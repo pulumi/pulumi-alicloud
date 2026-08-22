@@ -307,14 +307,18 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceUserId);
     }
     /**
-     * The status of the resource. Valid values: `Frozen`, `Normal`.
+     * The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     * 
+     * &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user&#39;s remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Frozen`, `Normal`.
+     * @return The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     * 
+     * &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user&#39;s remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      * 
      */
     public Output<String> status() {

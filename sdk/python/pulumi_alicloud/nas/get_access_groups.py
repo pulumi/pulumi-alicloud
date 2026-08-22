@@ -183,7 +183,7 @@ def get_access_groups(access_group_name: Optional[_builtins.str] = None,
     """
     This data source provides user-available access groups. Use when you can create mount points
 
-    > NOTE: Available in 1.35.0+
+    > **NOTE:** Available since v1.35.0+
 
     ## Example Usage
 
@@ -201,7 +201,7 @@ def get_access_groups(access_group_name: Optional[_builtins.str] = None,
     :param _builtins.str access_group_name: The name of access group.
     :param _builtins.str access_group_type: Filter results by a specific AccessGroupType.
     :param _builtins.str description: Filter results by a specific Description.
-    :param _builtins.str file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+    :param _builtins.str file_system_type: The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
     :param _builtins.str name_regex: A regex string to filter AccessGroups by name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
@@ -244,7 +244,7 @@ def get_access_groups_output(access_group_name: pulumi.Input[Optional[Optional[_
     """
     This data source provides user-available access groups. Use when you can create mount points
 
-    > NOTE: Available in 1.35.0+
+    > **NOTE:** Available since v1.35.0+
 
     ## Example Usage
 
@@ -262,7 +262,7 @@ def get_access_groups_output(access_group_name: pulumi.Input[Optional[Optional[_
     :param _builtins.str access_group_name: The name of access group.
     :param _builtins.str access_group_type: Filter results by a specific AccessGroupType.
     :param _builtins.str description: Filter results by a specific Description.
-    :param _builtins.str file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+    :param _builtins.str file_system_type: The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
     :param _builtins.str name_regex: A regex string to filter AccessGroups by name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.

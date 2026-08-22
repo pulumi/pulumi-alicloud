@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:gpdb/account:Account":
 		r = &Account{}
+	case "alicloud:gpdb/apiKey:ApiKey":
+		r = &ApiKey{}
 	case "alicloud:gpdb/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "alicloud:gpdb/connection:Connection":
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/apiKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

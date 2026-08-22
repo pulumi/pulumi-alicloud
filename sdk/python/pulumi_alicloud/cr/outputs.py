@@ -23,11 +23,13 @@ __all__ = [
     'ChainChainConfigRouter',
     'ChainChainConfigRouterFrom',
     'ChainChainConfigRouterTo',
+    'InternetEndpointEntry',
     'RegistryEnterpriseInstanceInstanceEndpoint',
     'RegistryEnterpriseInstanceInstanceEndpointDomain',
     'RepoDomainList',
     'StorageDomainRoutingRuleRoute',
     'GetArtifactLifecycleRulesRuleResult',
+    'GetArtifactSubscriptionRulesRuleResult',
     'GetChainsChainResult',
     'GetChainsChainChainConfigResult',
     'GetChainsChainChainConfigNodeResult',
@@ -39,6 +41,7 @@ __all__ = [
     'GetChartNamespacesNamespaceResult',
     'GetChartRepositoriesRepositoryResult',
     'GetEndpointAclPoliciesPolicyResult',
+    'GetInternetEndpointEntryResult',
     'GetNamespacesNamespaceResult',
     'GetReposRepoResult',
     'GetReposRepoDomainListResult',
@@ -354,6 +357,41 @@ class ChainChainConfigRouterTo(dict):
         The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
         return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class InternetEndpointEntry(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 entry: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: The comment of the entry.
+               
+               > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+        :param _builtins.str entry: The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        The comment of the entry.
+
+        > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> Optional[_builtins.str]:
+        """
+        The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+        """
+        return pulumi.get(self, "entry")
 
 
 @pulumi.output_type
@@ -708,6 +746,200 @@ class GetArtifactLifecycleRulesRuleResult(dict):
     def tag_regexp(self) -> _builtins.str:
         """
         Retain regular expressions for mirrored versions.
+        """
+        return pulumi.get(self, "tag_regexp")
+
+
+@pulumi.output_type
+class GetArtifactSubscriptionRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 accelerate: _builtins.bool,
+                 artifact_subscription_rule_id: _builtins.str,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 instance_id: _builtins.str,
+                 modified_time: _builtins.str,
+                 namespace_name: _builtins.str,
+                 override: _builtins.bool,
+                 platforms: Sequence[_builtins.str],
+                 region_id: _builtins.str,
+                 repo_name: _builtins.str,
+                 source_domain: _builtins.str,
+                 source_namespace_name: _builtins.str,
+                 source_provider: _builtins.str,
+                 source_repo_name: _builtins.str,
+                 tag_count: _builtins.int,
+                 tag_regexp: _builtins.str):
+        """
+        :param _builtins.bool accelerate: Whether to enable acceleration.
+        :param _builtins.str artifact_subscription_rule_id: The first ID of the resource.
+        :param _builtins.str create_time: Creation time.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str instance_id: Instance ID
+        :param _builtins.str modified_time: Modification time.
+        :param _builtins.str namespace_name: Namespace name
+        :param _builtins.bool override: Whether to override existing tags.
+        :param Sequence[_builtins.str] platforms: Subscription platform list.
+        :param _builtins.str region_id: **NOTE:** This field is only available when `enable_details` is `true`. The region ID of the resource.
+        :param _builtins.str repo_name: Repository name
+        :param _builtins.str source_domain: Source domain.
+        :param _builtins.str source_namespace_name: Source namespace name.
+        :param _builtins.str source_provider: Source image registry provider, e.
+        :param _builtins.str source_repo_name: Source repository name.
+        :param _builtins.int tag_count: Number of tags to subscribe.
+        :param _builtins.str tag_regexp: Regular expression for subscribing tags.
+        """
+        pulumi.set(__self__, "accelerate", accelerate)
+        pulumi.set(__self__, "artifact_subscription_rule_id", artifact_subscription_rule_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "override", override)
+        pulumi.set(__self__, "platforms", platforms)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "source_domain", source_domain)
+        pulumi.set(__self__, "source_namespace_name", source_namespace_name)
+        pulumi.set(__self__, "source_provider", source_provider)
+        pulumi.set(__self__, "source_repo_name", source_repo_name)
+        pulumi.set(__self__, "tag_count", tag_count)
+        pulumi.set(__self__, "tag_regexp", tag_regexp)
+
+    @_builtins.property
+    @pulumi.getter
+    def accelerate(self) -> _builtins.bool:
+        """
+        Whether to enable acceleration.
+        """
+        return pulumi.get(self, "accelerate")
+
+    @_builtins.property
+    @pulumi.getter(name="artifactSubscriptionRuleId")
+    def artifact_subscription_rule_id(self) -> _builtins.str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "artifact_subscription_rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        Instance ID
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> _builtins.str:
+        """
+        Modification time.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> _builtins.str:
+        """
+        Namespace name
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def override(self) -> _builtins.bool:
+        """
+        Whether to override existing tags.
+        """
+        return pulumi.get(self, "override")
+
+    @_builtins.property
+    @pulumi.getter
+    def platforms(self) -> Sequence[_builtins.str]:
+        """
+        Subscription platform list.
+        """
+        return pulumi.get(self, "platforms")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The region ID of the resource.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> _builtins.str:
+        """
+        Repository name
+        """
+        return pulumi.get(self, "repo_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceDomain")
+    def source_domain(self) -> _builtins.str:
+        """
+        Source domain.
+        """
+        return pulumi.get(self, "source_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceNamespaceName")
+    def source_namespace_name(self) -> _builtins.str:
+        """
+        Source namespace name.
+        """
+        return pulumi.get(self, "source_namespace_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceProvider")
+    def source_provider(self) -> _builtins.str:
+        """
+        Source image registry provider, e.
+        """
+        return pulumi.get(self, "source_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceRepoName")
+    def source_repo_name(self) -> _builtins.str:
+        """
+        Source repository name.
+        """
+        return pulumi.get(self, "source_repo_name")
+
+    @_builtins.property
+    @pulumi.getter(name="tagCount")
+    def tag_count(self) -> _builtins.int:
+        """
+        Number of tags to subscribe.
+        """
+        return pulumi.get(self, "tag_count")
+
+    @_builtins.property
+    @pulumi.getter(name="tagRegexp")
+    def tag_regexp(self) -> _builtins.str:
+        """
+        Regular expression for subscribing tags.
         """
         return pulumi.get(self, "tag_regexp")
 
@@ -1261,6 +1493,35 @@ class GetEndpointAclPoliciesPolicyResult(dict):
         The ID of the CR Instance.
         """
         return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetInternetEndpointEntryResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 entry: _builtins.str):
+        """
+        :param _builtins.str comment: The comment of the entry.
+        :param _builtins.str entry: The CIDR-formatted IP address range that is allowed to access.
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "entry", entry)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        The comment of the entry.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> _builtins.str:
+        """
+        The CIDR-formatted IP address range that is allowed to access.
+        """
+        return pulumi.get(self, "entry")
 
 
 @pulumi.output_type

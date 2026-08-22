@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.ram;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyArgs;
+import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
 import com.pulumi.alicloud.ram.inputs.GetAccountAliasPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
@@ -24,6 +26,7 @@ import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
 import com.pulumi.alicloud.ram.inputs.GetSystemPolicysPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
 import com.pulumi.alicloud.ram.inputs.GetUsersPlainArgs;
+import com.pulumi.alicloud.ram.outputs.GetAccessKeyPolicyResult;
 import com.pulumi.alicloud.ram.outputs.GetAccountAliasResult;
 import com.pulumi.alicloud.ram.outputs.GetAccountAliasesResult;
 import com.pulumi.alicloud.ram.outputs.GetGroupsResult;
@@ -42,6 +45,416 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class RamFunctions {
+    /**
+     * Provides a RAM Access Key Policy data source.
+     * 
+     * Reads the network access restriction policy for the AccessKey of an Alibaba Cloud account (primary account) or a RAM user.
+     * 
+     * For information about RAM Access Key Policy and how to use it, see [What is Access Key Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-getaccesskeypolicy).
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.AccessKey;
+     * import com.pulumi.alicloud.ram.AccessKeyArgs;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicy;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicyArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .build());
+     * 
+     *         var defaultAccessKey = new AccessKey("defaultAccessKey", AccessKeyArgs.builder()
+     *             .userName(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultAccessKeyPolicy = new AccessKeyPolicy("defaultAccessKeyPolicy", AccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKey.id())
+     *             .userPrincipalName(defaultUser.name().applyValue(_name -> String.format("%s}{@literal @}{@code %s.onaliyun.com", _name,default_.id())))
+     *             .accessKeyPolicy(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("Status", "Active"),
+     *                     jsonProperty("Statements", jsonArray(jsonObject(
+     *                         jsonProperty("Type", "ClassicWhiteList"),
+     *                         jsonProperty("IPList", jsonArray("10.0.0.1/32"))
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var defaultGetAccessKeyPolicy = RamFunctions.getAccessKeyPolicy(GetAccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKeyPolicy.userAccessKeyId())
+     *             .userPrincipalName(defaultAccessKeyPolicy.userPrincipalName())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccessKeyPolicyResult> getAccessKeyPolicy(GetAccessKeyPolicyArgs args) {
+        return getAccessKeyPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a RAM Access Key Policy data source.
+     * 
+     * Reads the network access restriction policy for the AccessKey of an Alibaba Cloud account (primary account) or a RAM user.
+     * 
+     * For information about RAM Access Key Policy and how to use it, see [What is Access Key Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-getaccesskeypolicy).
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.AccessKey;
+     * import com.pulumi.alicloud.ram.AccessKeyArgs;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicy;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicyArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .build());
+     * 
+     *         var defaultAccessKey = new AccessKey("defaultAccessKey", AccessKeyArgs.builder()
+     *             .userName(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultAccessKeyPolicy = new AccessKeyPolicy("defaultAccessKeyPolicy", AccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKey.id())
+     *             .userPrincipalName(defaultUser.name().applyValue(_name -> String.format("%s}{@literal @}{@code %s.onaliyun.com", _name,default_.id())))
+     *             .accessKeyPolicy(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("Status", "Active"),
+     *                     jsonProperty("Statements", jsonArray(jsonObject(
+     *                         jsonProperty("Type", "ClassicWhiteList"),
+     *                         jsonProperty("IPList", jsonArray("10.0.0.1/32"))
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var defaultGetAccessKeyPolicy = RamFunctions.getAccessKeyPolicy(GetAccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKeyPolicy.userAccessKeyId())
+     *             .userPrincipalName(defaultAccessKeyPolicy.userPrincipalName())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccessKeyPolicyResult> getAccessKeyPolicyPlain(GetAccessKeyPolicyPlainArgs args) {
+        return getAccessKeyPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a RAM Access Key Policy data source.
+     * 
+     * Reads the network access restriction policy for the AccessKey of an Alibaba Cloud account (primary account) or a RAM user.
+     * 
+     * For information about RAM Access Key Policy and how to use it, see [What is Access Key Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-getaccesskeypolicy).
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.AccessKey;
+     * import com.pulumi.alicloud.ram.AccessKeyArgs;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicy;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicyArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .build());
+     * 
+     *         var defaultAccessKey = new AccessKey("defaultAccessKey", AccessKeyArgs.builder()
+     *             .userName(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultAccessKeyPolicy = new AccessKeyPolicy("defaultAccessKeyPolicy", AccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKey.id())
+     *             .userPrincipalName(defaultUser.name().applyValue(_name -> String.format("%s}{@literal @}{@code %s.onaliyun.com", _name,default_.id())))
+     *             .accessKeyPolicy(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("Status", "Active"),
+     *                     jsonProperty("Statements", jsonArray(jsonObject(
+     *                         jsonProperty("Type", "ClassicWhiteList"),
+     *                         jsonProperty("IPList", jsonArray("10.0.0.1/32"))
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var defaultGetAccessKeyPolicy = RamFunctions.getAccessKeyPolicy(GetAccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKeyPolicy.userAccessKeyId())
+     *             .userPrincipalName(defaultAccessKeyPolicy.userPrincipalName())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccessKeyPolicyResult> getAccessKeyPolicy(GetAccessKeyPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getAccessKeyPolicy:getAccessKeyPolicy", TypeShape.of(GetAccessKeyPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a RAM Access Key Policy data source.
+     * 
+     * Reads the network access restriction policy for the AccessKey of an Alibaba Cloud account (primary account) or a RAM user.
+     * 
+     * For information about RAM Access Key Policy and how to use it, see [What is Access Key Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-getaccesskeypolicy).
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.AccessKey;
+     * import com.pulumi.alicloud.ram.AccessKeyArgs;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicy;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicyArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .build());
+     * 
+     *         var defaultAccessKey = new AccessKey("defaultAccessKey", AccessKeyArgs.builder()
+     *             .userName(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultAccessKeyPolicy = new AccessKeyPolicy("defaultAccessKeyPolicy", AccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKey.id())
+     *             .userPrincipalName(defaultUser.name().applyValue(_name -> String.format("%s}{@literal @}{@code %s.onaliyun.com", _name,default_.id())))
+     *             .accessKeyPolicy(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("Status", "Active"),
+     *                     jsonProperty("Statements", jsonArray(jsonObject(
+     *                         jsonProperty("Type", "ClassicWhiteList"),
+     *                         jsonProperty("IPList", jsonArray("10.0.0.1/32"))
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var defaultGetAccessKeyPolicy = RamFunctions.getAccessKeyPolicy(GetAccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKeyPolicy.userAccessKeyId())
+     *             .userPrincipalName(defaultAccessKeyPolicy.userPrincipalName())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccessKeyPolicyResult> getAccessKeyPolicy(GetAccessKeyPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getAccessKeyPolicy:getAccessKeyPolicy", TypeShape.of(GetAccessKeyPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a RAM Access Key Policy data source.
+     * 
+     * Reads the network access restriction policy for the AccessKey of an Alibaba Cloud account (primary account) or a RAM user.
+     * 
+     * For information about RAM Access Key Policy and how to use it, see [What is Access Key Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-getaccesskeypolicy).
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.AccessKey;
+     * import com.pulumi.alicloud.ram.AccessKeyArgs;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicy;
+     * import com.pulumi.alicloud.ram.AccessKeyPolicyArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccessKeyPolicyArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .build());
+     * 
+     *         var defaultAccessKey = new AccessKey("defaultAccessKey", AccessKeyArgs.builder()
+     *             .userName(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultAccessKeyPolicy = new AccessKeyPolicy("defaultAccessKeyPolicy", AccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKey.id())
+     *             .userPrincipalName(defaultUser.name().applyValue(_name -> String.format("%s}{@literal @}{@code %s.onaliyun.com", _name,default_.id())))
+     *             .accessKeyPolicy(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("Status", "Active"),
+     *                     jsonProperty("Statements", jsonArray(jsonObject(
+     *                         jsonProperty("Type", "ClassicWhiteList"),
+     *                         jsonProperty("IPList", jsonArray("10.0.0.1/32"))
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var defaultGetAccessKeyPolicy = RamFunctions.getAccessKeyPolicy(GetAccessKeyPolicyArgs.builder()
+     *             .userAccessKeyId(defaultAccessKeyPolicy.userAccessKeyId())
+     *             .userPrincipalName(defaultAccessKeyPolicy.userPrincipalName())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccessKeyPolicyResult> getAccessKeyPolicyPlain(GetAccessKeyPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ram/getAccessKeyPolicy:getAccessKeyPolicy", TypeShape.of(GetAccessKeyPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides an alias for the Alibaba Cloud account.
      * 

@@ -6,6 +6,7 @@ package com.pulumi.alicloud;
 import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
 import com.pulumi.alicloud.inputs.ProviderAssumeRoleWithOidcArgs;
 import com.pulumi.alicloud.inputs.ProviderEndpointArgs;
+import com.pulumi.alicloud.inputs.ProviderFeaturesArgs;
 import com.pulumi.alicloud.inputs.ProviderSignVersionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -173,6 +174,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
     public Optional<Output<String>> fc() {
         return Optional.ofNullable(this.fc);
+    }
+
+    /**
+     * Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider&#39;s default behaviour.
+     * 
+     */
+    @Import(name="features", json=true)
+    private @Nullable Output<ProviderFeaturesArgs> features;
+
+    /**
+     * @return Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider&#39;s default behaviour.
+     * 
+     */
+    public Optional<Output<ProviderFeaturesArgs>> features() {
+        return Optional.ofNullable(this.features);
     }
 
     /**
@@ -359,14 +375,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
      * 
      */
     @Import(name="skipRegionValidation", json=true)
     private @Nullable Output<Boolean> skipRegionValidation;
 
     /**
-     * @return Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+     * @return Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
      * 
      */
     public Optional<Output<Boolean>> skipRegionValidation() {
@@ -403,6 +419,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.ecsRoleName = $.ecsRoleName;
         this.endpoints = $.endpoints;
         this.fc = $.fc;
+        this.features = $.features;
         this.logEndpoint = $.logEndpoint;
         this.maxRetryTimeout = $.maxRetryTimeout;
         this.mnsEndpoint = $.mnsEndpoint;
@@ -648,6 +665,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
         public Builder fc(String fc) {
             return fc(Output.of(fc));
+        }
+
+        /**
+         * @param features Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider&#39;s default behaviour.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(@Nullable Output<ProviderFeaturesArgs> features) {
+            $.features = features;
+            return this;
+        }
+
+        /**
+         * @param features Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider&#39;s default behaviour.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(ProviderFeaturesArgs features) {
+            return features(Output.of(features));
         }
 
         /**
@@ -900,7 +938,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
          * 
          * @return builder
          * 
@@ -911,7 +949,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
          * 
          * @return builder
          * 

@@ -4596,7 +4596,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 
@@ -4641,7 +4641,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 
@@ -4686,7 +4686,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 
@@ -4731,7 +4731,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 
@@ -4776,7 +4776,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 
@@ -4821,7 +4821,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 
@@ -4866,7 +4866,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+
+     * &gt; **NOTE:** Available since v1.86.0
      * 
      * ## Example Usage
      * 

@@ -490,7 +490,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      * 
      */
@@ -500,7 +500,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      * 
      */
@@ -1445,7 +1445,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param specType The instance edition. Default value: `normal`. Valid values:
          * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-         * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+         * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
          * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
          * 
          * @return builder
@@ -1459,7 +1459,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param specType The instance edition. Default value: `normal`. Valid values:
          * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-         * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+         * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
          * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
          * 
          * @return builder

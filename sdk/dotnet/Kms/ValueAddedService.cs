@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available since v1.267.0.
     /// 
+    /// &gt; **NOTE:** A value added service can be purchased only once per region while it is in effect. If the account already holds it, for example because it was purchased in the console, a duplicate order is charged and then refunded automatically and its instance never becomes effective, so creating this resource fails rather than tracking an instance that does not work. Import the existing service instead of creating it.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -108,9 +110,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-        /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// The value added service type. Valid values:
         /// </summary>
         [Output("valueAddedService")]
         public Output<string?> ServiceType { get; private set; } = null!;
@@ -194,9 +194,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-        /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// The value added service type. Valid values:
         /// </summary>
         [Input("valueAddedService")]
         public Input<string>? ServiceType { get; set; }
@@ -260,9 +258,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-        /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// The value added service type. Valid values:
         /// </summary>
         [Input("valueAddedService")]
         public Input<string>? ServiceType { get; set; }

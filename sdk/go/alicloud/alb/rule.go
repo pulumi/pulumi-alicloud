@@ -201,6 +201,66 @@ import (
 //
 // ```
 //
+// # Removing a request header before forwarding
+//
+// A forwarding rule must contain exactly one final action (`ForwardGroup`, `Redirect` or `FixedResponse`), and that action is executed last, so the `RemoveHeader` extension action has to be declared with a smaller `order`. The example below reuses the listener and the server group created above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alb.NewRule(ctx, "remove_header", &alb.RuleArgs{
+//				RuleName:   pulumi.Sprintf("%v_remove_header", name),
+//				ListenerId: pulumi.Any(defaultAlicloudAlbListener.Id),
+//				Priority:   pulumi.Int(556),
+//				RuleConditions: alb.RuleRuleConditionArray{
+//					&alb.RuleRuleConditionArgs{
+//						HostConfig: &alb.RuleRuleConditionHostConfigArgs{
+//							Values: pulumi.StringArray{
+//								pulumi.String("www.example.com"),
+//							},
+//						},
+//						Type: pulumi.String("Host"),
+//					},
+//				},
+//				RuleActions: alb.RuleRuleActionArray{
+//					&alb.RuleRuleActionArgs{
+//						RemoveHeaderConfig: &alb.RuleRuleActionRemoveHeaderConfigArgs{
+//							Key: pulumi.String("X-Debug-Trace"),
+//						},
+//						Order: pulumi.Int(1),
+//						Type:  pulumi.String("RemoveHeader"),
+//					},
+//					&alb.RuleRuleActionArgs{
+//						ForwardGroupConfig: &alb.RuleRuleActionForwardGroupConfigArgs{
+//							ServerGroupTuples: alb.RuleRuleActionForwardGroupConfigServerGroupTupleArray{
+//								&alb.RuleRuleActionForwardGroupConfigServerGroupTupleArgs{
+//									ServerGroupId: pulumi.Any(_default.Id),
+//								},
+//							},
+//						},
+//						Order: pulumi.Int(9),
+//						Type:  pulumi.String("ForwardGroup"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -221,7 +281,9 @@ type Rule struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayOutput `pulumi:"ruleActions"`
@@ -286,7 +348,9 @@ type ruleState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId *string `pulumi:"listenerId"`
-	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** The priority of each rule within the same listener must be unique.
 	Priority *int `pulumi:"priority"`
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions []RuleRuleAction `pulumi:"ruleActions"`
@@ -307,7 +371,9 @@ type RuleState struct {
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId pulumi.StringPtrInput
-	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntPtrInput
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayInput
@@ -332,7 +398,9 @@ type ruleArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId string `pulumi:"listenerId"`
-	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** The priority of each rule within the same listener must be unique.
 	Priority int `pulumi:"priority"`
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions []RuleRuleAction `pulumi:"ruleActions"`
@@ -352,7 +420,9 @@ type RuleArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId pulumi.StringInput
-	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+	//
+	// > **NOTE:** The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntInput
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayInput
@@ -466,7 +536,9 @@ func (o RuleOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+//
+// > **NOTE:** The priority of each rule within the same listener must be unique.
 func (o RuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }

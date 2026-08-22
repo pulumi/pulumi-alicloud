@@ -511,14 +511,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.httpTokens;
     }
     /**
-     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
-     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
      * 
      */
     public Output<String> imageId() {

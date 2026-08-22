@@ -27,13 +27,16 @@ class GetFileSystemsResult:
     """
     A collection of values returned by getFileSystems.
     """
-    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, protocol_type=None, storage_type=None, systems=None):
+    def __init__(__self__, description_regex=None, descriptions=None, file_system_type=None, id=None, ids=None, output_file=None, protocol_type=None, storage_type=None, systems=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         pulumi.set(__self__, "description_regex", description_regex)
         if descriptions and not isinstance(descriptions, list):
             raise TypeError("Expected argument 'descriptions' to be a list")
         pulumi.set(__self__, "descriptions", descriptions)
+        if file_system_type and not isinstance(file_system_type, str):
+            raise TypeError("Expected argument 'file_system_type' to be a str")
+        pulumi.set(__self__, "file_system_type", file_system_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -65,6 +68,19 @@ class GetFileSystemsResult:
         A list of FileSystem descriptions.
         """
         return pulumi.get(self, "descriptions")
+
+    @_builtins.property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Available in v1.140.0+) The type of the file system.
+        Valid values:
+        `standard`,
+        `extreme`,
+        `cpfs`,
+        `cpfsse`.
+        """
+        return pulumi.get(self, "file_system_type")
 
     @_builtins.property
     @pulumi.getter
@@ -120,6 +136,7 @@ class AwaitableGetFileSystemsResult(GetFileSystemsResult):
         return GetFileSystemsResult(
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            file_system_type=self.file_system_type,
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
@@ -129,6 +146,7 @@ class AwaitableGetFileSystemsResult(GetFileSystemsResult):
 
 
 def get_file_systems(description_regex: Optional[_builtins.str] = None,
+                     file_system_type: Optional[_builtins.str] = None,
                      ids: Optional[Sequence[_builtins.str]] = None,
                      output_file: Optional[_builtins.str] = None,
                      protocol_type: Optional[_builtins.str] = None,
@@ -137,7 +155,7 @@ def get_file_systems(description_regex: Optional[_builtins.str] = None,
     """
     This data source provides FileSystems available to the user.
 
-    > **NOTE**: Available in 1.35.0+
+    > **NOTE:** Available since v1.35.0+
 
     ## Example Usage
 
@@ -146,12 +164,19 @@ def get_file_systems(description_regex: Optional[_builtins.str] = None,
     import pulumi_alicloud as alicloud
 
     fs = alicloud.nas.get_file_systems(protocol_type="NFS",
+        file_system_type="standard",
         description_regex=foo["description"])
     pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
     ```
 
 
     :param _builtins.str description_regex: A regex string to filter the results by the ：FileSystem description.
+    :param _builtins.str file_system_type: The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+           Valid values:
+           `standard`,
+           `extreme`,
+           `cpfs`,
+           `cpfsse`.
     :param Sequence[_builtins.str] ids: A list of FileSystemId.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str protocol_type: The protocol type of the file system.
@@ -165,6 +190,7 @@ def get_file_systems(description_regex: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex
+    __args__['fileSystemType'] = file_system_type
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['protocolType'] = protocol_type
@@ -175,6 +201,7 @@ def get_file_systems(description_regex: Optional[_builtins.str] = None,
     return AwaitableGetFileSystemsResult(
         description_regex=pulumi.get(__ret__, 'description_regex'),
         descriptions=pulumi.get(__ret__, 'descriptions'),
+        file_system_type=pulumi.get(__ret__, 'file_system_type'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
@@ -182,6 +209,7 @@ def get_file_systems(description_regex: Optional[_builtins.str] = None,
         storage_type=pulumi.get(__ret__, 'storage_type'),
         systems=pulumi.get(__ret__, 'systems'))
 def get_file_systems_output(description_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            file_system_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             protocol_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -190,7 +218,7 @@ def get_file_systems_output(description_regex: pulumi.Input[Optional[Optional[_b
     """
     This data source provides FileSystems available to the user.
 
-    > **NOTE**: Available in 1.35.0+
+    > **NOTE:** Available since v1.35.0+
 
     ## Example Usage
 
@@ -199,12 +227,19 @@ def get_file_systems_output(description_regex: pulumi.Input[Optional[Optional[_b
     import pulumi_alicloud as alicloud
 
     fs = alicloud.nas.get_file_systems(protocol_type="NFS",
+        file_system_type="standard",
         description_regex=foo["description"])
     pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
     ```
 
 
     :param _builtins.str description_regex: A regex string to filter the results by the ：FileSystem description.
+    :param _builtins.str file_system_type: The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+           Valid values:
+           `standard`,
+           `extreme`,
+           `cpfs`,
+           `cpfsse`.
     :param Sequence[_builtins.str] ids: A list of FileSystemId.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str protocol_type: The protocol type of the file system.
@@ -218,6 +253,7 @@ def get_file_systems_output(description_regex: pulumi.Input[Optional[Optional[_b
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex
+    __args__['fileSystemType'] = file_system_type
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['protocolType'] = protocol_type
@@ -227,6 +263,7 @@ def get_file_systems_output(description_regex: pulumi.Input[Optional[Optional[_b
     return __ret__.apply(lambda __response__: GetFileSystemsResult(
         description_regex=pulumi.get(__response__, 'description_regex'),
         descriptions=pulumi.get(__response__, 'descriptions'),
+        file_system_type=pulumi.get(__response__, 'file_system_type'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         output_file=pulumi.get(__response__, 'output_file'),

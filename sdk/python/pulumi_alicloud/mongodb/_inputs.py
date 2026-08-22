@@ -19,6 +19,8 @@ __all__ = [
     'InstanceParameterArgsDict',
     'InstanceReplicaSetArgs',
     'InstanceReplicaSetArgsDict',
+    'InstanceSecurityIpGroupArgs',
+    'InstanceSecurityIpGroupArgsDict',
     'InstanceZoneInfoArgs',
     'InstanceZoneInfoArgsDict',
     'PublicNetworkAddressReplicaSetArgs',
@@ -31,6 +33,8 @@ __all__ = [
     'ShardingInstanceMongoListArgsDict',
     'ShardingInstanceParameterArgs',
     'ShardingInstanceParameterArgsDict',
+    'ShardingInstanceSecurityIpGroupArgs',
+    'ShardingInstanceSecurityIpGroupArgsDict',
     'ShardingInstanceShardListArgs',
     'ShardingInstanceShardListArgsDict',
     'ShardingInstanceZoneInfoArgs',
@@ -258,6 +262,75 @@ class InstanceReplicaSetArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+class InstanceSecurityIpGroupArgsDict(TypedDict):
+    security_ip_group_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+    """
+    security_ip_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `security_ip_list` (which manages the `default` group).
+    """
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+    """
+
+@pulumi.input_type
+class InstanceSecurityIpGroupArgs:
+    def __init__(__self__, *,
+                 security_ip_group_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] security_ip_group_attribute: The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+        :param pulumi.Input[_builtins.str] security_ip_group_name: The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `security_ip_list` (which manages the `default` group).
+        :param pulumi.Input[_builtins.str] security_ip_list: The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        if security_ip_group_attribute is not None:
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+        if security_ip_group_name is not None:
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @_builtins.property
+    @pulumi.getter(name="securityIpGroupAttribute")
+    def security_ip_group_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+        """
+        return pulumi.get(self, "security_ip_group_attribute")
+
+    @security_ip_group_attribute.setter
+    def security_ip_group_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_ip_group_attribute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityIpGroupName")
+    def security_ip_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `security_ip_list` (which manages the `default` group).
+        """
+        return pulumi.get(self, "security_ip_group_name")
+
+    @security_ip_group_name.setter
+    def security_ip_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_ip_group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ip_list")
+
+    @security_ip_list.setter
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_ip_list", value)
 
 
 class InstanceZoneInfoArgsDict(TypedDict):
@@ -875,6 +948,75 @@ class ShardingInstanceParameterArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class ShardingInstanceSecurityIpGroupArgsDict(TypedDict):
+    security_ip_group_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+    """
+    security_ip_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `security_ip_list` (which manages the `default` group).
+    """
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+    """
+
+@pulumi.input_type
+class ShardingInstanceSecurityIpGroupArgs:
+    def __init__(__self__, *,
+                 security_ip_group_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] security_ip_group_attribute: The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+        :param pulumi.Input[_builtins.str] security_ip_group_name: The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `security_ip_list` (which manages the `default` group).
+        :param pulumi.Input[_builtins.str] security_ip_list: The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        if security_ip_group_attribute is not None:
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+        if security_ip_group_name is not None:
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @_builtins.property
+    @pulumi.getter(name="securityIpGroupAttribute")
+    def security_ip_group_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+        """
+        return pulumi.get(self, "security_ip_group_attribute")
+
+    @security_ip_group_attribute.setter
+    def security_ip_group_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_ip_group_attribute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityIpGroupName")
+    def security_ip_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `security_ip_list` (which manages the `default` group).
+        """
+        return pulumi.get(self, "security_ip_group_name")
+
+    @security_ip_group_name.setter
+    def security_ip_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_ip_group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ip_list")
+
+    @security_ip_list.setter
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_ip_list", value)
 
 
 class ShardingInstanceShardListArgsDict(TypedDict):

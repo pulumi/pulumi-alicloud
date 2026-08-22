@@ -505,7 +505,7 @@ type FileSystemOptions struct {
 	// - true: On.
 	// - false: does not turn on.
 	//
-	// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+	// > **NOTE:** Description Only file systems of the SMB protocol type are supported.
 	EnableOplock *bool `pulumi:"enableOplock"`
 }
 
@@ -525,7 +525,7 @@ type FileSystemOptionsArgs struct {
 	// - true: On.
 	// - false: does not turn on.
 	//
-	// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+	// > **NOTE:** Description Only file systems of the SMB protocol type are supported.
 	EnableOplock pulumi.BoolPtrInput `pulumi:"enableOplock"`
 }
 
@@ -610,7 +610,7 @@ func (o FileSystemOptionsOutput) ToFileSystemOptionsPtrOutputWithContext(ctx con
 // - true: On.
 // - false: does not turn on.
 //
-// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+// > **NOTE:** Description Only file systems of the SMB protocol type are supported.
 func (o FileSystemOptionsOutput) EnableOplock() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileSystemOptions) *bool { return v.EnableOplock }).(pulumi.BoolPtrOutput)
 }
@@ -643,7 +643,7 @@ func (o FileSystemOptionsPtrOutput) Elem() FileSystemOptionsOutput {
 // - true: On.
 // - false: does not turn on.
 //
-// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+// > **NOTE:** Description Only file systems of the SMB protocol type are supported.
 func (o FileSystemOptionsPtrOutput) EnableOplock() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FileSystemOptions) *bool {
 		if v == nil {
@@ -885,7 +885,7 @@ type FileSystemSmbAcl struct {
 	//
 	// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 	//
-	// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+	// > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
 	HomeDirPath *string `pulumi:"homeDirPath"`
 	// Whether to reject non-encrypted clients.
 	// - true: Deny non-encrypted clients.
@@ -929,7 +929,7 @@ type FileSystemSmbAclArgs struct {
 	//
 	// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 	//
-	// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+	// > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
 	HomeDirPath pulumi.StringPtrInput `pulumi:"homeDirPath"`
 	// Whether to reject non-encrypted clients.
 	// - true: Deny non-encrypted clients.
@@ -1047,7 +1047,7 @@ func (o FileSystemSmbAclOutput) EncryptData() pulumi.BoolPtrOutput {
 //
 // For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 //
-// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+// > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
 func (o FileSystemSmbAclOutput) HomeDirPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemSmbAcl) *string { return v.HomeDirPath }).(pulumi.StringPtrOutput)
 }
@@ -1134,7 +1134,7 @@ func (o FileSystemSmbAclPtrOutput) EncryptData() pulumi.BoolPtrOutput {
 //
 // For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 //
-// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+// > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
 func (o FileSystemSmbAclPtrOutput) HomeDirPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystemSmbAcl) *string {
 		if v == nil {
@@ -1835,13 +1835,14 @@ type GetFileSystemsSystem struct {
 	CreateTime string `pulumi:"createTime"`
 	// Description of the FileSystem.
 	Description string `pulumi:"description"`
-	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-	// * Valid values:
+	// (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
 	EncryptType int `pulumi:"encryptType"`
-	// The type of the file system.
+	// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
 	// Valid values:
-	// `standard` (Default),
-	// `extreme`.
+	// `standard`,
+	// `extreme`,
+	// `cpfs`,
+	// `cpfsse`.
 	FileSystemType string `pulumi:"fileSystemType"`
 	// ID of the FileSystem.
 	Id string `pulumi:"id"`
@@ -1883,13 +1884,14 @@ type GetFileSystemsSystemArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Description of the FileSystem.
 	Description pulumi.StringInput `pulumi:"description"`
-	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-	// * Valid values:
+	// (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
 	EncryptType pulumi.IntInput `pulumi:"encryptType"`
-	// The type of the file system.
+	// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
 	// Valid values:
-	// `standard` (Default),
-	// `extreme`.
+	// `standard`,
+	// `extreme`,
+	// `cpfs`,
+	// `cpfsse`.
 	FileSystemType pulumi.StringInput `pulumi:"fileSystemType"`
 	// ID of the FileSystem.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1979,16 +1981,17 @@ func (o GetFileSystemsSystemOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-// * Valid values:
+// (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
 func (o GetFileSystemsSystemOutput) EncryptType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.EncryptType }).(pulumi.IntOutput)
 }
 
-// The type of the file system.
+// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
 // Valid values:
-// `standard` (Default),
-// `extreme`.
+// `standard`,
+// `extreme`,
+// `cpfs`,
+// `cpfsse`.
 func (o GetFileSystemsSystemOutput) FileSystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.FileSystemType }).(pulumi.StringOutput)
 }
@@ -2363,6 +2366,148 @@ func (o GetLifecyclePoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetLifec
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLifecyclePoliciesPolicy {
 		return vs[0].([]GetLifecyclePoliciesPolicy)[vs[1].(int)]
 	}).(GetLifecyclePoliciesPolicyOutput)
+}
+
+type GetLogAnalysesAnalysis struct {
+	// The ID of the file system for which log delivery is enabled.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The ID of the Log Analysis. It is the same as the file system ID.
+	Id string `pulumi:"id"`
+	// The name of the Logstore that receives NAS logs.
+	Logstore string `pulumi:"logstore"`
+	// The name of the project that receives NAS logs.
+	Project string `pulumi:"project"`
+	// The Simple Log Service region of the log project.
+	Region string `pulumi:"region"`
+	// The ARN of the service role used by NAS to deliver logs to Simple Log Service.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// GetLogAnalysesAnalysisInput is an input type that accepts GetLogAnalysesAnalysisArgs and GetLogAnalysesAnalysisOutput values.
+// You can construct a concrete instance of `GetLogAnalysesAnalysisInput` via:
+//
+//	GetLogAnalysesAnalysisArgs{...}
+type GetLogAnalysesAnalysisInput interface {
+	pulumi.Input
+
+	ToGetLogAnalysesAnalysisOutput() GetLogAnalysesAnalysisOutput
+	ToGetLogAnalysesAnalysisOutputWithContext(context.Context) GetLogAnalysesAnalysisOutput
+}
+
+type GetLogAnalysesAnalysisArgs struct {
+	// The ID of the file system for which log delivery is enabled.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The ID of the Log Analysis. It is the same as the file system ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the Logstore that receives NAS logs.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// The name of the project that receives NAS logs.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The Simple Log Service region of the log project.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The ARN of the service role used by NAS to deliver logs to Simple Log Service.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetLogAnalysesAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogAnalysesAnalysis)(nil)).Elem()
+}
+
+func (i GetLogAnalysesAnalysisArgs) ToGetLogAnalysesAnalysisOutput() GetLogAnalysesAnalysisOutput {
+	return i.ToGetLogAnalysesAnalysisOutputWithContext(context.Background())
+}
+
+func (i GetLogAnalysesAnalysisArgs) ToGetLogAnalysesAnalysisOutputWithContext(ctx context.Context) GetLogAnalysesAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogAnalysesAnalysisOutput)
+}
+
+// GetLogAnalysesAnalysisArrayInput is an input type that accepts GetLogAnalysesAnalysisArray and GetLogAnalysesAnalysisArrayOutput values.
+// You can construct a concrete instance of `GetLogAnalysesAnalysisArrayInput` via:
+//
+//	GetLogAnalysesAnalysisArray{ GetLogAnalysesAnalysisArgs{...} }
+type GetLogAnalysesAnalysisArrayInput interface {
+	pulumi.Input
+
+	ToGetLogAnalysesAnalysisArrayOutput() GetLogAnalysesAnalysisArrayOutput
+	ToGetLogAnalysesAnalysisArrayOutputWithContext(context.Context) GetLogAnalysesAnalysisArrayOutput
+}
+
+type GetLogAnalysesAnalysisArray []GetLogAnalysesAnalysisInput
+
+func (GetLogAnalysesAnalysisArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogAnalysesAnalysis)(nil)).Elem()
+}
+
+func (i GetLogAnalysesAnalysisArray) ToGetLogAnalysesAnalysisArrayOutput() GetLogAnalysesAnalysisArrayOutput {
+	return i.ToGetLogAnalysesAnalysisArrayOutputWithContext(context.Background())
+}
+
+func (i GetLogAnalysesAnalysisArray) ToGetLogAnalysesAnalysisArrayOutputWithContext(ctx context.Context) GetLogAnalysesAnalysisArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogAnalysesAnalysisArrayOutput)
+}
+
+type GetLogAnalysesAnalysisOutput struct{ *pulumi.OutputState }
+
+func (GetLogAnalysesAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogAnalysesAnalysis)(nil)).Elem()
+}
+
+func (o GetLogAnalysesAnalysisOutput) ToGetLogAnalysesAnalysisOutput() GetLogAnalysesAnalysisOutput {
+	return o
+}
+
+func (o GetLogAnalysesAnalysisOutput) ToGetLogAnalysesAnalysisOutputWithContext(ctx context.Context) GetLogAnalysesAnalysisOutput {
+	return o
+}
+
+// The ID of the file system for which log delivery is enabled.
+func (o GetLogAnalysesAnalysisOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogAnalysesAnalysis) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the Log Analysis. It is the same as the file system ID.
+func (o GetLogAnalysesAnalysisOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogAnalysesAnalysis) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Logstore that receives NAS logs.
+func (o GetLogAnalysesAnalysisOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogAnalysesAnalysis) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The name of the project that receives NAS logs.
+func (o GetLogAnalysesAnalysisOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogAnalysesAnalysis) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The Simple Log Service region of the log project.
+func (o GetLogAnalysesAnalysisOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogAnalysesAnalysis) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ARN of the service role used by NAS to deliver logs to Simple Log Service.
+func (o GetLogAnalysesAnalysisOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogAnalysesAnalysis) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetLogAnalysesAnalysisArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLogAnalysesAnalysisArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogAnalysesAnalysis)(nil)).Elem()
+}
+
+func (o GetLogAnalysesAnalysisArrayOutput) ToGetLogAnalysesAnalysisArrayOutput() GetLogAnalysesAnalysisArrayOutput {
+	return o
+}
+
+func (o GetLogAnalysesAnalysisArrayOutput) ToGetLogAnalysesAnalysisArrayOutputWithContext(ctx context.Context) GetLogAnalysesAnalysisArrayOutput {
+	return o
+}
+
+func (o GetLogAnalysesAnalysisArrayOutput) Index(i pulumi.IntInput) GetLogAnalysesAnalysisOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLogAnalysesAnalysis {
+		return vs[0].([]GetLogAnalysesAnalysis)[vs[1].(int)]
+	}).(GetLogAnalysesAnalysisOutput)
 }
 
 type GetMountTargetsTarget struct {
@@ -2969,6 +3114,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesetsFilesetArrayInput)(nil)).Elem(), GetFilesetsFilesetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLifecyclePoliciesPolicyInput)(nil)).Elem(), GetLifecyclePoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLifecyclePoliciesPolicyArrayInput)(nil)).Elem(), GetLifecyclePoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogAnalysesAnalysisInput)(nil)).Elem(), GetLogAnalysesAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogAnalysesAnalysisArrayInput)(nil)).Elem(), GetLogAnalysesAnalysisArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMountTargetsTargetInput)(nil)).Elem(), GetMountTargetsTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMountTargetsTargetArrayInput)(nil)).Elem(), GetMountTargetsTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
@@ -3003,6 +3150,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFilesetsFilesetArrayOutput{})
 	pulumi.RegisterOutputType(GetLifecyclePoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetLifecyclePoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetLogAnalysesAnalysisOutput{})
+	pulumi.RegisterOutputType(GetLogAnalysesAnalysisArrayOutput{})
 	pulumi.RegisterOutputType(GetMountTargetsTargetOutput{})
 	pulumi.RegisterOutputType(GetMountTargetsTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})

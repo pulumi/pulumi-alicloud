@@ -70,14 +70,18 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** The priority of each rule within the same listener must be unique.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * @return The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** The priority of each rule within the same listener must be unique.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -243,7 +247,9 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+         * @param priority The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+         * 
+         * &gt; **NOTE:** The priority of each rule within the same listener must be unique.
          * 
          * @return builder
          * 
@@ -254,7 +260,9 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+         * @param priority The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+         * 
+         * &gt; **NOTE:** The priority of each rule within the same listener must be unique.
          * 
          * @return builder
          * 

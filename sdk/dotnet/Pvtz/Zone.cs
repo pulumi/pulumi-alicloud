@@ -50,6 +50,12 @@ namespace Pulumi.AliCloud.Pvtz
     public partial class Zone : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+        /// </summary>
+        [Output("dnsGroup")]
+        public Output<string> DnsGroup { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the Private Zone is ptr.
         /// </summary>
         [Output("isPtr")]
@@ -171,6 +177,12 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+        /// </summary>
+        [Input("dnsGroup")]
+        public Input<string>? DnsGroup { get; set; }
+
+        /// <summary>
         /// The language. Valid values: "zh", "en", "jp".
         /// </summary>
         [Input("lang")]
@@ -253,6 +265,12 @@ namespace Pulumi.AliCloud.Pvtz
 
     public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+        /// </summary>
+        [Input("dnsGroup")]
+        public Input<string>? DnsGroup { get; set; }
+
         /// <summary>
         /// Whether the Private Zone is ptr.
         /// </summary>

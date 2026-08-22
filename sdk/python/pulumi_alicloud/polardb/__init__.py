@@ -16,6 +16,8 @@ from .batch_task import *
 from .cluster import *
 from .cluster_endpoint import *
 from .database import *
+from .dynamo_item import *
+from .dynamo_table import *
 from .endpoint import *
 from .endpoint_address import *
 from .get_accounts import *

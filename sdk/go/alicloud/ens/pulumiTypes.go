@@ -463,6 +463,220 @@ func (o LoadBalancerBackendServerArrayOutput) Index(i pulumi.IntInput) LoadBalan
 	}).(LoadBalancerBackendServerOutput)
 }
 
+type SecurityGroupPermission struct {
+	// Creation time, UTC time.
+	CreationTime *string `pulumi:"creationTime"`
+	// Rule description information
+	Description *string `pulumi:"description"`
+	// Destination IP address segment for outbound authorization
+	// Example value: 0.0.0.0/0
+	DestCidrIp *string `pulumi:"destCidrIp"`
+	// Authorized direction
+	// Example value: ingress
+	Direction *string `pulumi:"direction"`
+	// IP protocol
+	// Example value: TCP
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// The target IPv6 address segment.
+	Ipv6DestCidrIp *string `pulumi:"ipv6DestCidrIp"`
+	// The source IPv6 address segment.
+	Ipv6SourceCidrIp *string `pulumi:"ipv6SourceCidrIp"`
+	// Authorization Policy
+	// Example value: Accept
+	Policy *string `pulumi:"policy"`
+	// Source end port range.
+	PortRange *string `pulumi:"portRange"`
+	// Rule Priority
+	// Example value: 1
+	Priority *int `pulumi:"priority"`
+	// Source IP address segment, used for inbound authorization
+	// Example value: 0.0.0.0/0
+	SourceCidrIp *string `pulumi:"sourceCidrIp"`
+	// The port range of the source security group.
+	SourcePortRange *string `pulumi:"sourcePortRange"`
+}
+
+// SecurityGroupPermissionInput is an input type that accepts SecurityGroupPermissionArgs and SecurityGroupPermissionOutput values.
+// You can construct a concrete instance of `SecurityGroupPermissionInput` via:
+//
+//	SecurityGroupPermissionArgs{...}
+type SecurityGroupPermissionInput interface {
+	pulumi.Input
+
+	ToSecurityGroupPermissionOutput() SecurityGroupPermissionOutput
+	ToSecurityGroupPermissionOutputWithContext(context.Context) SecurityGroupPermissionOutput
+}
+
+type SecurityGroupPermissionArgs struct {
+	// Creation time, UTC time.
+	CreationTime pulumi.StringPtrInput `pulumi:"creationTime"`
+	// Rule description information
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Destination IP address segment for outbound authorization
+	// Example value: 0.0.0.0/0
+	DestCidrIp pulumi.StringPtrInput `pulumi:"destCidrIp"`
+	// Authorized direction
+	// Example value: ingress
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// IP protocol
+	// Example value: TCP
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// The target IPv6 address segment.
+	Ipv6DestCidrIp pulumi.StringPtrInput `pulumi:"ipv6DestCidrIp"`
+	// The source IPv6 address segment.
+	Ipv6SourceCidrIp pulumi.StringPtrInput `pulumi:"ipv6SourceCidrIp"`
+	// Authorization Policy
+	// Example value: Accept
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// Source end port range.
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
+	// Rule Priority
+	// Example value: 1
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Source IP address segment, used for inbound authorization
+	// Example value: 0.0.0.0/0
+	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
+	// The port range of the source security group.
+	SourcePortRange pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+}
+
+func (SecurityGroupPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupPermission)(nil)).Elem()
+}
+
+func (i SecurityGroupPermissionArgs) ToSecurityGroupPermissionOutput() SecurityGroupPermissionOutput {
+	return i.ToSecurityGroupPermissionOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupPermissionArgs) ToSecurityGroupPermissionOutputWithContext(ctx context.Context) SecurityGroupPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupPermissionOutput)
+}
+
+// SecurityGroupPermissionArrayInput is an input type that accepts SecurityGroupPermissionArray and SecurityGroupPermissionArrayOutput values.
+// You can construct a concrete instance of `SecurityGroupPermissionArrayInput` via:
+//
+//	SecurityGroupPermissionArray{ SecurityGroupPermissionArgs{...} }
+type SecurityGroupPermissionArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupPermissionArrayOutput() SecurityGroupPermissionArrayOutput
+	ToSecurityGroupPermissionArrayOutputWithContext(context.Context) SecurityGroupPermissionArrayOutput
+}
+
+type SecurityGroupPermissionArray []SecurityGroupPermissionInput
+
+func (SecurityGroupPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupPermission)(nil)).Elem()
+}
+
+func (i SecurityGroupPermissionArray) ToSecurityGroupPermissionArrayOutput() SecurityGroupPermissionArrayOutput {
+	return i.ToSecurityGroupPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupPermissionArray) ToSecurityGroupPermissionArrayOutputWithContext(ctx context.Context) SecurityGroupPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupPermissionArrayOutput)
+}
+
+type SecurityGroupPermissionOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupPermission)(nil)).Elem()
+}
+
+func (o SecurityGroupPermissionOutput) ToSecurityGroupPermissionOutput() SecurityGroupPermissionOutput {
+	return o
+}
+
+func (o SecurityGroupPermissionOutput) ToSecurityGroupPermissionOutputWithContext(ctx context.Context) SecurityGroupPermissionOutput {
+	return o
+}
+
+// Creation time, UTC time.
+func (o SecurityGroupPermissionOutput) CreationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
+}
+
+// Rule description information
+func (o SecurityGroupPermissionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Destination IP address segment for outbound authorization
+// Example value: 0.0.0.0/0
+func (o SecurityGroupPermissionOutput) DestCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.DestCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// Authorized direction
+// Example value: ingress
+func (o SecurityGroupPermissionOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// IP protocol
+// Example value: TCP
+func (o SecurityGroupPermissionOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The target IPv6 address segment.
+func (o SecurityGroupPermissionOutput) Ipv6DestCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.Ipv6DestCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// The source IPv6 address segment.
+func (o SecurityGroupPermissionOutput) Ipv6SourceCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.Ipv6SourceCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// Authorization Policy
+// Example value: Accept
+func (o SecurityGroupPermissionOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// Source end port range.
+func (o SecurityGroupPermissionOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
+// Rule Priority
+// Example value: 1
+func (o SecurityGroupPermissionOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Source IP address segment, used for inbound authorization
+// Example value: 0.0.0.0/0
+func (o SecurityGroupPermissionOutput) SourceCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// The port range of the source security group.
+func (o SecurityGroupPermissionOutput) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupPermission) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupPermission)(nil)).Elem()
+}
+
+func (o SecurityGroupPermissionArrayOutput) ToSecurityGroupPermissionArrayOutput() SecurityGroupPermissionArrayOutput {
+	return o
+}
+
+func (o SecurityGroupPermissionArrayOutput) ToSecurityGroupPermissionArrayOutputWithContext(ctx context.Context) SecurityGroupPermissionArrayOutput {
+	return o
+}
+
+func (o SecurityGroupPermissionArrayOutput) Index(i pulumi.IntInput) SecurityGroupPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupPermission {
+		return vs[0].([]SecurityGroupPermission)[vs[1].(int)]
+	}).(SecurityGroupPermissionOutput)
+}
+
 type GetKeyPairsPair struct {
 	// The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime string `pulumi:"createTime"`
@@ -596,6 +810,353 @@ func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutp
 	}).(GetKeyPairsPairOutput)
 }
 
+type GetSecurityGroupsGroup struct {
+	// Creation time of the security group, UTC time.
+	CreateTime string `pulumi:"createTime"`
+	// Rule description information.
+	Description string `pulumi:"description"`
+	// The ID of the Security Group.
+	Id string `pulumi:"id"`
+	// Number of instances associated with a security group.
+	InstanceCount int `pulumi:"instanceCount"`
+	// A collection of rules for a security group instance.
+	Permissions []GetSecurityGroupsGroupPermission `pulumi:"permissions"`
+	// The ID of the Security Group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The name of the Security Group.
+	SecurityGroupName string `pulumi:"securityGroupName"`
+}
+
+// GetSecurityGroupsGroupInput is an input type that accepts GetSecurityGroupsGroupArgs and GetSecurityGroupsGroupOutput values.
+// You can construct a concrete instance of `GetSecurityGroupsGroupInput` via:
+//
+//	GetSecurityGroupsGroupArgs{...}
+type GetSecurityGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetSecurityGroupsGroupOutput() GetSecurityGroupsGroupOutput
+	ToGetSecurityGroupsGroupOutputWithContext(context.Context) GetSecurityGroupsGroupOutput
+}
+
+type GetSecurityGroupsGroupArgs struct {
+	// Creation time of the security group, UTC time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Rule description information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Security Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Number of instances associated with a security group.
+	InstanceCount pulumi.IntInput `pulumi:"instanceCount"`
+	// A collection of rules for a security group instance.
+	Permissions GetSecurityGroupsGroupPermissionArrayInput `pulumi:"permissions"`
+	// The ID of the Security Group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The name of the Security Group.
+	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
+}
+
+func (GetSecurityGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupsGroup)(nil)).Elem()
+}
+
+func (i GetSecurityGroupsGroupArgs) ToGetSecurityGroupsGroupOutput() GetSecurityGroupsGroupOutput {
+	return i.ToGetSecurityGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGroupsGroupArgs) ToGetSecurityGroupsGroupOutputWithContext(ctx context.Context) GetSecurityGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGroupsGroupOutput)
+}
+
+// GetSecurityGroupsGroupArrayInput is an input type that accepts GetSecurityGroupsGroupArray and GetSecurityGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGroupsGroupArrayInput` via:
+//
+//	GetSecurityGroupsGroupArray{ GetSecurityGroupsGroupArgs{...} }
+type GetSecurityGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGroupsGroupArrayOutput() GetSecurityGroupsGroupArrayOutput
+	ToGetSecurityGroupsGroupArrayOutputWithContext(context.Context) GetSecurityGroupsGroupArrayOutput
+}
+
+type GetSecurityGroupsGroupArray []GetSecurityGroupsGroupInput
+
+func (GetSecurityGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGroupsGroup)(nil)).Elem()
+}
+
+func (i GetSecurityGroupsGroupArray) ToGetSecurityGroupsGroupArrayOutput() GetSecurityGroupsGroupArrayOutput {
+	return i.ToGetSecurityGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGroupsGroupArray) ToGetSecurityGroupsGroupArrayOutputWithContext(ctx context.Context) GetSecurityGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGroupsGroupArrayOutput)
+}
+
+type GetSecurityGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupsGroup)(nil)).Elem()
+}
+
+func (o GetSecurityGroupsGroupOutput) ToGetSecurityGroupsGroupOutput() GetSecurityGroupsGroupOutput {
+	return o
+}
+
+func (o GetSecurityGroupsGroupOutput) ToGetSecurityGroupsGroupOutputWithContext(ctx context.Context) GetSecurityGroupsGroupOutput {
+	return o
+}
+
+// Creation time of the security group, UTC time.
+func (o GetSecurityGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Rule description information.
+func (o GetSecurityGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Security Group.
+func (o GetSecurityGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Number of instances associated with a security group.
+func (o GetSecurityGroupsGroupOutput) InstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) int { return v.InstanceCount }).(pulumi.IntOutput)
+}
+
+// A collection of rules for a security group instance.
+func (o GetSecurityGroupsGroupOutput) Permissions() GetSecurityGroupsGroupPermissionArrayOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) []GetSecurityGroupsGroupPermission { return v.Permissions }).(GetSecurityGroupsGroupPermissionArrayOutput)
+}
+
+// The ID of the Security Group.
+func (o GetSecurityGroupsGroupOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the Security Group.
+func (o GetSecurityGroupsGroupOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.SecurityGroupName }).(pulumi.StringOutput)
+}
+
+type GetSecurityGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGroupsGroup)(nil)).Elem()
+}
+
+func (o GetSecurityGroupsGroupArrayOutput) ToGetSecurityGroupsGroupArrayOutput() GetSecurityGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetSecurityGroupsGroupArrayOutput) ToGetSecurityGroupsGroupArrayOutputWithContext(ctx context.Context) GetSecurityGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetSecurityGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSecurityGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGroupsGroup {
+		return vs[0].([]GetSecurityGroupsGroup)[vs[1].(int)]
+	}).(GetSecurityGroupsGroupOutput)
+}
+
+type GetSecurityGroupsGroupPermission struct {
+	// Creation time, UTC time.
+	CreationTime string `pulumi:"creationTime"`
+	// Rule description information.
+	Description string `pulumi:"description"`
+	// Destination IP address segment for outbound authorization.
+	DestCidrIp string `pulumi:"destCidrIp"`
+	// Authorized direction.
+	Direction string `pulumi:"direction"`
+	// IP protocol.
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The target IPv6 address segment.
+	Ipv6DestCidrIp string `pulumi:"ipv6DestCidrIp"`
+	// The source IPv6 address segment.
+	Ipv6SourceCidrIp string `pulumi:"ipv6SourceCidrIp"`
+	// Authorization Policy.
+	Policy string `pulumi:"policy"`
+	// Source end port range.
+	PortRange string `pulumi:"portRange"`
+	// Rule Priority.
+	Priority int `pulumi:"priority"`
+	// Source IP address segment, used for inbound authorization.
+	SourceCidrIp string `pulumi:"sourceCidrIp"`
+	// The port range of the source security group.
+	SourcePortRange string `pulumi:"sourcePortRange"`
+}
+
+// GetSecurityGroupsGroupPermissionInput is an input type that accepts GetSecurityGroupsGroupPermissionArgs and GetSecurityGroupsGroupPermissionOutput values.
+// You can construct a concrete instance of `GetSecurityGroupsGroupPermissionInput` via:
+//
+//	GetSecurityGroupsGroupPermissionArgs{...}
+type GetSecurityGroupsGroupPermissionInput interface {
+	pulumi.Input
+
+	ToGetSecurityGroupsGroupPermissionOutput() GetSecurityGroupsGroupPermissionOutput
+	ToGetSecurityGroupsGroupPermissionOutputWithContext(context.Context) GetSecurityGroupsGroupPermissionOutput
+}
+
+type GetSecurityGroupsGroupPermissionArgs struct {
+	// Creation time, UTC time.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// Rule description information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Destination IP address segment for outbound authorization.
+	DestCidrIp pulumi.StringInput `pulumi:"destCidrIp"`
+	// Authorized direction.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// IP protocol.
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The target IPv6 address segment.
+	Ipv6DestCidrIp pulumi.StringInput `pulumi:"ipv6DestCidrIp"`
+	// The source IPv6 address segment.
+	Ipv6SourceCidrIp pulumi.StringInput `pulumi:"ipv6SourceCidrIp"`
+	// Authorization Policy.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// Source end port range.
+	PortRange pulumi.StringInput `pulumi:"portRange"`
+	// Rule Priority.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// Source IP address segment, used for inbound authorization.
+	SourceCidrIp pulumi.StringInput `pulumi:"sourceCidrIp"`
+	// The port range of the source security group.
+	SourcePortRange pulumi.StringInput `pulumi:"sourcePortRange"`
+}
+
+func (GetSecurityGroupsGroupPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupsGroupPermission)(nil)).Elem()
+}
+
+func (i GetSecurityGroupsGroupPermissionArgs) ToGetSecurityGroupsGroupPermissionOutput() GetSecurityGroupsGroupPermissionOutput {
+	return i.ToGetSecurityGroupsGroupPermissionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGroupsGroupPermissionArgs) ToGetSecurityGroupsGroupPermissionOutputWithContext(ctx context.Context) GetSecurityGroupsGroupPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGroupsGroupPermissionOutput)
+}
+
+// GetSecurityGroupsGroupPermissionArrayInput is an input type that accepts GetSecurityGroupsGroupPermissionArray and GetSecurityGroupsGroupPermissionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGroupsGroupPermissionArrayInput` via:
+//
+//	GetSecurityGroupsGroupPermissionArray{ GetSecurityGroupsGroupPermissionArgs{...} }
+type GetSecurityGroupsGroupPermissionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGroupsGroupPermissionArrayOutput() GetSecurityGroupsGroupPermissionArrayOutput
+	ToGetSecurityGroupsGroupPermissionArrayOutputWithContext(context.Context) GetSecurityGroupsGroupPermissionArrayOutput
+}
+
+type GetSecurityGroupsGroupPermissionArray []GetSecurityGroupsGroupPermissionInput
+
+func (GetSecurityGroupsGroupPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGroupsGroupPermission)(nil)).Elem()
+}
+
+func (i GetSecurityGroupsGroupPermissionArray) ToGetSecurityGroupsGroupPermissionArrayOutput() GetSecurityGroupsGroupPermissionArrayOutput {
+	return i.ToGetSecurityGroupsGroupPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGroupsGroupPermissionArray) ToGetSecurityGroupsGroupPermissionArrayOutputWithContext(ctx context.Context) GetSecurityGroupsGroupPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGroupsGroupPermissionArrayOutput)
+}
+
+type GetSecurityGroupsGroupPermissionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGroupsGroupPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupsGroupPermission)(nil)).Elem()
+}
+
+func (o GetSecurityGroupsGroupPermissionOutput) ToGetSecurityGroupsGroupPermissionOutput() GetSecurityGroupsGroupPermissionOutput {
+	return o
+}
+
+func (o GetSecurityGroupsGroupPermissionOutput) ToGetSecurityGroupsGroupPermissionOutputWithContext(ctx context.Context) GetSecurityGroupsGroupPermissionOutput {
+	return o
+}
+
+// Creation time, UTC time.
+func (o GetSecurityGroupsGroupPermissionOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Rule description information.
+func (o GetSecurityGroupsGroupPermissionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Destination IP address segment for outbound authorization.
+func (o GetSecurityGroupsGroupPermissionOutput) DestCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.DestCidrIp }).(pulumi.StringOutput)
+}
+
+// Authorized direction.
+func (o GetSecurityGroupsGroupPermissionOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// IP protocol.
+func (o GetSecurityGroupsGroupPermissionOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The target IPv6 address segment.
+func (o GetSecurityGroupsGroupPermissionOutput) Ipv6DestCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.Ipv6DestCidrIp }).(pulumi.StringOutput)
+}
+
+// The source IPv6 address segment.
+func (o GetSecurityGroupsGroupPermissionOutput) Ipv6SourceCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.Ipv6SourceCidrIp }).(pulumi.StringOutput)
+}
+
+// Authorization Policy.
+func (o GetSecurityGroupsGroupPermissionOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// Source end port range.
+func (o GetSecurityGroupsGroupPermissionOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+// Rule Priority.
+func (o GetSecurityGroupsGroupPermissionOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Source IP address segment, used for inbound authorization.
+func (o GetSecurityGroupsGroupPermissionOutput) SourceCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.SourceCidrIp }).(pulumi.StringOutput)
+}
+
+// The port range of the source security group.
+func (o GetSecurityGroupsGroupPermissionOutput) SourcePortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroupPermission) string { return v.SourcePortRange }).(pulumi.StringOutput)
+}
+
+type GetSecurityGroupsGroupPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGroupsGroupPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGroupsGroupPermission)(nil)).Elem()
+}
+
+func (o GetSecurityGroupsGroupPermissionArrayOutput) ToGetSecurityGroupsGroupPermissionArrayOutput() GetSecurityGroupsGroupPermissionArrayOutput {
+	return o
+}
+
+func (o GetSecurityGroupsGroupPermissionArrayOutput) ToGetSecurityGroupsGroupPermissionArrayOutputWithContext(ctx context.Context) GetSecurityGroupsGroupPermissionArrayOutput {
+	return o
+}
+
+func (o GetSecurityGroupsGroupPermissionArrayOutput) Index(i pulumi.IntInput) GetSecurityGroupsGroupPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGroupsGroupPermission {
+		return vs[0].([]GetSecurityGroupsGroupPermission)[vs[1].(int)]
+	}).(GetSecurityGroupsGroupPermissionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
@@ -603,14 +1164,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSystemDiskPtrInput)(nil)).Elem(), InstanceSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendServerInput)(nil)).Elem(), LoadBalancerBackendServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendServerArrayInput)(nil)).Elem(), LoadBalancerBackendServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupPermissionInput)(nil)).Elem(), SecurityGroupPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupPermissionArrayInput)(nil)).Elem(), SecurityGroupPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupInput)(nil)).Elem(), GetSecurityGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupArrayInput)(nil)).Elem(), GetSecurityGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupPermissionInput)(nil)).Elem(), GetSecurityGroupsGroupPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupPermissionArrayInput)(nil)).Elem(), GetSecurityGroupsGroupPermissionArray{})
 	pulumi.RegisterOutputType(InstanceDataDiskOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSystemDiskOutput{})
 	pulumi.RegisterOutputType(InstanceSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendServerOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendServerArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupPermissionOutput{})
+	pulumi.RegisterOutputType(SecurityGroupPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetSecurityGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGroupsGroupPermissionOutput{})
+	pulumi.RegisterOutputType(GetSecurityGroupsGroupPermissionArrayOutput{})
 }

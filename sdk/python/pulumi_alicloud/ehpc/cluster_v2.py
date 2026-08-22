@@ -23,54 +23,97 @@ class ClusterV2Args:
     def __init__(__self__, *,
                  cluster_credentials: pulumi.Input['ClusterV2ClusterCredentialsArgs'],
                  shared_storages: pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]],
+                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]]] = None,
                  addons: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_custom_configuration: pulumi.Input[Optional['ClusterV2ClusterCustomConfigurationArgs']] = None,
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  manager: pulumi.Input[Optional['ClusterV2ManagerArgs']] = None,
+                 max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_spec: pulumi.Input[Optional['ClusterV2MonitorSpecArgs']] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueArgs']]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 scheduler_spec: pulumi.Input[Optional['ClusterV2SchedulerSpecArgs']] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ClusterV2 resource.
 
         :param pulumi.Input['ClusterV2ClusterCredentialsArgs'] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
-        :param pulumi.Input[_builtins.str] client_version: Specifies whether to enable auto scale-out for the cluster. Valid values:
-               
-               - true
-               - false
+        :param pulumi.Input[_builtins.str] client_version: The version of the E-HPC client.
         :param pulumi.Input[_builtins.str] cluster_category: The cluster type. Valid values:
                
                - Standard
                - Serverless
+        :param pulumi.Input['ClusterV2ClusterCustomConfigurationArgs'] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        :param pulumi.Input[_builtins.str] cluster_description: The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] cluster_mode: The deployment mode of the cluster. Valid values:
                
                - Integrated
                - Hybrid
                - Custom
-        :param pulumi.Input[_builtins.str] cluster_name: The post-processing script of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster.
         :param pulumi.Input[_builtins.str] cluster_vpc_id: The ID of the virtual private cloud (VPC) in which the cluster resides.
         :param pulumi.Input[_builtins.str] cluster_vswitch_id: The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
                You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
-        :param pulumi.Input[_builtins.bool] deletion_protection: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_out: Specifies whether to enable auto scale-out for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.int] grow_interval: The time interval of auto scale-out for the cluster.
+        :param pulumi.Input[_builtins.int] idle_interval: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Specifies whether to use an enterprise security group. Valid values:
+               
+               - true: An enterprise security group is automatically created and used.
+               - false: A basic security group is automatically created and used.
         :param pulumi.Input['ClusterV2ManagerArgs'] manager: The configurations of the cluster management node. See `manager` below.
+        :param pulumi.Input[_builtins.int] max_core_count: The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        :param pulumi.Input[_builtins.int] max_count: The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        :param pulumi.Input['ClusterV2MonitorSpecArgs'] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2QueueArgs']]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
                You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
+        :param pulumi.Input['ClusterV2SchedulerSpecArgs'] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "cluster_credentials", cluster_credentials)
         pulumi.set(__self__, "shared_storages", shared_storages)
+        if additional_packages is not None:
+            pulumi.set(__self__, "additional_packages", additional_packages)
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if client_version is not None:
             pulumi.set(__self__, "client_version", client_version)
         if cluster_category is not None:
             pulumi.set(__self__, "cluster_category", cluster_category)
+        if cluster_custom_configuration is not None:
+            pulumi.set(__self__, "cluster_custom_configuration", cluster_custom_configuration)
+        if cluster_description is not None:
+            pulumi.set(__self__, "cluster_description", cluster_description)
         if cluster_mode is not None:
             pulumi.set(__self__, "cluster_mode", cluster_mode)
         if cluster_name is not None:
@@ -81,12 +124,34 @@ class ClusterV2Args:
             pulumi.set(__self__, "cluster_vswitch_id", cluster_vswitch_id)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if enable_scale_in is not None:
+            pulumi.set(__self__, "enable_scale_in", enable_scale_in)
+        if enable_scale_out is not None:
+            pulumi.set(__self__, "enable_scale_out", enable_scale_out)
+        if grow_interval is not None:
+            pulumi.set(__self__, "grow_interval", grow_interval)
+        if idle_interval is not None:
+            pulumi.set(__self__, "idle_interval", idle_interval)
+        if is_enterprise_security_group is not None:
+            pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
         if manager is not None:
             pulumi.set(__self__, "manager", manager)
+        if max_core_count is not None:
+            pulumi.set(__self__, "max_core_count", max_core_count)
+        if max_count is not None:
+            pulumi.set(__self__, "max_count", max_count)
+        if monitor_spec is not None:
+            pulumi.set(__self__, "monitor_spec", monitor_spec)
+        if queues is not None:
+            pulumi.set(__self__, "queues", queues)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if scheduler_spec is not None:
+            pulumi.set(__self__, "scheduler_spec", scheduler_spec)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="clusterCredentials")
@@ -113,6 +178,18 @@ class ClusterV2Args:
         pulumi.set(self, "shared_storages", value)
 
     @_builtins.property
+    @pulumi.getter(name="additionalPackages")
+    def additional_packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]]]:
+        """
+        The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
+        """
+        return pulumi.get(self, "additional_packages")
+
+    @additional_packages.setter
+    def additional_packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]]]):
+        pulumi.set(self, "additional_packages", value)
+
+    @_builtins.property
     @pulumi.getter
     def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]:
         """
@@ -128,10 +205,7 @@ class ClusterV2Args:
     @pulumi.getter(name="clientVersion")
     def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies whether to enable auto scale-out for the cluster. Valid values:
-
-        - true
-        - false
+        The version of the E-HPC client.
         """
         return pulumi.get(self, "client_version")
 
@@ -155,6 +229,30 @@ class ClusterV2Args:
         pulumi.set(self, "cluster_category", value)
 
     @_builtins.property
+    @pulumi.getter(name="clusterCustomConfiguration")
+    def cluster_custom_configuration(self) -> pulumi.Input[Optional['ClusterV2ClusterCustomConfigurationArgs']]:
+        """
+        The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        """
+        return pulumi.get(self, "cluster_custom_configuration")
+
+    @cluster_custom_configuration.setter
+    def cluster_custom_configuration(self, value: pulumi.Input[Optional['ClusterV2ClusterCustomConfigurationArgs']]):
+        pulumi.set(self, "cluster_custom_configuration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterDescription")
+    def cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+        """
+        return pulumi.get(self, "cluster_description")
+
+    @cluster_description.setter
+    def cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cluster_description", value)
+
+    @_builtins.property
     @pulumi.getter(name="clusterMode")
     def cluster_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -174,7 +272,7 @@ class ClusterV2Args:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The post-processing script of the cluster.
+        The name of the cluster.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -211,13 +309,85 @@ class ClusterV2Args:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        The idle duration of the compute nodes allowed by the cluster.
+        Specifies whether to enable deletion protection for the cluster. Valid values:
+
+        - true
+        - false
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
     def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleIn")
+    def enable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto scale-in for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_in")
+
+    @enable_scale_in.setter
+    def enable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_scale_in", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleOut")
+    def enable_scale_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto scale-out for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_out")
+
+    @enable_scale_out.setter
+    def enable_scale_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_scale_out", value)
+
+    @_builtins.property
+    @pulumi.getter(name="growInterval")
+    def grow_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The time interval of auto scale-out for the cluster.
+        """
+        return pulumi.get(self, "grow_interval")
+
+    @grow_interval.setter
+    def grow_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "grow_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleInterval")
+    def idle_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The idle duration of the compute nodes allowed by the cluster.
+        """
+        return pulumi.get(self, "idle_interval")
+
+    @idle_interval.setter
+    def idle_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "idle_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterpriseSecurityGroup")
+    def is_enterprise_security_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to use an enterprise security group. Valid values:
+
+        - true: An enterprise security group is automatically created and used.
+        - false: A basic security group is automatically created and used.
+        """
+        return pulumi.get(self, "is_enterprise_security_group")
+
+    @is_enterprise_security_group.setter
+    def is_enterprise_security_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_enterprise_security_group", value)
 
     @_builtins.property
     @pulumi.getter
@@ -230,6 +400,54 @@ class ClusterV2Args:
     @manager.setter
     def manager(self, value: pulumi.Input[Optional['ClusterV2ManagerArgs']]):
         pulumi.set(self, "manager", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCoreCount")
+    def max_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        """
+        return pulumi.get(self, "max_core_count")
+
+    @max_core_count.setter
+    def max_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        """
+        return pulumi.get(self, "max_count")
+
+    @max_count.setter
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monitorSpec")
+    def monitor_spec(self) -> pulumi.Input[Optional['ClusterV2MonitorSpecArgs']]:
+        """
+        The monitoring configuration of the cluster. See `monitor_spec` below.
+        """
+        return pulumi.get(self, "monitor_spec")
+
+    @monitor_spec.setter
+    def monitor_spec(self, value: pulumi.Input[Optional['ClusterV2MonitorSpecArgs']]):
+        pulumi.set(self, "monitor_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def queues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueArgs']]]]:
+        """
+        The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+        """
+        return pulumi.get(self, "queues")
+
+    @queues.setter
+    def queues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueArgs']]]]):
+        pulumi.set(self, "queues", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -245,6 +463,18 @@ class ClusterV2Args:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="schedulerSpec")
+    def scheduler_spec(self) -> pulumi.Input[Optional['ClusterV2SchedulerSpecArgs']]:
+        """
+        The scheduler configuration of the cluster. See `scheduler_spec` below.
+        """
+        return pulumi.get(self, "scheduler_spec")
+
+    @scheduler_spec.setter
+    def scheduler_spec(self, value: pulumi.Input[Optional['ClusterV2SchedulerSpecArgs']]):
+        pulumi.set(self, "scheduler_spec", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -256,54 +486,111 @@ class ClusterV2Args:
     def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _ClusterV2State:
     def __init__(__self__, *,
+                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]]] = None,
                  addons: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_credentials: pulumi.Input[Optional['ClusterV2ClusterCredentialsArgs']] = None,
+                 cluster_custom_configuration: pulumi.Input[Optional['ClusterV2ClusterCustomConfigurationArgs']] = None,
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_status: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  manager: pulumi.Input[Optional['ClusterV2ManagerArgs']] = None,
+                 max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_spec: pulumi.Input[Optional['ClusterV2MonitorSpecArgs']] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueArgs']]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_spec: pulumi.Input[Optional['ClusterV2SchedulerSpecArgs']] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]] = None):
+                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ClusterV2 resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
-        :param pulumi.Input[_builtins.str] client_version: Specifies whether to enable auto scale-out for the cluster. Valid values:
-               
-               - true
-               - false
+        :param pulumi.Input[_builtins.str] client_version: The version of the E-HPC client.
         :param pulumi.Input[_builtins.str] cluster_category: The cluster type. Valid values:
                
                - Standard
                - Serverless
         :param pulumi.Input['ClusterV2ClusterCredentialsArgs'] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
+        :param pulumi.Input['ClusterV2ClusterCustomConfigurationArgs'] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        :param pulumi.Input[_builtins.str] cluster_description: The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] cluster_mode: The deployment mode of the cluster. Valid values:
                
                - Integrated
                - Hybrid
                - Custom
-        :param pulumi.Input[_builtins.str] cluster_name: The post-processing script of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_status: (Available since v1.288.0) The status of the cluster.
         :param pulumi.Input[_builtins.str] cluster_vpc_id: The ID of the virtual private cloud (VPC) in which the cluster resides.
         :param pulumi.Input[_builtins.str] cluster_vswitch_id: The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
                You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
         :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created.
-        :param pulumi.Input[_builtins.bool] deletion_protection: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.str] ehpc_version: (Available since v1.288.0) The version of the E-HPC cluster.
+        :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_out: Specifies whether to enable auto scale-out for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.int] grow_interval: The time interval of auto scale-out for the cluster.
+        :param pulumi.Input[_builtins.int] idle_interval: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Specifies whether to use an enterprise security group. Valid values:
+               
+               - true: An enterprise security group is automatically created and used.
+               - false: A basic security group is automatically created and used.
         :param pulumi.Input['ClusterV2ManagerArgs'] manager: The configurations of the cluster management node. See `manager` below.
+        :param pulumi.Input[_builtins.int] max_core_count: The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        :param pulumi.Input[_builtins.int] max_count: The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        :param pulumi.Input[_builtins.str] modify_time: (Available since v1.288.0) The time when the cluster was modified.
+        :param pulumi.Input['ClusterV2MonitorSpecArgs'] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2QueueArgs']]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
                You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
+        :param pulumi.Input['ClusterV2SchedulerSpecArgs'] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
+        if additional_packages is not None:
+            pulumi.set(__self__, "additional_packages", additional_packages)
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if client_version is not None:
@@ -312,10 +599,16 @@ class _ClusterV2State:
             pulumi.set(__self__, "cluster_category", cluster_category)
         if cluster_credentials is not None:
             pulumi.set(__self__, "cluster_credentials", cluster_credentials)
+        if cluster_custom_configuration is not None:
+            pulumi.set(__self__, "cluster_custom_configuration", cluster_custom_configuration)
+        if cluster_description is not None:
+            pulumi.set(__self__, "cluster_description", cluster_description)
         if cluster_mode is not None:
             pulumi.set(__self__, "cluster_mode", cluster_mode)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if cluster_status is not None:
+            pulumi.set(__self__, "cluster_status", cluster_status)
         if cluster_vpc_id is not None:
             pulumi.set(__self__, "cluster_vpc_id", cluster_vpc_id)
         if cluster_vswitch_id is not None:
@@ -324,14 +617,52 @@ class _ClusterV2State:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if ehpc_version is not None:
+            pulumi.set(__self__, "ehpc_version", ehpc_version)
+        if enable_scale_in is not None:
+            pulumi.set(__self__, "enable_scale_in", enable_scale_in)
+        if enable_scale_out is not None:
+            pulumi.set(__self__, "enable_scale_out", enable_scale_out)
+        if grow_interval is not None:
+            pulumi.set(__self__, "grow_interval", grow_interval)
+        if idle_interval is not None:
+            pulumi.set(__self__, "idle_interval", idle_interval)
+        if is_enterprise_security_group is not None:
+            pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
         if manager is not None:
             pulumi.set(__self__, "manager", manager)
+        if max_core_count is not None:
+            pulumi.set(__self__, "max_core_count", max_core_count)
+        if max_count is not None:
+            pulumi.set(__self__, "max_count", max_count)
+        if modify_time is not None:
+            pulumi.set(__self__, "modify_time", modify_time)
+        if monitor_spec is not None:
+            pulumi.set(__self__, "monitor_spec", monitor_spec)
+        if queues is not None:
+            pulumi.set(__self__, "queues", queues)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if scheduler_spec is not None:
+            pulumi.set(__self__, "scheduler_spec", scheduler_spec)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if shared_storages is not None:
             pulumi.set(__self__, "shared_storages", shared_storages)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalPackages")
+    def additional_packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]]]:
+        """
+        The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
+        """
+        return pulumi.get(self, "additional_packages")
+
+    @additional_packages.setter
+    def additional_packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AdditionalPackageArgs']]]]):
+        pulumi.set(self, "additional_packages", value)
 
     @_builtins.property
     @pulumi.getter
@@ -349,10 +680,7 @@ class _ClusterV2State:
     @pulumi.getter(name="clientVersion")
     def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies whether to enable auto scale-out for the cluster. Valid values:
-
-        - true
-        - false
+        The version of the E-HPC client.
         """
         return pulumi.get(self, "client_version")
 
@@ -388,6 +716,30 @@ class _ClusterV2State:
         pulumi.set(self, "cluster_credentials", value)
 
     @_builtins.property
+    @pulumi.getter(name="clusterCustomConfiguration")
+    def cluster_custom_configuration(self) -> pulumi.Input[Optional['ClusterV2ClusterCustomConfigurationArgs']]:
+        """
+        The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        """
+        return pulumi.get(self, "cluster_custom_configuration")
+
+    @cluster_custom_configuration.setter
+    def cluster_custom_configuration(self, value: pulumi.Input[Optional['ClusterV2ClusterCustomConfigurationArgs']]):
+        pulumi.set(self, "cluster_custom_configuration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterDescription")
+    def cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+        """
+        return pulumi.get(self, "cluster_description")
+
+    @cluster_description.setter
+    def cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cluster_description", value)
+
+    @_builtins.property
     @pulumi.getter(name="clusterMode")
     def cluster_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -407,13 +759,25 @@ class _ClusterV2State:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The post-processing script of the cluster.
+        The name of the cluster.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
     def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterStatus")
+    def cluster_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.288.0) The status of the cluster.
+        """
+        return pulumi.get(self, "cluster_status")
+
+    @cluster_status.setter
+    def cluster_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cluster_status", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVpcId")
@@ -456,13 +820,97 @@ class _ClusterV2State:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        The idle duration of the compute nodes allowed by the cluster.
+        Specifies whether to enable deletion protection for the cluster. Valid values:
+
+        - true
+        - false
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
     def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ehpcVersion")
+    def ehpc_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.288.0) The version of the E-HPC cluster.
+        """
+        return pulumi.get(self, "ehpc_version")
+
+    @ehpc_version.setter
+    def ehpc_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ehpc_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleIn")
+    def enable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto scale-in for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_in")
+
+    @enable_scale_in.setter
+    def enable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_scale_in", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleOut")
+    def enable_scale_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto scale-out for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_out")
+
+    @enable_scale_out.setter
+    def enable_scale_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_scale_out", value)
+
+    @_builtins.property
+    @pulumi.getter(name="growInterval")
+    def grow_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The time interval of auto scale-out for the cluster.
+        """
+        return pulumi.get(self, "grow_interval")
+
+    @grow_interval.setter
+    def grow_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "grow_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleInterval")
+    def idle_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The idle duration of the compute nodes allowed by the cluster.
+        """
+        return pulumi.get(self, "idle_interval")
+
+    @idle_interval.setter
+    def idle_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "idle_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterpriseSecurityGroup")
+    def is_enterprise_security_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to use an enterprise security group. Valid values:
+
+        - true: An enterprise security group is automatically created and used.
+        - false: A basic security group is automatically created and used.
+        """
+        return pulumi.get(self, "is_enterprise_security_group")
+
+    @is_enterprise_security_group.setter
+    def is_enterprise_security_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_enterprise_security_group", value)
 
     @_builtins.property
     @pulumi.getter
@@ -477,6 +925,66 @@ class _ClusterV2State:
         pulumi.set(self, "manager", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxCoreCount")
+    def max_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        """
+        return pulumi.get(self, "max_core_count")
+
+    @max_core_count.setter
+    def max_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        """
+        return pulumi.get(self, "max_count")
+
+    @max_count.setter
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.288.0) The time when the cluster was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @modify_time.setter
+    def modify_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modify_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monitorSpec")
+    def monitor_spec(self) -> pulumi.Input[Optional['ClusterV2MonitorSpecArgs']]:
+        """
+        The monitoring configuration of the cluster. See `monitor_spec` below.
+        """
+        return pulumi.get(self, "monitor_spec")
+
+    @monitor_spec.setter
+    def monitor_spec(self, value: pulumi.Input[Optional['ClusterV2MonitorSpecArgs']]):
+        pulumi.set(self, "monitor_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def queues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueArgs']]]]:
+        """
+        The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+        """
+        return pulumi.get(self, "queues")
+
+    @queues.setter
+    def queues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueArgs']]]]):
+        pulumi.set(self, "queues", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -488,6 +996,18 @@ class _ClusterV2State:
     @resource_group_id.setter
     def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schedulerSpec")
+    def scheduler_spec(self) -> pulumi.Input[Optional['ClusterV2SchedulerSpecArgs']]:
+        """
+        The scheduler configuration of the cluster. See `scheduler_spec` below.
+        """
+        return pulumi.get(self, "scheduler_spec")
+
+    @scheduler_spec.setter
+    def scheduler_spec(self, value: pulumi.Input[Optional['ClusterV2SchedulerSpecArgs']]):
+        pulumi.set(self, "scheduler_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -513,6 +1033,18 @@ class _ClusterV2State:
     def shared_storages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]]):
         pulumi.set(self, "shared_storages", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.type_token("alicloud:ehpc/clusterV2:ClusterV2")
 class ClusterV2(pulumi.CustomResource):
@@ -520,19 +1052,33 @@ class ClusterV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]]] = None,
                  addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
+                 cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']]] = None,
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+                 max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ehpc Cluster V2 resource.
@@ -673,31 +1219,54 @@ class ClusterV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
-        :param pulumi.Input[_builtins.str] client_version: Specifies whether to enable auto scale-out for the cluster. Valid values:
-               
-               - true
-               - false
+        :param pulumi.Input[_builtins.str] client_version: The version of the E-HPC client.
         :param pulumi.Input[_builtins.str] cluster_category: The cluster type. Valid values:
                
                - Standard
                - Serverless
         :param pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
+        :param pulumi.Input[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        :param pulumi.Input[_builtins.str] cluster_description: The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] cluster_mode: The deployment mode of the cluster. Valid values:
                
                - Integrated
                - Hybrid
                - Custom
-        :param pulumi.Input[_builtins.str] cluster_name: The post-processing script of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster.
         :param pulumi.Input[_builtins.str] cluster_vpc_id: The ID of the virtual private cloud (VPC) in which the cluster resides.
         :param pulumi.Input[_builtins.str] cluster_vswitch_id: The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
                You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
-        :param pulumi.Input[_builtins.bool] deletion_protection: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_out: Specifies whether to enable auto scale-out for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.int] grow_interval: The time interval of auto scale-out for the cluster.
+        :param pulumi.Input[_builtins.int] idle_interval: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Specifies whether to use an enterprise security group. Valid values:
+               
+               - true: An enterprise security group is automatically created and used.
+               - false: A basic security group is automatically created and used.
         :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']] manager: The configurations of the cluster management node. See `manager` below.
+        :param pulumi.Input[_builtins.int] max_core_count: The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        :param pulumi.Input[_builtins.int] max_count: The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        :param pulumi.Input[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
                You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
+        :param pulumi.Input[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -857,19 +1426,33 @@ class ClusterV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]]] = None,
                  addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
+                 cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']]] = None,
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+                 max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -879,24 +1462,41 @@ class ClusterV2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterV2Args.__new__(ClusterV2Args)
 
+            __props__.__dict__["additional_packages"] = additional_packages
             __props__.__dict__["addons"] = None if addons is None else pulumi.Output.secret(addons)
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["cluster_category"] = cluster_category
             if cluster_credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_credentials'")
             __props__.__dict__["cluster_credentials"] = None if cluster_credentials is None else pulumi.Output.secret(cluster_credentials)
+            __props__.__dict__["cluster_custom_configuration"] = cluster_custom_configuration
+            __props__.__dict__["cluster_description"] = cluster_description
             __props__.__dict__["cluster_mode"] = cluster_mode
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["cluster_vpc_id"] = cluster_vpc_id
             __props__.__dict__["cluster_vswitch_id"] = cluster_vswitch_id
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["enable_scale_in"] = enable_scale_in
+            __props__.__dict__["enable_scale_out"] = enable_scale_out
+            __props__.__dict__["grow_interval"] = grow_interval
+            __props__.__dict__["idle_interval"] = idle_interval
+            __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
             __props__.__dict__["manager"] = manager
+            __props__.__dict__["max_core_count"] = max_core_count
+            __props__.__dict__["max_count"] = max_count
+            __props__.__dict__["monitor_spec"] = monitor_spec
+            __props__.__dict__["queues"] = queues
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["scheduler_spec"] = scheduler_spec
             __props__.__dict__["security_group_id"] = security_group_id
             if shared_storages is None and not opts.urn:
                 raise TypeError("Missing required property 'shared_storages'")
             __props__.__dict__["shared_storages"] = shared_storages
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["cluster_status"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["ehpc_version"] = None
+            __props__.__dict__["modify_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["addons", "clusterCredentials"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ClusterV2, __self__).__init__(
@@ -909,20 +1509,37 @@ class ClusterV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]]] = None,
             addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
             client_version: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
+            cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']]] = None,
+            cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_status: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+            grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
             manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+            max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']]] = None,
+            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None) -> 'ClusterV2':
+            shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ClusterV2':
         """
         Get an existing ClusterV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -930,52 +1547,103 @@ class ClusterV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
-        :param pulumi.Input[_builtins.str] client_version: Specifies whether to enable auto scale-out for the cluster. Valid values:
-               
-               - true
-               - false
+        :param pulumi.Input[_builtins.str] client_version: The version of the E-HPC client.
         :param pulumi.Input[_builtins.str] cluster_category: The cluster type. Valid values:
                
                - Standard
                - Serverless
         :param pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
+        :param pulumi.Input[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        :param pulumi.Input[_builtins.str] cluster_description: The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] cluster_mode: The deployment mode of the cluster. Valid values:
                
                - Integrated
                - Hybrid
                - Custom
-        :param pulumi.Input[_builtins.str] cluster_name: The post-processing script of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster.
+        :param pulumi.Input[_builtins.str] cluster_status: (Available since v1.288.0) The status of the cluster.
         :param pulumi.Input[_builtins.str] cluster_vpc_id: The ID of the virtual private cloud (VPC) in which the cluster resides.
         :param pulumi.Input[_builtins.str] cluster_vswitch_id: The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
                You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
         :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created.
-        :param pulumi.Input[_builtins.bool] deletion_protection: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.str] ehpc_version: (Available since v1.288.0) The version of the E-HPC cluster.
+        :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_out: Specifies whether to enable auto scale-out for the cluster. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.int] grow_interval: The time interval of auto scale-out for the cluster.
+        :param pulumi.Input[_builtins.int] idle_interval: The idle duration of the compute nodes allowed by the cluster.
+        :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Specifies whether to use an enterprise security group. Valid values:
+               
+               - true: An enterprise security group is automatically created and used.
+               - false: A basic security group is automatically created and used.
         :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']] manager: The configurations of the cluster management node. See `manager` below.
+        :param pulumi.Input[_builtins.int] max_core_count: The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        :param pulumi.Input[_builtins.int] max_count: The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        :param pulumi.Input[_builtins.str] modify_time: (Available since v1.288.0) The time when the cluster was modified.
+        :param pulumi.Input[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
                You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
+        :param pulumi.Input[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClusterV2State.__new__(_ClusterV2State)
 
+        __props__.__dict__["additional_packages"] = additional_packages
         __props__.__dict__["addons"] = addons
         __props__.__dict__["client_version"] = client_version
         __props__.__dict__["cluster_category"] = cluster_category
         __props__.__dict__["cluster_credentials"] = cluster_credentials
+        __props__.__dict__["cluster_custom_configuration"] = cluster_custom_configuration
+        __props__.__dict__["cluster_description"] = cluster_description
         __props__.__dict__["cluster_mode"] = cluster_mode
         __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["cluster_status"] = cluster_status
         __props__.__dict__["cluster_vpc_id"] = cluster_vpc_id
         __props__.__dict__["cluster_vswitch_id"] = cluster_vswitch_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["ehpc_version"] = ehpc_version
+        __props__.__dict__["enable_scale_in"] = enable_scale_in
+        __props__.__dict__["enable_scale_out"] = enable_scale_out
+        __props__.__dict__["grow_interval"] = grow_interval
+        __props__.__dict__["idle_interval"] = idle_interval
+        __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
         __props__.__dict__["manager"] = manager
+        __props__.__dict__["max_core_count"] = max_core_count
+        __props__.__dict__["max_count"] = max_count
+        __props__.__dict__["modify_time"] = modify_time
+        __props__.__dict__["monitor_spec"] = monitor_spec
+        __props__.__dict__["queues"] = queues
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["scheduler_spec"] = scheduler_spec
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["shared_storages"] = shared_storages
+        __props__.__dict__["tags"] = tags
         return ClusterV2(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalPackages")
+    def additional_packages(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterV2AdditionalPackage']]]:
+        """
+        The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
+        """
+        return pulumi.get(self, "additional_packages")
 
     @_builtins.property
     @pulumi.getter
@@ -989,10 +1657,7 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="clientVersion")
     def client_version(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies whether to enable auto scale-out for the cluster. Valid values:
-
-        - true
-        - false
+        The version of the E-HPC client.
         """
         return pulumi.get(self, "client_version")
 
@@ -1016,6 +1681,22 @@ class ClusterV2(pulumi.CustomResource):
         return pulumi.get(self, "cluster_credentials")
 
     @_builtins.property
+    @pulumi.getter(name="clusterCustomConfiguration")
+    def cluster_custom_configuration(self) -> pulumi.Output['outputs.ClusterV2ClusterCustomConfiguration']:
+        """
+        The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        """
+        return pulumi.get(self, "cluster_custom_configuration")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterDescription")
+    def cluster_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+        """
+        return pulumi.get(self, "cluster_description")
+
+    @_builtins.property
     @pulumi.getter(name="clusterMode")
     def cluster_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1031,9 +1712,17 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The post-processing script of the cluster.
+        The name of the cluster.
         """
         return pulumi.get(self, "cluster_name")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterStatus")
+    def cluster_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.288.0) The status of the cluster.
+        """
+        return pulumi.get(self, "cluster_status")
 
     @_builtins.property
     @pulumi.getter(name="clusterVpcId")
@@ -1064,9 +1753,69 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        The idle duration of the compute nodes allowed by the cluster.
+        Specifies whether to enable deletion protection for the cluster. Valid values:
+
+        - true
+        - false
         """
         return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="ehpcVersion")
+    def ehpc_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.288.0) The version of the E-HPC cluster.
+        """
+        return pulumi.get(self, "ehpc_version")
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleIn")
+    def enable_scale_in(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable auto scale-in for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_in")
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleOut")
+    def enable_scale_out(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable auto scale-out for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_out")
+
+    @_builtins.property
+    @pulumi.getter(name="growInterval")
+    def grow_interval(self) -> pulumi.Output[_builtins.int]:
+        """
+        The time interval of auto scale-out for the cluster.
+        """
+        return pulumi.get(self, "grow_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="idleInterval")
+    def idle_interval(self) -> pulumi.Output[_builtins.int]:
+        """
+        The idle duration of the compute nodes allowed by the cluster.
+        """
+        return pulumi.get(self, "idle_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnterpriseSecurityGroup")
+    def is_enterprise_security_group(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to use an enterprise security group. Valid values:
+
+        - true: An enterprise security group is automatically created and used.
+        - false: A basic security group is automatically created and used.
+        """
+        return pulumi.get(self, "is_enterprise_security_group")
 
     @_builtins.property
     @pulumi.getter
@@ -1077,6 +1826,46 @@ class ClusterV2(pulumi.CustomResource):
         return pulumi.get(self, "manager")
 
     @_builtins.property
+    @pulumi.getter(name="maxCoreCount")
+    def max_core_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        """
+        return pulumi.get(self, "max_core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        """
+        return pulumi.get(self, "max_count")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.288.0) The time when the cluster was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="monitorSpec")
+    def monitor_spec(self) -> pulumi.Output['outputs.ClusterV2MonitorSpec']:
+        """
+        The monitoring configuration of the cluster. See `monitor_spec` below.
+        """
+        return pulumi.get(self, "monitor_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def queues(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterV2Queue']]]:
+        """
+        The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+        """
+        return pulumi.get(self, "queues")
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1084,6 +1873,14 @@ class ClusterV2(pulumi.CustomResource):
         You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulerSpec")
+    def scheduler_spec(self) -> pulumi.Output['outputs.ClusterV2SchedulerSpec']:
+        """
+        The scheduler configuration of the cluster. See `scheduler_spec` below.
+        """
+        return pulumi.get(self, "scheduler_spec")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -1100,4 +1897,12 @@ class ClusterV2(pulumi.CustomResource):
         List of cluster shared storage configurations. See `shared_storages` below.
         """
         return pulumi.get(self, "shared_storages")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

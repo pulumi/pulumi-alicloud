@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Apig.Outputs
     public sealed class GatewayNetworkAccessConfig
     {
         /// <summary>
-        /// Network Access Type
+        /// The network access type of the gateway instance.
         /// </summary>
         public readonly string? Type;
 

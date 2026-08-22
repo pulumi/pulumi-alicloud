@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:redis/backup:Backup":
 		r = &Backup{}
+	case "alicloud:redis/globalSecurityIpGroup:GlobalSecurityIpGroup":
+		r = &GlobalSecurityIpGroup{}
 	case "alicloud:redis/tairInstance:TairInstance":
 		r = &TairInstance{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"redis/backup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"redis/globalSecurityIpGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

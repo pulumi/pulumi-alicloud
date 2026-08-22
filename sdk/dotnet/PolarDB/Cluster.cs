@@ -179,6 +179,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
+        /// </summary>
+        [Output("automaticRotation")]
+        public Output<string> AutomaticRotation { get; private set; } = null!;
+
+        /// <summary>
         /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         /// </summary>
         [Output("backupRetentionPolicyOnClusterDeletion")]
@@ -246,7 +252,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The DbNodeClass of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
@@ -308,6 +314,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `False`. Valid values are `True`, `False`. This parameter takes effect only after TDE is enabled.
+        /// </summary>
+        [Output("enableAutomaticRotation")]
+        public Output<bool?> EnableAutomaticRotation { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable DynamoDB compatibility. Valid values: `True`, `False`.
@@ -496,6 +508,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.289.0) The rotation interval of the TDE encryption key.
+        /// </summary>
+        [Output("rotationInterval")]
+        public Output<string> RotationInterval { get; private set; } = null!;
+
+        /// <summary>
         /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         /// </summary>
         [Output("scaleApRoNumMax")]
@@ -663,8 +681,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> TdeRegion { get; private set; } = null!;
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
-        /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
+        /// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        /// &gt; **NOTE:** `TdeStatus` only supports modification from `Disabled` to `Enabled`.
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
@@ -814,7 +832,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The DbNodeClass of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
@@ -870,6 +888,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `False`. Valid values are `True`, `False`. This parameter takes effect only after TDE is enabled.
+        /// </summary>
+        [Input("enableAutomaticRotation")]
+        public Input<bool>? EnableAutomaticRotation { get; set; }
 
         /// <summary>
         /// Specifies whether to enable DynamoDB compatibility. Valid values: `True`, `False`.
@@ -1235,8 +1259,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TargetMinorVersion { get; set; }
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
-        /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
+        /// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        /// &gt; **NOTE:** `TdeStatus` only supports modification from `Disabled` to `Enabled`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -1285,6 +1309,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
+        /// </summary>
+        [Input("automaticRotation")]
+        public Input<string>? AutomaticRotation { get; set; }
 
         /// <summary>
         /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
@@ -1360,7 +1390,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The DbNodeClass of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
@@ -1428,6 +1458,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `False`. Valid values are `True`, `False`. This parameter takes effect only after TDE is enabled.
+        /// </summary>
+        [Input("enableAutomaticRotation")]
+        public Input<bool>? EnableAutomaticRotation { get; set; }
 
         /// <summary>
         /// Specifies whether to enable DynamoDB compatibility. Valid values: `True`, `False`.
@@ -1628,6 +1664,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
+        /// (Available since v1.289.0) The rotation interval of the TDE encryption key.
+        /// </summary>
+        [Input("rotationInterval")]
+        public Input<string>? RotationInterval { get; set; }
+
+        /// <summary>
         /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         /// </summary>
         [Input("scaleApRoNumMax")]
@@ -1813,8 +1855,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TdeRegion { get; set; }
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
-        /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
+        /// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        /// &gt; **NOTE:** `TdeStatus` only supports modification from `Disabled` to `Enabled`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }

@@ -32,8 +32,8 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a RAM Role Policy attachment.
     ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
-    ///         Name = "roleName",
-    ///         Document = @"    {
+    ///         RoleName = "roleName",
+    ///         AssumeRolePolicyDocument = @"    {
     ///       \""Statement\"": [
     ///         {
     ///           \""Action\"": \""sts:AssumeRole\"",
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ram
     ///     {
     ///         PolicyName = policy.PolicyName,
     ///         PolicyType = policy.Type,
-    ///         RoleName = role.Name,
+    ///         RoleName = role.RoleName,
     ///     });
     /// 
     /// });

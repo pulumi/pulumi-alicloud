@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -117,6 +118,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .instanceId(defaultInstance.id())
  *             .port(8080)
+ *             .vpcTargetHostName("www.example.com")
  *             .build());
  * 
  *     }
@@ -206,6 +208,20 @@ public class VpcAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vpcId() {
         return this.vpcId;
+    }
+    /**
+     * The host of the backend service.
+     * 
+     */
+    @Export(name="vpcTargetHostName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vpcTargetHostName;
+
+    /**
+     * @return The host of the backend service.
+     * 
+     */
+    public Output<Optional<String>> vpcTargetHostName() {
+        return Codegen.optional(this.vpcTargetHostName);
     }
 
     /**

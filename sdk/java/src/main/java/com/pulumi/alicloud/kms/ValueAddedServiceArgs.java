@@ -94,18 +94,14 @@ public final class ValueAddedServiceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * The value added service type. Valid values:
      * 
      */
     @Import(name="valueAddedService")
     private @Nullable Output<String> valueAddedService;
 
     /**
-     * @return value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * @return The value added service type. Valid values:
      * 
      */
     public Optional<Output<String>> valueAddedService() {
@@ -241,9 +237,7 @@ public final class ValueAddedServiceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueAddedService value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-         * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * @param valueAddedService The value added service type. Valid values:
          * 
          * @return builder
          * 
@@ -254,9 +248,7 @@ public final class ValueAddedServiceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueAddedService value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-         * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * @param valueAddedService The value added service type. Valid values:
          * 
          * @return builder
          * 

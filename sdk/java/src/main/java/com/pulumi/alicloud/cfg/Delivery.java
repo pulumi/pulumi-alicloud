@@ -176,6 +176,20 @@ public class Delivery extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deliveryChannelCondition);
     }
     /**
+     * The ID of the delivery channel. It is the same as the resource `id`.
+     * 
+     */
+    @Export(name="deliveryChannelId", refs={String.class}, tree="[0]")
+    private Output<String> deliveryChannelId;
+
+    /**
+     * @return The ID of the delivery channel. It is the same as the resource `id`.
+     * 
+     */
+    public Output<String> deliveryChannelId() {
+        return this.deliveryChannelId;
+    }
+    /**
      * The name of the delivery channel.
      * 
      */

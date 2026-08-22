@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVpc {
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The VPC network ID.
+     * @return The ID of the VPC network associated with the gateway.
      * 
      */
     private String vpcId;
 
     private GatewayVpc() {}
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The VPC network ID.
+     * @return The ID of the VPC network associated with the gateway.
      * 
      */
     public String vpcId() {

@@ -82,7 +82,7 @@ import (
 type SecurityGroupRule struct {
 	pulumi.CustomResourceState
 
-	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp pulumi.StringPtrOutput `pulumi:"cidrIp"`
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -107,8 +107,12 @@ type SecurityGroupRule struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The ID of the Security Group Rule.
 	SecurityGroupRuleId pulumi.StringOutput `pulumi:"securityGroupRuleId"`
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+	// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+	//
+	// Deprecated: Use sourceGroupOwnerId instead.
 	SourceGroupOwnerAccount pulumi.StringPtrOutput `pulumi:"sourceGroupOwnerAccount"`
+	// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+	SourceGroupOwnerId pulumi.StringPtrOutput `pulumi:"sourceGroupOwnerId"`
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId pulumi.StringPtrOutput `pulumi:"sourceSecurityGroupId"`
 	// The type of the Security Group Rule. Valid values:
@@ -154,7 +158,7 @@ func GetSecurityGroupRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroupRule resources.
 type securityGroupRuleState struct {
-	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp *string `pulumi:"cidrIp"`
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -179,8 +183,12 @@ type securityGroupRuleState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The ID of the Security Group Rule.
 	SecurityGroupRuleId *string `pulumi:"securityGroupRuleId"`
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+	// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+	//
+	// Deprecated: Use sourceGroupOwnerId instead.
 	SourceGroupOwnerAccount *string `pulumi:"sourceGroupOwnerAccount"`
+	// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+	SourceGroupOwnerId *string `pulumi:"sourceGroupOwnerId"`
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId *string `pulumi:"sourceSecurityGroupId"`
 	// The type of the Security Group Rule. Valid values:
@@ -188,7 +196,7 @@ type securityGroupRuleState struct {
 }
 
 type SecurityGroupRuleState struct {
-	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp pulumi.StringPtrInput
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -213,8 +221,12 @@ type SecurityGroupRuleState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// The ID of the Security Group Rule.
 	SecurityGroupRuleId pulumi.StringPtrInput
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+	// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+	//
+	// Deprecated: Use sourceGroupOwnerId instead.
 	SourceGroupOwnerAccount pulumi.StringPtrInput
+	// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+	SourceGroupOwnerId pulumi.StringPtrInput
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId pulumi.StringPtrInput
 	// The type of the Security Group Rule. Valid values:
@@ -226,7 +238,7 @@ func (SecurityGroupRuleState) ElementType() reflect.Type {
 }
 
 type securityGroupRuleArgs struct {
-	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp *string `pulumi:"cidrIp"`
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -249,8 +261,12 @@ type securityGroupRuleArgs struct {
 	Priority *int `pulumi:"priority"`
 	// The ID of the Security Group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+	// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+	//
+	// Deprecated: Use sourceGroupOwnerId instead.
 	SourceGroupOwnerAccount *string `pulumi:"sourceGroupOwnerAccount"`
+	// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+	SourceGroupOwnerId *string `pulumi:"sourceGroupOwnerId"`
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId *string `pulumi:"sourceSecurityGroupId"`
 	// The type of the Security Group Rule. Valid values:
@@ -259,7 +275,7 @@ type securityGroupRuleArgs struct {
 
 // The set of arguments for constructing a SecurityGroupRule resource.
 type SecurityGroupRuleArgs struct {
-	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp pulumi.StringPtrInput
 	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
 	//
@@ -282,8 +298,12 @@ type SecurityGroupRuleArgs struct {
 	Priority pulumi.IntPtrInput
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringInput
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+	// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+	//
+	// Deprecated: Use sourceGroupOwnerId instead.
 	SourceGroupOwnerAccount pulumi.StringPtrInput
+	// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+	SourceGroupOwnerId pulumi.StringPtrInput
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId pulumi.StringPtrInput
 	// The type of the Security Group Rule. Valid values:
@@ -377,7 +397,7 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx contex
 	return o
 }
 
-// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 func (o SecurityGroupRuleOutput) CidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.CidrIp }).(pulumi.StringPtrOutput)
 }
@@ -435,9 +455,16 @@ func (o SecurityGroupRuleOutput) SecurityGroupRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroupRuleId }).(pulumi.StringOutput)
 }
 
-// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+//
+// Deprecated: Use sourceGroupOwnerId instead.
 func (o SecurityGroupRuleOutput) SourceGroupOwnerAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.SourceGroupOwnerAccount }).(pulumi.StringPtrOutput)
+}
+
+// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+func (o SecurityGroupRuleOutput) SourceGroupOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.SourceGroupOwnerId }).(pulumi.StringPtrOutput)
 }
 
 // The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.

@@ -101,14 +101,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alidnscloudgtm/monitorTemplate:MonitorTemplate")
 public class MonitorTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      * 
      */
     @Export(name="evaluationCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> evaluationCount;
 
     /**
-     * @return The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * @return The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      * 
      */
     public Output<Integer> evaluationCount() {

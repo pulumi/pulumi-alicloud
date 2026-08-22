@@ -170,6 +170,10 @@ export class Listener extends pulumi.CustomResource {
      * The tags. You can specify at most 20 tags in each call.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     */
+    declare public readonly tcpIdleTimeout: pulumi.Output<number>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -191,6 +195,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["serverGroupId"] = state?.serverGroupId;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tcpIdleTimeout"] = state?.tcpIdleTimeout;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if (args?.loadBalancerId === undefined && !opts.urn) {
@@ -204,6 +209,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["loadBalancerId"] = args?.loadBalancerId;
             resourceInputs["serverGroupId"] = args?.serverGroupId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tcpIdleTimeout"] = args?.tcpIdleTimeout;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -246,6 +252,10 @@ export interface ListenerState {
      * The tags. You can specify at most 20 tags in each call.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     */
+    tcpIdleTimeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -274,4 +284,8 @@ export interface ListenerArgs {
      * The tags. You can specify at most 20 tags in each call.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     */
+    tcpIdleTimeout?: pulumi.Input<number | undefined>;
 }

@@ -27,6 +27,7 @@ class NodePoolArgs:
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 containerd_config: pulumi.Input[Optional['NodePoolContainerdConfigArgs']] = None,
                  cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -109,6 +110,9 @@ class NodePoolArgs:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[_builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        :param pulumi.Input['NodePoolContainerdConfigArgs'] containerd_config: Containerd configuration parameters for worker nodes.
+               
+               > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
         :param pulumi.Input[_builtins.str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -246,6 +250,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "cis_enabled", cis_enabled)
         if compensate_with_on_demand is not None:
             pulumi.set(__self__, "compensate_with_on_demand", compensate_with_on_demand)
+        if containerd_config is not None:
+            pulumi.set(__self__, "containerd_config", containerd_config)
         if cpu_policy is not None:
             pulumi.set(__self__, "cpu_policy", cpu_policy)
         if data_disks is not None:
@@ -477,6 +483,20 @@ class NodePoolArgs:
     @compensate_with_on_demand.setter
     def compensate_with_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compensate_with_on_demand", value)
+
+    @_builtins.property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> pulumi.Input[Optional['NodePoolContainerdConfigArgs']]:
+        """
+        Containerd configuration parameters for worker nodes.
+
+        > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
+        """
+        return pulumi.get(self, "containerd_config")
+
+    @containerd_config.setter
+    def containerd_config(self, value: pulumi.Input[Optional['NodePoolContainerdConfigArgs']]):
+        pulumi.set(self, "containerd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuPolicy")
@@ -1417,6 +1437,7 @@ class _NodePoolState:
                  cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 containerd_config: pulumi.Input[Optional['NodePoolContainerdConfigArgs']] = None,
                  cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1501,6 +1522,9 @@ class _NodePoolState:
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        :param pulumi.Input['NodePoolContainerdConfigArgs'] containerd_config: Containerd configuration parameters for worker nodes.
+               
+               > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
         :param pulumi.Input[_builtins.str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -1641,6 +1665,8 @@ class _NodePoolState:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if compensate_with_on_demand is not None:
             pulumi.set(__self__, "compensate_with_on_demand", compensate_with_on_demand)
+        if containerd_config is not None:
+            pulumi.set(__self__, "containerd_config", containerd_config)
         if cpu_policy is not None:
             pulumi.set(__self__, "cpu_policy", cpu_policy)
         if data_disks is not None:
@@ -1876,6 +1902,20 @@ class _NodePoolState:
     @compensate_with_on_demand.setter
     def compensate_with_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compensate_with_on_demand", value)
+
+    @_builtins.property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> pulumi.Input[Optional['NodePoolContainerdConfigArgs']]:
+        """
+        Containerd configuration parameters for worker nodes.
+
+        > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
+        """
+        return pulumi.get(self, "containerd_config")
+
+    @containerd_config.setter
+    def containerd_config(self, value: pulumi.Input[Optional['NodePoolContainerdConfigArgs']]):
+        pulumi.set(self, "containerd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuPolicy")
@@ -2843,6 +2883,7 @@ class NodePool(pulumi.CustomResource):
                  cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']]] = None,
                  cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3162,6 +3203,21 @@ class NodePool(pulumi.CustomResource):
                 "max_pods": "100",
                 "read_only_port": "0",
                 "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
+            },
+            containerd_config={
+                "max_concurrent_downloads": 10,
+                "ignore_image_defined_volume": "true",
+                "limit_core": "10",
+                "limit_no_file": "1024",
+                "limit_mem_lock": "65536",
+                "registry_mirrors": [
+                    "docker.io=https://registry.cn-hangzhou.aliyuncs.com,https://mirror2.example.com&override_path",
+                    "gcr.io=https://gcr-mirror.example.com&override_path",
+                ],
+                "insecure_registries": [
+                    "registry.example.com",
+                    "192.168.1.1:5000",
+                ],
             },
             rolling_policy={
                 "max_parallelism": 1,
@@ -3492,6 +3548,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        :param pulumi.Input[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']] containerd_config: Containerd configuration parameters for worker nodes.
+               
+               > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
         :param pulumi.Input[_builtins.str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -3867,6 +3926,21 @@ class NodePool(pulumi.CustomResource):
                 "read_only_port": "0",
                 "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
             },
+            containerd_config={
+                "max_concurrent_downloads": 10,
+                "ignore_image_defined_volume": "true",
+                "limit_core": "10",
+                "limit_no_file": "1024",
+                "limit_mem_lock": "65536",
+                "registry_mirrors": [
+                    "docker.io=https://registry.cn-hangzhou.aliyuncs.com,https://mirror2.example.com&override_path",
+                    "gcr.io=https://gcr-mirror.example.com&override_path",
+                ],
+                "insecure_registries": [
+                    "registry.example.com",
+                    "192.168.1.1:5000",
+                ],
+            },
             rolling_policy={
                 "max_parallelism": 1,
             })
@@ -4209,6 +4283,7 @@ class NodePool(pulumi.CustomResource):
                  cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']]] = None,
                  cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4299,6 +4374,7 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["compensate_with_on_demand"] = compensate_with_on_demand
+            __props__.__dict__["containerd_config"] = containerd_config
             __props__.__dict__["cpu_policy"] = cpu_policy
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deployment_set_id"] = deployment_set_id
@@ -4392,6 +4468,7 @@ class NodePool(pulumi.CustomResource):
             cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']]] = None,
             cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
             data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
             deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4480,6 +4557,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        :param pulumi.Input[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']] containerd_config: Containerd configuration parameters for worker nodes.
+               
+               > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
         :param pulumi.Input[_builtins.str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -4615,6 +4695,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["cis_enabled"] = cis_enabled
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["compensate_with_on_demand"] = compensate_with_on_demand
+        __props__.__dict__["containerd_config"] = containerd_config
         __props__.__dict__["cpu_policy"] = cpu_policy
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
@@ -4740,6 +4821,16 @@ class NodePool(pulumi.CustomResource):
         Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         """
         return pulumi.get(self, "compensate_with_on_demand")
+
+    @_builtins.property
+    @pulumi.getter(name="containerdConfig")
+    def containerd_config(self) -> pulumi.Output[Optional['outputs.NodePoolContainerdConfig']]:
+        """
+        Containerd configuration parameters for worker nodes.
+
+        > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
+        """
+        return pulumi.get(self, "containerd_config")
 
     @_builtins.property
     @pulumi.getter(name="cpuPolicy")

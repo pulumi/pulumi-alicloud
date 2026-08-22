@@ -90,6 +90,9 @@ class DiskArgs:
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if enable_auto_snapshot is not None:
+            warnings.warn("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""", DeprecationWarning)
+            pulumi.log.warn("""enable_auto_snapshot is deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
+        if enable_auto_snapshot is not None:
             pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         if encrypt_algorithm is not None:
             pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
@@ -228,6 +231,7 @@ class DiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
+    @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
@@ -501,6 +505,9 @@ class _DiskState:
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if enable_auto_snapshot is not None:
+            warnings.warn("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""", DeprecationWarning)
+            pulumi.log.warn("""enable_auto_snapshot is deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
+        if enable_auto_snapshot is not None:
             pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         if encrypt_algorithm is not None:
             pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
@@ -652,6 +659,7 @@ class _DiskState:
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
+    @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
@@ -1255,6 +1263,7 @@ class Disk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
+    @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Output[_builtins.bool]:
         """
         Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.

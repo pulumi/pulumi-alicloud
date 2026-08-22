@@ -60,6 +60,7 @@ class ShardingInstanceArgs:
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -90,7 +91,6 @@ class ShardingInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -119,10 +119,11 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - ` Flash  `: Single-digit second backup.
+               - `Flash`: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -213,6 +214,8 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_ip_groups is not None:
+            pulumi.set(__self__, "security_ip_groups", security_ip_groups)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if snapshot_backup_type is not None:
@@ -410,7 +413,6 @@ class ShardingInstanceArgs:
     def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the log backup feature. Valid values:
-        - ` 1  `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
@@ -711,6 +713,18 @@ class ShardingInstanceArgs:
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]]]:
+        """
+        The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @security_ip_groups.setter
+    def security_ip_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]]]):
+        pulumi.set(self, "security_ip_groups", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -728,7 +742,7 @@ class ShardingInstanceArgs:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
-        - ` Flash  `: Single-digit second backup.
+        - `Flash`: Single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -893,6 +907,7 @@ class _ShardingInstanceState:
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -923,7 +938,6 @@ class _ShardingInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -956,11 +970,12 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - ` Flash  `: Single-digit second backup.
+               - `Flash`: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -1058,6 +1073,8 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_ip_groups is not None:
+            pulumi.set(__self__, "security_ip_groups", security_ip_groups)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if shard_lists is not None:
@@ -1225,7 +1242,6 @@ class _ShardingInstanceState:
     def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the log backup feature. Valid values:
-        - ` 1  `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
@@ -1574,6 +1590,18 @@ class _ShardingInstanceState:
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]]]:
+        """
+        The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @security_ip_groups.setter
+    def security_ip_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceSecurityIpGroupArgs']]]]):
+        pulumi.set(self, "security_ip_groups", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -1603,7 +1631,7 @@ class _ShardingInstanceState:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
-        - ` Flash  `: Single-digit second backup.
+        - `Flash`: Single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -1793,6 +1821,7 @@ class ShardingInstance(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceSecurityIpGroupArgs', 'ShardingInstanceSecurityIpGroupArgsDict']]]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1809,7 +1838,7 @@ class ShardingInstance(pulumi.CustomResource):
         """
         Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+        You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.40.0.
 
@@ -1896,7 +1925,6 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -1927,11 +1955,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceSecurityIpGroupArgs', 'ShardingInstanceSecurityIpGroupArgsDict']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - ` Flash  `: Single-digit second backup.
+               - `Flash`: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -1956,7 +1985,7 @@ class ShardingInstance(pulumi.CustomResource):
         """
         Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+        You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.40.0.
 
@@ -2081,6 +2110,7 @@ class ShardingInstance(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceSecurityIpGroupArgs', 'ShardingInstanceSecurityIpGroupArgsDict']]]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2144,6 +2174,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["security_ip_groups"] = security_ip_groups
             __props__.__dict__["security_ip_lists"] = security_ip_lists
             if shard_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'shard_lists'")
@@ -2214,6 +2245,7 @@ class ShardingInstance(pulumi.CustomResource):
             role_arn: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceSecurityIpGroupArgs', 'ShardingInstanceSecurityIpGroupArgsDict']]]]] = None,
             security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
             snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2248,7 +2280,6 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -2281,11 +2312,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceSecurityIpGroupArgs', 'ShardingInstanceSecurityIpGroupArgsDict']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - ` Flash  `: Single-digit second backup.
+               - `Flash`: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2347,6 +2379,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["role_arn"] = role_arn
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["security_ip_groups"] = security_ip_groups
         __props__.__dict__["security_ip_lists"] = security_ip_lists
         __props__.__dict__["shard_lists"] = shard_lists
         __props__.__dict__["snapshot_backup_type"] = snapshot_backup_type
@@ -2457,7 +2490,6 @@ class ShardingInstance(pulumi.CustomResource):
     def enable_backup_log(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies whether to enable the log backup feature. Valid values:
-        - ` 1  `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
@@ -2690,6 +2722,14 @@ class ShardingInstance(pulumi.CustomResource):
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> pulumi.Output[Optional[Sequence['outputs.ShardingInstanceSecurityIpGroup']]]:
+        """
+        The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @_builtins.property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
@@ -2711,7 +2751,7 @@ class ShardingInstance(pulumi.CustomResource):
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
-        - ` Flash  `: Single-digit second backup.
+        - `Flash`: Single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 

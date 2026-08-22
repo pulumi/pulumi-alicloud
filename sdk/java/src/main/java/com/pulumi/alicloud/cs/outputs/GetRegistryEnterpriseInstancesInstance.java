@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -61,6 +62,11 @@ public final class GetRegistryEnterpriseInstancesInstance {
      * 
      */
     private String specification;
+    /**
+     * @return A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return The username that was used to log on to the registry.
      * 
@@ -144,6 +150,13 @@ public final class GetRegistryEnterpriseInstancesInstance {
         return this.specification;
     }
     /**
+     * @return A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return The username that was used to log on to the registry.
      * 
      */
@@ -177,6 +190,7 @@ public final class GetRegistryEnterpriseInstancesInstance {
         private String repoQuota;
         private String repoUsage;
         private String specification;
+        private Map<String,String> tags;
         private String tempUsername;
         private List<String> vpcEndpoints;
         public Builder() {}
@@ -192,6 +206,7 @@ public final class GetRegistryEnterpriseInstancesInstance {
     	      this.repoQuota = defaults.repoQuota;
     	      this.repoUsage = defaults.repoUsage;
     	      this.specification = defaults.specification;
+    	      this.tags = defaults.tags;
     	      this.tempUsername = defaults.tempUsername;
     	      this.vpcEndpoints = defaults.vpcEndpoints;
         }
@@ -280,6 +295,14 @@ public final class GetRegistryEnterpriseInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tempUsername(String tempUsername) {
             if (tempUsername == null) {
               throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "tempUsername");
@@ -310,6 +333,7 @@ public final class GetRegistryEnterpriseInstancesInstance {
             _resultValue.repoQuota = repoQuota;
             _resultValue.repoUsage = repoUsage;
             _resultValue.specification = specification;
+            _resultValue.tags = tags;
             _resultValue.tempUsername = tempUsername;
             _resultValue.vpcEndpoints = vpcEndpoints;
             return _resultValue;

@@ -14,7 +14,7 @@ import (
 
 // Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
 // It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+// You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 //
 // > **NOTE:** Available since v1.40.0.
 //
@@ -141,7 +141,6 @@ type ShardingInstance struct {
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"dbInstanceReleaseProtection"`
 	// Specifies whether to enable the log backup feature. Valid values:
-	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog pulumi.IntOutput `pulumi:"enableBackupLog"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
@@ -203,13 +202,15 @@ type ShardingInstance struct {
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups ShardingInstanceSecurityIpGroupArrayOutput `pulumi:"securityIpGroups"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: Standard backup.
-	// - ` Flash  `: Single-digit second backup.
+	// - `Flash`: Single-digit second backup.
 	SnapshotBackupType pulumi.StringOutput `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrOutput `pulumi:"srcDbInstanceId"`
@@ -310,7 +311,6 @@ type shardingInstanceState struct {
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
 	// Specifies whether to enable the log backup feature. Valid values:
-	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted *bool `pulumi:"encrypted"`
@@ -372,13 +372,15 @@ type shardingInstanceState struct {
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups []ShardingInstanceSecurityIpGroup `pulumi:"securityIpGroups"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: Standard backup.
-	// - ` Flash  `: Single-digit second backup.
+	// - `Flash`: Single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
@@ -434,7 +436,6 @@ type ShardingInstanceState struct {
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection pulumi.BoolPtrInput
 	// Specifies whether to enable the log backup feature. Valid values:
-	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog pulumi.IntPtrInput
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrInput
@@ -496,13 +497,15 @@ type ShardingInstanceState struct {
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups ShardingInstanceSecurityIpGroupArrayInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
 	// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists ShardingInstanceShardListArrayInput
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: Standard backup.
-	// - ` Flash  `: Single-digit second backup.
+	// - `Flash`: Single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrInput
@@ -562,7 +565,6 @@ type shardingInstanceArgs struct {
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
 	// Specifies whether to enable the log backup feature. Valid values:
-	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted *bool `pulumi:"encrypted"`
@@ -620,13 +622,15 @@ type shardingInstanceArgs struct {
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups []ShardingInstanceSecurityIpGroup `pulumi:"securityIpGroups"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: Standard backup.
-	// - ` Flash  `: Single-digit second backup.
+	// - `Flash`: Single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
@@ -679,7 +683,6 @@ type ShardingInstanceArgs struct {
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection pulumi.BoolPtrInput
 	// Specifies whether to enable the log backup feature. Valid values:
-	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog pulumi.IntPtrInput
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrInput
@@ -737,13 +740,15 @@ type ShardingInstanceArgs struct {
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups ShardingInstanceSecurityIpGroupArrayInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
 	// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists ShardingInstanceShardListArrayInput
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: Standard backup.
-	// - ` Flash  `: Single-digit second backup.
+	// - `Flash`: Single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrInput
@@ -914,7 +919,6 @@ func (o ShardingInstanceOutput) DbInstanceReleaseProtection() pulumi.BoolPtrOutp
 }
 
 // Specifies whether to enable the log backup feature. Valid values:
-// - ` 1  `: The log backup feature is enabled.
 func (o ShardingInstanceOutput) EnableBackupLog() pulumi.IntOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.EnableBackupLog }).(pulumi.IntOutput)
 }
@@ -1063,6 +1067,11 @@ func (o ShardingInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+func (o ShardingInstanceOutput) SecurityIpGroups() ShardingInstanceSecurityIpGroupArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceSecurityIpGroupArrayOutput { return v.SecurityIpGroups }).(ShardingInstanceSecurityIpGroupArrayOutput)
+}
+
 // List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 func (o ShardingInstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
@@ -1075,7 +1084,7 @@ func (o ShardingInstanceOutput) ShardLists() ShardingInstanceShardListArrayOutpu
 
 // The snapshot backup type. Default value: `Standard`. Valid values:
 // - `Standard`: Standard backup.
-// - ` Flash  `: Single-digit second backup.
+// - `Flash`: Single-digit second backup.
 func (o ShardingInstanceOutput) SnapshotBackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.SnapshotBackupType }).(pulumi.StringOutput)
 }

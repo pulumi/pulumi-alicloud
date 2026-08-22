@@ -182,14 +182,14 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      * 
      */
     @Import(name="objectWormMode")
     private @Nullable Output<String> objectWormMode;
 
     /**
-     * @return The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * @return The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      * 
      */
     public Optional<Output<String>> objectWormMode() {
@@ -515,7 +515,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objectWormMode The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+         * @param objectWormMode The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objectWormMode The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+         * @param objectWormMode The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
          * 
          * @return builder
          * 

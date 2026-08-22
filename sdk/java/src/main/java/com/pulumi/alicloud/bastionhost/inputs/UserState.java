@@ -199,14 +199,18 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `Frozen`, `Normal`.
+     * The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     * 
+     * &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user&#39;s remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Frozen`, `Normal`.
+     * @return The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     * 
+     * &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user&#39;s remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      * 
      */
     public Optional<Output<String>> status() {
@@ -516,7 +520,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Frozen`, `Normal`.
+         * @param status The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+         * 
+         * &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user&#39;s remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
          * 
          * @return builder
          * 
@@ -527,7 +533,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Frozen`, `Normal`.
+         * @param status The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+         * 
+         * &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user&#39;s remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
          * 
          * @return builder
          * 

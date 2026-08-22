@@ -6,6 +6,8 @@ package com.pulumi.alicloud.cr;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
 import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesPlainArgs;
+import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesArgs;
+import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
 import com.pulumi.alicloud.cr.inputs.GetChainsPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetChartNamespacesArgs;
@@ -16,6 +18,8 @@ import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
 import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
 import com.pulumi.alicloud.cr.inputs.GetEndpointAclServicePlainArgs;
+import com.pulumi.alicloud.cr.inputs.GetInternetEndpointArgs;
+import com.pulumi.alicloud.cr.inputs.GetInternetEndpointPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
 import com.pulumi.alicloud.cr.inputs.GetNamespacesPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetReposArgs;
@@ -25,11 +29,13 @@ import com.pulumi.alicloud.cr.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
 import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsPlainArgs;
 import com.pulumi.alicloud.cr.outputs.GetArtifactLifecycleRulesResult;
+import com.pulumi.alicloud.cr.outputs.GetArtifactSubscriptionRulesResult;
 import com.pulumi.alicloud.cr.outputs.GetChainsResult;
 import com.pulumi.alicloud.cr.outputs.GetChartNamespacesResult;
 import com.pulumi.alicloud.cr.outputs.GetChartRepositoriesResult;
 import com.pulumi.alicloud.cr.outputs.GetEndpointAclPoliciesResult;
 import com.pulumi.alicloud.cr.outputs.GetEndpointAclServiceResult;
+import com.pulumi.alicloud.cr.outputs.GetInternetEndpointResult;
 import com.pulumi.alicloud.cr.outputs.GetNamespacesResult;
 import com.pulumi.alicloud.cr.outputs.GetReposResult;
 import com.pulumi.alicloud.cr.outputs.GetServiceResult;
@@ -491,6 +497,221 @@ public final class CrFunctions {
      */
     public static CompletableFuture<GetArtifactLifecycleRulesResult> getArtifactLifecycleRulesPlain(GetArtifactLifecycleRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getArtifactLifecycleRules:getArtifactLifecycleRules", TypeShape.of(GetArtifactLifecycleRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cr Artifact Subscription Rule available to the user.[What is Artifact Subscription Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactSubscriptionRule)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactSubscriptionRulesResult> getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs args) {
+        return getArtifactSubscriptionRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cr Artifact Subscription Rule available to the user.[What is Artifact Subscription Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactSubscriptionRule)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetArtifactSubscriptionRulesResult> getArtifactSubscriptionRulesPlain(GetArtifactSubscriptionRulesPlainArgs args) {
+        return getArtifactSubscriptionRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cr Artifact Subscription Rule available to the user.[What is Artifact Subscription Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactSubscriptionRule)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactSubscriptionRulesResult> getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getArtifactSubscriptionRules:getArtifactSubscriptionRules", TypeShape.of(GetArtifactSubscriptionRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cr Artifact Subscription Rule available to the user.[What is Artifact Subscription Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactSubscriptionRule)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactSubscriptionRulesResult> getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getArtifactSubscriptionRules:getArtifactSubscriptionRules", TypeShape.of(GetArtifactSubscriptionRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cr Artifact Subscription Rule available to the user.[What is Artifact Subscription Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactSubscriptionRule)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactSubscriptionRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getArtifactSubscriptionRules(GetArtifactSubscriptionRulesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetArtifactSubscriptionRulesResult> getArtifactSubscriptionRulesPlain(GetArtifactSubscriptionRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cr/getArtifactSubscriptionRules:getArtifactSubscriptionRules", TypeShape.of(GetArtifactSubscriptionRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cr Chains of the current Alibaba Cloud user.
@@ -1546,6 +1767,246 @@ public final class CrFunctions {
      */
     public static CompletableFuture<GetEndpointAclServiceResult> getEndpointAclServicePlain(GetEndpointAclServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getEndpointAclService:getEndpointAclService", TypeShape.of(GetEndpointAclServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Internet Endpoint of the current Alibaba Cloud user.
+     * 
+     * For information about CR Internet Endpoint and how to use it, see [GetInstanceEndpoint](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-getinstanceendpoint).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetInternetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var instanceId = config.require("instanceId");
+     *         final var default = CrFunctions.getInternetEndpoint(GetInternetEndpointArgs.builder()
+     *             .instanceId(instanceId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInternetEndpointResult> getInternetEndpoint(GetInternetEndpointArgs args) {
+        return getInternetEndpoint(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the CR Internet Endpoint of the current Alibaba Cloud user.
+     * 
+     * For information about CR Internet Endpoint and how to use it, see [GetInstanceEndpoint](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-getinstanceendpoint).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetInternetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var instanceId = config.require("instanceId");
+     *         final var default = CrFunctions.getInternetEndpoint(GetInternetEndpointArgs.builder()
+     *             .instanceId(instanceId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInternetEndpointResult> getInternetEndpointPlain(GetInternetEndpointPlainArgs args) {
+        return getInternetEndpointPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the CR Internet Endpoint of the current Alibaba Cloud user.
+     * 
+     * For information about CR Internet Endpoint and how to use it, see [GetInstanceEndpoint](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-getinstanceendpoint).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetInternetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var instanceId = config.require("instanceId");
+     *         final var default = CrFunctions.getInternetEndpoint(GetInternetEndpointArgs.builder()
+     *             .instanceId(instanceId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInternetEndpointResult> getInternetEndpoint(GetInternetEndpointArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getInternetEndpoint:getInternetEndpoint", TypeShape.of(GetInternetEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Internet Endpoint of the current Alibaba Cloud user.
+     * 
+     * For information about CR Internet Endpoint and how to use it, see [GetInstanceEndpoint](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-getinstanceendpoint).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetInternetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var instanceId = config.require("instanceId");
+     *         final var default = CrFunctions.getInternetEndpoint(GetInternetEndpointArgs.builder()
+     *             .instanceId(instanceId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInternetEndpointResult> getInternetEndpoint(GetInternetEndpointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getInternetEndpoint:getInternetEndpoint", TypeShape.of(GetInternetEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Internet Endpoint of the current Alibaba Cloud user.
+     * 
+     * For information about CR Internet Endpoint and how to use it, see [GetInstanceEndpoint](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-getinstanceendpoint).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetInternetEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var instanceId = config.require("instanceId");
+     *         final var default = CrFunctions.getInternetEndpoint(GetInternetEndpointArgs.builder()
+     *             .instanceId(instanceId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInternetEndpointResult> getInternetEndpointPlain(GetInternetEndpointPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cr/getInternetEndpoint:getInternetEndpoint", TypeShape.of(GetInternetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.

@@ -19,14 +19,14 @@ public final class MonitorTemplateState extends com.pulumi.resources.ResourceArg
     public static final MonitorTemplateState Empty = new MonitorTemplateState();
 
     /**
-     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      * 
      */
     @Import(name="evaluationCount")
     private @Nullable Output<Integer> evaluationCount;
 
     /**
-     * @return The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * @return The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      * 
      */
     public Optional<Output<Integer>> evaluationCount() {
@@ -202,7 +202,7 @@ public final class MonitorTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param evaluationCount The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+         * @param evaluationCount The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class MonitorTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param evaluationCount The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+         * @param evaluationCount The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
          * 
          * @return builder
          * 

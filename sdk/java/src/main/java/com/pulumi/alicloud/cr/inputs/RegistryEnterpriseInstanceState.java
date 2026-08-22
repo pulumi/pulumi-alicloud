@@ -399,6 +399,21 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     }
 
     /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The number of VPC access controls.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -445,6 +460,7 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         this.repoQuota = $.repoQuota;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcQuota = $.vpcQuota;
     }
 
@@ -979,6 +995,27 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

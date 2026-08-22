@@ -18,14 +18,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     public static final SecurityGroupRuleArgs Empty = new SecurityGroupRuleArgs();
 
     /**
-     * The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+     * The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
      * 
      */
     @Import(name="cidrIp")
     private @Nullable Output<String> cidrIp;
 
     /**
-     * @return The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+     * @return The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
      * 
      */
     public Optional<Output<String>> cidrIp() {
@@ -174,18 +174,41 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+     * 
+     * @deprecated
+     * Use sourceGroupOwnerId instead.
      * 
      */
+    @Deprecated /* Use sourceGroupOwnerId instead. */
     @Import(name="sourceGroupOwnerAccount")
     private @Nullable Output<String> sourceGroupOwnerAccount;
 
     /**
-     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * @return The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+     * 
+     * @deprecated
+     * Use sourceGroupOwnerId instead.
      * 
      */
+    @Deprecated /* Use sourceGroupOwnerId instead. */
     public Optional<Output<String>> sourceGroupOwnerAccount() {
         return Optional.ofNullable(this.sourceGroupOwnerAccount);
+    }
+
+    /**
+     * The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+     * 
+     */
+    @Import(name="sourceGroupOwnerId")
+    private @Nullable Output<String> sourceGroupOwnerId;
+
+    /**
+     * @return The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+     * 
+     */
+    public Optional<Output<String>> sourceGroupOwnerId() {
+        return Optional.ofNullable(this.sourceGroupOwnerId);
     }
 
     /**
@@ -232,6 +255,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         this.priority = $.priority;
         this.securityGroupId = $.securityGroupId;
         this.sourceGroupOwnerAccount = $.sourceGroupOwnerAccount;
+        this.sourceGroupOwnerId = $.sourceGroupOwnerId;
         this.sourceSecurityGroupId = $.sourceSecurityGroupId;
         this.type = $.type;
     }
@@ -255,7 +279,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cidrIp The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+         * @param cidrIp The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
          * 
          * @return builder
          * 
@@ -266,7 +290,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cidrIp The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+         * @param cidrIp The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
          * 
          * @return builder
          * 
@@ -471,24 +495,53 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+         * @param sourceGroupOwnerAccount The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use sourceGroupOwnerId instead.
+         * 
          */
+        @Deprecated /* Use sourceGroupOwnerId instead. */
         public Builder sourceGroupOwnerAccount(@Nullable Output<String> sourceGroupOwnerAccount) {
             $.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
             return this;
         }
 
         /**
-         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+         * @param sourceGroupOwnerAccount The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use sourceGroupOwnerId instead.
+         * 
+         */
+        @Deprecated /* Use sourceGroupOwnerId instead. */
+        public Builder sourceGroupOwnerAccount(String sourceGroupOwnerAccount) {
+            return sourceGroupOwnerAccount(Output.of(sourceGroupOwnerAccount));
+        }
+
+        /**
+         * @param sourceGroupOwnerId The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
          * 
          * @return builder
          * 
          */
-        public Builder sourceGroupOwnerAccount(String sourceGroupOwnerAccount) {
-            return sourceGroupOwnerAccount(Output.of(sourceGroupOwnerAccount));
+        public Builder sourceGroupOwnerId(@Nullable Output<String> sourceGroupOwnerId) {
+            $.sourceGroupOwnerId = sourceGroupOwnerId;
+            return this;
+        }
+
+        /**
+         * @param sourceGroupOwnerId The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceGroupOwnerId(String sourceGroupOwnerId) {
+            return sourceGroupOwnerId(Output.of(sourceGroupOwnerId));
         }
 
         /**

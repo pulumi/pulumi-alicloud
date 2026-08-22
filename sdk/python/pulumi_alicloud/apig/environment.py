@@ -25,11 +25,6 @@ class EnvironmentArgs:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Environment resource.
-
-        :param pulumi.Input[_builtins.str] environment_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_id: Gateway id
-        :param pulumi.Input[_builtins.str] description: Description
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         """
         pulumi.set(__self__, "environment_name", environment_name)
         pulumi.set(__self__, "gateway_id", gateway_id)
@@ -41,9 +36,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter(name="environmentName")
     def environment_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the resource
-        """
         return pulumi.get(self, "environment_name")
 
     @environment_name.setter
@@ -53,9 +45,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Gateway id
-        """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
@@ -65,9 +54,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Description
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -77,9 +63,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The ID of the resource group
-        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -96,11 +79,6 @@ class _EnvironmentState:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
-
-        :param pulumi.Input[_builtins.str] description: Description
-        :param pulumi.Input[_builtins.str] environment_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_id: Gateway id
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -114,9 +92,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Description
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -126,9 +101,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="environmentName")
     def environment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The name of the resource
-        """
         return pulumi.get(self, "environment_name")
 
     @environment_name.setter
@@ -138,9 +110,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Gateway id
-        """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
@@ -150,9 +119,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The ID of the resource group
-        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -172,72 +138,10 @@ class Environment(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a APIG Environment resource.
-
-        For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
-
-        > **NOTE:** Available since v1.240.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_std as std
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.resourcemanager.get_resource_groups()
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
-        defaultgateway = alicloud.apig.Gateway("defaultgateway",
-            network_access_config={
-                "type": "Intranet",
-            },
-            vswitch={
-                "vswitch_id": default_get_switches.ids[0],
-            },
-            zone_config={
-                "select_option": "Auto",
-            },
-            vpc={
-                "vpc_id": default_get_networks.ids[0],
-            },
-            payment_type="PayAsYouGo",
-            gateway_name=std.format(input="%s2",
-                args=[name]).result,
-            spec="apigw.small.x1",
-            log_config={
-                "sls": {},
-            })
-        default_environment = alicloud.apig.Environment("default",
-            description=name,
-            environment_name=name,
-            gateway_id=defaultgateway.id,
-            resource_group_id=default.ids[1])
-        ```
-
-        📚 Need more examples? VIEW MORE EXAMPLES
-
-        ## Import
-
-        APIG Environment can be imported using the id, e.g.
-
-        ```sh
-        $ pulumi import alicloud:apig/environment:Environment example <id>
-        ```
-
+        Create a Environment resource with the given unique name, props, and options.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Description
-        :param pulumi.Input[_builtins.str] environment_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_id: Gateway id
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         """
         ...
     @overload
@@ -246,65 +150,7 @@ class Environment(pulumi.CustomResource):
                  args: EnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a APIG Environment resource.
-
-        For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
-
-        > **NOTE:** Available since v1.240.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_std as std
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.resourcemanager.get_resource_groups()
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
-        defaultgateway = alicloud.apig.Gateway("defaultgateway",
-            network_access_config={
-                "type": "Intranet",
-            },
-            vswitch={
-                "vswitch_id": default_get_switches.ids[0],
-            },
-            zone_config={
-                "select_option": "Auto",
-            },
-            vpc={
-                "vpc_id": default_get_networks.ids[0],
-            },
-            payment_type="PayAsYouGo",
-            gateway_name=std.format(input="%s2",
-                args=[name]).result,
-            spec="apigw.small.x1",
-            log_config={
-                "sls": {},
-            })
-        default_environment = alicloud.apig.Environment("default",
-            description=name,
-            environment_name=name,
-            gateway_id=defaultgateway.id,
-            resource_group_id=default.ids[1])
-        ```
-
-        📚 Need more examples? VIEW MORE EXAMPLES
-
-        ## Import
-
-        APIG Environment can be imported using the id, e.g.
-
-        ```sh
-        $ pulumi import alicloud:apig/environment:Environment example <id>
-        ```
-
+        Create a Environment resource with the given unique name, props, and options.
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
@@ -363,10 +209,6 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Description
-        :param pulumi.Input[_builtins.str] environment_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_id: Gateway id
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -381,32 +223,20 @@ class Environment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Description
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="environmentName")
     def environment_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the resource
-        """
         return pulumi.get(self, "environment_name")
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Gateway id
-        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the resource group
-        """
         return pulumi.get(self, "resource_group_id")
 

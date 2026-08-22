@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * APIG Http Api can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:apig/httpApi:HttpApi example <id>
+ * $ pulumi import alicloud:apig/httpApi:HttpApi example <http_api_id>
  * ```
  */
 export class HttpApi extends pulumi.CustomResource {
@@ -72,29 +72,60 @@ export class HttpApi extends pulumi.CustomResource {
     }
 
     /**
-     * API path
+     * AI API protocols. Currently the supported value is `OpenAI/v1`.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    declare public readonly aiProtocols: pulumi.Output<string[] | undefined>;
+    /**
+     * API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     declare public readonly basePath: pulumi.Output<string | undefined>;
     /**
-     * Description of API
+     * API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     */
+    declare public readonly deployConfigs: pulumi.Output<string[] | undefined>;
+    /**
+     * API description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource
+     * Whether to enable authentication.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    declare public readonly enableAuth: pulumi.Output<boolean | undefined>;
+    /**
+     * Perform an exact search by name.
      */
     declare public readonly httpApiName: pulumi.Output<string>;
     /**
-     * API protocol
+     * AI model category
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    declare public readonly modelCategory: pulumi.Output<string | undefined>;
+    /**
+     * List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      */
     declare public readonly protocols: pulumi.Output<string[]>;
     /**
-     * The ID of the resource group
+     * The ID of the resource group. It can be modified to migrate the resource to another resource group.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * API type
+     * The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a HttpApi resource with the given unique name, arguments, and options.
@@ -109,9 +140,13 @@ export class HttpApi extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpApiState | undefined;
+            resourceInputs["aiProtocols"] = state?.aiProtocols;
             resourceInputs["basePath"] = state?.basePath;
+            resourceInputs["deployConfigs"] = state?.deployConfigs;
             resourceInputs["description"] = state?.description;
+            resourceInputs["enableAuth"] = state?.enableAuth;
             resourceInputs["httpApiName"] = state?.httpApiName;
+            resourceInputs["modelCategory"] = state?.modelCategory;
             resourceInputs["protocols"] = state?.protocols;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["type"] = state?.type;
@@ -123,9 +158,16 @@ export class HttpApi extends pulumi.CustomResource {
             if (args?.protocols === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
+            if (args?.type === undefined && !opts.urn) {
+                throw new Error("Missing required property 'type'");
+            }
+            resourceInputs["aiProtocols"] = args?.aiProtocols;
             resourceInputs["basePath"] = args?.basePath;
+            resourceInputs["deployConfigs"] = args?.deployConfigs;
             resourceInputs["description"] = args?.description;
+            resourceInputs["enableAuth"] = args?.enableAuth;
             resourceInputs["httpApiName"] = args?.httpApiName;
+            resourceInputs["modelCategory"] = args?.modelCategory;
             resourceInputs["protocols"] = args?.protocols;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["type"] = args?.type;
@@ -140,27 +182,58 @@ export class HttpApi extends pulumi.CustomResource {
  */
 export interface HttpApiState {
     /**
-     * API path
+     * AI API protocols. Currently the supported value is `OpenAI/v1`.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    aiProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     basePath?: pulumi.Input<string | undefined>;
     /**
-     * Description of API
+     * API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     */
+    deployConfigs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * API description.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The name of the resource
+     * Whether to enable authentication.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    enableAuth?: pulumi.Input<boolean | undefined>;
+    /**
+     * Perform an exact search by name.
      */
     httpApiName?: pulumi.Input<string | undefined>;
     /**
-     * API protocol
+     * AI model category
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    modelCategory?: pulumi.Input<string | undefined>;
+    /**
+     * List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      */
     protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The ID of the resource group
+     * The ID of the resource group. It can be modified to migrate the resource to another resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * API type
+     * The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -170,27 +243,58 @@ export interface HttpApiState {
  */
 export interface HttpApiArgs {
     /**
-     * API path
+     * AI API protocols. Currently the supported value is `OpenAI/v1`.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    aiProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     basePath?: pulumi.Input<string | undefined>;
     /**
-     * Description of API
+     * API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     */
+    deployConfigs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * API description.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The name of the resource
+     * Whether to enable authentication.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    enableAuth?: pulumi.Input<boolean | undefined>;
+    /**
+     * Perform an exact search by name.
      */
     httpApiName: pulumi.Input<string>;
     /**
-     * API protocol
+     * AI model category
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     */
+    modelCategory?: pulumi.Input<string | undefined>;
+    /**
+     * List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      */
     protocols: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the resource group
+     * The ID of the resource group. It can be modified to migrate the resource to another resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * API type
+     * The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      */
-    type?: pulumi.Input<string | undefined>;
+    type: pulumi.Input<string>;
 }

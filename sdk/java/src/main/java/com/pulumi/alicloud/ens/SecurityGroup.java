@@ -6,11 +6,13 @@ package com.pulumi.alicloud.ens;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ens.SecurityGroupArgs;
 import com.pulumi.alicloud.ens.inputs.SecurityGroupState;
+import com.pulumi.alicloud.ens.outputs.SecurityGroupPermission;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -66,35 +68,53 @@ import javax.annotation.Nullable;
  * ENS Security Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ens/securityGroup:SecurityGroup example &lt;id&gt;
+ * $ pulumi import alicloud:ens/securityGroup:SecurityGroup example &lt;security_group_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ens/securityGroup:SecurityGroup")
 public class SecurityGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * A collection of rules for a security group instance See `permissions` below.
+     * 
+     */
+    @Export(name="permissions", refs={List.class,SecurityGroupPermission.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SecurityGroupPermission>> permissions;
+
+    /**
+     * @return A collection of rules for a security group instance See `permissions` below.
+     * 
+     */
+    public Output<Optional<List<SecurityGroupPermission>>> permissions() {
+        return Codegen.optional(this.permissions);
+    }
+    /**
+     * Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      * 
      */
     @Export(name="securityGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupName;
 
     /**
-     * @return Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * @return Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      * 
      */
     public Output<Optional<String>> securityGroupName() {

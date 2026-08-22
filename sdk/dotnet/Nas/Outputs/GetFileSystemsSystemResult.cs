@@ -26,15 +26,16 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
-        /// * Valid values:
+        /// (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
         /// </summary>
         public readonly int EncryptType;
         /// <summary>
-        /// The type of the file system.
+        /// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
         /// Valid values:
-        /// `Standard` (Default),
-        /// `Extreme`.
+        /// `Standard`,
+        /// `Extreme`,
+        /// `Cpfs`,
+        /// `Cpfsse`.
         /// </summary>
         public readonly string FileSystemType;
         /// <summary>

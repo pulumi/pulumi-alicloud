@@ -53,8 +53,8 @@ export function getAddressBooks(args?: GetAddressBooksArgs, opts?: pulumi.Invoke
  */
 export interface GetAddressBooksArgs {
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      */
     groupType?: string;
     /**
@@ -142,8 +142,8 @@ export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: p
  */
 export interface GetAddressBooksOutputArgs {
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      */
     groupType?: pulumi.Input<string | undefined>;
     /**

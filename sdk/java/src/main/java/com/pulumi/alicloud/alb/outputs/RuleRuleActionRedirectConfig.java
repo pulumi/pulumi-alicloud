@@ -32,7 +32,9 @@ public final class RuleRuleActionRedirectConfig {
      */
     private @Nullable String port;
     /**
-     * @return The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+     * @return The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+     * 
+     * &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
      * 
      */
     private @Nullable String protocol;
@@ -72,7 +74,9 @@ public final class RuleRuleActionRedirectConfig {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+     * @return The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+     * 
+     * &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
      * 
      */
     public Optional<String> protocol() {

@@ -63,6 +63,10 @@ export class Zone extends pulumi.CustomResource {
     }
 
     /**
+     * The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+     */
+    declare public readonly dnsGroup: pulumi.Output<string>;
+    /**
      * Whether the Private Zone is ptr.
      */
     declare public /*out*/ readonly isPtr: pulumi.Output<boolean>;
@@ -129,6 +133,7 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
+            resourceInputs["dnsGroup"] = state?.dnsGroup;
             resourceInputs["isPtr"] = state?.isPtr;
             resourceInputs["lang"] = state?.lang;
             resourceInputs["name"] = state?.name;
@@ -143,6 +148,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
+            resourceInputs["dnsGroup"] = args?.dnsGroup;
             resourceInputs["lang"] = args?.lang;
             resourceInputs["name"] = args?.name;
             resourceInputs["proxyPattern"] = args?.proxyPattern;
@@ -165,6 +171,10 @@ export class Zone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Zone resources.
  */
 export interface ZoneState {
+    /**
+     * The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+     */
+    dnsGroup?: pulumi.Input<string | undefined>;
     /**
      * Whether the Private Zone is ptr.
      */
@@ -224,6 +234,10 @@ export interface ZoneState {
  * The set of arguments for constructing a Zone resource.
  */
 export interface ZoneArgs {
+    /**
+     * The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+     */
+    dnsGroup?: pulumi.Input<string | undefined>;
     /**
      * The language. Valid values: "zh", "en", "jp".
      */

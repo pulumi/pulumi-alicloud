@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a RAM Role Policy attachment.
  *         var role = new Role("role", RoleArgs.builder()
- *             .name("roleName")
- *             .document("""
+ *             .roleName("roleName")
+ *             .assumeRolePolicyDocument("""
  *     {
  *       \"Statement\": [
  *         {
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()
  *             .policyName(policy.policyName())
  *             .policyType(policy.type())
- *             .roleName(role.name())
+ *             .roleName(role.roleName())
  *             .build());
  * 
  *     }

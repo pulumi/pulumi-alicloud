@@ -32,6 +32,7 @@ class ProviderArgs:
                  ecs_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
                  fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional['ProviderFeaturesArgs']] = None,
                  log_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  max_retry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  mns_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -57,6 +58,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[_builtins.str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
+        :param pulumi.Input['ProviderFeaturesArgs'] features: Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
         :param pulumi.Input[_builtins.int] max_retry_timeout: The maximum retry timeout of the request.
         :param pulumi.Input[_builtins.str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         :param pulumi.Input[_builtins.str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
@@ -64,7 +66,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[_builtins.str] security_token: security token. A security token is only required if you are using Security Token Service.
         :param pulumi.Input[_builtins.str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         :param pulumi.Input[_builtins.str] source_ip: The source ip for the assume role invoking.
         """
         if access_key is not None:
@@ -96,6 +98,8 @@ class ProviderArgs:
             pulumi.log.warn("""fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
         if fc is not None:
             pulumi.set(__self__, "fc", fc)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if log_endpoint is not None:
             warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
             pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
@@ -271,6 +275,18 @@ class ProviderArgs:
         pulumi.set(self, "fc", value)
 
     @_builtins.property
+    @pulumi.getter
+    def features(self) -> pulumi.Input[Optional['ProviderFeaturesArgs']]:
+        """
+        Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: pulumi.Input[Optional['ProviderFeaturesArgs']]):
+        pulumi.set(self, "features", value)
+
+    @_builtins.property
     @pulumi.getter(name="logEndpoint")
     @_utilities.deprecated("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
     def log_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
@@ -415,7 +431,7 @@ class ProviderArgs:
     @pulumi.getter(name="skipRegionValidation")
     def skip_region_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         """
         return pulumi.get(self, "skip_region_validation")
 
@@ -454,6 +470,7 @@ class Provider(pulumi.ProviderResource):
                  ecs_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
                  fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional[Union['ProviderFeaturesArgs', 'ProviderFeaturesArgsDict']]] = None,
                  log_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  max_retry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  mns_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -486,6 +503,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[_builtins.str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
+        :param pulumi.Input[Union['ProviderFeaturesArgs', 'ProviderFeaturesArgsDict']] features: Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
         :param pulumi.Input[_builtins.int] max_retry_timeout: The maximum retry timeout of the request.
         :param pulumi.Input[_builtins.str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         :param pulumi.Input[_builtins.str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
@@ -493,7 +511,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[_builtins.str] security_token: security token. A security token is only required if you are using Security Token Service.
         :param pulumi.Input[_builtins.str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         :param pulumi.Input[_builtins.str] source_ip: The source ip for the assume role invoking.
         """
         ...
@@ -536,6 +554,7 @@ class Provider(pulumi.ProviderResource):
                  ecs_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
                  fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional[Union['ProviderFeaturesArgs', 'ProviderFeaturesArgsDict']]] = None,
                  log_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  max_retry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  mns_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,6 +593,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["ecs_role_name"] = ecs_role_name
             __props__.__dict__["endpoints"] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
             __props__.__dict__["fc"] = fc
+            __props__.__dict__["features"] = pulumi.Output.from_input(features).apply(pulumi.runtime.to_json) if features is not None else None
             __props__.__dict__["log_endpoint"] = log_endpoint
             __props__.__dict__["max_retry_timeout"] = pulumi.Output.from_input(max_retry_timeout).apply(pulumi.runtime.to_json) if max_retry_timeout is not None else None
             __props__.__dict__["mns_endpoint"] = mns_endpoint

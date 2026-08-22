@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
     public sealed class ServerGroupServerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Computed, Int) The port that is used by the backend server.
+        /// The port that is used by the backend server.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -51,7 +51,13 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         public Input<string> ServerType { get; set; } = null!;
 
         /// <summary>
-        /// Indicates the status of the backend server.
+        /// Indicates the status of the backend server. Valid values:
+        /// 
+        /// - `Adding`: The backend server is being added.
+        /// - `Available`: The backend server is available.
+        /// - `Draining`: The backend server is in connection draining.
+        /// - `Removing`: The backend server is being removed.
+        /// - `Replacing`: The backend server is being replaced.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

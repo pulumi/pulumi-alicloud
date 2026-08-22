@@ -27,7 +27,7 @@ class GetRegistryEnterpriseInstancesResult:
     """
     A collection of values returned by getRegistryEnterpriseInstances.
     """
-    def __init__(__self__, enable_details=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         pulumi.set(__self__, "enable_details", enable_details)
@@ -49,6 +49,9 @@ class GetRegistryEnterpriseInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="enableDetails")
@@ -97,6 +100,14 @@ class GetRegistryEnterpriseInstancesResult:
     def output_file(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "output_file")
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.288.0) A mapping of tags assigned to the instance.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetRegistryEnterpriseInstancesResult(GetRegistryEnterpriseInstancesResult):
     # pylint: disable=using-constant-test
@@ -110,18 +121,20 @@ class AwaitableGetRegistryEnterpriseInstancesResult(GetRegistryEnterpriseInstanc
             instances=self.instances,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file)
+            output_file=self.output_file,
+            tags=self.tags)
 
 
 def get_registry_enterprise_instances(enable_details: Optional[_builtins.bool] = None,
                                       ids: Optional[Sequence[_builtins.str]] = None,
                                       name_regex: Optional[_builtins.str] = None,
                                       output_file: Optional[_builtins.str] = None,
+                                      tags: Optional[Mapping[str, _builtins.str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryEnterpriseInstancesResult:
     """
     This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
 
-    > **NOTE:** Available in v1.86.0+
+    > **NOTE:** Available since v1.86.0
 
     ## Example Usage
 
@@ -140,12 +153,14 @@ def get_registry_enterprise_instances(enable_details: Optional[_builtins.bool] =
     :param Sequence[_builtins.str] ids: A list of ids to filter results by instance id.
     :param _builtins.str name_regex: A regex string to filter results by instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances', __args__, opts=opts, typ=GetRegistryEnterpriseInstancesResult).value
 
@@ -156,16 +171,18 @@ def get_registry_enterprise_instances(enable_details: Optional[_builtins.bool] =
         instances=pulumi.get(__ret__, 'instances'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
-        output_file=pulumi.get(__ret__, 'output_file'))
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_registry_enterprise_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseInstancesResult]:
     """
     This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
 
-    > **NOTE:** Available in v1.86.0+
+    > **NOTE:** Available since v1.86.0
 
     ## Example Usage
 
@@ -184,12 +201,14 @@ def get_registry_enterprise_instances_output(enable_details: pulumi.Input[Option
     :param Sequence[_builtins.str] ids: A list of ids to filter results by instance id.
     :param _builtins.str name_regex: A regex string to filter results by instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances', __args__, opts=opts, typ=GetRegistryEnterpriseInstancesResult)
     return __ret__.apply(lambda __response__: GetRegistryEnterpriseInstancesResult(
@@ -199,4 +218,5 @@ def get_registry_enterprise_instances_output(enable_details: pulumi.Input[Option
         instances=pulumi.get(__response__, 'instances'),
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),
-        output_file=pulumi.get(__response__, 'output_file')))
+        output_file=pulumi.get(__response__, 'output_file'),
+        tags=pulumi.get(__response__, 'tags')))

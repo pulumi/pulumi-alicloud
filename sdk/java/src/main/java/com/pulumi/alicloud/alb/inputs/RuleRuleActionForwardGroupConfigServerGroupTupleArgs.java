@@ -33,7 +33,8 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
 
     /**
      * The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-     * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+     * 
+     * &gt; **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
      * 
      */
     @Import(name="weight")
@@ -41,7 +42,8 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
 
     /**
      * @return The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-     * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+     * 
+     * &gt; **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -96,7 +98,8 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
 
         /**
          * @param weight The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-         * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+         * 
+         * &gt; **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
          * 
          * @return builder
          * 
@@ -108,7 +111,8 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
 
         /**
          * @param weight The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-         * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+         * 
+         * &gt; **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
          * 
          * @return builder
          * 

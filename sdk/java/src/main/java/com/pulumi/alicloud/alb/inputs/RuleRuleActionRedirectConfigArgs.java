@@ -76,14 +76,18 @@ public final class RuleRuleActionRedirectConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+     * The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+     * 
+     * &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+     * @return The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+     * 
+     * &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -219,7 +223,9 @@ public final class RuleRuleActionRedirectConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param protocol The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+         * @param protocol The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+         * 
+         * &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
          * 
          * @return builder
          * 
@@ -230,7 +236,9 @@ public final class RuleRuleActionRedirectConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param protocol The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+         * @param protocol The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+         * 
+         * &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
          * 
          * @return builder
          * 

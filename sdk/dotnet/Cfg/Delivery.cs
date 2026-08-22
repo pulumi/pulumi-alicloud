@@ -116,6 +116,12 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> DeliveryChannelCondition { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the delivery channel. It is the same as the resource `Id`.
+        /// </summary>
+        [Output("deliveryChannelId")]
+        public Output<string> DeliveryChannelId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the delivery channel.
         /// </summary>
         [Output("deliveryChannelName")]
@@ -336,6 +342,12 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         [Input("deliveryChannelCondition")]
         public Input<string>? DeliveryChannelCondition { get; set; }
+
+        /// <summary>
+        /// The ID of the delivery channel. It is the same as the resource `Id`.
+        /// </summary>
+        [Input("deliveryChannelId")]
+        public Input<string>? DeliveryChannelId { get; set; }
 
         /// <summary>
         /// The name of the delivery channel.

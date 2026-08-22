@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
         /// <summary>
         /// The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+        /// 
+        /// &gt; **NOTE:** The `ForwardGroup`, `Redirect` or `FixedResponse` action is performed last, so its `Order` must be greater than the `Order` of every other action in the same rule. Otherwise the rule is rejected with `IllegalParam.Order`.
         /// </summary>
         [Input("order", required: true)]
         public Input<int> Order { get; set; } = null!;
@@ -49,7 +51,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.RuleRuleActionRedirectConfigArgs>? RedirectConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the inserted header field. See `RemoveHeaderConfig` below.
+        /// The configuration of the removed header field. See `RemoveHeaderConfig` below.
         /// </summary>
         [Input("removeHeaderConfig")]
         public Input<Inputs.RuleRuleActionRemoveHeaderConfigArgs>? RemoveHeaderConfig { get; set; }
@@ -74,9 +76,12 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
         /// <summary>
         /// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-        /// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-        /// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-        /// **NOTE:** From version 1.205.0, `Type` can be set to `Cors`.
+        /// 
+        /// &gt; **NOTE:** A forwarding rule must contain exactly one `ForwardGroup`, `Redirect` or `FixedResponse` action, which is performed last. Every other action is performed before it and can only be used together with it: a rule can contain multiple `InsertHeader` actions, but at most one `Rewrite` action.
+        /// 
+        /// &gt; **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+        /// 
+        /// &gt; **NOTE:** From version 1.205.0, `Type` can be set to `Cors`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

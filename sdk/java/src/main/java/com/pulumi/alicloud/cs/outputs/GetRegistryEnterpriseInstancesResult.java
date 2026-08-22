@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +39,11 @@ public final class GetRegistryEnterpriseInstancesResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return (Available since v1.288.0) A mapping of tags assigned to the instance.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
 
     private GetRegistryEnterpriseInstancesResult() {}
     public Optional<Boolean> enableDetails() {
@@ -77,6 +83,13 @@ public final class GetRegistryEnterpriseInstancesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return (Available since v1.288.0) A mapping of tags assigned to the instance.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -94,6 +107,7 @@ public final class GetRegistryEnterpriseInstancesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetRegistryEnterpriseInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -104,6 +118,7 @@ public final class GetRegistryEnterpriseInstancesResult {
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -165,6 +180,12 @@ public final class GetRegistryEnterpriseInstancesResult {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public GetRegistryEnterpriseInstancesResult build() {
             final var _resultValue = new GetRegistryEnterpriseInstancesResult();
             _resultValue.enableDetails = enableDetails;
@@ -174,6 +195,7 @@ public final class GetRegistryEnterpriseInstancesResult {
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

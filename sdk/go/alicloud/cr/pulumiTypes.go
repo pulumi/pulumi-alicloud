@@ -763,6 +763,118 @@ func (o ChainChainConfigRouterToArrayOutput) Index(i pulumi.IntInput) ChainChain
 	}).(ChainChainConfigRouterToOutput)
 }
 
+type InternetEndpointEntry struct {
+	// The comment of the entry.
+	//
+	// > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+	Comment *string `pulumi:"comment"`
+	// The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+	Entry *string `pulumi:"entry"`
+}
+
+// InternetEndpointEntryInput is an input type that accepts InternetEndpointEntryArgs and InternetEndpointEntryOutput values.
+// You can construct a concrete instance of `InternetEndpointEntryInput` via:
+//
+//	InternetEndpointEntryArgs{...}
+type InternetEndpointEntryInput interface {
+	pulumi.Input
+
+	ToInternetEndpointEntryOutput() InternetEndpointEntryOutput
+	ToInternetEndpointEntryOutputWithContext(context.Context) InternetEndpointEntryOutput
+}
+
+type InternetEndpointEntryArgs struct {
+	// The comment of the entry.
+	//
+	// > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+	Entry pulumi.StringPtrInput `pulumi:"entry"`
+}
+
+func (InternetEndpointEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternetEndpointEntry)(nil)).Elem()
+}
+
+func (i InternetEndpointEntryArgs) ToInternetEndpointEntryOutput() InternetEndpointEntryOutput {
+	return i.ToInternetEndpointEntryOutputWithContext(context.Background())
+}
+
+func (i InternetEndpointEntryArgs) ToInternetEndpointEntryOutputWithContext(ctx context.Context) InternetEndpointEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternetEndpointEntryOutput)
+}
+
+// InternetEndpointEntryArrayInput is an input type that accepts InternetEndpointEntryArray and InternetEndpointEntryArrayOutput values.
+// You can construct a concrete instance of `InternetEndpointEntryArrayInput` via:
+//
+//	InternetEndpointEntryArray{ InternetEndpointEntryArgs{...} }
+type InternetEndpointEntryArrayInput interface {
+	pulumi.Input
+
+	ToInternetEndpointEntryArrayOutput() InternetEndpointEntryArrayOutput
+	ToInternetEndpointEntryArrayOutputWithContext(context.Context) InternetEndpointEntryArrayOutput
+}
+
+type InternetEndpointEntryArray []InternetEndpointEntryInput
+
+func (InternetEndpointEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InternetEndpointEntry)(nil)).Elem()
+}
+
+func (i InternetEndpointEntryArray) ToInternetEndpointEntryArrayOutput() InternetEndpointEntryArrayOutput {
+	return i.ToInternetEndpointEntryArrayOutputWithContext(context.Background())
+}
+
+func (i InternetEndpointEntryArray) ToInternetEndpointEntryArrayOutputWithContext(ctx context.Context) InternetEndpointEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternetEndpointEntryArrayOutput)
+}
+
+type InternetEndpointEntryOutput struct{ *pulumi.OutputState }
+
+func (InternetEndpointEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternetEndpointEntry)(nil)).Elem()
+}
+
+func (o InternetEndpointEntryOutput) ToInternetEndpointEntryOutput() InternetEndpointEntryOutput {
+	return o
+}
+
+func (o InternetEndpointEntryOutput) ToInternetEndpointEntryOutputWithContext(ctx context.Context) InternetEndpointEntryOutput {
+	return o
+}
+
+// The comment of the entry.
+//
+// > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+func (o InternetEndpointEntryOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternetEndpointEntry) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+func (o InternetEndpointEntryOutput) Entry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternetEndpointEntry) *string { return v.Entry }).(pulumi.StringPtrOutput)
+}
+
+type InternetEndpointEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (InternetEndpointEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InternetEndpointEntry)(nil)).Elem()
+}
+
+func (o InternetEndpointEntryArrayOutput) ToInternetEndpointEntryArrayOutput() InternetEndpointEntryArrayOutput {
+	return o
+}
+
+func (o InternetEndpointEntryArrayOutput) ToInternetEndpointEntryArrayOutputWithContext(ctx context.Context) InternetEndpointEntryArrayOutput {
+	return o
+}
+
+func (o InternetEndpointEntryArrayOutput) Index(i pulumi.IntInput) InternetEndpointEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InternetEndpointEntry {
+		return vs[0].([]InternetEndpointEntry)[vs[1].(int)]
+	}).(InternetEndpointEntryOutput)
+}
+
 type RegistryEnterpriseInstanceInstanceEndpoint struct {
 	// Domain List
 	Domains []RegistryEnterpriseInstanceInstanceEndpointDomain `pulumi:"domains"`
@@ -1488,6 +1600,247 @@ func (o GetArtifactLifecycleRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetArtifactLifecycleRulesRule {
 		return vs[0].([]GetArtifactLifecycleRulesRule)[vs[1].(int)]
 	}).(GetArtifactLifecycleRulesRuleOutput)
+}
+
+type GetArtifactSubscriptionRulesRule struct {
+	// Whether to enable acceleration.
+	Accelerate bool `pulumi:"accelerate"`
+	// The first ID of the resource.
+	ArtifactSubscriptionRuleId string `pulumi:"artifactSubscriptionRuleId"`
+	// Creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Instance ID
+	InstanceId string `pulumi:"instanceId"`
+	// Modification time.
+	ModifiedTime string `pulumi:"modifiedTime"`
+	// Namespace name
+	NamespaceName string `pulumi:"namespaceName"`
+	// Whether to override existing tags.
+	Override bool `pulumi:"override"`
+	// Subscription platform list.
+	Platforms []string `pulumi:"platforms"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The region ID of the resource.
+	RegionId string `pulumi:"regionId"`
+	// Repository name
+	RepoName string `pulumi:"repoName"`
+	// Source domain.
+	SourceDomain string `pulumi:"sourceDomain"`
+	// Source namespace name.
+	SourceNamespaceName string `pulumi:"sourceNamespaceName"`
+	// Source image registry provider, e.
+	SourceProvider string `pulumi:"sourceProvider"`
+	// Source repository name.
+	SourceRepoName string `pulumi:"sourceRepoName"`
+	// Number of tags to subscribe.
+	TagCount int `pulumi:"tagCount"`
+	// Regular expression for subscribing tags.
+	TagRegexp string `pulumi:"tagRegexp"`
+}
+
+// GetArtifactSubscriptionRulesRuleInput is an input type that accepts GetArtifactSubscriptionRulesRuleArgs and GetArtifactSubscriptionRulesRuleOutput values.
+// You can construct a concrete instance of `GetArtifactSubscriptionRulesRuleInput` via:
+//
+//	GetArtifactSubscriptionRulesRuleArgs{...}
+type GetArtifactSubscriptionRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetArtifactSubscriptionRulesRuleOutput() GetArtifactSubscriptionRulesRuleOutput
+	ToGetArtifactSubscriptionRulesRuleOutputWithContext(context.Context) GetArtifactSubscriptionRulesRuleOutput
+}
+
+type GetArtifactSubscriptionRulesRuleArgs struct {
+	// Whether to enable acceleration.
+	Accelerate pulumi.BoolInput `pulumi:"accelerate"`
+	// The first ID of the resource.
+	ArtifactSubscriptionRuleId pulumi.StringInput `pulumi:"artifactSubscriptionRuleId"`
+	// Creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instance ID
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Modification time.
+	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
+	// Namespace name
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Whether to override existing tags.
+	Override pulumi.BoolInput `pulumi:"override"`
+	// Subscription platform list.
+	Platforms pulumi.StringArrayInput `pulumi:"platforms"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The region ID of the resource.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// Repository name
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// Source domain.
+	SourceDomain pulumi.StringInput `pulumi:"sourceDomain"`
+	// Source namespace name.
+	SourceNamespaceName pulumi.StringInput `pulumi:"sourceNamespaceName"`
+	// Source image registry provider, e.
+	SourceProvider pulumi.StringInput `pulumi:"sourceProvider"`
+	// Source repository name.
+	SourceRepoName pulumi.StringInput `pulumi:"sourceRepoName"`
+	// Number of tags to subscribe.
+	TagCount pulumi.IntInput `pulumi:"tagCount"`
+	// Regular expression for subscribing tags.
+	TagRegexp pulumi.StringInput `pulumi:"tagRegexp"`
+}
+
+func (GetArtifactSubscriptionRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetArtifactSubscriptionRulesRule)(nil)).Elem()
+}
+
+func (i GetArtifactSubscriptionRulesRuleArgs) ToGetArtifactSubscriptionRulesRuleOutput() GetArtifactSubscriptionRulesRuleOutput {
+	return i.ToGetArtifactSubscriptionRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetArtifactSubscriptionRulesRuleArgs) ToGetArtifactSubscriptionRulesRuleOutputWithContext(ctx context.Context) GetArtifactSubscriptionRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetArtifactSubscriptionRulesRuleOutput)
+}
+
+// GetArtifactSubscriptionRulesRuleArrayInput is an input type that accepts GetArtifactSubscriptionRulesRuleArray and GetArtifactSubscriptionRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetArtifactSubscriptionRulesRuleArrayInput` via:
+//
+//	GetArtifactSubscriptionRulesRuleArray{ GetArtifactSubscriptionRulesRuleArgs{...} }
+type GetArtifactSubscriptionRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetArtifactSubscriptionRulesRuleArrayOutput() GetArtifactSubscriptionRulesRuleArrayOutput
+	ToGetArtifactSubscriptionRulesRuleArrayOutputWithContext(context.Context) GetArtifactSubscriptionRulesRuleArrayOutput
+}
+
+type GetArtifactSubscriptionRulesRuleArray []GetArtifactSubscriptionRulesRuleInput
+
+func (GetArtifactSubscriptionRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetArtifactSubscriptionRulesRule)(nil)).Elem()
+}
+
+func (i GetArtifactSubscriptionRulesRuleArray) ToGetArtifactSubscriptionRulesRuleArrayOutput() GetArtifactSubscriptionRulesRuleArrayOutput {
+	return i.ToGetArtifactSubscriptionRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetArtifactSubscriptionRulesRuleArray) ToGetArtifactSubscriptionRulesRuleArrayOutputWithContext(ctx context.Context) GetArtifactSubscriptionRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetArtifactSubscriptionRulesRuleArrayOutput)
+}
+
+type GetArtifactSubscriptionRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetArtifactSubscriptionRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetArtifactSubscriptionRulesRule)(nil)).Elem()
+}
+
+func (o GetArtifactSubscriptionRulesRuleOutput) ToGetArtifactSubscriptionRulesRuleOutput() GetArtifactSubscriptionRulesRuleOutput {
+	return o
+}
+
+func (o GetArtifactSubscriptionRulesRuleOutput) ToGetArtifactSubscriptionRulesRuleOutputWithContext(ctx context.Context) GetArtifactSubscriptionRulesRuleOutput {
+	return o
+}
+
+// Whether to enable acceleration.
+func (o GetArtifactSubscriptionRulesRuleOutput) Accelerate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) bool { return v.Accelerate }).(pulumi.BoolOutput)
+}
+
+// The first ID of the resource.
+func (o GetArtifactSubscriptionRulesRuleOutput) ArtifactSubscriptionRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.ArtifactSubscriptionRuleId }).(pulumi.StringOutput)
+}
+
+// Creation time.
+func (o GetArtifactSubscriptionRulesRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetArtifactSubscriptionRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instance ID
+func (o GetArtifactSubscriptionRulesRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Modification time.
+func (o GetArtifactSubscriptionRulesRuleOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+// Namespace name
+func (o GetArtifactSubscriptionRulesRuleOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Whether to override existing tags.
+func (o GetArtifactSubscriptionRulesRuleOutput) Override() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) bool { return v.Override }).(pulumi.BoolOutput)
+}
+
+// Subscription platform list.
+func (o GetArtifactSubscriptionRulesRuleOutput) Platforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) []string { return v.Platforms }).(pulumi.StringArrayOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The region ID of the resource.
+func (o GetArtifactSubscriptionRulesRuleOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Repository name
+func (o GetArtifactSubscriptionRulesRuleOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Source domain.
+func (o GetArtifactSubscriptionRulesRuleOutput) SourceDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.SourceDomain }).(pulumi.StringOutput)
+}
+
+// Source namespace name.
+func (o GetArtifactSubscriptionRulesRuleOutput) SourceNamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.SourceNamespaceName }).(pulumi.StringOutput)
+}
+
+// Source image registry provider, e.
+func (o GetArtifactSubscriptionRulesRuleOutput) SourceProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.SourceProvider }).(pulumi.StringOutput)
+}
+
+// Source repository name.
+func (o GetArtifactSubscriptionRulesRuleOutput) SourceRepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.SourceRepoName }).(pulumi.StringOutput)
+}
+
+// Number of tags to subscribe.
+func (o GetArtifactSubscriptionRulesRuleOutput) TagCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) int { return v.TagCount }).(pulumi.IntOutput)
+}
+
+// Regular expression for subscribing tags.
+func (o GetArtifactSubscriptionRulesRuleOutput) TagRegexp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactSubscriptionRulesRule) string { return v.TagRegexp }).(pulumi.StringOutput)
+}
+
+type GetArtifactSubscriptionRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetArtifactSubscriptionRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetArtifactSubscriptionRulesRule)(nil)).Elem()
+}
+
+func (o GetArtifactSubscriptionRulesRuleArrayOutput) ToGetArtifactSubscriptionRulesRuleArrayOutput() GetArtifactSubscriptionRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetArtifactSubscriptionRulesRuleArrayOutput) ToGetArtifactSubscriptionRulesRuleArrayOutputWithContext(ctx context.Context) GetArtifactSubscriptionRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetArtifactSubscriptionRulesRuleArrayOutput) Index(i pulumi.IntInput) GetArtifactSubscriptionRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetArtifactSubscriptionRulesRule {
+		return vs[0].([]GetArtifactSubscriptionRulesRule)[vs[1].(int)]
+	}).(GetArtifactSubscriptionRulesRuleOutput)
 }
 
 type GetChainsChain struct {
@@ -2847,6 +3200,112 @@ func (o GetEndpointAclPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetEnd
 	}).(GetEndpointAclPoliciesPolicyOutput)
 }
 
+type GetInternetEndpointEntry struct {
+	// The comment of the entry.
+	Comment string `pulumi:"comment"`
+	// The CIDR-formatted IP address range that is allowed to access.
+	Entry string `pulumi:"entry"`
+}
+
+// GetInternetEndpointEntryInput is an input type that accepts GetInternetEndpointEntryArgs and GetInternetEndpointEntryOutput values.
+// You can construct a concrete instance of `GetInternetEndpointEntryInput` via:
+//
+//	GetInternetEndpointEntryArgs{...}
+type GetInternetEndpointEntryInput interface {
+	pulumi.Input
+
+	ToGetInternetEndpointEntryOutput() GetInternetEndpointEntryOutput
+	ToGetInternetEndpointEntryOutputWithContext(context.Context) GetInternetEndpointEntryOutput
+}
+
+type GetInternetEndpointEntryArgs struct {
+	// The comment of the entry.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The CIDR-formatted IP address range that is allowed to access.
+	Entry pulumi.StringInput `pulumi:"entry"`
+}
+
+func (GetInternetEndpointEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInternetEndpointEntry)(nil)).Elem()
+}
+
+func (i GetInternetEndpointEntryArgs) ToGetInternetEndpointEntryOutput() GetInternetEndpointEntryOutput {
+	return i.ToGetInternetEndpointEntryOutputWithContext(context.Background())
+}
+
+func (i GetInternetEndpointEntryArgs) ToGetInternetEndpointEntryOutputWithContext(ctx context.Context) GetInternetEndpointEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInternetEndpointEntryOutput)
+}
+
+// GetInternetEndpointEntryArrayInput is an input type that accepts GetInternetEndpointEntryArray and GetInternetEndpointEntryArrayOutput values.
+// You can construct a concrete instance of `GetInternetEndpointEntryArrayInput` via:
+//
+//	GetInternetEndpointEntryArray{ GetInternetEndpointEntryArgs{...} }
+type GetInternetEndpointEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetInternetEndpointEntryArrayOutput() GetInternetEndpointEntryArrayOutput
+	ToGetInternetEndpointEntryArrayOutputWithContext(context.Context) GetInternetEndpointEntryArrayOutput
+}
+
+type GetInternetEndpointEntryArray []GetInternetEndpointEntryInput
+
+func (GetInternetEndpointEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInternetEndpointEntry)(nil)).Elem()
+}
+
+func (i GetInternetEndpointEntryArray) ToGetInternetEndpointEntryArrayOutput() GetInternetEndpointEntryArrayOutput {
+	return i.ToGetInternetEndpointEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetInternetEndpointEntryArray) ToGetInternetEndpointEntryArrayOutputWithContext(ctx context.Context) GetInternetEndpointEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInternetEndpointEntryArrayOutput)
+}
+
+type GetInternetEndpointEntryOutput struct{ *pulumi.OutputState }
+
+func (GetInternetEndpointEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInternetEndpointEntry)(nil)).Elem()
+}
+
+func (o GetInternetEndpointEntryOutput) ToGetInternetEndpointEntryOutput() GetInternetEndpointEntryOutput {
+	return o
+}
+
+func (o GetInternetEndpointEntryOutput) ToGetInternetEndpointEntryOutputWithContext(ctx context.Context) GetInternetEndpointEntryOutput {
+	return o
+}
+
+// The comment of the entry.
+func (o GetInternetEndpointEntryOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInternetEndpointEntry) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The CIDR-formatted IP address range that is allowed to access.
+func (o GetInternetEndpointEntryOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInternetEndpointEntry) string { return v.Entry }).(pulumi.StringOutput)
+}
+
+type GetInternetEndpointEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInternetEndpointEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInternetEndpointEntry)(nil)).Elem()
+}
+
+func (o GetInternetEndpointEntryArrayOutput) ToGetInternetEndpointEntryArrayOutput() GetInternetEndpointEntryArrayOutput {
+	return o
+}
+
+func (o GetInternetEndpointEntryArrayOutput) ToGetInternetEndpointEntryArrayOutputWithContext(ctx context.Context) GetInternetEndpointEntryArrayOutput {
+	return o
+}
+
+func (o GetInternetEndpointEntryArrayOutput) Index(i pulumi.IntInput) GetInternetEndpointEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInternetEndpointEntry {
+		return vs[0].([]GetInternetEndpointEntry)[vs[1].(int)]
+	}).(GetInternetEndpointEntryOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
 	AutoCreate bool `pulumi:"autoCreate"`
@@ -3506,6 +3965,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterFromArrayInput)(nil)).Elem(), ChainChainConfigRouterFromArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterToInput)(nil)).Elem(), ChainChainConfigRouterToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterToArrayInput)(nil)).Elem(), ChainChainConfigRouterToArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternetEndpointEntryInput)(nil)).Elem(), InternetEndpointEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternetEndpointEntryArrayInput)(nil)).Elem(), InternetEndpointEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointArrayInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomainInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointDomainArgs{})
@@ -3516,6 +3977,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteArrayInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactLifecycleRulesRuleInput)(nil)).Elem(), GetArtifactLifecycleRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactLifecycleRulesRuleArrayInput)(nil)).Elem(), GetArtifactLifecycleRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactSubscriptionRulesRuleInput)(nil)).Elem(), GetArtifactSubscriptionRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactSubscriptionRulesRuleArrayInput)(nil)).Elem(), GetArtifactSubscriptionRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainInput)(nil)).Elem(), GetChainsChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainArrayInput)(nil)).Elem(), GetChainsChainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigInput)(nil)).Elem(), GetChainsChainChainConfigArgs{})
@@ -3538,6 +4001,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChartRepositoriesRepositoryArrayInput)(nil)).Elem(), GetChartRepositoriesRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointAclPoliciesPolicyInput)(nil)).Elem(), GetEndpointAclPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointAclPoliciesPolicyArrayInput)(nil)).Elem(), GetEndpointAclPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInternetEndpointEntryInput)(nil)).Elem(), GetInternetEndpointEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInternetEndpointEntryArrayInput)(nil)).Elem(), GetInternetEndpointEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoInput)(nil)).Elem(), GetReposRepoArgs{})
@@ -3561,6 +4026,8 @@ func init() {
 	pulumi.RegisterOutputType(ChainChainConfigRouterFromArrayOutput{})
 	pulumi.RegisterOutputType(ChainChainConfigRouterToOutput{})
 	pulumi.RegisterOutputType(ChainChainConfigRouterToArrayOutput{})
+	pulumi.RegisterOutputType(InternetEndpointEntryOutput{})
+	pulumi.RegisterOutputType(InternetEndpointEntryArrayOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointArrayOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointDomainOutput{})
@@ -3571,6 +4038,8 @@ func init() {
 	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetArtifactLifecycleRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetArtifactLifecycleRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetArtifactSubscriptionRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetArtifactSubscriptionRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetChainsChainOutput{})
 	pulumi.RegisterOutputType(GetChainsChainArrayOutput{})
 	pulumi.RegisterOutputType(GetChainsChainChainConfigOutput{})
@@ -3593,6 +4062,8 @@ func init() {
 	pulumi.RegisterOutputType(GetChartRepositoriesRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInternetEndpointEntryOutput{})
+	pulumi.RegisterOutputType(GetInternetEndpointEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetReposRepoOutput{})

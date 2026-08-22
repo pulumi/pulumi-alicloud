@@ -6,6 +6,7 @@ package com.pulumi.alicloud;
 import com.pulumi.alicloud.config.inputs.AssumeRole;
 import com.pulumi.alicloud.config.inputs.AssumeRoleWithOidc;
 import com.pulumi.alicloud.config.inputs.Endpoints;
+import com.pulumi.alicloud.config.inputs.Features;
 import com.pulumi.alicloud.config.inputs.SignVersion;
 import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
@@ -82,6 +83,13 @@ public final class Config {
     public Optional<String> fc() {
         return Codegen.stringProp("fc").config(config).get();
     }
+/**
+ * Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider&#39;s default behaviour.
+ * 
+ */
+    public Optional<Features> features() {
+        return Codegen.objectProp("features", Features.class).config(config).get();
+    }
     public Optional<String> logEndpoint() {
         return Codegen.stringProp("logEndpoint").config(config).get();
     }
@@ -150,7 +158,7 @@ public final class Config {
         return Codegen.objectProp("signVersion", SignVersion.class).config(config).get();
     }
 /**
- * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+ * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
  * 
  */
     public Optional<Boolean> skipRegionValidation() {

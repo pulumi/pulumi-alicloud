@@ -115,6 +115,7 @@ import (
 // VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 // Port: pulumi.Int(8080),
+// VpcTargetHostName: pulumi.String("www.example.com"),
 // })
 // if err != nil {
 // return err
@@ -153,6 +154,8 @@ type VpcAccess struct {
 	VpcAccessId pulumi.StringOutput `pulumi:"vpcAccessId"`
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The host of the backend service.
+	VpcTargetHostName pulumi.StringPtrOutput `pulumi:"vpcTargetHostName"`
 }
 
 // NewVpcAccess registers a new resource with the given unique name, arguments, and options.
@@ -204,6 +207,8 @@ type vpcAccessState struct {
 	VpcAccessId *string `pulumi:"vpcAccessId"`
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId *string `pulumi:"vpcId"`
+	// The host of the backend service.
+	VpcTargetHostName *string `pulumi:"vpcTargetHostName"`
 }
 
 type VpcAccessState struct {
@@ -217,6 +222,8 @@ type VpcAccessState struct {
 	VpcAccessId pulumi.StringPtrInput
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringPtrInput
+	// The host of the backend service.
+	VpcTargetHostName pulumi.StringPtrInput
 }
 
 func (VpcAccessState) ElementType() reflect.Type {
@@ -232,6 +239,8 @@ type vpcAccessArgs struct {
 	Port int `pulumi:"port"`
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId string `pulumi:"vpcId"`
+	// The host of the backend service.
+	VpcTargetHostName *string `pulumi:"vpcTargetHostName"`
 }
 
 // The set of arguments for constructing a VpcAccess resource.
@@ -244,6 +253,8 @@ type VpcAccessArgs struct {
 	Port pulumi.IntInput
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringInput
+	// The host of the backend service.
+	VpcTargetHostName pulumi.StringPtrInput
 }
 
 func (VpcAccessArgs) ElementType() reflect.Type {
@@ -356,6 +367,11 @@ func (o VpcAccessOutput) VpcAccessId() pulumi.StringOutput {
 // The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 func (o VpcAccessOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The host of the backend service.
+func (o VpcAccessOutput) VpcTargetHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcAccess) pulumi.StringPtrOutput { return v.VpcTargetHostName }).(pulumi.StringPtrOutput)
 }
 
 type VpcAccessArrayOutput struct{ *pulumi.OutputState }

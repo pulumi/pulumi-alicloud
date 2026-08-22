@@ -291,6 +291,10 @@ type GatewayVpnAttachment struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The bandwidth specification of a single VPN tunnel. Valid values:
+	// - `Standard` (default): 1 Gbps.
+	// - `Large`: 3 Gbps.
+	TunnelBandwidth pulumi.StringOutput `pulumi:"tunnelBandwidth"`
 	// Configure the tunnel.
 	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
 	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -384,6 +388,10 @@ type gatewayVpnAttachmentState struct {
 	Status *string `pulumi:"status"`
 	// Tags
 	Tags map[string]string `pulumi:"tags"`
+	// The bandwidth specification of a single VPN tunnel. Valid values:
+	// - `Standard` (default): 1 Gbps.
+	// - `Large`: 3 Gbps.
+	TunnelBandwidth *string `pulumi:"tunnelBandwidth"`
 	// Configure the tunnel.
 	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
 	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -442,6 +450,10 @@ type GatewayVpnAttachmentState struct {
 	Status pulumi.StringPtrInput
 	// Tags
 	Tags pulumi.StringMapInput
+	// The bandwidth specification of a single VPN tunnel. Valid values:
+	// - `Standard` (default): 1 Gbps.
+	// - `Large`: 3 Gbps.
+	TunnelBandwidth pulumi.StringPtrInput
 	// Configure the tunnel.
 	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
 	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -500,6 +512,10 @@ type gatewayVpnAttachmentArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Tags
 	Tags map[string]string `pulumi:"tags"`
+	// The bandwidth specification of a single VPN tunnel. Valid values:
+	// - `Standard` (default): 1 Gbps.
+	// - `Large`: 3 Gbps.
+	TunnelBandwidth *string `pulumi:"tunnelBandwidth"`
 	// Configure the tunnel.
 	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
 	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -555,6 +571,10 @@ type GatewayVpnAttachmentArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Tags
 	Tags pulumi.StringMapInput
+	// The bandwidth specification of a single VPN tunnel. Valid values:
+	// - `Standard` (default): 1 Gbps.
+	// - `Large`: 3 Gbps.
+	TunnelBandwidth pulumi.StringPtrInput
 	// Configure the tunnel.
 	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
 	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -745,6 +765,13 @@ func (o GatewayVpnAttachmentOutput) Status() pulumi.StringOutput {
 // Tags
 func (o GatewayVpnAttachmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The bandwidth specification of a single VPN tunnel. Valid values:
+// - `Standard` (default): 1 Gbps.
+// - `Large`: 3 Gbps.
+func (o GatewayVpnAttachmentOutput) TunnelBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.TunnelBandwidth }).(pulumi.StringOutput)
 }
 
 // Configure the tunnel.

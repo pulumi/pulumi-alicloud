@@ -399,6 +399,85 @@ namespace Pulumi.AliCloud.CS
     /// });
     /// ```
     /// 
+    /// ACK Cluster with an automatically created private NLB
+    /// 
+    /// When `LoadBalancerId` is omitted, ACK automatically creates and manages a private NLB for the cluster API server endpoint, so there is no need to create an `alicloud.nlb.LoadBalancer` resource. The cluster must span at least two zones so that the auto-created NLB gets a valid zone list.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example-auto-nlb";
+    ///     // The kubernetes service cidr block.
+    ///     var serviceCidr = config.Get("serviceCidr") ?? "172.23.0.0/16";
+    ///     var @default = AliCloud.Nlb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var default1 = new AliCloud.Vpc.Switch("default_1", new()
+    ///     {
+    ///         VswitchName = $"{name}-1",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.1.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var default2 = new AliCloud.Vpc.Switch("default_2", new()
+    ///     {
+    ///         VswitchName = $"{name}-2",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.2.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         Name = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         VswitchIds = new[]
+    ///         {
+    ///             default1.Id,
+    ///             default2.Id,
+    ///         },
+    ///         PodVswitchIds = new[]
+    ///         {
+    ///             default1.Id,
+    ///             default2.Id,
+    ///         },
+    ///         NewNatGateway = false,
+    ///         ServiceCidr = serviceCidr,
+    ///         IsEnterpriseSecurityGroup = true,
+    ///         Addons = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "terway-eniip",
+    ///             },
+    ///         },
+    ///         ControlPlaneEndpointsConfig = new AliCloud.CS.Inputs.ManagedKubernetesControlPlaneEndpointsConfigArgs
+    ///         {
+    ///             LoadBalancersConfigs = new[]
+    ///             {
+    ///                 new AliCloud.CS.Inputs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs
+    ///                 {
+    ///                     EndpointType = "private",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
@@ -486,6 +565,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("connections")]
         public Output<Outputs.ManagedKubernetesConnections> Connections { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster access configuration. See `ControlPlaneEndpointsConfig` below.
+        /// </summary>
+        [Output("controlPlaneEndpointsConfig")]
+        public Output<Outputs.ManagedKubernetesControlPlaneEndpointsConfig> ControlPlaneEndpointsConfig { get; private set; } = null!;
 
         /// <summary>
         /// List of target components for which logs need to be collected. Supports `Apiserver`, `Kcm`, `Scheduler`, `Ccm` and `controlplane-events`.
@@ -902,6 +987,12 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
+        /// <summary>
+        /// The cluster access configuration. See `ControlPlaneEndpointsConfig` below.
+        /// </summary>
+        [Input("controlPlaneEndpointsConfig")]
+        public Input<Inputs.ManagedKubernetesControlPlaneEndpointsConfigArgs>? ControlPlaneEndpointsConfig { get; set; }
+
         [Input("controlPlaneLogComponents")]
         private InputList<string>? _controlPlaneLogComponents;
 
@@ -1297,6 +1388,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("connections")]
         public Input<Inputs.ManagedKubernetesConnectionsGetArgs>? Connections { get; set; }
+
+        /// <summary>
+        /// The cluster access configuration. See `ControlPlaneEndpointsConfig` below.
+        /// </summary>
+        [Input("controlPlaneEndpointsConfig")]
+        public Input<Inputs.ManagedKubernetesControlPlaneEndpointsConfigGetArgs>? ControlPlaneEndpointsConfig { get; set; }
 
         [Input("controlPlaneLogComponents")]
         private InputList<string>? _controlPlaneLogComponents;

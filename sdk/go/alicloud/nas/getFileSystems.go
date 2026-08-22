@@ -13,7 +13,7 @@ import (
 
 // This data source provides FileSystems available to the user.
 //
-// > **NOTE**: Available in 1.35.0+
+// > **NOTE:** Available since v1.35.0+
 //
 // ## Example Usage
 //
@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fs, err := nas.GetFileSystems(ctx, &nas.GetFileSystemsArgs{
 //				ProtocolType:     pulumi.StringRef("NFS"),
+//				FileSystemType:   pulumi.StringRef("standard"),
 //				DescriptionRegex: pulumi.StringRef(foo.Description),
 //			}, nil)
 //			if err != nil {
@@ -56,6 +57,13 @@ func GetFileSystems(ctx *pulumi.Context, args *GetFileSystemsArgs, opts ...pulum
 type GetFileSystemsArgs struct {
 	// A regex string to filter the results by the ：FileSystem description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
+	// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+	// Valid values:
+	// `standard`,
+	// `extreme`,
+	// `cpfs`,
+	// `cpfsse`.
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// A list of FileSystemId.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -77,6 +85,13 @@ type GetFileSystemsResult struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of FileSystem descriptions.
 	Descriptions []string `pulumi:"descriptions"`
+	// (Optional, Available in v1.140.0+) The type of the file system.
+	// Valid values:
+	// `standard`,
+	// `extreme`,
+	// `cpfs`,
+	// `cpfsse`.
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of FileSystem Id.
@@ -103,6 +118,13 @@ func GetFileSystemsOutput(ctx *pulumi.Context, args GetFileSystemsOutputArgs, op
 type GetFileSystemsOutputArgs struct {
 	// A regex string to filter the results by the ：FileSystem description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+	// Valid values:
+	// `standard`,
+	// `extreme`,
+	// `cpfs`,
+	// `cpfsse`.
+	FileSystemType pulumi.StringPtrInput `pulumi:"fileSystemType"`
 	// A list of FileSystemId.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -145,6 +167,16 @@ func (o GetFileSystemsResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
 // A list of FileSystem descriptions.
 func (o GetFileSystemsResultOutput) Descriptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFileSystemsResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
+}
+
+// (Optional, Available in v1.140.0+) The type of the file system.
+// Valid values:
+// `standard`,
+// `extreme`,
+// `cpfs`,
+// `cpfsse`.
+func (o GetFileSystemsResultOutput) FileSystemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.FileSystemType }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

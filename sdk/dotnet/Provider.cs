@@ -207,6 +207,12 @@ namespace Pulumi.AliCloud
         [Input("fc")]
         public Input<string>? Fc { get; set; }
 
+        /// <summary>
+        /// Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+        /// </summary>
+        [Input("features", json: true)]
+        public Input<Inputs.ProviderFeaturesArgs>? Features { get; set; }
+
         [Input("logEndpoint")]
         public Input<string>? LogEndpoint { get; set; }
 
@@ -268,7 +274,7 @@ namespace Pulumi.AliCloud
         public Input<Inputs.ProviderSignVersionArgs>? SignVersion { get; set; }
 
         /// <summary>
-        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         /// </summary>
         [Input("skipRegionValidation", json: true)]
         public Input<bool>? SkipRegionValidation { get; set; }

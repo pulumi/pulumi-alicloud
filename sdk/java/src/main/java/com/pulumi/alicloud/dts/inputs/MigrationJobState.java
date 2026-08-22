@@ -77,6 +77,36 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    @Import(name="destPrimaryVswitchId")
+    private @Nullable Output<String> destPrimaryVswitchId;
+
+    /**
+     * @return The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    public Optional<Output<String>> destPrimaryVswitchId() {
+        return Optional.ofNullable(this.destPrimaryVswitchId);
+    }
+
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    @Import(name="destSecondaryVswitchId")
+    private @Nullable Output<String> destSecondaryVswitchId;
+
+    /**
+     * @return The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    public Optional<Output<String>> destSecondaryVswitchId() {
+        return Optional.ofNullable(this.destSecondaryVswitchId);
+    }
+
+    /**
      * The name of migrate the database.
      * 
      */
@@ -209,6 +239,21 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> destinationEndpointRegion() {
         return Optional.ofNullable(this.destinationEndpointRegion);
+    }
+
+    /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Import(name="destinationEndpointSsl")
+    private @Nullable Output<String> destinationEndpointSsl;
+
+    /**
+     * @return The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Optional<Output<String>> destinationEndpointSsl() {
+        return Optional.ofNullable(this.destinationEndpointSsl);
     }
 
     /**
@@ -437,6 +482,21 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Import(name="sourceEndpointSsl")
+    private @Nullable Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Optional<Output<String>> sourceEndpointSsl() {
+        return Optional.ofNullable(this.sourceEndpointSsl);
+    }
+
+    /**
      * The username of database account.
      * 
      */
@@ -452,7 +512,39 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    @Import(name="srcPrimaryVswitchId")
+    private @Nullable Output<String> srcPrimaryVswitchId;
+
+    /**
+     * @return The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    public Optional<Output<String>> srcPrimaryVswitchId() {
+        return Optional.ofNullable(this.srcPrimaryVswitchId);
+    }
+
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    @Import(name="srcSecondaryVswitchId")
+    private @Nullable Output<String> srcSecondaryVswitchId;
+
+    /**
+     * @return The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    public Optional<Output<String>> srcSecondaryVswitchId() {
+        return Optional.ofNullable(this.srcSecondaryVswitchId);
+    }
+
+    /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     * 
+     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      * 
      */
     @Import(name="status")
@@ -460,6 +552,8 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     * 
+     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -488,6 +582,8 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         this.dataInitialization = $.dataInitialization;
         this.dataSynchronization = $.dataSynchronization;
         this.dbList = $.dbList;
+        this.destPrimaryVswitchId = $.destPrimaryVswitchId;
+        this.destSecondaryVswitchId = $.destSecondaryVswitchId;
         this.destinationEndpointDatabaseName = $.destinationEndpointDatabaseName;
         this.destinationEndpointEngineName = $.destinationEndpointEngineName;
         this.destinationEndpointInstanceId = $.destinationEndpointInstanceId;
@@ -497,6 +593,7 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         this.destinationEndpointPassword = $.destinationEndpointPassword;
         this.destinationEndpointPort = $.destinationEndpointPort;
         this.destinationEndpointRegion = $.destinationEndpointRegion;
+        this.destinationEndpointSsl = $.destinationEndpointSsl;
         this.destinationEndpointUserName = $.destinationEndpointUserName;
         this.dtsInstanceId = $.dtsInstanceId;
         this.dtsJobName = $.dtsJobName;
@@ -512,7 +609,10 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         this.sourceEndpointPort = $.sourceEndpointPort;
         this.sourceEndpointRegion = $.sourceEndpointRegion;
         this.sourceEndpointRole = $.sourceEndpointRole;
+        this.sourceEndpointSsl = $.sourceEndpointSsl;
         this.sourceEndpointUserName = $.sourceEndpointUserName;
+        this.srcPrimaryVswitchId = $.srcPrimaryVswitchId;
+        this.srcSecondaryVswitchId = $.srcSecondaryVswitchId;
         this.status = $.status;
         this.structureInitialization = $.structureInitialization;
     }
@@ -617,6 +717,48 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbList(String dbList) {
             return dbList(Output.of(dbList));
+        }
+
+        /**
+         * @param destPrimaryVswitchId The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destPrimaryVswitchId(@Nullable Output<String> destPrimaryVswitchId) {
+            $.destPrimaryVswitchId = destPrimaryVswitchId;
+            return this;
+        }
+
+        /**
+         * @param destPrimaryVswitchId The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destPrimaryVswitchId(String destPrimaryVswitchId) {
+            return destPrimaryVswitchId(Output.of(destPrimaryVswitchId));
+        }
+
+        /**
+         * @param destSecondaryVswitchId The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destSecondaryVswitchId(@Nullable Output<String> destSecondaryVswitchId) {
+            $.destSecondaryVswitchId = destSecondaryVswitchId;
+            return this;
+        }
+
+        /**
+         * @param destSecondaryVswitchId The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destSecondaryVswitchId(String destSecondaryVswitchId) {
+            return destSecondaryVswitchId(Output.of(destSecondaryVswitchId));
         }
 
         /**
@@ -806,6 +948,27 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder destinationEndpointRegion(String destinationEndpointRegion) {
             return destinationEndpointRegion(Output.of(destinationEndpointRegion));
+        }
+
+        /**
+         * @param destinationEndpointSsl The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationEndpointSsl(@Nullable Output<String> destinationEndpointSsl) {
+            $.destinationEndpointSsl = destinationEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param destinationEndpointSsl The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationEndpointSsl(String destinationEndpointSsl) {
+            return destinationEndpointSsl(Output.of(destinationEndpointSsl));
         }
 
         /**
@@ -1124,6 +1287,27 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(@Nullable Output<String> sourceEndpointSsl) {
+            $.sourceEndpointSsl = sourceEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(String sourceEndpointSsl) {
+            return sourceEndpointSsl(Output.of(sourceEndpointSsl));
+        }
+
+        /**
          * @param sourceEndpointUserName The username of database account.
          * 
          * @return builder
@@ -1145,7 +1329,51 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param srcPrimaryVswitchId The ID of the primary vSwitch on the source side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcPrimaryVswitchId(@Nullable Output<String> srcPrimaryVswitchId) {
+            $.srcPrimaryVswitchId = srcPrimaryVswitchId;
+            return this;
+        }
+
+        /**
+         * @param srcPrimaryVswitchId The ID of the primary vSwitch on the source side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcPrimaryVswitchId(String srcPrimaryVswitchId) {
+            return srcPrimaryVswitchId(Output.of(srcPrimaryVswitchId));
+        }
+
+        /**
+         * @param srcSecondaryVswitchId The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecondaryVswitchId(@Nullable Output<String> srcSecondaryVswitchId) {
+            $.srcSecondaryVswitchId = srcSecondaryVswitchId;
+            return this;
+        }
+
+        /**
+         * @param srcSecondaryVswitchId The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecondaryVswitchId(String srcSecondaryVswitchId) {
+            return srcSecondaryVswitchId(Output.of(srcSecondaryVswitchId));
+        }
+
+        /**
          * @param status The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+         * 
+         * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
          * 
          * @return builder
          * 
@@ -1157,6 +1385,8 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+         * 
+         * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
          * 
          * @return builder
          * 

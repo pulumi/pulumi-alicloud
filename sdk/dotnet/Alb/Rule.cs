@@ -191,6 +191,69 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// Removing a request header before forwarding
+    /// 
+    /// A forwarding rule must contain exactly one final action (`ForwardGroup`, `Redirect` or `FixedResponse`), and that action is executed last, so the `RemoveHeader` extension action has to be declared with a smaller `Order`. The example below reuses the listener and the server group created above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var removeHeader = new AliCloud.Alb.Rule("remove_header", new()
+    ///     {
+    ///         RuleName = $"{name}_remove_header",
+    ///         ListenerId = defaultAlicloudAlbListener.Id,
+    ///         Priority = 556,
+    ///         RuleConditions = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.RuleRuleConditionArgs
+    ///             {
+    ///                 HostConfig = new AliCloud.Alb.Inputs.RuleRuleConditionHostConfigArgs
+    ///                 {
+    ///                     Values = new[]
+    ///                     {
+    ///                         "www.example.com",
+    ///                     },
+    ///                 },
+    ///                 Type = "Host",
+    ///             },
+    ///         },
+    ///         RuleActions = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.RuleRuleActionArgs
+    ///             {
+    ///                 RemoveHeaderConfig = new AliCloud.Alb.Inputs.RuleRuleActionRemoveHeaderConfigArgs
+    ///                 {
+    ///                     Key = "X-Debug-Trace",
+    ///                 },
+    ///                 Order = 1,
+    ///                 Type = "RemoveHeader",
+    ///             },
+    ///             new AliCloud.Alb.Inputs.RuleRuleActionArgs
+    ///             {
+    ///                 ForwardGroupConfig = new AliCloud.Alb.Inputs.RuleRuleActionForwardGroupConfigArgs
+    ///                 {
+    ///                     ServerGroupTuples = new[]
+    ///                     {
+    ///                         new AliCloud.Alb.Inputs.RuleRuleActionForwardGroupConfigServerGroupTupleArgs
+    ///                         {
+    ///                             ServerGroupId = @default.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Order = 9,
+    ///                 Type = "ForwardGroup",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
@@ -225,7 +288,9 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+        /// 
+        /// &gt; **NOTE:** The priority of each rule within the same listener must be unique.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
@@ -321,7 +386,9 @@ namespace Pulumi.AliCloud.Alb
         public Input<string> ListenerId { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+        /// 
+        /// &gt; **NOTE:** The priority of each rule within the same listener must be unique.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
@@ -385,7 +452,9 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ListenerId { get; set; }
 
         /// <summary>
-        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+        /// 
+        /// &gt; **NOTE:** The priority of each rule within the same listener must be unique.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

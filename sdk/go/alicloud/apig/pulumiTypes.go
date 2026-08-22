@@ -13,8 +13,680 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DomainTlsCipherSuitesConfig struct {
+	// The configuration type, which can be Default or Custom.
+	ConfigType *string `pulumi:"configType"`
+	// TLS cipher suite. See `tlsCipherSuite` below.
+	TlsCipherSuites []DomainTlsCipherSuitesConfigTlsCipherSuite `pulumi:"tlsCipherSuites"`
+}
+
+// DomainTlsCipherSuitesConfigInput is an input type that accepts DomainTlsCipherSuitesConfigArgs and DomainTlsCipherSuitesConfigOutput values.
+// You can construct a concrete instance of `DomainTlsCipherSuitesConfigInput` via:
+//
+//	DomainTlsCipherSuitesConfigArgs{...}
+type DomainTlsCipherSuitesConfigInput interface {
+	pulumi.Input
+
+	ToDomainTlsCipherSuitesConfigOutput() DomainTlsCipherSuitesConfigOutput
+	ToDomainTlsCipherSuitesConfigOutputWithContext(context.Context) DomainTlsCipherSuitesConfigOutput
+}
+
+type DomainTlsCipherSuitesConfigArgs struct {
+	// The configuration type, which can be Default or Custom.
+	ConfigType pulumi.StringPtrInput `pulumi:"configType"`
+	// TLS cipher suite. See `tlsCipherSuite` below.
+	TlsCipherSuites DomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput `pulumi:"tlsCipherSuites"`
+}
+
+func (DomainTlsCipherSuitesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (i DomainTlsCipherSuitesConfigArgs) ToDomainTlsCipherSuitesConfigOutput() DomainTlsCipherSuitesConfigOutput {
+	return i.ToDomainTlsCipherSuitesConfigOutputWithContext(context.Background())
+}
+
+func (i DomainTlsCipherSuitesConfigArgs) ToDomainTlsCipherSuitesConfigOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTlsCipherSuitesConfigOutput)
+}
+
+func (i DomainTlsCipherSuitesConfigArgs) ToDomainTlsCipherSuitesConfigPtrOutput() DomainTlsCipherSuitesConfigPtrOutput {
+	return i.ToDomainTlsCipherSuitesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DomainTlsCipherSuitesConfigArgs) ToDomainTlsCipherSuitesConfigPtrOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTlsCipherSuitesConfigOutput).ToDomainTlsCipherSuitesConfigPtrOutputWithContext(ctx)
+}
+
+// DomainTlsCipherSuitesConfigPtrInput is an input type that accepts DomainTlsCipherSuitesConfigArgs, DomainTlsCipherSuitesConfigPtr and DomainTlsCipherSuitesConfigPtrOutput values.
+// You can construct a concrete instance of `DomainTlsCipherSuitesConfigPtrInput` via:
+//
+//	        DomainTlsCipherSuitesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainTlsCipherSuitesConfigPtrInput interface {
+	pulumi.Input
+
+	ToDomainTlsCipherSuitesConfigPtrOutput() DomainTlsCipherSuitesConfigPtrOutput
+	ToDomainTlsCipherSuitesConfigPtrOutputWithContext(context.Context) DomainTlsCipherSuitesConfigPtrOutput
+}
+
+type domainTlsCipherSuitesConfigPtrType DomainTlsCipherSuitesConfigArgs
+
+func DomainTlsCipherSuitesConfigPtr(v *DomainTlsCipherSuitesConfigArgs) DomainTlsCipherSuitesConfigPtrInput {
+	return (*domainTlsCipherSuitesConfigPtrType)(v)
+}
+
+func (*domainTlsCipherSuitesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (i *domainTlsCipherSuitesConfigPtrType) ToDomainTlsCipherSuitesConfigPtrOutput() DomainTlsCipherSuitesConfigPtrOutput {
+	return i.ToDomainTlsCipherSuitesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *domainTlsCipherSuitesConfigPtrType) ToDomainTlsCipherSuitesConfigPtrOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTlsCipherSuitesConfigPtrOutput)
+}
+
+type DomainTlsCipherSuitesConfigOutput struct{ *pulumi.OutputState }
+
+func (DomainTlsCipherSuitesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (o DomainTlsCipherSuitesConfigOutput) ToDomainTlsCipherSuitesConfigOutput() DomainTlsCipherSuitesConfigOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigOutput) ToDomainTlsCipherSuitesConfigOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigOutput) ToDomainTlsCipherSuitesConfigPtrOutput() DomainTlsCipherSuitesConfigPtrOutput {
+	return o.ToDomainTlsCipherSuitesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DomainTlsCipherSuitesConfigOutput) ToDomainTlsCipherSuitesConfigPtrOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainTlsCipherSuitesConfig) *DomainTlsCipherSuitesConfig {
+		return &v
+	}).(DomainTlsCipherSuitesConfigPtrOutput)
+}
+
+// The configuration type, which can be Default or Custom.
+func (o DomainTlsCipherSuitesConfigOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainTlsCipherSuitesConfig) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
+}
+
+// TLS cipher suite. See `tlsCipherSuite` below.
+func (o DomainTlsCipherSuitesConfigOutput) TlsCipherSuites() DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o.ApplyT(func(v DomainTlsCipherSuitesConfig) []DomainTlsCipherSuitesConfigTlsCipherSuite {
+		return v.TlsCipherSuites
+	}).(DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput)
+}
+
+type DomainTlsCipherSuitesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainTlsCipherSuitesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (o DomainTlsCipherSuitesConfigPtrOutput) ToDomainTlsCipherSuitesConfigPtrOutput() DomainTlsCipherSuitesConfigPtrOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigPtrOutput) ToDomainTlsCipherSuitesConfigPtrOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigPtrOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigPtrOutput) Elem() DomainTlsCipherSuitesConfigOutput {
+	return o.ApplyT(func(v *DomainTlsCipherSuitesConfig) DomainTlsCipherSuitesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainTlsCipherSuitesConfig
+		return ret
+	}).(DomainTlsCipherSuitesConfigOutput)
+}
+
+// The configuration type, which can be Default or Custom.
+func (o DomainTlsCipherSuitesConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainTlsCipherSuitesConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// TLS cipher suite. See `tlsCipherSuite` below.
+func (o DomainTlsCipherSuitesConfigPtrOutput) TlsCipherSuites() DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o.ApplyT(func(v *DomainTlsCipherSuitesConfig) []DomainTlsCipherSuitesConfigTlsCipherSuite {
+		if v == nil {
+			return nil
+		}
+		return v.TlsCipherSuites
+	}).(DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput)
+}
+
+type DomainTlsCipherSuitesConfigTlsCipherSuite struct {
+	// The name of the cipher suite.
+	Name *string `pulumi:"name"`
+	// support versions
+	SupportVersions []string `pulumi:"supportVersions"`
+}
+
+// DomainTlsCipherSuitesConfigTlsCipherSuiteInput is an input type that accepts DomainTlsCipherSuitesConfigTlsCipherSuiteArgs and DomainTlsCipherSuitesConfigTlsCipherSuiteOutput values.
+// You can construct a concrete instance of `DomainTlsCipherSuitesConfigTlsCipherSuiteInput` via:
+//
+//	DomainTlsCipherSuitesConfigTlsCipherSuiteArgs{...}
+type DomainTlsCipherSuitesConfigTlsCipherSuiteInput interface {
+	pulumi.Input
+
+	ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutput() DomainTlsCipherSuitesConfigTlsCipherSuiteOutput
+	ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(context.Context) DomainTlsCipherSuitesConfigTlsCipherSuiteOutput
+}
+
+type DomainTlsCipherSuitesConfigTlsCipherSuiteArgs struct {
+	// The name of the cipher suite.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// support versions
+	SupportVersions pulumi.StringArrayInput `pulumi:"supportVersions"`
+}
+
+func (DomainTlsCipherSuitesConfigTlsCipherSuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (i DomainTlsCipherSuitesConfigTlsCipherSuiteArgs) ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutput() DomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return i.ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(context.Background())
+}
+
+func (i DomainTlsCipherSuitesConfigTlsCipherSuiteArgs) ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTlsCipherSuitesConfigTlsCipherSuiteOutput)
+}
+
+// DomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput is an input type that accepts DomainTlsCipherSuitesConfigTlsCipherSuiteArray and DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput values.
+// You can construct a concrete instance of `DomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput` via:
+//
+//	DomainTlsCipherSuitesConfigTlsCipherSuiteArray{ DomainTlsCipherSuitesConfigTlsCipherSuiteArgs{...} }
+type DomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput interface {
+	pulumi.Input
+
+	ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput() DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput
+	ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(context.Context) DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput
+}
+
+type DomainTlsCipherSuitesConfigTlsCipherSuiteArray []DomainTlsCipherSuitesConfigTlsCipherSuiteInput
+
+func (DomainTlsCipherSuitesConfigTlsCipherSuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (i DomainTlsCipherSuitesConfigTlsCipherSuiteArray) ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput() DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return i.ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(context.Background())
+}
+
+func (i DomainTlsCipherSuitesConfigTlsCipherSuiteArray) ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput)
+}
+
+type DomainTlsCipherSuitesConfigTlsCipherSuiteOutput struct{ *pulumi.OutputState }
+
+func (DomainTlsCipherSuitesConfigTlsCipherSuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteOutput) ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutput() DomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteOutput) ToDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return o
+}
+
+// The name of the cipher suite.
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainTlsCipherSuitesConfigTlsCipherSuite) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// support versions
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteOutput) SupportVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DomainTlsCipherSuitesConfigTlsCipherSuite) []string { return v.SupportVersions }).(pulumi.StringArrayOutput)
+}
+
+type DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput() DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) ToDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(ctx context.Context) DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o
+}
+
+func (o DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) Index(i pulumi.IntInput) DomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainTlsCipherSuitesConfigTlsCipherSuite {
+		return vs[0].([]DomainTlsCipherSuitesConfigTlsCipherSuite)[vs[1].(int)]
+	}).(DomainTlsCipherSuitesConfigTlsCipherSuiteOutput)
+}
+
+type GatewayEnvironment struct {
+	// The alias of the environment.
+	Alias *string `pulumi:"alias"`
+	// The ID of the environment.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The name of the availability zone for the gateway.
+	Name *string `pulumi:"name"`
+}
+
+// GatewayEnvironmentInput is an input type that accepts GatewayEnvironmentArgs and GatewayEnvironmentOutput values.
+// You can construct a concrete instance of `GatewayEnvironmentInput` via:
+//
+//	GatewayEnvironmentArgs{...}
+type GatewayEnvironmentInput interface {
+	pulumi.Input
+
+	ToGatewayEnvironmentOutput() GatewayEnvironmentOutput
+	ToGatewayEnvironmentOutputWithContext(context.Context) GatewayEnvironmentOutput
+}
+
+type GatewayEnvironmentArgs struct {
+	// The alias of the environment.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The ID of the environment.
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	// The name of the availability zone for the gateway.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GatewayEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEnvironment)(nil)).Elem()
+}
+
+func (i GatewayEnvironmentArgs) ToGatewayEnvironmentOutput() GatewayEnvironmentOutput {
+	return i.ToGatewayEnvironmentOutputWithContext(context.Background())
+}
+
+func (i GatewayEnvironmentArgs) ToGatewayEnvironmentOutputWithContext(ctx context.Context) GatewayEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayEnvironmentOutput)
+}
+
+// GatewayEnvironmentArrayInput is an input type that accepts GatewayEnvironmentArray and GatewayEnvironmentArrayOutput values.
+// You can construct a concrete instance of `GatewayEnvironmentArrayInput` via:
+//
+//	GatewayEnvironmentArray{ GatewayEnvironmentArgs{...} }
+type GatewayEnvironmentArrayInput interface {
+	pulumi.Input
+
+	ToGatewayEnvironmentArrayOutput() GatewayEnvironmentArrayOutput
+	ToGatewayEnvironmentArrayOutputWithContext(context.Context) GatewayEnvironmentArrayOutput
+}
+
+type GatewayEnvironmentArray []GatewayEnvironmentInput
+
+func (GatewayEnvironmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayEnvironment)(nil)).Elem()
+}
+
+func (i GatewayEnvironmentArray) ToGatewayEnvironmentArrayOutput() GatewayEnvironmentArrayOutput {
+	return i.ToGatewayEnvironmentArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayEnvironmentArray) ToGatewayEnvironmentArrayOutputWithContext(ctx context.Context) GatewayEnvironmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayEnvironmentArrayOutput)
+}
+
+type GatewayEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (GatewayEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEnvironment)(nil)).Elem()
+}
+
+func (o GatewayEnvironmentOutput) ToGatewayEnvironmentOutput() GatewayEnvironmentOutput {
+	return o
+}
+
+func (o GatewayEnvironmentOutput) ToGatewayEnvironmentOutputWithContext(ctx context.Context) GatewayEnvironmentOutput {
+	return o
+}
+
+// The alias of the environment.
+func (o GatewayEnvironmentOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEnvironment) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the environment.
+func (o GatewayEnvironmentOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEnvironment) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the availability zone for the gateway.
+func (o GatewayEnvironmentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEnvironment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GatewayEnvironmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayEnvironmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayEnvironment)(nil)).Elem()
+}
+
+func (o GatewayEnvironmentArrayOutput) ToGatewayEnvironmentArrayOutput() GatewayEnvironmentArrayOutput {
+	return o
+}
+
+func (o GatewayEnvironmentArrayOutput) ToGatewayEnvironmentArrayOutputWithContext(ctx context.Context) GatewayEnvironmentArrayOutput {
+	return o
+}
+
+func (o GatewayEnvironmentArrayOutput) Index(i pulumi.IntInput) GatewayEnvironmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayEnvironment {
+		return vs[0].([]GatewayEnvironment)[vs[1].(int)]
+	}).(GatewayEnvironmentOutput)
+}
+
+type GatewayLoadBalancer struct {
+	// The address of the load balancer for the gateway.
+	Address *string `pulumi:"address"`
+	// The IP version of the load balancer.
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	// The load balancer address type.
+	AddressType *string `pulumi:"addressType"`
+	// Indicates whether this is the default ingress address of the gateway.
+	GatewayDefault *bool `pulumi:"gatewayDefault"`
+	// The list of IPv4 addresses.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// The list of IPv6 addresses.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+	// The ID of the load balancer associated with the gateway.
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
+	// The load balancing provisioning mode for the gateway.
+	Mode *string `pulumi:"mode"`
+	// The list of listening ports.
+	Ports []GatewayLoadBalancerPort `pulumi:"ports"`
+	// The status of the gateway.
+	Status *string `pulumi:"status"`
+	// The type of the load balancer.
+	Type *string `pulumi:"type"`
+}
+
+// GatewayLoadBalancerInput is an input type that accepts GatewayLoadBalancerArgs and GatewayLoadBalancerOutput values.
+// You can construct a concrete instance of `GatewayLoadBalancerInput` via:
+//
+//	GatewayLoadBalancerArgs{...}
+type GatewayLoadBalancerInput interface {
+	pulumi.Input
+
+	ToGatewayLoadBalancerOutput() GatewayLoadBalancerOutput
+	ToGatewayLoadBalancerOutputWithContext(context.Context) GatewayLoadBalancerOutput
+}
+
+type GatewayLoadBalancerArgs struct {
+	// The address of the load balancer for the gateway.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IP version of the load balancer.
+	AddressIpVersion pulumi.StringPtrInput `pulumi:"addressIpVersion"`
+	// The load balancer address type.
+	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
+	// Indicates whether this is the default ingress address of the gateway.
+	GatewayDefault pulumi.BoolPtrInput `pulumi:"gatewayDefault"`
+	// The list of IPv4 addresses.
+	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
+	// The list of IPv6 addresses.
+	Ipv6Addresses pulumi.StringArrayInput `pulumi:"ipv6Addresses"`
+	// The ID of the load balancer associated with the gateway.
+	LoadBalancerId pulumi.StringPtrInput `pulumi:"loadBalancerId"`
+	// The load balancing provisioning mode for the gateway.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The list of listening ports.
+	Ports GatewayLoadBalancerPortArrayInput `pulumi:"ports"`
+	// The status of the gateway.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The type of the load balancer.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GatewayLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLoadBalancer)(nil)).Elem()
+}
+
+func (i GatewayLoadBalancerArgs) ToGatewayLoadBalancerOutput() GatewayLoadBalancerOutput {
+	return i.ToGatewayLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i GatewayLoadBalancerArgs) ToGatewayLoadBalancerOutputWithContext(ctx context.Context) GatewayLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoadBalancerOutput)
+}
+
+// GatewayLoadBalancerArrayInput is an input type that accepts GatewayLoadBalancerArray and GatewayLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `GatewayLoadBalancerArrayInput` via:
+//
+//	GatewayLoadBalancerArray{ GatewayLoadBalancerArgs{...} }
+type GatewayLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToGatewayLoadBalancerArrayOutput() GatewayLoadBalancerArrayOutput
+	ToGatewayLoadBalancerArrayOutputWithContext(context.Context) GatewayLoadBalancerArrayOutput
+}
+
+type GatewayLoadBalancerArray []GatewayLoadBalancerInput
+
+func (GatewayLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayLoadBalancer)(nil)).Elem()
+}
+
+func (i GatewayLoadBalancerArray) ToGatewayLoadBalancerArrayOutput() GatewayLoadBalancerArrayOutput {
+	return i.ToGatewayLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayLoadBalancerArray) ToGatewayLoadBalancerArrayOutputWithContext(ctx context.Context) GatewayLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoadBalancerArrayOutput)
+}
+
+type GatewayLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (GatewayLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLoadBalancer)(nil)).Elem()
+}
+
+func (o GatewayLoadBalancerOutput) ToGatewayLoadBalancerOutput() GatewayLoadBalancerOutput {
+	return o
+}
+
+func (o GatewayLoadBalancerOutput) ToGatewayLoadBalancerOutputWithContext(ctx context.Context) GatewayLoadBalancerOutput {
+	return o
+}
+
+// The address of the load balancer for the gateway.
+func (o GatewayLoadBalancerOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The IP version of the load balancer.
+func (o GatewayLoadBalancerOutput) AddressIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.AddressIpVersion }).(pulumi.StringPtrOutput)
+}
+
+// The load balancer address type.
+func (o GatewayLoadBalancerOutput) AddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.AddressType }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether this is the default ingress address of the gateway.
+func (o GatewayLoadBalancerOutput) GatewayDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *bool { return v.GatewayDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The list of IPv4 addresses.
+func (o GatewayLoadBalancerOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The list of IPv6 addresses.
+func (o GatewayLoadBalancerOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the load balancer associated with the gateway.
+func (o GatewayLoadBalancerOutput) LoadBalancerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.LoadBalancerId }).(pulumi.StringPtrOutput)
+}
+
+// The load balancing provisioning mode for the gateway.
+func (o GatewayLoadBalancerOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The list of listening ports.
+func (o GatewayLoadBalancerOutput) Ports() GatewayLoadBalancerPortArrayOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) []GatewayLoadBalancerPort { return v.Ports }).(GatewayLoadBalancerPortArrayOutput)
+}
+
+// The status of the gateway.
+func (o GatewayLoadBalancerOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The type of the load balancer.
+func (o GatewayLoadBalancerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancer) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GatewayLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayLoadBalancer)(nil)).Elem()
+}
+
+func (o GatewayLoadBalancerArrayOutput) ToGatewayLoadBalancerArrayOutput() GatewayLoadBalancerArrayOutput {
+	return o
+}
+
+func (o GatewayLoadBalancerArrayOutput) ToGatewayLoadBalancerArrayOutputWithContext(ctx context.Context) GatewayLoadBalancerArrayOutput {
+	return o
+}
+
+func (o GatewayLoadBalancerArrayOutput) Index(i pulumi.IntInput) GatewayLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayLoadBalancer {
+		return vs[0].([]GatewayLoadBalancer)[vs[1].(int)]
+	}).(GatewayLoadBalancerOutput)
+}
+
+type GatewayLoadBalancerPort struct {
+	// The port number of the load balancer listener.
+	Port *int `pulumi:"port"`
+	// The protocol of the load balancer listener.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// GatewayLoadBalancerPortInput is an input type that accepts GatewayLoadBalancerPortArgs and GatewayLoadBalancerPortOutput values.
+// You can construct a concrete instance of `GatewayLoadBalancerPortInput` via:
+//
+//	GatewayLoadBalancerPortArgs{...}
+type GatewayLoadBalancerPortInput interface {
+	pulumi.Input
+
+	ToGatewayLoadBalancerPortOutput() GatewayLoadBalancerPortOutput
+	ToGatewayLoadBalancerPortOutputWithContext(context.Context) GatewayLoadBalancerPortOutput
+}
+
+type GatewayLoadBalancerPortArgs struct {
+	// The port number of the load balancer listener.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The protocol of the load balancer listener.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (GatewayLoadBalancerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (i GatewayLoadBalancerPortArgs) ToGatewayLoadBalancerPortOutput() GatewayLoadBalancerPortOutput {
+	return i.ToGatewayLoadBalancerPortOutputWithContext(context.Background())
+}
+
+func (i GatewayLoadBalancerPortArgs) ToGatewayLoadBalancerPortOutputWithContext(ctx context.Context) GatewayLoadBalancerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoadBalancerPortOutput)
+}
+
+// GatewayLoadBalancerPortArrayInput is an input type that accepts GatewayLoadBalancerPortArray and GatewayLoadBalancerPortArrayOutput values.
+// You can construct a concrete instance of `GatewayLoadBalancerPortArrayInput` via:
+//
+//	GatewayLoadBalancerPortArray{ GatewayLoadBalancerPortArgs{...} }
+type GatewayLoadBalancerPortArrayInput interface {
+	pulumi.Input
+
+	ToGatewayLoadBalancerPortArrayOutput() GatewayLoadBalancerPortArrayOutput
+	ToGatewayLoadBalancerPortArrayOutputWithContext(context.Context) GatewayLoadBalancerPortArrayOutput
+}
+
+type GatewayLoadBalancerPortArray []GatewayLoadBalancerPortInput
+
+func (GatewayLoadBalancerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (i GatewayLoadBalancerPortArray) ToGatewayLoadBalancerPortArrayOutput() GatewayLoadBalancerPortArrayOutput {
+	return i.ToGatewayLoadBalancerPortArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayLoadBalancerPortArray) ToGatewayLoadBalancerPortArrayOutputWithContext(ctx context.Context) GatewayLoadBalancerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoadBalancerPortArrayOutput)
+}
+
+type GatewayLoadBalancerPortOutput struct{ *pulumi.OutputState }
+
+func (GatewayLoadBalancerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (o GatewayLoadBalancerPortOutput) ToGatewayLoadBalancerPortOutput() GatewayLoadBalancerPortOutput {
+	return o
+}
+
+func (o GatewayLoadBalancerPortOutput) ToGatewayLoadBalancerPortOutputWithContext(ctx context.Context) GatewayLoadBalancerPortOutput {
+	return o
+}
+
+// The port number of the load balancer listener.
+func (o GatewayLoadBalancerPortOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol of the load balancer listener.
+func (o GatewayLoadBalancerPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLoadBalancerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type GatewayLoadBalancerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayLoadBalancerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (o GatewayLoadBalancerPortArrayOutput) ToGatewayLoadBalancerPortArrayOutput() GatewayLoadBalancerPortArrayOutput {
+	return o
+}
+
+func (o GatewayLoadBalancerPortArrayOutput) ToGatewayLoadBalancerPortArrayOutputWithContext(ctx context.Context) GatewayLoadBalancerPortArrayOutput {
+	return o
+}
+
+func (o GatewayLoadBalancerPortArrayOutput) Index(i pulumi.IntInput) GatewayLoadBalancerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayLoadBalancerPort {
+		return vs[0].([]GatewayLoadBalancerPort)[vs[1].(int)]
+	}).(GatewayLoadBalancerPortOutput)
+}
+
 type GatewayLogConfig struct {
-	// Sls See `sls` below.
+	// The Simple Log Service configuration for the gateway. See `sls` below.
 	Sls *GatewayLogConfigSls `pulumi:"sls"`
 }
 
@@ -30,7 +702,7 @@ type GatewayLogConfigInput interface {
 }
 
 type GatewayLogConfigArgs struct {
-	// Sls See `sls` below.
+	// The Simple Log Service configuration for the gateway. See `sls` below.
 	Sls GatewayLogConfigSlsPtrInput `pulumi:"sls"`
 }
 
@@ -111,7 +783,7 @@ func (o GatewayLogConfigOutput) ToGatewayLogConfigPtrOutputWithContext(ctx conte
 	}).(GatewayLogConfigPtrOutput)
 }
 
-// Sls See `sls` below.
+// The Simple Log Service configuration for the gateway. See `sls` below.
 func (o GatewayLogConfigOutput) Sls() GatewayLogConfigSlsPtrOutput {
 	return o.ApplyT(func(v GatewayLogConfig) *GatewayLogConfigSls { return v.Sls }).(GatewayLogConfigSlsPtrOutput)
 }
@@ -140,7 +812,7 @@ func (o GatewayLogConfigPtrOutput) Elem() GatewayLogConfigOutput {
 	}).(GatewayLogConfigOutput)
 }
 
-// Sls See `sls` below.
+// The Simple Log Service configuration for the gateway. See `sls` below.
 func (o GatewayLogConfigPtrOutput) Sls() GatewayLogConfigSlsPtrOutput {
 	return o.ApplyT(func(v *GatewayLogConfig) *GatewayLogConfigSls {
 		if v == nil {
@@ -151,7 +823,7 @@ func (o GatewayLogConfigPtrOutput) Sls() GatewayLogConfigSlsPtrOutput {
 }
 
 type GatewayLogConfigSls struct {
-	// Enable Log Service
+	// The Simple Log Service configuration for the gateway.
 	Enable *bool `pulumi:"enable"`
 }
 
@@ -167,7 +839,7 @@ type GatewayLogConfigSlsInput interface {
 }
 
 type GatewayLogConfigSlsArgs struct {
-	// Enable Log Service
+	// The Simple Log Service configuration for the gateway.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 }
 
@@ -248,7 +920,7 @@ func (o GatewayLogConfigSlsOutput) ToGatewayLogConfigSlsPtrOutputWithContext(ctx
 	}).(GatewayLogConfigSlsPtrOutput)
 }
 
-// Enable Log Service
+// The Simple Log Service configuration for the gateway.
 func (o GatewayLogConfigSlsOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayLogConfigSls) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -277,7 +949,7 @@ func (o GatewayLogConfigSlsPtrOutput) Elem() GatewayLogConfigSlsOutput {
 	}).(GatewayLogConfigSlsOutput)
 }
 
-// Enable Log Service
+// The Simple Log Service configuration for the gateway.
 func (o GatewayLogConfigSlsPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayLogConfigSls) *bool {
 		if v == nil {
@@ -288,7 +960,7 @@ func (o GatewayLogConfigSlsPtrOutput) Enable() pulumi.BoolPtrOutput {
 }
 
 type GatewayNetworkAccessConfig struct {
-	// Network Access Type
+	// The network access type of the gateway instance.
 	Type *string `pulumi:"type"`
 }
 
@@ -304,7 +976,7 @@ type GatewayNetworkAccessConfigInput interface {
 }
 
 type GatewayNetworkAccessConfigArgs struct {
-	// Network Access Type
+	// The network access type of the gateway instance.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -385,7 +1057,7 @@ func (o GatewayNetworkAccessConfigOutput) ToGatewayNetworkAccessConfigPtrOutputW
 	}).(GatewayNetworkAccessConfigPtrOutput)
 }
 
-// Network Access Type
+// The network access type of the gateway instance.
 func (o GatewayNetworkAccessConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkAccessConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -414,7 +1086,7 @@ func (o GatewayNetworkAccessConfigPtrOutput) Elem() GatewayNetworkAccessConfigOu
 	}).(GatewayNetworkAccessConfigOutput)
 }
 
-// Network Access Type
+// The network access type of the gateway instance.
 func (o GatewayNetworkAccessConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayNetworkAccessConfig) *string {
 		if v == nil {
@@ -424,10 +1096,116 @@ func (o GatewayNetworkAccessConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GatewayVpc struct {
-	// The zone name.
+type GatewaySecurityGroup struct {
+	// The name of the availability zone for the gateway.
 	Name *string `pulumi:"name"`
-	// The VPC network ID.
+	// The ID of the security group.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+}
+
+// GatewaySecurityGroupInput is an input type that accepts GatewaySecurityGroupArgs and GatewaySecurityGroupOutput values.
+// You can construct a concrete instance of `GatewaySecurityGroupInput` via:
+//
+//	GatewaySecurityGroupArgs{...}
+type GatewaySecurityGroupInput interface {
+	pulumi.Input
+
+	ToGatewaySecurityGroupOutput() GatewaySecurityGroupOutput
+	ToGatewaySecurityGroupOutputWithContext(context.Context) GatewaySecurityGroupOutput
+}
+
+type GatewaySecurityGroupArgs struct {
+	// The name of the availability zone for the gateway.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+}
+
+func (GatewaySecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySecurityGroup)(nil)).Elem()
+}
+
+func (i GatewaySecurityGroupArgs) ToGatewaySecurityGroupOutput() GatewaySecurityGroupOutput {
+	return i.ToGatewaySecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GatewaySecurityGroupArgs) ToGatewaySecurityGroupOutputWithContext(ctx context.Context) GatewaySecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityGroupOutput)
+}
+
+// GatewaySecurityGroupArrayInput is an input type that accepts GatewaySecurityGroupArray and GatewaySecurityGroupArrayOutput values.
+// You can construct a concrete instance of `GatewaySecurityGroupArrayInput` via:
+//
+//	GatewaySecurityGroupArray{ GatewaySecurityGroupArgs{...} }
+type GatewaySecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToGatewaySecurityGroupArrayOutput() GatewaySecurityGroupArrayOutput
+	ToGatewaySecurityGroupArrayOutputWithContext(context.Context) GatewaySecurityGroupArrayOutput
+}
+
+type GatewaySecurityGroupArray []GatewaySecurityGroupInput
+
+func (GatewaySecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySecurityGroup)(nil)).Elem()
+}
+
+func (i GatewaySecurityGroupArray) ToGatewaySecurityGroupArrayOutput() GatewaySecurityGroupArrayOutput {
+	return i.ToGatewaySecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GatewaySecurityGroupArray) ToGatewaySecurityGroupArrayOutputWithContext(ctx context.Context) GatewaySecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityGroupArrayOutput)
+}
+
+type GatewaySecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GatewaySecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySecurityGroup)(nil)).Elem()
+}
+
+func (o GatewaySecurityGroupOutput) ToGatewaySecurityGroupOutput() GatewaySecurityGroupOutput {
+	return o
+}
+
+func (o GatewaySecurityGroupOutput) ToGatewaySecurityGroupOutputWithContext(ctx context.Context) GatewaySecurityGroupOutput {
+	return o
+}
+
+// The name of the availability zone for the gateway.
+func (o GatewaySecurityGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group.
+func (o GatewaySecurityGroupOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySecurityGroup) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+type GatewaySecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewaySecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySecurityGroup)(nil)).Elem()
+}
+
+func (o GatewaySecurityGroupArrayOutput) ToGatewaySecurityGroupArrayOutput() GatewaySecurityGroupArrayOutput {
+	return o
+}
+
+func (o GatewaySecurityGroupArrayOutput) ToGatewaySecurityGroupArrayOutputWithContext(ctx context.Context) GatewaySecurityGroupArrayOutput {
+	return o
+}
+
+func (o GatewaySecurityGroupArrayOutput) Index(i pulumi.IntInput) GatewaySecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewaySecurityGroup {
+		return vs[0].([]GatewaySecurityGroup)[vs[1].(int)]
+	}).(GatewaySecurityGroupOutput)
+}
+
+type GatewayVpc struct {
+	// The name of the availability zone for the gateway.
+	Name *string `pulumi:"name"`
+	// The ID of the VPC network associated with the gateway.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -443,9 +1221,9 @@ type GatewayVpcInput interface {
 }
 
 type GatewayVpcArgs struct {
-	// The zone name.
+	// The name of the availability zone for the gateway.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The VPC network ID.
+	// The ID of the VPC network associated with the gateway.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -526,12 +1304,12 @@ func (o GatewayVpcOutput) ToGatewayVpcPtrOutputWithContext(ctx context.Context) 
 	}).(GatewayVpcPtrOutput)
 }
 
-// The zone name.
+// The name of the availability zone for the gateway.
 func (o GatewayVpcOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpc) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The VPC network ID.
+// The ID of the VPC network associated with the gateway.
 func (o GatewayVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -560,7 +1338,7 @@ func (o GatewayVpcPtrOutput) Elem() GatewayVpcOutput {
 	}).(GatewayVpcOutput)
 }
 
-// The zone name.
+// The name of the availability zone for the gateway.
 func (o GatewayVpcPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpc) *string {
 		if v == nil {
@@ -570,7 +1348,7 @@ func (o GatewayVpcPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The VPC network ID.
+// The ID of the VPC network associated with the gateway.
 func (o GatewayVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpc) *string {
 		if v == nil {
@@ -581,7 +1359,7 @@ func (o GatewayVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
 }
 
 type GatewayVswitch struct {
-	// The zone name.
+	// The name of the availability zone for the gateway.
 	Name *string `pulumi:"name"`
 	// The ID of the virtual switch.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -599,7 +1377,7 @@ type GatewayVswitchInput interface {
 }
 
 type GatewayVswitchArgs struct {
-	// The zone name.
+	// The name of the availability zone for the gateway.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the virtual switch.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
@@ -682,7 +1460,7 @@ func (o GatewayVswitchOutput) ToGatewayVswitchPtrOutputWithContext(ctx context.C
 	}).(GatewayVswitchPtrOutput)
 }
 
-// The zone name.
+// The name of the availability zone for the gateway.
 func (o GatewayVswitchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVswitch) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -716,7 +1494,7 @@ func (o GatewayVswitchPtrOutput) Elem() GatewayVswitchOutput {
 	}).(GatewayVswitchOutput)
 }
 
-// The zone name.
+// The name of the availability zone for the gateway.
 func (o GatewayVswitchPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVswitch) *string {
 		if v == nil {
@@ -737,11 +1515,11 @@ func (o GatewayVswitchPtrOutput) VswitchId() pulumi.StringPtrOutput {
 }
 
 type GatewayZone struct {
-	// The zone name.
+	// The name of the availability zone for the gateway.
 	Name *string `pulumi:"name"`
-	// The vswitch ID.
+	// The ID of the virtual switch in the availability zone.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The zone ID.
+	// The ID of the availability zone for the gateway.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -757,11 +1535,11 @@ type GatewayZoneInput interface {
 }
 
 type GatewayZoneArgs struct {
-	// The zone name.
+	// The name of the availability zone for the gateway.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The vswitch ID.
+	// The ID of the virtual switch in the availability zone.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
-	// The zone ID.
+	// The ID of the availability zone for the gateway.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -816,17 +1594,17 @@ func (o GatewayZoneOutput) ToGatewayZoneOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The zone name.
+// The name of the availability zone for the gateway.
 func (o GatewayZoneOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayZone) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The vswitch ID.
+// The ID of the virtual switch in the availability zone.
 func (o GatewayZoneOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayZone) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
-// The zone ID.
+// The ID of the availability zone for the gateway.
 func (o GatewayZoneOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayZone) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -852,7 +1630,7 @@ func (o GatewayZoneArrayOutput) Index(i pulumi.IntInput) GatewayZoneOutput {
 }
 
 type GatewayZoneConfig struct {
-	// Availability Zone Options
+	// Zone selection option.
 	SelectOption string `pulumi:"selectOption"`
 }
 
@@ -868,7 +1646,7 @@ type GatewayZoneConfigInput interface {
 }
 
 type GatewayZoneConfigArgs struct {
-	// Availability Zone Options
+	// Zone selection option.
 	SelectOption pulumi.StringInput `pulumi:"selectOption"`
 }
 
@@ -949,7 +1727,7 @@ func (o GatewayZoneConfigOutput) ToGatewayZoneConfigPtrOutputWithContext(ctx con
 	}).(GatewayZoneConfigPtrOutput)
 }
 
-// Availability Zone Options
+// Zone selection option.
 func (o GatewayZoneConfigOutput) SelectOption() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayZoneConfig) string { return v.SelectOption }).(pulumi.StringOutput)
 }
@@ -978,7 +1756,7 @@ func (o GatewayZoneConfigPtrOutput) Elem() GatewayZoneConfigOutput {
 	}).(GatewayZoneConfigOutput)
 }
 
-// Availability Zone Options
+// Zone selection option.
 func (o GatewayZoneConfigPtrOutput) SelectOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayZoneConfig) *string {
 		if v == nil {
@@ -986,6 +1764,4189 @@ func (o GatewayZoneConfigPtrOutput) SelectOption() pulumi.StringPtrOutput {
 		}
 		return &v.SelectOption
 	}).(pulumi.StringPtrOutput)
+}
+
+type RouteBackend struct {
+	// The backend service scenario.
+	// - SingleService: Single service.
+	// - MultiServiceByRatio: Canary release across multiple services by ratio.
+	// - Mock: Mock service.
+	// - Redirect: Redirect service.
+	Scene *string `pulumi:"scene"`
+	// Backend service. See `services` below.
+	Services []RouteBackendService `pulumi:"services"`
+}
+
+// RouteBackendInput is an input type that accepts RouteBackendArgs and RouteBackendOutput values.
+// You can construct a concrete instance of `RouteBackendInput` via:
+//
+//	RouteBackendArgs{...}
+type RouteBackendInput interface {
+	pulumi.Input
+
+	ToRouteBackendOutput() RouteBackendOutput
+	ToRouteBackendOutputWithContext(context.Context) RouteBackendOutput
+}
+
+type RouteBackendArgs struct {
+	// The backend service scenario.
+	// - SingleService: Single service.
+	// - MultiServiceByRatio: Canary release across multiple services by ratio.
+	// - Mock: Mock service.
+	// - Redirect: Redirect service.
+	Scene pulumi.StringPtrInput `pulumi:"scene"`
+	// Backend service. See `services` below.
+	Services RouteBackendServiceArrayInput `pulumi:"services"`
+}
+
+func (RouteBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteBackend)(nil)).Elem()
+}
+
+func (i RouteBackendArgs) ToRouteBackendOutput() RouteBackendOutput {
+	return i.ToRouteBackendOutputWithContext(context.Background())
+}
+
+func (i RouteBackendArgs) ToRouteBackendOutputWithContext(ctx context.Context) RouteBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteBackendOutput)
+}
+
+func (i RouteBackendArgs) ToRouteBackendPtrOutput() RouteBackendPtrOutput {
+	return i.ToRouteBackendPtrOutputWithContext(context.Background())
+}
+
+func (i RouteBackendArgs) ToRouteBackendPtrOutputWithContext(ctx context.Context) RouteBackendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteBackendOutput).ToRouteBackendPtrOutputWithContext(ctx)
+}
+
+// RouteBackendPtrInput is an input type that accepts RouteBackendArgs, RouteBackendPtr and RouteBackendPtrOutput values.
+// You can construct a concrete instance of `RouteBackendPtrInput` via:
+//
+//	        RouteBackendArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteBackendPtrInput interface {
+	pulumi.Input
+
+	ToRouteBackendPtrOutput() RouteBackendPtrOutput
+	ToRouteBackendPtrOutputWithContext(context.Context) RouteBackendPtrOutput
+}
+
+type routeBackendPtrType RouteBackendArgs
+
+func RouteBackendPtr(v *RouteBackendArgs) RouteBackendPtrInput {
+	return (*routeBackendPtrType)(v)
+}
+
+func (*routeBackendPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteBackend)(nil)).Elem()
+}
+
+func (i *routeBackendPtrType) ToRouteBackendPtrOutput() RouteBackendPtrOutput {
+	return i.ToRouteBackendPtrOutputWithContext(context.Background())
+}
+
+func (i *routeBackendPtrType) ToRouteBackendPtrOutputWithContext(ctx context.Context) RouteBackendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteBackendPtrOutput)
+}
+
+type RouteBackendOutput struct{ *pulumi.OutputState }
+
+func (RouteBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteBackend)(nil)).Elem()
+}
+
+func (o RouteBackendOutput) ToRouteBackendOutput() RouteBackendOutput {
+	return o
+}
+
+func (o RouteBackendOutput) ToRouteBackendOutputWithContext(ctx context.Context) RouteBackendOutput {
+	return o
+}
+
+func (o RouteBackendOutput) ToRouteBackendPtrOutput() RouteBackendPtrOutput {
+	return o.ToRouteBackendPtrOutputWithContext(context.Background())
+}
+
+func (o RouteBackendOutput) ToRouteBackendPtrOutputWithContext(ctx context.Context) RouteBackendPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteBackend) *RouteBackend {
+		return &v
+	}).(RouteBackendPtrOutput)
+}
+
+// The backend service scenario.
+// - SingleService: Single service.
+// - MultiServiceByRatio: Canary release across multiple services by ratio.
+// - Mock: Mock service.
+// - Redirect: Redirect service.
+func (o RouteBackendOutput) Scene() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteBackend) *string { return v.Scene }).(pulumi.StringPtrOutput)
+}
+
+// Backend service. See `services` below.
+func (o RouteBackendOutput) Services() RouteBackendServiceArrayOutput {
+	return o.ApplyT(func(v RouteBackend) []RouteBackendService { return v.Services }).(RouteBackendServiceArrayOutput)
+}
+
+type RouteBackendPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteBackendPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteBackend)(nil)).Elem()
+}
+
+func (o RouteBackendPtrOutput) ToRouteBackendPtrOutput() RouteBackendPtrOutput {
+	return o
+}
+
+func (o RouteBackendPtrOutput) ToRouteBackendPtrOutputWithContext(ctx context.Context) RouteBackendPtrOutput {
+	return o
+}
+
+func (o RouteBackendPtrOutput) Elem() RouteBackendOutput {
+	return o.ApplyT(func(v *RouteBackend) RouteBackend {
+		if v != nil {
+			return *v
+		}
+		var ret RouteBackend
+		return ret
+	}).(RouteBackendOutput)
+}
+
+// The backend service scenario.
+// - SingleService: Single service.
+// - MultiServiceByRatio: Canary release across multiple services by ratio.
+// - Mock: Mock service.
+// - Redirect: Redirect service.
+func (o RouteBackendPtrOutput) Scene() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteBackend) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scene
+	}).(pulumi.StringPtrOutput)
+}
+
+// Backend service. See `services` below.
+func (o RouteBackendPtrOutput) Services() RouteBackendServiceArrayOutput {
+	return o.ApplyT(func(v *RouteBackend) []RouteBackendService {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(RouteBackendServiceArrayOutput)
+}
+
+type RouteBackendService struct {
+	// The name of the second-level domain name.
+	Name *string `pulumi:"name"`
+	// Service port. Do not specify this parameter for dynamic ports.
+	Port *int `pulumi:"port"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol *string `pulumi:"protocol"`
+	// The unique identifier of the backend service to which this route forwards traffic.
+	ServiceId *string `pulumi:"serviceId"`
+	// The version label of the backend service used for routing and canary release scenarios.
+	Version *string `pulumi:"version"`
+	// The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+	Weight *int `pulumi:"weight"`
+}
+
+// RouteBackendServiceInput is an input type that accepts RouteBackendServiceArgs and RouteBackendServiceOutput values.
+// You can construct a concrete instance of `RouteBackendServiceInput` via:
+//
+//	RouteBackendServiceArgs{...}
+type RouteBackendServiceInput interface {
+	pulumi.Input
+
+	ToRouteBackendServiceOutput() RouteBackendServiceOutput
+	ToRouteBackendServiceOutputWithContext(context.Context) RouteBackendServiceOutput
+}
+
+type RouteBackendServiceArgs struct {
+	// The name of the second-level domain name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Service port. Do not specify this parameter for dynamic ports.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The unique identifier of the backend service to which this route forwards traffic.
+	ServiceId pulumi.StringPtrInput `pulumi:"serviceId"`
+	// The version label of the backend service used for routing and canary release scenarios.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+	// The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (RouteBackendServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteBackendService)(nil)).Elem()
+}
+
+func (i RouteBackendServiceArgs) ToRouteBackendServiceOutput() RouteBackendServiceOutput {
+	return i.ToRouteBackendServiceOutputWithContext(context.Background())
+}
+
+func (i RouteBackendServiceArgs) ToRouteBackendServiceOutputWithContext(ctx context.Context) RouteBackendServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteBackendServiceOutput)
+}
+
+// RouteBackendServiceArrayInput is an input type that accepts RouteBackendServiceArray and RouteBackendServiceArrayOutput values.
+// You can construct a concrete instance of `RouteBackendServiceArrayInput` via:
+//
+//	RouteBackendServiceArray{ RouteBackendServiceArgs{...} }
+type RouteBackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToRouteBackendServiceArrayOutput() RouteBackendServiceArrayOutput
+	ToRouteBackendServiceArrayOutputWithContext(context.Context) RouteBackendServiceArrayOutput
+}
+
+type RouteBackendServiceArray []RouteBackendServiceInput
+
+func (RouteBackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteBackendService)(nil)).Elem()
+}
+
+func (i RouteBackendServiceArray) ToRouteBackendServiceArrayOutput() RouteBackendServiceArrayOutput {
+	return i.ToRouteBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i RouteBackendServiceArray) ToRouteBackendServiceArrayOutputWithContext(ctx context.Context) RouteBackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteBackendServiceArrayOutput)
+}
+
+type RouteBackendServiceOutput struct{ *pulumi.OutputState }
+
+func (RouteBackendServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteBackendService)(nil)).Elem()
+}
+
+func (o RouteBackendServiceOutput) ToRouteBackendServiceOutput() RouteBackendServiceOutput {
+	return o
+}
+
+func (o RouteBackendServiceOutput) ToRouteBackendServiceOutputWithContext(ctx context.Context) RouteBackendServiceOutput {
+	return o
+}
+
+// The name of the second-level domain name.
+func (o RouteBackendServiceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteBackendService) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Service port. Do not specify this parameter for dynamic ports.
+func (o RouteBackendServiceOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouteBackendService) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The domain protocol, such as HTTP or HTTPS.
+func (o RouteBackendServiceOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteBackendService) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the backend service to which this route forwards traffic.
+func (o RouteBackendServiceOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteBackendService) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+// The version label of the backend service used for routing and canary release scenarios.
+func (o RouteBackendServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteBackendService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+func (o RouteBackendServiceOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouteBackendService) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type RouteBackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteBackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteBackendService)(nil)).Elem()
+}
+
+func (o RouteBackendServiceArrayOutput) ToRouteBackendServiceArrayOutput() RouteBackendServiceArrayOutput {
+	return o
+}
+
+func (o RouteBackendServiceArrayOutput) ToRouteBackendServiceArrayOutputWithContext(ctx context.Context) RouteBackendServiceArrayOutput {
+	return o
+}
+
+func (o RouteBackendServiceArrayOutput) Index(i pulumi.IntInput) RouteBackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteBackendService {
+		return vs[0].([]RouteBackendService)[vs[1].(int)]
+	}).(RouteBackendServiceOutput)
+}
+
+type RouteEnvironmentInfo struct {
+	// The alias of the environment name.
+	Alias *string `pulumi:"alias"`
+	// The unique identifier of the APIG environment where this route is published and deployed.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The gateway instance information corresponding to the environment.
+	GatewayInfos []RouteEnvironmentInfoGatewayInfo `pulumi:"gatewayInfos"`
+	// The name of the second-level domain name.
+	Name *string `pulumi:"name"`
+	// The default second-level domain names of the environment.
+	SubDomains []RouteEnvironmentInfoSubDomain `pulumi:"subDomains"`
+}
+
+// RouteEnvironmentInfoInput is an input type that accepts RouteEnvironmentInfoArgs and RouteEnvironmentInfoOutput values.
+// You can construct a concrete instance of `RouteEnvironmentInfoInput` via:
+//
+//	RouteEnvironmentInfoArgs{...}
+type RouteEnvironmentInfoInput interface {
+	pulumi.Input
+
+	ToRouteEnvironmentInfoOutput() RouteEnvironmentInfoOutput
+	ToRouteEnvironmentInfoOutputWithContext(context.Context) RouteEnvironmentInfoOutput
+}
+
+type RouteEnvironmentInfoArgs struct {
+	// The alias of the environment name.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The unique identifier of the APIG environment where this route is published and deployed.
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	// The gateway instance information corresponding to the environment.
+	GatewayInfos RouteEnvironmentInfoGatewayInfoArrayInput `pulumi:"gatewayInfos"`
+	// The name of the second-level domain name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The default second-level domain names of the environment.
+	SubDomains RouteEnvironmentInfoSubDomainArrayInput `pulumi:"subDomains"`
+}
+
+func (RouteEnvironmentInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (i RouteEnvironmentInfoArgs) ToRouteEnvironmentInfoOutput() RouteEnvironmentInfoOutput {
+	return i.ToRouteEnvironmentInfoOutputWithContext(context.Background())
+}
+
+func (i RouteEnvironmentInfoArgs) ToRouteEnvironmentInfoOutputWithContext(ctx context.Context) RouteEnvironmentInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoOutput)
+}
+
+func (i RouteEnvironmentInfoArgs) ToRouteEnvironmentInfoPtrOutput() RouteEnvironmentInfoPtrOutput {
+	return i.ToRouteEnvironmentInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RouteEnvironmentInfoArgs) ToRouteEnvironmentInfoPtrOutputWithContext(ctx context.Context) RouteEnvironmentInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoOutput).ToRouteEnvironmentInfoPtrOutputWithContext(ctx)
+}
+
+// RouteEnvironmentInfoPtrInput is an input type that accepts RouteEnvironmentInfoArgs, RouteEnvironmentInfoPtr and RouteEnvironmentInfoPtrOutput values.
+// You can construct a concrete instance of `RouteEnvironmentInfoPtrInput` via:
+//
+//	        RouteEnvironmentInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteEnvironmentInfoPtrInput interface {
+	pulumi.Input
+
+	ToRouteEnvironmentInfoPtrOutput() RouteEnvironmentInfoPtrOutput
+	ToRouteEnvironmentInfoPtrOutputWithContext(context.Context) RouteEnvironmentInfoPtrOutput
+}
+
+type routeEnvironmentInfoPtrType RouteEnvironmentInfoArgs
+
+func RouteEnvironmentInfoPtr(v *RouteEnvironmentInfoArgs) RouteEnvironmentInfoPtrInput {
+	return (*routeEnvironmentInfoPtrType)(v)
+}
+
+func (*routeEnvironmentInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (i *routeEnvironmentInfoPtrType) ToRouteEnvironmentInfoPtrOutput() RouteEnvironmentInfoPtrOutput {
+	return i.ToRouteEnvironmentInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *routeEnvironmentInfoPtrType) ToRouteEnvironmentInfoPtrOutputWithContext(ctx context.Context) RouteEnvironmentInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoPtrOutput)
+}
+
+type RouteEnvironmentInfoOutput struct{ *pulumi.OutputState }
+
+func (RouteEnvironmentInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (o RouteEnvironmentInfoOutput) ToRouteEnvironmentInfoOutput() RouteEnvironmentInfoOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoOutput) ToRouteEnvironmentInfoOutputWithContext(ctx context.Context) RouteEnvironmentInfoOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoOutput) ToRouteEnvironmentInfoPtrOutput() RouteEnvironmentInfoPtrOutput {
+	return o.ToRouteEnvironmentInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RouteEnvironmentInfoOutput) ToRouteEnvironmentInfoPtrOutputWithContext(ctx context.Context) RouteEnvironmentInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteEnvironmentInfo) *RouteEnvironmentInfo {
+		return &v
+	}).(RouteEnvironmentInfoPtrOutput)
+}
+
+// The alias of the environment name.
+func (o RouteEnvironmentInfoOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfo) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the APIG environment where this route is published and deployed.
+func (o RouteEnvironmentInfoOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfo) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The gateway instance information corresponding to the environment.
+func (o RouteEnvironmentInfoOutput) GatewayInfos() RouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfo) []RouteEnvironmentInfoGatewayInfo { return v.GatewayInfos }).(RouteEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+// The name of the second-level domain name.
+func (o RouteEnvironmentInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The default second-level domain names of the environment.
+func (o RouteEnvironmentInfoOutput) SubDomains() RouteEnvironmentInfoSubDomainArrayOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfo) []RouteEnvironmentInfoSubDomain { return v.SubDomains }).(RouteEnvironmentInfoSubDomainArrayOutput)
+}
+
+type RouteEnvironmentInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteEnvironmentInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (o RouteEnvironmentInfoPtrOutput) ToRouteEnvironmentInfoPtrOutput() RouteEnvironmentInfoPtrOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoPtrOutput) ToRouteEnvironmentInfoPtrOutputWithContext(ctx context.Context) RouteEnvironmentInfoPtrOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoPtrOutput) Elem() RouteEnvironmentInfoOutput {
+	return o.ApplyT(func(v *RouteEnvironmentInfo) RouteEnvironmentInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RouteEnvironmentInfo
+		return ret
+	}).(RouteEnvironmentInfoOutput)
+}
+
+// The alias of the environment name.
+func (o RouteEnvironmentInfoPtrOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEnvironmentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alias
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the APIG environment where this route is published and deployed.
+func (o RouteEnvironmentInfoPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEnvironmentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The gateway instance information corresponding to the environment.
+func (o RouteEnvironmentInfoPtrOutput) GatewayInfos() RouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o.ApplyT(func(v *RouteEnvironmentInfo) []RouteEnvironmentInfoGatewayInfo {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayInfos
+	}).(RouteEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+// The name of the second-level domain name.
+func (o RouteEnvironmentInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEnvironmentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default second-level domain names of the environment.
+func (o RouteEnvironmentInfoPtrOutput) SubDomains() RouteEnvironmentInfoSubDomainArrayOutput {
+	return o.ApplyT(func(v *RouteEnvironmentInfo) []RouteEnvironmentInfoSubDomain {
+		if v == nil {
+			return nil
+		}
+		return v.SubDomains
+	}).(RouteEnvironmentInfoSubDomainArrayOutput)
+}
+
+type RouteEnvironmentInfoGatewayInfo struct {
+	// The edition of the gateway instance.
+	GatewayEdition *string `pulumi:"gatewayEdition"`
+	// The ID of the Cloud-native API Gateway.
+	GatewayId *string `pulumi:"gatewayId"`
+	// The name of the second-level domain name.
+	Name *string `pulumi:"name"`
+}
+
+// RouteEnvironmentInfoGatewayInfoInput is an input type that accepts RouteEnvironmentInfoGatewayInfoArgs and RouteEnvironmentInfoGatewayInfoOutput values.
+// You can construct a concrete instance of `RouteEnvironmentInfoGatewayInfoInput` via:
+//
+//	RouteEnvironmentInfoGatewayInfoArgs{...}
+type RouteEnvironmentInfoGatewayInfoInput interface {
+	pulumi.Input
+
+	ToRouteEnvironmentInfoGatewayInfoOutput() RouteEnvironmentInfoGatewayInfoOutput
+	ToRouteEnvironmentInfoGatewayInfoOutputWithContext(context.Context) RouteEnvironmentInfoGatewayInfoOutput
+}
+
+type RouteEnvironmentInfoGatewayInfoArgs struct {
+	// The edition of the gateway instance.
+	GatewayEdition pulumi.StringPtrInput `pulumi:"gatewayEdition"`
+	// The ID of the Cloud-native API Gateway.
+	GatewayId pulumi.StringPtrInput `pulumi:"gatewayId"`
+	// The name of the second-level domain name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (RouteEnvironmentInfoGatewayInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (i RouteEnvironmentInfoGatewayInfoArgs) ToRouteEnvironmentInfoGatewayInfoOutput() RouteEnvironmentInfoGatewayInfoOutput {
+	return i.ToRouteEnvironmentInfoGatewayInfoOutputWithContext(context.Background())
+}
+
+func (i RouteEnvironmentInfoGatewayInfoArgs) ToRouteEnvironmentInfoGatewayInfoOutputWithContext(ctx context.Context) RouteEnvironmentInfoGatewayInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoGatewayInfoOutput)
+}
+
+// RouteEnvironmentInfoGatewayInfoArrayInput is an input type that accepts RouteEnvironmentInfoGatewayInfoArray and RouteEnvironmentInfoGatewayInfoArrayOutput values.
+// You can construct a concrete instance of `RouteEnvironmentInfoGatewayInfoArrayInput` via:
+//
+//	RouteEnvironmentInfoGatewayInfoArray{ RouteEnvironmentInfoGatewayInfoArgs{...} }
+type RouteEnvironmentInfoGatewayInfoArrayInput interface {
+	pulumi.Input
+
+	ToRouteEnvironmentInfoGatewayInfoArrayOutput() RouteEnvironmentInfoGatewayInfoArrayOutput
+	ToRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(context.Context) RouteEnvironmentInfoGatewayInfoArrayOutput
+}
+
+type RouteEnvironmentInfoGatewayInfoArray []RouteEnvironmentInfoGatewayInfoInput
+
+func (RouteEnvironmentInfoGatewayInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (i RouteEnvironmentInfoGatewayInfoArray) ToRouteEnvironmentInfoGatewayInfoArrayOutput() RouteEnvironmentInfoGatewayInfoArrayOutput {
+	return i.ToRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(context.Background())
+}
+
+func (i RouteEnvironmentInfoGatewayInfoArray) ToRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(ctx context.Context) RouteEnvironmentInfoGatewayInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+type RouteEnvironmentInfoGatewayInfoOutput struct{ *pulumi.OutputState }
+
+func (RouteEnvironmentInfoGatewayInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (o RouteEnvironmentInfoGatewayInfoOutput) ToRouteEnvironmentInfoGatewayInfoOutput() RouteEnvironmentInfoGatewayInfoOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoGatewayInfoOutput) ToRouteEnvironmentInfoGatewayInfoOutputWithContext(ctx context.Context) RouteEnvironmentInfoGatewayInfoOutput {
+	return o
+}
+
+// The edition of the gateway instance.
+func (o RouteEnvironmentInfoGatewayInfoOutput) GatewayEdition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoGatewayInfo) *string { return v.GatewayEdition }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Cloud-native API Gateway.
+func (o RouteEnvironmentInfoGatewayInfoOutput) GatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoGatewayInfo) *string { return v.GatewayId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the second-level domain name.
+func (o RouteEnvironmentInfoGatewayInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoGatewayInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RouteEnvironmentInfoGatewayInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteEnvironmentInfoGatewayInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (o RouteEnvironmentInfoGatewayInfoArrayOutput) ToRouteEnvironmentInfoGatewayInfoArrayOutput() RouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoGatewayInfoArrayOutput) ToRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(ctx context.Context) RouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoGatewayInfoArrayOutput) Index(i pulumi.IntInput) RouteEnvironmentInfoGatewayInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteEnvironmentInfoGatewayInfo {
+		return vs[0].([]RouteEnvironmentInfoGatewayInfo)[vs[1].(int)]
+	}).(RouteEnvironmentInfoGatewayInfoOutput)
+}
+
+type RouteEnvironmentInfoSubDomain struct {
+	// The ID of the second-level domain name.
+	DomainId *string `pulumi:"domainId"`
+	// The name of the second-level domain name.
+	Name *string `pulumi:"name"`
+	// The domain access type, such as Intranet or Internet.
+	NetworkType *string `pulumi:"networkType"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// RouteEnvironmentInfoSubDomainInput is an input type that accepts RouteEnvironmentInfoSubDomainArgs and RouteEnvironmentInfoSubDomainOutput values.
+// You can construct a concrete instance of `RouteEnvironmentInfoSubDomainInput` via:
+//
+//	RouteEnvironmentInfoSubDomainArgs{...}
+type RouteEnvironmentInfoSubDomainInput interface {
+	pulumi.Input
+
+	ToRouteEnvironmentInfoSubDomainOutput() RouteEnvironmentInfoSubDomainOutput
+	ToRouteEnvironmentInfoSubDomainOutputWithContext(context.Context) RouteEnvironmentInfoSubDomainOutput
+}
+
+type RouteEnvironmentInfoSubDomainArgs struct {
+	// The ID of the second-level domain name.
+	DomainId pulumi.StringPtrInput `pulumi:"domainId"`
+	// The name of the second-level domain name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The domain access type, such as Intranet or Internet.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (RouteEnvironmentInfoSubDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (i RouteEnvironmentInfoSubDomainArgs) ToRouteEnvironmentInfoSubDomainOutput() RouteEnvironmentInfoSubDomainOutput {
+	return i.ToRouteEnvironmentInfoSubDomainOutputWithContext(context.Background())
+}
+
+func (i RouteEnvironmentInfoSubDomainArgs) ToRouteEnvironmentInfoSubDomainOutputWithContext(ctx context.Context) RouteEnvironmentInfoSubDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoSubDomainOutput)
+}
+
+// RouteEnvironmentInfoSubDomainArrayInput is an input type that accepts RouteEnvironmentInfoSubDomainArray and RouteEnvironmentInfoSubDomainArrayOutput values.
+// You can construct a concrete instance of `RouteEnvironmentInfoSubDomainArrayInput` via:
+//
+//	RouteEnvironmentInfoSubDomainArray{ RouteEnvironmentInfoSubDomainArgs{...} }
+type RouteEnvironmentInfoSubDomainArrayInput interface {
+	pulumi.Input
+
+	ToRouteEnvironmentInfoSubDomainArrayOutput() RouteEnvironmentInfoSubDomainArrayOutput
+	ToRouteEnvironmentInfoSubDomainArrayOutputWithContext(context.Context) RouteEnvironmentInfoSubDomainArrayOutput
+}
+
+type RouteEnvironmentInfoSubDomainArray []RouteEnvironmentInfoSubDomainInput
+
+func (RouteEnvironmentInfoSubDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (i RouteEnvironmentInfoSubDomainArray) ToRouteEnvironmentInfoSubDomainArrayOutput() RouteEnvironmentInfoSubDomainArrayOutput {
+	return i.ToRouteEnvironmentInfoSubDomainArrayOutputWithContext(context.Background())
+}
+
+func (i RouteEnvironmentInfoSubDomainArray) ToRouteEnvironmentInfoSubDomainArrayOutputWithContext(ctx context.Context) RouteEnvironmentInfoSubDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEnvironmentInfoSubDomainArrayOutput)
+}
+
+type RouteEnvironmentInfoSubDomainOutput struct{ *pulumi.OutputState }
+
+func (RouteEnvironmentInfoSubDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (o RouteEnvironmentInfoSubDomainOutput) ToRouteEnvironmentInfoSubDomainOutput() RouteEnvironmentInfoSubDomainOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoSubDomainOutput) ToRouteEnvironmentInfoSubDomainOutputWithContext(ctx context.Context) RouteEnvironmentInfoSubDomainOutput {
+	return o
+}
+
+// The ID of the second-level domain name.
+func (o RouteEnvironmentInfoSubDomainOutput) DomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoSubDomain) *string { return v.DomainId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the second-level domain name.
+func (o RouteEnvironmentInfoSubDomainOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoSubDomain) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The domain access type, such as Intranet or Internet.
+func (o RouteEnvironmentInfoSubDomainOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoSubDomain) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The domain protocol, such as HTTP or HTTPS.
+func (o RouteEnvironmentInfoSubDomainOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteEnvironmentInfoSubDomain) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type RouteEnvironmentInfoSubDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteEnvironmentInfoSubDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (o RouteEnvironmentInfoSubDomainArrayOutput) ToRouteEnvironmentInfoSubDomainArrayOutput() RouteEnvironmentInfoSubDomainArrayOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoSubDomainArrayOutput) ToRouteEnvironmentInfoSubDomainArrayOutputWithContext(ctx context.Context) RouteEnvironmentInfoSubDomainArrayOutput {
+	return o
+}
+
+func (o RouteEnvironmentInfoSubDomainArrayOutput) Index(i pulumi.IntInput) RouteEnvironmentInfoSubDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteEnvironmentInfoSubDomain {
+		return vs[0].([]RouteEnvironmentInfoSubDomain)[vs[1].(int)]
+	}).(RouteEnvironmentInfoSubDomainOutput)
+}
+
+type RouteMatch struct {
+	// The list of HTTP request header matching rules. See `headers` below.
+	Headers []RouteMatchHeader `pulumi:"headers"`
+	// Specifies whether the path is case-sensitive.
+	IgnoreUriCase *bool `pulumi:"ignoreUriCase"`
+	// The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+	Methods []string `pulumi:"methods"`
+	// The path rule. See `path` below.
+	Path *RouteMatchPath `pulumi:"path"`
+	// The matching rules for query parameters. See `queryParams` below.
+	QueryParams []RouteMatchQueryParam `pulumi:"queryParams"`
+}
+
+// RouteMatchInput is an input type that accepts RouteMatchArgs and RouteMatchOutput values.
+// You can construct a concrete instance of `RouteMatchInput` via:
+//
+//	RouteMatchArgs{...}
+type RouteMatchInput interface {
+	pulumi.Input
+
+	ToRouteMatchOutput() RouteMatchOutput
+	ToRouteMatchOutputWithContext(context.Context) RouteMatchOutput
+}
+
+type RouteMatchArgs struct {
+	// The list of HTTP request header matching rules. See `headers` below.
+	Headers RouteMatchHeaderArrayInput `pulumi:"headers"`
+	// Specifies whether the path is case-sensitive.
+	IgnoreUriCase pulumi.BoolPtrInput `pulumi:"ignoreUriCase"`
+	// The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The path rule. See `path` below.
+	Path RouteMatchPathPtrInput `pulumi:"path"`
+	// The matching rules for query parameters. See `queryParams` below.
+	QueryParams RouteMatchQueryParamArrayInput `pulumi:"queryParams"`
+}
+
+func (RouteMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatch)(nil)).Elem()
+}
+
+func (i RouteMatchArgs) ToRouteMatchOutput() RouteMatchOutput {
+	return i.ToRouteMatchOutputWithContext(context.Background())
+}
+
+func (i RouteMatchArgs) ToRouteMatchOutputWithContext(ctx context.Context) RouteMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchOutput)
+}
+
+func (i RouteMatchArgs) ToRouteMatchPtrOutput() RouteMatchPtrOutput {
+	return i.ToRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (i RouteMatchArgs) ToRouteMatchPtrOutputWithContext(ctx context.Context) RouteMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchOutput).ToRouteMatchPtrOutputWithContext(ctx)
+}
+
+// RouteMatchPtrInput is an input type that accepts RouteMatchArgs, RouteMatchPtr and RouteMatchPtrOutput values.
+// You can construct a concrete instance of `RouteMatchPtrInput` via:
+//
+//	        RouteMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteMatchPtrInput interface {
+	pulumi.Input
+
+	ToRouteMatchPtrOutput() RouteMatchPtrOutput
+	ToRouteMatchPtrOutputWithContext(context.Context) RouteMatchPtrOutput
+}
+
+type routeMatchPtrType RouteMatchArgs
+
+func RouteMatchPtr(v *RouteMatchArgs) RouteMatchPtrInput {
+	return (*routeMatchPtrType)(v)
+}
+
+func (*routeMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteMatch)(nil)).Elem()
+}
+
+func (i *routeMatchPtrType) ToRouteMatchPtrOutput() RouteMatchPtrOutput {
+	return i.ToRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *routeMatchPtrType) ToRouteMatchPtrOutputWithContext(ctx context.Context) RouteMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchPtrOutput)
+}
+
+type RouteMatchOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatch)(nil)).Elem()
+}
+
+func (o RouteMatchOutput) ToRouteMatchOutput() RouteMatchOutput {
+	return o
+}
+
+func (o RouteMatchOutput) ToRouteMatchOutputWithContext(ctx context.Context) RouteMatchOutput {
+	return o
+}
+
+func (o RouteMatchOutput) ToRouteMatchPtrOutput() RouteMatchPtrOutput {
+	return o.ToRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (o RouteMatchOutput) ToRouteMatchPtrOutputWithContext(ctx context.Context) RouteMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteMatch) *RouteMatch {
+		return &v
+	}).(RouteMatchPtrOutput)
+}
+
+// The list of HTTP request header matching rules. See `headers` below.
+func (o RouteMatchOutput) Headers() RouteMatchHeaderArrayOutput {
+	return o.ApplyT(func(v RouteMatch) []RouteMatchHeader { return v.Headers }).(RouteMatchHeaderArrayOutput)
+}
+
+// Specifies whether the path is case-sensitive.
+func (o RouteMatchOutput) IgnoreUriCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RouteMatch) *bool { return v.IgnoreUriCase }).(pulumi.BoolPtrOutput)
+}
+
+// The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+func (o RouteMatchOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteMatch) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The path rule. See `path` below.
+func (o RouteMatchOutput) Path() RouteMatchPathPtrOutput {
+	return o.ApplyT(func(v RouteMatch) *RouteMatchPath { return v.Path }).(RouteMatchPathPtrOutput)
+}
+
+// The matching rules for query parameters. See `queryParams` below.
+func (o RouteMatchOutput) QueryParams() RouteMatchQueryParamArrayOutput {
+	return o.ApplyT(func(v RouteMatch) []RouteMatchQueryParam { return v.QueryParams }).(RouteMatchQueryParamArrayOutput)
+}
+
+type RouteMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteMatch)(nil)).Elem()
+}
+
+func (o RouteMatchPtrOutput) ToRouteMatchPtrOutput() RouteMatchPtrOutput {
+	return o
+}
+
+func (o RouteMatchPtrOutput) ToRouteMatchPtrOutputWithContext(ctx context.Context) RouteMatchPtrOutput {
+	return o
+}
+
+func (o RouteMatchPtrOutput) Elem() RouteMatchOutput {
+	return o.ApplyT(func(v *RouteMatch) RouteMatch {
+		if v != nil {
+			return *v
+		}
+		var ret RouteMatch
+		return ret
+	}).(RouteMatchOutput)
+}
+
+// The list of HTTP request header matching rules. See `headers` below.
+func (o RouteMatchPtrOutput) Headers() RouteMatchHeaderArrayOutput {
+	return o.ApplyT(func(v *RouteMatch) []RouteMatchHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(RouteMatchHeaderArrayOutput)
+}
+
+// Specifies whether the path is case-sensitive.
+func (o RouteMatchPtrOutput) IgnoreUriCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouteMatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreUriCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+func (o RouteMatchPtrOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The path rule. See `path` below.
+func (o RouteMatchPtrOutput) Path() RouteMatchPathPtrOutput {
+	return o.ApplyT(func(v *RouteMatch) *RouteMatchPath {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(RouteMatchPathPtrOutput)
+}
+
+// The matching rules for query parameters. See `queryParams` below.
+func (o RouteMatchPtrOutput) QueryParams() RouteMatchQueryParamArrayOutput {
+	return o.ApplyT(func(v *RouteMatch) []RouteMatchQueryParam {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParams
+	}).(RouteMatchQueryParamArrayOutput)
+}
+
+type RouteMatchHeader struct {
+	// The name of the second-level domain name.
+	Name *string `pulumi:"name"`
+	// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+	Type *string `pulumi:"type"`
+	// The query parameter value that incoming requests must supply to be routed by this route.
+	Value *string `pulumi:"value"`
+}
+
+// RouteMatchHeaderInput is an input type that accepts RouteMatchHeaderArgs and RouteMatchHeaderOutput values.
+// You can construct a concrete instance of `RouteMatchHeaderInput` via:
+//
+//	RouteMatchHeaderArgs{...}
+type RouteMatchHeaderInput interface {
+	pulumi.Input
+
+	ToRouteMatchHeaderOutput() RouteMatchHeaderOutput
+	ToRouteMatchHeaderOutputWithContext(context.Context) RouteMatchHeaderOutput
+}
+
+type RouteMatchHeaderArgs struct {
+	// The name of the second-level domain name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The query parameter value that incoming requests must supply to be routed by this route.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RouteMatchHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatchHeader)(nil)).Elem()
+}
+
+func (i RouteMatchHeaderArgs) ToRouteMatchHeaderOutput() RouteMatchHeaderOutput {
+	return i.ToRouteMatchHeaderOutputWithContext(context.Background())
+}
+
+func (i RouteMatchHeaderArgs) ToRouteMatchHeaderOutputWithContext(ctx context.Context) RouteMatchHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchHeaderOutput)
+}
+
+// RouteMatchHeaderArrayInput is an input type that accepts RouteMatchHeaderArray and RouteMatchHeaderArrayOutput values.
+// You can construct a concrete instance of `RouteMatchHeaderArrayInput` via:
+//
+//	RouteMatchHeaderArray{ RouteMatchHeaderArgs{...} }
+type RouteMatchHeaderArrayInput interface {
+	pulumi.Input
+
+	ToRouteMatchHeaderArrayOutput() RouteMatchHeaderArrayOutput
+	ToRouteMatchHeaderArrayOutputWithContext(context.Context) RouteMatchHeaderArrayOutput
+}
+
+type RouteMatchHeaderArray []RouteMatchHeaderInput
+
+func (RouteMatchHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteMatchHeader)(nil)).Elem()
+}
+
+func (i RouteMatchHeaderArray) ToRouteMatchHeaderArrayOutput() RouteMatchHeaderArrayOutput {
+	return i.ToRouteMatchHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i RouteMatchHeaderArray) ToRouteMatchHeaderArrayOutputWithContext(ctx context.Context) RouteMatchHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchHeaderArrayOutput)
+}
+
+type RouteMatchHeaderOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatchHeader)(nil)).Elem()
+}
+
+func (o RouteMatchHeaderOutput) ToRouteMatchHeaderOutput() RouteMatchHeaderOutput {
+	return o
+}
+
+func (o RouteMatchHeaderOutput) ToRouteMatchHeaderOutputWithContext(ctx context.Context) RouteMatchHeaderOutput {
+	return o
+}
+
+// The name of the second-level domain name.
+func (o RouteMatchHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+func (o RouteMatchHeaderOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchHeader) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The query parameter value that incoming requests must supply to be routed by this route.
+func (o RouteMatchHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RouteMatchHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteMatchHeader)(nil)).Elem()
+}
+
+func (o RouteMatchHeaderArrayOutput) ToRouteMatchHeaderArrayOutput() RouteMatchHeaderArrayOutput {
+	return o
+}
+
+func (o RouteMatchHeaderArrayOutput) ToRouteMatchHeaderArrayOutputWithContext(ctx context.Context) RouteMatchHeaderArrayOutput {
+	return o
+}
+
+func (o RouteMatchHeaderArrayOutput) Index(i pulumi.IntInput) RouteMatchHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteMatchHeader {
+		return vs[0].([]RouteMatchHeader)[vs[1].(int)]
+	}).(RouteMatchHeaderOutput)
+}
+
+type RouteMatchPath struct {
+	// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+	Type *string `pulumi:"type"`
+	// The query parameter value that incoming requests must supply to be routed by this route.
+	Value *string `pulumi:"value"`
+}
+
+// RouteMatchPathInput is an input type that accepts RouteMatchPathArgs and RouteMatchPathOutput values.
+// You can construct a concrete instance of `RouteMatchPathInput` via:
+//
+//	RouteMatchPathArgs{...}
+type RouteMatchPathInput interface {
+	pulumi.Input
+
+	ToRouteMatchPathOutput() RouteMatchPathOutput
+	ToRouteMatchPathOutputWithContext(context.Context) RouteMatchPathOutput
+}
+
+type RouteMatchPathArgs struct {
+	// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The query parameter value that incoming requests must supply to be routed by this route.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RouteMatchPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatchPath)(nil)).Elem()
+}
+
+func (i RouteMatchPathArgs) ToRouteMatchPathOutput() RouteMatchPathOutput {
+	return i.ToRouteMatchPathOutputWithContext(context.Background())
+}
+
+func (i RouteMatchPathArgs) ToRouteMatchPathOutputWithContext(ctx context.Context) RouteMatchPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchPathOutput)
+}
+
+func (i RouteMatchPathArgs) ToRouteMatchPathPtrOutput() RouteMatchPathPtrOutput {
+	return i.ToRouteMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (i RouteMatchPathArgs) ToRouteMatchPathPtrOutputWithContext(ctx context.Context) RouteMatchPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchPathOutput).ToRouteMatchPathPtrOutputWithContext(ctx)
+}
+
+// RouteMatchPathPtrInput is an input type that accepts RouteMatchPathArgs, RouteMatchPathPtr and RouteMatchPathPtrOutput values.
+// You can construct a concrete instance of `RouteMatchPathPtrInput` via:
+//
+//	        RouteMatchPathArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteMatchPathPtrInput interface {
+	pulumi.Input
+
+	ToRouteMatchPathPtrOutput() RouteMatchPathPtrOutput
+	ToRouteMatchPathPtrOutputWithContext(context.Context) RouteMatchPathPtrOutput
+}
+
+type routeMatchPathPtrType RouteMatchPathArgs
+
+func RouteMatchPathPtr(v *RouteMatchPathArgs) RouteMatchPathPtrInput {
+	return (*routeMatchPathPtrType)(v)
+}
+
+func (*routeMatchPathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteMatchPath)(nil)).Elem()
+}
+
+func (i *routeMatchPathPtrType) ToRouteMatchPathPtrOutput() RouteMatchPathPtrOutput {
+	return i.ToRouteMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (i *routeMatchPathPtrType) ToRouteMatchPathPtrOutputWithContext(ctx context.Context) RouteMatchPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchPathPtrOutput)
+}
+
+type RouteMatchPathOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatchPath)(nil)).Elem()
+}
+
+func (o RouteMatchPathOutput) ToRouteMatchPathOutput() RouteMatchPathOutput {
+	return o
+}
+
+func (o RouteMatchPathOutput) ToRouteMatchPathOutputWithContext(ctx context.Context) RouteMatchPathOutput {
+	return o
+}
+
+func (o RouteMatchPathOutput) ToRouteMatchPathPtrOutput() RouteMatchPathPtrOutput {
+	return o.ToRouteMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (o RouteMatchPathOutput) ToRouteMatchPathPtrOutputWithContext(ctx context.Context) RouteMatchPathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteMatchPath) *RouteMatchPath {
+		return &v
+	}).(RouteMatchPathPtrOutput)
+}
+
+// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+func (o RouteMatchPathOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchPath) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The query parameter value that incoming requests must supply to be routed by this route.
+func (o RouteMatchPathOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchPath) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RouteMatchPathPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchPathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteMatchPath)(nil)).Elem()
+}
+
+func (o RouteMatchPathPtrOutput) ToRouteMatchPathPtrOutput() RouteMatchPathPtrOutput {
+	return o
+}
+
+func (o RouteMatchPathPtrOutput) ToRouteMatchPathPtrOutputWithContext(ctx context.Context) RouteMatchPathPtrOutput {
+	return o
+}
+
+func (o RouteMatchPathPtrOutput) Elem() RouteMatchPathOutput {
+	return o.ApplyT(func(v *RouteMatchPath) RouteMatchPath {
+		if v != nil {
+			return *v
+		}
+		var ret RouteMatchPath
+		return ret
+	}).(RouteMatchPathOutput)
+}
+
+// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+func (o RouteMatchPathPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMatchPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query parameter value that incoming requests must supply to be routed by this route.
+func (o RouteMatchPathPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMatchPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteMatchQueryParam struct {
+	// The name of the second-level domain name.
+	Name *string `pulumi:"name"`
+	// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+	Type *string `pulumi:"type"`
+	// The query parameter value that incoming requests must supply to be routed by this route.
+	Value *string `pulumi:"value"`
+}
+
+// RouteMatchQueryParamInput is an input type that accepts RouteMatchQueryParamArgs and RouteMatchQueryParamOutput values.
+// You can construct a concrete instance of `RouteMatchQueryParamInput` via:
+//
+//	RouteMatchQueryParamArgs{...}
+type RouteMatchQueryParamInput interface {
+	pulumi.Input
+
+	ToRouteMatchQueryParamOutput() RouteMatchQueryParamOutput
+	ToRouteMatchQueryParamOutputWithContext(context.Context) RouteMatchQueryParamOutput
+}
+
+type RouteMatchQueryParamArgs struct {
+	// The name of the second-level domain name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The query parameter value that incoming requests must supply to be routed by this route.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RouteMatchQueryParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatchQueryParam)(nil)).Elem()
+}
+
+func (i RouteMatchQueryParamArgs) ToRouteMatchQueryParamOutput() RouteMatchQueryParamOutput {
+	return i.ToRouteMatchQueryParamOutputWithContext(context.Background())
+}
+
+func (i RouteMatchQueryParamArgs) ToRouteMatchQueryParamOutputWithContext(ctx context.Context) RouteMatchQueryParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchQueryParamOutput)
+}
+
+// RouteMatchQueryParamArrayInput is an input type that accepts RouteMatchQueryParamArray and RouteMatchQueryParamArrayOutput values.
+// You can construct a concrete instance of `RouteMatchQueryParamArrayInput` via:
+//
+//	RouteMatchQueryParamArray{ RouteMatchQueryParamArgs{...} }
+type RouteMatchQueryParamArrayInput interface {
+	pulumi.Input
+
+	ToRouteMatchQueryParamArrayOutput() RouteMatchQueryParamArrayOutput
+	ToRouteMatchQueryParamArrayOutputWithContext(context.Context) RouteMatchQueryParamArrayOutput
+}
+
+type RouteMatchQueryParamArray []RouteMatchQueryParamInput
+
+func (RouteMatchQueryParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteMatchQueryParam)(nil)).Elem()
+}
+
+func (i RouteMatchQueryParamArray) ToRouteMatchQueryParamArrayOutput() RouteMatchQueryParamArrayOutput {
+	return i.ToRouteMatchQueryParamArrayOutputWithContext(context.Background())
+}
+
+func (i RouteMatchQueryParamArray) ToRouteMatchQueryParamArrayOutputWithContext(ctx context.Context) RouteMatchQueryParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMatchQueryParamArrayOutput)
+}
+
+type RouteMatchQueryParamOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchQueryParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMatchQueryParam)(nil)).Elem()
+}
+
+func (o RouteMatchQueryParamOutput) ToRouteMatchQueryParamOutput() RouteMatchQueryParamOutput {
+	return o
+}
+
+func (o RouteMatchQueryParamOutput) ToRouteMatchQueryParamOutputWithContext(ctx context.Context) RouteMatchQueryParamOutput {
+	return o
+}
+
+// The name of the second-level domain name.
+func (o RouteMatchQueryParamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchQueryParam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+func (o RouteMatchQueryParamOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchQueryParam) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The query parameter value that incoming requests must supply to be routed by this route.
+func (o RouteMatchQueryParamOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteMatchQueryParam) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RouteMatchQueryParamArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteMatchQueryParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteMatchQueryParam)(nil)).Elem()
+}
+
+func (o RouteMatchQueryParamArrayOutput) ToRouteMatchQueryParamArrayOutput() RouteMatchQueryParamArrayOutput {
+	return o
+}
+
+func (o RouteMatchQueryParamArrayOutput) ToRouteMatchQueryParamArrayOutputWithContext(ctx context.Context) RouteMatchQueryParamArrayOutput {
+	return o
+}
+
+func (o RouteMatchQueryParamArrayOutput) Index(i pulumi.IntInput) RouteMatchQueryParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteMatchQueryParam {
+		return vs[0].([]RouteMatchQueryParam)[vs[1].(int)]
+	}).(RouteMatchQueryParamOutput)
+}
+
+type ServiceHealthCheckConfig struct {
+	// Whether to enable health check
+	Enable *bool `pulumi:"enable"`
+	// Expected HTTP status codes
+	ExpectedStatuses []string `pulumi:"expectedStatuses"`
+	// Healthy threshold
+	HealthyThreshold *int `pulumi:"healthyThreshold"`
+	// Health check host (optional when protocol is HTTP)
+	HttpHost *string `pulumi:"httpHost"`
+	// Health check path (required when protocol is HTTP)
+	HttpPath *string `pulumi:"httpPath"`
+	// Health check interval
+	Interval *int `pulumi:"interval"`
+	// Health check protocol TCP|HTTP|GRPC
+	Protocol *string `pulumi:"protocol"`
+	// Health check response timeout
+	Timeout *int `pulumi:"timeout"`
+	// Unhealthy threshold
+	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
+}
+
+// ServiceHealthCheckConfigInput is an input type that accepts ServiceHealthCheckConfigArgs and ServiceHealthCheckConfigOutput values.
+// You can construct a concrete instance of `ServiceHealthCheckConfigInput` via:
+//
+//	ServiceHealthCheckConfigArgs{...}
+type ServiceHealthCheckConfigInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckConfigOutput() ServiceHealthCheckConfigOutput
+	ToServiceHealthCheckConfigOutputWithContext(context.Context) ServiceHealthCheckConfigOutput
+}
+
+type ServiceHealthCheckConfigArgs struct {
+	// Whether to enable health check
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Expected HTTP status codes
+	ExpectedStatuses pulumi.StringArrayInput `pulumi:"expectedStatuses"`
+	// Healthy threshold
+	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
+	// Health check host (optional when protocol is HTTP)
+	HttpHost pulumi.StringPtrInput `pulumi:"httpHost"`
+	// Health check path (required when protocol is HTTP)
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// Health check interval
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// Health check protocol TCP|HTTP|GRPC
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Health check response timeout
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// Unhealthy threshold
+	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
+}
+
+func (ServiceHealthCheckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (i ServiceHealthCheckConfigArgs) ToServiceHealthCheckConfigOutput() ServiceHealthCheckConfigOutput {
+	return i.ToServiceHealthCheckConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckConfigArgs) ToServiceHealthCheckConfigOutputWithContext(ctx context.Context) ServiceHealthCheckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigOutput)
+}
+
+func (i ServiceHealthCheckConfigArgs) ToServiceHealthCheckConfigPtrOutput() ServiceHealthCheckConfigPtrOutput {
+	return i.ToServiceHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckConfigArgs) ToServiceHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigOutput).ToServiceHealthCheckConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceHealthCheckConfigPtrInput is an input type that accepts ServiceHealthCheckConfigArgs, ServiceHealthCheckConfigPtr and ServiceHealthCheckConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceHealthCheckConfigPtrInput` via:
+//
+//	        ServiceHealthCheckConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceHealthCheckConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckConfigPtrOutput() ServiceHealthCheckConfigPtrOutput
+	ToServiceHealthCheckConfigPtrOutputWithContext(context.Context) ServiceHealthCheckConfigPtrOutput
+}
+
+type serviceHealthCheckConfigPtrType ServiceHealthCheckConfigArgs
+
+func ServiceHealthCheckConfigPtr(v *ServiceHealthCheckConfigArgs) ServiceHealthCheckConfigPtrInput {
+	return (*serviceHealthCheckConfigPtrType)(v)
+}
+
+func (*serviceHealthCheckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (i *serviceHealthCheckConfigPtrType) ToServiceHealthCheckConfigPtrOutput() ServiceHealthCheckConfigPtrOutput {
+	return i.ToServiceHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceHealthCheckConfigPtrType) ToServiceHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigPtrOutput)
+}
+
+type ServiceHealthCheckConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckConfigOutput) ToServiceHealthCheckConfigOutput() ServiceHealthCheckConfigOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigOutput) ToServiceHealthCheckConfigOutputWithContext(ctx context.Context) ServiceHealthCheckConfigOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigOutput) ToServiceHealthCheckConfigPtrOutput() ServiceHealthCheckConfigPtrOutput {
+	return o.ToServiceHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceHealthCheckConfigOutput) ToServiceHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceHealthCheckConfig) *ServiceHealthCheckConfig {
+		return &v
+	}).(ServiceHealthCheckConfigPtrOutput)
+}
+
+// Whether to enable health check
+func (o ServiceHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Expected HTTP status codes
+func (o ServiceHealthCheckConfigOutput) ExpectedStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) []string { return v.ExpectedStatuses }).(pulumi.StringArrayOutput)
+}
+
+// Healthy threshold
+func (o ServiceHealthCheckConfigOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Health check host (optional when protocol is HTTP)
+func (o ServiceHealthCheckConfigOutput) HttpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *string { return v.HttpHost }).(pulumi.StringPtrOutput)
+}
+
+// Health check path (required when protocol is HTTP)
+func (o ServiceHealthCheckConfigOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// Health check interval
+func (o ServiceHealthCheckConfigOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// Health check protocol TCP|HTTP|GRPC
+func (o ServiceHealthCheckConfigOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Health check response timeout
+func (o ServiceHealthCheckConfigOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// Unhealthy threshold
+func (o ServiceHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfig) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+type ServiceHealthCheckConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckConfigPtrOutput) ToServiceHealthCheckConfigPtrOutput() ServiceHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigPtrOutput) ToServiceHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigPtrOutput) Elem() ServiceHealthCheckConfigOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) ServiceHealthCheckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceHealthCheckConfig
+		return ret
+	}).(ServiceHealthCheckConfigOutput)
+}
+
+// Whether to enable health check
+func (o ServiceHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Expected HTTP status codes
+func (o ServiceHealthCheckConfigPtrOutput) ExpectedStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedStatuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Healthy threshold
+func (o ServiceHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health check host (optional when protocol is HTTP)
+func (o ServiceHealthCheckConfigPtrOutput) HttpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health check path (required when protocol is HTTP)
+func (o ServiceHealthCheckConfigPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health check interval
+func (o ServiceHealthCheckConfigPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health check protocol TCP|HTTP|GRPC
+func (o ServiceHealthCheckConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health check response timeout
+func (o ServiceHealthCheckConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unhealthy threshold
+func (o ServiceHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceOutlierDetectionConfig struct {
+	// Base ejection time
+	BaseEjectionTime *int `pulumi:"baseEjectionTime"`
+	// Whether to enable outlier detection
+	Enable *bool `pulumi:"enable"`
+	// Failure percentage minimum hosts
+	FailurePercentageMinimumHosts *int `pulumi:"failurePercentageMinimumHosts"`
+	// Failure percentage threshold
+	FailurePercentageThreshold *int `pulumi:"failurePercentageThreshold"`
+	// Detection interval
+	Interval *int `pulumi:"interval"`
+}
+
+// ServiceOutlierDetectionConfigInput is an input type that accepts ServiceOutlierDetectionConfigArgs and ServiceOutlierDetectionConfigOutput values.
+// You can construct a concrete instance of `ServiceOutlierDetectionConfigInput` via:
+//
+//	ServiceOutlierDetectionConfigArgs{...}
+type ServiceOutlierDetectionConfigInput interface {
+	pulumi.Input
+
+	ToServiceOutlierDetectionConfigOutput() ServiceOutlierDetectionConfigOutput
+	ToServiceOutlierDetectionConfigOutputWithContext(context.Context) ServiceOutlierDetectionConfigOutput
+}
+
+type ServiceOutlierDetectionConfigArgs struct {
+	// Base ejection time
+	BaseEjectionTime pulumi.IntPtrInput `pulumi:"baseEjectionTime"`
+	// Whether to enable outlier detection
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Failure percentage minimum hosts
+	FailurePercentageMinimumHosts pulumi.IntPtrInput `pulumi:"failurePercentageMinimumHosts"`
+	// Failure percentage threshold
+	FailurePercentageThreshold pulumi.IntPtrInput `pulumi:"failurePercentageThreshold"`
+	// Detection interval
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+}
+
+func (ServiceOutlierDetectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (i ServiceOutlierDetectionConfigArgs) ToServiceOutlierDetectionConfigOutput() ServiceOutlierDetectionConfigOutput {
+	return i.ToServiceOutlierDetectionConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceOutlierDetectionConfigArgs) ToServiceOutlierDetectionConfigOutputWithContext(ctx context.Context) ServiceOutlierDetectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutlierDetectionConfigOutput)
+}
+
+func (i ServiceOutlierDetectionConfigArgs) ToServiceOutlierDetectionConfigPtrOutput() ServiceOutlierDetectionConfigPtrOutput {
+	return i.ToServiceOutlierDetectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceOutlierDetectionConfigArgs) ToServiceOutlierDetectionConfigPtrOutputWithContext(ctx context.Context) ServiceOutlierDetectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutlierDetectionConfigOutput).ToServiceOutlierDetectionConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceOutlierDetectionConfigPtrInput is an input type that accepts ServiceOutlierDetectionConfigArgs, ServiceOutlierDetectionConfigPtr and ServiceOutlierDetectionConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceOutlierDetectionConfigPtrInput` via:
+//
+//	        ServiceOutlierDetectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceOutlierDetectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceOutlierDetectionConfigPtrOutput() ServiceOutlierDetectionConfigPtrOutput
+	ToServiceOutlierDetectionConfigPtrOutputWithContext(context.Context) ServiceOutlierDetectionConfigPtrOutput
+}
+
+type serviceOutlierDetectionConfigPtrType ServiceOutlierDetectionConfigArgs
+
+func ServiceOutlierDetectionConfigPtr(v *ServiceOutlierDetectionConfigArgs) ServiceOutlierDetectionConfigPtrInput {
+	return (*serviceOutlierDetectionConfigPtrType)(v)
+}
+
+func (*serviceOutlierDetectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (i *serviceOutlierDetectionConfigPtrType) ToServiceOutlierDetectionConfigPtrOutput() ServiceOutlierDetectionConfigPtrOutput {
+	return i.ToServiceOutlierDetectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceOutlierDetectionConfigPtrType) ToServiceOutlierDetectionConfigPtrOutputWithContext(ctx context.Context) ServiceOutlierDetectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutlierDetectionConfigPtrOutput)
+}
+
+type ServiceOutlierDetectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceOutlierDetectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (o ServiceOutlierDetectionConfigOutput) ToServiceOutlierDetectionConfigOutput() ServiceOutlierDetectionConfigOutput {
+	return o
+}
+
+func (o ServiceOutlierDetectionConfigOutput) ToServiceOutlierDetectionConfigOutputWithContext(ctx context.Context) ServiceOutlierDetectionConfigOutput {
+	return o
+}
+
+func (o ServiceOutlierDetectionConfigOutput) ToServiceOutlierDetectionConfigPtrOutput() ServiceOutlierDetectionConfigPtrOutput {
+	return o.ToServiceOutlierDetectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceOutlierDetectionConfigOutput) ToServiceOutlierDetectionConfigPtrOutputWithContext(ctx context.Context) ServiceOutlierDetectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceOutlierDetectionConfig) *ServiceOutlierDetectionConfig {
+		return &v
+	}).(ServiceOutlierDetectionConfigPtrOutput)
+}
+
+// Base ejection time
+func (o ServiceOutlierDetectionConfigOutput) BaseEjectionTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceOutlierDetectionConfig) *int { return v.BaseEjectionTime }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable outlier detection
+func (o ServiceOutlierDetectionConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceOutlierDetectionConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Failure percentage minimum hosts
+func (o ServiceOutlierDetectionConfigOutput) FailurePercentageMinimumHosts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceOutlierDetectionConfig) *int { return v.FailurePercentageMinimumHosts }).(pulumi.IntPtrOutput)
+}
+
+// Failure percentage threshold
+func (o ServiceOutlierDetectionConfigOutput) FailurePercentageThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceOutlierDetectionConfig) *int { return v.FailurePercentageThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Detection interval
+func (o ServiceOutlierDetectionConfigOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceOutlierDetectionConfig) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+type ServiceOutlierDetectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceOutlierDetectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (o ServiceOutlierDetectionConfigPtrOutput) ToServiceOutlierDetectionConfigPtrOutput() ServiceOutlierDetectionConfigPtrOutput {
+	return o
+}
+
+func (o ServiceOutlierDetectionConfigPtrOutput) ToServiceOutlierDetectionConfigPtrOutputWithContext(ctx context.Context) ServiceOutlierDetectionConfigPtrOutput {
+	return o
+}
+
+func (o ServiceOutlierDetectionConfigPtrOutput) Elem() ServiceOutlierDetectionConfigOutput {
+	return o.ApplyT(func(v *ServiceOutlierDetectionConfig) ServiceOutlierDetectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceOutlierDetectionConfig
+		return ret
+	}).(ServiceOutlierDetectionConfigOutput)
+}
+
+// Base ejection time
+func (o ServiceOutlierDetectionConfigPtrOutput) BaseEjectionTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceOutlierDetectionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BaseEjectionTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable outlier detection
+func (o ServiceOutlierDetectionConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceOutlierDetectionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Failure percentage minimum hosts
+func (o ServiceOutlierDetectionConfigPtrOutput) FailurePercentageMinimumHosts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceOutlierDetectionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailurePercentageMinimumHosts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Failure percentage threshold
+func (o ServiceOutlierDetectionConfigPtrOutput) FailurePercentageThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceOutlierDetectionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailurePercentageThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Detection interval
+func (o ServiceOutlierDetectionConfigPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceOutlierDetectionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServicePort struct {
+	// Port name.
+	Name *string `pulumi:"name"`
+	// Port number.
+	Port *int `pulumi:"port"`
+	// Service protocol.
+	//
+	// > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// ServicePortInput is an input type that accepts ServicePortArgs and ServicePortOutput values.
+// You can construct a concrete instance of `ServicePortInput` via:
+//
+//	ServicePortArgs{...}
+type ServicePortInput interface {
+	pulumi.Input
+
+	ToServicePortOutput() ServicePortOutput
+	ToServicePortOutputWithContext(context.Context) ServicePortOutput
+}
+
+type ServicePortArgs struct {
+	// Port name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Port number.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Service protocol.
+	//
+	// > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (ServicePortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePort)(nil)).Elem()
+}
+
+func (i ServicePortArgs) ToServicePortOutput() ServicePortOutput {
+	return i.ToServicePortOutputWithContext(context.Background())
+}
+
+func (i ServicePortArgs) ToServicePortOutputWithContext(ctx context.Context) ServicePortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePortOutput)
+}
+
+// ServicePortArrayInput is an input type that accepts ServicePortArray and ServicePortArrayOutput values.
+// You can construct a concrete instance of `ServicePortArrayInput` via:
+//
+//	ServicePortArray{ ServicePortArgs{...} }
+type ServicePortArrayInput interface {
+	pulumi.Input
+
+	ToServicePortArrayOutput() ServicePortArrayOutput
+	ToServicePortArrayOutputWithContext(context.Context) ServicePortArrayOutput
+}
+
+type ServicePortArray []ServicePortInput
+
+func (ServicePortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePort)(nil)).Elem()
+}
+
+func (i ServicePortArray) ToServicePortArrayOutput() ServicePortArrayOutput {
+	return i.ToServicePortArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePortArray) ToServicePortArrayOutputWithContext(ctx context.Context) ServicePortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePortArrayOutput)
+}
+
+type ServicePortOutput struct{ *pulumi.OutputState }
+
+func (ServicePortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePort)(nil)).Elem()
+}
+
+func (o ServicePortOutput) ToServicePortOutput() ServicePortOutput {
+	return o
+}
+
+func (o ServicePortOutput) ToServicePortOutputWithContext(ctx context.Context) ServicePortOutput {
+	return o
+}
+
+// Port name.
+func (o ServicePortOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePort) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Port number.
+func (o ServicePortOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServicePort) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Service protocol.
+//
+// > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+func (o ServicePortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ServicePortArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePort)(nil)).Elem()
+}
+
+func (o ServicePortArrayOutput) ToServicePortArrayOutput() ServicePortArrayOutput {
+	return o
+}
+
+func (o ServicePortArrayOutput) ToServicePortArrayOutputWithContext(ctx context.Context) ServicePortArrayOutput {
+	return o
+}
+
+func (o ServicePortArrayOutput) Index(i pulumi.IntInput) ServicePortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePort {
+		return vs[0].([]ServicePort)[vs[1].(int)]
+	}).(ServicePortOutput)
+}
+
+type GetAiModelProvidersProvider struct {
+	// A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
+	BoundServices []GetAiModelProvidersProviderBoundService `pulumi:"boundServices"`
+	// Model supplier presentation name.
+	DisplayName string `pulumi:"displayName"`
+	// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// A list of model cards currently associated with the model supplier. Each element contains the following attributes:
+	ModelCards []GetAiModelProvidersProviderModelCard `pulumi:"modelCards"`
+	// The number of model cards currently associated with the model supplier.
+	ModelCount int `pulumi:"modelCount"`
+	// The model provider identifier.
+	ModelProvider string `pulumi:"modelProvider"`
+	// The first ID of the resource.
+	ModelProviderId string `pulumi:"modelProviderId"`
+	// The model source.
+	Source string `pulumi:"source"`
+	// The last update time of the model card.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetAiModelProvidersProviderInput is an input type that accepts GetAiModelProvidersProviderArgs and GetAiModelProvidersProviderOutput values.
+// You can construct a concrete instance of `GetAiModelProvidersProviderInput` via:
+//
+//	GetAiModelProvidersProviderArgs{...}
+type GetAiModelProvidersProviderInput interface {
+	pulumi.Input
+
+	ToGetAiModelProvidersProviderOutput() GetAiModelProvidersProviderOutput
+	ToGetAiModelProvidersProviderOutputWithContext(context.Context) GetAiModelProvidersProviderOutput
+}
+
+type GetAiModelProvidersProviderArgs struct {
+	// A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
+	BoundServices GetAiModelProvidersProviderBoundServiceArrayInput `pulumi:"boundServices"`
+	// Model supplier presentation name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of model cards currently associated with the model supplier. Each element contains the following attributes:
+	ModelCards GetAiModelProvidersProviderModelCardArrayInput `pulumi:"modelCards"`
+	// The number of model cards currently associated with the model supplier.
+	ModelCount pulumi.IntInput `pulumi:"modelCount"`
+	// The model provider identifier.
+	ModelProvider pulumi.StringInput `pulumi:"modelProvider"`
+	// The first ID of the resource.
+	ModelProviderId pulumi.StringInput `pulumi:"modelProviderId"`
+	// The model source.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The last update time of the model card.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetAiModelProvidersProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiModelProvidersProvider)(nil)).Elem()
+}
+
+func (i GetAiModelProvidersProviderArgs) ToGetAiModelProvidersProviderOutput() GetAiModelProvidersProviderOutput {
+	return i.ToGetAiModelProvidersProviderOutputWithContext(context.Background())
+}
+
+func (i GetAiModelProvidersProviderArgs) ToGetAiModelProvidersProviderOutputWithContext(ctx context.Context) GetAiModelProvidersProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiModelProvidersProviderOutput)
+}
+
+// GetAiModelProvidersProviderArrayInput is an input type that accepts GetAiModelProvidersProviderArray and GetAiModelProvidersProviderArrayOutput values.
+// You can construct a concrete instance of `GetAiModelProvidersProviderArrayInput` via:
+//
+//	GetAiModelProvidersProviderArray{ GetAiModelProvidersProviderArgs{...} }
+type GetAiModelProvidersProviderArrayInput interface {
+	pulumi.Input
+
+	ToGetAiModelProvidersProviderArrayOutput() GetAiModelProvidersProviderArrayOutput
+	ToGetAiModelProvidersProviderArrayOutputWithContext(context.Context) GetAiModelProvidersProviderArrayOutput
+}
+
+type GetAiModelProvidersProviderArray []GetAiModelProvidersProviderInput
+
+func (GetAiModelProvidersProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiModelProvidersProvider)(nil)).Elem()
+}
+
+func (i GetAiModelProvidersProviderArray) ToGetAiModelProvidersProviderArrayOutput() GetAiModelProvidersProviderArrayOutput {
+	return i.ToGetAiModelProvidersProviderArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiModelProvidersProviderArray) ToGetAiModelProvidersProviderArrayOutputWithContext(ctx context.Context) GetAiModelProvidersProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiModelProvidersProviderArrayOutput)
+}
+
+type GetAiModelProvidersProviderOutput struct{ *pulumi.OutputState }
+
+func (GetAiModelProvidersProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiModelProvidersProvider)(nil)).Elem()
+}
+
+func (o GetAiModelProvidersProviderOutput) ToGetAiModelProvidersProviderOutput() GetAiModelProvidersProviderOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderOutput) ToGetAiModelProvidersProviderOutputWithContext(ctx context.Context) GetAiModelProvidersProviderOutput {
+	return o
+}
+
+// A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
+func (o GetAiModelProvidersProviderOutput) BoundServices() GetAiModelProvidersProviderBoundServiceArrayOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) []GetAiModelProvidersProviderBoundService { return v.BoundServices }).(GetAiModelProvidersProviderBoundServiceArrayOutput)
+}
+
+// Model supplier presentation name.
+func (o GetAiModelProvidersProviderOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+func (o GetAiModelProvidersProviderOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetAiModelProvidersProviderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of model cards currently associated with the model supplier. Each element contains the following attributes:
+func (o GetAiModelProvidersProviderOutput) ModelCards() GetAiModelProvidersProviderModelCardArrayOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) []GetAiModelProvidersProviderModelCard { return v.ModelCards }).(GetAiModelProvidersProviderModelCardArrayOutput)
+}
+
+// The number of model cards currently associated with the model supplier.
+func (o GetAiModelProvidersProviderOutput) ModelCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) int { return v.ModelCount }).(pulumi.IntOutput)
+}
+
+// The model provider identifier.
+func (o GetAiModelProvidersProviderOutput) ModelProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.ModelProvider }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetAiModelProvidersProviderOutput) ModelProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.ModelProviderId }).(pulumi.StringOutput)
+}
+
+// The model source.
+func (o GetAiModelProvidersProviderOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// The last update time of the model card.
+func (o GetAiModelProvidersProviderOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProvider) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetAiModelProvidersProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiModelProvidersProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiModelProvidersProvider)(nil)).Elem()
+}
+
+func (o GetAiModelProvidersProviderArrayOutput) ToGetAiModelProvidersProviderArrayOutput() GetAiModelProvidersProviderArrayOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderArrayOutput) ToGetAiModelProvidersProviderArrayOutputWithContext(ctx context.Context) GetAiModelProvidersProviderArrayOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetAiModelProvidersProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiModelProvidersProvider {
+		return vs[0].([]GetAiModelProvidersProvider)[vs[1].(int)]
+	}).(GetAiModelProvidersProviderOutput)
+}
+
+type GetAiModelProvidersProviderBoundService struct {
+	// The express type of the AI service.
+	ExpressType string `pulumi:"expressType"`
+	// The group name of the AI service.
+	GroupName string `pulumi:"groupName"`
+	// The name of the AI service.
+	Name string `pulumi:"name"`
+	// The namespace of the AI service.
+	Namespace string `pulumi:"namespace"`
+	// The PAI workspace ID.
+	PaiWorkspaceId string `pulumi:"paiWorkspaceId"`
+	// The PAI workspace name.
+	PaiWorkspaceName string `pulumi:"paiWorkspaceName"`
+	// The qualifier of the AI service.
+	Qualifier string `pulumi:"qualifier"`
+	// The ID of the AI service.
+	ServiceId string `pulumi:"serviceId"`
+	// The source type of the AI service.
+	SourceType string `pulumi:"sourceType"`
+	// The status of the AI service.
+	Status string `pulumi:"status"`
+}
+
+// GetAiModelProvidersProviderBoundServiceInput is an input type that accepts GetAiModelProvidersProviderBoundServiceArgs and GetAiModelProvidersProviderBoundServiceOutput values.
+// You can construct a concrete instance of `GetAiModelProvidersProviderBoundServiceInput` via:
+//
+//	GetAiModelProvidersProviderBoundServiceArgs{...}
+type GetAiModelProvidersProviderBoundServiceInput interface {
+	pulumi.Input
+
+	ToGetAiModelProvidersProviderBoundServiceOutput() GetAiModelProvidersProviderBoundServiceOutput
+	ToGetAiModelProvidersProviderBoundServiceOutputWithContext(context.Context) GetAiModelProvidersProviderBoundServiceOutput
+}
+
+type GetAiModelProvidersProviderBoundServiceArgs struct {
+	// The express type of the AI service.
+	ExpressType pulumi.StringInput `pulumi:"expressType"`
+	// The group name of the AI service.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The name of the AI service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace of the AI service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The PAI workspace ID.
+	PaiWorkspaceId pulumi.StringInput `pulumi:"paiWorkspaceId"`
+	// The PAI workspace name.
+	PaiWorkspaceName pulumi.StringInput `pulumi:"paiWorkspaceName"`
+	// The qualifier of the AI service.
+	Qualifier pulumi.StringInput `pulumi:"qualifier"`
+	// The ID of the AI service.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// The source type of the AI service.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The status of the AI service.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAiModelProvidersProviderBoundServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiModelProvidersProviderBoundService)(nil)).Elem()
+}
+
+func (i GetAiModelProvidersProviderBoundServiceArgs) ToGetAiModelProvidersProviderBoundServiceOutput() GetAiModelProvidersProviderBoundServiceOutput {
+	return i.ToGetAiModelProvidersProviderBoundServiceOutputWithContext(context.Background())
+}
+
+func (i GetAiModelProvidersProviderBoundServiceArgs) ToGetAiModelProvidersProviderBoundServiceOutputWithContext(ctx context.Context) GetAiModelProvidersProviderBoundServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiModelProvidersProviderBoundServiceOutput)
+}
+
+// GetAiModelProvidersProviderBoundServiceArrayInput is an input type that accepts GetAiModelProvidersProviderBoundServiceArray and GetAiModelProvidersProviderBoundServiceArrayOutput values.
+// You can construct a concrete instance of `GetAiModelProvidersProviderBoundServiceArrayInput` via:
+//
+//	GetAiModelProvidersProviderBoundServiceArray{ GetAiModelProvidersProviderBoundServiceArgs{...} }
+type GetAiModelProvidersProviderBoundServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetAiModelProvidersProviderBoundServiceArrayOutput() GetAiModelProvidersProviderBoundServiceArrayOutput
+	ToGetAiModelProvidersProviderBoundServiceArrayOutputWithContext(context.Context) GetAiModelProvidersProviderBoundServiceArrayOutput
+}
+
+type GetAiModelProvidersProviderBoundServiceArray []GetAiModelProvidersProviderBoundServiceInput
+
+func (GetAiModelProvidersProviderBoundServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiModelProvidersProviderBoundService)(nil)).Elem()
+}
+
+func (i GetAiModelProvidersProviderBoundServiceArray) ToGetAiModelProvidersProviderBoundServiceArrayOutput() GetAiModelProvidersProviderBoundServiceArrayOutput {
+	return i.ToGetAiModelProvidersProviderBoundServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiModelProvidersProviderBoundServiceArray) ToGetAiModelProvidersProviderBoundServiceArrayOutputWithContext(ctx context.Context) GetAiModelProvidersProviderBoundServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiModelProvidersProviderBoundServiceArrayOutput)
+}
+
+type GetAiModelProvidersProviderBoundServiceOutput struct{ *pulumi.OutputState }
+
+func (GetAiModelProvidersProviderBoundServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiModelProvidersProviderBoundService)(nil)).Elem()
+}
+
+func (o GetAiModelProvidersProviderBoundServiceOutput) ToGetAiModelProvidersProviderBoundServiceOutput() GetAiModelProvidersProviderBoundServiceOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderBoundServiceOutput) ToGetAiModelProvidersProviderBoundServiceOutputWithContext(ctx context.Context) GetAiModelProvidersProviderBoundServiceOutput {
+	return o
+}
+
+// The express type of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) ExpressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.ExpressType }).(pulumi.StringOutput)
+}
+
+// The group name of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The name of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The PAI workspace ID.
+func (o GetAiModelProvidersProviderBoundServiceOutput) PaiWorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.PaiWorkspaceId }).(pulumi.StringOutput)
+}
+
+// The PAI workspace name.
+func (o GetAiModelProvidersProviderBoundServiceOutput) PaiWorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.PaiWorkspaceName }).(pulumi.StringOutput)
+}
+
+// The qualifier of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) Qualifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.Qualifier }).(pulumi.StringOutput)
+}
+
+// The ID of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The source type of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The status of the AI service.
+func (o GetAiModelProvidersProviderBoundServiceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderBoundService) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAiModelProvidersProviderBoundServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiModelProvidersProviderBoundServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiModelProvidersProviderBoundService)(nil)).Elem()
+}
+
+func (o GetAiModelProvidersProviderBoundServiceArrayOutput) ToGetAiModelProvidersProviderBoundServiceArrayOutput() GetAiModelProvidersProviderBoundServiceArrayOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderBoundServiceArrayOutput) ToGetAiModelProvidersProviderBoundServiceArrayOutputWithContext(ctx context.Context) GetAiModelProvidersProviderBoundServiceArrayOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderBoundServiceArrayOutput) Index(i pulumi.IntInput) GetAiModelProvidersProviderBoundServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiModelProvidersProviderBoundService {
+		return vs[0].([]GetAiModelProvidersProviderBoundService)[vs[1].(int)]
+	}).(GetAiModelProvidersProviderBoundServiceOutput)
+}
+
+type GetAiModelProvidersProviderModelCard struct {
+	// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the model card.
+	ModelCardId string `pulumi:"modelCardId"`
+	// The model name.
+	ModelName string `pulumi:"modelName"`
+	// The model provider identifier.
+	ModelProvider string `pulumi:"modelProvider"`
+	// The model source.
+	Source string `pulumi:"source"`
+	// The last update time of the model card.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetAiModelProvidersProviderModelCardInput is an input type that accepts GetAiModelProvidersProviderModelCardArgs and GetAiModelProvidersProviderModelCardOutput values.
+// You can construct a concrete instance of `GetAiModelProvidersProviderModelCardInput` via:
+//
+//	GetAiModelProvidersProviderModelCardArgs{...}
+type GetAiModelProvidersProviderModelCardInput interface {
+	pulumi.Input
+
+	ToGetAiModelProvidersProviderModelCardOutput() GetAiModelProvidersProviderModelCardOutput
+	ToGetAiModelProvidersProviderModelCardOutputWithContext(context.Context) GetAiModelProvidersProviderModelCardOutput
+}
+
+type GetAiModelProvidersProviderModelCardArgs struct {
+	// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the model card.
+	ModelCardId pulumi.StringInput `pulumi:"modelCardId"`
+	// The model name.
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The model provider identifier.
+	ModelProvider pulumi.StringInput `pulumi:"modelProvider"`
+	// The model source.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The last update time of the model card.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetAiModelProvidersProviderModelCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiModelProvidersProviderModelCard)(nil)).Elem()
+}
+
+func (i GetAiModelProvidersProviderModelCardArgs) ToGetAiModelProvidersProviderModelCardOutput() GetAiModelProvidersProviderModelCardOutput {
+	return i.ToGetAiModelProvidersProviderModelCardOutputWithContext(context.Background())
+}
+
+func (i GetAiModelProvidersProviderModelCardArgs) ToGetAiModelProvidersProviderModelCardOutputWithContext(ctx context.Context) GetAiModelProvidersProviderModelCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiModelProvidersProviderModelCardOutput)
+}
+
+// GetAiModelProvidersProviderModelCardArrayInput is an input type that accepts GetAiModelProvidersProviderModelCardArray and GetAiModelProvidersProviderModelCardArrayOutput values.
+// You can construct a concrete instance of `GetAiModelProvidersProviderModelCardArrayInput` via:
+//
+//	GetAiModelProvidersProviderModelCardArray{ GetAiModelProvidersProviderModelCardArgs{...} }
+type GetAiModelProvidersProviderModelCardArrayInput interface {
+	pulumi.Input
+
+	ToGetAiModelProvidersProviderModelCardArrayOutput() GetAiModelProvidersProviderModelCardArrayOutput
+	ToGetAiModelProvidersProviderModelCardArrayOutputWithContext(context.Context) GetAiModelProvidersProviderModelCardArrayOutput
+}
+
+type GetAiModelProvidersProviderModelCardArray []GetAiModelProvidersProviderModelCardInput
+
+func (GetAiModelProvidersProviderModelCardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiModelProvidersProviderModelCard)(nil)).Elem()
+}
+
+func (i GetAiModelProvidersProviderModelCardArray) ToGetAiModelProvidersProviderModelCardArrayOutput() GetAiModelProvidersProviderModelCardArrayOutput {
+	return i.ToGetAiModelProvidersProviderModelCardArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiModelProvidersProviderModelCardArray) ToGetAiModelProvidersProviderModelCardArrayOutputWithContext(ctx context.Context) GetAiModelProvidersProviderModelCardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiModelProvidersProviderModelCardArrayOutput)
+}
+
+type GetAiModelProvidersProviderModelCardOutput struct{ *pulumi.OutputState }
+
+func (GetAiModelProvidersProviderModelCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiModelProvidersProviderModelCard)(nil)).Elem()
+}
+
+func (o GetAiModelProvidersProviderModelCardOutput) ToGetAiModelProvidersProviderModelCardOutput() GetAiModelProvidersProviderModelCardOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderModelCardOutput) ToGetAiModelProvidersProviderModelCardOutputWithContext(ctx context.Context) GetAiModelProvidersProviderModelCardOutput {
+	return o
+}
+
+// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+func (o GetAiModelProvidersProviderModelCardOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderModelCard) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the model card.
+func (o GetAiModelProvidersProviderModelCardOutput) ModelCardId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderModelCard) string { return v.ModelCardId }).(pulumi.StringOutput)
+}
+
+// The model name.
+func (o GetAiModelProvidersProviderModelCardOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderModelCard) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// The model provider identifier.
+func (o GetAiModelProvidersProviderModelCardOutput) ModelProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderModelCard) string { return v.ModelProvider }).(pulumi.StringOutput)
+}
+
+// The model source.
+func (o GetAiModelProvidersProviderModelCardOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderModelCard) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// The last update time of the model card.
+func (o GetAiModelProvidersProviderModelCardOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiModelProvidersProviderModelCard) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetAiModelProvidersProviderModelCardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiModelProvidersProviderModelCardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiModelProvidersProviderModelCard)(nil)).Elem()
+}
+
+func (o GetAiModelProvidersProviderModelCardArrayOutput) ToGetAiModelProvidersProviderModelCardArrayOutput() GetAiModelProvidersProviderModelCardArrayOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderModelCardArrayOutput) ToGetAiModelProvidersProviderModelCardArrayOutputWithContext(ctx context.Context) GetAiModelProvidersProviderModelCardArrayOutput {
+	return o
+}
+
+func (o GetAiModelProvidersProviderModelCardArrayOutput) Index(i pulumi.IntInput) GetAiModelProvidersProviderModelCardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiModelProvidersProviderModelCard {
+		return vs[0].([]GetAiModelProvidersProviderModelCard)[vs[1].(int)]
+	}).(GetAiModelProvidersProviderModelCardOutput)
+}
+
+type GetDomainsDomain struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. CA certificate identifier.
+	CaCertIdentifier string `pulumi:"caCertIdentifier"`
+	// tls cert identifier.
+	CertIdentifier string `pulumi:"certIdentifier"`
+	// client CA certificate.
+	ClientCaCert string `pulumi:"clientCaCert"`
+	// domain id.
+	DomainId string `pulumi:"domainId"`
+	// domain name.
+	DomainName string `pulumi:"domainName"`
+	// domain scope.
+	DomainScope string `pulumi:"domainScope"`
+	// Set the HTTPS protocol type and whether to enable forced HTTPS redirection.
+	ForceHttps bool `pulumi:"forceHttps"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether to enable http2 settings.
+	Http2Option string `pulumi:"http2Option"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Whether to enable mTLS mutual authentication.
+	MTlsEnabled bool `pulumi:"mTlsEnabled"`
+	// Protocol, HTTP/HTTPS.
+	Protocol string `pulumi:"protocol"`
+	// The ID of the resource group
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. TlsCipherSuitesConfig.
+	TlsCipherSuitesConfigs []GetDomainsDomainTlsCipherSuitesConfig `pulumi:"tlsCipherSuitesConfigs"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The maximum version of the TLS protocol.
+	TlsMax string `pulumi:"tlsMax"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The minimum version of the TLS protocol.
+	TlsMin string `pulumi:"tlsMin"`
+}
+
+// GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
+// You can construct a concrete instance of `GetDomainsDomainInput` via:
+//
+//	GetDomainsDomainArgs{...}
+type GetDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainOutput() GetDomainsDomainOutput
+	ToGetDomainsDomainOutputWithContext(context.Context) GetDomainsDomainOutput
+}
+
+type GetDomainsDomainArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. CA certificate identifier.
+	CaCertIdentifier pulumi.StringInput `pulumi:"caCertIdentifier"`
+	// tls cert identifier.
+	CertIdentifier pulumi.StringInput `pulumi:"certIdentifier"`
+	// client CA certificate.
+	ClientCaCert pulumi.StringInput `pulumi:"clientCaCert"`
+	// domain id.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
+	// domain name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// domain scope.
+	DomainScope pulumi.StringInput `pulumi:"domainScope"`
+	// Set the HTTPS protocol type and whether to enable forced HTTPS redirection.
+	ForceHttps pulumi.BoolInput `pulumi:"forceHttps"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether to enable http2 settings.
+	Http2Option pulumi.StringInput `pulumi:"http2Option"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to enable mTLS mutual authentication.
+	MTlsEnabled pulumi.BoolInput `pulumi:"mTlsEnabled"`
+	// Protocol, HTTP/HTTPS.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. TlsCipherSuitesConfig.
+	TlsCipherSuitesConfigs GetDomainsDomainTlsCipherSuitesConfigArrayInput `pulumi:"tlsCipherSuitesConfigs"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The maximum version of the TLS protocol.
+	TlsMax pulumi.StringInput `pulumi:"tlsMax"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The minimum version of the TLS protocol.
+	TlsMin pulumi.StringInput `pulumi:"tlsMin"`
+}
+
+func (GetDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return i.ToGetDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
+}
+
+// GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
+//
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+type GetDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput
+	ToGetDomainsDomainArrayOutputWithContext(context.Context) GetDomainsDomainArrayOutput
+}
+
+type GetDomainsDomainArray []GetDomainsDomainInput
+
+func (GetDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return i.ToGetDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
+}
+
+type GetDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return o
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. CA certificate identifier.
+func (o GetDomainsDomainOutput) CaCertIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.CaCertIdentifier }).(pulumi.StringOutput)
+}
+
+// tls cert identifier.
+func (o GetDomainsDomainOutput) CertIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.CertIdentifier }).(pulumi.StringOutput)
+}
+
+// client CA certificate.
+func (o GetDomainsDomainOutput) ClientCaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.ClientCaCert }).(pulumi.StringOutput)
+}
+
+// domain id.
+func (o GetDomainsDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// domain name.
+func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// domain scope.
+func (o GetDomainsDomainOutput) DomainScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainScope }).(pulumi.StringOutput)
+}
+
+// Set the HTTPS protocol type and whether to enable forced HTTPS redirection.
+func (o GetDomainsDomainOutput) ForceHttps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.ForceHttps }).(pulumi.BoolOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Whether to enable http2 settings.
+func (o GetDomainsDomainOutput) Http2Option() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Http2Option }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to enable mTLS mutual authentication.
+func (o GetDomainsDomainOutput) MTlsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.MTlsEnabled }).(pulumi.BoolOutput)
+}
+
+// Protocol, HTTP/HTTPS.
+func (o GetDomainsDomainOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group
+func (o GetDomainsDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. TlsCipherSuitesConfig.
+func (o GetDomainsDomainOutput) TlsCipherSuitesConfigs() GetDomainsDomainTlsCipherSuitesConfigArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []GetDomainsDomainTlsCipherSuitesConfig { return v.TlsCipherSuitesConfigs }).(GetDomainsDomainTlsCipherSuitesConfigArrayOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The maximum version of the TLS protocol.
+func (o GetDomainsDomainOutput) TlsMax() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.TlsMax }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The minimum version of the TLS protocol.
+func (o GetDomainsDomainOutput) TlsMin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.TlsMin }).(pulumi.StringOutput)
+}
+
+type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
+		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
+	}).(GetDomainsDomainOutput)
+}
+
+type GetDomainsDomainTlsCipherSuitesConfig struct {
+	// config type, Default or Custom.
+	ConfigType string `pulumi:"configType"`
+	// tls Cipher Suite.
+	TlsCipherSuites []GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite `pulumi:"tlsCipherSuites"`
+}
+
+// GetDomainsDomainTlsCipherSuitesConfigInput is an input type that accepts GetDomainsDomainTlsCipherSuitesConfigArgs and GetDomainsDomainTlsCipherSuitesConfigOutput values.
+// You can construct a concrete instance of `GetDomainsDomainTlsCipherSuitesConfigInput` via:
+//
+//	GetDomainsDomainTlsCipherSuitesConfigArgs{...}
+type GetDomainsDomainTlsCipherSuitesConfigInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainTlsCipherSuitesConfigOutput() GetDomainsDomainTlsCipherSuitesConfigOutput
+	ToGetDomainsDomainTlsCipherSuitesConfigOutputWithContext(context.Context) GetDomainsDomainTlsCipherSuitesConfigOutput
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigArgs struct {
+	// config type, Default or Custom.
+	ConfigType pulumi.StringInput `pulumi:"configType"`
+	// tls Cipher Suite.
+	TlsCipherSuites GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput `pulumi:"tlsCipherSuites"`
+}
+
+func (GetDomainsDomainTlsCipherSuitesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigArgs) ToGetDomainsDomainTlsCipherSuitesConfigOutput() GetDomainsDomainTlsCipherSuitesConfigOutput {
+	return i.ToGetDomainsDomainTlsCipherSuitesConfigOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigArgs) ToGetDomainsDomainTlsCipherSuitesConfigOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainTlsCipherSuitesConfigOutput)
+}
+
+// GetDomainsDomainTlsCipherSuitesConfigArrayInput is an input type that accepts GetDomainsDomainTlsCipherSuitesConfigArray and GetDomainsDomainTlsCipherSuitesConfigArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainTlsCipherSuitesConfigArrayInput` via:
+//
+//	GetDomainsDomainTlsCipherSuitesConfigArray{ GetDomainsDomainTlsCipherSuitesConfigArgs{...} }
+type GetDomainsDomainTlsCipherSuitesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainTlsCipherSuitesConfigArrayOutput() GetDomainsDomainTlsCipherSuitesConfigArrayOutput
+	ToGetDomainsDomainTlsCipherSuitesConfigArrayOutputWithContext(context.Context) GetDomainsDomainTlsCipherSuitesConfigArrayOutput
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigArray []GetDomainsDomainTlsCipherSuitesConfigInput
+
+func (GetDomainsDomainTlsCipherSuitesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigArray) ToGetDomainsDomainTlsCipherSuitesConfigArrayOutput() GetDomainsDomainTlsCipherSuitesConfigArrayOutput {
+	return i.ToGetDomainsDomainTlsCipherSuitesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigArray) ToGetDomainsDomainTlsCipherSuitesConfigArrayOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainTlsCipherSuitesConfigArrayOutput)
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainTlsCipherSuitesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigOutput) ToGetDomainsDomainTlsCipherSuitesConfigOutput() GetDomainsDomainTlsCipherSuitesConfigOutput {
+	return o
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigOutput) ToGetDomainsDomainTlsCipherSuitesConfigOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigOutput {
+	return o
+}
+
+// config type, Default or Custom.
+func (o GetDomainsDomainTlsCipherSuitesConfigOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainTlsCipherSuitesConfig) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// tls Cipher Suite.
+func (o GetDomainsDomainTlsCipherSuitesConfigOutput) TlsCipherSuites() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomainTlsCipherSuitesConfig) []GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite {
+		return v.TlsCipherSuites
+	}).(GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput)
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainTlsCipherSuitesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainTlsCipherSuitesConfig)(nil)).Elem()
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigArrayOutput) ToGetDomainsDomainTlsCipherSuitesConfigArrayOutput() GetDomainsDomainTlsCipherSuitesConfigArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigArrayOutput) ToGetDomainsDomainTlsCipherSuitesConfigArrayOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainTlsCipherSuitesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomainTlsCipherSuitesConfig {
+		return vs[0].([]GetDomainsDomainTlsCipherSuitesConfig)[vs[1].(int)]
+	}).(GetDomainsDomainTlsCipherSuitesConfigOutput)
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite struct {
+	// cipher suite name.
+	Name string `pulumi:"name"`
+	// support versions.
+	SupportVersions []string `pulumi:"supportVersions"`
+}
+
+// GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteInput is an input type that accepts GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs and GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput values.
+// You can construct a concrete instance of `GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteInput` via:
+//
+//	GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs{...}
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput
+	ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(context.Context) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs struct {
+	// cipher suite name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// support versions.
+	SupportVersions pulumi.StringArrayInput `pulumi:"supportVersions"`
+}
+
+func (GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return i.ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput)
+}
+
+// GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput is an input type that accepts GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray and GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput` via:
+//
+//	GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray{ GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs{...} }
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput
+	ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(context.Context) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray []GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteInput
+
+func (GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return i.ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput)
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return o
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return o
+}
+
+// cipher suite name.
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// support versions.
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput) SupportVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite) []string { return v.SupportVersions }).(pulumi.StringArrayOutput)
+}
+
+type GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite)(nil)).Elem()
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput() GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) ToGetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutputWithContext(ctx context.Context) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite {
+		return vs[0].([]GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite)[vs[1].(int)]
+	}).(GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput)
+}
+
+type GetGatewaysGateway struct {
+	// The source from which the gateway was created.
+	CreateFrom string `pulumi:"createFrom"`
+	// Creation timestamp.
+	CreateTime int `pulumi:"createTime"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The list of environments associated with the gateway.
+	Environments []GetGatewaysGatewayEnvironment `pulumi:"environments"`
+	// Timestamp indicating when the subscription expires.
+	ExpireTime int `pulumi:"expireTime"`
+	// Gateway instance edition:.
+	GatewayEdition string `pulumi:"gatewayEdition"`
+	// Cloud-native API gateway ID.
+	GatewayId string `pulumi:"gatewayId"`
+	// The name of the gateway.
+	GatewayName string `pulumi:"gatewayName"`
+	// The gateway type.
+	GatewayType string `pulumi:"gatewayType"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The list of Gateway ingress addresses.
+	LoadBalancers []GetGatewaysGatewayLoadBalancer `pulumi:"loadBalancers"`
+	// Payment type:.
+	PaymentType string `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Security group of the gateway.
+	SecurityGroups []GetGatewaysGatewaySecurityGroup `pulumi:"securityGroups"`
+	// Gateway specification:.
+	Spec string `pulumi:"spec"`
+	// Gateway status:.
+	Status string `pulumi:"status"`
+	// List of second-level domain names.
+	SubDomainInfos []GetGatewaysGatewaySubDomainInfo `pulumi:"subDomainInfos"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The target version of the gateway instance.
+	TargetVersion string `pulumi:"targetVersion"`
+	// The timestamp when the resource was last updated.
+	UpdateTime int `pulumi:"updateTime"`
+	// The current running version of the gateway instance.
+	Version string `pulumi:"version"`
+	// The Virtual Private Cloud (VPC) associated with the gateway.
+	Vpcs []GetGatewaysGatewayVpc `pulumi:"vpcs"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The vSwitch associated with the gateway.
+	Vswitches []GetGatewaysGatewayVswitch `pulumi:"vswitches"`
+	// The list of zones associated with the gateway.
+	Zones []GetGatewaysGatewayZone `pulumi:"zones"`
+}
+
+// GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayInput` via:
+//
+//	GetGatewaysGatewayArgs{...}
+type GetGatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput
+	ToGetGatewaysGatewayOutputWithContext(context.Context) GetGatewaysGatewayOutput
+}
+
+type GetGatewaysGatewayArgs struct {
+	// The source from which the gateway was created.
+	CreateFrom pulumi.StringInput `pulumi:"createFrom"`
+	// Creation timestamp.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The list of environments associated with the gateway.
+	Environments GetGatewaysGatewayEnvironmentArrayInput `pulumi:"environments"`
+	// Timestamp indicating when the subscription expires.
+	ExpireTime pulumi.IntInput `pulumi:"expireTime"`
+	// Gateway instance edition:.
+	GatewayEdition pulumi.StringInput `pulumi:"gatewayEdition"`
+	// Cloud-native API gateway ID.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The name of the gateway.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// The gateway type.
+	GatewayType pulumi.StringInput `pulumi:"gatewayType"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The list of Gateway ingress addresses.
+	LoadBalancers GetGatewaysGatewayLoadBalancerArrayInput `pulumi:"loadBalancers"`
+	// Payment type:.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Security group of the gateway.
+	SecurityGroups GetGatewaysGatewaySecurityGroupArrayInput `pulumi:"securityGroups"`
+	// Gateway specification:.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// Gateway status:.
+	Status pulumi.StringInput `pulumi:"status"`
+	// List of second-level domain names.
+	SubDomainInfos GetGatewaysGatewaySubDomainInfoArrayInput `pulumi:"subDomainInfos"`
+	// The tag of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The target version of the gateway instance.
+	TargetVersion pulumi.StringInput `pulumi:"targetVersion"`
+	// The timestamp when the resource was last updated.
+	UpdateTime pulumi.IntInput `pulumi:"updateTime"`
+	// The current running version of the gateway instance.
+	Version pulumi.StringInput `pulumi:"version"`
+	// The Virtual Private Cloud (VPC) associated with the gateway.
+	Vpcs GetGatewaysGatewayVpcArrayInput `pulumi:"vpcs"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The vSwitch associated with the gateway.
+	Vswitches GetGatewaysGatewayVswitchArrayInput `pulumi:"vswitches"`
+	// The list of zones associated with the gateway.
+	Zones GetGatewaysGatewayZoneArrayInput `pulumi:"zones"`
+}
+
+func (GetGatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput {
+	return i.ToGetGatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayOutput)
+}
+
+// GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
+//
+//	GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
+type GetGatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput
+	ToGetGatewaysGatewayArrayOutputWithContext(context.Context) GetGatewaysGatewayArrayOutput
+}
+
+type GetGatewaysGatewayArray []GetGatewaysGatewayInput
+
+func (GetGatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput {
+	return i.ToGetGatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
+}
+
+type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
+	return o
+}
+
+// The source from which the gateway was created.
+func (o GetGatewaysGatewayOutput) CreateFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.CreateFrom }).(pulumi.StringOutput)
+}
+
+// Creation timestamp.
+func (o GetGatewaysGatewayOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The list of environments associated with the gateway.
+func (o GetGatewaysGatewayOutput) Environments() GetGatewaysGatewayEnvironmentArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewayEnvironment { return v.Environments }).(GetGatewaysGatewayEnvironmentArrayOutput)
+}
+
+// Timestamp indicating when the subscription expires.
+func (o GetGatewaysGatewayOutput) ExpireTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) int { return v.ExpireTime }).(pulumi.IntOutput)
+}
+
+// Gateway instance edition:.
+func (o GetGatewaysGatewayOutput) GatewayEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayEdition }).(pulumi.StringOutput)
+}
+
+// Cloud-native API gateway ID.
+func (o GetGatewaysGatewayOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The name of the gateway.
+func (o GetGatewaysGatewayOutput) GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayName }).(pulumi.StringOutput)
+}
+
+// The gateway type.
+func (o GetGatewaysGatewayOutput) GatewayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetGatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of Gateway ingress addresses.
+func (o GetGatewaysGatewayOutput) LoadBalancers() GetGatewaysGatewayLoadBalancerArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewayLoadBalancer { return v.LoadBalancers }).(GetGatewaysGatewayLoadBalancerArrayOutput)
+}
+
+// Payment type:.
+func (o GetGatewaysGatewayOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetGatewaysGatewayOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Security group of the gateway.
+func (o GetGatewaysGatewayOutput) SecurityGroups() GetGatewaysGatewaySecurityGroupArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewaySecurityGroup { return v.SecurityGroups }).(GetGatewaysGatewaySecurityGroupArrayOutput)
+}
+
+// Gateway specification:.
+func (o GetGatewaysGatewayOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+// Gateway status:.
+func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of second-level domain names.
+func (o GetGatewaysGatewayOutput) SubDomainInfos() GetGatewaysGatewaySubDomainInfoArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewaySubDomainInfo { return v.SubDomainInfos }).(GetGatewaysGatewaySubDomainInfoArrayOutput)
+}
+
+// The tag of the resource.
+func (o GetGatewaysGatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The target version of the gateway instance.
+func (o GetGatewaysGatewayOutput) TargetVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.TargetVersion }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was last updated.
+func (o GetGatewaysGatewayOutput) UpdateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) int { return v.UpdateTime }).(pulumi.IntOutput)
+}
+
+// The current running version of the gateway instance.
+func (o GetGatewaysGatewayOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The Virtual Private Cloud (VPC) associated with the gateway.
+func (o GetGatewaysGatewayOutput) Vpcs() GetGatewaysGatewayVpcArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewayVpc { return v.Vpcs }).(GetGatewaysGatewayVpcArrayOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The vSwitch associated with the gateway.
+func (o GetGatewaysGatewayOutput) Vswitches() GetGatewaysGatewayVswitchArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewayVswitch { return v.Vswitches }).(GetGatewaysGatewayVswitchArrayOutput)
+}
+
+// The list of zones associated with the gateway.
+func (o GetGatewaysGatewayOutput) Zones() GetGatewaysGatewayZoneArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewayZone { return v.Zones }).(GetGatewaysGatewayZoneArrayOutput)
+}
+
+type GetGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGateway {
+		return vs[0].([]GetGatewaysGateway)[vs[1].(int)]
+	}).(GetGatewaysGatewayOutput)
+}
+
+type GetGatewaysGatewayEnvironment struct {
+	// The alias of the environment.
+	Alias string `pulumi:"alias"`
+	// The ID of the environment.
+	EnvironmentId string `pulumi:"environmentId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name string `pulumi:"name"`
+}
+
+// GetGatewaysGatewayEnvironmentInput is an input type that accepts GetGatewaysGatewayEnvironmentArgs and GetGatewaysGatewayEnvironmentOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayEnvironmentInput` via:
+//
+//	GetGatewaysGatewayEnvironmentArgs{...}
+type GetGatewaysGatewayEnvironmentInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayEnvironmentOutput() GetGatewaysGatewayEnvironmentOutput
+	ToGetGatewaysGatewayEnvironmentOutputWithContext(context.Context) GetGatewaysGatewayEnvironmentOutput
+}
+
+type GetGatewaysGatewayEnvironmentArgs struct {
+	// The alias of the environment.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The ID of the environment.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGatewaysGatewayEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayEnvironment)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayEnvironmentArgs) ToGetGatewaysGatewayEnvironmentOutput() GetGatewaysGatewayEnvironmentOutput {
+	return i.ToGetGatewaysGatewayEnvironmentOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayEnvironmentArgs) ToGetGatewaysGatewayEnvironmentOutputWithContext(ctx context.Context) GetGatewaysGatewayEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayEnvironmentOutput)
+}
+
+// GetGatewaysGatewayEnvironmentArrayInput is an input type that accepts GetGatewaysGatewayEnvironmentArray and GetGatewaysGatewayEnvironmentArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayEnvironmentArrayInput` via:
+//
+//	GetGatewaysGatewayEnvironmentArray{ GetGatewaysGatewayEnvironmentArgs{...} }
+type GetGatewaysGatewayEnvironmentArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayEnvironmentArrayOutput() GetGatewaysGatewayEnvironmentArrayOutput
+	ToGetGatewaysGatewayEnvironmentArrayOutputWithContext(context.Context) GetGatewaysGatewayEnvironmentArrayOutput
+}
+
+type GetGatewaysGatewayEnvironmentArray []GetGatewaysGatewayEnvironmentInput
+
+func (GetGatewaysGatewayEnvironmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayEnvironment)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayEnvironmentArray) ToGetGatewaysGatewayEnvironmentArrayOutput() GetGatewaysGatewayEnvironmentArrayOutput {
+	return i.ToGetGatewaysGatewayEnvironmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayEnvironmentArray) ToGetGatewaysGatewayEnvironmentArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayEnvironmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayEnvironmentArrayOutput)
+}
+
+type GetGatewaysGatewayEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayEnvironment)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayEnvironmentOutput) ToGetGatewaysGatewayEnvironmentOutput() GetGatewaysGatewayEnvironmentOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayEnvironmentOutput) ToGetGatewaysGatewayEnvironmentOutputWithContext(ctx context.Context) GetGatewaysGatewayEnvironmentOutput {
+	return o
+}
+
+// The alias of the environment.
+func (o GetGatewaysGatewayEnvironmentOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayEnvironment) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The ID of the environment.
+func (o GetGatewaysGatewayEnvironmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayEnvironment) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+func (o GetGatewaysGatewayEnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayEnvironment) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayEnvironmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayEnvironmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayEnvironment)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayEnvironmentArrayOutput) ToGetGatewaysGatewayEnvironmentArrayOutput() GetGatewaysGatewayEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayEnvironmentArrayOutput) ToGetGatewaysGatewayEnvironmentArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayEnvironmentArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayEnvironmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewayEnvironment {
+		return vs[0].([]GetGatewaysGatewayEnvironment)[vs[1].(int)]
+	}).(GetGatewaysGatewayEnvironmentOutput)
+}
+
+type GetGatewaysGatewayLoadBalancer struct {
+	// The address of the load balancer for the gateway.
+	Address string `pulumi:"address"`
+	// IP version:.
+	AddressIpVersion string `pulumi:"addressIpVersion"`
+	// Load balancer address type:.
+	AddressType string `pulumi:"addressType"`
+	// Indicates whether this is the default ingress address of the gateway.
+	GatewayDefault bool `pulumi:"gatewayDefault"`
+	// The list of IPv4 addresses.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// The list of IPv6 addresses.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+	// The ID of the load balancer associated with the gateway.
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// Load balancing provisioning mode for the gateway:.
+	Mode string `pulumi:"mode"`
+	// The list of listening ports.
+	Ports []GetGatewaysGatewayLoadBalancerPort `pulumi:"ports"`
+	// Gateway status:.
+	Status string `pulumi:"status"`
+	// Load balancer type:.
+	Type string `pulumi:"type"`
+}
+
+// GetGatewaysGatewayLoadBalancerInput is an input type that accepts GetGatewaysGatewayLoadBalancerArgs and GetGatewaysGatewayLoadBalancerOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayLoadBalancerInput` via:
+//
+//	GetGatewaysGatewayLoadBalancerArgs{...}
+type GetGatewaysGatewayLoadBalancerInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayLoadBalancerOutput() GetGatewaysGatewayLoadBalancerOutput
+	ToGetGatewaysGatewayLoadBalancerOutputWithContext(context.Context) GetGatewaysGatewayLoadBalancerOutput
+}
+
+type GetGatewaysGatewayLoadBalancerArgs struct {
+	// The address of the load balancer for the gateway.
+	Address pulumi.StringInput `pulumi:"address"`
+	// IP version:.
+	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
+	// Load balancer address type:.
+	AddressType pulumi.StringInput `pulumi:"addressType"`
+	// Indicates whether this is the default ingress address of the gateway.
+	GatewayDefault pulumi.BoolInput `pulumi:"gatewayDefault"`
+	// The list of IPv4 addresses.
+	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
+	// The list of IPv6 addresses.
+	Ipv6Addresses pulumi.StringArrayInput `pulumi:"ipv6Addresses"`
+	// The ID of the load balancer associated with the gateway.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// Load balancing provisioning mode for the gateway:.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The list of listening ports.
+	Ports GetGatewaysGatewayLoadBalancerPortArrayInput `pulumi:"ports"`
+	// Gateway status:.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Load balancer type:.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetGatewaysGatewayLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayLoadBalancer)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayLoadBalancerArgs) ToGetGatewaysGatewayLoadBalancerOutput() GetGatewaysGatewayLoadBalancerOutput {
+	return i.ToGetGatewaysGatewayLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayLoadBalancerArgs) ToGetGatewaysGatewayLoadBalancerOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayLoadBalancerOutput)
+}
+
+// GetGatewaysGatewayLoadBalancerArrayInput is an input type that accepts GetGatewaysGatewayLoadBalancerArray and GetGatewaysGatewayLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayLoadBalancerArrayInput` via:
+//
+//	GetGatewaysGatewayLoadBalancerArray{ GetGatewaysGatewayLoadBalancerArgs{...} }
+type GetGatewaysGatewayLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayLoadBalancerArrayOutput() GetGatewaysGatewayLoadBalancerArrayOutput
+	ToGetGatewaysGatewayLoadBalancerArrayOutputWithContext(context.Context) GetGatewaysGatewayLoadBalancerArrayOutput
+}
+
+type GetGatewaysGatewayLoadBalancerArray []GetGatewaysGatewayLoadBalancerInput
+
+func (GetGatewaysGatewayLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayLoadBalancer)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayLoadBalancerArray) ToGetGatewaysGatewayLoadBalancerArrayOutput() GetGatewaysGatewayLoadBalancerArrayOutput {
+	return i.ToGetGatewaysGatewayLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayLoadBalancerArray) ToGetGatewaysGatewayLoadBalancerArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayLoadBalancerArrayOutput)
+}
+
+type GetGatewaysGatewayLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayLoadBalancer)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayLoadBalancerOutput) ToGetGatewaysGatewayLoadBalancerOutput() GetGatewaysGatewayLoadBalancerOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayLoadBalancerOutput) ToGetGatewaysGatewayLoadBalancerOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerOutput {
+	return o
+}
+
+// The address of the load balancer for the gateway.
+func (o GetGatewaysGatewayLoadBalancerOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// IP version:.
+func (o GetGatewaysGatewayLoadBalancerOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.AddressIpVersion }).(pulumi.StringOutput)
+}
+
+// Load balancer address type:.
+func (o GetGatewaysGatewayLoadBalancerOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.AddressType }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is the default ingress address of the gateway.
+func (o GetGatewaysGatewayLoadBalancerOutput) GatewayDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) bool { return v.GatewayDefault }).(pulumi.BoolOutput)
+}
+
+// The list of IPv4 addresses.
+func (o GetGatewaysGatewayLoadBalancerOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The list of IPv6 addresses.
+func (o GetGatewaysGatewayLoadBalancerOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the load balancer associated with the gateway.
+func (o GetGatewaysGatewayLoadBalancerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Load balancing provisioning mode for the gateway:.
+func (o GetGatewaysGatewayLoadBalancerOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The list of listening ports.
+func (o GetGatewaysGatewayLoadBalancerOutput) Ports() GetGatewaysGatewayLoadBalancerPortArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) []GetGatewaysGatewayLoadBalancerPort { return v.Ports }).(GetGatewaysGatewayLoadBalancerPortArrayOutput)
+}
+
+// Gateway status:.
+func (o GetGatewaysGatewayLoadBalancerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Load balancer type:.
+func (o GetGatewaysGatewayLoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayLoadBalancer)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayLoadBalancerArrayOutput) ToGetGatewaysGatewayLoadBalancerArrayOutput() GetGatewaysGatewayLoadBalancerArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayLoadBalancerArrayOutput) ToGetGatewaysGatewayLoadBalancerArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayLoadBalancerArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewayLoadBalancer {
+		return vs[0].([]GetGatewaysGatewayLoadBalancer)[vs[1].(int)]
+	}).(GetGatewaysGatewayLoadBalancerOutput)
+}
+
+type GetGatewaysGatewayLoadBalancerPort struct {
+	// The port number of the load balancer listener.
+	Port int `pulumi:"port"`
+	// The protocol used by the secondary domain name.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetGatewaysGatewayLoadBalancerPortInput is an input type that accepts GetGatewaysGatewayLoadBalancerPortArgs and GetGatewaysGatewayLoadBalancerPortOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayLoadBalancerPortInput` via:
+//
+//	GetGatewaysGatewayLoadBalancerPortArgs{...}
+type GetGatewaysGatewayLoadBalancerPortInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayLoadBalancerPortOutput() GetGatewaysGatewayLoadBalancerPortOutput
+	ToGetGatewaysGatewayLoadBalancerPortOutputWithContext(context.Context) GetGatewaysGatewayLoadBalancerPortOutput
+}
+
+type GetGatewaysGatewayLoadBalancerPortArgs struct {
+	// The port number of the load balancer listener.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The protocol used by the secondary domain name.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetGatewaysGatewayLoadBalancerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayLoadBalancerPortArgs) ToGetGatewaysGatewayLoadBalancerPortOutput() GetGatewaysGatewayLoadBalancerPortOutput {
+	return i.ToGetGatewaysGatewayLoadBalancerPortOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayLoadBalancerPortArgs) ToGetGatewaysGatewayLoadBalancerPortOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayLoadBalancerPortOutput)
+}
+
+// GetGatewaysGatewayLoadBalancerPortArrayInput is an input type that accepts GetGatewaysGatewayLoadBalancerPortArray and GetGatewaysGatewayLoadBalancerPortArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayLoadBalancerPortArrayInput` via:
+//
+//	GetGatewaysGatewayLoadBalancerPortArray{ GetGatewaysGatewayLoadBalancerPortArgs{...} }
+type GetGatewaysGatewayLoadBalancerPortArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayLoadBalancerPortArrayOutput() GetGatewaysGatewayLoadBalancerPortArrayOutput
+	ToGetGatewaysGatewayLoadBalancerPortArrayOutputWithContext(context.Context) GetGatewaysGatewayLoadBalancerPortArrayOutput
+}
+
+type GetGatewaysGatewayLoadBalancerPortArray []GetGatewaysGatewayLoadBalancerPortInput
+
+func (GetGatewaysGatewayLoadBalancerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayLoadBalancerPortArray) ToGetGatewaysGatewayLoadBalancerPortArrayOutput() GetGatewaysGatewayLoadBalancerPortArrayOutput {
+	return i.ToGetGatewaysGatewayLoadBalancerPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayLoadBalancerPortArray) ToGetGatewaysGatewayLoadBalancerPortArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayLoadBalancerPortArrayOutput)
+}
+
+type GetGatewaysGatewayLoadBalancerPortOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayLoadBalancerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayLoadBalancerPortOutput) ToGetGatewaysGatewayLoadBalancerPortOutput() GetGatewaysGatewayLoadBalancerPortOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayLoadBalancerPortOutput) ToGetGatewaysGatewayLoadBalancerPortOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerPortOutput {
+	return o
+}
+
+// The port number of the load balancer listener.
+func (o GetGatewaysGatewayLoadBalancerPortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancerPort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The protocol used by the secondary domain name.
+func (o GetGatewaysGatewayLoadBalancerPortOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayLoadBalancerPort) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayLoadBalancerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayLoadBalancerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayLoadBalancerPort)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayLoadBalancerPortArrayOutput) ToGetGatewaysGatewayLoadBalancerPortArrayOutput() GetGatewaysGatewayLoadBalancerPortArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayLoadBalancerPortArrayOutput) ToGetGatewaysGatewayLoadBalancerPortArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayLoadBalancerPortArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayLoadBalancerPortArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayLoadBalancerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewayLoadBalancerPort {
+		return vs[0].([]GetGatewaysGatewayLoadBalancerPort)[vs[1].(int)]
+	}).(GetGatewaysGatewayLoadBalancerPortOutput)
+}
+
+type GetGatewaysGatewaySecurityGroup struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name string `pulumi:"name"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+}
+
+// GetGatewaysGatewaySecurityGroupInput is an input type that accepts GetGatewaysGatewaySecurityGroupArgs and GetGatewaysGatewaySecurityGroupOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewaySecurityGroupInput` via:
+//
+//	GetGatewaysGatewaySecurityGroupArgs{...}
+type GetGatewaysGatewaySecurityGroupInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewaySecurityGroupOutput() GetGatewaysGatewaySecurityGroupOutput
+	ToGetGatewaysGatewaySecurityGroupOutputWithContext(context.Context) GetGatewaysGatewaySecurityGroupOutput
+}
+
+type GetGatewaysGatewaySecurityGroupArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+}
+
+func (GetGatewaysGatewaySecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewaySecurityGroup)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewaySecurityGroupArgs) ToGetGatewaysGatewaySecurityGroupOutput() GetGatewaysGatewaySecurityGroupOutput {
+	return i.ToGetGatewaysGatewaySecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewaySecurityGroupArgs) ToGetGatewaysGatewaySecurityGroupOutputWithContext(ctx context.Context) GetGatewaysGatewaySecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewaySecurityGroupOutput)
+}
+
+// GetGatewaysGatewaySecurityGroupArrayInput is an input type that accepts GetGatewaysGatewaySecurityGroupArray and GetGatewaysGatewaySecurityGroupArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewaySecurityGroupArrayInput` via:
+//
+//	GetGatewaysGatewaySecurityGroupArray{ GetGatewaysGatewaySecurityGroupArgs{...} }
+type GetGatewaysGatewaySecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewaySecurityGroupArrayOutput() GetGatewaysGatewaySecurityGroupArrayOutput
+	ToGetGatewaysGatewaySecurityGroupArrayOutputWithContext(context.Context) GetGatewaysGatewaySecurityGroupArrayOutput
+}
+
+type GetGatewaysGatewaySecurityGroupArray []GetGatewaysGatewaySecurityGroupInput
+
+func (GetGatewaysGatewaySecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewaySecurityGroup)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewaySecurityGroupArray) ToGetGatewaysGatewaySecurityGroupArrayOutput() GetGatewaysGatewaySecurityGroupArrayOutput {
+	return i.ToGetGatewaysGatewaySecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewaySecurityGroupArray) ToGetGatewaysGatewaySecurityGroupArrayOutputWithContext(ctx context.Context) GetGatewaysGatewaySecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewaySecurityGroupArrayOutput)
+}
+
+type GetGatewaysGatewaySecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewaySecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewaySecurityGroup)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewaySecurityGroupOutput) ToGetGatewaysGatewaySecurityGroupOutput() GetGatewaysGatewaySecurityGroupOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySecurityGroupOutput) ToGetGatewaysGatewaySecurityGroupOutputWithContext(ctx context.Context) GetGatewaysGatewaySecurityGroupOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+func (o GetGatewaysGatewaySecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o GetGatewaysGatewaySecurityGroupOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySecurityGroup) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewaySecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewaySecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewaySecurityGroup)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewaySecurityGroupArrayOutput) ToGetGatewaysGatewaySecurityGroupArrayOutput() GetGatewaysGatewaySecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySecurityGroupArrayOutput) ToGetGatewaysGatewaySecurityGroupArrayOutputWithContext(ctx context.Context) GetGatewaysGatewaySecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySecurityGroupArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewaySecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewaySecurityGroup {
+		return vs[0].([]GetGatewaysGatewaySecurityGroup)[vs[1].(int)]
+	}).(GetGatewaysGatewaySecurityGroupOutput)
+}
+
+type GetGatewaysGatewaySubDomainInfo struct {
+	// The ID of the secondary domain name for the gateway.
+	DomainId string `pulumi:"domainId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name string `pulumi:"name"`
+	// Network type:.
+	NetworkType string `pulumi:"networkType"`
+	// The protocol used by the secondary domain name.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetGatewaysGatewaySubDomainInfoInput is an input type that accepts GetGatewaysGatewaySubDomainInfoArgs and GetGatewaysGatewaySubDomainInfoOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewaySubDomainInfoInput` via:
+//
+//	GetGatewaysGatewaySubDomainInfoArgs{...}
+type GetGatewaysGatewaySubDomainInfoInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewaySubDomainInfoOutput() GetGatewaysGatewaySubDomainInfoOutput
+	ToGetGatewaysGatewaySubDomainInfoOutputWithContext(context.Context) GetGatewaysGatewaySubDomainInfoOutput
+}
+
+type GetGatewaysGatewaySubDomainInfoArgs struct {
+	// The ID of the secondary domain name for the gateway.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network type:.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The protocol used by the secondary domain name.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetGatewaysGatewaySubDomainInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewaySubDomainInfo)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewaySubDomainInfoArgs) ToGetGatewaysGatewaySubDomainInfoOutput() GetGatewaysGatewaySubDomainInfoOutput {
+	return i.ToGetGatewaysGatewaySubDomainInfoOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewaySubDomainInfoArgs) ToGetGatewaysGatewaySubDomainInfoOutputWithContext(ctx context.Context) GetGatewaysGatewaySubDomainInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewaySubDomainInfoOutput)
+}
+
+// GetGatewaysGatewaySubDomainInfoArrayInput is an input type that accepts GetGatewaysGatewaySubDomainInfoArray and GetGatewaysGatewaySubDomainInfoArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewaySubDomainInfoArrayInput` via:
+//
+//	GetGatewaysGatewaySubDomainInfoArray{ GetGatewaysGatewaySubDomainInfoArgs{...} }
+type GetGatewaysGatewaySubDomainInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewaySubDomainInfoArrayOutput() GetGatewaysGatewaySubDomainInfoArrayOutput
+	ToGetGatewaysGatewaySubDomainInfoArrayOutputWithContext(context.Context) GetGatewaysGatewaySubDomainInfoArrayOutput
+}
+
+type GetGatewaysGatewaySubDomainInfoArray []GetGatewaysGatewaySubDomainInfoInput
+
+func (GetGatewaysGatewaySubDomainInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewaySubDomainInfo)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewaySubDomainInfoArray) ToGetGatewaysGatewaySubDomainInfoArrayOutput() GetGatewaysGatewaySubDomainInfoArrayOutput {
+	return i.ToGetGatewaysGatewaySubDomainInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewaySubDomainInfoArray) ToGetGatewaysGatewaySubDomainInfoArrayOutputWithContext(ctx context.Context) GetGatewaysGatewaySubDomainInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewaySubDomainInfoArrayOutput)
+}
+
+type GetGatewaysGatewaySubDomainInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewaySubDomainInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewaySubDomainInfo)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewaySubDomainInfoOutput) ToGetGatewaysGatewaySubDomainInfoOutput() GetGatewaysGatewaySubDomainInfoOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySubDomainInfoOutput) ToGetGatewaysGatewaySubDomainInfoOutputWithContext(ctx context.Context) GetGatewaysGatewaySubDomainInfoOutput {
+	return o
+}
+
+// The ID of the secondary domain name for the gateway.
+func (o GetGatewaysGatewaySubDomainInfoOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySubDomainInfo) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+func (o GetGatewaysGatewaySubDomainInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySubDomainInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network type:.
+func (o GetGatewaysGatewaySubDomainInfoOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySubDomainInfo) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The protocol used by the secondary domain name.
+func (o GetGatewaysGatewaySubDomainInfoOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySubDomainInfo) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewaySubDomainInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewaySubDomainInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewaySubDomainInfo)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewaySubDomainInfoArrayOutput) ToGetGatewaysGatewaySubDomainInfoArrayOutput() GetGatewaysGatewaySubDomainInfoArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySubDomainInfoArrayOutput) ToGetGatewaysGatewaySubDomainInfoArrayOutputWithContext(ctx context.Context) GetGatewaysGatewaySubDomainInfoArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySubDomainInfoArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewaySubDomainInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewaySubDomainInfo {
+		return vs[0].([]GetGatewaysGatewaySubDomainInfo)[vs[1].(int)]
+	}).(GetGatewaysGatewaySubDomainInfoOutput)
+}
+
+type GetGatewaysGatewayVpc struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name string `pulumi:"name"`
+	// The ID of the VPC network associated with the gateway.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetGatewaysGatewayVpcInput is an input type that accepts GetGatewaysGatewayVpcArgs and GetGatewaysGatewayVpcOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayVpcInput` via:
+//
+//	GetGatewaysGatewayVpcArgs{...}
+type GetGatewaysGatewayVpcInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayVpcOutput() GetGatewaysGatewayVpcOutput
+	ToGetGatewaysGatewayVpcOutputWithContext(context.Context) GetGatewaysGatewayVpcOutput
+}
+
+type GetGatewaysGatewayVpcArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the VPC network associated with the gateway.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetGatewaysGatewayVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayVpc)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayVpcArgs) ToGetGatewaysGatewayVpcOutput() GetGatewaysGatewayVpcOutput {
+	return i.ToGetGatewaysGatewayVpcOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayVpcArgs) ToGetGatewaysGatewayVpcOutputWithContext(ctx context.Context) GetGatewaysGatewayVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayVpcOutput)
+}
+
+// GetGatewaysGatewayVpcArrayInput is an input type that accepts GetGatewaysGatewayVpcArray and GetGatewaysGatewayVpcArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayVpcArrayInput` via:
+//
+//	GetGatewaysGatewayVpcArray{ GetGatewaysGatewayVpcArgs{...} }
+type GetGatewaysGatewayVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayVpcArrayOutput() GetGatewaysGatewayVpcArrayOutput
+	ToGetGatewaysGatewayVpcArrayOutputWithContext(context.Context) GetGatewaysGatewayVpcArrayOutput
+}
+
+type GetGatewaysGatewayVpcArray []GetGatewaysGatewayVpcInput
+
+func (GetGatewaysGatewayVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayVpc)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayVpcArray) ToGetGatewaysGatewayVpcArrayOutput() GetGatewaysGatewayVpcArrayOutput {
+	return i.ToGetGatewaysGatewayVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayVpcArray) ToGetGatewaysGatewayVpcArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayVpcArrayOutput)
+}
+
+type GetGatewaysGatewayVpcOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayVpc)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayVpcOutput) ToGetGatewaysGatewayVpcOutput() GetGatewaysGatewayVpcOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayVpcOutput) ToGetGatewaysGatewayVpcOutputWithContext(ctx context.Context) GetGatewaysGatewayVpcOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+func (o GetGatewaysGatewayVpcOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayVpc) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC network associated with the gateway.
+func (o GetGatewaysGatewayVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayVpc)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayVpcArrayOutput) ToGetGatewaysGatewayVpcArrayOutput() GetGatewaysGatewayVpcArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayVpcArrayOutput) ToGetGatewaysGatewayVpcArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayVpcArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewayVpc {
+		return vs[0].([]GetGatewaysGatewayVpc)[vs[1].(int)]
+	}).(GetGatewaysGatewayVpcOutput)
+}
+
+type GetGatewaysGatewayVswitch struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name string `pulumi:"name"`
+	// The ID of the virtual switch in the availability zone.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetGatewaysGatewayVswitchInput is an input type that accepts GetGatewaysGatewayVswitchArgs and GetGatewaysGatewayVswitchOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayVswitchInput` via:
+//
+//	GetGatewaysGatewayVswitchArgs{...}
+type GetGatewaysGatewayVswitchInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayVswitchOutput() GetGatewaysGatewayVswitchOutput
+	ToGetGatewaysGatewayVswitchOutputWithContext(context.Context) GetGatewaysGatewayVswitchOutput
+}
+
+type GetGatewaysGatewayVswitchArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the virtual switch in the availability zone.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetGatewaysGatewayVswitchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayVswitch)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayVswitchArgs) ToGetGatewaysGatewayVswitchOutput() GetGatewaysGatewayVswitchOutput {
+	return i.ToGetGatewaysGatewayVswitchOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayVswitchArgs) ToGetGatewaysGatewayVswitchOutputWithContext(ctx context.Context) GetGatewaysGatewayVswitchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayVswitchOutput)
+}
+
+// GetGatewaysGatewayVswitchArrayInput is an input type that accepts GetGatewaysGatewayVswitchArray and GetGatewaysGatewayVswitchArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayVswitchArrayInput` via:
+//
+//	GetGatewaysGatewayVswitchArray{ GetGatewaysGatewayVswitchArgs{...} }
+type GetGatewaysGatewayVswitchArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayVswitchArrayOutput() GetGatewaysGatewayVswitchArrayOutput
+	ToGetGatewaysGatewayVswitchArrayOutputWithContext(context.Context) GetGatewaysGatewayVswitchArrayOutput
+}
+
+type GetGatewaysGatewayVswitchArray []GetGatewaysGatewayVswitchInput
+
+func (GetGatewaysGatewayVswitchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayVswitch)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayVswitchArray) ToGetGatewaysGatewayVswitchArrayOutput() GetGatewaysGatewayVswitchArrayOutput {
+	return i.ToGetGatewaysGatewayVswitchArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayVswitchArray) ToGetGatewaysGatewayVswitchArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayVswitchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayVswitchArrayOutput)
+}
+
+type GetGatewaysGatewayVswitchOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayVswitchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayVswitch)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayVswitchOutput) ToGetGatewaysGatewayVswitchOutput() GetGatewaysGatewayVswitchOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayVswitchOutput) ToGetGatewaysGatewayVswitchOutputWithContext(ctx context.Context) GetGatewaysGatewayVswitchOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+func (o GetGatewaysGatewayVswitchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayVswitch) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual switch in the availability zone.
+func (o GetGatewaysGatewayVswitchOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayVswitch) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayVswitchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayVswitchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayVswitch)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayVswitchArrayOutput) ToGetGatewaysGatewayVswitchArrayOutput() GetGatewaysGatewayVswitchArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayVswitchArrayOutput) ToGetGatewaysGatewayVswitchArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayVswitchArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayVswitchArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayVswitchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewayVswitch {
+		return vs[0].([]GetGatewaysGatewayVswitch)[vs[1].(int)]
+	}).(GetGatewaysGatewayVswitchOutput)
+}
+
+type GetGatewaysGatewayZone struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name string `pulumi:"name"`
+	// The ID of the virtual switch in the availability zone.
+	VswitchId string `pulumi:"vswitchId"`
+	// The ID of the availability zone for the gateway.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetGatewaysGatewayZoneInput is an input type that accepts GetGatewaysGatewayZoneArgs and GetGatewaysGatewayZoneOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayZoneInput` via:
+//
+//	GetGatewaysGatewayZoneArgs{...}
+type GetGatewaysGatewayZoneInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayZoneOutput() GetGatewaysGatewayZoneOutput
+	ToGetGatewaysGatewayZoneOutputWithContext(context.Context) GetGatewaysGatewayZoneOutput
+}
+
+type GetGatewaysGatewayZoneArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the virtual switch in the availability zone.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The ID of the availability zone for the gateway.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetGatewaysGatewayZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayZone)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayZoneArgs) ToGetGatewaysGatewayZoneOutput() GetGatewaysGatewayZoneOutput {
+	return i.ToGetGatewaysGatewayZoneOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayZoneArgs) ToGetGatewaysGatewayZoneOutputWithContext(ctx context.Context) GetGatewaysGatewayZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayZoneOutput)
+}
+
+// GetGatewaysGatewayZoneArrayInput is an input type that accepts GetGatewaysGatewayZoneArray and GetGatewaysGatewayZoneArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayZoneArrayInput` via:
+//
+//	GetGatewaysGatewayZoneArray{ GetGatewaysGatewayZoneArgs{...} }
+type GetGatewaysGatewayZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayZoneArrayOutput() GetGatewaysGatewayZoneArrayOutput
+	ToGetGatewaysGatewayZoneArrayOutputWithContext(context.Context) GetGatewaysGatewayZoneArrayOutput
+}
+
+type GetGatewaysGatewayZoneArray []GetGatewaysGatewayZoneInput
+
+func (GetGatewaysGatewayZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayZone)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayZoneArray) ToGetGatewaysGatewayZoneArrayOutput() GetGatewaysGatewayZoneArrayOutput {
+	return i.ToGetGatewaysGatewayZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayZoneArray) ToGetGatewaysGatewayZoneArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayZoneArrayOutput)
+}
+
+type GetGatewaysGatewayZoneOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewayZone)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayZoneOutput) ToGetGatewaysGatewayZoneOutput() GetGatewaysGatewayZoneOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayZoneOutput) ToGetGatewaysGatewayZoneOutputWithContext(ctx context.Context) GetGatewaysGatewayZoneOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+func (o GetGatewaysGatewayZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayZone) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual switch in the availability zone.
+func (o GetGatewaysGatewayZoneOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayZone) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the availability zone for the gateway.
+func (o GetGatewaysGatewayZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewayZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewayZone)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayZoneArrayOutput) ToGetGatewaysGatewayZoneArrayOutput() GetGatewaysGatewayZoneArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayZoneArrayOutput) ToGetGatewaysGatewayZoneArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayZoneArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayZoneArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewayZone {
+		return vs[0].([]GetGatewaysGatewayZone)[vs[1].(int)]
+	}).(GetGatewaysGatewayZoneOutput)
 }
 
 type GetPluginClassesClass struct {
@@ -1166,13 +6127,2744 @@ func (o GetPluginClassesClassArrayOutput) Index(i pulumi.IntInput) GetPluginClas
 	}).(GetPluginClassesClassOutput)
 }
 
+type GetPluginsPlugin struct {
+	// The filter parameter for the gateway instance ID.
+	GatewayId string `pulumi:"gatewayId"`
+	// The gateway name.
+	GatewayName string `pulumi:"gatewayName"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The plugin class ID.
+	PluginClassId string `pulumi:"pluginClassId"`
+	// The filter parameter for the plugin class name.
+	PluginClassName string `pulumi:"pluginClassName"`
+	// The plugin ID.
+	PluginId string `pulumi:"pluginId"`
+}
+
+// GetPluginsPluginInput is an input type that accepts GetPluginsPluginArgs and GetPluginsPluginOutput values.
+// You can construct a concrete instance of `GetPluginsPluginInput` via:
+//
+//	GetPluginsPluginArgs{...}
+type GetPluginsPluginInput interface {
+	pulumi.Input
+
+	ToGetPluginsPluginOutput() GetPluginsPluginOutput
+	ToGetPluginsPluginOutputWithContext(context.Context) GetPluginsPluginOutput
+}
+
+type GetPluginsPluginArgs struct {
+	// The filter parameter for the gateway instance ID.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The gateway name.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The plugin class ID.
+	PluginClassId pulumi.StringInput `pulumi:"pluginClassId"`
+	// The filter parameter for the plugin class name.
+	PluginClassName pulumi.StringInput `pulumi:"pluginClassName"`
+	// The plugin ID.
+	PluginId pulumi.StringInput `pulumi:"pluginId"`
+}
+
+func (GetPluginsPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsPluginArgs) ToGetPluginsPluginOutput() GetPluginsPluginOutput {
+	return i.ToGetPluginsPluginOutputWithContext(context.Background())
+}
+
+func (i GetPluginsPluginArgs) ToGetPluginsPluginOutputWithContext(ctx context.Context) GetPluginsPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsPluginOutput)
+}
+
+// GetPluginsPluginArrayInput is an input type that accepts GetPluginsPluginArray and GetPluginsPluginArrayOutput values.
+// You can construct a concrete instance of `GetPluginsPluginArrayInput` via:
+//
+//	GetPluginsPluginArray{ GetPluginsPluginArgs{...} }
+type GetPluginsPluginArrayInput interface {
+	pulumi.Input
+
+	ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput
+	ToGetPluginsPluginArrayOutputWithContext(context.Context) GetPluginsPluginArrayOutput
+}
+
+type GetPluginsPluginArray []GetPluginsPluginInput
+
+func (GetPluginsPluginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsPluginArray) ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput {
+	return i.ToGetPluginsPluginArrayOutputWithContext(context.Background())
+}
+
+func (i GetPluginsPluginArray) ToGetPluginsPluginArrayOutputWithContext(ctx context.Context) GetPluginsPluginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsPluginArrayOutput)
+}
+
+type GetPluginsPluginOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsPluginOutput) ToGetPluginsPluginOutput() GetPluginsPluginOutput {
+	return o
+}
+
+func (o GetPluginsPluginOutput) ToGetPluginsPluginOutputWithContext(ctx context.Context) GetPluginsPluginOutput {
+	return o
+}
+
+// The filter parameter for the gateway instance ID.
+func (o GetPluginsPluginOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The gateway name.
+func (o GetPluginsPluginOutput) GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.GatewayName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetPluginsPluginOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The plugin class ID.
+func (o GetPluginsPluginOutput) PluginClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginClassId }).(pulumi.StringOutput)
+}
+
+// The filter parameter for the plugin class name.
+func (o GetPluginsPluginOutput) PluginClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginClassName }).(pulumi.StringOutput)
+}
+
+// The plugin ID.
+func (o GetPluginsPluginOutput) PluginId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginId }).(pulumi.StringOutput)
+}
+
+type GetPluginsPluginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsPluginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsPluginArrayOutput) ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsPluginArrayOutput) ToGetPluginsPluginArrayOutputWithContext(ctx context.Context) GetPluginsPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPluginsPlugin {
+		return vs[0].([]GetPluginsPlugin)[vs[1].(int)]
+	}).(GetPluginsPluginOutput)
+}
+
+type GetRoutesEnvironmentInfo struct {
+	// The alias of the environment name.
+	Alias string `pulumi:"alias"`
+	// The environment ID.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+	GatewayInfos []GetRoutesEnvironmentInfoGatewayInfo `pulumi:"gatewayInfos"`
+	// The name of the second-level domain name.
+	Name string `pulumi:"name"`
+	// The default second-level domain names of the environment. See `subDomains` below.
+	SubDomains []GetRoutesEnvironmentInfoSubDomain `pulumi:"subDomains"`
+}
+
+// GetRoutesEnvironmentInfoInput is an input type that accepts GetRoutesEnvironmentInfoArgs and GetRoutesEnvironmentInfoOutput values.
+// You can construct a concrete instance of `GetRoutesEnvironmentInfoInput` via:
+//
+//	GetRoutesEnvironmentInfoArgs{...}
+type GetRoutesEnvironmentInfoInput interface {
+	pulumi.Input
+
+	ToGetRoutesEnvironmentInfoOutput() GetRoutesEnvironmentInfoOutput
+	ToGetRoutesEnvironmentInfoOutputWithContext(context.Context) GetRoutesEnvironmentInfoOutput
+}
+
+type GetRoutesEnvironmentInfoArgs struct {
+	// The alias of the environment name.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The environment ID.
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+	GatewayInfos GetRoutesEnvironmentInfoGatewayInfoArrayInput `pulumi:"gatewayInfos"`
+	// The name of the second-level domain name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The default second-level domain names of the environment. See `subDomains` below.
+	SubDomains GetRoutesEnvironmentInfoSubDomainArrayInput `pulumi:"subDomains"`
+}
+
+func (GetRoutesEnvironmentInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesEnvironmentInfo)(nil)).Elem()
+}
+
+func (i GetRoutesEnvironmentInfoArgs) ToGetRoutesEnvironmentInfoOutput() GetRoutesEnvironmentInfoOutput {
+	return i.ToGetRoutesEnvironmentInfoOutputWithContext(context.Background())
+}
+
+func (i GetRoutesEnvironmentInfoArgs) ToGetRoutesEnvironmentInfoOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoOutput)
+}
+
+func (i GetRoutesEnvironmentInfoArgs) ToGetRoutesEnvironmentInfoPtrOutput() GetRoutesEnvironmentInfoPtrOutput {
+	return i.ToGetRoutesEnvironmentInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetRoutesEnvironmentInfoArgs) ToGetRoutesEnvironmentInfoPtrOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoOutput).ToGetRoutesEnvironmentInfoPtrOutputWithContext(ctx)
+}
+
+// GetRoutesEnvironmentInfoPtrInput is an input type that accepts GetRoutesEnvironmentInfoArgs, GetRoutesEnvironmentInfoPtr and GetRoutesEnvironmentInfoPtrOutput values.
+// You can construct a concrete instance of `GetRoutesEnvironmentInfoPtrInput` via:
+//
+//	        GetRoutesEnvironmentInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRoutesEnvironmentInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetRoutesEnvironmentInfoPtrOutput() GetRoutesEnvironmentInfoPtrOutput
+	ToGetRoutesEnvironmentInfoPtrOutputWithContext(context.Context) GetRoutesEnvironmentInfoPtrOutput
+}
+
+type getRoutesEnvironmentInfoPtrType GetRoutesEnvironmentInfoArgs
+
+func GetRoutesEnvironmentInfoPtr(v *GetRoutesEnvironmentInfoArgs) GetRoutesEnvironmentInfoPtrInput {
+	return (*getRoutesEnvironmentInfoPtrType)(v)
+}
+
+func (*getRoutesEnvironmentInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRoutesEnvironmentInfo)(nil)).Elem()
+}
+
+func (i *getRoutesEnvironmentInfoPtrType) ToGetRoutesEnvironmentInfoPtrOutput() GetRoutesEnvironmentInfoPtrOutput {
+	return i.ToGetRoutesEnvironmentInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getRoutesEnvironmentInfoPtrType) ToGetRoutesEnvironmentInfoPtrOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoPtrOutput)
+}
+
+type GetRoutesEnvironmentInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesEnvironmentInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesEnvironmentInfo)(nil)).Elem()
+}
+
+func (o GetRoutesEnvironmentInfoOutput) ToGetRoutesEnvironmentInfoOutput() GetRoutesEnvironmentInfoOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoOutput) ToGetRoutesEnvironmentInfoOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoOutput) ToGetRoutesEnvironmentInfoPtrOutput() GetRoutesEnvironmentInfoPtrOutput {
+	return o.ToGetRoutesEnvironmentInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetRoutesEnvironmentInfoOutput) ToGetRoutesEnvironmentInfoPtrOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRoutesEnvironmentInfo) *GetRoutesEnvironmentInfo {
+		return &v
+	}).(GetRoutesEnvironmentInfoPtrOutput)
+}
+
+// The alias of the environment name.
+func (o GetRoutesEnvironmentInfoOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfo) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The environment ID.
+func (o GetRoutesEnvironmentInfoOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfo) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+func (o GetRoutesEnvironmentInfoOutput) GatewayInfos() GetRoutesEnvironmentInfoGatewayInfoArrayOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfo) []GetRoutesEnvironmentInfoGatewayInfo { return v.GatewayInfos }).(GetRoutesEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+// The name of the second-level domain name.
+func (o GetRoutesEnvironmentInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The default second-level domain names of the environment. See `subDomains` below.
+func (o GetRoutesEnvironmentInfoOutput) SubDomains() GetRoutesEnvironmentInfoSubDomainArrayOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfo) []GetRoutesEnvironmentInfoSubDomain { return v.SubDomains }).(GetRoutesEnvironmentInfoSubDomainArrayOutput)
+}
+
+type GetRoutesEnvironmentInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesEnvironmentInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRoutesEnvironmentInfo)(nil)).Elem()
+}
+
+func (o GetRoutesEnvironmentInfoPtrOutput) ToGetRoutesEnvironmentInfoPtrOutput() GetRoutesEnvironmentInfoPtrOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoPtrOutput) ToGetRoutesEnvironmentInfoPtrOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoPtrOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoPtrOutput) Elem() GetRoutesEnvironmentInfoOutput {
+	return o.ApplyT(func(v *GetRoutesEnvironmentInfo) GetRoutesEnvironmentInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetRoutesEnvironmentInfo
+		return ret
+	}).(GetRoutesEnvironmentInfoOutput)
+}
+
+// The alias of the environment name.
+func (o GetRoutesEnvironmentInfoPtrOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRoutesEnvironmentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Alias
+	}).(pulumi.StringPtrOutput)
+}
+
+// The environment ID.
+func (o GetRoutesEnvironmentInfoPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRoutesEnvironmentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+func (o GetRoutesEnvironmentInfoPtrOutput) GatewayInfos() GetRoutesEnvironmentInfoGatewayInfoArrayOutput {
+	return o.ApplyT(func(v *GetRoutesEnvironmentInfo) []GetRoutesEnvironmentInfoGatewayInfo {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayInfos
+	}).(GetRoutesEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+// The name of the second-level domain name.
+func (o GetRoutesEnvironmentInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRoutesEnvironmentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default second-level domain names of the environment. See `subDomains` below.
+func (o GetRoutesEnvironmentInfoPtrOutput) SubDomains() GetRoutesEnvironmentInfoSubDomainArrayOutput {
+	return o.ApplyT(func(v *GetRoutesEnvironmentInfo) []GetRoutesEnvironmentInfoSubDomain {
+		if v == nil {
+			return nil
+		}
+		return v.SubDomains
+	}).(GetRoutesEnvironmentInfoSubDomainArrayOutput)
+}
+
+type GetRoutesEnvironmentInfoGatewayInfo struct {
+	// The edition of the gateway instance.
+	GatewayEdition string `pulumi:"gatewayEdition"`
+	// The ID of the Cloud-native API Gateway.
+	GatewayId string `pulumi:"gatewayId"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+}
+
+// GetRoutesEnvironmentInfoGatewayInfoInput is an input type that accepts GetRoutesEnvironmentInfoGatewayInfoArgs and GetRoutesEnvironmentInfoGatewayInfoOutput values.
+// You can construct a concrete instance of `GetRoutesEnvironmentInfoGatewayInfoInput` via:
+//
+//	GetRoutesEnvironmentInfoGatewayInfoArgs{...}
+type GetRoutesEnvironmentInfoGatewayInfoInput interface {
+	pulumi.Input
+
+	ToGetRoutesEnvironmentInfoGatewayInfoOutput() GetRoutesEnvironmentInfoGatewayInfoOutput
+	ToGetRoutesEnvironmentInfoGatewayInfoOutputWithContext(context.Context) GetRoutesEnvironmentInfoGatewayInfoOutput
+}
+
+type GetRoutesEnvironmentInfoGatewayInfoArgs struct {
+	// The edition of the gateway instance.
+	GatewayEdition pulumi.StringInput `pulumi:"gatewayEdition"`
+	// The ID of the Cloud-native API Gateway.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRoutesEnvironmentInfoGatewayInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (i GetRoutesEnvironmentInfoGatewayInfoArgs) ToGetRoutesEnvironmentInfoGatewayInfoOutput() GetRoutesEnvironmentInfoGatewayInfoOutput {
+	return i.ToGetRoutesEnvironmentInfoGatewayInfoOutputWithContext(context.Background())
+}
+
+func (i GetRoutesEnvironmentInfoGatewayInfoArgs) ToGetRoutesEnvironmentInfoGatewayInfoOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoGatewayInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoGatewayInfoOutput)
+}
+
+// GetRoutesEnvironmentInfoGatewayInfoArrayInput is an input type that accepts GetRoutesEnvironmentInfoGatewayInfoArray and GetRoutesEnvironmentInfoGatewayInfoArrayOutput values.
+// You can construct a concrete instance of `GetRoutesEnvironmentInfoGatewayInfoArrayInput` via:
+//
+//	GetRoutesEnvironmentInfoGatewayInfoArray{ GetRoutesEnvironmentInfoGatewayInfoArgs{...} }
+type GetRoutesEnvironmentInfoGatewayInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesEnvironmentInfoGatewayInfoArrayOutput() GetRoutesEnvironmentInfoGatewayInfoArrayOutput
+	ToGetRoutesEnvironmentInfoGatewayInfoArrayOutputWithContext(context.Context) GetRoutesEnvironmentInfoGatewayInfoArrayOutput
+}
+
+type GetRoutesEnvironmentInfoGatewayInfoArray []GetRoutesEnvironmentInfoGatewayInfoInput
+
+func (GetRoutesEnvironmentInfoGatewayInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (i GetRoutesEnvironmentInfoGatewayInfoArray) ToGetRoutesEnvironmentInfoGatewayInfoArrayOutput() GetRoutesEnvironmentInfoGatewayInfoArrayOutput {
+	return i.ToGetRoutesEnvironmentInfoGatewayInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesEnvironmentInfoGatewayInfoArray) ToGetRoutesEnvironmentInfoGatewayInfoArrayOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoGatewayInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+type GetRoutesEnvironmentInfoGatewayInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesEnvironmentInfoGatewayInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (o GetRoutesEnvironmentInfoGatewayInfoOutput) ToGetRoutesEnvironmentInfoGatewayInfoOutput() GetRoutesEnvironmentInfoGatewayInfoOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoGatewayInfoOutput) ToGetRoutesEnvironmentInfoGatewayInfoOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoGatewayInfoOutput {
+	return o
+}
+
+// The edition of the gateway instance.
+func (o GetRoutesEnvironmentInfoGatewayInfoOutput) GatewayEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoGatewayInfo) string { return v.GatewayEdition }).(pulumi.StringOutput)
+}
+
+// The ID of the Cloud-native API Gateway.
+func (o GetRoutesEnvironmentInfoGatewayInfoOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoGatewayInfo) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The parameter name.
+func (o GetRoutesEnvironmentInfoGatewayInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoGatewayInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRoutesEnvironmentInfoGatewayInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesEnvironmentInfoGatewayInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (o GetRoutesEnvironmentInfoGatewayInfoArrayOutput) ToGetRoutesEnvironmentInfoGatewayInfoArrayOutput() GetRoutesEnvironmentInfoGatewayInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoGatewayInfoArrayOutput) ToGetRoutesEnvironmentInfoGatewayInfoArrayOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoGatewayInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoGatewayInfoArrayOutput) Index(i pulumi.IntInput) GetRoutesEnvironmentInfoGatewayInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesEnvironmentInfoGatewayInfo {
+		return vs[0].([]GetRoutesEnvironmentInfoGatewayInfo)[vs[1].(int)]
+	}).(GetRoutesEnvironmentInfoGatewayInfoOutput)
+}
+
+type GetRoutesEnvironmentInfoSubDomain struct {
+	// The ID of the second-level domain name.
+	DomainId string `pulumi:"domainId"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The domain access type, such as Intranet or Internet.
+	NetworkType string `pulumi:"networkType"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetRoutesEnvironmentInfoSubDomainInput is an input type that accepts GetRoutesEnvironmentInfoSubDomainArgs and GetRoutesEnvironmentInfoSubDomainOutput values.
+// You can construct a concrete instance of `GetRoutesEnvironmentInfoSubDomainInput` via:
+//
+//	GetRoutesEnvironmentInfoSubDomainArgs{...}
+type GetRoutesEnvironmentInfoSubDomainInput interface {
+	pulumi.Input
+
+	ToGetRoutesEnvironmentInfoSubDomainOutput() GetRoutesEnvironmentInfoSubDomainOutput
+	ToGetRoutesEnvironmentInfoSubDomainOutputWithContext(context.Context) GetRoutesEnvironmentInfoSubDomainOutput
+}
+
+type GetRoutesEnvironmentInfoSubDomainArgs struct {
+	// The ID of the second-level domain name.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The domain access type, such as Intranet or Internet.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetRoutesEnvironmentInfoSubDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (i GetRoutesEnvironmentInfoSubDomainArgs) ToGetRoutesEnvironmentInfoSubDomainOutput() GetRoutesEnvironmentInfoSubDomainOutput {
+	return i.ToGetRoutesEnvironmentInfoSubDomainOutputWithContext(context.Background())
+}
+
+func (i GetRoutesEnvironmentInfoSubDomainArgs) ToGetRoutesEnvironmentInfoSubDomainOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoSubDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoSubDomainOutput)
+}
+
+// GetRoutesEnvironmentInfoSubDomainArrayInput is an input type that accepts GetRoutesEnvironmentInfoSubDomainArray and GetRoutesEnvironmentInfoSubDomainArrayOutput values.
+// You can construct a concrete instance of `GetRoutesEnvironmentInfoSubDomainArrayInput` via:
+//
+//	GetRoutesEnvironmentInfoSubDomainArray{ GetRoutesEnvironmentInfoSubDomainArgs{...} }
+type GetRoutesEnvironmentInfoSubDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesEnvironmentInfoSubDomainArrayOutput() GetRoutesEnvironmentInfoSubDomainArrayOutput
+	ToGetRoutesEnvironmentInfoSubDomainArrayOutputWithContext(context.Context) GetRoutesEnvironmentInfoSubDomainArrayOutput
+}
+
+type GetRoutesEnvironmentInfoSubDomainArray []GetRoutesEnvironmentInfoSubDomainInput
+
+func (GetRoutesEnvironmentInfoSubDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (i GetRoutesEnvironmentInfoSubDomainArray) ToGetRoutesEnvironmentInfoSubDomainArrayOutput() GetRoutesEnvironmentInfoSubDomainArrayOutput {
+	return i.ToGetRoutesEnvironmentInfoSubDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesEnvironmentInfoSubDomainArray) ToGetRoutesEnvironmentInfoSubDomainArrayOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoSubDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesEnvironmentInfoSubDomainArrayOutput)
+}
+
+type GetRoutesEnvironmentInfoSubDomainOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesEnvironmentInfoSubDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (o GetRoutesEnvironmentInfoSubDomainOutput) ToGetRoutesEnvironmentInfoSubDomainOutput() GetRoutesEnvironmentInfoSubDomainOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoSubDomainOutput) ToGetRoutesEnvironmentInfoSubDomainOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoSubDomainOutput {
+	return o
+}
+
+// The ID of the second-level domain name.
+func (o GetRoutesEnvironmentInfoSubDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoSubDomain) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The parameter name.
+func (o GetRoutesEnvironmentInfoSubDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoSubDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The domain access type, such as Intranet or Internet.
+func (o GetRoutesEnvironmentInfoSubDomainOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoSubDomain) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The domain protocol, such as HTTP or HTTPS.
+func (o GetRoutesEnvironmentInfoSubDomainOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesEnvironmentInfoSubDomain) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetRoutesEnvironmentInfoSubDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesEnvironmentInfoSubDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (o GetRoutesEnvironmentInfoSubDomainArrayOutput) ToGetRoutesEnvironmentInfoSubDomainArrayOutput() GetRoutesEnvironmentInfoSubDomainArrayOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoSubDomainArrayOutput) ToGetRoutesEnvironmentInfoSubDomainArrayOutputWithContext(ctx context.Context) GetRoutesEnvironmentInfoSubDomainArrayOutput {
+	return o
+}
+
+func (o GetRoutesEnvironmentInfoSubDomainArrayOutput) Index(i pulumi.IntInput) GetRoutesEnvironmentInfoSubDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesEnvironmentInfoSubDomain {
+		return vs[0].([]GetRoutesEnvironmentInfoSubDomain)[vs[1].(int)]
+	}).(GetRoutesEnvironmentInfoSubDomainOutput)
+}
+
+type GetRoutesRoute struct {
+	// Backend service.
+	Backends []GetRoutesRouteBackend `pulumi:"backends"`
+	// Indicates whether the route is a built-in route.
+	Builtin string `pulumi:"builtin"`
+	// The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the route.
+	Description string `pulumi:"description"`
+	// The domain name information.
+	DomainInfos []GetRoutesRouteDomainInfo `pulumi:"domainInfos"`
+	// The environment information of the route. See `environmentInfo` below.
+	EnvironmentInfos []GetRoutesRouteEnvironmentInfo `pulumi:"environmentInfos"`
+	// The publishing status of the route on each gateway.
+	GatewayStatus map[string]string `pulumi:"gatewayStatus"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The route match rule.
+	Matches []GetRoutesRouteMatch `pulumi:"matches"`
+	// The route ID.
+	RouteId string `pulumi:"routeId"`
+	// The name of the route.
+	RouteName string `pulumi:"routeName"`
+	// The deployment status of the route.
+	Status string `pulumi:"status"`
+	// The update time in Greenwich Mean Time (GMT).
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetRoutesRouteInput is an input type that accepts GetRoutesRouteArgs and GetRoutesRouteOutput values.
+// You can construct a concrete instance of `GetRoutesRouteInput` via:
+//
+//	GetRoutesRouteArgs{...}
+type GetRoutesRouteInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteOutput() GetRoutesRouteOutput
+	ToGetRoutesRouteOutputWithContext(context.Context) GetRoutesRouteOutput
+}
+
+type GetRoutesRouteArgs struct {
+	// Backend service.
+	Backends GetRoutesRouteBackendArrayInput `pulumi:"backends"`
+	// Indicates whether the route is a built-in route.
+	Builtin pulumi.StringInput `pulumi:"builtin"`
+	// The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the route.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The domain name information.
+	DomainInfos GetRoutesRouteDomainInfoArrayInput `pulumi:"domainInfos"`
+	// The environment information of the route. See `environmentInfo` below.
+	EnvironmentInfos GetRoutesRouteEnvironmentInfoArrayInput `pulumi:"environmentInfos"`
+	// The publishing status of the route on each gateway.
+	GatewayStatus pulumi.StringMapInput `pulumi:"gatewayStatus"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The route match rule.
+	Matches GetRoutesRouteMatchArrayInput `pulumi:"matches"`
+	// The route ID.
+	RouteId pulumi.StringInput `pulumi:"routeId"`
+	// The name of the route.
+	RouteName pulumi.StringInput `pulumi:"routeName"`
+	// The deployment status of the route.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The update time in Greenwich Mean Time (GMT).
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetRoutesRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRoute)(nil)).Elem()
+}
+
+func (i GetRoutesRouteArgs) ToGetRoutesRouteOutput() GetRoutesRouteOutput {
+	return i.ToGetRoutesRouteOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteArgs) ToGetRoutesRouteOutputWithContext(ctx context.Context) GetRoutesRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteOutput)
+}
+
+// GetRoutesRouteArrayInput is an input type that accepts GetRoutesRouteArray and GetRoutesRouteArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteArrayInput` via:
+//
+//	GetRoutesRouteArray{ GetRoutesRouteArgs{...} }
+type GetRoutesRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteArrayOutput() GetRoutesRouteArrayOutput
+	ToGetRoutesRouteArrayOutputWithContext(context.Context) GetRoutesRouteArrayOutput
+}
+
+type GetRoutesRouteArray []GetRoutesRouteInput
+
+func (GetRoutesRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRoute)(nil)).Elem()
+}
+
+func (i GetRoutesRouteArray) ToGetRoutesRouteArrayOutput() GetRoutesRouteArrayOutput {
+	return i.ToGetRoutesRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteArray) ToGetRoutesRouteArrayOutputWithContext(ctx context.Context) GetRoutesRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteArrayOutput)
+}
+
+type GetRoutesRouteOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRoute)(nil)).Elem()
+}
+
+func (o GetRoutesRouteOutput) ToGetRoutesRouteOutput() GetRoutesRouteOutput {
+	return o
+}
+
+func (o GetRoutesRouteOutput) ToGetRoutesRouteOutputWithContext(ctx context.Context) GetRoutesRouteOutput {
+	return o
+}
+
+// Backend service.
+func (o GetRoutesRouteOutput) Backends() GetRoutesRouteBackendArrayOutput {
+	return o.ApplyT(func(v GetRoutesRoute) []GetRoutesRouteBackend { return v.Backends }).(GetRoutesRouteBackendArrayOutput)
+}
+
+// Indicates whether the route is a built-in route.
+func (o GetRoutesRouteOutput) Builtin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.Builtin }).(pulumi.StringOutput)
+}
+
+// The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+func (o GetRoutesRouteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the route.
+func (o GetRoutesRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The domain name information.
+func (o GetRoutesRouteOutput) DomainInfos() GetRoutesRouteDomainInfoArrayOutput {
+	return o.ApplyT(func(v GetRoutesRoute) []GetRoutesRouteDomainInfo { return v.DomainInfos }).(GetRoutesRouteDomainInfoArrayOutput)
+}
+
+// The environment information of the route. See `environmentInfo` below.
+func (o GetRoutesRouteOutput) EnvironmentInfos() GetRoutesRouteEnvironmentInfoArrayOutput {
+	return o.ApplyT(func(v GetRoutesRoute) []GetRoutesRouteEnvironmentInfo { return v.EnvironmentInfos }).(GetRoutesRouteEnvironmentInfoArrayOutput)
+}
+
+// The publishing status of the route on each gateway.
+func (o GetRoutesRouteOutput) GatewayStatus() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRoutesRoute) map[string]string { return v.GatewayStatus }).(pulumi.StringMapOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetRoutesRouteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The route match rule.
+func (o GetRoutesRouteOutput) Matches() GetRoutesRouteMatchArrayOutput {
+	return o.ApplyT(func(v GetRoutesRoute) []GetRoutesRouteMatch { return v.Matches }).(GetRoutesRouteMatchArrayOutput)
+}
+
+// The route ID.
+func (o GetRoutesRouteOutput) RouteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.RouteId }).(pulumi.StringOutput)
+}
+
+// The name of the route.
+func (o GetRoutesRouteOutput) RouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.RouteName }).(pulumi.StringOutput)
+}
+
+// The deployment status of the route.
+func (o GetRoutesRouteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The update time in Greenwich Mean Time (GMT).
+func (o GetRoutesRouteOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRoute) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRoute)(nil)).Elem()
+}
+
+func (o GetRoutesRouteArrayOutput) ToGetRoutesRouteArrayOutput() GetRoutesRouteArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteArrayOutput) ToGetRoutesRouteArrayOutputWithContext(ctx context.Context) GetRoutesRouteArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRoute {
+		return vs[0].([]GetRoutesRoute)[vs[1].(int)]
+	}).(GetRoutesRouteOutput)
+}
+
+type GetRoutesRouteBackend struct {
+	// The backend service scenario.
+	Scene string `pulumi:"scene"`
+	// Backend service.
+	Services []GetRoutesRouteBackendService `pulumi:"services"`
+}
+
+// GetRoutesRouteBackendInput is an input type that accepts GetRoutesRouteBackendArgs and GetRoutesRouteBackendOutput values.
+// You can construct a concrete instance of `GetRoutesRouteBackendInput` via:
+//
+//	GetRoutesRouteBackendArgs{...}
+type GetRoutesRouteBackendInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteBackendOutput() GetRoutesRouteBackendOutput
+	ToGetRoutesRouteBackendOutputWithContext(context.Context) GetRoutesRouteBackendOutput
+}
+
+type GetRoutesRouteBackendArgs struct {
+	// The backend service scenario.
+	Scene pulumi.StringInput `pulumi:"scene"`
+	// Backend service.
+	Services GetRoutesRouteBackendServiceArrayInput `pulumi:"services"`
+}
+
+func (GetRoutesRouteBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteBackend)(nil)).Elem()
+}
+
+func (i GetRoutesRouteBackendArgs) ToGetRoutesRouteBackendOutput() GetRoutesRouteBackendOutput {
+	return i.ToGetRoutesRouteBackendOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteBackendArgs) ToGetRoutesRouteBackendOutputWithContext(ctx context.Context) GetRoutesRouteBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteBackendOutput)
+}
+
+// GetRoutesRouteBackendArrayInput is an input type that accepts GetRoutesRouteBackendArray and GetRoutesRouteBackendArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteBackendArrayInput` via:
+//
+//	GetRoutesRouteBackendArray{ GetRoutesRouteBackendArgs{...} }
+type GetRoutesRouteBackendArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteBackendArrayOutput() GetRoutesRouteBackendArrayOutput
+	ToGetRoutesRouteBackendArrayOutputWithContext(context.Context) GetRoutesRouteBackendArrayOutput
+}
+
+type GetRoutesRouteBackendArray []GetRoutesRouteBackendInput
+
+func (GetRoutesRouteBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteBackend)(nil)).Elem()
+}
+
+func (i GetRoutesRouteBackendArray) ToGetRoutesRouteBackendArrayOutput() GetRoutesRouteBackendArrayOutput {
+	return i.ToGetRoutesRouteBackendArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteBackendArray) ToGetRoutesRouteBackendArrayOutputWithContext(ctx context.Context) GetRoutesRouteBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteBackendArrayOutput)
+}
+
+type GetRoutesRouteBackendOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteBackend)(nil)).Elem()
+}
+
+func (o GetRoutesRouteBackendOutput) ToGetRoutesRouteBackendOutput() GetRoutesRouteBackendOutput {
+	return o
+}
+
+func (o GetRoutesRouteBackendOutput) ToGetRoutesRouteBackendOutputWithContext(ctx context.Context) GetRoutesRouteBackendOutput {
+	return o
+}
+
+// The backend service scenario.
+func (o GetRoutesRouteBackendOutput) Scene() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackend) string { return v.Scene }).(pulumi.StringOutput)
+}
+
+// Backend service.
+func (o GetRoutesRouteBackendOutput) Services() GetRoutesRouteBackendServiceArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackend) []GetRoutesRouteBackendService { return v.Services }).(GetRoutesRouteBackendServiceArrayOutput)
+}
+
+type GetRoutesRouteBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteBackend)(nil)).Elem()
+}
+
+func (o GetRoutesRouteBackendArrayOutput) ToGetRoutesRouteBackendArrayOutput() GetRoutesRouteBackendArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteBackendArrayOutput) ToGetRoutesRouteBackendArrayOutputWithContext(ctx context.Context) GetRoutesRouteBackendArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteBackendArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteBackend {
+		return vs[0].([]GetRoutesRouteBackend)[vs[1].(int)]
+	}).(GetRoutesRouteBackendOutput)
+}
+
+type GetRoutesRouteBackendService struct {
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// Service port.
+	Port int `pulumi:"port"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol string `pulumi:"protocol"`
+	// Service ID.
+	ServiceId string `pulumi:"serviceId"`
+	// Service version.
+	Version string `pulumi:"version"`
+	// The percentage value of the traffic ratio.
+	Weight int `pulumi:"weight"`
+}
+
+// GetRoutesRouteBackendServiceInput is an input type that accepts GetRoutesRouteBackendServiceArgs and GetRoutesRouteBackendServiceOutput values.
+// You can construct a concrete instance of `GetRoutesRouteBackendServiceInput` via:
+//
+//	GetRoutesRouteBackendServiceArgs{...}
+type GetRoutesRouteBackendServiceInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteBackendServiceOutput() GetRoutesRouteBackendServiceOutput
+	ToGetRoutesRouteBackendServiceOutputWithContext(context.Context) GetRoutesRouteBackendServiceOutput
+}
+
+type GetRoutesRouteBackendServiceArgs struct {
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Service port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Service ID.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// Service version.
+	Version pulumi.StringInput `pulumi:"version"`
+	// The percentage value of the traffic ratio.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetRoutesRouteBackendServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteBackendService)(nil)).Elem()
+}
+
+func (i GetRoutesRouteBackendServiceArgs) ToGetRoutesRouteBackendServiceOutput() GetRoutesRouteBackendServiceOutput {
+	return i.ToGetRoutesRouteBackendServiceOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteBackendServiceArgs) ToGetRoutesRouteBackendServiceOutputWithContext(ctx context.Context) GetRoutesRouteBackendServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteBackendServiceOutput)
+}
+
+// GetRoutesRouteBackendServiceArrayInput is an input type that accepts GetRoutesRouteBackendServiceArray and GetRoutesRouteBackendServiceArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteBackendServiceArrayInput` via:
+//
+//	GetRoutesRouteBackendServiceArray{ GetRoutesRouteBackendServiceArgs{...} }
+type GetRoutesRouteBackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteBackendServiceArrayOutput() GetRoutesRouteBackendServiceArrayOutput
+	ToGetRoutesRouteBackendServiceArrayOutputWithContext(context.Context) GetRoutesRouteBackendServiceArrayOutput
+}
+
+type GetRoutesRouteBackendServiceArray []GetRoutesRouteBackendServiceInput
+
+func (GetRoutesRouteBackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteBackendService)(nil)).Elem()
+}
+
+func (i GetRoutesRouteBackendServiceArray) ToGetRoutesRouteBackendServiceArrayOutput() GetRoutesRouteBackendServiceArrayOutput {
+	return i.ToGetRoutesRouteBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteBackendServiceArray) ToGetRoutesRouteBackendServiceArrayOutputWithContext(ctx context.Context) GetRoutesRouteBackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteBackendServiceArrayOutput)
+}
+
+type GetRoutesRouteBackendServiceOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteBackendServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteBackendService)(nil)).Elem()
+}
+
+func (o GetRoutesRouteBackendServiceOutput) ToGetRoutesRouteBackendServiceOutput() GetRoutesRouteBackendServiceOutput {
+	return o
+}
+
+func (o GetRoutesRouteBackendServiceOutput) ToGetRoutesRouteBackendServiceOutputWithContext(ctx context.Context) GetRoutesRouteBackendServiceOutput {
+	return o
+}
+
+// The parameter name.
+func (o GetRoutesRouteBackendServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackendService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Service port.
+func (o GetRoutesRouteBackendServiceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackendService) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The domain protocol, such as HTTP or HTTPS.
+func (o GetRoutesRouteBackendServiceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackendService) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Service ID.
+func (o GetRoutesRouteBackendServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackendService) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// Service version.
+func (o GetRoutesRouteBackendServiceOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackendService) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The percentage value of the traffic ratio.
+func (o GetRoutesRouteBackendServiceOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutesRouteBackendService) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetRoutesRouteBackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteBackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteBackendService)(nil)).Elem()
+}
+
+func (o GetRoutesRouteBackendServiceArrayOutput) ToGetRoutesRouteBackendServiceArrayOutput() GetRoutesRouteBackendServiceArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteBackendServiceArrayOutput) ToGetRoutesRouteBackendServiceArrayOutputWithContext(ctx context.Context) GetRoutesRouteBackendServiceArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteBackendServiceArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteBackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteBackendService {
+		return vs[0].([]GetRoutesRouteBackendService)[vs[1].(int)]
+	}).(GetRoutesRouteBackendServiceOutput)
+}
+
+type GetRoutesRouteDomainInfo struct {
+	// The ID of the second-level domain name.
+	DomainId string `pulumi:"domainId"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetRoutesRouteDomainInfoInput is an input type that accepts GetRoutesRouteDomainInfoArgs and GetRoutesRouteDomainInfoOutput values.
+// You can construct a concrete instance of `GetRoutesRouteDomainInfoInput` via:
+//
+//	GetRoutesRouteDomainInfoArgs{...}
+type GetRoutesRouteDomainInfoInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteDomainInfoOutput() GetRoutesRouteDomainInfoOutput
+	ToGetRoutesRouteDomainInfoOutputWithContext(context.Context) GetRoutesRouteDomainInfoOutput
+}
+
+type GetRoutesRouteDomainInfoArgs struct {
+	// The ID of the second-level domain name.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetRoutesRouteDomainInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteDomainInfo)(nil)).Elem()
+}
+
+func (i GetRoutesRouteDomainInfoArgs) ToGetRoutesRouteDomainInfoOutput() GetRoutesRouteDomainInfoOutput {
+	return i.ToGetRoutesRouteDomainInfoOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteDomainInfoArgs) ToGetRoutesRouteDomainInfoOutputWithContext(ctx context.Context) GetRoutesRouteDomainInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteDomainInfoOutput)
+}
+
+// GetRoutesRouteDomainInfoArrayInput is an input type that accepts GetRoutesRouteDomainInfoArray and GetRoutesRouteDomainInfoArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteDomainInfoArrayInput` via:
+//
+//	GetRoutesRouteDomainInfoArray{ GetRoutesRouteDomainInfoArgs{...} }
+type GetRoutesRouteDomainInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteDomainInfoArrayOutput() GetRoutesRouteDomainInfoArrayOutput
+	ToGetRoutesRouteDomainInfoArrayOutputWithContext(context.Context) GetRoutesRouteDomainInfoArrayOutput
+}
+
+type GetRoutesRouteDomainInfoArray []GetRoutesRouteDomainInfoInput
+
+func (GetRoutesRouteDomainInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteDomainInfo)(nil)).Elem()
+}
+
+func (i GetRoutesRouteDomainInfoArray) ToGetRoutesRouteDomainInfoArrayOutput() GetRoutesRouteDomainInfoArrayOutput {
+	return i.ToGetRoutesRouteDomainInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteDomainInfoArray) ToGetRoutesRouteDomainInfoArrayOutputWithContext(ctx context.Context) GetRoutesRouteDomainInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteDomainInfoArrayOutput)
+}
+
+type GetRoutesRouteDomainInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteDomainInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteDomainInfo)(nil)).Elem()
+}
+
+func (o GetRoutesRouteDomainInfoOutput) ToGetRoutesRouteDomainInfoOutput() GetRoutesRouteDomainInfoOutput {
+	return o
+}
+
+func (o GetRoutesRouteDomainInfoOutput) ToGetRoutesRouteDomainInfoOutputWithContext(ctx context.Context) GetRoutesRouteDomainInfoOutput {
+	return o
+}
+
+// The ID of the second-level domain name.
+func (o GetRoutesRouteDomainInfoOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteDomainInfo) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The parameter name.
+func (o GetRoutesRouteDomainInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteDomainInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The domain protocol, such as HTTP or HTTPS.
+func (o GetRoutesRouteDomainInfoOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteDomainInfo) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteDomainInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteDomainInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteDomainInfo)(nil)).Elem()
+}
+
+func (o GetRoutesRouteDomainInfoArrayOutput) ToGetRoutesRouteDomainInfoArrayOutput() GetRoutesRouteDomainInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteDomainInfoArrayOutput) ToGetRoutesRouteDomainInfoArrayOutputWithContext(ctx context.Context) GetRoutesRouteDomainInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteDomainInfoArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteDomainInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteDomainInfo {
+		return vs[0].([]GetRoutesRouteDomainInfo)[vs[1].(int)]
+	}).(GetRoutesRouteDomainInfoOutput)
+}
+
+type GetRoutesRouteEnvironmentInfo struct {
+	// The alias of the environment name.
+	Alias string `pulumi:"alias"`
+	// The environment ID.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+	GatewayInfos []GetRoutesRouteEnvironmentInfoGatewayInfo `pulumi:"gatewayInfos"`
+	// The name of the second-level domain name.
+	Name string `pulumi:"name"`
+	// The default second-level domain names of the environment. See `subDomains` below.
+	SubDomains []GetRoutesRouteEnvironmentInfoSubDomain `pulumi:"subDomains"`
+}
+
+// GetRoutesRouteEnvironmentInfoInput is an input type that accepts GetRoutesRouteEnvironmentInfoArgs and GetRoutesRouteEnvironmentInfoOutput values.
+// You can construct a concrete instance of `GetRoutesRouteEnvironmentInfoInput` via:
+//
+//	GetRoutesRouteEnvironmentInfoArgs{...}
+type GetRoutesRouteEnvironmentInfoInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteEnvironmentInfoOutput() GetRoutesRouteEnvironmentInfoOutput
+	ToGetRoutesRouteEnvironmentInfoOutputWithContext(context.Context) GetRoutesRouteEnvironmentInfoOutput
+}
+
+type GetRoutesRouteEnvironmentInfoArgs struct {
+	// The alias of the environment name.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The environment ID.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+	GatewayInfos GetRoutesRouteEnvironmentInfoGatewayInfoArrayInput `pulumi:"gatewayInfos"`
+	// The name of the second-level domain name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The default second-level domain names of the environment. See `subDomains` below.
+	SubDomains GetRoutesRouteEnvironmentInfoSubDomainArrayInput `pulumi:"subDomains"`
+}
+
+func (GetRoutesRouteEnvironmentInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (i GetRoutesRouteEnvironmentInfoArgs) ToGetRoutesRouteEnvironmentInfoOutput() GetRoutesRouteEnvironmentInfoOutput {
+	return i.ToGetRoutesRouteEnvironmentInfoOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteEnvironmentInfoArgs) ToGetRoutesRouteEnvironmentInfoOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteEnvironmentInfoOutput)
+}
+
+// GetRoutesRouteEnvironmentInfoArrayInput is an input type that accepts GetRoutesRouteEnvironmentInfoArray and GetRoutesRouteEnvironmentInfoArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteEnvironmentInfoArrayInput` via:
+//
+//	GetRoutesRouteEnvironmentInfoArray{ GetRoutesRouteEnvironmentInfoArgs{...} }
+type GetRoutesRouteEnvironmentInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteEnvironmentInfoArrayOutput() GetRoutesRouteEnvironmentInfoArrayOutput
+	ToGetRoutesRouteEnvironmentInfoArrayOutputWithContext(context.Context) GetRoutesRouteEnvironmentInfoArrayOutput
+}
+
+type GetRoutesRouteEnvironmentInfoArray []GetRoutesRouteEnvironmentInfoInput
+
+func (GetRoutesRouteEnvironmentInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (i GetRoutesRouteEnvironmentInfoArray) ToGetRoutesRouteEnvironmentInfoArrayOutput() GetRoutesRouteEnvironmentInfoArrayOutput {
+	return i.ToGetRoutesRouteEnvironmentInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteEnvironmentInfoArray) ToGetRoutesRouteEnvironmentInfoArrayOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteEnvironmentInfoArrayOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteEnvironmentInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (o GetRoutesRouteEnvironmentInfoOutput) ToGetRoutesRouteEnvironmentInfoOutput() GetRoutesRouteEnvironmentInfoOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoOutput) ToGetRoutesRouteEnvironmentInfoOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoOutput {
+	return o
+}
+
+// The alias of the environment name.
+func (o GetRoutesRouteEnvironmentInfoOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfo) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The environment ID.
+func (o GetRoutesRouteEnvironmentInfoOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfo) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+func (o GetRoutesRouteEnvironmentInfoOutput) GatewayInfos() GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfo) []GetRoutesRouteEnvironmentInfoGatewayInfo {
+		return v.GatewayInfos
+	}).(GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+// The name of the second-level domain name.
+func (o GetRoutesRouteEnvironmentInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The default second-level domain names of the environment. See `subDomains` below.
+func (o GetRoutesRouteEnvironmentInfoOutput) SubDomains() GetRoutesRouteEnvironmentInfoSubDomainArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfo) []GetRoutesRouteEnvironmentInfoSubDomain { return v.SubDomains }).(GetRoutesRouteEnvironmentInfoSubDomainArrayOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteEnvironmentInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteEnvironmentInfo)(nil)).Elem()
+}
+
+func (o GetRoutesRouteEnvironmentInfoArrayOutput) ToGetRoutesRouteEnvironmentInfoArrayOutput() GetRoutesRouteEnvironmentInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoArrayOutput) ToGetRoutesRouteEnvironmentInfoArrayOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteEnvironmentInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteEnvironmentInfo {
+		return vs[0].([]GetRoutesRouteEnvironmentInfo)[vs[1].(int)]
+	}).(GetRoutesRouteEnvironmentInfoOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoGatewayInfo struct {
+	// The edition of the gateway instance.
+	GatewayEdition string `pulumi:"gatewayEdition"`
+	// The ID of the Cloud-native API Gateway.
+	GatewayId string `pulumi:"gatewayId"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+}
+
+// GetRoutesRouteEnvironmentInfoGatewayInfoInput is an input type that accepts GetRoutesRouteEnvironmentInfoGatewayInfoArgs and GetRoutesRouteEnvironmentInfoGatewayInfoOutput values.
+// You can construct a concrete instance of `GetRoutesRouteEnvironmentInfoGatewayInfoInput` via:
+//
+//	GetRoutesRouteEnvironmentInfoGatewayInfoArgs{...}
+type GetRoutesRouteEnvironmentInfoGatewayInfoInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteEnvironmentInfoGatewayInfoOutput() GetRoutesRouteEnvironmentInfoGatewayInfoOutput
+	ToGetRoutesRouteEnvironmentInfoGatewayInfoOutputWithContext(context.Context) GetRoutesRouteEnvironmentInfoGatewayInfoOutput
+}
+
+type GetRoutesRouteEnvironmentInfoGatewayInfoArgs struct {
+	// The edition of the gateway instance.
+	GatewayEdition pulumi.StringInput `pulumi:"gatewayEdition"`
+	// The ID of the Cloud-native API Gateway.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRoutesRouteEnvironmentInfoGatewayInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (i GetRoutesRouteEnvironmentInfoGatewayInfoArgs) ToGetRoutesRouteEnvironmentInfoGatewayInfoOutput() GetRoutesRouteEnvironmentInfoGatewayInfoOutput {
+	return i.ToGetRoutesRouteEnvironmentInfoGatewayInfoOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteEnvironmentInfoGatewayInfoArgs) ToGetRoutesRouteEnvironmentInfoGatewayInfoOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoGatewayInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteEnvironmentInfoGatewayInfoOutput)
+}
+
+// GetRoutesRouteEnvironmentInfoGatewayInfoArrayInput is an input type that accepts GetRoutesRouteEnvironmentInfoGatewayInfoArray and GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteEnvironmentInfoGatewayInfoArrayInput` via:
+//
+//	GetRoutesRouteEnvironmentInfoGatewayInfoArray{ GetRoutesRouteEnvironmentInfoGatewayInfoArgs{...} }
+type GetRoutesRouteEnvironmentInfoGatewayInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput() GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput
+	ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(context.Context) GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput
+}
+
+type GetRoutesRouteEnvironmentInfoGatewayInfoArray []GetRoutesRouteEnvironmentInfoGatewayInfoInput
+
+func (GetRoutesRouteEnvironmentInfoGatewayInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (i GetRoutesRouteEnvironmentInfoGatewayInfoArray) ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput() GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput {
+	return i.ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteEnvironmentInfoGatewayInfoArray) ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoGatewayInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteEnvironmentInfoGatewayInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoOutput) ToGetRoutesRouteEnvironmentInfoGatewayInfoOutput() GetRoutesRouteEnvironmentInfoGatewayInfoOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoOutput) ToGetRoutesRouteEnvironmentInfoGatewayInfoOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoGatewayInfoOutput {
+	return o
+}
+
+// The edition of the gateway instance.
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoOutput) GatewayEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoGatewayInfo) string { return v.GatewayEdition }).(pulumi.StringOutput)
+}
+
+// The ID of the Cloud-native API Gateway.
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoGatewayInfo) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The parameter name.
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoGatewayInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteEnvironmentInfoGatewayInfo)(nil)).Elem()
+}
+
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput) ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput() GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput) ToGetRoutesRouteEnvironmentInfoGatewayInfoArrayOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteEnvironmentInfoGatewayInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteEnvironmentInfoGatewayInfo {
+		return vs[0].([]GetRoutesRouteEnvironmentInfoGatewayInfo)[vs[1].(int)]
+	}).(GetRoutesRouteEnvironmentInfoGatewayInfoOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoSubDomain struct {
+	// The ID of the second-level domain name.
+	DomainId string `pulumi:"domainId"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The domain access type, such as Intranet or Internet.
+	NetworkType string `pulumi:"networkType"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetRoutesRouteEnvironmentInfoSubDomainInput is an input type that accepts GetRoutesRouteEnvironmentInfoSubDomainArgs and GetRoutesRouteEnvironmentInfoSubDomainOutput values.
+// You can construct a concrete instance of `GetRoutesRouteEnvironmentInfoSubDomainInput` via:
+//
+//	GetRoutesRouteEnvironmentInfoSubDomainArgs{...}
+type GetRoutesRouteEnvironmentInfoSubDomainInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteEnvironmentInfoSubDomainOutput() GetRoutesRouteEnvironmentInfoSubDomainOutput
+	ToGetRoutesRouteEnvironmentInfoSubDomainOutputWithContext(context.Context) GetRoutesRouteEnvironmentInfoSubDomainOutput
+}
+
+type GetRoutesRouteEnvironmentInfoSubDomainArgs struct {
+	// The ID of the second-level domain name.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The domain access type, such as Intranet or Internet.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The domain protocol, such as HTTP or HTTPS.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetRoutesRouteEnvironmentInfoSubDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (i GetRoutesRouteEnvironmentInfoSubDomainArgs) ToGetRoutesRouteEnvironmentInfoSubDomainOutput() GetRoutesRouteEnvironmentInfoSubDomainOutput {
+	return i.ToGetRoutesRouteEnvironmentInfoSubDomainOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteEnvironmentInfoSubDomainArgs) ToGetRoutesRouteEnvironmentInfoSubDomainOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoSubDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteEnvironmentInfoSubDomainOutput)
+}
+
+// GetRoutesRouteEnvironmentInfoSubDomainArrayInput is an input type that accepts GetRoutesRouteEnvironmentInfoSubDomainArray and GetRoutesRouteEnvironmentInfoSubDomainArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteEnvironmentInfoSubDomainArrayInput` via:
+//
+//	GetRoutesRouteEnvironmentInfoSubDomainArray{ GetRoutesRouteEnvironmentInfoSubDomainArgs{...} }
+type GetRoutesRouteEnvironmentInfoSubDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutput() GetRoutesRouteEnvironmentInfoSubDomainArrayOutput
+	ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutputWithContext(context.Context) GetRoutesRouteEnvironmentInfoSubDomainArrayOutput
+}
+
+type GetRoutesRouteEnvironmentInfoSubDomainArray []GetRoutesRouteEnvironmentInfoSubDomainInput
+
+func (GetRoutesRouteEnvironmentInfoSubDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (i GetRoutesRouteEnvironmentInfoSubDomainArray) ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutput() GetRoutesRouteEnvironmentInfoSubDomainArrayOutput {
+	return i.ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteEnvironmentInfoSubDomainArray) ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoSubDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteEnvironmentInfoSubDomainArrayOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoSubDomainOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteEnvironmentInfoSubDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (o GetRoutesRouteEnvironmentInfoSubDomainOutput) ToGetRoutesRouteEnvironmentInfoSubDomainOutput() GetRoutesRouteEnvironmentInfoSubDomainOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoSubDomainOutput) ToGetRoutesRouteEnvironmentInfoSubDomainOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoSubDomainOutput {
+	return o
+}
+
+// The ID of the second-level domain name.
+func (o GetRoutesRouteEnvironmentInfoSubDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoSubDomain) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The parameter name.
+func (o GetRoutesRouteEnvironmentInfoSubDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoSubDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The domain access type, such as Intranet or Internet.
+func (o GetRoutesRouteEnvironmentInfoSubDomainOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoSubDomain) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The domain protocol, such as HTTP or HTTPS.
+func (o GetRoutesRouteEnvironmentInfoSubDomainOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteEnvironmentInfoSubDomain) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteEnvironmentInfoSubDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteEnvironmentInfoSubDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteEnvironmentInfoSubDomain)(nil)).Elem()
+}
+
+func (o GetRoutesRouteEnvironmentInfoSubDomainArrayOutput) ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutput() GetRoutesRouteEnvironmentInfoSubDomainArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoSubDomainArrayOutput) ToGetRoutesRouteEnvironmentInfoSubDomainArrayOutputWithContext(ctx context.Context) GetRoutesRouteEnvironmentInfoSubDomainArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteEnvironmentInfoSubDomainArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteEnvironmentInfoSubDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteEnvironmentInfoSubDomain {
+		return vs[0].([]GetRoutesRouteEnvironmentInfoSubDomain)[vs[1].(int)]
+	}).(GetRoutesRouteEnvironmentInfoSubDomainOutput)
+}
+
+type GetRoutesRouteMatch struct {
+	// The list of HTTP request header matching rules.
+	Headers []GetRoutesRouteMatchHeader `pulumi:"headers"`
+	// Specifies whether the path is case-sensitive.
+	IgnoreUriCase bool `pulumi:"ignoreUriCase"`
+	// The request method.
+	Methods []string `pulumi:"methods"`
+	// The path rule.
+	Paths []GetRoutesRouteMatchPath `pulumi:"paths"`
+	// The matching rules for query parameters.
+	QueryParams []GetRoutesRouteMatchQueryParam `pulumi:"queryParams"`
+}
+
+// GetRoutesRouteMatchInput is an input type that accepts GetRoutesRouteMatchArgs and GetRoutesRouteMatchOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchInput` via:
+//
+//	GetRoutesRouteMatchArgs{...}
+type GetRoutesRouteMatchInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchOutput() GetRoutesRouteMatchOutput
+	ToGetRoutesRouteMatchOutputWithContext(context.Context) GetRoutesRouteMatchOutput
+}
+
+type GetRoutesRouteMatchArgs struct {
+	// The list of HTTP request header matching rules.
+	Headers GetRoutesRouteMatchHeaderArrayInput `pulumi:"headers"`
+	// Specifies whether the path is case-sensitive.
+	IgnoreUriCase pulumi.BoolInput `pulumi:"ignoreUriCase"`
+	// The request method.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The path rule.
+	Paths GetRoutesRouteMatchPathArrayInput `pulumi:"paths"`
+	// The matching rules for query parameters.
+	QueryParams GetRoutesRouteMatchQueryParamArrayInput `pulumi:"queryParams"`
+}
+
+func (GetRoutesRouteMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatch)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchArgs) ToGetRoutesRouteMatchOutput() GetRoutesRouteMatchOutput {
+	return i.ToGetRoutesRouteMatchOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchArgs) ToGetRoutesRouteMatchOutputWithContext(ctx context.Context) GetRoutesRouteMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchOutput)
+}
+
+// GetRoutesRouteMatchArrayInput is an input type that accepts GetRoutesRouteMatchArray and GetRoutesRouteMatchArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchArrayInput` via:
+//
+//	GetRoutesRouteMatchArray{ GetRoutesRouteMatchArgs{...} }
+type GetRoutesRouteMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchArrayOutput() GetRoutesRouteMatchArrayOutput
+	ToGetRoutesRouteMatchArrayOutputWithContext(context.Context) GetRoutesRouteMatchArrayOutput
+}
+
+type GetRoutesRouteMatchArray []GetRoutesRouteMatchInput
+
+func (GetRoutesRouteMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatch)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchArray) ToGetRoutesRouteMatchArrayOutput() GetRoutesRouteMatchArrayOutput {
+	return i.ToGetRoutesRouteMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchArray) ToGetRoutesRouteMatchArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchArrayOutput)
+}
+
+type GetRoutesRouteMatchOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatch)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchOutput) ToGetRoutesRouteMatchOutput() GetRoutesRouteMatchOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchOutput) ToGetRoutesRouteMatchOutputWithContext(ctx context.Context) GetRoutesRouteMatchOutput {
+	return o
+}
+
+// The list of HTTP request header matching rules.
+func (o GetRoutesRouteMatchOutput) Headers() GetRoutesRouteMatchHeaderArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatch) []GetRoutesRouteMatchHeader { return v.Headers }).(GetRoutesRouteMatchHeaderArrayOutput)
+}
+
+// Specifies whether the path is case-sensitive.
+func (o GetRoutesRouteMatchOutput) IgnoreUriCase() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatch) bool { return v.IgnoreUriCase }).(pulumi.BoolOutput)
+}
+
+// The request method.
+func (o GetRoutesRouteMatchOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatch) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The path rule.
+func (o GetRoutesRouteMatchOutput) Paths() GetRoutesRouteMatchPathArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatch) []GetRoutesRouteMatchPath { return v.Paths }).(GetRoutesRouteMatchPathArrayOutput)
+}
+
+// The matching rules for query parameters.
+func (o GetRoutesRouteMatchOutput) QueryParams() GetRoutesRouteMatchQueryParamArrayOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatch) []GetRoutesRouteMatchQueryParam { return v.QueryParams }).(GetRoutesRouteMatchQueryParamArrayOutput)
+}
+
+type GetRoutesRouteMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatch)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchArrayOutput) ToGetRoutesRouteMatchArrayOutput() GetRoutesRouteMatchArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchArrayOutput) ToGetRoutesRouteMatchArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteMatch {
+		return vs[0].([]GetRoutesRouteMatch)[vs[1].(int)]
+	}).(GetRoutesRouteMatchOutput)
+}
+
+type GetRoutesRouteMatchHeader struct {
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The matching rule for the query parameter.
+	Type string `pulumi:"type"`
+	// The parameter value.
+	Value string `pulumi:"value"`
+}
+
+// GetRoutesRouteMatchHeaderInput is an input type that accepts GetRoutesRouteMatchHeaderArgs and GetRoutesRouteMatchHeaderOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchHeaderInput` via:
+//
+//	GetRoutesRouteMatchHeaderArgs{...}
+type GetRoutesRouteMatchHeaderInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchHeaderOutput() GetRoutesRouteMatchHeaderOutput
+	ToGetRoutesRouteMatchHeaderOutputWithContext(context.Context) GetRoutesRouteMatchHeaderOutput
+}
+
+type GetRoutesRouteMatchHeaderArgs struct {
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The matching rule for the query parameter.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRoutesRouteMatchHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatchHeader)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchHeaderArgs) ToGetRoutesRouteMatchHeaderOutput() GetRoutesRouteMatchHeaderOutput {
+	return i.ToGetRoutesRouteMatchHeaderOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchHeaderArgs) ToGetRoutesRouteMatchHeaderOutputWithContext(ctx context.Context) GetRoutesRouteMatchHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchHeaderOutput)
+}
+
+// GetRoutesRouteMatchHeaderArrayInput is an input type that accepts GetRoutesRouteMatchHeaderArray and GetRoutesRouteMatchHeaderArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchHeaderArrayInput` via:
+//
+//	GetRoutesRouteMatchHeaderArray{ GetRoutesRouteMatchHeaderArgs{...} }
+type GetRoutesRouteMatchHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchHeaderArrayOutput() GetRoutesRouteMatchHeaderArrayOutput
+	ToGetRoutesRouteMatchHeaderArrayOutputWithContext(context.Context) GetRoutesRouteMatchHeaderArrayOutput
+}
+
+type GetRoutesRouteMatchHeaderArray []GetRoutesRouteMatchHeaderInput
+
+func (GetRoutesRouteMatchHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatchHeader)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchHeaderArray) ToGetRoutesRouteMatchHeaderArrayOutput() GetRoutesRouteMatchHeaderArrayOutput {
+	return i.ToGetRoutesRouteMatchHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchHeaderArray) ToGetRoutesRouteMatchHeaderArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchHeaderArrayOutput)
+}
+
+type GetRoutesRouteMatchHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatchHeader)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchHeaderOutput) ToGetRoutesRouteMatchHeaderOutput() GetRoutesRouteMatchHeaderOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchHeaderOutput) ToGetRoutesRouteMatchHeaderOutputWithContext(ctx context.Context) GetRoutesRouteMatchHeaderOutput {
+	return o
+}
+
+// The parameter name.
+func (o GetRoutesRouteMatchHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The matching rule for the query parameter.
+func (o GetRoutesRouteMatchHeaderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchHeader) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The parameter value.
+func (o GetRoutesRouteMatchHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteMatchHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatchHeader)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchHeaderArrayOutput) ToGetRoutesRouteMatchHeaderArrayOutput() GetRoutesRouteMatchHeaderArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchHeaderArrayOutput) ToGetRoutesRouteMatchHeaderArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchHeaderArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchHeaderArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteMatchHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteMatchHeader {
+		return vs[0].([]GetRoutesRouteMatchHeader)[vs[1].(int)]
+	}).(GetRoutesRouteMatchHeaderOutput)
+}
+
+type GetRoutesRouteMatchPath struct {
+	// The matching rule for the query parameter.
+	Type string `pulumi:"type"`
+	// The parameter value.
+	Value string `pulumi:"value"`
+}
+
+// GetRoutesRouteMatchPathInput is an input type that accepts GetRoutesRouteMatchPathArgs and GetRoutesRouteMatchPathOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchPathInput` via:
+//
+//	GetRoutesRouteMatchPathArgs{...}
+type GetRoutesRouteMatchPathInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchPathOutput() GetRoutesRouteMatchPathOutput
+	ToGetRoutesRouteMatchPathOutputWithContext(context.Context) GetRoutesRouteMatchPathOutput
+}
+
+type GetRoutesRouteMatchPathArgs struct {
+	// The matching rule for the query parameter.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRoutesRouteMatchPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatchPath)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchPathArgs) ToGetRoutesRouteMatchPathOutput() GetRoutesRouteMatchPathOutput {
+	return i.ToGetRoutesRouteMatchPathOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchPathArgs) ToGetRoutesRouteMatchPathOutputWithContext(ctx context.Context) GetRoutesRouteMatchPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchPathOutput)
+}
+
+// GetRoutesRouteMatchPathArrayInput is an input type that accepts GetRoutesRouteMatchPathArray and GetRoutesRouteMatchPathArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchPathArrayInput` via:
+//
+//	GetRoutesRouteMatchPathArray{ GetRoutesRouteMatchPathArgs{...} }
+type GetRoutesRouteMatchPathArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchPathArrayOutput() GetRoutesRouteMatchPathArrayOutput
+	ToGetRoutesRouteMatchPathArrayOutputWithContext(context.Context) GetRoutesRouteMatchPathArrayOutput
+}
+
+type GetRoutesRouteMatchPathArray []GetRoutesRouteMatchPathInput
+
+func (GetRoutesRouteMatchPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatchPath)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchPathArray) ToGetRoutesRouteMatchPathArrayOutput() GetRoutesRouteMatchPathArrayOutput {
+	return i.ToGetRoutesRouteMatchPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchPathArray) ToGetRoutesRouteMatchPathArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchPathArrayOutput)
+}
+
+type GetRoutesRouteMatchPathOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatchPath)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchPathOutput) ToGetRoutesRouteMatchPathOutput() GetRoutesRouteMatchPathOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchPathOutput) ToGetRoutesRouteMatchPathOutputWithContext(ctx context.Context) GetRoutesRouteMatchPathOutput {
+	return o
+}
+
+// The matching rule for the query parameter.
+func (o GetRoutesRouteMatchPathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchPath) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The parameter value.
+func (o GetRoutesRouteMatchPathOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchPath) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteMatchPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatchPath)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchPathArrayOutput) ToGetRoutesRouteMatchPathArrayOutput() GetRoutesRouteMatchPathArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchPathArrayOutput) ToGetRoutesRouteMatchPathArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchPathArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchPathArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteMatchPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteMatchPath {
+		return vs[0].([]GetRoutesRouteMatchPath)[vs[1].(int)]
+	}).(GetRoutesRouteMatchPathOutput)
+}
+
+type GetRoutesRouteMatchQueryParam struct {
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The matching rule for the query parameter.
+	Type string `pulumi:"type"`
+	// The parameter value.
+	Value string `pulumi:"value"`
+}
+
+// GetRoutesRouteMatchQueryParamInput is an input type that accepts GetRoutesRouteMatchQueryParamArgs and GetRoutesRouteMatchQueryParamOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchQueryParamInput` via:
+//
+//	GetRoutesRouteMatchQueryParamArgs{...}
+type GetRoutesRouteMatchQueryParamInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchQueryParamOutput() GetRoutesRouteMatchQueryParamOutput
+	ToGetRoutesRouteMatchQueryParamOutputWithContext(context.Context) GetRoutesRouteMatchQueryParamOutput
+}
+
+type GetRoutesRouteMatchQueryParamArgs struct {
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The matching rule for the query parameter.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRoutesRouteMatchQueryParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatchQueryParam)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchQueryParamArgs) ToGetRoutesRouteMatchQueryParamOutput() GetRoutesRouteMatchQueryParamOutput {
+	return i.ToGetRoutesRouteMatchQueryParamOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchQueryParamArgs) ToGetRoutesRouteMatchQueryParamOutputWithContext(ctx context.Context) GetRoutesRouteMatchQueryParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchQueryParamOutput)
+}
+
+// GetRoutesRouteMatchQueryParamArrayInput is an input type that accepts GetRoutesRouteMatchQueryParamArray and GetRoutesRouteMatchQueryParamArrayOutput values.
+// You can construct a concrete instance of `GetRoutesRouteMatchQueryParamArrayInput` via:
+//
+//	GetRoutesRouteMatchQueryParamArray{ GetRoutesRouteMatchQueryParamArgs{...} }
+type GetRoutesRouteMatchQueryParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutesRouteMatchQueryParamArrayOutput() GetRoutesRouteMatchQueryParamArrayOutput
+	ToGetRoutesRouteMatchQueryParamArrayOutputWithContext(context.Context) GetRoutesRouteMatchQueryParamArrayOutput
+}
+
+type GetRoutesRouteMatchQueryParamArray []GetRoutesRouteMatchQueryParamInput
+
+func (GetRoutesRouteMatchQueryParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatchQueryParam)(nil)).Elem()
+}
+
+func (i GetRoutesRouteMatchQueryParamArray) ToGetRoutesRouteMatchQueryParamArrayOutput() GetRoutesRouteMatchQueryParamArrayOutput {
+	return i.ToGetRoutesRouteMatchQueryParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutesRouteMatchQueryParamArray) ToGetRoutesRouteMatchQueryParamArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchQueryParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutesRouteMatchQueryParamArrayOutput)
+}
+
+type GetRoutesRouteMatchQueryParamOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchQueryParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutesRouteMatchQueryParam)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchQueryParamOutput) ToGetRoutesRouteMatchQueryParamOutput() GetRoutesRouteMatchQueryParamOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchQueryParamOutput) ToGetRoutesRouteMatchQueryParamOutputWithContext(ctx context.Context) GetRoutesRouteMatchQueryParamOutput {
+	return o
+}
+
+// The parameter name.
+func (o GetRoutesRouteMatchQueryParamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchQueryParam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The matching rule for the query parameter.
+func (o GetRoutesRouteMatchQueryParamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchQueryParam) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The parameter value.
+func (o GetRoutesRouteMatchQueryParamOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutesRouteMatchQueryParam) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRoutesRouteMatchQueryParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutesRouteMatchQueryParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutesRouteMatchQueryParam)(nil)).Elem()
+}
+
+func (o GetRoutesRouteMatchQueryParamArrayOutput) ToGetRoutesRouteMatchQueryParamArrayOutput() GetRoutesRouteMatchQueryParamArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchQueryParamArrayOutput) ToGetRoutesRouteMatchQueryParamArrayOutputWithContext(ctx context.Context) GetRoutesRouteMatchQueryParamArrayOutput {
+	return o
+}
+
+func (o GetRoutesRouteMatchQueryParamArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteMatchQueryParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutesRouteMatchQueryParam {
+		return vs[0].([]GetRoutesRouteMatchQueryParam)[vs[1].(int)]
+	}).(GetRoutesRouteMatchQueryParamOutput)
+}
+
+type GetServicesService struct {
+	// A list of domain names or fixed addresses.
+	Addresses []string `pulumi:"addresses"`
+	// Creation timestamp.
+	CreateTimestamp int `pulumi:"createTimestamp"`
+	// DNS servers.
+	DnsServers []string `pulumi:"dnsServers"`
+	// Express type.
+	ExpressType string `pulumi:"expressType"`
+	// The ID of the Cloud Native API Gateway.
+	GatewayId string `pulumi:"gatewayId"`
+	// Health check configuration.
+	HealthCheckConfigs []GetServicesServiceHealthCheckConfig `pulumi:"healthCheckConfigs"`
+	// Health status.
+	HealthStatus string `pulumi:"healthStatus"`
+	// Healthy panic threshold.
+	HealthyPanicThreshold float64 `pulumi:"healthyPanicThreshold"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The namespace of the service.
+	Namespace string `pulumi:"namespace"`
+	// Outlier detection configuration.
+	OutlierDetectionConfigs []GetServicesServiceOutlierDetectionConfig `pulumi:"outlierDetectionConfigs"`
+	// Outlier endpoints.
+	OutlierEndpoints []string `pulumi:"outlierEndpoints"`
+	// Port information.
+	Ports []GetServicesServicePort `pulumi:"ports"`
+	// Service protocol.
+	Protocol string `pulumi:"protocol"`
+	// The function version or alias.
+	Qualifier string `pulumi:"qualifier"`
+	// The ID of the resource group
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Runtime detail error code.
+	RuntimeDetailErrorCode string `pulumi:"runtimeDetailErrorCode"`
+	// Runtime detail status.
+	RuntimeDetailStatus string `pulumi:"runtimeDetailStatus"`
+	// service id.
+	ServiceId string `pulumi:"serviceId"`
+	// Service Name, need to fill in manually when sourceType is VIP/DNS/AI.
+	ServiceName string `pulumi:"serviceName"`
+	// service source type, optional value is K8S/MSE_NACOS/FC3/SAE_K8S_SERVICE/VIP/DNS/AI
+	SourceType string `pulumi:"sourceType"`
+	// Unhealthy endpoints.
+	UnhealthyEndpoints []string `pulumi:"unhealthyEndpoints"`
+	// Update timestamp.
+	UpdateTimestamp int `pulumi:"updateTimestamp"`
+}
+
+// GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
+// You can construct a concrete instance of `GetServicesServiceInput` via:
+//
+//	GetServicesServiceArgs{...}
+type GetServicesServiceInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceOutput() GetServicesServiceOutput
+	ToGetServicesServiceOutputWithContext(context.Context) GetServicesServiceOutput
+}
+
+type GetServicesServiceArgs struct {
+	// A list of domain names or fixed addresses.
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+	// Creation timestamp.
+	CreateTimestamp pulumi.IntInput `pulumi:"createTimestamp"`
+	// DNS servers.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Express type.
+	ExpressType pulumi.StringInput `pulumi:"expressType"`
+	// The ID of the Cloud Native API Gateway.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// Health check configuration.
+	HealthCheckConfigs GetServicesServiceHealthCheckConfigArrayInput `pulumi:"healthCheckConfigs"`
+	// Health status.
+	HealthStatus pulumi.StringInput `pulumi:"healthStatus"`
+	// Healthy panic threshold.
+	HealthyPanicThreshold pulumi.Float64Input `pulumi:"healthyPanicThreshold"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The namespace of the service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Outlier detection configuration.
+	OutlierDetectionConfigs GetServicesServiceOutlierDetectionConfigArrayInput `pulumi:"outlierDetectionConfigs"`
+	// Outlier endpoints.
+	OutlierEndpoints pulumi.StringArrayInput `pulumi:"outlierEndpoints"`
+	// Port information.
+	Ports GetServicesServicePortArrayInput `pulumi:"ports"`
+	// Service protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The function version or alias.
+	Qualifier pulumi.StringInput `pulumi:"qualifier"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Runtime detail error code.
+	RuntimeDetailErrorCode pulumi.StringInput `pulumi:"runtimeDetailErrorCode"`
+	// Runtime detail status.
+	RuntimeDetailStatus pulumi.StringInput `pulumi:"runtimeDetailStatus"`
+	// service id.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// Service Name, need to fill in manually when sourceType is VIP/DNS/AI.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// service source type, optional value is K8S/MSE_NACOS/FC3/SAE_K8S_SERVICE/VIP/DNS/AI
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// Unhealthy endpoints.
+	UnhealthyEndpoints pulumi.StringArrayInput `pulumi:"unhealthyEndpoints"`
+	// Update timestamp.
+	UpdateTimestamp pulumi.IntInput `pulumi:"updateTimestamp"`
+}
+
+func (GetServicesServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
+}
+
+func (i GetServicesServiceArgs) ToGetServicesServiceOutput() GetServicesServiceOutput {
+	return i.ToGetServicesServiceOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceOutput)
+}
+
+// GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
+// You can construct a concrete instance of `GetServicesServiceArrayInput` via:
+//
+//	GetServicesServiceArray{ GetServicesServiceArgs{...} }
+type GetServicesServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput
+	ToGetServicesServiceArrayOutputWithContext(context.Context) GetServicesServiceArrayOutput
+}
+
+type GetServicesServiceArray []GetServicesServiceInput
+
+func (GetServicesServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
+}
+
+func (i GetServicesServiceArray) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
+	return i.ToGetServicesServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceArray) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceArrayOutput)
+}
+
+type GetServicesServiceOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
+}
+
+func (o GetServicesServiceOutput) ToGetServicesServiceOutput() GetServicesServiceOutput {
+	return o
+}
+
+func (o GetServicesServiceOutput) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
+	return o
+}
+
+// A list of domain names or fixed addresses.
+func (o GetServicesServiceOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Creation timestamp.
+func (o GetServicesServiceOutput) CreateTimestamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesService) int { return v.CreateTimestamp }).(pulumi.IntOutput)
+}
+
+// DNS servers.
+func (o GetServicesServiceOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Express type.
+func (o GetServicesServiceOutput) ExpressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.ExpressType }).(pulumi.StringOutput)
+}
+
+// The ID of the Cloud Native API Gateway.
+func (o GetServicesServiceOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// Health check configuration.
+func (o GetServicesServiceOutput) HealthCheckConfigs() GetServicesServiceHealthCheckConfigArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []GetServicesServiceHealthCheckConfig { return v.HealthCheckConfigs }).(GetServicesServiceHealthCheckConfigArrayOutput)
+}
+
+// Health status.
+func (o GetServicesServiceOutput) HealthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.HealthStatus }).(pulumi.StringOutput)
+}
+
+// Healthy panic threshold.
+func (o GetServicesServiceOutput) HealthyPanicThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServicesService) float64 { return v.HealthyPanicThreshold }).(pulumi.Float64Output)
+}
+
+// The ID of the resource supplied above.
+func (o GetServicesServiceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The namespace of the service.
+func (o GetServicesServiceOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Outlier detection configuration.
+func (o GetServicesServiceOutput) OutlierDetectionConfigs() GetServicesServiceOutlierDetectionConfigArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []GetServicesServiceOutlierDetectionConfig {
+		return v.OutlierDetectionConfigs
+	}).(GetServicesServiceOutlierDetectionConfigArrayOutput)
+}
+
+// Outlier endpoints.
+func (o GetServicesServiceOutput) OutlierEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.OutlierEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Port information.
+func (o GetServicesServiceOutput) Ports() GetServicesServicePortArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []GetServicesServicePort { return v.Ports }).(GetServicesServicePortArrayOutput)
+}
+
+// Service protocol.
+func (o GetServicesServiceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The function version or alias.
+func (o GetServicesServiceOutput) Qualifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.Qualifier }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group
+func (o GetServicesServiceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Runtime detail error code.
+func (o GetServicesServiceOutput) RuntimeDetailErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.RuntimeDetailErrorCode }).(pulumi.StringOutput)
+}
+
+// Runtime detail status.
+func (o GetServicesServiceOutput) RuntimeDetailStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.RuntimeDetailStatus }).(pulumi.StringOutput)
+}
+
+// service id.
+func (o GetServicesServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// Service Name, need to fill in manually when sourceType is VIP/DNS/AI.
+func (o GetServicesServiceOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// service source type, optional value is K8S/MSE_NACOS/FC3/SAE_K8S_SERVICE/VIP/DNS/AI
+func (o GetServicesServiceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Unhealthy endpoints.
+func (o GetServicesServiceOutput) UnhealthyEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.UnhealthyEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Update timestamp.
+func (o GetServicesServiceOutput) UpdateTimestamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesService) int { return v.UpdateTimestamp }).(pulumi.IntOutput)
+}
+
+type GetServicesServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
+}
+
+func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesService {
+		return vs[0].([]GetServicesService)[vs[1].(int)]
+	}).(GetServicesServiceOutput)
+}
+
+type GetServicesServiceHealthCheckConfig struct {
+	// Whether to enable outlier detection.
+	Enable bool `pulumi:"enable"`
+	// Expected HTTP status codes.
+	ExpectedStatuses []string `pulumi:"expectedStatuses"`
+	// Healthy threshold.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// Health check host (optional when protocol is HTTP).
+	HttpHost string `pulumi:"httpHost"`
+	// Health check path (required when protocol is HTTP).
+	HttpPath string `pulumi:"httpPath"`
+	// Detection interval.
+	Interval int `pulumi:"interval"`
+	// Service protocol.
+	Protocol string `pulumi:"protocol"`
+	// Health check response timeout.
+	Timeout int `pulumi:"timeout"`
+	// Unhealthy threshold.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+// GetServicesServiceHealthCheckConfigInput is an input type that accepts GetServicesServiceHealthCheckConfigArgs and GetServicesServiceHealthCheckConfigOutput values.
+// You can construct a concrete instance of `GetServicesServiceHealthCheckConfigInput` via:
+//
+//	GetServicesServiceHealthCheckConfigArgs{...}
+type GetServicesServiceHealthCheckConfigInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceHealthCheckConfigOutput() GetServicesServiceHealthCheckConfigOutput
+	ToGetServicesServiceHealthCheckConfigOutputWithContext(context.Context) GetServicesServiceHealthCheckConfigOutput
+}
+
+type GetServicesServiceHealthCheckConfigArgs struct {
+	// Whether to enable outlier detection.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Expected HTTP status codes.
+	ExpectedStatuses pulumi.StringArrayInput `pulumi:"expectedStatuses"`
+	// Healthy threshold.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// Health check host (optional when protocol is HTTP).
+	HttpHost pulumi.StringInput `pulumi:"httpHost"`
+	// Health check path (required when protocol is HTTP).
+	HttpPath pulumi.StringInput `pulumi:"httpPath"`
+	// Detection interval.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// Service protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Health check response timeout.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Unhealthy threshold.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+}
+
+func (GetServicesServiceHealthCheckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (i GetServicesServiceHealthCheckConfigArgs) ToGetServicesServiceHealthCheckConfigOutput() GetServicesServiceHealthCheckConfigOutput {
+	return i.ToGetServicesServiceHealthCheckConfigOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceHealthCheckConfigArgs) ToGetServicesServiceHealthCheckConfigOutputWithContext(ctx context.Context) GetServicesServiceHealthCheckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceHealthCheckConfigOutput)
+}
+
+// GetServicesServiceHealthCheckConfigArrayInput is an input type that accepts GetServicesServiceHealthCheckConfigArray and GetServicesServiceHealthCheckConfigArrayOutput values.
+// You can construct a concrete instance of `GetServicesServiceHealthCheckConfigArrayInput` via:
+//
+//	GetServicesServiceHealthCheckConfigArray{ GetServicesServiceHealthCheckConfigArgs{...} }
+type GetServicesServiceHealthCheckConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceHealthCheckConfigArrayOutput() GetServicesServiceHealthCheckConfigArrayOutput
+	ToGetServicesServiceHealthCheckConfigArrayOutputWithContext(context.Context) GetServicesServiceHealthCheckConfigArrayOutput
+}
+
+type GetServicesServiceHealthCheckConfigArray []GetServicesServiceHealthCheckConfigInput
+
+func (GetServicesServiceHealthCheckConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (i GetServicesServiceHealthCheckConfigArray) ToGetServicesServiceHealthCheckConfigArrayOutput() GetServicesServiceHealthCheckConfigArrayOutput {
+	return i.ToGetServicesServiceHealthCheckConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceHealthCheckConfigArray) ToGetServicesServiceHealthCheckConfigArrayOutputWithContext(ctx context.Context) GetServicesServiceHealthCheckConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceHealthCheckConfigArrayOutput)
+}
+
+type GetServicesServiceHealthCheckConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceHealthCheckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (o GetServicesServiceHealthCheckConfigOutput) ToGetServicesServiceHealthCheckConfigOutput() GetServicesServiceHealthCheckConfigOutput {
+	return o
+}
+
+func (o GetServicesServiceHealthCheckConfigOutput) ToGetServicesServiceHealthCheckConfigOutputWithContext(ctx context.Context) GetServicesServiceHealthCheckConfigOutput {
+	return o
+}
+
+// Whether to enable outlier detection.
+func (o GetServicesServiceHealthCheckConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Expected HTTP status codes.
+func (o GetServicesServiceHealthCheckConfigOutput) ExpectedStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) []string { return v.ExpectedStatuses }).(pulumi.StringArrayOutput)
+}
+
+// Healthy threshold.
+func (o GetServicesServiceHealthCheckConfigOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// Health check host (optional when protocol is HTTP).
+func (o GetServicesServiceHealthCheckConfigOutput) HttpHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) string { return v.HttpHost }).(pulumi.StringOutput)
+}
+
+// Health check path (required when protocol is HTTP).
+func (o GetServicesServiceHealthCheckConfigOutput) HttpPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) string { return v.HttpPath }).(pulumi.StringOutput)
+}
+
+// Detection interval.
+func (o GetServicesServiceHealthCheckConfigOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// Service protocol.
+func (o GetServicesServiceHealthCheckConfigOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Health check response timeout.
+func (o GetServicesServiceHealthCheckConfigOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// Unhealthy threshold.
+func (o GetServicesServiceHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceHealthCheckConfig) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type GetServicesServiceHealthCheckConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceHealthCheckConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServiceHealthCheckConfig)(nil)).Elem()
+}
+
+func (o GetServicesServiceHealthCheckConfigArrayOutput) ToGetServicesServiceHealthCheckConfigArrayOutput() GetServicesServiceHealthCheckConfigArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceHealthCheckConfigArrayOutput) ToGetServicesServiceHealthCheckConfigArrayOutputWithContext(ctx context.Context) GetServicesServiceHealthCheckConfigArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceHealthCheckConfigArrayOutput) Index(i pulumi.IntInput) GetServicesServiceHealthCheckConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesServiceHealthCheckConfig {
+		return vs[0].([]GetServicesServiceHealthCheckConfig)[vs[1].(int)]
+	}).(GetServicesServiceHealthCheckConfigOutput)
+}
+
+type GetServicesServiceOutlierDetectionConfig struct {
+	// Base ejection time.
+	BaseEjectionTime int `pulumi:"baseEjectionTime"`
+	// Whether to enable outlier detection.
+	Enable bool `pulumi:"enable"`
+	// Failure percentage minimum hosts.
+	FailurePercentageMinimumHosts int `pulumi:"failurePercentageMinimumHosts"`
+	// Failure percentage threshold.
+	FailurePercentageThreshold int `pulumi:"failurePercentageThreshold"`
+	// Detection interval.
+	Interval int `pulumi:"interval"`
+}
+
+// GetServicesServiceOutlierDetectionConfigInput is an input type that accepts GetServicesServiceOutlierDetectionConfigArgs and GetServicesServiceOutlierDetectionConfigOutput values.
+// You can construct a concrete instance of `GetServicesServiceOutlierDetectionConfigInput` via:
+//
+//	GetServicesServiceOutlierDetectionConfigArgs{...}
+type GetServicesServiceOutlierDetectionConfigInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceOutlierDetectionConfigOutput() GetServicesServiceOutlierDetectionConfigOutput
+	ToGetServicesServiceOutlierDetectionConfigOutputWithContext(context.Context) GetServicesServiceOutlierDetectionConfigOutput
+}
+
+type GetServicesServiceOutlierDetectionConfigArgs struct {
+	// Base ejection time.
+	BaseEjectionTime pulumi.IntInput `pulumi:"baseEjectionTime"`
+	// Whether to enable outlier detection.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Failure percentage minimum hosts.
+	FailurePercentageMinimumHosts pulumi.IntInput `pulumi:"failurePercentageMinimumHosts"`
+	// Failure percentage threshold.
+	FailurePercentageThreshold pulumi.IntInput `pulumi:"failurePercentageThreshold"`
+	// Detection interval.
+	Interval pulumi.IntInput `pulumi:"interval"`
+}
+
+func (GetServicesServiceOutlierDetectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (i GetServicesServiceOutlierDetectionConfigArgs) ToGetServicesServiceOutlierDetectionConfigOutput() GetServicesServiceOutlierDetectionConfigOutput {
+	return i.ToGetServicesServiceOutlierDetectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceOutlierDetectionConfigArgs) ToGetServicesServiceOutlierDetectionConfigOutputWithContext(ctx context.Context) GetServicesServiceOutlierDetectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceOutlierDetectionConfigOutput)
+}
+
+// GetServicesServiceOutlierDetectionConfigArrayInput is an input type that accepts GetServicesServiceOutlierDetectionConfigArray and GetServicesServiceOutlierDetectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetServicesServiceOutlierDetectionConfigArrayInput` via:
+//
+//	GetServicesServiceOutlierDetectionConfigArray{ GetServicesServiceOutlierDetectionConfigArgs{...} }
+type GetServicesServiceOutlierDetectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceOutlierDetectionConfigArrayOutput() GetServicesServiceOutlierDetectionConfigArrayOutput
+	ToGetServicesServiceOutlierDetectionConfigArrayOutputWithContext(context.Context) GetServicesServiceOutlierDetectionConfigArrayOutput
+}
+
+type GetServicesServiceOutlierDetectionConfigArray []GetServicesServiceOutlierDetectionConfigInput
+
+func (GetServicesServiceOutlierDetectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (i GetServicesServiceOutlierDetectionConfigArray) ToGetServicesServiceOutlierDetectionConfigArrayOutput() GetServicesServiceOutlierDetectionConfigArrayOutput {
+	return i.ToGetServicesServiceOutlierDetectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceOutlierDetectionConfigArray) ToGetServicesServiceOutlierDetectionConfigArrayOutputWithContext(ctx context.Context) GetServicesServiceOutlierDetectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceOutlierDetectionConfigArrayOutput)
+}
+
+type GetServicesServiceOutlierDetectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceOutlierDetectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (o GetServicesServiceOutlierDetectionConfigOutput) ToGetServicesServiceOutlierDetectionConfigOutput() GetServicesServiceOutlierDetectionConfigOutput {
+	return o
+}
+
+func (o GetServicesServiceOutlierDetectionConfigOutput) ToGetServicesServiceOutlierDetectionConfigOutputWithContext(ctx context.Context) GetServicesServiceOutlierDetectionConfigOutput {
+	return o
+}
+
+// Base ejection time.
+func (o GetServicesServiceOutlierDetectionConfigOutput) BaseEjectionTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceOutlierDetectionConfig) int { return v.BaseEjectionTime }).(pulumi.IntOutput)
+}
+
+// Whether to enable outlier detection.
+func (o GetServicesServiceOutlierDetectionConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicesServiceOutlierDetectionConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Failure percentage minimum hosts.
+func (o GetServicesServiceOutlierDetectionConfigOutput) FailurePercentageMinimumHosts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceOutlierDetectionConfig) int { return v.FailurePercentageMinimumHosts }).(pulumi.IntOutput)
+}
+
+// Failure percentage threshold.
+func (o GetServicesServiceOutlierDetectionConfigOutput) FailurePercentageThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceOutlierDetectionConfig) int { return v.FailurePercentageThreshold }).(pulumi.IntOutput)
+}
+
+// Detection interval.
+func (o GetServicesServiceOutlierDetectionConfigOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceOutlierDetectionConfig) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+type GetServicesServiceOutlierDetectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceOutlierDetectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServiceOutlierDetectionConfig)(nil)).Elem()
+}
+
+func (o GetServicesServiceOutlierDetectionConfigArrayOutput) ToGetServicesServiceOutlierDetectionConfigArrayOutput() GetServicesServiceOutlierDetectionConfigArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceOutlierDetectionConfigArrayOutput) ToGetServicesServiceOutlierDetectionConfigArrayOutputWithContext(ctx context.Context) GetServicesServiceOutlierDetectionConfigArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceOutlierDetectionConfigArrayOutput) Index(i pulumi.IntInput) GetServicesServiceOutlierDetectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesServiceOutlierDetectionConfig {
+		return vs[0].([]GetServicesServiceOutlierDetectionConfig)[vs[1].(int)]
+	}).(GetServicesServiceOutlierDetectionConfigOutput)
+}
+
+type GetServicesServicePort struct {
+	// Port name.
+	Name string `pulumi:"name"`
+	// Port number.
+	Port int `pulumi:"port"`
+	// Service protocol.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetServicesServicePortInput is an input type that accepts GetServicesServicePortArgs and GetServicesServicePortOutput values.
+// You can construct a concrete instance of `GetServicesServicePortInput` via:
+//
+//	GetServicesServicePortArgs{...}
+type GetServicesServicePortInput interface {
+	pulumi.Input
+
+	ToGetServicesServicePortOutput() GetServicesServicePortOutput
+	ToGetServicesServicePortOutputWithContext(context.Context) GetServicesServicePortOutput
+}
+
+type GetServicesServicePortArgs struct {
+	// Port name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port number.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Service protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetServicesServicePortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServicePort)(nil)).Elem()
+}
+
+func (i GetServicesServicePortArgs) ToGetServicesServicePortOutput() GetServicesServicePortOutput {
+	return i.ToGetServicesServicePortOutputWithContext(context.Background())
+}
+
+func (i GetServicesServicePortArgs) ToGetServicesServicePortOutputWithContext(ctx context.Context) GetServicesServicePortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServicePortOutput)
+}
+
+// GetServicesServicePortArrayInput is an input type that accepts GetServicesServicePortArray and GetServicesServicePortArrayOutput values.
+// You can construct a concrete instance of `GetServicesServicePortArrayInput` via:
+//
+//	GetServicesServicePortArray{ GetServicesServicePortArgs{...} }
+type GetServicesServicePortArrayInput interface {
+	pulumi.Input
+
+	ToGetServicesServicePortArrayOutput() GetServicesServicePortArrayOutput
+	ToGetServicesServicePortArrayOutputWithContext(context.Context) GetServicesServicePortArrayOutput
+}
+
+type GetServicesServicePortArray []GetServicesServicePortInput
+
+func (GetServicesServicePortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServicePort)(nil)).Elem()
+}
+
+func (i GetServicesServicePortArray) ToGetServicesServicePortArrayOutput() GetServicesServicePortArrayOutput {
+	return i.ToGetServicesServicePortArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicesServicePortArray) ToGetServicesServicePortArrayOutputWithContext(ctx context.Context) GetServicesServicePortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServicePortArrayOutput)
+}
+
+type GetServicesServicePortOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServicePortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServicePort)(nil)).Elem()
+}
+
+func (o GetServicesServicePortOutput) ToGetServicesServicePortOutput() GetServicesServicePortOutput {
+	return o
+}
+
+func (o GetServicesServicePortOutput) ToGetServicesServicePortOutputWithContext(ctx context.Context) GetServicesServicePortOutput {
+	return o
+}
+
+// Port name.
+func (o GetServicesServicePortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServicePort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port number.
+func (o GetServicesServicePortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServicePort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Service protocol.
+func (o GetServicesServicePortOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServicePort) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetServicesServicePortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServicePortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServicePort)(nil)).Elem()
+}
+
+func (o GetServicesServicePortArrayOutput) ToGetServicesServicePortArrayOutput() GetServicesServicePortArrayOutput {
+	return o
+}
+
+func (o GetServicesServicePortArrayOutput) ToGetServicesServicePortArrayOutputWithContext(ctx context.Context) GetServicesServicePortArrayOutput {
+	return o
+}
+
+func (o GetServicesServicePortArrayOutput) Index(i pulumi.IntInput) GetServicesServicePortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesServicePort {
+		return vs[0].([]GetServicesServicePort)[vs[1].(int)]
+	}).(GetServicesServicePortOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTlsCipherSuitesConfigInput)(nil)).Elem(), DomainTlsCipherSuitesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTlsCipherSuitesConfigPtrInput)(nil)).Elem(), DomainTlsCipherSuitesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTlsCipherSuitesConfigTlsCipherSuiteInput)(nil)).Elem(), DomainTlsCipherSuitesConfigTlsCipherSuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput)(nil)).Elem(), DomainTlsCipherSuitesConfigTlsCipherSuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEnvironmentInput)(nil)).Elem(), GatewayEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEnvironmentArrayInput)(nil)).Elem(), GatewayEnvironmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoadBalancerInput)(nil)).Elem(), GatewayLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoadBalancerArrayInput)(nil)).Elem(), GatewayLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoadBalancerPortInput)(nil)).Elem(), GatewayLoadBalancerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoadBalancerPortArrayInput)(nil)).Elem(), GatewayLoadBalancerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLogConfigInput)(nil)).Elem(), GatewayLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLogConfigPtrInput)(nil)).Elem(), GatewayLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLogConfigSlsInput)(nil)).Elem(), GatewayLogConfigSlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLogConfigSlsPtrInput)(nil)).Elem(), GatewayLogConfigSlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkAccessConfigInput)(nil)).Elem(), GatewayNetworkAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkAccessConfigPtrInput)(nil)).Elem(), GatewayNetworkAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySecurityGroupInput)(nil)).Elem(), GatewaySecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySecurityGroupArrayInput)(nil)).Elem(), GatewaySecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpcInput)(nil)).Elem(), GatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpcPtrInput)(nil)).Elem(), GatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVswitchInput)(nil)).Elem(), GatewayVswitchArgs{})
@@ -1181,14 +8873,118 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneArrayInput)(nil)).Elem(), GatewayZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneConfigInput)(nil)).Elem(), GatewayZoneConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneConfigPtrInput)(nil)).Elem(), GatewayZoneConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteBackendInput)(nil)).Elem(), RouteBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteBackendPtrInput)(nil)).Elem(), RouteBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteBackendServiceInput)(nil)).Elem(), RouteBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteBackendServiceArrayInput)(nil)).Elem(), RouteBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEnvironmentInfoInput)(nil)).Elem(), RouteEnvironmentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEnvironmentInfoPtrInput)(nil)).Elem(), RouteEnvironmentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEnvironmentInfoGatewayInfoInput)(nil)).Elem(), RouteEnvironmentInfoGatewayInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEnvironmentInfoGatewayInfoArrayInput)(nil)).Elem(), RouteEnvironmentInfoGatewayInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEnvironmentInfoSubDomainInput)(nil)).Elem(), RouteEnvironmentInfoSubDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteEnvironmentInfoSubDomainArrayInput)(nil)).Elem(), RouteEnvironmentInfoSubDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchInput)(nil)).Elem(), RouteMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchPtrInput)(nil)).Elem(), RouteMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchHeaderInput)(nil)).Elem(), RouteMatchHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchHeaderArrayInput)(nil)).Elem(), RouteMatchHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchPathInput)(nil)).Elem(), RouteMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchPathPtrInput)(nil)).Elem(), RouteMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchQueryParamInput)(nil)).Elem(), RouteMatchQueryParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchQueryParamArrayInput)(nil)).Elem(), RouteMatchQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceHealthCheckConfigInput)(nil)).Elem(), ServiceHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceHealthCheckConfigPtrInput)(nil)).Elem(), ServiceHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceOutlierDetectionConfigInput)(nil)).Elem(), ServiceOutlierDetectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceOutlierDetectionConfigPtrInput)(nil)).Elem(), ServiceOutlierDetectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePortInput)(nil)).Elem(), ServicePortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePortArrayInput)(nil)).Elem(), ServicePortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderInput)(nil)).Elem(), GetAiModelProvidersProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderArrayInput)(nil)).Elem(), GetAiModelProvidersProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderBoundServiceInput)(nil)).Elem(), GetAiModelProvidersProviderBoundServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderBoundServiceArrayInput)(nil)).Elem(), GetAiModelProvidersProviderBoundServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderModelCardInput)(nil)).Elem(), GetAiModelProvidersProviderModelCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderModelCardArrayInput)(nil)).Elem(), GetAiModelProvidersProviderModelCardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfigInput)(nil)).Elem(), GetDomainsDomainTlsCipherSuitesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfigArrayInput)(nil)).Elem(), GetDomainsDomainTlsCipherSuitesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteInput)(nil)).Elem(), GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayInput)(nil)).Elem(), GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayEnvironmentInput)(nil)).Elem(), GetGatewaysGatewayEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayEnvironmentArrayInput)(nil)).Elem(), GetGatewaysGatewayEnvironmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayLoadBalancerInput)(nil)).Elem(), GetGatewaysGatewayLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayLoadBalancerArrayInput)(nil)).Elem(), GetGatewaysGatewayLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayLoadBalancerPortInput)(nil)).Elem(), GetGatewaysGatewayLoadBalancerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayLoadBalancerPortArrayInput)(nil)).Elem(), GetGatewaysGatewayLoadBalancerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySecurityGroupInput)(nil)).Elem(), GetGatewaysGatewaySecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySecurityGroupArrayInput)(nil)).Elem(), GetGatewaysGatewaySecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySubDomainInfoInput)(nil)).Elem(), GetGatewaysGatewaySubDomainInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySubDomainInfoArrayInput)(nil)).Elem(), GetGatewaysGatewaySubDomainInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayVpcInput)(nil)).Elem(), GetGatewaysGatewayVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayVpcArrayInput)(nil)).Elem(), GetGatewaysGatewayVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayVswitchInput)(nil)).Elem(), GetGatewaysGatewayVswitchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayVswitchArrayInput)(nil)).Elem(), GetGatewaysGatewayVswitchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayZoneInput)(nil)).Elem(), GetGatewaysGatewayZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayZoneArrayInput)(nil)).Elem(), GetGatewaysGatewayZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginClassesClassInput)(nil)).Elem(), GetPluginClassesClassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginClassesClassArrayInput)(nil)).Elem(), GetPluginClassesClassArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoInput)(nil)).Elem(), GetRoutesEnvironmentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoPtrInput)(nil)).Elem(), GetRoutesEnvironmentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoGatewayInfoInput)(nil)).Elem(), GetRoutesEnvironmentInfoGatewayInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoGatewayInfoArrayInput)(nil)).Elem(), GetRoutesEnvironmentInfoGatewayInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoSubDomainInput)(nil)).Elem(), GetRoutesEnvironmentInfoSubDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoSubDomainArrayInput)(nil)).Elem(), GetRoutesEnvironmentInfoSubDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteInput)(nil)).Elem(), GetRoutesRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteArrayInput)(nil)).Elem(), GetRoutesRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteBackendInput)(nil)).Elem(), GetRoutesRouteBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteBackendArrayInput)(nil)).Elem(), GetRoutesRouteBackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteBackendServiceInput)(nil)).Elem(), GetRoutesRouteBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteBackendServiceArrayInput)(nil)).Elem(), GetRoutesRouteBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteDomainInfoInput)(nil)).Elem(), GetRoutesRouteDomainInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteDomainInfoArrayInput)(nil)).Elem(), GetRoutesRouteDomainInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteEnvironmentInfoInput)(nil)).Elem(), GetRoutesRouteEnvironmentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteEnvironmentInfoArrayInput)(nil)).Elem(), GetRoutesRouteEnvironmentInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteEnvironmentInfoGatewayInfoInput)(nil)).Elem(), GetRoutesRouteEnvironmentInfoGatewayInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteEnvironmentInfoGatewayInfoArrayInput)(nil)).Elem(), GetRoutesRouteEnvironmentInfoGatewayInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteEnvironmentInfoSubDomainInput)(nil)).Elem(), GetRoutesRouteEnvironmentInfoSubDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteEnvironmentInfoSubDomainArrayInput)(nil)).Elem(), GetRoutesRouteEnvironmentInfoSubDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchInput)(nil)).Elem(), GetRoutesRouteMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchArrayInput)(nil)).Elem(), GetRoutesRouteMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchHeaderInput)(nil)).Elem(), GetRoutesRouteMatchHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchHeaderArrayInput)(nil)).Elem(), GetRoutesRouteMatchHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchPathInput)(nil)).Elem(), GetRoutesRouteMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchPathArrayInput)(nil)).Elem(), GetRoutesRouteMatchPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchQueryParamInput)(nil)).Elem(), GetRoutesRouteMatchQueryParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchQueryParamArrayInput)(nil)).Elem(), GetRoutesRouteMatchQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceHealthCheckConfigInput)(nil)).Elem(), GetServicesServiceHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceHealthCheckConfigArrayInput)(nil)).Elem(), GetServicesServiceHealthCheckConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceOutlierDetectionConfigInput)(nil)).Elem(), GetServicesServiceOutlierDetectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceOutlierDetectionConfigArrayInput)(nil)).Elem(), GetServicesServiceOutlierDetectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServicePortInput)(nil)).Elem(), GetServicesServicePortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServicePortArrayInput)(nil)).Elem(), GetServicesServicePortArray{})
+	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigOutput{})
+	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigPtrOutput{})
+	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigTlsCipherSuiteOutput{})
+	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput{})
+	pulumi.RegisterOutputType(GatewayEnvironmentOutput{})
+	pulumi.RegisterOutputType(GatewayEnvironmentArrayOutput{})
+	pulumi.RegisterOutputType(GatewayLoadBalancerOutput{})
+	pulumi.RegisterOutputType(GatewayLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(GatewayLoadBalancerPortOutput{})
+	pulumi.RegisterOutputType(GatewayLoadBalancerPortArrayOutput{})
 	pulumi.RegisterOutputType(GatewayLogConfigOutput{})
 	pulumi.RegisterOutputType(GatewayLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(GatewayLogConfigSlsOutput{})
 	pulumi.RegisterOutputType(GatewayLogConfigSlsPtrOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkAccessConfigOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewaySecurityGroupOutput{})
+	pulumi.RegisterOutputType(GatewaySecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GatewayVpcOutput{})
 	pulumi.RegisterOutputType(GatewayVpcPtrOutput{})
 	pulumi.RegisterOutputType(GatewayVswitchOutput{})
@@ -1197,6 +8993,98 @@ func init() {
 	pulumi.RegisterOutputType(GatewayZoneArrayOutput{})
 	pulumi.RegisterOutputType(GatewayZoneConfigOutput{})
 	pulumi.RegisterOutputType(GatewayZoneConfigPtrOutput{})
+	pulumi.RegisterOutputType(RouteBackendOutput{})
+	pulumi.RegisterOutputType(RouteBackendPtrOutput{})
+	pulumi.RegisterOutputType(RouteBackendServiceOutput{})
+	pulumi.RegisterOutputType(RouteBackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(RouteEnvironmentInfoOutput{})
+	pulumi.RegisterOutputType(RouteEnvironmentInfoPtrOutput{})
+	pulumi.RegisterOutputType(RouteEnvironmentInfoGatewayInfoOutput{})
+	pulumi.RegisterOutputType(RouteEnvironmentInfoGatewayInfoArrayOutput{})
+	pulumi.RegisterOutputType(RouteEnvironmentInfoSubDomainOutput{})
+	pulumi.RegisterOutputType(RouteEnvironmentInfoSubDomainArrayOutput{})
+	pulumi.RegisterOutputType(RouteMatchOutput{})
+	pulumi.RegisterOutputType(RouteMatchPtrOutput{})
+	pulumi.RegisterOutputType(RouteMatchHeaderOutput{})
+	pulumi.RegisterOutputType(RouteMatchHeaderArrayOutput{})
+	pulumi.RegisterOutputType(RouteMatchPathOutput{})
+	pulumi.RegisterOutputType(RouteMatchPathPtrOutput{})
+	pulumi.RegisterOutputType(RouteMatchQueryParamOutput{})
+	pulumi.RegisterOutputType(RouteMatchQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceOutlierDetectionConfigOutput{})
+	pulumi.RegisterOutputType(ServiceOutlierDetectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServicePortOutput{})
+	pulumi.RegisterOutputType(ServicePortArrayOutput{})
+	pulumi.RegisterOutputType(GetAiModelProvidersProviderOutput{})
+	pulumi.RegisterOutputType(GetAiModelProvidersProviderArrayOutput{})
+	pulumi.RegisterOutputType(GetAiModelProvidersProviderBoundServiceOutput{})
+	pulumi.RegisterOutputType(GetAiModelProvidersProviderBoundServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAiModelProvidersProviderModelCardOutput{})
+	pulumi.RegisterOutputType(GetAiModelProvidersProviderModelCardArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainTlsCipherSuitesConfigOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainTlsCipherSuitesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayEnvironmentOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayEnvironmentArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayLoadBalancerOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayLoadBalancerPortOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayLoadBalancerPortArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewaySecurityGroupOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewaySecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewaySubDomainInfoOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewaySubDomainInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayVpcOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayVpcArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayVswitchOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayVswitchArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayZoneOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetPluginClassesClassOutput{})
 	pulumi.RegisterOutputType(GetPluginClassesClassArrayOutput{})
+	pulumi.RegisterOutputType(GetPluginsPluginOutput{})
+	pulumi.RegisterOutputType(GetPluginsPluginArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoOutput{})
+	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoGatewayInfoOutput{})
+	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoGatewayInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoSubDomainOutput{})
+	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoSubDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteBackendOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteBackendArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteBackendServiceOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteBackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteDomainInfoOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteDomainInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteEnvironmentInfoOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteEnvironmentInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteEnvironmentInfoGatewayInfoOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteEnvironmentInfoGatewayInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteEnvironmentInfoSubDomainOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteEnvironmentInfoSubDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchHeaderOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchPathOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchQueryParamOutput{})
+	pulumi.RegisterOutputType(GetRoutesRouteMatchQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceHealthCheckConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceOutlierDetectionConfigOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceOutlierDetectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServicesServicePortOutput{})
+	pulumi.RegisterOutputType(GetServicesServicePortArrayOutput{})
 }

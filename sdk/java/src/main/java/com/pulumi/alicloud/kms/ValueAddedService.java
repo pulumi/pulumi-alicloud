@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.267.0.
  * 
+ * &gt; **NOTE:** A value added service can be purchased only once per region while it is in effect. If the account already holds it, for example because it was purchased in the console, a duplicate order is charged and then refunded automatically and its instance never becomes effective, so creating this resource fails rather than tracking an instance that does not work. Import the existing service instead of creating it.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -193,18 +195,14 @@ public class ValueAddedService extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * The value added service type. Valid values:
      * 
      */
     @Export(name="valueAddedService", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> valueAddedService;
 
     /**
-     * @return value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * @return The value added service type. Valid values:
      * 
      */
     public Output<Optional<String>> valueAddedService() {

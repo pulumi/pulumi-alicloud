@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+ * You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  *
  * > **NOTE:** Available since v1.40.0.
  *
@@ -156,7 +156,6 @@ export class ShardingInstance extends pulumi.CustomResource {
     declare public readonly dbInstanceReleaseProtection: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - ` 1  `: The log backup feature is enabled.
      */
     declare public readonly enableBackupLog: pulumi.Output<number>;
     /**
@@ -276,6 +275,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly securityGroupId: pulumi.Output<string>;
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     */
+    declare public readonly securityIpGroups: pulumi.Output<outputs.mongodb.ShardingInstanceSecurityIpGroup[] | undefined>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
     declare public readonly securityIpLists: pulumi.Output<string[]>;
@@ -286,7 +289,7 @@ export class ShardingInstance extends pulumi.CustomResource {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - ` Flash  `: Single-digit second backup.
+     * - `Flash`: Single-digit second backup.
      */
     declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
@@ -392,6 +395,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["roleArn"] = state?.roleArn;
             resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityIpGroups"] = state?.securityIpGroups;
             resourceInputs["securityIpLists"] = state?.securityIpLists;
             resourceInputs["shardLists"] = state?.shardLists;
             resourceInputs["snapshotBackupType"] = state?.snapshotBackupType;
@@ -455,6 +459,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityIpGroups"] = args?.securityIpGroups;
             resourceInputs["securityIpLists"] = args?.securityIpLists;
             resourceInputs["shardLists"] = args?.shardLists;
             resourceInputs["snapshotBackupType"] = args?.snapshotBackupType;
@@ -530,7 +535,6 @@ export interface ShardingInstanceState {
     dbInstanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - ` 1  `: The log backup feature is enabled.
      */
     enableBackupLog?: pulumi.Input<number | undefined>;
     /**
@@ -650,6 +654,10 @@ export interface ShardingInstanceState {
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     */
+    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceSecurityIpGroup>[] | undefined>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -660,7 +668,7 @@ export interface ShardingInstanceState {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - ` Flash  `: Single-digit second backup.
+     * - `Flash`: Single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**
@@ -765,7 +773,6 @@ export interface ShardingInstanceArgs {
     dbInstanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - ` 1  `: The log backup feature is enabled.
      */
     enableBackupLog?: pulumi.Input<number | undefined>;
     /**
@@ -877,6 +884,10 @@ export interface ShardingInstanceArgs {
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     */
+    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceSecurityIpGroup>[] | undefined>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -887,7 +898,7 @@ export interface ShardingInstanceArgs {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - ` Flash  `: Single-digit second backup.
+     * - `Flash`: Single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**

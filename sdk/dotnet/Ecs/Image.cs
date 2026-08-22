@@ -264,6 +264,12 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the image is available. Valid values:
+        /// </summary>
+        [Output("usable")]
+        public Output<bool> Usable { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Image resource with the given unique name, arguments, and options.
@@ -613,6 +619,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Indicates whether the image is available. Valid values:
+        /// </summary>
+        [Input("usable")]
+        public Input<bool>? Usable { get; set; }
 
         public ImageState()
         {

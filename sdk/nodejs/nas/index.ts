@@ -75,6 +75,11 @@ export const getLifecyclePolicies: typeof import("./getLifecyclePolicies").getLi
 export const getLifecyclePoliciesOutput: typeof import("./getLifecyclePolicies").getLifecyclePoliciesOutput = null as any;
 utilities.lazyLoad(exports, ["getLifecyclePolicies","getLifecyclePoliciesOutput"], () => require("./getLifecyclePolicies"));
 
+export { GetLogAnalysesArgs, GetLogAnalysesResult, GetLogAnalysesOutputArgs } from "./getLogAnalyses";
+export const getLogAnalyses: typeof import("./getLogAnalyses").getLogAnalyses = null as any;
+export const getLogAnalysesOutput: typeof import("./getLogAnalyses").getLogAnalysesOutput = null as any;
+utilities.lazyLoad(exports, ["getLogAnalyses","getLogAnalysesOutput"], () => require("./getLogAnalyses"));
+
 export { GetMountTargetsArgs, GetMountTargetsResult, GetMountTargetsOutputArgs } from "./getMountTargets";
 export const getMountTargets: typeof import("./getMountTargets").getMountTargets = null as any;
 export const getMountTargetsOutput: typeof import("./getMountTargets").getMountTargetsOutput = null as any;
@@ -104,6 +109,11 @@ export { LifecyclePolicyArgs, LifecyclePolicyState } from "./lifecyclePolicy";
 export type LifecyclePolicy = import("./lifecyclePolicy").LifecyclePolicy;
 export const LifecyclePolicy: typeof import("./lifecyclePolicy").LifecyclePolicy = null as any;
 utilities.lazyLoad(exports, ["LifecyclePolicy"], () => require("./lifecyclePolicy"));
+
+export { LogAnalysisArgs, LogAnalysisState } from "./logAnalysis";
+export type LogAnalysis = import("./logAnalysis").LogAnalysis;
+export const LogAnalysis: typeof import("./logAnalysis").LogAnalysis = null as any;
+utilities.lazyLoad(exports, ["LogAnalysis"], () => require("./logAnalysis"));
 
 export { MountTargetArgs, MountTargetState } from "./mountTarget";
 export type MountTarget = import("./mountTarget").MountTarget;
@@ -156,6 +166,8 @@ const _module = {
                 return new Fileset(name, <any>undefined, { urn })
             case "alicloud:nas/lifecyclePolicy:LifecyclePolicy":
                 return new LifecyclePolicy(name, <any>undefined, { urn })
+            case "alicloud:nas/logAnalysis:LogAnalysis":
+                return new LogAnalysis(name, <any>undefined, { urn })
             case "alicloud:nas/mountTarget:MountTarget":
                 return new MountTarget(name, <any>undefined, { urn })
             case "alicloud:nas/protocolMountTarget:ProtocolMountTarget":
@@ -181,6 +193,7 @@ pulumi.runtime.registerResourceModule("alicloud", "nas/dataFlow", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/fileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/fileset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/lifecyclePolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/logAnalysis", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/mountTarget", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/protocolMountTarget", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/protocolService", _module)

@@ -23,10 +23,14 @@ __all__ = [
     'ClusterApplicationArgsDict',
     'ClusterPostInstallScriptArgs',
     'ClusterPostInstallScriptArgsDict',
+    'ClusterV2AdditionalPackageArgs',
+    'ClusterV2AdditionalPackageArgsDict',
     'ClusterV2AddonArgs',
     'ClusterV2AddonArgsDict',
     'ClusterV2ClusterCredentialsArgs',
     'ClusterV2ClusterCredentialsArgsDict',
+    'ClusterV2ClusterCustomConfigurationArgs',
+    'ClusterV2ClusterCustomConfigurationArgsDict',
     'ClusterV2ManagerArgs',
     'ClusterV2ManagerArgsDict',
     'ClusterV2ManagerDirectoryServiceArgs',
@@ -39,6 +43,16 @@ __all__ = [
     'ClusterV2ManagerManagerNodeSystemDiskArgsDict',
     'ClusterV2ManagerSchedulerArgs',
     'ClusterV2ManagerSchedulerArgsDict',
+    'ClusterV2MonitorSpecArgs',
+    'ClusterV2MonitorSpecArgsDict',
+    'ClusterV2QueueArgs',
+    'ClusterV2QueueArgsDict',
+    'ClusterV2QueueComputeNodeArgs',
+    'ClusterV2QueueComputeNodeArgsDict',
+    'ClusterV2QueueComputeNodeSystemDiskArgs',
+    'ClusterV2QueueComputeNodeSystemDiskArgsDict',
+    'ClusterV2SchedulerSpecArgs',
+    'ClusterV2SchedulerSpecArgsDict',
     'ClusterV2SharedStorageArgs',
     'ClusterV2SharedStorageArgsDict',
     'QueueComputeNodeArgs',
@@ -363,6 +377,55 @@ class ClusterPostInstallScriptArgs:
         pulumi.set(self, "url", value)
 
 
+class ClusterV2AdditionalPackageArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the software to be installed.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The version of the software to be installed.
+    """
+
+@pulumi.input_type
+class ClusterV2AdditionalPackageArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the software to be installed.
+        :param pulumi.Input[_builtins.str] version: The version of the software to be installed.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the software to be installed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version of the software to be installed.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
 class ClusterV2AddonArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     """
@@ -497,6 +560,55 @@ class ClusterV2ClusterCredentialsArgs:
     @password.setter
     def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+
+class ClusterV2ClusterCustomConfigurationArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The execution parameters of the post-processing script.
+    """
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The download URL of the post-processing script.
+    """
+
+@pulumi.input_type
+class ClusterV2ClusterCustomConfigurationArgs:
+    def __init__(__self__, *,
+                 args: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] args: The execution parameters of the post-processing script.
+        :param pulumi.Input[_builtins.str] script: The download URL of the post-processing script.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The execution parameters of the post-processing script.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The download URL of the post-processing script.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "script", value)
 
 
 class ClusterV2ManagerArgsDict(TypedDict):
@@ -710,81 +822,25 @@ class ClusterV2ManagerDnsArgs:
 
 class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
     auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    """
-    Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
-    - true: Automatic renewal.
-    - false: Do not renew automatically (default).
-    """
     auto_renew_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    """
-    The renewal duration of a single automatic renewal. Value range:
-    - When PeriodUnit = Week: 1, 2, 3.
-    - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
-
-    Default value: 1.
-    """
     duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    """
-    The duration of the preemptible instance, in hours. Value:
-    - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
-    - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
-
-    Default value: 1.
-    """
     enable_ht: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    """
-    EnableHT
-    """
     expired_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The expiration time of the management node.
     """
     image_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    ImageId
-    """
     instance_charge_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The instance billing method of the management node. Valid values:
-
-    - PostPaid: pay-as-you-go
-    - PrePaid: subscription
-    """
     instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance ID of the management node.
     """
     instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The instance type of the management node.
-    """
     period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    """
-    The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
-    - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
-    - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
-    """
     period_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The unit of duration of the year-to-month billing method. Value range:
-    - Week.
-    - Month (default).
-    """
     spot_price_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
-    """
-    Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
-    """
     spot_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
-    - NoSpot: normal pay-as-you-go instances (default).
-    - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
-    - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
-    """
     system_disk: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgsDict']]]
-    """
-    System disk configuration of the management node. See `system_disk` below.
-    """
 
 @pulumi.input_type
 class ClusterV2ManagerManagerNodeArgs:
@@ -804,40 +860,8 @@ class ClusterV2ManagerManagerNodeArgs:
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk: pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']] = None):
         """
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
-               - true: Automatic renewal.
-               - false: Do not renew automatically (default).
-        :param pulumi.Input[_builtins.int] auto_renew_period: The renewal duration of a single automatic renewal. Value range:
-               - When PeriodUnit = Week: 1, 2, 3.
-               - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
-               
-               Default value: 1.
-        :param pulumi.Input[_builtins.int] duration: The duration of the preemptible instance, in hours. Value:
-               - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
-               - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
-               
-               Default value: 1.
-        :param pulumi.Input[_builtins.bool] enable_ht: EnableHT
         :param pulumi.Input[_builtins.str] expired_time: The expiration time of the management node.
-        :param pulumi.Input[_builtins.str] image_id: ImageId
-        :param pulumi.Input[_builtins.str] instance_charge_type: The instance billing method of the management node. Valid values:
-               
-               - PostPaid: pay-as-you-go
-               - PrePaid: subscription
         :param pulumi.Input[_builtins.str] instance_id: The instance ID of the management node.
-        :param pulumi.Input[_builtins.str] instance_type: The instance type of the management node.
-        :param pulumi.Input[_builtins.int] period: The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
-               - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
-               - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
-        :param pulumi.Input[_builtins.str] period_unit: The unit of duration of the year-to-month billing method. Value range:
-               - Week.
-               - Month (default).
-        :param pulumi.Input[_builtins.float] spot_price_limit: Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
-        :param pulumi.Input[_builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
-               - NoSpot: normal pay-as-you-go instances (default).
-               - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
-               - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
-        :param pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgs'] system_disk: System disk configuration of the management node. See `system_disk` below.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -871,11 +895,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
-        - true: Automatic renewal.
-        - false: Do not renew automatically (default).
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -885,13 +904,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        The renewal duration of a single automatic renewal. Value range:
-        - When PeriodUnit = Week: 1, 2, 3.
-        - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
-
-        Default value: 1.
-        """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
@@ -901,13 +913,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        The duration of the preemptible instance, in hours. Value:
-        - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
-        - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
-
-        Default value: 1.
-        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -917,9 +922,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="enableHt")
     def enable_ht(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        EnableHT
-        """
         return pulumi.get(self, "enable_ht")
 
     @enable_ht.setter
@@ -941,9 +943,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        ImageId
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -953,12 +952,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The instance billing method of the management node. Valid values:
-
-        - PostPaid: pay-as-you-go
-        - PrePaid: subscription
-        """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -980,9 +973,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The instance type of the management node.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -992,11 +982,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
-        - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
-        - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1006,11 +991,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The unit of duration of the year-to-month billing method. Value range:
-        - Week.
-        - Month (default).
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -1020,9 +1000,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
-        """
-        Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
-        """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
@@ -1032,12 +1009,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
-        - NoSpot: normal pay-as-you-go instances (default).
-        - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
-        - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
-        """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
@@ -1047,9 +1018,6 @@ class ClusterV2ManagerManagerNodeArgs:
     @_builtins.property
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']]:
-        """
-        System disk configuration of the management node. See `system_disk` below.
-        """
         return pulumi.get(self, "system_disk")
 
     @system_disk.setter
@@ -1059,32 +1027,8 @@ class ClusterV2ManagerManagerNodeArgs:
 
 class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
     category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Manage the system disk configuration of the node. Value range:
-    - cloud_efficiency: The Ultra cloud disk.
-    - cloud_ssd:SSD cloud disk.
-    - cloud_essd:ESSD cloud disk.
-    - cloud: ordinary cloud disk.
-    """
     level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-    - PL0: maximum random read/write IOPS 10000 for a single disk.
-    - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-    - PL2: maximum random read/write IOPS 100000 for a single disk.
-    - PL3: maximum random read/write IOPS 1 million for a single disk.
-    """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    """
-    The system disk size of the management node. Unit: GiB. Value range:
-    - Ordinary cloud tray: 20~500.
-    - ESSD cloud disk:
-    - PL0:1~2048.
-    - PL1:20~2048.
-    - PL2:461~2048.
-    - PL3:1261~2048.
-    - Other cloud disk types: 20~2048.
-    """
 
 @pulumi.input_type
 class ClusterV2ManagerManagerNodeSystemDiskArgs:
@@ -1092,26 +1036,6 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  level: pulumi.Input[Optional[_builtins.str]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] category: Manage the system disk configuration of the node. Value range:
-               - cloud_efficiency: The Ultra cloud disk.
-               - cloud_ssd:SSD cloud disk.
-               - cloud_essd:ESSD cloud disk.
-               - cloud: ordinary cloud disk.
-        :param pulumi.Input[_builtins.str] level: When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-               - PL0: maximum random read/write IOPS 10000 for a single disk.
-               - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-               - PL2: maximum random read/write IOPS 100000 for a single disk.
-               - PL3: maximum random read/write IOPS 1 million for a single disk.
-        :param pulumi.Input[_builtins.int] size: The system disk size of the management node. Unit: GiB. Value range:
-               - Ordinary cloud tray: 20~500.
-               - ESSD cloud disk:
-               - PL0:1~2048.
-               - PL1:20~2048.
-               - PL2:461~2048.
-               - PL3:1261~2048.
-               - Other cloud disk types: 20~2048.
-        """
         if category is not None:
             pulumi.set(__self__, "category", category)
         if level is not None:
@@ -1122,13 +1046,6 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Manage the system disk configuration of the node. Value range:
-        - cloud_efficiency: The Ultra cloud disk.
-        - cloud_ssd:SSD cloud disk.
-        - cloud_essd:ESSD cloud disk.
-        - cloud: ordinary cloud disk.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -1138,13 +1055,6 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
     @_builtins.property
     @pulumi.getter
     def level(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-        - PL0: maximum random read/write IOPS 10000 for a single disk.
-        - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-        - PL2: maximum random read/write IOPS 100000 for a single disk.
-        - PL3: maximum random read/write IOPS 1 million for a single disk.
-        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -1154,16 +1064,6 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        The system disk size of the management node. Unit: GiB. Value range:
-        - Ordinary cloud tray: 20~500.
-        - ESSD cloud disk:
-        - PL0:1~2048.
-        - PL1:20~2048.
-        - PL2:461~2048.
-        - PL3:1261~2048.
-        - Other cloud disk types: 20~2048.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1229,6 +1129,647 @@ class ClusterV2ManagerSchedulerArgs:
     @version.setter
     def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
+
+
+class ClusterV2MonitorSpecArgsDict(TypedDict):
+    enable_compute_load_monitor: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable the monitoring component for the compute nodes. Valid values:
+
+    - true
+    - false
+    """
+
+@pulumi.input_type
+class ClusterV2MonitorSpecArgs:
+    def __init__(__self__, *,
+                 enable_compute_load_monitor: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_compute_load_monitor: Specifies whether to enable the monitoring component for the compute nodes. Valid values:
+               
+               - true
+               - false
+        """
+        if enable_compute_load_monitor is not None:
+            pulumi.set(__self__, "enable_compute_load_monitor", enable_compute_load_monitor)
+
+    @_builtins.property
+    @pulumi.getter(name="enableComputeLoadMonitor")
+    def enable_compute_load_monitor(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the monitoring component for the compute nodes. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_compute_load_monitor")
+
+    @enable_compute_load_monitor.setter
+    def enable_compute_load_monitor(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_compute_load_monitor", value)
+
+
+class ClusterV2QueueArgsDict(TypedDict):
+    allocation_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The auto scale-out strategy of the queue.
+    """
+    compute_nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueComputeNodeArgsDict']]]]]
+    """
+    The list of hardware configurations of the compute nodes in the queue. The value range of N is 0 to 10. See `compute_nodes` below.
+    """
+    enable_scale_in: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable auto scale-in for the queue. Valid values:
+
+    - true
+    - false
+    """
+    enable_scale_out: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable auto scale-out for the queue. Valid values:
+
+    - true
+    - false
+    """
+    hostname_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hostname prefix of the compute nodes in the queue.
+    """
+    hostname_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hostname suffix of the compute nodes in the queue.
+    """
+    initial_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The initial number of compute nodes that the queue retains.
+    """
+    inter_connect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The network type between the compute nodes in the queue. Valid values:
+
+    - vpc
+    - eRDMA
+    """
+    keep_alive_nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of nodes with deletion protection enabled in the queue. The value is the hostname of the node.
+    """
+    max_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum number of compute nodes that the queue can retain.
+    """
+    max_count_per_cycle: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum number of compute nodes that the queue can scale out in each scale-out cycle.
+    """
+    min_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum number of compute nodes that the queue retains.
+    """
+    queue_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the queue. The name must be 1 to 15 characters in length. It can contain letters, digits, and periods (.).
+    """
+    ram_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the instance role attached to the compute nodes in the queue.
+    """
+    reserved_node_pool_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the reserved node pool used by the queue.
+    """
+    vswitch_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of vSwitches available to the compute nodes in the queue. The value range of N is 1 to 5.
+    """
+
+@pulumi.input_type
+class ClusterV2QueueArgs:
+    def __init__(__self__, *,
+                 allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueComputeNodeArgs']]]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_alive_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_count_per_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_node_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocation_strategy: The auto scale-out strategy of the queue.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2QueueComputeNodeArgs']]] compute_nodes: The list of hardware configurations of the compute nodes in the queue. The value range of N is 0 to 10. See `compute_nodes` below.
+        :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the queue. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.bool] enable_scale_out: Specifies whether to enable auto scale-out for the queue. Valid values:
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.str] hostname_prefix: The hostname prefix of the compute nodes in the queue.
+        :param pulumi.Input[_builtins.str] hostname_suffix: The hostname suffix of the compute nodes in the queue.
+        :param pulumi.Input[_builtins.int] initial_count: The initial number of compute nodes that the queue retains.
+        :param pulumi.Input[_builtins.str] inter_connect: The network type between the compute nodes in the queue. Valid values:
+               
+               - vpc
+               - eRDMA
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_alive_nodes: The list of nodes with deletion protection enabled in the queue. The value is the hostname of the node.
+        :param pulumi.Input[_builtins.int] max_count: The maximum number of compute nodes that the queue can retain.
+        :param pulumi.Input[_builtins.int] max_count_per_cycle: The maximum number of compute nodes that the queue can scale out in each scale-out cycle.
+        :param pulumi.Input[_builtins.int] min_count: The minimum number of compute nodes that the queue retains.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the queue. The name must be 1 to 15 characters in length. It can contain letters, digits, and periods (.).
+        :param pulumi.Input[_builtins.str] ram_role: The name of the instance role attached to the compute nodes in the queue.
+        :param pulumi.Input[_builtins.str] reserved_node_pool_id: The ID of the reserved node pool used by the queue.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The list of vSwitches available to the compute nodes in the queue. The value range of N is 1 to 5.
+        """
+        if allocation_strategy is not None:
+            pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        if compute_nodes is not None:
+            pulumi.set(__self__, "compute_nodes", compute_nodes)
+        if enable_scale_in is not None:
+            pulumi.set(__self__, "enable_scale_in", enable_scale_in)
+        if enable_scale_out is not None:
+            pulumi.set(__self__, "enable_scale_out", enable_scale_out)
+        if hostname_prefix is not None:
+            pulumi.set(__self__, "hostname_prefix", hostname_prefix)
+        if hostname_suffix is not None:
+            pulumi.set(__self__, "hostname_suffix", hostname_suffix)
+        if initial_count is not None:
+            pulumi.set(__self__, "initial_count", initial_count)
+        if inter_connect is not None:
+            pulumi.set(__self__, "inter_connect", inter_connect)
+        if keep_alive_nodes is not None:
+            pulumi.set(__self__, "keep_alive_nodes", keep_alive_nodes)
+        if max_count is not None:
+            pulumi.set(__self__, "max_count", max_count)
+        if max_count_per_cycle is not None:
+            pulumi.set(__self__, "max_count_per_cycle", max_count_per_cycle)
+        if min_count is not None:
+            pulumi.set(__self__, "min_count", min_count)
+        if queue_name is not None:
+            pulumi.set(__self__, "queue_name", queue_name)
+        if ram_role is not None:
+            pulumi.set(__self__, "ram_role", ram_role)
+        if reserved_node_pool_id is not None:
+            pulumi.set(__self__, "reserved_node_pool_id", reserved_node_pool_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationStrategy")
+    def allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The auto scale-out strategy of the queue.
+        """
+        return pulumi.get(self, "allocation_strategy")
+
+    @allocation_strategy.setter
+    def allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocation_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="computeNodes")
+    def compute_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueComputeNodeArgs']]]]:
+        """
+        The list of hardware configurations of the compute nodes in the queue. The value range of N is 0 to 10. See `compute_nodes` below.
+        """
+        return pulumi.get(self, "compute_nodes")
+
+    @compute_nodes.setter
+    def compute_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2QueueComputeNodeArgs']]]]):
+        pulumi.set(self, "compute_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleIn")
+    def enable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto scale-in for the queue. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_in")
+
+    @enable_scale_in.setter
+    def enable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_scale_in", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableScaleOut")
+    def enable_scale_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto scale-out for the queue. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_scale_out")
+
+    @enable_scale_out.setter
+    def enable_scale_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_scale_out", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostnamePrefix")
+    def hostname_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hostname prefix of the compute nodes in the queue.
+        """
+        return pulumi.get(self, "hostname_prefix")
+
+    @hostname_prefix.setter
+    def hostname_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hostname_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostnameSuffix")
+    def hostname_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hostname suffix of the compute nodes in the queue.
+        """
+        return pulumi.get(self, "hostname_suffix")
+
+    @hostname_suffix.setter
+    def hostname_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hostname_suffix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialCount")
+    def initial_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The initial number of compute nodes that the queue retains.
+        """
+        return pulumi.get(self, "initial_count")
+
+    @initial_count.setter
+    def initial_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "initial_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="interConnect")
+    def inter_connect(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network type between the compute nodes in the queue. Valid values:
+
+        - vpc
+        - eRDMA
+        """
+        return pulumi.get(self, "inter_connect")
+
+    @inter_connect.setter
+    def inter_connect(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "inter_connect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keepAliveNodes")
+    def keep_alive_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of nodes with deletion protection enabled in the queue. The value is the hostname of the node.
+        """
+        return pulumi.get(self, "keep_alive_nodes")
+
+    @keep_alive_nodes.setter
+    def keep_alive_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "keep_alive_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of compute nodes that the queue can retain.
+        """
+        return pulumi.get(self, "max_count")
+
+    @max_count.setter
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCountPerCycle")
+    def max_count_per_cycle(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of compute nodes that the queue can scale out in each scale-out cycle.
+        """
+        return pulumi.get(self, "max_count_per_cycle")
+
+    @max_count_per_cycle.setter
+    def max_count_per_cycle(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_count_per_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum number of compute nodes that the queue retains.
+        """
+        return pulumi.get(self, "min_count")
+
+    @min_count.setter
+    def min_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "min_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the queue. The name must be 1 to 15 characters in length. It can contain letters, digits, and periods (.).
+        """
+        return pulumi.get(self, "queue_name")
+
+    @queue_name.setter
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "queue_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ramRole")
+    def ram_role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the instance role attached to the compute nodes in the queue.
+        """
+        return pulumi.get(self, "ram_role")
+
+    @ram_role.setter
+    def ram_role(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ram_role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservedNodePoolId")
+    def reserved_node_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the reserved node pool used by the queue.
+        """
+        return pulumi.get(self, "reserved_node_pool_id")
+
+    @reserved_node_pool_id.setter
+    def reserved_node_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "reserved_node_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of vSwitches available to the compute nodes in the queue. The value range of N is 1 to 5.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+
+class ClusterV2QueueComputeNodeArgsDict(TypedDict):
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    auto_renew_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    enable_ht: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    image_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    instance_charge_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    period_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    spot_price_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    spot_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    system_disk: NotRequired[pulumi.Input[Optional['ClusterV2QueueComputeNodeSystemDiskArgsDict']]]
+
+@pulumi.input_type
+class ClusterV2QueueComputeNodeArgs:
+    def __init__(__self__, *,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk: pulumi.Input[Optional['ClusterV2QueueComputeNodeSystemDiskArgs']] = None):
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enable_ht is not None:
+            pulumi.set(__self__, "enable_ht", enable_ht)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
+        if spot_price_limit is not None:
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
+        if system_disk is not None:
+            pulumi.set(__self__, "system_disk", system_disk)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableHt")
+    def enable_ht(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "enable_ht")
+
+    @enable_ht.setter
+    def enable_ht(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_ht", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "period_unit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
+        return pulumi.get(self, "spot_price_limit")
+
+    @spot_price_limit.setter
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "spot_price_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="systemDisk")
+    def system_disk(self) -> pulumi.Input[Optional['ClusterV2QueueComputeNodeSystemDiskArgs']]:
+        return pulumi.get(self, "system_disk")
+
+    @system_disk.setter
+    def system_disk(self, value: pulumi.Input[Optional['ClusterV2QueueComputeNodeSystemDiskArgs']]):
+        pulumi.set(self, "system_disk", value)
+
+
+class ClusterV2QueueComputeNodeSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class ClusterV2QueueComputeNodeSystemDiskArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+
+class ClusterV2SchedulerSpecArgsDict(TypedDict):
+    enable_topology_awareness: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable the topology awareness feature for the cluster. Valid values:
+
+    - true
+    - false
+    """
+
+@pulumi.input_type
+class ClusterV2SchedulerSpecArgs:
+    def __init__(__self__, *,
+                 enable_topology_awareness: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_topology_awareness: Specifies whether to enable the topology awareness feature for the cluster. Valid values:
+               
+               - true
+               - false
+        """
+        if enable_topology_awareness is not None:
+            pulumi.set(__self__, "enable_topology_awareness", enable_topology_awareness)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTopologyAwareness")
+    def enable_topology_awareness(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the topology awareness feature for the cluster. Valid values:
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "enable_topology_awareness")
+
+    @enable_topology_awareness.setter
+    def enable_topology_awareness(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_topology_awareness", value)
 
 
 class ClusterV2SharedStorageArgsDict(TypedDict):

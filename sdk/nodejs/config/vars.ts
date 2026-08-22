@@ -126,6 +126,17 @@ Object.defineProperty(exports, "fc", {
     enumerable: true,
 });
 
+/**
+ * Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+ */
+export declare const features: outputs.config.Features | undefined;
+Object.defineProperty(exports, "features", {
+    get() {
+        return __config.getObject<outputs.config.Features>("features");
+    },
+    enumerable: true,
+});
+
 export declare const logEndpoint: string | undefined;
 Object.defineProperty(exports, "logEndpoint", {
     get() {
@@ -252,7 +263,7 @@ Object.defineProperty(exports, "signVersion", {
 });
 
 /**
- * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+ * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
  */
 export declare const skipRegionValidation: boolean | undefined;
 Object.defineProperty(exports, "skipRegionValidation", {
