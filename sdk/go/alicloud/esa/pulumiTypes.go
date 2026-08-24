@@ -2530,6 +2530,112 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type RoutineCodeDeploymentCodeVersion struct {
+	// The committed code version to deploy.
+	CodeVersion string `pulumi:"codeVersion"`
+	// The traffic percentage of this code version. Valid values: 1 to 100.
+	Percentage int `pulumi:"percentage"`
+}
+
+// RoutineCodeDeploymentCodeVersionInput is an input type that accepts RoutineCodeDeploymentCodeVersionArgs and RoutineCodeDeploymentCodeVersionOutput values.
+// You can construct a concrete instance of `RoutineCodeDeploymentCodeVersionInput` via:
+//
+//	RoutineCodeDeploymentCodeVersionArgs{...}
+type RoutineCodeDeploymentCodeVersionInput interface {
+	pulumi.Input
+
+	ToRoutineCodeDeploymentCodeVersionOutput() RoutineCodeDeploymentCodeVersionOutput
+	ToRoutineCodeDeploymentCodeVersionOutputWithContext(context.Context) RoutineCodeDeploymentCodeVersionOutput
+}
+
+type RoutineCodeDeploymentCodeVersionArgs struct {
+	// The committed code version to deploy.
+	CodeVersion pulumi.StringInput `pulumi:"codeVersion"`
+	// The traffic percentage of this code version. Valid values: 1 to 100.
+	Percentage pulumi.IntInput `pulumi:"percentage"`
+}
+
+func (RoutineCodeDeploymentCodeVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineCodeDeploymentCodeVersion)(nil)).Elem()
+}
+
+func (i RoutineCodeDeploymentCodeVersionArgs) ToRoutineCodeDeploymentCodeVersionOutput() RoutineCodeDeploymentCodeVersionOutput {
+	return i.ToRoutineCodeDeploymentCodeVersionOutputWithContext(context.Background())
+}
+
+func (i RoutineCodeDeploymentCodeVersionArgs) ToRoutineCodeDeploymentCodeVersionOutputWithContext(ctx context.Context) RoutineCodeDeploymentCodeVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineCodeDeploymentCodeVersionOutput)
+}
+
+// RoutineCodeDeploymentCodeVersionArrayInput is an input type that accepts RoutineCodeDeploymentCodeVersionArray and RoutineCodeDeploymentCodeVersionArrayOutput values.
+// You can construct a concrete instance of `RoutineCodeDeploymentCodeVersionArrayInput` via:
+//
+//	RoutineCodeDeploymentCodeVersionArray{ RoutineCodeDeploymentCodeVersionArgs{...} }
+type RoutineCodeDeploymentCodeVersionArrayInput interface {
+	pulumi.Input
+
+	ToRoutineCodeDeploymentCodeVersionArrayOutput() RoutineCodeDeploymentCodeVersionArrayOutput
+	ToRoutineCodeDeploymentCodeVersionArrayOutputWithContext(context.Context) RoutineCodeDeploymentCodeVersionArrayOutput
+}
+
+type RoutineCodeDeploymentCodeVersionArray []RoutineCodeDeploymentCodeVersionInput
+
+func (RoutineCodeDeploymentCodeVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineCodeDeploymentCodeVersion)(nil)).Elem()
+}
+
+func (i RoutineCodeDeploymentCodeVersionArray) ToRoutineCodeDeploymentCodeVersionArrayOutput() RoutineCodeDeploymentCodeVersionArrayOutput {
+	return i.ToRoutineCodeDeploymentCodeVersionArrayOutputWithContext(context.Background())
+}
+
+func (i RoutineCodeDeploymentCodeVersionArray) ToRoutineCodeDeploymentCodeVersionArrayOutputWithContext(ctx context.Context) RoutineCodeDeploymentCodeVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineCodeDeploymentCodeVersionArrayOutput)
+}
+
+type RoutineCodeDeploymentCodeVersionOutput struct{ *pulumi.OutputState }
+
+func (RoutineCodeDeploymentCodeVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineCodeDeploymentCodeVersion)(nil)).Elem()
+}
+
+func (o RoutineCodeDeploymentCodeVersionOutput) ToRoutineCodeDeploymentCodeVersionOutput() RoutineCodeDeploymentCodeVersionOutput {
+	return o
+}
+
+func (o RoutineCodeDeploymentCodeVersionOutput) ToRoutineCodeDeploymentCodeVersionOutputWithContext(ctx context.Context) RoutineCodeDeploymentCodeVersionOutput {
+	return o
+}
+
+// The committed code version to deploy.
+func (o RoutineCodeDeploymentCodeVersionOutput) CodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineCodeDeploymentCodeVersion) string { return v.CodeVersion }).(pulumi.StringOutput)
+}
+
+// The traffic percentage of this code version. Valid values: 1 to 100.
+func (o RoutineCodeDeploymentCodeVersionOutput) Percentage() pulumi.IntOutput {
+	return o.ApplyT(func(v RoutineCodeDeploymentCodeVersion) int { return v.Percentage }).(pulumi.IntOutput)
+}
+
+type RoutineCodeDeploymentCodeVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (RoutineCodeDeploymentCodeVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineCodeDeploymentCodeVersion)(nil)).Elem()
+}
+
+func (o RoutineCodeDeploymentCodeVersionArrayOutput) ToRoutineCodeDeploymentCodeVersionArrayOutput() RoutineCodeDeploymentCodeVersionArrayOutput {
+	return o
+}
+
+func (o RoutineCodeDeploymentCodeVersionArrayOutput) ToRoutineCodeDeploymentCodeVersionArrayOutputWithContext(ctx context.Context) RoutineCodeDeploymentCodeVersionArrayOutput {
+	return o
+}
+
+func (o RoutineCodeDeploymentCodeVersionArrayOutput) Index(i pulumi.IntInput) RoutineCodeDeploymentCodeVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineCodeDeploymentCodeVersion {
+		return vs[0].([]RoutineCodeDeploymentCodeVersion)[vs[1].(int)]
+	}).(RoutineCodeDeploymentCodeVersionOutput)
+}
+
 type SiteDeliveryTaskHttpDelivery struct {
 	Compress       *string           `pulumi:"compress"`
 	DestUrl        *string           `pulumi:"destUrl"`
@@ -11558,6 +11664,166 @@ func (o GetOriginRulesRuleArrayOutput) Index(i pulumi.IntInput) GetOriginRulesRu
 	}).(GetOriginRulesRuleOutput)
 }
 
+type GetRoutineCodeVersionsVersion struct {
+	// The build ID of the code version.
+	BuildId int `pulumi:"buildId"`
+	// The description of the code version.
+	CodeDescription string `pulumi:"codeDescription"`
+	// The code version number.
+	CodeVersion string `pulumi:"codeVersion"`
+	// The time when the code version was created, in RFC 3339 (UTC) format.
+	CreateTime string `pulumi:"createTime"`
+	// The environment bundled with the code version. Valid values: `staging`, `production`.
+	DeployEnv string `pulumi:"deployEnv"`
+	// Whether the code version bundles environment variables.
+	HasEnvVars bool `pulumi:"hasEnvVars"`
+	// The ID of the code version. Same as `codeVersion`.
+	Id string `pulumi:"id"`
+	// The status of the code version.
+	Status string `pulumi:"status"`
+}
+
+// GetRoutineCodeVersionsVersionInput is an input type that accepts GetRoutineCodeVersionsVersionArgs and GetRoutineCodeVersionsVersionOutput values.
+// You can construct a concrete instance of `GetRoutineCodeVersionsVersionInput` via:
+//
+//	GetRoutineCodeVersionsVersionArgs{...}
+type GetRoutineCodeVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetRoutineCodeVersionsVersionOutput() GetRoutineCodeVersionsVersionOutput
+	ToGetRoutineCodeVersionsVersionOutputWithContext(context.Context) GetRoutineCodeVersionsVersionOutput
+}
+
+type GetRoutineCodeVersionsVersionArgs struct {
+	// The build ID of the code version.
+	BuildId pulumi.IntInput `pulumi:"buildId"`
+	// The description of the code version.
+	CodeDescription pulumi.StringInput `pulumi:"codeDescription"`
+	// The code version number.
+	CodeVersion pulumi.StringInput `pulumi:"codeVersion"`
+	// The time when the code version was created, in RFC 3339 (UTC) format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The environment bundled with the code version. Valid values: `staging`, `production`.
+	DeployEnv pulumi.StringInput `pulumi:"deployEnv"`
+	// Whether the code version bundles environment variables.
+	HasEnvVars pulumi.BoolInput `pulumi:"hasEnvVars"`
+	// The ID of the code version. Same as `codeVersion`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the code version.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRoutineCodeVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutineCodeVersionsVersion)(nil)).Elem()
+}
+
+func (i GetRoutineCodeVersionsVersionArgs) ToGetRoutineCodeVersionsVersionOutput() GetRoutineCodeVersionsVersionOutput {
+	return i.ToGetRoutineCodeVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetRoutineCodeVersionsVersionArgs) ToGetRoutineCodeVersionsVersionOutputWithContext(ctx context.Context) GetRoutineCodeVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutineCodeVersionsVersionOutput)
+}
+
+// GetRoutineCodeVersionsVersionArrayInput is an input type that accepts GetRoutineCodeVersionsVersionArray and GetRoutineCodeVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetRoutineCodeVersionsVersionArrayInput` via:
+//
+//	GetRoutineCodeVersionsVersionArray{ GetRoutineCodeVersionsVersionArgs{...} }
+type GetRoutineCodeVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutineCodeVersionsVersionArrayOutput() GetRoutineCodeVersionsVersionArrayOutput
+	ToGetRoutineCodeVersionsVersionArrayOutputWithContext(context.Context) GetRoutineCodeVersionsVersionArrayOutput
+}
+
+type GetRoutineCodeVersionsVersionArray []GetRoutineCodeVersionsVersionInput
+
+func (GetRoutineCodeVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutineCodeVersionsVersion)(nil)).Elem()
+}
+
+func (i GetRoutineCodeVersionsVersionArray) ToGetRoutineCodeVersionsVersionArrayOutput() GetRoutineCodeVersionsVersionArrayOutput {
+	return i.ToGetRoutineCodeVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutineCodeVersionsVersionArray) ToGetRoutineCodeVersionsVersionArrayOutputWithContext(ctx context.Context) GetRoutineCodeVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutineCodeVersionsVersionArrayOutput)
+}
+
+type GetRoutineCodeVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetRoutineCodeVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutineCodeVersionsVersion)(nil)).Elem()
+}
+
+func (o GetRoutineCodeVersionsVersionOutput) ToGetRoutineCodeVersionsVersionOutput() GetRoutineCodeVersionsVersionOutput {
+	return o
+}
+
+func (o GetRoutineCodeVersionsVersionOutput) ToGetRoutineCodeVersionsVersionOutputWithContext(ctx context.Context) GetRoutineCodeVersionsVersionOutput {
+	return o
+}
+
+// The build ID of the code version.
+func (o GetRoutineCodeVersionsVersionOutput) BuildId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) int { return v.BuildId }).(pulumi.IntOutput)
+}
+
+// The description of the code version.
+func (o GetRoutineCodeVersionsVersionOutput) CodeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) string { return v.CodeDescription }).(pulumi.StringOutput)
+}
+
+// The code version number.
+func (o GetRoutineCodeVersionsVersionOutput) CodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) string { return v.CodeVersion }).(pulumi.StringOutput)
+}
+
+// The time when the code version was created, in RFC 3339 (UTC) format.
+func (o GetRoutineCodeVersionsVersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The environment bundled with the code version. Valid values: `staging`, `production`.
+func (o GetRoutineCodeVersionsVersionOutput) DeployEnv() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) string { return v.DeployEnv }).(pulumi.StringOutput)
+}
+
+// Whether the code version bundles environment variables.
+func (o GetRoutineCodeVersionsVersionOutput) HasEnvVars() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) bool { return v.HasEnvVars }).(pulumi.BoolOutput)
+}
+
+// The ID of the code version. Same as `codeVersion`.
+func (o GetRoutineCodeVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the code version.
+func (o GetRoutineCodeVersionsVersionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutineCodeVersionsVersion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRoutineCodeVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutineCodeVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutineCodeVersionsVersion)(nil)).Elem()
+}
+
+func (o GetRoutineCodeVersionsVersionArrayOutput) ToGetRoutineCodeVersionsVersionArrayOutput() GetRoutineCodeVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetRoutineCodeVersionsVersionArrayOutput) ToGetRoutineCodeVersionsVersionArrayOutputWithContext(ctx context.Context) GetRoutineCodeVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetRoutineCodeVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetRoutineCodeVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutineCodeVersionsVersion {
+		return vs[0].([]GetRoutineCodeVersionsVersion)[vs[1].(int)]
+	}).(GetRoutineCodeVersionsVersionOutput)
+}
+
 type GetSitesSite struct {
 	// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
 	AccessType string `pulumi:"accessType"`
@@ -12135,6 +12401,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordAuthConfPtrInput)(nil)).Elem(), RecordAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineCodeDeploymentCodeVersionInput)(nil)).Elem(), RoutineCodeDeploymentCodeVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineCodeDeploymentCodeVersionArrayInput)(nil)).Elem(), RoutineCodeDeploymentCodeVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryStandardAuthParamInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs{})
@@ -12241,6 +12509,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkOptimizationsOptimizationArrayInput)(nil)).Elem(), GetNetworkOptimizationsOptimizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOriginRulesRuleInput)(nil)).Elem(), GetOriginRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOriginRulesRuleArrayInput)(nil)).Elem(), GetOriginRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutineCodeVersionsVersionInput)(nil)).Elem(), GetRoutineCodeVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutineCodeVersionsVersionArrayInput)(nil)).Elem(), GetRoutineCodeVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesetsQueryArgsInput)(nil)).Elem(), GetWafRulesetsQueryArgsArgs{})
@@ -12273,6 +12543,8 @@ func init() {
 	pulumi.RegisterOutputType(RecordAuthConfPtrOutput{})
 	pulumi.RegisterOutputType(RecordDataOutput{})
 	pulumi.RegisterOutputType(RecordDataPtrOutput{})
+	pulumi.RegisterOutputType(RoutineCodeDeploymentCodeVersionOutput{})
+	pulumi.RegisterOutputType(RoutineCodeDeploymentCodeVersionArrayOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryPtrOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput{})
@@ -12379,6 +12651,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkOptimizationsOptimizationArrayOutput{})
 	pulumi.RegisterOutputType(GetOriginRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetOriginRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutineCodeVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetRoutineCodeVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteArrayOutput{})
 	pulumi.RegisterOutputType(GetWafRulesetsQueryArgsOutput{})

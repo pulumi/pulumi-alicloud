@@ -10,6 +10,7 @@ import com.pulumi.alicloud.cloudmonitor.outputs.ServiceMetricAlarmRuleCompositeE
 import com.pulumi.alicloud.cloudmonitor.outputs.ServiceMetricAlarmRuleEscalations;
 import com.pulumi.alicloud.cloudmonitor.outputs.ServiceMetricAlarmRuleLabel;
 import com.pulumi.alicloud.cloudmonitor.outputs.ServiceMetricAlarmRulePrometheus;
+import com.pulumi.alicloud.cloudmonitor.outputs.ServiceMetricAlarmRuleTarget;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -471,6 +472,20 @@ public class ServiceMetricAlarmRule extends com.pulumi.resources.CustomResource 
      */
     public Output<Boolean> status() {
         return this.status;
+    }
+    /**
+     * The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     * 
+     */
+    @Export(name="targets", refs={List.class,ServiceMetricAlarmRuleTarget.class}, tree="[0,1]")
+    private Output<List<ServiceMetricAlarmRuleTarget>> targets;
+
+    /**
+     * @return The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     * 
+     */
+    public Output<List<ServiceMetricAlarmRuleTarget>> targets() {
+        return this.targets;
     }
     /**
      * The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.

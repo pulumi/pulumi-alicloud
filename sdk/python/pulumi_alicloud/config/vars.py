@@ -91,6 +91,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('fc')
 
     @_builtins.property
+    def features(self) -> Optional[str]:
+        """
+        Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+        """
+        return __config__.get('features')
+
+    @_builtins.property
     def log_endpoint(self) -> Optional[str]:
         return __config__.get('logEndpoint')
 
@@ -166,7 +173,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def skip_region_validation(self) -> Optional[bool]:
         """
-        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         """
         return __config__.get_bool('skipRegionValidation')
 

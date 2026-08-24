@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceServerlessConfig {
     /**
-     * @return The reserved capacity for publishing messages.
+     * @return The reserved capacity for publishing messages. The minimum value is `60`.
      * 
      */
     private @Nullable Integer reservedPublishCapacity;
     /**
-     * @return The reserved capacity for subscribing to message.
+     * @return The reserved capacity for subscribing to message. The minimum value is `20`.
      * 
      */
     private @Nullable Integer reservedSubscribeCapacity;
 
     private InstanceServerlessConfig() {}
     /**
-     * @return The reserved capacity for publishing messages.
+     * @return The reserved capacity for publishing messages. The minimum value is `60`.
      * 
      */
     public Optional<Integer> reservedPublishCapacity() {
         return Optional.ofNullable(this.reservedPublishCapacity);
     }
     /**
-     * @return The reserved capacity for subscribing to message.
+     * @return The reserved capacity for subscribing to message. The minimum value is `20`.
      * 
      */
     public Optional<Integer> reservedSubscribeCapacity() {

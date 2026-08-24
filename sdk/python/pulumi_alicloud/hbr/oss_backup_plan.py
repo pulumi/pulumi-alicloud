@@ -429,7 +429,7 @@ class OssBackupPlan(pulumi.CustomResource):
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
         default_oss_backup_plan = alicloud.hbr.OssBackupPlan("default",
             oss_backup_plan_name="terraform-example",
-            prefix="/example",
+            prefix="example",
             bucket=default_bucket.bucket,
             vault_id=default_vault.id,
             schedule="I|1602673264|PT2H",
@@ -496,7 +496,7 @@ class OssBackupPlan(pulumi.CustomResource):
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
         default_oss_backup_plan = alicloud.hbr.OssBackupPlan("default",
             oss_backup_plan_name="terraform-example",
-            prefix="/example",
+            prefix="example",
             bucket=default_bucket.bucket,
             vault_id=default_vault.id,
             schedule="I|1602673264|PT2H",

@@ -202,7 +202,7 @@ type Instance struct {
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The instance edition. Default value: `normal`. Valid values:
 	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
 	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
 	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
@@ -342,7 +342,7 @@ type instanceState struct {
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The instance edition. Default value: `normal`. Valid values:
 	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
 	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType *string `pulumi:"specType"`
 	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
@@ -450,7 +450,7 @@ type InstanceState struct {
 	ServiceVersion pulumi.StringPtrInput
 	// The instance edition. Default value: `normal`. Valid values:
 	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
 	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType pulumi.StringPtrInput
 	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
@@ -546,7 +546,7 @@ type instanceArgs struct {
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The instance edition. Default value: `normal`. Valid values:
 	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
 	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -625,7 +625,7 @@ type InstanceArgs struct {
 	ServiceVersion pulumi.StringPtrInput
 	// The instance edition. Default value: `normal`. Valid values:
 	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
 	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -895,7 +895,7 @@ func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
 
 // The instance edition. Default value: `normal`. Valid values:
 // - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+// - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
 // - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)

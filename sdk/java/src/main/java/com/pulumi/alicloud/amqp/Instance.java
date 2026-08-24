@@ -132,6 +132,142 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Create a RabbitMQ (AMQP) serverless instance with the provisioned (reserved + elastic) billing type.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .build());
+ * 
+ *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .instanceName(name)
+ *             .paymentType("PayAsYouGo")
+ *             .vpcId(defaultGetSwitches.vpcId())
+ *             .vswitchIds(            
+ *                 defaultGetSwitches.ids()[0],
+ *                 defaultGetSwitches.ids()[1])
+ *             .securityGroupId(defaultGetSecurityGroups.ids()[0])
+ *             .serverlessChargeType("provisioned")
+ *             .edition("dedicated")
+ *             .provisionedCapacity(20000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Create a RabbitMQ (AMQP) serverless instance with the provisioned (reserved + elastic, shared architecture) billing type.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .build());
+ * 
+ *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .instanceName(name)
+ *             .paymentType("PayAsYouGo")
+ *             .vpcId(defaultGetSwitches.vpcId())
+ *             .vswitchIds(            
+ *                 defaultGetSwitches.ids()[0],
+ *                 defaultGetSwitches.ids()[1])
+ *             .securityGroupId(defaultGetSecurityGroups.ids()[0])
+ *             .serverlessChargeType("provisioned")
+ *             .edition("shared")
+ *             .provisionedCapacity(20000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Serverless billing modes and parameter combinations
+ * 
+ * A Serverless instance (`paymentType = &#34;PayAsYouGo&#34;`) supports the following billing modes. The combination of `serverlessChargeType` and `edition` determines the deployment architecture and how `provisionedCapacity` is consumed:
+ * 
+ * | Billing mode | `serverlessChargeType` | `edition` | `provisionedCapacity` | Description |
+ * | --- | --- | --- | --- | --- |
+ * | Pay-as-you-go (cumulative) | `onDemand` | not required | not applicable | Billed by actual traffic usage on a shared architecture. |
+ * | Reserved + elastic (shared) | `provisioned` | `shared` | set the reserved TPS capacity | Reserved baseline TPS with elastic burst on a shared architecture. |
+ * | Reserved + elastic (dedicated) | `provisioned` | `dedicated` | set the reserved TPS capacity | Reserved baseline TPS with elastic burst on a dedicated (isolated) architecture. |
+ * 
+ * &gt; **NOTE:** For `provisioned` instances, `edition` distinguishes the deployment architecture. Modifying `edition` triggers instance cluster migration; submit a ticket before changing it. Storage encryption (`encryptedInstance = true`) is only supported on the `provisioned` + `dedicated` combination.
+ * 
  * ### Deleting `alicloud.amqp.Instance` or removing it from your configuration
  * 
  * The `alicloud.amqp.Instance` resource allows you to manage  `paymentType = &#34;PayAsYouGo&#34;`  instance, but Terraform cannot destroy it.
@@ -208,6 +344,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.edition;
     }
     /**
+     * Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = &#34;vip&#34;`.
+     * - `paymentType = &#34;PayAsYouGo&#34;`, `serverlessChargeType = &#34;provisioned&#34;`, and `edition = &#34;dedicated&#34;`.
+     * 
+     * &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     * 
+     */
+    @Export(name="encryptedInstance", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> encryptedInstance;
+
+    /**
+     * @return Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = &#34;vip&#34;`.
+     * - `paymentType = &#34;PayAsYouGo&#34;`, `serverlessChargeType = &#34;provisioned&#34;`, and `edition = &#34;dedicated&#34;`.
+     * 
+     * &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     * 
+     */
+    public Output<Boolean> encryptedInstance() {
+        return this.encryptedInstance;
+    }
+    /**
      * The instance name.
      * 
      */
@@ -227,7 +385,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
+     * &gt; **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = &#34;PayAsYouGo&#34;` and choose `serverlessChargeType = &#34;onDemand&#34;` or `serverlessChargeType = &#34;provisioned&#34;`.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
@@ -239,11 +397,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
+     * &gt; **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = &#34;PayAsYouGo&#34;` and choose `serverlessChargeType = &#34;onDemand&#34;` or `serverlessChargeType = &#34;provisioned&#34;`.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
+    }
+    /**
+     * The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     * 
+     */
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyId;
+
+    /**
+     * @return The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyId() {
+        return Codegen.optional(this.kmsKeyId);
     }
     /**
      * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
@@ -450,14 +622,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityGroupId);
     }
     /**
-     * The billing type of the serverless instance. Value: onDemand.
+     * The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      * 
      */
     @Export(name="serverlessChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverlessChargeType;
 
     /**
-     * @return The billing type of the serverless instance. Value: onDemand.
+     * @return The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      * 
      */
     public Output<Optional<String>> serverlessChargeType() {

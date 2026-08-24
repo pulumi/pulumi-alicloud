@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to put a object(content or file) to a oss bucket.
  *
+ * > **NOTE:** Available since v0.1.1.
+ *
  * ## Example Usage
  *
  * ### Uploading a file to a bucket
@@ -138,7 +140,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
-     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      */
     declare public readonly objectWormMode: pulumi.Output<string>;
     /**
@@ -280,7 +282,7 @@ export interface BucketObjectState {
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      */
     objectWormMode?: pulumi.Input<string | undefined>;
     /**
@@ -352,7 +354,7 @@ export interface BucketObjectArgs {
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      */
     objectWormMode?: pulumi.Input<string | undefined>;
     /**

@@ -15,14 +15,14 @@ public final class GatewayZoneConfigArgs extends com.pulumi.resources.ResourceAr
     public static final GatewayZoneConfigArgs Empty = new GatewayZoneConfigArgs();
 
     /**
-     * Availability Zone Options
+     * Zone selection option.
      * 
      */
     @Import(name="selectOption", required=true)
     private Output<String> selectOption;
 
     /**
-     * @return Availability Zone Options
+     * @return Zone selection option.
      * 
      */
     public Output<String> selectOption() {
@@ -54,7 +54,7 @@ public final class GatewayZoneConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selectOption Availability Zone Options
+         * @param selectOption Zone selection option.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GatewayZoneConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selectOption Availability Zone Options
+         * @param selectOption Zone selection option.
          * 
          * @return builder
          * 

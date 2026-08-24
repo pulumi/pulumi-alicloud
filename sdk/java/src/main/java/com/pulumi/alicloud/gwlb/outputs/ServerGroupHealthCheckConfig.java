@@ -37,7 +37,7 @@ public final class ServerGroupHealthCheckConfig {
     /**
      * @return The domain name that you want to use for health checks. Valid values:
      * 
-     * *   **$SERVER_IP** (default): the private IP address of a backend server.
+     * - **$SERVER_IP** (default): the private IP address of a backend server.
      * 
      */
     private @Nullable String healthCheckDomain;
@@ -128,7 +128,7 @@ public final class ServerGroupHealthCheckConfig {
     /**
      * @return The domain name that you want to use for health checks. Valid values:
      * 
-     * *   **$SERVER_IP** (default): the private IP address of a backend server.
+     * - **$SERVER_IP** (default): the private IP address of a backend server.
      * 
      */
     public Optional<String> healthCheckDomain() {

@@ -139,14 +139,22 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      * 
+     * @deprecated
+     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * 
      */
+    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
     @Import(name="enableAutoSnapshot")
     private @Nullable Output<Boolean> enableAutoSnapshot;
 
     /**
      * @return Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      * 
+     * @deprecated
+     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * 
      */
+    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
     public Optional<Output<Boolean>> enableAutoSnapshot() {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
@@ -588,7 +596,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+         * 
          */
+        @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
         public Builder enableAutoSnapshot(@Nullable Output<Boolean> enableAutoSnapshot) {
             $.enableAutoSnapshot = enableAutoSnapshot;
             return this;
@@ -599,7 +611,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+         * 
          */
+        @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
         public Builder enableAutoSnapshot(Boolean enableAutoSnapshot) {
             return enableAutoSnapshot(Output.of(enableAutoSnapshot));
         }

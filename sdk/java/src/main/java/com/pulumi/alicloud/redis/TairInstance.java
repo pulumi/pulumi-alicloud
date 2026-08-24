@@ -193,6 +193,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterBackupId);
     }
     /**
+     * The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+     * 
+     */
+    @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> config;
+
+    /**
+     * @return The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+     * 
+     */
+    public Output<Map<String,String>> config() {
+        return this.config;
+    }
+    /**
      * The internal endpoint of the instance.
      * 
      */
@@ -397,6 +411,34 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> intranetBandwidth() {
         return this.intranetBandwidth;
+    }
+    /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     * 
+     */
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
+    private Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     * 
+     */
+    public Output<String> maintainEndTime() {
+        return this.maintainEndTime;
+    }
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     * 
+     */
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
+    private Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     * 
+     */
+    public Output<String> maintainStartTime() {
+        return this.maintainStartTime;
     }
     /**
      * The maximum number of connections supported by the instance.

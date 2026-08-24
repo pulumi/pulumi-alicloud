@@ -29,6 +29,8 @@ class MigrationJobArgs:
                  source_endpoint_instance_type: pulumi.Input[_builtins.str],
                  structure_initialization: pulumi.Input[_builtins.bool],
                  checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +38,7 @@ class MigrationJobArgs:
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,7 +51,10 @@ class MigrationJobArgs:
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
@@ -63,6 +69,8 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         :param pulumi.Input[_builtins.str] checkpoint: Start time in Unix timestamp format.
+        :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
         :param pulumi.Input[_builtins.str] destination_endpoint_ip: The ip of source endpoint.
@@ -70,6 +78,7 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
@@ -82,8 +91,13 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
+        :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         pulumi.set(__self__, "data_initialization", data_initialization)
         pulumi.set(__self__, "data_synchronization", data_synchronization)
@@ -96,6 +110,10 @@ class MigrationJobArgs:
         pulumi.set(__self__, "structure_initialization", structure_initialization)
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
+        if dest_primary_vswitch_id is not None:
+            pulumi.set(__self__, "dest_primary_vswitch_id", dest_primary_vswitch_id)
+        if dest_secondary_vswitch_id is not None:
+            pulumi.set(__self__, "dest_secondary_vswitch_id", dest_secondary_vswitch_id)
         if destination_endpoint_database_name is not None:
             pulumi.set(__self__, "destination_endpoint_database_name", destination_endpoint_database_name)
         if destination_endpoint_instance_id is not None:
@@ -110,6 +128,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        if destination_endpoint_ssl is not None:
+            pulumi.set(__self__, "destination_endpoint_ssl", destination_endpoint_ssl)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_job_name is not None:
@@ -134,8 +154,14 @@ class MigrationJobArgs:
             pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        if source_endpoint_ssl is not None:
+            pulumi.set(__self__, "source_endpoint_ssl", source_endpoint_ssl)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+        if src_primary_vswitch_id is not None:
+            pulumi.set(__self__, "src_primary_vswitch_id", src_primary_vswitch_id)
+        if src_secondary_vswitch_id is not None:
+            pulumi.set(__self__, "src_secondary_vswitch_id", src_secondary_vswitch_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -260,6 +286,30 @@ class MigrationJobArgs:
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="destPrimaryVswitchId")
+    def dest_primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "dest_primary_vswitch_id")
+
+    @dest_primary_vswitch_id.setter
+    def dest_primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_primary_vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destSecondaryVswitchId")
+    def dest_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "dest_secondary_vswitch_id")
+
+    @dest_secondary_vswitch_id.setter
+    def dest_secondary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_secondary_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="destinationEndpointDatabaseName")
     def destination_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -342,6 +392,18 @@ class MigrationJobArgs:
     @destination_endpoint_region.setter
     def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationEndpointSsl")
+    def destination_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "destination_endpoint_ssl")
+
+    @destination_endpoint_ssl.setter
+    def destination_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_endpoint_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
@@ -488,6 +550,18 @@ class MigrationJobArgs:
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @source_endpoint_ssl.setter
+    def source_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -500,10 +574,36 @@ class MigrationJobArgs:
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="srcPrimaryVswitchId")
+    def src_primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "src_primary_vswitch_id")
+
+    @src_primary_vswitch_id.setter
+    def src_primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_primary_vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcSecondaryVswitchId")
+    def src_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "src_secondary_vswitch_id")
+
+    @src_secondary_vswitch_id.setter
+    def src_secondary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_secondary_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "status")
 
@@ -519,6 +619,8 @@ class _MigrationJobState:
                  data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,6 +630,7 @@ class _MigrationJobState:
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -543,7 +646,10 @@ class _MigrationJobState:
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -553,6 +659,8 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
@@ -562,6 +670,7 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
@@ -577,8 +686,13 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
+        :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
         if checkpoint is not None:
@@ -589,6 +703,10 @@ class _MigrationJobState:
             pulumi.set(__self__, "data_synchronization", data_synchronization)
         if db_list is not None:
             pulumi.set(__self__, "db_list", db_list)
+        if dest_primary_vswitch_id is not None:
+            pulumi.set(__self__, "dest_primary_vswitch_id", dest_primary_vswitch_id)
+        if dest_secondary_vswitch_id is not None:
+            pulumi.set(__self__, "dest_secondary_vswitch_id", dest_secondary_vswitch_id)
         if destination_endpoint_database_name is not None:
             pulumi.set(__self__, "destination_endpoint_database_name", destination_endpoint_database_name)
         if destination_endpoint_engine_name is not None:
@@ -607,6 +725,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        if destination_endpoint_ssl is not None:
+            pulumi.set(__self__, "destination_endpoint_ssl", destination_endpoint_ssl)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_instance_id is not None:
@@ -637,8 +757,14 @@ class _MigrationJobState:
             pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        if source_endpoint_ssl is not None:
+            pulumi.set(__self__, "source_endpoint_ssl", source_endpoint_ssl)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+        if src_primary_vswitch_id is not None:
+            pulumi.set(__self__, "src_primary_vswitch_id", src_primary_vswitch_id)
+        if src_secondary_vswitch_id is not None:
+            pulumi.set(__self__, "src_secondary_vswitch_id", src_secondary_vswitch_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if structure_initialization is not None:
@@ -691,6 +817,30 @@ class _MigrationJobState:
     @db_list.setter
     def db_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_list", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destPrimaryVswitchId")
+    def dest_primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "dest_primary_vswitch_id")
+
+    @dest_primary_vswitch_id.setter
+    def dest_primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_primary_vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destSecondaryVswitchId")
+    def dest_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "dest_secondary_vswitch_id")
+
+    @dest_secondary_vswitch_id.setter
+    def dest_secondary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_secondary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointDatabaseName")
@@ -799,6 +949,18 @@ class _MigrationJobState:
     @destination_endpoint_region.setter
     def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationEndpointSsl")
+    def destination_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "destination_endpoint_ssl")
+
+    @destination_endpoint_ssl.setter
+    def destination_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_endpoint_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
@@ -981,6 +1143,18 @@ class _MigrationJobState:
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @source_endpoint_ssl.setter
+    def source_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -993,10 +1167,36 @@ class _MigrationJobState:
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="srcPrimaryVswitchId")
+    def src_primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "src_primary_vswitch_id")
+
+    @src_primary_vswitch_id.setter
+    def src_primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_primary_vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcSecondaryVswitchId")
+    def src_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "src_secondary_vswitch_id")
+
+    @src_secondary_vswitch_id.setter
+    def src_secondary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_secondary_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "status")
 
@@ -1027,6 +1227,8 @@ class MigrationJob(pulumi.CustomResource):
                  data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1036,6 +1238,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1051,7 +1254,10 @@ class MigrationJob(pulumi.CustomResource):
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1199,6 +1405,8 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
@@ -1208,6 +1416,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
@@ -1223,8 +1432,13 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
+        :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
         ...
@@ -1390,6 +1604,8 @@ class MigrationJob(pulumi.CustomResource):
                  data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1399,6 +1615,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1414,7 +1631,10 @@ class MigrationJob(pulumi.CustomResource):
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1436,6 +1656,8 @@ class MigrationJob(pulumi.CustomResource):
             if db_list is None and not opts.urn:
                 raise TypeError("Missing required property 'db_list'")
             __props__.__dict__["db_list"] = db_list
+            __props__.__dict__["dest_primary_vswitch_id"] = dest_primary_vswitch_id
+            __props__.__dict__["dest_secondary_vswitch_id"] = dest_secondary_vswitch_id
             __props__.__dict__["destination_endpoint_database_name"] = destination_endpoint_database_name
             if destination_endpoint_engine_name is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_endpoint_engine_name'")
@@ -1449,6 +1671,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["destination_endpoint_password"] = destination_endpoint_password
             __props__.__dict__["destination_endpoint_port"] = destination_endpoint_port
             __props__.__dict__["destination_endpoint_region"] = destination_endpoint_region
+            __props__.__dict__["destination_endpoint_ssl"] = destination_endpoint_ssl
             __props__.__dict__["destination_endpoint_user_name"] = destination_endpoint_user_name
             if dts_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dts_instance_id'")
@@ -1470,7 +1693,10 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["source_endpoint_port"] = source_endpoint_port
             __props__.__dict__["source_endpoint_region"] = source_endpoint_region
             __props__.__dict__["source_endpoint_role"] = source_endpoint_role
+            __props__.__dict__["source_endpoint_ssl"] = source_endpoint_ssl
             __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
+            __props__.__dict__["src_primary_vswitch_id"] = src_primary_vswitch_id
+            __props__.__dict__["src_secondary_vswitch_id"] = src_secondary_vswitch_id
             __props__.__dict__["status"] = status
             if structure_initialization is None and not opts.urn:
                 raise TypeError("Missing required property 'structure_initialization'")
@@ -1489,6 +1715,8 @@ class MigrationJob(pulumi.CustomResource):
             data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
             data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
             db_list: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1498,6 +1726,7 @@ class MigrationJob(pulumi.CustomResource):
             destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1513,7 +1742,10 @@ class MigrationJob(pulumi.CustomResource):
             source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            src_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            src_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None) -> 'MigrationJob':
         """
@@ -1527,6 +1759,8 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to execute DTS supports schema migration.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of migrate the database.
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance.
@@ -1536,6 +1770,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
@@ -1551,8 +1786,13 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
+        :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1563,6 +1803,8 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["data_initialization"] = data_initialization
         __props__.__dict__["data_synchronization"] = data_synchronization
         __props__.__dict__["db_list"] = db_list
+        __props__.__dict__["dest_primary_vswitch_id"] = dest_primary_vswitch_id
+        __props__.__dict__["dest_secondary_vswitch_id"] = dest_secondary_vswitch_id
         __props__.__dict__["destination_endpoint_database_name"] = destination_endpoint_database_name
         __props__.__dict__["destination_endpoint_engine_name"] = destination_endpoint_engine_name
         __props__.__dict__["destination_endpoint_instance_id"] = destination_endpoint_instance_id
@@ -1572,6 +1814,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["destination_endpoint_password"] = destination_endpoint_password
         __props__.__dict__["destination_endpoint_port"] = destination_endpoint_port
         __props__.__dict__["destination_endpoint_region"] = destination_endpoint_region
+        __props__.__dict__["destination_endpoint_ssl"] = destination_endpoint_ssl
         __props__.__dict__["destination_endpoint_user_name"] = destination_endpoint_user_name
         __props__.__dict__["dts_instance_id"] = dts_instance_id
         __props__.__dict__["dts_job_name"] = dts_job_name
@@ -1587,7 +1830,10 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["source_endpoint_port"] = source_endpoint_port
         __props__.__dict__["source_endpoint_region"] = source_endpoint_region
         __props__.__dict__["source_endpoint_role"] = source_endpoint_role
+        __props__.__dict__["source_endpoint_ssl"] = source_endpoint_ssl
         __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
+        __props__.__dict__["src_primary_vswitch_id"] = src_primary_vswitch_id
+        __props__.__dict__["src_secondary_vswitch_id"] = src_secondary_vswitch_id
         __props__.__dict__["status"] = status
         __props__.__dict__["structure_initialization"] = structure_initialization
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
@@ -1623,6 +1869,22 @@ class MigrationJob(pulumi.CustomResource):
         Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
         """
         return pulumi.get(self, "db_list")
+
+    @_builtins.property
+    @pulumi.getter(name="destPrimaryVswitchId")
+    def dest_primary_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "dest_primary_vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="destSecondaryVswitchId")
+    def dest_secondary_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "dest_secondary_vswitch_id")
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointDatabaseName")
@@ -1695,6 +1957,14 @@ class MigrationJob(pulumi.CustomResource):
         The region of destination instance.
         """
         return pulumi.get(self, "destination_endpoint_region")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationEndpointSsl")
+    def destination_endpoint_ssl(self) -> pulumi.Output[_builtins.str]:
+        """
+        The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "destination_endpoint_ssl")
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
@@ -1817,6 +2087,14 @@ class MigrationJob(pulumi.CustomResource):
         return pulumi.get(self, "source_endpoint_role")
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Output[_builtins.str]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1825,10 +2103,28 @@ class MigrationJob(pulumi.CustomResource):
         return pulumi.get(self, "source_endpoint_user_name")
 
     @_builtins.property
+    @pulumi.getter(name="srcPrimaryVswitchId")
+    def src_primary_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "src_primary_vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="srcSecondaryVswitchId")
+    def src_secondary_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        """
+        return pulumi.get(self, "src_secondary_vswitch_id")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "status")
 

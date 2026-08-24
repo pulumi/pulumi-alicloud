@@ -16,62 +16,30 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EnvironmentArgs Empty = new EnvironmentArgs();
 
-    /**
-     * Description
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return Description
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * The name of the resource
-     * 
-     */
     @Import(name="environmentName", required=true)
     private Output<String> environmentName;
 
-    /**
-     * @return The name of the resource
-     * 
-     */
     public Output<String> environmentName() {
         return this.environmentName;
     }
 
-    /**
-     * Gateway id
-     * 
-     */
     @Import(name="gatewayId", required=true)
     private Output<String> gatewayId;
 
-    /**
-     * @return Gateway id
-     * 
-     */
     public Output<String> gatewayId() {
         return this.gatewayId;
     }
 
-    /**
-     * The ID of the resource group
-     * 
-     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
-    /**
-     * @return The ID of the resource group
-     * 
-     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -103,86 +71,38 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
             $ = new EnvironmentArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description Description
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description Description
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param environmentName The name of the resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentName(Output<String> environmentName) {
             $.environmentName = environmentName;
             return this;
         }
 
-        /**
-         * @param environmentName The name of the resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentName(String environmentName) {
             return environmentName(Output.of(environmentName));
         }
 
-        /**
-         * @param gatewayId Gateway id
-         * 
-         * @return builder
-         * 
-         */
         public Builder gatewayId(Output<String> gatewayId) {
             $.gatewayId = gatewayId;
             return this;
         }
 
-        /**
-         * @param gatewayId Gateway id
-         * 
-         * @return builder
-         * 
-         */
         public Builder gatewayId(String gatewayId) {
             return gatewayId(Output.of(gatewayId));
         }
 
-        /**
-         * @param resourceGroupId The ID of the resource group
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
-        /**
-         * @param resourceGroupId The ID of the resource group
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }

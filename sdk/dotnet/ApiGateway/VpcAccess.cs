@@ -96,6 +96,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         VpcId = defaultNetwork.Id,
     ///         InstanceId = defaultInstance.Id,
     ///         Port = 8080,
+    ///         VpcTargetHostName = "www.example.com",
     ///     });
     /// 
     /// });
@@ -143,6 +144,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The host of the backend service.
+        /// </summary>
+        [Output("vpcTargetHostName")]
+        public Output<string?> VpcTargetHostName { get; private set; } = null!;
 
 
         /// <summary>
@@ -214,6 +221,12 @@ namespace Pulumi.AliCloud.ApiGateway
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
+        /// <summary>
+        /// The host of the backend service.
+        /// </summary>
+        [Input("vpcTargetHostName")]
+        public Input<string>? VpcTargetHostName { get; set; }
+
         public VpcAccessArgs()
         {
         }
@@ -251,6 +264,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The host of the backend service.
+        /// </summary>
+        [Input("vpcTargetHostName")]
+        public Input<string>? VpcTargetHostName { get; set; }
 
         public VpcAccessState()
         {

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
+ * > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
  *
  * This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
  *
@@ -110,7 +110,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      */
     declare public readonly addons: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[] | undefined>;
     /**
@@ -153,9 +153,19 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     */
+    declare public readonly disableEncryption: pulumi.Output<boolean>;
+    /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     declare public readonly enableRrsa: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     */
+    declare public readonly encryptionProviderKey: pulumi.Output<string | undefined>;
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
@@ -282,7 +292,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["customSan"] = state?.customSan;
             resourceInputs["deleteOptions"] = state?.deleteOptions;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["disableEncryption"] = state?.disableEncryption;
             resourceInputs["enableRrsa"] = state?.enableRrsa;
+            resourceInputs["encryptionProviderKey"] = state?.encryptionProviderKey;
             resourceInputs["endpointPublicAccessEnabled"] = state?.endpointPublicAccessEnabled;
             resourceInputs["kubeConfig"] = state?.kubeConfig;
             resourceInputs["loadBalancerSpec"] = state?.loadBalancerSpec;
@@ -316,7 +328,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["customSan"] = args?.customSan;
             resourceInputs["deleteOptions"] = args?.deleteOptions;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["disableEncryption"] = args?.disableEncryption;
             resourceInputs["enableRrsa"] = args?.enableRrsa;
+            resourceInputs["encryptionProviderKey"] = args?.encryptionProviderKey;
             resourceInputs["endpointPublicAccessEnabled"] = args?.endpointPublicAccessEnabled;
             resourceInputs["kubeConfig"] = args?.kubeConfig;
             resourceInputs["loadBalancerSpec"] = args?.loadBalancerSpec;
@@ -351,7 +365,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
  */
 export interface ServerlessKubernetesState {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[] | undefined>;
     /**
@@ -394,9 +408,19 @@ export interface ServerlessKubernetesState {
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     */
+    disableEncryption?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     enableRrsa?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     */
+    encryptionProviderKey?: pulumi.Input<string | undefined>;
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
@@ -508,7 +532,7 @@ export interface ServerlessKubernetesState {
  */
 export interface ServerlessKubernetesArgs {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[] | undefined>;
     /**
@@ -551,9 +575,19 @@ export interface ServerlessKubernetesArgs {
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     */
+    disableEncryption?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     enableRrsa?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     */
+    encryptionProviderKey?: pulumi.Input<string | undefined>;
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */

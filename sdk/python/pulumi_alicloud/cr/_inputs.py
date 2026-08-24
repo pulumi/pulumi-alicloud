@@ -29,6 +29,8 @@ __all__ = [
     'ChainChainConfigRouterFromArgsDict',
     'ChainChainConfigRouterToArgs',
     'ChainChainConfigRouterToArgsDict',
+    'InternetEndpointEntryArgs',
+    'InternetEndpointEntryArgsDict',
     'RegistryEnterpriseInstanceInstanceEndpointArgs',
     'RegistryEnterpriseInstanceInstanceEndpointArgsDict',
     'RegistryEnterpriseInstanceInstanceEndpointDomainArgs',
@@ -386,6 +388,61 @@ class ChainChainConfigRouterToArgs:
     @node_name.setter
     def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
+
+
+class InternetEndpointEntryArgsDict(TypedDict):
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The comment of the entry.
+
+    > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+    """
+    entry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+    """
+
+@pulumi.input_type
+class InternetEndpointEntryArgs:
+    def __init__(__self__, *,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] comment: The comment of the entry.
+               
+               > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+        :param pulumi.Input[_builtins.str] entry: The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The comment of the entry.
+
+        > **NOTE:** When the Internet endpoint is enabled, the CIDR block `127.0.0.1/32` with comment `default` is automatically added to the whitelist as a system-managed loopback ACL policy. It cannot be created or deleted through this resource's `entries` and is filtered out of state on Read, so adding `entry = "127.0.0.1/32"` with `comment = "default"` to `entries` causes a perpetual plan diff. Removing all user-managed entries exposes the instance to the Internet.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The CIDR-formatted IP address range that is allowed to access the instance over the Internet.
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "entry", value)
 
 
 class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):

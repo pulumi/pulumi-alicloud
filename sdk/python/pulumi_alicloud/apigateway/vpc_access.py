@@ -22,7 +22,8 @@ class VpcAccessArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.int],
                  vpc_id: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_target_host_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcAccess resource.
 
@@ -30,12 +31,15 @@ class VpcAccessArgs:
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
+        :param pulumi.Input[_builtins.str] vpc_target_host_name: The host of the backend service.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if vpc_target_host_name is not None:
+            pulumi.set(__self__, "vpc_target_host_name", vpc_target_host_name)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -85,6 +89,18 @@ class VpcAccessArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcTargetHostName")
+    def vpc_target_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The host of the backend service.
+        """
+        return pulumi.get(self, "vpc_target_host_name")
+
+    @vpc_target_host_name.setter
+    def vpc_target_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_target_host_name", value)
+
 
 @pulumi.input_type
 class _VpcAccessState:
@@ -93,7 +109,8 @@ class _VpcAccessState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_access_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_target_host_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcAccess resources.
 
@@ -102,6 +119,7 @@ class _VpcAccessState:
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
         :param pulumi.Input[_builtins.str] vpc_access_id: The ID of the Vpc Access.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
+        :param pulumi.Input[_builtins.str] vpc_target_host_name: The host of the backend service.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -113,6 +131,8 @@ class _VpcAccessState:
             pulumi.set(__self__, "vpc_access_id", vpc_access_id)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_target_host_name is not None:
+            pulumi.set(__self__, "vpc_target_host_name", vpc_target_host_name)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -174,6 +194,18 @@ class _VpcAccessState:
     def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcTargetHostName")
+    def vpc_target_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The host of the backend service.
+        """
+        return pulumi.get(self, "vpc_target_host_name")
+
+    @vpc_target_host_name.setter
+    def vpc_target_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_target_host_name", value)
+
 
 @pulumi.type_token("alicloud:apigateway/vpcAccess:VpcAccess")
 class VpcAccess(pulumi.CustomResource):
@@ -185,6 +217,7 @@ class VpcAccess(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_target_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an Api Gateway Vpc Access resource.
@@ -242,7 +275,8 @@ class VpcAccess(pulumi.CustomResource):
             name=name,
             vpc_id=default_network.id,
             instance_id=default_instance.id,
-            port=8080)
+            port=8080,
+            vpc_target_host_name="www.example.com")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -262,6 +296,7 @@ class VpcAccess(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
+        :param pulumi.Input[_builtins.str] vpc_target_host_name: The host of the backend service.
         """
         ...
     @overload
@@ -325,7 +360,8 @@ class VpcAccess(pulumi.CustomResource):
             name=name,
             vpc_id=default_network.id,
             instance_id=default_instance.id,
-            port=8080)
+            port=8080,
+            vpc_target_host_name="www.example.com")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -358,6 +394,7 @@ class VpcAccess(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_target_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,6 +414,7 @@ class VpcAccess(pulumi.CustomResource):
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vpc_target_host_name"] = vpc_target_host_name
             __props__.__dict__["vpc_access_id"] = None
         super(VpcAccess, __self__).__init__(
             'alicloud:apigateway/vpcAccess:VpcAccess',
@@ -392,7 +430,8 @@ class VpcAccess(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             vpc_access_id: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcAccess':
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_target_host_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcAccess':
         """
         Get an existing VpcAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -405,6 +444,7 @@ class VpcAccess(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
         :param pulumi.Input[_builtins.str] vpc_access_id: The ID of the Vpc Access.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
+        :param pulumi.Input[_builtins.str] vpc_target_host_name: The host of the backend service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -415,6 +455,7 @@ class VpcAccess(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["vpc_access_id"] = vpc_access_id
         __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vpc_target_host_name"] = vpc_target_host_name
         return VpcAccess(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -456,4 +497,12 @@ class VpcAccess(pulumi.CustomResource):
         The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcTargetHostName")
+    def vpc_target_host_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The host of the backend service.
+        """
+        return pulumi.get(self, "vpc_target_host_name")
 

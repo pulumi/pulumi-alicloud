@@ -205,6 +205,8 @@ type Image struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Indicates whether the image is available. Valid values:
+	Usable pulumi.BoolOutput `pulumi:"usable"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -301,6 +303,8 @@ type imageState struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
+	// Indicates whether the image is available. Valid values:
+	Usable *bool `pulumi:"usable"`
 }
 
 type ImageState struct {
@@ -368,6 +372,8 @@ type ImageState struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput
+	// Indicates whether the image is available. Valid values:
+	Usable pulumi.BoolPtrInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -710,6 +716,11 @@ func (o ImageOutput) Status() pulumi.StringOutput {
 // The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ImageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Indicates whether the image is available. Valid values:
+func (o ImageOutput) Usable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.Usable }).(pulumi.BoolOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }

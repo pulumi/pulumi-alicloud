@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:sslcertificatesservice/company:Company":
+		r = &Company{}
+	case "alicloud:sslcertificatesservice/contact:Contact":
+		r = &Contact{}
 	case "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate":
 		r = &PcaCertificate{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sslcertificatesservice/company",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sslcertificatesservice/contact",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sslcertificatesservice/pcaCertificate",

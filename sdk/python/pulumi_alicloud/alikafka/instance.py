@@ -85,7 +85,7 @@ class InstanceArgs:
                - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         :param pulumi.Input[_builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
                - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
                - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] topic_quota: The max num of topic can be creation of the instance.
@@ -437,7 +437,7 @@ class InstanceArgs:
         """
         The instance edition. Default value: `normal`. Valid values:
         - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-        - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
         - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         """
         return pulumi.get(self, "spec_type")
@@ -614,7 +614,7 @@ class _InstanceState:
                - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         :param pulumi.Input[_builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
                - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
                - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[_builtins.str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
         :param pulumi.Input[_builtins.str] ssl_endpoint: (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
@@ -1100,7 +1100,7 @@ class _InstanceState:
         """
         The instance edition. Default value: `normal`. Valid values:
         - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-        - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
         - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         """
         return pulumi.get(self, "spec_type")
@@ -1411,7 +1411,7 @@ class Instance(pulumi.CustomResource):
                - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         :param pulumi.Input[_builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
                - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
                - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] topic_quota: The max num of topic can be creation of the instance.
@@ -1700,7 +1700,7 @@ class Instance(pulumi.CustomResource):
                - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         :param pulumi.Input[_builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
                - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
                - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[_builtins.str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
         :param pulumi.Input[_builtins.str] ssl_endpoint: (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
@@ -2024,7 +2024,7 @@ class Instance(pulumi.CustomResource):
         """
         The instance edition. Default value: `normal`. Valid values:
         - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-        - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        - If `instance_type` is set to `alikafka_serverless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paid_type` is set to `PrePaid`.
         - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         """
         return pulumi.get(self, "spec_type")

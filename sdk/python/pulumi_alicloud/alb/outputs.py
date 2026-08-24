@@ -1376,16 +1376,21 @@ class RuleRuleAction(dict):
                  traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None):
         """
         :param _builtins.int order: The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+               
+               > **NOTE:** The `ForwardGroup`, `Redirect` or `FixedResponse` action is performed last, so its `order` must be greater than the `order` of every other action in the same rule. Otherwise the rule is rejected with `IllegalParam.Order`.
         :param _builtins.str type: The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-               **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-               **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-               **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+               
+               > **NOTE:** A forwarding rule must contain exactly one `ForwardGroup`, `Redirect` or `FixedResponse` action, which is performed last. Every other action is performed before it and can only be used together with it: a rule can contain multiple `InsertHeader` actions, but at most one `Rewrite` action.
+               
+               > **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+               
+               > **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
         :param 'RuleRuleActionCorsConfigArgs' cors_config: Request forwarding based on CORS. See `cors_config` below.
         :param 'RuleRuleActionFixedResponseConfigArgs' fixed_response_config: The configuration of the fixed response. See `fixed_response_config` below.
         :param 'RuleRuleActionForwardGroupConfigArgs' forward_group_config: The forward response action within ALB. See `forward_group_config` below.
         :param 'RuleRuleActionInsertHeaderConfigArgs' insert_header_config: The configuration of the inserted header field. See `insert_header_config` below.
         :param 'RuleRuleActionRedirectConfigArgs' redirect_config: The configuration of the external redirect action. See `redirect_config` below.
-        :param 'RuleRuleActionRemoveHeaderConfigArgs' remove_header_config: The configuration of the inserted header field. See `remove_header_config` below.
+        :param 'RuleRuleActionRemoveHeaderConfigArgs' remove_header_config: The configuration of the removed header field. See `remove_header_config` below.
         :param 'RuleRuleActionRewriteConfigArgs' rewrite_config: The redirect action within ALB. See `rewrite_config` below.
         :param 'RuleRuleActionTrafficLimitConfigArgs' traffic_limit_config: The Flow speed limit. See `traffic_limit_config` below.
         :param 'RuleRuleActionTrafficMirrorConfigArgs' traffic_mirror_config: The Traffic mirroring. See `traffic_mirror_config` below.
@@ -1416,6 +1421,8 @@ class RuleRuleAction(dict):
     def order(self) -> _builtins.int:
         """
         The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+
+        > **NOTE:** The `ForwardGroup`, `Redirect` or `FixedResponse` action is performed last, so its `order` must be greater than the `order` of every other action in the same rule. Otherwise the rule is rejected with `IllegalParam.Order`.
         """
         return pulumi.get(self, "order")
 
@@ -1424,9 +1431,12 @@ class RuleRuleAction(dict):
     def type(self) -> _builtins.str:
         """
         The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-        **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-        **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+
+        > **NOTE:** A forwarding rule must contain exactly one `ForwardGroup`, `Redirect` or `FixedResponse` action, which is performed last. Every other action is performed before it and can only be used together with it: a rule can contain multiple `InsertHeader` actions, but at most one `Rewrite` action.
+
+        > **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+
+        > **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
         """
         return pulumi.get(self, "type")
 
@@ -1474,7 +1484,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="removeHeaderConfig")
     def remove_header_config(self) -> Optional['outputs.RuleRuleActionRemoveHeaderConfig']:
         """
-        The configuration of the inserted header field. See `remove_header_config` below.
+        The configuration of the removed header field. See `remove_header_config` below.
         """
         return pulumi.get(self, "remove_header_config")
 
@@ -1776,7 +1786,8 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
         """
         :param _builtins.str server_group_id: The ID of the destination server group to which requests are forwarded.
         :param _builtins.int weight: The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-               **NOTE:** `weight` is required when the number of `server_group_tuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+               
+               > **NOTE:** `weight` is required when the number of `server_group_tuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
         """
         if server_group_id is not None:
             pulumi.set(__self__, "server_group_id", server_group_id)
@@ -1796,7 +1807,8 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
     def weight(self) -> Optional[_builtins.int]:
         """
         The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-        **NOTE:** `weight` is required when the number of `server_group_tuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+
+        > **NOTE:** `weight` is required when the number of `server_group_tuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
         """
         return pulumi.get(self, "weight")
 
@@ -1890,7 +1902,9 @@ class RuleRuleActionRedirectConfig(dict):
         :param _builtins.str http_code: The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
         :param _builtins.str path: The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
         :param _builtins.str port: The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
-        :param _builtins.str protocol: The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        :param _builtins.str protocol: The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+               
+               > **NOTE:** HTTPS listeners can redirect only HTTPS requests.
         :param _builtins.str query: The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         if host is not None:
@@ -1942,7 +1956,9 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
         """
-        The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+
+        > **NOTE:** HTTPS listeners can redirect only HTTPS requests.
         """
         return pulumi.get(self, "protocol")
 
@@ -2034,7 +2050,9 @@ class RuleRuleActionTrafficLimitConfig(dict):
                  per_ip_qps: Optional[_builtins.int] = None,
                  qps: Optional[_builtins.int] = None):
         """
-        :param _builtins.int per_ip_qps: The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+        :param _builtins.int per_ip_qps: The number of requests per second for a single IP address. Value range: 1~1000000.
+               
+               > **NOTE:** If `qps` is also configured, the value of `per_ip_qps` must be smaller than the value of `qps`.
         :param _builtins.int qps: The Number of requests per second. Valid values: `1` to `100000`.
         """
         if per_ip_qps is not None:
@@ -2046,7 +2064,9 @@ class RuleRuleActionTrafficLimitConfig(dict):
     @pulumi.getter(name="perIpQps")
     def per_ip_qps(self) -> Optional[_builtins.int]:
         """
-        The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+        The number of requests per second for a single IP address. Value range: 1~1000000.
+
+        > **NOTE:** If `qps` is also configured, the value of `per_ip_qps` must be smaller than the value of `qps`.
         """
         return pulumi.get(self, "per_ip_qps")
 
@@ -2235,10 +2255,12 @@ class RuleRuleCondition(dict):
                - `QueryString`: Requests are forwarded based on the query string.
                - `Method`: Request are forwarded based on the request method.
                - `Cookie`: Requests are forwarded based on the cookie.
-               - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-               - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-               - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
-        :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See See `cookie_config` below.
+               - `SourceIp`: Requests are forwarded based on the source ip.
+               - `ResponseHeader`: Response header.
+               - `ResponseStatusCode`: Response status code.
+               
+               > **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
+        :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See `cookie_config` below.
         :param 'RuleRuleConditionHeaderConfigArgs' header_config: The configuration of the header field. See `header_config` below.
         :param 'RuleRuleConditionHostConfigArgs' host_config: The configuration of the host field. See `host_config` below.
         :param 'RuleRuleConditionMethodConfigArgs' method_config: The configuration of the request method. See `method_config` below.
@@ -2279,9 +2301,11 @@ class RuleRuleCondition(dict):
         - `QueryString`: Requests are forwarded based on the query string.
         - `Method`: Request are forwarded based on the request method.
         - `Cookie`: Requests are forwarded based on the cookie.
-        - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-        - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-        - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+        - `SourceIp`: Requests are forwarded based on the source ip.
+        - `ResponseHeader`: Response header.
+        - `ResponseStatusCode`: Response status code.
+
+        > **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
         """
         return pulumi.get(self, "type")
 
@@ -2289,7 +2313,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="cookieConfig")
     def cookie_config(self) -> Optional['outputs.RuleRuleConditionCookieConfig']:
         """
-        The configuration of the cookie. See See `cookie_config` below.
+        The configuration of the cookie. See `cookie_config` below.
         """
         return pulumi.get(self, "cookie_config")
 

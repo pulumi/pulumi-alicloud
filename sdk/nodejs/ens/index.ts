@@ -30,6 +30,11 @@ export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as a
 export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyPairs","getKeyPairsOutput"], () => require("./getKeyPairs"));
 
+export { GetSecurityGroupsArgs, GetSecurityGroupsResult, GetSecurityGroupsOutputArgs } from "./getSecurityGroups";
+export const getSecurityGroups: typeof import("./getSecurityGroups").getSecurityGroups = null as any;
+export const getSecurityGroupsOutput: typeof import("./getSecurityGroups").getSecurityGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGroups","getSecurityGroupsOutput"], () => require("./getSecurityGroups"));
+
 export { ImageArgs, ImageState } from "./image";
 export type Image = import("./image").Image;
 export const Image: typeof import("./image").Image = null as any;

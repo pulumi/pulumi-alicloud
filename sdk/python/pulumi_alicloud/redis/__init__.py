@@ -7,4 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .backup import *
+from .get_global_security_ip_groups import *
+from .global_security_ip_group import *
 from .tair_instance import *
+from . import outputs

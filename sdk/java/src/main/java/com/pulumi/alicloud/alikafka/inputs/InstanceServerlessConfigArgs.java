@@ -16,14 +16,14 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     public static final InstanceServerlessConfigArgs Empty = new InstanceServerlessConfigArgs();
 
     /**
-     * The reserved capacity for publishing messages.
+     * The reserved capacity for publishing messages. The minimum value is `60`.
      * 
      */
     @Import(name="reservedPublishCapacity")
     private @Nullable Output<Integer> reservedPublishCapacity;
 
     /**
-     * @return The reserved capacity for publishing messages.
+     * @return The reserved capacity for publishing messages. The minimum value is `60`.
      * 
      */
     public Optional<Output<Integer>> reservedPublishCapacity() {
@@ -31,14 +31,14 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The reserved capacity for subscribing to message.
+     * The reserved capacity for subscribing to message. The minimum value is `20`.
      * 
      */
     @Import(name="reservedSubscribeCapacity")
     private @Nullable Output<Integer> reservedSubscribeCapacity;
 
     /**
-     * @return The reserved capacity for subscribing to message.
+     * @return The reserved capacity for subscribing to message. The minimum value is `20`.
      * 
      */
     public Optional<Output<Integer>> reservedSubscribeCapacity() {
@@ -71,7 +71,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param reservedPublishCapacity The reserved capacity for publishing messages.
+         * @param reservedPublishCapacity The reserved capacity for publishing messages. The minimum value is `60`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param reservedPublishCapacity The reserved capacity for publishing messages.
+         * @param reservedPublishCapacity The reserved capacity for publishing messages. The minimum value is `60`.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param reservedSubscribeCapacity The reserved capacity for subscribing to message.
+         * @param reservedSubscribeCapacity The reserved capacity for subscribing to message. The minimum value is `20`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param reservedSubscribeCapacity The reserved capacity for subscribing to message.
+         * @param reservedSubscribeCapacity The reserved capacity for subscribing to message. The minimum value is `20`.
          * 
          * @return builder
          * 

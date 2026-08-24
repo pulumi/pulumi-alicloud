@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a resource to put a object(content or file) to a oss bucket.
  * 
+ * &gt; **NOTE:** Available since v0.1.1.
+ * 
  * ## Example Usage
  * 
  * ### Uploading a file to a bucket
@@ -317,14 +319,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
-     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      * 
      */
     @Export(name="objectWormMode", refs={String.class}, tree="[0]")
     private Output<String> objectWormMode;
 
     /**
-     * @return The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * @return The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
      * 
      */
     public Output<String> objectWormMode() {

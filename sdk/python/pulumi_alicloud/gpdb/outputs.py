@@ -26,6 +26,7 @@ __all__ = [
     'InstanceIpWhitelist',
     'InstanceParameter',
     'GetAccountsAccountResult',
+    'GetApiKeysKeyResult',
     'GetDataBackupsBackupResult',
     'GetDbInstancePlansPlanResult',
     'GetDbInstancePlansPlanPlanConfigResult',
@@ -685,11 +686,11 @@ class InstanceParameter(dict):
         """
         :param _builtins.str name: The name of the parameter.
         :param _builtins.str value: The value of the parameter.
-        :param _builtins.str default_value: (Available since v1.231.0) The default value of the parameter.
-        :param _builtins.str force_restart_instance: (Available since v1.231.0) Whether to force restart the instance to config the parameter.
-        :param _builtins.str is_changeable_config: (Available since v1.231.0) Whether the parameter is changeable.
-        :param _builtins.str optional_range: (Available since v1.231.0) The optional range of the parameter.
-        :param _builtins.str parameter_description: (Available since v1.231.0) The description of the parameter.
+        :param _builtins.str default_value: The default value of the parameter.
+        :param _builtins.str force_restart_instance: Whether to force restart the instance to config the parameter.
+        :param _builtins.str is_changeable_config: Whether the parameter is changeable.
+        :param _builtins.str optional_range: The optional range of the parameter.
+        :param _builtins.str parameter_description: The description of the parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -724,7 +725,7 @@ class InstanceParameter(dict):
     @pulumi.getter(name="defaultValue")
     def default_value(self) -> Optional[_builtins.str]:
         """
-        (Available since v1.231.0) The default value of the parameter.
+        The default value of the parameter.
         """
         return pulumi.get(self, "default_value")
 
@@ -732,7 +733,7 @@ class InstanceParameter(dict):
     @pulumi.getter(name="forceRestartInstance")
     def force_restart_instance(self) -> Optional[_builtins.str]:
         """
-        (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+        Whether to force restart the instance to config the parameter.
         """
         return pulumi.get(self, "force_restart_instance")
 
@@ -740,7 +741,7 @@ class InstanceParameter(dict):
     @pulumi.getter(name="isChangeableConfig")
     def is_changeable_config(self) -> Optional[_builtins.str]:
         """
-        (Available since v1.231.0) Whether the parameter is changeable.
+        Whether the parameter is changeable.
         """
         return pulumi.get(self, "is_changeable_config")
 
@@ -748,7 +749,7 @@ class InstanceParameter(dict):
     @pulumi.getter(name="optionalRange")
     def optional_range(self) -> Optional[_builtins.str]:
         """
-        (Available since v1.231.0) The optional range of the parameter.
+        The optional range of the parameter.
         """
         return pulumi.get(self, "optional_range")
 
@@ -756,7 +757,7 @@ class InstanceParameter(dict):
     @pulumi.getter(name="parameterDescription")
     def parameter_description(self) -> Optional[_builtins.str]:
         """
-        (Available since v1.231.0) The description of the parameter.
+        The description of the parameter.
         """
         return pulumi.get(self, "parameter_description")
 
@@ -821,6 +822,79 @@ class GetAccountsAccountResult(dict):
         The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetApiKeysKeyResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 key_id: _builtins.str,
+                 key_name: _builtins.str,
+                 key_prefix: _builtins.str):
+        """
+        :param _builtins.str create_time: The creation time of the resource.
+        :param _builtins.str description: The description of the API key.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str key_id: The ID of the API key.
+        :param _builtins.str key_name: The name of the API key.
+        :param _builtins.str key_prefix: The prefix of the API key.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_prefix", key_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the API key.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> _builtins.str:
+        """
+        The ID of the API key.
+        """
+        return pulumi.get(self, "key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> _builtins.str:
+        """
+        The name of the API key.
+        """
+        return pulumi.get(self, "key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="keyPrefix")
+    def key_prefix(self) -> _builtins.str:
+        """
+        The prefix of the API key.
+        """
+        return pulumi.get(self, "key_prefix")
 
 
 @pulumi.output_type

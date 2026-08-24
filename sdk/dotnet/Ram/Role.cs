@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the RAM role.
+        /// The description of the RAM role. The description must be `1` to `1024` characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? AssumeRolePolicyDocument { get; set; }
 
         /// <summary>
-        /// The description of the RAM role.
+        /// The description of the RAM role. The description must be `1` to `1024` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the RAM role.
+        /// The description of the RAM role. The description must be `1` to `1024` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

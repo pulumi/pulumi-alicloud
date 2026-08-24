@@ -59,14 +59,18 @@ import (
 // ENS Security Group can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
+// $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <security_group_id>
 // ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// Security group description information
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+	// A collection of rules for a security group instance See `permissions` below.
+	Permissions SecurityGroupPermissionArrayOutput `pulumi:"permissions"`
+	// Security group name
+	// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
 	SecurityGroupName pulumi.StringPtrOutput `pulumi:"securityGroupName"`
 }
 
@@ -100,16 +104,24 @@ func GetSecurityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroup resources.
 type securityGroupState struct {
-	// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// Security group description information
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
 	Description *string `pulumi:"description"`
-	// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+	// A collection of rules for a security group instance See `permissions` below.
+	Permissions []SecurityGroupPermission `pulumi:"permissions"`
+	// Security group name
+	// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 }
 
 type SecurityGroupState struct {
-	// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// Security group description information
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
 	Description pulumi.StringPtrInput
-	// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+	// A collection of rules for a security group instance See `permissions` below.
+	Permissions SecurityGroupPermissionArrayInput
+	// Security group name
+	// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
 	SecurityGroupName pulumi.StringPtrInput
 }
 
@@ -118,17 +130,25 @@ func (SecurityGroupState) ElementType() reflect.Type {
 }
 
 type securityGroupArgs struct {
-	// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// Security group description information
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
 	Description *string `pulumi:"description"`
-	// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+	// A collection of rules for a security group instance See `permissions` below.
+	Permissions []SecurityGroupPermission `pulumi:"permissions"`
+	// Security group name
+	// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 }
 
 // The set of arguments for constructing a SecurityGroup resource.
 type SecurityGroupArgs struct {
-	// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// Security group description information
+	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
 	Description pulumi.StringPtrInput
-	// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+	// A collection of rules for a security group instance See `permissions` below.
+	Permissions SecurityGroupPermissionArrayInput
+	// Security group name
+	// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
 	SecurityGroupName pulumi.StringPtrInput
 }
 
@@ -219,12 +239,19 @@ func (o SecurityGroupOutput) ToSecurityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+// Security group description information
+// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
 func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+// A collection of rules for a security group instance See `permissions` below.
+func (o SecurityGroupOutput) Permissions() SecurityGroupPermissionArrayOutput {
+	return o.ApplyT(func(v *SecurityGroup) SecurityGroupPermissionArrayOutput { return v.Permissions }).(SecurityGroupPermissionArrayOutput)
+}
+
+// Security group name
+// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
 func (o SecurityGroupOutput) SecurityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
 }

@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
     /// Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
+    /// You can see the detail product introduction in the [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) API reference.
     /// 
     /// &gt; **NOTE:** Available since v1.47.0.
     /// 
@@ -93,6 +93,18 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        /// </summary>
+        [Output("backupId")]
+        public Output<string?> BackupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `CacheStorageSize` is valid only when `DbInstanceMode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        /// </summary>
+        [Output("cacheStorageSize")]
+        public Output<int> CacheStorageSize { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since v1.196.0) The connection string of the instance.
         /// </summary>
         [Output("connectionString")]
@@ -127,7 +139,9 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> DbInstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+        /// 
+        /// &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `DbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `ServerlessResource` and `CacheStorageSize` instead of `InstanceSpec`.
         /// </summary>
         [Output("dbInstanceMode")]
         public Output<string> DbInstanceMode { get; private set; } = null!;
@@ -191,9 +205,10 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Output("instanceSpec")]
-        public Output<string?> InstanceSpec { get; private set; } = null!;
+        public Output<string> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
         /// The ip whitelist. See `IpWhitelist` below.
@@ -224,7 +239,15 @@ namespace Pulumi.AliCloud.Gpdb
         /// The number of Master nodes. **NOTE:** Field `MasterNodeNum` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Output("masterNodeNum")]
-        public Output<int?> MasterNodeNum { get; private set; } = null!;
+        public Output<int> MasterNodeNum { get; private set; } = null!;
+
+        /// <summary>
+        /// The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+        /// 
+        /// &gt; **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
+        /// </summary>
+        [Output("minorVersion")]
+        public Output<string> MinorVersion { get; private set; } = null!;
 
         /// <summary>
         /// The parameters. See `Parameters` below.
@@ -233,13 +256,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `PaymentType` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `Period` and `UsedTime` are required; when modifying the billing method of an instance to `PayAsYouGo`, `Period` and `UsedTime` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`. Valid values: `Year`, `Month`.
+        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`, including when `PaymentType` is modified to `Subscription`. Valid values: `Year`, `Month`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -307,13 +330,35 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> ServerlessMode { get; private set; } = null!;
 
         /// <summary>
+        /// The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `ServerlessResource` is valid only when `DbInstanceMode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        /// </summary>
+        [Output("serverlessResource")]
+        public Output<int> ServerlessResource { get; private set; } = null!;
+
+        /// <summary>
+        /// The source instance ID for creating an instance from a backup set. Must be set together with `BackupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        /// </summary>
+        [Output("srcDbInstanceName")]
+        public Output<string?> SrcDbInstanceName { get; private set; } = null!;
+
+        /// <summary>
         /// Enable or disable SSL. Valid values: `0` and `1`.
         /// </summary>
         [Output("sslEnabled")]
         public Output<int> SslEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the instance.
+        /// The expected status of the instance. Valid values:
+        /// - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+        /// - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+        /// 
+        /// When `Status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+        /// 
+        /// &gt; **NOTE:** Setting `Status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+        /// 
+        /// &gt; **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+        /// 
+        /// &gt; **NOTE:** `Status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `Status` is set to `Stopped`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -333,7 +378,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`.
+        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `UsedTime` is required (together with `Period`) when `PaymentType` is modified to `Subscription`.
         /// </summary>
         [Output("usedTime")]
         public Output<string?> UsedTime { get; private set; } = null!;
@@ -415,6 +460,18 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
+        /// The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        /// </summary>
+        [Input("backupId")]
+        public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `CacheStorageSize` is valid only when `DbInstanceMode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        /// </summary>
+        [Input("cacheStorageSize")]
+        public Input<int>? CacheStorageSize { get; set; }
+
+        /// <summary>
         /// Whether to load the sample dataset after the instance is created. Valid values: `True`, `False`.
         /// </summary>
         [Input("createSampleData")]
@@ -443,7 +500,9 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? DbInstanceClass { get; set; }
 
         /// <summary>
-        /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+        /// 
+        /// &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `DbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `ServerlessResource` and `CacheStorageSize` instead of `InstanceSpec`.
         /// </summary>
         [Input("dbInstanceMode", required: true)]
         public Input<string> DbInstanceMode { get; set; } = null!;
@@ -507,6 +566,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }
@@ -548,6 +608,14 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
 
+        /// <summary>
+        /// The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+        /// 
+        /// &gt; **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
+        /// </summary>
+        [Input("minorVersion")]
+        public Input<string>? MinorVersion { get; set; }
+
         [Input("parameters")]
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
@@ -561,13 +629,13 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `PaymentType` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `Period` and `UsedTime` are required; when modifying the billing method of an instance to `PayAsYouGo`, `Period` and `UsedTime` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`. Valid values: `Year`, `Month`.
+        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`, including when `PaymentType` is modified to `Subscription`. Valid values: `Year`, `Month`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -636,10 +704,38 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? ServerlessMode { get; set; }
 
         /// <summary>
+        /// The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `ServerlessResource` is valid only when `DbInstanceMode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        /// </summary>
+        [Input("serverlessResource")]
+        public Input<int>? ServerlessResource { get; set; }
+
+        /// <summary>
+        /// The source instance ID for creating an instance from a backup set. Must be set together with `BackupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        /// </summary>
+        [Input("srcDbInstanceName")]
+        public Input<string>? SrcDbInstanceName { get; set; }
+
+        /// <summary>
         /// Enable or disable SSL. Valid values: `0` and `1`.
         /// </summary>
         [Input("sslEnabled")]
         public Input<int>? SslEnabled { get; set; }
+
+        /// <summary>
+        /// The expected status of the instance. Valid values:
+        /// - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+        /// - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+        /// 
+        /// When `Status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+        /// 
+        /// &gt; **NOTE:** Setting `Status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+        /// 
+        /// &gt; **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+        /// 
+        /// &gt; **NOTE:** `Status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `Status` is set to `Stopped`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -662,7 +758,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`.
+        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `UsedTime` is required (together with `Period`) when `PaymentType` is modified to `Subscription`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
@@ -706,6 +802,18 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
+        /// The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        /// </summary>
+        [Input("backupId")]
+        public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `CacheStorageSize` is valid only when `DbInstanceMode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        /// </summary>
+        [Input("cacheStorageSize")]
+        public Input<int>? CacheStorageSize { get; set; }
+
+        /// <summary>
         /// (Available since v1.196.0) The connection string of the instance.
         /// </summary>
         [Input("connectionString")]
@@ -740,7 +848,9 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? DbInstanceClass { get; set; }
 
         /// <summary>
-        /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+        /// 
+        /// &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `DbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `ServerlessResource` and `CacheStorageSize` instead of `InstanceSpec`.
         /// </summary>
         [Input("dbInstanceMode")]
         public Input<string>? DbInstanceMode { get; set; }
@@ -804,6 +914,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }
@@ -845,6 +956,14 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
 
+        /// <summary>
+        /// The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+        /// 
+        /// &gt; **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
+        /// </summary>
+        [Input("minorVersion")]
+        public Input<string>? MinorVersion { get; set; }
+
         [Input("parameters")]
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
@@ -858,13 +977,13 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `PaymentType` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `Period` and `UsedTime` are required; when modifying the billing method of an instance to `PayAsYouGo`, `Period` and `UsedTime` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`. Valid values: `Year`, `Month`.
+        /// The duration that you will buy the resource, in month. required when `PaymentType` is `Subscription`, including when `PaymentType` is modified to `Subscription`. Valid values: `Year`, `Month`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -939,13 +1058,35 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? ServerlessMode { get; set; }
 
         /// <summary>
+        /// The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `ServerlessResource` is valid only when `DbInstanceMode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        /// </summary>
+        [Input("serverlessResource")]
+        public Input<int>? ServerlessResource { get; set; }
+
+        /// <summary>
+        /// The source instance ID for creating an instance from a backup set. Must be set together with `BackupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        /// </summary>
+        [Input("srcDbInstanceName")]
+        public Input<string>? SrcDbInstanceName { get; set; }
+
+        /// <summary>
         /// Enable or disable SSL. Valid values: `0` and `1`.
         /// </summary>
         [Input("sslEnabled")]
         public Input<int>? SslEnabled { get; set; }
 
         /// <summary>
-        /// The status of the instance.
+        /// The expected status of the instance. Valid values:
+        /// - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+        /// - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+        /// 
+        /// When `Status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+        /// 
+        /// &gt; **NOTE:** Setting `Status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+        /// 
+        /// &gt; **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+        /// 
+        /// &gt; **NOTE:** `Status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `Status` is set to `Stopped`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -971,7 +1112,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`.
+        /// The used time. When the parameter `Period` is `Year`, the `UsedTime` value is `1` to `3`. When the parameter `Period` is `Month`, the `UsedTime` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `UsedTime` is required (together with `Period`) when `PaymentType` is modified to `Subscription`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }

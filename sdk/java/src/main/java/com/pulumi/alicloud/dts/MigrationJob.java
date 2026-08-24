@@ -293,6 +293,34 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
         return this.dbList;
     }
     /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    @Export(name="destPrimaryVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> destPrimaryVswitchId;
+
+    /**
+     * @return The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    public Output<Optional<String>> destPrimaryVswitchId() {
+        return Codegen.optional(this.destPrimaryVswitchId);
+    }
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    @Export(name="destSecondaryVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> destSecondaryVswitchId;
+
+    /**
+     * @return The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     * 
+     */
+    public Output<Optional<String>> destSecondaryVswitchId() {
+        return Codegen.optional(this.destSecondaryVswitchId);
+    }
+    /**
      * The name of migrate the database.
      * 
      */
@@ -417,6 +445,20 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> destinationEndpointRegion() {
         return Codegen.optional(this.destinationEndpointRegion);
+    }
+    /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Export(name="destinationEndpointSsl", refs={String.class}, tree="[0]")
+    private Output<String> destinationEndpointSsl;
+
+    /**
+     * @return The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Output<String> destinationEndpointSsl() {
+        return this.destinationEndpointSsl;
     }
     /**
      * The username of database account.
@@ -629,6 +671,20 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceEndpointRole);
     }
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Export(name="sourceEndpointSsl", refs={String.class}, tree="[0]")
+    private Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Output<String> sourceEndpointSsl() {
+        return this.sourceEndpointSsl;
+    }
+    /**
      * The username of database account.
      * 
      */
@@ -643,7 +699,37 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceEndpointUserName);
     }
     /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    @Export(name="srcPrimaryVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> srcPrimaryVswitchId;
+
+    /**
+     * @return The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    public Output<Optional<String>> srcPrimaryVswitchId() {
+        return Codegen.optional(this.srcPrimaryVswitchId);
+    }
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    @Export(name="srcSecondaryVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> srcSecondaryVswitchId;
+
+    /**
+     * @return The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     * 
+     */
+    public Output<Optional<String>> srcSecondaryVswitchId() {
+        return Codegen.optional(this.srcSecondaryVswitchId);
+    }
+    /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     * 
+     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -651,6 +737,8 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     * 
+     * &gt; **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      * 
      */
     public Output<String> status() {

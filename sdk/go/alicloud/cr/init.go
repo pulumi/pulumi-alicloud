@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule":
 		r = &ArtifactLifecycleRule{}
+	case "alicloud:cr/artifactSubscriptionRule:ArtifactSubscriptionRule":
+		r = &ArtifactSubscriptionRule{}
 	case "alicloud:cr/chain:Chain":
 		r = &Chain{}
 	case "alicloud:cr/chartNamespace:ChartNamespace":
@@ -31,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ChartRepository{}
 	case "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
 		r = &EndpointAclPolicy{}
+	case "alicloud:cr/internetEndpoint:InternetEndpoint":
+		r = &InternetEndpoint{}
 	case "alicloud:cr/namespace:Namespace":
 		r = &Namespace{}
 	case "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
@@ -63,6 +67,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cr/artifactSubscriptionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cr/chain",
 		&module{version},
 	)
@@ -79,6 +88,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cr/endpointAclPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/internetEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

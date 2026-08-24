@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.267.0.
 //
+// > **NOTE:** A value added service can be purchased only once per region while it is in effect. If the account already holds it, for example because it was purchased in the console, a duplicate order is charged and then refunded automatically and its instance never becomes effective, so creating this resource fails rather than tracking an instance that does not work. Import the existing service instead of creating it.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -92,9 +94,7 @@ type ValueAddedService struct {
 	RenewStatus pulumi.StringPtrOutput `pulumi:"renewStatus"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	// The value added service type. Valid values:
 	ValueAddedService pulumi.StringPtrOutput `pulumi:"valueAddedService"`
 }
 
@@ -153,9 +153,7 @@ type valueAddedServiceState struct {
 	RenewStatus *string `pulumi:"renewStatus"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
-	// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	// The value added service type. Valid values:
 	ValueAddedService *string `pulumi:"valueAddedService"`
 }
 
@@ -182,9 +180,7 @@ type ValueAddedServiceState struct {
 	RenewStatus pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
-	// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	// The value added service type. Valid values:
 	ValueAddedService pulumi.StringPtrInput
 }
 
@@ -209,9 +205,7 @@ type valueAddedServiceArgs struct {
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
 	RenewStatus *string `pulumi:"renewStatus"`
-	// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	// The value added service type. Valid values:
 	ValueAddedService *string `pulumi:"valueAddedService"`
 }
 
@@ -233,9 +227,7 @@ type ValueAddedServiceArgs struct {
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
 	RenewStatus pulumi.StringPtrInput
-	// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	// The value added service type. Valid values:
 	ValueAddedService pulumi.StringPtrInput
 }
 
@@ -369,9 +361,7 @@ func (o ValueAddedServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValueAddedService) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-//
-// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+// The value added service type. Valid values:
 func (o ValueAddedServiceOutput) ValueAddedService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ValueAddedService) pulumi.StringPtrOutput { return v.ValueAddedService }).(pulumi.StringPtrOutput)
 }

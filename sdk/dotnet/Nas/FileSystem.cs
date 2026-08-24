@@ -59,6 +59,32 @@ namespace Pulumi.AliCloud.Nas
     /// });
     /// ```
     /// 
+    /// CPFS Usage
+    /// 
+    /// A CPFS file system is created inside a VPC, so `VpcId` and `VswitchId` are required. `Capacity` and `ZoneId` are also required for CPFS.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cpfs = new AliCloud.Nas.FileSystem("cpfs", new()
+    ///     {
+    ///         ProtocolType = "cpfs",
+    ///         StorageType = "advance_100",
+    ///         FileSystemType = "cpfs",
+    ///         Capacity = 3600,
+    ///         ZoneId = "cn-hangzhou-i",
+    ///         VpcId = "vpc-xxxxxxxxxxxxxxxxxxxxx",
+    ///         VswitchId = "vsw-xxxxxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
@@ -78,10 +104,10 @@ namespace Pulumi.AliCloud.Nas
         /// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
         /// 
         /// For optional values, please refer to the actual specifications on the purchase page:
-        /// -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-        /// -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-        /// -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-        /// -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+        /// - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        /// - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+        /// - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        /// - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         /// </summary>
         [Output("capacity")]
         public Output<int> Capacity { get; private set; } = null!;
@@ -97,7 +123,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Restrictions:
         /// - 2~128 English or Chinese characters in length.
-        /// - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+        /// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
         /// </summary>
         [Output("description")]
@@ -110,7 +136,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Value:
         /// - 0 (default): not encrypted.
-        /// - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+        /// - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
         /// - 2: User management key. You can manage keys only when FileSystemType = extreme.
         /// </summary>
         [Output("encryptType")]
@@ -123,6 +149,9 @@ namespace Pulumi.AliCloud.Nas
         /// - standard (default): Universal NAS
         /// - extreme: extreme NAS
         /// - cpfs: file storage CPFS
+        /// - cpfsse: file storage CPFS Smart Edition
+        /// 
+        /// &gt; **NOTE:** Whether the network fields `VpcId` and `VswitchId` must be configured depends on `FileSystemType`. Only CPFS file systems create a resource inside a VPC; for `Standard` and `Extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `FileSystemType` is as follows:
         /// </summary>
         [Output("fileSystemType")]
         public Output<string> FileSystemType { get; private set; } = null!;
@@ -145,6 +174,7 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the KMS key.
+        /// 
         /// This parameter is required only when EncryptType = 2.
         /// </summary>
         [Output("kmsKeyId")]
@@ -178,7 +208,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<Outputs.FileSystemRecycleBin> RecycleBin { get; private set; } = null!;
 
         /// <summary>
-        /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        /// Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         /// </summary>
         [Output("redundancyType")]
         public Output<string> RedundancyType { get; private set; } = null!;
@@ -212,7 +242,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("snapshotId")]
@@ -241,16 +270,22 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the VPC network.
-        /// This parameter must be configured when FileSystemType = cpfs.
-        /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VpcId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the switch.
-        /// This parameter must be configured when FileSystemType = cpfs.
-        /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// &gt; **NOTE:** This `VswitchId` configures the network of the CPFS file system itself and is different from `VswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `VswitchId` regardless of `FileSystemType`.
+        /// 
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VswitchId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -262,9 +297,9 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
         /// 
-        /// &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+        /// &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
         /// 
-        /// &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+        /// &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -321,10 +356,10 @@ namespace Pulumi.AliCloud.Nas
         /// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
         /// 
         /// For optional values, please refer to the actual specifications on the purchase page:
-        /// -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-        /// -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-        /// -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-        /// -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+        /// - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        /// - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+        /// - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        /// - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
@@ -334,7 +369,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Restrictions:
         /// - 2~128 English or Chinese characters in length.
-        /// - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+        /// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
         /// </summary>
         [Input("description")]
@@ -347,7 +382,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Value:
         /// - 0 (default): not encrypted.
-        /// - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+        /// - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
         /// - 2: User management key. You can manage keys only when FileSystemType = extreme.
         /// </summary>
         [Input("encryptType")]
@@ -360,6 +395,9 @@ namespace Pulumi.AliCloud.Nas
         /// - standard (default): Universal NAS
         /// - extreme: extreme NAS
         /// - cpfs: file storage CPFS
+        /// - cpfsse: file storage CPFS Smart Edition
+        /// 
+        /// &gt; **NOTE:** Whether the network fields `VpcId` and `VswitchId` must be configured depends on `FileSystemType`. Only CPFS file systems create a resource inside a VPC; for `Standard` and `Extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `FileSystemType` is as follows:
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
@@ -382,6 +420,7 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the KMS key.
+        /// 
         /// This parameter is required only when EncryptType = 2.
         /// </summary>
         [Input("kmsKeyId")]
@@ -415,7 +454,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.FileSystemRecycleBinArgs>? RecycleBin { get; set; }
 
         /// <summary>
-        /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        /// Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -449,7 +488,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("snapshotId")]
@@ -478,16 +516,22 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the VPC network.
-        /// This parameter must be configured when FileSystemType = cpfs.
-        /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VpcId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of the switch.
-        /// This parameter must be configured when FileSystemType = cpfs.
-        /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// &gt; **NOTE:** This `VswitchId` configures the network of the CPFS file system itself and is different from `VswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `VswitchId` regardless of `FileSystemType`.
+        /// 
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VswitchId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -499,9 +543,9 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
         /// 
-        /// &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+        /// &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
         /// 
-        /// &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+        /// &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -520,10 +564,10 @@ namespace Pulumi.AliCloud.Nas
         /// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
         /// 
         /// For optional values, please refer to the actual specifications on the purchase page:
-        /// -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-        /// -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-        /// -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-        /// -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+        /// - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        /// - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+        /// - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        /// - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
@@ -539,7 +583,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Restrictions:
         /// - 2~128 English or Chinese characters in length.
-        /// - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+        /// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
         /// </summary>
         [Input("description")]
@@ -552,7 +596,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Value:
         /// - 0 (default): not encrypted.
-        /// - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+        /// - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
         /// - 2: User management key. You can manage keys only when FileSystemType = extreme.
         /// </summary>
         [Input("encryptType")]
@@ -565,6 +609,9 @@ namespace Pulumi.AliCloud.Nas
         /// - standard (default): Universal NAS
         /// - extreme: extreme NAS
         /// - cpfs: file storage CPFS
+        /// - cpfsse: file storage CPFS Smart Edition
+        /// 
+        /// &gt; **NOTE:** Whether the network fields `VpcId` and `VswitchId` must be configured depends on `FileSystemType`. Only CPFS file systems create a resource inside a VPC; for `Standard` and `Extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `FileSystemType` is as follows:
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
@@ -587,6 +634,7 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the KMS key.
+        /// 
         /// This parameter is required only when EncryptType = 2.
         /// </summary>
         [Input("kmsKeyId")]
@@ -620,7 +668,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.FileSystemRecycleBinGetArgs>? RecycleBin { get; set; }
 
         /// <summary>
-        /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        /// Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -660,7 +708,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("snapshotId")]
@@ -695,16 +742,22 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The ID of the VPC network.
-        /// This parameter must be configured when FileSystemType = cpfs.
-        /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VpcId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of the switch.
-        /// This parameter must be configured when FileSystemType = cpfs.
-        /// When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+        /// 
+        /// &gt; **NOTE:** This `VswitchId` configures the network of the CPFS file system itself and is different from `VswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `VswitchId` regardless of `FileSystemType`.
+        /// 
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VswitchId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -716,9 +769,9 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
         /// 
-        /// &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+        /// &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
         /// 
-        /// &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+        /// &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

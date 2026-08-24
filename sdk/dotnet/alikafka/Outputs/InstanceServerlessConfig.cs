@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.alikafka.Outputs
     public sealed class InstanceServerlessConfig
     {
         /// <summary>
-        /// The reserved capacity for publishing messages.
+        /// The reserved capacity for publishing messages. The minimum value is `60`.
         /// </summary>
         public readonly int? ReservedPublishCapacity;
         /// <summary>
-        /// The reserved capacity for subscribing to message.
+        /// The reserved capacity for subscribing to message. The minimum value is `20`.
         /// </summary>
         public readonly int? ReservedSubscribeCapacity;
 

@@ -77,6 +77,21 @@ public final class VpcAccessArgs extends com.pulumi.resources.ResourceArgs {
         return this.vpcId;
     }
 
+    /**
+     * The host of the backend service.
+     * 
+     */
+    @Import(name="vpcTargetHostName")
+    private @Nullable Output<String> vpcTargetHostName;
+
+    /**
+     * @return The host of the backend service.
+     * 
+     */
+    public Optional<Output<String>> vpcTargetHostName() {
+        return Optional.ofNullable(this.vpcTargetHostName);
+    }
+
     private VpcAccessArgs() {}
 
     private VpcAccessArgs(VpcAccessArgs $) {
@@ -84,6 +99,7 @@ public final class VpcAccessArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.port = $.port;
         this.vpcId = $.vpcId;
+        this.vpcTargetHostName = $.vpcTargetHostName;
     }
 
     public static Builder builder() {
@@ -186,6 +202,27 @@ public final class VpcAccessArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vpcTargetHostName The host of the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcTargetHostName(@Nullable Output<String> vpcTargetHostName) {
+            $.vpcTargetHostName = vpcTargetHostName;
+            return this;
+        }
+
+        /**
+         * @param vpcTargetHostName The host of the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcTargetHostName(String vpcTargetHostName) {
+            return vpcTargetHostName(Output.of(vpcTargetHostName));
         }
 
         public VpcAccessArgs build() {

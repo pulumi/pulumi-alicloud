@@ -21,8 +21,11 @@ class PrometheusArgs:
     def __init__(__self__, *,
                  cluster_type: pulumi.Input[_builtins.str],
                  grafana_instance_id: pulumi.Input[_builtins.str],
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sub_clusters_json: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,8 +37,11 @@ class PrometheusArgs:
 
         :param pulumi.Input[_builtins.str] cluster_type: The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
         :param pulumi.Input[_builtins.str] grafana_instance_id: The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        :param pulumi.Input[_builtins.int] archive_duration: The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
+        :param pulumi.Input[_builtins.int] duration: The data storage duration, in days.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
         :param pulumi.Input[_builtins.str] sub_clusters_json: The child instance json string of the globalView instance.
@@ -45,10 +51,16 @@ class PrometheusArgs:
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "grafana_instance_id", grafana_instance_id)
+        if archive_duration is not None:
+            pulumi.set(__self__, "archive_duration", archive_duration)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
@@ -87,6 +99,18 @@ class PrometheusArgs:
         pulumi.set(self, "grafana_instance_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="archiveDuration")
+    def archive_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+        """
+        return pulumi.get(self, "archive_duration")
+
+    @archive_duration.setter
+    def archive_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "archive_duration", value)
+
+    @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -109,6 +133,30 @@ class PrometheusArgs:
     @cluster_name.setter
     def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The data storage duration, in days.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -186,10 +234,13 @@ class PrometheusArgs:
 @pulumi.input_type
 class _PrometheusState:
     def __init__(__self__, *,
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
                  grafana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sub_clusters_json: pulumi.Input[Optional[_builtins.str]] = None,
@@ -199,10 +250,13 @@ class _PrometheusState:
         """
         Input properties used for looking up and filtering Prometheus resources.
 
+        :param pulumi.Input[_builtins.int] archive_duration: The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
         :param pulumi.Input[_builtins.str] cluster_type: The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
+        :param pulumi.Input[_builtins.int] duration: The data storage duration, in days.
         :param pulumi.Input[_builtins.str] grafana_instance_id: The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
         :param pulumi.Input[_builtins.str] sub_clusters_json: The child instance json string of the globalView instance.
@@ -210,14 +264,20 @@ class _PrometheusState:
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
         """
+        if archive_duration is not None:
+            pulumi.set(__self__, "archive_duration", archive_duration)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_type is not None:
             pulumi.set(__self__, "cluster_type", cluster_type)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
         if grafana_instance_id is not None:
             pulumi.set(__self__, "grafana_instance_id", grafana_instance_id)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
@@ -230,6 +290,18 @@ class _PrometheusState:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveDuration")
+    def archive_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+        """
+        return pulumi.get(self, "archive_duration")
+
+    @archive_duration.setter
+    def archive_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "archive_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -268,6 +340,18 @@ class _PrometheusState:
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The data storage duration, in days.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
     @pulumi.getter(name="grafanaInstanceId")
     def grafana_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -278,6 +362,18 @@ class _PrometheusState:
     @grafana_instance_id.setter
     def grafana_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -358,10 +454,13 @@ class Prometheus(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
                  grafana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sub_clusters_json: pulumi.Input[Optional[_builtins.str]] = None,
@@ -428,10 +527,13 @@ class Prometheus(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] archive_duration: The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
         :param pulumi.Input[_builtins.str] cluster_type: The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
+        :param pulumi.Input[_builtins.int] duration: The data storage duration, in days.
         :param pulumi.Input[_builtins.str] grafana_instance_id: The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
         :param pulumi.Input[_builtins.str] sub_clusters_json: The child instance json string of the globalView instance.
@@ -517,10 +619,13 @@ class Prometheus(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
                  grafana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sub_clusters_json: pulumi.Input[Optional[_builtins.str]] = None,
@@ -536,14 +641,17 @@ class Prometheus(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PrometheusArgs.__new__(PrometheusArgs)
 
+            __props__.__dict__["archive_duration"] = archive_duration
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_name"] = cluster_name
             if cluster_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_type'")
             __props__.__dict__["cluster_type"] = cluster_type
+            __props__.__dict__["duration"] = duration
             if grafana_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'grafana_instance_id'")
             __props__.__dict__["grafana_instance_id"] = grafana_instance_id
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["sub_clusters_json"] = sub_clusters_json
@@ -560,10 +668,13 @@ class Prometheus(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
             grafana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             sub_clusters_json: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,10 +688,13 @@ class Prometheus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] archive_duration: The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
         :param pulumi.Input[_builtins.str] cluster_type: The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
+        :param pulumi.Input[_builtins.int] duration: The data storage duration, in days.
         :param pulumi.Input[_builtins.str] grafana_instance_id: The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
         :param pulumi.Input[_builtins.str] sub_clusters_json: The child instance json string of the globalView instance.
@@ -592,10 +706,13 @@ class Prometheus(pulumi.CustomResource):
 
         __props__ = _PrometheusState.__new__(_PrometheusState)
 
+        __props__.__dict__["archive_duration"] = archive_duration
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_name"] = cluster_name
         __props__.__dict__["cluster_type"] = cluster_type
+        __props__.__dict__["duration"] = duration
         __props__.__dict__["grafana_instance_id"] = grafana_instance_id
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["sub_clusters_json"] = sub_clusters_json
@@ -603,6 +720,14 @@ class Prometheus(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Prometheus(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveDuration")
+    def archive_duration(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+        """
+        return pulumi.get(self, "archive_duration")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -629,12 +754,28 @@ class Prometheus(pulumi.CustomResource):
         return pulumi.get(self, "cluster_type")
 
     @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Output[_builtins.int]:
+        """
+        The data storage duration, in days.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
     @pulumi.getter(name="grafanaInstanceId")
     def grafana_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
         """
         return pulumi.get(self, "grafana_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+        """
+        return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")

@@ -35,8 +35,8 @@ class SwitchArgs:
         The set of arguments for constructing a Switch resource.
 
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
-        :param pulumi.Input[_builtins.str] description: The description of VSwitch.
+        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        :param pulumi.Input[_builtins.str] description: The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
         :param pulumi.Input[_builtins.int] ipv6_cidr_block_mask: The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enable_ipv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
                - When the VPC IPv6 address mask is `52`: `0` to `4095`.
@@ -49,7 +49,7 @@ class SwitchArgs:
         :param pulumi.Input[_builtins.str] vpc_ipv6_cidr_block: The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         if availability_zone is not None:
@@ -100,7 +100,7 @@ class SwitchArgs:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -112,7 +112,7 @@ class SwitchArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of VSwitch.
+        The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -214,7 +214,7 @@ class SwitchArgs:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the VSwitch.
+        The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -257,9 +257,9 @@ class _SwitchState:
         Input properties used for looking up and filtering Switch resources.
 
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VSwitch.
-        :param pulumi.Input[_builtins.str] description: The description of VSwitch.
+        :param pulumi.Input[_builtins.str] description: The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
         :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the VSwitch.
         :param pulumi.Input[_builtins.int] ipv6_cidr_block_mask: The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enable_ipv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
@@ -274,7 +274,7 @@ class _SwitchState:
         :param pulumi.Input[_builtins.str] vpc_ipv6_cidr_block: The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         if availability_zone is not None:
@@ -331,7 +331,7 @@ class _SwitchState:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -355,7 +355,7 @@ class _SwitchState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of VSwitch.
+        The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -481,7 +481,7 @@ class _SwitchState:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the VSwitch.
+        The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -606,8 +606,8 @@ class Switch(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
-        :param pulumi.Input[_builtins.str] description: The description of VSwitch.
+        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        :param pulumi.Input[_builtins.str] description: The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
         :param pulumi.Input[_builtins.int] ipv6_cidr_block_mask: The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enable_ipv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
                - When the VPC IPv6 address mask is `52`: `0` to `4095`.
@@ -620,7 +620,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_ipv6_cidr_block: The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         ...
@@ -795,9 +795,9 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VSwitch.
-        :param pulumi.Input[_builtins.str] description: The description of VSwitch.
+        :param pulumi.Input[_builtins.str] description: The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
         :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the VSwitch.
         :param pulumi.Input[_builtins.int] ipv6_cidr_block_mask: The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enable_ipv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
@@ -812,7 +812,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_ipv6_cidr_block: The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_name: The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -849,7 +849,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[_builtins.str]:
         """
-        The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
+        The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -865,7 +865,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of VSwitch.
+        The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -951,7 +951,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the VSwitch.
+        The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "vswitch_name")
 

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -116,6 +118,10 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      */
     declare public readonly excludeResourceIdsScope: pulumi.Output<string | undefined>;
     /**
+     * The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     */
+    declare public readonly excludeTagsScopes: pulumi.Output<outputs.cfg.AggregateConfigRuleExcludeTagsScope[] | undefined>;
+    /**
      * The settings map of the input parameters for the rule.
      */
     declare public readonly inputParameters: pulumi.Output<{[key: string]: string} | undefined>;
@@ -179,6 +185,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
             resourceInputs["configRuleTriggerTypes"] = state?.configRuleTriggerTypes;
             resourceInputs["description"] = state?.description;
             resourceInputs["excludeResourceIdsScope"] = state?.excludeResourceIdsScope;
+            resourceInputs["excludeTagsScopes"] = state?.excludeTagsScopes;
             resourceInputs["inputParameters"] = state?.inputParameters;
             resourceInputs["maximumExecutionFrequency"] = state?.maximumExecutionFrequency;
             resourceInputs["regionIdsScope"] = state?.regionIdsScope;
@@ -218,6 +225,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
             resourceInputs["configRuleTriggerTypes"] = args?.configRuleTriggerTypes;
             resourceInputs["description"] = args?.description;
             resourceInputs["excludeResourceIdsScope"] = args?.excludeResourceIdsScope;
+            resourceInputs["excludeTagsScopes"] = args?.excludeTagsScopes;
             resourceInputs["inputParameters"] = args?.inputParameters;
             resourceInputs["maximumExecutionFrequency"] = args?.maximumExecutionFrequency;
             resourceInputs["regionIdsScope"] = args?.regionIdsScope;
@@ -267,6 +275,10 @@ export interface AggregateConfigRuleState {
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
     excludeResourceIdsScope?: pulumi.Input<string | undefined>;
+    /**
+     * The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     */
+    excludeTagsScopes?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateConfigRuleExcludeTagsScope>[] | undefined>;
     /**
      * The settings map of the input parameters for the rule.
      */
@@ -340,6 +352,10 @@ export interface AggregateConfigRuleArgs {
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
     excludeResourceIdsScope?: pulumi.Input<string | undefined>;
+    /**
+     * The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     */
+    excludeTagsScopes?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateConfigRuleExcludeTagsScope>[] | undefined>;
     /**
      * The settings map of the input parameters for the rule.
      */

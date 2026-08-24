@@ -232,6 +232,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
+     * (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
+     * 
+     */
+    @Export(name="automaticRotation", refs={String.class}, tree="[0]")
+    private Output<String> automaticRotation;
+
+    /**
+     * @return (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
+     * 
+     */
+    public Output<String> automaticRotation() {
+        return this.automaticRotation;
+    }
+    /**
      * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
      * 
      */
@@ -383,7 +397,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
      * 
      */
     @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
@@ -393,7 +407,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
      * 
      */
     public Output<String> dbNodeClass() {
@@ -532,6 +546,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
+     * 
+     */
+    @Export(name="enableAutomaticRotation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableAutomaticRotation;
+
+    /**
+     * @return Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> enableAutomaticRotation() {
+        return Codegen.optional(this.enableAutomaticRotation);
     }
     /**
      * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
@@ -962,6 +990,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.roleArn;
     }
     /**
+     * (Available since v1.289.0) The rotation interval of the TDE encryption key.
+     * 
+     */
+    @Export(name="rotationInterval", refs={String.class}, tree="[0]")
+    private Output<String> rotationInterval;
+
+    /**
+     * @return (Available since v1.289.0) The rotation interval of the TDE encryption key.
+     * 
+     */
+    public Output<String> rotationInterval() {
+        return this.rotationInterval;
+    }
+    /**
      * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
      * 
      */
@@ -1348,16 +1390,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.tdeRegion;
     }
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * &gt; **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      * 
      */
     @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tdeStatus;
 
     /**
-     * @return turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * @return Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * &gt; **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      * 
      */
     public Output<Optional<String>> tdeStatus() {

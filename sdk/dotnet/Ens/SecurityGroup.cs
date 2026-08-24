@@ -46,20 +46,28 @@ namespace Pulumi.AliCloud.Ens
     /// ENS Security Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ens/securityGroup:SecurityGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:ens/securityGroup:SecurityGroup example &lt;security_group_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ens/securityGroup:SecurityGroup")]
     public partial class SecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// Security group description information
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `Https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        /// A collection of rules for a security group instance See `Permissions` below.
+        /// </summary>
+        [Output("permissions")]
+        public Output<ImmutableArray<Outputs.SecurityGroupPermission>> Permissions { get; private set; } = null!;
+
+        /// <summary>
+        /// Security group name
+        /// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         /// </summary>
         [Output("securityGroupName")]
         public Output<string?> SecurityGroupName { get; private set; } = null!;
@@ -111,13 +119,27 @@ namespace Pulumi.AliCloud.Ens
     public sealed class SecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// Security group description information
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("permissions")]
+        private InputList<Inputs.SecurityGroupPermissionArgs>? _permissions;
+
         /// <summary>
-        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `Https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        /// A collection of rules for a security group instance See `Permissions` below.
+        /// </summary>
+        public InputList<Inputs.SecurityGroupPermissionArgs> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<Inputs.SecurityGroupPermissionArgs>());
+            set => _permissions = value;
+        }
+
+        /// <summary>
+        /// Security group name
+        /// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }
@@ -131,13 +153,27 @@ namespace Pulumi.AliCloud.Ens
     public sealed class SecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// Security group description information
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("permissions")]
+        private InputList<Inputs.SecurityGroupPermissionGetArgs>? _permissions;
+
         /// <summary>
-        /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `Https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        /// A collection of rules for a security group instance See `Permissions` below.
+        /// </summary>
+        public InputList<Inputs.SecurityGroupPermissionGetArgs> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<Inputs.SecurityGroupPermissionGetArgs>());
+            set => _permissions = value;
+        }
+
+        /// <summary>
+        /// Security group name
+        /// The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }

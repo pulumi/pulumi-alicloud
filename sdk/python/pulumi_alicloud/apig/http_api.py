@@ -21,36 +21,66 @@ class HttpApiArgs:
     def __init__(__self__, *,
                  http_api_name: pulumi.Input[_builtins.str],
                  protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 type: pulumi.Input[_builtins.str],
+                 ai_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_configs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 type: pulumi.Input[Optional[_builtins.str]] = None):
+                 enable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpApi resource.
 
-        :param pulumi.Input[_builtins.str] http_api_name: The name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: API protocol
-        :param pulumi.Input[_builtins.str] base_path: API path
-        :param pulumi.Input[_builtins.str] description: Description of API
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] type: API type
+        :param pulumi.Input[_builtins.str] http_api_name: Perform an exact search by name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of API access protocols. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[_builtins.str] type: The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+               - Http
+               - Rest
+               - LLM
+               - WebSocket
+               - HttpIngress
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ai_protocols: AI API protocols. Currently the supported value is `OpenAI/v1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] base_path: API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deploy_configs: API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] description: API description.
+        :param pulumi.Input[_builtins.bool] enable_auth: Whether to enable authentication.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] model_category: AI model category
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. It can be modified to migrate the resource to another resource group.
         """
         pulumi.set(__self__, "http_api_name", http_api_name)
         pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "type", type)
+        if ai_protocols is not None:
+            pulumi.set(__self__, "ai_protocols", ai_protocols)
         if base_path is not None:
             pulumi.set(__self__, "base_path", base_path)
+        if deploy_configs is not None:
+            pulumi.set(__self__, "deploy_configs", deploy_configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_auth is not None:
+            pulumi.set(__self__, "enable_auth", enable_auth)
+        if model_category is not None:
+            pulumi.set(__self__, "model_category", model_category)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="httpApiName")
     def http_api_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the resource
+        Perform an exact search by name.
         """
         return pulumi.get(self, "http_api_name")
 
@@ -62,7 +92,7 @@ class HttpApiArgs:
     @pulumi.getter
     def protocols(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        API protocol
+        List of API access protocols. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "protocols")
 
@@ -71,10 +101,43 @@ class HttpApiArgs:
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+        - Http
+        - Rest
+        - LLM
+        - WebSocket
+        - HttpIngress
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiProtocols")
+    def ai_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        AI API protocols. Currently the supported value is `OpenAI/v1`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "ai_protocols")
+
+    @ai_protocols.setter
+    def ai_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ai_protocols", value)
+
+    @_builtins.property
     @pulumi.getter(name="basePath")
     def base_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        API path
+        API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "base_path")
 
@@ -83,10 +146,24 @@ class HttpApiArgs:
         pulumi.set(self, "base_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="deployConfigs")
+    def deploy_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        """
+        return pulumi.get(self, "deploy_configs")
+
+    @deploy_configs.setter
+    def deploy_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deploy_configs", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of API
+        API description.
         """
         return pulumi.get(self, "description")
 
@@ -95,10 +172,38 @@ class HttpApiArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableAuth")
+    def enable_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable authentication.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "enable_auth")
+
+    @enable_auth.setter
+    def enable_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelCategory")
+    def model_category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        AI model category
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "model_category")
+
+    @model_category.setter
+    def model_category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_category", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group
+        The ID of the resource group. It can be modified to migrate the resource to another resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -106,44 +211,63 @@ class HttpApiArgs:
     def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        API type
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class _HttpApiState:
     def __init__(__self__, *,
+                 ai_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_configs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  http_api_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_category: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HttpApi resources.
 
-        :param pulumi.Input[_builtins.str] base_path: API path
-        :param pulumi.Input[_builtins.str] description: Description of API
-        :param pulumi.Input[_builtins.str] http_api_name: The name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: API protocol
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] type: API type
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ai_protocols: AI API protocols. Currently the supported value is `OpenAI/v1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] base_path: API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deploy_configs: API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] description: API description.
+        :param pulumi.Input[_builtins.bool] enable_auth: Whether to enable authentication.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] http_api_name: Perform an exact search by name.
+        :param pulumi.Input[_builtins.str] model_category: AI model category
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of API access protocols. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. It can be modified to migrate the resource to another resource group.
+        :param pulumi.Input[_builtins.str] type: The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+               - Http
+               - Rest
+               - LLM
+               - WebSocket
+               - HttpIngress
         """
+        if ai_protocols is not None:
+            pulumi.set(__self__, "ai_protocols", ai_protocols)
         if base_path is not None:
             pulumi.set(__self__, "base_path", base_path)
+        if deploy_configs is not None:
+            pulumi.set(__self__, "deploy_configs", deploy_configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_auth is not None:
+            pulumi.set(__self__, "enable_auth", enable_auth)
         if http_api_name is not None:
             pulumi.set(__self__, "http_api_name", http_api_name)
+        if model_category is not None:
+            pulumi.set(__self__, "model_category", model_category)
         if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if resource_group_id is not None:
@@ -152,10 +276,26 @@ class _HttpApiState:
             pulumi.set(__self__, "type", type)
 
     @_builtins.property
+    @pulumi.getter(name="aiProtocols")
+    def ai_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        AI API protocols. Currently the supported value is `OpenAI/v1`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "ai_protocols")
+
+    @ai_protocols.setter
+    def ai_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ai_protocols", value)
+
+    @_builtins.property
     @pulumi.getter(name="basePath")
     def base_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        API path
+        API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "base_path")
 
@@ -164,10 +304,24 @@ class _HttpApiState:
         pulumi.set(self, "base_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="deployConfigs")
+    def deploy_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        """
+        return pulumi.get(self, "deploy_configs")
+
+    @deploy_configs.setter
+    def deploy_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deploy_configs", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of API
+        API description.
         """
         return pulumi.get(self, "description")
 
@@ -176,10 +330,24 @@ class _HttpApiState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableAuth")
+    def enable_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable authentication.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "enable_auth")
+
+    @enable_auth.setter
+    def enable_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_auth", value)
+
+    @_builtins.property
     @pulumi.getter(name="httpApiName")
     def http_api_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the resource
+        Perform an exact search by name.
         """
         return pulumi.get(self, "http_api_name")
 
@@ -188,10 +356,24 @@ class _HttpApiState:
         pulumi.set(self, "http_api_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="modelCategory")
+    def model_category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        AI model category
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "model_category")
+
+    @model_category.setter
+    def model_category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_category", value)
+
+    @_builtins.property
     @pulumi.getter
     def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        API protocol
+        List of API access protocols. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "protocols")
 
@@ -203,7 +385,7 @@ class _HttpApiState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group
+        The ID of the resource group. It can be modified to migrate the resource to another resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -215,7 +397,12 @@ class _HttpApiState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        API type
+        The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+        - Http
+        - Rest
+        - LLM
+        - WebSocket
+        - HttpIngress
         """
         return pulumi.get(self, "type")
 
@@ -230,9 +417,13 @@ class HttpApi(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_configs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  http_api_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_category: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -278,18 +469,37 @@ class HttpApi(pulumi.CustomResource):
         APIG Http Api can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:apig/httpApi:HttpApi example <id>
+        $ pulumi import alicloud:apig/httpApi:HttpApi example <http_api_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_path: API path
-        :param pulumi.Input[_builtins.str] description: Description of API
-        :param pulumi.Input[_builtins.str] http_api_name: The name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: API protocol
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] type: API type
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ai_protocols: AI API protocols. Currently the supported value is `OpenAI/v1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] base_path: API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deploy_configs: API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] description: API description.
+        :param pulumi.Input[_builtins.bool] enable_auth: Whether to enable authentication.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] http_api_name: Perform an exact search by name.
+        :param pulumi.Input[_builtins.str] model_category: AI model category
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of API access protocols. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. It can be modified to migrate the resource to another resource group.
+        :param pulumi.Input[_builtins.str] type: The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+               - Http
+               - Rest
+               - LLM
+               - WebSocket
+               - HttpIngress
         """
         ...
     @overload
@@ -338,7 +548,7 @@ class HttpApi(pulumi.CustomResource):
         APIG Http Api can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:apig/httpApi:HttpApi example <id>
+        $ pulumi import alicloud:apig/httpApi:HttpApi example <http_api_id>
         ```
 
 
@@ -357,9 +567,13 @@ class HttpApi(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  base_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_configs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  http_api_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_category: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -372,15 +586,21 @@ class HttpApi(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HttpApiArgs.__new__(HttpApiArgs)
 
+            __props__.__dict__["ai_protocols"] = ai_protocols
             __props__.__dict__["base_path"] = base_path
+            __props__.__dict__["deploy_configs"] = deploy_configs
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_auth"] = enable_auth
             if http_api_name is None and not opts.urn:
                 raise TypeError("Missing required property 'http_api_name'")
             __props__.__dict__["http_api_name"] = http_api_name
+            __props__.__dict__["model_category"] = model_category
             if protocols is None and not opts.urn:
                 raise TypeError("Missing required property 'protocols'")
             __props__.__dict__["protocols"] = protocols
             __props__.__dict__["resource_group_id"] = resource_group_id
+            if type is None and not opts.urn:
+                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(HttpApi, __self__).__init__(
             'alicloud:apig/httpApi:HttpApi',
@@ -392,9 +612,13 @@ class HttpApi(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             base_path: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_configs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
             http_api_name: pulumi.Input[Optional[_builtins.str]] = None,
+            model_category: pulumi.Input[Optional[_builtins.str]] = None,
             protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'HttpApi':
@@ -405,54 +629,119 @@ class HttpApi(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_path: API path
-        :param pulumi.Input[_builtins.str] description: Description of API
-        :param pulumi.Input[_builtins.str] http_api_name: The name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: API protocol
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] type: API type
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ai_protocols: AI API protocols. Currently the supported value is `OpenAI/v1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] base_path: API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deploy_configs: API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] description: API description.
+        :param pulumi.Input[_builtins.bool] enable_auth: Whether to enable authentication.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] http_api_name: Perform an exact search by name.
+        :param pulumi.Input[_builtins.str] model_category: AI model category
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of API access protocols. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. It can be modified to migrate the resource to another resource group.
+        :param pulumi.Input[_builtins.str] type: The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+               - Http
+               - Rest
+               - LLM
+               - WebSocket
+               - HttpIngress
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _HttpApiState.__new__(_HttpApiState)
 
+        __props__.__dict__["ai_protocols"] = ai_protocols
         __props__.__dict__["base_path"] = base_path
+        __props__.__dict__["deploy_configs"] = deploy_configs
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_auth"] = enable_auth
         __props__.__dict__["http_api_name"] = http_api_name
+        __props__.__dict__["model_category"] = model_category
         __props__.__dict__["protocols"] = protocols
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["type"] = type
         return HttpApi(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="aiProtocols")
+    def ai_protocols(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        AI API protocols. Currently the supported value is `OpenAI/v1`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "ai_protocols")
+
+    @_builtins.property
     @pulumi.getter(name="basePath")
     def base_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        API path
+        API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "base_path")
+
+    @_builtins.property
+    @pulumi.getter(name="deployConfigs")
+    def deploy_configs(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        """
+        return pulumi.get(self, "deploy_configs")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Description of API
+        API description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableAuth")
+    def enable_auth(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable authentication.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "enable_auth")
 
     @_builtins.property
     @pulumi.getter(name="httpApiName")
     def http_api_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the resource
+        Perform an exact search by name.
         """
         return pulumi.get(self, "http_api_name")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCategory")
+    def model_category(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        AI model category
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "model_category")
 
     @_builtins.property
     @pulumi.getter
     def protocols(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        API protocol
+        List of API access protocols. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "protocols")
 
@@ -460,15 +749,20 @@ class HttpApi(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group
+        The ID of the resource group. It can be modified to migrate the resource to another resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def type(self) -> pulumi.Output[_builtins.str]:
         """
-        API type
+        The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+        - Http
+        - Rest
+        - LLM
+        - WebSocket
+        - HttpIngress
         """
         return pulumi.get(self, "type")
 

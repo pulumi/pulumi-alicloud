@@ -45,6 +45,23 @@ __all__ = [
     'AlertRuleV2QueryConfigMeasureList',
     'AlertRuleV2ScheduleConfig',
     'DynamicTagGroupMatchExpress',
+    'EventNotifyPolicyNotifyStrategy',
+    'EventNotifyPolicyNotifyStrategyCustomTemplateEntry',
+    'EventNotifyPolicyNotifyStrategyGroupingSetting',
+    'EventNotifyPolicyNotifyStrategyRoute',
+    'EventNotifyPolicyNotifyStrategyRouteChannel',
+    'EventNotifyPolicyNotifyStrategyRouteEffectTimeRange',
+    'EventNotifyPolicyNotifyStrategyRouteFilterSetting',
+    'EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition',
+    'EventNotifyPolicyResponsePlan',
+    'EventNotifyPolicyResponsePlanPushingSetting',
+    'EventNotifyPolicyResponsePlanRepeatNotifySetting',
+    'EventNotifyPolicySubscription',
+    'EventNotifyPolicySubscriptionFilterSetting',
+    'EventNotifyPolicySubscriptionFilterSettingCondition',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSetting',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition',
     'EventRuleContactParameter',
     'EventRuleEventPattern',
     'EventRuleFcParameter',
@@ -104,6 +121,24 @@ __all__ = [
     'GetAlertRulesV2RuleScheduleConfigResult',
     'GetDynamicTagGroupsGroupResult',
     'GetDynamicTagGroupsGroupMatchExpressResult',
+    'GetEventNotifyPoliciesPolicyResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyRouteResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingResult',
+    'GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionResult',
+    'GetEventNotifyPoliciesPolicyResponsePlanResult',
+    'GetEventNotifyPoliciesPolicyResponsePlanPushingSettingResult',
+    'GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingResult',
+    'GetEventNotifyPoliciesPolicySubscriptionResult',
+    'GetEventNotifyPoliciesPolicySubscriptionFilterSettingResult',
+    'GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionResult',
+    'GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingResult',
+    'GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorResult',
+    'GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionResult',
     'GetEventRulesRuleResult',
     'GetEventRulesRuleEventPatternResult',
     'GetEventRulesRuleEventPatternKeywordFilterResult',
@@ -2402,6 +2437,898 @@ class DynamicTagGroupMatchExpress(dict):
         The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
         """
         return pulumi.get(self, "tag_value_match_function")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTemplateEntries":
+            suggest = "custom_template_entries"
+        elif key == "groupingSetting":
+            suggest = "grouping_setting"
+        elif key == "ignoreRestoredNotification":
+            suggest = "ignore_restored_notification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyNotifyStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyNotifyStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyNotifyStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_template_entries: Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyCustomTemplateEntry']] = None,
+                 description: Optional[_builtins.str] = None,
+                 grouping_setting: Optional['outputs.EventNotifyPolicyNotifyStrategyGroupingSetting'] = None,
+                 ignore_restored_notification: Optional[_builtins.bool] = None,
+                 routes: Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyRoute']] = None):
+        """
+        :param Sequence['EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs'] custom_template_entries: The list of custom notification templates. See `custom_template_entries` below.
+        :param _builtins.str description: The description of the notification strategy.
+        :param 'EventNotifyPolicyNotifyStrategyGroupingSettingArgs' grouping_setting: The grouping and merging settings. See `grouping_setting` below.
+        :param _builtins.bool ignore_restored_notification: Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+        :param Sequence['EventNotifyPolicyNotifyStrategyRouteArgs'] routes: The notification channel routing settings. See `routes` below.
+        """
+        if custom_template_entries is not None:
+            pulumi.set(__self__, "custom_template_entries", custom_template_entries)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if grouping_setting is not None:
+            pulumi.set(__self__, "grouping_setting", grouping_setting)
+        if ignore_restored_notification is not None:
+            pulumi.set(__self__, "ignore_restored_notification", ignore_restored_notification)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateEntries")
+    def custom_template_entries(self) -> Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyCustomTemplateEntry']]:
+        """
+        The list of custom notification templates. See `custom_template_entries` below.
+        """
+        return pulumi.get(self, "custom_template_entries")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the notification strategy.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupingSetting")
+    def grouping_setting(self) -> Optional['outputs.EventNotifyPolicyNotifyStrategyGroupingSetting']:
+        """
+        The grouping and merging settings. See `grouping_setting` below.
+        """
+        return pulumi.get(self, "grouping_setting")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreRestoredNotification")
+    def ignore_restored_notification(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+        """
+        return pulumi.get(self, "ignore_restored_notification")
+
+    @_builtins.property
+    @pulumi.getter
+    def routes(self) -> Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyRoute']]:
+        """
+        The notification channel routing settings. See `routes` below.
+        """
+        return pulumi.get(self, "routes")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyCustomTemplateEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateUuid":
+            suggest = "template_uuid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyNotifyStrategyCustomTemplateEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyNotifyStrategyCustomTemplateEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyNotifyStrategyCustomTemplateEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 template_uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str template_uuid: The UUID of the template.
+        """
+        if template_uuid is not None:
+            pulumi.set(__self__, "template_uuid", template_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="templateUuid")
+    def template_uuid(self) -> Optional[_builtins.str]:
+        """
+        The UUID of the template.
+        """
+        return pulumi.get(self, "template_uuid")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyGroupingSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupingKeys":
+            suggest = "grouping_keys"
+        elif key == "periodMin":
+            suggest = "period_min"
+        elif key == "silenceSec":
+            suggest = "silence_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyNotifyStrategyGroupingSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyNotifyStrategyGroupingSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyNotifyStrategyGroupingSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grouping_keys: Optional[Sequence[_builtins.str]] = None,
+                 period_min: Optional[_builtins.int] = None,
+                 silence_sec: Optional[_builtins.int] = None,
+                 times: Optional[_builtins.int] = None):
+        """
+        :param Sequence[_builtins.str] grouping_keys: The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+        :param _builtins.int period_min: The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+        :param _builtins.int silence_sec: The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+        :param _builtins.int times: The number of triggers. This parameter does not take effect on this API and does not need to be set.
+        """
+        if grouping_keys is not None:
+            pulumi.set(__self__, "grouping_keys", grouping_keys)
+        if period_min is not None:
+            pulumi.set(__self__, "period_min", period_min)
+        if silence_sec is not None:
+            pulumi.set(__self__, "silence_sec", silence_sec)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="groupingKeys")
+    def grouping_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+        """
+        return pulumi.get(self, "grouping_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="periodMin")
+    def period_min(self) -> Optional[_builtins.int]:
+        """
+        The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+        """
+        return pulumi.get(self, "period_min")
+
+    @_builtins.property
+    @pulumi.getter(name="silenceSec")
+    def silence_sec(self) -> Optional[_builtins.int]:
+        """
+        The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+        """
+        return pulumi.get(self, "silence_sec")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> Optional[_builtins.int]:
+        """
+        The number of triggers. This parameter does not take effect on this API and does not need to be set.
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "digitalEmployeeName":
+            suggest = "digital_employee_name"
+        elif key == "effectTimeRange":
+            suggest = "effect_time_range"
+        elif key == "enableRca":
+            suggest = "enable_rca"
+        elif key == "filterSetting":
+            suggest = "filter_setting"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyNotifyStrategyRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyNotifyStrategyRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyNotifyStrategyRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channels: Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyRouteChannel']] = None,
+                 digital_employee_name: Optional[_builtins.str] = None,
+                 effect_time_range: Optional['outputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRange'] = None,
+                 enable_rca: Optional[_builtins.bool] = None,
+                 filter_setting: Optional['outputs.EventNotifyPolicyNotifyStrategyRouteFilterSetting'] = None):
+        """
+        :param Sequence['EventNotifyPolicyNotifyStrategyRouteChannelArgs'] channels: The notification channels. See `channels` below.
+        :param _builtins.str digital_employee_name: The name of the digital employee. This parameter is required when enableRca is set to true.
+        :param 'EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs' effect_time_range: The effective time range. See `effect_time_range` below.
+        :param _builtins.bool enable_rca: Specifies whether to enable Root Cause Analysis (RCA).
+        """
+        if channels is not None:
+            pulumi.set(__self__, "channels", channels)
+        if digital_employee_name is not None:
+            pulumi.set(__self__, "digital_employee_name", digital_employee_name)
+        if effect_time_range is not None:
+            pulumi.set(__self__, "effect_time_range", effect_time_range)
+        if enable_rca is not None:
+            pulumi.set(__self__, "enable_rca", enable_rca)
+        if filter_setting is not None:
+            pulumi.set(__self__, "filter_setting", filter_setting)
+
+    @_builtins.property
+    @pulumi.getter
+    def channels(self) -> Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyRouteChannel']]:
+        """
+        The notification channels. See `channels` below.
+        """
+        return pulumi.get(self, "channels")
+
+    @_builtins.property
+    @pulumi.getter(name="digitalEmployeeName")
+    def digital_employee_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the digital employee. This parameter is required when enableRca is set to true.
+        """
+        return pulumi.get(self, "digital_employee_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectTimeRange")
+    def effect_time_range(self) -> Optional['outputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRange']:
+        """
+        The effective time range. See `effect_time_range` below.
+        """
+        return pulumi.get(self, "effect_time_range")
+
+    @_builtins.property
+    @pulumi.getter(name="enableRca")
+    def enable_rca(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable Root Cause Analysis (RCA).
+        """
+        return pulumi.get(self, "enable_rca")
+
+    @_builtins.property
+    @pulumi.getter(name="filterSetting")
+    def filter_setting(self) -> Optional['outputs.EventNotifyPolicyNotifyStrategyRouteFilterSetting']:
+        return pulumi.get(self, "filter_setting")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyRouteChannel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelType":
+            suggest = "channel_type"
+        elif key == "enabledSubChannels":
+            suggest = "enabled_sub_channels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyNotifyStrategyRouteChannel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyNotifyStrategyRouteChannel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyNotifyStrategyRouteChannel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channel_type: Optional[_builtins.str] = None,
+                 enabled_sub_channels: Optional[Sequence[_builtins.str]] = None,
+                 receivers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str channel_type: The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+        :param Sequence[_builtins.str] enabled_sub_channels: The enabled notification methods. It is required only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+        :param Sequence[_builtins.str] receivers: The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+        """
+        if channel_type is not None:
+            pulumi.set(__self__, "channel_type", channel_type)
+        if enabled_sub_channels is not None:
+            pulumi.set(__self__, "enabled_sub_channels", enabled_sub_channels)
+        if receivers is not None:
+            pulumi.set(__self__, "receivers", receivers)
+
+    @_builtins.property
+    @pulumi.getter(name="channelType")
+    def channel_type(self) -> Optional[_builtins.str]:
+        """
+        The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+        """
+        return pulumi.get(self, "channel_type")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledSubChannels")
+    def enabled_sub_channels(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The enabled notification methods. It is required only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+        """
+        return pulumi.get(self, "enabled_sub_channels")
+
+    @_builtins.property
+    @pulumi.getter
+    def receivers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+        """
+        return pulumi.get(self, "receivers")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyRouteEffectTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayInWeeks":
+            suggest = "day_in_weeks"
+        elif key == "endTimeInMinute":
+            suggest = "end_time_in_minute"
+        elif key == "startTimeInMinute":
+            suggest = "start_time_in_minute"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyNotifyStrategyRouteEffectTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyNotifyStrategyRouteEffectTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyNotifyStrategyRouteEffectTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_in_weeks: Optional[Sequence[_builtins.int]] = None,
+                 end_time_in_minute: Optional[_builtins.int] = None,
+                 start_time_in_minute: Optional[_builtins.int] = None,
+                 time_zone: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.int] day_in_weeks: The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+        :param _builtins.int end_time_in_minute: The end time in minutes. Valid values: 0 to 1439.
+        :param _builtins.int start_time_in_minute: The start time in minutes. Valid values: 0 to 1438.
+        :param _builtins.str time_zone: The time zone, such as Asia/Shanghai.
+        """
+        if day_in_weeks is not None:
+            pulumi.set(__self__, "day_in_weeks", day_in_weeks)
+        if end_time_in_minute is not None:
+            pulumi.set(__self__, "end_time_in_minute", end_time_in_minute)
+        if start_time_in_minute is not None:
+            pulumi.set(__self__, "start_time_in_minute", start_time_in_minute)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="dayInWeeks")
+    def day_in_weeks(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+        """
+        return pulumi.get(self, "day_in_weeks")
+
+    @_builtins.property
+    @pulumi.getter(name="endTimeInMinute")
+    def end_time_in_minute(self) -> Optional[_builtins.int]:
+        """
+        The end time in minutes. Valid values: 0 to 1439.
+        """
+        return pulumi.get(self, "end_time_in_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="startTimeInMinute")
+    def start_time_in_minute(self) -> Optional[_builtins.int]:
+        """
+        The start time in minutes. Valid values: 0 to 1438.
+        """
+        return pulumi.get(self, "start_time_in_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[_builtins.str]:
+        """
+        The time zone, such as Asia/Shanghai.
+        """
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyRouteFilterSetting(dict):
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition']] = None,
+                 expression: Optional[_builtins.str] = None,
+                 relation: Optional[_builtins.str] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition']]:
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "relation")
+
+
+@pulumi.output_type
+class EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class EventNotifyPolicyResponsePlan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRecoverSeconds":
+            suggest = "auto_recover_seconds"
+        elif key == "escalationIds":
+            suggest = "escalation_ids"
+        elif key == "pushingSetting":
+            suggest = "pushing_setting"
+        elif key == "repeatNotifySetting":
+            suggest = "repeat_notify_setting"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyResponsePlan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyResponsePlan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyResponsePlan.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_recover_seconds: Optional[_builtins.int] = None,
+                 escalation_ids: Optional[Sequence[_builtins.str]] = None,
+                 pushing_setting: Optional['outputs.EventNotifyPolicyResponsePlanPushingSetting'] = None,
+                 repeat_notify_setting: Optional['outputs.EventNotifyPolicyResponsePlanRepeatNotifySetting'] = None):
+        """
+        :param _builtins.int auto_recover_seconds: The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+        :param Sequence[_builtins.str] escalation_ids: The list of escalation plan IDs.
+        :param 'EventNotifyPolicyResponsePlanPushingSettingArgs' pushing_setting: Action integration push settings. See `pushing_setting` below.
+        :param 'EventNotifyPolicyResponsePlanRepeatNotifySettingArgs' repeat_notify_setting: Repeated notification configuration. See `repeat_notify_setting` below.
+        """
+        if auto_recover_seconds is not None:
+            pulumi.set(__self__, "auto_recover_seconds", auto_recover_seconds)
+        if escalation_ids is not None:
+            pulumi.set(__self__, "escalation_ids", escalation_ids)
+        if pushing_setting is not None:
+            pulumi.set(__self__, "pushing_setting", pushing_setting)
+        if repeat_notify_setting is not None:
+            pulumi.set(__self__, "repeat_notify_setting", repeat_notify_setting)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRecoverSeconds")
+    def auto_recover_seconds(self) -> Optional[_builtins.int]:
+        """
+        The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+        """
+        return pulumi.get(self, "auto_recover_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="escalationIds")
+    def escalation_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of escalation plan IDs.
+        """
+        return pulumi.get(self, "escalation_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="pushingSetting")
+    def pushing_setting(self) -> Optional['outputs.EventNotifyPolicyResponsePlanPushingSetting']:
+        """
+        Action integration push settings. See `pushing_setting` below.
+        """
+        return pulumi.get(self, "pushing_setting")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatNotifySetting")
+    def repeat_notify_setting(self) -> Optional['outputs.EventNotifyPolicyResponsePlanRepeatNotifySetting']:
+        """
+        Repeated notification configuration. See `repeat_notify_setting` below.
+        """
+        return pulumi.get(self, "repeat_notify_setting")
+
+
+@pulumi.output_type
+class EventNotifyPolicyResponsePlanPushingSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alertActionIds":
+            suggest = "alert_action_ids"
+        elif key == "restoreActionIds":
+            suggest = "restore_action_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyResponsePlanPushingSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyResponsePlanPushingSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyResponsePlanPushingSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert_action_ids: Optional[Sequence[_builtins.str]] = None,
+                 restore_action_ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] alert_action_ids: The list of alert action integration IDs triggered by alerts.
+        :param Sequence[_builtins.str] restore_action_ids: The list of action integration IDs triggered upon recovery.
+        """
+        if alert_action_ids is not None:
+            pulumi.set(__self__, "alert_action_ids", alert_action_ids)
+        if restore_action_ids is not None:
+            pulumi.set(__self__, "restore_action_ids", restore_action_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alertActionIds")
+    def alert_action_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of alert action integration IDs triggered by alerts.
+        """
+        return pulumi.get(self, "alert_action_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreActionIds")
+    def restore_action_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of action integration IDs triggered upon recovery.
+        """
+        return pulumi.get(self, "restore_action_ids")
+
+
+@pulumi.output_type
+class EventNotifyPolicyResponsePlanRepeatNotifySetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endIncidentState":
+            suggest = "end_incident_state"
+        elif key == "repeatInterval":
+            suggest = "repeat_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicyResponsePlanRepeatNotifySetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicyResponsePlanRepeatNotifySetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicyResponsePlanRepeatNotifySetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_incident_state: Optional[_builtins.str] = None,
+                 repeat_interval: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str end_incident_state: The incident state at which repeated notifications stop. For example: `RECOVERED`.
+        :param _builtins.int repeat_interval: The interval between repeated notifications, in seconds.
+        """
+        if end_incident_state is not None:
+            pulumi.set(__self__, "end_incident_state", end_incident_state)
+        if repeat_interval is not None:
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="endIncidentState")
+    def end_incident_state(self) -> Optional[_builtins.str]:
+        """
+        The incident state at which repeated notifications stop. For example: `RECOVERED`.
+        """
+        return pulumi.get(self, "end_incident_state")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> Optional[_builtins.int]:
+        """
+        The interval between repeated notifications, in seconds.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+
+@pulumi.output_type
+class EventNotifyPolicySubscription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterSetting":
+            suggest = "filter_setting"
+        elif key == "subscribeLegacyEvent":
+            suggest = "subscribe_legacy_event"
+        elif key == "workspaceFilterSetting":
+            suggest = "workspace_filter_setting"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicySubscription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicySubscription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicySubscription.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_setting: Optional['outputs.EventNotifyPolicySubscriptionFilterSetting'] = None,
+                 subscribe_legacy_event: Optional[_builtins.bool] = None,
+                 workspace_filter_setting: Optional['outputs.EventNotifyPolicySubscriptionWorkspaceFilterSetting'] = None):
+        """
+        :param 'EventNotifyPolicySubscriptionFilterSettingArgs' filter_setting: Event content filtering. The server fills in defaults when it is not specified. See `filter_setting` below.
+        :param _builtins.bool subscribe_legacy_event: Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+        :param 'EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs' workspace_filter_setting: Cross-workspace event routing (global subscription). See `workspace_filter_setting` below.
+        """
+        if filter_setting is not None:
+            pulumi.set(__self__, "filter_setting", filter_setting)
+        if subscribe_legacy_event is not None:
+            pulumi.set(__self__, "subscribe_legacy_event", subscribe_legacy_event)
+        if workspace_filter_setting is not None:
+            pulumi.set(__self__, "workspace_filter_setting", workspace_filter_setting)
+
+    @_builtins.property
+    @pulumi.getter(name="filterSetting")
+    def filter_setting(self) -> Optional['outputs.EventNotifyPolicySubscriptionFilterSetting']:
+        """
+        Event content filtering. The server fills in defaults when it is not specified. See `filter_setting` below.
+        """
+        return pulumi.get(self, "filter_setting")
+
+    @_builtins.property
+    @pulumi.getter(name="subscribeLegacyEvent")
+    def subscribe_legacy_event(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+        """
+        return pulumi.get(self, "subscribe_legacy_event")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceFilterSetting")
+    def workspace_filter_setting(self) -> Optional['outputs.EventNotifyPolicySubscriptionWorkspaceFilterSetting']:
+        """
+        Cross-workspace event routing (global subscription). See `workspace_filter_setting` below.
+        """
+        return pulumi.get(self, "workspace_filter_setting")
+
+
+@pulumi.output_type
+class EventNotifyPolicySubscriptionFilterSetting(dict):
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.EventNotifyPolicySubscriptionFilterSettingCondition']] = None,
+                 expression: Optional[_builtins.str] = None,
+                 relation: Optional[_builtins.str] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.EventNotifyPolicySubscriptionFilterSettingCondition']]:
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "relation")
+
+
+@pulumi.output_type
+class EventNotifyPolicySubscriptionFilterSettingCondition(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class EventNotifyPolicySubscriptionWorkspaceFilterSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagSelector":
+            suggest = "tag_selector"
+        elif key == "workspaceUuids":
+            suggest = "workspace_uuids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotifyPolicySubscriptionWorkspaceFilterSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotifyPolicySubscriptionWorkspaceFilterSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotifyPolicySubscriptionWorkspaceFilterSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_selector: Optional['outputs.EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector'] = None,
+                 workspace_uuids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs' tag_selector: The tag selector. See `tag_selector` below.
+        :param Sequence[_builtins.str] workspace_uuids: The list of workspace UUIDs.
+        """
+        if tag_selector is not None:
+            pulumi.set(__self__, "tag_selector", tag_selector)
+        if workspace_uuids is not None:
+            pulumi.set(__self__, "workspace_uuids", workspace_uuids)
+
+    @_builtins.property
+    @pulumi.getter(name="tagSelector")
+    def tag_selector(self) -> Optional['outputs.EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector']:
+        """
+        The tag selector. See `tag_selector` below.
+        """
+        return pulumi.get(self, "tag_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuids")
+    def workspace_uuids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of workspace UUIDs.
+        """
+        return pulumi.get(self, "workspace_uuids")
+
+
+@pulumi.output_type
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector(dict):
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition']] = None,
+                 expression: Optional[_builtins.str] = None,
+                 relation: Optional[_builtins.str] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition']]:
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "relation")
+
+
+@pulumi.output_type
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -6887,6 +7814,858 @@ class GetDynamicTagGroupsGroupMatchExpressResult(dict):
         Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
         """
         return pulumi.get(self, "tag_value_match_function")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 notify_strategies: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyResult'],
+                 response_plans: Sequence['outputs.GetEventNotifyPoliciesPolicyResponsePlanResult'],
+                 subscriptions: Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionResult'],
+                 update_time: _builtins.str,
+                 user_id: _builtins.str,
+                 uuid: _builtins.str,
+                 version: _builtins.int,
+                 workspace: _builtins.str):
+        """
+        :param _builtins.str create_time: The creation time.
+        :param _builtins.str description: The description.
+        :param _builtins.bool enabled: Indicates whether the policy is enabled.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str name: Filters results by fuzzy matching on the policy name.
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyArgs'] notify_strategies: The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates.
+        :param Sequence['GetEventNotifyPoliciesPolicyResponsePlanArgs'] response_plans: **NOTE:** This field is only available when `enable_details` is `true`. Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration.
+        :param Sequence['GetEventNotifyPoliciesPolicySubscriptionArgs'] subscriptions: **NOTE:** This field is only available when `enable_details` is `true`. Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription.
+        :param _builtins.str update_time: The update time.
+        :param _builtins.str user_id: The user ID.
+        :param _builtins.str uuid: The unique identifier of the notification policy, which is returned by the creation API.
+        :param _builtins.int version: Private parameter for update operation.
+        :param _builtins.str workspace: The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notify_strategies", notify_strategies)
+        pulumi.set(__self__, "response_plans", response_plans)
+        pulumi.set(__self__, "subscriptions", subscriptions)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "workspace", workspace)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Indicates whether the policy is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Filters results by fuzzy matching on the policy name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyStrategies")
+    def notify_strategies(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyResult']:
+        """
+        The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates.
+        """
+        return pulumi.get(self, "notify_strategies")
+
+    @_builtins.property
+    @pulumi.getter(name="responsePlans")
+    def response_plans(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyResponsePlanResult']:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration.
+        """
+        return pulumi.get(self, "response_plans")
+
+    @_builtins.property
+    @pulumi.getter
+    def subscriptions(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionResult']:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription.
+        """
+        return pulumi.get(self, "subscriptions")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The update time.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        The unique identifier of the notification policy, which is returned by the creation API.
+        """
+        return pulumi.get(self, "uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        Private parameter for update operation.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter
+    def workspace(self) -> _builtins.str:
+        """
+        The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
+        """
+        return pulumi.get(self, "workspace")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyResult(dict):
+    def __init__(__self__, *,
+                 custom_template_entries: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryResult'],
+                 description: _builtins.str,
+                 grouping_settings: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingResult'],
+                 ignore_restored_notification: _builtins.bool,
+                 routes: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteResult']):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs'] custom_template_entries: The list of custom notification templates.
+        :param _builtins.str description: The description.
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs'] grouping_settings: The grouping and merging settings.
+        :param _builtins.bool ignore_restored_notification: Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs'] routes: The notification channel routing settings.
+        """
+        pulumi.set(__self__, "custom_template_entries", custom_template_entries)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "grouping_settings", grouping_settings)
+        pulumi.set(__self__, "ignore_restored_notification", ignore_restored_notification)
+        pulumi.set(__self__, "routes", routes)
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateEntries")
+    def custom_template_entries(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryResult']:
+        """
+        The list of custom notification templates.
+        """
+        return pulumi.get(self, "custom_template_entries")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupingSettings")
+    def grouping_settings(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingResult']:
+        """
+        The grouping and merging settings.
+        """
+        return pulumi.get(self, "grouping_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreRestoredNotification")
+    def ignore_restored_notification(self) -> _builtins.bool:
+        """
+        Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+        """
+        return pulumi.get(self, "ignore_restored_notification")
+
+    @_builtins.property
+    @pulumi.getter
+    def routes(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteResult']:
+        """
+        The notification channel routing settings.
+        """
+        return pulumi.get(self, "routes")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryResult(dict):
+    def __init__(__self__, *,
+                 template_uuid: _builtins.str):
+        """
+        :param _builtins.str template_uuid: The UUID of the template.
+        """
+        pulumi.set(__self__, "template_uuid", template_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="templateUuid")
+    def template_uuid(self) -> _builtins.str:
+        """
+        The UUID of the template.
+        """
+        return pulumi.get(self, "template_uuid")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingResult(dict):
+    def __init__(__self__, *,
+                 grouping_keys: Sequence[_builtins.str],
+                 period_min: _builtins.int,
+                 silence_sec: _builtins.int,
+                 times: _builtins.int):
+        """
+        :param Sequence[_builtins.str] grouping_keys: The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification.
+        :param _builtins.int period_min: The check period in minutes. This parameter does not take effect on this API.
+        :param _builtins.int silence_sec: The silence duration in seconds. This parameter does not take effect on this API.
+        :param _builtins.int times: The number of triggers. This parameter does not take effect on this API.
+        """
+        pulumi.set(__self__, "grouping_keys", grouping_keys)
+        pulumi.set(__self__, "period_min", period_min)
+        pulumi.set(__self__, "silence_sec", silence_sec)
+        pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="groupingKeys")
+    def grouping_keys(self) -> Sequence[_builtins.str]:
+        """
+        The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification.
+        """
+        return pulumi.get(self, "grouping_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="periodMin")
+    def period_min(self) -> _builtins.int:
+        """
+        The check period in minutes. This parameter does not take effect on this API.
+        """
+        return pulumi.get(self, "period_min")
+
+    @_builtins.property
+    @pulumi.getter(name="silenceSec")
+    def silence_sec(self) -> _builtins.int:
+        """
+        The silence duration in seconds. This parameter does not take effect on this API.
+        """
+        return pulumi.get(self, "silence_sec")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> _builtins.int:
+        """
+        The number of triggers. This parameter does not take effect on this API.
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyRouteResult(dict):
+    def __init__(__self__, *,
+                 channels: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelResult'],
+                 digital_employee_name: _builtins.str,
+                 effect_time_ranges: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeResult'],
+                 enable_rca: _builtins.bool,
+                 filter_settings: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingResult']):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs'] channels: The notification channels.
+        :param _builtins.str digital_employee_name: The name of the digital employee.
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs'] effect_time_ranges: The effective time range.
+        :param _builtins.bool enable_rca: Specifies whether to enable Root Cause Analysis (RCA).
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs'] filter_settings: Event content filtering.
+        """
+        pulumi.set(__self__, "channels", channels)
+        pulumi.set(__self__, "digital_employee_name", digital_employee_name)
+        pulumi.set(__self__, "effect_time_ranges", effect_time_ranges)
+        pulumi.set(__self__, "enable_rca", enable_rca)
+        pulumi.set(__self__, "filter_settings", filter_settings)
+
+    @_builtins.property
+    @pulumi.getter
+    def channels(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelResult']:
+        """
+        The notification channels.
+        """
+        return pulumi.get(self, "channels")
+
+    @_builtins.property
+    @pulumi.getter(name="digitalEmployeeName")
+    def digital_employee_name(self) -> _builtins.str:
+        """
+        The name of the digital employee.
+        """
+        return pulumi.get(self, "digital_employee_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectTimeRanges")
+    def effect_time_ranges(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeResult']:
+        """
+        The effective time range.
+        """
+        return pulumi.get(self, "effect_time_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="enableRca")
+    def enable_rca(self) -> _builtins.bool:
+        """
+        Specifies whether to enable Root Cause Analysis (RCA).
+        """
+        return pulumi.get(self, "enable_rca")
+
+    @_builtins.property
+    @pulumi.getter(name="filterSettings")
+    def filter_settings(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingResult']:
+        """
+        Event content filtering.
+        """
+        return pulumi.get(self, "filter_settings")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelResult(dict):
+    def __init__(__self__, *,
+                 channel_type: _builtins.str,
+                 enabled_sub_channels: Sequence[_builtins.str],
+                 receivers: Sequence[_builtins.str]):
+        """
+        :param _builtins.str channel_type: The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+        :param Sequence[_builtins.str] enabled_sub_channels: The enabled notification methods. Applies only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+        :param Sequence[_builtins.str] receivers: The list of recipients for the channel.
+        """
+        pulumi.set(__self__, "channel_type", channel_type)
+        pulumi.set(__self__, "enabled_sub_channels", enabled_sub_channels)
+        pulumi.set(__self__, "receivers", receivers)
+
+    @_builtins.property
+    @pulumi.getter(name="channelType")
+    def channel_type(self) -> _builtins.str:
+        """
+        The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+        """
+        return pulumi.get(self, "channel_type")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledSubChannels")
+    def enabled_sub_channels(self) -> Sequence[_builtins.str]:
+        """
+        The enabled notification methods. Applies only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+        """
+        return pulumi.get(self, "enabled_sub_channels")
+
+    @_builtins.property
+    @pulumi.getter
+    def receivers(self) -> Sequence[_builtins.str]:
+        """
+        The list of recipients for the channel.
+        """
+        return pulumi.get(self, "receivers")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeResult(dict):
+    def __init__(__self__, *,
+                 day_in_weeks: Sequence[_builtins.int],
+                 end_time_in_minute: _builtins.int,
+                 start_time_in_minute: _builtins.int,
+                 time_zone: _builtins.str):
+        """
+        :param Sequence[_builtins.int] day_in_weeks: The effective days of the week.
+        :param _builtins.int end_time_in_minute: The end time in minutes.
+        :param _builtins.int start_time_in_minute: The start time in minutes.
+        :param _builtins.str time_zone: The time zone, such as Asia/Shanghai.
+        """
+        pulumi.set(__self__, "day_in_weeks", day_in_weeks)
+        pulumi.set(__self__, "end_time_in_minute", end_time_in_minute)
+        pulumi.set(__self__, "start_time_in_minute", start_time_in_minute)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="dayInWeeks")
+    def day_in_weeks(self) -> Sequence[_builtins.int]:
+        """
+        The effective days of the week.
+        """
+        return pulumi.get(self, "day_in_weeks")
+
+    @_builtins.property
+    @pulumi.getter(name="endTimeInMinute")
+    def end_time_in_minute(self) -> _builtins.int:
+        """
+        The end time in minutes.
+        """
+        return pulumi.get(self, "end_time_in_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="startTimeInMinute")
+    def start_time_in_minute(self) -> _builtins.int:
+        """
+        The start time in minutes.
+        """
+        return pulumi.get(self, "start_time_in_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        The time zone, such as Asia/Shanghai.
+        """
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionResult'],
+                 expression: _builtins.str,
+                 relation: _builtins.str):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs'] conditions: The filter conditions.
+        :param _builtins.str expression: The relational expression.
+        :param _builtins.str relation: The condition relation.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionResult']:
+        """
+        The filter conditions.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        The relational expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> _builtins.str:
+        """
+        The condition relation.
+        """
+        return pulumi.get(self, "relation")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionResult(dict):
+    def __init__(__self__, *,
+                 field: _builtins.str,
+                 op: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str field: The filter field.
+        :param _builtins.str op: The filter operator.
+        :param _builtins.str value: The filter value.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        The filter field.
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> _builtins.str:
+        """
+        The filter operator.
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The filter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyResponsePlanResult(dict):
+    def __init__(__self__, *,
+                 auto_recover_seconds: _builtins.int,
+                 escalation_ids: Sequence[_builtins.str],
+                 pushing_settings: Sequence['outputs.GetEventNotifyPoliciesPolicyResponsePlanPushingSettingResult'],
+                 repeat_notify_settings: Sequence['outputs.GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingResult']):
+        """
+        :param _builtins.int auto_recover_seconds: The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+        :param Sequence[_builtins.str] escalation_ids: The list of escalation plan IDs.
+        :param Sequence['GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs'] pushing_settings: Action integration push settings.
+        :param Sequence['GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs'] repeat_notify_settings: Repeated notification configuration.
+        """
+        pulumi.set(__self__, "auto_recover_seconds", auto_recover_seconds)
+        pulumi.set(__self__, "escalation_ids", escalation_ids)
+        pulumi.set(__self__, "pushing_settings", pushing_settings)
+        pulumi.set(__self__, "repeat_notify_settings", repeat_notify_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRecoverSeconds")
+    def auto_recover_seconds(self) -> _builtins.int:
+        """
+        The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+        """
+        return pulumi.get(self, "auto_recover_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="escalationIds")
+    def escalation_ids(self) -> Sequence[_builtins.str]:
+        """
+        The list of escalation plan IDs.
+        """
+        return pulumi.get(self, "escalation_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="pushingSettings")
+    def pushing_settings(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyResponsePlanPushingSettingResult']:
+        """
+        Action integration push settings.
+        """
+        return pulumi.get(self, "pushing_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatNotifySettings")
+    def repeat_notify_settings(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingResult']:
+        """
+        Repeated notification configuration.
+        """
+        return pulumi.get(self, "repeat_notify_settings")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyResponsePlanPushingSettingResult(dict):
+    def __init__(__self__, *,
+                 alert_action_ids: Sequence[_builtins.str],
+                 restore_action_ids: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] alert_action_ids: The list of alert action integration IDs triggered by alerts.
+        :param Sequence[_builtins.str] restore_action_ids: The list of action integration IDs triggered upon recovery.
+        """
+        pulumi.set(__self__, "alert_action_ids", alert_action_ids)
+        pulumi.set(__self__, "restore_action_ids", restore_action_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alertActionIds")
+    def alert_action_ids(self) -> Sequence[_builtins.str]:
+        """
+        The list of alert action integration IDs triggered by alerts.
+        """
+        return pulumi.get(self, "alert_action_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreActionIds")
+    def restore_action_ids(self) -> Sequence[_builtins.str]:
+        """
+        The list of action integration IDs triggered upon recovery.
+        """
+        return pulumi.get(self, "restore_action_ids")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingResult(dict):
+    def __init__(__self__, *,
+                 end_incident_state: _builtins.str,
+                 repeat_interval: _builtins.int):
+        """
+        :param _builtins.str end_incident_state: The incident state at which repeated notifications stop. For example: `RECOVERED`.
+        :param _builtins.int repeat_interval: The interval between repeated notifications, in seconds.
+        """
+        pulumi.set(__self__, "end_incident_state", end_incident_state)
+        pulumi.set(__self__, "repeat_interval", repeat_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="endIncidentState")
+    def end_incident_state(self) -> _builtins.str:
+        """
+        The incident state at which repeated notifications stop. For example: `RECOVERED`.
+        """
+        return pulumi.get(self, "end_incident_state")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> _builtins.int:
+        """
+        The interval between repeated notifications, in seconds.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicySubscriptionResult(dict):
+    def __init__(__self__, *,
+                 filter_settings: Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionFilterSettingResult'],
+                 subscribe_legacy_event: _builtins.bool,
+                 workspace_filter_settings: Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingResult']):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs'] filter_settings: Event content filtering.
+        :param _builtins.bool subscribe_legacy_event: Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.
+        :param Sequence['GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs'] workspace_filter_settings: Cross-workspace event routing (global subscription).
+        """
+        pulumi.set(__self__, "filter_settings", filter_settings)
+        pulumi.set(__self__, "subscribe_legacy_event", subscribe_legacy_event)
+        pulumi.set(__self__, "workspace_filter_settings", workspace_filter_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="filterSettings")
+    def filter_settings(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionFilterSettingResult']:
+        """
+        Event content filtering.
+        """
+        return pulumi.get(self, "filter_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="subscribeLegacyEvent")
+    def subscribe_legacy_event(self) -> _builtins.bool:
+        """
+        Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.
+        """
+        return pulumi.get(self, "subscribe_legacy_event")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceFilterSettings")
+    def workspace_filter_settings(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingResult']:
+        """
+        Cross-workspace event routing (global subscription).
+        """
+        return pulumi.get(self, "workspace_filter_settings")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicySubscriptionFilterSettingResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionResult'],
+                 expression: _builtins.str,
+                 relation: _builtins.str):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs'] conditions: The filter conditions.
+        :param _builtins.str expression: The relational expression.
+        :param _builtins.str relation: The condition relation.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionResult']:
+        """
+        The filter conditions.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        The relational expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> _builtins.str:
+        """
+        The condition relation.
+        """
+        return pulumi.get(self, "relation")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionResult(dict):
+    def __init__(__self__, *,
+                 field: _builtins.str,
+                 op: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str field: The filter field.
+        :param _builtins.str op: The filter operator.
+        :param _builtins.str value: The filter value.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        The filter field.
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> _builtins.str:
+        """
+        The filter operator.
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The filter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingResult(dict):
+    def __init__(__self__, *,
+                 tag_selectors: Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorResult'],
+                 workspace_uuids: Sequence[_builtins.str]):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs'] tag_selectors: The tag selector.
+        :param Sequence[_builtins.str] workspace_uuids: The list of workspace UUIDs.
+        """
+        pulumi.set(__self__, "tag_selectors", tag_selectors)
+        pulumi.set(__self__, "workspace_uuids", workspace_uuids)
+
+    @_builtins.property
+    @pulumi.getter(name="tagSelectors")
+    def tag_selectors(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorResult']:
+        """
+        The tag selector.
+        """
+        return pulumi.get(self, "tag_selectors")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuids")
+    def workspace_uuids(self) -> Sequence[_builtins.str]:
+        """
+        The list of workspace UUIDs.
+        """
+        return pulumi.get(self, "workspace_uuids")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionResult'],
+                 expression: _builtins.str,
+                 relation: _builtins.str):
+        """
+        :param Sequence['GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs'] conditions: The filter conditions.
+        :param _builtins.str expression: The relational expression.
+        :param _builtins.str relation: The condition relation.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionResult']:
+        """
+        The filter conditions.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        The relational expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> _builtins.str:
+        """
+        The condition relation.
+        """
+        return pulumi.get(self, "relation")
+
+
+@pulumi.output_type
+class GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionResult(dict):
+    def __init__(__self__, *,
+                 field: _builtins.str,
+                 op: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str field: The filter field.
+        :param _builtins.str op: The filter operator.
+        :param _builtins.str value: The filter value.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        The filter field.
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> _builtins.str:
+        """
+        The filter operator.
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The filter value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

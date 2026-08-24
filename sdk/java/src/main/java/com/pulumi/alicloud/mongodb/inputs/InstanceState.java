@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.inputs;
 
 import com.pulumi.alicloud.mongodb.inputs.InstanceParameterArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceReplicaSetArgs;
+import com.pulumi.alicloud.mongodb.inputs.InstanceSecurityIpGroupArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceZoneInfoArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -701,6 +702,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     * 
+     */
+    @Import(name="securityIpGroups")
+    private @Nullable Output<List<InstanceSecurityIpGroupArgs>> securityIpGroups;
+
+    /**
+     * @return The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     * 
+     */
+    public Optional<Output<List<InstanceSecurityIpGroupArgs>>> securityIpGroups() {
+        return Optional.ofNullable(this.securityIpGroups);
+    }
+
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
@@ -718,7 +734,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      * 
      */
     @Import(name="snapshotBackupType")
@@ -727,7 +743,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      * 
      */
     public Optional<Output<String>> snapshotBackupType() {
@@ -958,6 +974,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
+        this.securityIpGroups = $.securityIpGroups;
         this.securityIpLists = $.securityIpLists;
         this.snapshotBackupType = $.snapshotBackupType;
         this.srcDbInstanceId = $.srcDbInstanceId;
@@ -1984,6 +2001,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param securityIpGroups The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroups(@Nullable Output<List<InstanceSecurityIpGroupArgs>> securityIpGroups) {
+            $.securityIpGroups = securityIpGroups;
+            return this;
+        }
+
+        /**
+         * @param securityIpGroups The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroups(List<InstanceSecurityIpGroupArgs> securityIpGroups) {
+            return securityIpGroups(Output.of(securityIpGroups));
+        }
+
+        /**
+         * @param securityIpGroups The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroups(InstanceSecurityIpGroupArgs... securityIpGroups) {
+            return securityIpGroups(List.of(securityIpGroups));
+        }
+
+        /**
          * @param securityIpLists List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
          * 
          * @return builder
@@ -2017,7 +2065,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
          * - `Standard`: standard backup.
-         * - ` Flash  `: single-digit second backup.
+         * - `Flash`: single-digit second backup.
          * 
          * @return builder
          * 
@@ -2030,7 +2078,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
          * - `Standard`: standard backup.
-         * - ` Flash  `: single-digit second backup.
+         * - `Flash`: single-digit second backup.
          * 
          * @return builder
          * 

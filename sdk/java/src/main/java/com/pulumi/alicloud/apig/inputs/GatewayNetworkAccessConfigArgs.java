@@ -16,14 +16,14 @@ public final class GatewayNetworkAccessConfigArgs extends com.pulumi.resources.R
     public static final GatewayNetworkAccessConfigArgs Empty = new GatewayNetworkAccessConfigArgs();
 
     /**
-     * Network Access Type
+     * The network access type of the gateway instance.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Network Access Type
+     * @return The network access type of the gateway instance.
      * 
      */
     public Optional<Output<String>> type() {
@@ -55,7 +55,7 @@ public final class GatewayNetworkAccessConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Network Access Type
+         * @param type The network access type of the gateway instance.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GatewayNetworkAccessConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Network Access Type
+         * @param type The network access type of the gateway instance.
          * 
          * @return builder
          * 

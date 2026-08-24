@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleCondition {
     /**
-     * @return The configuration of the cookie. See See `cookieConfig` below.
+     * @return The configuration of the cookie. See `cookieConfig` below.
      * 
      */
     private @Nullable RuleRuleConditionCookieConfig cookieConfig;
@@ -74,16 +74,18 @@ public final class RuleRuleCondition {
      * - `QueryString`: Requests are forwarded based on the query string.
      * - `Method`: Request are forwarded based on the request method.
      * - `Cookie`: Requests are forwarded based on the cookie.
-     * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-     * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-     * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+     * - `SourceIp`: Requests are forwarded based on the source ip.
+     * - `ResponseHeader`: Response header.
+     * - `ResponseStatusCode`: Response status code.
+     * 
+     * &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
      * 
      */
     private String type;
 
     private RuleRuleCondition() {}
     /**
-     * @return The configuration of the cookie. See See `cookieConfig` below.
+     * @return The configuration of the cookie. See `cookieConfig` below.
      * 
      */
     public Optional<RuleRuleConditionCookieConfig> cookieConfig() {
@@ -153,9 +155,11 @@ public final class RuleRuleCondition {
      * - `QueryString`: Requests are forwarded based on the query string.
      * - `Method`: Request are forwarded based on the request method.
      * - `Cookie`: Requests are forwarded based on the cookie.
-     * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-     * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-     * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+     * - `SourceIp`: Requests are forwarded based on the source ip.
+     * - `ResponseHeader`: Response header.
+     * - `ResponseStatusCode`: Response status code.
+     * 
+     * &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
      * 
      */
     public String type() {

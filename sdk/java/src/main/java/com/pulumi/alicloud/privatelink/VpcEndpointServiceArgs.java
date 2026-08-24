@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.privatelink;
 
+import com.pulumi.alicloud.privatelink.inputs.VpcEndpointServiceResourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -114,6 +115,21 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable Output<List<VpcEndpointServiceResourceArgs>> resources;
+
+    /**
+     * @return The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     * 
+     */
+    public Optional<Output<List<VpcEndpointServiceResourceArgs>>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
      * The description of the endpoint service.
      * 
      */
@@ -212,6 +228,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         this.dryRun = $.dryRun;
         this.payer = $.payer;
         this.resourceGroupId = $.resourceGroupId;
+        this.resources = $.resources;
         this.serviceDescription = $.serviceDescription;
         this.serviceResourceType = $.serviceResourceType;
         this.serviceSupportIpv6 = $.serviceSupportIpv6;
@@ -366,6 +383,37 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param resources The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable Output<List<VpcEndpointServiceResourceArgs>> resources) {
+            $.resources = resources;
+            return this;
+        }
+
+        /**
+         * @param resources The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(List<VpcEndpointServiceResourceArgs> resources) {
+            return resources(Output.of(resources));
+        }
+
+        /**
+         * @param resources The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(VpcEndpointServiceResourceArgs... resources) {
+            return resources(List.of(resources));
         }
 
         /**

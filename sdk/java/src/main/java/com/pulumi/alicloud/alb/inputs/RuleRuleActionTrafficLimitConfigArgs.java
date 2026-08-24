@@ -16,14 +16,18 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
     public static final RuleRuleActionTrafficLimitConfigArgs Empty = new RuleRuleActionTrafficLimitConfigArgs();
 
     /**
-     * The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * The number of requests per second for a single IP address. Value range: 1~1000000.
+     * 
+     * &gt; **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
      * 
      */
     @Import(name="perIpQps")
     private @Nullable Output<Integer> perIpQps;
 
     /**
-     * @return The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * @return The number of requests per second for a single IP address. Value range: 1~1000000.
+     * 
+     * &gt; **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
      * 
      */
     public Optional<Output<Integer>> perIpQps() {
@@ -71,7 +75,9 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param perIpQps The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+         * @param perIpQps The number of requests per second for a single IP address. Value range: 1~1000000.
+         * 
+         * &gt; **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
          * 
          * @return builder
          * 
@@ -82,7 +88,9 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param perIpQps The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+         * @param perIpQps The number of requests per second for a single IP address. Value range: 1~1000000.
+         * 
+         * &gt; **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
          * 
          * @return builder
          * 

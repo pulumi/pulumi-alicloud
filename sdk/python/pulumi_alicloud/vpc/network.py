@@ -50,7 +50,7 @@ class NetworkArgs:
                
                - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
                - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
-        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function.
+        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
@@ -84,7 +84,7 @@ class NetworkArgs:
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -92,6 +92,9 @@ class NetworkArgs:
         """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
+        if classic_link_enabled is not None:
+            warnings.warn("""Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""", DeprecationWarning)
+            pulumi.log.warn("""classic_link_enabled is deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""")
         if classic_link_enabled is not None:
             pulumi.set(__self__, "classic_link_enabled", classic_link_enabled)
         if description is not None:
@@ -167,9 +170,10 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="classicLinkEnabled")
+    @_utilities.deprecated("""Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""")
     def classic_link_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        The status of ClassicLink function.
+        The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         """
         return pulumi.get(self, "classic_link_enabled")
 
@@ -417,7 +421,7 @@ class NetworkArgs:
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of user CIDRs.
+        A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         """
         return pulumi.get(self, "user_cidrs")
 
@@ -480,7 +484,7 @@ class _NetworkState:
                
                - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
                - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
-        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function.
+        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VPC.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -510,7 +514,7 @@ class _NetworkState:
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the system route table.
-        :param pulumi.Input[_builtins.str] router_id: The region ID of the VPC to which the route table belongs.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the VRouter.
         :param pulumi.Input[_builtins.str] router_table_id: . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
@@ -521,7 +525,7 @@ class _NetworkState:
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -529,6 +533,9 @@ class _NetworkState:
         """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
+        if classic_link_enabled is not None:
+            warnings.warn("""Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""", DeprecationWarning)
+            pulumi.log.warn("""classic_link_enabled is deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""")
         if classic_link_enabled is not None:
             pulumi.set(__self__, "classic_link_enabled", classic_link_enabled)
         if create_time is not None:
@@ -621,9 +628,10 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="classicLinkEnabled")
+    @_utilities.deprecated("""Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""")
     def classic_link_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        The status of ClassicLink function.
+        The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         """
         return pulumi.get(self, "classic_link_enabled")
 
@@ -843,7 +851,7 @@ class _NetworkState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The region ID of the VPC to which the route table belongs.
+        The ID of the VRouter.
         """
         return pulumi.get(self, "router_id")
 
@@ -956,7 +964,7 @@ class _NetworkState:
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of user CIDRs.
+        A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         """
         return pulumi.get(self, "user_cidrs")
 
@@ -1061,7 +1069,7 @@ class Network(pulumi.CustomResource):
                
                - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
                - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
-        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function.
+        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
@@ -1095,7 +1103,7 @@ class Network(pulumi.CustomResource):
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -1278,7 +1286,7 @@ class Network(pulumi.CustomResource):
                
                - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
                - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
-        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function.
+        :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VPC.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -1308,7 +1316,7 @@ class Network(pulumi.CustomResource):
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the system route table.
-        :param pulumi.Input[_builtins.str] router_id: The region ID of the VPC to which the route table belongs.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the VRouter.
         :param pulumi.Input[_builtins.str] router_table_id: . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
@@ -1319,7 +1327,7 @@ class Network(pulumi.CustomResource):
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -1373,9 +1381,10 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="classicLinkEnabled")
+    @_utilities.deprecated("""Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.""")
     def classic_link_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        The status of ClassicLink function.
+        The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         """
         return pulumi.get(self, "classic_link_enabled")
 
@@ -1527,7 +1536,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The region ID of the VPC to which the route table belongs.
+        The ID of the VRouter.
         """
         return pulumi.get(self, "router_id")
 
@@ -1604,7 +1613,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of user CIDRs.
+        A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         """
         return pulumi.get(self, "user_cidrs")
 

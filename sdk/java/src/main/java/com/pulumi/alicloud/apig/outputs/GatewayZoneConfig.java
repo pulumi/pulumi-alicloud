@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GatewayZoneConfig {
     /**
-     * @return Availability Zone Options
+     * @return Zone selection option.
      * 
      */
     private String selectOption;
 
     private GatewayZoneConfig() {}
     /**
-     * @return Availability Zone Options
+     * @return Zone selection option.
      * 
      */
     public String selectOption() {

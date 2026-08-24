@@ -31,6 +31,31 @@ public final class GetFileSystemsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     * 
+     */
+    @Import(name="fileSystemType")
+    private @Nullable String fileSystemType;
+
+    /**
+     * @return The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     * 
+     */
+    public Optional<String> fileSystemType() {
+        return Optional.ofNullable(this.fileSystemType);
+    }
+
+    /**
      * A list of FileSystemId.
      * 
      */
@@ -106,6 +131,7 @@ public final class GetFileSystemsPlainArgs extends com.pulumi.resources.InvokeAr
 
     private GetFileSystemsPlainArgs(GetFileSystemsPlainArgs $) {
         this.descriptionRegex = $.descriptionRegex;
+        this.fileSystemType = $.fileSystemType;
         this.ids = $.ids;
         this.outputFile = $.outputFile;
         this.protocolType = $.protocolType;
@@ -138,6 +164,22 @@ public final class GetFileSystemsPlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             $.descriptionRegex = descriptionRegex;
+            return this;
+        }
+
+        /**
+         * @param fileSystemType The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+         * Valid values:
+         * `standard`,
+         * `extreme`,
+         * `cpfs`,
+         * `cpfsse`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(@Nullable String fileSystemType) {
+            $.fileSystemType = fileSystemType;
             return this;
         }
 

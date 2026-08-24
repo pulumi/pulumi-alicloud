@@ -251,7 +251,7 @@ type ApiFcServiceConfig struct {
 	// * `CUSTOM`: Use a custom value.
 	// * `CLIENT`: Use the Content-Type header from the client request.
 	ContentTypeCategory *string `pulumi:"contentTypeCategory"`
-	// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+	// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
 	ContentTypeValue *string `pulumi:"contentTypeValue"`
 	// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
 	FunctionBaseUrl *string `pulumi:"functionBaseUrl"`
@@ -296,7 +296,7 @@ type ApiFcServiceConfigArgs struct {
 	// * `CUSTOM`: Use a custom value.
 	// * `CLIENT`: Use the Content-Type header from the client request.
 	ContentTypeCategory pulumi.StringPtrInput `pulumi:"contentTypeCategory"`
-	// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+	// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
 	ContentTypeValue pulumi.StringPtrInput `pulumi:"contentTypeValue"`
 	// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
 	FunctionBaseUrl pulumi.StringPtrInput `pulumi:"functionBaseUrl"`
@@ -412,7 +412,7 @@ func (o ApiFcServiceConfigOutput) ContentTypeCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ContentTypeCategory }).(pulumi.StringPtrOutput)
 }
 
-// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
 func (o ApiFcServiceConfigOutput) ContentTypeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ContentTypeValue }).(pulumi.StringPtrOutput)
 }
@@ -519,7 +519,7 @@ func (o ApiFcServiceConfigPtrOutput) ContentTypeCategory() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
 func (o ApiFcServiceConfigPtrOutput) ContentTypeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
 		if v == nil {

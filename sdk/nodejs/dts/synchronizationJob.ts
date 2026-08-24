@@ -232,18 +232,26 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     declare public readonly delayRuleTime: pulumi.Output<string | undefined>;
     /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     */
+    declare public readonly destPrimaryVswitchId: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     */
+    declare public readonly destSecondaryVswitchId: pulumi.Output<string | undefined>;
+    /**
      * The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
      */
     declare public readonly destinationEndpointDatabaseName: pulumi.Output<string | undefined>;
     /**
-     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
      */
     declare public readonly destinationEndpointEngineName: pulumi.Output<string>;
     /**
      * The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-     * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-     * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-     * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+     * - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+     * - `DG`, then this parameter needs to be passed into the ID of database gateway.
+     * - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      */
     declare public readonly destinationEndpointInstanceId: pulumi.Output<string | undefined>;
     /**
@@ -279,11 +287,17 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     declare public readonly destinationEndpointRole: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly destinationEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     declare public readonly destinationEndpointUserName: pulumi.Output<string | undefined>;
     /**
      * The environment label of the DTS instance. The value is: **normal**, **online**.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      *
      * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
      *
@@ -316,6 +330,8 @@ export class SynchronizationJob extends pulumi.CustomResource {
     declare public readonly jobParameters: pulumi.Output<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     *
+     * > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      */
     declare public readonly reserve: pulumi.Output<string>;
     /**
@@ -328,9 +344,9 @@ export class SynchronizationJob extends pulumi.CustomResource {
     declare public readonly sourceEndpointEngineName: pulumi.Output<string>;
     /**
      * The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-     * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-     * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-     * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+     * - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+     * - `DG`, then this parameter needs to be passed into the ID of database gateway.
+     * - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      */
     declare public readonly sourceEndpointInstanceId: pulumi.Output<string | undefined>;
     /**
@@ -366,6 +382,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     declare public readonly sourceEndpointRole: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly sourceEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     declare public readonly sourceEndpointUserName: pulumi.Output<string | undefined>;
@@ -373,6 +393,14 @@ export class SynchronizationJob extends pulumi.CustomResource {
      * Data Delivery link switch instance id
      */
     declare public readonly sourceEndpointVswitchId: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     */
+    declare public readonly srcPrimaryVswitchId: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     */
+    declare public readonly srcSecondaryVswitchId: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      */
@@ -408,6 +436,8 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["delayNotice"] = state?.delayNotice;
             resourceInputs["delayPhone"] = state?.delayPhone;
             resourceInputs["delayRuleTime"] = state?.delayRuleTime;
+            resourceInputs["destPrimaryVswitchId"] = state?.destPrimaryVswitchId;
+            resourceInputs["destSecondaryVswitchId"] = state?.destSecondaryVswitchId;
             resourceInputs["destinationEndpointDatabaseName"] = state?.destinationEndpointDatabaseName;
             resourceInputs["destinationEndpointEngineName"] = state?.destinationEndpointEngineName;
             resourceInputs["destinationEndpointInstanceId"] = state?.destinationEndpointInstanceId;
@@ -419,6 +449,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPort"] = state?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = state?.destinationEndpointRegion;
             resourceInputs["destinationEndpointRole"] = state?.destinationEndpointRole;
+            resourceInputs["destinationEndpointSsl"] = state?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = state?.destinationEndpointUserName;
             resourceInputs["dtsBisLabel"] = state?.dtsBisLabel;
             resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
@@ -439,8 +470,11 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = state?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = state?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
             resourceInputs["sourceEndpointVswitchId"] = state?.sourceEndpointVswitchId;
+            resourceInputs["srcPrimaryVswitchId"] = state?.srcPrimaryVswitchId;
+            resourceInputs["srcSecondaryVswitchId"] = state?.srcSecondaryVswitchId;
             resourceInputs["status"] = state?.status;
             resourceInputs["structureInitialization"] = state?.structureInitialization;
             resourceInputs["synchronizationDirection"] = state?.synchronizationDirection;
@@ -485,6 +519,8 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["delayNotice"] = args?.delayNotice;
             resourceInputs["delayPhone"] = args?.delayPhone;
             resourceInputs["delayRuleTime"] = args?.delayRuleTime;
+            resourceInputs["destPrimaryVswitchId"] = args?.destPrimaryVswitchId;
+            resourceInputs["destSecondaryVswitchId"] = args?.destSecondaryVswitchId;
             resourceInputs["destinationEndpointDatabaseName"] = args?.destinationEndpointDatabaseName;
             resourceInputs["destinationEndpointEngineName"] = args?.destinationEndpointEngineName;
             resourceInputs["destinationEndpointInstanceId"] = args?.destinationEndpointInstanceId;
@@ -496,6 +532,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPort"] = args?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = args?.destinationEndpointRegion;
             resourceInputs["destinationEndpointRole"] = args?.destinationEndpointRole;
+            resourceInputs["destinationEndpointSsl"] = args?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = args?.destinationEndpointUserName;
             resourceInputs["dtsBisLabel"] = args?.dtsBisLabel;
             resourceInputs["dtsInstanceId"] = args?.dtsInstanceId;
@@ -516,8 +553,11 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = args?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = args?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
             resourceInputs["sourceEndpointVswitchId"] = args?.sourceEndpointVswitchId;
+            resourceInputs["srcPrimaryVswitchId"] = args?.srcPrimaryVswitchId;
+            resourceInputs["srcSecondaryVswitchId"] = args?.srcSecondaryVswitchId;
             resourceInputs["status"] = args?.status;
             resourceInputs["structureInitialization"] = args?.structureInitialization;
             resourceInputs["synchronizationDirection"] = args?.synchronizationDirection;
@@ -568,18 +608,26 @@ export interface SynchronizationJobState {
      */
     delayRuleTime?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destSecondaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
      * The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
      */
     destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
      */
     destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-     * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-     * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-     * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+     * - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+     * - `DG`, then this parameter needs to be passed into the ID of database gateway.
+     * - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      */
     destinationEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -615,11 +663,17 @@ export interface SynchronizationJobState {
      */
     destinationEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     destinationEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The environment label of the DTS instance. The value is: **normal**, **online**.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      *
      * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
      *
@@ -652,6 +706,8 @@ export interface SynchronizationJobState {
     jobParameters?: pulumi.Input<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     *
+     * > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      */
     reserve?: pulumi.Input<string | undefined>;
     /**
@@ -664,9 +720,9 @@ export interface SynchronizationJobState {
     sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-     * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-     * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-     * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+     * - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+     * - `DG`, then this parameter needs to be passed into the ID of database gateway.
+     * - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      */
     sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -702,6 +758,10 @@ export interface SynchronizationJobState {
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     sourceEndpointUserName?: pulumi.Input<string | undefined>;
@@ -709,6 +769,14 @@ export interface SynchronizationJobState {
      * Data Delivery link switch instance id
      */
     sourceEndpointVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      */
@@ -764,18 +832,26 @@ export interface SynchronizationJobArgs {
      */
     delayRuleTime?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destSecondaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
      * The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
      */
     destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
      */
     destinationEndpointEngineName: pulumi.Input<string>;
     /**
      * The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-     * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-     * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-     * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+     * - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+     * - `DG`, then this parameter needs to be passed into the ID of database gateway.
+     * - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      */
     destinationEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -811,11 +887,17 @@ export interface SynchronizationJobArgs {
      */
     destinationEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     destinationEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The environment label of the DTS instance. The value is: **normal**, **online**.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      *
      * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
      *
@@ -848,6 +930,8 @@ export interface SynchronizationJobArgs {
     jobParameters?: pulumi.Input<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     *
+     * > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      */
     reserve?: pulumi.Input<string | undefined>;
     /**
@@ -860,9 +944,9 @@ export interface SynchronizationJobArgs {
     sourceEndpointEngineName: pulumi.Input<string>;
     /**
      * The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-     * ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-     * ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-     * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+     * - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+     * - `DG`, then this parameter needs to be passed into the ID of database gateway.
+     * - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      */
     sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -898,6 +982,10 @@ export interface SynchronizationJobArgs {
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     sourceEndpointUserName?: pulumi.Input<string | undefined>;
@@ -905,6 +993,14 @@ export interface SynchronizationJobArgs {
      * Data Delivery link switch instance id
      */
     sourceEndpointVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      */

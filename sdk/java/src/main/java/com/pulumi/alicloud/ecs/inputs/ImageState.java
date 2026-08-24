@@ -372,6 +372,21 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Indicates whether the image is available. Valid values:
+     * 
+     */
+    @Import(name="usable")
+    private @Nullable Output<Boolean> usable;
+
+    /**
+     * @return Indicates whether the image is available. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> usable() {
+        return Optional.ofNullable(this.usable);
+    }
+
     private ImageState() {}
 
     private ImageState(ImageState $) {
@@ -395,6 +410,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.snapshotId = $.snapshotId;
         this.status = $.status;
         this.tags = $.tags;
+        this.usable = $.usable;
     }
 
     public static Builder builder() {
@@ -895,6 +911,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param usable Indicates whether the image is available. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usable(@Nullable Output<Boolean> usable) {
+            $.usable = usable;
+            return this;
+        }
+
+        /**
+         * @param usable Indicates whether the image is available. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usable(Boolean usable) {
+            return usable(Output.of(usable));
         }
 
         public ImageState build() {

@@ -181,7 +181,9 @@ type User struct {
 	Source pulumi.StringOutput `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId pulumi.StringPtrOutput `pulumi:"sourceUserId"`
-	// The status of the resource. Valid values: `Frozen`, `Normal`.
+	// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+	//
+	// > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The User ID.
 	UserId pulumi.StringOutput `pulumi:"userId"`
@@ -277,7 +279,9 @@ type userState struct {
 	Source *string `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId *string `pulumi:"sourceUserId"`
-	// The status of the resource. Valid values: `Frozen`, `Normal`.
+	// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+	//
+	// > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
 	Status *string `pulumi:"status"`
 	// The User ID.
 	UserId *string `pulumi:"userId"`
@@ -328,7 +332,9 @@ type UserState struct {
 	Source pulumi.StringPtrInput
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Frozen`, `Normal`.
+	// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+	//
+	// > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
 	Status pulumi.StringPtrInput
 	// The User ID.
 	UserId pulumi.StringPtrInput
@@ -383,7 +389,9 @@ type userArgs struct {
 	Source string `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId *string `pulumi:"sourceUserId"`
-	// The status of the resource. Valid values: `Frozen`, `Normal`.
+	// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+	//
+	// > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
 	Status *string `pulumi:"status"`
 	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
 	UserName string `pulumi:"userName"`
@@ -433,7 +441,9 @@ type UserArgs struct {
 	Source pulumi.StringInput
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Frozen`, `Normal`.
+	// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+	//
+	// > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
 	Status pulumi.StringPtrInput
 	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
 	UserName pulumi.StringInput
@@ -595,7 +605,9 @@ func (o UserOutput) SourceUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.SourceUserId }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource. Valid values: `Frozen`, `Normal`.
+// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+//
+// > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
 func (o UserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

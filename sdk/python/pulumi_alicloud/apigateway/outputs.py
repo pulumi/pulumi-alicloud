@@ -213,7 +213,7 @@ class ApiFcServiceConfig(dict):
                * `DEFAULT`: Use the default value provided by API Gateway.
                * `CUSTOM`: Use a custom value.
                * `CLIENT`: Use the Content-Type header from the client request.
-        :param _builtins.str content_type_value: The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+        :param _builtins.str content_type_value: The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`. This field is ignored when `content_type_category` is set to `CLIENT`.
         :param _builtins.str function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         :param _builtins.str function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
         :param _builtins.str function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
@@ -289,7 +289,7 @@ class ApiFcServiceConfig(dict):
     @pulumi.getter(name="contentTypeValue")
     def content_type_value(self) -> Optional[_builtins.str]:
         """
-        The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+        The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`. This field is ignored when `content_type_category` is set to `CLIENT`.
         """
         return pulumi.get(self, "content_type_value")
 

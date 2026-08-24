@@ -212,6 +212,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
  * ### Create a High Availability RDS MySQL Instance
  * 
  * <pre>
@@ -793,9 +794,9 @@ import javax.annotation.Nullable;
  * 
  * ### Deleting `alicloud.rds.Instance` or removing it from your configuration
  * 
- * The `alicloud.rds.Instance` resource allows you to manage `instanceChargeType = &#34;Prepaid&#34;` db instance, but Terraform cannot destroy it.
- * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
- * You can resume managing the subscription db instance via the AlibabaCloud Console.
+ * By default, the `alicloud.rds.Instance` resource cannot destroy a `Prepaid` (Subscription) DB instance. Deleting the resource or removing it from your configuration will remove it from the state file and management, but will not destroy the DB Instance. You can resume managing the subscription db instance via the AlibabaCloud Console.
+ * 
+ * To destroy a Subscription DB instance, set `forceDelete = true` on the resource. Terraform will first convert the instance from `PrePaid` to `PostPaid` (settling the remaining subscription period) and then delete it. This conversion has billing consequences, so it must be enabled explicitly.
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
@@ -1457,6 +1458,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> force() {
         return Codegen.optional(this.force);
+    }
+    /**
+     * Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
     }
     /**
      * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:

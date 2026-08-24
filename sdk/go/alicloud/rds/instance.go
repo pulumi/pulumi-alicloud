@@ -197,6 +197,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Create a High Availability RDS MySQL Instance
 //
 // ```go
@@ -817,9 +818,9 @@ import (
 //
 // ### Deleting `rds.Instance` or removing it from your configuration
 //
-// The `rds.Instance` resource allows you to manage `instanceChargeType = "Prepaid"` db instance, but Terraform cannot destroy it.
-// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
-// You can resume managing the subscription db instance via the AlibabaCloud Console.
+// By default, the `rds.Instance` resource cannot destroy a `Prepaid` (Subscription) DB instance. Deleting the resource or removing it from your configuration will remove it from the state file and management, but will not destroy the DB Instance. You can resume managing the subscription db instance via the AlibabaCloud Console.
+//
+// To destroy a Subscription DB instance, set `forceDelete = true` on the resource. Terraform will first convert the instance from `PrePaid` to `PostPaid` (settling the remaining subscription period) and then delete it. This conversion has billing consequences, so it must be enabled explicitly.
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
@@ -992,6 +993,8 @@ type Instance struct {
 	// - Yes
 	// - No
 	Force pulumi.StringPtrOutput `pulumi:"force"`
+	// Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
@@ -1465,6 +1468,8 @@ type instanceState struct {
 	// - Yes
 	// - No
 	Force *string `pulumi:"force"`
+	// Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
@@ -1866,6 +1871,8 @@ type InstanceState struct {
 	// - Yes
 	// - No
 	Force pulumi.StringPtrInput
+	// Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+	ForceDelete pulumi.BoolPtrInput
 	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
@@ -2265,6 +2272,8 @@ type instanceArgs struct {
 	// - Yes
 	// - No
 	Force *string `pulumi:"force"`
+	// Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
@@ -2655,6 +2664,8 @@ type InstanceArgs struct {
 	// - Yes
 	// - No
 	Force pulumi.StringPtrInput
+	// Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+	ForceDelete pulumi.BoolPtrInput
 	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
@@ -3233,6 +3244,11 @@ func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 // - No
 func (o InstanceOutput) Force() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
+}
+
+// Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+func (o InstanceOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:

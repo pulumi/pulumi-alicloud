@@ -209,7 +209,7 @@ type Instance struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// The options of images. See `imageOptions` below.
 	ImageOptions InstanceImageOptionsOutput `pulumi:"imageOptions"`
@@ -513,7 +513,7 @@ type instanceState struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens *string `pulumi:"httpTokens"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId *string `pulumi:"imageId"`
 	// The options of images. See `imageOptions` below.
 	ImageOptions *InstanceImageOptions `pulumi:"imageOptions"`
@@ -781,7 +781,7 @@ type InstanceState struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens pulumi.StringPtrInput
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId pulumi.StringPtrInput
 	// The options of images. See `imageOptions` below.
 	ImageOptions InstanceImageOptionsPtrInput
@@ -1045,7 +1045,7 @@ type instanceArgs struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens *string `pulumi:"httpTokens"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId *string `pulumi:"imageId"`
 	// The options of images. See `imageOptions` below.
 	ImageOptions *InstanceImageOptions `pulumi:"imageOptions"`
@@ -1292,7 +1292,7 @@ type InstanceArgs struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens pulumi.StringPtrInput
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId pulumi.StringPtrInput
 	// The options of images. See `imageOptions` below.
 	ImageOptions InstanceImageOptionsPtrInput
@@ -1704,7 +1704,7 @@ func (o InstanceOutput) HttpTokens() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpTokens }).(pulumi.StringOutput)
 }
 
-// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 func (o InstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }

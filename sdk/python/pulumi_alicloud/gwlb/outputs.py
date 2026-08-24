@@ -261,7 +261,7 @@ class ServerGroupHealthCheckConfig(dict):
                Default value: `5`.
         :param _builtins.str health_check_domain: The domain name that you want to use for health checks. Valid values:
                
-               *   **$SERVER_IP** (default): the private IP address of a backend server.
+               - **$SERVER_IP** (default): the private IP address of a backend server.
         :param _builtins.bool health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param Sequence[_builtins.str] health_check_http_codes: The HTTP status codes that the system returns for health checks.
         :param _builtins.int health_check_interval: The interval at which health checks are performed.
@@ -346,7 +346,7 @@ class ServerGroupHealthCheckConfig(dict):
         """
         The domain name that you want to use for health checks. Valid values:
 
-        *   **$SERVER_IP** (default): the private IP address of a backend server.
+        - **$SERVER_IP** (default): the private IP address of a backend server.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -473,10 +473,16 @@ class ServerGroupServer(dict):
                - `Eni`: elastic network interface (ENI)
                - `Eci`: elastic container instance
                - `Ip`: IP address
-        :param _builtins.int port: (Optional, Computed, Int) The port that is used by the backend server.
+        :param _builtins.int port: The port that is used by the backend server.
         :param _builtins.str server_group_id: The server group ID.
         :param _builtins.str server_ip: The IP address of the backend server.
-        :param _builtins.str status: Indicates the status of the backend server.
+        :param _builtins.str status: Indicates the status of the backend server. Valid values:
+               
+               - `Adding`: The backend server is being added.
+               - `Available`: The backend server is available.
+               - `Draining`: The backend server is in connection draining.
+               - `Removing`: The backend server is being removed.
+               - `Replacing`: The backend server is being replaced.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -517,7 +523,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
         """
-        (Optional, Computed, Int) The port that is used by the backend server.
+        The port that is used by the backend server.
         """
         return pulumi.get(self, "port")
 
@@ -541,7 +547,13 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Indicates the status of the backend server.
+        Indicates the status of the backend server. Valid values:
+
+        - `Adding`: The backend server is being added.
+        - `Available`: The backend server is available.
+        - `Draining`: The backend server is in connection draining.
+        - `Removing`: The backend server is being removed.
+        - `Replacing`: The backend server is being replaced.
         """
         return pulumi.get(self, "status")
 

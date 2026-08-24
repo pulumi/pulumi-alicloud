@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  *     instanceId: defaultInstance.id,
  *     port: 8080,
+ *     vpcTargetHostName: "www.example.com",
  * });
  * ```
  *
@@ -130,6 +131,10 @@ export class VpcAccess extends pulumi.CustomResource {
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     declare public readonly vpcId: pulumi.Output<string>;
+    /**
+     * The host of the backend service.
+     */
+    declare public readonly vpcTargetHostName: pulumi.Output<string | undefined>;
 
     /**
      * Create a VpcAccess resource with the given unique name, arguments, and options.
@@ -149,6 +154,7 @@ export class VpcAccess extends pulumi.CustomResource {
             resourceInputs["port"] = state?.port;
             resourceInputs["vpcAccessId"] = state?.vpcAccessId;
             resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcTargetHostName"] = state?.vpcTargetHostName;
         } else {
             const args = argsOrState as VpcAccessArgs | undefined;
             if (args?.instanceId === undefined && !opts.urn) {
@@ -164,6 +170,7 @@ export class VpcAccess extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["port"] = args?.port;
             resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcTargetHostName"] = args?.vpcTargetHostName;
             resourceInputs["vpcAccessId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -195,6 +202,10 @@ export interface VpcAccessState {
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * The host of the backend service.
+     */
+    vpcTargetHostName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,4 +228,8 @@ export interface VpcAccessArgs {
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     vpcId: pulumi.Input<string>;
+    /**
+     * The host of the backend service.
+     */
+    vpcTargetHostName?: pulumi.Input<string | undefined>;
 }

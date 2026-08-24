@@ -10,6 +10,11 @@ export type ArtifactLifecycleRule = import("./artifactLifecycleRule").ArtifactLi
 export const ArtifactLifecycleRule: typeof import("./artifactLifecycleRule").ArtifactLifecycleRule = null as any;
 utilities.lazyLoad(exports, ["ArtifactLifecycleRule"], () => require("./artifactLifecycleRule"));
 
+export { ArtifactSubscriptionRuleArgs, ArtifactSubscriptionRuleState } from "./artifactSubscriptionRule";
+export type ArtifactSubscriptionRule = import("./artifactSubscriptionRule").ArtifactSubscriptionRule;
+export const ArtifactSubscriptionRule: typeof import("./artifactSubscriptionRule").ArtifactSubscriptionRule = null as any;
+utilities.lazyLoad(exports, ["ArtifactSubscriptionRule"], () => require("./artifactSubscriptionRule"));
+
 export { ChainArgs, ChainState } from "./chain";
 export type Chain = import("./chain").Chain;
 export const Chain: typeof import("./chain").Chain = null as any;
@@ -34,6 +39,11 @@ export { GetArtifactLifecycleRulesArgs, GetArtifactLifecycleRulesResult, GetArti
 export const getArtifactLifecycleRules: typeof import("./getArtifactLifecycleRules").getArtifactLifecycleRules = null as any;
 export const getArtifactLifecycleRulesOutput: typeof import("./getArtifactLifecycleRules").getArtifactLifecycleRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getArtifactLifecycleRules","getArtifactLifecycleRulesOutput"], () => require("./getArtifactLifecycleRules"));
+
+export { GetArtifactSubscriptionRulesArgs, GetArtifactSubscriptionRulesResult, GetArtifactSubscriptionRulesOutputArgs } from "./getArtifactSubscriptionRules";
+export const getArtifactSubscriptionRules: typeof import("./getArtifactSubscriptionRules").getArtifactSubscriptionRules = null as any;
+export const getArtifactSubscriptionRulesOutput: typeof import("./getArtifactSubscriptionRules").getArtifactSubscriptionRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getArtifactSubscriptionRules","getArtifactSubscriptionRulesOutput"], () => require("./getArtifactSubscriptionRules"));
 
 export { GetChainsArgs, GetChainsResult, GetChainsOutputArgs } from "./getChains";
 export const getChains: typeof import("./getChains").getChains = null as any;
@@ -60,6 +70,11 @@ export const getEndpointAclService: typeof import("./getEndpointAclService").get
 export const getEndpointAclServiceOutput: typeof import("./getEndpointAclService").getEndpointAclServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpointAclService","getEndpointAclServiceOutput"], () => require("./getEndpointAclService"));
 
+export { GetInternetEndpointArgs, GetInternetEndpointResult, GetInternetEndpointOutputArgs } from "./getInternetEndpoint";
+export const getInternetEndpoint: typeof import("./getInternetEndpoint").getInternetEndpoint = null as any;
+export const getInternetEndpointOutput: typeof import("./getInternetEndpoint").getInternetEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getInternetEndpoint","getInternetEndpointOutput"], () => require("./getInternetEndpoint"));
+
 export { GetNamespacesArgs, GetNamespacesResult, GetNamespacesOutputArgs } from "./getNamespaces";
 export const getNamespaces: typeof import("./getNamespaces").getNamespaces = null as any;
 export const getNamespacesOutput: typeof import("./getNamespaces").getNamespacesOutput = null as any;
@@ -79,6 +94,11 @@ export { GetVpcEndpointLinkedVpcsArgs, GetVpcEndpointLinkedVpcsResult, GetVpcEnd
 export const getVpcEndpointLinkedVpcs: typeof import("./getVpcEndpointLinkedVpcs").getVpcEndpointLinkedVpcs = null as any;
 export const getVpcEndpointLinkedVpcsOutput: typeof import("./getVpcEndpointLinkedVpcs").getVpcEndpointLinkedVpcsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpcEndpointLinkedVpcs","getVpcEndpointLinkedVpcsOutput"], () => require("./getVpcEndpointLinkedVpcs"));
+
+export { InternetEndpointArgs, InternetEndpointState } from "./internetEndpoint";
+export type InternetEndpoint = import("./internetEndpoint").InternetEndpoint;
+export const InternetEndpoint: typeof import("./internetEndpoint").InternetEndpoint = null as any;
+utilities.lazyLoad(exports, ["InternetEndpoint"], () => require("./internetEndpoint"));
 
 export { NamespaceArgs, NamespaceState } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
@@ -117,6 +137,8 @@ const _module = {
         switch (type) {
             case "alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule":
                 return new ArtifactLifecycleRule(name, <any>undefined, { urn })
+            case "alicloud:cr/artifactSubscriptionRule:ArtifactSubscriptionRule":
+                return new ArtifactSubscriptionRule(name, <any>undefined, { urn })
             case "alicloud:cr/chain:Chain":
                 return new Chain(name, <any>undefined, { urn })
             case "alicloud:cr/chartNamespace:ChartNamespace":
@@ -125,6 +147,8 @@ const _module = {
                 return new ChartRepository(name, <any>undefined, { urn })
             case "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
                 return new EndpointAclPolicy(name, <any>undefined, { urn })
+            case "alicloud:cr/internetEndpoint:InternetEndpoint":
+                return new InternetEndpoint(name, <any>undefined, { urn })
             case "alicloud:cr/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
             case "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
@@ -143,10 +167,12 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cr/artifactLifecycleRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/artifactSubscriptionRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chartNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chartRepository", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/endpointAclPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/internetEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/registryEnterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/repo", _module)

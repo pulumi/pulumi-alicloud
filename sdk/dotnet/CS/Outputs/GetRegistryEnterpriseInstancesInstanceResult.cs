@@ -54,6 +54,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string Specification;
         /// <summary>
+        /// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
         /// The username that was used to log on to the registry.
         /// </summary>
         public readonly string TempUsername;
@@ -84,6 +88,8 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string specification,
 
+            ImmutableDictionary<string, string> tags,
+
             string tempUsername,
 
             ImmutableArray<string> vpcEndpoints)
@@ -98,6 +104,7 @@ namespace Pulumi.AliCloud.CS.Outputs
             RepoQuota = repoQuota;
             RepoUsage = repoUsage;
             Specification = specification;
+            Tags = tags;
             TempUsername = tempUsername;
             VpcEndpoints = vpcEndpoints;
         }

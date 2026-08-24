@@ -12,71 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterV2ManagerManagerNodeSystemDisk {
-    /**
-     * @return Manage the system disk configuration of the node. Value range:
-     * - cloud_efficiency: The Ultra cloud disk.
-     * - cloud_ssd:SSD cloud disk.
-     * - cloud_essd:ESSD cloud disk.
-     * - cloud: ordinary cloud disk.
-     * 
-     */
     private @Nullable String category;
-    /**
-     * @return When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-     * - PL0: maximum random read/write IOPS 10000 for a single disk.
-     * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-     * - PL2: maximum random read/write IOPS 100000 for a single disk.
-     * - PL3: maximum random read/write IOPS 1 million for a single disk.
-     * 
-     */
     private @Nullable String level;
-    /**
-     * @return The system disk size of the management node. Unit: GiB. Value range:
-     * - Ordinary cloud tray: 20~500.
-     * - ESSD cloud disk:
-     * - PL0:1~2048.
-     * - PL1:20~2048.
-     * - PL2:461~2048.
-     * - PL3:1261~2048.
-     * - Other cloud disk types: 20~2048.
-     * 
-     */
     private @Nullable Integer size;
 
     private ClusterV2ManagerManagerNodeSystemDisk() {}
-    /**
-     * @return Manage the system disk configuration of the node. Value range:
-     * - cloud_efficiency: The Ultra cloud disk.
-     * - cloud_ssd:SSD cloud disk.
-     * - cloud_essd:ESSD cloud disk.
-     * - cloud: ordinary cloud disk.
-     * 
-     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
-    /**
-     * @return When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-     * - PL0: maximum random read/write IOPS 10000 for a single disk.
-     * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-     * - PL2: maximum random read/write IOPS 100000 for a single disk.
-     * - PL3: maximum random read/write IOPS 1 million for a single disk.
-     * 
-     */
     public Optional<String> level() {
         return Optional.ofNullable(this.level);
     }
-    /**
-     * @return The system disk size of the management node. Unit: GiB. Value range:
-     * - Ordinary cloud tray: 20~500.
-     * - ESSD cloud disk:
-     * - PL0:1~2048.
-     * - PL1:20~2048.
-     * - PL2:461~2048.
-     * - PL3:1261~2048.
-     * - Other cloud disk types: 20~2048.
-     * 
-     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

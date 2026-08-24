@@ -13,11 +13,13 @@ from .alarm_contact import *
 from .alarm_contact_group import *
 from .alert_rule_v2 import *
 from .dynamic_tag_group import *
+from .event_notify_policy import *
 from .event_rule import *
 from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
 from .get_alert_rules_v2 import *
 from .get_dynamic_tag_groups import *
+from .get_event_notify_policies import *
 from .get_event_rules import *
 from .get_group_metric_rules import *
 from .get_hybrid_monitor_datas import *

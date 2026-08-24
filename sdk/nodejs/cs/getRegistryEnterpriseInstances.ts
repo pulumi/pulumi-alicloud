@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.86.0+
+ * > **NOTE:** Available since v1.86.0
  *
  * ## Example Usage
  *
@@ -33,6 +33,7 @@ export function getRegistryEnterpriseInstances(args?: GetRegistryEnterpriseInsta
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -56,6 +57,10 @@ export interface GetRegistryEnterpriseInstancesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+     */
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -81,11 +86,15 @@ export interface GetRegistryEnterpriseInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * (Available since v1.288.0) A mapping of tags assigned to the instance.
+     */
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.86.0+
+ * > **NOTE:** Available since v1.86.0
  *
  * ## Example Usage
  *
@@ -109,6 +118,7 @@ export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpris
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -132,4 +142,8 @@ export interface GetRegistryEnterpriseInstancesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

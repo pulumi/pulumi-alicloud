@@ -298,6 +298,25 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     * 
+     */
+    @Import(name="tunnelBandwidth")
+    private @Nullable Output<String> tunnelBandwidth;
+
+    /**
+     * @return The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     * 
+     */
+    public Optional<Output<String>> tunnelBandwidth() {
+        return Optional.ofNullable(this.tunnelBandwidth);
+    }
+
+    /**
      * Configure the tunnel.
      * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
      * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -350,6 +369,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.tags = $.tags;
+        this.tunnelBandwidth = $.tunnelBandwidth;
         this.tunnelOptionsSpecifications = $.tunnelOptionsSpecifications;
         this.vpnAttachmentName = $.vpnAttachmentName;
     }
@@ -740,6 +760,31 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tunnelBandwidth The bandwidth specification of a single VPN tunnel. Valid values:
+         * - `Standard` (default): 1 Gbps.
+         * - `Large`: 3 Gbps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelBandwidth(@Nullable Output<String> tunnelBandwidth) {
+            $.tunnelBandwidth = tunnelBandwidth;
+            return this;
+        }
+
+        /**
+         * @param tunnelBandwidth The bandwidth specification of a single VPN tunnel. Valid values:
+         * - `Standard` (default): 1 Gbps.
+         * - `Large`: 3 Gbps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelBandwidth(String tunnelBandwidth) {
+            return tunnelBandwidth(Output.of(tunnelBandwidth));
         }
 
         /**

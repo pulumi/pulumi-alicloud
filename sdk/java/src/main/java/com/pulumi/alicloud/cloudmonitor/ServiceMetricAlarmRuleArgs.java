@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cloudmonitor.inputs.ServiceMetricAlarmRuleCompositeEx
 import com.pulumi.alicloud.cloudmonitor.inputs.ServiceMetricAlarmRuleEscalationsArgs;
 import com.pulumi.alicloud.cloudmonitor.inputs.ServiceMetricAlarmRuleLabelArgs;
 import com.pulumi.alicloud.cloudmonitor.inputs.ServiceMetricAlarmRulePrometheusArgs;
+import com.pulumi.alicloud.cloudmonitor.inputs.ServiceMetricAlarmRuleTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -382,6 +383,21 @@ public final class ServiceMetricAlarmRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     * 
+     */
+    @Import(name="targets")
+    private @Nullable Output<List<ServiceMetricAlarmRuleTargetArgs>> targets;
+
+    /**
+     * @return The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     * 
+     */
+    public Optional<Output<List<ServiceMetricAlarmRuleTargetArgs>>> targets() {
+        return Optional.ofNullable(this.targets);
+    }
+
+    /**
      * The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
      * 
      */
@@ -418,6 +434,7 @@ public final class ServiceMetricAlarmRuleArgs extends com.pulumi.resources.Resou
         this.sendOk = $.sendOk;
         this.silenceTime = $.silenceTime;
         this.status = $.status;
+        this.targets = $.targets;
         this.webhook = $.webhook;
     }
 
@@ -923,6 +940,37 @@ public final class ServiceMetricAlarmRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder status(Boolean status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param targets The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(@Nullable Output<List<ServiceMetricAlarmRuleTargetArgs>> targets) {
+            $.targets = targets;
+            return this;
+        }
+
+        /**
+         * @param targets The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(List<ServiceMetricAlarmRuleTargetArgs> targets) {
+            return targets(Output.of(targets));
+        }
+
+        /**
+         * @param targets The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(ServiceMetricAlarmRuleTargetArgs... targets) {
+            return targets(List.of(targets));
         }
 
         /**

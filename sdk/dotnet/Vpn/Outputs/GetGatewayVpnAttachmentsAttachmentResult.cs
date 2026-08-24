@@ -94,6 +94,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
+        /// The bandwidth specification of a single VPN tunnel. Valid values: **Standard** (default, 1 Gbps) and **Large** (3 Gbps).
+        /// </summary>
+        public readonly string TunnelBandwidth;
+        /// <summary>
         /// Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationResult> TunnelOptionsSpecifications;
@@ -148,6 +152,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             ImmutableDictionary<string, string> tags,
 
+            string tunnelBandwidth,
+
             ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationResult> tunnelOptionsSpecifications,
 
             string vpnAttachmentName,
@@ -174,6 +180,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
+            TunnelBandwidth = tunnelBandwidth;
             TunnelOptionsSpecifications = tunnelOptionsSpecifications;
             VpnAttachmentName = vpnAttachmentName;
             VpnConnectionId = vpnConnectionId;

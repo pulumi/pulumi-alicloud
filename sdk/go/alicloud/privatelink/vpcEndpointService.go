@@ -83,6 +83,8 @@ type VpcEndpointService struct {
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The resource group ID.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+	Resources VpcEndpointServiceResourceTypeArrayOutput `pulumi:"resources"`
 	// The service state of the endpoint service.
 	ServiceBusinessStatus pulumi.StringOutput `pulumi:"serviceBusinessStatus"`
 	// The description of the endpoint service.
@@ -153,6 +155,8 @@ type vpcEndpointServiceState struct {
 	RegionId *string `pulumi:"regionId"`
 	// The resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+	Resources []VpcEndpointServiceResourceType `pulumi:"resources"`
 	// The service state of the endpoint service.
 	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
 	// The description of the endpoint service.
@@ -194,6 +198,8 @@ type VpcEndpointServiceState struct {
 	RegionId pulumi.StringPtrInput
 	// The resource group ID.
 	ResourceGroupId pulumi.StringPtrInput
+	// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+	Resources VpcEndpointServiceResourceTypeArrayInput
 	// The service state of the endpoint service.
 	ServiceBusinessStatus pulumi.StringPtrInput
 	// The description of the endpoint service.
@@ -235,6 +241,8 @@ type vpcEndpointServiceArgs struct {
 	Payer *string `pulumi:"payer"`
 	// The resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+	Resources []VpcEndpointServiceResourceType `pulumi:"resources"`
 	// The description of the endpoint service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
 	// The service resource type. Value:
@@ -265,6 +273,8 @@ type VpcEndpointServiceArgs struct {
 	Payer pulumi.StringPtrInput
 	// The resource group ID.
 	ResourceGroupId pulumi.StringPtrInput
+	// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+	Resources VpcEndpointServiceResourceTypeArrayInput
 	// The description of the endpoint service.
 	ServiceDescription pulumi.StringPtrInput
 	// The service resource type. Value:
@@ -406,6 +416,11 @@ func (o VpcEndpointServiceOutput) RegionId() pulumi.StringOutput {
 // The resource group ID.
 func (o VpcEndpointServiceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+func (o VpcEndpointServiceOutput) Resources() VpcEndpointServiceResourceTypeArrayOutput {
+	return o.ApplyT(func(v *VpcEndpointService) VpcEndpointServiceResourceTypeArrayOutput { return v.Resources }).(VpcEndpointServiceResourceTypeArrayOutput)
 }
 
 // The service state of the endpoint service.

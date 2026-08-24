@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${_default.result}`});
  * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("default", {
  *     ossBackupPlanName: "terraform-example",
- *     prefix: "/example",
+ *     prefix: "example",
  *     bucket: defaultBucket.bucket,
  *     vaultId: defaultVault.id,
  *     schedule: "I|1602673264|PT2H",
