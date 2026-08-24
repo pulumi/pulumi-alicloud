@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ram
     ///             var @default = values.Item2;
     ///             return $"{name}@{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyun.com";
     ///         }),
-    ///         AccessKeyPolicy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Status"] = "Active",
     ///             ["Statements"] = new[]
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Ram
         /// The network access restriction policy, in JSON format. For the structure of the policy document, see [SetAccessKeyPolicy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-setaccesskeypolicy).
         /// </summary>
         [Output("accessKeyPolicy")]
-        public Output<string> AccessKeyPolicy { get; private set; } = null!;
+        public Output<string> Policy { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the access key that the network access restriction policy applies to.
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Ram
         /// The network access restriction policy, in JSON format. For the structure of the policy document, see [SetAccessKeyPolicy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-setaccesskeypolicy).
         /// </summary>
         [Input("accessKeyPolicy", required: true)]
-        public Input<string> AccessKeyPolicy { get; set; } = null!;
+        public Input<string> Policy { get; set; } = null!;
 
         /// <summary>
         /// The ID of the access key that the network access restriction policy applies to.
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Ram
         /// The network access restriction policy, in JSON format. For the structure of the policy document, see [SetAccessKeyPolicy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-setaccesskeypolicy).
         /// </summary>
         [Input("accessKeyPolicy")]
-        public Input<string>? AccessKeyPolicy { get; set; }
+        public Input<string>? Policy { get; set; }
 
         /// <summary>
         /// The ID of the access key that the network access restriction policy applies to.

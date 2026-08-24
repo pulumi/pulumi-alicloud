@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ram
         ///             var @default = values.Item2;
         ///             return $"{name}@{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyun.com";
         ///         }),
-        ///         AccessKeyPolicy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
         ///             ["Status"] = "Active",
         ///             ["Statements"] = new[]
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Ram
         ///             var @default = values.Item2;
         ///             return $"{name}@{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyun.com";
         ///         }),
-        ///         AccessKeyPolicy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
         ///             ["Status"] = "Active",
         ///             ["Statements"] = new[]
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Ram
         ///             var @default = values.Item2;
         ///             return $"{name}@{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyun.com";
         ///         }),
-        ///         AccessKeyPolicy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
         ///             ["Status"] = "Active",
         ///             ["Statements"] = new[]
