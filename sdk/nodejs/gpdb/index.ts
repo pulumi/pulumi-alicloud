@@ -10,6 +10,11 @@ export type Account = import("./account").Account;
 export const Account: typeof import("./account").Account = null as any;
 utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
+export { ApiKeyArgs, ApiKeyState } from "./apiKey";
+export type ApiKey = import("./apiKey").ApiKey;
+export const ApiKey: typeof import("./apiKey").ApiKey = null as any;
+utilities.lazyLoad(exports, ["ApiKey"], () => require("./apiKey"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
@@ -54,6 +59,11 @@ export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./get
 export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetApiKeysArgs, GetApiKeysResult, GetApiKeysOutputArgs } from "./getApiKeys";
+export const getApiKeys: typeof import("./getApiKeys").getApiKeys = null as any;
+export const getApiKeysOutput: typeof import("./getApiKeys").getApiKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getApiKeys","getApiKeysOutput"], () => require("./getApiKeys"));
 
 export { GetDataBackupsArgs, GetDataBackupsResult, GetDataBackupsOutputArgs } from "./getDataBackups";
 export const getDataBackups: typeof import("./getDataBackups").getDataBackups = null as any;
@@ -127,6 +137,8 @@ const _module = {
         switch (type) {
             case "alicloud:gpdb/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "alicloud:gpdb/apiKey:ApiKey":
+                return new ApiKey(name, <any>undefined, { urn })
             case "alicloud:gpdb/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:gpdb/connection:Connection":
@@ -165,6 +177,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/apiKey", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/database", _module)

@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
         /// <summary>
         /// The domain name that you want to use for health checks. Valid values:
         /// 
-        /// *   **$SERVER_IP** (default): the private IP address of a backend server.
+        /// - **$SERVER_IP** (default): the private IP address of a backend server.
         /// </summary>
         public readonly string? HealthCheckDomain;
         /// <summary>

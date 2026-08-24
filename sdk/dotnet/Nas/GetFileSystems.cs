@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides FileSystems available to the user.
         /// 
-        /// &gt; **NOTE**: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.Nas
         ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
         ///     {
         ///         ProtocolType = "NFS",
+        ///         FileSystemType = "standard",
         ///         DescriptionRegex = foo.Description,
         ///     });
         /// 
@@ -45,7 +46,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides FileSystems available to the user.
         /// 
-        /// &gt; **NOTE**: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -60,6 +61,7 @@ namespace Pulumi.AliCloud.Nas
         ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
         ///     {
         ///         ProtocolType = "NFS",
+        ///         FileSystemType = "standard",
         ///         DescriptionRegex = foo.Description,
         ///     });
         /// 
@@ -76,7 +78,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides FileSystems available to the user.
         /// 
-        /// &gt; **NOTE**: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -91,6 +93,7 @@ namespace Pulumi.AliCloud.Nas
         ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
         ///     {
         ///         ProtocolType = "NFS",
+        ///         FileSystemType = "standard",
         ///         DescriptionRegex = foo.Description,
         ///     });
         /// 
@@ -113,6 +116,17 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
+
+        /// <summary>
+        /// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+        /// Valid values:
+        /// `Standard`,
+        /// `Extreme`,
+        /// `Cpfs`,
+        /// `Cpfsse`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public string? FileSystemType { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -163,6 +177,17 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("descriptionRegex")]
         public Input<string>? DescriptionRegex { get; set; }
+
+        /// <summary>
+        /// The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+        /// Valid values:
+        /// `Standard`,
+        /// `Extreme`,
+        /// `Cpfs`,
+        /// `Cpfsse`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
@@ -216,6 +241,15 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
+        /// (Optional, Available in v1.140.0+) The type of the file system.
+        /// Valid values:
+        /// `Standard`,
+        /// `Extreme`,
+        /// `Cpfs`,
+        /// `Cpfsse`.
+        /// </summary>
+        public readonly string? FileSystemType;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -243,6 +277,8 @@ namespace Pulumi.AliCloud.Nas
 
             ImmutableArray<string> descriptions,
 
+            string? fileSystemType,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -257,6 +293,7 @@ namespace Pulumi.AliCloud.Nas
         {
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            FileSystemType = fileSystemType;
             Id = id;
             Ids = ids;
             OutputFile = outputFile;

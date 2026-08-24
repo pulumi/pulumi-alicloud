@@ -1400,17 +1400,17 @@ func (o InstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) InstanceIpWhite
 }
 
 type InstanceParameter struct {
-	// (Available since v1.231.0) The default value of the parameter.
+	// The default value of the parameter.
 	DefaultValue *string `pulumi:"defaultValue"`
-	// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+	// Whether to force restart the instance to config the parameter.
 	ForceRestartInstance *string `pulumi:"forceRestartInstance"`
-	// (Available since v1.231.0) Whether the parameter is changeable.
+	// Whether the parameter is changeable.
 	IsChangeableConfig *string `pulumi:"isChangeableConfig"`
 	// The name of the parameter.
 	Name string `pulumi:"name"`
-	// (Available since v1.231.0) The optional range of the parameter.
+	// The optional range of the parameter.
 	OptionalRange *string `pulumi:"optionalRange"`
-	// (Available since v1.231.0) The description of the parameter.
+	// The description of the parameter.
 	ParameterDescription *string `pulumi:"parameterDescription"`
 	// The value of the parameter.
 	Value string `pulumi:"value"`
@@ -1428,17 +1428,17 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	// (Available since v1.231.0) The default value of the parameter.
+	// The default value of the parameter.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
-	// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+	// Whether to force restart the instance to config the parameter.
 	ForceRestartInstance pulumi.StringPtrInput `pulumi:"forceRestartInstance"`
-	// (Available since v1.231.0) Whether the parameter is changeable.
+	// Whether the parameter is changeable.
 	IsChangeableConfig pulumi.StringPtrInput `pulumi:"isChangeableConfig"`
 	// The name of the parameter.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Available since v1.231.0) The optional range of the parameter.
+	// The optional range of the parameter.
 	OptionalRange pulumi.StringPtrInput `pulumi:"optionalRange"`
-	// (Available since v1.231.0) The description of the parameter.
+	// The description of the parameter.
 	ParameterDescription pulumi.StringPtrInput `pulumi:"parameterDescription"`
 	// The value of the parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -1495,17 +1495,17 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 	return o
 }
 
-// (Available since v1.231.0) The default value of the parameter.
+// The default value of the parameter.
 func (o InstanceParameterOutput) DefaultValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
-// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+// Whether to force restart the instance to config the parameter.
 func (o InstanceParameterOutput) ForceRestartInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceParameter) *string { return v.ForceRestartInstance }).(pulumi.StringPtrOutput)
 }
 
-// (Available since v1.231.0) Whether the parameter is changeable.
+// Whether the parameter is changeable.
 func (o InstanceParameterOutput) IsChangeableConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceParameter) *string { return v.IsChangeableConfig }).(pulumi.StringPtrOutput)
 }
@@ -1515,12 +1515,12 @@ func (o InstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Available since v1.231.0) The optional range of the parameter.
+// The optional range of the parameter.
 func (o InstanceParameterOutput) OptionalRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceParameter) *string { return v.OptionalRange }).(pulumi.StringPtrOutput)
 }
 
-// (Available since v1.231.0) The description of the parameter.
+// The description of the parameter.
 func (o InstanceParameterOutput) ParameterDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceParameter) *string { return v.ParameterDescription }).(pulumi.StringPtrOutput)
 }
@@ -1681,6 +1681,148 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
 		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
 	}).(GetAccountsAccountOutput)
+}
+
+type GetApiKeysKey struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the API key.
+	Description string `pulumi:"description"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The ID of the API key.
+	KeyId string `pulumi:"keyId"`
+	// The name of the API key.
+	KeyName string `pulumi:"keyName"`
+	// The prefix of the API key.
+	KeyPrefix string `pulumi:"keyPrefix"`
+}
+
+// GetApiKeysKeyInput is an input type that accepts GetApiKeysKeyArgs and GetApiKeysKeyOutput values.
+// You can construct a concrete instance of `GetApiKeysKeyInput` via:
+//
+//	GetApiKeysKeyArgs{...}
+type GetApiKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetApiKeysKeyOutput() GetApiKeysKeyOutput
+	ToGetApiKeysKeyOutputWithContext(context.Context) GetApiKeysKeyOutput
+}
+
+type GetApiKeysKeyArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the API key.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the API key.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// The name of the API key.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The prefix of the API key.
+	KeyPrefix pulumi.StringInput `pulumi:"keyPrefix"`
+}
+
+func (GetApiKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiKeysKey)(nil)).Elem()
+}
+
+func (i GetApiKeysKeyArgs) ToGetApiKeysKeyOutput() GetApiKeysKeyOutput {
+	return i.ToGetApiKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetApiKeysKeyArgs) ToGetApiKeysKeyOutputWithContext(ctx context.Context) GetApiKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiKeysKeyOutput)
+}
+
+// GetApiKeysKeyArrayInput is an input type that accepts GetApiKeysKeyArray and GetApiKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetApiKeysKeyArrayInput` via:
+//
+//	GetApiKeysKeyArray{ GetApiKeysKeyArgs{...} }
+type GetApiKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetApiKeysKeyArrayOutput() GetApiKeysKeyArrayOutput
+	ToGetApiKeysKeyArrayOutputWithContext(context.Context) GetApiKeysKeyArrayOutput
+}
+
+type GetApiKeysKeyArray []GetApiKeysKeyInput
+
+func (GetApiKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApiKeysKey)(nil)).Elem()
+}
+
+func (i GetApiKeysKeyArray) ToGetApiKeysKeyArrayOutput() GetApiKeysKeyArrayOutput {
+	return i.ToGetApiKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetApiKeysKeyArray) ToGetApiKeysKeyArrayOutputWithContext(ctx context.Context) GetApiKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiKeysKeyArrayOutput)
+}
+
+type GetApiKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetApiKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiKeysKey)(nil)).Elem()
+}
+
+func (o GetApiKeysKeyOutput) ToGetApiKeysKeyOutput() GetApiKeysKeyOutput {
+	return o
+}
+
+func (o GetApiKeysKeyOutput) ToGetApiKeysKeyOutputWithContext(ctx context.Context) GetApiKeysKeyOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetApiKeysKeyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeysKey) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the API key.
+func (o GetApiKeysKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeysKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetApiKeysKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeysKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the API key.
+func (o GetApiKeysKeyOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeysKey) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The name of the API key.
+func (o GetApiKeysKeyOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeysKey) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The prefix of the API key.
+func (o GetApiKeysKeyOutput) KeyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeysKey) string { return v.KeyPrefix }).(pulumi.StringOutput)
+}
+
+type GetApiKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApiKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApiKeysKey)(nil)).Elem()
+}
+
+func (o GetApiKeysKeyArrayOutput) ToGetApiKeysKeyArrayOutput() GetApiKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetApiKeysKeyArrayOutput) ToGetApiKeysKeyArrayOutputWithContext(ctx context.Context) GetApiKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetApiKeysKeyArrayOutput) Index(i pulumi.IntInput) GetApiKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApiKeysKey {
+		return vs[0].([]GetApiKeysKey)[vs[1].(int)]
+	}).(GetApiKeysKeyOutput)
 }
 
 type GetDataBackupsBackup struct {
@@ -3412,6 +3554,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiKeysKeyInput)(nil)).Elem(), GetApiKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiKeysKeyArrayInput)(nil)).Elem(), GetApiKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataBackupsBackupInput)(nil)).Elem(), GetDataBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataBackupsBackupArrayInput)(nil)).Elem(), GetDataBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanInput)(nil)).Elem(), GetDbInstancePlansPlanArgs{})
@@ -3454,6 +3598,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetApiKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetApiKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDataBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetDataBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanOutput{})

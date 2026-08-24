@@ -73,6 +73,40 @@ __all__ = [
     'AlertRuleV2ScheduleConfigArgsDict',
     'DynamicTagGroupMatchExpressArgs',
     'DynamicTagGroupMatchExpressArgsDict',
+    'EventNotifyPolicyNotifyStrategyArgs',
+    'EventNotifyPolicyNotifyStrategyArgsDict',
+    'EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs',
+    'EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgsDict',
+    'EventNotifyPolicyNotifyStrategyGroupingSettingArgs',
+    'EventNotifyPolicyNotifyStrategyGroupingSettingArgsDict',
+    'EventNotifyPolicyNotifyStrategyRouteArgs',
+    'EventNotifyPolicyNotifyStrategyRouteArgsDict',
+    'EventNotifyPolicyNotifyStrategyRouteChannelArgs',
+    'EventNotifyPolicyNotifyStrategyRouteChannelArgsDict',
+    'EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs',
+    'EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgsDict',
+    'EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs',
+    'EventNotifyPolicyNotifyStrategyRouteFilterSettingArgsDict',
+    'EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs',
+    'EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgsDict',
+    'EventNotifyPolicyResponsePlanArgs',
+    'EventNotifyPolicyResponsePlanArgsDict',
+    'EventNotifyPolicyResponsePlanPushingSettingArgs',
+    'EventNotifyPolicyResponsePlanPushingSettingArgsDict',
+    'EventNotifyPolicyResponsePlanRepeatNotifySettingArgs',
+    'EventNotifyPolicyResponsePlanRepeatNotifySettingArgsDict',
+    'EventNotifyPolicySubscriptionArgs',
+    'EventNotifyPolicySubscriptionArgsDict',
+    'EventNotifyPolicySubscriptionFilterSettingArgs',
+    'EventNotifyPolicySubscriptionFilterSettingArgsDict',
+    'EventNotifyPolicySubscriptionFilterSettingConditionArgs',
+    'EventNotifyPolicySubscriptionFilterSettingConditionArgsDict',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingArgsDict',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgsDict',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs',
+    'EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgsDict',
     'EventRuleContactParameterArgs',
     'EventRuleContactParameterArgsDict',
     'EventRuleEventPatternArgs',
@@ -3116,6 +3150,1074 @@ class DynamicTagGroupMatchExpressArgs:
     @tag_value_match_function.setter
     def tag_value_match_function(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tag_value_match_function", value)
+
+
+class EventNotifyPolicyNotifyStrategyArgsDict(TypedDict):
+    custom_template_entries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgsDict']]]]]
+    """
+    The list of custom notification templates. See `custom_template_entries` below.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description of the notification strategy.
+    """
+    grouping_setting: NotRequired[pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyGroupingSettingArgsDict']]]
+    """
+    The grouping and merging settings. See `grouping_setting` below.
+    """
+    ignore_restored_notification: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+    """
+    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteArgsDict']]]]]
+    """
+    The notification channel routing settings. See `routes` below.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyArgs:
+    def __init__(__self__, *,
+                 custom_template_entries: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 grouping_setting: pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyGroupingSettingArgs']] = None,
+                 ignore_restored_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs']]] custom_template_entries: The list of custom notification templates. See `custom_template_entries` below.
+        :param pulumi.Input[_builtins.str] description: The description of the notification strategy.
+        :param pulumi.Input['EventNotifyPolicyNotifyStrategyGroupingSettingArgs'] grouping_setting: The grouping and merging settings. See `grouping_setting` below.
+        :param pulumi.Input[_builtins.bool] ignore_restored_notification: Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+        :param pulumi.Input[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteArgs']]] routes: The notification channel routing settings. See `routes` below.
+        """
+        if custom_template_entries is not None:
+            pulumi.set(__self__, "custom_template_entries", custom_template_entries)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if grouping_setting is not None:
+            pulumi.set(__self__, "grouping_setting", grouping_setting)
+        if ignore_restored_notification is not None:
+            pulumi.set(__self__, "ignore_restored_notification", ignore_restored_notification)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+
+    @_builtins.property
+    @pulumi.getter(name="customTemplateEntries")
+    def custom_template_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs']]]]:
+        """
+        The list of custom notification templates. See `custom_template_entries` below.
+        """
+        return pulumi.get(self, "custom_template_entries")
+
+    @custom_template_entries.setter
+    def custom_template_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs']]]]):
+        pulumi.set(self, "custom_template_entries", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the notification strategy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupingSetting")
+    def grouping_setting(self) -> pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyGroupingSettingArgs']]:
+        """
+        The grouping and merging settings. See `grouping_setting` below.
+        """
+        return pulumi.get(self, "grouping_setting")
+
+    @grouping_setting.setter
+    def grouping_setting(self, value: pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyGroupingSettingArgs']]):
+        pulumi.set(self, "grouping_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreRestoredNotification")
+    def ignore_restored_notification(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+        """
+        return pulumi.get(self, "ignore_restored_notification")
+
+    @ignore_restored_notification.setter
+    def ignore_restored_notification(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_restored_notification", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteArgs']]]]:
+        """
+        The notification channel routing settings. See `routes` below.
+        """
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteArgs']]]]):
+        pulumi.set(self, "routes", value)
+
+
+class EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgsDict(TypedDict):
+    template_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The UUID of the template.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs:
+    def __init__(__self__, *,
+                 template_uuid: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] template_uuid: The UUID of the template.
+        """
+        if template_uuid is not None:
+            pulumi.set(__self__, "template_uuid", template_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="templateUuid")
+    def template_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The UUID of the template.
+        """
+        return pulumi.get(self, "template_uuid")
+
+    @template_uuid.setter
+    def template_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "template_uuid", value)
+
+
+class EventNotifyPolicyNotifyStrategyGroupingSettingArgsDict(TypedDict):
+    grouping_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+    """
+    period_min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+    """
+    silence_sec: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of triggers. This parameter does not take effect on this API and does not need to be set.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyGroupingSettingArgs:
+    def __init__(__self__, *,
+                 grouping_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 period_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 silence_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grouping_keys: The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+        :param pulumi.Input[_builtins.int] period_min: The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+        :param pulumi.Input[_builtins.int] silence_sec: The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+        :param pulumi.Input[_builtins.int] times: The number of triggers. This parameter does not take effect on this API and does not need to be set.
+        """
+        if grouping_keys is not None:
+            pulumi.set(__self__, "grouping_keys", grouping_keys)
+        if period_min is not None:
+            pulumi.set(__self__, "period_min", period_min)
+        if silence_sec is not None:
+            pulumi.set(__self__, "silence_sec", silence_sec)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="groupingKeys")
+    def grouping_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+        """
+        return pulumi.get(self, "grouping_keys")
+
+    @grouping_keys.setter
+    def grouping_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "grouping_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodMin")
+    def period_min(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+        """
+        return pulumi.get(self, "period_min")
+
+    @period_min.setter
+    def period_min(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period_min", value)
+
+    @_builtins.property
+    @pulumi.getter(name="silenceSec")
+    def silence_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+        """
+        return pulumi.get(self, "silence_sec")
+
+    @silence_sec.setter
+    def silence_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "silence_sec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of triggers. This parameter does not take effect on this API and does not need to be set.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class EventNotifyPolicyNotifyStrategyRouteArgsDict(TypedDict):
+    channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteChannelArgsDict']]]]]
+    """
+    The notification channels. See `channels` below.
+    """
+    digital_employee_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the digital employee. This parameter is required when enableRca is set to true.
+    """
+    effect_time_range: NotRequired[pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgsDict']]]
+    """
+    The effective time range. See `effect_time_range` below.
+    """
+    enable_rca: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable Root Cause Analysis (RCA).
+    """
+    filter_setting: NotRequired[pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteFilterSettingArgsDict']]]
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyRouteArgs:
+    def __init__(__self__, *,
+                 channels: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteChannelArgs']]]] = None,
+                 digital_employee_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_time_range: pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs']] = None,
+                 enable_rca: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter_setting: pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteChannelArgs']]] channels: The notification channels. See `channels` below.
+        :param pulumi.Input[_builtins.str] digital_employee_name: The name of the digital employee. This parameter is required when enableRca is set to true.
+        :param pulumi.Input['EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs'] effect_time_range: The effective time range. See `effect_time_range` below.
+        :param pulumi.Input[_builtins.bool] enable_rca: Specifies whether to enable Root Cause Analysis (RCA).
+        """
+        if channels is not None:
+            pulumi.set(__self__, "channels", channels)
+        if digital_employee_name is not None:
+            pulumi.set(__self__, "digital_employee_name", digital_employee_name)
+        if effect_time_range is not None:
+            pulumi.set(__self__, "effect_time_range", effect_time_range)
+        if enable_rca is not None:
+            pulumi.set(__self__, "enable_rca", enable_rca)
+        if filter_setting is not None:
+            pulumi.set(__self__, "filter_setting", filter_setting)
+
+    @_builtins.property
+    @pulumi.getter
+    def channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteChannelArgs']]]]:
+        """
+        The notification channels. See `channels` below.
+        """
+        return pulumi.get(self, "channels")
+
+    @channels.setter
+    def channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteChannelArgs']]]]):
+        pulumi.set(self, "channels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="digitalEmployeeName")
+    def digital_employee_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the digital employee. This parameter is required when enableRca is set to true.
+        """
+        return pulumi.get(self, "digital_employee_name")
+
+    @digital_employee_name.setter
+    def digital_employee_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "digital_employee_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectTimeRange")
+    def effect_time_range(self) -> pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs']]:
+        """
+        The effective time range. See `effect_time_range` below.
+        """
+        return pulumi.get(self, "effect_time_range")
+
+    @effect_time_range.setter
+    def effect_time_range(self, value: pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs']]):
+        pulumi.set(self, "effect_time_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableRca")
+    def enable_rca(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable Root Cause Analysis (RCA).
+        """
+        return pulumi.get(self, "enable_rca")
+
+    @enable_rca.setter
+    def enable_rca(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_rca", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterSetting")
+    def filter_setting(self) -> pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs']]:
+        return pulumi.get(self, "filter_setting")
+
+    @filter_setting.setter
+    def filter_setting(self, value: pulumi.Input[Optional['EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs']]):
+        pulumi.set(self, "filter_setting", value)
+
+
+class EventNotifyPolicyNotifyStrategyRouteChannelArgsDict(TypedDict):
+    channel_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+    """
+    enabled_sub_channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The enabled notification methods. It is required only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+    """
+    receivers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyRouteChannelArgs:
+    def __init__(__self__, *,
+                 channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_sub_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 receivers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] channel_type: The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_sub_channels: The enabled notification methods. It is required only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] receivers: The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+        """
+        if channel_type is not None:
+            pulumi.set(__self__, "channel_type", channel_type)
+        if enabled_sub_channels is not None:
+            pulumi.set(__self__, "enabled_sub_channels", enabled_sub_channels)
+        if receivers is not None:
+            pulumi.set(__self__, "receivers", receivers)
+
+    @_builtins.property
+    @pulumi.getter(name="channelType")
+    def channel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+        """
+        return pulumi.get(self, "channel_type")
+
+    @channel_type.setter
+    def channel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "channel_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enabledSubChannels")
+    def enabled_sub_channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The enabled notification methods. It is required only when `channel_type` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+        """
+        return pulumi.get(self, "enabled_sub_channels")
+
+    @enabled_sub_channels.setter
+    def enabled_sub_channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "enabled_sub_channels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def receivers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+        """
+        return pulumi.get(self, "receivers")
+
+    @receivers.setter
+    def receivers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "receivers", value)
+
+
+class EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgsDict(TypedDict):
+    day_in_weeks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+    """
+    end_time_in_minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The end time in minutes. Valid values: 0 to 1439.
+    """
+    start_time_in_minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The start time in minutes. Valid values: 0 to 1438.
+    """
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The time zone, such as Asia/Shanghai.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs:
+    def __init__(__self__, *,
+                 day_in_weeks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 end_time_in_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time_in_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] day_in_weeks: The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+        :param pulumi.Input[_builtins.int] end_time_in_minute: The end time in minutes. Valid values: 0 to 1439.
+        :param pulumi.Input[_builtins.int] start_time_in_minute: The start time in minutes. Valid values: 0 to 1438.
+        :param pulumi.Input[_builtins.str] time_zone: The time zone, such as Asia/Shanghai.
+        """
+        if day_in_weeks is not None:
+            pulumi.set(__self__, "day_in_weeks", day_in_weeks)
+        if end_time_in_minute is not None:
+            pulumi.set(__self__, "end_time_in_minute", end_time_in_minute)
+        if start_time_in_minute is not None:
+            pulumi.set(__self__, "start_time_in_minute", start_time_in_minute)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="dayInWeeks")
+    def day_in_weeks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+        """
+        return pulumi.get(self, "day_in_weeks")
+
+    @day_in_weeks.setter
+    def day_in_weeks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "day_in_weeks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTimeInMinute")
+    def end_time_in_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The end time in minutes. Valid values: 0 to 1439.
+        """
+        return pulumi.get(self, "end_time_in_minute")
+
+    @end_time_in_minute.setter
+    def end_time_in_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "end_time_in_minute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTimeInMinute")
+    def start_time_in_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The start time in minutes. Valid values: 0 to 1438.
+        """
+        return pulumi.get(self, "start_time_in_minute")
+
+    @start_time_in_minute.setter
+    def start_time_in_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "start_time_in_minute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The time zone, such as Asia/Shanghai.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "time_zone", value)
+
+
+class EventNotifyPolicyNotifyStrategyRouteFilterSettingArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgsDict']]]]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    relation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs:
+    def __init__(__self__, *,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs']]]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 relation: pulumi.Input[Optional[_builtins.str]] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs']]]]:
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "relation", value)
+
+
+class EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 op: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "op", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class EventNotifyPolicyResponsePlanArgsDict(TypedDict):
+    auto_recover_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+    """
+    escalation_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of escalation plan IDs.
+    """
+    pushing_setting: NotRequired[pulumi.Input[Optional['EventNotifyPolicyResponsePlanPushingSettingArgsDict']]]
+    """
+    Action integration push settings. See `pushing_setting` below.
+    """
+    repeat_notify_setting: NotRequired[pulumi.Input[Optional['EventNotifyPolicyResponsePlanRepeatNotifySettingArgsDict']]]
+    """
+    Repeated notification configuration. See `repeat_notify_setting` below.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyResponsePlanArgs:
+    def __init__(__self__, *,
+                 auto_recover_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 escalation_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pushing_setting: pulumi.Input[Optional['EventNotifyPolicyResponsePlanPushingSettingArgs']] = None,
+                 repeat_notify_setting: pulumi.Input[Optional['EventNotifyPolicyResponsePlanRepeatNotifySettingArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.int] auto_recover_seconds: The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] escalation_ids: The list of escalation plan IDs.
+        :param pulumi.Input['EventNotifyPolicyResponsePlanPushingSettingArgs'] pushing_setting: Action integration push settings. See `pushing_setting` below.
+        :param pulumi.Input['EventNotifyPolicyResponsePlanRepeatNotifySettingArgs'] repeat_notify_setting: Repeated notification configuration. See `repeat_notify_setting` below.
+        """
+        if auto_recover_seconds is not None:
+            pulumi.set(__self__, "auto_recover_seconds", auto_recover_seconds)
+        if escalation_ids is not None:
+            pulumi.set(__self__, "escalation_ids", escalation_ids)
+        if pushing_setting is not None:
+            pulumi.set(__self__, "pushing_setting", pushing_setting)
+        if repeat_notify_setting is not None:
+            pulumi.set(__self__, "repeat_notify_setting", repeat_notify_setting)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRecoverSeconds")
+    def auto_recover_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+        """
+        return pulumi.get(self, "auto_recover_seconds")
+
+    @auto_recover_seconds.setter
+    def auto_recover_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_recover_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="escalationIds")
+    def escalation_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of escalation plan IDs.
+        """
+        return pulumi.get(self, "escalation_ids")
+
+    @escalation_ids.setter
+    def escalation_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "escalation_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pushingSetting")
+    def pushing_setting(self) -> pulumi.Input[Optional['EventNotifyPolicyResponsePlanPushingSettingArgs']]:
+        """
+        Action integration push settings. See `pushing_setting` below.
+        """
+        return pulumi.get(self, "pushing_setting")
+
+    @pushing_setting.setter
+    def pushing_setting(self, value: pulumi.Input[Optional['EventNotifyPolicyResponsePlanPushingSettingArgs']]):
+        pulumi.set(self, "pushing_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatNotifySetting")
+    def repeat_notify_setting(self) -> pulumi.Input[Optional['EventNotifyPolicyResponsePlanRepeatNotifySettingArgs']]:
+        """
+        Repeated notification configuration. See `repeat_notify_setting` below.
+        """
+        return pulumi.get(self, "repeat_notify_setting")
+
+    @repeat_notify_setting.setter
+    def repeat_notify_setting(self, value: pulumi.Input[Optional['EventNotifyPolicyResponsePlanRepeatNotifySettingArgs']]):
+        pulumi.set(self, "repeat_notify_setting", value)
+
+
+class EventNotifyPolicyResponsePlanPushingSettingArgsDict(TypedDict):
+    alert_action_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of alert action integration IDs triggered by alerts.
+    """
+    restore_action_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of action integration IDs triggered upon recovery.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyResponsePlanPushingSettingArgs:
+    def __init__(__self__, *,
+                 alert_action_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 restore_action_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_action_ids: The list of alert action integration IDs triggered by alerts.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restore_action_ids: The list of action integration IDs triggered upon recovery.
+        """
+        if alert_action_ids is not None:
+            pulumi.set(__self__, "alert_action_ids", alert_action_ids)
+        if restore_action_ids is not None:
+            pulumi.set(__self__, "restore_action_ids", restore_action_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alertActionIds")
+    def alert_action_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of alert action integration IDs triggered by alerts.
+        """
+        return pulumi.get(self, "alert_action_ids")
+
+    @alert_action_ids.setter
+    def alert_action_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alert_action_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="restoreActionIds")
+    def restore_action_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of action integration IDs triggered upon recovery.
+        """
+        return pulumi.get(self, "restore_action_ids")
+
+    @restore_action_ids.setter
+    def restore_action_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "restore_action_ids", value)
+
+
+class EventNotifyPolicyResponsePlanRepeatNotifySettingArgsDict(TypedDict):
+    end_incident_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The incident state at which repeated notifications stop. For example: `RECOVERED`.
+    """
+    repeat_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The interval between repeated notifications, in seconds.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicyResponsePlanRepeatNotifySettingArgs:
+    def __init__(__self__, *,
+                 end_incident_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_interval: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_incident_state: The incident state at which repeated notifications stop. For example: `RECOVERED`.
+        :param pulumi.Input[_builtins.int] repeat_interval: The interval between repeated notifications, in seconds.
+        """
+        if end_incident_state is not None:
+            pulumi.set(__self__, "end_incident_state", end_incident_state)
+        if repeat_interval is not None:
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="endIncidentState")
+    def end_incident_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The incident state at which repeated notifications stop. For example: `RECOVERED`.
+        """
+        return pulumi.get(self, "end_incident_state")
+
+    @end_incident_state.setter
+    def end_incident_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_incident_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The interval between repeated notifications, in seconds.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+    @repeat_interval.setter
+    def repeat_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "repeat_interval", value)
+
+
+class EventNotifyPolicySubscriptionArgsDict(TypedDict):
+    filter_setting: NotRequired[pulumi.Input[Optional['EventNotifyPolicySubscriptionFilterSettingArgsDict']]]
+    """
+    Event content filtering. The server fills in defaults when it is not specified. See `filter_setting` below.
+    """
+    subscribe_legacy_event: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+    """
+    workspace_filter_setting: NotRequired[pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingArgsDict']]]
+    """
+    Cross-workspace event routing (global subscription). See `workspace_filter_setting` below.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicySubscriptionArgs:
+    def __init__(__self__, *,
+                 filter_setting: pulumi.Input[Optional['EventNotifyPolicySubscriptionFilterSettingArgs']] = None,
+                 subscribe_legacy_event: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_filter_setting: pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs']] = None):
+        """
+        :param pulumi.Input['EventNotifyPolicySubscriptionFilterSettingArgs'] filter_setting: Event content filtering. The server fills in defaults when it is not specified. See `filter_setting` below.
+        :param pulumi.Input[_builtins.bool] subscribe_legacy_event: Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+        :param pulumi.Input['EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs'] workspace_filter_setting: Cross-workspace event routing (global subscription). See `workspace_filter_setting` below.
+        """
+        if filter_setting is not None:
+            pulumi.set(__self__, "filter_setting", filter_setting)
+        if subscribe_legacy_event is not None:
+            pulumi.set(__self__, "subscribe_legacy_event", subscribe_legacy_event)
+        if workspace_filter_setting is not None:
+            pulumi.set(__self__, "workspace_filter_setting", workspace_filter_setting)
+
+    @_builtins.property
+    @pulumi.getter(name="filterSetting")
+    def filter_setting(self) -> pulumi.Input[Optional['EventNotifyPolicySubscriptionFilterSettingArgs']]:
+        """
+        Event content filtering. The server fills in defaults when it is not specified. See `filter_setting` below.
+        """
+        return pulumi.get(self, "filter_setting")
+
+    @filter_setting.setter
+    def filter_setting(self, value: pulumi.Input[Optional['EventNotifyPolicySubscriptionFilterSettingArgs']]):
+        pulumi.set(self, "filter_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subscribeLegacyEvent")
+    def subscribe_legacy_event(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+        """
+        return pulumi.get(self, "subscribe_legacy_event")
+
+    @subscribe_legacy_event.setter
+    def subscribe_legacy_event(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "subscribe_legacy_event", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceFilterSetting")
+    def workspace_filter_setting(self) -> pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs']]:
+        """
+        Cross-workspace event routing (global subscription). See `workspace_filter_setting` below.
+        """
+        return pulumi.get(self, "workspace_filter_setting")
+
+    @workspace_filter_setting.setter
+    def workspace_filter_setting(self, value: pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs']]):
+        pulumi.set(self, "workspace_filter_setting", value)
+
+
+class EventNotifyPolicySubscriptionFilterSettingArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionFilterSettingConditionArgsDict']]]]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    relation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class EventNotifyPolicySubscriptionFilterSettingArgs:
+    def __init__(__self__, *,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionFilterSettingConditionArgs']]]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 relation: pulumi.Input[Optional[_builtins.str]] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionFilterSettingConditionArgs']]]]:
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionFilterSettingConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "relation", value)
+
+
+class EventNotifyPolicySubscriptionFilterSettingConditionArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class EventNotifyPolicySubscriptionFilterSettingConditionArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 op: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "op", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingArgsDict(TypedDict):
+    tag_selector: NotRequired[pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgsDict']]]
+    """
+    The tag selector. See `tag_selector` below.
+    """
+    workspace_uuids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of workspace UUIDs.
+    """
+
+@pulumi.input_type
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs:
+    def __init__(__self__, *,
+                 tag_selector: pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs']] = None,
+                 workspace_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs'] tag_selector: The tag selector. See `tag_selector` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] workspace_uuids: The list of workspace UUIDs.
+        """
+        if tag_selector is not None:
+            pulumi.set(__self__, "tag_selector", tag_selector)
+        if workspace_uuids is not None:
+            pulumi.set(__self__, "workspace_uuids", workspace_uuids)
+
+    @_builtins.property
+    @pulumi.getter(name="tagSelector")
+    def tag_selector(self) -> pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs']]:
+        """
+        The tag selector. See `tag_selector` below.
+        """
+        return pulumi.get(self, "tag_selector")
+
+    @tag_selector.setter
+    def tag_selector(self, value: pulumi.Input[Optional['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs']]):
+        pulumi.set(self, "tag_selector", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuids")
+    def workspace_uuids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of workspace UUIDs.
+        """
+        return pulumi.get(self, "workspace_uuids")
+
+    @workspace_uuids.setter
+    def workspace_uuids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "workspace_uuids", value)
+
+
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgsDict']]]]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    relation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs:
+    def __init__(__self__, *,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs']]]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 relation: pulumi.Input[Optional[_builtins.str]] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs']]]]:
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "relation", value)
+
+
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 op: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "op", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class EventRuleContactParameterArgsDict(TypedDict):

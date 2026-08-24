@@ -78,23 +78,46 @@ import (
 // APIG Http Api can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:apig/httpApi:HttpApi example <id>
+// $ pulumi import alicloud:apig/httpApi:HttpApi example <http_api_id>
 // ```
 type HttpApi struct {
 	pulumi.CustomResourceState
 
-	// API path
+	// AI API protocols. Currently the supported value is `OpenAI/v1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	AiProtocols pulumi.StringArrayOutput `pulumi:"aiProtocols"`
+	// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	BasePath pulumi.StringPtrOutput `pulumi:"basePath"`
-	// Description of API
+	// API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	DeployConfigs pulumi.StringArrayOutput `pulumi:"deployConfigs"`
+	// API description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the resource
+	// Whether to enable authentication.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	EnableAuth pulumi.BoolPtrOutput `pulumi:"enableAuth"`
+	// Perform an exact search by name.
 	HttpApiName pulumi.StringOutput `pulumi:"httpApiName"`
-	// API protocol
+	// AI model category
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	ModelCategory pulumi.StringPtrOutput `pulumi:"modelCategory"`
+	// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
-	// The ID of the resource group
+	// The ID of the resource group. It can be modified to migrate the resource to another resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// API type
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+	// - Http
+	// - Rest
+	// - LLM
+	// - WebSocket
+	// - HttpIngress
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewHttpApi registers a new resource with the given unique name, arguments, and options.
@@ -109,6 +132,9 @@ func NewHttpApi(ctx *pulumi.Context,
 	}
 	if args.Protocols == nil {
 		return nil, errors.New("invalid value for required argument 'Protocols'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpApi
@@ -133,32 +159,78 @@ func GetHttpApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpApi resources.
 type httpApiState struct {
-	// API path
+	// AI API protocols. Currently the supported value is `OpenAI/v1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	AiProtocols []string `pulumi:"aiProtocols"`
+	// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	BasePath *string `pulumi:"basePath"`
-	// Description of API
+	// API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	DeployConfigs []string `pulumi:"deployConfigs"`
+	// API description.
 	Description *string `pulumi:"description"`
-	// The name of the resource
+	// Whether to enable authentication.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	EnableAuth *bool `pulumi:"enableAuth"`
+	// Perform an exact search by name.
 	HttpApiName *string `pulumi:"httpApiName"`
-	// API protocol
+	// AI model category
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	ModelCategory *string `pulumi:"modelCategory"`
+	// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
 	Protocols []string `pulumi:"protocols"`
-	// The ID of the resource group
+	// The ID of the resource group. It can be modified to migrate the resource to another resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// API type
+	// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+	// - Http
+	// - Rest
+	// - LLM
+	// - WebSocket
+	// - HttpIngress
 	Type *string `pulumi:"type"`
 }
 
 type HttpApiState struct {
-	// API path
+	// AI API protocols. Currently the supported value is `OpenAI/v1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	AiProtocols pulumi.StringArrayInput
+	// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	BasePath pulumi.StringPtrInput
-	// Description of API
+	// API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	DeployConfigs pulumi.StringArrayInput
+	// API description.
 	Description pulumi.StringPtrInput
-	// The name of the resource
+	// Whether to enable authentication.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	EnableAuth pulumi.BoolPtrInput
+	// Perform an exact search by name.
 	HttpApiName pulumi.StringPtrInput
-	// API protocol
+	// AI model category
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	ModelCategory pulumi.StringPtrInput
+	// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
 	Protocols pulumi.StringArrayInput
-	// The ID of the resource group
+	// The ID of the resource group. It can be modified to migrate the resource to another resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// API type
+	// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+	// - Http
+	// - Rest
+	// - LLM
+	// - WebSocket
+	// - HttpIngress
 	Type pulumi.StringPtrInput
 }
 
@@ -167,34 +239,80 @@ func (HttpApiState) ElementType() reflect.Type {
 }
 
 type httpApiArgs struct {
-	// API path
+	// AI API protocols. Currently the supported value is `OpenAI/v1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	AiProtocols []string `pulumi:"aiProtocols"`
+	// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	BasePath *string `pulumi:"basePath"`
-	// Description of API
+	// API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	DeployConfigs []string `pulumi:"deployConfigs"`
+	// API description.
 	Description *string `pulumi:"description"`
-	// The name of the resource
+	// Whether to enable authentication.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	EnableAuth *bool `pulumi:"enableAuth"`
+	// Perform an exact search by name.
 	HttpApiName string `pulumi:"httpApiName"`
-	// API protocol
+	// AI model category
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	ModelCategory *string `pulumi:"modelCategory"`
+	// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
 	Protocols []string `pulumi:"protocols"`
-	// The ID of the resource group
+	// The ID of the resource group. It can be modified to migrate the resource to another resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// API type
-	Type *string `pulumi:"type"`
+	// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+	// - Http
+	// - Rest
+	// - LLM
+	// - WebSocket
+	// - HttpIngress
+	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a HttpApi resource.
 type HttpApiArgs struct {
-	// API path
+	// AI API protocols. Currently the supported value is `OpenAI/v1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	AiProtocols pulumi.StringArrayInput
+	// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	BasePath pulumi.StringPtrInput
-	// Description of API
+	// API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	DeployConfigs pulumi.StringArrayInput
+	// API description.
 	Description pulumi.StringPtrInput
-	// The name of the resource
+	// Whether to enable authentication.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	EnableAuth pulumi.BoolPtrInput
+	// Perform an exact search by name.
 	HttpApiName pulumi.StringInput
-	// API protocol
+	// AI model category
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	ModelCategory pulumi.StringPtrInput
+	// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
 	Protocols pulumi.StringArrayInput
-	// The ID of the resource group
+	// The ID of the resource group. It can be modified to migrate the resource to another resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// API type
-	Type pulumi.StringPtrInput
+	// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+	// - Http
+	// - Rest
+	// - LLM
+	// - WebSocket
+	// - HttpIngress
+	Type pulumi.StringInput
 }
 
 func (HttpApiArgs) ElementType() reflect.Type {
@@ -284,34 +402,69 @@ func (o HttpApiOutput) ToHttpApiOutputWithContext(ctx context.Context) HttpApiOu
 	return o
 }
 
-// API path
+// AI API protocols. Currently the supported value is `OpenAI/v1`.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+func (o HttpApiOutput) AiProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpApi) pulumi.StringArrayOutput { return v.AiProtocols }).(pulumi.StringArrayOutput)
+}
+
+// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o HttpApiOutput) BasePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpApi) pulumi.StringPtrOutput { return v.BasePath }).(pulumi.StringPtrOutput)
 }
 
-// Description of API
+// API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+//
+// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+func (o HttpApiOutput) DeployConfigs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpApi) pulumi.StringArrayOutput { return v.DeployConfigs }).(pulumi.StringArrayOutput)
+}
+
+// API description.
 func (o HttpApiOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpApi) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Whether to enable authentication.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+func (o HttpApiOutput) EnableAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpApi) pulumi.BoolPtrOutput { return v.EnableAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Perform an exact search by name.
 func (o HttpApiOutput) HttpApiName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpApi) pulumi.StringOutput { return v.HttpApiName }).(pulumi.StringOutput)
 }
 
-// API protocol
+// AI model category
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+func (o HttpApiOutput) ModelCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpApi) pulumi.StringPtrOutput { return v.ModelCategory }).(pulumi.StringPtrOutput)
+}
+
+// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
 func (o HttpApiOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpApi) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the resource group
+// The ID of the resource group. It can be modified to migrate the resource to another resource group.
 func (o HttpApiOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpApi) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// API type
-func (o HttpApiOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpApi) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+// - Http
+// - Rest
+// - LLM
+// - WebSocket
+// - HttpIngress
+func (o HttpApiOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpApi) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type HttpApiArrayOutput struct{ *pulumi.OutputState }

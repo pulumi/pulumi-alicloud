@@ -6,7 +6,10 @@ package com.pulumi.alicloud.ens;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ens.inputs.GetKeyPairsArgs;
 import com.pulumi.alicloud.ens.inputs.GetKeyPairsPlainArgs;
+import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsPlainArgs;
 import com.pulumi.alicloud.ens.outputs.GetKeyPairsResult;
+import com.pulumi.alicloud.ens.outputs.GetSecurityGroupsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -244,5 +247,327 @@ public final class EnsFunctions {
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ens/getKeyPairs:getKeyPairs", TypeShape.of(GetKeyPairsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGroupsResult> getSecurityGroups() {
+        return getSecurityGroups(GetSecurityGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain() {
+        return getSecurityGroupsPlain(GetSecurityGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args) {
+        return getSecurityGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain(GetSecurityGroupsPlainArgs args) {
+        return getSecurityGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getSecurityGroups:getSecurityGroups", TypeShape.of(GetSecurityGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getSecurityGroups:getSecurityGroups", TypeShape.of(GetSecurityGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Security Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .securityGroupName("tf-example")
+     *             .ids("sg-xxx")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain(GetSecurityGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ens/getSecurityGroups:getSecurityGroups", TypeShape.of(GetSecurityGroupsResult.class), args, Utilities.withVersion(options));
     }
 }

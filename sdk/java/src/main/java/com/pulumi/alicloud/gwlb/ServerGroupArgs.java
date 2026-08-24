@@ -125,6 +125,27 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+     * 
+     * - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+     * - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+     * 
+     */
+    @Import(name="serverFailoverMode")
+    private @Nullable Output<String> serverFailoverMode;
+
+    /**
+     * @return The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+     * 
+     * - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+     * - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+     * 
+     */
+    public Optional<Output<String>> serverFailoverMode() {
+        return Optional.ofNullable(this.serverFailoverMode);
+    }
+
+    /**
      * The server group name.
      * 
      * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -232,6 +253,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.protocol = $.protocol;
         this.resourceGroupId = $.resourceGroupId;
         this.scheduler = $.scheduler;
+        this.serverFailoverMode = $.serverFailoverMode;
         this.serverGroupName = $.serverGroupName;
         this.serverGroupType = $.serverGroupType;
         this.servers = $.servers;
@@ -393,6 +415,33 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scheduler(String scheduler) {
             return scheduler(Output.of(scheduler));
+        }
+
+        /**
+         * @param serverFailoverMode The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+         * 
+         * - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+         * - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverFailoverMode(@Nullable Output<String> serverFailoverMode) {
+            $.serverFailoverMode = serverFailoverMode;
+            return this;
+        }
+
+        /**
+         * @param serverFailoverMode The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+         * 
+         * - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+         * - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverFailoverMode(String serverFailoverMode) {
+            return serverFailoverMode(Output.of(serverFailoverMode));
         }
 
         /**

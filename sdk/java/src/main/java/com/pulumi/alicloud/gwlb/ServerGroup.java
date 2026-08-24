@@ -273,6 +273,26 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.scheduler;
     }
     /**
+     * The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+     * 
+     * - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+     * - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+     * 
+     */
+    @Export(name="serverFailoverMode", refs={String.class}, tree="[0]")
+    private Output<String> serverFailoverMode;
+
+    /**
+     * @return The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+     * 
+     * - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+     * - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+     * 
+     */
+    public Output<String> serverFailoverMode() {
+        return this.serverFailoverMode;
+    }
+    /**
      * The server group name.
      * 
      * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.

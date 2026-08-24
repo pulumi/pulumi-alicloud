@@ -13,12 +13,16 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'InstanceDataDisk',
     'InstanceSystemDisk',
     'LoadBalancerBackendServer',
+    'SecurityGroupPermission',
     'GetKeyPairsPairResult',
+    'GetSecurityGroupsGroupResult',
+    'GetSecurityGroupsGroupPermissionResult',
 ]
 
 @pulumi.output_type
@@ -238,6 +242,200 @@ class LoadBalancerBackendServer(dict):
 
 
 @pulumi.output_type
+class SecurityGroupPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creationTime":
+            suggest = "creation_time"
+        elif key == "destCidrIp":
+            suggest = "dest_cidr_ip"
+        elif key == "ipProtocol":
+            suggest = "ip_protocol"
+        elif key == "ipv6DestCidrIp":
+            suggest = "ipv6_dest_cidr_ip"
+        elif key == "ipv6SourceCidrIp":
+            suggest = "ipv6_source_cidr_ip"
+        elif key == "portRange":
+            suggest = "port_range"
+        elif key == "sourceCidrIp":
+            suggest = "source_cidr_ip"
+        elif key == "sourcePortRange":
+            suggest = "source_port_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGroupPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGroupPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGroupPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 creation_time: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 dest_cidr_ip: Optional[_builtins.str] = None,
+                 direction: Optional[_builtins.str] = None,
+                 ip_protocol: Optional[_builtins.str] = None,
+                 ipv6_dest_cidr_ip: Optional[_builtins.str] = None,
+                 ipv6_source_cidr_ip: Optional[_builtins.str] = None,
+                 policy: Optional[_builtins.str] = None,
+                 port_range: Optional[_builtins.str] = None,
+                 priority: Optional[_builtins.int] = None,
+                 source_cidr_ip: Optional[_builtins.str] = None,
+                 source_port_range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str creation_time: Creation time, UTC time.
+        :param _builtins.str description: Rule description information
+        :param _builtins.str dest_cidr_ip: Destination IP address segment for outbound authorization
+               Example value: 0.0.0.0/0
+        :param _builtins.str direction: Authorized direction
+               Example value: ingress
+        :param _builtins.str ip_protocol: IP protocol
+               Example value: TCP
+        :param _builtins.str ipv6_dest_cidr_ip: The target IPv6 address segment.
+        :param _builtins.str ipv6_source_cidr_ip: The source IPv6 address segment.
+        :param _builtins.str policy: Authorization Policy
+               Example value: Accept
+        :param _builtins.str port_range: Source end port range.
+        :param _builtins.int priority: Rule Priority
+               Example value: 1
+        :param _builtins.str source_cidr_ip: Source IP address segment, used for inbound authorization
+               Example value: 0.0.0.0/0
+        :param _builtins.str source_port_range: The port range of the source security group.
+        """
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dest_cidr_ip is not None:
+            pulumi.set(__self__, "dest_cidr_ip", dest_cidr_ip)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ipv6_dest_cidr_ip is not None:
+            pulumi.set(__self__, "ipv6_dest_cidr_ip", ipv6_dest_cidr_ip)
+        if ipv6_source_cidr_ip is not None:
+            pulumi.set(__self__, "ipv6_source_cidr_ip", ipv6_source_cidr_ip)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if source_cidr_ip is not None:
+            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+        if source_port_range is not None:
+            pulumi.set(__self__, "source_port_range", source_port_range)
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[_builtins.str]:
+        """
+        Creation time, UTC time.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Rule description information
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="destCidrIp")
+    def dest_cidr_ip(self) -> Optional[_builtins.str]:
+        """
+        Destination IP address segment for outbound authorization
+        Example value: 0.0.0.0/0
+        """
+        return pulumi.get(self, "dest_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Authorized direction
+        Example value: ingress
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[_builtins.str]:
+        """
+        IP protocol
+        Example value: TCP
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6DestCidrIp")
+    def ipv6_dest_cidr_ip(self) -> Optional[_builtins.str]:
+        """
+        The target IPv6 address segment.
+        """
+        return pulumi.get(self, "ipv6_dest_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6SourceCidrIp")
+    def ipv6_source_cidr_ip(self) -> Optional[_builtins.str]:
+        """
+        The source IPv6 address segment.
+        """
+        return pulumi.get(self, "ipv6_source_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Authorization Policy
+        Example value: Accept
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[_builtins.str]:
+        """
+        Source end port range.
+        """
+        return pulumi.get(self, "port_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[_builtins.int]:
+        """
+        Rule Priority
+        Example value: 1
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> Optional[_builtins.str]:
+        """
+        Source IP address segment, used for inbound authorization
+        Example value: 0.0.0.0/0
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> Optional[_builtins.str]:
+        """
+        The port range of the source security group.
+        """
+        return pulumi.get(self, "source_port_range")
+
+
+@pulumi.output_type
 class GetKeyPairsPairResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
@@ -297,5 +495,228 @@ class GetKeyPairsPairResult(dict):
         The version number.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetSecurityGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 instance_count: _builtins.int,
+                 permissions: Sequence['outputs.GetSecurityGroupsGroupPermissionResult'],
+                 security_group_id: _builtins.str,
+                 security_group_name: _builtins.str):
+        """
+        :param _builtins.str create_time: Creation time of the security group, UTC time.
+        :param _builtins.str description: Rule description information.
+        :param _builtins.str id: The ID of the Security Group.
+        :param _builtins.int instance_count: Number of instances associated with a security group.
+        :param Sequence['GetSecurityGroupsGroupPermissionArgs'] permissions: A collection of rules for a security group instance.
+        :param _builtins.str security_group_id: The ID of the Security Group.
+        :param _builtins.str security_group_name: The name of the Security Group.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_count", instance_count)
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_name", security_group_name)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Creation time of the security group, UTC time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Rule description information.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Security Group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceCount")
+    def instance_count(self) -> _builtins.int:
+        """
+        Number of instances associated with a security group.
+        """
+        return pulumi.get(self, "instance_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> Sequence['outputs.GetSecurityGroupsGroupPermissionResult']:
+        """
+        A collection of rules for a security group instance.
+        """
+        return pulumi.get(self, "permissions")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        The ID of the Security Group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> _builtins.str:
+        """
+        The name of the Security Group.
+        """
+        return pulumi.get(self, "security_group_name")
+
+
+@pulumi.output_type
+class GetSecurityGroupsGroupPermissionResult(dict):
+    def __init__(__self__, *,
+                 creation_time: _builtins.str,
+                 description: _builtins.str,
+                 dest_cidr_ip: _builtins.str,
+                 direction: _builtins.str,
+                 ip_protocol: _builtins.str,
+                 ipv6_dest_cidr_ip: _builtins.str,
+                 ipv6_source_cidr_ip: _builtins.str,
+                 policy: _builtins.str,
+                 port_range: _builtins.str,
+                 priority: _builtins.int,
+                 source_cidr_ip: _builtins.str,
+                 source_port_range: _builtins.str):
+        """
+        :param _builtins.str creation_time: Creation time, UTC time.
+        :param _builtins.str description: Rule description information.
+        :param _builtins.str dest_cidr_ip: Destination IP address segment for outbound authorization.
+        :param _builtins.str direction: Authorized direction.
+        :param _builtins.str ip_protocol: IP protocol.
+        :param _builtins.str ipv6_dest_cidr_ip: The target IPv6 address segment.
+        :param _builtins.str ipv6_source_cidr_ip: The source IPv6 address segment.
+        :param _builtins.str policy: Authorization Policy.
+        :param _builtins.str port_range: Source end port range.
+        :param _builtins.int priority: Rule Priority.
+        :param _builtins.str source_cidr_ip: Source IP address segment, used for inbound authorization.
+        :param _builtins.str source_port_range: The port range of the source security group.
+        """
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dest_cidr_ip", dest_cidr_ip)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "ipv6_dest_cidr_ip", ipv6_dest_cidr_ip)
+        pulumi.set(__self__, "ipv6_source_cidr_ip", ipv6_source_cidr_ip)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "port_range", port_range)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+        pulumi.set(__self__, "source_port_range", source_port_range)
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> _builtins.str:
+        """
+        Creation time, UTC time.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Rule description information.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="destCidrIp")
+    def dest_cidr_ip(self) -> _builtins.str:
+        """
+        Destination IP address segment for outbound authorization.
+        """
+        return pulumi.get(self, "dest_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Authorized direction.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> _builtins.str:
+        """
+        IP protocol.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6DestCidrIp")
+    def ipv6_dest_cidr_ip(self) -> _builtins.str:
+        """
+        The target IPv6 address segment.
+        """
+        return pulumi.get(self, "ipv6_dest_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6SourceCidrIp")
+    def ipv6_source_cidr_ip(self) -> _builtins.str:
+        """
+        The source IPv6 address segment.
+        """
+        return pulumi.get(self, "ipv6_source_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        Authorization Policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> _builtins.str:
+        """
+        Source end port range.
+        """
+        return pulumi.get(self, "port_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> _builtins.int:
+        """
+        Rule Priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> _builtins.str:
+        """
+        Source IP address segment, used for inbound authorization.
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> _builtins.str:
+        """
+        The port range of the source security group.
+        """
+        return pulumi.get(self, "source_port_range")
 
 

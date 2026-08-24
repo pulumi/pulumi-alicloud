@@ -99,6 +99,8 @@ export class Disk extends pulumi.CustomResource {
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     *
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      */
     declare public readonly enableAutoSnapshot: pulumi.Output<boolean>;
     declare public readonly encryptAlgorithm: pulumi.Output<string | undefined>;
@@ -268,6 +270,8 @@ export interface DiskState {
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     *
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      */
     enableAutoSnapshot?: pulumi.Input<boolean | undefined>;
     encryptAlgorithm?: pulumi.Input<string | undefined>;
@@ -356,6 +360,8 @@ export interface DiskArgs {
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     *
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      */
     enableAutoSnapshot?: pulumi.Input<boolean | undefined>;
     encryptAlgorithm?: pulumi.Input<string | undefined>;

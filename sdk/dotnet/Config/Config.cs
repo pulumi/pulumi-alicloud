@@ -137,6 +137,16 @@ namespace Pulumi.AliCloud
             set => _fc.Set(value);
         }
 
+        private static readonly __Value<Pulumi.AliCloud.Config.Types.Features?> _features = new __Value<Pulumi.AliCloud.Config.Types.Features?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.Features>("features"));
+        /// <summary>
+        /// Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+        /// </summary>
+        public static Pulumi.AliCloud.Config.Types.Features? Features
+        {
+            get => _features.Get();
+            set => _features.Set(value);
+        }
+
         private static readonly __Value<string?> _logEndpoint = new __Value<string?>(() => __config.Get("logEndpoint"));
         public static string? LogEndpoint
         {
@@ -251,7 +261,7 @@ namespace Pulumi.AliCloud
 
         private static readonly __Value<bool?> _skipRegionValidation = new __Value<bool?>(() => __config.GetBoolean("skipRegionValidation"));
         /// <summary>
-        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         /// </summary>
         public static bool? SkipRegionValidation
         {
@@ -934,6 +944,22 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `Region`. It's typically used to connect to custom WafOpenapi endpoints.
             /// </summary>
                 public string? WafOpenapi { get; set; } = null!;
+            }
+
+             public class Features
+             {
+            /// <summary>
+            /// The behaviour toggles of the `alicloud.ecs.Instance` resource.
+            /// </summary>
+                public Pulumi.AliCloud.Config.Types.FeaturesEcsInstance? EcsInstance { get; set; } = null!;
+            }
+
+             public class FeaturesEcsInstance
+             {
+            /// <summary>
+            /// Whether a change to `ImageId` on an `alicloud.ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+            /// </summary>
+                public bool? ReplaceOnImageUpdate { get; set; }
             }
 
              public class SignVersion

@@ -39,9 +39,7 @@ class ValueAddedServiceArgs:
                - AutoRenewal: The instance is automatically renewed.
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
-        :param pulumi.Input[_builtins.str] value_added_service: value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-               
-               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] value_added_service: The value added service type. Valid values:
         """
         pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -113,9 +111,7 @@ class ValueAddedServiceArgs:
     @pulumi.getter(name="valueAddedService")
     def value_added_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-
-        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        The value added service type. Valid values:
         """
         return pulumi.get(self, "value_added_service")
 
@@ -153,9 +149,7 @@ class _ValueAddedServiceState:
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
         :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[_builtins.str] value_added_service: value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-               
-               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] value_added_service: The value added service type. Valid values:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -270,9 +264,7 @@ class _ValueAddedServiceState:
     @pulumi.getter(name="valueAddedService")
     def value_added_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-
-        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        The value added service type. Valid values:
         """
         return pulumi.get(self, "value_added_service")
 
@@ -301,6 +293,8 @@ class ValueAddedService(pulumi.CustomResource):
         For information about KMS Value Added Service and how to use it, see [What is Value Added Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
 
         > **NOTE:** Available since v1.267.0.
+
+        > **NOTE:** A value added service can be purchased only once per region while it is in effect. If the account already holds it, for example because it was purchased in the console, a duplicate order is charged and then refunded automatically and its instance never becomes effective, so creating this resource fails rather than tracking an instance that does not work. Import the existing service instead of creating it.
 
         ## Example Usage
 
@@ -347,9 +341,7 @@ class ValueAddedService(pulumi.CustomResource):
                - AutoRenewal: The instance is automatically renewed.
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
-        :param pulumi.Input[_builtins.str] value_added_service: value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-               
-               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] value_added_service: The value added service type. Valid values:
         """
         ...
     @overload
@@ -365,6 +357,8 @@ class ValueAddedService(pulumi.CustomResource):
         For information about KMS Value Added Service and how to use it, see [What is Value Added Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
 
         > **NOTE:** Available since v1.267.0.
+
+        > **NOTE:** A value added service can be purchased only once per region while it is in effect. If the account already holds it, for example because it was purchased in the console, a duplicate order is charged and then refunded automatically and its instance never becomes effective, so creating this resource fails rather than tracking an instance that does not work. Import the existing service instead of creating it.
 
         ## Example Usage
 
@@ -476,9 +470,7 @@ class ValueAddedService(pulumi.CustomResource):
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
         :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[_builtins.str] value_added_service: value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-               
-               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] value_added_service: The value added service type. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -562,9 +554,7 @@ class ValueAddedService(pulumi.CustomResource):
     @pulumi.getter(name="valueAddedService")
     def value_added_service(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-
-        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        The value added service type. Valid values:
         """
         return pulumi.get(self, "value_added_service")
 

@@ -122,6 +122,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> ClusterBackupId { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `Appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+        /// </summary>
+        [Output("config")]
+        public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
+
+        /// <summary>
         /// The internal endpoint of the instance.
         /// </summary>
         [Output("connectionDomain")]
@@ -213,6 +219,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("intranetBandwidth")]
         public Output<int> IntranetBandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        /// </summary>
+        [Output("maintainEndTime")]
+        public Output<string> MaintainEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        /// </summary>
+        [Output("maintainStartTime")]
+        public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of connections supported by the instance.
@@ -541,6 +559,18 @@ namespace Pulumi.AliCloud.Redis
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
 
+        [Input("config")]
+        private InputMap<string>? _config;
+
+        /// <summary>
+        /// The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `Appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+        /// </summary>
+        public InputMap<string> Config
+        {
+            get => _config ?? (_config = new InputMap<string>());
+            set => _config = value;
+        }
+
         /// <summary>
         /// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
         /// </summary>
@@ -621,6 +651,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("intranetBandwidth")]
         public Input<int>? IntranetBandwidth { get; set; }
+
+        /// <summary>
+        /// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        /// </summary>
+        [Input("maintainEndTime")]
+        public Input<string>? MaintainEndTime { get; set; }
+
+        /// <summary>
+        /// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        /// </summary>
+        [Input("maintainStartTime")]
+        public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
         /// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
@@ -899,6 +941,18 @@ namespace Pulumi.AliCloud.Redis
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
 
+        [Input("config")]
+        private InputMap<string>? _config;
+
+        /// <summary>
+        /// The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `Appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+        /// </summary>
+        public InputMap<string> Config
+        {
+            get => _config ?? (_config = new InputMap<string>());
+            set => _config = value;
+        }
+
         /// <summary>
         /// The internal endpoint of the instance.
         /// </summary>
@@ -991,6 +1045,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("intranetBandwidth")]
         public Input<int>? IntranetBandwidth { get; set; }
+
+        /// <summary>
+        /// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        /// </summary>
+        [Input("maintainEndTime")]
+        public Input<string>? MaintainEndTime { get; set; }
+
+        /// <summary>
+        /// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        /// </summary>
+        [Input("maintainStartTime")]
+        public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
         /// The maximum number of connections supported by the instance.

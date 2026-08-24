@@ -185,7 +185,11 @@ public class Disk extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      * 
+     * @deprecated
+     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * 
      */
+    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
     @Export(name="enableAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAutoSnapshot;
 

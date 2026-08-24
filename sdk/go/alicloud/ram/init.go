@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ram/accessKey:AccessKey":
 		r = &AccessKey{}
+	case "alicloud:ram/accessKeyPolicy:AccessKeyPolicy":
+		r = &AccessKeyPolicy{}
 	case "alicloud:ram/accountAlias:AccountAlias":
 		r = &AccountAlias{}
 	case "alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy":
@@ -73,6 +75,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ram/accessKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ram/accessKeyPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

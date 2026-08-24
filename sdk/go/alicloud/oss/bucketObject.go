@@ -14,6 +14,8 @@ import (
 
 // Provides a resource to put a object(content or file) to a oss bucket.
 //
+// > **NOTE:** Available since v0.1.1.
+//
 // ## Example Usage
 //
 // ### Uploading a file to a bucket
@@ -144,7 +146,7 @@ type BucketObject struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
 	ObjectWormMode pulumi.StringOutput `pulumi:"objectWormMode"`
 	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
 	//
@@ -220,7 +222,7 @@ type bucketObjectState struct {
 	Key *string `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
 	ObjectWormMode *string `pulumi:"objectWormMode"`
 	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
 	//
@@ -261,7 +263,7 @@ type BucketObjectState struct {
 	Key pulumi.StringPtrInput
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
 	KmsKeyId pulumi.StringPtrInput
-	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
 	ObjectWormMode pulumi.StringPtrInput
 	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
 	//
@@ -302,7 +304,7 @@ type bucketObjectArgs struct {
 	Key string `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
 	ObjectWormMode *string `pulumi:"objectWormMode"`
 	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
 	//
@@ -338,7 +340,7 @@ type BucketObjectArgs struct {
 	Key pulumi.StringInput
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
 	KmsKeyId pulumi.StringPtrInput
-	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
 	ObjectWormMode pulumi.StringPtrInput
 	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
 	//
@@ -502,7 +504,7 @@ func (o BucketObjectOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `objectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
 func (o BucketObjectOutput) ObjectWormMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ObjectWormMode }).(pulumi.StringOutput)
 }

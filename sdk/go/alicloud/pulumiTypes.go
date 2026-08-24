@@ -3047,6 +3047,280 @@ func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOu
 	}).(ProviderEndpointOutput)
 }
 
+type ProviderFeatures struct {
+	// The behaviour toggles of the `ecs.Instance` resource.
+	EcsInstance *ProviderFeaturesEcsInstance `pulumi:"ecsInstance"`
+}
+
+// ProviderFeaturesInput is an input type that accepts ProviderFeaturesArgs and ProviderFeaturesOutput values.
+// You can construct a concrete instance of `ProviderFeaturesInput` via:
+//
+//	ProviderFeaturesArgs{...}
+type ProviderFeaturesInput interface {
+	pulumi.Input
+
+	ToProviderFeaturesOutput() ProviderFeaturesOutput
+	ToProviderFeaturesOutputWithContext(context.Context) ProviderFeaturesOutput
+}
+
+type ProviderFeaturesArgs struct {
+	// The behaviour toggles of the `ecs.Instance` resource.
+	EcsInstance ProviderFeaturesEcsInstancePtrInput `pulumi:"ecsInstance"`
+}
+
+func (ProviderFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderFeatures)(nil)).Elem()
+}
+
+func (i ProviderFeaturesArgs) ToProviderFeaturesOutput() ProviderFeaturesOutput {
+	return i.ToProviderFeaturesOutputWithContext(context.Background())
+}
+
+func (i ProviderFeaturesArgs) ToProviderFeaturesOutputWithContext(ctx context.Context) ProviderFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesOutput)
+}
+
+func (i ProviderFeaturesArgs) ToProviderFeaturesPtrOutput() ProviderFeaturesPtrOutput {
+	return i.ToProviderFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderFeaturesArgs) ToProviderFeaturesPtrOutputWithContext(ctx context.Context) ProviderFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesOutput).ToProviderFeaturesPtrOutputWithContext(ctx)
+}
+
+// ProviderFeaturesPtrInput is an input type that accepts ProviderFeaturesArgs, ProviderFeaturesPtr and ProviderFeaturesPtrOutput values.
+// You can construct a concrete instance of `ProviderFeaturesPtrInput` via:
+//
+//	        ProviderFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToProviderFeaturesPtrOutput() ProviderFeaturesPtrOutput
+	ToProviderFeaturesPtrOutputWithContext(context.Context) ProviderFeaturesPtrOutput
+}
+
+type providerFeaturesPtrType ProviderFeaturesArgs
+
+func ProviderFeaturesPtr(v *ProviderFeaturesArgs) ProviderFeaturesPtrInput {
+	return (*providerFeaturesPtrType)(v)
+}
+
+func (*providerFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderFeatures)(nil)).Elem()
+}
+
+func (i *providerFeaturesPtrType) ToProviderFeaturesPtrOutput() ProviderFeaturesPtrOutput {
+	return i.ToProviderFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *providerFeaturesPtrType) ToProviderFeaturesPtrOutputWithContext(ctx context.Context) ProviderFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesPtrOutput)
+}
+
+type ProviderFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ProviderFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderFeatures)(nil)).Elem()
+}
+
+func (o ProviderFeaturesOutput) ToProviderFeaturesOutput() ProviderFeaturesOutput {
+	return o
+}
+
+func (o ProviderFeaturesOutput) ToProviderFeaturesOutputWithContext(ctx context.Context) ProviderFeaturesOutput {
+	return o
+}
+
+func (o ProviderFeaturesOutput) ToProviderFeaturesPtrOutput() ProviderFeaturesPtrOutput {
+	return o.ToProviderFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderFeaturesOutput) ToProviderFeaturesPtrOutputWithContext(ctx context.Context) ProviderFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderFeatures) *ProviderFeatures {
+		return &v
+	}).(ProviderFeaturesPtrOutput)
+}
+
+// The behaviour toggles of the `ecs.Instance` resource.
+func (o ProviderFeaturesOutput) EcsInstance() ProviderFeaturesEcsInstancePtrOutput {
+	return o.ApplyT(func(v ProviderFeatures) *ProviderFeaturesEcsInstance { return v.EcsInstance }).(ProviderFeaturesEcsInstancePtrOutput)
+}
+
+type ProviderFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderFeatures)(nil)).Elem()
+}
+
+func (o ProviderFeaturesPtrOutput) ToProviderFeaturesPtrOutput() ProviderFeaturesPtrOutput {
+	return o
+}
+
+func (o ProviderFeaturesPtrOutput) ToProviderFeaturesPtrOutputWithContext(ctx context.Context) ProviderFeaturesPtrOutput {
+	return o
+}
+
+func (o ProviderFeaturesPtrOutput) Elem() ProviderFeaturesOutput {
+	return o.ApplyT(func(v *ProviderFeatures) ProviderFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderFeatures
+		return ret
+	}).(ProviderFeaturesOutput)
+}
+
+// The behaviour toggles of the `ecs.Instance` resource.
+func (o ProviderFeaturesPtrOutput) EcsInstance() ProviderFeaturesEcsInstancePtrOutput {
+	return o.ApplyT(func(v *ProviderFeatures) *ProviderFeaturesEcsInstance {
+		if v == nil {
+			return nil
+		}
+		return v.EcsInstance
+	}).(ProviderFeaturesEcsInstancePtrOutput)
+}
+
+type ProviderFeaturesEcsInstance struct {
+	// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+	ReplaceOnImageUpdate *bool `pulumi:"replaceOnImageUpdate"`
+}
+
+// ProviderFeaturesEcsInstanceInput is an input type that accepts ProviderFeaturesEcsInstanceArgs and ProviderFeaturesEcsInstanceOutput values.
+// You can construct a concrete instance of `ProviderFeaturesEcsInstanceInput` via:
+//
+//	ProviderFeaturesEcsInstanceArgs{...}
+type ProviderFeaturesEcsInstanceInput interface {
+	pulumi.Input
+
+	ToProviderFeaturesEcsInstanceOutput() ProviderFeaturesEcsInstanceOutput
+	ToProviderFeaturesEcsInstanceOutputWithContext(context.Context) ProviderFeaturesEcsInstanceOutput
+}
+
+type ProviderFeaturesEcsInstanceArgs struct {
+	// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+	ReplaceOnImageUpdate pulumi.BoolPtrInput `pulumi:"replaceOnImageUpdate"`
+}
+
+func (ProviderFeaturesEcsInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderFeaturesEcsInstance)(nil)).Elem()
+}
+
+func (i ProviderFeaturesEcsInstanceArgs) ToProviderFeaturesEcsInstanceOutput() ProviderFeaturesEcsInstanceOutput {
+	return i.ToProviderFeaturesEcsInstanceOutputWithContext(context.Background())
+}
+
+func (i ProviderFeaturesEcsInstanceArgs) ToProviderFeaturesEcsInstanceOutputWithContext(ctx context.Context) ProviderFeaturesEcsInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesEcsInstanceOutput)
+}
+
+func (i ProviderFeaturesEcsInstanceArgs) ToProviderFeaturesEcsInstancePtrOutput() ProviderFeaturesEcsInstancePtrOutput {
+	return i.ToProviderFeaturesEcsInstancePtrOutputWithContext(context.Background())
+}
+
+func (i ProviderFeaturesEcsInstanceArgs) ToProviderFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) ProviderFeaturesEcsInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesEcsInstanceOutput).ToProviderFeaturesEcsInstancePtrOutputWithContext(ctx)
+}
+
+// ProviderFeaturesEcsInstancePtrInput is an input type that accepts ProviderFeaturesEcsInstanceArgs, ProviderFeaturesEcsInstancePtr and ProviderFeaturesEcsInstancePtrOutput values.
+// You can construct a concrete instance of `ProviderFeaturesEcsInstancePtrInput` via:
+//
+//	        ProviderFeaturesEcsInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderFeaturesEcsInstancePtrInput interface {
+	pulumi.Input
+
+	ToProviderFeaturesEcsInstancePtrOutput() ProviderFeaturesEcsInstancePtrOutput
+	ToProviderFeaturesEcsInstancePtrOutputWithContext(context.Context) ProviderFeaturesEcsInstancePtrOutput
+}
+
+type providerFeaturesEcsInstancePtrType ProviderFeaturesEcsInstanceArgs
+
+func ProviderFeaturesEcsInstancePtr(v *ProviderFeaturesEcsInstanceArgs) ProviderFeaturesEcsInstancePtrInput {
+	return (*providerFeaturesEcsInstancePtrType)(v)
+}
+
+func (*providerFeaturesEcsInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderFeaturesEcsInstance)(nil)).Elem()
+}
+
+func (i *providerFeaturesEcsInstancePtrType) ToProviderFeaturesEcsInstancePtrOutput() ProviderFeaturesEcsInstancePtrOutput {
+	return i.ToProviderFeaturesEcsInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *providerFeaturesEcsInstancePtrType) ToProviderFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) ProviderFeaturesEcsInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesEcsInstancePtrOutput)
+}
+
+type ProviderFeaturesEcsInstanceOutput struct{ *pulumi.OutputState }
+
+func (ProviderFeaturesEcsInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderFeaturesEcsInstance)(nil)).Elem()
+}
+
+func (o ProviderFeaturesEcsInstanceOutput) ToProviderFeaturesEcsInstanceOutput() ProviderFeaturesEcsInstanceOutput {
+	return o
+}
+
+func (o ProviderFeaturesEcsInstanceOutput) ToProviderFeaturesEcsInstanceOutputWithContext(ctx context.Context) ProviderFeaturesEcsInstanceOutput {
+	return o
+}
+
+func (o ProviderFeaturesEcsInstanceOutput) ToProviderFeaturesEcsInstancePtrOutput() ProviderFeaturesEcsInstancePtrOutput {
+	return o.ToProviderFeaturesEcsInstancePtrOutputWithContext(context.Background())
+}
+
+func (o ProviderFeaturesEcsInstanceOutput) ToProviderFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) ProviderFeaturesEcsInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderFeaturesEcsInstance) *ProviderFeaturesEcsInstance {
+		return &v
+	}).(ProviderFeaturesEcsInstancePtrOutput)
+}
+
+// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+func (o ProviderFeaturesEcsInstanceOutput) ReplaceOnImageUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderFeaturesEcsInstance) *bool { return v.ReplaceOnImageUpdate }).(pulumi.BoolPtrOutput)
+}
+
+type ProviderFeaturesEcsInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderFeaturesEcsInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderFeaturesEcsInstance)(nil)).Elem()
+}
+
+func (o ProviderFeaturesEcsInstancePtrOutput) ToProviderFeaturesEcsInstancePtrOutput() ProviderFeaturesEcsInstancePtrOutput {
+	return o
+}
+
+func (o ProviderFeaturesEcsInstancePtrOutput) ToProviderFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) ProviderFeaturesEcsInstancePtrOutput {
+	return o
+}
+
+func (o ProviderFeaturesEcsInstancePtrOutput) Elem() ProviderFeaturesEcsInstanceOutput {
+	return o.ApplyT(func(v *ProviderFeaturesEcsInstance) ProviderFeaturesEcsInstance {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderFeaturesEcsInstance
+		return ret
+	}).(ProviderFeaturesEcsInstanceOutput)
+}
+
+// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+func (o ProviderFeaturesEcsInstancePtrOutput) ReplaceOnImageUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderFeaturesEcsInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceOnImageUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ProviderSignVersion struct {
 	Oss *string `pulumi:"oss"`
 	Sls *string `pulumi:"sls"`
@@ -4664,6 +4938,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleWithOidcPtrInput)(nil)).Elem(), ProviderAssumeRoleWithOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderFeaturesInput)(nil)).Elem(), ProviderFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderFeaturesPtrInput)(nil)).Elem(), ProviderFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderFeaturesEcsInstanceInput)(nil)).Elem(), ProviderFeaturesEcsInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderFeaturesEcsInstancePtrInput)(nil)).Elem(), ProviderFeaturesEcsInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionInput)(nil)).Elem(), ProviderSignVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionPtrInput)(nil)).Elem(), ProviderSignVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceBackendNodeGroupInput)(nil)).Elem(), StarRocksInstanceBackendNodeGroupArgs{})
@@ -4706,6 +4984,10 @@ func init() {
 	pulumi.RegisterOutputType(ProviderAssumeRoleWithOidcPtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ProviderFeaturesOutput{})
+	pulumi.RegisterOutputType(ProviderFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(ProviderFeaturesEcsInstanceOutput{})
+	pulumi.RegisterOutputType(ProviderFeaturesEcsInstancePtrOutput{})
 	pulumi.RegisterOutputType(ProviderSignVersionOutput{})
 	pulumi.RegisterOutputType(ProviderSignVersionPtrOutput{})
 	pulumi.RegisterOutputType(StarRocksInstanceBackendNodeGroupOutput{})

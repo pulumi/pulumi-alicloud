@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['VpcEndpointServiceArgs', 'VpcEndpointService']
 
@@ -25,6 +27,7 @@ class VpcEndpointServiceArgs:
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  payer: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]]] = None,
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -42,6 +45,7 @@ class VpcEndpointServiceArgs:
                - `Endpoint`: the service consumer.
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
@@ -61,6 +65,8 @@ class VpcEndpointServiceArgs:
             pulumi.set(__self__, "payer", payer)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if service_description is not None:
             pulumi.set(__self__, "service_description", service_description)
         if service_resource_type is not None:
@@ -149,6 +155,18 @@ class VpcEndpointServiceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]]]:
+        """
+        The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -232,6 +250,7 @@ class _VpcEndpointServiceState:
                  payer: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]]] = None,
                  service_business_status: pulumi.Input[Optional[_builtins.str]] = None,
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -255,6 +274,7 @@ class _VpcEndpointServiceState:
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
         :param pulumi.Input[_builtins.str] service_business_status: The service state of the endpoint service.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_domain: The domain name of the endpoint service.
@@ -282,6 +302,8 @@ class _VpcEndpointServiceState:
             pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if service_business_status is not None:
             pulumi.set(__self__, "service_business_status", service_business_status)
         if service_description is not None:
@@ -400,6 +422,18 @@ class _VpcEndpointServiceState:
     @resource_group_id.setter
     def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]]]:
+        """
+        The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcEndpointServiceResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceBusinessStatus")
@@ -534,6 +568,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  payer: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]]] = None,
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -587,6 +622,7 @@ class VpcEndpointService(pulumi.CustomResource):
                - `Endpoint`: the service consumer.
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
@@ -657,6 +693,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  payer: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]]] = None,
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -678,6 +715,7 @@ class VpcEndpointService(pulumi.CustomResource):
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["payer"] = payer
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["resources"] = resources
             __props__.__dict__["service_description"] = service_description
             __props__.__dict__["service_resource_type"] = service_resource_type
             __props__.__dict__["service_support_ipv6"] = service_support_ipv6
@@ -708,6 +746,7 @@ class VpcEndpointService(pulumi.CustomResource):
             payer: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]]] = None,
             service_business_status: pulumi.Input[Optional[_builtins.str]] = None,
             service_description: pulumi.Input[Optional[_builtins.str]] = None,
             service_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -735,6 +774,7 @@ class VpcEndpointService(pulumi.CustomResource):
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
         :param pulumi.Input[_builtins.str] service_business_status: The service state of the endpoint service.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_domain: The domain name of the endpoint service.
@@ -758,6 +798,7 @@ class VpcEndpointService(pulumi.CustomResource):
         __props__.__dict__["payer"] = payer
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resources"] = resources
         __props__.__dict__["service_business_status"] = service_business_status
         __props__.__dict__["service_description"] = service_description
         __props__.__dict__["service_domain"] = service_domain
@@ -835,6 +876,14 @@ class VpcEndpointService(pulumi.CustomResource):
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Output[Sequence['outputs.VpcEndpointServiceResource']]:
+        """
+        The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        """
+        return pulumi.get(self, "resources")
 
     @_builtins.property
     @pulumi.getter(name="serviceBusinessStatus")

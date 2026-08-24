@@ -67,6 +67,84 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Create a RabbitMQ (AMQP) serverless instance with the provisioned (reserved + elastic) billing type.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
+ * }));
+ * const defaultGetSecurityGroups = _default.then(_default => alicloud.ecs.getSecurityGroups({
+ *     vpcId: _default.ids?.[0],
+ *     nameRegex: "default-NODELETING",
+ * }));
+ * const defaultInstance = new alicloud.amqp.Instance("default", {
+ *     instanceName: name,
+ *     paymentType: "PayAsYouGo",
+ *     vpcId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vpcId),
+ *     vswitchIds: [
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[1]),
+ *     ],
+ *     securityGroupId: defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids?.[0]),
+ *     serverlessChargeType: "provisioned",
+ *     edition: "dedicated",
+ *     provisionedCapacity: 20000,
+ * });
+ * ```
+ *
+ * Create a RabbitMQ (AMQP) serverless instance with the provisioned (reserved + elastic, shared architecture) billing type.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
+ * }));
+ * const defaultGetSecurityGroups = _default.then(_default => alicloud.ecs.getSecurityGroups({
+ *     vpcId: _default.ids?.[0],
+ *     nameRegex: "default-NODELETING",
+ * }));
+ * const defaultInstance = new alicloud.amqp.Instance("default", {
+ *     instanceName: name,
+ *     paymentType: "PayAsYouGo",
+ *     vpcId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vpcId),
+ *     vswitchIds: [
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[1]),
+ *     ],
+ *     securityGroupId: defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids?.[0]),
+ *     serverlessChargeType: "provisioned",
+ *     edition: "shared",
+ *     provisionedCapacity: 20000,
+ * });
+ * ```
+ *
+ * ### Serverless billing modes and parameter combinations
+ *
+ * A Serverless instance (`paymentType = "PayAsYouGo"`) supports the following billing modes. The combination of `serverlessChargeType` and `edition` determines the deployment architecture and how `provisionedCapacity` is consumed:
+ *
+ * | Billing mode | `serverlessChargeType` | `edition` | `provisionedCapacity` | Description |
+ * | --- | --- | --- | --- | --- |
+ * | Pay-as-you-go (cumulative) | `onDemand` | not required | not applicable | Billed by actual traffic usage on a shared architecture. |
+ * | Reserved + elastic (shared) | `provisioned` | `shared` | set the reserved TPS capacity | Reserved baseline TPS with elastic burst on a shared architecture. |
+ * | Reserved + elastic (dedicated) | `provisioned` | `dedicated` | set the reserved TPS capacity | Reserved baseline TPS with elastic burst on a dedicated (isolated) architecture. |
+ *
+ * > **NOTE:** For `provisioned` instances, `edition` distinguishes the deployment architecture. Modifying `edition` triggers instance cluster migration; submit a ticket before changing it. Storage encryption (`encryptedInstance = true`) is only supported on the `provisioned` + `dedicated` combination.
+ *
  * ### Deleting `alicloud.amqp.Instance` or removing it from your configuration
  *
  * The `alicloud.amqp.Instance` resource allows you to manage  `paymentType = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
@@ -128,6 +206,14 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly edition: pulumi.Output<string>;
     /**
+     * Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = "vip"`.
+     * - `paymentType = "PayAsYouGo"`, `serverlessChargeType = "provisioned"`, and `edition = "dedicated"`.
+     *
+     * > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     */
+    declare public readonly encryptedInstance: pulumi.Output<boolean>;
+    /**
      * The instance name.
      */
     declare public readonly instanceName: pulumi.Output<string>;
@@ -137,9 +223,13 @@ export class Instance extends pulumi.CustomResource {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
+     * > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
      */
     declare public readonly instanceType: pulumi.Output<string>;
+    /**
+     * The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     */
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
      */
@@ -201,7 +291,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
-     * The billing type of the serverless instance. Value: onDemand.
+     * The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      */
     declare public readonly serverlessChargeType: pulumi.Output<string | undefined>;
     /**
@@ -258,8 +348,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["edition"] = state?.edition;
+            resourceInputs["encryptedInstance"] = state?.encryptedInstance;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
             resourceInputs["listenerMode"] = state?.listenerMode;
             resourceInputs["maxConnections"] = state?.maxConnections;
             resourceInputs["maxEipTps"] = state?.maxEipTps;
@@ -292,8 +384,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authModel"] = args?.authModel;
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["edition"] = args?.edition;
+            resourceInputs["encryptedInstance"] = args?.encryptedInstance;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
             resourceInputs["listenerMode"] = args?.listenerMode;
             resourceInputs["maxConnections"] = args?.maxConnections;
             resourceInputs["maxEipTps"] = args?.maxEipTps;
@@ -346,6 +440,14 @@ export interface InstanceState {
      */
     edition?: pulumi.Input<string | undefined>;
     /**
+     * Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = "vip"`.
+     * - `paymentType = "PayAsYouGo"`, `serverlessChargeType = "provisioned"`, and `edition = "dedicated"`.
+     *
+     * > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     */
+    encryptedInstance?: pulumi.Input<boolean | undefined>;
+    /**
      * The instance name.
      */
     instanceName?: pulumi.Input<string | undefined>;
@@ -355,9 +457,13 @@ export interface InstanceState {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
+     * > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
      */
     instanceType?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     */
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
      */
@@ -419,7 +525,7 @@ export interface InstanceState {
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The billing type of the serverless instance. Value: onDemand.
+     * The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      */
     serverlessChargeType?: pulumi.Input<string | undefined>;
     /**
@@ -477,6 +583,14 @@ export interface InstanceArgs {
      */
     edition?: pulumi.Input<string | undefined>;
     /**
+     * Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = "vip"`.
+     * - `paymentType = "PayAsYouGo"`, `serverlessChargeType = "provisioned"`, and `edition = "dedicated"`.
+     *
+     * > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     */
+    encryptedInstance?: pulumi.Input<boolean | undefined>;
+    /**
      * The instance name.
      */
     instanceName?: pulumi.Input<string | undefined>;
@@ -486,9 +600,13 @@ export interface InstanceArgs {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
+     * > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
      */
     instanceType?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     */
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
      */
@@ -550,7 +668,7 @@ export interface InstanceArgs {
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The billing type of the serverless instance. Value: onDemand.
+     * The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      */
     serverlessChargeType?: pulumi.Input<string | undefined>;
     /**

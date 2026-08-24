@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
     public sealed class ServerGroupServer
     {
         /// <summary>
-        /// (Optional, Computed, Int) The port that is used by the backend server.
+        /// The port that is used by the backend server.
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -42,7 +42,13 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
         /// </summary>
         public readonly string ServerType;
         /// <summary>
-        /// Indicates the status of the backend server.
+        /// Indicates the status of the backend server. Valid values:
+        /// 
+        /// - `Adding`: The backend server is being added.
+        /// - `Available`: The backend server is available.
+        /// - `Draining`: The backend server is in connection draining.
+        /// - `Removing`: The backend server is being removed.
+        /// - `Replacing`: The backend server is being replaced.
         /// </summary>
         public readonly string? Status;
 

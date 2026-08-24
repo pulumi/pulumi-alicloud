@@ -93,6 +93,10 @@ export class Prometheus extends pulumi.CustomResource {
     }
 
     /**
+     * The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     */
+    declare public readonly archiveDuration: pulumi.Output<number>;
+    /**
      * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      */
     declare public readonly clusterId: pulumi.Output<string>;
@@ -105,9 +109,17 @@ export class Prometheus extends pulumi.CustomResource {
      */
     declare public readonly clusterType: pulumi.Output<string>;
     /**
+     * The data storage duration, in days.
+     */
+    declare public readonly duration: pulumi.Output<number>;
+    /**
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      */
     declare public readonly grafanaInstanceId: pulumi.Output<string>;
+    /**
+     * The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     */
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -146,10 +158,13 @@ export class Prometheus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrometheusState | undefined;
+            resourceInputs["archiveDuration"] = state?.archiveDuration;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["clusterName"] = state?.clusterName;
             resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["duration"] = state?.duration;
             resourceInputs["grafanaInstanceId"] = state?.grafanaInstanceId;
+            resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["subClustersJson"] = state?.subClustersJson;
@@ -164,10 +179,13 @@ export class Prometheus extends pulumi.CustomResource {
             if (args?.grafanaInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'grafanaInstanceId'");
             }
+            resourceInputs["archiveDuration"] = args?.archiveDuration;
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["duration"] = args?.duration;
             resourceInputs["grafanaInstanceId"] = args?.grafanaInstanceId;
+            resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["subClustersJson"] = args?.subClustersJson;
@@ -185,6 +203,10 @@ export class Prometheus extends pulumi.CustomResource {
  */
 export interface PrometheusState {
     /**
+     * The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     */
+    archiveDuration?: pulumi.Input<number | undefined>;
+    /**
      * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      */
     clusterId?: pulumi.Input<string | undefined>;
@@ -197,9 +219,17 @@ export interface PrometheusState {
      */
     clusterType?: pulumi.Input<string | undefined>;
     /**
+     * The data storage duration, in days.
+     */
+    duration?: pulumi.Input<number | undefined>;
+    /**
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      */
     grafanaInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     */
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
@@ -231,6 +261,10 @@ export interface PrometheusState {
  */
 export interface PrometheusArgs {
     /**
+     * The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     */
+    archiveDuration?: pulumi.Input<number | undefined>;
+    /**
      * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      */
     clusterId?: pulumi.Input<string | undefined>;
@@ -243,9 +277,17 @@ export interface PrometheusArgs {
      */
     clusterType: pulumi.Input<string>;
     /**
+     * The data storage duration, in days.
+     */
+    duration?: pulumi.Input<number | undefined>;
+    /**
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      */
     grafanaInstanceId: pulumi.Input<string>;
+    /**
+     * The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     */
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */

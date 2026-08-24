@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cfg;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cfg.AggregateConfigRuleArgs;
 import com.pulumi.alicloud.cfg.inputs.AggregateConfigRuleState;
+import com.pulumi.alicloud.cfg.outputs.AggregateConfigRuleExcludeTagsScope;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -195,6 +196,20 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> excludeResourceIdsScope() {
         return Codegen.optional(this.excludeResourceIdsScope);
+    }
+    /**
+     * The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     * 
+     */
+    @Export(name="excludeTagsScopes", refs={List.class,AggregateConfigRuleExcludeTagsScope.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AggregateConfigRuleExcludeTagsScope>> excludeTagsScopes;
+
+    /**
+     * @return The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     * 
+     */
+    public Output<Optional<List<AggregateConfigRuleExcludeTagsScope>>> excludeTagsScopes() {
+        return Codegen.optional(this.excludeTagsScopes);
     }
     /**
      * The settings map of the input parameters for the rule.

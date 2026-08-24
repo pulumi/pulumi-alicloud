@@ -478,6 +478,20 @@ public class Image extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Indicates whether the image is available. Valid values:
+     * 
+     */
+    @Export(name="usable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> usable;
+
+    /**
+     * @return Indicates whether the image is available. Valid values:
+     * 
+     */
+    public Output<Boolean> usable() {
+        return this.usable;
+    }
 
     /**
      *

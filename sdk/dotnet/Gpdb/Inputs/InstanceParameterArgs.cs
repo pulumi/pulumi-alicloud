@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
     public sealed class InstanceParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available since v1.231.0) The default value of the parameter.
+        /// The default value of the parameter.
         /// </summary>
         [Input("defaultValue")]
         public Input<string>? DefaultValue { get; set; }
 
         /// <summary>
-        /// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+        /// Whether to force restart the instance to config the parameter.
         /// </summary>
         [Input("forceRestartInstance")]
         public Input<string>? ForceRestartInstance { get; set; }
 
         /// <summary>
-        /// (Available since v1.231.0) Whether the parameter is changeable.
+        /// Whether the parameter is changeable.
         /// </summary>
         [Input("isChangeableConfig")]
         public Input<string>? IsChangeableConfig { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// (Available since v1.231.0) The optional range of the parameter.
+        /// The optional range of the parameter.
         /// </summary>
         [Input("optionalRange")]
         public Input<string>? OptionalRange { get; set; }
 
         /// <summary>
-        /// (Available since v1.231.0) The description of the parameter.
+        /// The description of the parameter.
         /// </summary>
         [Input("parameterDescription")]
         public Input<string>? ParameterDescription { get; set; }

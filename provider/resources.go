@@ -692,7 +692,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_chain":               {Tok: resource(crMod, "Chain")},
 
 			// CS
-			"alicloud_cs_kubernetes": {Tok: resource(csMod, "Kubernetes")},
+			"alicloud_cs_kubernetes":             {Tok: resource(csMod, "Kubernetes")},
 			"alicloud_cs_kubernetes_autoscaler":  {Tok: resource(csMod, "KubernetesAutoscaler")},
 			"alicloud_cs_managed_kubernetes":     {Tok: resource(csMod, "ManagedKubernetes")},
 			"alicloud_cs_serverless_kubernetes":  {Tok: resource(csMod, "ServerlessKubernetes")},
@@ -1256,6 +1256,13 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Ram
 			"alicloud_ram_access_key": {Tok: resource(ramMod, "AccessKey")},
+			"alicloud_ram_access_key_policy": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"access_key_policy": {
+						CSharpName: "Policy",
+					},
+				},
+			},
 			"alicloud_ram_account_alias": {
 				Tok: resource(ramMod, "AccountAlias"),
 				Fields: map[string]*tfbridge.SchemaInfo{

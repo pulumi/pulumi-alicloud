@@ -41,6 +41,8 @@ __all__ = [
     'RecordAuthConfArgsDict',
     'RecordDataArgs',
     'RecordDataArgsDict',
+    'RoutineCodeDeploymentCodeVersionArgs',
+    'RoutineCodeDeploymentCodeVersionArgsDict',
     'SiteDeliveryTaskHttpDeliveryArgs',
     'SiteDeliveryTaskHttpDeliveryArgsDict',
     'SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs',
@@ -1795,6 +1797,53 @@ class RecordDataArgs:
     @weight.setter
     def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
+
+
+class RoutineCodeDeploymentCodeVersionArgsDict(TypedDict):
+    code_version: pulumi.Input[_builtins.str]
+    """
+    The committed code version to deploy.
+    """
+    percentage: pulumi.Input[_builtins.int]
+    """
+    The traffic percentage of this code version. Valid values: 1 to 100.
+    """
+
+@pulumi.input_type
+class RoutineCodeDeploymentCodeVersionArgs:
+    def __init__(__self__, *,
+                 code_version: pulumi.Input[_builtins.str],
+                 percentage: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] code_version: The committed code version to deploy.
+        :param pulumi.Input[_builtins.int] percentage: The traffic percentage of this code version. Valid values: 1 to 100.
+        """
+        pulumi.set(__self__, "code_version", code_version)
+        pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="codeVersion")
+    def code_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The committed code version to deploy.
+        """
+        return pulumi.get(self, "code_version")
+
+    @code_version.setter
+    def code_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "code_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[_builtins.int]:
+        """
+        The traffic percentage of this code version. Valid values: 1 to 100.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "percentage", value)
 
 
 class SiteDeliveryTaskHttpDeliveryArgsDict(TypedDict):

@@ -23,7 +23,8 @@ class ListenerArgs:
                  server_group_id: pulumi.Input[_builtins.str],
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  listener_description: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tcp_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -34,6 +35,7 @@ class ListenerArgs:
                
                The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify at most 20 tags in each call.
+        :param pulumi.Input[_builtins.int] tcp_idle_timeout: The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
         """
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         pulumi.set(__self__, "server_group_id", server_group_id)
@@ -43,6 +45,8 @@ class ListenerArgs:
             pulumi.set(__self__, "listener_description", listener_description)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tcp_idle_timeout is not None:
+            pulumi.set(__self__, "tcp_idle_timeout", tcp_idle_timeout)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
@@ -106,6 +110,18 @@ class ListenerArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tcpIdleTimeout")
+    def tcp_idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+        """
+        return pulumi.get(self, "tcp_idle_timeout")
+
+    @tcp_idle_timeout.setter
+    def tcp_idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "tcp_idle_timeout", value)
+
 
 @pulumi.input_type
 class _ListenerState:
@@ -116,7 +132,8 @@ class _ListenerState:
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tcp_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -129,6 +146,7 @@ class _ListenerState:
         :param pulumi.Input[_builtins.str] server_group_id: The server group ID.
         :param pulumi.Input[_builtins.str] status: The status of the listener.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify at most 20 tags in each call.
+        :param pulumi.Input[_builtins.int] tcp_idle_timeout: The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -144,6 +162,8 @@ class _ListenerState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tcp_idle_timeout is not None:
+            pulumi.set(__self__, "tcp_idle_timeout", tcp_idle_timeout)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
@@ -231,6 +251,18 @@ class _ListenerState:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tcpIdleTimeout")
+    def tcp_idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+        """
+        return pulumi.get(self, "tcp_idle_timeout")
+
+    @tcp_idle_timeout.setter
+    def tcp_idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "tcp_idle_timeout", value)
+
 
 @pulumi.type_token("alicloud:gwlb/listener:Listener")
 class Listener(pulumi.CustomResource):
@@ -243,6 +275,7 @@ class Listener(pulumi.CustomResource):
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tcp_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a GWLB Listener resource.
@@ -357,6 +390,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancer_id: The GWLB instance ID.
         :param pulumi.Input[_builtins.str] server_group_id: The server group ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify at most 20 tags in each call.
+        :param pulumi.Input[_builtins.int] tcp_idle_timeout: The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
         """
         ...
     @overload
@@ -488,6 +522,7 @@ class Listener(pulumi.CustomResource):
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tcp_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,6 +541,7 @@ class Listener(pulumi.CustomResource):
                 raise TypeError("Missing required property 'server_group_id'")
             __props__.__dict__["server_group_id"] = server_group_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tcp_idle_timeout"] = tcp_idle_timeout
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(Listener, __self__).__init__(
@@ -524,7 +560,8 @@ class Listener(pulumi.CustomResource):
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tcp_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -541,6 +578,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] server_group_id: The server group ID.
         :param pulumi.Input[_builtins.str] status: The status of the listener.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify at most 20 tags in each call.
+        :param pulumi.Input[_builtins.int] tcp_idle_timeout: The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -553,6 +591,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["server_group_id"] = server_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tcp_idle_timeout"] = tcp_idle_timeout
         return Listener(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -612,4 +651,12 @@ class Listener(pulumi.CustomResource):
         The tags. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tcpIdleTimeout")
+    def tcp_idle_timeout(self) -> pulumi.Output[_builtins.int]:
+        """
+        The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+        """
+        return pulumi.get(self, "tcp_idle_timeout")
 

@@ -12,6 +12,8 @@ import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
 import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
 import com.pulumi.alicloud.esa.inputs.GetOriginRulesPlainArgs;
+import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsArgs;
+import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
 import com.pulumi.alicloud.esa.inputs.GetSitesPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
@@ -20,6 +22,7 @@ import com.pulumi.alicloud.esa.outputs.GetCacheReserveInstancesResult;
 import com.pulumi.alicloud.esa.outputs.GetHttpsBasicConfigurationsResult;
 import com.pulumi.alicloud.esa.outputs.GetNetworkOptimizationsResult;
 import com.pulumi.alicloud.esa.outputs.GetOriginRulesResult;
+import com.pulumi.alicloud.esa.outputs.GetRoutineCodeVersionsResult;
 import com.pulumi.alicloud.esa.outputs.GetSitesResult;
 import com.pulumi.alicloud.esa.outputs.GetWafRulesetsResult;
 import com.pulumi.core.Output;
@@ -1538,6 +1541,241 @@ public final class EsaFunctions {
      */
     public static CompletableFuture<GetOriginRulesResult> getOriginRulesPlain(GetOriginRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:esa/getOriginRules:getOriginRules", TypeShape.of(GetOriginRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Routine Code Versions of the current Alibaba Cloud user.
+     * 
+     * For information about ESA Routine Code Versions and how to use it, see [ListRoutineCodeVersions](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListRoutineCodeVersions).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * &gt; **NOTE:** The underlying `ListRoutineCodeVersions` API caps pagination at 2 pages of up to 20 items each, so at most the 40 most recent code versions are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EsaFunctions.getRoutineCodeVersions(GetRoutineCodeVersionsArgs.builder()
+     *             .routineName("terraform-example")
+     *             .build());
+     * 
+     *         ctx.export("codeVersions", default_.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutineCodeVersionsResult> getRoutineCodeVersions(GetRoutineCodeVersionsArgs args) {
+        return getRoutineCodeVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Routine Code Versions of the current Alibaba Cloud user.
+     * 
+     * For information about ESA Routine Code Versions and how to use it, see [ListRoutineCodeVersions](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListRoutineCodeVersions).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * &gt; **NOTE:** The underlying `ListRoutineCodeVersions` API caps pagination at 2 pages of up to 20 items each, so at most the 40 most recent code versions are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EsaFunctions.getRoutineCodeVersions(GetRoutineCodeVersionsArgs.builder()
+     *             .routineName("terraform-example")
+     *             .build());
+     * 
+     *         ctx.export("codeVersions", default_.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutineCodeVersionsResult> getRoutineCodeVersionsPlain(GetRoutineCodeVersionsPlainArgs args) {
+        return getRoutineCodeVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Routine Code Versions of the current Alibaba Cloud user.
+     * 
+     * For information about ESA Routine Code Versions and how to use it, see [ListRoutineCodeVersions](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListRoutineCodeVersions).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * &gt; **NOTE:** The underlying `ListRoutineCodeVersions` API caps pagination at 2 pages of up to 20 items each, so at most the 40 most recent code versions are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EsaFunctions.getRoutineCodeVersions(GetRoutineCodeVersionsArgs.builder()
+     *             .routineName("terraform-example")
+     *             .build());
+     * 
+     *         ctx.export("codeVersions", default_.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutineCodeVersionsResult> getRoutineCodeVersions(GetRoutineCodeVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getRoutineCodeVersions:getRoutineCodeVersions", TypeShape.of(GetRoutineCodeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Routine Code Versions of the current Alibaba Cloud user.
+     * 
+     * For information about ESA Routine Code Versions and how to use it, see [ListRoutineCodeVersions](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListRoutineCodeVersions).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * &gt; **NOTE:** The underlying `ListRoutineCodeVersions` API caps pagination at 2 pages of up to 20 items each, so at most the 40 most recent code versions are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EsaFunctions.getRoutineCodeVersions(GetRoutineCodeVersionsArgs.builder()
+     *             .routineName("terraform-example")
+     *             .build());
+     * 
+     *         ctx.export("codeVersions", default_.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutineCodeVersionsResult> getRoutineCodeVersions(GetRoutineCodeVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getRoutineCodeVersions:getRoutineCodeVersions", TypeShape.of(GetRoutineCodeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Routine Code Versions of the current Alibaba Cloud user.
+     * 
+     * For information about ESA Routine Code Versions and how to use it, see [ListRoutineCodeVersions](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListRoutineCodeVersions).
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * &gt; **NOTE:** The underlying `ListRoutineCodeVersions` API caps pagination at 2 pages of up to 20 items each, so at most the 40 most recent code versions are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetRoutineCodeVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EsaFunctions.getRoutineCodeVersions(GetRoutineCodeVersionsArgs.builder()
+     *             .routineName("terraform-example")
+     *             .build());
+     * 
+     *         ctx.export("codeVersions", default_.versions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutineCodeVersionsResult> getRoutineCodeVersionsPlain(GetRoutineCodeVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:esa/getRoutineCodeVersions:getRoutineCodeVersions", TypeShape.of(GetRoutineCodeVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Esa Site available to the user.[What is Site](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateSite)

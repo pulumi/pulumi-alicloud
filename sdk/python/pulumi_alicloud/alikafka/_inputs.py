@@ -393,11 +393,11 @@ class InstanceConfluentConfigArgs:
 class InstanceServerlessConfigArgsDict(TypedDict):
     reserved_publish_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The reserved capacity for publishing messages.
+    The reserved capacity for publishing messages. The minimum value is `60`.
     """
     reserved_subscribe_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The reserved capacity for subscribing to message.
+    The reserved capacity for subscribing to message. The minimum value is `20`.
     """
 
 @pulumi.input_type
@@ -406,8 +406,8 @@ class InstanceServerlessConfigArgs:
                  reserved_publish_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  reserved_subscribe_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] reserved_publish_capacity: The reserved capacity for publishing messages.
-        :param pulumi.Input[_builtins.int] reserved_subscribe_capacity: The reserved capacity for subscribing to message.
+        :param pulumi.Input[_builtins.int] reserved_publish_capacity: The reserved capacity for publishing messages. The minimum value is `60`.
+        :param pulumi.Input[_builtins.int] reserved_subscribe_capacity: The reserved capacity for subscribing to message. The minimum value is `20`.
         """
         if reserved_publish_capacity is not None:
             pulumi.set(__self__, "reserved_publish_capacity", reserved_publish_capacity)
@@ -418,7 +418,7 @@ class InstanceServerlessConfigArgs:
     @pulumi.getter(name="reservedPublishCapacity")
     def reserved_publish_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The reserved capacity for publishing messages.
+        The reserved capacity for publishing messages. The minimum value is `60`.
         """
         return pulumi.get(self, "reserved_publish_capacity")
 
@@ -430,7 +430,7 @@ class InstanceServerlessConfigArgs:
     @pulumi.getter(name="reservedSubscribeCapacity")
     def reserved_subscribe_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The reserved capacity for subscribing to message.
+        The reserved capacity for subscribing to message. The minimum value is `20`.
         """
         return pulumi.get(self, "reserved_subscribe_capacity")
 

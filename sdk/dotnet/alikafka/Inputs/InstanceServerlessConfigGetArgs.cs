@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.alikafka.Inputs
     public sealed class InstanceServerlessConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The reserved capacity for publishing messages.
+        /// The reserved capacity for publishing messages. The minimum value is `60`.
         /// </summary>
         [Input("reservedPublishCapacity")]
         public Input<int>? ReservedPublishCapacity { get; set; }
 
         /// <summary>
-        /// The reserved capacity for subscribing to message.
+        /// The reserved capacity for subscribing to message. The minimum value is `20`.
         /// </summary>
         [Input("reservedSubscribeCapacity")]
         public Input<int>? ReservedSubscribeCapacity { get; set; }

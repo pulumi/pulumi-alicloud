@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides user-available access groups. Use when you can create mount points
         /// 
-        /// &gt; NOTE: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides user-available access groups. Use when you can create mount points
         /// 
-        /// &gt; NOTE: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides user-available access groups. Use when you can create mount points
         /// 
-        /// &gt; NOTE: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Nas
         public string? Description { get; set; }
 
         /// <summary>
-        /// The type of file system. Valid values: `Standard` and `Extreme`. Default to `Standard`.
+        /// The type of file system. Valid values: `Standard`, `Extreme` and `Cpfs`. Default to `Standard`.
         /// </summary>
         [Input("fileSystemType")]
         public string? FileSystemType { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of file system. Valid values: `Standard` and `Extreme`. Default to `Standard`.
+        /// The type of file system. Valid values: `Standard`, `Extreme` and `Cpfs`. Default to `Standard`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }

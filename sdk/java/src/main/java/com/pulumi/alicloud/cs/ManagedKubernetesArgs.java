@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAutoModeArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesControlPlaneEndpointsConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesOperationPolicyArgs;
@@ -201,6 +202,21 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> clusterSpec() {
         return Optional.ofNullable(this.clusterSpec);
+    }
+
+    /**
+     * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     * 
+     */
+    @Import(name="controlPlaneEndpointsConfig")
+    private @Nullable Output<ManagedKubernetesControlPlaneEndpointsConfigArgs> controlPlaneEndpointsConfig;
+
+    /**
+     * @return The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     * 
+     */
+    public Optional<Output<ManagedKubernetesControlPlaneEndpointsConfigArgs>> controlPlaneEndpointsConfig() {
+        return Optional.ofNullable(this.controlPlaneEndpointsConfig);
     }
 
     /**
@@ -846,6 +862,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         this.clusterCaCert = $.clusterCaCert;
         this.clusterDomain = $.clusterDomain;
         this.clusterSpec = $.clusterSpec;
+        this.controlPlaneEndpointsConfig = $.controlPlaneEndpointsConfig;
         this.controlPlaneLogComponents = $.controlPlaneLogComponents;
         this.controlPlaneLogProject = $.controlPlaneLogProject;
         this.controlPlaneLogTtl = $.controlPlaneLogTtl;
@@ -1152,6 +1169,27 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder clusterSpec(String clusterSpec) {
             return clusterSpec(Output.of(clusterSpec));
+        }
+
+        /**
+         * @param controlPlaneEndpointsConfig The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEndpointsConfig(@Nullable Output<ManagedKubernetesControlPlaneEndpointsConfigArgs> controlPlaneEndpointsConfig) {
+            $.controlPlaneEndpointsConfig = controlPlaneEndpointsConfig;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneEndpointsConfig The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEndpointsConfig(ManagedKubernetesControlPlaneEndpointsConfigArgs controlPlaneEndpointsConfig) {
+            return controlPlaneEndpointsConfig(Output.of(controlPlaneEndpointsConfig));
         }
 
         /**

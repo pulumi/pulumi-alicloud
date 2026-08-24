@@ -211,6 +211,10 @@ export class ServiceMetricAlarmRule extends pulumi.CustomResource {
      */
     declare public readonly status: pulumi.Output<boolean>;
     /**
+     * The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     */
+    declare public readonly targets: pulumi.Output<outputs.cloudmonitor.ServiceMetricAlarmRuleTarget[]>;
+    /**
      * The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
      */
     declare public readonly webhook: pulumi.Output<string | undefined>;
@@ -249,6 +253,7 @@ export class ServiceMetricAlarmRule extends pulumi.CustomResource {
             resourceInputs["silenceTime"] = state?.silenceTime;
             resourceInputs["sourceType"] = state?.sourceType;
             resourceInputs["status"] = state?.status;
+            resourceInputs["targets"] = state?.targets;
             resourceInputs["webhook"] = state?.webhook;
         } else {
             const args = argsOrState as ServiceMetricAlarmRuleArgs | undefined;
@@ -289,6 +294,7 @@ export class ServiceMetricAlarmRule extends pulumi.CustomResource {
             resourceInputs["sendOk"] = args?.sendOk;
             resourceInputs["silenceTime"] = args?.silenceTime;
             resourceInputs["status"] = args?.status;
+            resourceInputs["targets"] = args?.targets;
             resourceInputs["webhook"] = args?.webhook;
             resourceInputs["dimensions"] = undefined /*out*/;
             resourceInputs["sourceType"] = undefined /*out*/;
@@ -424,6 +430,10 @@ export interface ServiceMetricAlarmRuleState {
      */
     status?: pulumi.Input<boolean | undefined>;
     /**
+     * The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRuleTarget>[] | undefined>;
+    /**
      * The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
      */
     webhook?: pulumi.Input<string | undefined>;
@@ -546,6 +556,10 @@ export interface ServiceMetricAlarmRuleArgs {
      * - false: disabled.
      */
     status?: pulumi.Input<boolean | undefined>;
+    /**
+     * The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRuleTarget>[] | undefined>;
     /**
      * The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
      */

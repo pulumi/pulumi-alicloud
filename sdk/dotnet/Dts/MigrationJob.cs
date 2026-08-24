@@ -256,6 +256,18 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> DbList { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Output("destPrimaryVswitchId")]
+        public Output<string?> DestPrimaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Output("destSecondaryVswitchId")]
+        public Output<string?> DestSecondaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of migrate the database.
         /// </summary>
         [Output("destinationEndpointDatabaseName")]
@@ -308,6 +320,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Output("destinationEndpointRegion")]
         public Output<string?> DestinationEndpointRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Output("destinationEndpointSsl")]
+        public Output<string> DestinationEndpointSsl { get; private set; } = null!;
 
         /// <summary>
         /// The username of database account.
@@ -400,13 +418,33 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointRole { get; private set; } = null!;
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Output("sourceEndpointSsl")]
+        public Output<string> SourceEndpointSsl { get; private set; } = null!;
+
+        /// <summary>
         /// The username of database account.
         /// </summary>
         [Output("sourceEndpointUserName")]
         public Output<string?> SourceEndpointUserName { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Output("srcPrimaryVswitchId")]
+        public Output<string?> SrcPrimaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Output("srcSecondaryVswitchId")]
+        public Output<string?> SrcSecondaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -488,6 +526,18 @@ namespace Pulumi.AliCloud.Dts
         public Input<string> DbList { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destPrimaryVswitchId")]
+        public Input<string>? DestPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destSecondaryVswitchId")]
+        public Input<string>? DestSecondaryVswitchId { get; set; }
+
+        /// <summary>
         /// The name of migrate the database.
         /// </summary>
         [Input("destinationEndpointDatabaseName")]
@@ -540,6 +590,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("destinationEndpointRegion")]
         public Input<string>? DestinationEndpointRegion { get; set; }
+
+        /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("destinationEndpointSsl")]
+        public Input<string>? DestinationEndpointSsl { get; set; }
 
         /// <summary>
         /// The username of database account.
@@ -632,13 +688,33 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account.
         /// </summary>
         [Input("sourceEndpointUserName")]
         public Input<string>? SourceEndpointUserName { get; set; }
 
         /// <summary>
+        /// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcPrimaryVswitchId")]
+        public Input<string>? SrcPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcSecondaryVswitchId")]
+        public Input<string>? SrcSecondaryVswitchId { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -680,6 +756,18 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("dbList")]
         public Input<string>? DbList { get; set; }
+
+        /// <summary>
+        /// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destPrimaryVswitchId")]
+        public Input<string>? DestPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destSecondaryVswitchId")]
+        public Input<string>? DestSecondaryVswitchId { get; set; }
 
         /// <summary>
         /// The name of migrate the database.
@@ -734,6 +822,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("destinationEndpointRegion")]
         public Input<string>? DestinationEndpointRegion { get; set; }
+
+        /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("destinationEndpointSsl")]
+        public Input<string>? DestinationEndpointSsl { get; set; }
 
         /// <summary>
         /// The username of database account.
@@ -826,13 +920,33 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account.
         /// </summary>
         [Input("sourceEndpointUserName")]
         public Input<string>? SourceEndpointUserName { get; set; }
 
         /// <summary>
+        /// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcPrimaryVswitchId")]
+        public Input<string>? SrcPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcSecondaryVswitchId")]
+        public Input<string>? SrcSecondaryVswitchId { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

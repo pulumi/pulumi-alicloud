@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HttpTokens { get; private set; } = null!;
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
@@ -949,7 +949,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -1610,7 +1610,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `ImageId`. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `ImageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }

@@ -15,133 +15,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterV2ManagerManagerNode {
-    /**
-     * @return Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
-     * - true: Automatic renewal.
-     * - false: Do not renew automatically (default).
-     * 
-     */
     private @Nullable Boolean autoRenew;
-    /**
-     * @return The renewal duration of a single automatic renewal. Value range:
-     * - When PeriodUnit = Week: 1, 2, 3.
-     * - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
-     * 
-     * Default value: 1.
-     * 
-     */
     private @Nullable Integer autoRenewPeriod;
-    /**
-     * @return The duration of the preemptible instance, in hours. Value:
-     * - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
-     * - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
-     * 
-     * Default value: 1.
-     * 
-     */
     private @Nullable Integer duration;
-    /**
-     * @return EnableHT
-     * 
-     */
     private @Nullable Boolean enableHt;
     /**
      * @return The expiration time of the management node.
      * 
      */
     private @Nullable String expiredTime;
-    /**
-     * @return ImageId
-     * 
-     */
     private @Nullable String imageId;
-    /**
-     * @return The instance billing method of the management node. Valid values:
-     * 
-     * - PostPaid: pay-as-you-go
-     * - PrePaid: subscription
-     * 
-     */
     private @Nullable String instanceChargeType;
     /**
      * @return The instance ID of the management node.
      * 
      */
     private @Nullable String instanceId;
-    /**
-     * @return The instance type of the management node.
-     * 
-     */
     private @Nullable String instanceType;
-    /**
-     * @return The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
-     * - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
-     * - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
-     * 
-     */
     private @Nullable Integer period;
-    /**
-     * @return The unit of duration of the year-to-month billing method. Value range:
-     * - Week.
-     * - Month (default).
-     * 
-     */
     private @Nullable String periodUnit;
-    /**
-     * @return Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
-     * 
-     */
     private @Nullable Double spotPriceLimit;
-    /**
-     * @return The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
-     * - NoSpot: normal pay-as-you-go instances (default).
-     * - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
-     * - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
-     * 
-     */
     private @Nullable String spotStrategy;
-    /**
-     * @return System disk configuration of the management node. See `systemDisk` below.
-     * 
-     */
     private @Nullable ClusterV2ManagerManagerNodeSystemDisk systemDisk;
 
     private ClusterV2ManagerManagerNode() {}
-    /**
-     * @return Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
-     * - true: Automatic renewal.
-     * - false: Do not renew automatically (default).
-     * 
-     */
     public Optional<Boolean> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
     }
-    /**
-     * @return The renewal duration of a single automatic renewal. Value range:
-     * - When PeriodUnit = Week: 1, 2, 3.
-     * - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
-     * 
-     * Default value: 1.
-     * 
-     */
     public Optional<Integer> autoRenewPeriod() {
         return Optional.ofNullable(this.autoRenewPeriod);
     }
-    /**
-     * @return The duration of the preemptible instance, in hours. Value:
-     * - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
-     * - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
-     * 
-     * Default value: 1.
-     * 
-     */
     public Optional<Integer> duration() {
         return Optional.ofNullable(this.duration);
     }
-    /**
-     * @return EnableHT
-     * 
-     */
     public Optional<Boolean> enableHt() {
         return Optional.ofNullable(this.enableHt);
     }
@@ -152,20 +58,9 @@ public final class ClusterV2ManagerManagerNode {
     public Optional<String> expiredTime() {
         return Optional.ofNullable(this.expiredTime);
     }
-    /**
-     * @return ImageId
-     * 
-     */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
-    /**
-     * @return The instance billing method of the management node. Valid values:
-     * 
-     * - PostPaid: pay-as-you-go
-     * - PrePaid: subscription
-     * 
-     */
     public Optional<String> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -176,52 +71,21 @@ public final class ClusterV2ManagerManagerNode {
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
-    /**
-     * @return The instance type of the management node.
-     * 
-     */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
-    /**
-     * @return The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
-     * - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
-     * - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
-     * 
-     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
-    /**
-     * @return The unit of duration of the year-to-month billing method. Value range:
-     * - Week.
-     * - Month (default).
-     * 
-     */
     public Optional<String> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
     }
-    /**
-     * @return Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
-     * 
-     */
     public Optional<Double> spotPriceLimit() {
         return Optional.ofNullable(this.spotPriceLimit);
     }
-    /**
-     * @return The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
-     * - NoSpot: normal pay-as-you-go instances (default).
-     * - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
-     * - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
-     * 
-     */
     public Optional<String> spotStrategy() {
         return Optional.ofNullable(this.spotStrategy);
     }
-    /**
-     * @return System disk configuration of the management node. See `systemDisk` below.
-     * 
-     */
     public Optional<ClusterV2ManagerManagerNodeSystemDisk> systemDisk() {
         return Optional.ofNullable(this.systemDisk);
     }

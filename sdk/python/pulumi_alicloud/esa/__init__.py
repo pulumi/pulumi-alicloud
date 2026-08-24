@@ -20,6 +20,7 @@ from .get_cache_reserve_instances import *
 from .get_https_basic_configurations import *
 from .get_network_optimizations import *
 from .get_origin_rules import *
+from .get_routine_code_versions import *
 from .get_sites import *
 from .get_waf_rulesets import *
 from .http_incoming_request_header_modification_rule import *
@@ -46,6 +47,7 @@ from .record import *
 from .redirect_rule import *
 from .rewrite_url_rule import *
 from .routine import *
+from .routine_code_deployment import *
 from .routine_related_record import *
 from .routine_route import *
 from .scheduled_preload_execution import *

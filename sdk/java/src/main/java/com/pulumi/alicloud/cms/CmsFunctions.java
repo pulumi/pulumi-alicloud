@@ -12,6 +12,8 @@ import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
 import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2PlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsPlainArgs;
+import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
+import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
 import com.pulumi.alicloud.cms.inputs.GetEventRulesPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
@@ -42,6 +44,7 @@ import com.pulumi.alicloud.cms.outputs.GetAlarmContactGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactsResult;
 import com.pulumi.alicloud.cms.outputs.GetAlertRulesV2Result;
 import com.pulumi.alicloud.cms.outputs.GetDynamicTagGroupsResult;
+import com.pulumi.alicloud.cms.outputs.GetEventNotifyPoliciesResult;
 import com.pulumi.alicloud.cms.outputs.GetEventRulesResult;
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesResult;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorDatasResult;
@@ -1903,6 +1906,561 @@ public final class CmsFunctions {
      */
     public static CompletableFuture<GetDynamicTagGroupsResult> getDynamicTagGroupsPlain(GetDynamicTagGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", TypeShape.of(GetDynamicTagGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cms Event Notify Policy available to the user.[What is Event Notify Policy](https://next.api.alibabacloud.com/document/Cms/2024-03-30/CreateNotifyPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.289.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicy;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanRepeatNotifySettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyGroupingSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingConditionArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultEventNotifyPolicy = new EventNotifyPolicy("defaultEventNotifyPolicy", EventNotifyPolicyArgs.builder()
+     *             .description("Event notification policy managed by Terraform")
+     *             .responsePlan(EventNotifyPolicyResponsePlanArgs.builder()
+     *                 .repeatNotifySetting(EventNotifyPolicyResponsePlanRepeatNotifySettingArgs.builder()
+     *                     .endIncidentState("resolved")
+     *                     .repeatInterval(30)
+     *                     .build())
+     *                 .autoRecoverSeconds(600)
+     *                 .build())
+     *             .notifyStrategy(EventNotifyPolicyNotifyStrategyArgs.builder()
+     *                 .description("Notify strategy for list test")
+     *                 .ignoreRestoredNotification(false)
+     *                 .groupingSetting(EventNotifyPolicyNotifyStrategyGroupingSettingArgs.builder()
+     *                     .groupingKeys("severity")
+     *                     .periodMin(5)
+     *                     .times(1)
+     *                     .silenceSec(300)
+     *                     .build())
+     *                 .routes(EventNotifyPolicyNotifyStrategyRouteArgs.builder()
+     *                     .effectTimeRange(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs.builder()
+     *                         .timeZone("Asia/Shanghai")
+     *                         .startTimeInMinute(0)
+     *                         .endTimeInMinute(1439)
+     *                         .dayInWeeks(                        
+     *                             1,
+     *                             2,
+     *                             3,
+     *                             4,
+     *                             5)
+     *                         .build())
+     *                     .channels(EventNotifyPolicyNotifyStrategyRouteChannelArgs.builder()
+     *                         .receivers("tf-test-group")
+     *                         .channelType("DING")
+     *                         .enabledSubChannels()
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .subscription(EventNotifyPolicySubscriptionArgs.builder()
+     *                 .subscribeLegacyEvent(true)
+     *                 .filterSetting(EventNotifyPolicySubscriptionFilterSettingArgs.builder()
+     *                     .relation("AND")
+     *                     .conditions(EventNotifyPolicySubscriptionFilterSettingConditionArgs.builder()
+     *                         .field("severity")
+     *                         .op("EQ")
+     *                         .value("CRITICAL")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .name("tf-list-enp-0716a")
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getEventNotifyPolicies(GetEventNotifyPoliciesArgs.builder()
+     *             .ids(defaultEventNotifyPolicy.id())
+     *             .name("tf-list-enp-0716a")
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEventNotifyPoliciesResult> getEventNotifyPolicies(GetEventNotifyPoliciesArgs args) {
+        return getEventNotifyPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cms Event Notify Policy available to the user.[What is Event Notify Policy](https://next.api.alibabacloud.com/document/Cms/2024-03-30/CreateNotifyPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.289.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicy;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanRepeatNotifySettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyGroupingSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingConditionArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultEventNotifyPolicy = new EventNotifyPolicy("defaultEventNotifyPolicy", EventNotifyPolicyArgs.builder()
+     *             .description("Event notification policy managed by Terraform")
+     *             .responsePlan(EventNotifyPolicyResponsePlanArgs.builder()
+     *                 .repeatNotifySetting(EventNotifyPolicyResponsePlanRepeatNotifySettingArgs.builder()
+     *                     .endIncidentState("resolved")
+     *                     .repeatInterval(30)
+     *                     .build())
+     *                 .autoRecoverSeconds(600)
+     *                 .build())
+     *             .notifyStrategy(EventNotifyPolicyNotifyStrategyArgs.builder()
+     *                 .description("Notify strategy for list test")
+     *                 .ignoreRestoredNotification(false)
+     *                 .groupingSetting(EventNotifyPolicyNotifyStrategyGroupingSettingArgs.builder()
+     *                     .groupingKeys("severity")
+     *                     .periodMin(5)
+     *                     .times(1)
+     *                     .silenceSec(300)
+     *                     .build())
+     *                 .routes(EventNotifyPolicyNotifyStrategyRouteArgs.builder()
+     *                     .effectTimeRange(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs.builder()
+     *                         .timeZone("Asia/Shanghai")
+     *                         .startTimeInMinute(0)
+     *                         .endTimeInMinute(1439)
+     *                         .dayInWeeks(                        
+     *                             1,
+     *                             2,
+     *                             3,
+     *                             4,
+     *                             5)
+     *                         .build())
+     *                     .channels(EventNotifyPolicyNotifyStrategyRouteChannelArgs.builder()
+     *                         .receivers("tf-test-group")
+     *                         .channelType("DING")
+     *                         .enabledSubChannels()
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .subscription(EventNotifyPolicySubscriptionArgs.builder()
+     *                 .subscribeLegacyEvent(true)
+     *                 .filterSetting(EventNotifyPolicySubscriptionFilterSettingArgs.builder()
+     *                     .relation("AND")
+     *                     .conditions(EventNotifyPolicySubscriptionFilterSettingConditionArgs.builder()
+     *                         .field("severity")
+     *                         .op("EQ")
+     *                         .value("CRITICAL")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .name("tf-list-enp-0716a")
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getEventNotifyPolicies(GetEventNotifyPoliciesArgs.builder()
+     *             .ids(defaultEventNotifyPolicy.id())
+     *             .name("tf-list-enp-0716a")
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEventNotifyPoliciesResult> getEventNotifyPoliciesPlain(GetEventNotifyPoliciesPlainArgs args) {
+        return getEventNotifyPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cms Event Notify Policy available to the user.[What is Event Notify Policy](https://next.api.alibabacloud.com/document/Cms/2024-03-30/CreateNotifyPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.289.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicy;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanRepeatNotifySettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyGroupingSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingConditionArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultEventNotifyPolicy = new EventNotifyPolicy("defaultEventNotifyPolicy", EventNotifyPolicyArgs.builder()
+     *             .description("Event notification policy managed by Terraform")
+     *             .responsePlan(EventNotifyPolicyResponsePlanArgs.builder()
+     *                 .repeatNotifySetting(EventNotifyPolicyResponsePlanRepeatNotifySettingArgs.builder()
+     *                     .endIncidentState("resolved")
+     *                     .repeatInterval(30)
+     *                     .build())
+     *                 .autoRecoverSeconds(600)
+     *                 .build())
+     *             .notifyStrategy(EventNotifyPolicyNotifyStrategyArgs.builder()
+     *                 .description("Notify strategy for list test")
+     *                 .ignoreRestoredNotification(false)
+     *                 .groupingSetting(EventNotifyPolicyNotifyStrategyGroupingSettingArgs.builder()
+     *                     .groupingKeys("severity")
+     *                     .periodMin(5)
+     *                     .times(1)
+     *                     .silenceSec(300)
+     *                     .build())
+     *                 .routes(EventNotifyPolicyNotifyStrategyRouteArgs.builder()
+     *                     .effectTimeRange(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs.builder()
+     *                         .timeZone("Asia/Shanghai")
+     *                         .startTimeInMinute(0)
+     *                         .endTimeInMinute(1439)
+     *                         .dayInWeeks(                        
+     *                             1,
+     *                             2,
+     *                             3,
+     *                             4,
+     *                             5)
+     *                         .build())
+     *                     .channels(EventNotifyPolicyNotifyStrategyRouteChannelArgs.builder()
+     *                         .receivers("tf-test-group")
+     *                         .channelType("DING")
+     *                         .enabledSubChannels()
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .subscription(EventNotifyPolicySubscriptionArgs.builder()
+     *                 .subscribeLegacyEvent(true)
+     *                 .filterSetting(EventNotifyPolicySubscriptionFilterSettingArgs.builder()
+     *                     .relation("AND")
+     *                     .conditions(EventNotifyPolicySubscriptionFilterSettingConditionArgs.builder()
+     *                         .field("severity")
+     *                         .op("EQ")
+     *                         .value("CRITICAL")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .name("tf-list-enp-0716a")
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getEventNotifyPolicies(GetEventNotifyPoliciesArgs.builder()
+     *             .ids(defaultEventNotifyPolicy.id())
+     *             .name("tf-list-enp-0716a")
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEventNotifyPoliciesResult> getEventNotifyPolicies(GetEventNotifyPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getEventNotifyPolicies:getEventNotifyPolicies", TypeShape.of(GetEventNotifyPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cms Event Notify Policy available to the user.[What is Event Notify Policy](https://next.api.alibabacloud.com/document/Cms/2024-03-30/CreateNotifyPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.289.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicy;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanRepeatNotifySettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyGroupingSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingConditionArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultEventNotifyPolicy = new EventNotifyPolicy("defaultEventNotifyPolicy", EventNotifyPolicyArgs.builder()
+     *             .description("Event notification policy managed by Terraform")
+     *             .responsePlan(EventNotifyPolicyResponsePlanArgs.builder()
+     *                 .repeatNotifySetting(EventNotifyPolicyResponsePlanRepeatNotifySettingArgs.builder()
+     *                     .endIncidentState("resolved")
+     *                     .repeatInterval(30)
+     *                     .build())
+     *                 .autoRecoverSeconds(600)
+     *                 .build())
+     *             .notifyStrategy(EventNotifyPolicyNotifyStrategyArgs.builder()
+     *                 .description("Notify strategy for list test")
+     *                 .ignoreRestoredNotification(false)
+     *                 .groupingSetting(EventNotifyPolicyNotifyStrategyGroupingSettingArgs.builder()
+     *                     .groupingKeys("severity")
+     *                     .periodMin(5)
+     *                     .times(1)
+     *                     .silenceSec(300)
+     *                     .build())
+     *                 .routes(EventNotifyPolicyNotifyStrategyRouteArgs.builder()
+     *                     .effectTimeRange(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs.builder()
+     *                         .timeZone("Asia/Shanghai")
+     *                         .startTimeInMinute(0)
+     *                         .endTimeInMinute(1439)
+     *                         .dayInWeeks(                        
+     *                             1,
+     *                             2,
+     *                             3,
+     *                             4,
+     *                             5)
+     *                         .build())
+     *                     .channels(EventNotifyPolicyNotifyStrategyRouteChannelArgs.builder()
+     *                         .receivers("tf-test-group")
+     *                         .channelType("DING")
+     *                         .enabledSubChannels()
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .subscription(EventNotifyPolicySubscriptionArgs.builder()
+     *                 .subscribeLegacyEvent(true)
+     *                 .filterSetting(EventNotifyPolicySubscriptionFilterSettingArgs.builder()
+     *                     .relation("AND")
+     *                     .conditions(EventNotifyPolicySubscriptionFilterSettingConditionArgs.builder()
+     *                         .field("severity")
+     *                         .op("EQ")
+     *                         .value("CRITICAL")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .name("tf-list-enp-0716a")
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getEventNotifyPolicies(GetEventNotifyPoliciesArgs.builder()
+     *             .ids(defaultEventNotifyPolicy.id())
+     *             .name("tf-list-enp-0716a")
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEventNotifyPoliciesResult> getEventNotifyPolicies(GetEventNotifyPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getEventNotifyPolicies:getEventNotifyPolicies", TypeShape.of(GetEventNotifyPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cms Event Notify Policy available to the user.[What is Event Notify Policy](https://next.api.alibabacloud.com/document/Cms/2024-03-30/CreateNotifyPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.289.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicy;
+     * import com.pulumi.alicloud.cms.EventNotifyPolicyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyResponsePlanRepeatNotifySettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyGroupingSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicyNotifyStrategyRouteChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingArgs;
+     * import com.pulumi.alicloud.cms.inputs.EventNotifyPolicySubscriptionFilterSettingConditionArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultEventNotifyPolicy = new EventNotifyPolicy("defaultEventNotifyPolicy", EventNotifyPolicyArgs.builder()
+     *             .description("Event notification policy managed by Terraform")
+     *             .responsePlan(EventNotifyPolicyResponsePlanArgs.builder()
+     *                 .repeatNotifySetting(EventNotifyPolicyResponsePlanRepeatNotifySettingArgs.builder()
+     *                     .endIncidentState("resolved")
+     *                     .repeatInterval(30)
+     *                     .build())
+     *                 .autoRecoverSeconds(600)
+     *                 .build())
+     *             .notifyStrategy(EventNotifyPolicyNotifyStrategyArgs.builder()
+     *                 .description("Notify strategy for list test")
+     *                 .ignoreRestoredNotification(false)
+     *                 .groupingSetting(EventNotifyPolicyNotifyStrategyGroupingSettingArgs.builder()
+     *                     .groupingKeys("severity")
+     *                     .periodMin(5)
+     *                     .times(1)
+     *                     .silenceSec(300)
+     *                     .build())
+     *                 .routes(EventNotifyPolicyNotifyStrategyRouteArgs.builder()
+     *                     .effectTimeRange(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs.builder()
+     *                         .timeZone("Asia/Shanghai")
+     *                         .startTimeInMinute(0)
+     *                         .endTimeInMinute(1439)
+     *                         .dayInWeeks(                        
+     *                             1,
+     *                             2,
+     *                             3,
+     *                             4,
+     *                             5)
+     *                         .build())
+     *                     .channels(EventNotifyPolicyNotifyStrategyRouteChannelArgs.builder()
+     *                         .receivers("tf-test-group")
+     *                         .channelType("DING")
+     *                         .enabledSubChannels()
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .subscription(EventNotifyPolicySubscriptionArgs.builder()
+     *                 .subscribeLegacyEvent(true)
+     *                 .filterSetting(EventNotifyPolicySubscriptionFilterSettingArgs.builder()
+     *                     .relation("AND")
+     *                     .conditions(EventNotifyPolicySubscriptionFilterSettingConditionArgs.builder()
+     *                         .field("severity")
+     *                         .op("EQ")
+     *                         .value("CRITICAL")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .name("tf-list-enp-0716a")
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getEventNotifyPolicies(GetEventNotifyPoliciesArgs.builder()
+     *             .ids(defaultEventNotifyPolicy.id())
+     *             .name("tf-list-enp-0716a")
+     *             .workspace("default-workspace-cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEventNotifyPoliciesResult> getEventNotifyPoliciesPlain(GetEventNotifyPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cms/getEventNotifyPolicies:getEventNotifyPolicies", TypeShape.of(GetEventNotifyPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cms Event Rules of the current Alibaba Cloud user.

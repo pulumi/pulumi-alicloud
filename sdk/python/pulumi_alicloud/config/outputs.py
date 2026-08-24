@@ -13,12 +13,15 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'ReportTemplateReportScope',
     'AssumeRole',
     'AssumeRoleWithOidc',
     'Endpoints',
+    'Features',
+    'FeaturesEcsInstance',
     'SignVersion',
 ]
 
@@ -2120,6 +2123,44 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
         """
         return pulumi.get(self, "waf_openapi")
+
+
+@pulumi.output_type
+class Features(dict):
+    def __init__(__self__, *,
+                 ecs_instance: Optional['outputs.FeaturesEcsInstance'] = None):
+        """
+        :param 'FeaturesEcsInstanceArgs' ecs_instance: The behaviour toggles of the `ecs.Instance` resource.
+        """
+        if ecs_instance is not None:
+            pulumi.set(__self__, "ecs_instance", ecs_instance)
+
+    @_builtins.property
+    @pulumi.getter(name="ecsInstance")
+    def ecs_instance(self) -> Optional['outputs.FeaturesEcsInstance']:
+        """
+        The behaviour toggles of the `ecs.Instance` resource.
+        """
+        return pulumi.get(self, "ecs_instance")
+
+
+@pulumi.output_type
+class FeaturesEcsInstance(dict):
+    def __init__(__self__, *,
+                 replace_on_image_update: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool replace_on_image_update: Whether a change to `image_id` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+        """
+        if replace_on_image_update is not None:
+            pulumi.set(__self__, "replace_on_image_update", replace_on_image_update)
+
+    @_builtins.property
+    @pulumi.getter(name="replaceOnImageUpdate")
+    def replace_on_image_update(self) -> Optional[_builtins.bool]:
+        """
+        Whether a change to `image_id` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+        """
+        return pulumi.get(self, "replace_on_image_update")
 
 
 @pulumi.output_type

@@ -1033,6 +1033,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.readOnlyCount);
     }
     /**
+     * The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
+     */
+    @Export(name="replicaCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> replicaCount;
+
+    /**
+     * @return The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
+     */
+    public Output<Integer> replicaCount() {
+        return this.replicaCount;
+    }
+    /**
      * The ID of resource group which the resource belongs.
      * 
      */
@@ -1175,6 +1189,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> slaveReadOnlyCount() {
         return Codegen.optional(this.slaveReadOnlyCount);
+    }
+    /**
+     * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     * 
+     */
+    @Export(name="slaveReplicaCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> slaveReplicaCount;
+
+    /**
+     * @return The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     * 
+     */
+    public Output<Integer> slaveReplicaCount() {
+        return this.slaveReplicaCount;
     }
     /**
      * The ID of the source instance.

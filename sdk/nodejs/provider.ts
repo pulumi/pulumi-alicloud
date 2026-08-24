@@ -118,6 +118,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["ecsRoleName"] = (args?.ecsRoleName) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
             resourceInputs["endpoints"] = pulumi.output(args?.endpoints).apply(JSON.stringify);
             resourceInputs["fc"] = args?.fc;
+            resourceInputs["features"] = pulumi.output(args?.features).apply(JSON.stringify);
             resourceInputs["logEndpoint"] = args?.logEndpoint;
             resourceInputs["maxRetryTimeout"] = pulumi.output(args?.maxRetryTimeout).apply(JSON.stringify);
             resourceInputs["mnsEndpoint"] = args?.mnsEndpoint;
@@ -189,6 +190,10 @@ export interface ProviderArgs {
      */
     fc?: pulumi.Input<string | undefined>;
     /**
+     * Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+     */
+    features?: pulumi.Input<inputs.ProviderFeatures | undefined>;
+    /**
      * @deprecated Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
      */
     logEndpoint?: pulumi.Input<string | undefined>;
@@ -232,7 +237,7 @@ export interface ProviderArgs {
     sharedCredentialsFile?: pulumi.Input<string | undefined>;
     signVersion?: pulumi.Input<inputs.ProviderSignVersion | undefined>;
     /**
-     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
      */
     skipRegionValidation?: pulumi.Input<boolean | undefined>;
     /**

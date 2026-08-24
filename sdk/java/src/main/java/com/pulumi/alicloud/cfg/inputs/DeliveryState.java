@@ -91,6 +91,21 @@ public final class DeliveryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the delivery channel. It is the same as the resource `id`.
+     * 
+     */
+    @Import(name="deliveryChannelId")
+    private @Nullable Output<String> deliveryChannelId;
+
+    /**
+     * @return The ID of the delivery channel. It is the same as the resource `id`.
+     * 
+     */
+    public Optional<Output<String>> deliveryChannelId() {
+        return Optional.ofNullable(this.deliveryChannelId);
+    }
+
+    /**
      * The name of the delivery channel.
      * 
      */
@@ -221,6 +236,7 @@ public final class DeliveryState extends com.pulumi.resources.ResourceArgs {
         this.configurationItemChangeNotification = $.configurationItemChangeNotification;
         this.configurationSnapshot = $.configurationSnapshot;
         this.deliveryChannelCondition = $.deliveryChannelCondition;
+        this.deliveryChannelId = $.deliveryChannelId;
         this.deliveryChannelName = $.deliveryChannelName;
         this.deliveryChannelTargetArn = $.deliveryChannelTargetArn;
         this.deliveryChannelType = $.deliveryChannelType;
@@ -337,6 +353,27 @@ public final class DeliveryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deliveryChannelCondition(String deliveryChannelCondition) {
             return deliveryChannelCondition(Output.of(deliveryChannelCondition));
+        }
+
+        /**
+         * @param deliveryChannelId The ID of the delivery channel. It is the same as the resource `id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deliveryChannelId(@Nullable Output<String> deliveryChannelId) {
+            $.deliveryChannelId = deliveryChannelId;
+            return this;
+        }
+
+        /**
+         * @param deliveryChannelId The ID of the delivery channel. It is the same as the resource `id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deliveryChannelId(String deliveryChannelId) {
+            return deliveryChannelId(Output.of(deliveryChannelId));
         }
 
         /**

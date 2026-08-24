@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,7 +36,7 @@ import * as utilities from "../utilities";
  * ENS Security Group can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
+ * $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <security_group_id>
  * ```
  */
 export class SecurityGroup extends pulumi.CustomResource {
@@ -66,11 +68,17 @@ export class SecurityGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * A collection of rules for a security group instance See `permissions` below.
+     */
+    declare public readonly permissions: pulumi.Output<outputs.ens.SecurityGroupPermission[] | undefined>;
+    /**
+     * Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      */
     declare public readonly securityGroupName: pulumi.Output<string | undefined>;
 
@@ -88,10 +96,12 @@ export class SecurityGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
             resourceInputs["description"] = state?.description;
+            resourceInputs["permissions"] = state?.permissions;
             resourceInputs["securityGroupName"] = state?.securityGroupName;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
             resourceInputs["description"] = args?.description;
+            resourceInputs["permissions"] = args?.permissions;
             resourceInputs["securityGroupName"] = args?.securityGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -104,11 +114,17 @@ export class SecurityGroup extends pulumi.CustomResource {
  */
 export interface SecurityGroupState {
     /**
-     * Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * A collection of rules for a security group instance See `permissions` below.
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.ens.SecurityGroupPermission>[] | undefined>;
+    /**
+     * Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      */
     securityGroupName?: pulumi.Input<string | undefined>;
 }
@@ -118,11 +134,17 @@ export interface SecurityGroupState {
  */
 export interface SecurityGroupArgs {
     /**
-     * Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * A collection of rules for a security group instance See `permissions` below.
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.ens.SecurityGroupPermission>[] | undefined>;
+    /**
+     * Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      */
     securityGroupName?: pulumi.Input<string | undefined>;
 }

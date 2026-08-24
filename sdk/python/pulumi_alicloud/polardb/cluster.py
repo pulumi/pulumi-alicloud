@@ -40,6 +40,7 @@ class ClusterArgs:
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -102,7 +103,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         :param pulumi.Input[_builtins.str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[_builtins.str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[_builtins.str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
@@ -129,6 +130,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -207,8 +209,8 @@ class ClusterArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -250,6 +252,8 @@ class ClusterArgs:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_automatic_rotation is not None:
+            pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if enable_dynamodb is not None:
             pulumi.set(__self__, "enable_dynamodb", enable_dynamodb)
         if encrypt_new_tables is not None:
@@ -370,7 +374,7 @@ class ClusterArgs:
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         """
         return pulumi.get(self, "db_node_class")
 
@@ -601,6 +605,18 @@ class ClusterArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutomaticRotation")
+    def enable_automatic_rotation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
+        """
+        return pulumi.get(self, "enable_automatic_rotation")
+
+    @enable_automatic_rotation.setter
+    def enable_automatic_rotation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDynamodb")
@@ -1245,8 +1261,8 @@ class ClusterArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -1309,6 +1325,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
                  collector_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1329,6 +1346,7 @@ class _ClusterState:
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1357,6 +1375,7 @@ class _ClusterState:
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
                  scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
                  scale_max: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1393,6 +1412,7 @@ class _ClusterState:
 
         :param pulumi.Input[_builtins.str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[_builtins.str] automatic_rotation: (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         :param pulumi.Input[_builtins.str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
@@ -1410,7 +1430,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -1424,6 +1444,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -1470,6 +1491,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
                > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        :param pulumi.Input[_builtins.str] rotation_interval: (Available since v1.289.0) The rotation interval of the TDE encryption key.
         :param pulumi.Input[_builtins.int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[_builtins.int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[_builtins.int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
@@ -1507,8 +1529,8 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -1519,6 +1541,8 @@ class _ClusterState:
             pulumi.set(__self__, "allow_shut_down", allow_shut_down)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if automatic_rotation is not None:
+            pulumi.set(__self__, "automatic_rotation", automatic_rotation)
         if backup_retention_policy_on_cluster_deletion is not None:
             pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if clone_data_point is not None:
@@ -1559,6 +1583,8 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_automatic_rotation is not None:
+            pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if enable_dynamodb is not None:
             pulumi.set(__self__, "enable_dynamodb", enable_dynamodb)
         if encrypt_new_tables is not None:
@@ -1615,6 +1641,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
         if scale_ap_ro_num_max is not None:
             pulumi.set(__self__, "scale_ap_ro_num_max", scale_ap_ro_num_max)
         if scale_ap_ro_num_min is not None:
@@ -1701,6 +1729,18 @@ class _ClusterState:
     @auto_renew_period.setter
     def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticRotation")
+    def automatic_rotation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
+        """
+        return pulumi.get(self, "automatic_rotation")
+
+    @automatic_rotation.setter
+    def automatic_rotation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
@@ -1833,7 +1873,7 @@ class _ClusterState:
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         """
         return pulumi.get(self, "db_node_class")
 
@@ -1952,6 +1992,18 @@ class _ClusterState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutomaticRotation")
+    def enable_automatic_rotation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
+        """
+        return pulumi.get(self, "enable_automatic_rotation")
+
+    @enable_automatic_rotation.setter
+    def enable_automatic_rotation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDynamodb")
@@ -2308,6 +2360,18 @@ class _ClusterState:
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.289.0) The rotation interval of the TDE encryption key.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rotation_interval", value)
+
+    @_builtins.property
     @pulumi.getter(name="scaleApRoNumMax")
     def scale_ap_ro_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -2634,8 +2698,8 @@ class _ClusterState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -2718,6 +2782,7 @@ class Cluster(pulumi.CustomResource):
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2908,7 +2973,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -2921,6 +2986,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -2999,8 +3065,8 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -3161,6 +3227,7 @@ class Cluster(pulumi.CustomResource):
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3251,6 +3318,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_time_zone"] = default_time_zone
             __props__.__dict__["deletion_lock"] = deletion_lock
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
             __props__.__dict__["enable_dynamodb"] = enable_dynamodb
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
             __props__.__dict__["encryption_key"] = encryption_key
@@ -3307,10 +3375,12 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["automatic_rotation"] = None
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["db_revision_version_lists"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["rotation_interval"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tde_region"] = None
         super(Cluster, __self__).__init__(
@@ -3325,6 +3395,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
             clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
             collector_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3345,6 +3416,7 @@ class Cluster(pulumi.CustomResource):
             default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
             encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3373,6 +3445,7 @@ class Cluster(pulumi.CustomResource):
             renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
             scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
             scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
             scale_max: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3413,6 +3486,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[_builtins.str] automatic_rotation: (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         :param pulumi.Input[_builtins.str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
@@ -3430,7 +3504,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -3444,6 +3518,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -3490,6 +3565,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
                > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        :param pulumi.Input[_builtins.str] rotation_interval: (Available since v1.289.0) The rotation interval of the TDE encryption key.
         :param pulumi.Input[_builtins.int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[_builtins.int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[_builtins.int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
@@ -3527,8 +3603,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -3541,6 +3617,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["allow_shut_down"] = allow_shut_down
         __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["automatic_rotation"] = automatic_rotation
         __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["clone_data_point"] = clone_data_point
         __props__.__dict__["collector_status"] = collector_status
@@ -3561,6 +3638,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["default_time_zone"] = default_time_zone
         __props__.__dict__["deletion_lock"] = deletion_lock
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
         __props__.__dict__["enable_dynamodb"] = enable_dynamodb
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
         __props__.__dict__["encryption_key"] = encryption_key
@@ -3589,6 +3667,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role_arn"] = role_arn
+        __props__.__dict__["rotation_interval"] = rotation_interval
         __props__.__dict__["scale_ap_ro_num_max"] = scale_ap_ro_num_max
         __props__.__dict__["scale_ap_ro_num_min"] = scale_ap_ro_num_min
         __props__.__dict__["scale_max"] = scale_max
@@ -3637,6 +3716,14 @@ class Cluster(pulumi.CustomResource):
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @_builtins.property
+    @pulumi.getter(name="automaticRotation")
+    def automatic_rotation(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.289.0) Indicates whether automatic rotation of the TDE encryption key is enabled.
+        """
+        return pulumi.get(self, "automatic_rotation")
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
@@ -3729,7 +3816,7 @@ class Cluster(pulumi.CustomResource):
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         """
         return pulumi.get(self, "db_node_class")
 
@@ -3808,6 +3895,14 @@ class Cluster(pulumi.CustomResource):
         The description of cluster.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutomaticRotation")
+    def enable_automatic_rotation(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
+        """
+        return pulumi.get(self, "enable_automatic_rotation")
 
     @_builtins.property
     @pulumi.getter(name="enableDynamodb")
@@ -4052,6 +4147,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "role_arn")
 
     @_builtins.property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.289.0) The rotation interval of the TDE encryption key.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @_builtins.property
     @pulumi.getter(name="scaleApRoNumMax")
     def scale_ap_ro_num_max(self) -> pulumi.Output[_builtins.int]:
         """
@@ -4274,8 +4377,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         """
         return pulumi.get(self, "tde_status")
 

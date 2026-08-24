@@ -166,8 +166,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetAddressBooksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
-        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`, `Asset`, `assetIpv6`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`. From version 1.286.0, `GroupType` can be set to `Asset`, `assetIpv6`.
         /// </summary>
         [Input("groupType")]
         public string? GroupType { get; set; }
@@ -205,8 +205,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetAddressBooksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
-        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`, `Asset`, `assetIpv6`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`. From version 1.286.0, `GroupType` can be set to `Asset`, `assetIpv6`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }

@@ -4888,6 +4888,2623 @@ func (o DynamicTagGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) Dynamic
 	}).(DynamicTagGroupMatchExpressOutput)
 }
 
+type EventNotifyPolicyNotifyStrategy struct {
+	// The list of custom notification templates. See `customTemplateEntries` below.
+	CustomTemplateEntries []EventNotifyPolicyNotifyStrategyCustomTemplateEntry `pulumi:"customTemplateEntries"`
+	// The description of the notification strategy.
+	Description *string `pulumi:"description"`
+	// The grouping and merging settings. See `groupingSetting` below.
+	GroupingSetting *EventNotifyPolicyNotifyStrategyGroupingSetting `pulumi:"groupingSetting"`
+	// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+	IgnoreRestoredNotification *bool `pulumi:"ignoreRestoredNotification"`
+	// The notification channel routing settings. See `routes` below.
+	Routes []EventNotifyPolicyNotifyStrategyRoute `pulumi:"routes"`
+}
+
+// EventNotifyPolicyNotifyStrategyInput is an input type that accepts EventNotifyPolicyNotifyStrategyArgs and EventNotifyPolicyNotifyStrategyOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyArgs{...}
+type EventNotifyPolicyNotifyStrategyInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyOutput() EventNotifyPolicyNotifyStrategyOutput
+	ToEventNotifyPolicyNotifyStrategyOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyOutput
+}
+
+type EventNotifyPolicyNotifyStrategyArgs struct {
+	// The list of custom notification templates. See `customTemplateEntries` below.
+	CustomTemplateEntries EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayInput `pulumi:"customTemplateEntries"`
+	// The description of the notification strategy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The grouping and merging settings. See `groupingSetting` below.
+	GroupingSetting EventNotifyPolicyNotifyStrategyGroupingSettingPtrInput `pulumi:"groupingSetting"`
+	// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+	IgnoreRestoredNotification pulumi.BoolPtrInput `pulumi:"ignoreRestoredNotification"`
+	// The notification channel routing settings. See `routes` below.
+	Routes EventNotifyPolicyNotifyStrategyRouteArrayInput `pulumi:"routes"`
+}
+
+func (EventNotifyPolicyNotifyStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyArgs) ToEventNotifyPolicyNotifyStrategyOutput() EventNotifyPolicyNotifyStrategyOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyArgs) ToEventNotifyPolicyNotifyStrategyOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyOutput)
+}
+
+func (i EventNotifyPolicyNotifyStrategyArgs) ToEventNotifyPolicyNotifyStrategyPtrOutput() EventNotifyPolicyNotifyStrategyPtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyArgs) ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyOutput).ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyNotifyStrategyPtrInput is an input type that accepts EventNotifyPolicyNotifyStrategyArgs, EventNotifyPolicyNotifyStrategyPtr and EventNotifyPolicyNotifyStrategyPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyPtrInput` via:
+//
+//	        EventNotifyPolicyNotifyStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyNotifyStrategyPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyPtrOutput() EventNotifyPolicyNotifyStrategyPtrOutput
+	ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyPtrOutput
+}
+
+type eventNotifyPolicyNotifyStrategyPtrType EventNotifyPolicyNotifyStrategyArgs
+
+func EventNotifyPolicyNotifyStrategyPtr(v *EventNotifyPolicyNotifyStrategyArgs) EventNotifyPolicyNotifyStrategyPtrInput {
+	return (*eventNotifyPolicyNotifyStrategyPtrType)(v)
+}
+
+func (*eventNotifyPolicyNotifyStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyNotifyStrategyPtrType) ToEventNotifyPolicyNotifyStrategyPtrOutput() EventNotifyPolicyNotifyStrategyPtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyNotifyStrategyPtrType) ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyOutput) ToEventNotifyPolicyNotifyStrategyOutput() EventNotifyPolicyNotifyStrategyOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyOutput) ToEventNotifyPolicyNotifyStrategyOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyOutput) ToEventNotifyPolicyNotifyStrategyPtrOutput() EventNotifyPolicyNotifyStrategyPtrOutput {
+	return o.ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyNotifyStrategyOutput) ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyNotifyStrategy) *EventNotifyPolicyNotifyStrategy {
+		return &v
+	}).(EventNotifyPolicyNotifyStrategyPtrOutput)
+}
+
+// The list of custom notification templates. See `customTemplateEntries` below.
+func (o EventNotifyPolicyNotifyStrategyOutput) CustomTemplateEntries() EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategy) []EventNotifyPolicyNotifyStrategyCustomTemplateEntry {
+		return v.CustomTemplateEntries
+	}).(EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput)
+}
+
+// The description of the notification strategy.
+func (o EventNotifyPolicyNotifyStrategyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The grouping and merging settings. See `groupingSetting` below.
+func (o EventNotifyPolicyNotifyStrategyOutput) GroupingSetting() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategy) *EventNotifyPolicyNotifyStrategyGroupingSetting {
+		return v.GroupingSetting
+	}).(EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput)
+}
+
+// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+func (o EventNotifyPolicyNotifyStrategyOutput) IgnoreRestoredNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategy) *bool { return v.IgnoreRestoredNotification }).(pulumi.BoolPtrOutput)
+}
+
+// The notification channel routing settings. See `routes` below.
+func (o EventNotifyPolicyNotifyStrategyOutput) Routes() EventNotifyPolicyNotifyStrategyRouteArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategy) []EventNotifyPolicyNotifyStrategyRoute { return v.Routes }).(EventNotifyPolicyNotifyStrategyRouteArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) ToEventNotifyPolicyNotifyStrategyPtrOutput() EventNotifyPolicyNotifyStrategyPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) ToEventNotifyPolicyNotifyStrategyPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) Elem() EventNotifyPolicyNotifyStrategyOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategy) EventNotifyPolicyNotifyStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyNotifyStrategy
+		return ret
+	}).(EventNotifyPolicyNotifyStrategyOutput)
+}
+
+// The list of custom notification templates. See `customTemplateEntries` below.
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) CustomTemplateEntries() EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategy) []EventNotifyPolicyNotifyStrategyCustomTemplateEntry {
+		if v == nil {
+			return nil
+		}
+		return v.CustomTemplateEntries
+	}).(EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput)
+}
+
+// The description of the notification strategy.
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grouping and merging settings. See `groupingSetting` below.
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) GroupingSetting() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategy) *EventNotifyPolicyNotifyStrategyGroupingSetting {
+		if v == nil {
+			return nil
+		}
+		return v.GroupingSetting
+	}).(EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput)
+}
+
+// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) IgnoreRestoredNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreRestoredNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The notification channel routing settings. See `routes` below.
+func (o EventNotifyPolicyNotifyStrategyPtrOutput) Routes() EventNotifyPolicyNotifyStrategyRouteArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategy) []EventNotifyPolicyNotifyStrategyRoute {
+		if v == nil {
+			return nil
+		}
+		return v.Routes
+	}).(EventNotifyPolicyNotifyStrategyRouteArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntry struct {
+	// The UUID of the template.
+	TemplateUuid *string `pulumi:"templateUuid"`
+}
+
+// EventNotifyPolicyNotifyStrategyCustomTemplateEntryInput is an input type that accepts EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs and EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyCustomTemplateEntryInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs{...}
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntryInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput() EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput
+	ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput
+}
+
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs struct {
+	// The UUID of the template.
+	TemplateUuid pulumi.StringPtrInput `pulumi:"templateUuid"`
+}
+
+func (EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput() EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput)
+}
+
+// EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayInput is an input type that accepts EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray and EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray{ EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs{...} }
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput() EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput
+	ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput
+}
+
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray []EventNotifyPolicyNotifyStrategyCustomTemplateEntryInput
+
+func (EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput() EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput() EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return o
+}
+
+// The UUID of the template.
+func (o EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput) TemplateUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyCustomTemplateEntry) *string { return v.TemplateUuid }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput() EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput) ToEventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput) Index(i pulumi.IntInput) EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotifyPolicyNotifyStrategyCustomTemplateEntry {
+		return vs[0].([]EventNotifyPolicyNotifyStrategyCustomTemplateEntry)[vs[1].(int)]
+	}).(EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyGroupingSetting struct {
+	// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+	GroupingKeys []string `pulumi:"groupingKeys"`
+	// The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+	PeriodMin *int `pulumi:"periodMin"`
+	// The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+	SilenceSec *int `pulumi:"silenceSec"`
+	// The number of triggers. This parameter does not take effect on this API and does not need to be set.
+	Times *int `pulumi:"times"`
+}
+
+// EventNotifyPolicyNotifyStrategyGroupingSettingInput is an input type that accepts EventNotifyPolicyNotifyStrategyGroupingSettingArgs and EventNotifyPolicyNotifyStrategyGroupingSettingOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyGroupingSettingInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyGroupingSettingArgs{...}
+type EventNotifyPolicyNotifyStrategyGroupingSettingInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyGroupingSettingOutput() EventNotifyPolicyNotifyStrategyGroupingSettingOutput
+	ToEventNotifyPolicyNotifyStrategyGroupingSettingOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingOutput
+}
+
+type EventNotifyPolicyNotifyStrategyGroupingSettingArgs struct {
+	// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+	GroupingKeys pulumi.StringArrayInput `pulumi:"groupingKeys"`
+	// The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+	PeriodMin pulumi.IntPtrInput `pulumi:"periodMin"`
+	// The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+	SilenceSec pulumi.IntPtrInput `pulumi:"silenceSec"`
+	// The number of triggers. This parameter does not take effect on this API and does not need to be set.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (EventNotifyPolicyNotifyStrategyGroupingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyGroupingSettingArgs) ToEventNotifyPolicyNotifyStrategyGroupingSettingOutput() EventNotifyPolicyNotifyStrategyGroupingSettingOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyGroupingSettingOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyGroupingSettingArgs) ToEventNotifyPolicyNotifyStrategyGroupingSettingOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyGroupingSettingOutput)
+}
+
+func (i EventNotifyPolicyNotifyStrategyGroupingSettingArgs) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyGroupingSettingArgs) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyGroupingSettingOutput).ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyNotifyStrategyGroupingSettingPtrInput is an input type that accepts EventNotifyPolicyNotifyStrategyGroupingSettingArgs, EventNotifyPolicyNotifyStrategyGroupingSettingPtr and EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyGroupingSettingPtrInput` via:
+//
+//	        EventNotifyPolicyNotifyStrategyGroupingSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyNotifyStrategyGroupingSettingPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput
+	ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput
+}
+
+type eventNotifyPolicyNotifyStrategyGroupingSettingPtrType EventNotifyPolicyNotifyStrategyGroupingSettingArgs
+
+func EventNotifyPolicyNotifyStrategyGroupingSettingPtr(v *EventNotifyPolicyNotifyStrategyGroupingSettingArgs) EventNotifyPolicyNotifyStrategyGroupingSettingPtrInput {
+	return (*eventNotifyPolicyNotifyStrategyGroupingSettingPtrType)(v)
+}
+
+func (*eventNotifyPolicyNotifyStrategyGroupingSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyNotifyStrategyGroupingSettingPtrType) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyNotifyStrategyGroupingSettingPtrType) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyGroupingSettingOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyGroupingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) ToEventNotifyPolicyNotifyStrategyGroupingSettingOutput() EventNotifyPolicyNotifyStrategyGroupingSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) ToEventNotifyPolicyNotifyStrategyGroupingSettingOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return o.ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyNotifyStrategyGroupingSetting) *EventNotifyPolicyNotifyStrategyGroupingSetting {
+		return &v
+	}).(EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput)
+}
+
+// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) GroupingKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyGroupingSetting) []string { return v.GroupingKeys }).(pulumi.StringArrayOutput)
+}
+
+// The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) PeriodMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyGroupingSetting) *int { return v.PeriodMin }).(pulumi.IntPtrOutput)
+}
+
+// The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) SilenceSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyGroupingSetting) *int { return v.SilenceSec }).(pulumi.IntPtrOutput)
+}
+
+// The number of triggers. This parameter does not take effect on this API and does not need to be set.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyGroupingSetting) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput() EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) ToEventNotifyPolicyNotifyStrategyGroupingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) Elem() EventNotifyPolicyNotifyStrategyGroupingSettingOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyGroupingSetting) EventNotifyPolicyNotifyStrategyGroupingSetting {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyNotifyStrategyGroupingSetting
+		return ret
+	}).(EventNotifyPolicyNotifyStrategyGroupingSettingOutput)
+}
+
+// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification. An empty list means no grouping.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) GroupingKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyGroupingSetting) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupingKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The check period in minutes. This parameter does not take effect on this API and does not need to be set.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) PeriodMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyGroupingSetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// The silence duration in seconds. This parameter does not take effect on this API and does not need to be set.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) SilenceSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyGroupingSetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SilenceSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of triggers. This parameter does not take effect on this API and does not need to be set.
+func (o EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyGroupingSetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRoute struct {
+	// The notification channels. See `channels` below.
+	Channels []EventNotifyPolicyNotifyStrategyRouteChannel `pulumi:"channels"`
+	// The name of the digital employee. This parameter is required when enableRca is set to true.
+	DigitalEmployeeName *string `pulumi:"digitalEmployeeName"`
+	// The effective time range. See `effectTimeRange` below.
+	EffectTimeRange *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange `pulumi:"effectTimeRange"`
+	// Specifies whether to enable Root Cause Analysis (RCA).
+	EnableRca     *bool                                              `pulumi:"enableRca"`
+	FilterSetting *EventNotifyPolicyNotifyStrategyRouteFilterSetting `pulumi:"filterSetting"`
+}
+
+// EventNotifyPolicyNotifyStrategyRouteInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteArgs and EventNotifyPolicyNotifyStrategyRouteOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteArgs{...}
+type EventNotifyPolicyNotifyStrategyRouteInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteOutput() EventNotifyPolicyNotifyStrategyRouteOutput
+	ToEventNotifyPolicyNotifyStrategyRouteOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteArgs struct {
+	// The notification channels. See `channels` below.
+	Channels EventNotifyPolicyNotifyStrategyRouteChannelArrayInput `pulumi:"channels"`
+	// The name of the digital employee. This parameter is required when enableRca is set to true.
+	DigitalEmployeeName pulumi.StringPtrInput `pulumi:"digitalEmployeeName"`
+	// The effective time range. See `effectTimeRange` below.
+	EffectTimeRange EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrInput `pulumi:"effectTimeRange"`
+	// Specifies whether to enable Root Cause Analysis (RCA).
+	EnableRca     pulumi.BoolPtrInput                                       `pulumi:"enableRca"`
+	FilterSetting EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrInput `pulumi:"filterSetting"`
+}
+
+func (EventNotifyPolicyNotifyStrategyRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteArgs) ToEventNotifyPolicyNotifyStrategyRouteOutput() EventNotifyPolicyNotifyStrategyRouteOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteArgs) ToEventNotifyPolicyNotifyStrategyRouteOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteOutput)
+}
+
+// EventNotifyPolicyNotifyStrategyRouteArrayInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteArray and EventNotifyPolicyNotifyStrategyRouteArrayOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteArrayInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteArray{ EventNotifyPolicyNotifyStrategyRouteArgs{...} }
+type EventNotifyPolicyNotifyStrategyRouteArrayInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteArrayOutput() EventNotifyPolicyNotifyStrategyRouteArrayOutput
+	ToEventNotifyPolicyNotifyStrategyRouteArrayOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteArrayOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteArray []EventNotifyPolicyNotifyStrategyRouteInput
+
+func (EventNotifyPolicyNotifyStrategyRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteArray) ToEventNotifyPolicyNotifyStrategyRouteArrayOutput() EventNotifyPolicyNotifyStrategyRouteArrayOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteArray) ToEventNotifyPolicyNotifyStrategyRouteArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) ToEventNotifyPolicyNotifyStrategyRouteOutput() EventNotifyPolicyNotifyStrategyRouteOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) ToEventNotifyPolicyNotifyStrategyRouteOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteOutput {
+	return o
+}
+
+// The notification channels. See `channels` below.
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) Channels() EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRoute) []EventNotifyPolicyNotifyStrategyRouteChannel {
+		return v.Channels
+	}).(EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput)
+}
+
+// The name of the digital employee. This parameter is required when enableRca is set to true.
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) DigitalEmployeeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRoute) *string { return v.DigitalEmployeeName }).(pulumi.StringPtrOutput)
+}
+
+// The effective time range. See `effectTimeRange` below.
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) EffectTimeRange() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRoute) *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange {
+		return v.EffectTimeRange
+	}).(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput)
+}
+
+// Specifies whether to enable Root Cause Analysis (RCA).
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) EnableRca() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRoute) *bool { return v.EnableRca }).(pulumi.BoolPtrOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteOutput) FilterSetting() EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRoute) *EventNotifyPolicyNotifyStrategyRouteFilterSetting {
+		return v.FilterSetting
+	}).(EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteArrayOutput) ToEventNotifyPolicyNotifyStrategyRouteArrayOutput() EventNotifyPolicyNotifyStrategyRouteArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteArrayOutput) ToEventNotifyPolicyNotifyStrategyRouteArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteArrayOutput) Index(i pulumi.IntInput) EventNotifyPolicyNotifyStrategyRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotifyPolicyNotifyStrategyRoute {
+		return vs[0].([]EventNotifyPolicyNotifyStrategyRoute)[vs[1].(int)]
+	}).(EventNotifyPolicyNotifyStrategyRouteOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteChannel struct {
+	// The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+	ChannelType *string `pulumi:"channelType"`
+	// The enabled notification methods. It is required only when `channelType` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+	EnabledSubChannels []string `pulumi:"enabledSubChannels"`
+	// The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+	Receivers []string `pulumi:"receivers"`
+}
+
+// EventNotifyPolicyNotifyStrategyRouteChannelInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteChannelArgs and EventNotifyPolicyNotifyStrategyRouteChannelOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteChannelInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteChannelArgs{...}
+type EventNotifyPolicyNotifyStrategyRouteChannelInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteChannelOutput() EventNotifyPolicyNotifyStrategyRouteChannelOutput
+	ToEventNotifyPolicyNotifyStrategyRouteChannelOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteChannelOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteChannelArgs struct {
+	// The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+	ChannelType pulumi.StringPtrInput `pulumi:"channelType"`
+	// The enabled notification methods. It is required only when `channelType` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+	EnabledSubChannels pulumi.StringArrayInput `pulumi:"enabledSubChannels"`
+	// The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+	Receivers pulumi.StringArrayInput `pulumi:"receivers"`
+}
+
+func (EventNotifyPolicyNotifyStrategyRouteChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteChannelArgs) ToEventNotifyPolicyNotifyStrategyRouteChannelOutput() EventNotifyPolicyNotifyStrategyRouteChannelOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteChannelOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteChannelArgs) ToEventNotifyPolicyNotifyStrategyRouteChannelOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteChannelOutput)
+}
+
+// EventNotifyPolicyNotifyStrategyRouteChannelArrayInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteChannelArray and EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteChannelArrayInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteChannelArray{ EventNotifyPolicyNotifyStrategyRouteChannelArgs{...} }
+type EventNotifyPolicyNotifyStrategyRouteChannelArrayInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutput() EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput
+	ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteChannelArray []EventNotifyPolicyNotifyStrategyRouteChannelInput
+
+func (EventNotifyPolicyNotifyStrategyRouteChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteChannelArray) ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutput() EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteChannelArray) ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteChannelOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteChannelOutput) ToEventNotifyPolicyNotifyStrategyRouteChannelOutput() EventNotifyPolicyNotifyStrategyRouteChannelOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteChannelOutput) ToEventNotifyPolicyNotifyStrategyRouteChannelOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteChannelOutput {
+	return o
+}
+
+// The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+func (o EventNotifyPolicyNotifyStrategyRouteChannelOutput) ChannelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteChannel) *string { return v.ChannelType }).(pulumi.StringPtrOutput)
+}
+
+// The enabled notification methods. It is required only when `channelType` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+func (o EventNotifyPolicyNotifyStrategyRouteChannelOutput) EnabledSubChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteChannel) []string { return v.EnabledSubChannels }).(pulumi.StringArrayOutput)
+}
+
+// The list of recipient identifiers for the channel. At least one item is required. For a webhook channel it is the webhook UUID, for a robot channel it is the robot UUID, and for `CONTACT` it is the contact ID.
+func (o EventNotifyPolicyNotifyStrategyRouteChannelOutput) Receivers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteChannel) []string { return v.Receivers }).(pulumi.StringArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput) ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutput() EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput) ToEventNotifyPolicyNotifyStrategyRouteChannelArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput) Index(i pulumi.IntInput) EventNotifyPolicyNotifyStrategyRouteChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotifyPolicyNotifyStrategyRouteChannel {
+		return vs[0].([]EventNotifyPolicyNotifyStrategyRouteChannel)[vs[1].(int)]
+	}).(EventNotifyPolicyNotifyStrategyRouteChannelOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteEffectTimeRange struct {
+	// The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+	DayInWeeks []int `pulumi:"dayInWeeks"`
+	// The end time in minutes. Valid values: 0 to 1439.
+	EndTimeInMinute *int `pulumi:"endTimeInMinute"`
+	// The start time in minutes. Valid values: 0 to 1438.
+	StartTimeInMinute *int `pulumi:"startTimeInMinute"`
+	// The time zone, such as Asia/Shanghai.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs and EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs{...}
+type EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput
+	ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs struct {
+	// The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+	DayInWeeks pulumi.IntArrayInput `pulumi:"dayInWeeks"`
+	// The end time in minutes. Valid values: 0 to 1439.
+	EndTimeInMinute pulumi.IntPtrInput `pulumi:"endTimeInMinute"`
+	// The start time in minutes. Valid values: 0 to 1438.
+	StartTimeInMinute pulumi.IntPtrInput `pulumi:"startTimeInMinute"`
+	// The time zone, such as Asia/Shanghai.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput)
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput).ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs, EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtr and EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrInput` via:
+//
+//	        EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput
+	ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput
+}
+
+type eventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrType EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs
+
+func EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtr(v *EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrInput {
+	return (*eventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrType)(v)
+}
+
+func (*eventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrType) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrType) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return o.ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange {
+		return &v
+	}).(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput)
+}
+
+// The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) DayInWeeks() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) []int { return v.DayInWeeks }).(pulumi.IntArrayOutput)
+}
+
+// The end time in minutes. Valid values: 0 to 1439.
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) EndTimeInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *int { return v.EndTimeInMinute }).(pulumi.IntPtrOutput)
+}
+
+// The start time in minutes. Valid values: 0 to 1438.
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) StartTimeInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *int { return v.StartTimeInMinute }).(pulumi.IntPtrOutput)
+}
+
+// The time zone, such as Asia/Shanghai.
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) ToEventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) Elem() EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) EventNotifyPolicyNotifyStrategyRouteEffectTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyNotifyStrategyRouteEffectTimeRange
+		return ret
+	}).(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput)
+}
+
+// The effective days of the week. Valid values: 0 to 6 (0 indicates Sunday and 6 indicates Saturday).
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) DayInWeeks() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DayInWeeks
+	}).(pulumi.IntArrayOutput)
+}
+
+// The end time in minutes. Valid values: 0 to 1439.
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) EndTimeInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndTimeInMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// The start time in minutes. Valid values: 0 to 1438.
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) StartTimeInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartTimeInMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time zone, such as Asia/Shanghai.
+func (o EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteEffectTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSetting struct {
+	Conditions []EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition `pulumi:"conditions"`
+	Expression *string                                                      `pulumi:"expression"`
+	Relation   *string                                                      `pulumi:"relation"`
+}
+
+// EventNotifyPolicyNotifyStrategyRouteFilterSettingInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs and EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteFilterSettingInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs{...}
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs struct {
+	Conditions EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayInput `pulumi:"conditions"`
+	Expression pulumi.StringPtrInput                                                `pulumi:"expression"`
+	Relation   pulumi.StringPtrInput                                                `pulumi:"relation"`
+}
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput)
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput).ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs, EventNotifyPolicyNotifyStrategyRouteFilterSettingPtr and EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrInput` via:
+//
+//	        EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput
+}
+
+type eventNotifyPolicyNotifyStrategyRouteFilterSettingPtrType EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs
+
+func EventNotifyPolicyNotifyStrategyRouteFilterSettingPtr(v *EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs) EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrInput {
+	return (*eventNotifyPolicyNotifyStrategyRouteFilterSettingPtrType)(v)
+}
+
+func (*eventNotifyPolicyNotifyStrategyRouteFilterSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyNotifyStrategyRouteFilterSettingPtrType) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyNotifyStrategyRouteFilterSettingPtrType) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return o.ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyNotifyStrategyRouteFilterSetting) *EventNotifyPolicyNotifyStrategyRouteFilterSetting {
+		return &v
+	}).(EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) Conditions() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteFilterSetting) []EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition {
+		return v.Conditions
+	}).(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteFilterSetting) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteFilterSetting) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) Elem() EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteFilterSetting) EventNotifyPolicyNotifyStrategyRouteFilterSetting {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyNotifyStrategyRouteFilterSetting
+		return ret
+	}).(EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) Conditions() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteFilterSetting) []EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteFilterSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyNotifyStrategyRouteFilterSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition struct {
+	Field *string `pulumi:"field"`
+	Op    *string `pulumi:"op"`
+	Value *string `pulumi:"value"`
+}
+
+// EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs and EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs{...}
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs struct {
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	Op    pulumi.StringPtrInput `pulumi:"op"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput)
+}
+
+// EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayInput is an input type that accepts EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray and EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayInput` via:
+//
+//	EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray{ EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs{...} }
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput
+	ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray []EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionInput
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return i.ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput() EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) ToEventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(ctx context.Context) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) Index(i pulumi.IntInput) EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition {
+		return vs[0].([]EventNotifyPolicyNotifyStrategyRouteFilterSettingCondition)[vs[1].(int)]
+	}).(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput)
+}
+
+type EventNotifyPolicyResponsePlan struct {
+	// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+	AutoRecoverSeconds *int `pulumi:"autoRecoverSeconds"`
+	// The list of escalation plan IDs.
+	EscalationIds []string `pulumi:"escalationIds"`
+	// Action integration push settings. See `pushingSetting` below.
+	PushingSetting *EventNotifyPolicyResponsePlanPushingSetting `pulumi:"pushingSetting"`
+	// Repeated notification configuration. See `repeatNotifySetting` below.
+	RepeatNotifySetting *EventNotifyPolicyResponsePlanRepeatNotifySetting `pulumi:"repeatNotifySetting"`
+}
+
+// EventNotifyPolicyResponsePlanInput is an input type that accepts EventNotifyPolicyResponsePlanArgs and EventNotifyPolicyResponsePlanOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyResponsePlanInput` via:
+//
+//	EventNotifyPolicyResponsePlanArgs{...}
+type EventNotifyPolicyResponsePlanInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyResponsePlanOutput() EventNotifyPolicyResponsePlanOutput
+	ToEventNotifyPolicyResponsePlanOutputWithContext(context.Context) EventNotifyPolicyResponsePlanOutput
+}
+
+type EventNotifyPolicyResponsePlanArgs struct {
+	// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+	AutoRecoverSeconds pulumi.IntPtrInput `pulumi:"autoRecoverSeconds"`
+	// The list of escalation plan IDs.
+	EscalationIds pulumi.StringArrayInput `pulumi:"escalationIds"`
+	// Action integration push settings. See `pushingSetting` below.
+	PushingSetting EventNotifyPolicyResponsePlanPushingSettingPtrInput `pulumi:"pushingSetting"`
+	// Repeated notification configuration. See `repeatNotifySetting` below.
+	RepeatNotifySetting EventNotifyPolicyResponsePlanRepeatNotifySettingPtrInput `pulumi:"repeatNotifySetting"`
+}
+
+func (EventNotifyPolicyResponsePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyResponsePlan)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyResponsePlanArgs) ToEventNotifyPolicyResponsePlanOutput() EventNotifyPolicyResponsePlanOutput {
+	return i.ToEventNotifyPolicyResponsePlanOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyResponsePlanArgs) ToEventNotifyPolicyResponsePlanOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanOutput)
+}
+
+func (i EventNotifyPolicyResponsePlanArgs) ToEventNotifyPolicyResponsePlanPtrOutput() EventNotifyPolicyResponsePlanPtrOutput {
+	return i.ToEventNotifyPolicyResponsePlanPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyResponsePlanArgs) ToEventNotifyPolicyResponsePlanPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanOutput).ToEventNotifyPolicyResponsePlanPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyResponsePlanPtrInput is an input type that accepts EventNotifyPolicyResponsePlanArgs, EventNotifyPolicyResponsePlanPtr and EventNotifyPolicyResponsePlanPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyResponsePlanPtrInput` via:
+//
+//	        EventNotifyPolicyResponsePlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyResponsePlanPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyResponsePlanPtrOutput() EventNotifyPolicyResponsePlanPtrOutput
+	ToEventNotifyPolicyResponsePlanPtrOutputWithContext(context.Context) EventNotifyPolicyResponsePlanPtrOutput
+}
+
+type eventNotifyPolicyResponsePlanPtrType EventNotifyPolicyResponsePlanArgs
+
+func EventNotifyPolicyResponsePlanPtr(v *EventNotifyPolicyResponsePlanArgs) EventNotifyPolicyResponsePlanPtrInput {
+	return (*eventNotifyPolicyResponsePlanPtrType)(v)
+}
+
+func (*eventNotifyPolicyResponsePlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyResponsePlan)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyResponsePlanPtrType) ToEventNotifyPolicyResponsePlanPtrOutput() EventNotifyPolicyResponsePlanPtrOutput {
+	return i.ToEventNotifyPolicyResponsePlanPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyResponsePlanPtrType) ToEventNotifyPolicyResponsePlanPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanPtrOutput)
+}
+
+type EventNotifyPolicyResponsePlanOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyResponsePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyResponsePlan)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyResponsePlanOutput) ToEventNotifyPolicyResponsePlanOutput() EventNotifyPolicyResponsePlanOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanOutput) ToEventNotifyPolicyResponsePlanOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanOutput) ToEventNotifyPolicyResponsePlanPtrOutput() EventNotifyPolicyResponsePlanPtrOutput {
+	return o.ToEventNotifyPolicyResponsePlanPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyResponsePlanOutput) ToEventNotifyPolicyResponsePlanPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyResponsePlan) *EventNotifyPolicyResponsePlan {
+		return &v
+	}).(EventNotifyPolicyResponsePlanPtrOutput)
+}
+
+// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+func (o EventNotifyPolicyResponsePlanOutput) AutoRecoverSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlan) *int { return v.AutoRecoverSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The list of escalation plan IDs.
+func (o EventNotifyPolicyResponsePlanOutput) EscalationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlan) []string { return v.EscalationIds }).(pulumi.StringArrayOutput)
+}
+
+// Action integration push settings. See `pushingSetting` below.
+func (o EventNotifyPolicyResponsePlanOutput) PushingSetting() EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlan) *EventNotifyPolicyResponsePlanPushingSetting {
+		return v.PushingSetting
+	}).(EventNotifyPolicyResponsePlanPushingSettingPtrOutput)
+}
+
+// Repeated notification configuration. See `repeatNotifySetting` below.
+func (o EventNotifyPolicyResponsePlanOutput) RepeatNotifySetting() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlan) *EventNotifyPolicyResponsePlanRepeatNotifySetting {
+		return v.RepeatNotifySetting
+	}).(EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput)
+}
+
+type EventNotifyPolicyResponsePlanPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyResponsePlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyResponsePlan)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyResponsePlanPtrOutput) ToEventNotifyPolicyResponsePlanPtrOutput() EventNotifyPolicyResponsePlanPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanPtrOutput) ToEventNotifyPolicyResponsePlanPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanPtrOutput) Elem() EventNotifyPolicyResponsePlanOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlan) EventNotifyPolicyResponsePlan {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyResponsePlan
+		return ret
+	}).(EventNotifyPolicyResponsePlanOutput)
+}
+
+// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+func (o EventNotifyPolicyResponsePlanPtrOutput) AutoRecoverSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlan) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRecoverSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The list of escalation plan IDs.
+func (o EventNotifyPolicyResponsePlanPtrOutput) EscalationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EscalationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Action integration push settings. See `pushingSetting` below.
+func (o EventNotifyPolicyResponsePlanPtrOutput) PushingSetting() EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlan) *EventNotifyPolicyResponsePlanPushingSetting {
+		if v == nil {
+			return nil
+		}
+		return v.PushingSetting
+	}).(EventNotifyPolicyResponsePlanPushingSettingPtrOutput)
+}
+
+// Repeated notification configuration. See `repeatNotifySetting` below.
+func (o EventNotifyPolicyResponsePlanPtrOutput) RepeatNotifySetting() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlan) *EventNotifyPolicyResponsePlanRepeatNotifySetting {
+		if v == nil {
+			return nil
+		}
+		return v.RepeatNotifySetting
+	}).(EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput)
+}
+
+type EventNotifyPolicyResponsePlanPushingSetting struct {
+	// The list of alert action integration IDs triggered by alerts.
+	AlertActionIds []string `pulumi:"alertActionIds"`
+	// The list of action integration IDs triggered upon recovery.
+	RestoreActionIds []string `pulumi:"restoreActionIds"`
+}
+
+// EventNotifyPolicyResponsePlanPushingSettingInput is an input type that accepts EventNotifyPolicyResponsePlanPushingSettingArgs and EventNotifyPolicyResponsePlanPushingSettingOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyResponsePlanPushingSettingInput` via:
+//
+//	EventNotifyPolicyResponsePlanPushingSettingArgs{...}
+type EventNotifyPolicyResponsePlanPushingSettingInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyResponsePlanPushingSettingOutput() EventNotifyPolicyResponsePlanPushingSettingOutput
+	ToEventNotifyPolicyResponsePlanPushingSettingOutputWithContext(context.Context) EventNotifyPolicyResponsePlanPushingSettingOutput
+}
+
+type EventNotifyPolicyResponsePlanPushingSettingArgs struct {
+	// The list of alert action integration IDs triggered by alerts.
+	AlertActionIds pulumi.StringArrayInput `pulumi:"alertActionIds"`
+	// The list of action integration IDs triggered upon recovery.
+	RestoreActionIds pulumi.StringArrayInput `pulumi:"restoreActionIds"`
+}
+
+func (EventNotifyPolicyResponsePlanPushingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyResponsePlanPushingSettingArgs) ToEventNotifyPolicyResponsePlanPushingSettingOutput() EventNotifyPolicyResponsePlanPushingSettingOutput {
+	return i.ToEventNotifyPolicyResponsePlanPushingSettingOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyResponsePlanPushingSettingArgs) ToEventNotifyPolicyResponsePlanPushingSettingOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPushingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanPushingSettingOutput)
+}
+
+func (i EventNotifyPolicyResponsePlanPushingSettingArgs) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutput() EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return i.ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyResponsePlanPushingSettingArgs) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanPushingSettingOutput).ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyResponsePlanPushingSettingPtrInput is an input type that accepts EventNotifyPolicyResponsePlanPushingSettingArgs, EventNotifyPolicyResponsePlanPushingSettingPtr and EventNotifyPolicyResponsePlanPushingSettingPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyResponsePlanPushingSettingPtrInput` via:
+//
+//	        EventNotifyPolicyResponsePlanPushingSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyResponsePlanPushingSettingPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyResponsePlanPushingSettingPtrOutput() EventNotifyPolicyResponsePlanPushingSettingPtrOutput
+	ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(context.Context) EventNotifyPolicyResponsePlanPushingSettingPtrOutput
+}
+
+type eventNotifyPolicyResponsePlanPushingSettingPtrType EventNotifyPolicyResponsePlanPushingSettingArgs
+
+func EventNotifyPolicyResponsePlanPushingSettingPtr(v *EventNotifyPolicyResponsePlanPushingSettingArgs) EventNotifyPolicyResponsePlanPushingSettingPtrInput {
+	return (*eventNotifyPolicyResponsePlanPushingSettingPtrType)(v)
+}
+
+func (*eventNotifyPolicyResponsePlanPushingSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyResponsePlanPushingSettingPtrType) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutput() EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return i.ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyResponsePlanPushingSettingPtrType) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanPushingSettingPtrOutput)
+}
+
+type EventNotifyPolicyResponsePlanPushingSettingOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyResponsePlanPushingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingOutput) ToEventNotifyPolicyResponsePlanPushingSettingOutput() EventNotifyPolicyResponsePlanPushingSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingOutput) ToEventNotifyPolicyResponsePlanPushingSettingOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPushingSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingOutput) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutput() EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return o.ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingOutput) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyResponsePlanPushingSetting) *EventNotifyPolicyResponsePlanPushingSetting {
+		return &v
+	}).(EventNotifyPolicyResponsePlanPushingSettingPtrOutput)
+}
+
+// The list of alert action integration IDs triggered by alerts.
+func (o EventNotifyPolicyResponsePlanPushingSettingOutput) AlertActionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlanPushingSetting) []string { return v.AlertActionIds }).(pulumi.StringArrayOutput)
+}
+
+// The list of action integration IDs triggered upon recovery.
+func (o EventNotifyPolicyResponsePlanPushingSettingOutput) RestoreActionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlanPushingSetting) []string { return v.RestoreActionIds }).(pulumi.StringArrayOutput)
+}
+
+type EventNotifyPolicyResponsePlanPushingSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyResponsePlanPushingSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingPtrOutput) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutput() EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingPtrOutput) ToEventNotifyPolicyResponsePlanPushingSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanPushingSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanPushingSettingPtrOutput) Elem() EventNotifyPolicyResponsePlanPushingSettingOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlanPushingSetting) EventNotifyPolicyResponsePlanPushingSetting {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyResponsePlanPushingSetting
+		return ret
+	}).(EventNotifyPolicyResponsePlanPushingSettingOutput)
+}
+
+// The list of alert action integration IDs triggered by alerts.
+func (o EventNotifyPolicyResponsePlanPushingSettingPtrOutput) AlertActionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlanPushingSetting) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertActionIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of action integration IDs triggered upon recovery.
+func (o EventNotifyPolicyResponsePlanPushingSettingPtrOutput) RestoreActionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlanPushingSetting) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestoreActionIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type EventNotifyPolicyResponsePlanRepeatNotifySetting struct {
+	// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+	EndIncidentState *string `pulumi:"endIncidentState"`
+	// The interval between repeated notifications, in seconds.
+	RepeatInterval *int `pulumi:"repeatInterval"`
+}
+
+// EventNotifyPolicyResponsePlanRepeatNotifySettingInput is an input type that accepts EventNotifyPolicyResponsePlanRepeatNotifySettingArgs and EventNotifyPolicyResponsePlanRepeatNotifySettingOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyResponsePlanRepeatNotifySettingInput` via:
+//
+//	EventNotifyPolicyResponsePlanRepeatNotifySettingArgs{...}
+type EventNotifyPolicyResponsePlanRepeatNotifySettingInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingOutput
+	ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutputWithContext(context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingOutput
+}
+
+type EventNotifyPolicyResponsePlanRepeatNotifySettingArgs struct {
+	// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+	EndIncidentState pulumi.StringPtrInput `pulumi:"endIncidentState"`
+	// The interval between repeated notifications, in seconds.
+	RepeatInterval pulumi.IntPtrInput `pulumi:"repeatInterval"`
+}
+
+func (EventNotifyPolicyResponsePlanRepeatNotifySettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (i EventNotifyPolicyResponsePlanRepeatNotifySettingArgs) ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingOutput {
+	return i.ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyResponsePlanRepeatNotifySettingArgs) ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanRepeatNotifySettingOutput)
+}
+
+func (i EventNotifyPolicyResponsePlanRepeatNotifySettingArgs) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return i.ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicyResponsePlanRepeatNotifySettingArgs) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanRepeatNotifySettingOutput).ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicyResponsePlanRepeatNotifySettingPtrInput is an input type that accepts EventNotifyPolicyResponsePlanRepeatNotifySettingArgs, EventNotifyPolicyResponsePlanRepeatNotifySettingPtr and EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicyResponsePlanRepeatNotifySettingPtrInput` via:
+//
+//	        EventNotifyPolicyResponsePlanRepeatNotifySettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicyResponsePlanRepeatNotifySettingPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput
+	ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput
+}
+
+type eventNotifyPolicyResponsePlanRepeatNotifySettingPtrType EventNotifyPolicyResponsePlanRepeatNotifySettingArgs
+
+func EventNotifyPolicyResponsePlanRepeatNotifySettingPtr(v *EventNotifyPolicyResponsePlanRepeatNotifySettingArgs) EventNotifyPolicyResponsePlanRepeatNotifySettingPtrInput {
+	return (*eventNotifyPolicyResponsePlanRepeatNotifySettingPtrType)(v)
+}
+
+func (*eventNotifyPolicyResponsePlanRepeatNotifySettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicyResponsePlanRepeatNotifySettingPtrType) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return i.ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicyResponsePlanRepeatNotifySettingPtrType) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput)
+}
+
+type EventNotifyPolicyResponsePlanRepeatNotifySettingOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) ToEventNotifyPolicyResponsePlanRepeatNotifySettingOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return o.ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicyResponsePlanRepeatNotifySetting) *EventNotifyPolicyResponsePlanRepeatNotifySetting {
+		return &v
+	}).(EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput)
+}
+
+// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) EndIncidentState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlanRepeatNotifySetting) *string { return v.EndIncidentState }).(pulumi.StringPtrOutput)
+}
+
+// The interval between repeated notifications, in seconds.
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingOutput) RepeatInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicyResponsePlanRepeatNotifySetting) *int { return v.RepeatInterval }).(pulumi.IntPtrOutput)
+}
+
+type EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput() EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput) ToEventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput) Elem() EventNotifyPolicyResponsePlanRepeatNotifySettingOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlanRepeatNotifySetting) EventNotifyPolicyResponsePlanRepeatNotifySetting {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicyResponsePlanRepeatNotifySetting
+		return ret
+	}).(EventNotifyPolicyResponsePlanRepeatNotifySettingOutput)
+}
+
+// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput) EndIncidentState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlanRepeatNotifySetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndIncidentState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval between repeated notifications, in seconds.
+func (o EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput) RepeatInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicyResponsePlanRepeatNotifySetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RepeatInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+type EventNotifyPolicySubscription struct {
+	// Event content filtering. The server fills in defaults when it is not specified. See `filterSetting` below.
+	FilterSetting *EventNotifyPolicySubscriptionFilterSetting `pulumi:"filterSetting"`
+	// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+	SubscribeLegacyEvent *bool `pulumi:"subscribeLegacyEvent"`
+	// Cross-workspace event routing (global subscription). See `workspaceFilterSetting` below.
+	WorkspaceFilterSetting *EventNotifyPolicySubscriptionWorkspaceFilterSetting `pulumi:"workspaceFilterSetting"`
+}
+
+// EventNotifyPolicySubscriptionInput is an input type that accepts EventNotifyPolicySubscriptionArgs and EventNotifyPolicySubscriptionOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionInput` via:
+//
+//	EventNotifyPolicySubscriptionArgs{...}
+type EventNotifyPolicySubscriptionInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionOutput() EventNotifyPolicySubscriptionOutput
+	ToEventNotifyPolicySubscriptionOutputWithContext(context.Context) EventNotifyPolicySubscriptionOutput
+}
+
+type EventNotifyPolicySubscriptionArgs struct {
+	// Event content filtering. The server fills in defaults when it is not specified. See `filterSetting` below.
+	FilterSetting EventNotifyPolicySubscriptionFilterSettingPtrInput `pulumi:"filterSetting"`
+	// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+	SubscribeLegacyEvent pulumi.BoolPtrInput `pulumi:"subscribeLegacyEvent"`
+	// Cross-workspace event routing (global subscription). See `workspaceFilterSetting` below.
+	WorkspaceFilterSetting EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrInput `pulumi:"workspaceFilterSetting"`
+}
+
+func (EventNotifyPolicySubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscription)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionArgs) ToEventNotifyPolicySubscriptionOutput() EventNotifyPolicySubscriptionOutput {
+	return i.ToEventNotifyPolicySubscriptionOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionArgs) ToEventNotifyPolicySubscriptionOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionOutput)
+}
+
+func (i EventNotifyPolicySubscriptionArgs) ToEventNotifyPolicySubscriptionPtrOutput() EventNotifyPolicySubscriptionPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionArgs) ToEventNotifyPolicySubscriptionPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionOutput).ToEventNotifyPolicySubscriptionPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicySubscriptionPtrInput is an input type that accepts EventNotifyPolicySubscriptionArgs, EventNotifyPolicySubscriptionPtr and EventNotifyPolicySubscriptionPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionPtrInput` via:
+//
+//	        EventNotifyPolicySubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicySubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionPtrOutput() EventNotifyPolicySubscriptionPtrOutput
+	ToEventNotifyPolicySubscriptionPtrOutputWithContext(context.Context) EventNotifyPolicySubscriptionPtrOutput
+}
+
+type eventNotifyPolicySubscriptionPtrType EventNotifyPolicySubscriptionArgs
+
+func EventNotifyPolicySubscriptionPtr(v *EventNotifyPolicySubscriptionArgs) EventNotifyPolicySubscriptionPtrInput {
+	return (*eventNotifyPolicySubscriptionPtrType)(v)
+}
+
+func (*eventNotifyPolicySubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscription)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicySubscriptionPtrType) ToEventNotifyPolicySubscriptionPtrOutput() EventNotifyPolicySubscriptionPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicySubscriptionPtrType) ToEventNotifyPolicySubscriptionPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscription)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionOutput) ToEventNotifyPolicySubscriptionOutput() EventNotifyPolicySubscriptionOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionOutput) ToEventNotifyPolicySubscriptionOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionOutput) ToEventNotifyPolicySubscriptionPtrOutput() EventNotifyPolicySubscriptionPtrOutput {
+	return o.ToEventNotifyPolicySubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicySubscriptionOutput) ToEventNotifyPolicySubscriptionPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicySubscription) *EventNotifyPolicySubscription {
+		return &v
+	}).(EventNotifyPolicySubscriptionPtrOutput)
+}
+
+// Event content filtering. The server fills in defaults when it is not specified. See `filterSetting` below.
+func (o EventNotifyPolicySubscriptionOutput) FilterSetting() EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscription) *EventNotifyPolicySubscriptionFilterSetting {
+		return v.FilterSetting
+	}).(EventNotifyPolicySubscriptionFilterSettingPtrOutput)
+}
+
+// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+func (o EventNotifyPolicySubscriptionOutput) SubscribeLegacyEvent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscription) *bool { return v.SubscribeLegacyEvent }).(pulumi.BoolPtrOutput)
+}
+
+// Cross-workspace event routing (global subscription). See `workspaceFilterSetting` below.
+func (o EventNotifyPolicySubscriptionOutput) WorkspaceFilterSetting() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscription) *EventNotifyPolicySubscriptionWorkspaceFilterSetting {
+		return v.WorkspaceFilterSetting
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscription)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionPtrOutput) ToEventNotifyPolicySubscriptionPtrOutput() EventNotifyPolicySubscriptionPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionPtrOutput) ToEventNotifyPolicySubscriptionPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionPtrOutput) Elem() EventNotifyPolicySubscriptionOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscription) EventNotifyPolicySubscription {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicySubscription
+		return ret
+	}).(EventNotifyPolicySubscriptionOutput)
+}
+
+// Event content filtering. The server fills in defaults when it is not specified. See `filterSetting` below.
+func (o EventNotifyPolicySubscriptionPtrOutput) FilterSetting() EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscription) *EventNotifyPolicySubscriptionFilterSetting {
+		if v == nil {
+			return nil
+		}
+		return v.FilterSetting
+	}).(EventNotifyPolicySubscriptionFilterSettingPtrOutput)
+}
+
+// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.0, ARMS, or SLS events).
+func (o EventNotifyPolicySubscriptionPtrOutput) SubscribeLegacyEvent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SubscribeLegacyEvent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cross-workspace event routing (global subscription). See `workspaceFilterSetting` below.
+func (o EventNotifyPolicySubscriptionPtrOutput) WorkspaceFilterSetting() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscription) *EventNotifyPolicySubscriptionWorkspaceFilterSetting {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceFilterSetting
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionFilterSetting struct {
+	Conditions []EventNotifyPolicySubscriptionFilterSettingCondition `pulumi:"conditions"`
+	Expression *string                                               `pulumi:"expression"`
+	Relation   *string                                               `pulumi:"relation"`
+}
+
+// EventNotifyPolicySubscriptionFilterSettingInput is an input type that accepts EventNotifyPolicySubscriptionFilterSettingArgs and EventNotifyPolicySubscriptionFilterSettingOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionFilterSettingInput` via:
+//
+//	EventNotifyPolicySubscriptionFilterSettingArgs{...}
+type EventNotifyPolicySubscriptionFilterSettingInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionFilterSettingOutput() EventNotifyPolicySubscriptionFilterSettingOutput
+	ToEventNotifyPolicySubscriptionFilterSettingOutputWithContext(context.Context) EventNotifyPolicySubscriptionFilterSettingOutput
+}
+
+type EventNotifyPolicySubscriptionFilterSettingArgs struct {
+	Conditions EventNotifyPolicySubscriptionFilterSettingConditionArrayInput `pulumi:"conditions"`
+	Expression pulumi.StringPtrInput                                         `pulumi:"expression"`
+	Relation   pulumi.StringPtrInput                                         `pulumi:"relation"`
+}
+
+func (EventNotifyPolicySubscriptionFilterSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingArgs) ToEventNotifyPolicySubscriptionFilterSettingOutput() EventNotifyPolicySubscriptionFilterSettingOutput {
+	return i.ToEventNotifyPolicySubscriptionFilterSettingOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingArgs) ToEventNotifyPolicySubscriptionFilterSettingOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionFilterSettingOutput)
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingArgs) ToEventNotifyPolicySubscriptionFilterSettingPtrOutput() EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingArgs) ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionFilterSettingOutput).ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicySubscriptionFilterSettingPtrInput is an input type that accepts EventNotifyPolicySubscriptionFilterSettingArgs, EventNotifyPolicySubscriptionFilterSettingPtr and EventNotifyPolicySubscriptionFilterSettingPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionFilterSettingPtrInput` via:
+//
+//	        EventNotifyPolicySubscriptionFilterSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicySubscriptionFilterSettingPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionFilterSettingPtrOutput() EventNotifyPolicySubscriptionFilterSettingPtrOutput
+	ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(context.Context) EventNotifyPolicySubscriptionFilterSettingPtrOutput
+}
+
+type eventNotifyPolicySubscriptionFilterSettingPtrType EventNotifyPolicySubscriptionFilterSettingArgs
+
+func EventNotifyPolicySubscriptionFilterSettingPtr(v *EventNotifyPolicySubscriptionFilterSettingArgs) EventNotifyPolicySubscriptionFilterSettingPtrInput {
+	return (*eventNotifyPolicySubscriptionFilterSettingPtrType)(v)
+}
+
+func (*eventNotifyPolicySubscriptionFilterSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicySubscriptionFilterSettingPtrType) ToEventNotifyPolicySubscriptionFilterSettingPtrOutput() EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicySubscriptionFilterSettingPtrType) ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionFilterSettingPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionFilterSettingOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionFilterSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) ToEventNotifyPolicySubscriptionFilterSettingOutput() EventNotifyPolicySubscriptionFilterSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) ToEventNotifyPolicySubscriptionFilterSettingOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) ToEventNotifyPolicySubscriptionFilterSettingPtrOutput() EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return o.ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicySubscriptionFilterSetting) *EventNotifyPolicySubscriptionFilterSetting {
+		return &v
+	}).(EventNotifyPolicySubscriptionFilterSettingPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) Conditions() EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionFilterSetting) []EventNotifyPolicySubscriptionFilterSettingCondition {
+		return v.Conditions
+	}).(EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionFilterSetting) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionFilterSetting) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionFilterSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionFilterSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingPtrOutput) ToEventNotifyPolicySubscriptionFilterSettingPtrOutput() EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingPtrOutput) ToEventNotifyPolicySubscriptionFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingPtrOutput) Elem() EventNotifyPolicySubscriptionFilterSettingOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionFilterSetting) EventNotifyPolicySubscriptionFilterSetting {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicySubscriptionFilterSetting
+		return ret
+	}).(EventNotifyPolicySubscriptionFilterSettingOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingPtrOutput) Conditions() EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionFilterSetting) []EventNotifyPolicySubscriptionFilterSettingCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionFilterSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingPtrOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionFilterSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionFilterSettingCondition struct {
+	Field *string `pulumi:"field"`
+	Op    *string `pulumi:"op"`
+	Value *string `pulumi:"value"`
+}
+
+// EventNotifyPolicySubscriptionFilterSettingConditionInput is an input type that accepts EventNotifyPolicySubscriptionFilterSettingConditionArgs and EventNotifyPolicySubscriptionFilterSettingConditionOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionFilterSettingConditionInput` via:
+//
+//	EventNotifyPolicySubscriptionFilterSettingConditionArgs{...}
+type EventNotifyPolicySubscriptionFilterSettingConditionInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionFilterSettingConditionOutput() EventNotifyPolicySubscriptionFilterSettingConditionOutput
+	ToEventNotifyPolicySubscriptionFilterSettingConditionOutputWithContext(context.Context) EventNotifyPolicySubscriptionFilterSettingConditionOutput
+}
+
+type EventNotifyPolicySubscriptionFilterSettingConditionArgs struct {
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	Op    pulumi.StringPtrInput `pulumi:"op"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EventNotifyPolicySubscriptionFilterSettingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingConditionArgs) ToEventNotifyPolicySubscriptionFilterSettingConditionOutput() EventNotifyPolicySubscriptionFilterSettingConditionOutput {
+	return i.ToEventNotifyPolicySubscriptionFilterSettingConditionOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingConditionArgs) ToEventNotifyPolicySubscriptionFilterSettingConditionOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionFilterSettingConditionOutput)
+}
+
+// EventNotifyPolicySubscriptionFilterSettingConditionArrayInput is an input type that accepts EventNotifyPolicySubscriptionFilterSettingConditionArray and EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionFilterSettingConditionArrayInput` via:
+//
+//	EventNotifyPolicySubscriptionFilterSettingConditionArray{ EventNotifyPolicySubscriptionFilterSettingConditionArgs{...} }
+type EventNotifyPolicySubscriptionFilterSettingConditionArrayInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutput() EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput
+	ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutputWithContext(context.Context) EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput
+}
+
+type EventNotifyPolicySubscriptionFilterSettingConditionArray []EventNotifyPolicySubscriptionFilterSettingConditionInput
+
+func (EventNotifyPolicySubscriptionFilterSettingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingConditionArray) ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutput() EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput {
+	return i.ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionFilterSettingConditionArray) ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput)
+}
+
+type EventNotifyPolicySubscriptionFilterSettingConditionOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionFilterSettingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionOutput) ToEventNotifyPolicySubscriptionFilterSettingConditionOutput() EventNotifyPolicySubscriptionFilterSettingConditionOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionOutput) ToEventNotifyPolicySubscriptionFilterSettingConditionOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingConditionOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionFilterSettingCondition) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionFilterSettingCondition) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionFilterSettingCondition) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput) ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutput() EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput) ToEventNotifyPolicySubscriptionFilterSettingConditionArrayOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput) Index(i pulumi.IntInput) EventNotifyPolicySubscriptionFilterSettingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotifyPolicySubscriptionFilterSettingCondition {
+		return vs[0].([]EventNotifyPolicySubscriptionFilterSettingCondition)[vs[1].(int)]
+	}).(EventNotifyPolicySubscriptionFilterSettingConditionOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSetting struct {
+	// The tag selector. See `tagSelector` below.
+	TagSelector *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector `pulumi:"tagSelector"`
+	// The list of workspace UUIDs.
+	WorkspaceUuids []string `pulumi:"workspaceUuids"`
+}
+
+// EventNotifyPolicySubscriptionWorkspaceFilterSettingInput is an input type that accepts EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs and EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionWorkspaceFilterSettingInput` via:
+//
+//	EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs{...}
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutputWithContext(context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs struct {
+	// The tag selector. See `tagSelector` below.
+	TagSelector EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrInput `pulumi:"tagSelector"`
+	// The list of workspace UUIDs.
+	WorkspaceUuids pulumi.StringArrayInput `pulumi:"workspaceUuids"`
+}
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput)
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput).ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrInput is an input type that accepts EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs, EventNotifyPolicySubscriptionWorkspaceFilterSettingPtr and EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrInput` via:
+//
+//	        EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput
+}
+
+type eventNotifyPolicySubscriptionWorkspaceFilterSettingPtrType EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs
+
+func EventNotifyPolicySubscriptionWorkspaceFilterSettingPtr(v *EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs) EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrInput {
+	return (*eventNotifyPolicySubscriptionWorkspaceFilterSettingPtrType)(v)
+}
+
+func (*eventNotifyPolicySubscriptionWorkspaceFilterSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicySubscriptionWorkspaceFilterSettingPtrType) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicySubscriptionWorkspaceFilterSettingPtrType) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return o.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicySubscriptionWorkspaceFilterSetting) *EventNotifyPolicySubscriptionWorkspaceFilterSetting {
+		return &v
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput)
+}
+
+// The tag selector. See `tagSelector` below.
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) TagSelector() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSetting) *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector {
+		return v.TagSelector
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput)
+}
+
+// The list of workspace UUIDs.
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput) WorkspaceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSetting) []string { return v.WorkspaceUuids }).(pulumi.StringArrayOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput) Elem() EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSetting) EventNotifyPolicySubscriptionWorkspaceFilterSetting {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicySubscriptionWorkspaceFilterSetting
+		return ret
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput)
+}
+
+// The tag selector. See `tagSelector` below.
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput) TagSelector() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSetting) *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector {
+		if v == nil {
+			return nil
+		}
+		return v.TagSelector
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput)
+}
+
+// The list of workspace UUIDs.
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput) WorkspaceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSetting) []string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceUuids
+	}).(pulumi.StringArrayOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector struct {
+	Conditions []EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition `pulumi:"conditions"`
+	Expression *string                                                                   `pulumi:"expression"`
+	Relation   *string                                                                   `pulumi:"relation"`
+}
+
+// EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorInput is an input type that accepts EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs and EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorInput` via:
+//
+//	EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{...}
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs struct {
+	Conditions EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput `pulumi:"conditions"`
+	Expression pulumi.StringPtrInput                                                             `pulumi:"expression"`
+	Relation   pulumi.StringPtrInput                                                             `pulumi:"relation"`
+}
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput)
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput).ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(ctx)
+}
+
+// EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrInput is an input type that accepts EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs, EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtr and EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrInput` via:
+//
+//	        EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput
+}
+
+type eventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrType EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs
+
+func EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtr(v *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrInput {
+	return (*eventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrType)(v)
+}
+
+func (*eventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (i *eventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrType) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *eventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrType) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return o.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector {
+		return &v
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) Conditions() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) []EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition {
+		return v.Conditions
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) Elem() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector {
+		if v != nil {
+			return *v
+		}
+		var ret EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector
+		return ret
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) Conditions() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) []EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition struct {
+	Field *string `pulumi:"field"`
+	Op    *string `pulumi:"op"`
+	Value *string `pulumi:"value"`
+}
+
+// EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput is an input type that accepts EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs and EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput` via:
+//
+//	EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs{...}
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs struct {
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	Op    pulumi.StringPtrInput `pulumi:"op"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput)
+}
+
+// EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput is an input type that accepts EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray and EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput values.
+// You can construct a concrete instance of `EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput` via:
+//
+//	EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray{ EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs{...} }
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput interface {
+	pulumi.Input
+
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput
+	ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray []EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return i.ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition) *string {
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput() EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) ToEventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(ctx context.Context) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o
+}
+
+func (o EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) Index(i pulumi.IntInput) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition {
+		return vs[0].([]EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)[vs[1].(int)]
+	}).(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput)
+}
+
 type EventRuleContactParameter struct {
 	// The name of the alert contact group.
 	ContactGroupName *string `pulumi:"contactGroupName"`
@@ -14210,6 +16827,2230 @@ func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) Index(i pulumi.IntInput
 	}).(GetDynamicTagGroupsGroupMatchExpressOutput)
 }
 
+type GetEventNotifyPoliciesPolicy struct {
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The description.
+	Description string `pulumi:"description"`
+	// Indicates whether the policy is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Filters results by fuzzy matching on the policy name.
+	Name string `pulumi:"name"`
+	// The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates.
+	NotifyStrategies []GetEventNotifyPoliciesPolicyNotifyStrategy `pulumi:"notifyStrategies"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration.
+	ResponsePlans []GetEventNotifyPoliciesPolicyResponsePlan `pulumi:"responsePlans"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription.
+	Subscriptions []GetEventNotifyPoliciesPolicySubscription `pulumi:"subscriptions"`
+	// The update time.
+	UpdateTime string `pulumi:"updateTime"`
+	// The user ID.
+	UserId string `pulumi:"userId"`
+	// The unique identifier of the notification policy, which is returned by the creation API.
+	Uuid string `pulumi:"uuid"`
+	// Private parameter for update operation.
+	Version int `pulumi:"version"`
+	// The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
+	Workspace string `pulumi:"workspace"`
+}
+
+// GetEventNotifyPoliciesPolicyInput is an input type that accepts GetEventNotifyPoliciesPolicyArgs and GetEventNotifyPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyInput` via:
+//
+//	GetEventNotifyPoliciesPolicyArgs{...}
+type GetEventNotifyPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyOutput() GetEventNotifyPoliciesPolicyOutput
+	ToGetEventNotifyPoliciesPolicyOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyOutput
+}
+
+type GetEventNotifyPoliciesPolicyArgs struct {
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates whether the policy is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Filters results by fuzzy matching on the policy name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates.
+	NotifyStrategies GetEventNotifyPoliciesPolicyNotifyStrategyArrayInput `pulumi:"notifyStrategies"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration.
+	ResponsePlans GetEventNotifyPoliciesPolicyResponsePlanArrayInput `pulumi:"responsePlans"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription.
+	Subscriptions GetEventNotifyPoliciesPolicySubscriptionArrayInput `pulumi:"subscriptions"`
+	// The update time.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The user ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// The unique identifier of the notification policy, which is returned by the creation API.
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// Private parameter for update operation.
+	Version pulumi.IntInput `pulumi:"version"`
+	// The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (GetEventNotifyPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyArgs) ToGetEventNotifyPoliciesPolicyOutput() GetEventNotifyPoliciesPolicyOutput {
+	return i.ToGetEventNotifyPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyArgs) ToGetEventNotifyPoliciesPolicyOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyOutput)
+}
+
+// GetEventNotifyPoliciesPolicyArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyArray and GetEventNotifyPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyArray{ GetEventNotifyPoliciesPolicyArgs{...} }
+type GetEventNotifyPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyArrayOutput() GetEventNotifyPoliciesPolicyArrayOutput
+	ToGetEventNotifyPoliciesPolicyArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyArray []GetEventNotifyPoliciesPolicyInput
+
+func (GetEventNotifyPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyArray) ToGetEventNotifyPoliciesPolicyArrayOutput() GetEventNotifyPoliciesPolicyArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyArray) ToGetEventNotifyPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyOutput) ToGetEventNotifyPoliciesPolicyOutput() GetEventNotifyPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyOutput) ToGetEventNotifyPoliciesPolicyOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyOutput {
+	return o
+}
+
+// The creation time.
+func (o GetEventNotifyPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description.
+func (o GetEventNotifyPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates whether the policy is enabled.
+func (o GetEventNotifyPoliciesPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetEventNotifyPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Filters results by fuzzy matching on the policy name.
+func (o GetEventNotifyPoliciesPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates.
+func (o GetEventNotifyPoliciesPolicyOutput) NotifyStrategies() GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) []GetEventNotifyPoliciesPolicyNotifyStrategy {
+		return v.NotifyStrategies
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration.
+func (o GetEventNotifyPoliciesPolicyOutput) ResponsePlans() GetEventNotifyPoliciesPolicyResponsePlanArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) []GetEventNotifyPoliciesPolicyResponsePlan {
+		return v.ResponsePlans
+	}).(GetEventNotifyPoliciesPolicyResponsePlanArrayOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription.
+func (o GetEventNotifyPoliciesPolicyOutput) Subscriptions() GetEventNotifyPoliciesPolicySubscriptionArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) []GetEventNotifyPoliciesPolicySubscription {
+		return v.Subscriptions
+	}).(GetEventNotifyPoliciesPolicySubscriptionArrayOutput)
+}
+
+// The update time.
+func (o GetEventNotifyPoliciesPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The user ID.
+func (o GetEventNotifyPoliciesPolicyOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the notification policy, which is returned by the creation API.
+func (o GetEventNotifyPoliciesPolicyOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Private parameter for update operation.
+func (o GetEventNotifyPoliciesPolicyOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) int { return v.Version }).(pulumi.IntOutput)
+}
+
+// The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
+func (o GetEventNotifyPoliciesPolicyOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicy) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyArrayOutput) ToGetEventNotifyPoliciesPolicyArrayOutput() GetEventNotifyPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyArrayOutput) ToGetEventNotifyPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicy {
+		return vs[0].([]GetEventNotifyPoliciesPolicy)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategy struct {
+	// The list of custom notification templates.
+	CustomTemplateEntries []GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry `pulumi:"customTemplateEntries"`
+	// The description.
+	Description string `pulumi:"description"`
+	// The grouping and merging settings.
+	GroupingSettings []GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting `pulumi:"groupingSettings"`
+	// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+	IgnoreRestoredNotification bool `pulumi:"ignoreRestoredNotification"`
+	// The notification channel routing settings.
+	Routes []GetEventNotifyPoliciesPolicyNotifyStrategyRoute `pulumi:"routes"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyArgs and GetEventNotifyPoliciesPolicyNotifyStrategyOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyOutput() GetEventNotifyPoliciesPolicyNotifyStrategyOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyArgs struct {
+	// The list of custom notification templates.
+	CustomTemplateEntries GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayInput `pulumi:"customTemplateEntries"`
+	// The description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The grouping and merging settings.
+	GroupingSettings GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayInput `pulumi:"groupingSettings"`
+	// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+	IgnoreRestoredNotification pulumi.BoolInput `pulumi:"ignoreRestoredNotification"`
+	// The notification channel routing settings.
+	Routes GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayInput `pulumi:"routes"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyOutput() GetEventNotifyPoliciesPolicyNotifyStrategyOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyArray and GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyArray{ GetEventNotifyPoliciesPolicyNotifyStrategyArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyArray []GetEventNotifyPoliciesPolicyNotifyStrategyInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyOutput() GetEventNotifyPoliciesPolicyNotifyStrategyOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyOutput {
+	return o
+}
+
+// The list of custom notification templates.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) CustomTemplateEntries() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategy) []GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry {
+		return v.CustomTemplateEntries
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput)
+}
+
+// The description.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The grouping and merging settings.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) GroupingSettings() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategy) []GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting {
+		return v.GroupingSettings
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput)
+}
+
+// Indicates whether to ignore notifications for recovered events. `true` means no recovery notification is sent.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) IgnoreRestoredNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategy) bool { return v.IgnoreRestoredNotification }).(pulumi.BoolOutput)
+}
+
+// The notification channel routing settings.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyOutput) Routes() GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategy) []GetEventNotifyPoliciesPolicyNotifyStrategyRoute {
+		return v.Routes
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategy)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategy {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategy)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry struct {
+	// The UUID of the template.
+	TemplateUuid string `pulumi:"templateUuid"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs and GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs struct {
+	// The UUID of the template.
+	TemplateUuid pulumi.StringInput `pulumi:"templateUuid"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray and GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray{ GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray []GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return o
+}
+
+// The UUID of the template.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput) TemplateUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry) string { return v.TemplateUuid }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntry)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting struct {
+	// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification.
+	GroupingKeys []string `pulumi:"groupingKeys"`
+	// The check period in minutes. This parameter does not take effect on this API.
+	PeriodMin int `pulumi:"periodMin"`
+	// The silence duration in seconds. This parameter does not take effect on this API.
+	SilenceSec int `pulumi:"silenceSec"`
+	// The number of triggers. This parameter does not take effect on this API.
+	Times int `pulumi:"times"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs and GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs struct {
+	// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification.
+	GroupingKeys pulumi.StringArrayInput `pulumi:"groupingKeys"`
+	// The check period in minutes. This parameter does not take effect on this API.
+	PeriodMin pulumi.IntInput `pulumi:"periodMin"`
+	// The silence duration in seconds. This parameter does not take effect on this API.
+	SilenceSec pulumi.IntInput `pulumi:"silenceSec"`
+	// The number of triggers. This parameter does not take effect on this API.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray and GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray{ GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray []GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput {
+	return o
+}
+
+// The event fields used to group and merge notifications. Events sharing the same values are merged into a single notification.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) GroupingKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting) []string { return v.GroupingKeys }).(pulumi.StringArrayOutput)
+}
+
+// The check period in minutes. This parameter does not take effect on this API.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) PeriodMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting) int { return v.PeriodMin }).(pulumi.IntOutput)
+}
+
+// The silence duration in seconds. This parameter does not take effect on this API.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) SilenceSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting) int { return v.SilenceSec }).(pulumi.IntOutput)
+}
+
+// The number of triggers. This parameter does not take effect on this API.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSetting)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRoute struct {
+	// The notification channels.
+	Channels []GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel `pulumi:"channels"`
+	// The name of the digital employee.
+	DigitalEmployeeName string `pulumi:"digitalEmployeeName"`
+	// The effective time range.
+	EffectTimeRanges []GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange `pulumi:"effectTimeRanges"`
+	// Specifies whether to enable Root Cause Analysis (RCA).
+	EnableRca bool `pulumi:"enableRca"`
+	// Event content filtering.
+	FilterSettings []GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting `pulumi:"filterSettings"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs and GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs struct {
+	// The notification channels.
+	Channels GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayInput `pulumi:"channels"`
+	// The name of the digital employee.
+	DigitalEmployeeName pulumi.StringInput `pulumi:"digitalEmployeeName"`
+	// The effective time range.
+	EffectTimeRanges GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayInput `pulumi:"effectTimeRanges"`
+	// Specifies whether to enable Root Cause Analysis (RCA).
+	EnableRca pulumi.BoolInput `pulumi:"enableRca"`
+	// Event content filtering.
+	FilterSettings GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayInput `pulumi:"filterSettings"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray and GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray{ GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray []GetEventNotifyPoliciesPolicyNotifyStrategyRouteInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput {
+	return o
+}
+
+// The notification channels.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) Channels() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRoute) []GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel {
+		return v.Channels
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput)
+}
+
+// The name of the digital employee.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) DigitalEmployeeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRoute) string { return v.DigitalEmployeeName }).(pulumi.StringOutput)
+}
+
+// The effective time range.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) EffectTimeRanges() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRoute) []GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange {
+		return v.EffectTimeRanges
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput)
+}
+
+// Specifies whether to enable Root Cause Analysis (RCA).
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) EnableRca() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRoute) bool { return v.EnableRca }).(pulumi.BoolOutput)
+}
+
+// Event content filtering.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput) FilterSettings() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRoute) []GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting {
+		return v.FilterSettings
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRoute)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyRoute {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyRoute)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel struct {
+	// The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+	ChannelType string `pulumi:"channelType"`
+	// The enabled notification methods. Applies only when `channelType` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+	EnabledSubChannels []string `pulumi:"enabledSubChannels"`
+	// The list of recipients for the channel.
+	Receivers []string `pulumi:"receivers"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs and GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs struct {
+	// The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+	ChannelType pulumi.StringInput `pulumi:"channelType"`
+	// The enabled notification methods. Applies only when `channelType` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+	EnabledSubChannels pulumi.StringArrayInput `pulumi:"enabledSubChannels"`
+	// The list of recipients for the channel.
+	Receivers pulumi.StringArrayInput `pulumi:"receivers"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray and GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray{ GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray []GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput {
+	return o
+}
+
+// The channel type. Valid values: `DING`, `WEIXIN`, `FEISHU`, `SLACK`, `TEAMS`, `CONTACT`, `GROUP`, `DUTY`, `DING_COOL_APP`.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput) ChannelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel) string { return v.ChannelType }).(pulumi.StringOutput)
+}
+
+// The enabled notification methods. Applies only when `channelType` is `CONTACT`, `GROUP` or `DUTY`. Valid values: `EMAIL`, `SMS`, `VOICE`, `DING`, `WEIXIN`, `FEISHU`, `WEBHOOK`.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput) EnabledSubChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel) []string { return v.EnabledSubChannels }).(pulumi.StringArrayOutput)
+}
+
+// The list of recipients for the channel.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput) Receivers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel) []string { return v.Receivers }).(pulumi.StringArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannel)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange struct {
+	// The effective days of the week.
+	DayInWeeks []int `pulumi:"dayInWeeks"`
+	// The end time in minutes.
+	EndTimeInMinute int `pulumi:"endTimeInMinute"`
+	// The start time in minutes.
+	StartTimeInMinute int `pulumi:"startTimeInMinute"`
+	// The time zone, such as Asia/Shanghai.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs and GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs struct {
+	// The effective days of the week.
+	DayInWeeks pulumi.IntArrayInput `pulumi:"dayInWeeks"`
+	// The end time in minutes.
+	EndTimeInMinute pulumi.IntInput `pulumi:"endTimeInMinute"`
+	// The start time in minutes.
+	StartTimeInMinute pulumi.IntInput `pulumi:"startTimeInMinute"`
+	// The time zone, such as Asia/Shanghai.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray and GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray{ GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray []GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return o
+}
+
+// The effective days of the week.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) DayInWeeks() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange) []int { return v.DayInWeeks }).(pulumi.IntArrayOutput)
+}
+
+// The end time in minutes.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) EndTimeInMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange) int { return v.EndTimeInMinute }).(pulumi.IntOutput)
+}
+
+// The start time in minutes.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) StartTimeInMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange) int { return v.StartTimeInMinute }).(pulumi.IntOutput)
+}
+
+// The time zone, such as Asia/Shanghai.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRange)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting struct {
+	// The filter conditions.
+	Conditions []GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition `pulumi:"conditions"`
+	// The relational expression.
+	Expression string `pulumi:"expression"`
+	// The condition relation.
+	Relation string `pulumi:"relation"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs and GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs struct {
+	// The filter conditions.
+	Conditions GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayInput `pulumi:"conditions"`
+	// The relational expression.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The condition relation.
+	Relation pulumi.StringInput `pulumi:"relation"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray and GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray{ GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray []GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput {
+	return o
+}
+
+// The filter conditions.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput) Conditions() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting) []GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition {
+		return v.Conditions
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput)
+}
+
+// The relational expression.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The condition relation.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting) string { return v.Relation }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSetting)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition struct {
+	// The filter field.
+	Field string `pulumi:"field"`
+	// The filter operator.
+	Op string `pulumi:"op"`
+	// The filter value.
+	Value string `pulumi:"value"`
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs and GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs{...}
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs struct {
+	// The filter field.
+	Field pulumi.StringInput `pulumi:"field"`
+	// The filter operator.
+	Op pulumi.StringInput `pulumi:"op"`
+	// The filter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput)
+}
+
+// GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray and GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray{ GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs{...} }
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput
+	ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray []GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionInput
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return o
+}
+
+// The filter field.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// The filter operator.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput() GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) ToGetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition {
+		return vs[0].([]GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingCondition)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlan struct {
+	// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+	AutoRecoverSeconds int `pulumi:"autoRecoverSeconds"`
+	// The list of escalation plan IDs.
+	EscalationIds []string `pulumi:"escalationIds"`
+	// Action integration push settings.
+	PushingSettings []GetEventNotifyPoliciesPolicyResponsePlanPushingSetting `pulumi:"pushingSettings"`
+	// Repeated notification configuration.
+	RepeatNotifySettings []GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting `pulumi:"repeatNotifySettings"`
+}
+
+// GetEventNotifyPoliciesPolicyResponsePlanInput is an input type that accepts GetEventNotifyPoliciesPolicyResponsePlanArgs and GetEventNotifyPoliciesPolicyResponsePlanOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyResponsePlanInput` via:
+//
+//	GetEventNotifyPoliciesPolicyResponsePlanArgs{...}
+type GetEventNotifyPoliciesPolicyResponsePlanInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyResponsePlanOutput() GetEventNotifyPoliciesPolicyResponsePlanOutput
+	ToGetEventNotifyPoliciesPolicyResponsePlanOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyResponsePlanOutput
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanArgs struct {
+	// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+	AutoRecoverSeconds pulumi.IntInput `pulumi:"autoRecoverSeconds"`
+	// The list of escalation plan IDs.
+	EscalationIds pulumi.StringArrayInput `pulumi:"escalationIds"`
+	// Action integration push settings.
+	PushingSettings GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayInput `pulumi:"pushingSettings"`
+	// Repeated notification configuration.
+	RepeatNotifySettings GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayInput `pulumi:"repeatNotifySettings"`
+}
+
+func (GetEventNotifyPoliciesPolicyResponsePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlan)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanArgs) ToGetEventNotifyPoliciesPolicyResponsePlanOutput() GetEventNotifyPoliciesPolicyResponsePlanOutput {
+	return i.ToGetEventNotifyPoliciesPolicyResponsePlanOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanArgs) ToGetEventNotifyPoliciesPolicyResponsePlanOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyResponsePlanOutput)
+}
+
+// GetEventNotifyPoliciesPolicyResponsePlanArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyResponsePlanArray and GetEventNotifyPoliciesPolicyResponsePlanArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyResponsePlanArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyResponsePlanArray{ GetEventNotifyPoliciesPolicyResponsePlanArgs{...} }
+type GetEventNotifyPoliciesPolicyResponsePlanArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanArrayOutput
+	ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyResponsePlanArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanArray []GetEventNotifyPoliciesPolicyResponsePlanInput
+
+func (GetEventNotifyPoliciesPolicyResponsePlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyResponsePlan)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanArray) ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanArray) ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyResponsePlanArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyResponsePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlan)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanOutput) ToGetEventNotifyPoliciesPolicyResponsePlanOutput() GetEventNotifyPoliciesPolicyResponsePlanOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanOutput) ToGetEventNotifyPoliciesPolicyResponsePlanOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanOutput {
+	return o
+}
+
+// The auto-recovery duration in seconds. An event is recovered automatically when it is not triggered again within this duration.
+func (o GetEventNotifyPoliciesPolicyResponsePlanOutput) AutoRecoverSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlan) int { return v.AutoRecoverSeconds }).(pulumi.IntOutput)
+}
+
+// The list of escalation plan IDs.
+func (o GetEventNotifyPoliciesPolicyResponsePlanOutput) EscalationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlan) []string { return v.EscalationIds }).(pulumi.StringArrayOutput)
+}
+
+// Action integration push settings.
+func (o GetEventNotifyPoliciesPolicyResponsePlanOutput) PushingSettings() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlan) []GetEventNotifyPoliciesPolicyResponsePlanPushingSetting {
+		return v.PushingSettings
+	}).(GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput)
+}
+
+// Repeated notification configuration.
+func (o GetEventNotifyPoliciesPolicyResponsePlanOutput) RepeatNotifySettings() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlan) []GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting {
+		return v.RepeatNotifySettings
+	}).(GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyResponsePlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyResponsePlan)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanArrayOutput) ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanArrayOutput) ToGetEventNotifyPoliciesPolicyResponsePlanArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyResponsePlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyResponsePlan {
+		return vs[0].([]GetEventNotifyPoliciesPolicyResponsePlan)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyResponsePlanOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSetting struct {
+	// The list of alert action integration IDs triggered by alerts.
+	AlertActionIds []string `pulumi:"alertActionIds"`
+	// The list of action integration IDs triggered upon recovery.
+	RestoreActionIds []string `pulumi:"restoreActionIds"`
+}
+
+// GetEventNotifyPoliciesPolicyResponsePlanPushingSettingInput is an input type that accepts GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs and GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyResponsePlanPushingSettingInput` via:
+//
+//	GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs{...}
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSettingInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput
+	ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs struct {
+	// The list of alert action integration IDs triggered by alerts.
+	AlertActionIds pulumi.StringArrayInput `pulumi:"alertActionIds"`
+	// The list of action integration IDs triggered upon recovery.
+	RestoreActionIds pulumi.StringArrayInput `pulumi:"restoreActionIds"`
+}
+
+func (GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput {
+	return i.ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput)
+}
+
+// GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray and GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray{ GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs{...} }
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput
+	ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray []GetEventNotifyPoliciesPolicyResponsePlanPushingSettingInput
+
+func (GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput {
+	return o
+}
+
+// The list of alert action integration IDs triggered by alerts.
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput) AlertActionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlanPushingSetting) []string { return v.AlertActionIds }).(pulumi.StringArrayOutput)
+}
+
+// The list of action integration IDs triggered upon recovery.
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput) RestoreActionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlanPushingSetting) []string { return v.RestoreActionIds }).(pulumi.StringArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyResponsePlanPushingSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput) ToGetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyResponsePlanPushingSetting {
+		return vs[0].([]GetEventNotifyPoliciesPolicyResponsePlanPushingSetting)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting struct {
+	// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+	EndIncidentState string `pulumi:"endIncidentState"`
+	// The interval between repeated notifications, in seconds.
+	RepeatInterval int `pulumi:"repeatInterval"`
+}
+
+// GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingInput is an input type that accepts GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs and GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingInput` via:
+//
+//	GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs{...}
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput
+	ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs struct {
+	// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+	EndIncidentState pulumi.StringInput `pulumi:"endIncidentState"`
+	// The interval between repeated notifications, in seconds.
+	RepeatInterval pulumi.IntInput `pulumi:"repeatInterval"`
+}
+
+func (GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput {
+	return i.ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput)
+}
+
+// GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayInput is an input type that accepts GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray and GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray{ GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs{...} }
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput
+	ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray []GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingInput
+
+func (GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput {
+	return o
+}
+
+// The incident state at which repeated notifications stop. For example: `RECOVERED`.
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput) EndIncidentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting) string { return v.EndIncidentState }).(pulumi.StringOutput)
+}
+
+// The interval between repeated notifications, in seconds.
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput) RepeatInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting) int { return v.RepeatInterval }).(pulumi.IntOutput)
+}
+
+type GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput() GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput) ToGetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting {
+		return vs[0].([]GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySetting)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscription struct {
+	// Event content filtering.
+	FilterSettings []GetEventNotifyPoliciesPolicySubscriptionFilterSetting `pulumi:"filterSettings"`
+	// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.
+	SubscribeLegacyEvent bool `pulumi:"subscribeLegacyEvent"`
+	// Cross-workspace event routing (global subscription).
+	WorkspaceFilterSettings []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting `pulumi:"workspaceFilterSettings"`
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionArgs and GetEventNotifyPoliciesPolicySubscriptionOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionArgs{...}
+type GetEventNotifyPoliciesPolicySubscriptionInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionOutput() GetEventNotifyPoliciesPolicySubscriptionOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionArgs struct {
+	// Event content filtering.
+	FilterSettings GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayInput `pulumi:"filterSettings"`
+	// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.
+	SubscribeLegacyEvent pulumi.BoolInput `pulumi:"subscribeLegacyEvent"`
+	// Cross-workspace event routing (global subscription).
+	WorkspaceFilterSettings GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayInput `pulumi:"workspaceFilterSettings"`
+}
+
+func (GetEventNotifyPoliciesPolicySubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscription)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionArgs) ToGetEventNotifyPoliciesPolicySubscriptionOutput() GetEventNotifyPoliciesPolicySubscriptionOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionArgs) ToGetEventNotifyPoliciesPolicySubscriptionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionOutput)
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionArrayInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionArray and GetEventNotifyPoliciesPolicySubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionArray{ GetEventNotifyPoliciesPolicySubscriptionArgs{...} }
+type GetEventNotifyPoliciesPolicySubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionArrayOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionArray []GetEventNotifyPoliciesPolicySubscriptionInput
+
+func (GetEventNotifyPoliciesPolicySubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscription)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionArray) ToGetEventNotifyPoliciesPolicySubscriptionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionArray) ToGetEventNotifyPoliciesPolicySubscriptionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscription)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionOutput) ToGetEventNotifyPoliciesPolicySubscriptionOutput() GetEventNotifyPoliciesPolicySubscriptionOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionOutput) ToGetEventNotifyPoliciesPolicySubscriptionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionOutput {
+	return o
+}
+
+// Event content filtering.
+func (o GetEventNotifyPoliciesPolicySubscriptionOutput) FilterSettings() GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscription) []GetEventNotifyPoliciesPolicySubscriptionFilterSetting {
+		return v.FilterSettings
+	}).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput)
+}
+
+// Specifies whether to subscribe to legacy product events (events with an empty workspace, such as CMS 1.
+func (o GetEventNotifyPoliciesPolicySubscriptionOutput) SubscribeLegacyEvent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscription) bool { return v.SubscribeLegacyEvent }).(pulumi.BoolOutput)
+}
+
+// Cross-workspace event routing (global subscription).
+func (o GetEventNotifyPoliciesPolicySubscriptionOutput) WorkspaceFilterSettings() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscription) []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting {
+		return v.WorkspaceFilterSettings
+	}).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscription)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicySubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicySubscription {
+		return vs[0].([]GetEventNotifyPoliciesPolicySubscription)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicySubscriptionOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSetting struct {
+	// The filter conditions.
+	Conditions []GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition `pulumi:"conditions"`
+	// The relational expression.
+	Expression string `pulumi:"expression"`
+	// The condition relation.
+	Relation string `pulumi:"relation"`
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionFilterSettingInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs and GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionFilterSettingInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs{...}
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs struct {
+	// The filter conditions.
+	Conditions GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayInput `pulumi:"conditions"`
+	// The relational expression.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The condition relation.
+	Relation pulumi.StringInput `pulumi:"relation"`
+}
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput)
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray and GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray{ GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs{...} }
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray []GetEventNotifyPoliciesPolicySubscriptionFilterSettingInput
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput {
+	return o
+}
+
+// The filter conditions.
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput) Conditions() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionFilterSetting) []GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition {
+		return v.Conditions
+	}).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput)
+}
+
+// The relational expression.
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionFilterSetting) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The condition relation.
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionFilterSetting) string { return v.Relation }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionFilterSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicySubscriptionFilterSetting {
+		return vs[0].([]GetEventNotifyPoliciesPolicySubscriptionFilterSetting)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition struct {
+	// The filter field.
+	Field string `pulumi:"field"`
+	// The filter operator.
+	Op string `pulumi:"op"`
+	// The filter value.
+	Value string `pulumi:"value"`
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs and GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs{...}
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs struct {
+	// The filter field.
+	Field pulumi.StringInput `pulumi:"field"`
+	// The filter operator.
+	Op pulumi.StringInput `pulumi:"op"`
+	// The filter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput)
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray and GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray{ GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs{...} }
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray []GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionInput
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput {
+	return o
+}
+
+// The filter field.
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// The filter operator.
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition {
+		return vs[0].([]GetEventNotifyPoliciesPolicySubscriptionFilterSettingCondition)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting struct {
+	// The tag selector.
+	TagSelectors []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector `pulumi:"tagSelectors"`
+	// The list of workspace UUIDs.
+	WorkspaceUuids []string `pulumi:"workspaceUuids"`
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs and GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs{...}
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs struct {
+	// The tag selector.
+	TagSelectors GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayInput `pulumi:"tagSelectors"`
+	// The list of workspace UUIDs.
+	WorkspaceUuids pulumi.StringArrayInput `pulumi:"workspaceUuids"`
+}
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput)
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray and GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray{ GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs{...} }
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingInput
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput {
+	return o
+}
+
+// The tag selector.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput) TagSelectors() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting) []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector {
+		return v.TagSelectors
+	}).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput)
+}
+
+// The list of workspace UUIDs.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput) WorkspaceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting) []string {
+		return v.WorkspaceUuids
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting {
+		return vs[0].([]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSetting)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector struct {
+	// The filter conditions.
+	Conditions []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition `pulumi:"conditions"`
+	// The relational expression.
+	Expression string `pulumi:"expression"`
+	// The condition relation.
+	Relation string `pulumi:"relation"`
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs and GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{...}
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs struct {
+	// The filter conditions.
+	Conditions GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput `pulumi:"conditions"`
+	// The relational expression.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The condition relation.
+	Relation pulumi.StringInput `pulumi:"relation"`
+}
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput)
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray and GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray{ GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{...} }
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorInput
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return o
+}
+
+// The filter conditions.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) Conditions() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector) []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition {
+		return v.Conditions
+	}).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput)
+}
+
+// The relational expression.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector) string {
+		return v.Expression
+	}).(pulumi.StringOutput)
+}
+
+// The condition relation.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector) string {
+		return v.Relation
+	}).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector {
+		return vs[0].([]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelector)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition struct {
+	// The filter field.
+	Field string `pulumi:"field"`
+	// The filter operator.
+	Op string `pulumi:"op"`
+	// The filter value.
+	Value string `pulumi:"value"`
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs and GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs{...}
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs struct {
+	// The filter field.
+	Field pulumi.StringInput `pulumi:"field"`
+	// The filter operator.
+	Op pulumi.StringInput `pulumi:"op"`
+	// The filter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput)
+}
+
+// GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput is an input type that accepts GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray and GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput values.
+// You can construct a concrete instance of `GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput` via:
+//
+//	GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray{ GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs{...} }
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput
+	ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray []GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return i.ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return o
+}
+
+// The filter field.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition) string {
+		return v.Field
+	}).(pulumi.StringOutput)
+}
+
+// The filter operator.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition) string {
+		return v.Op
+	}).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)(nil)).Elem()
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput() GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) ToGetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutputWithContext(ctx context.Context) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput {
+	return o
+}
+
+func (o GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput) Index(i pulumi.IntInput) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition {
+		return vs[0].([]GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorCondition)[vs[1].(int)]
+	}).(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput)
+}
+
 type GetEventRulesRule struct {
 	// The description of the rule.
 	Description string `pulumi:"description"`
@@ -19203,6 +24044,40 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ScheduleConfigPtrInput)(nil)).Elem(), AlertRuleV2ScheduleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyPtrInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyCustomTemplateEntryInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyCustomTemplateEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyCustomTemplateEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyGroupingSettingInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyGroupingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyGroupingSettingPtrInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyGroupingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteArrayInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteChannelInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteChannelArrayInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSettingInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayInput)(nil)).Elem(), EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyResponsePlanInput)(nil)).Elem(), EventNotifyPolicyResponsePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyResponsePlanPtrInput)(nil)).Elem(), EventNotifyPolicyResponsePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyResponsePlanPushingSettingInput)(nil)).Elem(), EventNotifyPolicyResponsePlanPushingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyResponsePlanPushingSettingPtrInput)(nil)).Elem(), EventNotifyPolicyResponsePlanPushingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyResponsePlanRepeatNotifySettingInput)(nil)).Elem(), EventNotifyPolicyResponsePlanRepeatNotifySettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicyResponsePlanRepeatNotifySettingPtrInput)(nil)).Elem(), EventNotifyPolicyResponsePlanRepeatNotifySettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionInput)(nil)).Elem(), EventNotifyPolicySubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionPtrInput)(nil)).Elem(), EventNotifyPolicySubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSettingInput)(nil)).Elem(), EventNotifyPolicySubscriptionFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSettingPtrInput)(nil)).Elem(), EventNotifyPolicySubscriptionFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSettingConditionInput)(nil)).Elem(), EventNotifyPolicySubscriptionFilterSettingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionFilterSettingConditionArrayInput)(nil)).Elem(), EventNotifyPolicySubscriptionFilterSettingConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingInput)(nil)).Elem(), EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrInput)(nil)).Elem(), EventNotifyPolicySubscriptionWorkspaceFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorInput)(nil)).Elem(), EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrInput)(nil)).Elem(), EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput)(nil)).Elem(), EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput)(nil)).Elem(), EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleContactParameterInput)(nil)).Elem(), EventRuleContactParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleContactParameterArrayInput)(nil)).Elem(), EventRuleContactParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleEventPatternInput)(nil)).Elem(), EventRuleEventPatternArgs{})
@@ -19321,6 +24196,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyResponsePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyResponsePlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanPushingSettingInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSettingInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionFilterSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayInput)(nil)).Elem(), GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleInput)(nil)).Elem(), GetEventRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleArrayInput)(nil)).Elem(), GetEventRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleEventPatternInput)(nil)).Elem(), GetEventRulesRuleEventPatternArgs{})
@@ -19451,6 +24362,40 @@ func init() {
 	pulumi.RegisterOutputType(AlertRuleV2ScheduleConfigPtrOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyCustomTemplateEntryOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyCustomTemplateEntryArrayOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyGroupingSettingOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyGroupingSettingPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteArrayOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteChannelOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteChannelArrayOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangeOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteEffectTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteFilterSettingOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteFilterSettingPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyResponsePlanOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyResponsePlanPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyResponsePlanPushingSettingOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyResponsePlanPushingSettingPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyResponsePlanRepeatNotifySettingOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicyResponsePlanRepeatNotifySettingPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionFilterSettingOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionFilterSettingPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionFilterSettingConditionOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionFilterSettingConditionArrayOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionWorkspaceFilterSettingOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionWorkspaceFilterSettingPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorPtrOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput{})
+	pulumi.RegisterOutputType(EventNotifyPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput{})
 	pulumi.RegisterOutputType(EventRuleContactParameterOutput{})
 	pulumi.RegisterOutputType(EventRuleContactParameterArrayOutput{})
 	pulumi.RegisterOutputType(EventRuleEventPatternOutput{})
@@ -19569,6 +24514,42 @@ func init() {
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyCustomTemplateEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyGroupingSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteChannelArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteEffectTimeRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyNotifyStrategyRouteFilterSettingConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyResponsePlanOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyResponsePlanArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyResponsePlanPushingSettingOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyResponsePlanPushingSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicyResponsePlanRepeatNotifySettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionFilterSettingOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionFilterSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionFilterSettingConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionOutput{})
+	pulumi.RegisterOutputType(GetEventNotifyPoliciesPolicySubscriptionWorkspaceFilterSettingTagSelectorConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetEventRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetEventRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetEventRulesRuleEventPatternOutput{})

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SecurityGroupArgs', 'SecurityGroup']
 
@@ -20,15 +22,21 @@ __all__ = ['SecurityGroupArgs', 'SecurityGroup']
 class SecurityGroupArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]]] = None,
                  security_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
 
-        :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] security_group_name: Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[_builtins.str] description: Security group description information
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]] permissions: A collection of rules for a security group instance See `permissions` below.
+        :param pulumi.Input[_builtins.str] security_group_name: Security group name
+               The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if security_group_name is not None:
             pulumi.set(__self__, "security_group_name", security_group_name)
 
@@ -36,7 +44,8 @@ class SecurityGroupArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        Security group description information
+        It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
         """
         return pulumi.get(self, "description")
 
@@ -45,10 +54,23 @@ class SecurityGroupArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]]]:
+        """
+        A collection of rules for a security group instance See `permissions` below.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        Security group name
+        The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         return pulumi.get(self, "security_group_name")
 
@@ -61,15 +83,21 @@ class SecurityGroupArgs:
 class _SecurityGroupState:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]]] = None,
                  security_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
 
-        :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] security_group_name: Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[_builtins.str] description: Security group description information
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]] permissions: A collection of rules for a security group instance See `permissions` below.
+        :param pulumi.Input[_builtins.str] security_group_name: Security group name
+               The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if security_group_name is not None:
             pulumi.set(__self__, "security_group_name", security_group_name)
 
@@ -77,7 +105,8 @@ class _SecurityGroupState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        Security group description information
+        It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
         """
         return pulumi.get(self, "description")
 
@@ -86,10 +115,23 @@ class _SecurityGroupState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]]]:
+        """
+        A collection of rules for a security group instance See `permissions` below.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGroupPermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        Security group name
+        The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         return pulumi.get(self, "security_group_name")
 
@@ -105,6 +147,7 @@ class SecurityGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGroupPermissionArgs', 'SecurityGroupPermissionArgsDict']]]]] = None,
                  security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -138,14 +181,17 @@ class SecurityGroup(pulumi.CustomResource):
         ENS Security Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
+        $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <security_group_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] security_group_name: Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[_builtins.str] description: Security group description information
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupPermissionArgs', 'SecurityGroupPermissionArgsDict']]]] permissions: A collection of rules for a security group instance See `permissions` below.
+        :param pulumi.Input[_builtins.str] security_group_name: Security group name
+               The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         ...
     @overload
@@ -184,7 +230,7 @@ class SecurityGroup(pulumi.CustomResource):
         ENS Security Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
+        $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <security_group_id>
         ```
 
 
@@ -204,6 +250,7 @@ class SecurityGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGroupPermissionArgs', 'SecurityGroupPermissionArgsDict']]]]] = None,
                  security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -215,6 +262,7 @@ class SecurityGroup(pulumi.CustomResource):
             __props__ = SecurityGroupArgs.__new__(SecurityGroupArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["permissions"] = permissions
             __props__.__dict__["security_group_name"] = security_group_name
         super(SecurityGroup, __self__).__init__(
             'alicloud:ens/securityGroup:SecurityGroup',
@@ -227,6 +275,7 @@ class SecurityGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGroupPermissionArgs', 'SecurityGroupPermissionArgsDict']]]]] = None,
             security_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityGroup':
         """
         Get an existing SecurityGroup resource's state with the given name, id, and optional extra
@@ -235,14 +284,18 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] security_group_name: Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[_builtins.str] description: Security group description information
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupPermissionArgs', 'SecurityGroupPermissionArgsDict']]]] permissions: A collection of rules for a security group instance See `permissions` below.
+        :param pulumi.Input[_builtins.str] security_group_name: Security group name
+               The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SecurityGroupState.__new__(_SecurityGroupState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["permissions"] = permissions
         __props__.__dict__["security_group_name"] = security_group_name
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -250,15 +303,25 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        Security group description information
+        It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.SecurityGroupPermission']]]:
+        """
+        A collection of rules for a security group instance See `permissions` below.
+        """
+        return pulumi.get(self, "permissions")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+        Security group name
+        The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
         """
         return pulumi.get(self, "security_group_name")
 

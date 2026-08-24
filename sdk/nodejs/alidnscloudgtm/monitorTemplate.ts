@@ -91,7 +91,7 @@ export class MonitorTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      */
     declare public readonly evaluationCount: pulumi.Output<number>;
     /**
@@ -198,7 +198,7 @@ export class MonitorTemplate extends pulumi.CustomResource {
  */
 export interface MonitorTemplateState {
     /**
-     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      */
     evaluationCount?: pulumi.Input<number | undefined>;
     /**
@@ -244,7 +244,7 @@ export interface MonitorTemplateState {
  */
 export interface MonitorTemplateArgs {
     /**
-     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+     * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
      */
     evaluationCount: pulumi.Input<number>;
     /**

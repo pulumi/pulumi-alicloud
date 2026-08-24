@@ -34,7 +34,7 @@ class MonitorTemplateArgs:
         """
         The set of arguments for constructing a MonitorTemplate resource.
 
-        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.int] failure_rate: The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         :param pulumi.Input[_builtins.str] interval: The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the probing node. Valid values: `IPv4`, `IPv6`.
@@ -63,7 +63,7 @@ class MonitorTemplateArgs:
     @pulumi.getter(name="evaluationCount")
     def evaluation_count(self) -> pulumi.Input[_builtins.int]:
         """
-        The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         """
         return pulumi.get(self, "evaluation_count")
 
@@ -196,7 +196,7 @@ class _MonitorTemplateState:
         """
         Input properties used for looking up and filtering MonitorTemplate resources.
 
-        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.str] extend_info: A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extend_info` below.
         :param pulumi.Input[_builtins.int] failure_rate: The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         :param pulumi.Input[_builtins.str] interval: The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
@@ -232,7 +232,7 @@ class _MonitorTemplateState:
     @pulumi.getter(name="evaluationCount")
     def evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         """
         return pulumi.get(self, "evaluation_count")
 
@@ -427,7 +427,7 @@ class MonitorTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.str] extend_info: A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extend_info` below.
         :param pulumi.Input[_builtins.int] failure_rate: The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         :param pulumi.Input[_builtins.str] interval: The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
@@ -588,7 +588,7 @@ class MonitorTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[_builtins.int] evaluation_count: The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.str] extend_info: A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extend_info` below.
         :param pulumi.Input[_builtins.int] failure_rate: The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         :param pulumi.Input[_builtins.str] interval: The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
@@ -619,7 +619,7 @@ class MonitorTemplate(pulumi.CustomResource):
     @pulumi.getter(name="evaluationCount")
     def evaluation_count(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         """
         return pulumi.get(self, "evaluation_count")
 

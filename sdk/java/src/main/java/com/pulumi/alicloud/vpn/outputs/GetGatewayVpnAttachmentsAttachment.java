@@ -119,6 +119,11 @@ public final class GetGatewayVpnAttachmentsAttachment {
      */
     private Map<String,String> tags;
     /**
+     * @return The bandwidth specification of a single VPN tunnel. Valid values: **Standard** (default, 1 Gbps) and **Large** (3 Gbps).
+     * 
+     */
+    private String tunnelBandwidth;
+    /**
      * @return Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
      * 
      */
@@ -276,6 +281,13 @@ public final class GetGatewayVpnAttachmentsAttachment {
         return this.tags;
     }
     /**
+     * @return The bandwidth specification of a single VPN tunnel. Valid values: **Standard** (default, 1 Gbps) and **Large** (3 Gbps).
+     * 
+     */
+    public String tunnelBandwidth() {
+        return this.tunnelBandwidth;
+    }
+    /**
      * @return Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
      * 
      */
@@ -326,6 +338,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
         private String resourceGroupId;
         private String status;
         private Map<String,String> tags;
+        private String tunnelBandwidth;
         private List<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification> tunnelOptionsSpecifications;
         private String vpnAttachmentName;
         private String vpnConnectionId;
@@ -352,6 +365,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
+    	      this.tunnelBandwidth = defaults.tunnelBandwidth;
     	      this.tunnelOptionsSpecifications = defaults.tunnelOptionsSpecifications;
     	      this.vpnAttachmentName = defaults.vpnAttachmentName;
     	      this.vpnConnectionId = defaults.vpnConnectionId;
@@ -530,6 +544,14 @@ public final class GetGatewayVpnAttachmentsAttachment {
             return this;
         }
         @CustomType.Setter
+        public Builder tunnelBandwidth(String tunnelBandwidth) {
+            if (tunnelBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "tunnelBandwidth");
+            }
+            this.tunnelBandwidth = tunnelBandwidth;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tunnelOptionsSpecifications(List<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification> tunnelOptionsSpecifications) {
             if (tunnelOptionsSpecifications == null) {
               throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "tunnelOptionsSpecifications");
@@ -578,6 +600,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
             _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.status = status;
             _resultValue.tags = tags;
+            _resultValue.tunnelBandwidth = tunnelBandwidth;
             _resultValue.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
             _resultValue.vpnAttachmentName = vpnAttachmentName;
             _resultValue.vpnConnectionId = vpnConnectionId;

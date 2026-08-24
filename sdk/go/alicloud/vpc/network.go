@@ -80,7 +80,9 @@ type Network struct {
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
-	// The status of ClassicLink function.
+	// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+	//
+	// Deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
 	ClassicLinkEnabled pulumi.BoolPtrOutput `pulumi:"classicLinkEnabled"`
 	// The creation time of the VPC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -133,7 +135,7 @@ type Network struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the system route table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
-	// The region ID of the VPC to which the route table belongs.
+	// The ID of the VRouter.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
 	// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
 	//
@@ -159,7 +161,7 @@ type Network struct {
 	SystemRouteTableRoutePropagationEnable pulumi.BoolOutput `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs pulumi.StringArrayOutput `pulumi:"userCidrs"`
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -203,7 +205,9 @@ type networkState struct {
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// The status of ClassicLink function.
+	// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+	//
+	// Deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
 	ClassicLinkEnabled *bool `pulumi:"classicLinkEnabled"`
 	// The creation time of the VPC.
 	CreateTime *string `pulumi:"createTime"`
@@ -256,7 +260,7 @@ type networkState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the system route table.
 	RouteTableId *string `pulumi:"routeTableId"`
-	// The region ID of the VPC to which the route table belongs.
+	// The ID of the VRouter.
 	RouterId *string `pulumi:"routerId"`
 	// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
 	//
@@ -282,7 +286,7 @@ type networkState struct {
 	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags map[string]string `pulumi:"tags"`
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -297,7 +301,9 @@ type NetworkState struct {
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock pulumi.StringPtrInput
-	// The status of ClassicLink function.
+	// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+	//
+	// Deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
 	ClassicLinkEnabled pulumi.BoolPtrInput
 	// The creation time of the VPC.
 	CreateTime pulumi.StringPtrInput
@@ -350,7 +356,7 @@ type NetworkState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the system route table.
 	RouteTableId pulumi.StringPtrInput
-	// The region ID of the VPC to which the route table belongs.
+	// The ID of the VRouter.
 	RouterId pulumi.StringPtrInput
 	// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
 	//
@@ -376,7 +382,7 @@ type NetworkState struct {
 	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
 	// The tags of Vpc.
 	Tags pulumi.StringMapInput
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -395,7 +401,9 @@ type networkArgs struct {
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// The status of ClassicLink function.
+	// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+	//
+	// Deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
 	ClassicLinkEnabled *bool `pulumi:"classicLinkEnabled"`
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -458,7 +466,7 @@ type networkArgs struct {
 	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags map[string]string `pulumi:"tags"`
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -474,7 +482,9 @@ type NetworkArgs struct {
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock pulumi.StringPtrInput
-	// The status of ClassicLink function.
+	// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+	//
+	// Deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
 	ClassicLinkEnabled pulumi.BoolPtrInput
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -537,7 +547,7 @@ type NetworkArgs struct {
 	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
 	// The tags of Vpc.
 	Tags pulumi.StringMapInput
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -641,7 +651,9 @@ func (o NetworkOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
-// The status of ClassicLink function.
+// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+//
+// Deprecated: Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
 func (o NetworkOutput) ClassicLinkEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.ClassicLinkEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -745,7 +757,7 @@ func (o NetworkOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The region ID of the VPC to which the route table belongs.
+// The ID of the VRouter.
 func (o NetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
@@ -798,7 +810,7 @@ func (o NetworkOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// A list of user CIDRs.
+// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 func (o NetworkOutput) UserCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.UserCidrs }).(pulumi.StringArrayOutput)
 }

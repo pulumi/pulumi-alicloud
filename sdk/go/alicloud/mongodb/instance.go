@@ -14,7 +14,7 @@ import (
 
 // Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
 // It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+// You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 //
 // > **NOTE:** Available since v1.37.0.
 //
@@ -205,11 +205,13 @@ type Instance struct {
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups InstanceSecurityIpGroupArrayOutput `pulumi:"securityIpGroups"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: standard backup.
-	// - ` Flash  `: single-digit second backup.
+	// - `Flash`: single-digit second backup.
 	SnapshotBackupType pulumi.StringOutput `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrOutput `pulumi:"srcDbInstanceId"`
@@ -384,11 +386,13 @@ type instanceState struct {
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups []InstanceSecurityIpGroup `pulumi:"securityIpGroups"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: standard backup.
-	// - ` Flash  `: single-digit second backup.
+	// - `Flash`: single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
@@ -518,11 +522,13 @@ type InstanceState struct {
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups InstanceSecurityIpGroupArrayInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: standard backup.
-	// - ` Flash  `: single-digit second backup.
+	// - `Flash`: single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrInput
@@ -648,11 +654,13 @@ type instanceArgs struct {
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups []InstanceSecurityIpGroup `pulumi:"securityIpGroups"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: standard backup.
-	// - ` Flash  `: single-digit second backup.
+	// - `Flash`: single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
@@ -771,11 +779,13 @@ type InstanceArgs struct {
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
+	// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+	SecurityIpGroups InstanceSecurityIpGroupArrayInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	// The snapshot backup type. Default value: `Standard`. Valid values:
 	// - `Standard`: standard backup.
-	// - ` Flash  `: single-digit second backup.
+	// - `Flash`: single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrInput
@@ -1119,6 +1129,11 @@ func (o InstanceOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+func (o InstanceOutput) SecurityIpGroups() InstanceSecurityIpGroupArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceSecurityIpGroupArrayOutput { return v.SecurityIpGroups }).(InstanceSecurityIpGroupArrayOutput)
+}
+
 // List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
@@ -1126,7 +1141,7 @@ func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 
 // The snapshot backup type. Default value: `Standard`. Valid values:
 // - `Standard`: standard backup.
-// - ` Flash  `: single-digit second backup.
+// - `Flash`: single-digit second backup.
 func (o InstanceOutput) SnapshotBackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SnapshotBackupType }).(pulumi.StringOutput)
 }

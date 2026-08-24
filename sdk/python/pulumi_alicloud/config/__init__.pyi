@@ -60,6 +60,11 @@ endpoints: Optional[str]
 
 fc: Optional[str]
 
+features: Optional[str]
+"""
+Customize the behaviour of certain resources. Every toggle it holds is optional, and leaving the block out keeps the provider's default behaviour.
+"""
+
 logEndpoint: Optional[str]
 
 maxRetryTimeout: Optional[int]
@@ -109,7 +114,7 @@ signVersion: Optional[str]
 
 skipRegionValidation: Optional[bool]
 """
-Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
 """
 
 sourceIp: Optional[str]

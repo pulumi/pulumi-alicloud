@@ -12,120 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a APIG Environment resource.
-//
-// For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
-//
-// > **NOTE:** Available since v1.240.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apig"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
-//				Input: "%s2",
-//				Args: []string{
-//					name,
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultgateway, err := apig.NewGateway(ctx, "defaultgateway", &apig.GatewayArgs{
-//				NetworkAccessConfig: &apig.GatewayNetworkAccessConfigArgs{
-//					Type: pulumi.String("Intranet"),
-//				},
-//				Vswitch: &apig.GatewayVswitchArgs{
-//					VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
-//				},
-//				ZoneConfig: &apig.GatewayZoneConfigArgs{
-//					SelectOption: pulumi.String("Auto"),
-//				},
-//				Vpc: &apig.GatewayVpcArgs{
-//					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
-//				},
-//				PaymentType: pulumi.String("PayAsYouGo"),
-//				GatewayName: pulumi.String(invokeFormat.Result),
-//				Spec:        pulumi.String("apigw.small.x1"),
-//				LogConfig: &apig.GatewayLogConfigArgs{
-//					Sls: &apig.GatewayLogConfigSlsArgs{},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apig.NewEnvironment(ctx, "default", &apig.EnvironmentArgs{
-//				Description:     pulumi.String(name),
-//				EnvironmentName: pulumi.String(name),
-//				GatewayId:       defaultgateway.ID().ToIDOutput().ToStringOutput(),
-//				ResourceGroupId: pulumi.String(_default.Ids[1]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// 📚 Need more examples? VIEW MORE EXAMPLES
-//
-// ## Import
-//
-// APIG Environment can be imported using the id, e.g.
-//
-// ```sh
-// $ pulumi import alicloud:apig/environment:Environment example <id>
-// ```
 type Environment struct {
 	pulumi.CustomResourceState
 
-	// Description
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the resource
-	EnvironmentName pulumi.StringOutput `pulumi:"environmentName"`
-	// Gateway id
-	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
-	// The ID of the resource group
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	Description     pulumi.StringPtrOutput `pulumi:"description"`
+	EnvironmentName pulumi.StringOutput    `pulumi:"environmentName"`
+	GatewayId       pulumi.StringOutput    `pulumi:"gatewayId"`
+	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -164,24 +57,16 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Description
-	Description *string `pulumi:"description"`
-	// The name of the resource
+	Description     *string `pulumi:"description"`
 	EnvironmentName *string `pulumi:"environmentName"`
-	// Gateway id
-	GatewayId *string `pulumi:"gatewayId"`
-	// The ID of the resource group
+	GatewayId       *string `pulumi:"gatewayId"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
 type EnvironmentState struct {
-	// Description
-	Description pulumi.StringPtrInput
-	// The name of the resource
+	Description     pulumi.StringPtrInput
 	EnvironmentName pulumi.StringPtrInput
-	// Gateway id
-	GatewayId pulumi.StringPtrInput
-	// The ID of the resource group
+	GatewayId       pulumi.StringPtrInput
 	ResourceGroupId pulumi.StringPtrInput
 }
 
@@ -190,25 +75,17 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
-	// Description
-	Description *string `pulumi:"description"`
-	// The name of the resource
-	EnvironmentName string `pulumi:"environmentName"`
-	// Gateway id
-	GatewayId string `pulumi:"gatewayId"`
-	// The ID of the resource group
+	Description     *string `pulumi:"description"`
+	EnvironmentName string  `pulumi:"environmentName"`
+	GatewayId       string  `pulumi:"gatewayId"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
-	// Description
-	Description pulumi.StringPtrInput
-	// The name of the resource
+	Description     pulumi.StringPtrInput
 	EnvironmentName pulumi.StringInput
-	// Gateway id
-	GatewayId pulumi.StringInput
-	// The ID of the resource group
+	GatewayId       pulumi.StringInput
 	ResourceGroupId pulumi.StringPtrInput
 }
 
@@ -299,22 +176,18 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// Description
 func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
 func (o EnvironmentOutput) EnvironmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentName }).(pulumi.StringOutput)
 }
 
-// Gateway id
 func (o EnvironmentOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group
 func (o EnvironmentOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

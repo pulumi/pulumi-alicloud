@@ -26,6 +26,8 @@ class InstanceArgs:
                  engine_version: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +44,7 @@ class InstanceArgs:
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  master_cu: pulumi.Input[Optional[_builtins.int]] = None,
                  master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -54,7 +57,10 @@ class InstanceArgs:
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  used_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -64,11 +70,15 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -93,15 +103,19 @@ class InstanceArgs:
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[_builtins.int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[_builtins.int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[_builtins.str] minor_version: The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+               
+               > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: The parameters. See `parameters` below.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
-        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
+        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[_builtins.str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[_builtins.str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
@@ -113,12 +127,25 @@ class InstanceArgs:
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
+        :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
+               - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+               - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+               
+               When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+               
+               > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+               
+               > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+               
+               > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         :param pulumi.Input[_builtins.str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance.
@@ -132,6 +159,10 @@ class InstanceArgs:
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if cache_storage_size is not None:
+            pulumi.set(__self__, "cache_storage_size", cache_storage_size)
         if create_sample_data is not None:
             pulumi.set(__self__, "create_sample_data", create_sample_data)
         if data_share_status is not None:
@@ -170,6 +201,8 @@ class InstanceArgs:
             pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
         if master_node_num is not None:
             pulumi.set(__self__, "master_node_num", master_node_num)
+        if minor_version is not None:
+            pulumi.set(__self__, "minor_version", minor_version)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if payment_type is not None:
@@ -200,8 +233,14 @@ class InstanceArgs:
             pulumi.set(__self__, "seg_storage_type", seg_storage_type)
         if serverless_mode is not None:
             pulumi.set(__self__, "serverless_mode", serverless_mode)
+        if serverless_resource is not None:
+            pulumi.set(__self__, "serverless_resource", serverless_resource)
+        if src_db_instance_name is not None:
+            pulumi.set(__self__, "src_db_instance_name", src_db_instance_name)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
         if tags is not None:
@@ -219,7 +258,9 @@ class InstanceArgs:
     @pulumi.getter(name="dbInstanceMode")
     def db_instance_mode(self) -> pulumi.Input[_builtins.str]:
         """
-        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+
+        > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         """
         return pulumi.get(self, "db_instance_mode")
 
@@ -275,6 +316,30 @@ class InstanceArgs:
     @availability_zone.setter
     def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheStorageSize")
+    def cache_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        """
+        return pulumi.get(self, "cache_storage_size")
+
+    @cache_storage_size.setter
+    def cache_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="createSampleData")
@@ -415,6 +480,7 @@ class InstanceArgs:
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -485,6 +551,20 @@ class InstanceArgs:
         pulumi.set(self, "master_node_num", value)
 
     @_builtins.property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+
+        > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
+        """
+        return pulumi.get(self, "minor_version")
+
+    @minor_version.setter
+    def minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "minor_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
@@ -500,7 +580,7 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         """
         return pulumi.get(self, "payment_type")
 
@@ -512,7 +592,7 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         """
         return pulumi.get(self, "period")
 
@@ -633,6 +713,30 @@ class InstanceArgs:
         pulumi.set(self, "serverless_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverlessResource")
+    def serverless_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        """
+        return pulumi.get(self, "serverless_resource")
+
+    @serverless_resource.setter
+    def serverless_resource(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serverless_resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcDbInstanceName")
+    def src_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "src_db_instance_name")
+
+    @src_db_instance_name.setter
+    def src_db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_db_instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -643,6 +747,28 @@ class InstanceArgs:
     @ssl_enabled.setter
     def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The expected status of the instance. Valid values:
+        - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+        - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+
+        When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+
+        > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+
+        > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+
+        > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
@@ -674,7 +800,7 @@ class InstanceArgs:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         """
         return pulumi.get(self, "used_time")
 
@@ -723,6 +849,8 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  connection_string: pulumi.Input[Optional[_builtins.str]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -743,6 +871,7 @@ class _InstanceState:
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  master_cu: pulumi.Input[Optional[_builtins.int]] = None,
                  master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -756,6 +885,8 @@ class _InstanceState:
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -769,6 +900,8 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
 
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
@@ -778,7 +911,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
@@ -797,15 +932,19 @@ class _InstanceState:
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[_builtins.int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[_builtins.int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[_builtins.str] minor_version: The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+               
+               > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: The parameters. See `parameters` below.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
-        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
+        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[_builtins.str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[_builtins.str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
@@ -818,13 +957,25 @@ class _InstanceState:
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
-        :param pulumi.Input[_builtins.str] status: The status of the instance.
+        :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
+               - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+               - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+               
+               When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+               
+               > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+               
+               > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+               
+               > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         :param pulumi.Input[_builtins.str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
@@ -835,6 +986,10 @@ class _InstanceState:
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if cache_storage_size is not None:
+            pulumi.set(__self__, "cache_storage_size", cache_storage_size)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if create_sample_data is not None:
@@ -881,6 +1036,8 @@ class _InstanceState:
             pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
         if master_node_num is not None:
             pulumi.set(__self__, "master_node_num", master_node_num)
+        if minor_version is not None:
+            pulumi.set(__self__, "minor_version", minor_version)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if payment_type is not None:
@@ -913,6 +1070,10 @@ class _InstanceState:
             pulumi.set(__self__, "seg_storage_type", seg_storage_type)
         if serverless_mode is not None:
             pulumi.set(__self__, "serverless_mode", serverless_mode)
+        if serverless_resource is not None:
+            pulumi.set(__self__, "serverless_resource", serverless_resource)
+        if src_db_instance_name is not None:
+            pulumi.set(__self__, "src_db_instance_name", src_db_instance_name)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if status is not None:
@@ -944,6 +1105,30 @@ class _InstanceState:
     @availability_zone.setter
     def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheStorageSize")
+    def cache_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        """
+        return pulumi.get(self, "cache_storage_size")
+
+    @cache_storage_size.setter
+    def cache_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
@@ -1013,7 +1198,9 @@ class _InstanceState:
     @pulumi.getter(name="dbInstanceMode")
     def db_instance_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+
+        > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         """
         return pulumi.get(self, "db_instance_mode")
 
@@ -1132,6 +1319,7 @@ class _InstanceState:
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -1202,6 +1390,20 @@ class _InstanceState:
         pulumi.set(self, "master_node_num", value)
 
     @_builtins.property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+
+        > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
+        """
+        return pulumi.get(self, "minor_version")
+
+    @minor_version.setter
+    def minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "minor_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
@@ -1217,7 +1419,7 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         """
         return pulumi.get(self, "payment_type")
 
@@ -1229,7 +1431,7 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         """
         return pulumi.get(self, "period")
 
@@ -1362,6 +1564,30 @@ class _InstanceState:
         pulumi.set(self, "serverless_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverlessResource")
+    def serverless_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        """
+        return pulumi.get(self, "serverless_resource")
+
+    @serverless_resource.setter
+    def serverless_resource(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serverless_resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcDbInstanceName")
+    def src_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "src_db_instance_name")
+
+    @src_db_instance_name.setter
+    def src_db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_db_instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1377,7 +1603,17 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the instance.
+        The expected status of the instance. Valid values:
+        - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+        - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+
+        When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+
+        > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+
+        > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+
+        > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
         """
         return pulumi.get(self, "status")
 
@@ -1415,7 +1651,7 @@ class _InstanceState:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         """
         return pulumi.get(self, "used_time")
 
@@ -1479,6 +1715,8 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1498,6 +1736,7 @@ class Instance(pulumi.CustomResource):
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  master_cu: pulumi.Input[Optional[_builtins.int]] = None,
                  master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1510,7 +1749,10 @@ class Instance(pulumi.CustomResource):
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  used_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1521,7 +1763,7 @@ class Instance(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
+        You can see the detail product introduction in the [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) API reference.
 
         > **NOTE:** Available since v1.47.0.
 
@@ -1577,6 +1819,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -1585,7 +1829,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
@@ -1604,15 +1850,19 @@ class Instance(pulumi.CustomResource):
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[_builtins.int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[_builtins.int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[_builtins.str] minor_version: The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+               
+               > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: The parameters. See `parameters` below.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
-        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
+        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[_builtins.str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[_builtins.str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
@@ -1624,12 +1874,25 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
+        :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
+               - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+               - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+               
+               When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+               
+               > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+               
+               > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+               
+               > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         :param pulumi.Input[_builtins.str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
@@ -1643,7 +1906,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
+        You can see the detail product introduction in the [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) API reference.
 
         > **NOTE:** Available since v1.47.0.
 
@@ -1712,6 +1975,8 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1731,6 +1996,7 @@ class Instance(pulumi.CustomResource):
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  master_cu: pulumi.Input[Optional[_builtins.int]] = None,
                  master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1743,7 +2009,10 @@ class Instance(pulumi.CustomResource):
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  used_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1761,6 +2030,8 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["backup_id"] = backup_id
+            __props__.__dict__["cache_storage_size"] = cache_storage_size
             __props__.__dict__["create_sample_data"] = create_sample_data
             __props__.__dict__["data_share_status"] = data_share_status
             __props__.__dict__["db_instance_category"] = db_instance_category
@@ -1786,6 +2057,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintain_start_time"] = maintain_start_time
             __props__.__dict__["master_cu"] = master_cu
             __props__.__dict__["master_node_num"] = master_node_num
+            __props__.__dict__["minor_version"] = minor_version
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
@@ -1798,7 +2070,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["seg_node_num"] = seg_node_num
             __props__.__dict__["seg_storage_type"] = seg_storage_type
             __props__.__dict__["serverless_mode"] = serverless_mode
+            __props__.__dict__["serverless_resource"] = serverless_resource
+            __props__.__dict__["src_db_instance_name"] = src_db_instance_name
             __props__.__dict__["ssl_enabled"] = ssl_enabled
+            __props__.__dict__["status"] = status
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["tags"] = tags
             __props__.__dict__["used_time"] = used_time
@@ -1810,7 +2085,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["port"] = None
-            __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:gpdb/instance:Instance',
             resource_name,
@@ -1822,6 +2096,8 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
             connection_string: pulumi.Input[Optional[_builtins.str]] = None,
             create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
             data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1842,6 +2118,7 @@ class Instance(pulumi.CustomResource):
             maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
             master_cu: pulumi.Input[Optional[_builtins.int]] = None,
             master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+            minor_version: pulumi.Input[Optional[_builtins.str]] = None,
             parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1855,6 +2132,8 @@ class Instance(pulumi.CustomResource):
             seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
             seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
             serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+            src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             storage_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1872,6 +2151,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
@@ -1881,7 +2162,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
@@ -1900,15 +2183,19 @@ class Instance(pulumi.CustomResource):
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[_builtins.int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[_builtins.int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[_builtins.str] minor_version: The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+               
+               > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: The parameters. See `parameters` below.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
-        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
+        :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[_builtins.str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[_builtins.str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
@@ -1921,13 +2208,25 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
-        :param pulumi.Input[_builtins.str] status: The status of the instance.
+        :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
+               - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+               - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+               
+               When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+               
+               > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+               
+               > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+               
+               > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         :param pulumi.Input[_builtins.str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[_builtins.str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
@@ -1938,6 +2237,8 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["backup_id"] = backup_id
+        __props__.__dict__["cache_storage_size"] = cache_storage_size
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["create_sample_data"] = create_sample_data
         __props__.__dict__["data_share_status"] = data_share_status
@@ -1958,6 +2259,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintain_start_time"] = maintain_start_time
         __props__.__dict__["master_cu"] = master_cu
         __props__.__dict__["master_node_num"] = master_node_num
+        __props__.__dict__["minor_version"] = minor_version
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
@@ -1971,6 +2273,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["seg_node_num"] = seg_node_num
         __props__.__dict__["seg_storage_type"] = seg_storage_type
         __props__.__dict__["serverless_mode"] = serverless_mode
+        __props__.__dict__["serverless_resource"] = serverless_resource
+        __props__.__dict__["src_db_instance_name"] = src_db_instance_name
         __props__.__dict__["ssl_enabled"] = ssl_enabled
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
@@ -1990,6 +2294,22 @@ class Instance(pulumi.CustomResource):
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="cacheStorageSize")
+    def cache_storage_size(self) -> pulumi.Output[_builtins.int]:
+        """
+        The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        """
+        return pulumi.get(self, "cache_storage_size")
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
@@ -2039,7 +2359,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceMode")
     def db_instance_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+
+        > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         """
         return pulumi.get(self, "db_instance_mode")
 
@@ -2114,7 +2436,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="instanceSpec")
-    def instance_spec(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def instance_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -2122,6 +2444,7 @@ class Instance(pulumi.CustomResource):
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -2161,11 +2484,21 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="masterNodeNum")
     @_utilities.deprecated("""Field `master_node_num` has been deprecated from provider version 1.213.0.""")
-    def master_node_num(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def master_node_num(self) -> pulumi.Output[_builtins.int]:
         """
         The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         """
         return pulumi.get(self, "master_node_num")
+
+    @_builtins.property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
+
+        > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
+        """
+        return pulumi.get(self, "minor_version")
 
     @_builtins.property
     @pulumi.getter
@@ -2179,7 +2512,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         """
         return pulumi.get(self, "payment_type")
 
@@ -2187,7 +2520,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         """
         return pulumi.get(self, "period")
 
@@ -2276,6 +2609,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "serverless_mode")
 
     @_builtins.property
+    @pulumi.getter(name="serverlessResource")
+    def serverless_resource(self) -> pulumi.Output[_builtins.int]:
+        """
+        The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        """
+        return pulumi.get(self, "serverless_resource")
+
+    @_builtins.property
+    @pulumi.getter(name="srcDbInstanceName")
+    def src_db_instance_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "src_db_instance_name")
+
+    @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> pulumi.Output[_builtins.int]:
         """
@@ -2287,7 +2636,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the instance.
+        The expected status of the instance. Valid values:
+        - `Running`: The instance is expected to be running. If the instance is paused, the provider resumes it.
+        - `Stopped`: The instance is expected to be stopped. If the instance is running, the provider pauses it.
+
+        When `status` is not set, it keeps the read-only behavior and the provider does not manage the instance status.
+
+        > **NOTE:** Setting `status` actually pauses or resumes the instance. Pausing or resuming an instance is supported only for Serverless instances with kernel version V1.0.2.1 or later, the instance must be charged with the PayAsYouGo billing method, and pausing takes effect only when the instance is in the running state. See [PauseInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-pauseinstance) and [ResumeInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-resumeinstance).
+
+        > **NOTE:** Pausing or resuming an instance is asynchronous. While a pause or resume request is in progress, the status of the instance transitions through `STOPPING` or `STARTING` and then converges to `STOPPED` (paused) or `Running` (resumed).
+
+        > **NOTE:** `status` does not take part in the instance creation. A new instance is always created in the running state and is paused afterwards when `status` is set to `Stopped`.
         """
         return pulumi.get(self, "status")
 
@@ -2313,7 +2672,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="usedTime")
     def used_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`. **NOTE:** From provider version 1.287.0, `used_time` is required (together with `period`) when `payment_type` is modified to `Subscription`.
         """
         return pulumi.get(self, "used_time")
 

@@ -11,6 +11,7 @@ from .disk_instance_attachment import *
 from .eip import *
 from .eip_instance_attachment import *
 from .get_key_pairs import *
+from .get_security_groups import *
 from .image import *
 from .instance import *
 from .instance_security_group_attachment import *

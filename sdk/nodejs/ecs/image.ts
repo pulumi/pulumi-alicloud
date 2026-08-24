@@ -220,6 +220,10 @@ export class Image extends pulumi.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Indicates whether the image is available. Valid values:
+     */
+    declare public /*out*/ readonly usable: pulumi.Output<boolean>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -254,6 +258,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["snapshotId"] = state?.snapshotId;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["usable"] = state?.usable;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             resourceInputs["architecture"] = args?.architecture;
@@ -276,6 +281,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["usable"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Image.__pulumiType, name, resourceInputs, opts);
@@ -390,6 +396,10 @@ export interface ImageState {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Indicates whether the image is available. Valid values:
+     */
+    usable?: pulumi.Input<boolean | undefined>;
 }
 
 /**

@@ -13,7 +13,7 @@ import (
 
 // This data source provides user-available access groups. Use when you can create mount points
 //
-// > NOTE: Available in 1.35.0+
+// > **NOTE:** Available since v1.35.0+
 //
 // ## Example Usage
 //
@@ -61,7 +61,7 @@ type GetAccessGroupsArgs struct {
 	AccessGroupType *string `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description *string `pulumi:"description"`
-	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+	// The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
 	FileSystemType *string `pulumi:"fileSystemType"`
 	// A regex string to filter AccessGroups by name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -118,7 +118,7 @@ type GetAccessGroupsOutputArgs struct {
 	AccessGroupType pulumi.StringPtrInput `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+	// The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
 	FileSystemType pulumi.StringPtrInput `pulumi:"fileSystemType"`
 	// A regex string to filter AccessGroups by name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

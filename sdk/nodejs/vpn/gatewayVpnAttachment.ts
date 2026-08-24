@@ -294,6 +294,12 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     */
+    declare public readonly tunnelBandwidth: pulumi.Output<string>;
+    /**
      * Configure the tunnel.
      * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
      * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -333,6 +339,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tunnelBandwidth"] = state?.tunnelBandwidth;
             resourceInputs["tunnelOptionsSpecifications"] = state?.tunnelOptionsSpecifications;
             resourceInputs["vpnAttachmentName"] = state?.vpnAttachmentName;
         } else {
@@ -357,6 +364,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
             resourceInputs["remoteSubnet"] = args?.remoteSubnet;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tunnelBandwidth"] = args?.tunnelBandwidth;
             resourceInputs["tunnelOptionsSpecifications"] = args?.tunnelOptionsSpecifications;
             resourceInputs["vpnAttachmentName"] = args?.vpnAttachmentName;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -453,6 +461,12 @@ export interface GatewayVpnAttachmentState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     */
+    tunnelBandwidth?: pulumi.Input<string | undefined>;
+    /**
      * Configure the tunnel.
      * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
      * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
@@ -541,6 +555,12 @@ export interface GatewayVpnAttachmentArgs {
      * Tags
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     */
+    tunnelBandwidth?: pulumi.Input<string | undefined>;
     /**
      * Configure the tunnel.
      * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.

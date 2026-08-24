@@ -37,6 +37,10 @@ __all__ = [
     'ProviderAssumeRoleWithOidcArgsDict',
     'ProviderEndpointArgs',
     'ProviderEndpointArgsDict',
+    'ProviderFeaturesArgs',
+    'ProviderFeaturesArgsDict',
+    'ProviderFeaturesEcsInstanceArgs',
+    'ProviderFeaturesEcsInstanceArgsDict',
     'ProviderSignVersionArgs',
     'ProviderSignVersionArgsDict',
     'StarRocksInstanceBackendNodeGroupArgs',
@@ -4206,6 +4210,64 @@ class ProviderEndpointArgs:
     @waf_openapi.setter
     def waf_openapi(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waf_openapi", value)
+
+
+class ProviderFeaturesArgsDict(TypedDict):
+    ecs_instance: NotRequired[pulumi.Input[Optional['ProviderFeaturesEcsInstanceArgsDict']]]
+    """
+    The behaviour toggles of the `ecs.Instance` resource.
+    """
+
+@pulumi.input_type
+class ProviderFeaturesArgs:
+    def __init__(__self__, *,
+                 ecs_instance: pulumi.Input[Optional['ProviderFeaturesEcsInstanceArgs']] = None):
+        """
+        :param pulumi.Input['ProviderFeaturesEcsInstanceArgs'] ecs_instance: The behaviour toggles of the `ecs.Instance` resource.
+        """
+        if ecs_instance is not None:
+            pulumi.set(__self__, "ecs_instance", ecs_instance)
+
+    @_builtins.property
+    @pulumi.getter(name="ecsInstance")
+    def ecs_instance(self) -> pulumi.Input[Optional['ProviderFeaturesEcsInstanceArgs']]:
+        """
+        The behaviour toggles of the `ecs.Instance` resource.
+        """
+        return pulumi.get(self, "ecs_instance")
+
+    @ecs_instance.setter
+    def ecs_instance(self, value: pulumi.Input[Optional['ProviderFeaturesEcsInstanceArgs']]):
+        pulumi.set(self, "ecs_instance", value)
+
+
+class ProviderFeaturesEcsInstanceArgsDict(TypedDict):
+    replace_on_image_update: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether a change to `image_id` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+    """
+
+@pulumi.input_type
+class ProviderFeaturesEcsInstanceArgs:
+    def __init__(__self__, *,
+                 replace_on_image_update: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] replace_on_image_update: Whether a change to `image_id` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+        """
+        if replace_on_image_update is not None:
+            pulumi.set(__self__, "replace_on_image_update", replace_on_image_update)
+
+    @_builtins.property
+    @pulumi.getter(name="replaceOnImageUpdate")
+    def replace_on_image_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether a change to `image_id` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+        """
+        return pulumi.get(self, "replace_on_image_update")
+
+    @replace_on_image_update.setter
+    def replace_on_image_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "replace_on_image_update", value)
 
 
 class ProviderSignVersionArgsDict(TypedDict):

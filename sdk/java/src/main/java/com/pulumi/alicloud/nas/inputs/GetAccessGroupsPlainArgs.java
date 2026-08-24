@@ -61,14 +61,14 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+     * The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
      * 
      */
     @Import(name="fileSystemType")
     private @Nullable String fileSystemType;
 
     /**
-     * @return The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+     * @return The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
      * 
      */
     public Optional<String> fileSystemType() {
@@ -208,7 +208,7 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param fileSystemType The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+         * @param fileSystemType The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
          * 
          * @return builder
          * 

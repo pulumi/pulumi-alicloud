@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs;
 
 import com.pulumi.alicloud.cs.inputs.NodePoolAutoModeArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolContainerdConfigArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolDataDiskArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolEfloNodeGroupArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolInstanceMetadataOptionsArgs;
@@ -131,6 +132,25 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> compensateWithOnDemand() {
         return Optional.ofNullable(this.compensateWithOnDemand);
+    }
+
+    /**
+     * Containerd configuration parameters for worker nodes.
+     * 
+     * &gt; **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     * 
+     */
+    @Import(name="containerdConfig")
+    private @Nullable Output<NodePoolContainerdConfigArgs> containerdConfig;
+
+    /**
+     * @return Containerd configuration parameters for worker nodes.
+     * 
+     * &gt; **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     * 
+     */
+    public Optional<Output<NodePoolContainerdConfigArgs>> containerdConfig() {
+        return Optional.ofNullable(this.containerdConfig);
     }
 
     /**
@@ -1367,6 +1387,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.cisEnabled = $.cisEnabled;
         this.clusterId = $.clusterId;
         this.compensateWithOnDemand = $.compensateWithOnDemand;
+        this.containerdConfig = $.containerdConfig;
         this.cpuPolicy = $.cpuPolicy;
         this.dataDisks = $.dataDisks;
         this.deploymentSetId = $.deploymentSetId;
@@ -1592,6 +1613,31 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder compensateWithOnDemand(Boolean compensateWithOnDemand) {
             return compensateWithOnDemand(Output.of(compensateWithOnDemand));
+        }
+
+        /**
+         * @param containerdConfig Containerd configuration parameters for worker nodes.
+         * 
+         * &gt; **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(@Nullable Output<NodePoolContainerdConfigArgs> containerdConfig) {
+            $.containerdConfig = containerdConfig;
+            return this;
+        }
+
+        /**
+         * @param containerdConfig Containerd configuration parameters for worker nodes.
+         * 
+         * &gt; **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerdConfig(NodePoolContainerdConfigArgs containerdConfig) {
+            return containerdConfig(Output.of(containerdConfig));
         }
 
         /**

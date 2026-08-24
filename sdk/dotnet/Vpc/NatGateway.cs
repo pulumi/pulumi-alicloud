@@ -129,6 +129,14 @@ namespace Pulumi.AliCloud.Vpc
         public Output<Outputs.NatGatewayAccessMode> AccessMode { get; private set; } = null!;
 
         /// <summary>
+        /// The disaster recovery mode of the NAT gateway. **NOTE:** `AvailabilityMode` requires `NatType` to be set to `Enhanced`. Valid values:
+        /// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+        /// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+        /// </summary>
+        [Output("availabilityMode")]
+        public Output<string> AvailabilityMode { get; private set; } = null!;
+
+        /// <summary>
         /// Whether enable the deletion protection or not. Default value: `False`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
@@ -199,13 +207,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NatGatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`.
+        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`. The parameter is immutable after resource creation.
         /// </summary>
         [Output("natType")]
         public Output<string> NatType { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway.
+        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
@@ -260,7 +268,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of VSwitch.
+        /// The id of VSwitch. The parameter is immutable after resource creation.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -316,6 +324,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("accessMode")]
         public Input<Inputs.NatGatewayAccessModeArgs>? AccessMode { get; set; }
+
+        /// <summary>
+        /// The disaster recovery mode of the NAT gateway. **NOTE:** `AvailabilityMode` requires `NatType` to be set to `Enhanced`. Valid values:
+        /// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+        /// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+        /// </summary>
+        [Input("availabilityMode")]
+        public Input<string>? AvailabilityMode { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `False`.
@@ -382,13 +398,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`.
+        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`. The parameter is immutable after resource creation.
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
 
         /// <summary>
-        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway.
+        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -437,7 +453,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The id of VSwitch.
+        /// The id of VSwitch. The parameter is immutable after resource creation.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -455,6 +471,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("accessMode")]
         public Input<Inputs.NatGatewayAccessModeGetArgs>? AccessMode { get; set; }
+
+        /// <summary>
+        /// The disaster recovery mode of the NAT gateway. **NOTE:** `AvailabilityMode` requires `NatType` to be set to `Enhanced`. Valid values:
+        /// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+        /// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+        /// </summary>
+        [Input("availabilityMode")]
+        public Input<string>? AvailabilityMode { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `False`.
@@ -527,13 +551,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NatGatewayName { get; set; }
 
         /// <summary>
-        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`.
+        /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `NatType` cannot be set to `Normal`. The parameter is immutable after resource creation.
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
 
         /// <summary>
-        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway.
+        /// Indicates the type of the created NAT gateway. Valid values `Internet` and `Intranet`. `Internet`: Internet NAT Gateway. `Intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -594,7 +618,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The id of VSwitch.
+        /// The id of VSwitch. The parameter is immutable after resource creation.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

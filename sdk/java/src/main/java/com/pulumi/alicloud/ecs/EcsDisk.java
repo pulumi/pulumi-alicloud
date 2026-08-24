@@ -237,14 +237,18 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * 
+     * @deprecated
+     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
+    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
     @Export(name="enableAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAutoSnapshot;
 
     /**
-     * @return Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * @return Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
     public Output<Boolean> enableAutoSnapshot() {

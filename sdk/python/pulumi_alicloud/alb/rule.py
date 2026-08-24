@@ -32,7 +32,9 @@ class RuleArgs:
         The set of arguments for constructing a Rule resource.
 
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener to which the forwarding rule belongs.
-        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+               
+               > **NOTE:** The priority of each rule within the same listener must be unique.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -67,7 +69,9 @@ class RuleArgs:
     @pulumi.getter
     def priority(self) -> pulumi.Input[_builtins.int]:
         """
-        The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+
+        > **NOTE:** The priority of each rule within the same listener must be unique.
         """
         return pulumi.get(self, "priority")
 
@@ -157,7 +161,9 @@ class _RuleState:
                - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener to which the forwarding rule belongs.
-        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+               
+               > **NOTE:** The priority of each rule within the same listener must be unique.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -222,7 +228,9 @@ class _RuleState:
     @pulumi.getter
     def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+
+        > **NOTE:** The priority of each rule within the same listener must be unique.
         """
         return pulumi.get(self, "priority")
 
@@ -404,6 +412,44 @@ class Rule(pulumi.CustomResource):
             }])
         ```
 
+        Removing a request header before forwarding
+
+        A forwarding rule must contain exactly one final action (`ForwardGroup`, `Redirect` or `FixedResponse`), and that action is executed last, so the `RemoveHeader` extension action has to be declared with a smaller `order`. The example below reuses the listener and the server group created above.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        remove_header = alicloud.alb.Rule("remove_header",
+            rule_name=f"{name}_remove_header",
+            listener_id=default_alicloud_alb_listener["id"],
+            priority=556,
+            rule_conditions=[{
+                "host_config": {
+                    "values": ["www.example.com"],
+                },
+                "type": "Host",
+            }],
+            rule_actions=[
+                {
+                    "remove_header_config": {
+                        "key": "X-Debug-Trace",
+                    },
+                    "order": 1,
+                    "type": "RemoveHeader",
+                },
+                {
+                    "forward_group_config": {
+                        "server_group_tuples": [{
+                            "server_group_id": default["id"],
+                        }],
+                    },
+                    "order": 9,
+                    "type": "ForwardGroup",
+                },
+            ])
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -422,7 +468,9 @@ class Rule(pulumi.CustomResource):
                - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener to which the forwarding rule belongs.
-        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+               
+               > **NOTE:** The priority of each rule within the same listener must be unique.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -544,6 +592,44 @@ class Rule(pulumi.CustomResource):
             }])
         ```
 
+        Removing a request header before forwarding
+
+        A forwarding rule must contain exactly one final action (`ForwardGroup`, `Redirect` or `FixedResponse`), and that action is executed last, so the `RemoveHeader` extension action has to be declared with a smaller `order`. The example below reuses the listener and the server group created above.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        remove_header = alicloud.alb.Rule("remove_header",
+            rule_name=f"{name}_remove_header",
+            listener_id=default_alicloud_alb_listener["id"],
+            priority=556,
+            rule_conditions=[{
+                "host_config": {
+                    "values": ["www.example.com"],
+                },
+                "type": "Host",
+            }],
+            rule_actions=[
+                {
+                    "remove_header_config": {
+                        "key": "X-Debug-Trace",
+                    },
+                    "order": 1,
+                    "type": "RemoveHeader",
+                },
+                {
+                    "forward_group_config": {
+                        "server_group_tuples": [{
+                            "server_group_id": default["id"],
+                        }],
+                    },
+                    "order": 9,
+                    "type": "ForwardGroup",
+                },
+            ])
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -634,7 +720,9 @@ class Rule(pulumi.CustomResource):
                - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener to which the forwarding rule belongs.
-        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        :param pulumi.Input[_builtins.int] priority: The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+               
+               > **NOTE:** The priority of each rule within the same listener must be unique.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -684,7 +772,9 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[_builtins.int]:
         """
-        The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+
+        > **NOTE:** The priority of each rule within the same listener must be unique.
         """
         return pulumi.get(self, "priority")
 

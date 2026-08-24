@@ -21,6 +21,7 @@ __all__ = ['ZoneArgs', 'Zone']
 @pulumi.input_type
 class ZoneArgs:
     def __init__(__self__, *,
+                 dns_group: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,7 @@ class ZoneArgs:
         """
         The set of arguments for constructing a Zone resource.
 
+        :param pulumi.Input[_builtins.str] dns_group: The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[_builtins.str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
@@ -48,6 +50,8 @@ class ZoneArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. See `user_info` below.
         :param pulumi.Input[_builtins.str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
+        if dns_group is not None:
+            pulumi.set(__self__, "dns_group", dns_group)
         if lang is not None:
             pulumi.set(__self__, "lang", lang)
         if name is not None:
@@ -71,6 +75,18 @@ class ZoneArgs:
             pulumi.set(__self__, "user_infos", user_infos)
         if zone_name is not None:
             pulumi.set(__self__, "zone_name", zone_name)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsGroup")
+    def dns_group(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+        """
+        return pulumi.get(self, "dns_group")
+
+    @dns_group.setter
+    def dns_group(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dns_group", value)
 
     @_builtins.property
     @pulumi.getter
@@ -200,6 +216,7 @@ class ZoneArgs:
 @pulumi.input_type
 class _ZoneState:
     def __init__(__self__, *,
+                 dns_group: pulumi.Input[Optional[_builtins.str]] = None,
                  is_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -215,6 +232,7 @@ class _ZoneState:
         """
         Input properties used for looking up and filtering Zone resources.
 
+        :param pulumi.Input[_builtins.str] dns_group: The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
         :param pulumi.Input[_builtins.bool] is_ptr: Whether the Private Zone is ptr.
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[_builtins.str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
@@ -231,6 +249,8 @@ class _ZoneState:
         :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. See `user_info` below.
         :param pulumi.Input[_builtins.str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
+        if dns_group is not None:
+            pulumi.set(__self__, "dns_group", dns_group)
         if is_ptr is not None:
             pulumi.set(__self__, "is_ptr", is_ptr)
         if lang is not None:
@@ -258,6 +278,18 @@ class _ZoneState:
             pulumi.set(__self__, "user_infos", user_infos)
         if zone_name is not None:
             pulumi.set(__self__, "zone_name", zone_name)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsGroup")
+    def dns_group(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+        """
+        return pulumi.get(self, "dns_group")
+
+    @dns_group.setter
+    def dns_group(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dns_group", value)
 
     @_builtins.property
     @pulumi.getter(name="isPtr")
@@ -414,6 +446,7 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dns_group: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
@@ -456,6 +489,7 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dns_group: The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[_builtins.str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
@@ -520,6 +554,7 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dns_group: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
@@ -539,6 +574,7 @@ class Zone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
+            __props__.__dict__["dns_group"] = dns_group
             __props__.__dict__["lang"] = lang
             __props__.__dict__["name"] = name
             __props__.__dict__["proxy_pattern"] = proxy_pattern
@@ -561,6 +597,7 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dns_group: pulumi.Input[Optional[_builtins.str]] = None,
             is_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -580,6 +617,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dns_group: The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
         :param pulumi.Input[_builtins.bool] is_ptr: Whether the Private Zone is ptr.
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[_builtins.str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
@@ -600,6 +638,7 @@ class Zone(pulumi.CustomResource):
 
         __props__ = _ZoneState.__new__(_ZoneState)
 
+        __props__.__dict__["dns_group"] = dns_group
         __props__.__dict__["is_ptr"] = is_ptr
         __props__.__dict__["lang"] = lang
         __props__.__dict__["name"] = name
@@ -613,6 +652,14 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["user_infos"] = user_infos
         __props__.__dict__["zone_name"] = zone_name
         return Zone(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsGroup")
+    def dns_group(self) -> pulumi.Output[_builtins.str]:
+        """
+        The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+        """
+        return pulumi.get(self, "dns_group")
 
     @_builtins.property
     @pulumi.getter(name="isPtr")

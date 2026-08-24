@@ -20,7 +20,7 @@ public final class FileSystemOptionsArgs extends com.pulumi.resources.ResourceAr
      * - true: On.
      * - false: does not turn on.
      * 
-     * &gt; **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+     * &gt; **NOTE:** Description Only file systems of the SMB protocol type are supported.
      * 
      */
     @Import(name="enableOplock")
@@ -31,7 +31,7 @@ public final class FileSystemOptionsArgs extends com.pulumi.resources.ResourceAr
      * - true: On.
      * - false: does not turn on.
      * 
-     * &gt; **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+     * &gt; **NOTE:** Description Only file systems of the SMB protocol type are supported.
      * 
      */
     public Optional<Output<Boolean>> enableOplock() {
@@ -67,7 +67,7 @@ public final class FileSystemOptionsArgs extends com.pulumi.resources.ResourceAr
          * - true: On.
          * - false: does not turn on.
          * 
-         * &gt; **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         * &gt; **NOTE:** Description Only file systems of the SMB protocol type are supported.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class FileSystemOptionsArgs extends com.pulumi.resources.ResourceAr
          * - true: On.
          * - false: does not turn on.
          * 
-         * &gt; **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         * &gt; **NOTE:** Description Only file systems of the SMB protocol type are supported.
          * 
          * @return builder
          * 

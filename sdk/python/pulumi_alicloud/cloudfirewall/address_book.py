@@ -25,6 +25,8 @@ class AddressBookArgs:
                  group_name: pulumi.Input[_builtins.str],
                  group_type: pulumi.Input[_builtins.str],
                  address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_member_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 asset_region_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]]] = None,
                  auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
                  ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,9 +36,11 @@ class AddressBookArgs:
 
         :param pulumi.Input[_builtins.str] description: The description of the Address Book.
         :param pulumi.Input[_builtins.str] group_name: The name of the Address Book.
-        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lists: The list of addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] asset_member_uids: The list of member account UIDs of the asset Address Book.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]] asset_region_resource_types: The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
         :param pulumi.Input[_builtins.int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -47,6 +51,10 @@ class AddressBookArgs:
         pulumi.set(__self__, "group_type", group_type)
         if address_lists is not None:
             pulumi.set(__self__, "address_lists", address_lists)
+        if asset_member_uids is not None:
+            pulumi.set(__self__, "asset_member_uids", asset_member_uids)
+        if asset_region_resource_types is not None:
+            pulumi.set(__self__, "asset_region_resource_types", asset_region_resource_types)
         if auto_add_tag_ecs is not None:
             pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
         if ecs_tags is not None:
@@ -84,8 +92,8 @@ class AddressBookArgs:
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         """
         return pulumi.get(self, "group_type")
 
@@ -104,6 +112,30 @@ class AddressBookArgs:
     @address_lists.setter
     def address_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetMemberUids")
+    def asset_member_uids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The list of member account UIDs of the asset Address Book.
+        """
+        return pulumi.get(self, "asset_member_uids")
+
+    @asset_member_uids.setter
+    def asset_member_uids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "asset_member_uids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetRegionResourceTypes")
+    def asset_region_resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]]]:
+        """
+        The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
+        """
+        return pulumi.get(self, "asset_region_resource_types")
+
+    @asset_region_resource_types.setter
+    def asset_region_resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]]]):
+        pulumi.set(self, "asset_region_resource_types", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAddTagEcs")
@@ -157,29 +189,43 @@ class AddressBookArgs:
 @pulumi.input_type
 class _AddressBookState:
     def __init__(__self__, *,
+                 address_list_count: pulumi.Input[Optional[_builtins.int]] = None,
                  address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_member_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 asset_region_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]]] = None,
                  auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_count: pulumi.Input[Optional[_builtins.int]] = None,
                  tag_relation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressBook resources.
 
+        :param pulumi.Input[_builtins.int] address_list_count: (Available since v1.286.0) The number of addresses in the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lists: The list of addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] asset_member_uids: The list of member account UIDs of the asset Address Book.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]] asset_region_resource_types: The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
         :param pulumi.Input[_builtins.int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[_builtins.str] description: The description of the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[_builtins.str] group_name: The name of the Address Book.
-        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[_builtins.int] reference_count: (Available since v1.286.0) The number of times that the Address Book is referenced.
         :param pulumi.Input[_builtins.str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
+        if address_list_count is not None:
+            pulumi.set(__self__, "address_list_count", address_list_count)
         if address_lists is not None:
             pulumi.set(__self__, "address_lists", address_lists)
+        if asset_member_uids is not None:
+            pulumi.set(__self__, "asset_member_uids", asset_member_uids)
+        if asset_region_resource_types is not None:
+            pulumi.set(__self__, "asset_region_resource_types", asset_region_resource_types)
         if auto_add_tag_ecs is not None:
             pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
         if description is not None:
@@ -192,8 +238,22 @@ class _AddressBookState:
             pulumi.set(__self__, "group_type", group_type)
         if lang is not None:
             pulumi.set(__self__, "lang", lang)
+        if reference_count is not None:
+            pulumi.set(__self__, "reference_count", reference_count)
         if tag_relation is not None:
             pulumi.set(__self__, "tag_relation", tag_relation)
+
+    @_builtins.property
+    @pulumi.getter(name="addressListCount")
+    def address_list_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Available since v1.286.0) The number of addresses in the Address Book.
+        """
+        return pulumi.get(self, "address_list_count")
+
+    @address_list_count.setter
+    def address_list_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "address_list_count", value)
 
     @_builtins.property
     @pulumi.getter(name="addressLists")
@@ -206,6 +266,30 @@ class _AddressBookState:
     @address_lists.setter
     def address_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetMemberUids")
+    def asset_member_uids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The list of member account UIDs of the asset Address Book.
+        """
+        return pulumi.get(self, "asset_member_uids")
+
+    @asset_member_uids.setter
+    def asset_member_uids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "asset_member_uids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetRegionResourceTypes")
+    def asset_region_resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]]]:
+        """
+        The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
+        """
+        return pulumi.get(self, "asset_region_resource_types")
+
+    @asset_region_resource_types.setter
+    def asset_region_resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookAssetRegionResourceTypeArgs']]]]):
+        pulumi.set(self, "asset_region_resource_types", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAddTagEcs")
@@ -259,8 +343,8 @@ class _AddressBookState:
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         """
         return pulumi.get(self, "group_type")
 
@@ -279,6 +363,18 @@ class _AddressBookState:
     @lang.setter
     def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
+
+    @_builtins.property
+    @pulumi.getter(name="referenceCount")
+    def reference_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Available since v1.286.0) The number of times that the Address Book is referenced.
+        """
+        return pulumi.get(self, "reference_count")
+
+    @reference_count.setter
+    def reference_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "reference_count", value)
 
     @_builtins.property
     @pulumi.getter(name="tagRelation")
@@ -300,6 +396,8 @@ class AddressBook(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_member_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 asset_region_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookAssetRegionResourceTypeArgs', 'AddressBookAssetRegionResourceTypeArgsDict']]]]] = None,
                  auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
@@ -349,12 +447,14 @@ class AddressBook(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lists: The list of addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] asset_member_uids: The list of member account UIDs of the asset Address Book.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressBookAssetRegionResourceTypeArgs', 'AddressBookAssetRegionResourceTypeArgsDict']]]] asset_region_resource_types: The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
         :param pulumi.Input[_builtins.int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[_builtins.str] description: The description of the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[_builtins.str] group_name: The name of the Address Book.
-        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
@@ -418,6 +518,8 @@ class AddressBook(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_member_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 asset_region_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookAssetRegionResourceTypeArgs', 'AddressBookAssetRegionResourceTypeArgsDict']]]]] = None,
                  auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
@@ -435,6 +537,8 @@ class AddressBook(pulumi.CustomResource):
             __props__ = AddressBookArgs.__new__(AddressBookArgs)
 
             __props__.__dict__["address_lists"] = address_lists
+            __props__.__dict__["asset_member_uids"] = asset_member_uids
+            __props__.__dict__["asset_region_resource_types"] = asset_region_resource_types
             __props__.__dict__["auto_add_tag_ecs"] = auto_add_tag_ecs
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -448,6 +552,8 @@ class AddressBook(pulumi.CustomResource):
             __props__.__dict__["group_type"] = group_type
             __props__.__dict__["lang"] = lang
             __props__.__dict__["tag_relation"] = tag_relation
+            __props__.__dict__["address_list_count"] = None
+            __props__.__dict__["reference_count"] = None
         super(AddressBook, __self__).__init__(
             'alicloud:cloudfirewall/addressBook:AddressBook',
             resource_name,
@@ -458,13 +564,17 @@ class AddressBook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            address_list_count: pulumi.Input[Optional[_builtins.int]] = None,
             address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            asset_member_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            asset_region_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookAssetRegionResourceTypeArgs', 'AddressBookAssetRegionResourceTypeArgsDict']]]]] = None,
             auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
             group_type: pulumi.Input[Optional[_builtins.str]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_count: pulumi.Input[Optional[_builtins.int]] = None,
             tag_relation: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddressBook':
         """
         Get an existing AddressBook resource's state with the given name, id, and optional extra
@@ -473,37 +583,69 @@ class AddressBook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] address_list_count: (Available since v1.286.0) The number of addresses in the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lists: The list of addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] asset_member_uids: The list of member account UIDs of the asset Address Book.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressBookAssetRegionResourceTypeArgs', 'AddressBookAssetRegionResourceTypeArgsDict']]]] asset_region_resource_types: The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
         :param pulumi.Input[_builtins.int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[_builtins.str] description: The description of the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[_builtins.str] group_name: The name of the Address Book.
-        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[_builtins.int] reference_count: (Available since v1.286.0) The number of times that the Address Book is referenced.
         :param pulumi.Input[_builtins.str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AddressBookState.__new__(_AddressBookState)
 
+        __props__.__dict__["address_list_count"] = address_list_count
         __props__.__dict__["address_lists"] = address_lists
+        __props__.__dict__["asset_member_uids"] = asset_member_uids
+        __props__.__dict__["asset_region_resource_types"] = asset_region_resource_types
         __props__.__dict__["auto_add_tag_ecs"] = auto_add_tag_ecs
         __props__.__dict__["description"] = description
         __props__.__dict__["ecs_tags"] = ecs_tags
         __props__.__dict__["group_name"] = group_name
         __props__.__dict__["group_type"] = group_type
         __props__.__dict__["lang"] = lang
+        __props__.__dict__["reference_count"] = reference_count
         __props__.__dict__["tag_relation"] = tag_relation
         return AddressBook(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="addressListCount")
+    def address_list_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.286.0) The number of addresses in the Address Book.
+        """
+        return pulumi.get(self, "address_list_count")
+
+    @_builtins.property
     @pulumi.getter(name="addressLists")
-    def address_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def address_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The list of addresses.
         """
         return pulumi.get(self, "address_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="assetMemberUids")
+    def asset_member_uids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
+        """
+        The list of member account UIDs of the asset Address Book.
+        """
+        return pulumi.get(self, "asset_member_uids")
+
+    @_builtins.property
+    @pulumi.getter(name="assetRegionResourceTypes")
+    def asset_region_resource_types(self) -> pulumi.Output[Optional[Sequence['outputs.AddressBookAssetRegionResourceType']]]:
+        """
+        The list of regions and asset types of the asset Address Book. See `asset_region_resource_types` below.
+        """
+        return pulumi.get(self, "asset_region_resource_types")
 
     @_builtins.property
     @pulumi.getter(name="autoAddTagEcs")
@@ -541,8 +683,8 @@ class AddressBook(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
         """
         return pulumi.get(self, "group_type")
 
@@ -553,6 +695,14 @@ class AddressBook(pulumi.CustomResource):
         The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
+
+    @_builtins.property
+    @pulumi.getter(name="referenceCount")
+    def reference_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.286.0) The number of times that the Address Book is referenced.
+        """
+        return pulumi.get(self, "reference_count")
 
     @_builtins.property
     @pulumi.getter(name="tagRelation")

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+ * You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  *
  * > **NOTE:** Available since v1.37.0.
  *
@@ -284,13 +284,17 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     */
+    declare public readonly securityIpGroups: pulumi.Output<outputs.mongodb.InstanceSecurityIpGroup[] | undefined>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     declare public readonly securityIpLists: pulumi.Output<string[]>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      */
     declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
@@ -401,6 +405,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["roleArn"] = state?.roleArn;
             resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityIpGroups"] = state?.securityIpGroups;
             resourceInputs["securityIpLists"] = state?.securityIpLists;
             resourceInputs["snapshotBackupType"] = state?.snapshotBackupType;
             resourceInputs["srcDbInstanceId"] = state?.srcDbInstanceId;
@@ -465,6 +470,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityIpGroups"] = args?.securityIpGroups;
             resourceInputs["securityIpLists"] = args?.securityIpLists;
             resourceInputs["snapshotBackupType"] = args?.snapshotBackupType;
             resourceInputs["srcDbInstanceId"] = args?.srcDbInstanceId;
@@ -680,13 +686,17 @@ export interface InstanceState {
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     */
+    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceSecurityIpGroup>[] | undefined>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**
@@ -915,13 +925,17 @@ export interface InstanceArgs {
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     */
+    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceSecurityIpGroup>[] | undefined>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**

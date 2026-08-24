@@ -52,6 +52,9 @@ import javax.annotation.Nullable;
  *         var default_ = new Routine("default", RoutineArgs.builder()
  *             .description(name)
  *             .name(name)
+ *             .code("addEventListener('fetch', e => e.respondWith(new Response('hello world')))")
+ *             .codeDescription("initial version")
+ *             .deployEnv("staging")
  *             .build());
  * 
  *     }
@@ -59,7 +62,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * 📚 Need more examples? VIEW MORE EXAMPLES
+ * Manage the routine code from a local file:
  * 
  * ## Import
  * 
@@ -72,6 +75,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:esa/routine:Routine")
 public class Routine extends com.pulumi.resources.CustomResource {
+    /**
+     * The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file(&#34;index.js&#34;)`.
+     * 
+     */
+    @Export(name="code", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> code;
+
+    /**
+     * @return The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file(&#34;index.js&#34;)`.
+     * 
+     */
+    public Output<Optional<String>> code() {
+        return Codegen.optional(this.code);
+    }
+    /**
+     * The description attached to the committed code version.
+     * 
+     */
+    @Export(name="codeDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> codeDescription;
+
+    /**
+     * @return The description attached to the committed code version.
+     * 
+     */
+    public Output<Optional<String>> codeDescription() {
+        return Codegen.optional(this.codeDescription);
+    }
     /**
      * The time when the routine was created.
      * 
@@ -87,28 +118,56 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The routine name, which must be unique in the same account.
+     * The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     * 
+     */
+    @Export(name="deployEnv", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deployEnv;
+
+    /**
+     * @return The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     * 
+     */
+    public Output<Optional<String>> deployEnv() {
+        return Codegen.optional(this.deployEnv);
+    }
+    /**
+     * The description of the routine.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The routine name, which must be unique in the same account.
+     * @return The description of the routine.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Routine Name
+     * The most recent committed code version of the routine.
+     * 
+     */
+    @Export(name="latestCodeVersion", refs={String.class}, tree="[0]")
+    private Output<String> latestCodeVersion;
+
+    /**
+     * @return The most recent committed code version of the routine.
+     * 
+     */
+    public Output<String> latestCodeVersion() {
+        return this.latestCodeVersion;
+    }
+    /**
+     * Routine Name, which must be unique in the same account.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Routine Name
+     * @return Routine Name, which must be unique in the same account.
      * 
      */
     public Output<String> name() {

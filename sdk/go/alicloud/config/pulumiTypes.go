@@ -1823,6 +1823,195 @@ func (o EndpointsArrayOutput) Index(i pulumi.IntInput) EndpointsOutput {
 	}).(EndpointsOutput)
 }
 
+type Features struct {
+	// The behaviour toggles of the `ecs.Instance` resource.
+	EcsInstance *FeaturesEcsInstance `pulumi:"ecsInstance"`
+}
+
+// FeaturesInput is an input type that accepts FeaturesArgs and FeaturesOutput values.
+// You can construct a concrete instance of `FeaturesInput` via:
+//
+//	FeaturesArgs{...}
+type FeaturesInput interface {
+	pulumi.Input
+
+	ToFeaturesOutput() FeaturesOutput
+	ToFeaturesOutputWithContext(context.Context) FeaturesOutput
+}
+
+type FeaturesArgs struct {
+	// The behaviour toggles of the `ecs.Instance` resource.
+	EcsInstance FeaturesEcsInstancePtrInput `pulumi:"ecsInstance"`
+}
+
+func (FeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Features)(nil)).Elem()
+}
+
+func (i FeaturesArgs) ToFeaturesOutput() FeaturesOutput {
+	return i.ToFeaturesOutputWithContext(context.Background())
+}
+
+func (i FeaturesArgs) ToFeaturesOutputWithContext(ctx context.Context) FeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesOutput)
+}
+
+type FeaturesOutput struct{ *pulumi.OutputState }
+
+func (FeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Features)(nil)).Elem()
+}
+
+func (o FeaturesOutput) ToFeaturesOutput() FeaturesOutput {
+	return o
+}
+
+func (o FeaturesOutput) ToFeaturesOutputWithContext(ctx context.Context) FeaturesOutput {
+	return o
+}
+
+// The behaviour toggles of the `ecs.Instance` resource.
+func (o FeaturesOutput) EcsInstance() FeaturesEcsInstancePtrOutput {
+	return o.ApplyT(func(v Features) *FeaturesEcsInstance { return v.EcsInstance }).(FeaturesEcsInstancePtrOutput)
+}
+
+type FeaturesEcsInstance struct {
+	// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+	ReplaceOnImageUpdate *bool `pulumi:"replaceOnImageUpdate"`
+}
+
+// FeaturesEcsInstanceInput is an input type that accepts FeaturesEcsInstanceArgs and FeaturesEcsInstanceOutput values.
+// You can construct a concrete instance of `FeaturesEcsInstanceInput` via:
+//
+//	FeaturesEcsInstanceArgs{...}
+type FeaturesEcsInstanceInput interface {
+	pulumi.Input
+
+	ToFeaturesEcsInstanceOutput() FeaturesEcsInstanceOutput
+	ToFeaturesEcsInstanceOutputWithContext(context.Context) FeaturesEcsInstanceOutput
+}
+
+type FeaturesEcsInstanceArgs struct {
+	// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+	ReplaceOnImageUpdate pulumi.BoolPtrInput `pulumi:"replaceOnImageUpdate"`
+}
+
+func (FeaturesEcsInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeaturesEcsInstance)(nil)).Elem()
+}
+
+func (i FeaturesEcsInstanceArgs) ToFeaturesEcsInstanceOutput() FeaturesEcsInstanceOutput {
+	return i.ToFeaturesEcsInstanceOutputWithContext(context.Background())
+}
+
+func (i FeaturesEcsInstanceArgs) ToFeaturesEcsInstanceOutputWithContext(ctx context.Context) FeaturesEcsInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesEcsInstanceOutput)
+}
+
+func (i FeaturesEcsInstanceArgs) ToFeaturesEcsInstancePtrOutput() FeaturesEcsInstancePtrOutput {
+	return i.ToFeaturesEcsInstancePtrOutputWithContext(context.Background())
+}
+
+func (i FeaturesEcsInstanceArgs) ToFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) FeaturesEcsInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesEcsInstanceOutput).ToFeaturesEcsInstancePtrOutputWithContext(ctx)
+}
+
+// FeaturesEcsInstancePtrInput is an input type that accepts FeaturesEcsInstanceArgs, FeaturesEcsInstancePtr and FeaturesEcsInstancePtrOutput values.
+// You can construct a concrete instance of `FeaturesEcsInstancePtrInput` via:
+//
+//	        FeaturesEcsInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeaturesEcsInstancePtrInput interface {
+	pulumi.Input
+
+	ToFeaturesEcsInstancePtrOutput() FeaturesEcsInstancePtrOutput
+	ToFeaturesEcsInstancePtrOutputWithContext(context.Context) FeaturesEcsInstancePtrOutput
+}
+
+type featuresEcsInstancePtrType FeaturesEcsInstanceArgs
+
+func FeaturesEcsInstancePtr(v *FeaturesEcsInstanceArgs) FeaturesEcsInstancePtrInput {
+	return (*featuresEcsInstancePtrType)(v)
+}
+
+func (*featuresEcsInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeaturesEcsInstance)(nil)).Elem()
+}
+
+func (i *featuresEcsInstancePtrType) ToFeaturesEcsInstancePtrOutput() FeaturesEcsInstancePtrOutput {
+	return i.ToFeaturesEcsInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *featuresEcsInstancePtrType) ToFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) FeaturesEcsInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesEcsInstancePtrOutput)
+}
+
+type FeaturesEcsInstanceOutput struct{ *pulumi.OutputState }
+
+func (FeaturesEcsInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeaturesEcsInstance)(nil)).Elem()
+}
+
+func (o FeaturesEcsInstanceOutput) ToFeaturesEcsInstanceOutput() FeaturesEcsInstanceOutput {
+	return o
+}
+
+func (o FeaturesEcsInstanceOutput) ToFeaturesEcsInstanceOutputWithContext(ctx context.Context) FeaturesEcsInstanceOutput {
+	return o
+}
+
+func (o FeaturesEcsInstanceOutput) ToFeaturesEcsInstancePtrOutput() FeaturesEcsInstancePtrOutput {
+	return o.ToFeaturesEcsInstancePtrOutputWithContext(context.Background())
+}
+
+func (o FeaturesEcsInstanceOutput) ToFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) FeaturesEcsInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeaturesEcsInstance) *FeaturesEcsInstance {
+		return &v
+	}).(FeaturesEcsInstancePtrOutput)
+}
+
+// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+func (o FeaturesEcsInstanceOutput) ReplaceOnImageUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeaturesEcsInstance) *bool { return v.ReplaceOnImageUpdate }).(pulumi.BoolPtrOutput)
+}
+
+type FeaturesEcsInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (FeaturesEcsInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeaturesEcsInstance)(nil)).Elem()
+}
+
+func (o FeaturesEcsInstancePtrOutput) ToFeaturesEcsInstancePtrOutput() FeaturesEcsInstancePtrOutput {
+	return o
+}
+
+func (o FeaturesEcsInstancePtrOutput) ToFeaturesEcsInstancePtrOutputWithContext(ctx context.Context) FeaturesEcsInstancePtrOutput {
+	return o
+}
+
+func (o FeaturesEcsInstancePtrOutput) Elem() FeaturesEcsInstanceOutput {
+	return o.ApplyT(func(v *FeaturesEcsInstance) FeaturesEcsInstance {
+		if v != nil {
+			return *v
+		}
+		var ret FeaturesEcsInstance
+		return ret
+	}).(FeaturesEcsInstanceOutput)
+}
+
+// Whether a change to `imageId` on an `ecs.Instance` is planned as a replacement of the instance instead of an in-place replacement of its system disk.
+func (o FeaturesEcsInstancePtrOutput) ReplaceOnImageUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeaturesEcsInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceOnImageUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SignVersion struct {
 	Oss *string `pulumi:"oss"`
 	Sls *string `pulumi:"sls"`
@@ -1885,6 +2074,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssumeRoleWithOidcInput)(nil)).Elem(), AssumeRoleWithOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsInput)(nil)).Elem(), EndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsArrayInput)(nil)).Elem(), EndpointsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeaturesInput)(nil)).Elem(), FeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeaturesEcsInstanceInput)(nil)).Elem(), FeaturesEcsInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeaturesEcsInstancePtrInput)(nil)).Elem(), FeaturesEcsInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignVersionInput)(nil)).Elem(), SignVersionArgs{})
 	pulumi.RegisterOutputType(ReportTemplateReportScopeOutput{})
 	pulumi.RegisterOutputType(ReportTemplateReportScopeArrayOutput{})
@@ -1892,5 +2084,8 @@ func init() {
 	pulumi.RegisterOutputType(AssumeRoleWithOidcOutput{})
 	pulumi.RegisterOutputType(EndpointsOutput{})
 	pulumi.RegisterOutputType(EndpointsArrayOutput{})
+	pulumi.RegisterOutputType(FeaturesOutput{})
+	pulumi.RegisterOutputType(FeaturesEcsInstanceOutput{})
+	pulumi.RegisterOutputType(FeaturesEcsInstancePtrOutput{})
 	pulumi.RegisterOutputType(SignVersionOutput{})
 }

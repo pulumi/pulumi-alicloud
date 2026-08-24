@@ -282,6 +282,121 @@ func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaS
 	}).(InstanceReplicaSetOutput)
 }
 
+type InstanceSecurityIpGroup struct {
+	// The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
+	// The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `securityIpList` (which manages the `default` group).
+	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	SecurityIpList *string `pulumi:"securityIpList"`
+}
+
+// InstanceSecurityIpGroupInput is an input type that accepts InstanceSecurityIpGroupArgs and InstanceSecurityIpGroupOutput values.
+// You can construct a concrete instance of `InstanceSecurityIpGroupInput` via:
+//
+//	InstanceSecurityIpGroupArgs{...}
+type InstanceSecurityIpGroupInput interface {
+	pulumi.Input
+
+	ToInstanceSecurityIpGroupOutput() InstanceSecurityIpGroupOutput
+	ToInstanceSecurityIpGroupOutputWithContext(context.Context) InstanceSecurityIpGroupOutput
+}
+
+type InstanceSecurityIpGroupArgs struct {
+	// The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+	SecurityIpGroupAttribute pulumi.StringPtrInput `pulumi:"securityIpGroupAttribute"`
+	// The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `securityIpList` (which manages the `default` group).
+	SecurityIpGroupName pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
+}
+
+func (InstanceSecurityIpGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i InstanceSecurityIpGroupArgs) ToInstanceSecurityIpGroupOutput() InstanceSecurityIpGroupOutput {
+	return i.ToInstanceSecurityIpGroupOutputWithContext(context.Background())
+}
+
+func (i InstanceSecurityIpGroupArgs) ToInstanceSecurityIpGroupOutputWithContext(ctx context.Context) InstanceSecurityIpGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSecurityIpGroupOutput)
+}
+
+// InstanceSecurityIpGroupArrayInput is an input type that accepts InstanceSecurityIpGroupArray and InstanceSecurityIpGroupArrayOutput values.
+// You can construct a concrete instance of `InstanceSecurityIpGroupArrayInput` via:
+//
+//	InstanceSecurityIpGroupArray{ InstanceSecurityIpGroupArgs{...} }
+type InstanceSecurityIpGroupArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSecurityIpGroupArrayOutput() InstanceSecurityIpGroupArrayOutput
+	ToInstanceSecurityIpGroupArrayOutputWithContext(context.Context) InstanceSecurityIpGroupArrayOutput
+}
+
+type InstanceSecurityIpGroupArray []InstanceSecurityIpGroupInput
+
+func (InstanceSecurityIpGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i InstanceSecurityIpGroupArray) ToInstanceSecurityIpGroupArrayOutput() InstanceSecurityIpGroupArrayOutput {
+	return i.ToInstanceSecurityIpGroupArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSecurityIpGroupArray) ToInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) InstanceSecurityIpGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSecurityIpGroupArrayOutput)
+}
+
+type InstanceSecurityIpGroupOutput struct{ *pulumi.OutputState }
+
+func (InstanceSecurityIpGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o InstanceSecurityIpGroupOutput) ToInstanceSecurityIpGroupOutput() InstanceSecurityIpGroupOutput {
+	return o
+}
+
+func (o InstanceSecurityIpGroupOutput) ToInstanceSecurityIpGroupOutputWithContext(ctx context.Context) InstanceSecurityIpGroupOutput {
+	return o
+}
+
+// The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+func (o InstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSecurityIpGroup) *string { return v.SecurityIpGroupAttribute }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `securityIpList` (which manages the `default` group).
+func (o InstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSecurityIpGroup) *string { return v.SecurityIpGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o InstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSecurityIpGroup) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
+}
+
+type InstanceSecurityIpGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSecurityIpGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o InstanceSecurityIpGroupArrayOutput) ToInstanceSecurityIpGroupArrayOutput() InstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o InstanceSecurityIpGroupArrayOutput) ToInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) InstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o InstanceSecurityIpGroupArrayOutput) Index(i pulumi.IntInput) InstanceSecurityIpGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSecurityIpGroup {
+		return vs[0].([]InstanceSecurityIpGroup)[vs[1].(int)]
+	}).(InstanceSecurityIpGroupOutput)
+}
+
 type InstanceZoneInfo struct {
 	// The ID of the node.
 	InsName *string `pulumi:"insName"`
@@ -1066,6 +1181,121 @@ func (o ShardingInstanceParameterArrayOutput) Index(i pulumi.IntInput) ShardingI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceParameter {
 		return vs[0].([]ShardingInstanceParameter)[vs[1].(int)]
 	}).(ShardingInstanceParameterOutput)
+}
+
+type ShardingInstanceSecurityIpGroup struct {
+	// The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
+	// The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `securityIpList` (which manages the `default` group).
+	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	SecurityIpList *string `pulumi:"securityIpList"`
+}
+
+// ShardingInstanceSecurityIpGroupInput is an input type that accepts ShardingInstanceSecurityIpGroupArgs and ShardingInstanceSecurityIpGroupOutput values.
+// You can construct a concrete instance of `ShardingInstanceSecurityIpGroupInput` via:
+//
+//	ShardingInstanceSecurityIpGroupArgs{...}
+type ShardingInstanceSecurityIpGroupInput interface {
+	pulumi.Input
+
+	ToShardingInstanceSecurityIpGroupOutput() ShardingInstanceSecurityIpGroupOutput
+	ToShardingInstanceSecurityIpGroupOutputWithContext(context.Context) ShardingInstanceSecurityIpGroupOutput
+}
+
+type ShardingInstanceSecurityIpGroupArgs struct {
+	// The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+	SecurityIpGroupAttribute pulumi.StringPtrInput `pulumi:"securityIpGroupAttribute"`
+	// The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `securityIpList` (which manages the `default` group).
+	SecurityIpGroupName pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
+}
+
+func (ShardingInstanceSecurityIpGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i ShardingInstanceSecurityIpGroupArgs) ToShardingInstanceSecurityIpGroupOutput() ShardingInstanceSecurityIpGroupOutput {
+	return i.ToShardingInstanceSecurityIpGroupOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceSecurityIpGroupArgs) ToShardingInstanceSecurityIpGroupOutputWithContext(ctx context.Context) ShardingInstanceSecurityIpGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceSecurityIpGroupOutput)
+}
+
+// ShardingInstanceSecurityIpGroupArrayInput is an input type that accepts ShardingInstanceSecurityIpGroupArray and ShardingInstanceSecurityIpGroupArrayOutput values.
+// You can construct a concrete instance of `ShardingInstanceSecurityIpGroupArrayInput` via:
+//
+//	ShardingInstanceSecurityIpGroupArray{ ShardingInstanceSecurityIpGroupArgs{...} }
+type ShardingInstanceSecurityIpGroupArrayInput interface {
+	pulumi.Input
+
+	ToShardingInstanceSecurityIpGroupArrayOutput() ShardingInstanceSecurityIpGroupArrayOutput
+	ToShardingInstanceSecurityIpGroupArrayOutputWithContext(context.Context) ShardingInstanceSecurityIpGroupArrayOutput
+}
+
+type ShardingInstanceSecurityIpGroupArray []ShardingInstanceSecurityIpGroupInput
+
+func (ShardingInstanceSecurityIpGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i ShardingInstanceSecurityIpGroupArray) ToShardingInstanceSecurityIpGroupArrayOutput() ShardingInstanceSecurityIpGroupArrayOutput {
+	return i.ToShardingInstanceSecurityIpGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceSecurityIpGroupArray) ToShardingInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) ShardingInstanceSecurityIpGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceSecurityIpGroupArrayOutput)
+}
+
+type ShardingInstanceSecurityIpGroupOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceSecurityIpGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o ShardingInstanceSecurityIpGroupOutput) ToShardingInstanceSecurityIpGroupOutput() ShardingInstanceSecurityIpGroupOutput {
+	return o
+}
+
+func (o ShardingInstanceSecurityIpGroupOutput) ToShardingInstanceSecurityIpGroupOutputWithContext(ctx context.Context) ShardingInstanceSecurityIpGroupOutput {
+	return o
+}
+
+// The attribute of the security IP group. It must be 1 to 120 characters in length and can contain letters and digits. Do not set this attribute to `hidden`; otherwise the group will be ignored by Read.
+func (o ShardingInstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceSecurityIpGroup) *string { return v.SecurityIpGroupAttribute }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security IP group. If not specified, the default group name `default` is used. Each named group is managed independently from `securityIpList` (which manages the `default` group).
+func (o ShardingInstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceSecurityIpGroup) *string { return v.SecurityIpGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses in the security IP group. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o ShardingInstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceSecurityIpGroup) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
+}
+
+type ShardingInstanceSecurityIpGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceSecurityIpGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o ShardingInstanceSecurityIpGroupArrayOutput) ToShardingInstanceSecurityIpGroupArrayOutput() ShardingInstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceSecurityIpGroupArrayOutput) ToShardingInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) ShardingInstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceSecurityIpGroupArrayOutput) Index(i pulumi.IntInput) ShardingInstanceSecurityIpGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceSecurityIpGroup {
+		return vs[0].([]ShardingInstanceSecurityIpGroup)[vs[1].(int)]
+	}).(ShardingInstanceSecurityIpGroupOutput)
 }
 
 type ShardingInstanceShardList struct {
@@ -3538,6 +3768,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetInput)(nil)).Elem(), InstanceReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetArrayInput)(nil)).Elem(), InstanceReplicaSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSecurityIpGroupInput)(nil)).Elem(), InstanceSecurityIpGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSecurityIpGroupArrayInput)(nil)).Elem(), InstanceSecurityIpGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneInfoInput)(nil)).Elem(), InstanceZoneInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneInfoArrayInput)(nil)).Elem(), InstanceZoneInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicNetworkAddressReplicaSetInput)(nil)).Elem(), PublicNetworkAddressReplicaSetArgs{})
@@ -3550,6 +3782,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListArrayInput)(nil)).Elem(), ShardingInstanceMongoListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceParameterInput)(nil)).Elem(), ShardingInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceParameterArrayInput)(nil)).Elem(), ShardingInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceSecurityIpGroupInput)(nil)).Elem(), ShardingInstanceSecurityIpGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceSecurityIpGroupArrayInput)(nil)).Elem(), ShardingInstanceSecurityIpGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListInput)(nil)).Elem(), ShardingInstanceShardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListArrayInput)(nil)).Elem(), ShardingInstanceShardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceZoneInfoInput)(nil)).Elem(), ShardingInstanceZoneInfoArgs{})
@@ -3584,6 +3818,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSecurityIpGroupOutput{})
+	pulumi.RegisterOutputType(InstanceSecurityIpGroupArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZoneInfoOutput{})
 	pulumi.RegisterOutputType(InstanceZoneInfoArrayOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAddressReplicaSetOutput{})
@@ -3596,6 +3832,8 @@ func init() {
 	pulumi.RegisterOutputType(ShardingInstanceMongoListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceParameterOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceSecurityIpGroupOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceSecurityIpGroupArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceZoneInfoOutput{})

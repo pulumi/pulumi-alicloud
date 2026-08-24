@@ -21,6 +21,8 @@ __all__ = [
     'AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict',
     'AggregateCompliancePackConfigRuleIdArgs',
     'AggregateCompliancePackConfigRuleIdArgsDict',
+    'AggregateConfigRuleExcludeTagsScopeArgs',
+    'AggregateConfigRuleExcludeTagsScopeArgsDict',
     'AggregatorAggregatorAccountArgs',
     'AggregatorAggregatorAccountArgsDict',
     'CompliancePackConfigRuleArgs',
@@ -159,6 +161,55 @@ class AggregateCompliancePackConfigRuleIdArgs:
     @config_rule_id.setter
     def config_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_rule_id", value)
+
+
+class AggregateConfigRuleExcludeTagsScopeArgsDict(TypedDict):
+    tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the tag to be excluded.
+    """
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the tag to be excluded.
+    """
+
+@pulumi.input_type
+class AggregateConfigRuleExcludeTagsScopeArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] tag_key: The key of the tag to be excluded.
+        :param pulumi.Input[_builtins.str] tag_value: The value of the tag to be excluded.
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the tag to be excluded.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the tag to be excluded.
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_value", value)
 
 
 class AggregatorAggregatorAccountArgsDict(TypedDict):

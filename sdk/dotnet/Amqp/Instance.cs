@@ -93,6 +93,112 @@ namespace Pulumi.AliCloud.Amqp
     /// });
     /// ```
     /// 
+    /// Create a RabbitMQ (AMQP) serverless instance with the provisioned (reserved + elastic) billing type.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("default", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         VpcId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.VpcId),
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[1]),
+    ///         },
+    ///         SecurityGroupId = defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids[0]),
+    ///         ServerlessChargeType = "provisioned",
+    ///         Edition = "dedicated",
+    ///         ProvisionedCapacity = 20000,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a RabbitMQ (AMQP) serverless instance with the provisioned (reserved + elastic, shared architecture) billing type.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("default", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         VpcId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.VpcId),
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[1]),
+    ///         },
+    ///         SecurityGroupId = defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids[0]),
+    ///         ServerlessChargeType = "provisioned",
+    ///         Edition = "shared",
+    ///         ProvisionedCapacity = 20000,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Serverless billing modes and parameter combinations
+    /// 
+    /// A Serverless instance (`PaymentType = "PayAsYouGo"`) supports the following billing modes. The combination of `ServerlessChargeType` and `Edition` determines the deployment architecture and how `ProvisionedCapacity` is consumed:
+    /// 
+    /// | Billing mode | `ServerlessChargeType` | `Edition` | `ProvisionedCapacity` | Description |
+    /// | --- | --- | --- | --- | --- |
+    /// | Pay-as-you-go (cumulative) | `onDemand` | not required | not applicable | Billed by actual traffic usage on a shared architecture. |
+    /// | Reserved + elastic (shared) | `Provisioned` | `Shared` | set the reserved TPS capacity | Reserved baseline TPS with elastic burst on a shared architecture. |
+    /// | Reserved + elastic (dedicated) | `Provisioned` | `Dedicated` | set the reserved TPS capacity | Reserved baseline TPS with elastic burst on a dedicated (isolated) architecture. |
+    /// 
+    /// &gt; **NOTE:** For `Provisioned` instances, `Edition` distinguishes the deployment architecture. Modifying `Edition` triggers instance cluster migration; submit a ticket before changing it. Storage encryption (`EncryptedInstance = true`) is only supported on the `Provisioned` + `Dedicated` combination.
+    /// 
     /// ### Deleting `alicloud.amqp.Instance` or removing it from your configuration
     /// 
     /// The `alicloud.amqp.Instance` resource allows you to manage  `PaymentType = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
@@ -137,6 +243,16 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable storage encryption when creating the instance. When set to `True`, `KmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+        /// - `InstanceType = "vip"`.
+        /// - `PaymentType = "PayAsYouGo"`, `ServerlessChargeType = "provisioned"`, and `edition = "dedicated"`.
+        /// 
+        /// &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `EncryptedInstance` replaces the instance.
+        /// </summary>
+        [Output("encryptedInstance")]
+        public Output<bool> EncryptedInstance { get; private set; } = null!;
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Output("instanceName")]
@@ -148,10 +264,16 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
-        /// &gt; **NOTE:** There should not set the `InstanceType` parameter when creating a serverless instance. Only need to set `PaymentType = "PayAsYouGo"` and `ServerlessChargeType = "onDemand"`.
+        /// &gt; **NOTE:** Do not set `InstanceType` when creating a serverless instance. Set `PaymentType = "PayAsYouGo"` and choose `ServerlessChargeType = "onDemand"` or `ServerlessChargeType = "provisioned"`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `EncryptedInstance = true` when the instance is created. Changing `KmsKeyId` replaces the instance.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
         /// The Listener mode. Valid values: `TcpAndSsl`, `SslOnly`.
@@ -186,7 +308,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The Payment type. Valid value: 
+        /// The Payment type. Valid value:
         /// - Subscription: Pre-paid.
         /// - PayAsYouGo: Post-paid, and for serverless Edition.
         /// </summary>
@@ -242,7 +364,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string?> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The billing type of the serverless instance. Value: onDemand.
+        /// The billing type of the serverless instance. Valid values: `onDemand`, `Provisioned`.
         /// </summary>
         [Output("serverlessChargeType")]
         public Output<string?> ServerlessChargeType { get; private set; } = null!;
@@ -366,6 +488,16 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? Edition { get; set; }
 
         /// <summary>
+        /// Whether to enable storage encryption when creating the instance. When set to `True`, `KmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+        /// - `InstanceType = "vip"`.
+        /// - `PaymentType = "PayAsYouGo"`, `ServerlessChargeType = "provisioned"`, and `edition = "dedicated"`.
+        /// 
+        /// &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `EncryptedInstance` replaces the instance.
+        /// </summary>
+        [Input("encryptedInstance")]
+        public Input<bool>? EncryptedInstance { get; set; }
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Input("instanceName")]
@@ -377,10 +509,16 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
-        /// &gt; **NOTE:** There should not set the `InstanceType` parameter when creating a serverless instance. Only need to set `PaymentType = "PayAsYouGo"` and `ServerlessChargeType = "onDemand"`.
+        /// &gt; **NOTE:** Do not set `InstanceType` when creating a serverless instance. Set `PaymentType = "PayAsYouGo"` and choose `ServerlessChargeType = "onDemand"` or `ServerlessChargeType = "provisioned"`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `EncryptedInstance = true` when the instance is created. Changing `KmsKeyId` replaces the instance.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// The Listener mode. Valid values: `TcpAndSsl`, `SslOnly`.
@@ -415,7 +553,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The Payment type. Valid value: 
+        /// The Payment type. Valid value:
         /// - Subscription: Pre-paid.
         /// - PayAsYouGo: Post-paid, and for serverless Edition.
         /// </summary>
@@ -471,7 +609,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The billing type of the serverless instance. Value: onDemand.
+        /// The billing type of the serverless instance. Valid values: `onDemand`, `Provisioned`.
         /// </summary>
         [Input("serverlessChargeType")]
         public Input<string>? ServerlessChargeType { get; set; }
@@ -569,6 +707,16 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? Edition { get; set; }
 
         /// <summary>
+        /// Whether to enable storage encryption when creating the instance. When set to `True`, `KmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+        /// - `InstanceType = "vip"`.
+        /// - `PaymentType = "PayAsYouGo"`, `ServerlessChargeType = "provisioned"`, and `edition = "dedicated"`.
+        /// 
+        /// &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `EncryptedInstance` replaces the instance.
+        /// </summary>
+        [Input("encryptedInstance")]
+        public Input<bool>? EncryptedInstance { get; set; }
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Input("instanceName")]
@@ -580,10 +728,16 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
-        /// &gt; **NOTE:** There should not set the `InstanceType` parameter when creating a serverless instance. Only need to set `PaymentType = "PayAsYouGo"` and `ServerlessChargeType = "onDemand"`.
+        /// &gt; **NOTE:** Do not set `InstanceType` when creating a serverless instance. Set `PaymentType = "PayAsYouGo"` and choose `ServerlessChargeType = "onDemand"` or `ServerlessChargeType = "provisioned"`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `EncryptedInstance = true` when the instance is created. Changing `KmsKeyId` replaces the instance.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// The Listener mode. Valid values: `TcpAndSsl`, `SslOnly`.
@@ -618,7 +772,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The Payment type. Valid value: 
+        /// The Payment type. Valid value:
         /// - Subscription: Pre-paid.
         /// - PayAsYouGo: Post-paid, and for serverless Edition.
         /// </summary>
@@ -674,7 +828,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The billing type of the serverless instance. Value: onDemand.
+        /// The billing type of the serverless instance. Valid values: `onDemand`, `Provisioned`.
         /// </summary>
         [Input("serverlessChargeType")]
         public Input<string>? ServerlessChargeType { get; set; }

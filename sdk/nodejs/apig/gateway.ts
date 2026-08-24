@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a APIG Gateway resource.
  *
- * For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+ * Gateway instance  .
+ *
+ * For information about APIG Gateway and how to use it, see [What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway).
  *
  * > **NOTE:** Available since v1.240.0.
  *
@@ -68,7 +70,7 @@ import * as utilities from "../utilities";
  * APIG Gateway can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:apig/gateway:Gateway example <id>
+ * $ pulumi import alicloud:apig/gateway:Gateway example <gateway_id>
  * ```
  */
 export class Gateway extends pulumi.CustomResource {
@@ -100,41 +102,71 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
+     * The source from which the gateway was created.
+     */
+    declare public /*out*/ readonly createFrom: pulumi.Output<string>;
+    /**
      * The creation timestamp. Unit: milliseconds.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
-     * The name of the resource
+     * The list of environments associated with the gateway.
+     */
+    declare public /*out*/ readonly environments: pulumi.Output<outputs.apig.GatewayEnvironment[]>;
+    /**
+     * Timestamp indicating when the subscription expires. Unit: milliseconds.
+     */
+    declare public /*out*/ readonly expireTime: pulumi.Output<number>;
+    /**
+     * Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     */
+    declare public readonly gatewayEdition: pulumi.Output<string>;
+    /**
+     * Query by exact match of the gateway name.
      */
     declare public readonly gatewayName: pulumi.Output<string | undefined>;
     /**
-     * Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      */
     declare public readonly gatewayType: pulumi.Output<string>;
     /**
-     * Log Configuration See `logConfig` below.
+     * The list of Gateway ingress addresses.
+     */
+    declare public /*out*/ readonly loadBalancers: pulumi.Output<outputs.apig.GatewayLoadBalancer[]>;
+    /**
+     * The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     declare public readonly logConfig: pulumi.Output<outputs.apig.GatewayLogConfig | undefined>;
     /**
-     * Network Access Configuration See `networkAccessConfig` below.
+     * The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     declare public readonly networkAccessConfig: pulumi.Output<outputs.apig.GatewayNetworkAccessConfig | undefined>;
     /**
-     * The payment type of the resource
+     * Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
-     * The ID of the resource group
+     * The ID of the destination resource group.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * Gateway instance specifications
+     * The security group of the gateway.
+     */
+    declare public /*out*/ readonly securityGroups: pulumi.Output<outputs.apig.GatewaySecurityGroup[]>;
+    /**
+     * Gateway specification:
+     * - apigw.small.x1: Small specification.
      */
     declare public readonly spec: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource
+     * The status of the gateway.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -142,19 +174,31 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The VPC associated with the Gateway. See `vpc` below.
+     * The target version of the gateway instance.
+     */
+    declare public /*out*/ readonly targetVersion: pulumi.Output<string>;
+    /**
+     * The timestamp when the gateway was last updated. Unit: milliseconds.
+     */
+    declare public /*out*/ readonly updateTime: pulumi.Output<number>;
+    /**
+     * The current running version of the gateway instance.
+     */
+    declare public /*out*/ readonly version: pulumi.Output<string>;
+    /**
+     * The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      */
     declare public readonly vpc: pulumi.Output<outputs.apig.GatewayVpc | undefined>;
     /**
-     * The virtual switch associated with the Gateway. See `vswitch` below.
+     * The vSwitch associated with the gateway. See `vswitch` below.
      */
     declare public readonly vswitch: pulumi.Output<outputs.apig.GatewayVswitch | undefined>;
     /**
-     * Availability Zone Configuration See `zoneConfig` below.
+     * The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     declare public readonly zoneConfig: pulumi.Output<outputs.apig.GatewayZoneConfig>;
     /**
-     * The List of zones associated with the Gateway. See `zones` below.
+     * The list of zones associated with the gateway. See `zones` below.
      */
     declare public readonly zones: pulumi.Output<outputs.apig.GatewayZone[]>;
 
@@ -171,16 +215,25 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
+            resourceInputs["createFrom"] = state?.createFrom;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["environments"] = state?.environments;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["gatewayEdition"] = state?.gatewayEdition;
             resourceInputs["gatewayName"] = state?.gatewayName;
             resourceInputs["gatewayType"] = state?.gatewayType;
+            resourceInputs["loadBalancers"] = state?.loadBalancers;
             resourceInputs["logConfig"] = state?.logConfig;
             resourceInputs["networkAccessConfig"] = state?.networkAccessConfig;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroups"] = state?.securityGroups;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetVersion"] = state?.targetVersion;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
             resourceInputs["vpc"] = state?.vpc;
             resourceInputs["vswitch"] = state?.vswitch;
             resourceInputs["zoneConfig"] = state?.zoneConfig;
@@ -193,6 +246,7 @@ export class Gateway extends pulumi.CustomResource {
             if (args?.zoneConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneConfig'");
             }
+            resourceInputs["gatewayEdition"] = args?.gatewayEdition;
             resourceInputs["gatewayName"] = args?.gatewayName;
             resourceInputs["gatewayType"] = args?.gatewayType;
             resourceInputs["logConfig"] = args?.logConfig;
@@ -205,8 +259,16 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["vswitch"] = args?.vswitch;
             resourceInputs["zoneConfig"] = args?.zoneConfig;
             resourceInputs["zones"] = args?.zones;
+            resourceInputs["createFrom"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["environments"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["loadBalancers"] = undefined /*out*/;
+            resourceInputs["securityGroups"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["targetVersion"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Gateway.__pulumiType, name, resourceInputs, opts);
@@ -218,41 +280,71 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
+     * The source from which the gateway was created.
+     */
+    createFrom?: pulumi.Input<string | undefined>;
+    /**
      * The creation timestamp. Unit: milliseconds.
      */
     createTime?: pulumi.Input<number | undefined>;
     /**
-     * The name of the resource
+     * The list of environments associated with the gateway.
+     */
+    environments?: pulumi.Input<pulumi.Input<inputs.apig.GatewayEnvironment>[] | undefined>;
+    /**
+     * Timestamp indicating when the subscription expires. Unit: milliseconds.
+     */
+    expireTime?: pulumi.Input<number | undefined>;
+    /**
+     * Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     */
+    gatewayEdition?: pulumi.Input<string | undefined>;
+    /**
+     * Query by exact match of the gateway name.
      */
     gatewayName?: pulumi.Input<string | undefined>;
     /**
-     * Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      */
     gatewayType?: pulumi.Input<string | undefined>;
     /**
-     * Log Configuration See `logConfig` below.
+     * The list of Gateway ingress addresses.
+     */
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.apig.GatewayLoadBalancer>[] | undefined>;
+    /**
+     * The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     logConfig?: pulumi.Input<inputs.apig.GatewayLogConfig | undefined>;
     /**
-     * Network Access Configuration See `networkAccessConfig` below.
+     * The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     networkAccessConfig?: pulumi.Input<inputs.apig.GatewayNetworkAccessConfig | undefined>;
     /**
-     * The payment type of the resource
+     * Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource group
+     * The ID of the destination resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * Gateway instance specifications
+     * The security group of the gateway.
+     */
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.apig.GatewaySecurityGroup>[] | undefined>;
+    /**
+     * Gateway specification:
+     * - apigw.small.x1: Small specification.
      */
     spec?: pulumi.Input<string | undefined>;
     /**
-     * The status of the resource
+     * The status of the gateway.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -260,19 +352,31 @@ export interface GatewayState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The VPC associated with the Gateway. See `vpc` below.
+     * The target version of the gateway instance.
+     */
+    targetVersion?: pulumi.Input<string | undefined>;
+    /**
+     * The timestamp when the gateway was last updated. Unit: milliseconds.
+     */
+    updateTime?: pulumi.Input<number | undefined>;
+    /**
+     * The current running version of the gateway instance.
+     */
+    version?: pulumi.Input<string | undefined>;
+    /**
+     * The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      */
     vpc?: pulumi.Input<inputs.apig.GatewayVpc | undefined>;
     /**
-     * The virtual switch associated with the Gateway. See `vswitch` below.
+     * The vSwitch associated with the gateway. See `vswitch` below.
      */
     vswitch?: pulumi.Input<inputs.apig.GatewayVswitch | undefined>;
     /**
-     * Availability Zone Configuration See `zoneConfig` below.
+     * The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     zoneConfig?: pulumi.Input<inputs.apig.GatewayZoneConfig | undefined>;
     /**
-     * The List of zones associated with the Gateway. See `zones` below.
+     * The list of zones associated with the gateway. See `zones` below.
      */
     zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[] | undefined>;
 }
@@ -282,33 +386,43 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
-     * The name of the resource
+     * Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     */
+    gatewayEdition?: pulumi.Input<string | undefined>;
+    /**
+     * Query by exact match of the gateway name.
      */
     gatewayName?: pulumi.Input<string | undefined>;
     /**
-     * Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      */
     gatewayType?: pulumi.Input<string | undefined>;
     /**
-     * Log Configuration See `logConfig` below.
+     * The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     logConfig?: pulumi.Input<inputs.apig.GatewayLogConfig | undefined>;
     /**
-     * Network Access Configuration See `networkAccessConfig` below.
+     * The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     networkAccessConfig?: pulumi.Input<inputs.apig.GatewayNetworkAccessConfig | undefined>;
     /**
-     * The payment type of the resource
+     * Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The ID of the resource group
+     * The ID of the destination resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * Gateway instance specifications
+     * Gateway specification:
+     * - apigw.small.x1: Small specification.
      */
     spec?: pulumi.Input<string | undefined>;
     /**
@@ -316,19 +430,19 @@ export interface GatewayArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The VPC associated with the Gateway. See `vpc` below.
+     * The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      */
     vpc?: pulumi.Input<inputs.apig.GatewayVpc | undefined>;
     /**
-     * The virtual switch associated with the Gateway. See `vswitch` below.
+     * The vSwitch associated with the gateway. See `vswitch` below.
      */
     vswitch?: pulumi.Input<inputs.apig.GatewayVswitch | undefined>;
     /**
-     * Availability Zone Configuration See `zoneConfig` below.
+     * The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      */
     zoneConfig: pulumi.Input<inputs.apig.GatewayZoneConfig>;
     /**
-     * The List of zones associated with the Gateway. See `zones` below.
+     * The list of zones associated with the gateway. See `zones` below.
      */
     zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[] | undefined>;
 }

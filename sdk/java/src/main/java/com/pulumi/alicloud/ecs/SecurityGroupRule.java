@@ -95,14 +95,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/securityGroupRule:SecurityGroupRule")
 public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
-     * The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+     * The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
      * 
      */
     @Export(name="cidrIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cidrIp;
 
     /**
-     * @return The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+     * @return The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
      * 
      */
     public Output<Optional<String>> cidrIp() {
@@ -255,18 +255,36 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return this.securityGroupRuleId;
     }
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
+     * 
+     * @deprecated
+     * Use sourceGroupOwnerId instead.
      * 
      */
+    @Deprecated /* Use sourceGroupOwnerId instead. */
     @Export(name="sourceGroupOwnerAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceGroupOwnerAccount;
 
     /**
-     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * @return The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     public Output<Optional<String>> sourceGroupOwnerAccount() {
         return Codegen.optional(this.sourceGroupOwnerAccount);
+    }
+    /**
+     * The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+     * 
+     */
+    @Export(name="sourceGroupOwnerId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceGroupOwnerId;
+
+    /**
+     * @return The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+     * 
+     */
+    public Output<Optional<String>> sourceGroupOwnerId() {
+        return Codegen.optional(this.sourceGroupOwnerId);
     }
     /**
      * The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.

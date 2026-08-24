@@ -28,6 +28,7 @@ class ServerGroupArgs:
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  servers: pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
@@ -50,6 +51,10 @@ class ServerGroupArgs:
                - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        :param pulumi.Input[_builtins.str] server_failover_mode: The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+               
+               - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+               - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
         :param pulumi.Input[_builtins.str] server_group_name: The server group name.
                
                The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
@@ -78,6 +83,8 @@ class ServerGroupArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
+        if server_failover_mode is not None:
+            pulumi.set(__self__, "server_failover_mode", server_failover_mode)
         if server_group_name is not None:
             pulumi.set(__self__, "server_group_name", server_group_name)
         if server_group_type is not None:
@@ -180,6 +187,21 @@ class ServerGroupArgs:
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverFailoverMode")
+    def server_failover_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+
+        - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+        - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+        """
+        return pulumi.get(self, "server_failover_mode")
+
+    @server_failover_mode.setter
+    def server_failover_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_failover_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -248,6 +270,7 @@ class _ServerGroupState:
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  servers: pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
@@ -270,6 +293,10 @@ class _ServerGroupState:
                - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        :param pulumi.Input[_builtins.str] server_failover_mode: The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+               
+               - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+               - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
         :param pulumi.Input[_builtins.str] server_group_name: The server group name.
                
                The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
@@ -303,6 +330,8 @@ class _ServerGroupState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
+        if server_failover_mode is not None:
+            pulumi.set(__self__, "server_failover_mode", server_failover_mode)
         if server_group_name is not None:
             pulumi.set(__self__, "server_group_name", server_group_name)
         if server_group_type is not None:
@@ -407,6 +436,21 @@ class _ServerGroupState:
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverFailoverMode")
+    def server_failover_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+
+        - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+        - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+        """
+        return pulumi.get(self, "server_failover_mode")
+
+    @server_failover_mode.setter
+    def server_failover_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_failover_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -503,6 +547,7 @@ class ServerGroup(pulumi.CustomResource):
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
@@ -621,6 +666,10 @@ class ServerGroup(pulumi.CustomResource):
                - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        :param pulumi.Input[_builtins.str] server_failover_mode: The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+               
+               - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+               - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
         :param pulumi.Input[_builtins.str] server_group_name: The server group name.
                
                The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
@@ -764,6 +813,7 @@ class ServerGroup(pulumi.CustomResource):
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
@@ -784,6 +834,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["scheduler"] = scheduler
+            __props__.__dict__["server_failover_mode"] = server_failover_mode
             __props__.__dict__["server_group_name"] = server_group_name
             __props__.__dict__["server_group_type"] = server_group_type
             __props__.__dict__["servers"] = servers
@@ -810,6 +861,7 @@ class ServerGroup(pulumi.CustomResource):
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
             servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
@@ -836,6 +888,10 @@ class ServerGroup(pulumi.CustomResource):
                - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
                - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        :param pulumi.Input[_builtins.str] server_failover_mode: The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+               
+               - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+               - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
         :param pulumi.Input[_builtins.str] server_group_name: The server group name.
                
                The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
@@ -866,6 +922,7 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scheduler"] = scheduler
+        __props__.__dict__["server_failover_mode"] = server_failover_mode
         __props__.__dict__["server_group_name"] = server_group_name
         __props__.__dict__["server_group_type"] = server_group_type
         __props__.__dict__["servers"] = servers
@@ -935,6 +992,17 @@ class ServerGroup(pulumi.CustomResource):
         - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
+
+    @_builtins.property
+    @pulumi.getter(name="serverFailoverMode")
+    def server_failover_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+
+        - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+        - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+        """
+        return pulumi.get(self, "server_failover_mode")
 
     @_builtins.property
     @pulumi.getter(name="serverGroupName")

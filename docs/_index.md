@@ -612,6 +612,7 @@ You can provide your credentials via `ALIBABA_CLOUD_ACCESS_KEY_ID`, `ALIBABA_CLO
 `ALIBABA_CLOUD_SECURITY_TOKEN` environment variables. The Region can be set using the `ALIBABA_CLOUD_REGION` environment variables.
 
 Usage:
+
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
@@ -812,9 +813,9 @@ provider configuration:
   Can also be set with the `ALIBABA_CLOUD_PROFILE` environment variable since v1.228.0.
   Environment variable `ALICLOUD_PROFILE` has been deprecated since v1.228.0.
 
-* `assumeRole` - (Optional) An `assumeRole` Configuration Block block. Only one `assumeRole` block may be in the configuration.
+* `assumeRole` - (Optional) An `assumeRole` block. Only one `assumeRole` block may be in the configuration.
 
-* `assumeRoleWithOidc` - (Optional, Available since v1.220.0) Configuration block for assuming an RAM role using an OIDC. See the `assumeRoleWithOidc` Configuration Block section below. Only one `assumeRoleWithOidc` block may be in the configuration.
+* `assumeRoleWithOidc` - (Optional, Available since v1.220.0) Configuration block for assuming an RAM role using an OIDC. See the `assumeRoleWithOidc` section below. Only one `assumeRoleWithOidc` block may be in the configuration.
 
 * `credentialsUri` - (Optional, Available since v1.141.0) The URI of sidecar credentials service.
   Can also be set with the `ALIBABA_CLOUD_CREDENTIALS_URI` environment variable since v1.228.0.
@@ -825,6 +826,9 @@ provider configuration:
 * `signVersion` - (Optional, Available since v1.215.0) A `signVersion` block to specify the signature version used for the API requests of certain cloud products (currently `oss` and `sls`). Only one `signVersion` block may be in the configuration.
 
 * `skipRegionValidation` - (Optional, Available since v1.52.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+  Can also be set with the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable since v1.287.0.
+
+* `features` - (Optional, Available since v1.289.0) A `features` block that changes how certain resources behave. Only one `features` block may be in the configuration.
 
 * `configurationSource` - (Optional, Available since v1.56.0) Use a string to mark a configuration file source, like `pulumi-alicloud-modules/pulumi-alicloud-ecs-instance` or `pulumi-provider-alicloud/examples/vpc`.
   The length should not more than 1024(Before 1.283.0, it should not more than 128. Before 1.207.2, it should not more than 64). Since the version 1.145.0, it supports to be set by environment variable `TF_APPEND_USER_AGENT`. See `Custom User-Agent Information`.
@@ -836,7 +840,7 @@ provider configuration:
 * `clientConnectTimeout` - (Optional, Available since v1.125.0) The maximum timeout in millisecond second of the client connection server. Default to 60000.
 
 * `maxRetryTimeout` - (Optional, Available since v1.183.0) The maximum retry timeout in second of the request. Default to `0`.
-### `assumeRole` Configuration Block
+### `assumeRole`
 
 * `roleArn` - (Required) The ARN of the role to assume. If ARN is set to an empty string, it does not perform role switching.
   Can also be set with the `ALIBABA_CLOUD_ROLE_ARN` environment variable since v1.228.0.
@@ -855,7 +859,7 @@ provider configuration:
 * `externalId` - (Optional, Available since v1.207.1) The external ID of the RAM role.
   This parameter is provided by an external party and is used to prevent the confused deputy problem.
   The value must be 2 to 1,224 characters in length and can contain letters, digits, and the following special characters:`= , . @ : / - _`.
-### `assumeRoleWithOidc` Configuration Block
+### `assumeRoleWithOidc`
 
 The `assumeRoleWithOidc` configuration block supports the following arguments:
 
@@ -869,7 +873,7 @@ The `assumeRoleWithOidc` configuration block supports the following arguments:
   Can also be set with the `ALIBABA_CLOUD_ROLE_SESSION_NAME` environment variable.
 * `sessionExpiration` - (Optional) The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
 * `policy` - (Optional) The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
-### `signVersion` Configuration Block
+### `signVersion`
 
 The `signVersion` configuration block overrides the signature version used by the SDK client of specific cloud products. See Custom Product Sign Version for an example. The following configuration inputs are supported:
 
@@ -878,6 +882,31 @@ The `signVersion` configuration block overrides the signature version used by th
 ->**NOTE:** `v2` is no longer accepted starting from v1.278.0; the value will be treated as the default and the client will fall back to `v4`.
 
 * `sls` - (Optional) The signature version used by the SLS (Log Service) SDK client. Valid values: `v1`, `v4`. Defaults to `v1`. Full v4 signature support across all `alicloud_sls_*` / `alicloud_log_*` resources is available since v1.276.0.
+### `features`
+
+The `features` configuration block groups the arguments that change how a resource behaves, as opposed to which account, region or endpoint the provider talks to. Every argument in it is optional, so leaving the block out keeps the provider's default behaviour. The arguments of this block have no environment variable equivalent, and can only be set in the provider configuration.
+
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime:
+
+```
+
+The following configuration inputs are supported:
+
+* `ecsInstance` - (Optional) An `ecsInstance` block that changes how the alicloud.ecs.Instance resource behaves. Only one `ecsInstance` block may be in the configuration.
+### `features-ecs_instance`
+
+The `ecsInstance` configuration block applies to the alicloud.ecs.Instance resource only. The following configuration inputs are supported:
+
+* `replaceOnImageUpdate` - (Optional) Whether a change to `imageId` is planned as a replacement of the instance instead of an in-place update. Default value: `false`. Valid values:
+  - `false`: The instance is stopped if it is running, its system disk is replaced with a new one created from the new image, and the instance is started again. It keeps its ID, its private IP address and its data disks, and `pulumi preview` reports an in-place update.
+  - `true`: The existing instance is destroyed and a new one is created from the new image, and `pulumi preview` reports `forces replacement`.
+
+  > **NOTE:** The system disk is created anew from the image either way, so its data never survives an `imageId` change. Setting this argument to `true` gives up the instance ID, the private IP address and the data disks as well, and requires the instance to be destroyable: a `preventDestroy` lifecycle rule turns the planned replacement into an error, the provider refuses to destroy an instance whose `instanceChargeType` is `PrePaid` unless `forceDelete` is `true`, and ECS rejects the deletion itself while `deletionProtection` is `true`.
+
+  > **NOTE:** A new `imageId` that is not known until apply time, because it is read from a resource or a function that has yet to be created, is applied in place: `pulumi preview` cannot report a replacement for a value it does not have. Run `pulumi up` again after the new image exists to get the replacement.
 ### `endpoints`
 
 **NOTE:** Due to certain API restrictions, the endpoints pointing to the area should be consistent with the `regionId`.

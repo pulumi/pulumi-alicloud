@@ -36,6 +36,7 @@ class RegistryEnterpriseInstanceArgs:
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_quota: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
@@ -83,6 +84,7 @@ class RegistryEnterpriseInstanceArgs:
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -116,6 +118,8 @@ class RegistryEnterpriseInstanceArgs:
             pulumi.set(__self__, "repo_quota", repo_quota)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_quota is not None:
             pulumi.set(__self__, "vpc_quota", vpc_quota)
 
@@ -328,6 +332,18 @@ class RegistryEnterpriseInstanceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcQuota")
     def vpc_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -368,6 +384,7 @@ class _RegistryEnterpriseInstanceState:
                  repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_quota: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseInstance resources.
@@ -421,6 +438,7 @@ class _RegistryEnterpriseInstanceState:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] status: Instance Status
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -472,6 +490,8 @@ class _RegistryEnterpriseInstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_quota is not None:
             pulumi.set(__self__, "vpc_quota", vpc_quota)
 
@@ -757,6 +777,18 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcQuota")
     def vpc_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -794,6 +826,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -829,7 +862,11 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             renew_period=1,
             renewal_status="AutoRenewal",
             instance_type="Advanced",
-            instance_name=f"{name}-{default['result']}")
+            instance_name=f"{name}-{default['result']}",
+            tags={
+                "Created": "TF",
+                "For": "Test",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -888,6 +925,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -933,7 +971,11 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             renew_period=1,
             renewal_status="AutoRenewal",
             instance_type="Advanced",
-            instance_name=f"{name}-{default['result']}")
+            instance_name=f"{name}-{default['result']}",
+            tags={
+                "Created": "TF",
+                "For": "Test",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -977,6 +1019,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1008,6 +1051,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["repo_quota"] = repo_quota
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_quota"] = vpc_quota
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_time"] = None
@@ -1048,6 +1092,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_quota: pulumi.Input[Optional[_builtins.int]] = None) -> 'RegistryEnterpriseInstance':
         """
         Get an existing RegistryEnterpriseInstance resource's state with the given name, id, and optional extra
@@ -1105,6 +1150,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] status: Instance Status
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -1136,6 +1182,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["repo_quota"] = repo_quota
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_quota"] = vpc_quota
         return RegistryEnterpriseInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -1335,6 +1382,14 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         Instance Status
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcQuota")
