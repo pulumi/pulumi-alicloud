@@ -25268,7 +25268,14 @@
                 }
             },
             "alicloud_ssl_certificates_service_companies": {
-                "current": "alicloud:sslcertificatesservice/companies:Companies",
+                "current": "alicloud:sslcertificatesservice/getCompanies:getCompanies",
+                "past": [
+                    {
+                        "name": "alicloud:sslcertificatesservice/companies:Companies",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "companies": {
                         "maxItemsOne": false
@@ -25282,7 +25289,14 @@
                 }
             },
             "alicloud_ssl_certificates_service_contacts": {
-                "current": "alicloud:sslcertificatesservice/contacts:Contacts",
+                "current": "alicloud:sslcertificatesservice/getContacts:getContacts",
+                "past": [
+                    {
+                        "name": "alicloud:sslcertificatesservice/contacts:Contacts",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "contacts": {
                         "maxItemsOne": false
@@ -25293,7 +25307,14 @@
                 }
             },
             "alicloud_ssl_certificates_service_instance_certificates": {
-                "current": "alicloud:sslcertificatesserviceinstance/certificates:Certificates",
+                "current": "alicloud:sslcertificatesserviceinstance/getCertificates:getCertificates",
+                "past": [
+                    {
+                        "name": "alicloud:sslcertificatesserviceinstance/certificates:Certificates",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "certificates": {
                         "maxItemsOne": false
@@ -25304,7 +25325,14 @@
                 }
             },
             "alicloud_ssl_certificates_service_instances": {
-                "current": "alicloud:sslcertificatesservice/instances:Instances",
+                "current": "alicloud:sslcertificatesservice/getInstances:getInstances",
+                "past": [
+                    {
+                        "name": "alicloud:sslcertificatesservice/instances:Instances",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
@@ -26849,6 +26877,26 @@
                 "maxItemsOneOverrides": {
                     "indexs.$.line": true
                 }
+            },
+            "alicloud_ssl_certificates_service_companies": {
+                "renames": [
+                    "alicloud:sslcertificatesservice/companies:Companies"
+                ]
+            },
+            "alicloud_ssl_certificates_service_contacts": {
+                "renames": [
+                    "alicloud:sslcertificatesservice/contacts:Contacts"
+                ]
+            },
+            "alicloud_ssl_certificates_service_instance_certificates": {
+                "renames": [
+                    "alicloud:sslcertificatesserviceinstance/certificates:Certificates"
+                ]
+            },
+            "alicloud_ssl_certificates_service_instances": {
+                "renames": [
+                    "alicloud:sslcertificatesservice/instances:Instances"
+                ]
             },
             "alicloud_threat_detection_check_item_configs": {
                 "maxItemsOneOverrides": {
