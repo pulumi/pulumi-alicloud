@@ -116,12 +116,8 @@ type GetServiceHybridDoubleWritesResult struct {
 }
 
 func GetServiceHybridDoubleWritesOutput(ctx *pulumi.Context, args GetServiceHybridDoubleWritesOutputArgs, opts ...pulumi.InvokeOption) GetServiceHybridDoubleWritesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceHybridDoubleWritesResultOutput, error) {
-			args := v.(GetServiceHybridDoubleWritesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args, GetServiceHybridDoubleWritesResultOutput{}, options).(GetServiceHybridDoubleWritesResultOutput), nil
-		}).(GetServiceHybridDoubleWritesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args, GetServiceHybridDoubleWritesResultOutput{}, options).(GetServiceHybridDoubleWritesResultOutput)
 }
 
 // A collection of arguments for invoking getServiceHybridDoubleWrites.

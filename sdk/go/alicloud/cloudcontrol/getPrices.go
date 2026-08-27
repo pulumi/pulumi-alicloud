@@ -87,12 +87,8 @@ type GetPricesResult struct {
 }
 
 func GetPricesOutput(ctx *pulumi.Context, args GetPricesOutputArgs, opts ...pulumi.InvokeOption) GetPricesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPricesResultOutput, error) {
-			args := v.(GetPricesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudcontrol/getPrices:getPrices", args, GetPricesResultOutput{}, options).(GetPricesResultOutput), nil
-		}).(GetPricesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudcontrol/getPrices:getPrices", args, GetPricesResultOutput{}, options).(GetPricesResultOutput)
 }
 
 // A collection of arguments for invoking getPrices.

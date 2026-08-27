@@ -89,12 +89,8 @@ type GetDiskTypesResult struct {
 }
 
 func GetDiskTypesOutput(ctx *pulumi.Context, args GetDiskTypesOutputArgs, opts ...pulumi.InvokeOption) GetDiskTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDiskTypesResultOutput, error) {
-			args := v.(GetDiskTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:emr/getDiskTypes:getDiskTypes", args, GetDiskTypesResultOutput{}, options).(GetDiskTypesResultOutput), nil
-		}).(GetDiskTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:emr/getDiskTypes:getDiskTypes", args, GetDiskTypesResultOutput{}, options).(GetDiskTypesResultOutput)
 }
 
 // A collection of arguments for invoking getDiskTypes.

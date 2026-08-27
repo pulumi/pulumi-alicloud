@@ -132,12 +132,8 @@ type GetEnvironmentsResult struct {
 }
 
 func GetEnvironmentsOutput(ctx *pulumi.Context, args GetEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) GetEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvironmentsResultOutput, error) {
-			args := v.(GetEnvironmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getEnvironments:getEnvironments", args, GetEnvironmentsResultOutput{}, options).(GetEnvironmentsResultOutput), nil
-		}).(GetEnvironmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getEnvironments:getEnvironments", args, GetEnvironmentsResultOutput{}, options).(GetEnvironmentsResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironments.

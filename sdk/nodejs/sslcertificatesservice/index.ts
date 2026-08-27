@@ -25,6 +25,21 @@ export const contacts: typeof import("./contacts").contacts = null as any;
 export const contactsOutput: typeof import("./contacts").contactsOutput = null as any;
 utilities.lazyLoad(exports, ["contacts","contactsOutput"], () => require("./contacts"));
 
+export { GetCompaniesArgs, GetCompaniesResult, GetCompaniesOutputArgs } from "./getCompanies";
+export const getCompanies: typeof import("./getCompanies").getCompanies = null as any;
+export const getCompaniesOutput: typeof import("./getCompanies").getCompaniesOutput = null as any;
+utilities.lazyLoad(exports, ["getCompanies","getCompaniesOutput"], () => require("./getCompanies"));
+
+export { GetContactsArgs, GetContactsResult, GetContactsOutputArgs } from "./getContacts";
+export const getContacts: typeof import("./getContacts").getContacts = null as any;
+export const getContactsOutput: typeof import("./getContacts").getContactsOutput = null as any;
+utilities.lazyLoad(exports, ["getContacts","getContactsOutput"], () => require("./getContacts"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
 export { InstancesArgs, InstancesResult, InstancesOutputArgs } from "./instances";
 export const instances: typeof import("./instances").instances = null as any;
 export const instancesOutput: typeof import("./instances").instancesOutput = null as any;

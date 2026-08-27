@@ -92,12 +92,8 @@ type GetKubernetesClustersResult struct {
 }
 
 func GetKubernetesClustersOutput(ctx *pulumi.Context, args GetKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKubernetesClustersResultOutput, error) {
-			args := v.(GetKubernetesClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args, GetKubernetesClustersResultOutput{}, options).(GetKubernetesClustersResultOutput), nil
-		}).(GetKubernetesClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args, GetKubernetesClustersResultOutput{}, options).(GetKubernetesClustersResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesClusters.

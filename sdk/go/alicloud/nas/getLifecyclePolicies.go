@@ -90,12 +90,8 @@ type GetLifecyclePoliciesResult struct {
 }
 
 func GetLifecyclePoliciesOutput(ctx *pulumi.Context, args GetLifecyclePoliciesOutputArgs, opts ...pulumi.InvokeOption) GetLifecyclePoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLifecyclePoliciesResultOutput, error) {
-			args := v.(GetLifecyclePoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args, GetLifecyclePoliciesResultOutput{}, options).(GetLifecyclePoliciesResultOutput), nil
-		}).(GetLifecyclePoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args, GetLifecyclePoliciesResultOutput{}, options).(GetLifecyclePoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getLifecyclePolicies.

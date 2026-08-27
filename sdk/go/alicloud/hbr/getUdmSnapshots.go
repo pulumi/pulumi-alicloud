@@ -103,12 +103,8 @@ type GetUdmSnapshotsResult struct {
 }
 
 func GetUdmSnapshotsOutput(ctx *pulumi.Context, args GetUdmSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetUdmSnapshotsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUdmSnapshotsResultOutput, error) {
-			args := v.(GetUdmSnapshotsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getUdmSnapshots:getUdmSnapshots", args, GetUdmSnapshotsResultOutput{}, options).(GetUdmSnapshotsResultOutput), nil
-		}).(GetUdmSnapshotsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getUdmSnapshots:getUdmSnapshots", args, GetUdmSnapshotsResultOutput{}, options).(GetUdmSnapshotsResultOutput)
 }
 
 // A collection of arguments for invoking getUdmSnapshots.

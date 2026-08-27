@@ -86,12 +86,8 @@ type GetDeliveryChannelsResult struct {
 }
 
 func GetDeliveryChannelsOutput(ctx *pulumi.Context, args GetDeliveryChannelsOutputArgs, opts ...pulumi.InvokeOption) GetDeliveryChannelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDeliveryChannelsResultOutput, error) {
-			args := v.(GetDeliveryChannelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args, GetDeliveryChannelsResultOutput{}, options).(GetDeliveryChannelsResultOutput), nil
-		}).(GetDeliveryChannelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args, GetDeliveryChannelsResultOutput{}, options).(GetDeliveryChannelsResultOutput)
 }
 
 // A collection of arguments for invoking getDeliveryChannels.

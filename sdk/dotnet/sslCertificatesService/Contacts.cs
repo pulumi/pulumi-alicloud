@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.sslCertificatesService
 {
+    [Obsolete(@"alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts")]
     public static class Contacts
     {
         /// <summary>
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         ///         Email = "test@example.com",
         ///     });
         /// 
-        ///     var @default = AliCloud.SslCertificatesService.Contacts.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesService.GetContacts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -46,7 +47,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceContactExampleId"] = @default.Apply(@default =&gt; @default.Apply(contactsResult =&gt; contactsResult.Contacts[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceContactExampleId"] = @default.Apply(@default =&gt; @default.Apply(getContactsResult =&gt; getContactsResult.Contacts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -78,7 +79,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         ///         Email = "test@example.com",
         ///     });
         /// 
-        ///     var @default = AliCloud.SslCertificatesService.Contacts.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesService.GetContacts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -89,7 +90,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceContactExampleId"] = @default.Apply(@default =&gt; @default.Apply(contactsResult =&gt; contactsResult.Contacts[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceContactExampleId"] = @default.Apply(@default =&gt; @default.Apply(getContactsResult =&gt; getContactsResult.Contacts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -121,7 +122,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         ///         Email = "test@example.com",
         ///     });
         /// 
-        ///     var @default = AliCloud.SslCertificatesService.Contacts.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesService.GetContacts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -132,7 +133,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceContactExampleId"] = @default.Apply(@default =&gt; @default.Apply(contactsResult =&gt; contactsResult.Contacts[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceContactExampleId"] = @default.Apply(@default =&gt; @default.Apply(getContactsResult =&gt; getContactsResult.Contacts[0]?.Id)),
         ///     };
         /// });
         /// ```

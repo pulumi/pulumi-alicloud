@@ -81,12 +81,8 @@ type GetDdosCooDomainResourcesResult struct {
 }
 
 func GetDdosCooDomainResourcesOutput(ctx *pulumi.Context, args GetDdosCooDomainResourcesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooDomainResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDdosCooDomainResourcesResultOutput, error) {
-			args := v.(GetDdosCooDomainResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args, GetDdosCooDomainResourcesResultOutput{}, options).(GetDdosCooDomainResourcesResultOutput), nil
-		}).(GetDdosCooDomainResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args, GetDdosCooDomainResourcesResultOutput{}, options).(GetDdosCooDomainResourcesResultOutput)
 }
 
 // A collection of arguments for invoking getDdosCooDomainResources.

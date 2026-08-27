@@ -81,12 +81,8 @@ type GetEnterpriseDatabasesResult struct {
 }
 
 func GetEnterpriseDatabasesOutput(ctx *pulumi.Context, args GetEnterpriseDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseDatabasesResultOutput, error) {
-			args := v.(GetEnterpriseDatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args, GetEnterpriseDatabasesResultOutput{}, options).(GetEnterpriseDatabasesResultOutput), nil
-		}).(GetEnterpriseDatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args, GetEnterpriseDatabasesResultOutput{}, options).(GetEnterpriseDatabasesResultOutput)
 }
 
 // A collection of arguments for invoking getEnterpriseDatabases.

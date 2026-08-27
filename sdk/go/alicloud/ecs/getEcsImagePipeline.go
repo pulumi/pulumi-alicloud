@@ -93,12 +93,8 @@ type LookupEcsImagePipelineResult struct {
 }
 
 func LookupEcsImagePipelineOutput(ctx *pulumi.Context, args LookupEcsImagePipelineOutputArgs, opts ...pulumi.InvokeOption) LookupEcsImagePipelineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEcsImagePipelineResultOutput, error) {
-			args := v.(LookupEcsImagePipelineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args, LookupEcsImagePipelineResultOutput{}, options).(LookupEcsImagePipelineResultOutput), nil
-		}).(LookupEcsImagePipelineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args, LookupEcsImagePipelineResultOutput{}, options).(LookupEcsImagePipelineResultOutput)
 }
 
 // A collection of arguments for invoking getEcsImagePipeline.

@@ -90,12 +90,8 @@ type GetHealthCheckTemplatesResult struct {
 }
 
 func GetHealthCheckTemplatesOutput(ctx *pulumi.Context, args GetHealthCheckTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetHealthCheckTemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHealthCheckTemplatesResultOutput, error) {
-			args := v.(GetHealthCheckTemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args, GetHealthCheckTemplatesResultOutput{}, options).(GetHealthCheckTemplatesResultOutput), nil
-		}).(GetHealthCheckTemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args, GetHealthCheckTemplatesResultOutput{}, options).(GetHealthCheckTemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getHealthCheckTemplates.

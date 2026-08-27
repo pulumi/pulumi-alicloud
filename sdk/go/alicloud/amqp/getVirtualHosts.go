@@ -90,12 +90,8 @@ type GetVirtualHostsResult struct {
 }
 
 func GetVirtualHostsOutput(ctx *pulumi.Context, args GetVirtualHostsOutputArgs, opts ...pulumi.InvokeOption) GetVirtualHostsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVirtualHostsResultOutput, error) {
-			args := v.(GetVirtualHostsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:amqp/getVirtualHosts:getVirtualHosts", args, GetVirtualHostsResultOutput{}, options).(GetVirtualHostsResultOutput), nil
-		}).(GetVirtualHostsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:amqp/getVirtualHosts:getVirtualHosts", args, GetVirtualHostsResultOutput{}, options).(GetVirtualHostsResultOutput)
 }
 
 // A collection of arguments for invoking getVirtualHosts.

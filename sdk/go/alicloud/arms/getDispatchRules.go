@@ -155,12 +155,8 @@ type GetDispatchRulesResult struct {
 }
 
 func GetDispatchRulesOutput(ctx *pulumi.Context, args GetDispatchRulesOutputArgs, opts ...pulumi.InvokeOption) GetDispatchRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDispatchRulesResultOutput, error) {
-			args := v.(GetDispatchRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getDispatchRules:getDispatchRules", args, GetDispatchRulesResultOutput{}, options).(GetDispatchRulesResultOutput), nil
-		}).(GetDispatchRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getDispatchRules:getDispatchRules", args, GetDispatchRulesResultOutput{}, options).(GetDispatchRulesResultOutput)
 }
 
 // A collection of arguments for invoking getDispatchRules.

@@ -90,12 +90,8 @@ type GetEcsBackupClientsResult struct {
 }
 
 func GetEcsBackupClientsOutput(ctx *pulumi.Context, args GetEcsBackupClientsOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupClientsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsBackupClientsResultOutput, error) {
-			args := v.(GetEcsBackupClientsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args, GetEcsBackupClientsResultOutput{}, options).(GetEcsBackupClientsResultOutput), nil
-		}).(GetEcsBackupClientsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args, GetEcsBackupClientsResultOutput{}, options).(GetEcsBackupClientsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsBackupClients.

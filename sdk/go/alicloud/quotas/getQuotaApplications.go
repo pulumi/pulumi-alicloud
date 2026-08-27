@@ -107,12 +107,8 @@ type GetQuotaApplicationsResult struct {
 }
 
 func GetQuotaApplicationsOutput(ctx *pulumi.Context, args GetQuotaApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetQuotaApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetQuotaApplicationsResultOutput, error) {
-			args := v.(GetQuotaApplicationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:quotas/getQuotaApplications:getQuotaApplications", args, GetQuotaApplicationsResultOutput{}, options).(GetQuotaApplicationsResultOutput), nil
-		}).(GetQuotaApplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:quotas/getQuotaApplications:getQuotaApplications", args, GetQuotaApplicationsResultOutput{}, options).(GetQuotaApplicationsResultOutput)
 }
 
 // A collection of arguments for invoking getQuotaApplications.

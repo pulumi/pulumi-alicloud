@@ -126,12 +126,8 @@ type GetHttpsBasicConfigurationsResult struct {
 }
 
 func GetHttpsBasicConfigurationsOutput(ctx *pulumi.Context, args GetHttpsBasicConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetHttpsBasicConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHttpsBasicConfigurationsResultOutput, error) {
-			args := v.(GetHttpsBasicConfigurationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations", args, GetHttpsBasicConfigurationsResultOutput{}, options).(GetHttpsBasicConfigurationsResultOutput), nil
-		}).(GetHttpsBasicConfigurationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations", args, GetHttpsBasicConfigurationsResultOutput{}, options).(GetHttpsBasicConfigurationsResultOutput)
 }
 
 // A collection of arguments for invoking getHttpsBasicConfigurations.

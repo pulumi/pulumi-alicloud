@@ -164,12 +164,8 @@ type GetOpenSourceAccountsResult struct {
 }
 
 func GetOpenSourceAccountsOutput(ctx *pulumi.Context, args GetOpenSourceAccountsOutputArgs, opts ...pulumi.InvokeOption) GetOpenSourceAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOpenSourceAccountsResultOutput, error) {
-			args := v.(GetOpenSourceAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:amqp/getOpenSourceAccounts:getOpenSourceAccounts", args, GetOpenSourceAccountsResultOutput{}, options).(GetOpenSourceAccountsResultOutput), nil
-		}).(GetOpenSourceAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:amqp/getOpenSourceAccounts:getOpenSourceAccounts", args, GetOpenSourceAccountsResultOutput{}, options).(GetOpenSourceAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getOpenSourceAccounts.

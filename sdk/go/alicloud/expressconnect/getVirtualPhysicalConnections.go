@@ -81,12 +81,8 @@ type GetVirtualPhysicalConnectionsResult struct {
 }
 
 func GetVirtualPhysicalConnectionsOutput(ctx *pulumi.Context, args GetVirtualPhysicalConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetVirtualPhysicalConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVirtualPhysicalConnectionsResultOutput, error) {
-			args := v.(GetVirtualPhysicalConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args, GetVirtualPhysicalConnectionsResultOutput{}, options).(GetVirtualPhysicalConnectionsResultOutput), nil
-		}).(GetVirtualPhysicalConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args, GetVirtualPhysicalConnectionsResultOutput{}, options).(GetVirtualPhysicalConnectionsResultOutput)
 }
 
 // A collection of arguments for invoking getVirtualPhysicalConnections.

@@ -92,12 +92,8 @@ type GetAdConnectorOfficeSitesResult struct {
 }
 
 func GetAdConnectorOfficeSitesOutput(ctx *pulumi.Context, args GetAdConnectorOfficeSitesOutputArgs, opts ...pulumi.InvokeOption) GetAdConnectorOfficeSitesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAdConnectorOfficeSitesResultOutput, error) {
-			args := v.(GetAdConnectorOfficeSitesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args, GetAdConnectorOfficeSitesResultOutput{}, options).(GetAdConnectorOfficeSitesResultOutput), nil
-		}).(GetAdConnectorOfficeSitesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args, GetAdConnectorOfficeSitesResultOutput{}, options).(GetAdConnectorOfficeSitesResultOutput)
 }
 
 // A collection of arguments for invoking getAdConnectorOfficeSites.

@@ -80,12 +80,8 @@ type GetSubscriptionJobsResult struct {
 }
 
 func GetSubscriptionJobsOutput(ctx *pulumi.Context, args GetSubscriptionJobsOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSubscriptionJobsResultOutput, error) {
-			args := v.(GetSubscriptionJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args, GetSubscriptionJobsResultOutput{}, options).(GetSubscriptionJobsResultOutput), nil
-		}).(GetSubscriptionJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args, GetSubscriptionJobsResultOutput{}, options).(GetSubscriptionJobsResultOutput)
 }
 
 // A collection of arguments for invoking getSubscriptionJobs.

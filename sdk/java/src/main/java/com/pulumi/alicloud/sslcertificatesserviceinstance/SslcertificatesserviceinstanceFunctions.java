@@ -6,7 +6,10 @@ package com.pulumi.alicloud.sslcertificatesserviceinstance;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
 import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesPlainArgs;
+import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesPlainArgs;
 import com.pulumi.alicloud.sslcertificatesserviceinstance.outputs.CertificatesResult;
+import com.pulumi.alicloud.sslcertificatesserviceinstance.outputs.GetCertificatesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -30,7 +33,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -44,7 +47,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -54,7 +57,11 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
     public static Output<CertificatesResult> certificates() {
         return certificates(CertificatesArgs.Empty, InvokeOptions.Empty);
     }
@@ -73,7 +80,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -87,7 +94,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -97,7 +104,11 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
     public static CompletableFuture<CertificatesResult> certificatesPlain() {
         return certificatesPlain(CertificatesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -116,7 +127,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -130,7 +141,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -140,7 +151,11 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
     public static Output<CertificatesResult> certificates(CertificatesArgs args) {
         return certificates(args, InvokeOptions.Empty);
     }
@@ -159,7 +174,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -173,7 +188,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -183,7 +198,11 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
     public static CompletableFuture<CertificatesResult> certificatesPlain(CertificatesPlainArgs args) {
         return certificatesPlain(args, InvokeOptions.Empty);
     }
@@ -202,7 +221,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -216,7 +235,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -226,7 +245,11 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
     public static Output<CertificatesResult> certificates(CertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -245,7 +268,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -259,7 +282,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -269,7 +292,11 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
     public static Output<CertificatesResult> certificates(CertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -288,7 +315,7 @@ public final class SslcertificatesserviceinstanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.CertificatesArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -302,7 +329,54 @@ public final class SslcertificatesserviceinstanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SslcertificatesserviceinstanceFunctions.Certificates(CertificatesArgs.builder()
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * 
+     */
+    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    public static CompletableFuture<CertificatesResult> certificatesPlain(CertificatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
      *             .certificateStatus("issued")
      *             .build());
      * 
@@ -313,7 +387,265 @@ public final class SslcertificatesserviceinstanceFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<CertificatesResult> certificatesPlain(CertificatesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetCertificatesResult> getCertificates() {
+        return getCertificates(GetCertificatesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCertificatesResult> getCertificatesPlain() {
+        return getCertificatesPlain(GetCertificatesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
+        return getCertificates(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
+        return getCertificatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesserviceinstance/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesserviceinstance/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance Certificate available to the user.[What is Instance Certificate](https://next.api.alibabacloud.com/document/cas/2020-04-07/ListCertificates)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslcertificatesserviceinstanceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.GetCertificatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SslcertificatesserviceinstanceFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .certificateStatus("issued")
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesserviceinstance/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -55,12 +55,8 @@ type GetPatchBaselinesResult struct {
 }
 
 func GetPatchBaselinesOutput(ctx *pulumi.Context, args GetPatchBaselinesOutputArgs, opts ...pulumi.InvokeOption) GetPatchBaselinesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPatchBaselinesResultOutput, error) {
-			args := v.(GetPatchBaselinesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oos/getPatchBaselines:getPatchBaselines", args, GetPatchBaselinesResultOutput{}, options).(GetPatchBaselinesResultOutput), nil
-		}).(GetPatchBaselinesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oos/getPatchBaselines:getPatchBaselines", args, GetPatchBaselinesResultOutput{}, options).(GetPatchBaselinesResultOutput)
 }
 
 // A collection of arguments for invoking getPatchBaselines.

@@ -74,12 +74,8 @@ type GetStaticAccountsResult struct {
 }
 
 func GetStaticAccountsOutput(ctx *pulumi.Context, args GetStaticAccountsOutputArgs, opts ...pulumi.InvokeOption) GetStaticAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStaticAccountsResultOutput, error) {
-			args := v.(GetStaticAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:amqp/getStaticAccounts:getStaticAccounts", args, GetStaticAccountsResultOutput{}, options).(GetStaticAccountsResultOutput), nil
-		}).(GetStaticAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:amqp/getStaticAccounts:getStaticAccounts", args, GetStaticAccountsResultOutput{}, options).(GetStaticAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getStaticAccounts.

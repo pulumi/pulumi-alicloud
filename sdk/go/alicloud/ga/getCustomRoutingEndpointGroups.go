@@ -108,12 +108,8 @@ type GetCustomRoutingEndpointGroupsResult struct {
 }
 
 func GetCustomRoutingEndpointGroupsOutput(ctx *pulumi.Context, args GetCustomRoutingEndpointGroupsOutputArgs, opts ...pulumi.InvokeOption) GetCustomRoutingEndpointGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomRoutingEndpointGroupsResultOutput, error) {
-			args := v.(GetCustomRoutingEndpointGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", args, GetCustomRoutingEndpointGroupsResultOutput{}, options).(GetCustomRoutingEndpointGroupsResultOutput), nil
-		}).(GetCustomRoutingEndpointGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", args, GetCustomRoutingEndpointGroupsResultOutput{}, options).(GetCustomRoutingEndpointGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getCustomRoutingEndpointGroups.

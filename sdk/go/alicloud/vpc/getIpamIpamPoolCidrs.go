@@ -104,12 +104,8 @@ type GetIpamIpamPoolCidrsResult struct {
 }
 
 func GetIpamIpamPoolCidrsOutput(ctx *pulumi.Context, args GetIpamIpamPoolCidrsOutputArgs, opts ...pulumi.InvokeOption) GetIpamIpamPoolCidrsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpamIpamPoolCidrsResultOutput, error) {
-			args := v.(GetIpamIpamPoolCidrsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", args, GetIpamIpamPoolCidrsResultOutput{}, options).(GetIpamIpamPoolCidrsResultOutput), nil
-		}).(GetIpamIpamPoolCidrsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", args, GetIpamIpamPoolCidrsResultOutput{}, options).(GetIpamIpamPoolCidrsResultOutput)
 }
 
 // A collection of arguments for invoking getIpamIpamPoolCidrs.

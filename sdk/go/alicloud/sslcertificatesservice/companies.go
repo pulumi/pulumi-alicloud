@@ -51,13 +51,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := sslcertificatesservice.CompaniesOutput(ctx, sslcertificatesservice.CompaniesOutputArgs{
+//			_default := sslcertificatesservice.GetCompaniesOutput(ctx, sslcertificatesservice.GetCompaniesOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultCompany.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultCompany.CompanyName,
 //			}, nil)
-//			ctx.Export("alicloudSslCertificatesServiceCompanyExampleId", _default.ApplyT(func(_default sslcertificatesservice.CompaniesResult) (*int, error) {
+//			ctx.Export("alicloudSslCertificatesServiceCompanyExampleId", _default.ApplyT(func(_default sslcertificatesservice.GetCompaniesResult) (*int, error) {
 //				return _default.Companies[0].Id, nil
 //			}).(pulumi.IntPtrOutput))
 //			return nil
@@ -65,6 +65,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
 func Companies(ctx *pulumi.Context, args *CompaniesArgs, opts ...pulumi.InvokeOption) (*CompaniesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CompaniesResult
@@ -107,12 +109,8 @@ type CompaniesResult struct {
 }
 
 func CompaniesOutput(ctx *pulumi.Context, args CompaniesOutputArgs, opts ...pulumi.InvokeOption) CompaniesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (CompaniesResultOutput, error) {
-			args := v.(CompaniesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sslcertificatesservice/companies:Companies", args, CompaniesResultOutput{}, options).(CompaniesResultOutput), nil
-		}).(CompaniesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sslcertificatesservice/companies:Companies", args, CompaniesResultOutput{}, options).(CompaniesResultOutput)
 }
 
 // A collection of arguments for invoking Companies.

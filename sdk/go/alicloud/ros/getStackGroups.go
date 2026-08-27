@@ -84,12 +84,8 @@ type GetStackGroupsResult struct {
 }
 
 func GetStackGroupsOutput(ctx *pulumi.Context, args GetStackGroupsOutputArgs, opts ...pulumi.InvokeOption) GetStackGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStackGroupsResultOutput, error) {
-			args := v.(GetStackGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ros/getStackGroups:getStackGroups", args, GetStackGroupsResultOutput{}, options).(GetStackGroupsResultOutput), nil
-		}).(GetStackGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ros/getStackGroups:getStackGroups", args, GetStackGroupsResultOutput{}, options).(GetStackGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getStackGroups.

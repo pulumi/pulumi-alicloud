@@ -22,6 +22,8 @@ __all__ = [
     'companies_output',
 ]
 
+warnings.warn("""alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies""", DeprecationWarning)
+
 @pulumi.output_type
 class CompaniesResult:
     """
@@ -158,7 +160,7 @@ def companies(company_id: Optional[_builtins.int] = None,
         company_phone="15101081174",
         province="陕西",
         lang="zh")
-    default = alicloud.sslcertificatesservice.companies_output(ids=[default_company.id],
+    default = alicloud.sslcertificatesservice.get_companies_output(ids=[default_company.id],
         name_regex=default_company.company_name)
     pulumi.export("alicloudSslCertificatesServiceCompanyExampleId", default.companies[0].id)
     ```
@@ -170,6 +172,7 @@ def companies(company_id: Optional[_builtins.int] = None,
     :param _builtins.str name_regex: A regex string to filter results by Company name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
+    pulumi.log.warn("""companies is deprecated: alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies""")
     __args__ = dict()
     __args__['companyId'] = company_id
     __args__['ids'] = ids
@@ -221,7 +224,7 @@ def companies_output(company_id: pulumi.Input[Optional[Optional[_builtins.int]]]
         company_phone="15101081174",
         province="陕西",
         lang="zh")
-    default = alicloud.sslcertificatesservice.companies_output(ids=[default_company.id],
+    default = alicloud.sslcertificatesservice.get_companies_output(ids=[default_company.id],
         name_regex=default_company.company_name)
     pulumi.export("alicloudSslCertificatesServiceCompanyExampleId", default.companies[0].id)
     ```
@@ -233,6 +236,7 @@ def companies_output(company_id: pulumi.Input[Optional[Optional[_builtins.int]]]
     :param _builtins.str name_regex: A regex string to filter results by Company name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
+    pulumi.log.warn("""companies is deprecated: alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies""")
     __args__ = dict()
     __args__['companyId'] = company_id
     __args__['ids'] = ids

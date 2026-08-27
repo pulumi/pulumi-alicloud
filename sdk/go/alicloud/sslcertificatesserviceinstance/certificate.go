@@ -20,7 +20,7 @@ import (
 //
 // > **NOTE:** Available since v1.287.0.
 //
-// > **NOTE:** Certificates are issued by the certificate authority once an application passes review and cannot be created through an API, so this resource is read-only. Declaring it brings an already-issued certificate under management so that its attributes are tracked in state; destroying it removes it from state and leaves the certificate untouched. Use `sslcertificatesservicecertificate.Apply` to request a certificate, and `sslcertificatesserviceinstance.Certificates` to look certificates up without managing them.
+// > **NOTE:** Certificates are issued by the certificate authority once an application passes review and cannot be created through an API, so this resource is read-only. Declaring it brings an already-issued certificate under management so that its attributes are tracked in state; destroying it removes it from state and leaves the certificate untouched. Use `sslcertificatesservicecertificate.Apply` to request a certificate, and `sslcertificatesserviceinstance.getCertificates` to look certificates up without managing them.
 //
 // ## Example Usage
 //

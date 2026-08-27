@@ -102,12 +102,8 @@ type GetDbInstancesResult struct {
 }
 
 func GetDbInstancesOutput(ctx *pulumi.Context, args GetDbInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDbInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDbInstancesResultOutput, error) {
-			args := v.(GetDbInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:graphdatabase/getDbInstances:getDbInstances", args, GetDbInstancesResultOutput{}, options).(GetDbInstancesResultOutput), nil
-		}).(GetDbInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:graphdatabase/getDbInstances:getDbInstances", args, GetDbInstancesResultOutput{}, options).(GetDbInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getDbInstances.

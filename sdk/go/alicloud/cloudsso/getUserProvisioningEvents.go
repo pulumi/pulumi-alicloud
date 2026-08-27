@@ -102,12 +102,8 @@ type GetUserProvisioningEventsResult struct {
 }
 
 func GetUserProvisioningEventsOutput(ctx *pulumi.Context, args GetUserProvisioningEventsOutputArgs, opts ...pulumi.InvokeOption) GetUserProvisioningEventsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserProvisioningEventsResultOutput, error) {
-			args := v.(GetUserProvisioningEventsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudsso/getUserProvisioningEvents:getUserProvisioningEvents", args, GetUserProvisioningEventsResultOutput{}, options).(GetUserProvisioningEventsResultOutput), nil
-		}).(GetUserProvisioningEventsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudsso/getUserProvisioningEvents:getUserProvisioningEvents", args, GetUserProvisioningEventsResultOutput{}, options).(GetUserProvisioningEventsResultOutput)
 }
 
 // A collection of arguments for invoking getUserProvisioningEvents.

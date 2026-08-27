@@ -90,12 +90,8 @@ type GetBgpGroupsResult struct {
 }
 
 func GetBgpGroupsOutput(ctx *pulumi.Context, args GetBgpGroupsOutputArgs, opts ...pulumi.InvokeOption) GetBgpGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBgpGroupsResultOutput, error) {
-			args := v.(GetBgpGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getBgpGroups:getBgpGroups", args, GetBgpGroupsResultOutput{}, options).(GetBgpGroupsResultOutput), nil
-		}).(GetBgpGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getBgpGroups:getBgpGroups", args, GetBgpGroupsResultOutput{}, options).(GetBgpGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getBgpGroups.

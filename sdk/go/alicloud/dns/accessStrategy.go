@@ -99,7 +99,6 @@ import (
 //			var defaultAddressPool []*dns.AddressPool
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := dns.NewAddressPool(ctx, fmt.Sprintf("default-%v", key0), &dns.AddressPoolArgs{
 //					AddressPoolName: pulumi.String(invokeFormat.Result),
 //					InstanceId:      defaultGtmInstance.ID().ToIDOutput().ToStringOutput(),

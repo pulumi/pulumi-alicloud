@@ -114,12 +114,8 @@ type GetMachineGroupsResult struct {
 }
 
 func GetMachineGroupsOutput(ctx *pulumi.Context, args GetMachineGroupsOutputArgs, opts ...pulumi.InvokeOption) GetMachineGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMachineGroupsResultOutput, error) {
-			args := v.(GetMachineGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sls/getMachineGroups:getMachineGroups", args, GetMachineGroupsResultOutput{}, options).(GetMachineGroupsResultOutput), nil
-		}).(GetMachineGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sls/getMachineGroups:getMachineGroups", args, GetMachineGroupsResultOutput{}, options).(GetMachineGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getMachineGroups.

@@ -163,12 +163,8 @@ type GetIndexsResult struct {
 }
 
 func GetIndexsOutput(ctx *pulumi.Context, args GetIndexsOutputArgs, opts ...pulumi.InvokeOption) GetIndexsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIndexsResultOutput, error) {
-			args := v.(GetIndexsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sls/getIndexs:getIndexs", args, GetIndexsResultOutput{}, options).(GetIndexsResultOutput), nil
-		}).(GetIndexsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sls/getIndexs:getIndexs", args, GetIndexsResultOutput{}, options).(GetIndexsResultOutput)
 }
 
 // A collection of arguments for invoking getIndexs.

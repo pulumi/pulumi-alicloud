@@ -132,12 +132,8 @@ type GetDomainConfigsResult struct {
 }
 
 func GetDomainConfigsOutput(ctx *pulumi.Context, args GetDomainConfigsOutputArgs, opts ...pulumi.InvokeOption) GetDomainConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainConfigsResultOutput, error) {
-			args := v.(GetDomainConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cdn/getDomainConfigs:getDomainConfigs", args, GetDomainConfigsResultOutput{}, options).(GetDomainConfigsResultOutput), nil
-		}).(GetDomainConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cdn/getDomainConfigs:getDomainConfigs", args, GetDomainConfigsResultOutput{}, options).(GetDomainConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getDomainConfigs.

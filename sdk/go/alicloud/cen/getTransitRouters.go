@@ -90,12 +90,8 @@ type GetTransitRoutersResult struct {
 }
 
 func GetTransitRoutersOutput(ctx *pulumi.Context, args GetTransitRoutersOutputArgs, opts ...pulumi.InvokeOption) GetTransitRoutersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRoutersResultOutput, error) {
-			args := v.(GetTransitRoutersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouters:getTransitRouters", args, GetTransitRoutersResultOutput{}, options).(GetTransitRoutersResultOutput), nil
-		}).(GetTransitRoutersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouters:getTransitRouters", args, GetTransitRoutersResultOutput{}, options).(GetTransitRoutersResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouters.

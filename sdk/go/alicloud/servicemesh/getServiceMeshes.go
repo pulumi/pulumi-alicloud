@@ -55,12 +55,8 @@ type GetServiceMeshesResult struct {
 }
 
 func GetServiceMeshesOutput(ctx *pulumi.Context, args GetServiceMeshesOutputArgs, opts ...pulumi.InvokeOption) GetServiceMeshesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceMeshesResultOutput, error) {
-			args := v.(GetServiceMeshesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args, GetServiceMeshesResultOutput{}, options).(GetServiceMeshesResultOutput), nil
-		}).(GetServiceMeshesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args, GetServiceMeshesResultOutput{}, options).(GetServiceMeshesResultOutput)
 }
 
 // A collection of arguments for invoking getServiceMeshes.

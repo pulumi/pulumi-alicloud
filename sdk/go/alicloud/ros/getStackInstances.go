@@ -123,12 +123,8 @@ type LookupStackInstancesResult struct {
 }
 
 func LookupStackInstancesOutput(ctx *pulumi.Context, args LookupStackInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupStackInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStackInstancesResultOutput, error) {
-			args := v.(LookupStackInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ros/getStackInstances:getStackInstances", args, LookupStackInstancesResultOutput{}, options).(LookupStackInstancesResultOutput), nil
-		}).(LookupStackInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ros/getStackInstances:getStackInstances", args, LookupStackInstancesResultOutput{}, options).(LookupStackInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getStackInstances.

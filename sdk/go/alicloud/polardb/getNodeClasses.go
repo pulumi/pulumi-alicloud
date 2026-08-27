@@ -93,12 +93,8 @@ type GetNodeClassesResult struct {
 }
 
 func GetNodeClassesOutput(ctx *pulumi.Context, args GetNodeClassesOutputArgs, opts ...pulumi.InvokeOption) GetNodeClassesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNodeClassesResultOutput, error) {
-			args := v.(GetNodeClassesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:polardb/getNodeClasses:getNodeClasses", args, GetNodeClassesResultOutput{}, options).(GetNodeClassesResultOutput), nil
-		}).(GetNodeClassesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:polardb/getNodeClasses:getNodeClasses", args, GetNodeClassesResultOutput{}, options).(GetNodeClassesResultOutput)
 }
 
 // A collection of arguments for invoking getNodeClasses.

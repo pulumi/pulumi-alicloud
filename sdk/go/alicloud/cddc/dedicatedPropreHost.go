@@ -99,7 +99,6 @@ import (
 //
 //	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
 // VpcId: pulumi.String(defaultGetSwitches.Vswitches[0].VpcId),
@@ -128,7 +127,6 @@ import (
 //
 //	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := ecs.NewEcsDeploymentSet(ctx, fmt.Sprintf("default-%v", key0), &ecs.EcsDeploymentSetArgs{
 // Strategy: pulumi.String("Availability"),
@@ -160,7 +158,6 @@ import (
 //
 //	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := ecs.NewKeyPair(ctx, fmt.Sprintf("default-%v", key0), &ecs.KeyPairArgs{
 // KeyPairName: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
@@ -189,7 +186,6 @@ import (
 //
 //	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := cddc.NewDedicatedHostGroup(ctx, fmt.Sprintf("default-%v", key0), &cddc.DedicatedHostGroupArgs{
 // Engine: pulumi.String("MySQL"),

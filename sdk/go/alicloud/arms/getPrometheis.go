@@ -136,12 +136,8 @@ type GetPrometheisResult struct {
 }
 
 func GetPrometheisOutput(ctx *pulumi.Context, args GetPrometheisOutputArgs, opts ...pulumi.InvokeOption) GetPrometheisResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPrometheisResultOutput, error) {
-			args := v.(GetPrometheisArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getPrometheis:getPrometheis", args, GetPrometheisResultOutput{}, options).(GetPrometheisResultOutput), nil
-		}).(GetPrometheisResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getPrometheis:getPrometheis", args, GetPrometheisResultOutput{}, options).(GetPrometheisResultOutput)
 }
 
 // A collection of arguments for invoking getPrometheis.

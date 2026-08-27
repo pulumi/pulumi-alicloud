@@ -81,12 +81,8 @@ type GetFilesetsResult struct {
 }
 
 func GetFilesetsOutput(ctx *pulumi.Context, args GetFilesetsOutputArgs, opts ...pulumi.InvokeOption) GetFilesetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFilesetsResultOutput, error) {
-			args := v.(GetFilesetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nas/getFilesets:getFilesets", args, GetFilesetsResultOutput{}, options).(GetFilesetsResultOutput), nil
-		}).(GetFilesetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nas/getFilesets:getFilesets", args, GetFilesetsResultOutput{}, options).(GetFilesetsResultOutput)
 }
 
 // A collection of arguments for invoking getFilesets.

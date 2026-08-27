@@ -42,12 +42,8 @@ type GetRdsParameterGroupsResult struct {
 }
 
 func GetRdsParameterGroupsOutput(ctx *pulumi.Context, args GetRdsParameterGroupsOutputArgs, opts ...pulumi.InvokeOption) GetRdsParameterGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRdsParameterGroupsResultOutput, error) {
-			args := v.(GetRdsParameterGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args, GetRdsParameterGroupsResultOutput{}, options).(GetRdsParameterGroupsResultOutput), nil
-		}).(GetRdsParameterGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args, GetRdsParameterGroupsResultOutput{}, options).(GetRdsParameterGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getRdsParameterGroups.

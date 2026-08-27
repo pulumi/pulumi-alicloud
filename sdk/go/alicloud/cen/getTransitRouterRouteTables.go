@@ -127,12 +127,8 @@ type GetTransitRouterRouteTablesResult struct {
 }
 
 func GetTransitRouterRouteTablesOutput(ctx *pulumi.Context, args GetTransitRouterRouteTablesOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterRouteTablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterRouteTablesResultOutput, error) {
-			args := v.(GetTransitRouterRouteTablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", args, GetTransitRouterRouteTablesResultOutput{}, options).(GetTransitRouterRouteTablesResultOutput), nil
-		}).(GetTransitRouterRouteTablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", args, GetTransitRouterRouteTablesResultOutput{}, options).(GetTransitRouterRouteTablesResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouterRouteTables.

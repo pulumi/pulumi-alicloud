@@ -80,12 +80,8 @@ type GetHybridMonitorFcTasksResult struct {
 }
 
 func GetHybridMonitorFcTasksOutput(ctx *pulumi.Context, args GetHybridMonitorFcTasksOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorFcTasksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHybridMonitorFcTasksResultOutput, error) {
-			args := v.(GetHybridMonitorFcTasksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args, GetHybridMonitorFcTasksResultOutput{}, options).(GetHybridMonitorFcTasksResultOutput), nil
-		}).(GetHybridMonitorFcTasksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args, GetHybridMonitorFcTasksResultOutput{}, options).(GetHybridMonitorFcTasksResultOutput)
 }
 
 // A collection of arguments for invoking getHybridMonitorFcTasks.

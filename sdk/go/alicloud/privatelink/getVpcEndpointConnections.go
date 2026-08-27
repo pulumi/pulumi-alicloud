@@ -86,12 +86,8 @@ type GetVpcEndpointConnectionsResult struct {
 }
 
 func GetVpcEndpointConnectionsOutput(ctx *pulumi.Context, args GetVpcEndpointConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpcEndpointConnectionsResultOutput, error) {
-			args := v.(GetVpcEndpointConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", args, GetVpcEndpointConnectionsResultOutput{}, options).(GetVpcEndpointConnectionsResultOutput), nil
-		}).(GetVpcEndpointConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", args, GetVpcEndpointConnectionsResultOutput{}, options).(GetVpcEndpointConnectionsResultOutput)
 }
 
 // A collection of arguments for invoking getVpcEndpointConnections.

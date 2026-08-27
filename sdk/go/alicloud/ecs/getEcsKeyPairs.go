@@ -117,12 +117,8 @@ type GetEcsKeyPairsResult struct {
 }
 
 func GetEcsKeyPairsOutput(ctx *pulumi.Context, args GetEcsKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetEcsKeyPairsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsKeyPairsResultOutput, error) {
-			args := v.(GetEcsKeyPairsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args, GetEcsKeyPairsResultOutput{}, options).(GetEcsKeyPairsResultOutput), nil
-		}).(GetEcsKeyPairsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args, GetEcsKeyPairsResultOutput{}, options).(GetEcsKeyPairsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsKeyPairs.

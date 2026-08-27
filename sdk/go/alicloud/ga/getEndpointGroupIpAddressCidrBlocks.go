@@ -76,12 +76,8 @@ type GetEndpointGroupIpAddressCidrBlocksResult struct {
 }
 
 func GetEndpointGroupIpAddressCidrBlocksOutput(ctx *pulumi.Context, args GetEndpointGroupIpAddressCidrBlocksOutputArgs, opts ...pulumi.InvokeOption) GetEndpointGroupIpAddressCidrBlocksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEndpointGroupIpAddressCidrBlocksResultOutput, error) {
-			args := v.(GetEndpointGroupIpAddressCidrBlocksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args, GetEndpointGroupIpAddressCidrBlocksResultOutput{}, options).(GetEndpointGroupIpAddressCidrBlocksResultOutput), nil
-		}).(GetEndpointGroupIpAddressCidrBlocksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args, GetEndpointGroupIpAddressCidrBlocksResultOutput{}, options).(GetEndpointGroupIpAddressCidrBlocksResultOutput)
 }
 
 // A collection of arguments for invoking getEndpointGroupIpAddressCidrBlocks.

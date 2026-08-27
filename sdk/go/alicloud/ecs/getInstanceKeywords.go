@@ -73,12 +73,8 @@ type GetInstanceKeywordsResult struct {
 }
 
 func GetInstanceKeywordsOutput(ctx *pulumi.Context, args GetInstanceKeywordsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceKeywordsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceKeywordsResultOutput, error) {
-			args := v.(GetInstanceKeywordsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", args, GetInstanceKeywordsResultOutput{}, options).(GetInstanceKeywordsResultOutput), nil
-		}).(GetInstanceKeywordsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", args, GetInstanceKeywordsResultOutput{}, options).(GetInstanceKeywordsResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceKeywords.

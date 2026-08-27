@@ -100,12 +100,8 @@ type GetPrometheusMonitoringsResult struct {
 }
 
 func GetPrometheusMonitoringsOutput(ctx *pulumi.Context, args GetPrometheusMonitoringsOutputArgs, opts ...pulumi.InvokeOption) GetPrometheusMonitoringsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPrometheusMonitoringsResultOutput, error) {
-			args := v.(GetPrometheusMonitoringsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args, GetPrometheusMonitoringsResultOutput{}, options).(GetPrometheusMonitoringsResultOutput), nil
-		}).(GetPrometheusMonitoringsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args, GetPrometheusMonitoringsResultOutput{}, options).(GetPrometheusMonitoringsResultOutput)
 }
 
 // A collection of arguments for invoking getPrometheusMonitorings.

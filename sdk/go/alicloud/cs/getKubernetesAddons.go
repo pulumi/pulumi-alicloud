@@ -95,7 +95,7 @@ import (
 //				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("addons", defaultGetKubernetesAddons.ApplyT(func(defaultGetKubernetesAddons cs.GetKubernetesAddonsResult) ([]cs.GetKubernetesAddonsAddon, error) {
-//				return []cs.GetKubernetesAddonsAddon(defaultGetKubernetesAddons.Addons), nil
+//				return defaultGetKubernetesAddons.Addons.([]cs.GetKubernetesAddonsAddon), nil
 //			}).(pulumi.ArrayOutput))
 //			return nil
 //		})
@@ -137,12 +137,8 @@ type GetKubernetesAddonsResult struct {
 }
 
 func GetKubernetesAddonsOutput(ctx *pulumi.Context, args GetKubernetesAddonsOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesAddonsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKubernetesAddonsResultOutput, error) {
-			args := v.(GetKubernetesAddonsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args, GetKubernetesAddonsResultOutput{}, options).(GetKubernetesAddonsResultOutput), nil
-		}).(GetKubernetesAddonsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args, GetKubernetesAddonsResultOutput{}, options).(GetKubernetesAddonsResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesAddons.

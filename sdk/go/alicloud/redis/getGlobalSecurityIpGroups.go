@@ -100,12 +100,8 @@ type GetGlobalSecurityIpGroupsResult struct {
 }
 
 func GetGlobalSecurityIpGroupsOutput(ctx *pulumi.Context, args GetGlobalSecurityIpGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGlobalSecurityIpGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGlobalSecurityIpGroupsResultOutput, error) {
-			args := v.(GetGlobalSecurityIpGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:redis/getGlobalSecurityIpGroups:getGlobalSecurityIpGroups", args, GetGlobalSecurityIpGroupsResultOutput{}, options).(GetGlobalSecurityIpGroupsResultOutput), nil
-		}).(GetGlobalSecurityIpGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:redis/getGlobalSecurityIpGroups:getGlobalSecurityIpGroups", args, GetGlobalSecurityIpGroupsResultOutput{}, options).(GetGlobalSecurityIpGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getGlobalSecurityIpGroups.

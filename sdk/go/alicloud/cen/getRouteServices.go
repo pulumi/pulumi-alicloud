@@ -95,12 +95,8 @@ type GetRouteServicesResult struct {
 }
 
 func GetRouteServicesOutput(ctx *pulumi.Context, args GetRouteServicesOutputArgs, opts ...pulumi.InvokeOption) GetRouteServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouteServicesResultOutput, error) {
-			args := v.(GetRouteServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getRouteServices:getRouteServices", args, GetRouteServicesResultOutput{}, options).(GetRouteServicesResultOutput), nil
-		}).(GetRouteServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getRouteServices:getRouteServices", args, GetRouteServicesResultOutput{}, options).(GetRouteServicesResultOutput)
 }
 
 // A collection of arguments for invoking getRouteServices.

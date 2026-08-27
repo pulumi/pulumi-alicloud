@@ -144,12 +144,8 @@ type GetRouterVbrChildInstancesResult struct {
 }
 
 func GetRouterVbrChildInstancesOutput(ctx *pulumi.Context, args GetRouterVbrChildInstancesOutputArgs, opts ...pulumi.InvokeOption) GetRouterVbrChildInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouterVbrChildInstancesResultOutput, error) {
-			args := v.(GetRouterVbrChildInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:expressconnect/getRouterVbrChildInstances:getRouterVbrChildInstances", args, GetRouterVbrChildInstancesResultOutput{}, options).(GetRouterVbrChildInstancesResultOutput), nil
-		}).(GetRouterVbrChildInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:expressconnect/getRouterVbrChildInstances:getRouterVbrChildInstances", args, GetRouterVbrChildInstancesResultOutput{}, options).(GetRouterVbrChildInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getRouterVbrChildInstances.

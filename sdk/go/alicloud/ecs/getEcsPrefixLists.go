@@ -83,12 +83,8 @@ type GetEcsPrefixListsResult struct {
 }
 
 func GetEcsPrefixListsOutput(ctx *pulumi.Context, args GetEcsPrefixListsOutputArgs, opts ...pulumi.InvokeOption) GetEcsPrefixListsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsPrefixListsResultOutput, error) {
-			args := v.(GetEcsPrefixListsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args, GetEcsPrefixListsResultOutput{}, options).(GetEcsPrefixListsResultOutput), nil
-		}).(GetEcsPrefixListsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args, GetEcsPrefixListsResultOutput{}, options).(GetEcsPrefixListsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsPrefixLists.

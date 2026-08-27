@@ -87,12 +87,8 @@ type GetDdosCooPortsResult struct {
 }
 
 func GetDdosCooPortsOutput(ctx *pulumi.Context, args GetDdosCooPortsOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooPortsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDdosCooPortsResultOutput, error) {
-			args := v.(GetDdosCooPortsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args, GetDdosCooPortsResultOutput{}, options).(GetDdosCooPortsResultOutput), nil
-		}).(GetDdosCooPortsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args, GetDdosCooPortsResultOutput{}, options).(GetDdosCooPortsResultOutput)
 }
 
 // A collection of arguments for invoking getDdosCooPorts.

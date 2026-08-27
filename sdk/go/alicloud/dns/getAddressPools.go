@@ -93,12 +93,8 @@ type GetAddressPoolsResult struct {
 }
 
 func GetAddressPoolsOutput(ctx *pulumi.Context, args GetAddressPoolsOutputArgs, opts ...pulumi.InvokeOption) GetAddressPoolsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAddressPoolsResultOutput, error) {
-			args := v.(GetAddressPoolsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getAddressPools:getAddressPools", args, GetAddressPoolsResultOutput{}, options).(GetAddressPoolsResultOutput), nil
-		}).(GetAddressPoolsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getAddressPools:getAddressPools", args, GetAddressPoolsResultOutput{}, options).(GetAddressPoolsResultOutput)
 }
 
 // A collection of arguments for invoking getAddressPools.

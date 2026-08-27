@@ -72,12 +72,8 @@ type GetBackendServersResult struct {
 }
 
 func GetBackendServersOutput(ctx *pulumi.Context, args GetBackendServersOutputArgs, opts ...pulumi.InvokeOption) GetBackendServersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBackendServersResultOutput, error) {
-			args := v.(GetBackendServersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:slb/getBackendServers:getBackendServers", args, GetBackendServersResultOutput{}, options).(GetBackendServersResultOutput), nil
-		}).(GetBackendServersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:slb/getBackendServers:getBackendServers", args, GetBackendServersResultOutput{}, options).(GetBackendServersResultOutput)
 }
 
 // A collection of arguments for invoking getBackendServers.

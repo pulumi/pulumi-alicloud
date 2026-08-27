@@ -140,12 +140,8 @@ type GetSharedResourcesResult struct {
 }
 
 func GetSharedResourcesOutput(ctx *pulumi.Context, args GetSharedResourcesOutputArgs, opts ...pulumi.InvokeOption) GetSharedResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSharedResourcesResultOutput, error) {
-			args := v.(GetSharedResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:resourcemanager/getSharedResources:getSharedResources", args, GetSharedResourcesResultOutput{}, options).(GetSharedResourcesResultOutput), nil
-		}).(GetSharedResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:resourcemanager/getSharedResources:getSharedResources", args, GetSharedResourcesResultOutput{}, options).(GetSharedResourcesResultOutput)
 }
 
 // A collection of arguments for invoking getSharedResources.

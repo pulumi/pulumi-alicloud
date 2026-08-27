@@ -43,11 +43,11 @@ import (
 //			}
 //			countSize := len(_default.Zones)
 //			zoneId := countSize.ApplyT(func(countSize int) (ecp.GetZonesZone, error) {
-//				return ecp.GetZonesZone(_default.Zones[int(countSize-1)]), nil
+//				return _default.Zones[int(countSize-1)].(ecp.GetZonesZone), nil
 //			}).(ecp.GetZonesZoneOutput).ZoneId()
 //			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
 //			_ = instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
-//				return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)]), nil
+//				return defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)].(ecp.GetInstanceTypesInstanceType), nil
 //			}).(ecp.GetInstanceTypesInstanceTypeOutput).InstanceType()
 //			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
@@ -83,7 +83,7 @@ import (
 //				}).(pulumi.StringPtrOutput),
 //				ImageId: pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
 //				InstanceType: instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
-//					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)]), nil
+//					return defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)].(ecp.GetInstanceTypesInstanceType), nil
 //				}).(ecp.GetInstanceTypesInstanceTypeOutput).InstanceType(),
 //				PaymentType: pulumi.String("PayAsYouGo"),
 //			})
@@ -156,12 +156,8 @@ type GetInstancesResult struct {
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstancesResultOutput, error) {
-			args := v.(GetInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecp/getInstances:getInstances", args, GetInstancesResultOutput{}, options).(GetInstancesResultOutput), nil
-		}).(GetInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecp/getInstances:getInstances", args, GetInstancesResultOutput{}, options).(GetInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getInstances.

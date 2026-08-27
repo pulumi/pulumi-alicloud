@@ -107,12 +107,8 @@ type GetRouterInterfacesResult struct {
 }
 
 func GetRouterInterfacesOutput(ctx *pulumi.Context, args GetRouterInterfacesOutputArgs, opts ...pulumi.InvokeOption) GetRouterInterfacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouterInterfacesResultOutput, error) {
-			args := v.(GetRouterInterfacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args, GetRouterInterfacesResultOutput{}, options).(GetRouterInterfacesResultOutput), nil
-		}).(GetRouterInterfacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args, GetRouterInterfacesResultOutput{}, options).(GetRouterInterfacesResultOutput)
 }
 
 // A collection of arguments for invoking getRouterInterfaces.

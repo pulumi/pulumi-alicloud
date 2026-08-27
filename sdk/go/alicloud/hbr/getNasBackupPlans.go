@@ -81,12 +81,8 @@ type GetNasBackupPlansResult struct {
 }
 
 func GetNasBackupPlansOutput(ctx *pulumi.Context, args GetNasBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetNasBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNasBackupPlansResultOutput, error) {
-			args := v.(GetNasBackupPlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args, GetNasBackupPlansResultOutput{}, options).(GetNasBackupPlansResultOutput), nil
-		}).(GetNasBackupPlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args, GetNasBackupPlansResultOutput{}, options).(GetNasBackupPlansResultOutput)
 }
 
 // A collection of arguments for invoking getNasBackupPlans.

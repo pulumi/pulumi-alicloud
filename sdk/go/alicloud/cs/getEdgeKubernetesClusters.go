@@ -83,12 +83,8 @@ type GetEdgeKubernetesClustersResult struct {
 }
 
 func GetEdgeKubernetesClustersOutput(ctx *pulumi.Context, args GetEdgeKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetEdgeKubernetesClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEdgeKubernetesClustersResultOutput, error) {
-			args := v.(GetEdgeKubernetesClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args, GetEdgeKubernetesClustersResultOutput{}, options).(GetEdgeKubernetesClustersResultOutput), nil
-		}).(GetEdgeKubernetesClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args, GetEdgeKubernetesClustersResultOutput{}, options).(GetEdgeKubernetesClustersResultOutput)
 }
 
 // A collection of arguments for invoking getEdgeKubernetesClusters.

@@ -83,12 +83,8 @@ type GetDataCentersResult struct {
 }
 
 func GetDataCentersOutput(ctx *pulumi.Context, args GetDataCentersOutputArgs, opts ...pulumi.InvokeOption) GetDataCentersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataCentersResultOutput, error) {
-			args := v.(GetDataCentersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cassandra/getDataCenters:getDataCenters", args, GetDataCentersResultOutput{}, options).(GetDataCentersResultOutput), nil
-		}).(GetDataCentersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cassandra/getDataCenters:getDataCenters", args, GetDataCentersResultOutput{}, options).(GetDataCentersResultOutput)
 }
 
 // A collection of arguments for invoking getDataCenters.

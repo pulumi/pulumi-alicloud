@@ -227,12 +227,8 @@ type GetLoadBalancersResult struct {
 }
 
 func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancersResultOutput, error) {
-			args := v.(GetLoadBalancersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:alb/getLoadBalancers:getLoadBalancers", args, GetLoadBalancersResultOutput{}, options).(GetLoadBalancersResultOutput), nil
-		}).(GetLoadBalancersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:alb/getLoadBalancers:getLoadBalancers", args, GetLoadBalancersResultOutput{}, options).(GetLoadBalancersResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancers.

@@ -48,12 +48,8 @@ type GetEnterpriseLogicDatabasesResult struct {
 }
 
 func GetEnterpriseLogicDatabasesOutput(ctx *pulumi.Context, args GetEnterpriseLogicDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseLogicDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseLogicDatabasesResultOutput, error) {
-			args := v.(GetEnterpriseLogicDatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args, GetEnterpriseLogicDatabasesResultOutput{}, options).(GetEnterpriseLogicDatabasesResultOutput), nil
-		}).(GetEnterpriseLogicDatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args, GetEnterpriseLogicDatabasesResultOutput{}, options).(GetEnterpriseLogicDatabasesResultOutput)
 }
 
 // A collection of arguments for invoking getEnterpriseLogicDatabases.

@@ -102,12 +102,8 @@ type GetNasFileSystemsResult struct {
 }
 
 func GetNasFileSystemsOutput(ctx *pulumi.Context, args GetNasFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetNasFileSystemsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNasFileSystemsResultOutput, error) {
-			args := v.(GetNasFileSystemsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getNasFileSystems:getNasFileSystems", args, GetNasFileSystemsResultOutput{}, options).(GetNasFileSystemsResultOutput), nil
-		}).(GetNasFileSystemsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getNasFileSystems:getNasFileSystems", args, GetNasFileSystemsResultOutput{}, options).(GetNasFileSystemsResultOutput)
 }
 
 // A collection of arguments for invoking getNasFileSystems.

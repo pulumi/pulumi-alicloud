@@ -144,12 +144,8 @@ type GetGatewayEnhancedVpnGatewaysResult struct {
 }
 
 func GetGatewayEnhancedVpnGatewaysOutput(ctx *pulumi.Context, args GetGatewayEnhancedVpnGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewayEnhancedVpnGatewaysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewayEnhancedVpnGatewaysResultOutput, error) {
-			args := v.(GetGatewayEnhancedVpnGatewaysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpn/getGatewayEnhancedVpnGateways:getGatewayEnhancedVpnGateways", args, GetGatewayEnhancedVpnGatewaysResultOutput{}, options).(GetGatewayEnhancedVpnGatewaysResultOutput), nil
-		}).(GetGatewayEnhancedVpnGatewaysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpn/getGatewayEnhancedVpnGateways:getGatewayEnhancedVpnGateways", args, GetGatewayEnhancedVpnGatewaysResultOutput{}, options).(GetGatewayEnhancedVpnGatewaysResultOutput)
 }
 
 // A collection of arguments for invoking getGatewayEnhancedVpnGateways.

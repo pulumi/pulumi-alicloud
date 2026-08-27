@@ -15,6 +15,11 @@ export const certificates: typeof import("./certificates").certificates = null a
 export const certificatesOutput: typeof import("./certificates").certificatesOutput = null as any;
 utilities.lazyLoad(exports, ["certificates","certificatesOutput"], () => require("./certificates"));
 
+export { GetCertificatesArgs, GetCertificatesResult, GetCertificatesOutputArgs } from "./getCertificates";
+export const getCertificates: typeof import("./getCertificates").getCertificates = null as any;
+export const getCertificatesOutput: typeof import("./getCertificates").getCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificates","getCertificatesOutput"], () => require("./getCertificates"));
+
 export { SslCertificatesServiceInstanceArgs, SslCertificatesServiceInstanceState } from "./sslCertificatesServiceInstance";
 export type SslCertificatesServiceInstance = import("./sslCertificatesServiceInstance").SslCertificatesServiceInstance;
 export const SslCertificatesServiceInstance: typeof import("./sslCertificatesServiceInstance").SslCertificatesServiceInstance = null as any;

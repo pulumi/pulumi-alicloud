@@ -72,12 +72,8 @@ type GetConsumerChannelsResult struct {
 }
 
 func GetConsumerChannelsOutput(ctx *pulumi.Context, args GetConsumerChannelsOutputArgs, opts ...pulumi.InvokeOption) GetConsumerChannelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConsumerChannelsResultOutput, error) {
-			args := v.(GetConsumerChannelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dts/getConsumerChannels:getConsumerChannels", args, GetConsumerChannelsResultOutput{}, options).(GetConsumerChannelsResultOutput), nil
-		}).(GetConsumerChannelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dts/getConsumerChannels:getConsumerChannels", args, GetConsumerChannelsResultOutput{}, options).(GetConsumerChannelsResultOutput)
 }
 
 // A collection of arguments for invoking getConsumerChannels.

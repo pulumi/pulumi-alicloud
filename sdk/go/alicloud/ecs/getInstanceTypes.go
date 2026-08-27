@@ -105,7 +105,6 @@ import (
 //
 //	for index := 0; index < 14; index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
 // ImageId: pulumi.String(defaultGetImages.Images[0].Id),
@@ -222,12 +221,8 @@ type GetInstanceTypesResult struct {
 }
 
 func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceTypesResultOutput, error) {
-			args := v.(GetInstanceTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getInstanceTypes:getInstanceTypes", args, GetInstanceTypesResultOutput{}, options).(GetInstanceTypesResultOutput), nil
-		}).(GetInstanceTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getInstanceTypes:getInstanceTypes", args, GetInstanceTypesResultOutput{}, options).(GetInstanceTypesResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceTypes.

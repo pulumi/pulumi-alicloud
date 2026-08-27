@@ -137,12 +137,8 @@ type GetRouterVpcAssociationsResult struct {
 }
 
 func GetRouterVpcAssociationsOutput(ctx *pulumi.Context, args GetRouterVpcAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetRouterVpcAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouterVpcAssociationsResultOutput, error) {
-			args := v.(GetRouterVpcAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:expressconnect/getRouterVpcAssociations:getRouterVpcAssociations", args, GetRouterVpcAssociationsResultOutput{}, options).(GetRouterVpcAssociationsResultOutput), nil
-		}).(GetRouterVpcAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:expressconnect/getRouterVpcAssociations:getRouterVpcAssociations", args, GetRouterVpcAssociationsResultOutput{}, options).(GetRouterVpcAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getRouterVpcAssociations.

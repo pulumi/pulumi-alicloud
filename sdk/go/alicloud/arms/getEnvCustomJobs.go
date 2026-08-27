@@ -137,12 +137,8 @@ type GetEnvCustomJobsResult struct {
 }
 
 func GetEnvCustomJobsOutput(ctx *pulumi.Context, args GetEnvCustomJobsOutputArgs, opts ...pulumi.InvokeOption) GetEnvCustomJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvCustomJobsResultOutput, error) {
-			args := v.(GetEnvCustomJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getEnvCustomJobs:getEnvCustomJobs", args, GetEnvCustomJobsResultOutput{}, options).(GetEnvCustomJobsResultOutput), nil
-		}).(GetEnvCustomJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getEnvCustomJobs:getEnvCustomJobs", args, GetEnvCustomJobsResultOutput{}, options).(GetEnvCustomJobsResultOutput)
 }
 
 // A collection of arguments for invoking getEnvCustomJobs.

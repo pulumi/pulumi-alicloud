@@ -77,12 +77,8 @@ type GetPbrRouteEntriesResult struct {
 }
 
 func GetPbrRouteEntriesOutput(ctx *pulumi.Context, args GetPbrRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetPbrRouteEntriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPbrRouteEntriesResultOutput, error) {
-			args := v.(GetPbrRouteEntriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args, GetPbrRouteEntriesResultOutput{}, options).(GetPbrRouteEntriesResultOutput), nil
-		}).(GetPbrRouteEntriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args, GetPbrRouteEntriesResultOutput{}, options).(GetPbrRouteEntriesResultOutput)
 }
 
 // A collection of arguments for invoking getPbrRouteEntries.

@@ -82,12 +82,8 @@ type GetConsumerGroupsResult struct {
 }
 
 func GetConsumerGroupsOutput(ctx *pulumi.Context, args GetConsumerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetConsumerGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConsumerGroupsResultOutput, error) {
-			args := v.(GetConsumerGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args, GetConsumerGroupsResultOutput{}, options).(GetConsumerGroupsResultOutput), nil
-		}).(GetConsumerGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args, GetConsumerGroupsResultOutput{}, options).(GetConsumerGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getConsumerGroups.

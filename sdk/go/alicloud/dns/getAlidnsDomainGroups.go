@@ -78,12 +78,8 @@ type GetAlidnsDomainGroupsResult struct {
 }
 
 func GetAlidnsDomainGroupsOutput(ctx *pulumi.Context, args GetAlidnsDomainGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsDomainGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlidnsDomainGroupsResultOutput, error) {
-			args := v.(GetAlidnsDomainGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args, GetAlidnsDomainGroupsResultOutput{}, options).(GetAlidnsDomainGroupsResultOutput), nil
-		}).(GetAlidnsDomainGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args, GetAlidnsDomainGroupsResultOutput{}, options).(GetAlidnsDomainGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getAlidnsDomainGroups.

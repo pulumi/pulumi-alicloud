@@ -184,12 +184,8 @@ type GetKubernetesNodePoolsResult struct {
 }
 
 func GetKubernetesNodePoolsOutput(ctx *pulumi.Context, args GetKubernetesNodePoolsOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesNodePoolsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKubernetesNodePoolsResultOutput, error) {
-			args := v.(GetKubernetesNodePoolsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", args, GetKubernetesNodePoolsResultOutput{}, options).(GetKubernetesNodePoolsResultOutput), nil
-		}).(GetKubernetesNodePoolsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", args, GetKubernetesNodePoolsResultOutput{}, options).(GetKubernetesNodePoolsResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesNodePools.

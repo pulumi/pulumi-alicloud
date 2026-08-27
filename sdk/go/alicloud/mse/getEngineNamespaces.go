@@ -135,12 +135,8 @@ type GetEngineNamespacesResult struct {
 }
 
 func GetEngineNamespacesOutput(ctx *pulumi.Context, args GetEngineNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetEngineNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEngineNamespacesResultOutput, error) {
-			args := v.(GetEngineNamespacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args, GetEngineNamespacesResultOutput{}, options).(GetEngineNamespacesResultOutput), nil
-		}).(GetEngineNamespacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args, GetEngineNamespacesResultOutput{}, options).(GetEngineNamespacesResultOutput)
 }
 
 // A collection of arguments for invoking getEngineNamespaces.

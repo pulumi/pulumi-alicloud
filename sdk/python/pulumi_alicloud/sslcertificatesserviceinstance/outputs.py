@@ -17,6 +17,7 @@ from .. import _utilities
 __all__ = [
     'CertificatesCertificateResult',
     'SslCertificatesServiceInstanceParameter',
+    'GetCertificatesCertificateResult',
 ]
 
 @pulumi.output_type
@@ -257,5 +258,188 @@ class SslCertificatesServiceInstanceParameter(dict):
         > **NOTE:** The list above is a snapshot and is not exhaustive. Specifications, prices and availability differ per account and change over time. Call [DescribePricingModule](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/DescribePricingModule) with `ProductCode` and `ProductType` set to `cas` to get the values your account can actually order.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 cert_identifier: _builtins.str,
+                 certificate_id: _builtins.int,
+                 certificate_name: _builtins.str,
+                 certificate_source: _builtins.str,
+                 certificate_status: _builtins.str,
+                 common_name: _builtins.str,
+                 domain: _builtins.str,
+                 exist_private_key: _builtins.bool,
+                 finger_print: _builtins.str,
+                 id: _builtins.int,
+                 instance_id: _builtins.str,
+                 issuer: _builtins.str,
+                 key_size: _builtins.int,
+                 not_after: _builtins.int,
+                 not_before: _builtins.int):
+        """
+        :param _builtins.str algorithm: The encryption algorithm of the certificate.
+        :param _builtins.str cert_identifier: The global certificate identifier, formatted as the certificate ID plus `-` plus the site region ID. Alibaba Cloud services such as ALB, CDN and WAF reference a certificate by this value.
+        :param _builtins.int certificate_id: The ID of the certificate.
+        :param _builtins.str certificate_name: The name of the certificate.
+        :param _builtins.str certificate_source: The source of the certificate. Valid values: `BUY`, `UPLOAD` and `TEST`.
+        :param _builtins.str certificate_status: The status of the certificate. Valid values: `issued`, `revoked`, `willExpire` and `expired`.
+        :param _builtins.str common_name: The common name of the certificate.
+        :param _builtins.str domain: All domain names covered by the certificate, separated by commas.
+        :param _builtins.bool exist_private_key: Indicates whether the private key of the certificate is held on the server side.
+        :param _builtins.str finger_print: The public key fingerprint of the certificate.
+        :param _builtins.int id: The ID of the resource supplied above.
+        :param _builtins.str instance_id: The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
+        :param _builtins.str issuer: The certificate authority that issued the certificate.
+        :param _builtins.int key_size: The key length of the certificate algorithm.
+        :param _builtins.int not_after: The end of the certificate validity period.
+        :param _builtins.int not_before: The start of the certificate validity period.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "cert_identifier", cert_identifier)
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "certificate_source", certificate_source)
+        pulumi.set(__self__, "certificate_status", certificate_status)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "exist_private_key", exist_private_key)
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "key_size", key_size)
+        pulumi.set(__self__, "not_after", not_after)
+        pulumi.set(__self__, "not_before", not_before)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        The encryption algorithm of the certificate.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="certIdentifier")
+    def cert_identifier(self) -> _builtins.str:
+        """
+        The global certificate identifier, formatted as the certificate ID plus `-` plus the site region ID. Alibaba Cloud services such as ALB, CDN and WAF reference a certificate by this value.
+        """
+        return pulumi.get(self, "cert_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> _builtins.int:
+        """
+        The ID of the certificate.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> _builtins.str:
+        """
+        The name of the certificate.
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateSource")
+    def certificate_source(self) -> _builtins.str:
+        """
+        The source of the certificate. Valid values: `BUY`, `UPLOAD` and `TEST`.
+        """
+        return pulumi.get(self, "certificate_source")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateStatus")
+    def certificate_status(self) -> _builtins.str:
+        """
+        The status of the certificate. Valid values: `issued`, `revoked`, `willExpire` and `expired`.
+        """
+        return pulumi.get(self, "certificate_status")
+
+    @_builtins.property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> _builtins.str:
+        """
+        The common name of the certificate.
+        """
+        return pulumi.get(self, "common_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        All domain names covered by the certificate, separated by commas.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="existPrivateKey")
+    def exist_private_key(self) -> _builtins.bool:
+        """
+        Indicates whether the private key of the certificate is held on the server side.
+        """
+        return pulumi.get(self, "exist_private_key")
+
+    @_builtins.property
+    @pulumi.getter(name="fingerPrint")
+    def finger_print(self) -> _builtins.str:
+        """
+        The public key fingerprint of the certificate.
+        """
+        return pulumi.get(self, "finger_print")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> _builtins.str:
+        """
+        The certificate authority that issued the certificate.
+        """
+        return pulumi.get(self, "issuer")
+
+    @_builtins.property
+    @pulumi.getter(name="keySize")
+    def key_size(self) -> _builtins.int:
+        """
+        The key length of the certificate algorithm.
+        """
+        return pulumi.get(self, "key_size")
+
+    @_builtins.property
+    @pulumi.getter(name="notAfter")
+    def not_after(self) -> _builtins.int:
+        """
+        The end of the certificate validity period.
+        """
+        return pulumi.get(self, "not_after")
+
+    @_builtins.property
+    @pulumi.getter(name="notBefore")
+    def not_before(self) -> _builtins.int:
+        """
+        The start of the certificate validity period.
+        """
+        return pulumi.get(self, "not_before")
 
 

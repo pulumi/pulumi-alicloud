@@ -135,12 +135,8 @@ type GetBaselinesResult struct {
 }
 
 func GetBaselinesOutput(ctx *pulumi.Context, args GetBaselinesOutputArgs, opts ...pulumi.InvokeOption) GetBaselinesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBaselinesResultOutput, error) {
-			args := v.(GetBaselinesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:governance/getBaselines:getBaselines", args, GetBaselinesResultOutput{}, options).(GetBaselinesResultOutput), nil
-		}).(GetBaselinesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:governance/getBaselines:getBaselines", args, GetBaselinesResultOutput{}, options).(GetBaselinesResultOutput)
 }
 
 // A collection of arguments for invoking getBaselines.

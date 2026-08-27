@@ -104,12 +104,8 @@ type GetRestoreJobsResult struct {
 }
 
 func GetRestoreJobsOutput(ctx *pulumi.Context, args GetRestoreJobsOutputArgs, opts ...pulumi.InvokeOption) GetRestoreJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRestoreJobsResultOutput, error) {
-			args := v.(GetRestoreJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getRestoreJobs:getRestoreJobs", args, GetRestoreJobsResultOutput{}, options).(GetRestoreJobsResultOutput), nil
-		}).(GetRestoreJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getRestoreJobs:getRestoreJobs", args, GetRestoreJobsResultOutput{}, options).(GetRestoreJobsResultOutput)
 }
 
 // A collection of arguments for invoking getRestoreJobs.

@@ -80,12 +80,8 @@ type GetRoutineCodeVersionsResult struct {
 }
 
 func GetRoutineCodeVersionsOutput(ctx *pulumi.Context, args GetRoutineCodeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetRoutineCodeVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRoutineCodeVersionsResultOutput, error) {
-			args := v.(GetRoutineCodeVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:esa/getRoutineCodeVersions:getRoutineCodeVersions", args, GetRoutineCodeVersionsResultOutput{}, options).(GetRoutineCodeVersionsResultOutput), nil
-		}).(GetRoutineCodeVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:esa/getRoutineCodeVersions:getRoutineCodeVersions", args, GetRoutineCodeVersionsResultOutput{}, options).(GetRoutineCodeVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getRoutineCodeVersions.

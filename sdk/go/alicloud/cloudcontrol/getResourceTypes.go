@@ -83,12 +83,8 @@ type GetResourceTypesResult struct {
 }
 
 func GetResourceTypesOutput(ctx *pulumi.Context, args GetResourceTypesOutputArgs, opts ...pulumi.InvokeOption) GetResourceTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetResourceTypesResultOutput, error) {
-			args := v.(GetResourceTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudcontrol/getResourceTypes:getResourceTypes", args, GetResourceTypesResultOutput{}, options).(GetResourceTypesResultOutput), nil
-		}).(GetResourceTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudcontrol/getResourceTypes:getResourceTypes", args, GetResourceTypesResultOutput{}, options).(GetResourceTypesResultOutput)
 }
 
 // A collection of arguments for invoking getResourceTypes.

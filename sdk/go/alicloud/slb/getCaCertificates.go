@@ -80,12 +80,8 @@ type GetCaCertificatesResult struct {
 }
 
 func GetCaCertificatesOutput(ctx *pulumi.Context, args GetCaCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetCaCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCaCertificatesResultOutput, error) {
-			args := v.(GetCaCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:slb/getCaCertificates:getCaCertificates", args, GetCaCertificatesResultOutput{}, options).(GetCaCertificatesResultOutput), nil
-		}).(GetCaCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:slb/getCaCertificates:getCaCertificates", args, GetCaCertificatesResultOutput{}, options).(GetCaCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getCaCertificates.

@@ -89,12 +89,8 @@ type GetServerBackupPlansResult struct {
 }
 
 func GetServerBackupPlansOutput(ctx *pulumi.Context, args GetServerBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerBackupPlansResultOutput, error) {
-			args := v.(GetServerBackupPlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args, GetServerBackupPlansResultOutput{}, options).(GetServerBackupPlansResultOutput), nil
-		}).(GetServerBackupPlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args, GetServerBackupPlansResultOutput{}, options).(GetServerBackupPlansResultOutput)
 }
 
 // A collection of arguments for invoking getServerBackupPlans.

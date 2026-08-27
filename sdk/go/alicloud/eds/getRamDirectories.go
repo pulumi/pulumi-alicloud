@@ -87,12 +87,8 @@ type GetRamDirectoriesResult struct {
 }
 
 func GetRamDirectoriesOutput(ctx *pulumi.Context, args GetRamDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetRamDirectoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRamDirectoriesResultOutput, error) {
-			args := v.(GetRamDirectoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getRamDirectories:getRamDirectories", args, GetRamDirectoriesResultOutput{}, options).(GetRamDirectoriesResultOutput), nil
-		}).(GetRamDirectoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getRamDirectories:getRamDirectories", args, GetRamDirectoriesResultOutput{}, options).(GetRamDirectoriesResultOutput)
 }
 
 // A collection of arguments for invoking getRamDirectories.

@@ -72,12 +72,8 @@ type GetCollationTimeZonesResult struct {
 }
 
 func GetCollationTimeZonesOutput(ctx *pulumi.Context, args GetCollationTimeZonesOutputArgs, opts ...pulumi.InvokeOption) GetCollationTimeZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCollationTimeZonesResultOutput, error) {
-			args := v.(GetCollationTimeZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args, GetCollationTimeZonesResultOutput{}, options).(GetCollationTimeZonesResultOutput), nil
-		}).(GetCollationTimeZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args, GetCollationTimeZonesResultOutput{}, options).(GetCollationTimeZonesResultOutput)
 }
 
 // A collection of arguments for invoking getCollationTimeZones.

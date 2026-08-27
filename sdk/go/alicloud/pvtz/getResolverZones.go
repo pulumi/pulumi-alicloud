@@ -71,12 +71,8 @@ type GetResolverZonesResult struct {
 }
 
 func GetResolverZonesOutput(ctx *pulumi.Context, args GetResolverZonesOutputArgs, opts ...pulumi.InvokeOption) GetResolverZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetResolverZonesResultOutput, error) {
-			args := v.(GetResolverZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:pvtz/getResolverZones:getResolverZones", args, GetResolverZonesResultOutput{}, options).(GetResolverZonesResultOutput), nil
-		}).(GetResolverZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:pvtz/getResolverZones:getResolverZones", args, GetResolverZonesResultOutput{}, options).(GetResolverZonesResultOutput)
 }
 
 // A collection of arguments for invoking getResolverZones.

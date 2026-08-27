@@ -71,12 +71,8 @@ type GetStocksResult struct {
 }
 
 func GetStocksOutput(ctx *pulumi.Context, args GetStocksOutputArgs, opts ...pulumi.InvokeOption) GetStocksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStocksResultOutput, error) {
-			args := v.(GetStocksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudstoragegateway/getStocks:getStocks", args, GetStocksResultOutput{}, options).(GetStocksResultOutput), nil
-		}).(GetStocksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudstoragegateway/getStocks:getStocks", args, GetStocksResultOutput{}, options).(GetStocksResultOutput)
 }
 
 // A collection of arguments for invoking getStocks.

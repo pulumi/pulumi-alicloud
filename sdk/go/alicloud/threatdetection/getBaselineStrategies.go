@@ -96,12 +96,8 @@ type GetBaselineStrategiesResult struct {
 }
 
 func GetBaselineStrategiesOutput(ctx *pulumi.Context, args GetBaselineStrategiesOutputArgs, opts ...pulumi.InvokeOption) GetBaselineStrategiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBaselineStrategiesResultOutput, error) {
-			args := v.(GetBaselineStrategiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args, GetBaselineStrategiesResultOutput{}, options).(GetBaselineStrategiesResultOutput), nil
-		}).(GetBaselineStrategiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args, GetBaselineStrategiesResultOutput{}, options).(GetBaselineStrategiesResultOutput)
 }
 
 // A collection of arguments for invoking getBaselineStrategies.

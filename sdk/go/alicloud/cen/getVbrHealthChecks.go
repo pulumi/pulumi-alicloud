@@ -57,12 +57,8 @@ type GetVbrHealthChecksResult struct {
 }
 
 func GetVbrHealthChecksOutput(ctx *pulumi.Context, args GetVbrHealthChecksOutputArgs, opts ...pulumi.InvokeOption) GetVbrHealthChecksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVbrHealthChecksResultOutput, error) {
-			args := v.(GetVbrHealthChecksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args, GetVbrHealthChecksResultOutput{}, options).(GetVbrHealthChecksResultOutput), nil
-		}).(GetVbrHealthChecksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args, GetVbrHealthChecksResultOutput{}, options).(GetVbrHealthChecksResultOutput)
 }
 
 // A collection of arguments for invoking getVbrHealthChecks.

@@ -91,12 +91,8 @@ type GetTrafficMirrorFilterIngressRulesResult struct {
 }
 
 func GetTrafficMirrorFilterIngressRulesOutput(ctx *pulumi.Context, args GetTrafficMirrorFilterIngressRulesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorFilterIngressRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTrafficMirrorFilterIngressRulesResultOutput, error) {
-			args := v.(GetTrafficMirrorFilterIngressRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args, GetTrafficMirrorFilterIngressRulesResultOutput{}, options).(GetTrafficMirrorFilterIngressRulesResultOutput), nil
-		}).(GetTrafficMirrorFilterIngressRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args, GetTrafficMirrorFilterIngressRulesResultOutput{}, options).(GetTrafficMirrorFilterIngressRulesResultOutput)
 }
 
 // A collection of arguments for invoking getTrafficMirrorFilterIngressRules.

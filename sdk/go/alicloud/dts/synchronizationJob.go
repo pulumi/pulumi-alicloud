@@ -111,7 +111,6 @@ import (
 //			var exampleInstance []*rds.Instance
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := rds.NewInstance(ctx, fmt.Sprintf("example-%v", key0), &rds.InstanceArgs{
 //					Engine:                pulumi.String("MySQL"),
 //					EngineVersion:         pulumi.String("8.0"),

@@ -75,12 +75,8 @@ type GetBindingsResult struct {
 }
 
 func GetBindingsOutput(ctx *pulumi.Context, args GetBindingsOutputArgs, opts ...pulumi.InvokeOption) GetBindingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBindingsResultOutput, error) {
-			args := v.(GetBindingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:amqp/getBindings:getBindings", args, GetBindingsResultOutput{}, options).(GetBindingsResultOutput), nil
-		}).(GetBindingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:amqp/getBindings:getBindings", args, GetBindingsResultOutput{}, options).(GetBindingsResultOutput)
 }
 
 // A collection of arguments for invoking getBindings.

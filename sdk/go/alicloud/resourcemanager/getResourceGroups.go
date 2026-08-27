@@ -85,12 +85,8 @@ type GetResourceGroupsResult struct {
 }
 
 func GetResourceGroupsOutput(ctx *pulumi.Context, args GetResourceGroupsOutputArgs, opts ...pulumi.InvokeOption) GetResourceGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetResourceGroupsResultOutput, error) {
-			args := v.(GetResourceGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args, GetResourceGroupsResultOutput{}, options).(GetResourceGroupsResultOutput), nil
-		}).(GetResourceGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args, GetResourceGroupsResultOutput{}, options).(GetResourceGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getResourceGroups.

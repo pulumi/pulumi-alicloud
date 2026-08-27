@@ -161,7 +161,6 @@ import (
 //			var defaultServiceCertificate []*cas.ServiceCertificate
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := cas.NewServiceCertificate(ctx, fmt.Sprintf("default-%v", key0), &cas.ServiceCertificateArgs{
 //					CertificateName: pulumi.String(invokeJoin2.Result),
 //					Cert: pulumi.String(`-----BEGIN CERTIFICATE-----

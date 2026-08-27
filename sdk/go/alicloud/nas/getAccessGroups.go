@@ -102,12 +102,8 @@ type GetAccessGroupsResult struct {
 }
 
 func GetAccessGroupsOutput(ctx *pulumi.Context, args GetAccessGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAccessGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessGroupsResultOutput, error) {
-			args := v.(GetAccessGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nas/getAccessGroups:getAccessGroups", args, GetAccessGroupsResultOutput{}, options).(GetAccessGroupsResultOutput), nil
-		}).(GetAccessGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nas/getAccessGroups:getAccessGroups", args, GetAccessGroupsResultOutput{}, options).(GetAccessGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getAccessGroups.

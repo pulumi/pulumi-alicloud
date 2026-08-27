@@ -128,12 +128,8 @@ type LookupPrometheusResult struct {
 }
 
 func LookupPrometheusOutput(ctx *pulumi.Context, args LookupPrometheusOutputArgs, opts ...pulumi.InvokeOption) LookupPrometheusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrometheusResultOutput, error) {
-			args := v.(LookupPrometheusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getPrometheus:getPrometheus", args, LookupPrometheusResultOutput{}, options).(LookupPrometheusResultOutput), nil
-		}).(LookupPrometheusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getPrometheus:getPrometheus", args, LookupPrometheusResultOutput{}, options).(LookupPrometheusResultOutput)
 }
 
 // A collection of arguments for invoking getPrometheus.

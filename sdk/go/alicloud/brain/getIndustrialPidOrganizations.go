@@ -85,12 +85,8 @@ type GetIndustrialPidOrganizationsResult struct {
 }
 
 func GetIndustrialPidOrganizationsOutput(ctx *pulumi.Context, args GetIndustrialPidOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidOrganizationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIndustrialPidOrganizationsResultOutput, error) {
-			args := v.(GetIndustrialPidOrganizationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args, GetIndustrialPidOrganizationsResultOutput{}, options).(GetIndustrialPidOrganizationsResultOutput), nil
-		}).(GetIndustrialPidOrganizationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args, GetIndustrialPidOrganizationsResultOutput{}, options).(GetIndustrialPidOrganizationsResultOutput)
 }
 
 // A collection of arguments for invoking getIndustrialPidOrganizations.

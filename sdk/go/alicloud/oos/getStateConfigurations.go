@@ -75,12 +75,8 @@ type GetStateConfigurationsResult struct {
 }
 
 func GetStateConfigurationsOutput(ctx *pulumi.Context, args GetStateConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetStateConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStateConfigurationsResultOutput, error) {
-			args := v.(GetStateConfigurationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oos/getStateConfigurations:getStateConfigurations", args, GetStateConfigurationsResultOutput{}, options).(GetStateConfigurationsResultOutput), nil
-		}).(GetStateConfigurationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oos/getStateConfigurations:getStateConfigurations", args, GetStateConfigurationsResultOutput{}, options).(GetStateConfigurationsResultOutput)
 }
 
 // A collection of arguments for invoking getStateConfigurations.

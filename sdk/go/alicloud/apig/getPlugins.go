@@ -144,12 +144,8 @@ type GetPluginsResult struct {
 }
 
 func GetPluginsOutput(ctx *pulumi.Context, args GetPluginsOutputArgs, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPluginsResultOutput, error) {
-			args := v.(GetPluginsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:apig/getPlugins:getPlugins", args, GetPluginsResultOutput{}, options).(GetPluginsResultOutput), nil
-		}).(GetPluginsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:apig/getPlugins:getPlugins", args, GetPluginsResultOutput{}, options).(GetPluginsResultOutput)
 }
 
 // A collection of arguments for invoking getPlugins.

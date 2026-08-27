@@ -97,12 +97,8 @@ type GetServiceSubscriptionsResult struct {
 }
 
 func GetServiceSubscriptionsOutput(ctx *pulumi.Context, args GetServiceSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetServiceSubscriptionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceSubscriptionsResultOutput, error) {
-			args := v.(GetServiceSubscriptionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args, GetServiceSubscriptionsResultOutput{}, options).(GetServiceSubscriptionsResultOutput), nil
-		}).(GetServiceSubscriptionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args, GetServiceSubscriptionsResultOutput{}, options).(GetServiceSubscriptionsResultOutput)
 }
 
 // A collection of arguments for invoking getServiceSubscriptions.

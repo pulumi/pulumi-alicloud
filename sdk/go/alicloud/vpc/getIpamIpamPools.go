@@ -141,12 +141,8 @@ type GetIpamIpamPoolsResult struct {
 }
 
 func GetIpamIpamPoolsOutput(ctx *pulumi.Context, args GetIpamIpamPoolsOutputArgs, opts ...pulumi.InvokeOption) GetIpamIpamPoolsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpamIpamPoolsResultOutput, error) {
-			args := v.(GetIpamIpamPoolsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", args, GetIpamIpamPoolsResultOutput{}, options).(GetIpamIpamPoolsResultOutput), nil
-		}).(GetIpamIpamPoolsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", args, GetIpamIpamPoolsResultOutput{}, options).(GetIpamIpamPoolsResultOutput)
 }
 
 // A collection of arguments for invoking getIpamIpamPools.

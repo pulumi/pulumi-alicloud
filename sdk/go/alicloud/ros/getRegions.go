@@ -66,12 +66,8 @@ type GetRegionsResult struct {
 }
 
 func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegionsResultOutput, error) {
-			args := v.(GetRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ros/getRegions:getRegions", args, GetRegionsResultOutput{}, options).(GetRegionsResultOutput), nil
-		}).(GetRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ros/getRegions:getRegions", args, GetRegionsResultOutput{}, options).(GetRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getRegions.

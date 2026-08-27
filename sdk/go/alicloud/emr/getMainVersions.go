@@ -83,12 +83,8 @@ type GetMainVersionsResult struct {
 }
 
 func GetMainVersionsOutput(ctx *pulumi.Context, args GetMainVersionsOutputArgs, opts ...pulumi.InvokeOption) GetMainVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMainVersionsResultOutput, error) {
-			args := v.(GetMainVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:emr/getMainVersions:getMainVersions", args, GetMainVersionsResultOutput{}, options).(GetMainVersionsResultOutput), nil
-		}).(GetMainVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:emr/getMainVersions:getMainVersions", args, GetMainVersionsResultOutput{}, options).(GetMainVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getMainVersions.

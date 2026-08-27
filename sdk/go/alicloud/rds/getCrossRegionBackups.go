@@ -96,12 +96,8 @@ type GetCrossRegionBackupsResult struct {
 }
 
 func GetCrossRegionBackupsOutput(ctx *pulumi.Context, args GetCrossRegionBackupsOutputArgs, opts ...pulumi.InvokeOption) GetCrossRegionBackupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCrossRegionBackupsResultOutput, error) {
-			args := v.(GetCrossRegionBackupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", args, GetCrossRegionBackupsResultOutput{}, options).(GetCrossRegionBackupsResultOutput), nil
-		}).(GetCrossRegionBackupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", args, GetCrossRegionBackupsResultOutput{}, options).(GetCrossRegionBackupsResultOutput)
 }
 
 // A collection of arguments for invoking getCrossRegionBackups.

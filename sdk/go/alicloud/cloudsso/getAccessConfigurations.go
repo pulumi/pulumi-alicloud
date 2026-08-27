@@ -95,12 +95,8 @@ type GetAccessConfigurationsResult struct {
 }
 
 func GetAccessConfigurationsOutput(ctx *pulumi.Context, args GetAccessConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetAccessConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessConfigurationsResultOutput, error) {
-			args := v.(GetAccessConfigurationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args, GetAccessConfigurationsResultOutput{}, options).(GetAccessConfigurationsResultOutput), nil
-		}).(GetAccessConfigurationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args, GetAccessConfigurationsResultOutput{}, options).(GetAccessConfigurationsResultOutput)
 }
 
 // A collection of arguments for invoking getAccessConfigurations.

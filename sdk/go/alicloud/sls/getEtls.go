@@ -138,12 +138,8 @@ type GetEtlsResult struct {
 }
 
 func GetEtlsOutput(ctx *pulumi.Context, args GetEtlsOutputArgs, opts ...pulumi.InvokeOption) GetEtlsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEtlsResultOutput, error) {
-			args := v.(GetEtlsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sls/getEtls:getEtls", args, GetEtlsResultOutput{}, options).(GetEtlsResultOutput), nil
-		}).(GetEtlsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sls/getEtls:getEtls", args, GetEtlsResultOutput{}, options).(GetEtlsResultOutput)
 }
 
 // A collection of arguments for invoking getEtls.

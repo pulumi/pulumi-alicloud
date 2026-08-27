@@ -59,10 +59,8 @@ type LookupGlobalEventsStorageRegionResult struct {
 }
 
 func LookupGlobalEventsStorageRegionOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupGlobalEventsStorageRegionResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupGlobalEventsStorageRegionResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", nil, LookupGlobalEventsStorageRegionResultOutput{}, options).(LookupGlobalEventsStorageRegionResultOutput), nil
-	}).(LookupGlobalEventsStorageRegionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", nil, LookupGlobalEventsStorageRegionResultOutput{}, options).(LookupGlobalEventsStorageRegionResultOutput)
 }
 
 // A collection of values returned by getGlobalEventsStorageRegion.

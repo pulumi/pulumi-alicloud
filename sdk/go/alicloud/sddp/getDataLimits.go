@@ -78,12 +78,8 @@ type GetDataLimitsResult struct {
 }
 
 func GetDataLimitsOutput(ctx *pulumi.Context, args GetDataLimitsOutputArgs, opts ...pulumi.InvokeOption) GetDataLimitsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataLimitsResultOutput, error) {
-			args := v.(GetDataLimitsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sddp/getDataLimits:getDataLimits", args, GetDataLimitsResultOutput{}, options).(GetDataLimitsResultOutput), nil
-		}).(GetDataLimitsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sddp/getDataLimits:getDataLimits", args, GetDataLimitsResultOutput{}, options).(GetDataLimitsResultOutput)
 }
 
 // A collection of arguments for invoking getDataLimits.

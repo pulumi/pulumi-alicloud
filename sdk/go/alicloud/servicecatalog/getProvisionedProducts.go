@@ -101,12 +101,8 @@ type GetProvisionedProductsResult struct {
 }
 
 func GetProvisionedProductsOutput(ctx *pulumi.Context, args GetProvisionedProductsOutputArgs, opts ...pulumi.InvokeOption) GetProvisionedProductsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProvisionedProductsResultOutput, error) {
-			args := v.(GetProvisionedProductsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args, GetProvisionedProductsResultOutput{}, options).(GetProvisionedProductsResultOutput), nil
-		}).(GetProvisionedProductsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args, GetProvisionedProductsResultOutput{}, options).(GetProvisionedProductsResultOutput)
 }
 
 // A collection of arguments for invoking getProvisionedProducts.

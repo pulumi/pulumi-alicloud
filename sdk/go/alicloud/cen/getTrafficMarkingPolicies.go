@@ -95,12 +95,8 @@ type GetTrafficMarkingPoliciesResult struct {
 }
 
 func GetTrafficMarkingPoliciesOutput(ctx *pulumi.Context, args GetTrafficMarkingPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMarkingPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTrafficMarkingPoliciesResultOutput, error) {
-			args := v.(GetTrafficMarkingPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args, GetTrafficMarkingPoliciesResultOutput{}, options).(GetTrafficMarkingPoliciesResultOutput), nil
-		}).(GetTrafficMarkingPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args, GetTrafficMarkingPoliciesResultOutput{}, options).(GetTrafficMarkingPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getTrafficMarkingPolicies.

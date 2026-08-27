@@ -209,12 +209,8 @@ type GetEnvFeaturesResult struct {
 }
 
 func GetEnvFeaturesOutput(ctx *pulumi.Context, args GetEnvFeaturesOutputArgs, opts ...pulumi.InvokeOption) GetEnvFeaturesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvFeaturesResultOutput, error) {
-			args := v.(GetEnvFeaturesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getEnvFeatures:getEnvFeatures", args, GetEnvFeaturesResultOutput{}, options).(GetEnvFeaturesResultOutput), nil
-		}).(GetEnvFeaturesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getEnvFeatures:getEnvFeatures", args, GetEnvFeaturesResultOutput{}, options).(GetEnvFeaturesResultOutput)
 }
 
 // A collection of arguments for invoking getEnvFeatures.

@@ -93,12 +93,8 @@ type GetBgpNetworksResult struct {
 }
 
 func GetBgpNetworksOutput(ctx *pulumi.Context, args GetBgpNetworksOutputArgs, opts ...pulumi.InvokeOption) GetBgpNetworksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBgpNetworksResultOutput, error) {
-			args := v.(GetBgpNetworksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getBgpNetworks:getBgpNetworks", args, GetBgpNetworksResultOutput{}, options).(GetBgpNetworksResultOutput), nil
-		}).(GetBgpNetworksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getBgpNetworks:getBgpNetworks", args, GetBgpNetworksResultOutput{}, options).(GetBgpNetworksResultOutput)
 }
 
 // A collection of arguments for invoking getBgpNetworks.

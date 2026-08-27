@@ -181,12 +181,8 @@ type GetGatewayVcoRoutesResult struct {
 }
 
 func GetGatewayVcoRoutesOutput(ctx *pulumi.Context, args GetGatewayVcoRoutesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVcoRoutesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewayVcoRoutesResultOutput, error) {
-			args := v.(GetGatewayVcoRoutesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", args, GetGatewayVcoRoutesResultOutput{}, options).(GetGatewayVcoRoutesResultOutput), nil
-		}).(GetGatewayVcoRoutesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", args, GetGatewayVcoRoutesResultOutput{}, options).(GetGatewayVcoRoutesResultOutput)
 }
 
 // A collection of arguments for invoking getGatewayVcoRoutes.

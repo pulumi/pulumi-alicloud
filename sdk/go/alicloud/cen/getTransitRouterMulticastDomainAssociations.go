@@ -99,12 +99,8 @@ type GetTransitRouterMulticastDomainAssociationsResult struct {
 }
 
 func GetTransitRouterMulticastDomainAssociationsOutput(ctx *pulumi.Context, args GetTransitRouterMulticastDomainAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterMulticastDomainAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterMulticastDomainAssociationsResultOutput, error) {
-			args := v.(GetTransitRouterMulticastDomainAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", args, GetTransitRouterMulticastDomainAssociationsResultOutput{}, options).(GetTransitRouterMulticastDomainAssociationsResultOutput), nil
-		}).(GetTransitRouterMulticastDomainAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", args, GetTransitRouterMulticastDomainAssociationsResultOutput{}, options).(GetTransitRouterMulticastDomainAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouterMulticastDomainAssociations.

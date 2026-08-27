@@ -87,12 +87,8 @@ type GetLogAnalysesResult struct {
 }
 
 func GetLogAnalysesOutput(ctx *pulumi.Context, args GetLogAnalysesOutputArgs, opts ...pulumi.InvokeOption) GetLogAnalysesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLogAnalysesResultOutput, error) {
-			args := v.(GetLogAnalysesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nas/getLogAnalyses:getLogAnalyses", args, GetLogAnalysesResultOutput{}, options).(GetLogAnalysesResultOutput), nil
-		}).(GetLogAnalysesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nas/getLogAnalyses:getLogAnalyses", args, GetLogAnalysesResultOutput{}, options).(GetLogAnalysesResultOutput)
 }
 
 // A collection of arguments for invoking getLogAnalyses.

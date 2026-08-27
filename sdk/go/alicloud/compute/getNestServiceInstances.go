@@ -97,12 +97,8 @@ type GetNestServiceInstancesResult struct {
 }
 
 func GetNestServiceInstancesOutput(ctx *pulumi.Context, args GetNestServiceInstancesOutputArgs, opts ...pulumi.InvokeOption) GetNestServiceInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNestServiceInstancesResultOutput, error) {
-			args := v.(GetNestServiceInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args, GetNestServiceInstancesResultOutput{}, options).(GetNestServiceInstancesResultOutput), nil
-		}).(GetNestServiceInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args, GetNestServiceInstancesResultOutput{}, options).(GetNestServiceInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getNestServiceInstances.

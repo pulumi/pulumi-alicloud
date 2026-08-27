@@ -79,12 +79,8 @@ type GetApplicationsResult struct {
 }
 
 func GetApplicationsOutput(ctx *pulumi.Context, args GetApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApplicationsResultOutput, error) {
-			args := v.(GetApplicationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:edas/getApplications:getApplications", args, GetApplicationsResultOutput{}, options).(GetApplicationsResultOutput), nil
-		}).(GetApplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:edas/getApplications:getApplications", args, GetApplicationsResultOutput{}, options).(GetApplicationsResultOutput)
 }
 
 // A collection of arguments for invoking getApplications.

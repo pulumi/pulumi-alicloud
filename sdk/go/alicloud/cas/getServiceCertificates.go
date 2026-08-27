@@ -157,12 +157,8 @@ type GetServiceCertificatesResult struct {
 }
 
 func GetServiceCertificatesOutput(ctx *pulumi.Context, args GetServiceCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetServiceCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceCertificatesResultOutput, error) {
-			args := v.(GetServiceCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cas/getServiceCertificates:getServiceCertificates", args, GetServiceCertificatesResultOutput{}, options).(GetServiceCertificatesResultOutput), nil
-		}).(GetServiceCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cas/getServiceCertificates:getServiceCertificates", args, GetServiceCertificatesResultOutput{}, options).(GetServiceCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getServiceCertificates.

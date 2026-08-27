@@ -141,12 +141,8 @@ type GetSwitchesResult struct {
 }
 
 func GetSwitchesOutput(ctx *pulumi.Context, args GetSwitchesOutputArgs, opts ...pulumi.InvokeOption) GetSwitchesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSwitchesResultOutput, error) {
-			args := v.(GetSwitchesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getSwitches:getSwitches", args, GetSwitchesResultOutput{}, options).(GetSwitchesResultOutput), nil
-		}).(GetSwitchesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getSwitches:getSwitches", args, GetSwitchesResultOutput{}, options).(GetSwitchesResultOutput)
 }
 
 // A collection of arguments for invoking getSwitches.

@@ -85,12 +85,8 @@ type GetRegistryEnterpriseInstancesResult struct {
 }
 
 func GetRegistryEnterpriseInstancesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistryEnterpriseInstancesResultOutput, error) {
-			args := v.(GetRegistryEnterpriseInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args, GetRegistryEnterpriseInstancesResultOutput{}, options).(GetRegistryEnterpriseInstancesResultOutput), nil
-		}).(GetRegistryEnterpriseInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args, GetRegistryEnterpriseInstancesResultOutput{}, options).(GetRegistryEnterpriseInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getRegistryEnterpriseInstances.

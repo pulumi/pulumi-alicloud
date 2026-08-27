@@ -95,12 +95,8 @@ type GetPolardbxInstancesResult struct {
 }
 
 func GetPolardbxInstancesOutput(ctx *pulumi.Context, args GetPolardbxInstancesOutputArgs, opts ...pulumi.InvokeOption) GetPolardbxInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPolardbxInstancesResultOutput, error) {
-			args := v.(GetPolardbxInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:drds/getPolardbxInstances:getPolardbxInstances", args, GetPolardbxInstancesResultOutput{}, options).(GetPolardbxInstancesResultOutput), nil
-		}).(GetPolardbxInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:drds/getPolardbxInstances:getPolardbxInstances", args, GetPolardbxInstancesResultOutput{}, options).(GetPolardbxInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getPolardbxInstances.

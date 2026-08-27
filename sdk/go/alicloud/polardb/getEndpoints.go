@@ -114,12 +114,8 @@ type GetEndpointsResult struct {
 }
 
 func GetEndpointsOutput(ctx *pulumi.Context, args GetEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEndpointsResultOutput, error) {
-			args := v.(GetEndpointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:polardb/getEndpoints:getEndpoints", args, GetEndpointsResultOutput{}, options).(GetEndpointsResultOutput), nil
-		}).(GetEndpointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:polardb/getEndpoints:getEndpoints", args, GetEndpointsResultOutput{}, options).(GetEndpointsResultOutput)
 }
 
 // A collection of arguments for invoking getEndpoints.

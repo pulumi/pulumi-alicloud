@@ -98,12 +98,8 @@ type GetEcsImageComponentsResult struct {
 }
 
 func GetEcsImageComponentsOutput(ctx *pulumi.Context, args GetEcsImageComponentsOutputArgs, opts ...pulumi.InvokeOption) GetEcsImageComponentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsImageComponentsResultOutput, error) {
-			args := v.(GetEcsImageComponentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args, GetEcsImageComponentsResultOutput{}, options).(GetEcsImageComponentsResultOutput), nil
-		}).(GetEcsImageComponentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args, GetEcsImageComponentsResultOutput{}, options).(GetEcsImageComponentsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsImageComponents.

@@ -80,12 +80,8 @@ type GetDomainTxtGuidResult struct {
 }
 
 func GetDomainTxtGuidOutput(ctx *pulumi.Context, args GetDomainTxtGuidOutputArgs, opts ...pulumi.InvokeOption) GetDomainTxtGuidResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainTxtGuidResultOutput, error) {
-			args := v.(GetDomainTxtGuidArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args, GetDomainTxtGuidResultOutput{}, options).(GetDomainTxtGuidResultOutput), nil
-		}).(GetDomainTxtGuidResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args, GetDomainTxtGuidResultOutput{}, options).(GetDomainTxtGuidResultOutput)
 }
 
 // A collection of arguments for invoking getDomainTxtGuid.

@@ -73,12 +73,8 @@ type GetOtsSnapshotsResult struct {
 }
 
 func GetOtsSnapshotsOutput(ctx *pulumi.Context, args GetOtsSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetOtsSnapshotsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOtsSnapshotsResultOutput, error) {
-			args := v.(GetOtsSnapshotsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args, GetOtsSnapshotsResultOutput{}, options).(GetOtsSnapshotsResultOutput), nil
-		}).(GetOtsSnapshotsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args, GetOtsSnapshotsResultOutput{}, options).(GetOtsSnapshotsResultOutput)
 }
 
 // A collection of arguments for invoking getOtsSnapshots.

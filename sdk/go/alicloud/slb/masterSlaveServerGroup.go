@@ -103,7 +103,6 @@ import (
 //			var msServerGroupInstance []*ecs.Instance
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("ms_server_group-%v", key0), &ecs.InstanceArgs{
 //					ImageId:      pulumi.String(image.Images[0].Id),
 //					InstanceType: pulumi.String(msServerGroupGetInstanceTypes.InstanceTypes[0].Id),

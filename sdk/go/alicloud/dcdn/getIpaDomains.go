@@ -96,12 +96,8 @@ type GetIpaDomainsResult struct {
 }
 
 func GetIpaDomainsOutput(ctx *pulumi.Context, args GetIpaDomainsOutputArgs, opts ...pulumi.InvokeOption) GetIpaDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpaDomainsResultOutput, error) {
-			args := v.(GetIpaDomainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dcdn/getIpaDomains:getIpaDomains", args, GetIpaDomainsResultOutput{}, options).(GetIpaDomainsResultOutput), nil
-		}).(GetIpaDomainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dcdn/getIpaDomains:getIpaDomains", args, GetIpaDomainsResultOutput{}, options).(GetIpaDomainsResultOutput)
 }
 
 // A collection of arguments for invoking getIpaDomains.

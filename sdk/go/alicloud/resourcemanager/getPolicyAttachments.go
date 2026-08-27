@@ -90,12 +90,8 @@ type GetPolicyAttachmentsResult struct {
 }
 
 func GetPolicyAttachmentsOutput(ctx *pulumi.Context, args GetPolicyAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPolicyAttachmentsResultOutput, error) {
-			args := v.(GetPolicyAttachmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args, GetPolicyAttachmentsResultOutput{}, options).(GetPolicyAttachmentsResultOutput), nil
-		}).(GetPolicyAttachmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args, GetPolicyAttachmentsResultOutput{}, options).(GetPolicyAttachmentsResultOutput)
 }
 
 // A collection of arguments for invoking getPolicyAttachments.

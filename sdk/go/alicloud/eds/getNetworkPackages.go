@@ -90,12 +90,8 @@ type GetNetworkPackagesResult struct {
 }
 
 func GetNetworkPackagesOutput(ctx *pulumi.Context, args GetNetworkPackagesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkPackagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkPackagesResultOutput, error) {
-			args := v.(GetNetworkPackagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getNetworkPackages:getNetworkPackages", args, GetNetworkPackagesResultOutput{}, options).(GetNetworkPackagesResultOutput), nil
-		}).(GetNetworkPackagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getNetworkPackages:getNetworkPackages", args, GetNetworkPackagesResultOutput{}, options).(GetNetworkPackagesResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkPackages.

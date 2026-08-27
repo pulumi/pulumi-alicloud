@@ -84,12 +84,8 @@ type GetIntegrationExportersResult struct {
 }
 
 func GetIntegrationExportersOutput(ctx *pulumi.Context, args GetIntegrationExportersOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationExportersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIntegrationExportersResultOutput, error) {
-			args := v.(GetIntegrationExportersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getIntegrationExporters:getIntegrationExporters", args, GetIntegrationExportersResultOutput{}, options).(GetIntegrationExportersResultOutput), nil
-		}).(GetIntegrationExportersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getIntegrationExporters:getIntegrationExporters", args, GetIntegrationExportersResultOutput{}, options).(GetIntegrationExportersResultOutput)
 }
 
 // A collection of arguments for invoking getIntegrationExporters.

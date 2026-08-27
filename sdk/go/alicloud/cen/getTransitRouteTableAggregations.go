@@ -100,12 +100,8 @@ type GetTransitRouteTableAggregationsResult struct {
 }
 
 func GetTransitRouteTableAggregationsOutput(ctx *pulumi.Context, args GetTransitRouteTableAggregationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouteTableAggregationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouteTableAggregationsResultOutput, error) {
-			args := v.(GetTransitRouteTableAggregationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args, GetTransitRouteTableAggregationsResultOutput{}, options).(GetTransitRouteTableAggregationsResultOutput), nil
-		}).(GetTransitRouteTableAggregationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args, GetTransitRouteTableAggregationsResultOutput{}, options).(GetTransitRouteTableAggregationsResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouteTableAggregations.

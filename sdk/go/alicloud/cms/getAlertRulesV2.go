@@ -194,12 +194,8 @@ type GetAlertRulesV2Result struct {
 }
 
 func GetAlertRulesV2Output(ctx *pulumi.Context, args GetAlertRulesV2OutputArgs, opts ...pulumi.InvokeOption) GetAlertRulesV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlertRulesV2ResultOutput, error) {
-			args := v.(GetAlertRulesV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getAlertRulesV2:getAlertRulesV2", args, GetAlertRulesV2ResultOutput{}, options).(GetAlertRulesV2ResultOutput), nil
-		}).(GetAlertRulesV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getAlertRulesV2:getAlertRulesV2", args, GetAlertRulesV2ResultOutput{}, options).(GetAlertRulesV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAlertRulesV2.

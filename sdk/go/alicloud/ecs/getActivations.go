@@ -77,12 +77,8 @@ type GetActivationsResult struct {
 }
 
 func GetActivationsOutput(ctx *pulumi.Context, args GetActivationsOutputArgs, opts ...pulumi.InvokeOption) GetActivationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetActivationsResultOutput, error) {
-			args := v.(GetActivationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getActivations:getActivations", args, GetActivationsResultOutput{}, options).(GetActivationsResultOutput), nil
-		}).(GetActivationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getActivations:getActivations", args, GetActivationsResultOutput{}, options).(GetActivationsResultOutput)
 }
 
 // A collection of arguments for invoking getActivations.

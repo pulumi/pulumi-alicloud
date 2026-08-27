@@ -128,12 +128,8 @@ type GetSiteMonitorsResult struct {
 }
 
 func GetSiteMonitorsOutput(ctx *pulumi.Context, args GetSiteMonitorsOutputArgs, opts ...pulumi.InvokeOption) GetSiteMonitorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSiteMonitorsResultOutput, error) {
-			args := v.(GetSiteMonitorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getSiteMonitors:getSiteMonitors", args, GetSiteMonitorsResultOutput{}, options).(GetSiteMonitorsResultOutput), nil
-		}).(GetSiteMonitorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getSiteMonitors:getSiteMonitors", args, GetSiteMonitorsResultOutput{}, options).(GetSiteMonitorsResultOutput)
 }
 
 // A collection of arguments for invoking getSiteMonitors.

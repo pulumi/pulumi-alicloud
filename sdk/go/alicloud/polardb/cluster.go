@@ -132,7 +132,6 @@ import (
 //				return tmp0, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ram.NewRole(ctx, fmt.Sprintf("default-%v", key0), &ram.RoleArgs{
 //					Name: pulumi.String("AliyunRDSInstanceEncryptionDefaultRole"),
 //					Document: pulumi.String(`    {
@@ -170,7 +169,6 @@ import (
 //				return tmp2, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := resourcemanager.NewPolicyAttachment(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.PolicyAttachmentArgs{
 //					PolicyName: pulumi.String("AliyunRDSInstanceEncryptionRolePolicy"),
 //					PolicyType: pulumi.String("System"),

@@ -92,12 +92,8 @@ type GetDdosBgpInstancesResult struct {
 }
 
 func GetDdosBgpInstancesOutput(ctx *pulumi.Context, args GetDdosBgpInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDdosBgpInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDdosBgpInstancesResultOutput, error) {
-			args := v.(GetDdosBgpInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args, GetDdosBgpInstancesResultOutput{}, options).(GetDdosBgpInstancesResultOutput), nil
-		}).(GetDdosBgpInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args, GetDdosBgpInstancesResultOutput{}, options).(GetDdosBgpInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getDdosBgpInstances.

@@ -181,12 +181,8 @@ type GetLogtailConfigsResult struct {
 }
 
 func GetLogtailConfigsOutput(ctx *pulumi.Context, args GetLogtailConfigsOutputArgs, opts ...pulumi.InvokeOption) GetLogtailConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLogtailConfigsResultOutput, error) {
-			args := v.(GetLogtailConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sls/getLogtailConfigs:getLogtailConfigs", args, GetLogtailConfigsResultOutput{}, options).(GetLogtailConfigsResultOutput), nil
-		}).(GetLogtailConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sls/getLogtailConfigs:getLogtailConfigs", args, GetLogtailConfigsResultOutput{}, options).(GetLogtailConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getLogtailConfigs.

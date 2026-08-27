@@ -90,12 +90,8 @@ type GetPhysicalConnectionsResult struct {
 }
 
 func GetPhysicalConnectionsOutput(ctx *pulumi.Context, args GetPhysicalConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPhysicalConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPhysicalConnectionsResultOutput, error) {
-			args := v.(GetPhysicalConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args, GetPhysicalConnectionsResultOutput{}, options).(GetPhysicalConnectionsResultOutput), nil
-		}).(GetPhysicalConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args, GetPhysicalConnectionsResultOutput{}, options).(GetPhysicalConnectionsResultOutput)
 }
 
 // A collection of arguments for invoking getPhysicalConnections.

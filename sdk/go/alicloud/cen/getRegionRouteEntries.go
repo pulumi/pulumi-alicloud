@@ -71,12 +71,8 @@ type GetRegionRouteEntriesResult struct {
 }
 
 func GetRegionRouteEntriesOutput(ctx *pulumi.Context, args GetRegionRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRegionRouteEntriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegionRouteEntriesResultOutput, error) {
-			args := v.(GetRegionRouteEntriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args, GetRegionRouteEntriesResultOutput{}, options).(GetRegionRouteEntriesResultOutput), nil
-		}).(GetRegionRouteEntriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args, GetRegionRouteEntriesResultOutput{}, options).(GetRegionRouteEntriesResultOutput)
 }
 
 // A collection of arguments for invoking getRegionRouteEntries.

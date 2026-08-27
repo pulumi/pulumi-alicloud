@@ -86,7 +86,6 @@ import (
 //			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
 //					Name:      pulumi.Any(vpcName),
 //					CidrBlock: pulumi.Any(vpcCidr),
@@ -111,7 +110,6 @@ import (
 //			var defaultSecurityGroup []*ecs.SecurityGroup
 //			for index := 0; index < tmp2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
 //					Name:  pulumi.Any(securityGroupName),
 //					VpcId: pulumi.String(tmp1),
@@ -143,7 +141,6 @@ import (
 //			var vswitch []*vpc.Switch
 //			for index := 0; index < tmp5; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
 //					AvailabilityZone: pulumi.String(tmp3),
 //					VswitchName:      pulumi.Any(vswitchName),
@@ -362,7 +359,6 @@ import (
 //			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
 //					Name:      pulumi.Any(vpcName),
 //					CidrBlock: pulumi.Any(vpcCidr),
@@ -387,7 +383,6 @@ import (
 //			var defaultSecurityGroup []*ecs.SecurityGroup
 //			for index := 0; index < tmp2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
 //					Name:  pulumi.Any(securityGroupName),
 //					VpcId: pulumi.String(tmp1),
@@ -419,7 +414,6 @@ import (
 //			var vswitch []*vpc.Switch
 //			for index := 0; index < tmp5; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
 //					AvailabilityZone: pulumi.String(tmp3),
 //					VswitchName:      pulumi.Any(vswitchName),
@@ -636,7 +630,6 @@ import (
 //			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
 //					Name:      pulumi.Any(vpcName),
 //					CidrBlock: pulumi.Any(vpcCidr),
@@ -661,7 +654,6 @@ import (
 //			var defaultSecurityGroup []*ecs.SecurityGroup
 //			for index := 0; index < tmp2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
 //					Name:  pulumi.Any(securityGroupName),
 //					VpcId: pulumi.String(tmp1),
@@ -693,7 +685,6 @@ import (
 //			var vswitch []*vpc.Switch
 //			for index := 0; index < tmp5; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
 //					AvailabilityZone: pulumi.String(tmp3),
 //					VswitchName:      pulumi.Any(vswitchName),
@@ -902,7 +893,6 @@ import (
 //			var vpc2 []*vpc.Network
 //			for index := 0; index < tmp0; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
 //					Name:      pulumi.Any(vpcName),
 //					CidrBlock: pulumi.Any(vpcCidr),
@@ -927,7 +917,6 @@ import (
 //			var defaultSecurityGroup []*ecs.SecurityGroup
 //			for index := 0; index < tmp2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
 //					Name:  pulumi.Any(securityGroupName),
 //					VpcId: pulumi.String(tmp1),
@@ -959,7 +948,6 @@ import (
 //			var vswitch []*vpc.Switch
 //			for index := 0; index < tmp5; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
 //					AvailabilityZone: pulumi.String(tmp3),
 //					VswitchName:      pulumi.Any(vswitchName),

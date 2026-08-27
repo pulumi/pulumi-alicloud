@@ -96,12 +96,8 @@ type GetIndustrialPidLoopsResult struct {
 }
 
 func GetIndustrialPidLoopsOutput(ctx *pulumi.Context, args GetIndustrialPidLoopsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidLoopsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIndustrialPidLoopsResultOutput, error) {
-			args := v.(GetIndustrialPidLoopsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args, GetIndustrialPidLoopsResultOutput{}, options).(GetIndustrialPidLoopsResultOutput), nil
-		}).(GetIndustrialPidLoopsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args, GetIndustrialPidLoopsResultOutput{}, options).(GetIndustrialPidLoopsResultOutput)
 }
 
 // A collection of arguments for invoking getIndustrialPidLoops.

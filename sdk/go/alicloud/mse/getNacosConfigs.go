@@ -163,12 +163,8 @@ type GetNacosConfigsResult struct {
 }
 
 func GetNacosConfigsOutput(ctx *pulumi.Context, args GetNacosConfigsOutputArgs, opts ...pulumi.InvokeOption) GetNacosConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNacosConfigsResultOutput, error) {
-			args := v.(GetNacosConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mse/getNacosConfigs:getNacosConfigs", args, GetNacosConfigsResultOutput{}, options).(GetNacosConfigsResultOutput), nil
-		}).(GetNacosConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mse/getNacosConfigs:getNacosConfigs", args, GetNacosConfigsResultOutput{}, options).(GetNacosConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getNacosConfigs.

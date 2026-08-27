@@ -69,12 +69,8 @@ type GetInstanceSpecificationsResult struct {
 }
 
 func GetInstanceSpecificationsOutput(ctx *pulumi.Context, args GetInstanceSpecificationsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceSpecificationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceSpecificationsResultOutput, error) {
-			args := v.(GetInstanceSpecificationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args, GetInstanceSpecificationsResultOutput{}, options).(GetInstanceSpecificationsResultOutput), nil
-		}).(GetInstanceSpecificationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args, GetInstanceSpecificationsResultOutput{}, options).(GetInstanceSpecificationsResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceSpecifications.

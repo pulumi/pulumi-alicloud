@@ -79,12 +79,8 @@ type GetInstanceMembersResult struct {
 }
 
 func GetInstanceMembersOutput(ctx *pulumi.Context, args GetInstanceMembersOutputArgs, opts ...pulumi.InvokeOption) GetInstanceMembersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceMembersResultOutput, error) {
-			args := v.(GetInstanceMembersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args, GetInstanceMembersResultOutput{}, options).(GetInstanceMembersResultOutput), nil
-		}).(GetInstanceMembersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args, GetInstanceMembersResultOutput{}, options).(GetInstanceMembersResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceMembers.

@@ -79,12 +79,8 @@ type GetWafRulesResult struct {
 }
 
 func GetWafRulesOutput(ctx *pulumi.Context, args GetWafRulesOutputArgs, opts ...pulumi.InvokeOption) GetWafRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWafRulesResultOutput, error) {
-			args := v.(GetWafRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dcdn/getWafRules:getWafRules", args, GetWafRulesResultOutput{}, options).(GetWafRulesResultOutput), nil
-		}).(GetWafRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dcdn/getWafRules:getWafRules", args, GetWafRulesResultOutput{}, options).(GetWafRulesResultOutput)
 }
 
 // A collection of arguments for invoking getWafRules.

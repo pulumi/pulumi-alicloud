@@ -74,12 +74,8 @@ type GetAlarmContactGroupsResult struct {
 }
 
 func GetAlarmContactGroupsOutput(ctx *pulumi.Context, args GetAlarmContactGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAlarmContactGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlarmContactGroupsResultOutput, error) {
-			args := v.(GetAlarmContactGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args, GetAlarmContactGroupsResultOutput{}, options).(GetAlarmContactGroupsResultOutput), nil
-		}).(GetAlarmContactGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args, GetAlarmContactGroupsResultOutput{}, options).(GetAlarmContactGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getAlarmContactGroups.

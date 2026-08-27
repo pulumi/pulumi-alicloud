@@ -69,12 +69,8 @@ type GetCharacterSetNamesResult struct {
 }
 
 func GetCharacterSetNamesOutput(ctx *pulumi.Context, args GetCharacterSetNamesOutputArgs, opts ...pulumi.InvokeOption) GetCharacterSetNamesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCharacterSetNamesResultOutput, error) {
-			args := v.(GetCharacterSetNamesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args, GetCharacterSetNamesResultOutput{}, options).(GetCharacterSetNamesResultOutput), nil
-		}).(GetCharacterSetNamesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args, GetCharacterSetNamesResultOutput{}, options).(GetCharacterSetNamesResultOutput)
 }
 
 // A collection of arguments for invoking getCharacterSetNames.

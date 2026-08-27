@@ -50,7 +50,6 @@ import (
 //				return tmp0, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := resourcemanager.NewResourceDirectory(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.ResourceDirectoryArgs{
 //					Status: pulumi.String("Enabled"),
 //				})

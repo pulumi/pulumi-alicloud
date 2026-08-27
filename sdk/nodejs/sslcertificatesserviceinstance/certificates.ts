@@ -17,13 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.sslcertificatesserviceinstance.Certificates({
+ * const _default = alicloud.sslcertificatesserviceinstance.getCertificates({
  *     certificateStatus: "issued",
  * });
  * export const alicloudSslCertificatesServiceInstanceCertificateExampleId = _default.then(_default => _default.certificates?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
 export function certificates(args?: CertificatesArgs, opts?: pulumi.InvokeOptions): Promise<CertificatesResult> {
+    pulumi.log.warn("certificates is deprecated: alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sslcertificatesserviceinstance/certificates:Certificates", {
@@ -102,13 +104,15 @@ export interface CertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.sslcertificatesserviceinstance.Certificates({
+ * const _default = alicloud.sslcertificatesserviceinstance.getCertificates({
  *     certificateStatus: "issued",
  * });
  * export const alicloudSslCertificatesServiceInstanceCertificateExampleId = _default.then(_default => _default.certificates?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
 export function certificatesOutput(args?: CertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CertificatesResult> {
+    pulumi.log.warn("certificates is deprecated: alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sslcertificatesserviceinstance/certificates:Certificates", {

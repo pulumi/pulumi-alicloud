@@ -85,12 +85,8 @@ type GetEndpointAclServiceResult struct {
 }
 
 func GetEndpointAclServiceOutput(ctx *pulumi.Context, args GetEndpointAclServiceOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEndpointAclServiceResultOutput, error) {
-			args := v.(GetEndpointAclServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getEndpointAclService:getEndpointAclService", args, GetEndpointAclServiceResultOutput{}, options).(GetEndpointAclServiceResultOutput), nil
-		}).(GetEndpointAclServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getEndpointAclService:getEndpointAclService", args, GetEndpointAclServiceResultOutput{}, options).(GetEndpointAclServiceResultOutput)
 }
 
 // A collection of arguments for invoking getEndpointAclService.

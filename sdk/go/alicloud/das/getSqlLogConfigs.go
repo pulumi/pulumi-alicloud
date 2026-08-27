@@ -83,12 +83,8 @@ type GetSqlLogConfigsResult struct {
 }
 
 func GetSqlLogConfigsOutput(ctx *pulumi.Context, args GetSqlLogConfigsOutputArgs, opts ...pulumi.InvokeOption) GetSqlLogConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSqlLogConfigsResultOutput, error) {
-			args := v.(GetSqlLogConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:das/getSqlLogConfigs:getSqlLogConfigs", args, GetSqlLogConfigsResultOutput{}, options).(GetSqlLogConfigsResultOutput), nil
-		}).(GetSqlLogConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:das/getSqlLogConfigs:getSqlLogConfigs", args, GetSqlLogConfigsResultOutput{}, options).(GetSqlLogConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getSqlLogConfigs.

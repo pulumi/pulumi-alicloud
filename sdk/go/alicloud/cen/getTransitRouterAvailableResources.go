@@ -72,12 +72,8 @@ type GetTransitRouterAvailableResourcesResult struct {
 }
 
 func GetTransitRouterAvailableResourcesOutput(ctx *pulumi.Context, args GetTransitRouterAvailableResourcesOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterAvailableResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterAvailableResourcesResultOutput, error) {
-			args := v.(GetTransitRouterAvailableResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", args, GetTransitRouterAvailableResourcesResultOutput{}, options).(GetTransitRouterAvailableResourcesResultOutput), nil
-		}).(GetTransitRouterAvailableResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", args, GetTransitRouterAvailableResourcesResultOutput{}, options).(GetTransitRouterAvailableResourcesResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouterAvailableResources.

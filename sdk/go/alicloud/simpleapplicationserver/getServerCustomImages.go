@@ -84,12 +84,8 @@ type GetServerCustomImagesResult struct {
 }
 
 func GetServerCustomImagesOutput(ctx *pulumi.Context, args GetServerCustomImagesOutputArgs, opts ...pulumi.InvokeOption) GetServerCustomImagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerCustomImagesResultOutput, error) {
-			args := v.(GetServerCustomImagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args, GetServerCustomImagesResultOutput{}, options).(GetServerCustomImagesResultOutput), nil
-		}).(GetServerCustomImagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args, GetServerCustomImagesResultOutput{}, options).(GetServerCustomImagesResultOutput)
 }
 
 // A collection of arguments for invoking getServerCustomImages.

@@ -91,12 +91,8 @@ type GetHanaInstancesResult struct {
 }
 
 func GetHanaInstancesOutput(ctx *pulumi.Context, args GetHanaInstancesOutputArgs, opts ...pulumi.InvokeOption) GetHanaInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHanaInstancesResultOutput, error) {
-			args := v.(GetHanaInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getHanaInstances:getHanaInstances", args, GetHanaInstancesResultOutput{}, options).(GetHanaInstancesResultOutput), nil
-		}).(GetHanaInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getHanaInstances:getHanaInstances", args, GetHanaInstancesResultOutput{}, options).(GetHanaInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getHanaInstances.

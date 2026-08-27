@@ -144,12 +144,8 @@ type GetSaslUsersResult struct {
 }
 
 func GetSaslUsersOutput(ctx *pulumi.Context, args GetSaslUsersOutputArgs, opts ...pulumi.InvokeOption) GetSaslUsersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSaslUsersResultOutput, error) {
-			args := v.(GetSaslUsersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:actiontrail/getSaslUsers:getSaslUsers", args, GetSaslUsersResultOutput{}, options).(GetSaslUsersResultOutput), nil
-		}).(GetSaslUsersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:actiontrail/getSaslUsers:getSaslUsers", args, GetSaslUsersResultOutput{}, options).(GetSaslUsersResultOutput)
 }
 
 // A collection of arguments for invoking getSaslUsers.

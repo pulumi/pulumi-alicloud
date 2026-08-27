@@ -76,12 +76,8 @@ type LookupInternetEndpointResult struct {
 }
 
 func LookupInternetEndpointOutput(ctx *pulumi.Context, args LookupInternetEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupInternetEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInternetEndpointResultOutput, error) {
-			args := v.(LookupInternetEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getInternetEndpoint:getInternetEndpoint", args, LookupInternetEndpointResultOutput{}, options).(LookupInternetEndpointResultOutput), nil
-		}).(LookupInternetEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getInternetEndpoint:getInternetEndpoint", args, LookupInternetEndpointResultOutput{}, options).(LookupInternetEndpointResultOutput)
 }
 
 // A collection of arguments for invoking getInternetEndpoint.

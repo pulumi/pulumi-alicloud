@@ -22,6 +22,8 @@ __all__ = [
     'instances_output',
 ]
 
+warnings.warn("""alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances""", DeprecationWarning)
+
 @pulumi.output_type
 class InstancesResult:
     """
@@ -211,7 +213,7 @@ def instances(brand: Optional[_builtins.str] = None,
                 "value": "1",
             },
         ])
-    default = alicloud.sslcertificatesservice.instances_output(ids=[default_ssl_certificates_service_instance.id])
+    default = alicloud.sslcertificatesservice.get_instances_output(ids=[default_ssl_certificates_service_instance.id])
     pulumi.export("alicloudSslCertificatesServiceInstanceExampleId", default.instances[0].id)
     ```
 
@@ -227,6 +229,7 @@ def instances(brand: Optional[_builtins.str] = None,
     :param _builtins.str resource_group_id: The ID of the resource group.
     :param _builtins.str status: The instance status.
     """
+    pulumi.log.warn("""instances is deprecated: alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances""")
     __args__ = dict()
     __args__['brand'] = brand
     __args__['certificateStatus'] = certificate_status
@@ -295,7 +298,7 @@ def instances_output(brand: pulumi.Input[Optional[Optional[_builtins.str]]] = No
                 "value": "1",
             },
         ])
-    default = alicloud.sslcertificatesservice.instances_output(ids=[default_ssl_certificates_service_instance.id])
+    default = alicloud.sslcertificatesservice.get_instances_output(ids=[default_ssl_certificates_service_instance.id])
     pulumi.export("alicloudSslCertificatesServiceInstanceExampleId", default.instances[0].id)
     ```
 
@@ -311,6 +314,7 @@ def instances_output(brand: pulumi.Input[Optional[Optional[_builtins.str]]] = No
     :param _builtins.str resource_group_id: The ID of the resource group.
     :param _builtins.str status: The instance status.
     """
+    pulumi.log.warn("""instances is deprecated: alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances""")
     __args__ = dict()
     __args__['brand'] = brand
     __args__['certificateStatus'] = certificate_status

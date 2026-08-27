@@ -135,12 +135,8 @@ type GetScalingGroupsResult struct {
 }
 
 func GetScalingGroupsOutput(ctx *pulumi.Context, args GetScalingGroupsOutputArgs, opts ...pulumi.InvokeOption) GetScalingGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetScalingGroupsResultOutput, error) {
-			args := v.(GetScalingGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ess/getScalingGroups:getScalingGroups", args, GetScalingGroupsResultOutput{}, options).(GetScalingGroupsResultOutput), nil
-		}).(GetScalingGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ess/getScalingGroups:getScalingGroups", args, GetScalingGroupsResultOutput{}, options).(GetScalingGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getScalingGroups.

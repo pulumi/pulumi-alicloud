@@ -78,12 +78,8 @@ type GetUserTenantsResult struct {
 }
 
 func GetUserTenantsOutput(ctx *pulumi.Context, args GetUserTenantsOutputArgs, opts ...pulumi.InvokeOption) GetUserTenantsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserTenantsResultOutput, error) {
-			args := v.(GetUserTenantsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getUserTenants:getUserTenants", args, GetUserTenantsResultOutput{}, options).(GetUserTenantsResultOutput), nil
-		}).(GetUserTenantsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getUserTenants:getUserTenants", args, GetUserTenantsResultOutput{}, options).(GetUserTenantsResultOutput)
 }
 
 // A collection of arguments for invoking getUserTenants.

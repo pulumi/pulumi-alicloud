@@ -84,12 +84,8 @@ type GetProductVersionsResult struct {
 }
 
 func GetProductVersionsOutput(ctx *pulumi.Context, args GetProductVersionsOutputArgs, opts ...pulumi.InvokeOption) GetProductVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProductVersionsResultOutput, error) {
-			args := v.(GetProductVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicecatalog/getProductVersions:getProductVersions", args, GetProductVersionsResultOutput{}, options).(GetProductVersionsResultOutput), nil
-		}).(GetProductVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicecatalog/getProductVersions:getProductVersions", args, GetProductVersionsResultOutput{}, options).(GetProductVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getProductVersions.

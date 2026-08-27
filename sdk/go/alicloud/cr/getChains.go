@@ -104,12 +104,8 @@ type GetChainsResult struct {
 }
 
 func GetChainsOutput(ctx *pulumi.Context, args GetChainsOutputArgs, opts ...pulumi.InvokeOption) GetChainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetChainsResultOutput, error) {
-			args := v.(GetChainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getChains:getChains", args, GetChainsResultOutput{}, options).(GetChainsResultOutput), nil
-		}).(GetChainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getChains:getChains", args, GetChainsResultOutput{}, options).(GetChainsResultOutput)
 }
 
 // A collection of arguments for invoking getChains.

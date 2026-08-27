@@ -134,12 +134,8 @@ type GetKubernetesAddonMetadataResult struct {
 }
 
 func GetKubernetesAddonMetadataOutput(ctx *pulumi.Context, args GetKubernetesAddonMetadataOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesAddonMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKubernetesAddonMetadataResultOutput, error) {
-			args := v.(GetKubernetesAddonMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args, GetKubernetesAddonMetadataResultOutput{}, options).(GetKubernetesAddonMetadataResultOutput), nil
-		}).(GetKubernetesAddonMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args, GetKubernetesAddonMetadataResultOutput{}, options).(GetKubernetesAddonMetadataResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesAddonMetadata.

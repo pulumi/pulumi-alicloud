@@ -78,12 +78,8 @@ type GetJobTemplatesResult struct {
 }
 
 func GetJobTemplatesOutput(ctx *pulumi.Context, args GetJobTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetJobTemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetJobTemplatesResultOutput, error) {
-			args := v.(GetJobTemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ehpc/getJobTemplates:getJobTemplates", args, GetJobTemplatesResultOutput{}, options).(GetJobTemplatesResultOutput), nil
-		}).(GetJobTemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ehpc/getJobTemplates:getJobTemplates", args, GetJobTemplatesResultOutput{}, options).(GetJobTemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getJobTemplates.

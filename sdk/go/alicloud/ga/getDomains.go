@@ -48,7 +48,6 @@ import (
 //				return tmp0, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ga.NewAccelerator(ctx, fmt.Sprintf("default-%v", key0), &ga.AcceleratorArgs{
 //					Duration:      pulumi.Int(1),
 //					AutoUseCoupon: pulumi.Bool(true),
@@ -128,12 +127,8 @@ type GetDomainsResult struct {
 }
 
 func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainsResultOutput, error) {
-			args := v.(GetDomainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getDomains:getDomains", args, GetDomainsResultOutput{}, options).(GetDomainsResultOutput), nil
-		}).(GetDomainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getDomains:getDomains", args, GetDomainsResultOutput{}, options).(GetDomainsResultOutput)
 }
 
 // A collection of arguments for invoking getDomains.

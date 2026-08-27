@@ -130,12 +130,8 @@ type GetExecutionsResult struct {
 }
 
 func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetExecutionsResultOutput, error) {
-			args := v.(GetExecutionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oos/getExecutions:getExecutions", args, GetExecutionsResultOutput{}, options).(GetExecutionsResultOutput), nil
-		}).(GetExecutionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oos/getExecutions:getExecutions", args, GetExecutionsResultOutput{}, options).(GetExecutionsResultOutput)
 }
 
 // A collection of arguments for invoking getExecutions.

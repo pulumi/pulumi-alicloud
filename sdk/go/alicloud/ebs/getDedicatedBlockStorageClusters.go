@@ -79,12 +79,8 @@ type GetDedicatedBlockStorageClustersResult struct {
 }
 
 func GetDedicatedBlockStorageClustersOutput(ctx *pulumi.Context, args GetDedicatedBlockStorageClustersOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedBlockStorageClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDedicatedBlockStorageClustersResultOutput, error) {
-			args := v.(GetDedicatedBlockStorageClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args, GetDedicatedBlockStorageClustersResultOutput{}, options).(GetDedicatedBlockStorageClustersResultOutput), nil
-		}).(GetDedicatedBlockStorageClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args, GetDedicatedBlockStorageClustersResultOutput{}, options).(GetDedicatedBlockStorageClustersResultOutput)
 }
 
 // A collection of arguments for invoking getDedicatedBlockStorageClusters.

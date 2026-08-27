@@ -115,12 +115,8 @@ type GetBucketInventoriesResult struct {
 }
 
 func GetBucketInventoriesOutput(ctx *pulumi.Context, args GetBucketInventoriesOutputArgs, opts ...pulumi.InvokeOption) GetBucketInventoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBucketInventoriesResultOutput, error) {
-			args := v.(GetBucketInventoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oss/getBucketInventories:getBucketInventories", args, GetBucketInventoriesResultOutput{}, options).(GetBucketInventoriesResultOutput), nil
-		}).(GetBucketInventoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oss/getBucketInventories:getBucketInventories", args, GetBucketInventoriesResultOutput{}, options).(GetBucketInventoriesResultOutput)
 }
 
 // A collection of arguments for invoking getBucketInventories.

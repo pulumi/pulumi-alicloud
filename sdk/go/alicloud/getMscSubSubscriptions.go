@@ -67,12 +67,8 @@ type GetMscSubSubscriptionsResult struct {
 }
 
 func GetMscSubSubscriptionsOutput(ctx *pulumi.Context, args GetMscSubSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetMscSubSubscriptionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMscSubSubscriptionsResultOutput, error) {
-			args := v.(GetMscSubSubscriptionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args, GetMscSubSubscriptionsResultOutput{}, options).(GetMscSubSubscriptionsResultOutput), nil
-		}).(GetMscSubSubscriptionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args, GetMscSubSubscriptionsResultOutput{}, options).(GetMscSubSubscriptionsResultOutput)
 }
 
 // A collection of arguments for invoking getMscSubSubscriptions.

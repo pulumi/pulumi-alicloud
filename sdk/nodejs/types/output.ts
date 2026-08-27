@@ -66075,6 +66075,211 @@ export namespace sslcertificatesservice {
         webhooks: string;
     }
 
+    export interface GetCompaniesCompany {
+        /**
+         * The city where the company is located.
+         */
+        city: string;
+        /**
+         * The address of the company.
+         */
+        companyAddress: string;
+        /**
+         * The code of the company.
+         */
+        companyCode: string;
+        /**
+         * The email address of the company.
+         */
+        companyEmail: string;
+        /**
+         * The ID of the company used to filter the results.
+         */
+        companyId: number;
+        /**
+         * The name of the company.
+         */
+        companyName: string;
+        /**
+         * The contact phone number of the company.
+         */
+        companyPhone: string;
+        /**
+         * The type of the company.
+         */
+        companyType: number;
+        /**
+         * The country code of the company.
+         */
+        countryCode: string;
+        /**
+         * The department of the company.
+         */
+        department: string;
+        /**
+         * The ID of the Company.
+         */
+        id: number;
+        /**
+         * The natural language of the content within the request and response.
+         */
+        lang: string;
+        /**
+         * The postal code of the company.
+         */
+        postCode: string;
+        /**
+         * The province where the company is located.
+         */
+        province: string;
+    }
+
+    export interface GetContactsContact {
+        /**
+         * The first ID of the resource.
+         */
+        contactId: number;
+        /**
+         * The email address of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        email: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: number;
+        /**
+         * The mobile phone number of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        mobile: string;
+        /**
+         * The name of the resource
+         */
+        name: string;
+        /**
+         * The Webhook address used to receive notifications. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        webhooks: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Specifies whether to enable managed renewal.
+         */
+        autoReissue: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+         */
+        averageWaitingTime: string;
+        /**
+         * The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+         */
+        brand: string;
+        /**
+         * The type of the certificate. Valid values: DV, OV, and EV.
+         */
+        certificateType: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+         */
+        city: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The company information ID.
+         */
+        companyId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The list of contact IDs.
+         */
+        contactIdLists: number[];
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The code of the country or region where the certificate organization is located.
+         */
+        countryCode: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The CSR content.
+         */
+        csr: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The domain names to be bound to the certificate.
+         */
+        domain: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of single domain names included in the instance.
+         */
+        fullDomainCount: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The method used to generate the Certificate Signing Request (CSR).
+         */
+        generateCsrMethod: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+         */
+        instanceEndTime: number;
+        /**
+         * The instance ID.
+         */
+        instanceId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the instance.
+         */
+        instanceName: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Instance start time, a UNIX timestamp in seconds.
+         */
+        instanceStartTime: number;
+        /**
+         * The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+         */
+        instanceType: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The certificate algorithm.
+         */
+        keyAlgorithm: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Order end time, a UNIX timestamp in seconds.
+         */
+        orderEndTime: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Order start time, a UNIX timestamp in seconds.
+         */
+        orderStartTime: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The province or region where the company is located.
+         */
+        province: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The specification of the purchased instance.
+         */
+        spec: string;
+        /**
+         * The instance status.
+         */
+        status: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The tags of the instance.
+         */
+        tags: {[key: string]: string};
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The upgrade status of the instance.
+         */
+        upgradeStatus: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The verification method for the certificate application.
+         */
+        validationMethod: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of wildcard domain names included in the instance.
+         */
+        wildcardDomainCount: number;
+    }
+
     export interface InstancesInstance {
         /**
          * **NOTE:** This field is only available when `enableDetails` is `true`. Specifies whether to enable managed renewal.
@@ -66232,6 +66437,73 @@ export namespace sslcertificatesservicecertificate {
 
 export namespace sslcertificatesserviceinstance {
     export interface CertificatesCertificate {
+        /**
+         * The encryption algorithm of the certificate.
+         */
+        algorithm: string;
+        /**
+         * The global certificate identifier, formatted as the certificate ID plus `-` plus the site region ID. Alibaba Cloud services such as ALB, CDN and WAF reference a certificate by this value.
+         */
+        certIdentifier: string;
+        /**
+         * The ID of the certificate.
+         */
+        certificateId: number;
+        /**
+         * The name of the certificate.
+         */
+        certificateName: string;
+        /**
+         * The source of the certificate. Valid values: `BUY`, `UPLOAD` and `TEST`.
+         */
+        certificateSource: string;
+        /**
+         * The status of the certificate. Valid values: `issued`, `revoked`, `willExpire` and `expired`.
+         */
+        certificateStatus: string;
+        /**
+         * The common name of the certificate.
+         */
+        commonName: string;
+        /**
+         * All domain names covered by the certificate, separated by commas.
+         */
+        domain: string;
+        /**
+         * Indicates whether the private key of the certificate is held on the server side.
+         */
+        existPrivateKey: boolean;
+        /**
+         * The public key fingerprint of the certificate.
+         */
+        fingerPrint: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: number;
+        /**
+         * The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
+         */
+        instanceId: string;
+        /**
+         * The certificate authority that issued the certificate.
+         */
+        issuer: string;
+        /**
+         * The key length of the certificate algorithm.
+         */
+        keySize: number;
+        /**
+         * The end of the certificate validity period.
+         */
+        notAfter: number;
+        /**
+         * The start of the certificate validity period.
+         */
+        notBefore: number;
+    }
+
+    export interface GetCertificatesCertificate {
         /**
          * The encryption algorithm of the certificate.
          */

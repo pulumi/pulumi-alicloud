@@ -88,12 +88,8 @@ type GetHistoryDeliveryJobsResult struct {
 }
 
 func GetHistoryDeliveryJobsOutput(ctx *pulumi.Context, args GetHistoryDeliveryJobsOutputArgs, opts ...pulumi.InvokeOption) GetHistoryDeliveryJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHistoryDeliveryJobsResultOutput, error) {
-			args := v.(GetHistoryDeliveryJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args, GetHistoryDeliveryJobsResultOutput{}, options).(GetHistoryDeliveryJobsResultOutput), nil
-		}).(GetHistoryDeliveryJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args, GetHistoryDeliveryJobsResultOutput{}, options).(GetHistoryDeliveryJobsResultOutput)
 }
 
 // A collection of arguments for invoking getHistoryDeliveryJobs.

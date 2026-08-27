@@ -96,7 +96,6 @@ import (
 //			var defaultEipAddress []*ecs.EipAddress
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewEipAddress(ctx, fmt.Sprintf("default-%v", key0), &ecs.EipAddressArgs{
 //					Bandwidth:          pulumi.String("10"),
 //					InternetChargeType: pulumi.String("PayByBandwidth"),

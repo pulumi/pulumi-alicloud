@@ -137,12 +137,8 @@ type GetV3TriggersResult struct {
 }
 
 func GetV3TriggersOutput(ctx *pulumi.Context, args GetV3TriggersOutputArgs, opts ...pulumi.InvokeOption) GetV3TriggersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetV3TriggersResultOutput, error) {
-			args := v.(GetV3TriggersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:fc/getV3Triggers:getV3Triggers", args, GetV3TriggersResultOutput{}, options).(GetV3TriggersResultOutput), nil
-		}).(GetV3TriggersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:fc/getV3Triggers:getV3Triggers", args, GetV3TriggersResultOutput{}, options).(GetV3TriggersResultOutput)
 }
 
 // A collection of arguments for invoking getV3Triggers.

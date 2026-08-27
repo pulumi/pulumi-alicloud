@@ -67,12 +67,8 @@ type GetBlockedRegionsResult struct {
 }
 
 func GetBlockedRegionsOutput(ctx *pulumi.Context, args GetBlockedRegionsOutputArgs, opts ...pulumi.InvokeOption) GetBlockedRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBlockedRegionsResultOutput, error) {
-			args := v.(GetBlockedRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cdn/getBlockedRegions:getBlockedRegions", args, GetBlockedRegionsResultOutput{}, options).(GetBlockedRegionsResultOutput), nil
-		}).(GetBlockedRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cdn/getBlockedRegions:getBlockedRegions", args, GetBlockedRegionsResultOutput{}, options).(GetBlockedRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getBlockedRegions.

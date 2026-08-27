@@ -65,12 +65,8 @@ type GetResourceDirectoriesResult struct {
 }
 
 func GetResourceDirectoriesOutput(ctx *pulumi.Context, args GetResourceDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetResourceDirectoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetResourceDirectoriesResultOutput, error) {
-			args := v.(GetResourceDirectoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args, GetResourceDirectoriesResultOutput{}, options).(GetResourceDirectoriesResultOutput), nil
-		}).(GetResourceDirectoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args, GetResourceDirectoriesResultOutput{}, options).(GetResourceDirectoriesResultOutput)
 }
 
 // A collection of arguments for invoking getResourceDirectories.

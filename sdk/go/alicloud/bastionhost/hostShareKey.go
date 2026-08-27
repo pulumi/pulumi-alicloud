@@ -81,7 +81,6 @@ import (
 //				return tmp0, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
 //					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 //				})
@@ -101,7 +100,6 @@ import (
 //				return tmp1, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := bastionhost.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &bastionhost.InstanceArgs{
 //					Description: pulumi.String(name),
 //					LicenseCode: pulumi.String("bhah_ent_50_asset"),

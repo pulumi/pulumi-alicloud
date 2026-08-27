@@ -90,12 +90,8 @@ type GetEcsDeploymentSetsResult struct {
 }
 
 func GetEcsDeploymentSetsOutput(ctx *pulumi.Context, args GetEcsDeploymentSetsOutputArgs, opts ...pulumi.InvokeOption) GetEcsDeploymentSetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsDeploymentSetsResultOutput, error) {
-			args := v.(GetEcsDeploymentSetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args, GetEcsDeploymentSetsResultOutput{}, options).(GetEcsDeploymentSetsResultOutput), nil
-		}).(GetEcsDeploymentSetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args, GetEcsDeploymentSetsResultOutput{}, options).(GetEcsDeploymentSetsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsDeploymentSets.

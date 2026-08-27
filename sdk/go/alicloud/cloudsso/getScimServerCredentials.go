@@ -83,12 +83,8 @@ type GetScimServerCredentialsResult struct {
 }
 
 func GetScimServerCredentialsOutput(ctx *pulumi.Context, args GetScimServerCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetScimServerCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetScimServerCredentialsResultOutput, error) {
-			args := v.(GetScimServerCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args, GetScimServerCredentialsResultOutput{}, options).(GetScimServerCredentialsResultOutput), nil
-		}).(GetScimServerCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args, GetScimServerCredentialsResultOutput{}, options).(GetScimServerCredentialsResultOutput)
 }
 
 // A collection of arguments for invoking getScimServerCredentials.

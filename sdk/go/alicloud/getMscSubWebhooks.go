@@ -86,12 +86,8 @@ type GetMscSubWebhooksResult struct {
 }
 
 func GetMscSubWebhooksOutput(ctx *pulumi.Context, args GetMscSubWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetMscSubWebhooksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMscSubWebhooksResultOutput, error) {
-			args := v.(GetMscSubWebhooksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args, GetMscSubWebhooksResultOutput{}, options).(GetMscSubWebhooksResultOutput), nil
-		}).(GetMscSubWebhooksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args, GetMscSubWebhooksResultOutput{}, options).(GetMscSubWebhooksResultOutput)
 }
 
 // A collection of arguments for invoking getMscSubWebhooks.

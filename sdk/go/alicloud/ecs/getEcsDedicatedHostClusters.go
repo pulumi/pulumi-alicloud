@@ -119,12 +119,8 @@ type GetEcsDedicatedHostClustersResult struct {
 }
 
 func GetEcsDedicatedHostClustersOutput(ctx *pulumi.Context, args GetEcsDedicatedHostClustersOutputArgs, opts ...pulumi.InvokeOption) GetEcsDedicatedHostClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsDedicatedHostClustersResultOutput, error) {
-			args := v.(GetEcsDedicatedHostClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args, GetEcsDedicatedHostClustersResultOutput{}, options).(GetEcsDedicatedHostClustersResultOutput), nil
-		}).(GetEcsDedicatedHostClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args, GetEcsDedicatedHostClustersResultOutput{}, options).(GetEcsDedicatedHostClustersResultOutput)
 }
 
 // A collection of arguments for invoking getEcsDedicatedHostClusters.

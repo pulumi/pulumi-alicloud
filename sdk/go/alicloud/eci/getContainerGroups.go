@@ -102,12 +102,8 @@ type GetContainerGroupsResult struct {
 }
 
 func GetContainerGroupsOutput(ctx *pulumi.Context, args GetContainerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetContainerGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetContainerGroupsResultOutput, error) {
-			args := v.(GetContainerGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eci/getContainerGroups:getContainerGroups", args, GetContainerGroupsResultOutput{}, options).(GetContainerGroupsResultOutput), nil
-		}).(GetContainerGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eci/getContainerGroups:getContainerGroups", args, GetContainerGroupsResultOutput{}, options).(GetContainerGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getContainerGroups.

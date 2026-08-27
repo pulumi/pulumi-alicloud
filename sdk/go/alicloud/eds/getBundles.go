@@ -79,12 +79,8 @@ type GetBundlesResult struct {
 }
 
 func GetBundlesOutput(ctx *pulumi.Context, args GetBundlesOutputArgs, opts ...pulumi.InvokeOption) GetBundlesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBundlesResultOutput, error) {
-			args := v.(GetBundlesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getBundles:getBundles", args, GetBundlesResultOutput{}, options).(GetBundlesResultOutput), nil
-		}).(GetBundlesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getBundles:getBundles", args, GetBundlesResultOutput{}, options).(GetBundlesResultOutput)
 }
 
 // A collection of arguments for invoking getBundles.

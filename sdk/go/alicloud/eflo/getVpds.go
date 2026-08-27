@@ -103,12 +103,8 @@ type GetVpdsResult struct {
 }
 
 func GetVpdsOutput(ctx *pulumi.Context, args GetVpdsOutputArgs, opts ...pulumi.InvokeOption) GetVpdsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpdsResultOutput, error) {
-			args := v.(GetVpdsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eflo/getVpds:getVpds", args, GetVpdsResultOutput{}, options).(GetVpdsResultOutput), nil
-		}).(GetVpdsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eflo/getVpds:getVpds", args, GetVpdsResultOutput{}, options).(GetVpdsResultOutput)
 }
 
 // A collection of arguments for invoking getVpds.

@@ -92,12 +92,8 @@ type GetAccessAssignmentsResult struct {
 }
 
 func GetAccessAssignmentsOutput(ctx *pulumi.Context, args GetAccessAssignmentsOutputArgs, opts ...pulumi.InvokeOption) GetAccessAssignmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessAssignmentsResultOutput, error) {
-			args := v.(GetAccessAssignmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args, GetAccessAssignmentsResultOutput{}, options).(GetAccessAssignmentsResultOutput), nil
-		}).(GetAccessAssignmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args, GetAccessAssignmentsResultOutput{}, options).(GetAccessAssignmentsResultOutput)
 }
 
 // A collection of arguments for invoking getAccessAssignments.

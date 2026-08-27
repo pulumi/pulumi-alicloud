@@ -104,12 +104,8 @@ type GetControlPoliciesResult struct {
 }
 
 func GetControlPoliciesOutput(ctx *pulumi.Context, args GetControlPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetControlPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetControlPoliciesResultOutput, error) {
-			args := v.(GetControlPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args, GetControlPoliciesResultOutput{}, options).(GetControlPoliciesResultOutput), nil
-		}).(GetControlPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args, GetControlPoliciesResultOutput{}, options).(GetControlPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getControlPolicies.

@@ -103,12 +103,8 @@ type GetOidcProvidersResult struct {
 }
 
 func GetOidcProvidersOutput(ctx *pulumi.Context, args GetOidcProvidersOutputArgs, opts ...pulumi.InvokeOption) GetOidcProvidersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOidcProvidersResultOutput, error) {
-			args := v.(GetOidcProvidersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ims/getOidcProviders:getOidcProviders", args, GetOidcProvidersResultOutput{}, options).(GetOidcProvidersResultOutput), nil
-		}).(GetOidcProvidersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ims/getOidcProviders:getOidcProviders", args, GetOidcProvidersResultOutput{}, options).(GetOidcProvidersResultOutput)
 }
 
 // A collection of arguments for invoking getOidcProviders.

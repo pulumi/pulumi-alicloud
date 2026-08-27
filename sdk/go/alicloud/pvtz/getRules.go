@@ -83,12 +83,8 @@ type GetRulesResult struct {
 }
 
 func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRulesResultOutput, error) {
-			args := v.(GetRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:pvtz/getRules:getRules", args, GetRulesResultOutput{}, options).(GetRulesResultOutput), nil
-		}).(GetRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:pvtz/getRules:getRules", args, GetRulesResultOutput{}, options).(GetRulesResultOutput)
 }
 
 // A collection of arguments for invoking getRules.

@@ -51,12 +51,8 @@ type GetApplicationInfosResult struct {
 }
 
 func GetApplicationInfosOutput(ctx *pulumi.Context, args GetApplicationInfosOutputArgs, opts ...pulumi.InvokeOption) GetApplicationInfosResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApplicationInfosResultOutput, error) {
-			args := v.(GetApplicationInfosArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:quotas/getApplicationInfos:getApplicationInfos", args, GetApplicationInfosResultOutput{}, options).(GetApplicationInfosResultOutput), nil
-		}).(GetApplicationInfosResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:quotas/getApplicationInfos:getApplicationInfos", args, GetApplicationInfosResultOutput{}, options).(GetApplicationInfosResultOutput)
 }
 
 // A collection of arguments for invoking getApplicationInfos.

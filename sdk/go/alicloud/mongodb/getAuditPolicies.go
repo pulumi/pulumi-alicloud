@@ -73,12 +73,8 @@ type GetAuditPoliciesResult struct {
 }
 
 func GetAuditPoliciesOutput(ctx *pulumi.Context, args GetAuditPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAuditPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAuditPoliciesResultOutput, error) {
-			args := v.(GetAuditPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args, GetAuditPoliciesResultOutput{}, options).(GetAuditPoliciesResultOutput), nil
-		}).(GetAuditPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args, GetAuditPoliciesResultOutput{}, options).(GetAuditPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getAuditPolicies.

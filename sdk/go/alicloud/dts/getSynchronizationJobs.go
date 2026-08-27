@@ -77,12 +77,8 @@ type GetSynchronizationJobsResult struct {
 }
 
 func GetSynchronizationJobsOutput(ctx *pulumi.Context, args GetSynchronizationJobsOutputArgs, opts ...pulumi.InvokeOption) GetSynchronizationJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSynchronizationJobsResultOutput, error) {
-			args := v.(GetSynchronizationJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args, GetSynchronizationJobsResultOutput{}, options).(GetSynchronizationJobsResultOutput), nil
-		}).(GetSynchronizationJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args, GetSynchronizationJobsResultOutput{}, options).(GetSynchronizationJobsResultOutput)
 }
 
 // A collection of arguments for invoking getSynchronizationJobs.

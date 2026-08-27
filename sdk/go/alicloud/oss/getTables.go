@@ -84,12 +84,8 @@ type GetTablesResult struct {
 }
 
 func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTablesResultOutput, error) {
-			args := v.(GetTablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oss/getTables:getTables", args, GetTablesResultOutput{}, options).(GetTablesResultOutput), nil
-		}).(GetTablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oss/getTables:getTables", args, GetTablesResultOutput{}, options).(GetTablesResultOutput)
 }
 
 // A collection of arguments for invoking getTables.

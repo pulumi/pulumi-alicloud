@@ -111,12 +111,8 @@ type GetInterRegionTrafficQosPoliciesResult struct {
 }
 
 func GetInterRegionTrafficQosPoliciesOutput(ctx *pulumi.Context, args GetInterRegionTrafficQosPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetInterRegionTrafficQosPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInterRegionTrafficQosPoliciesResultOutput, error) {
-			args := v.(GetInterRegionTrafficQosPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", args, GetInterRegionTrafficQosPoliciesResultOutput{}, options).(GetInterRegionTrafficQosPoliciesResultOutput), nil
-		}).(GetInterRegionTrafficQosPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", args, GetInterRegionTrafficQosPoliciesResultOutput{}, options).(GetInterRegionTrafficQosPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getInterRegionTrafficQosPolicies.

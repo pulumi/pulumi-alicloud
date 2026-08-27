@@ -86,12 +86,8 @@ type GetAcceleratorsResult struct {
 }
 
 func GetAcceleratorsOutput(ctx *pulumi.Context, args GetAcceleratorsOutputArgs, opts ...pulumi.InvokeOption) GetAcceleratorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAcceleratorsResultOutput, error) {
-			args := v.(GetAcceleratorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getAccelerators:getAccelerators", args, GetAcceleratorsResultOutput{}, options).(GetAcceleratorsResultOutput), nil
-		}).(GetAcceleratorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getAccelerators:getAccelerators", args, GetAcceleratorsResultOutput{}, options).(GetAcceleratorsResultOutput)
 }
 
 // A collection of arguments for invoking getAccelerators.

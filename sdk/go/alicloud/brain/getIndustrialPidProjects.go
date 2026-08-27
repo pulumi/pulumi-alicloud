@@ -90,12 +90,8 @@ type GetIndustrialPidProjectsResult struct {
 }
 
 func GetIndustrialPidProjectsOutput(ctx *pulumi.Context, args GetIndustrialPidProjectsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidProjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIndustrialPidProjectsResultOutput, error) {
-			args := v.(GetIndustrialPidProjectsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args, GetIndustrialPidProjectsResultOutput{}, options).(GetIndustrialPidProjectsResultOutput), nil
-		}).(GetIndustrialPidProjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args, GetIndustrialPidProjectsResultOutput{}, options).(GetIndustrialPidProjectsResultOutput)
 }
 
 // A collection of arguments for invoking getIndustrialPidProjects.

@@ -53,12 +53,8 @@ type GetDomainRecordsResult struct {
 }
 
 func GetDomainRecordsOutput(ctx *pulumi.Context, args GetDomainRecordsOutputArgs, opts ...pulumi.InvokeOption) GetDomainRecordsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainRecordsResultOutput, error) {
-			args := v.(GetDomainRecordsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getDomainRecords:getDomainRecords", args, GetDomainRecordsResultOutput{}, options).(GetDomainRecordsResultOutput), nil
-		}).(GetDomainRecordsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getDomainRecords:getDomainRecords", args, GetDomainRecordsResultOutput{}, options).(GetDomainRecordsResultOutput)
 }
 
 // A collection of arguments for invoking getDomainRecords.

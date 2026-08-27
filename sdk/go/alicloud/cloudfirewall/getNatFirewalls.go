@@ -198,12 +198,8 @@ type GetNatFirewallsResult struct {
 }
 
 func GetNatFirewallsOutput(ctx *pulumi.Context, args GetNatFirewallsOutputArgs, opts ...pulumi.InvokeOption) GetNatFirewallsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNatFirewallsResultOutput, error) {
-			args := v.(GetNatFirewallsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", args, GetNatFirewallsResultOutput{}, options).(GetNatFirewallsResultOutput), nil
-		}).(GetNatFirewallsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", args, GetNatFirewallsResultOutput{}, options).(GetNatFirewallsResultOutput)
 }
 
 // A collection of arguments for invoking getNatFirewalls.

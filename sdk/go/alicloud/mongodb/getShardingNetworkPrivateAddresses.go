@@ -79,12 +79,8 @@ type GetShardingNetworkPrivateAddressesResult struct {
 }
 
 func GetShardingNetworkPrivateAddressesOutput(ctx *pulumi.Context, args GetShardingNetworkPrivateAddressesOutputArgs, opts ...pulumi.InvokeOption) GetShardingNetworkPrivateAddressesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetShardingNetworkPrivateAddressesResultOutput, error) {
-			args := v.(GetShardingNetworkPrivateAddressesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args, GetShardingNetworkPrivateAddressesResultOutput{}, options).(GetShardingNetworkPrivateAddressesResultOutput), nil
-		}).(GetShardingNetworkPrivateAddressesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args, GetShardingNetworkPrivateAddressesResultOutput{}, options).(GetShardingNetworkPrivateAddressesResultOutput)
 }
 
 // A collection of arguments for invoking getShardingNetworkPrivateAddresses.
