@@ -89,12 +89,8 @@ type GetCustomRoutingPortMappingsResult struct {
 }
 
 func GetCustomRoutingPortMappingsOutput(ctx *pulumi.Context, args GetCustomRoutingPortMappingsOutputArgs, opts ...pulumi.InvokeOption) GetCustomRoutingPortMappingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomRoutingPortMappingsResultOutput, error) {
-			args := v.(GetCustomRoutingPortMappingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", args, GetCustomRoutingPortMappingsResultOutput{}, options).(GetCustomRoutingPortMappingsResultOutput), nil
-		}).(GetCustomRoutingPortMappingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", args, GetCustomRoutingPortMappingsResultOutput{}, options).(GetCustomRoutingPortMappingsResultOutput)
 }
 
 // A collection of arguments for invoking getCustomRoutingPortMappings.

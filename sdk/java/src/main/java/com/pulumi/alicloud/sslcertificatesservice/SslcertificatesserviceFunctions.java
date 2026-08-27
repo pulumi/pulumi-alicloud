@@ -8,10 +8,19 @@ import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
 import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesPlainArgs;
 import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
 import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsPlainArgs;
+import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesPlainArgs;
+import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsPlainArgs;
+import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
 import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesPlainArgs;
 import com.pulumi.alicloud.sslcertificatesservice.outputs.CompaniesResult;
 import com.pulumi.alicloud.sslcertificatesservice.outputs.ContactsResult;
+import com.pulumi.alicloud.sslcertificatesservice.outputs.GetCompaniesResult;
+import com.pulumi.alicloud.sslcertificatesservice.outputs.GetContactsResult;
+import com.pulumi.alicloud.sslcertificatesservice.outputs.GetInstancesResult;
 import com.pulumi.alicloud.sslcertificatesservice.outputs.InstancesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -38,7 +47,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -68,7 +77,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -79,7 +88,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static Output<CompaniesResult> companies() {
         return companies(CompaniesArgs.Empty, InvokeOptions.Empty);
     }
@@ -100,7 +113,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -130,7 +143,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -141,7 +154,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static CompletableFuture<CompaniesResult> companiesPlain() {
         return companiesPlain(CompaniesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -162,7 +179,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -192,7 +209,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -203,7 +220,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static Output<CompaniesResult> companies(CompaniesArgs args) {
         return companies(args, InvokeOptions.Empty);
     }
@@ -224,7 +245,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -254,7 +275,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -265,7 +286,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static CompletableFuture<CompaniesResult> companiesPlain(CompaniesPlainArgs args) {
         return companiesPlain(args, InvokeOptions.Empty);
     }
@@ -286,7 +311,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -316,7 +341,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -327,7 +352,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static Output<CompaniesResult> companies(CompaniesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/companies:Companies", TypeShape.of(CompaniesResult.class), args, Utilities.withVersion(options));
     }
@@ -348,7 +377,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -378,7 +407,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -389,7 +418,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static Output<CompaniesResult> companies(CompaniesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/companies:Companies", TypeShape.of(CompaniesResult.class), args, Utilities.withVersion(options));
     }
@@ -410,7 +443,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Company;
      * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.CompaniesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -440,7 +473,7 @@ public final class SslcertificatesserviceFunctions {
      *             .lang("zh")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Companies(CompaniesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
      *             .ids(defaultCompany.id())
      *             .nameRegex(defaultCompany.companyName())
      *             .build());
@@ -451,7 +484,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
     public static CompletableFuture<CompaniesResult> companiesPlain(CompaniesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/companies:Companies", TypeShape.of(CompaniesResult.class), args, Utilities.withVersion(options));
     }
@@ -472,7 +509,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -494,7 +531,7 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -505,7 +542,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
     public static Output<ContactsResult> contacts() {
         return contacts(ContactsArgs.Empty, InvokeOptions.Empty);
     }
@@ -526,7 +567,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -548,7 +589,7 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -559,7 +600,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
     public static CompletableFuture<ContactsResult> contactsPlain() {
         return contactsPlain(ContactsPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -580,7 +625,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -602,7 +647,7 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -613,7 +658,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
     public static Output<ContactsResult> contacts(ContactsArgs args) {
         return contacts(args, InvokeOptions.Empty);
     }
@@ -634,7 +683,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -656,7 +705,7 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -667,7 +716,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
     public static CompletableFuture<ContactsResult> contactsPlain(ContactsPlainArgs args) {
         return contactsPlain(args, InvokeOptions.Empty);
     }
@@ -688,7 +741,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -710,7 +763,7 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -721,7 +774,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
     public static Output<ContactsResult> contacts(ContactsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/contacts:Contacts", TypeShape.of(ContactsResult.class), args, Utilities.withVersion(options));
     }
@@ -742,7 +799,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -764,7 +821,7 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -775,7 +832,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
     public static Output<ContactsResult> contacts(ContactsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/contacts:Contacts", TypeShape.of(ContactsResult.class), args, Utilities.withVersion(options));
     }
@@ -796,7 +857,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesservice.Contact;
      * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.ContactsArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -818,7 +879,499 @@ public final class SslcertificatesserviceFunctions {
      *             .email("test}{@literal @}{@code example.com")
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Contacts(ContactsArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
+     * 
+     */
+    @Deprecated /* alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
+    public static CompletableFuture<ContactsResult> contactsPlain(ContactsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/contacts:Contacts", TypeShape.of(ContactsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCompaniesResult> getCompanies() {
+        return getCompanies(GetCompaniesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCompaniesResult> getCompaniesPlain() {
+        return getCompaniesPlain(GetCompaniesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCompaniesResult> getCompanies(GetCompaniesArgs args) {
+        return getCompanies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCompaniesResult> getCompaniesPlain(GetCompaniesPlainArgs args) {
+        return getCompaniesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCompaniesResult> getCompanies(GetCompaniesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/getCompanies:getCompanies", TypeShape.of(GetCompaniesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCompaniesResult> getCompanies(GetCompaniesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/getCompanies:getCompanies", TypeShape.of(GetCompaniesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides SSL Certificate Service Companies available to the user.[What is Company](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateCompany)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Company;
+     * import com.pulumi.alicloud.sslcertificatesservice.CompanyArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetCompaniesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCompany = new Company("defaultCompany", CompanyArgs.builder()
+     *             .companyAddress("西安市")
+     *             .companyName("example公司1")
+     *             .department("example部门1")
+     *             .city("西安")
+     *             .companyType(1)
+     *             .countryCode("111122")
+     *             .postCode("11112233")
+     *             .companyCode("12312311")
+     *             .companyPhone("15101081174")
+     *             .province("陕西")
+     *             .lang("zh")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getCompanies(GetCompaniesArgs.builder()
+     *             .ids(defaultCompany.id())
+     *             .nameRegex(defaultCompany.companyName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceCompanyExampleId", default_.applyValue(_default_ -> _default_.companies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCompaniesResult> getCompaniesPlain(GetCompaniesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/getCompanies:getCompanies", TypeShape.of(GetCompaniesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
      *             .ids(defaultContact.id())
      *             .name(name)
      *             .build());
@@ -830,8 +1383,332 @@ public final class SslcertificatesserviceFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<ContactsResult> contactsPlain(ContactsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/contacts:Contacts", TypeShape.of(ContactsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetContactsResult> getContacts() {
+        return getContacts(GetContactsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContactsResult> getContactsPlain() {
+        return getContactsPlain(GetContactsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContactsResult> getContacts(GetContactsArgs args) {
+        return getContacts(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContactsResult> getContactsPlain(GetContactsPlainArgs args) {
+        return getContactsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContactsResult> getContacts(GetContactsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/getContacts:getContacts", TypeShape.of(GetContactsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContactsResult> getContacts(GetContactsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/getContacts:getContacts", TypeShape.of(GetContactsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Contact available to the user.[What is Contact](https://next.api.alibabacloud.com/document/cas/2020-04-07/CreateContact)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesservice.Contact;
+     * import com.pulumi.alicloud.sslcertificatesservice.ContactArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetContactsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultContact = new Contact("defaultContact", ContactArgs.builder()
+     *             .name(name)
+     *             .mobile("13312345678")
+     *             .email("test}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getContacts(GetContactsArgs.builder()
+     *             .ids(defaultContact.id())
+     *             .name(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceContactExampleId", default_.applyValue(_default_ -> _default_.contacts()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContactsResult> getContactsPlain(GetContactsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/getContacts:getContacts", TypeShape.of(GetContactsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
@@ -851,7 +1728,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -883,7 +1760,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -894,6 +1771,458 @@ public final class SslcertificatesserviceFunctions {
      * </pre>
      * 
      */
+    public static Output<GetInstancesResult> getInstances() {
+        return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
+        return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
+        return getInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
+        return getInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ssl Certificates Service Instance available to the user.[What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance)
+     * 
+     * &gt; **NOTE:** Available since v1.287.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstance;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
+     * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultSslCertificatesServiceInstance = new SslCertificatesServiceInstance("defaultSslCertificatesServiceInstance", SslCertificatesServiceInstanceArgs.builder()
+     *             .productType("cas")
+     *             .period(12)
+     *             .pricingCycle(2)
+     *             .instanceName(name)
+     *             .parameters(            
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullSpec")
+     *                     .value("ws.dv.f")
+     *                     .build(),
+     *                 SslCertificatesServiceInstanceParameterArgs.builder()
+     *                     .code("fullDomainCount")
+     *                     .value("1")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultSslCertificatesServiceInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSslCertificatesServiceInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
+     */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static Output<InstancesResult> instances() {
         return instances(InstancesArgs.Empty, InvokeOptions.Empty);
     }
@@ -915,7 +2244,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -947,7 +2276,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -957,7 +2286,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static CompletableFuture<InstancesResult> instancesPlain() {
         return instancesPlain(InstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -979,7 +2312,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1011,7 +2344,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -1021,7 +2354,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static Output<InstancesResult> instances(InstancesArgs args) {
         return instances(args, InvokeOptions.Empty);
     }
@@ -1043,7 +2380,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1075,7 +2412,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -1085,7 +2422,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static CompletableFuture<InstancesResult> instancesPlain(InstancesPlainArgs args) {
         return instancesPlain(args, InvokeOptions.Empty);
     }
@@ -1107,7 +2448,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1139,7 +2480,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -1149,7 +2490,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static Output<InstancesResult> instances(InstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/instances:Instances", TypeShape.of(InstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1171,7 +2516,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1203,7 +2548,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -1213,7 +2558,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static Output<InstancesResult> instances(InstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesservice/instances:Instances", TypeShape.of(InstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1235,7 +2584,7 @@ public final class SslcertificatesserviceFunctions {
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs;
      * import com.pulumi.alicloud.sslcertificatesserviceinstance.inputs.SslCertificatesServiceInstanceParameterArgs;
      * import com.pulumi.alicloud.sslcertificatesservice.SslcertificatesserviceFunctions;
-     * import com.pulumi.alicloud.sslcertificatesservice.inputs.InstancesArgs;
+     * import com.pulumi.alicloud.sslcertificatesservice.inputs.GetInstancesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1267,7 +2616,7 @@ public final class SslcertificatesserviceFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var default = SslcertificatesserviceFunctions.Instances(InstancesArgs.builder()
+     *         final var default = SslcertificatesserviceFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultSslCertificatesServiceInstance.id())
      *             .build());
      * 
@@ -1277,7 +2626,11 @@ public final class SslcertificatesserviceFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
+     * 
      */
+    @Deprecated /* alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
     public static CompletableFuture<InstancesResult> instancesPlain(InstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesservice/instances:Instances", TypeShape.of(InstancesResult.class), args, Utilities.withVersion(options));
     }

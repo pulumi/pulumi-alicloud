@@ -93,12 +93,8 @@ type GetApplicationGroupsResult struct {
 }
 
 func GetApplicationGroupsOutput(ctx *pulumi.Context, args GetApplicationGroupsOutputArgs, opts ...pulumi.InvokeOption) GetApplicationGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApplicationGroupsResultOutput, error) {
-			args := v.(GetApplicationGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oos/getApplicationGroups:getApplicationGroups", args, GetApplicationGroupsResultOutput{}, options).(GetApplicationGroupsResultOutput), nil
-		}).(GetApplicationGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oos/getApplicationGroups:getApplicationGroups", args, GetApplicationGroupsResultOutput{}, options).(GetApplicationGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getApplicationGroups.

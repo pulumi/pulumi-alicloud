@@ -79,12 +79,8 @@ type GetGreyTagRoutesResult struct {
 }
 
 func GetGreyTagRoutesOutput(ctx *pulumi.Context, args GetGreyTagRoutesOutputArgs, opts ...pulumi.InvokeOption) GetGreyTagRoutesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGreyTagRoutesResultOutput, error) {
-			args := v.(GetGreyTagRoutesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args, GetGreyTagRoutesResultOutput{}, options).(GetGreyTagRoutesResultOutput), nil
-		}).(GetGreyTagRoutesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args, GetGreyTagRoutesResultOutput{}, options).(GetGreyTagRoutesResultOutput)
 }
 
 // A collection of arguments for invoking getGreyTagRoutes.

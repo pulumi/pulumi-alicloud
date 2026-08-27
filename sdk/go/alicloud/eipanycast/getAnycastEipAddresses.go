@@ -102,12 +102,8 @@ type GetAnycastEipAddressesResult struct {
 }
 
 func GetAnycastEipAddressesOutput(ctx *pulumi.Context, args GetAnycastEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetAnycastEipAddressesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAnycastEipAddressesResultOutput, error) {
-			args := v.(GetAnycastEipAddressesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args, GetAnycastEipAddressesResultOutput{}, options).(GetAnycastEipAddressesResultOutput), nil
-		}).(GetAnycastEipAddressesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args, GetAnycastEipAddressesResultOutput{}, options).(GetAnycastEipAddressesResultOutput)
 }
 
 // A collection of arguments for invoking getAnycastEipAddresses.

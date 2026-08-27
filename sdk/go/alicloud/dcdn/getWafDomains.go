@@ -76,12 +76,8 @@ type GetWafDomainsResult struct {
 }
 
 func GetWafDomainsOutput(ctx *pulumi.Context, args GetWafDomainsOutputArgs, opts ...pulumi.InvokeOption) GetWafDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWafDomainsResultOutput, error) {
-			args := v.(GetWafDomainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dcdn/getWafDomains:getWafDomains", args, GetWafDomainsResultOutput{}, options).(GetWafDomainsResultOutput), nil
-		}).(GetWafDomainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dcdn/getWafDomains:getWafDomains", args, GetWafDomainsResultOutput{}, options).(GetWafDomainsResultOutput)
 }
 
 // A collection of arguments for invoking getWafDomains.

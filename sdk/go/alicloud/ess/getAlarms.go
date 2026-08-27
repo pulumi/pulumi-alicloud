@@ -57,12 +57,8 @@ type GetAlarmsResult struct {
 }
 
 func GetAlarmsOutput(ctx *pulumi.Context, args GetAlarmsOutputArgs, opts ...pulumi.InvokeOption) GetAlarmsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlarmsResultOutput, error) {
-			args := v.(GetAlarmsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ess/getAlarms:getAlarms", args, GetAlarmsResultOutput{}, options).(GetAlarmsResultOutput), nil
-		}).(GetAlarmsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ess/getAlarms:getAlarms", args, GetAlarmsResultOutput{}, options).(GetAlarmsResultOutput)
 }
 
 // A collection of arguments for invoking getAlarms.

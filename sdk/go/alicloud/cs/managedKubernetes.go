@@ -140,7 +140,6 @@ import (
 //
 //	for index := 0; index < tmp0; index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
 // CidrBlock: pulumi.String(vpcCidr),

@@ -95,12 +95,8 @@ type GetAccessStrategiesResult struct {
 }
 
 func GetAccessStrategiesOutput(ctx *pulumi.Context, args GetAccessStrategiesOutputArgs, opts ...pulumi.InvokeOption) GetAccessStrategiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessStrategiesResultOutput, error) {
-			args := v.(GetAccessStrategiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getAccessStrategies:getAccessStrategies", args, GetAccessStrategiesResultOutput{}, options).(GetAccessStrategiesResultOutput), nil
-		}).(GetAccessStrategiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getAccessStrategies:getAccessStrategies", args, GetAccessStrategiesResultOutput{}, options).(GetAccessStrategiesResultOutput)
 }
 
 // A collection of arguments for invoking getAccessStrategies.

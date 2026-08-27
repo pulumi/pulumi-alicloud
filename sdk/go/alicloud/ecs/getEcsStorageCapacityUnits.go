@@ -83,12 +83,8 @@ type GetEcsStorageCapacityUnitsResult struct {
 }
 
 func GetEcsStorageCapacityUnitsOutput(ctx *pulumi.Context, args GetEcsStorageCapacityUnitsOutputArgs, opts ...pulumi.InvokeOption) GetEcsStorageCapacityUnitsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsStorageCapacityUnitsResultOutput, error) {
-			args := v.(GetEcsStorageCapacityUnitsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args, GetEcsStorageCapacityUnitsResultOutput{}, options).(GetEcsStorageCapacityUnitsResultOutput), nil
-		}).(GetEcsStorageCapacityUnitsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args, GetEcsStorageCapacityUnitsResultOutput{}, options).(GetEcsStorageCapacityUnitsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsStorageCapacityUnits.

@@ -80,12 +80,8 @@ type GetMigrationJobsResult struct {
 }
 
 func GetMigrationJobsOutput(ctx *pulumi.Context, args GetMigrationJobsOutputArgs, opts ...pulumi.InvokeOption) GetMigrationJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMigrationJobsResultOutput, error) {
-			args := v.(GetMigrationJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dts/getMigrationJobs:getMigrationJobs", args, GetMigrationJobsResultOutput{}, options).(GetMigrationJobsResultOutput), nil
-		}).(GetMigrationJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dts/getMigrationJobs:getMigrationJobs", args, GetMigrationJobsResultOutput{}, options).(GetMigrationJobsResultOutput)
 }
 
 // A collection of arguments for invoking getMigrationJobs.

@@ -128,12 +128,8 @@ type GetArtifactLifecycleRulesResult struct {
 }
 
 func GetArtifactLifecycleRulesOutput(ctx *pulumi.Context, args GetArtifactLifecycleRulesOutputArgs, opts ...pulumi.InvokeOption) GetArtifactLifecycleRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetArtifactLifecycleRulesResultOutput, error) {
-			args := v.(GetArtifactLifecycleRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getArtifactLifecycleRules:getArtifactLifecycleRules", args, GetArtifactLifecycleRulesResultOutput{}, options).(GetArtifactLifecycleRulesResultOutput), nil
-		}).(GetArtifactLifecycleRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getArtifactLifecycleRules:getArtifactLifecycleRules", args, GetArtifactLifecycleRulesResultOutput{}, options).(GetArtifactLifecycleRulesResultOutput)
 }
 
 // A collection of arguments for invoking getArtifactLifecycleRules.

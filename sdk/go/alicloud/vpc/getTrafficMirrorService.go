@@ -72,12 +72,8 @@ type GetTrafficMirrorServiceResult struct {
 }
 
 func GetTrafficMirrorServiceOutput(ctx *pulumi.Context, args GetTrafficMirrorServiceOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTrafficMirrorServiceResultOutput, error) {
-			args := v.(GetTrafficMirrorServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args, GetTrafficMirrorServiceResultOutput{}, options).(GetTrafficMirrorServiceResultOutput), nil
-		}).(GetTrafficMirrorServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args, GetTrafficMirrorServiceResultOutput{}, options).(GetTrafficMirrorServiceResultOutput)
 }
 
 // A collection of arguments for invoking getTrafficMirrorService.

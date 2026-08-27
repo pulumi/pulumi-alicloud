@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.sslCertificatesServiceInstance
 {
+    [Obsolete(@"alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates")]
     public static class Certificates
     {
         /// <summary>
@@ -26,14 +27,14 @@ namespace Pulumi.AliCloud.sslCertificatesServiceInstance
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.SslCertificatesServiceInstance.Certificates.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesServiceInstance.GetCertificates.Invoke(new()
         ///     {
         ///         CertificateStatus = "issued",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceInstanceCertificateExampleId"] = @default.Apply(@default =&gt; @default.Apply(certificatesResult =&gt; certificatesResult.Certificates[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceInstanceCertificateExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -56,14 +57,14 @@ namespace Pulumi.AliCloud.sslCertificatesServiceInstance
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.SslCertificatesServiceInstance.Certificates.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesServiceInstance.GetCertificates.Invoke(new()
         ///     {
         ///         CertificateStatus = "issued",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceInstanceCertificateExampleId"] = @default.Apply(@default =&gt; @default.Apply(certificatesResult =&gt; certificatesResult.Certificates[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceInstanceCertificateExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -86,14 +87,14 @@ namespace Pulumi.AliCloud.sslCertificatesServiceInstance
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.SslCertificatesServiceInstance.Certificates.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesServiceInstance.GetCertificates.Invoke(new()
         ///     {
         ///         CertificateStatus = "issued",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceInstanceCertificateExampleId"] = @default.Apply(@default =&gt; @default.Apply(certificatesResult =&gt; certificatesResult.Certificates[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceInstanceCertificateExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id)),
         ///     };
         /// });
         /// ```

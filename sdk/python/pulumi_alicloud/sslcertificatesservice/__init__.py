@@ -10,6 +10,9 @@ from .companies import *
 from .company import *
 from .contact import *
 from .contacts import *
+from .get_companies import *
+from .get_contacts import *
+from .get_instances import *
 from .instances import *
 from .pca_certificate import *
 from . import outputs

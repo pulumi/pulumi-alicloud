@@ -124,12 +124,8 @@ type LookupAccessKeyPolicyResult struct {
 }
 
 func LookupAccessKeyPolicyOutput(ctx *pulumi.Context, args LookupAccessKeyPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessKeyPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessKeyPolicyResultOutput, error) {
-			args := v.(LookupAccessKeyPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ram/getAccessKeyPolicy:getAccessKeyPolicy", args, LookupAccessKeyPolicyResultOutput{}, options).(LookupAccessKeyPolicyResultOutput), nil
-		}).(LookupAccessKeyPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ram/getAccessKeyPolicy:getAccessKeyPolicy", args, LookupAccessKeyPolicyResultOutput{}, options).(LookupAccessKeyPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAccessKeyPolicy.

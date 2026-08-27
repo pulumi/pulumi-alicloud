@@ -99,12 +99,8 @@ type GetCustomRoutingEndpointTrafficPoliciesResult struct {
 }
 
 func GetCustomRoutingEndpointTrafficPoliciesOutput(ctx *pulumi.Context, args GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetCustomRoutingEndpointTrafficPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomRoutingEndpointTrafficPoliciesResultOutput, error) {
-			args := v.(GetCustomRoutingEndpointTrafficPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", args, GetCustomRoutingEndpointTrafficPoliciesResultOutput{}, options).(GetCustomRoutingEndpointTrafficPoliciesResultOutput), nil
-		}).(GetCustomRoutingEndpointTrafficPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", args, GetCustomRoutingEndpointTrafficPoliciesResultOutput{}, options).(GetCustomRoutingEndpointTrafficPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getCustomRoutingEndpointTrafficPolicies.

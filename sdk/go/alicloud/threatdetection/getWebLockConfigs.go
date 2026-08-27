@@ -89,12 +89,8 @@ type GetWebLockConfigsResult struct {
 }
 
 func GetWebLockConfigsOutput(ctx *pulumi.Context, args GetWebLockConfigsOutputArgs, opts ...pulumi.InvokeOption) GetWebLockConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWebLockConfigsResultOutput, error) {
-			args := v.(GetWebLockConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", args, GetWebLockConfigsResultOutput{}, options).(GetWebLockConfigsResultOutput), nil
-		}).(GetWebLockConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", args, GetWebLockConfigsResultOutput{}, options).(GetWebLockConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getWebLockConfigs.

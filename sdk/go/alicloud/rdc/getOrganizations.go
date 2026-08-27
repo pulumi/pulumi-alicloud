@@ -101,12 +101,8 @@ type GetOrganizationsResult struct {
 }
 
 func GetOrganizationsOutput(ctx *pulumi.Context, args GetOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationsResultOutput, error) {
-			args := v.(GetOrganizationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rdc/getOrganizations:getOrganizations", args, GetOrganizationsResultOutput{}, options).(GetOrganizationsResultOutput), nil
-		}).(GetOrganizationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rdc/getOrganizations:getOrganizations", args, GetOrganizationsResultOutput{}, options).(GetOrganizationsResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizations.

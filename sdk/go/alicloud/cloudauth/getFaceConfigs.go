@@ -84,12 +84,8 @@ type GetFaceConfigsResult struct {
 }
 
 func GetFaceConfigsOutput(ctx *pulumi.Context, args GetFaceConfigsOutputArgs, opts ...pulumi.InvokeOption) GetFaceConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFaceConfigsResultOutput, error) {
-			args := v.(GetFaceConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args, GetFaceConfigsResultOutput{}, options).(GetFaceConfigsResultOutput), nil
-		}).(GetFaceConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args, GetFaceConfigsResultOutput{}, options).(GetFaceConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getFaceConfigs.

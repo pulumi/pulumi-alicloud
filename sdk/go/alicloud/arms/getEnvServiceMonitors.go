@@ -238,12 +238,8 @@ type GetEnvServiceMonitorsResult struct {
 }
 
 func GetEnvServiceMonitorsOutput(ctx *pulumi.Context, args GetEnvServiceMonitorsOutputArgs, opts ...pulumi.InvokeOption) GetEnvServiceMonitorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvServiceMonitorsResultOutput, error) {
-			args := v.(GetEnvServiceMonitorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getEnvServiceMonitors:getEnvServiceMonitors", args, GetEnvServiceMonitorsResultOutput{}, options).(GetEnvServiceMonitorsResultOutput), nil
-		}).(GetEnvServiceMonitorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getEnvServiceMonitors:getEnvServiceMonitors", args, GetEnvServiceMonitorsResultOutput{}, options).(GetEnvServiceMonitorsResultOutput)
 }
 
 // A collection of arguments for invoking getEnvServiceMonitors.

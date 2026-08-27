@@ -88,12 +88,8 @@ type GetElasticityAssurancesResult struct {
 }
 
 func GetElasticityAssurancesOutput(ctx *pulumi.Context, args GetElasticityAssurancesOutputArgs, opts ...pulumi.InvokeOption) GetElasticityAssurancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetElasticityAssurancesResultOutput, error) {
-			args := v.(GetElasticityAssurancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args, GetElasticityAssurancesResultOutput{}, options).(GetElasticityAssurancesResultOutput), nil
-		}).(GetElasticityAssurancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args, GetElasticityAssurancesResultOutput{}, options).(GetElasticityAssurancesResultOutput)
 }
 
 // A collection of arguments for invoking getElasticityAssurances.

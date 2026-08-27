@@ -132,12 +132,8 @@ type GetSecretParametersResult struct {
 }
 
 func GetSecretParametersOutput(ctx *pulumi.Context, args GetSecretParametersOutputArgs, opts ...pulumi.InvokeOption) GetSecretParametersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSecretParametersResultOutput, error) {
-			args := v.(GetSecretParametersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:oos/getSecretParameters:getSecretParameters", args, GetSecretParametersResultOutput{}, options).(GetSecretParametersResultOutput), nil
-		}).(GetSecretParametersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:oos/getSecretParameters:getSecretParameters", args, GetSecretParametersResultOutput{}, options).(GetSecretParametersResultOutput)
 }
 
 // A collection of arguments for invoking getSecretParameters.

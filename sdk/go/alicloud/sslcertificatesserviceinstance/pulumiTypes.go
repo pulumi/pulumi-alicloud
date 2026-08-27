@@ -393,13 +393,249 @@ func (o SslCertificatesServiceInstanceParameterArrayOutput) Index(i pulumi.IntIn
 	}).(SslCertificatesServiceInstanceParameterOutput)
 }
 
+type GetCertificatesCertificate struct {
+	// The encryption algorithm of the certificate.
+	Algorithm string `pulumi:"algorithm"`
+	// The global certificate identifier, formatted as the certificate ID plus `-` plus the site region ID. Alibaba Cloud services such as ALB, CDN and WAF reference a certificate by this value.
+	CertIdentifier string `pulumi:"certIdentifier"`
+	// The ID of the certificate.
+	CertificateId int `pulumi:"certificateId"`
+	// The name of the certificate.
+	CertificateName string `pulumi:"certificateName"`
+	// The source of the certificate. Valid values: `BUY`, `UPLOAD` and `TEST`.
+	CertificateSource string `pulumi:"certificateSource"`
+	// The status of the certificate. Valid values: `issued`, `revoked`, `willExpire` and `expired`.
+	CertificateStatus string `pulumi:"certificateStatus"`
+	// The common name of the certificate.
+	CommonName string `pulumi:"commonName"`
+	// All domain names covered by the certificate, separated by commas.
+	Domain string `pulumi:"domain"`
+	// Indicates whether the private key of the certificate is held on the server side.
+	ExistPrivateKey bool `pulumi:"existPrivateKey"`
+	// The public key fingerprint of the certificate.
+	FingerPrint string `pulumi:"fingerPrint"`
+	// The ID of the resource supplied above.
+	Id int `pulumi:"id"`
+	// The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
+	InstanceId string `pulumi:"instanceId"`
+	// The certificate authority that issued the certificate.
+	Issuer string `pulumi:"issuer"`
+	// The key length of the certificate algorithm.
+	KeySize int `pulumi:"keySize"`
+	// The end of the certificate validity period.
+	NotAfter int `pulumi:"notAfter"`
+	// The start of the certificate validity period.
+	NotBefore int `pulumi:"notBefore"`
+}
+
+// GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateInput` via:
+//
+//	GetCertificatesCertificateArgs{...}
+type GetCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput
+	ToGetCertificatesCertificateOutputWithContext(context.Context) GetCertificatesCertificateOutput
+}
+
+type GetCertificatesCertificateArgs struct {
+	// The encryption algorithm of the certificate.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The global certificate identifier, formatted as the certificate ID plus `-` plus the site region ID. Alibaba Cloud services such as ALB, CDN and WAF reference a certificate by this value.
+	CertIdentifier pulumi.StringInput `pulumi:"certIdentifier"`
+	// The ID of the certificate.
+	CertificateId pulumi.IntInput `pulumi:"certificateId"`
+	// The name of the certificate.
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// The source of the certificate. Valid values: `BUY`, `UPLOAD` and `TEST`.
+	CertificateSource pulumi.StringInput `pulumi:"certificateSource"`
+	// The status of the certificate. Valid values: `issued`, `revoked`, `willExpire` and `expired`.
+	CertificateStatus pulumi.StringInput `pulumi:"certificateStatus"`
+	// The common name of the certificate.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// All domain names covered by the certificate, separated by commas.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Indicates whether the private key of the certificate is held on the server side.
+	ExistPrivateKey pulumi.BoolInput `pulumi:"existPrivateKey"`
+	// The public key fingerprint of the certificate.
+	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
+	// The ID of the resource supplied above.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The certificate authority that issued the certificate.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// The key length of the certificate algorithm.
+	KeySize pulumi.IntInput `pulumi:"keySize"`
+	// The end of the certificate validity period.
+	NotAfter pulumi.IntInput `pulumi:"notAfter"`
+	// The start of the certificate validity period.
+	NotBefore pulumi.IntInput `pulumi:"notBefore"`
+}
+
+func (GetCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput {
+	return i.ToGetCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateOutput)
+}
+
+// GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
+//
+//	GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
+type GetCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput
+	ToGetCertificatesCertificateArrayOutputWithContext(context.Context) GetCertificatesCertificateArrayOutput
+}
+
+type GetCertificatesCertificateArray []GetCertificatesCertificateInput
+
+func (GetCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput {
+	return i.ToGetCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateArrayOutput)
+}
+
+type GetCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
+	return o
+}
+
+// The encryption algorithm of the certificate.
+func (o GetCertificatesCertificateOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The global certificate identifier, formatted as the certificate ID plus `-` plus the site region ID. Alibaba Cloud services such as ALB, CDN and WAF reference a certificate by this value.
+func (o GetCertificatesCertificateOutput) CertIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CertIdentifier }).(pulumi.StringOutput)
+}
+
+// The ID of the certificate.
+func (o GetCertificatesCertificateOutput) CertificateId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) int { return v.CertificateId }).(pulumi.IntOutput)
+}
+
+// The name of the certificate.
+func (o GetCertificatesCertificateOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// The source of the certificate. Valid values: `BUY`, `UPLOAD` and `TEST`.
+func (o GetCertificatesCertificateOutput) CertificateSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CertificateSource }).(pulumi.StringOutput)
+}
+
+// The status of the certificate. Valid values: `issued`, `revoked`, `willExpire` and `expired`.
+func (o GetCertificatesCertificateOutput) CertificateStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CertificateStatus }).(pulumi.StringOutput)
+}
+
+// The common name of the certificate.
+func (o GetCertificatesCertificateOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// All domain names covered by the certificate, separated by commas.
+func (o GetCertificatesCertificateOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Indicates whether the private key of the certificate is held on the server side.
+func (o GetCertificatesCertificateOutput) ExistPrivateKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) bool { return v.ExistPrivateKey }).(pulumi.BoolOutput)
+}
+
+// The public key fingerprint of the certificate.
+func (o GetCertificatesCertificateOutput) FingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.FingerPrint }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetCertificatesCertificateOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
+func (o GetCertificatesCertificateOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The certificate authority that issued the certificate.
+func (o GetCertificatesCertificateOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The key length of the certificate algorithm.
+func (o GetCertificatesCertificateOutput) KeySize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) int { return v.KeySize }).(pulumi.IntOutput)
+}
+
+// The end of the certificate validity period.
+func (o GetCertificatesCertificateOutput) NotAfter() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) int { return v.NotAfter }).(pulumi.IntOutput)
+}
+
+// The start of the certificate validity period.
+func (o GetCertificatesCertificateOutput) NotBefore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) int { return v.NotBefore }).(pulumi.IntOutput)
+}
+
+type GetCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificate {
+		return vs[0].([]GetCertificatesCertificate)[vs[1].(int)]
+	}).(GetCertificatesCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificatesCertificateInput)(nil)).Elem(), CertificatesCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificatesCertificateArrayInput)(nil)).Elem(), CertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificatesServiceInstanceParameterInput)(nil)).Elem(), SslCertificatesServiceInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificatesServiceInstanceParameterArrayInput)(nil)).Elem(), SslCertificatesServiceInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateInput)(nil)).Elem(), GetCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateArrayInput)(nil)).Elem(), GetCertificatesCertificateArray{})
 	pulumi.RegisterOutputType(CertificatesCertificateOutput{})
 	pulumi.RegisterOutputType(CertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(SslCertificatesServiceInstanceParameterOutput{})
 	pulumi.RegisterOutputType(SslCertificatesServiceInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateArrayOutput{})
 }

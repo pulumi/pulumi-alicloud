@@ -130,12 +130,8 @@ type GetDatabasesResult struct {
 }
 
 func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatabasesResultOutput, error) {
-			args := v.(GetDatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:polardb/getDatabases:getDatabases", args, GetDatabasesResultOutput{}, options).(GetDatabasesResultOutput), nil
-		}).(GetDatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:polardb/getDatabases:getDatabases", args, GetDatabasesResultOutput{}, options).(GetDatabasesResultOutput)
 }
 
 // A collection of arguments for invoking getDatabases.

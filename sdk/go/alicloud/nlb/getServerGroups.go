@@ -101,12 +101,8 @@ type GetServerGroupsResult struct {
 }
 
 func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerGroupsResultOutput, error) {
-			args := v.(GetServerGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nlb/getServerGroups:getServerGroups", args, GetServerGroupsResultOutput{}, options).(GetServerGroupsResultOutput), nil
-		}).(GetServerGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nlb/getServerGroups:getServerGroups", args, GetServerGroupsResultOutput{}, options).(GetServerGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getServerGroups.

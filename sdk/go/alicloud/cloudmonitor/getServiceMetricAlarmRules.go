@@ -177,12 +177,8 @@ type GetServiceMetricAlarmRulesResult struct {
 }
 
 func GetServiceMetricAlarmRulesOutput(ctx *pulumi.Context, args GetServiceMetricAlarmRulesOutputArgs, opts ...pulumi.InvokeOption) GetServiceMetricAlarmRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceMetricAlarmRulesResultOutput, error) {
-			args := v.(GetServiceMetricAlarmRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", args, GetServiceMetricAlarmRulesResultOutput{}, options).(GetServiceMetricAlarmRulesResultOutput), nil
-		}).(GetServiceMetricAlarmRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", args, GetServiceMetricAlarmRulesResultOutput{}, options).(GetServiceMetricAlarmRulesResultOutput)
 }
 
 // A collection of arguments for invoking getServiceMetricAlarmRules.

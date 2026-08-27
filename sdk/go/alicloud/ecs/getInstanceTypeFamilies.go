@@ -82,12 +82,8 @@ type GetInstanceTypeFamiliesResult struct {
 }
 
 func GetInstanceTypeFamiliesOutput(ctx *pulumi.Context, args GetInstanceTypeFamiliesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypeFamiliesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceTypeFamiliesResultOutput, error) {
-			args := v.(GetInstanceTypeFamiliesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args, GetInstanceTypeFamiliesResultOutput{}, options).(GetInstanceTypeFamiliesResultOutput), nil
-		}).(GetInstanceTypeFamiliesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args, GetInstanceTypeFamiliesResultOutput{}, options).(GetInstanceTypeFamiliesResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceTypeFamilies.

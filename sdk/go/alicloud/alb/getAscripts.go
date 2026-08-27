@@ -91,12 +91,8 @@ type GetAscriptsResult struct {
 }
 
 func GetAscriptsOutput(ctx *pulumi.Context, args GetAscriptsOutputArgs, opts ...pulumi.InvokeOption) GetAscriptsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAscriptsResultOutput, error) {
-			args := v.(GetAscriptsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:alb/getAscripts:getAscripts", args, GetAscriptsResultOutput{}, options).(GetAscriptsResultOutput), nil
-		}).(GetAscriptsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:alb/getAscripts:getAscripts", args, GetAscriptsResultOutput{}, options).(GetAscriptsResultOutput)
 }
 
 // A collection of arguments for invoking getAscripts.

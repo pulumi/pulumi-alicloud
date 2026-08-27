@@ -111,12 +111,8 @@ type GetAddressBooksResult struct {
 }
 
 func GetAddressBooksOutput(ctx *pulumi.Context, args GetAddressBooksOutputArgs, opts ...pulumi.InvokeOption) GetAddressBooksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAddressBooksResultOutput, error) {
-			args := v.(GetAddressBooksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:wafv3/getAddressBooks:getAddressBooks", args, GetAddressBooksResultOutput{}, options).(GetAddressBooksResultOutput), nil
-		}).(GetAddressBooksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:wafv3/getAddressBooks:getAddressBooks", args, GetAddressBooksResultOutput{}, options).(GetAddressBooksResultOutput)
 }
 
 // A collection of arguments for invoking getAddressBooks.

@@ -89,12 +89,8 @@ type GetDataFlowsResult struct {
 }
 
 func GetDataFlowsOutput(ctx *pulumi.Context, args GetDataFlowsOutputArgs, opts ...pulumi.InvokeOption) GetDataFlowsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataFlowsResultOutput, error) {
-			args := v.(GetDataFlowsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nas/getDataFlows:getDataFlows", args, GetDataFlowsResultOutput{}, options).(GetDataFlowsResultOutput), nil
-		}).(GetDataFlowsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nas/getDataFlows:getDataFlows", args, GetDataFlowsResultOutput{}, options).(GetDataFlowsResultOutput)
 }
 
 // A collection of arguments for invoking getDataFlows.

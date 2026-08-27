@@ -86,12 +86,8 @@ type GetHybridMonitorDatasResult struct {
 }
 
 func GetHybridMonitorDatasOutput(ctx *pulumi.Context, args GetHybridMonitorDatasOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorDatasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHybridMonitorDatasResultOutput, error) {
-			args := v.(GetHybridMonitorDatasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args, GetHybridMonitorDatasResultOutput{}, options).(GetHybridMonitorDatasResultOutput), nil
-		}).(GetHybridMonitorDatasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args, GetHybridMonitorDatasResultOutput{}, options).(GetHybridMonitorDatasResultOutput)
 }
 
 // A collection of arguments for invoking getHybridMonitorDatas.

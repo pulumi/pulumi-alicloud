@@ -221,12 +221,8 @@ type GetAddonReleasesResult struct {
 }
 
 func GetAddonReleasesOutput(ctx *pulumi.Context, args GetAddonReleasesOutputArgs, opts ...pulumi.InvokeOption) GetAddonReleasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAddonReleasesResultOutput, error) {
-			args := v.(GetAddonReleasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getAddonReleases:getAddonReleases", args, GetAddonReleasesResultOutput{}, options).(GetAddonReleasesResultOutput), nil
-		}).(GetAddonReleasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getAddonReleases:getAddonReleases", args, GetAddonReleasesResultOutput{}, options).(GetAddonReleasesResultOutput)
 }
 
 // A collection of arguments for invoking getAddonReleases.

@@ -85,12 +85,8 @@ type GetSchedulesResult struct {
 }
 
 func GetSchedulesOutput(ctx *pulumi.Context, args GetSchedulesOutputArgs, opts ...pulumi.InvokeOption) GetSchedulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSchedulesResultOutput, error) {
-			args := v.(GetSchedulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:fnf/getSchedules:getSchedules", args, GetSchedulesResultOutput{}, options).(GetSchedulesResultOutput), nil
-		}).(GetSchedulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:fnf/getSchedules:getSchedules", args, GetSchedulesResultOutput{}, options).(GetSchedulesResultOutput)
 }
 
 // A collection of arguments for invoking getSchedules.

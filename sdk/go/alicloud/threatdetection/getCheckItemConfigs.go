@@ -85,12 +85,8 @@ type GetCheckItemConfigsResult struct {
 }
 
 func GetCheckItemConfigsOutput(ctx *pulumi.Context, args GetCheckItemConfigsOutputArgs, opts ...pulumi.InvokeOption) GetCheckItemConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCheckItemConfigsResultOutput, error) {
-			args := v.(GetCheckItemConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getCheckItemConfigs:getCheckItemConfigs", args, GetCheckItemConfigsResultOutput{}, options).(GetCheckItemConfigsResultOutput), nil
-		}).(GetCheckItemConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getCheckItemConfigs:getCheckItemConfigs", args, GetCheckItemConfigsResultOutput{}, options).(GetCheckItemConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getCheckItemConfigs.

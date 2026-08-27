@@ -78,12 +78,8 @@ type GetModifyParameterLogsResult struct {
 }
 
 func GetModifyParameterLogsOutput(ctx *pulumi.Context, args GetModifyParameterLogsOutputArgs, opts ...pulumi.InvokeOption) GetModifyParameterLogsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetModifyParameterLogsResultOutput, error) {
-			args := v.(GetModifyParameterLogsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args, GetModifyParameterLogsResultOutput{}, options).(GetModifyParameterLogsResultOutput), nil
-		}).(GetModifyParameterLogsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args, GetModifyParameterLogsResultOutput{}, options).(GetModifyParameterLogsResultOutput)
 }
 
 // A collection of arguments for invoking getModifyParameterLogs.

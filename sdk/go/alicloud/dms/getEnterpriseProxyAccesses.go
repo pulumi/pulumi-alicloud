@@ -88,12 +88,8 @@ type GetEnterpriseProxyAccessesResult struct {
 }
 
 func GetEnterpriseProxyAccessesOutput(ctx *pulumi.Context, args GetEnterpriseProxyAccessesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseProxyAccessesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseProxyAccessesResultOutput, error) {
-			args := v.(GetEnterpriseProxyAccessesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args, GetEnterpriseProxyAccessesResultOutput{}, options).(GetEnterpriseProxyAccessesResultOutput), nil
-		}).(GetEnterpriseProxyAccessesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args, GetEnterpriseProxyAccessesResultOutput{}, options).(GetEnterpriseProxyAccessesResultOutput)
 }
 
 // A collection of arguments for invoking getEnterpriseProxyAccesses.

@@ -86,12 +86,8 @@ type GetDesktopTypesResult struct {
 }
 
 func GetDesktopTypesOutput(ctx *pulumi.Context, args GetDesktopTypesOutputArgs, opts ...pulumi.InvokeOption) GetDesktopTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDesktopTypesResultOutput, error) {
-			args := v.(GetDesktopTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getDesktopTypes:getDesktopTypes", args, GetDesktopTypesResultOutput{}, options).(GetDesktopTypesResultOutput), nil
-		}).(GetDesktopTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getDesktopTypes:getDesktopTypes", args, GetDesktopTypesResultOutput{}, options).(GetDesktopTypesResultOutput)
 }
 
 // A collection of arguments for invoking getDesktopTypes.

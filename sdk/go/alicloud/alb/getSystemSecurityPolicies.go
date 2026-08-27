@@ -77,12 +77,8 @@ type GetSystemSecurityPoliciesResult struct {
 }
 
 func GetSystemSecurityPoliciesOutput(ctx *pulumi.Context, args GetSystemSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSystemSecurityPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSystemSecurityPoliciesResultOutput, error) {
-			args := v.(GetSystemSecurityPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args, GetSystemSecurityPoliciesResultOutput{}, options).(GetSystemSecurityPoliciesResultOutput), nil
-		}).(GetSystemSecurityPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args, GetSystemSecurityPoliciesResultOutput{}, options).(GetSystemSecurityPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getSystemSecurityPolicies.

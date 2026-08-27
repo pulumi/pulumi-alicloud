@@ -95,12 +95,8 @@ type GetRegistryEnterpriseSyncRulesResult struct {
 }
 
 func GetRegistryEnterpriseSyncRulesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseSyncRulesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseSyncRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistryEnterpriseSyncRulesResultOutput, error) {
-			args := v.(GetRegistryEnterpriseSyncRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args, GetRegistryEnterpriseSyncRulesResultOutput{}, options).(GetRegistryEnterpriseSyncRulesResultOutput), nil
-		}).(GetRegistryEnterpriseSyncRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args, GetRegistryEnterpriseSyncRulesResultOutput{}, options).(GetRegistryEnterpriseSyncRulesResultOutput)
 }
 
 // A collection of arguments for invoking getRegistryEnterpriseSyncRules.

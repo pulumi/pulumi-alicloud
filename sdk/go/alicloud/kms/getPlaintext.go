@@ -85,12 +85,8 @@ type GetPlaintextResult struct {
 }
 
 func GetPlaintextOutput(ctx *pulumi.Context, args GetPlaintextOutputArgs, opts ...pulumi.InvokeOption) GetPlaintextResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPlaintextResultOutput, error) {
-			args := v.(GetPlaintextArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:kms/getPlaintext:getPlaintext", args, GetPlaintextResultOutput{}, options).(GetPlaintextResultOutput), nil
-		}).(GetPlaintextResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:kms/getPlaintext:getPlaintext", args, GetPlaintextResultOutput{}, options).(GetPlaintextResultOutput)
 }
 
 // A collection of arguments for invoking getPlaintext.

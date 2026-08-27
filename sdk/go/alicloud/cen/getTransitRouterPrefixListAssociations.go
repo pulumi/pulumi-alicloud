@@ -91,12 +91,8 @@ type GetTransitRouterPrefixListAssociationsResult struct {
 }
 
 func GetTransitRouterPrefixListAssociationsOutput(ctx *pulumi.Context, args GetTransitRouterPrefixListAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterPrefixListAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterPrefixListAssociationsResultOutput, error) {
-			args := v.(GetTransitRouterPrefixListAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args, GetTransitRouterPrefixListAssociationsResultOutput{}, options).(GetTransitRouterPrefixListAssociationsResultOutput), nil
-		}).(GetTransitRouterPrefixListAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args, GetTransitRouterPrefixListAssociationsResultOutput{}, options).(GetTransitRouterPrefixListAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouterPrefixListAssociations.

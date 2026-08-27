@@ -67,12 +67,8 @@ type GetCrossRegionsResult struct {
 }
 
 func GetCrossRegionsOutput(ctx *pulumi.Context, args GetCrossRegionsOutputArgs, opts ...pulumi.InvokeOption) GetCrossRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCrossRegionsResultOutput, error) {
-			args := v.(GetCrossRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getCrossRegions:getCrossRegions", args, GetCrossRegionsResultOutput{}, options).(GetCrossRegionsResultOutput), nil
-		}).(GetCrossRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getCrossRegions:getCrossRegions", args, GetCrossRegionsResultOutput{}, options).(GetCrossRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getCrossRegions.

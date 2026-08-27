@@ -98,12 +98,8 @@ type GetLogBackupsResult struct {
 }
 
 func GetLogBackupsOutput(ctx *pulumi.Context, args GetLogBackupsOutputArgs, opts ...pulumi.InvokeOption) GetLogBackupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLogBackupsResultOutput, error) {
-			args := v.(GetLogBackupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:gpdb/getLogBackups:getLogBackups", args, GetLogBackupsResultOutput{}, options).(GetLogBackupsResultOutput), nil
-		}).(GetLogBackupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:gpdb/getLogBackups:getLogBackups", args, GetLogBackupsResultOutput{}, options).(GetLogBackupsResultOutput)
 }
 
 // A collection of arguments for invoking getLogBackups.

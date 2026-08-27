@@ -96,12 +96,8 @@ type GetAntiBruteForceRulesResult struct {
 }
 
 func GetAntiBruteForceRulesOutput(ctx *pulumi.Context, args GetAntiBruteForceRulesOutputArgs, opts ...pulumi.InvokeOption) GetAntiBruteForceRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAntiBruteForceRulesResultOutput, error) {
-			args := v.(GetAntiBruteForceRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args, GetAntiBruteForceRulesResultOutput{}, options).(GetAntiBruteForceRulesResultOutput), nil
-		}).(GetAntiBruteForceRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args, GetAntiBruteForceRulesResultOutput{}, options).(GetAntiBruteForceRulesResultOutput)
 }
 
 // A collection of arguments for invoking getAntiBruteForceRules.

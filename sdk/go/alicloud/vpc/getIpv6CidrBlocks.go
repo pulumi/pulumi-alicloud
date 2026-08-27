@@ -121,12 +121,8 @@ type GetIpv6CidrBlocksResult struct {
 }
 
 func GetIpv6CidrBlocksOutput(ctx *pulumi.Context, args GetIpv6CidrBlocksOutputArgs, opts ...pulumi.InvokeOption) GetIpv6CidrBlocksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpv6CidrBlocksResultOutput, error) {
-			args := v.(GetIpv6CidrBlocksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getIpv6CidrBlocks:getIpv6CidrBlocks", args, GetIpv6CidrBlocksResultOutput{}, options).(GetIpv6CidrBlocksResultOutput), nil
-		}).(GetIpv6CidrBlocksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getIpv6CidrBlocks:getIpv6CidrBlocks", args, GetIpv6CidrBlocksResultOutput{}, options).(GetIpv6CidrBlocksResultOutput)
 }
 
 // A collection of arguments for invoking getIpv6CidrBlocks.

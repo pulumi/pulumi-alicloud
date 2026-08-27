@@ -89,12 +89,8 @@ type GetAggregateDeliveriesResult struct {
 }
 
 func GetAggregateDeliveriesOutput(ctx *pulumi.Context, args GetAggregateDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateDeliveriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAggregateDeliveriesResultOutput, error) {
-			args := v.(GetAggregateDeliveriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args, GetAggregateDeliveriesResultOutput{}, options).(GetAggregateDeliveriesResultOutput), nil
-		}).(GetAggregateDeliveriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args, GetAggregateDeliveriesResultOutput{}, options).(GetAggregateDeliveriesResultOutput)
 }
 
 // A collection of arguments for invoking getAggregateDeliveries.

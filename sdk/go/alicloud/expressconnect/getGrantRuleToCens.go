@@ -82,12 +82,8 @@ type GetGrantRuleToCensResult struct {
 }
 
 func GetGrantRuleToCensOutput(ctx *pulumi.Context, args GetGrantRuleToCensOutputArgs, opts ...pulumi.InvokeOption) GetGrantRuleToCensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGrantRuleToCensResultOutput, error) {
-			args := v.(GetGrantRuleToCensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args, GetGrantRuleToCensResultOutput{}, options).(GetGrantRuleToCensResultOutput), nil
-		}).(GetGrantRuleToCensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args, GetGrantRuleToCensResultOutput{}, options).(GetGrantRuleToCensResultOutput)
 }
 
 // A collection of arguments for invoking getGrantRuleToCens.

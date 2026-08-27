@@ -72,12 +72,8 @@ type GetIndustrialSericeResult struct {
 }
 
 func GetIndustrialSericeOutput(ctx *pulumi.Context, args GetIndustrialSericeOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialSericeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIndustrialSericeResultOutput, error) {
-			args := v.(GetIndustrialSericeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args, GetIndustrialSericeResultOutput{}, options).(GetIndustrialSericeResultOutput), nil
-		}).(GetIndustrialSericeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args, GetIndustrialSericeResultOutput{}, options).(GetIndustrialSericeResultOutput)
 }
 
 // A collection of arguments for invoking getIndustrialSerice.

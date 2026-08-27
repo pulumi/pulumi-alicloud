@@ -80,12 +80,8 @@ type GetServerCertificatesResult struct {
 }
 
 func GetServerCertificatesOutput(ctx *pulumi.Context, args GetServerCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetServerCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerCertificatesResultOutput, error) {
-			args := v.(GetServerCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:slb/getServerCertificates:getServerCertificates", args, GetServerCertificatesResultOutput{}, options).(GetServerCertificatesResultOutput), nil
-		}).(GetServerCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:slb/getServerCertificates:getServerCertificates", args, GetServerCertificatesResultOutput{}, options).(GetServerCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getServerCertificates.

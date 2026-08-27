@@ -84,12 +84,8 @@ type GetServerGroupServerAttachmentsResult struct {
 }
 
 func GetServerGroupServerAttachmentsOutput(ctx *pulumi.Context, args GetServerGroupServerAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupServerAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerGroupServerAttachmentsResultOutput, error) {
-			args := v.(GetServerGroupServerAttachmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args, GetServerGroupServerAttachmentsResultOutput{}, options).(GetServerGroupServerAttachmentsResultOutput), nil
-		}).(GetServerGroupServerAttachmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args, GetServerGroupServerAttachmentsResultOutput{}, options).(GetServerGroupServerAttachmentsResultOutput)
 }
 
 // A collection of arguments for invoking getServerGroupServerAttachments.

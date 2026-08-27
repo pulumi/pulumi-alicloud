@@ -78,12 +78,8 @@ type GetVulWhitelistsResult struct {
 }
 
 func GetVulWhitelistsOutput(ctx *pulumi.Context, args GetVulWhitelistsOutputArgs, opts ...pulumi.InvokeOption) GetVulWhitelistsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVulWhitelistsResultOutput, error) {
-			args := v.(GetVulWhitelistsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args, GetVulWhitelistsResultOutput{}, options).(GetVulWhitelistsResultOutput), nil
-		}).(GetVulWhitelistsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args, GetVulWhitelistsResultOutput{}, options).(GetVulWhitelistsResultOutput)
 }
 
 // A collection of arguments for invoking getVulWhitelists.

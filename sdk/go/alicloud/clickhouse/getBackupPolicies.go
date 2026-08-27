@@ -71,12 +71,8 @@ type GetBackupPoliciesResult struct {
 }
 
 func GetBackupPoliciesOutput(ctx *pulumi.Context, args GetBackupPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetBackupPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBackupPoliciesResultOutput, error) {
-			args := v.(GetBackupPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args, GetBackupPoliciesResultOutput{}, options).(GetBackupPoliciesResultOutput), nil
-		}).(GetBackupPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args, GetBackupPoliciesResultOutput{}, options).(GetBackupPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getBackupPolicies.

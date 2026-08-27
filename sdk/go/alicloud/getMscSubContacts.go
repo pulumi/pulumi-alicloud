@@ -82,12 +82,8 @@ type GetMscSubContactsResult struct {
 }
 
 func GetMscSubContactsOutput(ctx *pulumi.Context, args GetMscSubContactsOutputArgs, opts ...pulumi.InvokeOption) GetMscSubContactsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMscSubContactsResultOutput, error) {
-			args := v.(GetMscSubContactsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:index/getMscSubContacts:getMscSubContacts", args, GetMscSubContactsResultOutput{}, options).(GetMscSubContactsResultOutput), nil
-		}).(GetMscSubContactsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:index/getMscSubContacts:getMscSubContacts", args, GetMscSubContactsResultOutput{}, options).(GetMscSubContactsResultOutput)
 }
 
 // A collection of arguments for invoking getMscSubContacts.

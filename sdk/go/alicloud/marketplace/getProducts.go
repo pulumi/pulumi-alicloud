@@ -101,12 +101,8 @@ type GetProductsResult struct {
 }
 
 func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...pulumi.InvokeOption) GetProductsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProductsResultOutput, error) {
-			args := v.(GetProductsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:marketplace/getProducts:getProducts", args, GetProductsResultOutput{}, options).(GetProductsResultOutput), nil
-		}).(GetProductsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:marketplace/getProducts:getProducts", args, GetProductsResultOutput{}, options).(GetProductsResultOutput)
 }
 
 // A collection of arguments for invoking getProducts.

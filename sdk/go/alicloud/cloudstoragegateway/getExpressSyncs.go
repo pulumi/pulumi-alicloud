@@ -80,12 +80,8 @@ type GetExpressSyncsResult struct {
 }
 
 func GetExpressSyncsOutput(ctx *pulumi.Context, args GetExpressSyncsOutputArgs, opts ...pulumi.InvokeOption) GetExpressSyncsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetExpressSyncsResultOutput, error) {
-			args := v.(GetExpressSyncsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args, GetExpressSyncsResultOutput{}, options).(GetExpressSyncsResultOutput), nil
-		}).(GetExpressSyncsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args, GetExpressSyncsResultOutput{}, options).(GetExpressSyncsResultOutput)
 }
 
 // A collection of arguments for invoking getExpressSyncs.

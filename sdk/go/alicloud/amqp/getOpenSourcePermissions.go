@@ -174,12 +174,8 @@ type GetOpenSourcePermissionsResult struct {
 }
 
 func GetOpenSourcePermissionsOutput(ctx *pulumi.Context, args GetOpenSourcePermissionsOutputArgs, opts ...pulumi.InvokeOption) GetOpenSourcePermissionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOpenSourcePermissionsResultOutput, error) {
-			args := v.(GetOpenSourcePermissionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:amqp/getOpenSourcePermissions:getOpenSourcePermissions", args, GetOpenSourcePermissionsResultOutput{}, options).(GetOpenSourcePermissionsResultOutput), nil
-		}).(GetOpenSourcePermissionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:amqp/getOpenSourcePermissions:getOpenSourcePermissions", args, GetOpenSourcePermissionsResultOutput{}, options).(GetOpenSourcePermissionsResultOutput)
 }
 
 // A collection of arguments for invoking getOpenSourcePermissions.

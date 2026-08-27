@@ -73,12 +73,8 @@ type GetGtmInstancesResult struct {
 }
 
 func GetGtmInstancesOutput(ctx *pulumi.Context, args GetGtmInstancesOutputArgs, opts ...pulumi.InvokeOption) GetGtmInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGtmInstancesResultOutput, error) {
-			args := v.(GetGtmInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getGtmInstances:getGtmInstances", args, GetGtmInstancesResultOutput{}, options).(GetGtmInstancesResultOutput), nil
-		}).(GetGtmInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getGtmInstances:getGtmInstances", args, GetGtmInstancesResultOutput{}, options).(GetGtmInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getGtmInstances.

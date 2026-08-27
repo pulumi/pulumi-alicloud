@@ -55,12 +55,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := sslcertificatesservice.InstancesOutput(ctx, sslcertificatesservice.InstancesOutputArgs{
+//			_default := sslcertificatesservice.GetInstancesOutput(ctx, sslcertificatesservice.GetInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultSslCertificatesServiceInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
-//			ctx.Export("alicloudSslCertificatesServiceInstanceExampleId", _default.ApplyT(func(_default sslcertificatesservice.InstancesResult) (*string, error) {
+//			ctx.Export("alicloudSslCertificatesServiceInstanceExampleId", _default.ApplyT(func(_default sslcertificatesservice.GetInstancesResult) (*string, error) {
 //				return _default.Instances[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
@@ -68,6 +68,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances
 func Instances(ctx *pulumi.Context, args *InstancesArgs, opts ...pulumi.InvokeOption) (*InstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv InstancesResult
@@ -127,12 +129,8 @@ type InstancesResult struct {
 }
 
 func InstancesOutput(ctx *pulumi.Context, args InstancesOutputArgs, opts ...pulumi.InvokeOption) InstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (InstancesResultOutput, error) {
-			args := v.(InstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sslcertificatesservice/instances:Instances", args, InstancesResultOutput{}, options).(InstancesResultOutput), nil
-		}).(InstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sslcertificatesservice/instances:Instances", args, InstancesResultOutput{}, options).(InstancesResultOutput)
 }
 
 // A collection of arguments for invoking Instances.

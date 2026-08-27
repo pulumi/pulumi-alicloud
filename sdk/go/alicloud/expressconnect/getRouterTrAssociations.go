@@ -148,12 +148,8 @@ type GetRouterTrAssociationsResult struct {
 }
 
 func GetRouterTrAssociationsOutput(ctx *pulumi.Context, args GetRouterTrAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetRouterTrAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouterTrAssociationsResultOutput, error) {
-			args := v.(GetRouterTrAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:expressconnect/getRouterTrAssociations:getRouterTrAssociations", args, GetRouterTrAssociationsResultOutput{}, options).(GetRouterTrAssociationsResultOutput), nil
-		}).(GetRouterTrAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:expressconnect/getRouterTrAssociations:getRouterTrAssociations", args, GetRouterTrAssociationsResultOutput{}, options).(GetRouterTrAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getRouterTrAssociations.

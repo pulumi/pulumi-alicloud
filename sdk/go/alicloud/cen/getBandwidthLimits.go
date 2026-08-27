@@ -70,12 +70,8 @@ type GetBandwidthLimitsResult struct {
 }
 
 func GetBandwidthLimitsOutput(ctx *pulumi.Context, args GetBandwidthLimitsOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthLimitsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBandwidthLimitsResultOutput, error) {
-			args := v.(GetBandwidthLimitsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args, GetBandwidthLimitsResultOutput{}, options).(GetBandwidthLimitsResultOutput), nil
-		}).(GetBandwidthLimitsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args, GetBandwidthLimitsResultOutput{}, options).(GetBandwidthLimitsResultOutput)
 }
 
 // A collection of arguments for invoking getBandwidthLimits.

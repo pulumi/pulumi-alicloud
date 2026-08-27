@@ -281,12 +281,8 @@ type GetVpcCenTrFirewallsResult struct {
 }
 
 func GetVpcCenTrFirewallsOutput(ctx *pulumi.Context, args GetVpcCenTrFirewallsOutputArgs, opts ...pulumi.InvokeOption) GetVpcCenTrFirewallsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpcCenTrFirewallsResultOutput, error) {
-			args := v.(GetVpcCenTrFirewallsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudfirewall/getVpcCenTrFirewalls:getVpcCenTrFirewalls", args, GetVpcCenTrFirewallsResultOutput{}, options).(GetVpcCenTrFirewallsResultOutput), nil
-		}).(GetVpcCenTrFirewallsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudfirewall/getVpcCenTrFirewalls:getVpcCenTrFirewalls", args, GetVpcCenTrFirewallsResultOutput{}, options).(GetVpcCenTrFirewallsResultOutput)
 }
 
 // A collection of arguments for invoking getVpcCenTrFirewalls.

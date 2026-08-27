@@ -176,12 +176,8 @@ type GetDisksResult struct {
 }
 
 func GetDisksOutput(ctx *pulumi.Context, args GetDisksOutputArgs, opts ...pulumi.InvokeOption) GetDisksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDisksResultOutput, error) {
-			args := v.(GetDisksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getDisks:getDisks", args, GetDisksResultOutput{}, options).(GetDisksResultOutput), nil
-		}).(GetDisksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getDisks:getDisks", args, GetDisksResultOutput{}, options).(GetDisksResultOutput)
 }
 
 // A collection of arguments for invoking getDisks.

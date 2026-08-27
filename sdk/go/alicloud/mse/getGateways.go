@@ -103,12 +103,8 @@ type GetGatewaysResult struct {
 }
 
 func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewaysResultOutput, error) {
-			args := v.(GetGatewaysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mse/getGateways:getGateways", args, GetGatewaysResultOutput{}, options).(GetGatewaysResultOutput), nil
-		}).(GetGatewaysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mse/getGateways:getGateways", args, GetGatewaysResultOutput{}, options).(GetGatewaysResultOutput)
 }
 
 // A collection of arguments for invoking getGateways.

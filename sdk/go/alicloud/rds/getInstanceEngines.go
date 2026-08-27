@@ -96,12 +96,8 @@ type GetInstanceEnginesResult struct {
 }
 
 func GetInstanceEnginesOutput(ctx *pulumi.Context, args GetInstanceEnginesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceEnginesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceEnginesResultOutput, error) {
-			args := v.(GetInstanceEnginesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getInstanceEngines:getInstanceEngines", args, GetInstanceEnginesResultOutput{}, options).(GetInstanceEnginesResultOutput), nil
-		}).(GetInstanceEnginesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getInstanceEngines:getInstanceEngines", args, GetInstanceEnginesResultOutput{}, options).(GetInstanceEnginesResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceEngines.

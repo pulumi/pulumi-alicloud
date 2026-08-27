@@ -205,12 +205,8 @@ type GetEcsLaunchTemplatesResult struct {
 }
 
 func GetEcsLaunchTemplatesOutput(ctx *pulumi.Context, args GetEcsLaunchTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetEcsLaunchTemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsLaunchTemplatesResultOutput, error) {
-			args := v.(GetEcsLaunchTemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args, GetEcsLaunchTemplatesResultOutput{}, options).(GetEcsLaunchTemplatesResultOutput), nil
-		}).(GetEcsLaunchTemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args, GetEcsLaunchTemplatesResultOutput{}, options).(GetEcsLaunchTemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getEcsLaunchTemplates.

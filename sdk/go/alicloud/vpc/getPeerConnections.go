@@ -94,12 +94,8 @@ type GetPeerConnectionsResult struct {
 }
 
 func GetPeerConnectionsOutput(ctx *pulumi.Context, args GetPeerConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPeerConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPeerConnectionsResultOutput, error) {
-			args := v.(GetPeerConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getPeerConnections:getPeerConnections", args, GetPeerConnectionsResultOutput{}, options).(GetPeerConnectionsResultOutput), nil
-		}).(GetPeerConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getPeerConnections:getPeerConnections", args, GetPeerConnectionsResultOutput{}, options).(GetPeerConnectionsResultOutput)
 }
 
 // A collection of arguments for invoking getPeerConnections.

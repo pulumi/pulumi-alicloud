@@ -80,12 +80,8 @@ type GetWafPoliciesResult struct {
 }
 
 func GetWafPoliciesOutput(ctx *pulumi.Context, args GetWafPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetWafPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWafPoliciesResultOutput, error) {
-			args := v.(GetWafPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dcdn/getWafPolicies:getWafPolicies", args, GetWafPoliciesResultOutput{}, options).(GetWafPoliciesResultOutput), nil
-		}).(GetWafPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dcdn/getWafPolicies:getWafPolicies", args, GetWafPoliciesResultOutput{}, options).(GetWafPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getWafPolicies.

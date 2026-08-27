@@ -204,12 +204,8 @@ type GetEcsDisksResult struct {
 }
 
 func GetEcsDisksOutput(ctx *pulumi.Context, args GetEcsDisksOutputArgs, opts ...pulumi.InvokeOption) GetEcsDisksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsDisksResultOutput, error) {
-			args := v.(GetEcsDisksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsDisks:getEcsDisks", args, GetEcsDisksResultOutput{}, options).(GetEcsDisksResultOutput), nil
-		}).(GetEcsDisksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsDisks:getEcsDisks", args, GetEcsDisksResultOutput{}, options).(GetEcsDisksResultOutput)
 }
 
 // A collection of arguments for invoking getEcsDisks.

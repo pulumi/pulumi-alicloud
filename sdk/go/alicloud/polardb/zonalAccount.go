@@ -18,6 +18,101 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"sort"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ens"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// // The advanced configuration for all nodes in the cluster except for the RW node, including db_node_class, hot_replica_mode, and imci_switch properties.
+// dbClusterNodesConfigs := map[string]map[string]interface{}{
+// "db_node_1": map[string]interface{}{
+// "dbNodeClass": "polar.mysql.x4.medium.c",
+// "dbNodeRole": "Writer",
+// "hotReplicaMode": nil,
+// "imciSwitch": nil,
+// },
+// };
+// if param := cfg.GetObject("dbClusterNodesConfigs"); param != nil {
+// dbClusterNodesConfigs = param
+// }
+// _default, err := ens.NewNetwork(ctx, "default", &ens.NetworkArgs{
+// NetworkName: pulumi.String("terraform-example"),
+// Description: pulumi.String("LoadBalancerNetworkDescription_test"),
+// CidrBlock: pulumi.String("192.168.2.0/24"),
+// EnsRegionId: pulumi.String("tr-Istanbul-1"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultVswitch, err := ens.NewVswitch(ctx, "default", &ens.VswitchArgs{
+// Description: pulumi.String("LoadBalancerVSwitchDescription_test"),
+// CidrBlock: pulumi.String("192.168.2.0/24"),
+// VswitchName: pulumi.String("terraform-example"),
+// EnsRegionId: pulumi.String("tr-Istanbul-1"),
+// NetworkId: _default.ID().ToIDOutput().ToStringOutput(),
+// })
+// if err != nil {
+// return err
+// }
+// forResult0 := map[string]*string{}
+// forRange0 := config
+// forKeys0 := make([]string, 0, len(forRange0))
+// for forKey0 := range forRange0 {
+// forKeys0 = append(forKeys0, forKey0)
+// }
+// sort.Strings(forKeys0)
+// for _, k := range forKeys0 {
+// v := forRange0[k]
+// if v != nil {
+// forResult0[k] = v
+// }
+// }
+// forResult1 := map[string]string{}
+// forRange1 := dbClusterNodesConfigs
+// forKeys1 := make([]string, 0, len(forRange1))
+// for forKey1 := range forRange1 {
+// forKeys1 = append(forKeys1, forKey1)
+// }
+// sort.Strings(forKeys1)
+// for _, node := range forKeys1 {
+// forResult1[node] = %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON)
+// }
+// defaultZonalDbCluster, err := polardb.NewZonalDbCluster(ctx, "default", &polardb.ZonalDbClusterArgs{
+// DbNodeClass: pulumi.String("polar.mysql.x4.medium.c"),
+// Description: pulumi.String("terraform-example"),
+// EnsRegionId: pulumi.String("tr-Istanbul-1"),
+// VpcId: _default.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultVswitch.ID().ToIDOutput().ToStringOutput(),
+// DbClusterNodesConfigs: pulumi.StringMap(forResult1),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = polardb.NewZonalAccount(ctx, "default", &polardb.ZonalAccountArgs{
+// DbClusterId: defaultZonalDbCluster.ID().ToIDOutput().ToStringOutput(),
+// AccountName: pulumi.String("terraform_example"),
+// AccountPassword: pulumi.String("Example1234"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import

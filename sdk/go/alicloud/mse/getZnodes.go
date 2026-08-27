@@ -98,12 +98,8 @@ type GetZnodesResult struct {
 }
 
 func GetZnodesOutput(ctx *pulumi.Context, args GetZnodesOutputArgs, opts ...pulumi.InvokeOption) GetZnodesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZnodesResultOutput, error) {
-			args := v.(GetZnodesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mse/getZnodes:getZnodes", args, GetZnodesResultOutput{}, options).(GetZnodesResultOutput), nil
-		}).(GetZnodesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mse/getZnodes:getZnodes", args, GetZnodesResultOutput{}, options).(GetZnodesResultOutput)
 }
 
 // A collection of arguments for invoking getZnodes.

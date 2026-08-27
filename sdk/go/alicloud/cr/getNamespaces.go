@@ -78,12 +78,8 @@ type GetNamespacesResult struct {
 }
 
 func GetNamespacesOutput(ctx *pulumi.Context, args GetNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNamespacesResultOutput, error) {
-			args := v.(GetNamespacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getNamespaces:getNamespaces", args, GetNamespacesResultOutput{}, options).(GetNamespacesResultOutput), nil
-		}).(GetNamespacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getNamespaces:getNamespaces", args, GetNamespacesResultOutput{}, options).(GetNamespacesResultOutput)
 }
 
 // A collection of arguments for invoking getNamespaces.

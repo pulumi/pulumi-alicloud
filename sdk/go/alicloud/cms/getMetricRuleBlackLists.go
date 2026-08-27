@@ -98,12 +98,8 @@ type GetMetricRuleBlackListsResult struct {
 }
 
 func GetMetricRuleBlackListsOutput(ctx *pulumi.Context, args GetMetricRuleBlackListsOutputArgs, opts ...pulumi.InvokeOption) GetMetricRuleBlackListsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMetricRuleBlackListsResultOutput, error) {
-			args := v.(GetMetricRuleBlackListsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args, GetMetricRuleBlackListsResultOutput{}, options).(GetMetricRuleBlackListsResultOutput), nil
-		}).(GetMetricRuleBlackListsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args, GetMetricRuleBlackListsResultOutput{}, options).(GetMetricRuleBlackListsResultOutput)
 }
 
 // A collection of arguments for invoking getMetricRuleBlackLists.

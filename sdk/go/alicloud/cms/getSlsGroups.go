@@ -91,12 +91,8 @@ type GetSlsGroupsResult struct {
 }
 
 func GetSlsGroupsOutput(ctx *pulumi.Context, args GetSlsGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSlsGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSlsGroupsResultOutput, error) {
-			args := v.(GetSlsGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getSlsGroups:getSlsGroups", args, GetSlsGroupsResultOutput{}, options).(GetSlsGroupsResultOutput), nil
-		}).(GetSlsGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getSlsGroups:getSlsGroups", args, GetSlsGroupsResultOutput{}, options).(GetSlsGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getSlsGroups.

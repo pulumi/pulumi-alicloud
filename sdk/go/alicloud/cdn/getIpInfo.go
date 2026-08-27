@@ -71,12 +71,8 @@ type GetIpInfoResult struct {
 }
 
 func GetIpInfoOutput(ctx *pulumi.Context, args GetIpInfoOutputArgs, opts ...pulumi.InvokeOption) GetIpInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpInfoResultOutput, error) {
-			args := v.(GetIpInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cdn/getIpInfo:getIpInfo", args, GetIpInfoResultOutput{}, options).(GetIpInfoResultOutput), nil
-		}).(GetIpInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cdn/getIpInfo:getIpInfo", args, GetIpInfoResultOutput{}, options).(GetIpInfoResultOutput)
 }
 
 // A collection of arguments for invoking getIpInfo.

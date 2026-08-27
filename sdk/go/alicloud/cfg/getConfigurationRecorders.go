@@ -65,12 +65,8 @@ type GetConfigurationRecordersResult struct {
 }
 
 func GetConfigurationRecordersOutput(ctx *pulumi.Context, args GetConfigurationRecordersOutputArgs, opts ...pulumi.InvokeOption) GetConfigurationRecordersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConfigurationRecordersResultOutput, error) {
-			args := v.(GetConfigurationRecordersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args, GetConfigurationRecordersResultOutput{}, options).(GetConfigurationRecordersResultOutput), nil
-		}).(GetConfigurationRecordersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args, GetConfigurationRecordersResultOutput{}, options).(GetConfigurationRecordersResultOutput)
 }
 
 // A collection of arguments for invoking getConfigurationRecorders.

@@ -67,7 +67,6 @@ import (
 //
 //	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
 // DirectoryName: pulumi.String(name),

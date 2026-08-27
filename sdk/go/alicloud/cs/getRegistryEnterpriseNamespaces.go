@@ -83,12 +83,8 @@ type GetRegistryEnterpriseNamespacesResult struct {
 }
 
 func GetRegistryEnterpriseNamespacesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistryEnterpriseNamespacesResultOutput, error) {
-			args := v.(GetRegistryEnterpriseNamespacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args, GetRegistryEnterpriseNamespacesResultOutput{}, options).(GetRegistryEnterpriseNamespacesResultOutput), nil
-		}).(GetRegistryEnterpriseNamespacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args, GetRegistryEnterpriseNamespacesResultOutput{}, options).(GetRegistryEnterpriseNamespacesResultOutput)
 }
 
 // A collection of arguments for invoking getRegistryEnterpriseNamespaces.

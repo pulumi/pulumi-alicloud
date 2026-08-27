@@ -51,12 +51,8 @@ type GetDeployGroupsResult struct {
 }
 
 func GetDeployGroupsOutput(ctx *pulumi.Context, args GetDeployGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDeployGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDeployGroupsResultOutput, error) {
-			args := v.(GetDeployGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:edas/getDeployGroups:getDeployGroups", args, GetDeployGroupsResultOutput{}, options).(GetDeployGroupsResultOutput), nil
-		}).(GetDeployGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:edas/getDeployGroups:getDeployGroups", args, GetDeployGroupsResultOutput{}, options).(GetDeployGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getDeployGroups.

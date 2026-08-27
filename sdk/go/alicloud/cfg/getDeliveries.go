@@ -83,12 +83,8 @@ type GetDeliveriesResult struct {
 }
 
 func GetDeliveriesOutput(ctx *pulumi.Context, args GetDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetDeliveriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDeliveriesResultOutput, error) {
-			args := v.(GetDeliveriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cfg/getDeliveries:getDeliveries", args, GetDeliveriesResultOutput{}, options).(GetDeliveriesResultOutput), nil
-		}).(GetDeliveriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cfg/getDeliveries:getDeliveries", args, GetDeliveriesResultOutput{}, options).(GetDeliveriesResultOutput)
 }
 
 // A collection of arguments for invoking getDeliveries.

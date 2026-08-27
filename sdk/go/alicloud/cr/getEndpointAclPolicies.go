@@ -82,12 +82,8 @@ type GetEndpointAclPoliciesResult struct {
 }
 
 func GetEndpointAclPoliciesOutput(ctx *pulumi.Context, args GetEndpointAclPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEndpointAclPoliciesResultOutput, error) {
-			args := v.(GetEndpointAclPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args, GetEndpointAclPoliciesResultOutput{}, options).(GetEndpointAclPoliciesResultOutput), nil
-		}).(GetEndpointAclPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args, GetEndpointAclPoliciesResultOutput{}, options).(GetEndpointAclPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getEndpointAclPolicies.

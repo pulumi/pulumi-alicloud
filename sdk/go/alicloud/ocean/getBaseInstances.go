@@ -101,12 +101,8 @@ type GetBaseInstancesResult struct {
 }
 
 func GetBaseInstancesOutput(ctx *pulumi.Context, args GetBaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetBaseInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBaseInstancesResultOutput, error) {
-			args := v.(GetBaseInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ocean/getBaseInstances:getBaseInstances", args, GetBaseInstancesResultOutput{}, options).(GetBaseInstancesResultOutput), nil
-		}).(GetBaseInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ocean/getBaseInstances:getBaseInstances", args, GetBaseInstancesResultOutput{}, options).(GetBaseInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getBaseInstances.

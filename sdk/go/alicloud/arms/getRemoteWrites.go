@@ -94,12 +94,8 @@ type GetRemoteWritesResult struct {
 }
 
 func GetRemoteWritesOutput(ctx *pulumi.Context, args GetRemoteWritesOutputArgs, opts ...pulumi.InvokeOption) GetRemoteWritesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRemoteWritesResultOutput, error) {
-			args := v.(GetRemoteWritesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getRemoteWrites:getRemoteWrites", args, GetRemoteWritesResultOutput{}, options).(GetRemoteWritesResultOutput), nil
-		}).(GetRemoteWritesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getRemoteWrites:getRemoteWrites", args, GetRemoteWritesResultOutput{}, options).(GetRemoteWritesResultOutput)
 }
 
 // A collection of arguments for invoking getRemoteWrites.

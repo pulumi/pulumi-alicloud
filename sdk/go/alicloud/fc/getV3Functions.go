@@ -89,12 +89,8 @@ type GetV3FunctionsResult struct {
 }
 
 func GetV3FunctionsOutput(ctx *pulumi.Context, args GetV3FunctionsOutputArgs, opts ...pulumi.InvokeOption) GetV3FunctionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetV3FunctionsResultOutput, error) {
-			args := v.(GetV3FunctionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:fc/getV3Functions:getV3Functions", args, GetV3FunctionsResultOutput{}, options).(GetV3FunctionsResultOutput), nil
-		}).(GetV3FunctionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:fc/getV3Functions:getV3Functions", args, GetV3FunctionsResultOutput{}, options).(GetV3FunctionsResultOutput)
 }
 
 // A collection of arguments for invoking getV3Functions.

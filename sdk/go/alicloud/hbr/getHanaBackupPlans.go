@@ -91,12 +91,8 @@ type GetHanaBackupPlansResult struct {
 }
 
 func GetHanaBackupPlansOutput(ctx *pulumi.Context, args GetHanaBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetHanaBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHanaBackupPlansResultOutput, error) {
-			args := v.(GetHanaBackupPlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args, GetHanaBackupPlansResultOutput{}, options).(GetHanaBackupPlansResultOutput), nil
-		}).(GetHanaBackupPlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args, GetHanaBackupPlansResultOutput{}, options).(GetHanaBackupPlansResultOutput)
 }
 
 // A collection of arguments for invoking getHanaBackupPlans.

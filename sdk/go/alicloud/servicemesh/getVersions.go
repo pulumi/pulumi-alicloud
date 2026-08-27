@@ -76,12 +76,8 @@ type GetVersionsResult struct {
 }
 
 func GetVersionsOutput(ctx *pulumi.Context, args GetVersionsOutputArgs, opts ...pulumi.InvokeOption) GetVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVersionsResultOutput, error) {
-			args := v.(GetVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicemesh/getVersions:getVersions", args, GetVersionsResultOutput{}, options).(GetVersionsResultOutput), nil
-		}).(GetVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicemesh/getVersions:getVersions", args, GetVersionsResultOutput{}, options).(GetVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getVersions.

@@ -165,12 +165,8 @@ type GetServicesResult struct {
 }
 
 func GetServicesOutput(ctx *pulumi.Context, args GetServicesOutputArgs, opts ...pulumi.InvokeOption) GetServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServicesResultOutput, error) {
-			args := v.(GetServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:apig/getServices:getServices", args, GetServicesResultOutput{}, options).(GetServicesResultOutput), nil
-		}).(GetServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:apig/getServices:getServices", args, GetServicesResultOutput{}, options).(GetServicesResultOutput)
 }
 
 // A collection of arguments for invoking getServices.

@@ -75,12 +75,8 @@ type LookupAlertResourceResult struct {
 }
 
 func LookupAlertResourceOutput(ctx *pulumi.Context, args LookupAlertResourceOutputArgs, opts ...pulumi.InvokeOption) LookupAlertResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertResourceResultOutput, error) {
-			args := v.(LookupAlertResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:log/getAlertResource:getAlertResource", args, LookupAlertResourceResultOutput{}, options).(LookupAlertResourceResultOutput), nil
-		}).(LookupAlertResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:log/getAlertResource:getAlertResource", args, LookupAlertResourceResultOutput{}, options).(LookupAlertResourceResultOutput)
 }
 
 // A collection of arguments for invoking getAlertResource.

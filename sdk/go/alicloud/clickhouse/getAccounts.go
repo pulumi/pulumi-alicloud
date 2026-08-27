@@ -150,12 +150,8 @@ type GetAccountsResult struct {
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountsResultOutput, error) {
-			args := v.(GetAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:clickhouse/getAccounts:getAccounts", args, GetAccountsResultOutput{}, options).(GetAccountsResultOutput), nil
-		}).(GetAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:clickhouse/getAccounts:getAccounts", args, GetAccountsResultOutput{}, options).(GetAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getAccounts.

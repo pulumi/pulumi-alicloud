@@ -130,12 +130,8 @@ type GetNatIpCidrsResult struct {
 }
 
 func GetNatIpCidrsOutput(ctx *pulumi.Context, args GetNatIpCidrsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpCidrsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNatIpCidrsResultOutput, error) {
-			args := v.(GetNatIpCidrsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args, GetNatIpCidrsResultOutput{}, options).(GetNatIpCidrsResultOutput), nil
-		}).(GetNatIpCidrsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args, GetNatIpCidrsResultOutput{}, options).(GetNatIpCidrsResultOutput)
 }
 
 // A collection of arguments for invoking getNatIpCidrs.

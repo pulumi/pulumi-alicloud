@@ -89,12 +89,8 @@ type GetIpv4GatewaysResult struct {
 }
 
 func GetIpv4GatewaysOutput(ctx *pulumi.Context, args GetIpv4GatewaysOutputArgs, opts ...pulumi.InvokeOption) GetIpv4GatewaysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpv4GatewaysResultOutput, error) {
-			args := v.(GetIpv4GatewaysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args, GetIpv4GatewaysResultOutput{}, options).(GetIpv4GatewaysResultOutput), nil
-		}).(GetIpv4GatewaysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args, GetIpv4GatewaysResultOutput{}, options).(GetIpv4GatewaysResultOutput)
 }
 
 // A collection of arguments for invoking getIpv4Gateways.

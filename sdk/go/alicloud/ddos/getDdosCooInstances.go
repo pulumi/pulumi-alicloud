@@ -75,12 +75,8 @@ type GetDdosCooInstancesResult struct {
 }
 
 func GetDdosCooInstancesOutput(ctx *pulumi.Context, args GetDdosCooInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDdosCooInstancesResultOutput, error) {
-			args := v.(GetDdosCooInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args, GetDdosCooInstancesResultOutput{}, options).(GetDdosCooInstancesResultOutput), nil
-		}).(GetDdosCooInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args, GetDdosCooInstancesResultOutput{}, options).(GetDdosCooInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getDdosCooInstances.

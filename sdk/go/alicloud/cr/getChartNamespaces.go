@@ -49,12 +49,8 @@ type GetChartNamespacesResult struct {
 }
 
 func GetChartNamespacesOutput(ctx *pulumi.Context, args GetChartNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetChartNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetChartNamespacesResultOutput, error) {
-			args := v.(GetChartNamespacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getChartNamespaces:getChartNamespaces", args, GetChartNamespacesResultOutput{}, options).(GetChartNamespacesResultOutput), nil
-		}).(GetChartNamespacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getChartNamespaces:getChartNamespaces", args, GetChartNamespacesResultOutput{}, options).(GetChartNamespacesResultOutput)
 }
 
 // A collection of arguments for invoking getChartNamespaces.

@@ -75,12 +75,8 @@ type GetProtocolsResult struct {
 }
 
 func GetProtocolsOutput(ctx *pulumi.Context, args GetProtocolsOutputArgs, opts ...pulumi.InvokeOption) GetProtocolsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProtocolsResultOutput, error) {
-			args := v.(GetProtocolsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:nas/getProtocols:getProtocols", args, GetProtocolsResultOutput{}, options).(GetProtocolsResultOutput), nil
-		}).(GetProtocolsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:nas/getProtocols:getProtocols", args, GetProtocolsResultOutput{}, options).(GetProtocolsResultOutput)
 }
 
 // A collection of arguments for invoking getProtocols.

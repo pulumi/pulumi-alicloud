@@ -80,12 +80,8 @@ type GetAdConnectorDirectoriesResult struct {
 }
 
 func GetAdConnectorDirectoriesOutput(ctx *pulumi.Context, args GetAdConnectorDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetAdConnectorDirectoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAdConnectorDirectoriesResultOutput, error) {
-			args := v.(GetAdConnectorDirectoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args, GetAdConnectorDirectoriesResultOutput{}, options).(GetAdConnectorDirectoriesResultOutput), nil
-		}).(GetAdConnectorDirectoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args, GetAdConnectorDirectoriesResultOutput{}, options).(GetAdConnectorDirectoriesResultOutput)
 }
 
 // A collection of arguments for invoking getAdConnectorDirectories.

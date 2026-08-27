@@ -90,12 +90,8 @@ type GetVpcEndpointLinkedVpcsResult struct {
 }
 
 func GetVpcEndpointLinkedVpcsOutput(ctx *pulumi.Context, args GetVpcEndpointLinkedVpcsOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointLinkedVpcsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpcEndpointLinkedVpcsResultOutput, error) {
-			args := v.(GetVpcEndpointLinkedVpcsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args, GetVpcEndpointLinkedVpcsResultOutput{}, options).(GetVpcEndpointLinkedVpcsResultOutput), nil
-		}).(GetVpcEndpointLinkedVpcsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args, GetVpcEndpointLinkedVpcsResultOutput{}, options).(GetVpcEndpointLinkedVpcsResultOutput)
 }
 
 // A collection of arguments for invoking getVpcEndpointLinkedVpcs.

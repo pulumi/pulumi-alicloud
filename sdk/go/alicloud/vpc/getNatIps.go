@@ -147,12 +147,8 @@ type GetNatIpsResult struct {
 }
 
 func GetNatIpsOutput(ctx *pulumi.Context, args GetNatIpsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNatIpsResultOutput, error) {
-			args := v.(GetNatIpsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getNatIps:getNatIps", args, GetNatIpsResultOutput{}, options).(GetNatIpsResultOutput), nil
-		}).(GetNatIpsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getNatIps:getNatIps", args, GetNatIpsResultOutput{}, options).(GetNatIpsResultOutput)
 }
 
 // A collection of arguments for invoking getNatIps.

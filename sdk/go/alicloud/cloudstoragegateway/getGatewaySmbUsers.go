@@ -121,12 +121,8 @@ type GetGatewaySmbUsersResult struct {
 }
 
 func GetGatewaySmbUsersOutput(ctx *pulumi.Context, args GetGatewaySmbUsersOutputArgs, opts ...pulumi.InvokeOption) GetGatewaySmbUsersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewaySmbUsersResultOutput, error) {
-			args := v.(GetGatewaySmbUsersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args, GetGatewaySmbUsersResultOutput{}, options).(GetGatewaySmbUsersResultOutput), nil
-		}).(GetGatewaySmbUsersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args, GetGatewaySmbUsersResultOutput{}, options).(GetGatewaySmbUsersResultOutput)
 }
 
 // A collection of arguments for invoking getGatewaySmbUsers.

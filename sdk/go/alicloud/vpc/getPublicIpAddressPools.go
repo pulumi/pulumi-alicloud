@@ -96,12 +96,8 @@ type GetPublicIpAddressPoolsResult struct {
 }
 
 func GetPublicIpAddressPoolsOutput(ctx *pulumi.Context, args GetPublicIpAddressPoolsOutputArgs, opts ...pulumi.InvokeOption) GetPublicIpAddressPoolsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPublicIpAddressPoolsResultOutput, error) {
-			args := v.(GetPublicIpAddressPoolsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", args, GetPublicIpAddressPoolsResultOutput{}, options).(GetPublicIpAddressPoolsResultOutput), nil
-		}).(GetPublicIpAddressPoolsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", args, GetPublicIpAddressPoolsResultOutput{}, options).(GetPublicIpAddressPoolsResultOutput)
 }
 
 // A collection of arguments for invoking getPublicIpAddressPools.

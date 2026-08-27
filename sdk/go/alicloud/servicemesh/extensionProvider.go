@@ -68,7 +68,6 @@ import (
 //				return tmp0, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("default-%v", key0), nil)
 //				if err != nil {
 //					return err
@@ -107,7 +106,6 @@ import (
 //				return tmp3, nil
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
 //					VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //						length := _args[0].(int)

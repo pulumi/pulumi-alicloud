@@ -81,12 +81,8 @@ type GetEcsBackupPlansResult struct {
 }
 
 func GetEcsBackupPlansOutput(ctx *pulumi.Context, args GetEcsBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsBackupPlansResultOutput, error) {
-			args := v.(GetEcsBackupPlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args, GetEcsBackupPlansResultOutput{}, options).(GetEcsBackupPlansResultOutput), nil
-		}).(GetEcsBackupPlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args, GetEcsBackupPlansResultOutput{}, options).(GetEcsBackupPlansResultOutput)
 }
 
 // A collection of arguments for invoking getEcsBackupPlans.

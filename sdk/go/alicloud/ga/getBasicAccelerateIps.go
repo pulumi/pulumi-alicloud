@@ -91,12 +91,8 @@ type GetBasicAccelerateIpsResult struct {
 }
 
 func GetBasicAccelerateIpsOutput(ctx *pulumi.Context, args GetBasicAccelerateIpsOutputArgs, opts ...pulumi.InvokeOption) GetBasicAccelerateIpsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBasicAccelerateIpsResultOutput, error) {
-			args := v.(GetBasicAccelerateIpsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", args, GetBasicAccelerateIpsResultOutput{}, options).(GetBasicAccelerateIpsResultOutput), nil
-		}).(GetBasicAccelerateIpsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", args, GetBasicAccelerateIpsResultOutput{}, options).(GetBasicAccelerateIpsResultOutput)
 }
 
 // A collection of arguments for invoking getBasicAccelerateIps.

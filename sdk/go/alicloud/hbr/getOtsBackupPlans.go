@@ -84,12 +84,8 @@ type GetOtsBackupPlansResult struct {
 }
 
 func GetOtsBackupPlansOutput(ctx *pulumi.Context, args GetOtsBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetOtsBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOtsBackupPlansResultOutput, error) {
-			args := v.(GetOtsBackupPlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans", args, GetOtsBackupPlansResultOutput{}, options).(GetOtsBackupPlansResultOutput), nil
-		}).(GetOtsBackupPlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans", args, GetOtsBackupPlansResultOutput{}, options).(GetOtsBackupPlansResultOutput)
 }
 
 // A collection of arguments for invoking getOtsBackupPlans.

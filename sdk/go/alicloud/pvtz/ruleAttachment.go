@@ -69,7 +69,6 @@ import (
 //			var defaultNetwork []*vpc.Network
 //			for index := 0; index < 3; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("default-%v", key0), &vpc.NetworkArgs{
 //					VpcName:   pulumi.String(name),
 //					CidrBlock: pulumi.String("172.16.0.0/12"),

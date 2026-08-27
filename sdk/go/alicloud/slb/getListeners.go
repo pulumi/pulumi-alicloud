@@ -104,12 +104,8 @@ type GetListenersResult struct {
 }
 
 func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetListenersResultOutput, error) {
-			args := v.(GetListenersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:slb/getListeners:getListeners", args, GetListenersResultOutput{}, options).(GetListenersResultOutput), nil
-		}).(GetListenersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:slb/getListeners:getListeners", args, GetListenersResultOutput{}, options).(GetListenersResultOutput)
 }
 
 // A collection of arguments for invoking getListeners.

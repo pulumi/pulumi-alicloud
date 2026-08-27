@@ -81,12 +81,8 @@ type GetHoneypotImagesResult struct {
 }
 
 func GetHoneypotImagesOutput(ctx *pulumi.Context, args GetHoneypotImagesOutputArgs, opts ...pulumi.InvokeOption) GetHoneypotImagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHoneypotImagesResultOutput, error) {
-			args := v.(GetHoneypotImagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args, GetHoneypotImagesResultOutput{}, options).(GetHoneypotImagesResultOutput), nil
-		}).(GetHoneypotImagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args, GetHoneypotImagesResultOutput{}, options).(GetHoneypotImagesResultOutput)
 }
 
 // A collection of arguments for invoking getHoneypotImages.

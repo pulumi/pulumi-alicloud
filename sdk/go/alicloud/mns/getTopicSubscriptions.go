@@ -77,12 +77,8 @@ type GetTopicSubscriptionsResult struct {
 }
 
 func GetTopicSubscriptionsOutput(ctx *pulumi.Context, args GetTopicSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetTopicSubscriptionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTopicSubscriptionsResultOutput, error) {
-			args := v.(GetTopicSubscriptionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args, GetTopicSubscriptionsResultOutput{}, options).(GetTopicSubscriptionsResultOutput), nil
-		}).(GetTopicSubscriptionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args, GetTopicSubscriptionsResultOutput{}, options).(GetTopicSubscriptionsResultOutput)
 }
 
 // A collection of arguments for invoking getTopicSubscriptions.

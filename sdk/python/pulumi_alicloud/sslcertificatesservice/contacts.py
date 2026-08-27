@@ -22,6 +22,8 @@ __all__ = [
     'contacts_output',
 ]
 
+warnings.warn("""alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts""", DeprecationWarning)
+
 @pulumi.output_type
 class ContactsResult:
     """
@@ -128,7 +130,7 @@ def contacts(enable_details: Optional[_builtins.bool] = None,
         name=name,
         mobile="13312345678",
         email="test@example.com")
-    default = alicloud.sslcertificatesservice.contacts_output(ids=[default_contact.id],
+    default = alicloud.sslcertificatesservice.get_contacts_output(ids=[default_contact.id],
         name=name)
     pulumi.export("alicloudSslCertificatesServiceContactExampleId", default.contacts[0].id)
     ```
@@ -139,6 +141,7 @@ def contacts(enable_details: Optional[_builtins.bool] = None,
     :param _builtins.str name: The name of the resource
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
+    pulumi.log.warn("""contacts is deprecated: alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts""")
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
@@ -178,7 +181,7 @@ def contacts_output(enable_details: pulumi.Input[Optional[Optional[_builtins.boo
         name=name,
         mobile="13312345678",
         email="test@example.com")
-    default = alicloud.sslcertificatesservice.contacts_output(ids=[default_contact.id],
+    default = alicloud.sslcertificatesservice.get_contacts_output(ids=[default_contact.id],
         name=name)
     pulumi.export("alicloudSslCertificatesServiceContactExampleId", default.contacts[0].id)
     ```
@@ -189,6 +192,7 @@ def contacts_output(enable_details: pulumi.Input[Optional[Optional[_builtins.boo
     :param _builtins.str name: The name of the resource
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
+    pulumi.log.warn("""contacts is deprecated: alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts""")
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids

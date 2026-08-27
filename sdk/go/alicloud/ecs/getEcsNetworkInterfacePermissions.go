@@ -85,12 +85,8 @@ type GetEcsNetworkInterfacePermissionsResult struct {
 }
 
 func GetEcsNetworkInterfacePermissionsOutput(ctx *pulumi.Context, args GetEcsNetworkInterfacePermissionsOutputArgs, opts ...pulumi.InvokeOption) GetEcsNetworkInterfacePermissionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsNetworkInterfacePermissionsResultOutput, error) {
-			args := v.(GetEcsNetworkInterfacePermissionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args, GetEcsNetworkInterfacePermissionsResultOutput{}, options).(GetEcsNetworkInterfacePermissionsResultOutput), nil
-		}).(GetEcsNetworkInterfacePermissionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args, GetEcsNetworkInterfacePermissionsResultOutput{}, options).(GetEcsNetworkInterfacePermissionsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsNetworkInterfacePermissions.

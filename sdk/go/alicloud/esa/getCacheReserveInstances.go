@@ -103,12 +103,8 @@ type GetCacheReserveInstancesResult struct {
 }
 
 func GetCacheReserveInstancesOutput(ctx *pulumi.Context, args GetCacheReserveInstancesOutputArgs, opts ...pulumi.InvokeOption) GetCacheReserveInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCacheReserveInstancesResultOutput, error) {
-			args := v.(GetCacheReserveInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:esa/getCacheReserveInstances:getCacheReserveInstances", args, GetCacheReserveInstancesResultOutput{}, options).(GetCacheReserveInstancesResultOutput), nil
-		}).(GetCacheReserveInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:esa/getCacheReserveInstances:getCacheReserveInstances", args, GetCacheReserveInstancesResultOutput{}, options).(GetCacheReserveInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getCacheReserveInstances.

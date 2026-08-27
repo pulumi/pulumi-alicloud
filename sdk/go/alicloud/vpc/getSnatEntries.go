@@ -154,12 +154,8 @@ type GetSnatEntriesResult struct {
 }
 
 func GetSnatEntriesOutput(ctx *pulumi.Context, args GetSnatEntriesOutputArgs, opts ...pulumi.InvokeOption) GetSnatEntriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSnatEntriesResultOutput, error) {
-			args := v.(GetSnatEntriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getSnatEntries:getSnatEntries", args, GetSnatEntriesResultOutput{}, options).(GetSnatEntriesResultOutput), nil
-		}).(GetSnatEntriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getSnatEntries:getSnatEntries", args, GetSnatEntriesResultOutput{}, options).(GetSnatEntriesResultOutput)
 }
 
 // A collection of arguments for invoking getSnatEntries.

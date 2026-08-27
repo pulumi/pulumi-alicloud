@@ -86,12 +86,8 @@ type GetEcsInvocationsResult struct {
 }
 
 func GetEcsInvocationsOutput(ctx *pulumi.Context, args GetEcsInvocationsOutputArgs, opts ...pulumi.InvokeOption) GetEcsInvocationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEcsInvocationsResultOutput, error) {
-			args := v.(GetEcsInvocationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEcsInvocations:getEcsInvocations", args, GetEcsInvocationsResultOutput{}, options).(GetEcsInvocationsResultOutput), nil
-		}).(GetEcsInvocationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEcsInvocations:getEcsInvocations", args, GetEcsInvocationsResultOutput{}, options).(GetEcsInvocationsResultOutput)
 }
 
 // A collection of arguments for invoking getEcsInvocations.

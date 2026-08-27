@@ -94,12 +94,8 @@ type GetIpsecServersResult struct {
 }
 
 func GetIpsecServersOutput(ctx *pulumi.Context, args GetIpsecServersOutputArgs, opts ...pulumi.InvokeOption) GetIpsecServersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIpsecServersResultOutput, error) {
-			args := v.(GetIpsecServersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getIpsecServers:getIpsecServers", args, GetIpsecServersResultOutput{}, options).(GetIpsecServersResultOutput), nil
-		}).(GetIpsecServersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getIpsecServers:getIpsecServers", args, GetIpsecServersResultOutput{}, options).(GetIpsecServersResultOutput)
 }
 
 // A collection of arguments for invoking getIpsecServers.

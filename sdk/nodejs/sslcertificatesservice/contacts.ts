@@ -24,14 +24,16 @@ import * as utilities from "../utilities";
  *     mobile: "13312345678",
  *     email: "test@example.com",
  * });
- * const _default = alicloud.sslcertificatesservice.ContactsOutput({
+ * const _default = alicloud.sslcertificatesservice.getContactsOutput({
  *     ids: [defaultContact.id],
  *     name: name,
  * });
  * export const alicloudSslCertificatesServiceContactExampleId = _default.apply(_default => _default.contacts?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
 export function contacts(args?: ContactsArgs, opts?: pulumi.InvokeOptions): Promise<ContactsResult> {
+    pulumi.log.warn("contacts is deprecated: alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sslcertificatesservice/contacts:Contacts", {
@@ -105,14 +107,16 @@ export interface ContactsResult {
  *     mobile: "13312345678",
  *     email: "test@example.com",
  * });
- * const _default = alicloud.sslcertificatesservice.ContactsOutput({
+ * const _default = alicloud.sslcertificatesservice.getContactsOutput({
  *     ids: [defaultContact.id],
  *     name: name,
  * });
  * export const alicloudSslCertificatesServiceContactExampleId = _default.apply(_default => _default.contacts?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts */
 export function contactsOutput(args?: ContactsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ContactsResult> {
+    pulumi.log.warn("contacts is deprecated: alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sslcertificatesservice/contacts:Contacts", {

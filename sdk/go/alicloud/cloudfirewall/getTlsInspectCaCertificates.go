@@ -94,12 +94,8 @@ type GetTlsInspectCaCertificatesResult struct {
 }
 
 func GetTlsInspectCaCertificatesOutput(ctx *pulumi.Context, args GetTlsInspectCaCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetTlsInspectCaCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTlsInspectCaCertificatesResultOutput, error) {
-			args := v.(GetTlsInspectCaCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudfirewall/getTlsInspectCaCertificates:getTlsInspectCaCertificates", args, GetTlsInspectCaCertificatesResultOutput{}, options).(GetTlsInspectCaCertificatesResultOutput), nil
-		}).(GetTlsInspectCaCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudfirewall/getTlsInspectCaCertificates:getTlsInspectCaCertificates", args, GetTlsInspectCaCertificatesResultOutput{}, options).(GetTlsInspectCaCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getTlsInspectCaCertificates.

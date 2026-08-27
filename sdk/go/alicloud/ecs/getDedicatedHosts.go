@@ -129,12 +129,8 @@ type GetDedicatedHostsResult struct {
 }
 
 func GetDedicatedHostsOutput(ctx *pulumi.Context, args GetDedicatedHostsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDedicatedHostsResultOutput, error) {
-			args := v.(GetDedicatedHostsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args, GetDedicatedHostsResultOutput{}, options).(GetDedicatedHostsResultOutput), nil
-		}).(GetDedicatedHostsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args, GetDedicatedHostsResultOutput{}, options).(GetDedicatedHostsResultOutput)
 }
 
 // A collection of arguments for invoking getDedicatedHosts.

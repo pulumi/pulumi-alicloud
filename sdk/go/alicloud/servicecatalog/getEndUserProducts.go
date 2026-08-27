@@ -84,12 +84,8 @@ type GetEndUserProductsResult struct {
 }
 
 func GetEndUserProductsOutput(ctx *pulumi.Context, args GetEndUserProductsOutputArgs, opts ...pulumi.InvokeOption) GetEndUserProductsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEndUserProductsResultOutput, error) {
-			args := v.(GetEndUserProductsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args, GetEndUserProductsResultOutput{}, options).(GetEndUserProductsResultOutput), nil
-		}).(GetEndUserProductsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args, GetEndUserProductsResultOutput{}, options).(GetEndUserProductsResultOutput)
 }
 
 // A collection of arguments for invoking getEndUserProducts.

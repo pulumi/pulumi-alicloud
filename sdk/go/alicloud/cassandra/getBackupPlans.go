@@ -74,12 +74,8 @@ type GetBackupPlansResult struct {
 }
 
 func GetBackupPlansOutput(ctx *pulumi.Context, args GetBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBackupPlansResultOutput, error) {
-			args := v.(GetBackupPlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cassandra/getBackupPlans:getBackupPlans", args, GetBackupPlansResultOutput{}, options).(GetBackupPlansResultOutput), nil
-		}).(GetBackupPlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cassandra/getBackupPlans:getBackupPlans", args, GetBackupPlansResultOutput{}, options).(GetBackupPlansResultOutput)
 }
 
 // A collection of arguments for invoking getBackupPlans.

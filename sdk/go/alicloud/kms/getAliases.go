@@ -80,12 +80,8 @@ type GetAliasesResult struct {
 }
 
 func GetAliasesOutput(ctx *pulumi.Context, args GetAliasesOutputArgs, opts ...pulumi.InvokeOption) GetAliasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAliasesResultOutput, error) {
-			args := v.(GetAliasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:kms/getAliases:getAliases", args, GetAliasesResultOutput{}, options).(GetAliasesResultOutput), nil
-		}).(GetAliasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:kms/getAliases:getAliases", args, GetAliasesResultOutput{}, options).(GetAliasesResultOutput)
 }
 
 // A collection of arguments for invoking getAliases.

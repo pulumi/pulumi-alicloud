@@ -81,12 +81,8 @@ type GetGatewayZonesResult struct {
 }
 
 func GetGatewayZonesOutput(ctx *pulumi.Context, args GetGatewayZonesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewayZonesResultOutput, error) {
-			args := v.(GetGatewayZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpn/getGatewayZones:getGatewayZones", args, GetGatewayZonesResultOutput{}, options).(GetGatewayZonesResultOutput), nil
-		}).(GetGatewayZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpn/getGatewayZones:getGatewayZones", args, GetGatewayZonesResultOutput{}, options).(GetGatewayZonesResultOutput)
 }
 
 // A collection of arguments for invoking getGatewayZones.

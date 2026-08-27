@@ -90,12 +90,8 @@ type GetTransitRouterMulticastDomainPeerMembersResult struct {
 }
 
 func GetTransitRouterMulticastDomainPeerMembersOutput(ctx *pulumi.Context, args GetTransitRouterMulticastDomainPeerMembersOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterMulticastDomainPeerMembersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterMulticastDomainPeerMembersResultOutput, error) {
-			args := v.(GetTransitRouterMulticastDomainPeerMembersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", args, GetTransitRouterMulticastDomainPeerMembersResultOutput{}, options).(GetTransitRouterMulticastDomainPeerMembersResultOutput), nil
-		}).(GetTransitRouterMulticastDomainPeerMembersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", args, GetTransitRouterMulticastDomainPeerMembersResultOutput{}, options).(GetTransitRouterMulticastDomainPeerMembersResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouterMulticastDomainPeerMembers.

@@ -124,12 +124,8 @@ type GetZoneRecordsResult struct {
 }
 
 func GetZoneRecordsOutput(ctx *pulumi.Context, args GetZoneRecordsOutputArgs, opts ...pulumi.InvokeOption) GetZoneRecordsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZoneRecordsResultOutput, error) {
-			args := v.(GetZoneRecordsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:pvtz/getZoneRecords:getZoneRecords", args, GetZoneRecordsResultOutput{}, options).(GetZoneRecordsResultOutput), nil
-		}).(GetZoneRecordsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:pvtz/getZoneRecords:getZoneRecords", args, GetZoneRecordsResultOutput{}, options).(GetZoneRecordsResultOutput)
 }
 
 // A collection of arguments for invoking getZoneRecords.

@@ -28,6 +28,100 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//	"sort"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicecertificate"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesserviceinstance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := sslcertificatesserviceinstance.NewSslCertificatesServiceInstance(ctx, "default", &sslcertificatesserviceinstance.SslCertificatesServiceInstanceArgs{
+// ProductType: pulumi.String("cas"),
+// Period: pulumi.Int(12),
+// PricingCycle: pulumi.Int(2),
+// InstanceName: pulumi.String(name),
+// Domain: pulumi.String("example.com"),
+// ValidationMethod: pulumi.String("DNS"),
+// Parameters: sslcertificatesserviceinstance.SslCertificatesServiceInstanceParameterArray{
+// &sslcertificatesserviceinstance.SslCertificatesServiceInstanceParameterArgs{
+// Code: pulumi.String("fullSpec"),
+// Value: pulumi.String("ws.dv.f"),
+// },
+// &sslcertificatesserviceinstance.SslCertificatesServiceInstanceParameterArgs{
+// Code: pulumi.String("fullDomainCount"),
+// Value: pulumi.String("1"),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultApply, err := sslcertificatesservicecertificate.NewApply(ctx, "default", &sslcertificatesservicecertificate.ApplyArgs{
+// InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
+// Domain: _default.Domain,
+// ValidationMethod: _default.ValidationMethod,
+// })
+// if err != nil {
+// return err
+// }
+// forResult0 := sslcertificatesservicecertificate.ApplyDomainValidationListMap{}
+// for _, v := range domainValidationLists {
+// forResult0[v.Domain] = v
+// }
+// var defaultAlidnsRecord []*dns.AlidnsRecord
+// for key0, val0 := range map[string]sslcertificatesservicecertificate.ApplyDomainValidationList(defaultApply.DomainValidationLists.ApplyT(func(domainValidationLists []sslcertificatesservicecertificate.ApplyDomainValidationList) (map[string]sslcertificatesservicecertificate.ApplyDomainValidationList, error) {
+// return forResult0, nil
+// }).(pulumi.MapOutput)) {
+// __res, err := dns.NewAlidnsRecord(ctx, fmt.Sprintf("default-%v", key0), &dns.AlidnsRecordArgs{
+// DomainName: pulumi.String(val0),
+// Rr: pulumi.String(val0),
+// Type: pulumi.String(val0),
+// Value: pulumi.String(val0),
+// Ttl: pulumi.Int(600),
+// })
+// if err != nil {
+// return err
+// }
+// defaultAlidnsRecord = append(defaultAlidnsRecord, __res)
+// }
+// var forResult1 pulumi.IDArray
+// forRange1 := defaultAlidnsRecord
+// forKeys1 := make([]string, 0, len(forRange1))
+// for forKey1 := range forRange1 {
+// forKeys1 = append(forKeys1, forKey1)
+// }
+// sort.Strings(forKeys1)
+// for _, forKey1 := range forKeys1 {
+// r := forRange1[forKey1]
+// forResult1 = append(forResult1, r.Id)
+// }
+// _, err = sslcertificatesservicecertificate.NewValidation(ctx, "default", &sslcertificatesservicecertificate.ValidationArgs{
+// InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
+// ValidationRecordIds: pulumi.StringArray(defaultAlidnsRecord.ApplyT(func(%!v(PANIC=Format method: fatal: An assertion has failed: tok: )).(pulumi.IDArrayOutput)),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // Downstream services should reference the certificate exposed by this resource, so that the reference is only resolved once the certificate actually exists:
 //
 // ```go

@@ -97,12 +97,8 @@ type GetPublicIpAddressPoolCidrBlocksResult struct {
 }
 
 func GetPublicIpAddressPoolCidrBlocksOutput(ctx *pulumi.Context, args GetPublicIpAddressPoolCidrBlocksOutputArgs, opts ...pulumi.InvokeOption) GetPublicIpAddressPoolCidrBlocksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPublicIpAddressPoolCidrBlocksResultOutput, error) {
-			args := v.(GetPublicIpAddressPoolCidrBlocksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args, GetPublicIpAddressPoolCidrBlocksResultOutput{}, options).(GetPublicIpAddressPoolCidrBlocksResultOutput), nil
-		}).(GetPublicIpAddressPoolCidrBlocksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args, GetPublicIpAddressPoolCidrBlocksResultOutput{}, options).(GetPublicIpAddressPoolCidrBlocksResultOutput)
 }
 
 // A collection of arguments for invoking getPublicIpAddressPoolCidrBlocks.

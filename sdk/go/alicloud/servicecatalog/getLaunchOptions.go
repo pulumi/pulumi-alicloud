@@ -88,12 +88,8 @@ type GetLaunchOptionsResult struct {
 }
 
 func GetLaunchOptionsOutput(ctx *pulumi.Context, args GetLaunchOptionsOutputArgs, opts ...pulumi.InvokeOption) GetLaunchOptionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLaunchOptionsResultOutput, error) {
-			args := v.(GetLaunchOptionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args, GetLaunchOptionsResultOutput{}, options).(GetLaunchOptionsResultOutput), nil
-		}).(GetLaunchOptionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args, GetLaunchOptionsResultOutput{}, options).(GetLaunchOptionsResultOutput)
 }
 
 // A collection of arguments for invoking getLaunchOptions.

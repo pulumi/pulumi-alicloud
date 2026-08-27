@@ -39,12 +39,8 @@ type LookupMonitorGroupInstancesResult struct {
 }
 
 func LookupMonitorGroupInstancesOutput(ctx *pulumi.Context, args LookupMonitorGroupInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorGroupInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitorGroupInstancesResultOutput, error) {
-			args := v.(LookupMonitorGroupInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, LookupMonitorGroupInstancesResultOutput{}, options).(LookupMonitorGroupInstancesResultOutput), nil
-		}).(LookupMonitorGroupInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, LookupMonitorGroupInstancesResultOutput{}, options).(LookupMonitorGroupInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorGroupInstances.

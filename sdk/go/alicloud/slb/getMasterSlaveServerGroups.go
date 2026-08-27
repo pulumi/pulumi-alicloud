@@ -52,12 +52,8 @@ type GetMasterSlaveServerGroupsResult struct {
 }
 
 func GetMasterSlaveServerGroupsOutput(ctx *pulumi.Context, args GetMasterSlaveServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetMasterSlaveServerGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMasterSlaveServerGroupsResultOutput, error) {
-			args := v.(GetMasterSlaveServerGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args, GetMasterSlaveServerGroupsResultOutput{}, options).(GetMasterSlaveServerGroupsResultOutput), nil
-		}).(GetMasterSlaveServerGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args, GetMasterSlaveServerGroupsResultOutput{}, options).(GetMasterSlaveServerGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getMasterSlaveServerGroups.

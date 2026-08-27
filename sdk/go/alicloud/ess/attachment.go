@@ -143,7 +143,6 @@ import (
 //			var defaultInstance []*ecs.Instance
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
 //					ImageId:      pulumi.String(defaultGetImages.Images[0].Id),
 //					InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),

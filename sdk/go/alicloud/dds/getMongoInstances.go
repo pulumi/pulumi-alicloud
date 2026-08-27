@@ -52,12 +52,8 @@ type GetMongoInstancesResult struct {
 }
 
 func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputArgs, opts ...pulumi.InvokeOption) GetMongoInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMongoInstancesResultOutput, error) {
-			args := v.(GetMongoInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dds/getMongoInstances:getMongoInstances", args, GetMongoInstancesResultOutput{}, options).(GetMongoInstancesResultOutput), nil
-		}).(GetMongoInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dds/getMongoInstances:getMongoInstances", args, GetMongoInstancesResultOutput{}, options).(GetMongoInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getMongoInstances.

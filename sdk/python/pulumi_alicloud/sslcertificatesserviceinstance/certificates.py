@@ -22,6 +22,8 @@ __all__ = [
     'certificates_output',
 ]
 
+warnings.warn("""alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class CertificatesResult:
     """
@@ -136,7 +138,7 @@ def certificates(certificate_source: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.sslcertificatesserviceinstance.certificates(certificate_status="issued")
+    default = alicloud.sslcertificatesserviceinstance.get_certificates(certificate_status="issued")
     pulumi.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default.certificates[0].id)
     ```
 
@@ -147,6 +149,7 @@ def certificates(certificate_source: Optional[_builtins.str] = None,
     :param _builtins.str instance_id: The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
+    pulumi.log.warn("""certificates is deprecated: alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates""")
     __args__ = dict()
     __args__['certificateSource'] = certificate_source
     __args__['certificateStatus'] = certificate_status
@@ -181,7 +184,7 @@ def certificates_output(certificate_source: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.sslcertificatesserviceinstance.certificates(certificate_status="issued")
+    default = alicloud.sslcertificatesserviceinstance.get_certificates(certificate_status="issued")
     pulumi.export("alicloudSslCertificatesServiceInstanceCertificateExampleId", default.certificates[0].id)
     ```
 
@@ -192,6 +195,7 @@ def certificates_output(certificate_source: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str instance_id: The ID of the certificate instance that issued the certificate. Use it to list the certificates a single instance has issued.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
+    pulumi.log.warn("""certificates is deprecated: alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates""")
     __args__ = dict()
     __args__['certificateSource'] = certificate_source
     __args__['certificateStatus'] = certificate_status

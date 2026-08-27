@@ -81,12 +81,8 @@ type GetSimpleOfficeSitesResult struct {
 }
 
 func GetSimpleOfficeSitesOutput(ctx *pulumi.Context, args GetSimpleOfficeSitesOutputArgs, opts ...pulumi.InvokeOption) GetSimpleOfficeSitesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSimpleOfficeSitesResultOutput, error) {
-			args := v.(GetSimpleOfficeSitesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args, GetSimpleOfficeSitesResultOutput{}, options).(GetSimpleOfficeSitesResultOutput), nil
-		}).(GetSimpleOfficeSitesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args, GetSimpleOfficeSitesResultOutput{}, options).(GetSimpleOfficeSitesResultOutput)
 }
 
 // A collection of arguments for invoking getSimpleOfficeSites.

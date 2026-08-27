@@ -78,12 +78,8 @@ type GetAccessRulesResult struct {
 }
 
 func GetAccessRulesOutput(ctx *pulumi.Context, args GetAccessRulesOutputArgs, opts ...pulumi.InvokeOption) GetAccessRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessRulesResultOutput, error) {
-			args := v.(GetAccessRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dfs/getAccessRules:getAccessRules", args, GetAccessRulesResultOutput{}, options).(GetAccessRulesResultOutput), nil
-		}).(GetAccessRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dfs/getAccessRules:getAccessRules", args, GetAccessRulesResultOutput{}, options).(GetAccessRulesResultOutput)
 }
 
 // A collection of arguments for invoking getAccessRules.

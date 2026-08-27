@@ -95,12 +95,8 @@ type GetPortfoliosResult struct {
 }
 
 func GetPortfoliosOutput(ctx *pulumi.Context, args GetPortfoliosOutputArgs, opts ...pulumi.InvokeOption) GetPortfoliosResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPortfoliosResultOutput, error) {
-			args := v.(GetPortfoliosArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:servicecatalog/getPortfolios:getPortfolios", args, GetPortfoliosResultOutput{}, options).(GetPortfoliosResultOutput), nil
-		}).(GetPortfoliosResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:servicecatalog/getPortfolios:getPortfolios", args, GetPortfoliosResultOutput{}, options).(GetPortfoliosResultOutput)
 }
 
 // A collection of arguments for invoking getPortfolios.

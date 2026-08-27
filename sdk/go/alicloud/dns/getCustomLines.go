@@ -85,12 +85,8 @@ type GetCustomLinesResult struct {
 }
 
 func GetCustomLinesOutput(ctx *pulumi.Context, args GetCustomLinesOutputArgs, opts ...pulumi.InvokeOption) GetCustomLinesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomLinesResultOutput, error) {
-			args := v.(GetCustomLinesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getCustomLines:getCustomLines", args, GetCustomLinesResultOutput{}, options).(GetCustomLinesResultOutput), nil
-		}).(GetCustomLinesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getCustomLines:getCustomLines", args, GetCustomLinesResultOutput{}, options).(GetCustomLinesResultOutput)
 }
 
 // A collection of arguments for invoking getCustomLines.

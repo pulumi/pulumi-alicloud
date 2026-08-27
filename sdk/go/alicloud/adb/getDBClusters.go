@@ -101,12 +101,8 @@ type GetDBClustersResult struct {
 }
 
 func GetDBClustersOutput(ctx *pulumi.Context, args GetDBClustersOutputArgs, opts ...pulumi.InvokeOption) GetDBClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDBClustersResultOutput, error) {
-			args := v.(GetDBClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:adb/getDBClusters:getDBClusters", args, GetDBClustersResultOutput{}, options).(GetDBClustersResultOutput), nil
-		}).(GetDBClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:adb/getDBClusters:getDBClusters", args, GetDBClustersResultOutput{}, options).(GetDBClustersResultOutput)
 }
 
 // A collection of arguments for invoking getDBClusters.

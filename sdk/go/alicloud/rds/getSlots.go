@@ -75,12 +75,8 @@ type GetSlotsResult struct {
 }
 
 func GetSlotsOutput(ctx *pulumi.Context, args GetSlotsOutputArgs, opts ...pulumi.InvokeOption) GetSlotsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSlotsResultOutput, error) {
-			args := v.(GetSlotsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getSlots:getSlots", args, GetSlotsResultOutput{}, options).(GetSlotsResultOutput), nil
-		}).(GetSlotsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getSlots:getSlots", args, GetSlotsResultOutput{}, options).(GetSlotsResultOutput)
 }
 
 // A collection of arguments for invoking getSlots.

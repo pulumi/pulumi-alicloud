@@ -72,12 +72,8 @@ type GetFlowLogServiceResult struct {
 }
 
 func GetFlowLogServiceOutput(ctx *pulumi.Context, args GetFlowLogServiceOutputArgs, opts ...pulumi.InvokeOption) GetFlowLogServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFlowLogServiceResultOutput, error) {
-			args := v.(GetFlowLogServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:vpc/getFlowLogService:getFlowLogService", args, GetFlowLogServiceResultOutput{}, options).(GetFlowLogServiceResultOutput), nil
-		}).(GetFlowLogServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:vpc/getFlowLogService:getFlowLogService", args, GetFlowLogServiceResultOutput{}, options).(GetFlowLogServiceResultOutput)
 }
 
 // A collection of arguments for invoking getFlowLogService.

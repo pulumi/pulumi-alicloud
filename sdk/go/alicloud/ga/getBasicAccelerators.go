@@ -95,12 +95,8 @@ type GetBasicAcceleratorsResult struct {
 }
 
 func GetBasicAcceleratorsOutput(ctx *pulumi.Context, args GetBasicAcceleratorsOutputArgs, opts ...pulumi.InvokeOption) GetBasicAcceleratorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBasicAcceleratorsResultOutput, error) {
-			args := v.(GetBasicAcceleratorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args, GetBasicAcceleratorsResultOutput{}, options).(GetBasicAcceleratorsResultOutput), nil
-		}).(GetBasicAcceleratorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args, GetBasicAcceleratorsResultOutput{}, options).(GetBasicAcceleratorsResultOutput)
 }
 
 // A collection of arguments for invoking getBasicAccelerators.

@@ -132,12 +132,8 @@ type GetInstanceClassesResult struct {
 }
 
 func GetInstanceClassesOutput(ctx *pulumi.Context, args GetInstanceClassesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceClassesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceClassesResultOutput, error) {
-			args := v.(GetInstanceClassesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args, GetInstanceClassesResultOutput{}, options).(GetInstanceClassesResultOutput), nil
-		}).(GetInstanceClassesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args, GetInstanceClassesResultOutput{}, options).(GetInstanceClassesResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceClasses.

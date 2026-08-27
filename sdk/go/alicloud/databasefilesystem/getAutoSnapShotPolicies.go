@@ -84,12 +84,8 @@ type GetAutoSnapShotPoliciesResult struct {
 }
 
 func GetAutoSnapShotPoliciesOutput(ctx *pulumi.Context, args GetAutoSnapShotPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAutoSnapShotPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAutoSnapShotPoliciesResultOutput, error) {
-			args := v.(GetAutoSnapShotPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args, GetAutoSnapShotPoliciesResultOutput{}, options).(GetAutoSnapShotPoliciesResultOutput), nil
-		}).(GetAutoSnapShotPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args, GetAutoSnapShotPoliciesResultOutput{}, options).(GetAutoSnapShotPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getAutoSnapShotPolicies.

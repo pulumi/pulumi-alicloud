@@ -91,12 +91,8 @@ type GetChangeSetsResult struct {
 }
 
 func GetChangeSetsOutput(ctx *pulumi.Context, args GetChangeSetsOutputArgs, opts ...pulumi.InvokeOption) GetChangeSetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetChangeSetsResultOutput, error) {
-			args := v.(GetChangeSetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ros/getChangeSets:getChangeSets", args, GetChangeSetsResultOutput{}, options).(GetChangeSetsResultOutput), nil
-		}).(GetChangeSetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ros/getChangeSets:getChangeSets", args, GetChangeSetsResultOutput{}, options).(GetChangeSetsResultOutput)
 }
 
 // A collection of arguments for invoking getChangeSets.

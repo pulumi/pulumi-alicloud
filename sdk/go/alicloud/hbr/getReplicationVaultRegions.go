@@ -66,12 +66,8 @@ type GetReplicationVaultRegionsResult struct {
 }
 
 func GetReplicationVaultRegionsOutput(ctx *pulumi.Context, args GetReplicationVaultRegionsOutputArgs, opts ...pulumi.InvokeOption) GetReplicationVaultRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetReplicationVaultRegionsResultOutput, error) {
-			args := v.(GetReplicationVaultRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args, GetReplicationVaultRegionsResultOutput{}, options).(GetReplicationVaultRegionsResultOutput), nil
-		}).(GetReplicationVaultRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args, GetReplicationVaultRegionsResultOutput{}, options).(GetReplicationVaultRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getReplicationVaultRegions.

@@ -78,12 +78,8 @@ type GetServerFirewallRulesResult struct {
 }
 
 func GetServerFirewallRulesOutput(ctx *pulumi.Context, args GetServerFirewallRulesOutputArgs, opts ...pulumi.InvokeOption) GetServerFirewallRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerFirewallRulesResultOutput, error) {
-			args := v.(GetServerFirewallRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args, GetServerFirewallRulesResultOutput{}, options).(GetServerFirewallRulesResultOutput), nil
-		}).(GetServerFirewallRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args, GetServerFirewallRulesResultOutput{}, options).(GetServerFirewallRulesResultOutput)
 }
 
 // A collection of arguments for invoking getServerFirewallRules.

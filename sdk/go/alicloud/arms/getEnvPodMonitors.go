@@ -239,12 +239,8 @@ type GetEnvPodMonitorsResult struct {
 }
 
 func GetEnvPodMonitorsOutput(ctx *pulumi.Context, args GetEnvPodMonitorsOutputArgs, opts ...pulumi.InvokeOption) GetEnvPodMonitorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvPodMonitorsResultOutput, error) {
-			args := v.(GetEnvPodMonitorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getEnvPodMonitors:getEnvPodMonitors", args, GetEnvPodMonitorsResultOutput{}, options).(GetEnvPodMonitorsResultOutput), nil
-		}).(GetEnvPodMonitorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getEnvPodMonitors:getEnvPodMonitors", args, GetEnvPodMonitorsResultOutput{}, options).(GetEnvPodMonitorsResultOutput)
 }
 
 // A collection of arguments for invoking getEnvPodMonitors.

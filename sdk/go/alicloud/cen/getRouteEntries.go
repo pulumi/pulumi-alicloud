@@ -78,12 +78,8 @@ type GetRouteEntriesResult struct {
 }
 
 func GetRouteEntriesOutput(ctx *pulumi.Context, args GetRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRouteEntriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouteEntriesResultOutput, error) {
-			args := v.(GetRouteEntriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getRouteEntries:getRouteEntries", args, GetRouteEntriesResultOutput{}, options).(GetRouteEntriesResultOutput), nil
-		}).(GetRouteEntriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getRouteEntries:getRouteEntries", args, GetRouteEntriesResultOutput{}, options).(GetRouteEntriesResultOutput)
 }
 
 // A collection of arguments for invoking getRouteEntries.

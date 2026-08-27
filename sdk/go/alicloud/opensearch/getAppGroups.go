@@ -56,7 +56,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("appGroups", _default.ApplyT(func(_default opensearch.GetAppGroupsResult) ([]opensearch.GetAppGroupsGroup, error) {
-//				return []opensearch.GetAppGroupsGroup(_default.Groups), nil
+//				return _default.Groups.([]opensearch.GetAppGroupsGroup), nil
 //			}).(pulumi.ArrayOutput))
 //			return nil
 //		})
@@ -109,12 +109,8 @@ type GetAppGroupsResult struct {
 }
 
 func GetAppGroupsOutput(ctx *pulumi.Context, args GetAppGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAppGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAppGroupsResultOutput, error) {
-			args := v.(GetAppGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:opensearch/getAppGroups:getAppGroups", args, GetAppGroupsResultOutput{}, options).(GetAppGroupsResultOutput), nil
-		}).(GetAppGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:opensearch/getAppGroups:getAppGroups", args, GetAppGroupsResultOutput{}, options).(GetAppGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getAppGroups.

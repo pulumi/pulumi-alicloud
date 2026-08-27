@@ -82,12 +82,8 @@ type GetSystemPolicysResult struct {
 }
 
 func GetSystemPolicysOutput(ctx *pulumi.Context, args GetSystemPolicysOutputArgs, opts ...pulumi.InvokeOption) GetSystemPolicysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSystemPolicysResultOutput, error) {
-			args := v.(GetSystemPolicysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ram/getSystemPolicys:getSystemPolicys", args, GetSystemPolicysResultOutput{}, options).(GetSystemPolicysResultOutput), nil
-		}).(GetSystemPolicysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ram/getSystemPolicys:getSystemPolicys", args, GetSystemPolicysResultOutput{}, options).(GetSystemPolicysResultOutput)
 }
 
 // A collection of arguments for invoking getSystemPolicys.

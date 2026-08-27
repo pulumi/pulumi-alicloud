@@ -162,12 +162,8 @@ type GetEventNotifyPoliciesResult struct {
 }
 
 func GetEventNotifyPoliciesOutput(ctx *pulumi.Context, args GetEventNotifyPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetEventNotifyPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEventNotifyPoliciesResultOutput, error) {
-			args := v.(GetEventNotifyPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getEventNotifyPolicies:getEventNotifyPolicies", args, GetEventNotifyPoliciesResultOutput{}, options).(GetEventNotifyPoliciesResultOutput), nil
-		}).(GetEventNotifyPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getEventNotifyPolicies:getEventNotifyPolicies", args, GetEventNotifyPoliciesResultOutput{}, options).(GetEventNotifyPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getEventNotifyPolicies.

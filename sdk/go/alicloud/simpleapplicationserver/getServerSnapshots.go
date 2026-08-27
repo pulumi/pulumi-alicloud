@@ -113,12 +113,8 @@ type GetServerSnapshotsResult struct {
 }
 
 func GetServerSnapshotsOutput(ctx *pulumi.Context, args GetServerSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetServerSnapshotsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerSnapshotsResultOutput, error) {
-			args := v.(GetServerSnapshotsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args, GetServerSnapshotsResultOutput{}, options).(GetServerSnapshotsResultOutput), nil
-		}).(GetServerSnapshotsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args, GetServerSnapshotsResultOutput{}, options).(GetServerSnapshotsResultOutput)
 }
 
 // A collection of arguments for invoking getServerSnapshots.

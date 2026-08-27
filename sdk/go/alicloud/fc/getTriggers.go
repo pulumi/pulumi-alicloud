@@ -82,12 +82,8 @@ type GetTriggersResult struct {
 }
 
 func GetTriggersOutput(ctx *pulumi.Context, args GetTriggersOutputArgs, opts ...pulumi.InvokeOption) GetTriggersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTriggersResultOutput, error) {
-			args := v.(GetTriggersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:fc/getTriggers:getTriggers", args, GetTriggersResultOutput{}, options).(GetTriggersResultOutput), nil
-		}).(GetTriggersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:fc/getTriggers:getTriggers", args, GetTriggersResultOutput{}, options).(GetTriggersResultOutput)
 }
 
 // A collection of arguments for invoking getTriggers.

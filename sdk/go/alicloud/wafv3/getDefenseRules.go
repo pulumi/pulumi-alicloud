@@ -228,12 +228,8 @@ type GetDefenseRulesResult struct {
 }
 
 func GetDefenseRulesOutput(ctx *pulumi.Context, args GetDefenseRulesOutputArgs, opts ...pulumi.InvokeOption) GetDefenseRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDefenseRulesResultOutput, error) {
-			args := v.(GetDefenseRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:wafv3/getDefenseRules:getDefenseRules", args, GetDefenseRulesResultOutput{}, options).(GetDefenseRulesResultOutput), nil
-		}).(GetDefenseRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:wafv3/getDefenseRules:getDefenseRules", args, GetDefenseRulesResultOutput{}, options).(GetDefenseRulesResultOutput)
 }
 
 // A collection of arguments for invoking getDefenseRules.

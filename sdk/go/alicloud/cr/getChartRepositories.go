@@ -82,12 +82,8 @@ type GetChartRepositoriesResult struct {
 }
 
 func GetChartRepositoriesOutput(ctx *pulumi.Context, args GetChartRepositoriesOutputArgs, opts ...pulumi.InvokeOption) GetChartRepositoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetChartRepositoriesResultOutput, error) {
-			args := v.(GetChartRepositoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getChartRepositories:getChartRepositories", args, GetChartRepositoriesResultOutput{}, options).(GetChartRepositoriesResultOutput), nil
-		}).(GetChartRepositoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getChartRepositories:getChartRepositories", args, GetChartRepositoriesResultOutput{}, options).(GetChartRepositoriesResultOutput)
 }
 
 // A collection of arguments for invoking getChartRepositories.

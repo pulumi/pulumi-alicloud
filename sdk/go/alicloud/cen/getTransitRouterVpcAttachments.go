@@ -164,12 +164,8 @@ type GetTransitRouterVpcAttachmentsResult struct {
 }
 
 func GetTransitRouterVpcAttachmentsOutput(ctx *pulumi.Context, args GetTransitRouterVpcAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterVpcAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterVpcAttachmentsResultOutput, error) {
-			args := v.(GetTransitRouterVpcAttachmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args, GetTransitRouterVpcAttachmentsResultOutput{}, options).(GetTransitRouterVpcAttachmentsResultOutput), nil
-		}).(GetTransitRouterVpcAttachmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args, GetTransitRouterVpcAttachmentsResultOutput{}, options).(GetTransitRouterVpcAttachmentsResultOutput)
 }
 
 // A collection of arguments for invoking getTransitRouterVpcAttachments.

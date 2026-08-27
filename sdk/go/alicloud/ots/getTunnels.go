@@ -89,12 +89,8 @@ type GetTunnelsResult struct {
 }
 
 func GetTunnelsOutput(ctx *pulumi.Context, args GetTunnelsOutputArgs, opts ...pulumi.InvokeOption) GetTunnelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTunnelsResultOutput, error) {
-			args := v.(GetTunnelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ots/getTunnels:getTunnels", args, GetTunnelsResultOutput{}, options).(GetTunnelsResultOutput), nil
-		}).(GetTunnelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ots/getTunnels:getTunnels", args, GetTunnelsResultOutput{}, options).(GetTunnelsResultOutput)
 }
 
 // A collection of arguments for invoking getTunnels.

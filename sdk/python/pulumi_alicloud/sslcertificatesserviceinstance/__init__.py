@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .certificate import *
 from .certificates import *
+from .get_certificates import *
 from .ssl_certificates_service_instance import *
 from ._inputs import *
 from . import outputs

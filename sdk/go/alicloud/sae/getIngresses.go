@@ -165,12 +165,8 @@ type GetIngressesResult struct {
 }
 
 func GetIngressesOutput(ctx *pulumi.Context, args GetIngressesOutputArgs, opts ...pulumi.InvokeOption) GetIngressesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIngressesResultOutput, error) {
-			args := v.(GetIngressesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sae/getIngresses:getIngresses", args, GetIngressesResultOutput{}, options).(GetIngressesResultOutput), nil
-		}).(GetIngressesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sae/getIngresses:getIngresses", args, GetIngressesResultOutput{}, options).(GetIngressesResultOutput)
 }
 
 // A collection of arguments for invoking getIngresses.

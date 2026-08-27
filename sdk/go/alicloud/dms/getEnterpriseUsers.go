@@ -94,12 +94,8 @@ type GetEnterpriseUsersResult struct {
 }
 
 func GetEnterpriseUsersOutput(ctx *pulumi.Context, args GetEnterpriseUsersOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseUsersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseUsersResultOutput, error) {
-			args := v.(GetEnterpriseUsersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args, GetEnterpriseUsersResultOutput{}, options).(GetEnterpriseUsersResultOutput), nil
-		}).(GetEnterpriseUsersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args, GetEnterpriseUsersResultOutput{}, options).(GetEnterpriseUsersResultOutput)
 }
 
 // A collection of arguments for invoking getEnterpriseUsers.

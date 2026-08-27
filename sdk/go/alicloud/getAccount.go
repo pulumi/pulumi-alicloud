@@ -54,10 +54,8 @@ type GetAccountResult struct {
 }
 
 func GetAccountOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("alicloud:index/getAccount:getAccount", nil, GetAccountResultOutput{}, options).(GetAccountResultOutput), nil
-	}).(GetAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:index/getAccount:getAccount", nil, GetAccountResultOutput{}, options).(GetAccountResultOutput)
 }
 
 // A collection of values returned by getAccount.

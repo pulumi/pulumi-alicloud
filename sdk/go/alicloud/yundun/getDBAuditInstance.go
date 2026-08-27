@@ -42,12 +42,8 @@ type LookupDBAuditInstanceResult struct {
 }
 
 func LookupDBAuditInstanceOutput(ctx *pulumi.Context, args LookupDBAuditInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDBAuditInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDBAuditInstanceResultOutput, error) {
-			args := v.(LookupDBAuditInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args, LookupDBAuditInstanceResultOutput{}, options).(LookupDBAuditInstanceResultOutput), nil
-		}).(LookupDBAuditInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args, LookupDBAuditInstanceResultOutput{}, options).(LookupDBAuditInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getDBAuditInstance.

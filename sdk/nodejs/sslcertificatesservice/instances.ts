@@ -35,13 +35,15 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const _default = alicloud.sslcertificatesservice.InstancesOutput({
+ * const _default = alicloud.sslcertificatesservice.getInstancesOutput({
  *     ids: [defaultSslCertificatesServiceInstance.id],
  * });
  * export const alicloudSslCertificatesServiceInstanceExampleId = _default.apply(_default => _default.instances?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
 export function instances(args?: InstancesArgs, opts?: pulumi.InvokeOptions): Promise<InstancesResult> {
+    pulumi.log.warn("instances is deprecated: alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sslcertificatesservice/instances:Instances", {
@@ -174,13 +176,15 @@ export interface InstancesResult {
  *         },
  *     ],
  * });
- * const _default = alicloud.sslcertificatesservice.InstancesOutput({
+ * const _default = alicloud.sslcertificatesservice.getInstancesOutput({
  *     ids: [defaultSslCertificatesServiceInstance.id],
  * });
  * export const alicloudSslCertificatesServiceInstanceExampleId = _default.apply(_default => _default.instances?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances */
 export function instancesOutput(args?: InstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<InstancesResult> {
+    pulumi.log.warn("instances is deprecated: alicloud.sslcertificatesservice/instances.Instances has been deprecated in favor of alicloud.sslcertificatesservice/getinstances.getInstances")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sslcertificatesservice/instances:Instances", {

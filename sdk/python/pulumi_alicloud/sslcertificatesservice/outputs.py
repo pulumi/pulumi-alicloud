@@ -18,6 +18,9 @@ __all__ = [
     'CompaniesCompanyResult',
     'ContactsContactResult',
     'InstancesInstanceResult',
+    'GetCompaniesCompanyResult',
+    'GetContactsContactResult',
+    'GetInstancesInstanceResult',
 ]
 
 @pulumi.output_type
@@ -256,6 +259,566 @@ class ContactsContactResult(dict):
 
 @pulumi.output_type
 class InstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 auto_reissue: _builtins.str,
+                 average_waiting_time: _builtins.str,
+                 brand: _builtins.str,
+                 certificate_type: _builtins.str,
+                 city: _builtins.str,
+                 company_id: _builtins.str,
+                 contact_id_lists: Sequence[_builtins.int],
+                 country_code: _builtins.str,
+                 csr: _builtins.str,
+                 domain: _builtins.str,
+                 full_domain_count: _builtins.int,
+                 generate_csr_method: _builtins.str,
+                 id: _builtins.str,
+                 instance_end_time: _builtins.int,
+                 instance_id: _builtins.str,
+                 instance_name: _builtins.str,
+                 instance_start_time: _builtins.int,
+                 instance_type: _builtins.str,
+                 key_algorithm: _builtins.str,
+                 order_end_time: _builtins.int,
+                 order_start_time: _builtins.int,
+                 province: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 spec: _builtins.str,
+                 status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 upgrade_status: _builtins.str,
+                 validation_method: _builtins.str,
+                 wildcard_domain_count: _builtins.int):
+        """
+        :param _builtins.str auto_reissue: **NOTE:** This field is only available when `enable_details` is `true`. Specifies whether to enable managed renewal.
+        :param _builtins.str average_waiting_time: **NOTE:** This field is only available when `enable_details` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+        :param _builtins.str brand: The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+        :param _builtins.str certificate_type: The type of the certificate. Valid values: DV, OV, and EV.
+        :param _builtins.str city: **NOTE:** This field is only available when `enable_details` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+        :param _builtins.str company_id: **NOTE:** This field is only available when `enable_details` is `true`. The company information ID.
+        :param Sequence[_builtins.int] contact_id_lists: **NOTE:** This field is only available when `enable_details` is `true`. The list of contact IDs.
+        :param _builtins.str country_code: **NOTE:** This field is only available when `enable_details` is `true`. The code of the country or region where the certificate organization is located.
+        :param _builtins.str csr: **NOTE:** This field is only available when `enable_details` is `true`. The CSR content.
+        :param _builtins.str domain: **NOTE:** This field is only available when `enable_details` is `true`. The domain names to be bound to the certificate.
+        :param _builtins.int full_domain_count: **NOTE:** This field is only available when `enable_details` is `true`. The number of single domain names included in the instance.
+        :param _builtins.str generate_csr_method: **NOTE:** This field is only available when `enable_details` is `true`. The method used to generate the Certificate Signing Request (CSR).
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.int instance_end_time: **NOTE:** This field is only available when `enable_details` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+        :param _builtins.str instance_id: The instance ID.
+        :param _builtins.str instance_name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the instance.
+        :param _builtins.int instance_start_time: **NOTE:** This field is only available when `enable_details` is `true`. Instance start time, a UNIX timestamp in seconds.
+        :param _builtins.str instance_type: The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+        :param _builtins.str key_algorithm: **NOTE:** This field is only available when `enable_details` is `true`. The certificate algorithm.
+        :param _builtins.int order_end_time: **NOTE:** This field is only available when `enable_details` is `true`. Order end time, a UNIX timestamp in seconds.
+        :param _builtins.int order_start_time: **NOTE:** This field is only available when `enable_details` is `true`. Order start time, a UNIX timestamp in seconds.
+        :param _builtins.str province: **NOTE:** This field is only available when `enable_details` is `true`. The province or region where the company is located.
+        :param _builtins.str resource_group_id: The ID of the resource group.
+        :param _builtins.str spec: **NOTE:** This field is only available when `enable_details` is `true`. The specification of the purchased instance.
+        :param _builtins.str status: The instance status.
+        :param Mapping[str, _builtins.str] tags: **NOTE:** This field is only available when `enable_details` is `true`. The tags of the instance.
+        :param _builtins.str upgrade_status: **NOTE:** This field is only available when `enable_details` is `true`. The upgrade status of the instance.
+        :param _builtins.str validation_method: **NOTE:** This field is only available when `enable_details` is `true`. The verification method for the certificate application.
+        :param _builtins.int wildcard_domain_count: **NOTE:** This field is only available when `enable_details` is `true`. The number of wildcard domain names included in the instance.
+        """
+        pulumi.set(__self__, "auto_reissue", auto_reissue)
+        pulumi.set(__self__, "average_waiting_time", average_waiting_time)
+        pulumi.set(__self__, "brand", brand)
+        pulumi.set(__self__, "certificate_type", certificate_type)
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "company_id", company_id)
+        pulumi.set(__self__, "contact_id_lists", contact_id_lists)
+        pulumi.set(__self__, "country_code", country_code)
+        pulumi.set(__self__, "csr", csr)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "full_domain_count", full_domain_count)
+        pulumi.set(__self__, "generate_csr_method", generate_csr_method)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_end_time", instance_end_time)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_start_time", instance_start_time)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_algorithm", key_algorithm)
+        pulumi.set(__self__, "order_end_time", order_end_time)
+        pulumi.set(__self__, "order_start_time", order_start_time)
+        pulumi.set(__self__, "province", province)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "upgrade_status", upgrade_status)
+        pulumi.set(__self__, "validation_method", validation_method)
+        pulumi.set(__self__, "wildcard_domain_count", wildcard_domain_count)
+
+    @_builtins.property
+    @pulumi.getter(name="autoReissue")
+    def auto_reissue(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Specifies whether to enable managed renewal.
+        """
+        return pulumi.get(self, "auto_reissue")
+
+    @_builtins.property
+    @pulumi.getter(name="averageWaitingTime")
+    def average_waiting_time(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+        """
+        return pulumi.get(self, "average_waiting_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def brand(self) -> _builtins.str:
+        """
+        The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+        """
+        return pulumi.get(self, "brand")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> _builtins.str:
+        """
+        The type of the certificate. Valid values: DV, OV, and EV.
+        """
+        return pulumi.get(self, "certificate_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def city(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+        """
+        return pulumi.get(self, "city")
+
+    @_builtins.property
+    @pulumi.getter(name="companyId")
+    def company_id(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The company information ID.
+        """
+        return pulumi.get(self, "company_id")
+
+    @_builtins.property
+    @pulumi.getter(name="contactIdLists")
+    def contact_id_lists(self) -> Sequence[_builtins.int]:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The list of contact IDs.
+        """
+        return pulumi.get(self, "contact_id_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The code of the country or region where the certificate organization is located.
+        """
+        return pulumi.get(self, "country_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def csr(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The CSR content.
+        """
+        return pulumi.get(self, "csr")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The domain names to be bound to the certificate.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="fullDomainCount")
+    def full_domain_count(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The number of single domain names included in the instance.
+        """
+        return pulumi.get(self, "full_domain_count")
+
+    @_builtins.property
+    @pulumi.getter(name="generateCsrMethod")
+    def generate_csr_method(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The method used to generate the Certificate Signing Request (CSR).
+        """
+        return pulumi.get(self, "generate_csr_method")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceEndTime")
+    def instance_end_time(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+        """
+        return pulumi.get(self, "instance_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceStartTime")
+    def instance_start_time(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Instance start time, a UNIX timestamp in seconds.
+        """
+        return pulumi.get(self, "instance_start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> _builtins.str:
+        """
+        The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The certificate algorithm.
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="orderEndTime")
+    def order_end_time(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Order end time, a UNIX timestamp in seconds.
+        """
+        return pulumi.get(self, "order_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="orderStartTime")
+    def order_start_time(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Order start time, a UNIX timestamp in seconds.
+        """
+        return pulumi.get(self, "order_start_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def province(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The province or region where the company is located.
+        """
+        return pulumi.get(self, "province")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The specification of the purchased instance.
+        """
+        return pulumi.get(self, "spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The instance status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The tags of the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="upgradeStatus")
+    def upgrade_status(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The upgrade status of the instance.
+        """
+        return pulumi.get(self, "upgrade_status")
+
+    @_builtins.property
+    @pulumi.getter(name="validationMethod")
+    def validation_method(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The verification method for the certificate application.
+        """
+        return pulumi.get(self, "validation_method")
+
+    @_builtins.property
+    @pulumi.getter(name="wildcardDomainCount")
+    def wildcard_domain_count(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The number of wildcard domain names included in the instance.
+        """
+        return pulumi.get(self, "wildcard_domain_count")
+
+
+@pulumi.output_type
+class GetCompaniesCompanyResult(dict):
+    def __init__(__self__, *,
+                 city: _builtins.str,
+                 company_address: _builtins.str,
+                 company_code: _builtins.str,
+                 company_email: _builtins.str,
+                 company_id: _builtins.int,
+                 company_name: _builtins.str,
+                 company_phone: _builtins.str,
+                 company_type: _builtins.int,
+                 country_code: _builtins.str,
+                 department: _builtins.str,
+                 id: _builtins.int,
+                 lang: _builtins.str,
+                 post_code: _builtins.str,
+                 province: _builtins.str):
+        """
+        :param _builtins.str city: The city where the company is located.
+        :param _builtins.str company_address: The address of the company.
+        :param _builtins.str company_code: The code of the company.
+        :param _builtins.str company_email: The email address of the company.
+        :param _builtins.int company_id: The ID of the company used to filter the results.
+        :param _builtins.str company_name: The name of the company.
+        :param _builtins.str company_phone: The contact phone number of the company.
+        :param _builtins.int company_type: The type of the company.
+        :param _builtins.str country_code: The country code of the company.
+        :param _builtins.str department: The department of the company.
+        :param _builtins.int id: The ID of the Company.
+        :param _builtins.str lang: The natural language of the content within the request and response.
+        :param _builtins.str post_code: The postal code of the company.
+        :param _builtins.str province: The province where the company is located.
+        """
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "company_address", company_address)
+        pulumi.set(__self__, "company_code", company_code)
+        pulumi.set(__self__, "company_email", company_email)
+        pulumi.set(__self__, "company_id", company_id)
+        pulumi.set(__self__, "company_name", company_name)
+        pulumi.set(__self__, "company_phone", company_phone)
+        pulumi.set(__self__, "company_type", company_type)
+        pulumi.set(__self__, "country_code", country_code)
+        pulumi.set(__self__, "department", department)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lang", lang)
+        pulumi.set(__self__, "post_code", post_code)
+        pulumi.set(__self__, "province", province)
+
+    @_builtins.property
+    @pulumi.getter
+    def city(self) -> _builtins.str:
+        """
+        The city where the company is located.
+        """
+        return pulumi.get(self, "city")
+
+    @_builtins.property
+    @pulumi.getter(name="companyAddress")
+    def company_address(self) -> _builtins.str:
+        """
+        The address of the company.
+        """
+        return pulumi.get(self, "company_address")
+
+    @_builtins.property
+    @pulumi.getter(name="companyCode")
+    def company_code(self) -> _builtins.str:
+        """
+        The code of the company.
+        """
+        return pulumi.get(self, "company_code")
+
+    @_builtins.property
+    @pulumi.getter(name="companyEmail")
+    def company_email(self) -> _builtins.str:
+        """
+        The email address of the company.
+        """
+        return pulumi.get(self, "company_email")
+
+    @_builtins.property
+    @pulumi.getter(name="companyId")
+    def company_id(self) -> _builtins.int:
+        """
+        The ID of the company used to filter the results.
+        """
+        return pulumi.get(self, "company_id")
+
+    @_builtins.property
+    @pulumi.getter(name="companyName")
+    def company_name(self) -> _builtins.str:
+        """
+        The name of the company.
+        """
+        return pulumi.get(self, "company_name")
+
+    @_builtins.property
+    @pulumi.getter(name="companyPhone")
+    def company_phone(self) -> _builtins.str:
+        """
+        The contact phone number of the company.
+        """
+        return pulumi.get(self, "company_phone")
+
+    @_builtins.property
+    @pulumi.getter(name="companyType")
+    def company_type(self) -> _builtins.int:
+        """
+        The type of the company.
+        """
+        return pulumi.get(self, "company_type")
+
+    @_builtins.property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> _builtins.str:
+        """
+        The country code of the company.
+        """
+        return pulumi.get(self, "country_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def department(self) -> _builtins.str:
+        """
+        The department of the company.
+        """
+        return pulumi.get(self, "department")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the Company.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def lang(self) -> _builtins.str:
+        """
+        The natural language of the content within the request and response.
+        """
+        return pulumi.get(self, "lang")
+
+    @_builtins.property
+    @pulumi.getter(name="postCode")
+    def post_code(self) -> _builtins.str:
+        """
+        The postal code of the company.
+        """
+        return pulumi.get(self, "post_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def province(self) -> _builtins.str:
+        """
+        The province where the company is located.
+        """
+        return pulumi.get(self, "province")
+
+
+@pulumi.output_type
+class GetContactsContactResult(dict):
+    def __init__(__self__, *,
+                 contact_id: _builtins.int,
+                 email: _builtins.str,
+                 id: _builtins.int,
+                 mobile: _builtins.str,
+                 name: _builtins.str,
+                 webhooks: _builtins.str):
+        """
+        :param _builtins.int contact_id: The first ID of the resource.
+        :param _builtins.str email: The email address of the contact. **NOTE:** This field is only available when `enable_details` is `true`.
+        :param _builtins.int id: The ID of the resource supplied above.
+        :param _builtins.str mobile: The mobile phone number of the contact. **NOTE:** This field is only available when `enable_details` is `true`.
+        :param _builtins.str name: The name of the resource
+        :param _builtins.str webhooks: The Webhook address used to receive notifications. **NOTE:** This field is only available when `enable_details` is `true`.
+        """
+        pulumi.set(__self__, "contact_id", contact_id)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mobile", mobile)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "webhooks", webhooks)
+
+    @_builtins.property
+    @pulumi.getter(name="contactId")
+    def contact_id(self) -> _builtins.int:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "contact_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        The email address of the contact. **NOTE:** This field is only available when `enable_details` is `true`.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def mobile(self) -> _builtins.str:
+        """
+        The mobile phone number of the contact. **NOTE:** This field is only available when `enable_details` is `true`.
+        """
+        return pulumi.get(self, "mobile")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def webhooks(self) -> _builtins.str:
+        """
+        The Webhook address used to receive notifications. **NOTE:** This field is only available when `enable_details` is `true`.
+        """
+        return pulumi.get(self, "webhooks")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  auto_reissue: _builtins.str,
                  average_waiting_time: _builtins.str,

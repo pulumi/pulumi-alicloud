@@ -43,13 +43,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := sslcertificatesservice.ContactsOutput(ctx, sslcertificatesservice.ContactsOutputArgs{
+//			_default := sslcertificatesservice.GetContactsOutput(ctx, sslcertificatesservice.GetContactsOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultContact.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Name: pulumi.String(name),
 //			}, nil)
-//			ctx.Export("alicloudSslCertificatesServiceContactExampleId", _default.ApplyT(func(_default sslcertificatesservice.ContactsResult) (*int, error) {
+//			ctx.Export("alicloudSslCertificatesServiceContactExampleId", _default.ApplyT(func(_default sslcertificatesservice.GetContactsResult) (*int, error) {
 //				return _default.Contacts[0].Id, nil
 //			}).(pulumi.IntPtrOutput))
 //			return nil
@@ -57,6 +57,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: alicloud.sslcertificatesservice/contacts.Contacts has been deprecated in favor of alicloud.sslcertificatesservice/getcontacts.getContacts
 func Contacts(ctx *pulumi.Context, args *ContactsArgs, opts ...pulumi.InvokeOption) (*ContactsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv ContactsResult
@@ -94,12 +96,8 @@ type ContactsResult struct {
 }
 
 func ContactsOutput(ctx *pulumi.Context, args ContactsOutputArgs, opts ...pulumi.InvokeOption) ContactsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ContactsResultOutput, error) {
-			args := v.(ContactsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sslcertificatesservice/contacts:Contacts", args, ContactsResultOutput{}, options).(ContactsResultOutput), nil
-		}).(ContactsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sslcertificatesservice/contacts:Contacts", args, ContactsResultOutput{}, options).(ContactsResultOutput)
 }
 
 // A collection of arguments for invoking Contacts.

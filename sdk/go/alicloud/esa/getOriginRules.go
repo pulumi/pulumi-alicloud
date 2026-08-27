@@ -137,12 +137,8 @@ type GetOriginRulesResult struct {
 }
 
 func GetOriginRulesOutput(ctx *pulumi.Context, args GetOriginRulesOutputArgs, opts ...pulumi.InvokeOption) GetOriginRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOriginRulesResultOutput, error) {
-			args := v.(GetOriginRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:esa/getOriginRules:getOriginRules", args, GetOriginRulesResultOutput{}, options).(GetOriginRulesResultOutput), nil
-		}).(GetOriginRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:esa/getOriginRules:getOriginRules", args, GetOriginRulesResultOutput{}, options).(GetOriginRulesResultOutput)
 }
 
 // A collection of arguments for invoking getOriginRules.

@@ -78,12 +78,8 @@ type GetEventSourcesResult struct {
 }
 
 func GetEventSourcesOutput(ctx *pulumi.Context, args GetEventSourcesOutputArgs, opts ...pulumi.InvokeOption) GetEventSourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEventSourcesResultOutput, error) {
-			args := v.(GetEventSourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eventbridge/getEventSources:getEventSources", args, GetEventSourcesResultOutput{}, options).(GetEventSourcesResultOutput), nil
-		}).(GetEventSourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eventbridge/getEventSources:getEventSources", args, GetEventSourcesResultOutput{}, options).(GetEventSourcesResultOutput)
 }
 
 // A collection of arguments for invoking getEventSources.

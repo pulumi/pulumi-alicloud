@@ -76,12 +76,8 @@ type GetHandshakesResult struct {
 }
 
 func GetHandshakesOutput(ctx *pulumi.Context, args GetHandshakesOutputArgs, opts ...pulumi.InvokeOption) GetHandshakesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHandshakesResultOutput, error) {
-			args := v.(GetHandshakesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:resourcemanager/getHandshakes:getHandshakes", args, GetHandshakesResultOutput{}, options).(GetHandshakesResultOutput), nil
-		}).(GetHandshakesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:resourcemanager/getHandshakes:getHandshakes", args, GetHandshakesResultOutput{}, options).(GetHandshakesResultOutput)
 }
 
 // A collection of arguments for invoking getHandshakes.

@@ -96,12 +96,8 @@ type GetTemplateScratchesResult struct {
 }
 
 func GetTemplateScratchesOutput(ctx *pulumi.Context, args GetTemplateScratchesOutputArgs, opts ...pulumi.InvokeOption) GetTemplateScratchesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTemplateScratchesResultOutput, error) {
-			args := v.(GetTemplateScratchesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ros/getTemplateScratches:getTemplateScratches", args, GetTemplateScratchesResultOutput{}, options).(GetTemplateScratchesResultOutput), nil
-		}).(GetTemplateScratchesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ros/getTemplateScratches:getTemplateScratches", args, GetTemplateScratchesResultOutput{}, options).(GetTemplateScratchesResultOutput)
 }
 
 // A collection of arguments for invoking getTemplateScratches.

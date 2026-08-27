@@ -89,12 +89,8 @@ type GetResolutionLinesResult struct {
 }
 
 func GetResolutionLinesOutput(ctx *pulumi.Context, args GetResolutionLinesOutputArgs, opts ...pulumi.InvokeOption) GetResolutionLinesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetResolutionLinesResultOutput, error) {
-			args := v.(GetResolutionLinesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getResolutionLines:getResolutionLines", args, GetResolutionLinesResultOutput{}, options).(GetResolutionLinesResultOutput), nil
-		}).(GetResolutionLinesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getResolutionLines:getResolutionLines", args, GetResolutionLinesResultOutput{}, options).(GetResolutionLinesResultOutput)
 }
 
 // A collection of arguments for invoking getResolutionLines.

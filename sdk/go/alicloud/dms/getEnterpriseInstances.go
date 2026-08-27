@@ -107,12 +107,8 @@ type GetEnterpriseInstancesResult struct {
 }
 
 func GetEnterpriseInstancesOutput(ctx *pulumi.Context, args GetEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseInstancesResultOutput, error) {
-			args := v.(GetEnterpriseInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args, GetEnterpriseInstancesResultOutput{}, options).(GetEnterpriseInstancesResultOutput), nil
-		}).(GetEnterpriseInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args, GetEnterpriseInstancesResultOutput{}, options).(GetEnterpriseInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getEnterpriseInstances.

@@ -47,12 +47,8 @@ type GetStorageBundlesResult struct {
 }
 
 func GetStorageBundlesOutput(ctx *pulumi.Context, args GetStorageBundlesOutputArgs, opts ...pulumi.InvokeOption) GetStorageBundlesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStorageBundlesResultOutput, error) {
-			args := v.(GetStorageBundlesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args, GetStorageBundlesResultOutput{}, options).(GetStorageBundlesResultOutput), nil
-		}).(GetStorageBundlesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args, GetStorageBundlesResultOutput{}, options).(GetStorageBundlesResultOutput)
 }
 
 // A collection of arguments for invoking getStorageBundles.

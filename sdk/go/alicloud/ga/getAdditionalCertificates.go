@@ -85,12 +85,8 @@ type GetAdditionalCertificatesResult struct {
 }
 
 func GetAdditionalCertificatesOutput(ctx *pulumi.Context, args GetAdditionalCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetAdditionalCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAdditionalCertificatesResultOutput, error) {
-			args := v.(GetAdditionalCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args, GetAdditionalCertificatesResultOutput{}, options).(GetAdditionalCertificatesResultOutput), nil
-		}).(GetAdditionalCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args, GetAdditionalCertificatesResultOutput{}, options).(GetAdditionalCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getAdditionalCertificates.

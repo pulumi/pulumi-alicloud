@@ -78,12 +78,8 @@ type GetApplicationScalingRulesResult struct {
 }
 
 func GetApplicationScalingRulesOutput(ctx *pulumi.Context, args GetApplicationScalingRulesOutputArgs, opts ...pulumi.InvokeOption) GetApplicationScalingRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApplicationScalingRulesResultOutput, error) {
-			args := v.(GetApplicationScalingRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args, GetApplicationScalingRulesResultOutput{}, options).(GetApplicationScalingRulesResultOutput), nil
-		}).(GetApplicationScalingRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args, GetApplicationScalingRulesResultOutput{}, options).(GetApplicationScalingRulesResultOutput)
 }
 
 // A collection of arguments for invoking getApplicationScalingRules.

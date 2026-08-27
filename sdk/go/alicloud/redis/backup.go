@@ -83,7 +83,6 @@ import (
 //
 //	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
 // VpcId: pulumi.String(_default.Ids[0]),

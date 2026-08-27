@@ -101,12 +101,8 @@ type GetParameterGroupsResult struct {
 }
 
 func GetParameterGroupsOutput(ctx *pulumi.Context, args GetParameterGroupsOutputArgs, opts ...pulumi.InvokeOption) GetParameterGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetParameterGroupsResultOutput, error) {
-			args := v.(GetParameterGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:polardb/getParameterGroups:getParameterGroups", args, GetParameterGroupsResultOutput{}, options).(GetParameterGroupsResultOutput), nil
-		}).(GetParameterGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:polardb/getParameterGroups:getParameterGroups", args, GetParameterGroupsResultOutput{}, options).(GetParameterGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getParameterGroups.

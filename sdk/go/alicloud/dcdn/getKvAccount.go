@@ -65,12 +65,8 @@ type GetKvAccountResult struct {
 }
 
 func GetKvAccountOutput(ctx *pulumi.Context, args GetKvAccountOutputArgs, opts ...pulumi.InvokeOption) GetKvAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKvAccountResultOutput, error) {
-			args := v.(GetKvAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dcdn/getKvAccount:getKvAccount", args, GetKvAccountResultOutput{}, options).(GetKvAccountResultOutput), nil
-		}).(GetKvAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dcdn/getKvAccount:getKvAccount", args, GetKvAccountResultOutput{}, options).(GetKvAccountResultOutput)
 }
 
 // A collection of arguments for invoking getKvAccount.

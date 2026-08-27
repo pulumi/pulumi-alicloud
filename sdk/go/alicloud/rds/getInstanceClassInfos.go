@@ -96,12 +96,8 @@ type GetInstanceClassInfosResult struct {
 }
 
 func GetInstanceClassInfosOutput(ctx *pulumi.Context, args GetInstanceClassInfosOutputArgs, opts ...pulumi.InvokeOption) GetInstanceClassInfosResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceClassInfosResultOutput, error) {
-			args := v.(GetInstanceClassInfosArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args, GetInstanceClassInfosResultOutput{}, options).(GetInstanceClassInfosResultOutput), nil
-		}).(GetInstanceClassInfosResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args, GetInstanceClassInfosResultOutput{}, options).(GetInstanceClassInfosResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceClassInfos.

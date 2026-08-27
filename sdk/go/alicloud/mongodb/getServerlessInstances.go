@@ -115,12 +115,8 @@ type GetServerlessInstancesResult struct {
 }
 
 func GetServerlessInstancesOutput(ctx *pulumi.Context, args GetServerlessInstancesOutputArgs, opts ...pulumi.InvokeOption) GetServerlessInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerlessInstancesResultOutput, error) {
-			args := v.(GetServerlessInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args, GetServerlessInstancesResultOutput{}, options).(GetServerlessInstancesResultOutput), nil
-		}).(GetServerlessInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args, GetServerlessInstancesResultOutput{}, options).(GetServerlessInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getServerlessInstances.

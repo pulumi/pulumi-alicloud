@@ -121,12 +121,8 @@ type GetRegistryEnterpriseReposResult struct {
 }
 
 func GetRegistryEnterpriseReposOutput(ctx *pulumi.Context, args GetRegistryEnterpriseReposOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseReposResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistryEnterpriseReposResultOutput, error) {
-			args := v.(GetRegistryEnterpriseReposArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args, GetRegistryEnterpriseReposResultOutput{}, options).(GetRegistryEnterpriseReposResultOutput), nil
-		}).(GetRegistryEnterpriseReposResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args, GetRegistryEnterpriseReposResultOutput{}, options).(GetRegistryEnterpriseReposResultOutput)
 }
 
 // A collection of arguments for invoking getRegistryEnterpriseRepos.

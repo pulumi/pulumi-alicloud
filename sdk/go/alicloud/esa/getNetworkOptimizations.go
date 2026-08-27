@@ -126,12 +126,8 @@ type GetNetworkOptimizationsResult struct {
 }
 
 func GetNetworkOptimizationsOutput(ctx *pulumi.Context, args GetNetworkOptimizationsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkOptimizationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkOptimizationsResultOutput, error) {
-			args := v.(GetNetworkOptimizationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:esa/getNetworkOptimizations:getNetworkOptimizations", args, GetNetworkOptimizationsResultOutput{}, options).(GetNetworkOptimizationsResultOutput), nil
-		}).(GetNetworkOptimizationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:esa/getNetworkOptimizations:getNetworkOptimizations", args, GetNetworkOptimizationsResultOutput{}, options).(GetNetworkOptimizationsResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkOptimizations.

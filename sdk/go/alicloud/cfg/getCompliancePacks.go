@@ -87,12 +87,8 @@ type GetCompliancePacksResult struct {
 }
 
 func GetCompliancePacksOutput(ctx *pulumi.Context, args GetCompliancePacksOutputArgs, opts ...pulumi.InvokeOption) GetCompliancePacksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCompliancePacksResultOutput, error) {
-			args := v.(GetCompliancePacksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cfg/getCompliancePacks:getCompliancePacks", args, GetCompliancePacksResultOutput{}, options).(GetCompliancePacksResultOutput), nil
-		}).(GetCompliancePacksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cfg/getCompliancePacks:getCompliancePacks", args, GetCompliancePacksResultOutput{}, options).(GetCompliancePacksResultOutput)
 }
 
 // A collection of arguments for invoking getCompliancePacks.

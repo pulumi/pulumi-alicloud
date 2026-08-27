@@ -277,12 +277,8 @@ type GetClusterInstancesResult struct {
 }
 
 func GetClusterInstancesOutput(ctx *pulumi.Context, args GetClusterInstancesOutputArgs, opts ...pulumi.InvokeOption) GetClusterInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetClusterInstancesResultOutput, error) {
-			args := v.(GetClusterInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:emrv2/getClusterInstances:getClusterInstances", args, GetClusterInstancesResultOutput{}, options).(GetClusterInstancesResultOutput), nil
-		}).(GetClusterInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:emrv2/getClusterInstances:getClusterInstances", args, GetClusterInstancesResultOutput{}, options).(GetClusterInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getClusterInstances.

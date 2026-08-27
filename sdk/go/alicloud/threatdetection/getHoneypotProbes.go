@@ -119,12 +119,8 @@ type GetHoneypotProbesResult struct {
 }
 
 func GetHoneypotProbesOutput(ctx *pulumi.Context, args GetHoneypotProbesOutputArgs, opts ...pulumi.InvokeOption) GetHoneypotProbesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHoneypotProbesResultOutput, error) {
-			args := v.(GetHoneypotProbesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args, GetHoneypotProbesResultOutput{}, options).(GetHoneypotProbesResultOutput), nil
-		}).(GetHoneypotProbesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args, GetHoneypotProbesResultOutput{}, options).(GetHoneypotProbesResultOutput)
 }
 
 // A collection of arguments for invoking getHoneypotProbes.

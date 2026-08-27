@@ -88,12 +88,8 @@ type GetOpenApiPricingModulesResult struct {
 }
 
 func GetOpenApiPricingModulesOutput(ctx *pulumi.Context, args GetOpenApiPricingModulesOutputArgs, opts ...pulumi.InvokeOption) GetOpenApiPricingModulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOpenApiPricingModulesResultOutput, error) {
-			args := v.(GetOpenApiPricingModulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args, GetOpenApiPricingModulesResultOutput{}, options).(GetOpenApiPricingModulesResultOutput), nil
-		}).(GetOpenApiPricingModulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args, GetOpenApiPricingModulesResultOutput{}, options).(GetOpenApiPricingModulesResultOutput)
 }
 
 // A collection of arguments for invoking getOpenApiPricingModules.

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.sslCertificatesService
 {
+    [Obsolete(@"alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies")]
     public static class Companies
     {
         /// <summary>
@@ -43,7 +44,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         ///         Lang = "zh",
         ///     });
         /// 
-        ///     var @default = AliCloud.SslCertificatesService.Companies.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesService.GetCompanies.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -54,7 +55,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceCompanyExampleId"] = @default.Apply(@default =&gt; @default.Apply(companiesResult =&gt; companiesResult.Companies[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceCompanyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCompaniesResult =&gt; getCompaniesResult.Companies[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -94,7 +95,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         ///         Lang = "zh",
         ///     });
         /// 
-        ///     var @default = AliCloud.SslCertificatesService.Companies.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesService.GetCompanies.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -105,7 +106,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceCompanyExampleId"] = @default.Apply(@default =&gt; @default.Apply(companiesResult =&gt; companiesResult.Companies[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceCompanyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCompaniesResult =&gt; getCompaniesResult.Companies[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -145,7 +146,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         ///         Lang = "zh",
         ///     });
         /// 
-        ///     var @default = AliCloud.SslCertificatesService.Companies.Invoke(new()
+        ///     var @default = AliCloud.SslCertificatesService.GetCompanies.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -156,7 +157,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudSslCertificatesServiceCompanyExampleId"] = @default.Apply(@default =&gt; @default.Apply(companiesResult =&gt; companiesResult.Companies[0]?.Id)),
+        ///         ["alicloudSslCertificatesServiceCompanyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCompaniesResult =&gt; getCompaniesResult.Companies[0]?.Id)),
         ///     };
         /// });
         /// ```

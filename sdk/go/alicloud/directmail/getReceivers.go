@@ -84,12 +84,8 @@ type LookupReceiversResult struct {
 }
 
 func LookupReceiversOutput(ctx *pulumi.Context, args LookupReceiversOutputArgs, opts ...pulumi.InvokeOption) LookupReceiversResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReceiversResultOutput, error) {
-			args := v.(LookupReceiversArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:directmail/getReceivers:getReceivers", args, LookupReceiversResultOutput{}, options).(LookupReceiversResultOutput), nil
-		}).(LookupReceiversResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:directmail/getReceivers:getReceivers", args, LookupReceiversResultOutput{}, options).(LookupReceiversResultOutput)
 }
 
 // A collection of arguments for invoking getReceivers.

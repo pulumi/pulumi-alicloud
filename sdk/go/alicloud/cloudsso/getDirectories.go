@@ -89,12 +89,8 @@ type GetDirectoriesResult struct {
 }
 
 func GetDirectoriesOutput(ctx *pulumi.Context, args GetDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetDirectoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDirectoriesResultOutput, error) {
-			args := v.(GetDirectoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cloudsso/getDirectories:getDirectories", args, GetDirectoriesResultOutput{}, options).(GetDirectoriesResultOutput), nil
-		}).(GetDirectoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cloudsso/getDirectories:getDirectories", args, GetDirectoriesResultOutput{}, options).(GetDirectoriesResultOutput)
 }
 
 // A collection of arguments for invoking getDirectories.

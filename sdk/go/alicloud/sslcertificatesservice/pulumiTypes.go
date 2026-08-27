@@ -718,6 +718,711 @@ func (o InstancesInstanceArrayOutput) Index(i pulumi.IntInput) InstancesInstance
 	}).(InstancesInstanceOutput)
 }
 
+type GetCompaniesCompany struct {
+	// The city where the company is located.
+	City string `pulumi:"city"`
+	// The address of the company.
+	CompanyAddress string `pulumi:"companyAddress"`
+	// The code of the company.
+	CompanyCode string `pulumi:"companyCode"`
+	// The email address of the company.
+	CompanyEmail string `pulumi:"companyEmail"`
+	// The ID of the company used to filter the results.
+	CompanyId int `pulumi:"companyId"`
+	// The name of the company.
+	CompanyName string `pulumi:"companyName"`
+	// The contact phone number of the company.
+	CompanyPhone string `pulumi:"companyPhone"`
+	// The type of the company.
+	CompanyType int `pulumi:"companyType"`
+	// The country code of the company.
+	CountryCode string `pulumi:"countryCode"`
+	// The department of the company.
+	Department string `pulumi:"department"`
+	// The ID of the Company.
+	Id int `pulumi:"id"`
+	// The natural language of the content within the request and response.
+	Lang string `pulumi:"lang"`
+	// The postal code of the company.
+	PostCode string `pulumi:"postCode"`
+	// The province where the company is located.
+	Province string `pulumi:"province"`
+}
+
+// GetCompaniesCompanyInput is an input type that accepts GetCompaniesCompanyArgs and GetCompaniesCompanyOutput values.
+// You can construct a concrete instance of `GetCompaniesCompanyInput` via:
+//
+//	GetCompaniesCompanyArgs{...}
+type GetCompaniesCompanyInput interface {
+	pulumi.Input
+
+	ToGetCompaniesCompanyOutput() GetCompaniesCompanyOutput
+	ToGetCompaniesCompanyOutputWithContext(context.Context) GetCompaniesCompanyOutput
+}
+
+type GetCompaniesCompanyArgs struct {
+	// The city where the company is located.
+	City pulumi.StringInput `pulumi:"city"`
+	// The address of the company.
+	CompanyAddress pulumi.StringInput `pulumi:"companyAddress"`
+	// The code of the company.
+	CompanyCode pulumi.StringInput `pulumi:"companyCode"`
+	// The email address of the company.
+	CompanyEmail pulumi.StringInput `pulumi:"companyEmail"`
+	// The ID of the company used to filter the results.
+	CompanyId pulumi.IntInput `pulumi:"companyId"`
+	// The name of the company.
+	CompanyName pulumi.StringInput `pulumi:"companyName"`
+	// The contact phone number of the company.
+	CompanyPhone pulumi.StringInput `pulumi:"companyPhone"`
+	// The type of the company.
+	CompanyType pulumi.IntInput `pulumi:"companyType"`
+	// The country code of the company.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+	// The department of the company.
+	Department pulumi.StringInput `pulumi:"department"`
+	// The ID of the Company.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The natural language of the content within the request and response.
+	Lang pulumi.StringInput `pulumi:"lang"`
+	// The postal code of the company.
+	PostCode pulumi.StringInput `pulumi:"postCode"`
+	// The province where the company is located.
+	Province pulumi.StringInput `pulumi:"province"`
+}
+
+func (GetCompaniesCompanyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCompaniesCompany)(nil)).Elem()
+}
+
+func (i GetCompaniesCompanyArgs) ToGetCompaniesCompanyOutput() GetCompaniesCompanyOutput {
+	return i.ToGetCompaniesCompanyOutputWithContext(context.Background())
+}
+
+func (i GetCompaniesCompanyArgs) ToGetCompaniesCompanyOutputWithContext(ctx context.Context) GetCompaniesCompanyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCompaniesCompanyOutput)
+}
+
+// GetCompaniesCompanyArrayInput is an input type that accepts GetCompaniesCompanyArray and GetCompaniesCompanyArrayOutput values.
+// You can construct a concrete instance of `GetCompaniesCompanyArrayInput` via:
+//
+//	GetCompaniesCompanyArray{ GetCompaniesCompanyArgs{...} }
+type GetCompaniesCompanyArrayInput interface {
+	pulumi.Input
+
+	ToGetCompaniesCompanyArrayOutput() GetCompaniesCompanyArrayOutput
+	ToGetCompaniesCompanyArrayOutputWithContext(context.Context) GetCompaniesCompanyArrayOutput
+}
+
+type GetCompaniesCompanyArray []GetCompaniesCompanyInput
+
+func (GetCompaniesCompanyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCompaniesCompany)(nil)).Elem()
+}
+
+func (i GetCompaniesCompanyArray) ToGetCompaniesCompanyArrayOutput() GetCompaniesCompanyArrayOutput {
+	return i.ToGetCompaniesCompanyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCompaniesCompanyArray) ToGetCompaniesCompanyArrayOutputWithContext(ctx context.Context) GetCompaniesCompanyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCompaniesCompanyArrayOutput)
+}
+
+type GetCompaniesCompanyOutput struct{ *pulumi.OutputState }
+
+func (GetCompaniesCompanyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCompaniesCompany)(nil)).Elem()
+}
+
+func (o GetCompaniesCompanyOutput) ToGetCompaniesCompanyOutput() GetCompaniesCompanyOutput {
+	return o
+}
+
+func (o GetCompaniesCompanyOutput) ToGetCompaniesCompanyOutputWithContext(ctx context.Context) GetCompaniesCompanyOutput {
+	return o
+}
+
+// The city where the company is located.
+func (o GetCompaniesCompanyOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.City }).(pulumi.StringOutput)
+}
+
+// The address of the company.
+func (o GetCompaniesCompanyOutput) CompanyAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.CompanyAddress }).(pulumi.StringOutput)
+}
+
+// The code of the company.
+func (o GetCompaniesCompanyOutput) CompanyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.CompanyCode }).(pulumi.StringOutput)
+}
+
+// The email address of the company.
+func (o GetCompaniesCompanyOutput) CompanyEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.CompanyEmail }).(pulumi.StringOutput)
+}
+
+// The ID of the company used to filter the results.
+func (o GetCompaniesCompanyOutput) CompanyId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) int { return v.CompanyId }).(pulumi.IntOutput)
+}
+
+// The name of the company.
+func (o GetCompaniesCompanyOutput) CompanyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.CompanyName }).(pulumi.StringOutput)
+}
+
+// The contact phone number of the company.
+func (o GetCompaniesCompanyOutput) CompanyPhone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.CompanyPhone }).(pulumi.StringOutput)
+}
+
+// The type of the company.
+func (o GetCompaniesCompanyOutput) CompanyType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) int { return v.CompanyType }).(pulumi.IntOutput)
+}
+
+// The country code of the company.
+func (o GetCompaniesCompanyOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+// The department of the company.
+func (o GetCompaniesCompanyOutput) Department() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.Department }).(pulumi.StringOutput)
+}
+
+// The ID of the Company.
+func (o GetCompaniesCompanyOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The natural language of the content within the request and response.
+func (o GetCompaniesCompanyOutput) Lang() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.Lang }).(pulumi.StringOutput)
+}
+
+// The postal code of the company.
+func (o GetCompaniesCompanyOutput) PostCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.PostCode }).(pulumi.StringOutput)
+}
+
+// The province where the company is located.
+func (o GetCompaniesCompanyOutput) Province() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCompaniesCompany) string { return v.Province }).(pulumi.StringOutput)
+}
+
+type GetCompaniesCompanyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCompaniesCompanyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCompaniesCompany)(nil)).Elem()
+}
+
+func (o GetCompaniesCompanyArrayOutput) ToGetCompaniesCompanyArrayOutput() GetCompaniesCompanyArrayOutput {
+	return o
+}
+
+func (o GetCompaniesCompanyArrayOutput) ToGetCompaniesCompanyArrayOutputWithContext(ctx context.Context) GetCompaniesCompanyArrayOutput {
+	return o
+}
+
+func (o GetCompaniesCompanyArrayOutput) Index(i pulumi.IntInput) GetCompaniesCompanyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCompaniesCompany {
+		return vs[0].([]GetCompaniesCompany)[vs[1].(int)]
+	}).(GetCompaniesCompanyOutput)
+}
+
+type GetContactsContact struct {
+	// The first ID of the resource.
+	ContactId int `pulumi:"contactId"`
+	// The email address of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+	Email string `pulumi:"email"`
+	// The ID of the resource supplied above.
+	Id int `pulumi:"id"`
+	// The mobile phone number of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+	Mobile string `pulumi:"mobile"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Webhook address used to receive notifications. **NOTE:** This field is only available when `enableDetails` is `true`.
+	Webhooks string `pulumi:"webhooks"`
+}
+
+// GetContactsContactInput is an input type that accepts GetContactsContactArgs and GetContactsContactOutput values.
+// You can construct a concrete instance of `GetContactsContactInput` via:
+//
+//	GetContactsContactArgs{...}
+type GetContactsContactInput interface {
+	pulumi.Input
+
+	ToGetContactsContactOutput() GetContactsContactOutput
+	ToGetContactsContactOutputWithContext(context.Context) GetContactsContactOutput
+}
+
+type GetContactsContactArgs struct {
+	// The first ID of the resource.
+	ContactId pulumi.IntInput `pulumi:"contactId"`
+	// The email address of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The ID of the resource supplied above.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The mobile phone number of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+	Mobile pulumi.StringInput `pulumi:"mobile"`
+	// The name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Webhook address used to receive notifications. **NOTE:** This field is only available when `enableDetails` is `true`.
+	Webhooks pulumi.StringInput `pulumi:"webhooks"`
+}
+
+func (GetContactsContactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContactsContact)(nil)).Elem()
+}
+
+func (i GetContactsContactArgs) ToGetContactsContactOutput() GetContactsContactOutput {
+	return i.ToGetContactsContactOutputWithContext(context.Background())
+}
+
+func (i GetContactsContactArgs) ToGetContactsContactOutputWithContext(ctx context.Context) GetContactsContactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContactsContactOutput)
+}
+
+// GetContactsContactArrayInput is an input type that accepts GetContactsContactArray and GetContactsContactArrayOutput values.
+// You can construct a concrete instance of `GetContactsContactArrayInput` via:
+//
+//	GetContactsContactArray{ GetContactsContactArgs{...} }
+type GetContactsContactArrayInput interface {
+	pulumi.Input
+
+	ToGetContactsContactArrayOutput() GetContactsContactArrayOutput
+	ToGetContactsContactArrayOutputWithContext(context.Context) GetContactsContactArrayOutput
+}
+
+type GetContactsContactArray []GetContactsContactInput
+
+func (GetContactsContactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContactsContact)(nil)).Elem()
+}
+
+func (i GetContactsContactArray) ToGetContactsContactArrayOutput() GetContactsContactArrayOutput {
+	return i.ToGetContactsContactArrayOutputWithContext(context.Background())
+}
+
+func (i GetContactsContactArray) ToGetContactsContactArrayOutputWithContext(ctx context.Context) GetContactsContactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContactsContactArrayOutput)
+}
+
+type GetContactsContactOutput struct{ *pulumi.OutputState }
+
+func (GetContactsContactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContactsContact)(nil)).Elem()
+}
+
+func (o GetContactsContactOutput) ToGetContactsContactOutput() GetContactsContactOutput {
+	return o
+}
+
+func (o GetContactsContactOutput) ToGetContactsContactOutputWithContext(ctx context.Context) GetContactsContactOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetContactsContactOutput) ContactId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContactsContact) int { return v.ContactId }).(pulumi.IntOutput)
+}
+
+// The email address of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+func (o GetContactsContactOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContactsContact) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetContactsContactOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContactsContact) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The mobile phone number of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+func (o GetContactsContactOutput) Mobile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContactsContact) string { return v.Mobile }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o GetContactsContactOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContactsContact) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Webhook address used to receive notifications. **NOTE:** This field is only available when `enableDetails` is `true`.
+func (o GetContactsContactOutput) Webhooks() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContactsContact) string { return v.Webhooks }).(pulumi.StringOutput)
+}
+
+type GetContactsContactArrayOutput struct{ *pulumi.OutputState }
+
+func (GetContactsContactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContactsContact)(nil)).Elem()
+}
+
+func (o GetContactsContactArrayOutput) ToGetContactsContactArrayOutput() GetContactsContactArrayOutput {
+	return o
+}
+
+func (o GetContactsContactArrayOutput) ToGetContactsContactArrayOutputWithContext(ctx context.Context) GetContactsContactArrayOutput {
+	return o
+}
+
+func (o GetContactsContactArrayOutput) Index(i pulumi.IntInput) GetContactsContactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContactsContact {
+		return vs[0].([]GetContactsContact)[vs[1].(int)]
+	}).(GetContactsContactOutput)
+}
+
+type GetInstancesInstance struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Specifies whether to enable managed renewal.
+	AutoReissue string `pulumi:"autoReissue"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+	AverageWaitingTime string `pulumi:"averageWaitingTime"`
+	// The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+	Brand string `pulumi:"brand"`
+	// The type of the certificate. Valid values: DV, OV, and EV.
+	CertificateType string `pulumi:"certificateType"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+	City string `pulumi:"city"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The company information ID.
+	CompanyId string `pulumi:"companyId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The list of contact IDs.
+	ContactIdLists []int `pulumi:"contactIdLists"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The code of the country or region where the certificate organization is located.
+	CountryCode string `pulumi:"countryCode"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The CSR content.
+	Csr string `pulumi:"csr"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The domain names to be bound to the certificate.
+	Domain string `pulumi:"domain"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of single domain names included in the instance.
+	FullDomainCount int `pulumi:"fullDomainCount"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The method used to generate the Certificate Signing Request (CSR).
+	GenerateCsrMethod string `pulumi:"generateCsrMethod"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+	InstanceEndTime int `pulumi:"instanceEndTime"`
+	// The instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the instance.
+	InstanceName string `pulumi:"instanceName"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Instance start time, a UNIX timestamp in seconds.
+	InstanceStartTime int `pulumi:"instanceStartTime"`
+	// The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+	InstanceType string `pulumi:"instanceType"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The certificate algorithm.
+	KeyAlgorithm string `pulumi:"keyAlgorithm"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Order end time, a UNIX timestamp in seconds.
+	OrderEndTime int `pulumi:"orderEndTime"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Order start time, a UNIX timestamp in seconds.
+	OrderStartTime int `pulumi:"orderStartTime"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The province or region where the company is located.
+	Province string `pulumi:"province"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The specification of the purchased instance.
+	Spec string `pulumi:"spec"`
+	// The instance status.
+	Status string `pulumi:"status"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The tags of the instance.
+	Tags map[string]string `pulumi:"tags"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The upgrade status of the instance.
+	UpgradeStatus string `pulumi:"upgradeStatus"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The verification method for the certificate application.
+	ValidationMethod string `pulumi:"validationMethod"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of wildcard domain names included in the instance.
+	WildcardDomainCount int `pulumi:"wildcardDomainCount"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//	GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Specifies whether to enable managed renewal.
+	AutoReissue pulumi.StringInput `pulumi:"autoReissue"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+	AverageWaitingTime pulumi.StringInput `pulumi:"averageWaitingTime"`
+	// The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+	Brand pulumi.StringInput `pulumi:"brand"`
+	// The type of the certificate. Valid values: DV, OV, and EV.
+	CertificateType pulumi.StringInput `pulumi:"certificateType"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+	City pulumi.StringInput `pulumi:"city"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The company information ID.
+	CompanyId pulumi.StringInput `pulumi:"companyId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The list of contact IDs.
+	ContactIdLists pulumi.IntArrayInput `pulumi:"contactIdLists"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The code of the country or region where the certificate organization is located.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The CSR content.
+	Csr pulumi.StringInput `pulumi:"csr"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The domain names to be bound to the certificate.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of single domain names included in the instance.
+	FullDomainCount pulumi.IntInput `pulumi:"fullDomainCount"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The method used to generate the Certificate Signing Request (CSR).
+	GenerateCsrMethod pulumi.StringInput `pulumi:"generateCsrMethod"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+	InstanceEndTime pulumi.IntInput `pulumi:"instanceEndTime"`
+	// The instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Instance start time, a UNIX timestamp in seconds.
+	InstanceStartTime pulumi.IntInput `pulumi:"instanceStartTime"`
+	// The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The certificate algorithm.
+	KeyAlgorithm pulumi.StringInput `pulumi:"keyAlgorithm"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Order end time, a UNIX timestamp in seconds.
+	OrderEndTime pulumi.IntInput `pulumi:"orderEndTime"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Order start time, a UNIX timestamp in seconds.
+	OrderStartTime pulumi.IntInput `pulumi:"orderStartTime"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The province or region where the company is located.
+	Province pulumi.StringInput `pulumi:"province"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The specification of the purchased instance.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// The instance status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The tags of the instance.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The upgrade status of the instance.
+	UpgradeStatus pulumi.StringInput `pulumi:"upgradeStatus"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The verification method for the certificate application.
+	ValidationMethod pulumi.StringInput `pulumi:"validationMethod"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of wildcard domain names included in the instance.
+	WildcardDomainCount pulumi.IntInput `pulumi:"wildcardDomainCount"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Specifies whether to enable managed renewal.
+func (o GetInstancesInstanceOutput) AutoReissue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AutoReissue }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+func (o GetInstancesInstanceOutput) AverageWaitingTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AverageWaitingTime }).(pulumi.StringOutput)
+}
+
+// The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+func (o GetInstancesInstanceOutput) Brand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Brand }).(pulumi.StringOutput)
+}
+
+// The type of the certificate. Valid values: DV, OV, and EV.
+func (o GetInstancesInstanceOutput) CertificateType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CertificateType }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+func (o GetInstancesInstanceOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.City }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The company information ID.
+func (o GetInstancesInstanceOutput) CompanyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CompanyId }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The list of contact IDs.
+func (o GetInstancesInstanceOutput) ContactIdLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []int { return v.ContactIdLists }).(pulumi.IntArrayOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The code of the country or region where the certificate organization is located.
+func (o GetInstancesInstanceOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The CSR content.
+func (o GetInstancesInstanceOutput) Csr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Csr }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The domain names to be bound to the certificate.
+func (o GetInstancesInstanceOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The number of single domain names included in the instance.
+func (o GetInstancesInstanceOutput) FullDomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.FullDomainCount }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The method used to generate the Certificate Signing Request (CSR).
+func (o GetInstancesInstanceOutput) GenerateCsrMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.GenerateCsrMethod }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+func (o GetInstancesInstanceOutput) InstanceEndTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.InstanceEndTime }).(pulumi.IntOutput)
+}
+
+// The instance ID.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The name of the instance.
+func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Instance start time, a UNIX timestamp in seconds.
+func (o GetInstancesInstanceOutput) InstanceStartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.InstanceStartTime }).(pulumi.IntOutput)
+}
+
+// The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The certificate algorithm.
+func (o GetInstancesInstanceOutput) KeyAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.KeyAlgorithm }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Order end time, a UNIX timestamp in seconds.
+func (o GetInstancesInstanceOutput) OrderEndTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.OrderEndTime }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Order start time, a UNIX timestamp in seconds.
+func (o GetInstancesInstanceOutput) OrderStartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.OrderStartTime }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The province or region where the company is located.
+func (o GetInstancesInstanceOutput) Province() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Province }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The specification of the purchased instance.
+func (o GetInstancesInstanceOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The instance status.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The tags of the instance.
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The upgrade status of the instance.
+func (o GetInstancesInstanceOutput) UpgradeStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.UpgradeStatus }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The verification method for the certificate application.
+func (o GetInstancesInstanceOutput) ValidationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ValidationMethod }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The number of wildcard domain names included in the instance.
+func (o GetInstancesInstanceOutput) WildcardDomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.WildcardDomainCount }).(pulumi.IntOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CompaniesCompanyInput)(nil)).Elem(), CompaniesCompanyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompaniesCompanyArrayInput)(nil)).Elem(), CompaniesCompanyArray{})
@@ -725,10 +1430,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContactsContactArrayInput)(nil)).Elem(), ContactsContactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancesInstanceInput)(nil)).Elem(), InstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancesInstanceArrayInput)(nil)).Elem(), InstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCompaniesCompanyInput)(nil)).Elem(), GetCompaniesCompanyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCompaniesCompanyArrayInput)(nil)).Elem(), GetCompaniesCompanyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContactsContactInput)(nil)).Elem(), GetContactsContactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContactsContactArrayInput)(nil)).Elem(), GetContactsContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterOutputType(CompaniesCompanyOutput{})
 	pulumi.RegisterOutputType(CompaniesCompanyArrayOutput{})
 	pulumi.RegisterOutputType(ContactsContactOutput{})
 	pulumi.RegisterOutputType(ContactsContactArrayOutput{})
 	pulumi.RegisterOutputType(InstancesInstanceOutput{})
 	pulumi.RegisterOutputType(InstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetCompaniesCompanyOutput{})
+	pulumi.RegisterOutputType(GetCompaniesCompanyArrayOutput{})
+	pulumi.RegisterOutputType(GetContactsContactOutput{})
+	pulumi.RegisterOutputType(GetContactsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 }

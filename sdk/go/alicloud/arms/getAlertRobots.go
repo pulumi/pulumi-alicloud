@@ -92,12 +92,8 @@ type GetAlertRobotsResult struct {
 }
 
 func GetAlertRobotsOutput(ctx *pulumi.Context, args GetAlertRobotsOutputArgs, opts ...pulumi.InvokeOption) GetAlertRobotsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlertRobotsResultOutput, error) {
-			args := v.(GetAlertRobotsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:arms/getAlertRobots:getAlertRobots", args, GetAlertRobotsResultOutput{}, options).(GetAlertRobotsResultOutput), nil
-		}).(GetAlertRobotsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:arms/getAlertRobots:getAlertRobots", args, GetAlertRobotsResultOutput{}, options).(GetAlertRobotsResultOutput)
 }
 
 // A collection of arguments for invoking getAlertRobots.

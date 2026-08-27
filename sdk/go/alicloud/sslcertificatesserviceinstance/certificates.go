@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := sslcertificatesserviceinstance.Certificates(ctx, &sslcertificatesserviceinstance.CertificatesArgs{
+//			_default, err := sslcertificatesserviceinstance.GetCertificates(ctx, &sslcertificatesserviceinstance.GetCertificatesArgs{
 //				CertificateStatus: pulumi.StringRef("issued"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
 func Certificates(ctx *pulumi.Context, args *CertificatesArgs, opts ...pulumi.InvokeOption) (*CertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv CertificatesResult
@@ -83,12 +85,8 @@ type CertificatesResult struct {
 }
 
 func CertificatesOutput(ctx *pulumi.Context, args CertificatesOutputArgs, opts ...pulumi.InvokeOption) CertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (CertificatesResultOutput, error) {
-			args := v.(CertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sslcertificatesserviceinstance/certificates:Certificates", args, CertificatesResultOutput{}, options).(CertificatesResultOutput), nil
-		}).(CertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sslcertificatesserviceinstance/certificates:Certificates", args, CertificatesResultOutput{}, options).(CertificatesResultOutput)
 }
 
 // A collection of arguments for invoking Certificates.

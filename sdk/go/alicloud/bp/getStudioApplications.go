@@ -102,12 +102,8 @@ type GetStudioApplicationsResult struct {
 }
 
 func GetStudioApplicationsOutput(ctx *pulumi.Context, args GetStudioApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetStudioApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStudioApplicationsResultOutput, error) {
-			args := v.(GetStudioApplicationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:bp/getStudioApplications:getStudioApplications", args, GetStudioApplicationsResultOutput{}, options).(GetStudioApplicationsResultOutput), nil
-		}).(GetStudioApplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:bp/getStudioApplications:getStudioApplications", args, GetStudioApplicationsResultOutput{}, options).(GetStudioApplicationsResultOutput)
 }
 
 // A collection of arguments for invoking getStudioApplications.

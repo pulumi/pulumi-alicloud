@@ -73,12 +73,8 @@ type GetCustomPropertiesResult struct {
 }
 
 func GetCustomPropertiesOutput(ctx *pulumi.Context, args GetCustomPropertiesOutputArgs, opts ...pulumi.InvokeOption) GetCustomPropertiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomPropertiesResultOutput, error) {
-			args := v.(GetCustomPropertiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:eds/getCustomProperties:getCustomProperties", args, GetCustomPropertiesResultOutput{}, options).(GetCustomPropertiesResultOutput), nil
-		}).(GetCustomPropertiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:eds/getCustomProperties:getCustomProperties", args, GetCustomPropertiesResultOutput{}, options).(GetCustomPropertiesResultOutput)
 }
 
 // A collection of arguments for invoking getCustomProperties.

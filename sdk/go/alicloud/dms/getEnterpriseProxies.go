@@ -72,12 +72,8 @@ type GetEnterpriseProxiesResult struct {
 }
 
 func GetEnterpriseProxiesOutput(ctx *pulumi.Context, args GetEnterpriseProxiesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseProxiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseProxiesResultOutput, error) {
-			args := v.(GetEnterpriseProxiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", args, GetEnterpriseProxiesResultOutput{}, options).(GetEnterpriseProxiesResultOutput), nil
-		}).(GetEnterpriseProxiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", args, GetEnterpriseProxiesResultOutput{}, options).(GetEnterpriseProxiesResultOutput)
 }
 
 // A collection of arguments for invoking getEnterpriseProxies.

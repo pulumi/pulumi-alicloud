@@ -126,12 +126,8 @@ type GetEipAddressesResult struct {
 }
 
 func GetEipAddressesOutput(ctx *pulumi.Context, args GetEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetEipAddressesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEipAddressesResultOutput, error) {
-			args := v.(GetEipAddressesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ecs/getEipAddresses:getEipAddresses", args, GetEipAddressesResultOutput{}, options).(GetEipAddressesResultOutput), nil
-		}).(GetEipAddressesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ecs/getEipAddresses:getEipAddresses", args, GetEipAddressesResultOutput{}, options).(GetEipAddressesResultOutput)
 }
 
 // A collection of arguments for invoking getEipAddresses.

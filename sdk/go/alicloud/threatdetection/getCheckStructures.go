@@ -85,12 +85,8 @@ type GetCheckStructuresResult struct {
 }
 
 func GetCheckStructuresOutput(ctx *pulumi.Context, args GetCheckStructuresOutputArgs, opts ...pulumi.InvokeOption) GetCheckStructuresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCheckStructuresResultOutput, error) {
-			args := v.(GetCheckStructuresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getCheckStructures:getCheckStructures", args, GetCheckStructuresResultOutput{}, options).(GetCheckStructuresResultOutput), nil
-		}).(GetCheckStructuresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getCheckStructures:getCheckStructures", args, GetCheckStructuresResultOutput{}, options).(GetCheckStructuresResultOutput)
 }
 
 // A collection of arguments for invoking getCheckStructures.

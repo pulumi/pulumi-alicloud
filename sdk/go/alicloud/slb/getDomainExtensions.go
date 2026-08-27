@@ -78,12 +78,8 @@ type GetDomainExtensionsResult struct {
 }
 
 func GetDomainExtensionsOutput(ctx *pulumi.Context, args GetDomainExtensionsOutputArgs, opts ...pulumi.InvokeOption) GetDomainExtensionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainExtensionsResultOutput, error) {
-			args := v.(GetDomainExtensionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:slb/getDomainExtensions:getDomainExtensions", args, GetDomainExtensionsResultOutput{}, options).(GetDomainExtensionsResultOutput), nil
-		}).(GetDomainExtensionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:slb/getDomainExtensions:getDomainExtensions", args, GetDomainExtensionsResultOutput{}, options).(GetDomainExtensionsResultOutput)
 }
 
 // A collection of arguments for invoking getDomainExtensions.

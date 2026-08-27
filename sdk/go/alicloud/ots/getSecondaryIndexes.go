@@ -89,12 +89,8 @@ type GetSecondaryIndexesResult struct {
 }
 
 func GetSecondaryIndexesOutput(ctx *pulumi.Context, args GetSecondaryIndexesOutputArgs, opts ...pulumi.InvokeOption) GetSecondaryIndexesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSecondaryIndexesResultOutput, error) {
-			args := v.(GetSecondaryIndexesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args, GetSecondaryIndexesResultOutput{}, options).(GetSecondaryIndexesResultOutput), nil
-		}).(GetSecondaryIndexesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args, GetSecondaryIndexesResultOutput{}, options).(GetSecondaryIndexesResultOutput)
 }
 
 // A collection of arguments for invoking getSecondaryIndexes.

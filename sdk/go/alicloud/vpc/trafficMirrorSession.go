@@ -92,7 +92,6 @@ import (
 //			var defaultInstance []*ecs.Instance
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
 //					AvailabilityZone: pulumi.String(defaultGetZones.Zones[0].Id),
 //					InstanceName:     pulumi.String(name),
@@ -113,7 +112,6 @@ import (
 //			var defaultEcsNetworkInterface []*ecs.EcsNetworkInterface
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := ecs.NewEcsNetworkInterface(ctx, fmt.Sprintf("default-%v", key0), &ecs.EcsNetworkInterfaceArgs{
 //					NetworkInterfaceName: pulumi.String(name),
 //					VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),

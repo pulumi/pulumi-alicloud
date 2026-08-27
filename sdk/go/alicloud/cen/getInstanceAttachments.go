@@ -85,12 +85,8 @@ type GetInstanceAttachmentsResult struct {
 }
 
 func GetInstanceAttachmentsOutput(ctx *pulumi.Context, args GetInstanceAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceAttachmentsResultOutput, error) {
-			args := v.(GetInstanceAttachmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args, GetInstanceAttachmentsResultOutput{}, options).(GetInstanceAttachmentsResultOutput), nil
-		}).(GetInstanceAttachmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args, GetInstanceAttachmentsResultOutput{}, options).(GetInstanceAttachmentsResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceAttachments.

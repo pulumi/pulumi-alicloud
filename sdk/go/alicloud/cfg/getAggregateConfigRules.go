@@ -100,12 +100,8 @@ type GetAggregateConfigRulesResult struct {
 }
 
 func GetAggregateConfigRulesOutput(ctx *pulumi.Context, args GetAggregateConfigRulesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateConfigRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAggregateConfigRulesResultOutput, error) {
-			args := v.(GetAggregateConfigRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args, GetAggregateConfigRulesResultOutput{}, options).(GetAggregateConfigRulesResultOutput), nil
-		}).(GetAggregateConfigRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args, GetAggregateConfigRulesResultOutput{}, options).(GetAggregateConfigRulesResultOutput)
 }
 
 // A collection of arguments for invoking getAggregateConfigRules.

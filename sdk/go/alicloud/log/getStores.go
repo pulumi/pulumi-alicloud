@@ -80,12 +80,8 @@ type GetStoresResult struct {
 }
 
 func GetStoresOutput(ctx *pulumi.Context, args GetStoresOutputArgs, opts ...pulumi.InvokeOption) GetStoresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStoresResultOutput, error) {
-			args := v.(GetStoresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:log/getStores:getStores", args, GetStoresResultOutput{}, options).(GetStoresResultOutput), nil
-		}).(GetStoresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:log/getStores:getStores", args, GetStoresResultOutput{}, options).(GetStoresResultOutput)
 }
 
 // A collection of arguments for invoking getStores.

@@ -90,12 +90,8 @@ type GetHoneypotNodesResult struct {
 }
 
 func GetHoneypotNodesOutput(ctx *pulumi.Context, args GetHoneypotNodesOutputArgs, opts ...pulumi.InvokeOption) GetHoneypotNodesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHoneypotNodesResultOutput, error) {
-			args := v.(GetHoneypotNodesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", args, GetHoneypotNodesResultOutput{}, options).(GetHoneypotNodesResultOutput), nil
-		}).(GetHoneypotNodesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", args, GetHoneypotNodesResultOutput{}, options).(GetHoneypotNodesResultOutput)
 }
 
 // A collection of arguments for invoking getHoneypotNodes.

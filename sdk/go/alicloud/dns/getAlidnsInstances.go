@@ -82,12 +82,8 @@ type GetAlidnsInstancesResult struct {
 }
 
 func GetAlidnsInstancesOutput(ctx *pulumi.Context, args GetAlidnsInstancesOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlidnsInstancesResultOutput, error) {
-			args := v.(GetAlidnsInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args, GetAlidnsInstancesResultOutput{}, options).(GetAlidnsInstancesResultOutput), nil
-		}).(GetAlidnsInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args, GetAlidnsInstancesResultOutput{}, options).(GetAlidnsInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getAlidnsInstances.

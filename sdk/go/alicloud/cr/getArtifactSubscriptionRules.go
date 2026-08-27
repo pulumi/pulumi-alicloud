@@ -86,12 +86,8 @@ type GetArtifactSubscriptionRulesResult struct {
 }
 
 func GetArtifactSubscriptionRulesOutput(ctx *pulumi.Context, args GetArtifactSubscriptionRulesOutputArgs, opts ...pulumi.InvokeOption) GetArtifactSubscriptionRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetArtifactSubscriptionRulesResultOutput, error) {
-			args := v.(GetArtifactSubscriptionRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cr/getArtifactSubscriptionRules:getArtifactSubscriptionRules", args, GetArtifactSubscriptionRulesResultOutput{}, options).(GetArtifactSubscriptionRulesResultOutput), nil
-		}).(GetArtifactSubscriptionRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cr/getArtifactSubscriptionRules:getArtifactSubscriptionRules", args, GetArtifactSubscriptionRulesResultOutput{}, options).(GetArtifactSubscriptionRulesResultOutput)
 }
 
 // A collection of arguments for invoking getArtifactSubscriptionRules.

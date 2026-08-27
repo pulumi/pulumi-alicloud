@@ -32,14 +32,16 @@ import * as utilities from "../utilities";
  *     province: "陕西",
  *     lang: "zh",
  * });
- * const _default = alicloud.sslcertificatesservice.CompaniesOutput({
+ * const _default = alicloud.sslcertificatesservice.getCompaniesOutput({
  *     ids: [defaultCompany.id],
  *     nameRegex: defaultCompany.companyName,
  * });
  * export const alicloudSslCertificatesServiceCompanyExampleId = _default.apply(_default => _default.companies?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
 export function companies(args?: CompaniesArgs, opts?: pulumi.InvokeOptions): Promise<CompaniesResult> {
+    pulumi.log.warn("companies is deprecated: alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sslcertificatesservice/companies:Companies", {
@@ -131,14 +133,16 @@ export interface CompaniesResult {
  *     province: "陕西",
  *     lang: "zh",
  * });
- * const _default = alicloud.sslcertificatesservice.CompaniesOutput({
+ * const _default = alicloud.sslcertificatesservice.getCompaniesOutput({
  *     ids: [defaultCompany.id],
  *     nameRegex: defaultCompany.companyName,
  * });
  * export const alicloudSslCertificatesServiceCompanyExampleId = _default.apply(_default => _default.companies?.[0]?.id);
  * ```
  */
+/** @deprecated alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies */
 export function companiesOutput(args?: CompaniesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<CompaniesResult> {
+    pulumi.log.warn("companies is deprecated: alicloud.sslcertificatesservice/companies.Companies has been deprecated in favor of alicloud.sslcertificatesservice/getcompanies.getCompanies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sslcertificatesservice/companies:Companies", {

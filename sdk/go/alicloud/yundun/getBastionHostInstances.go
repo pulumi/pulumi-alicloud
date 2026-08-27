@@ -42,12 +42,8 @@ type GetBastionHostInstancesResult struct {
 }
 
 func GetBastionHostInstancesOutput(ctx *pulumi.Context, args GetBastionHostInstancesOutputArgs, opts ...pulumi.InvokeOption) GetBastionHostInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBastionHostInstancesResultOutput, error) {
-			args := v.(GetBastionHostInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, GetBastionHostInstancesResultOutput{}, options).(GetBastionHostInstancesResultOutput), nil
-		}).(GetBastionHostInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, GetBastionHostInstancesResultOutput{}, options).(GetBastionHostInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getBastionHostInstances.

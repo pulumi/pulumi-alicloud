@@ -92,12 +92,8 @@ type GetServerlessKubernetesClustersResult struct {
 }
 
 func GetServerlessKubernetesClustersOutput(ctx *pulumi.Context, args GetServerlessKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetServerlessKubernetesClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerlessKubernetesClustersResultOutput, error) {
-			args := v.(GetServerlessKubernetesClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args, GetServerlessKubernetesClustersResultOutput{}, options).(GetServerlessKubernetesClustersResultOutput), nil
-		}).(GetServerlessKubernetesClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args, GetServerlessKubernetesClustersResultOutput{}, options).(GetServerlessKubernetesClustersResultOutput)
 }
 
 // A collection of arguments for invoking getServerlessKubernetesClusters.

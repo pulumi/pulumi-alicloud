@@ -86,12 +86,8 @@ type GetBandwidthPackagesResult struct {
 }
 
 func GetBandwidthPackagesOutput(ctx *pulumi.Context, args GetBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthPackagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBandwidthPackagesResultOutput, error) {
-			args := v.(GetBandwidthPackagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args, GetBandwidthPackagesResultOutput{}, options).(GetBandwidthPackagesResultOutput), nil
-		}).(GetBandwidthPackagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args, GetBandwidthPackagesResultOutput{}, options).(GetBandwidthPackagesResultOutput)
 }
 
 // A collection of arguments for invoking getBandwidthPackages.

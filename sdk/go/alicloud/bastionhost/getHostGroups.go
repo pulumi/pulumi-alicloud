@@ -93,12 +93,8 @@ type GetHostGroupsResult struct {
 }
 
 func GetHostGroupsOutput(ctx *pulumi.Context, args GetHostGroupsOutputArgs, opts ...pulumi.InvokeOption) GetHostGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHostGroupsResultOutput, error) {
-			args := v.(GetHostGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:bastionhost/getHostGroups:getHostGroups", args, GetHostGroupsResultOutput{}, options).(GetHostGroupsResultOutput), nil
-		}).(GetHostGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:bastionhost/getHostGroups:getHostGroups", args, GetHostGroupsResultOutput{}, options).(GetHostGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getHostGroups.

@@ -83,12 +83,8 @@ type GetHybridMonitorSlsTasksResult struct {
 }
 
 func GetHybridMonitorSlsTasksOutput(ctx *pulumi.Context, args GetHybridMonitorSlsTasksOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorSlsTasksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHybridMonitorSlsTasksResultOutput, error) {
-			args := v.(GetHybridMonitorSlsTasksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args, GetHybridMonitorSlsTasksResultOutput{}, options).(GetHybridMonitorSlsTasksResultOutput), nil
-		}).(GetHybridMonitorSlsTasksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args, GetHybridMonitorSlsTasksResultOutput{}, options).(GetHybridMonitorSlsTasksResultOutput)
 }
 
 // A collection of arguments for invoking getHybridMonitorSlsTasks.

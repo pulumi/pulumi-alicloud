@@ -79,12 +79,8 @@ type GetAiModelProvidersResult struct {
 }
 
 func GetAiModelProvidersOutput(ctx *pulumi.Context, args GetAiModelProvidersOutputArgs, opts ...pulumi.InvokeOption) GetAiModelProvidersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAiModelProvidersResultOutput, error) {
-			args := v.(GetAiModelProvidersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:apig/getAiModelProviders:getAiModelProviders", args, GetAiModelProvidersResultOutput{}, options).(GetAiModelProvidersResultOutput), nil
-		}).(GetAiModelProvidersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:apig/getAiModelProviders:getAiModelProviders", args, GetAiModelProvidersResultOutput{}, options).(GetAiModelProvidersResultOutput)
 }
 
 // A collection of arguments for invoking getAiModelProviders.

@@ -128,7 +128,6 @@ import (
 //			var defaultNodePool []*cs.NodePool
 //			for index := 0; index < 3; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := cs.NewNodePool(ctx, fmt.Sprintf("default-%v", key0), &cs.NodePoolArgs{
 //					NodePoolName: pulumi.String(invokeFormat2.Result),
 //					ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),

@@ -94,12 +94,8 @@ type GetSmartagFlowLogsResult struct {
 }
 
 func GetSmartagFlowLogsOutput(ctx *pulumi.Context, args GetSmartagFlowLogsOutputArgs, opts ...pulumi.InvokeOption) GetSmartagFlowLogsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSmartagFlowLogsResultOutput, error) {
-			args := v.(GetSmartagFlowLogsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args, GetSmartagFlowLogsResultOutput{}, options).(GetSmartagFlowLogsResultOutput), nil
-		}).(GetSmartagFlowLogsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args, GetSmartagFlowLogsResultOutput{}, options).(GetSmartagFlowLogsResultOutput)
 }
 
 // A collection of arguments for invoking getSmartagFlowLogs.
