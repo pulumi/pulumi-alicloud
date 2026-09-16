@@ -743,6 +743,19 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_rds_service_linked_role":            {Tok: resource(rdsMod, "RdsServiceLinkedRole")},
 			"alicloud_rds_upgrade_db_instance":            {Tok: resource(rdsMod, "RdsUpgradeDbInstance")},
 
+			// Realtime Compute
+			"alicloud_realtime_compute_member": {
+				Tok: resource("RealtimeCompute", "Member"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					// The "member" field collides with the enclosing "Member" class name,
+					// which the .NET generator rejects (CS0542: member names cannot be the
+					// same as their enclosing type). Rename the C# property to avoid it.
+					"member": {
+						CSharpName: "MemberName",
+					},
+				},
+			},
+
 			// DBS
 			"alicloud_dbs_backup_plan": {Tok: resource(dbsMod, "BackupPlan")},
 

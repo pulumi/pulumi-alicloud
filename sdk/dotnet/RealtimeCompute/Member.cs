@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
     /// 
     ///     var defaultMember = new AliCloud.RealtimeCompute.Member("default", new()
     ///     {
-    ///         Member = defaultUser.Id,
+    ///         MemberName = defaultUser.Id,
     ///         Namespace = defaultVvpInstance.VvpInstanceName.Apply(vvpInstanceName =&gt; $"{vvpInstanceName}-default"),
     ///         ResourceId = defaultVvpInstance.ResourceId,
     ///         Role = "viewer",
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// The name of the member.
         /// </summary>
         [Output("member")]
-        public Output<string> Member { get; private set; } = null!;
+        public Output<string> MemberName { get; private set; } = null!;
 
         /// <summary>
         /// The name of the namespace.
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// The name of the member.
         /// </summary>
         [Input("member", required: true)]
-        public Input<string> Member { get; set; } = null!;
+        public Input<string> MemberName { get; set; } = null!;
 
         /// <summary>
         /// The name of the namespace.
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// The name of the member.
         /// </summary>
         [Input("member")]
-        public Input<string>? Member { get; set; }
+        public Input<string>? MemberName { get; set; }
 
         /// <summary>
         /// The name of the namespace.

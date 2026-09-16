@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// 
         ///     var defaultMember = new AliCloud.RealtimeCompute.Member("default", new()
         ///     {
-        ///         Member = defaultUser.Id,
+        ///         MemberName = defaultUser.Id,
         ///         Namespace = defaultVvpInstance.VvpInstanceName.Apply(vvpInstanceName =&gt; $"{vvpInstanceName}-default"),
         ///         ResourceId = defaultVvpInstance.ResourceId,
         ///         Role = "viewer",
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// 
         ///     var defaultMember = new AliCloud.RealtimeCompute.Member("default", new()
         ///     {
-        ///         Member = defaultUser.Id,
+        ///         MemberName = defaultUser.Id,
         ///         Namespace = defaultVvpInstance.VvpInstanceName.Apply(vvpInstanceName =&gt; $"{vvpInstanceName}-default"),
         ///         ResourceId = defaultVvpInstance.ResourceId,
         ///         Role = "viewer",
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// 
         ///     var defaultMember = new AliCloud.RealtimeCompute.Member("default", new()
         ///     {
-        ///         Member = defaultUser.Id,
+        ///         MemberName = defaultUser.Id,
         ///         Namespace = defaultVvpInstance.VvpInstanceName.Apply(vvpInstanceName =&gt; $"{vvpInstanceName}-default"),
         ///         ResourceId = defaultVvpInstance.ResourceId,
         ///         Role = "viewer",
