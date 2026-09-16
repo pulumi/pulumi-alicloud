@@ -42,6 +42,7 @@ __all__ = [
     'GetClustersClusterApplicationResult',
     'GetClustersClusterPostInstallScriptResult',
     'GetJobTemplatesTemplateResult',
+    'GetUsersUserResult',
 ]
 
 @pulumi.output_type
@@ -2321,5 +2322,78 @@ class GetJobTemplatesTemplateResult(dict):
         The Job of the Environment Variable.
         """
         return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: _builtins.str,
+                 group: _builtins.str,
+                 group_id: _builtins.str,
+                 id: _builtins.str,
+                 user_id: _builtins.str,
+                 user_name: _builtins.str):
+        """
+        :param _builtins.str cluster_id: The cluster ID.
+        :param _builtins.str group: The name of the permission group.
+        :param _builtins.str group_id: The permission group ID.
+        :param _builtins.str id: The ID of the User.
+        :param _builtins.str user_id: The user ID.
+        :param _builtins.str user_name: The username.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> _builtins.str:
+        """
+        The cluster ID.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> _builtins.str:
+        """
+        The name of the permission group.
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.str:
+        """
+        The permission group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the User.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> _builtins.str:
+        """
+        The username.
+        """
+        return pulumi.get(self, "user_name")
 
 

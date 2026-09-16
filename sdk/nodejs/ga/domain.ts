@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ga Domain can be imported using the id, e.g.
+ * Ga Domain can be imported using the id, which consists of acceleratorId and domain, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>

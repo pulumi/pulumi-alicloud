@@ -317,7 +317,7 @@ class TrafficQosQueue(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Traffic Qos Queue can be imported using the id, e.g.
+        Express Connect Traffic Qos Queue can be imported using the id, which consists of qos_id and queue_id, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosQueue:TrafficQosQueue example <qos_id>:<queue_id>
@@ -389,7 +389,7 @@ class TrafficQosQueue(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Traffic Qos Queue can be imported using the id, e.g.
+        Express Connect Traffic Qos Queue can be imported using the id, which consists of qos_id and queue_id, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosQueue:TrafficQosQueue example <qos_id>:<queue_id>

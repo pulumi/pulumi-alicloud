@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Api Gateway Model can be imported using the id, e.g.
+ * Api Gateway Model can be imported using the id, which consists of groupId and model_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>

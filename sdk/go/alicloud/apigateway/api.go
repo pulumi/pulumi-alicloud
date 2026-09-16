@@ -163,6 +163,8 @@ type Api struct {
 
 	// The ID of the api of api gateway.
 	ApiId pulumi.StringOutput `pulumi:"apiId"`
+	// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+	AppCodeAuthType pulumi.StringOutput `pulumi:"appCodeAuthType"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringOutput `pulumi:"authType"`
 	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
@@ -246,6 +248,8 @@ func GetApi(ctx *pulumi.Context,
 type apiState struct {
 	// The ID of the api of api gateway.
 	ApiId *string `pulumi:"apiId"`
+	// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+	AppCodeAuthType *string `pulumi:"appCodeAuthType"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType *string `pulumi:"authType"`
 	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
@@ -285,6 +289,8 @@ type apiState struct {
 type ApiState struct {
 	// The ID of the api of api gateway.
 	ApiId pulumi.StringPtrInput
+	// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+	AppCodeAuthType pulumi.StringPtrInput
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringPtrInput
 	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
@@ -326,6 +332,8 @@ func (ApiState) ElementType() reflect.Type {
 }
 
 type apiArgs struct {
+	// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+	AppCodeAuthType *string `pulumi:"appCodeAuthType"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType string `pulumi:"authType"`
 	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
@@ -364,6 +372,8 @@ type apiArgs struct {
 
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
+	// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+	AppCodeAuthType pulumi.StringPtrInput
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringInput
 	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
@@ -490,6 +500,11 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 // The ID of the api of api gateway.
 func (o ApiOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+func (o ApiOutput) AppCodeAuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AppCodeAuthType }).(pulumi.StringOutput)
 }
 
 // The authorization Type including APP and ANONYMOUS. Defaults to null.

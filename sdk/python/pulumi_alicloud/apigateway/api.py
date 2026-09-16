@@ -26,6 +26,7 @@ class ApiArgs:
                  group_id: pulumi.Input[_builtins.str],
                  request_config: pulumi.Input['ApiRequestConfigArgs'],
                  service_type: pulumi.Input[_builtins.str],
+                 app_code_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_id: pulumi.Input[Optional[_builtins.str]] = None,
                  constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
@@ -46,6 +47,7 @@ class ApiArgs:
         :param pulumi.Input[_builtins.str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[_builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
+        :param pulumi.Input[_builtins.str] app_code_auth_type: The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
         :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
         :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
@@ -64,6 +66,8 @@ class ApiArgs:
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "request_config", request_config)
         pulumi.set(__self__, "service_type", service_type)
+        if app_code_auth_type is not None:
+            pulumi.set(__self__, "app_code_auth_type", app_code_auth_type)
         if backend_enabled is not None:
             pulumi.set(__self__, "backend_enabled", backend_enabled)
         if backend_id is not None:
@@ -148,6 +152,18 @@ class ApiArgs:
     @service_type.setter
     def service_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appCodeAuthType")
+    def app_code_auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+        """
+        return pulumi.get(self, "app_code_auth_type")
+
+    @app_code_auth_type.setter
+    def app_code_auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "app_code_auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="backendEnabled")
@@ -298,6 +314,7 @@ class ApiArgs:
 class _ApiState:
     def __init__(__self__, *,
                  api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_code_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -319,6 +336,7 @@ class _ApiState:
         Input properties used for looking up and filtering Api resources.
 
         :param pulumi.Input[_builtins.str] api_id: The ID of the api of api gateway.
+        :param pulumi.Input[_builtins.str] app_code_auth_type: The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
         :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
@@ -339,6 +357,8 @@ class _ApiState:
         """
         if api_id is not None:
             pulumi.set(__self__, "api_id", api_id)
+        if app_code_auth_type is not None:
+            pulumi.set(__self__, "app_code_auth_type", app_code_auth_type)
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
         if backend_enabled is not None:
@@ -385,6 +405,18 @@ class _ApiState:
     @api_id.setter
     def api_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appCodeAuthType")
+    def app_code_auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+        """
+        return pulumi.get(self, "app_code_auth_type")
+
+    @app_code_auth_type.setter
+    def app_code_auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "app_code_auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
@@ -597,6 +629,7 @@ class Api(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_code_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -720,6 +753,7 @@ class Api(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] app_code_auth_type: The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
         :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
@@ -862,6 +896,7 @@ class Api(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_code_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -888,6 +923,7 @@ class Api(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiArgs.__new__(ApiArgs)
 
+            __props__.__dict__["app_code_auth_type"] = app_code_auth_type
             if auth_type is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_type'")
             __props__.__dict__["auth_type"] = auth_type
@@ -927,6 +963,7 @@ class Api(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_code_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
             auth_type: pulumi.Input[Optional[_builtins.str]] = None,
             backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             backend_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -952,6 +989,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_id: The ID of the api of api gateway.
+        :param pulumi.Input[_builtins.str] app_code_auth_type: The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
         :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
@@ -975,6 +1013,7 @@ class Api(pulumi.CustomResource):
         __props__ = _ApiState.__new__(_ApiState)
 
         __props__.__dict__["api_id"] = api_id
+        __props__.__dict__["app_code_auth_type"] = app_code_auth_type
         __props__.__dict__["auth_type"] = auth_type
         __props__.__dict__["backend_enabled"] = backend_enabled
         __props__.__dict__["backend_id"] = backend_id
@@ -1001,6 +1040,14 @@ class Api(pulumi.CustomResource):
         The ID of the api of api gateway.
         """
         return pulumi.get(self, "api_id")
+
+    @_builtins.property
+    @pulumi.getter(name="appCodeAuthType")
+    def app_code_auth_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The App Code authentication type, only valid when `auth_type` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+        """
+        return pulumi.get(self, "app_code_auth_type")
 
     @_builtins.property
     @pulumi.getter(name="authType")

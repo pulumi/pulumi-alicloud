@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CR Chart Repository can be imported using the id, e.g.
+ * CR Chart Repository can be imported using the id, which consists of instance_id, repoNamespaceName and repo_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cr/chartRepository:ChartRepository example <instance_id>:<repo_namespace_name>:<repo_name>

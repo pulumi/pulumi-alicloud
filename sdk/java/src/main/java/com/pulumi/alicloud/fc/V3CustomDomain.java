@@ -228,6 +228,68 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Bind an HTTPS certificate managed by SSL Certificates Service (CAS) by id, instead of pasting the PEM material:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cas.ServiceCertificate;
+ * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.alicloud.fc.V3CustomDomain;
+ * import com.pulumi.alicloud.fc.V3CustomDomainArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3CustomDomainRouteConfigArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3CustomDomainRouteConfigRouteArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net");
+ *         final var functionName1 = config.get("functionName1").orElse("terraform-custom-domain-t1");
+ *         var default_ = new ServiceCertificate("default", ServiceCertificateArgs.builder()
+ *             .certificateName("tf-cert-example")
+ *             .cert(StdFunctions.file(FileArgs.builder()
+ *                 .input("cert.pem")
+ *                 .build()).result())
+ *             .key(StdFunctions.file(FileArgs.builder()
+ *                 .input("key.pem")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultV3CustomDomain = new V3CustomDomain("defaultV3CustomDomain", V3CustomDomainArgs.builder()
+ *             .customDomainName(name)
+ *             .protocol("HTTP,HTTPS")
+ *             .certificateId(default_.id())
+ *             .routeConfig(V3CustomDomainRouteConfigArgs.builder()
+ *                 .routes(V3CustomDomainRouteConfigRouteArgs.builder()
+ *                     .functionName(functionName1)
+ *                     .path("/a")
+ *                     .qualifier("LATEST")
+ *                     .methods("GET")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
@@ -296,6 +358,20 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
      */
     public Output<V3CustomDomainCertConfig> certConfig() {
         return this.certConfig;
+    }
+    /**
+     * The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     * 
+     */
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
+    private Output<String> certificateId;
+
+    /**
+     * @return The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     * 
+     */
+    public Output<String> certificateId() {
+        return this.certificateId;
     }
     /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.

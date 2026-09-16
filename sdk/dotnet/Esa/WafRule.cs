@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Waf Rule can be imported using the id, e.g.
+    /// ESA Waf Rule can be imported using the id, which consists of SiteId and waf_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/wafRule:WafRule example &lt;site_id&gt;:&lt;waf_rule_id&gt;

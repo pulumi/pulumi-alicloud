@@ -225,6 +225,59 @@ namespace Pulumi.AliCloud.FC
     /// });
     /// ```
     /// 
+    /// Bind an HTTPS certificate managed by SSL Certificates Service (CAS) by id, instead of pasting the PEM material:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net";
+    ///     var functionName1 = config.Get("functionName1") ?? "terraform-custom-domain-t1";
+    ///     var @default = new AliCloud.Cas.ServiceCertificate("default", new()
+    ///     {
+    ///         CertificateName = "tf-cert-example",
+    ///         Cert = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Key = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "key.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultV3CustomDomain = new AliCloud.FC.V3CustomDomain("default", new()
+    ///     {
+    ///         CustomDomainName = name,
+    ///         Protocol = "HTTP,HTTPS",
+    ///         CertificateId = @default.Id,
+    ///         RouteConfig = new AliCloud.FC.Inputs.V3CustomDomainRouteConfigArgs
+    ///         {
+    ///             Routes = new[]
+    ///             {
+    ///                 new AliCloud.FC.Inputs.V3CustomDomainRouteConfigRouteArgs
+    ///                 {
+    ///                     FunctionName = functionName1,
+    ///                     Path = "/a",
+    ///                     Qualifier = "LATEST",
+    ///                     Methods = new[]
+    ///                     {
+    ///                         "GET",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
@@ -261,6 +314,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Output("certConfig")]
         public Output<Outputs.V3CustomDomainCertConfig> CertConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+        /// </summary>
+        [Output("certificateId")]
+        public Output<string> CertificateId { get; private set; } = null!;
 
         /// <summary>
         /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `CorsConfig` below.
@@ -375,6 +434,12 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3CustomDomainCertConfigArgs>? CertConfig { get; set; }
 
         /// <summary>
+        /// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+        /// </summary>
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
+
+        /// <summary>
         /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `CorsConfig` below.
         /// </summary>
         [Input("corsConfig")]
@@ -441,6 +506,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.V3CustomDomainCertConfigGetArgs>? CertConfig { get; set; }
+
+        /// <summary>
+        /// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+        /// </summary>
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
 
         /// <summary>
         /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `CorsConfig` below.

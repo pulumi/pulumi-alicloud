@@ -306,7 +306,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
+        Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, which consists of listener_id and certificate_id, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
@@ -493,7 +493,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
+        Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, which consists of listener_id and certificate_id, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>

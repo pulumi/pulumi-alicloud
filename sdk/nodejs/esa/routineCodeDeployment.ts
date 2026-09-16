@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Routine Code Deployment can be imported using the id, e.g.
+ * ESA Routine Code Deployment can be imported using the id, which consists of routineName and env, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/routineCodeDeployment:RoutineCodeDeployment example <routine_name>:<env>

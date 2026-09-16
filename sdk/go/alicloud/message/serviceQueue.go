@@ -75,6 +75,12 @@ type ServiceQueue struct {
 	DelaySeconds pulumi.IntOutput `pulumi:"delaySeconds"`
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy ServiceQueueDlqPolicyOutput `pulumi:"dlqPolicy"`
+	// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+	EnableSse pulumi.BoolOutput `pulumi:"enableSse"`
+	// (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+	EncryptionEnabled pulumi.BoolOutput `pulumi:"encryptionEnabled"`
+	// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrOutput `pulumi:"loggingEnabled"`
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -87,9 +93,19 @@ type ServiceQueue struct {
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
 	// The type of the queue. Default value: `normal`. Valid values:
 	QueueType pulumi.StringOutput `pulumi:"queueType"`
+	// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+	SseAlgorithm pulumi.StringOutput `pulumi:"sseAlgorithm"`
+	// The type of server-side encryption (SSE). Valid values:
+	// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+	// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+	SseType pulumi.StringOutput `pulumi:"sseType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+	//
+	// > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+	//
+	// > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
 	VisibilityTimeout pulumi.IntOutput `pulumi:"visibilityTimeout"`
 }
 
@@ -132,6 +148,12 @@ type serviceQueueState struct {
 	DelaySeconds *int `pulumi:"delaySeconds"`
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy *ServiceQueueDlqPolicy `pulumi:"dlqPolicy"`
+	// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+	EnableSse *bool `pulumi:"enableSse"`
+	// (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+	EncryptionEnabled *bool `pulumi:"encryptionEnabled"`
+	// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -144,9 +166,19 @@ type serviceQueueState struct {
 	QueueName *string `pulumi:"queueName"`
 	// The type of the queue. Default value: `normal`. Valid values:
 	QueueType *string `pulumi:"queueType"`
+	// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+	SseAlgorithm *string `pulumi:"sseAlgorithm"`
+	// The type of server-side encryption (SSE). Valid values:
+	// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+	// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+	SseType *string `pulumi:"sseType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+	//
+	// > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+	//
+	// > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
 	VisibilityTimeout *int `pulumi:"visibilityTimeout"`
 }
 
@@ -157,6 +189,12 @@ type ServiceQueueState struct {
 	DelaySeconds pulumi.IntPtrInput
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy ServiceQueueDlqPolicyPtrInput
+	// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+	EnableSse pulumi.BoolPtrInput
+	// (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+	EncryptionEnabled pulumi.BoolPtrInput
+	// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+	KmsKeyId pulumi.StringPtrInput
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrInput
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -169,9 +207,19 @@ type ServiceQueueState struct {
 	QueueName pulumi.StringPtrInput
 	// The type of the queue. Default value: `normal`. Valid values:
 	QueueType pulumi.StringPtrInput
+	// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+	SseAlgorithm pulumi.StringPtrInput
+	// The type of server-side encryption (SSE). Valid values:
+	// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+	// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+	SseType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+	//
+	// > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+	//
+	// > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
 	VisibilityTimeout pulumi.IntPtrInput
 }
 
@@ -184,6 +232,10 @@ type serviceQueueArgs struct {
 	DelaySeconds *int `pulumi:"delaySeconds"`
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy *ServiceQueueDlqPolicy `pulumi:"dlqPolicy"`
+	// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+	EnableSse *bool `pulumi:"enableSse"`
+	// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -196,9 +248,19 @@ type serviceQueueArgs struct {
 	QueueName string `pulumi:"queueName"`
 	// The type of the queue. Default value: `normal`. Valid values:
 	QueueType *string `pulumi:"queueType"`
+	// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+	SseAlgorithm *string `pulumi:"sseAlgorithm"`
+	// The type of server-side encryption (SSE). Valid values:
+	// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+	// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+	SseType *string `pulumi:"sseType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+	//
+	// > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+	//
+	// > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
 	VisibilityTimeout *int `pulumi:"visibilityTimeout"`
 }
 
@@ -208,6 +270,10 @@ type ServiceQueueArgs struct {
 	DelaySeconds pulumi.IntPtrInput
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy ServiceQueueDlqPolicyPtrInput
+	// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+	EnableSse pulumi.BoolPtrInput
+	// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+	KmsKeyId pulumi.StringPtrInput
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrInput
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -220,9 +286,19 @@ type ServiceQueueArgs struct {
 	QueueName pulumi.StringInput
 	// The type of the queue. Default value: `normal`. Valid values:
 	QueueType pulumi.StringPtrInput
+	// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+	SseAlgorithm pulumi.StringPtrInput
+	// The type of server-side encryption (SSE). Valid values:
+	// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+	// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+	SseType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+	//
+	// > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+	//
+	// > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
 	VisibilityTimeout pulumi.IntPtrInput
 }
 
@@ -328,6 +404,21 @@ func (o ServiceQueueOutput) DlqPolicy() ServiceQueueDlqPolicyOutput {
 	return o.ApplyT(func(v *ServiceQueue) ServiceQueueDlqPolicyOutput { return v.DlqPolicy }).(ServiceQueueDlqPolicyOutput)
 }
 
+// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+func (o ServiceQueueOutput) EnableSse() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.BoolOutput { return v.EnableSse }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+func (o ServiceQueueOutput) EncryptionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.BoolOutput { return v.EncryptionEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+func (o ServiceQueueOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
 // Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 func (o ServiceQueueOutput) LoggingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.BoolPtrOutput { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
@@ -358,12 +449,28 @@ func (o ServiceQueueOutput) QueueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.QueueType }).(pulumi.StringOutput)
 }
 
+// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+func (o ServiceQueueOutput) SseAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.SseAlgorithm }).(pulumi.StringOutput)
+}
+
+// The type of server-side encryption (SSE). Valid values:
+// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+func (o ServiceQueueOutput) SseType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.SseType }).(pulumi.StringOutput)
+}
+
 // A mapping of tags to assign to the resource.
 func (o ServiceQueueOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+//
+// > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+//
+// > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
 func (o ServiceQueueOutput) VisibilityTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.VisibilityTimeout }).(pulumi.IntOutput)
 }

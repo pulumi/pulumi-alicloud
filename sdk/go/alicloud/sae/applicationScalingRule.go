@@ -175,7 +175,7 @@ import (
 //
 // ## Import
 //
-// Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
+// Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, which consists of appId and scaling_rule_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>

@@ -78,7 +78,7 @@ import (
 //
 // ## Import
 //
-// Private Link Vpc Endpoint Service User can be imported using the id, e.g.
+// Private Link Vpc Endpoint Service User can be imported using the id, which consists of serviceId and user_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>

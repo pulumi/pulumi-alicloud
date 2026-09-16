@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FCV3 Vpc Binding can be imported using the id, e.g.
+ * FCV3 Vpc Binding can be imported using the id, which consists of functionName and vpc_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:fc/v3VpcBinding:V3VpcBinding example &lt;function_name&gt;:&lt;vpc_id&gt;

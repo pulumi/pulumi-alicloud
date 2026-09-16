@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// ## Import
     /// 
-    /// ADB Lake Account can be imported using the id, e.g.
+    /// ADB Lake Account can be imported using the id, which consists of DbClusterId and account_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:adb/lakeAccount:LakeAccount example &lt;db_cluster_id&gt;:&lt;account_name&gt;

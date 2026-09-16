@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.alikafka
     /// 
     /// ## Import
     /// 
-    /// Alikafka Sasl Acl can be imported using the id, e.g.
+    /// Alikafka Sasl Acl can be imported using the id, which consists of instance_id, username, acl_resource_type, acl_resource_name, AclResourcePatternType and acl_operation_type, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example &lt;instance_id&gt;:&lt;username&gt;:&lt;acl_resource_type&gt;:&lt;acl_resource_name&gt;:&lt;acl_resource_pattern_type&gt;:&lt;acl_operation_type&gt;

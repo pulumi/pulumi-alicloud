@@ -1058,6 +1058,8 @@ type GetApplicationLoadBalancersBalancer struct {
 	BackendServers []GetApplicationLoadBalancersBalancerBackendServer `pulumi:"backendServers"`
 	// The bandwidth of the SLB.
 	Bandwidth int `pulumi:"bandwidth"`
+	// The creation time of the SLB, mapped from the API `CreateTime` field.
+	CreateTime string `pulumi:"createTime"`
 	// The create time stamp of the SLB.
 	CreateTimeStamp int `pulumi:"createTimeStamp"`
 	// Whether the SLB should delete protection.
@@ -1102,7 +1104,7 @@ type GetApplicationLoadBalancersBalancer struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The slave zone id of the SLB.
 	SlaveZoneId string `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	Tags map[string]string `pulumi:"tags"`
@@ -1136,6 +1138,8 @@ type GetApplicationLoadBalancersBalancerArgs struct {
 	BackendServers GetApplicationLoadBalancersBalancerBackendServerArrayInput `pulumi:"backendServers"`
 	// The bandwidth of the SLB.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The creation time of the SLB, mapped from the API `CreateTime` field.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The create time stamp of the SLB.
 	CreateTimeStamp pulumi.IntInput `pulumi:"createTimeStamp"`
 	// Whether the SLB should delete protection.
@@ -1180,7 +1184,7 @@ type GetApplicationLoadBalancersBalancerArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The slave zone id of the SLB.
 	SlaveZoneId pulumi.StringInput `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -1271,6 +1275,11 @@ func (o GetApplicationLoadBalancersBalancerOutput) BackendServers() GetApplicati
 // The bandwidth of the SLB.
 func (o GetApplicationLoadBalancersBalancerOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The creation time of the SLB, mapped from the API `CreateTime` field.
+func (o GetApplicationLoadBalancersBalancerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The create time stamp of the SLB.
@@ -1387,7 +1396,7 @@ func (o GetApplicationLoadBalancersBalancerOutput) SlaveZoneId() pulumi.StringOu
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) string { return v.SlaveZoneId }).(pulumi.StringOutput)
 }
 
-// SLB current status. Possible values: `inactive`, `active` and `locked`.
+// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 func (o GetApplicationLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1792,18 +1801,24 @@ func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) 
 
 type GetApplicationLoadBalancersSlb struct {
 	// Service address of the SLBs.
-	Address      string `pulumi:"address"`
+	Address string `pulumi:"address"`
+	// The creation time of the SLB.
 	CreationTime string `pulumi:"creationTime"`
 	// ID of the SLB.
-	Id                     string `pulumi:"id"`
-	Internet               bool   `pulumi:"internet"`
+	Id string `pulumi:"id"`
+	// Whether the SLB is internet-facing.
+	Internet bool `pulumi:"internet"`
+	// Master availability zone of the SLB.
 	MasterAvailabilityZone string `pulumi:"masterAvailabilityZone"`
-	Name                   string `pulumi:"name"`
+	// The name of the SLB.
+	Name string `pulumi:"name"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
-	NetworkType           string `pulumi:"networkType"`
-	RegionId              string `pulumi:"regionId"`
+	NetworkType string `pulumi:"networkType"`
+	// Region ID the SLB belongs to.
+	RegionId string `pulumi:"regionId"`
+	// Slave availability zone of the SLB.
 	SlaveAvailabilityZone string `pulumi:"slaveAvailabilityZone"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	Tags map[string]string `pulumi:"tags"`
@@ -1826,18 +1841,24 @@ type GetApplicationLoadBalancersSlbInput interface {
 
 type GetApplicationLoadBalancersSlbArgs struct {
 	// Service address of the SLBs.
-	Address      pulumi.StringInput `pulumi:"address"`
+	Address pulumi.StringInput `pulumi:"address"`
+	// The creation time of the SLB.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// ID of the SLB.
-	Id                     pulumi.StringInput `pulumi:"id"`
-	Internet               pulumi.BoolInput   `pulumi:"internet"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the SLB is internet-facing.
+	Internet pulumi.BoolInput `pulumi:"internet"`
+	// Master availability zone of the SLB.
 	MasterAvailabilityZone pulumi.StringInput `pulumi:"masterAvailabilityZone"`
-	Name                   pulumi.StringInput `pulumi:"name"`
+	// The name of the SLB.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
-	NetworkType           pulumi.StringInput `pulumi:"networkType"`
-	RegionId              pulumi.StringInput `pulumi:"regionId"`
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// Region ID the SLB belongs to.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// Slave availability zone of the SLB.
 	SlaveAvailabilityZone pulumi.StringInput `pulumi:"slaveAvailabilityZone"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -1903,6 +1924,7 @@ func (o GetApplicationLoadBalancersSlbOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The creation time of the SLB.
 func (o GetApplicationLoadBalancersSlbOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -1912,14 +1934,17 @@ func (o GetApplicationLoadBalancersSlbOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether the SLB is internet-facing.
 func (o GetApplicationLoadBalancersSlbOutput) Internet() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) bool { return v.Internet }).(pulumi.BoolOutput)
 }
 
+// Master availability zone of the SLB.
 func (o GetApplicationLoadBalancersSlbOutput) MasterAvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.MasterAvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The name of the SLB.
 func (o GetApplicationLoadBalancersSlbOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1929,15 +1954,17 @@ func (o GetApplicationLoadBalancersSlbOutput) NetworkType() pulumi.StringOutput 
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
+// Region ID the SLB belongs to.
 func (o GetApplicationLoadBalancersSlbOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// Slave availability zone of the SLB.
 func (o GetApplicationLoadBalancersSlbOutput) SlaveAvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.SlaveAvailabilityZone }).(pulumi.StringOutput)
 }
 
-// SLB current status. Possible values: `inactive`, `active` and `locked`.
+// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 func (o GetApplicationLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2953,6 +2980,7 @@ type GetLoadBalancersBalancer struct {
 	AutoReleaseTime  int                                     `pulumi:"autoReleaseTime"`
 	BackendServers   []GetLoadBalancersBalancerBackendServer `pulumi:"backendServers"`
 	Bandwidth        int                                     `pulumi:"bandwidth"`
+	CreateTime       string                                  `pulumi:"createTime"`
 	CreateTimeStamp  int                                     `pulumi:"createTimeStamp"`
 	DeleteProtection string                                  `pulumi:"deleteProtection"`
 	EndTime          string                                  `pulumi:"endTime"`
@@ -3030,6 +3058,7 @@ type GetLoadBalancersBalancerArgs struct {
 	AutoReleaseTime  pulumi.IntInput                                 `pulumi:"autoReleaseTime"`
 	BackendServers   GetLoadBalancersBalancerBackendServerArrayInput `pulumi:"backendServers"`
 	Bandwidth        pulumi.IntInput                                 `pulumi:"bandwidth"`
+	CreateTime       pulumi.StringInput                              `pulumi:"createTime"`
 	CreateTimeStamp  pulumi.IntInput                                 `pulumi:"createTimeStamp"`
 	DeleteProtection pulumi.StringInput                              `pulumi:"deleteProtection"`
 	EndTime          pulumi.StringInput                              `pulumi:"endTime"`
@@ -3162,6 +3191,10 @@ func (o GetLoadBalancersBalancerOutput) BackendServers() GetLoadBalancersBalance
 
 func (o GetLoadBalancersBalancerOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancersBalancerOutput) CreateTimeStamp() pulumi.IntOutput {

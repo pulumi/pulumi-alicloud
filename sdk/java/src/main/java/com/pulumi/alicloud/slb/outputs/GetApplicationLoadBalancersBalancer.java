@@ -47,6 +47,11 @@ public final class GetApplicationLoadBalancersBalancer {
      */
     private Integer bandwidth;
     /**
+     * @return The creation time of the SLB, mapped from the API `CreateTime` field.
+     * 
+     */
+    private String createTime;
+    /**
      * @return The create time stamp of the SLB.
      * 
      */
@@ -157,7 +162,7 @@ public final class GetApplicationLoadBalancersBalancer {
      */
     private String slaveZoneId;
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     private String status;
@@ -219,6 +224,13 @@ public final class GetApplicationLoadBalancersBalancer {
      */
     public Integer bandwidth() {
         return this.bandwidth;
+    }
+    /**
+     * @return The creation time of the SLB, mapped from the API `CreateTime` field.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
     }
     /**
      * @return The create time stamp of the SLB.
@@ -375,7 +387,7 @@ public final class GetApplicationLoadBalancersBalancer {
         return this.slaveZoneId;
     }
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public String status() {
@@ -418,6 +430,7 @@ public final class GetApplicationLoadBalancersBalancer {
         private Integer autoReleaseTime;
         private List<GetApplicationLoadBalancersBalancerBackendServer> backendServers;
         private Integer bandwidth;
+        private String createTime;
         private Integer createTimeStamp;
         private String deleteProtection;
         private String endTime;
@@ -453,6 +466,7 @@ public final class GetApplicationLoadBalancersBalancer {
     	      this.autoReleaseTime = defaults.autoReleaseTime;
     	      this.backendServers = defaults.backendServers;
     	      this.bandwidth = defaults.bandwidth;
+    	      this.createTime = defaults.createTime;
     	      this.createTimeStamp = defaults.createTimeStamp;
     	      this.deleteProtection = defaults.deleteProtection;
     	      this.endTime = defaults.endTime;
@@ -530,6 +544,14 @@ public final class GetApplicationLoadBalancersBalancer {
               throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancer", "bandwidth");
             }
             this.bandwidth = bandwidth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancer", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -754,6 +776,7 @@ public final class GetApplicationLoadBalancersBalancer {
             _resultValue.autoReleaseTime = autoReleaseTime;
             _resultValue.backendServers = backendServers;
             _resultValue.bandwidth = bandwidth;
+            _resultValue.createTime = createTime;
             _resultValue.createTimeStamp = createTimeStamp;
             _resultValue.deleteProtection = deleteProtection;
             _resultValue.endTime = endTime;

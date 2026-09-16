@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router can be imported using the id, which consists of CenId and transit_router_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;cen_id&gt;:&lt;transit_router_id&gt;

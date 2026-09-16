@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GPDB Database can be imported using the id, e.g.
+ * GPDB Database can be imported using the id, which consists of dbInstanceId and database_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/database:Database example <db_instance_id>:<database_name>

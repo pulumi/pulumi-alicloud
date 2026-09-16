@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NAT Gateway Snat Entry can be imported using the id, e.g.
+ * NAT Gateway Snat Entry can be imported using the id, which consists of snatTableId and snat_entry_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_table_id>:<snat_entry_id>

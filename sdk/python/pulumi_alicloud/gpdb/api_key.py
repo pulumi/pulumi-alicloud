@@ -221,7 +221,7 @@ class ApiKey(pulumi.CustomResource):
 
         ## Import
 
-        AnalyticDB for PostgreSQL (GPDB) Api Key can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Api Key can be imported using the id, which consists of workspace_id and key_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/apiKey:ApiKey example <workspace_id>:<key_id>
@@ -275,7 +275,7 @@ class ApiKey(pulumi.CustomResource):
 
         ## Import
 
-        AnalyticDB for PostgreSQL (GPDB) Api Key can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Api Key can be imported using the id, which consists of workspace_id and key_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/apiKey:ApiKey example <workspace_id>:<key_id>

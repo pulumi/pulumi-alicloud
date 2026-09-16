@@ -26,6 +26,8 @@ __all__ = [
     'DynamoTableGlobalSecondaryIndex',
     'DynamoTableLocalSecondaryIndex',
     'DynamoTableTtl',
+    'GatewayEndpoint',
+    'GatewaySecurityIpArray',
     'ParameterGroupParameter',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
@@ -644,6 +646,170 @@ class DynamoTableTtl(dict):
         Whether TTL is enabled. Default to `false`.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GatewayEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointId":
+            suggest = "endpoint_id"
+        elif key == "gatewayId":
+            suggest = "gateway_id"
+        elif key == "networkType":
+            suggest = "network_type"
+        elif key == "tunnelId":
+            suggest = "tunnel_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 endpoint_id: Optional[_builtins.str] = None,
+                 gateway_id: Optional[_builtins.str] = None,
+                 network_type: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 tunnel_id: Optional[_builtins.str] = None,
+                 vpc_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: The endpoint address.
+        :param _builtins.str endpoint_id: The endpoint ID.
+        :param _builtins.str gateway_id: The gateway ID.
+        :param _builtins.str network_type: The network type. Valid values: `Private`, `Public`.
+        :param _builtins.int port: The endpoint port.
+        :param _builtins.str tunnel_id: The tunnel ID.
+        :param _builtins.str vpc_id: The ID of the VPC.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if endpoint_id is not None:
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
+        if gateway_id is not None:
+            pulumi.set(__self__, "gateway_id", gateway_id)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if tunnel_id is not None:
+            pulumi.set(__self__, "tunnel_id", tunnel_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The endpoint address.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> Optional[_builtins.str]:
+        """
+        The endpoint ID.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> Optional[_builtins.str]:
+        """
+        The gateway ID.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[_builtins.str]:
+        """
+        The network type. Valid values: `Private`, `Public`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The endpoint port.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="tunnelId")
+    def tunnel_id(self) -> Optional[_builtins.str]:
+        """
+        The tunnel ID.
+        """
+        return pulumi.get(self, "tunnel_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GatewaySecurityIpArray(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipList":
+            suggest = "ip_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewaySecurityIpArray. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewaySecurityIpArray.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewaySecurityIpArray.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_list: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ip_list: The IP addresses in the whitelist group.
+        :param _builtins.str name: The whitelist group name.
+        """
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[_builtins.str]:
+        """
+        The IP addresses in the whitelist group.
+        """
+        return pulumi.get(self, "ip_list")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The whitelist group name.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

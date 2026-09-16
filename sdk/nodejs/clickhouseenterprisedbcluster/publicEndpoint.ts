@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Click House Enterprise Db Cluster Public Endpoint can be imported using the id, e.g.
+ * Click House Enterprise Db Cluster Public Endpoint can be imported using the id, which consists of dbInstanceId and net_type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint example <db_instance_id>:<net_type>

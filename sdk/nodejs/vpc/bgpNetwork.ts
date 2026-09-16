@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Express Connect Bgp Network can be imported using the id, e.g.
+ * Express Connect Bgp Network can be imported using the id, which consists of routerId and dst_cidr_block, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>

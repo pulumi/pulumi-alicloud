@@ -85,7 +85,7 @@ import (
 //
 // ## Import
 //
-// ENS Instance Security Group Attachment can be imported using the id, e.g.
+// ENS Instance Security Group Attachment can be imported using the id, which consists of instanceId and security_group_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment example <instance_id>:<security_group_id>

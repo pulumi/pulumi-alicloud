@@ -198,7 +198,7 @@ class HostGroup(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host Host Group can be imported using the id, e.g.
+        Bastion Host Host Group can be imported using the id, which consists of instance_id and host_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/hostGroup:HostGroup example <instance_id>:<host_group_id>
@@ -261,7 +261,7 @@ class HostGroup(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host Host Group can be imported using the id, e.g.
+        Bastion Host Host Group can be imported using the id, which consists of instance_id and host_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/hostGroup:HostGroup example <instance_id>:<host_group_id>

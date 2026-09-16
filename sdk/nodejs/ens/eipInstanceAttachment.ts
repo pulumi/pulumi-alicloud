@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ens Eip Instance Attachment can be imported using the id, e.g.
+ * Ens Eip Instance Attachment can be imported using the id, which consists of allocation_id, instanceId and instance_type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ens/eipInstanceAttachment:EipInstanceAttachment example <allocation_id>:<instance_id>:<instance_type>

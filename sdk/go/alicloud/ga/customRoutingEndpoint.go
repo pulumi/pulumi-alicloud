@@ -132,7 +132,7 @@ import (
 //
 // ## Import
 //
-// Global Accelerator (GA) Custom Routing Endpoint can be imported using the id, e.g.
+// Global Accelerator (GA) Custom Routing Endpoint can be imported using the id, which consists of endpointGroupId and custom_routing_endpoint_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint example <endpoint_group_id>:<custom_routing_endpoint_id>

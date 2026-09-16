@@ -271,7 +271,7 @@ class EipInstanceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Ens Eip Instance Attachment can be imported using the id, e.g.
+        Ens Eip Instance Attachment can be imported using the id, which consists of allocation_id, instance_id and instance_type, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/eipInstanceAttachment:EipInstanceAttachment example <allocation_id>:<instance_id>:<instance_type>
@@ -357,7 +357,7 @@ class EipInstanceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Ens Eip Instance Attachment can be imported using the id, e.g.
+        Ens Eip Instance Attachment can be imported using the id, which consists of allocation_id, instance_id and instance_type, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/eipInstanceAttachment:EipInstanceAttachment example <allocation_id>:<instance_id>:<instance_type>

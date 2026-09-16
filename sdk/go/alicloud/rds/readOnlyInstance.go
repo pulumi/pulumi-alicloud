@@ -156,6 +156,7 @@ type ReadOnlyInstance struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
@@ -342,6 +343,7 @@ type readOnlyInstanceState struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
@@ -487,6 +489,7 @@ type ReadOnlyInstanceState struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType pulumi.StringPtrInput
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
@@ -634,6 +637,7 @@ type readOnlyInstanceArgs struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
@@ -774,6 +778,7 @@ type ReadOnlyInstanceArgs struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType pulumi.StringPtrInput
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
@@ -1034,6 +1039,7 @@ func (o ReadOnlyInstanceOutput) DbInstanceIpArrayName() pulumi.StringPtrOutput {
 // - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 // - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 // - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+// - general_essd: general essd.
 func (o ReadOnlyInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
 }

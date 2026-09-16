@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Api Gateway Acl Entry Attachment can be imported using the id, e.g.
+ * Api Gateway Acl Entry Attachment can be imported using the id, which consists of aclId and entry, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:apigateway/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;

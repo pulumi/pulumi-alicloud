@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Service Catalog Principal Portfolio Association can be imported using the id, e.g.
+ * Service Catalog Principal Portfolio Association can be imported using the id, which consists of principal_id, principalType and portfolio_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example <principal_id>:<principal_type>:<portfolio_id>

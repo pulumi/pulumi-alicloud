@@ -128,7 +128,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ARMS Env Pod Monitor can be imported using the id, e.g.
+ * ARMS Env Pod Monitor can be imported using the id, which consists of environment_id, namespace and env_pod_monitor_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>

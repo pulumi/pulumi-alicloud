@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Data Works Data Source Shared Rule can be imported using the id, e.g.
+ * Data Works Data Source Shared Rule can be imported using the id, which consists of dataSourceId and data_source_shared_rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule example &lt;data_source_id&gt;:&lt;data_source_shared_rule_id&gt;

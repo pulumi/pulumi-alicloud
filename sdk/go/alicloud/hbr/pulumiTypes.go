@@ -578,12 +578,32 @@ func (o PolicyBindingAdvancedOptionsOssDetailPtrOutput) InventoryId() pulumi.Str
 }
 
 type PolicyBindingAdvancedOptionsUdmDetail struct {
+	// Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+	AppConsistent *bool `pulumi:"appConsistent"`
 	// Custom KMS key ID of encrypted copy
 	DestinationKmsKeyId *string `pulumi:"destinationKmsKeyId"`
 	// The list of backup disks. If it is empty, all disks are backed up.
 	DiskIdLists []string `pulumi:"diskIdLists"`
+	// Whether to enable file system freeze before taking a snapshot.
+	EnableFsFreeze *bool `pulumi:"enableFsFreeze"`
+	// Whether to enable VSS writers.
+	EnableWriters *bool `pulumi:"enableWriters"`
 	// List of cloud disk IDs that are not backed up
 	ExcludeDiskIdLists []string `pulumi:"excludeDiskIdLists"`
+	// The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+	PostScriptPath *string `pulumi:"postScriptPath"`
+	// The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+	PreScriptPath *string `pulumi:"preScriptPath"`
+	// The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+	RamRoleName *string `pulumi:"ramRoleName"`
+	// Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+	SnapshotGroup *bool `pulumi:"snapshotGroup"`
+	// The timeout in seconds for the pre/post script execution.
+	//
+	// > **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+	//
+	// > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
 }
 
 // PolicyBindingAdvancedOptionsUdmDetailInput is an input type that accepts PolicyBindingAdvancedOptionsUdmDetailArgs and PolicyBindingAdvancedOptionsUdmDetailOutput values.
@@ -598,12 +618,32 @@ type PolicyBindingAdvancedOptionsUdmDetailInput interface {
 }
 
 type PolicyBindingAdvancedOptionsUdmDetailArgs struct {
+	// Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+	AppConsistent pulumi.BoolPtrInput `pulumi:"appConsistent"`
 	// Custom KMS key ID of encrypted copy
 	DestinationKmsKeyId pulumi.StringPtrInput `pulumi:"destinationKmsKeyId"`
 	// The list of backup disks. If it is empty, all disks are backed up.
 	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
+	// Whether to enable file system freeze before taking a snapshot.
+	EnableFsFreeze pulumi.BoolPtrInput `pulumi:"enableFsFreeze"`
+	// Whether to enable VSS writers.
+	EnableWriters pulumi.BoolPtrInput `pulumi:"enableWriters"`
 	// List of cloud disk IDs that are not backed up
 	ExcludeDiskIdLists pulumi.StringArrayInput `pulumi:"excludeDiskIdLists"`
+	// The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+	PostScriptPath pulumi.StringPtrInput `pulumi:"postScriptPath"`
+	// The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+	PreScriptPath pulumi.StringPtrInput `pulumi:"preScriptPath"`
+	// The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+	RamRoleName pulumi.StringPtrInput `pulumi:"ramRoleName"`
+	// Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+	SnapshotGroup pulumi.BoolPtrInput `pulumi:"snapshotGroup"`
+	// The timeout in seconds for the pre/post script execution.
+	//
+	// > **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+	//
+	// > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
 }
 
 func (PolicyBindingAdvancedOptionsUdmDetailArgs) ElementType() reflect.Type {
@@ -683,6 +723,11 @@ func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOpti
 	}).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
 }
 
+// Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) AppConsistent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *bool { return v.AppConsistent }).(pulumi.BoolPtrOutput)
+}
+
 // Custom KMS key ID of encrypted copy
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.DestinationKmsKeyId }).(pulumi.StringPtrOutput)
@@ -693,9 +738,48 @@ func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DiskIdLists() pulumi.String
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
 }
 
+// Whether to enable file system freeze before taking a snapshot.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) EnableFsFreeze() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *bool { return v.EnableFsFreeze }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable VSS writers.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) EnableWriters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *bool { return v.EnableWriters }).(pulumi.BoolPtrOutput)
+}
+
 // List of cloud disk IDs that are not backed up
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.ExcludeDiskIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) PostScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.PostScriptPath }).(pulumi.StringPtrOutput)
+}
+
+// The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) PreScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.PreScriptPath }).(pulumi.StringPtrOutput)
+}
+
+// The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) SnapshotGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *bool { return v.SnapshotGroup }).(pulumi.BoolPtrOutput)
+}
+
+// The timeout in seconds for the pre/post script execution.
+//
+// > **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+//
+// > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
 }
 
 type PolicyBindingAdvancedOptionsUdmDetailPtrOutput struct{ *pulumi.OutputState }
@@ -722,6 +806,16 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) Elem() PolicyBindingAdva
 	}).(PolicyBindingAdvancedOptionsUdmDetailOutput)
 }
 
+// Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) AppConsistent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppConsistent
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Custom KMS key ID of encrypted copy
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
@@ -742,6 +836,26 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DiskIdLists() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether to enable file system freeze before taking a snapshot.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) EnableFsFreeze() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFsFreeze
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable VSS writers.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) EnableWriters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableWriters
+	}).(pulumi.BoolPtrOutput)
+}
+
 // List of cloud disk IDs that are not backed up
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) []string {
@@ -750,6 +864,60 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pul
 		}
 		return v.ExcludeDiskIdLists
 	}).(pulumi.StringArrayOutput)
+}
+
+// The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) PostScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostScriptPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) PreScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreScriptPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RamRoleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) SnapshotGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotGroup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The timeout in seconds for the pre/post script execution.
+//
+// > **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+//
+// > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type PolicyRule struct {
@@ -771,7 +939,7 @@ type PolicyRule struct {
 	RetentionRules []PolicyRuleRetentionRule `pulumi:"retentionRules"`
 	// Rule ID
 	RuleId *string `pulumi:"ruleId"`
-	// Rule Type
+	// Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
 	RuleType string `pulumi:"ruleType"`
 	// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  - startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. - interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 	Schedule *string `pulumi:"schedule"`
@@ -811,7 +979,7 @@ type PolicyRuleArgs struct {
 	RetentionRules PolicyRuleRetentionRuleArrayInput `pulumi:"retentionRules"`
 	// Rule ID
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
-	// Rule Type
+	// Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
 	RuleType pulumi.StringInput `pulumi:"ruleType"`
 	// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  - startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. - interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
@@ -917,7 +1085,7 @@ func (o PolicyRuleOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
-// Rule Type
+// Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
 func (o PolicyRuleOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyRule) string { return v.RuleType }).(pulumi.StringOutput)
 }

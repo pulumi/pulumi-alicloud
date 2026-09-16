@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
+ * ApsaraDB for MyBase Dedicated Host can be imported using the id, which consists of dedicatedHostGroupId and dedicated_host_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example <dedicated_host_group_id>:<dedicated_host_id>

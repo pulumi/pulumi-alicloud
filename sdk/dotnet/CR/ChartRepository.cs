@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// ## Import
     /// 
-    /// CR Chart Repository can be imported using the id, e.g.
+    /// CR Chart Repository can be imported using the id, which consists of instance_id, RepoNamespaceName and repo_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cr/chartRepository:ChartRepository example &lt;instance_id&gt;:&lt;repo_namespace_name&gt;:&lt;repo_name&gt;

@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
+ * Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, which consists of loadBalancerId and security_group_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>

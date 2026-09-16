@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB DB Instance Plan can be imported using the id, e.g.
+    /// GPDB DB Instance Plan can be imported using the id, which consists of DbInstanceId and plan_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example &lt;db_instance_id&gt;:&lt;plan_id&gt;

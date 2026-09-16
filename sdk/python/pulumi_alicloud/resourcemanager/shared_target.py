@@ -171,7 +171,7 @@ class SharedTarget(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager Shared Target can be imported using the id, e.g.
+        Resource Manager Shared Target can be imported using the id, which consists of resource_share_id and target_id, e.g.
 
         ```sh
         $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
@@ -223,7 +223,7 @@ class SharedTarget(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager Shared Target can be imported using the id, e.g.
+        Resource Manager Shared Target can be imported using the id, which consists of resource_share_id and target_id, e.g.
 
         ```sh
         $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>

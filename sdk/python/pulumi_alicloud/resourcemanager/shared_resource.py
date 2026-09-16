@@ -362,7 +362,7 @@ class SharedResource(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager Shared Resource can be imported using the id, e.g.
+        Resource Manager Shared Resource can be imported using the id, which consists of resource_share_id, resource_id and resource_type, e.g.
 
         ```sh
         $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
@@ -432,7 +432,7 @@ class SharedResource(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager Shared Resource can be imported using the id, e.g.
+        Resource Manager Shared Resource can be imported using the id, which consists of resource_share_id, resource_id and resource_type, e.g.
 
         ```sh
         $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>

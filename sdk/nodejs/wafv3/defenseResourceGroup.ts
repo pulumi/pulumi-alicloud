@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * WAFV3 Defense Resource Group can be imported using the id, e.g.
+ * WAFV3 Defense Resource Group can be imported using the id, which consists of instanceId and group_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup example <instance_id>:<group_name>

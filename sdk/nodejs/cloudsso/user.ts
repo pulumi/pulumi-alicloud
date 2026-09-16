@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud Sso User can be imported using the id, e.g.
+ * Cloud Sso User can be imported using the id, which consists of directoryId and user_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>

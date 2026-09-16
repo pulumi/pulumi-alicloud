@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CR Scan Rule can be imported using the id, e.g.
+ * CR Scan Rule can be imported using the id, which consists of instanceId and scan_rule_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cr/scanRule:ScanRule example <instance_id>:<scan_rule_id>

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AnalyticDB for PostgreSQL (GPDB) Api Key can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) Api Key can be imported using the id, which consists of workspaceId and key_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/apiKey:ApiKey example <workspace_id>:<key_id>

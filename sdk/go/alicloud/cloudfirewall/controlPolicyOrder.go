@@ -72,7 +72,7 @@ import (
 //
 // ## Import
 //
-// Cloud Firewall Control Policy Order can be imported using the id, e.g.
+// Cloud Firewall Control Policy Order can be imported using the id, which consists of aclUuid and direction, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>

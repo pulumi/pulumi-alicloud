@@ -144,7 +144,7 @@ import (
 //
 // ## Import
 //
-// ECS Key Pair Attachment can be imported using the id, e.g.
+// ECS Key Pair Attachment can be imported using the id, which consists of keyPairName and instance_ids, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>

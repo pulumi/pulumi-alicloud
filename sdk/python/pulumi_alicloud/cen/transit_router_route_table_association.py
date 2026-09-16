@@ -223,7 +223,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, which consists of transit_router_attachment_id and transit_router_route_table_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>
@@ -311,7 +311,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, which consists of transit_router_attachment_id and transit_router_route_table_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>

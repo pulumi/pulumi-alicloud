@@ -2030,6 +2030,175 @@ func (o GetDataBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetDataBackups
 	}).(GetDataBackupsBackupOutput)
 }
 
+type GetDbExtensionsExtension struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in current version.
+	CurrentVersion string `pulumi:"currentVersion"`
+	// Plug-in description.
+	Description string `pulumi:"description"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in id.
+	ExtensionId string `pulumi:"extensionId"`
+	// The name of the extension to install.
+	ExtensionName string `pulumi:"extensionName"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether the instance needs to be restarted for installation.
+	IsInstallNeedRestart bool `pulumi:"isInstallNeedRestart"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether the extension is at its latest version.
+	IsLatestVersion bool `pulumi:"isLatestVersion"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in latest version.
+	LatestVersion string `pulumi:"latestVersion"`
+	// The status of the extension.
+	Status string `pulumi:"status"`
+}
+
+// GetDbExtensionsExtensionInput is an input type that accepts GetDbExtensionsExtensionArgs and GetDbExtensionsExtensionOutput values.
+// You can construct a concrete instance of `GetDbExtensionsExtensionInput` via:
+//
+//	GetDbExtensionsExtensionArgs{...}
+type GetDbExtensionsExtensionInput interface {
+	pulumi.Input
+
+	ToGetDbExtensionsExtensionOutput() GetDbExtensionsExtensionOutput
+	ToGetDbExtensionsExtensionOutputWithContext(context.Context) GetDbExtensionsExtensionOutput
+}
+
+type GetDbExtensionsExtensionArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in current version.
+	CurrentVersion pulumi.StringInput `pulumi:"currentVersion"`
+	// Plug-in description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in id.
+	ExtensionId pulumi.StringInput `pulumi:"extensionId"`
+	// The name of the extension to install.
+	ExtensionName pulumi.StringInput `pulumi:"extensionName"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether the instance needs to be restarted for installation.
+	IsInstallNeedRestart pulumi.BoolInput `pulumi:"isInstallNeedRestart"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether the extension is at its latest version.
+	IsLatestVersion pulumi.BoolInput `pulumi:"isLatestVersion"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in latest version.
+	LatestVersion pulumi.StringInput `pulumi:"latestVersion"`
+	// The status of the extension.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDbExtensionsExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbExtensionsExtension)(nil)).Elem()
+}
+
+func (i GetDbExtensionsExtensionArgs) ToGetDbExtensionsExtensionOutput() GetDbExtensionsExtensionOutput {
+	return i.ToGetDbExtensionsExtensionOutputWithContext(context.Background())
+}
+
+func (i GetDbExtensionsExtensionArgs) ToGetDbExtensionsExtensionOutputWithContext(ctx context.Context) GetDbExtensionsExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbExtensionsExtensionOutput)
+}
+
+// GetDbExtensionsExtensionArrayInput is an input type that accepts GetDbExtensionsExtensionArray and GetDbExtensionsExtensionArrayOutput values.
+// You can construct a concrete instance of `GetDbExtensionsExtensionArrayInput` via:
+//
+//	GetDbExtensionsExtensionArray{ GetDbExtensionsExtensionArgs{...} }
+type GetDbExtensionsExtensionArrayInput interface {
+	pulumi.Input
+
+	ToGetDbExtensionsExtensionArrayOutput() GetDbExtensionsExtensionArrayOutput
+	ToGetDbExtensionsExtensionArrayOutputWithContext(context.Context) GetDbExtensionsExtensionArrayOutput
+}
+
+type GetDbExtensionsExtensionArray []GetDbExtensionsExtensionInput
+
+func (GetDbExtensionsExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbExtensionsExtension)(nil)).Elem()
+}
+
+func (i GetDbExtensionsExtensionArray) ToGetDbExtensionsExtensionArrayOutput() GetDbExtensionsExtensionArrayOutput {
+	return i.ToGetDbExtensionsExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbExtensionsExtensionArray) ToGetDbExtensionsExtensionArrayOutputWithContext(ctx context.Context) GetDbExtensionsExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbExtensionsExtensionArrayOutput)
+}
+
+type GetDbExtensionsExtensionOutput struct{ *pulumi.OutputState }
+
+func (GetDbExtensionsExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbExtensionsExtension)(nil)).Elem()
+}
+
+func (o GetDbExtensionsExtensionOutput) ToGetDbExtensionsExtensionOutput() GetDbExtensionsExtensionOutput {
+	return o
+}
+
+func (o GetDbExtensionsExtensionOutput) ToGetDbExtensionsExtensionOutputWithContext(ctx context.Context) GetDbExtensionsExtensionOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in current version.
+func (o GetDbExtensionsExtensionOutput) CurrentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.CurrentVersion }).(pulumi.StringOutput)
+}
+
+// Plug-in description.
+func (o GetDbExtensionsExtensionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in id.
+func (o GetDbExtensionsExtensionOutput) ExtensionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.ExtensionId }).(pulumi.StringOutput)
+}
+
+// The name of the extension to install.
+func (o GetDbExtensionsExtensionOutput) ExtensionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.ExtensionName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetDbExtensionsExtensionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Whether the instance needs to be restarted for installation.
+func (o GetDbExtensionsExtensionOutput) IsInstallNeedRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) bool { return v.IsInstallNeedRestart }).(pulumi.BoolOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Whether the extension is at its latest version.
+func (o GetDbExtensionsExtensionOutput) IsLatestVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) bool { return v.IsLatestVersion }).(pulumi.BoolOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in latest version.
+func (o GetDbExtensionsExtensionOutput) LatestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.LatestVersion }).(pulumi.StringOutput)
+}
+
+// The status of the extension.
+func (o GetDbExtensionsExtensionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbExtensionsExtension) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDbExtensionsExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbExtensionsExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbExtensionsExtension)(nil)).Elem()
+}
+
+func (o GetDbExtensionsExtensionArrayOutput) ToGetDbExtensionsExtensionArrayOutput() GetDbExtensionsExtensionArrayOutput {
+	return o
+}
+
+func (o GetDbExtensionsExtensionArrayOutput) ToGetDbExtensionsExtensionArrayOutputWithContext(ctx context.Context) GetDbExtensionsExtensionArrayOutput {
+	return o
+}
+
+func (o GetDbExtensionsExtensionArrayOutput) Index(i pulumi.IntInput) GetDbExtensionsExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbExtensionsExtension {
+		return vs[0].([]GetDbExtensionsExtension)[vs[1].(int)]
+	}).(GetDbExtensionsExtensionOutput)
+}
+
 type GetDbInstancePlansPlan struct {
 	// The name of the Plan.
 	DbInstancePlanName string `pulumi:"dbInstancePlanName"`
@@ -3558,6 +3727,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApiKeysKeyArrayInput)(nil)).Elem(), GetApiKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataBackupsBackupInput)(nil)).Elem(), GetDataBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataBackupsBackupArrayInput)(nil)).Elem(), GetDataBackupsBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbExtensionsExtensionInput)(nil)).Elem(), GetDbExtensionsExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbExtensionsExtensionArrayInput)(nil)).Elem(), GetDbExtensionsExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanInput)(nil)).Elem(), GetDbInstancePlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanArrayInput)(nil)).Elem(), GetDbInstancePlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigArgs{})
@@ -3602,6 +3773,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApiKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDataBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetDataBackupsBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetDbExtensionsExtensionOutput{})
+	pulumi.RegisterOutputType(GetDbExtensionsExtensionArrayOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigOutput{})

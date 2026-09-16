@@ -228,7 +228,7 @@ class Resource(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Control Resource can be imported using the id, e.g.
+        Cloud Control Resource can be imported using the id, which consists of provider, product, resource_code and resource_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudcontrol/resource:Resource example <provider>:<product>:<resource_code>:<resource_id>
@@ -289,7 +289,7 @@ class Resource(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Control Resource can be imported using the id, e.g.
+        Cloud Control Resource can be imported using the id, which consists of provider, product, resource_code and resource_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudcontrol/resource:Resource example <provider>:<product>:<resource_code>:<resource_id>

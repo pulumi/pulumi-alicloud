@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ens
     /// 
     /// ## Import
     /// 
-    /// ENS Disk Instance Attachment can be imported using the id, e.g.
+    /// ENS Disk Instance Attachment can be imported using the id, which consists of DiskId and instance_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example &lt;disk_id&gt;:&lt;instance_id&gt;

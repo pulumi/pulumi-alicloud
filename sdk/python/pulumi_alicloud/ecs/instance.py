@@ -45,6 +45,7 @@ class InstanceArgs:
                  image_options: pulumi.Input[Optional['InstanceImageOptionsArgs']] = None,
                  include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -119,6 +120,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
@@ -148,6 +150,7 @@ class InstanceArgs:
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[_builtins.str] instance_metadata_tags: Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
@@ -218,6 +221,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
+               
+               > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
@@ -313,6 +318,8 @@ class InstanceArgs:
             pulumi.set(__self__, "include_data_disks", include_data_disks)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_metadata_tags is not None:
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
@@ -512,6 +519,7 @@ class InstanceArgs:
     def credit_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         """
         return pulumi.get(self, "credit_specification")
 
@@ -745,6 +753,18 @@ class InstanceArgs:
     @instance_charge_type.setter
     def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+        """
+        return pulumi.get(self, "instance_metadata_tags")
+
+    @instance_metadata_tags.setter
+    def instance_metadata_tags(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_metadata_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -1207,6 +1227,8 @@ class InstanceArgs:
         The security enhancement strategy.
         - Active: Enable security enhancement strategy, it only works on system images.
         - Deactive: Disable security enhancement strategy, it works on all images.
+
+        > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -1564,6 +1586,7 @@ class _InstanceState:
                  image_options: pulumi.Input[Optional['InstanceImageOptionsArgs']] = None,
                  include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1647,6 +1670,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
@@ -1678,6 +1702,7 @@ class _InstanceState:
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[_builtins.str] instance_metadata_tags: Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
@@ -1753,6 +1778,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
+               
+               > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
@@ -1858,6 +1885,8 @@ class _InstanceState:
             pulumi.set(__self__, "include_data_disks", include_data_disks)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_metadata_tags is not None:
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
@@ -2095,6 +2124,7 @@ class _InstanceState:
     def credit_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         """
         return pulumi.get(self, "credit_specification")
 
@@ -2352,6 +2382,18 @@ class _InstanceState:
     @instance_charge_type.setter
     def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+        """
+        return pulumi.get(self, "instance_metadata_tags")
+
+    @instance_metadata_tags.setter
+    def instance_metadata_tags(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_metadata_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -2874,6 +2916,8 @@ class _InstanceState:
         The security enhancement strategy.
         - Active: Enable security enhancement strategy, it only works on system images.
         - Deactive: Disable security enhancement strategy, it works on all images.
+
+        > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -3254,6 +3298,7 @@ class Instance(pulumi.CustomResource):
                  image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']]] = None,
                  include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3409,6 +3454,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
@@ -3438,6 +3484,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[_builtins.str] instance_metadata_tags: Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
@@ -3508,6 +3555,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
+               
+               > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
@@ -3678,6 +3727,7 @@ class Instance(pulumi.CustomResource):
                  image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']]] = None,
                  include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3772,6 +3822,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["image_options"] = image_options
             __props__.__dict__["include_data_disks"] = include_data_disks
             __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["instance_metadata_tags"] = instance_metadata_tags
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -3884,6 +3935,7 @@ class Instance(pulumi.CustomResource):
             image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']]] = None,
             include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3971,6 +4023,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+               > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
@@ -4002,6 +4055,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[_builtins.str] instance_metadata_tags: Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
@@ -4077,6 +4131,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
+               
+               > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
@@ -4155,6 +4211,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["image_options"] = image_options
         __props__.__dict__["include_data_disks"] = include_data_disks
         __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_metadata_tags"] = instance_metadata_tags
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -4291,6 +4348,7 @@ class Instance(pulumi.CustomResource):
     def credit_specification(self) -> pulumi.Output[_builtins.str]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         """
         return pulumi.get(self, "credit_specification")
 
@@ -4464,6 +4522,14 @@ class Instance(pulumi.CustomResource):
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         """
         return pulumi.get(self, "instance_charge_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+        """
+        return pulumi.get(self, "instance_metadata_tags")
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -4826,6 +4892,8 @@ class Instance(pulumi.CustomResource):
         The security enhancement strategy.
         - Active: Enable security enhancement strategy, it only works on system images.
         - Deactive: Disable security enhancement strategy, it works on all images.
+
+        > **NOTE:** The ECS API does not return `security_enhancement_strategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `security_enhancement_strategy` is ignored and will not force the instance to be recreated.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 

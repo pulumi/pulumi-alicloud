@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RocketMQ Acl can be imported using the id, e.g.
+ * RocketMQ Acl can be imported using the id, which consists of instance_id, username, resourceType and resource_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:rocketmq/acl:Acl example &lt;instance_id&gt;:&lt;username&gt;:&lt;resource_type&gt;:&lt;resource_name&gt;

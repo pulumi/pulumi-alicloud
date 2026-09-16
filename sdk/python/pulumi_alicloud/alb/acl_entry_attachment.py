@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AclEntryAttachmentArgs', 'AclEntryAttachment']
 
@@ -20,25 +22,33 @@ __all__ = ['AclEntryAttachmentArgs', 'AclEntryAttachment']
 class AclEntryAttachmentArgs:
     def __init__(__self__, *,
                  acl_id: pulumi.Input[_builtins.str],
-                 entry: pulumi.Input[_builtins.str],
-                 description: pulumi.Input[Optional[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclEntryAttachment resource.
 
-        :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
-        :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
-        :param pulumi.Input[_builtins.str] description: The description of the entry.
+        :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
+        :param pulumi.Input[_builtins.str] description: The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
         """
         pulumi.set(__self__, "acl_id", acl_id)
-        pulumi.set(__self__, "entry", entry)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if entries is not None:
+            pulumi.set(__self__, "entries", entries)
+        if entry is not None:
+            warnings.warn("""Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""", DeprecationWarning)
+            pulumi.log.warn("""entry is deprecated: Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""")
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
 
     @_builtins.property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Acl.
+        The ID of the ACL.
         """
         return pulumi.get(self, "acl_id")
 
@@ -48,21 +58,9 @@ class AclEntryAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> pulumi.Input[_builtins.str]:
-        """
-        The CIDR blocks.
-        """
-        return pulumi.get(self, "entry")
-
-    @entry.setter
-    def entry(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "entry", value)
-
-    @_builtins.property
-    @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the entry.
+        The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -70,26 +68,58 @@ class AclEntryAttachmentArgs:
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]]]:
+        """
+        One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        """
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]]]):
+        pulumi.set(self, "entries", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""")
+    def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "entry", value)
+
 
 @pulumi.input_type
 class _AclEntryAttachmentState:
     def __init__(__self__, *,
                  acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]]] = None,
                  entry: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclEntryAttachment resources.
 
-        :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
-        :param pulumi.Input[_builtins.str] description: The description of the entry.
-        :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
-        :param pulumi.Input[_builtins.str] status: The Status of the resource.
+        :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
+        :param pulumi.Input[_builtins.str] description: The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if entries is not None:
+            pulumi.set(__self__, "entries", entries)
+        if entry is not None:
+            warnings.warn("""Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""", DeprecationWarning)
+            pulumi.log.warn("""entry is deprecated: Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""")
         if entry is not None:
             pulumi.set(__self__, "entry", entry)
         if status is not None:
@@ -99,7 +129,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the Acl.
+        The ID of the ACL.
         """
         return pulumi.get(self, "acl_id")
 
@@ -111,7 +141,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the entry.
+        The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -121,9 +151,22 @@ class _AclEntryAttachmentState:
 
     @_builtins.property
     @pulumi.getter
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]]]:
+        """
+        One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        """
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AclEntryAttachmentEntryArgs']]]]):
+        pulumi.set(self, "entries", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""")
     def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The CIDR blocks.
+        The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
         """
         return pulumi.get(self, "entry")
 
@@ -135,7 +178,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Status of the resource.
+        The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
         """
         return pulumi.get(self, "status")
 
@@ -152,12 +195,17 @@ class AclEntryAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]]] = None,
                  entry: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-addentriestoacl).
 
         > **NOTE:** Available since v1.166.0.
+
+        > **NOTE:** The `entries` attribute is available since v1.292.0. In batch mode, the attachment takes ownership of all entries of the ACL: entries added out of band or by other `alb.AclEntryAttachment` resources attached to the same ACL are removed on the next apply. Do not manage the entries of the same ACL from multiple resources.
+
+        > **NOTE:** Exactly one of `entry` and `entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
 
         ## Example Usage
 
@@ -179,22 +227,51 @@ class AclEntryAttachment(pulumi.CustomResource):
             description=name)
         ```
 
+        ### Batch mode
+
+        The `entries` attribute manages all entries of the ACL in one resource. The entries are added and removed in batches of at most `20` entries per API call.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.alb.AclEntryAttachment("default",
+            acl_id=default_alicloud_alb_acl["id"],
+            entries=[
+                {
+                    "entry": "168.10.10.0/24",
+                    "description": name,
+                },
+                {
+                    "entry": "168.10.11.0/24",
+                    "description": name,
+                },
+            ])
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Acl entry attachment can be imported using the id, e.g.
+        Acl entry attachment can be imported using the id, which consists of acl_id and entry, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
+        When `entries` is used, the id is the acl id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
-        :param pulumi.Input[_builtins.str] description: The description of the entry.
-        :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
+        :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
+        :param pulumi.Input[_builtins.str] description: The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
         """
         ...
     @overload
@@ -207,6 +284,10 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.166.0.
 
+        > **NOTE:** The `entries` attribute is available since v1.292.0. In batch mode, the attachment takes ownership of all entries of the ACL: entries added out of band or by other `alb.AclEntryAttachment` resources attached to the same ACL are removed on the next apply. Do not manage the entries of the same ACL from multiple resources.
+
+        > **NOTE:** Exactly one of `entry` and `entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
+
         ## Example Usage
 
         ```python
@@ -227,14 +308,42 @@ class AclEntryAttachment(pulumi.CustomResource):
             description=name)
         ```
 
+        ### Batch mode
+
+        The `entries` attribute manages all entries of the ACL in one resource. The entries are added and removed in batches of at most `20` entries per API call.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.alb.AclEntryAttachment("default",
+            acl_id=default_alicloud_alb_acl["id"],
+            entries=[
+                {
+                    "entry": "168.10.10.0/24",
+                    "description": name,
+                },
+                {
+                    "entry": "168.10.11.0/24",
+                    "description": name,
+                },
+            ])
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Acl entry attachment can be imported using the id, e.g.
+        Acl entry attachment can be imported using the id, which consists of acl_id and entry, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+        ```
+
+        When `entries` is used, the id is the acl id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>
         ```
 
 
@@ -255,6 +364,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]]] = None,
                  entry: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -269,8 +379,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'acl_id'")
             __props__.__dict__["acl_id"] = acl_id
             __props__.__dict__["description"] = description
-            if entry is None and not opts.urn:
-                raise TypeError("Missing required property 'entry'")
+            __props__.__dict__["entries"] = entries
             __props__.__dict__["entry"] = entry
             __props__.__dict__["status"] = None
         super(AclEntryAttachment, __self__).__init__(
@@ -285,6 +394,7 @@ class AclEntryAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]]] = None,
             entry: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclEntryAttachment':
         """
@@ -294,10 +404,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_id: The ID of the Acl.
-        :param pulumi.Input[_builtins.str] description: The description of the entry.
-        :param pulumi.Input[_builtins.str] entry: The CIDR blocks.
-        :param pulumi.Input[_builtins.str] status: The Status of the resource.
+        :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
+        :param pulumi.Input[_builtins.str] description: The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -305,6 +416,7 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         __props__.__dict__["acl_id"] = acl_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["entries"] = entries
         __props__.__dict__["entry"] = entry
         __props__.__dict__["status"] = status
         return AclEntryAttachment(resource_name, opts=opts, __props__=__props__)
@@ -313,7 +425,7 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Acl.
+        The ID of the ACL.
         """
         return pulumi.get(self, "acl_id")
 
@@ -321,15 +433,24 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the entry.
+        The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> pulumi.Output[_builtins.str]:
+    def entries(self) -> pulumi.Output[Optional[Sequence['outputs.AclEntryAttachmentEntry']]]:
         """
-        The CIDR blocks.
+        One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        """
+        return pulumi.get(self, "entries")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.""")
+    def entry(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
         """
         return pulumi.get(self, "entry")
 
@@ -337,7 +458,7 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The Status of the resource.
+        The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
         """
         return pulumi.get(self, "status")
 

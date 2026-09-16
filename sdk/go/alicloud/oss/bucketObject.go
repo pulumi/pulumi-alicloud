@@ -134,7 +134,7 @@ type BucketObject struct {
 	ContentEncoding pulumi.StringPtrOutput `pulumi:"contentEncoding"`
 	// the content length of request.
 	ContentLength pulumi.StringOutput `pulumi:"contentLength"`
-	// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+	// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
 	ContentMd5 pulumi.StringPtrOutput `pulumi:"contentMd5"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
@@ -210,7 +210,7 @@ type bucketObjectState struct {
 	ContentEncoding *string `pulumi:"contentEncoding"`
 	// the content length of request.
 	ContentLength *string `pulumi:"contentLength"`
-	// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+	// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
 	ContentMd5 *string `pulumi:"contentMd5"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
@@ -251,7 +251,7 @@ type BucketObjectState struct {
 	ContentEncoding pulumi.StringPtrInput
 	// the content length of request.
 	ContentLength pulumi.StringPtrInput
-	// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+	// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
 	ContentMd5 pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
@@ -294,7 +294,7 @@ type bucketObjectArgs struct {
 	ContentDisposition *string `pulumi:"contentDisposition"`
 	// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
 	ContentEncoding *string `pulumi:"contentEncoding"`
-	// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+	// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
 	ContentMd5 *string `pulumi:"contentMd5"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
@@ -330,7 +330,7 @@ type BucketObjectArgs struct {
 	ContentDisposition pulumi.StringPtrInput
 	// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
 	ContentEncoding pulumi.StringPtrInput
-	// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+	// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
 	ContentMd5 pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
@@ -474,7 +474,7 @@ func (o BucketObjectOutput) ContentLength() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentLength }).(pulumi.StringOutput)
 }
 
-// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
 func (o BucketObjectOutput) ContentMd5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.ContentMd5 }).(pulumi.StringPtrOutput)
 }

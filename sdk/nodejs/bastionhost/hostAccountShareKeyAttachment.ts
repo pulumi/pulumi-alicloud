@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Bastion Host Account Share Key Attachment can be imported using the id, e.g.
+ * Bastion Host Account Share Key Attachment can be imported using the id, which consists of instance_id, hostShareKeyId and host_account_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment example <instance_id>:<host_share_key_id>:<host_account_id>

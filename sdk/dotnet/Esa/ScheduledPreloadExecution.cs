@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Scheduled Preload Execution can be imported using the id, e.g.
+    /// ESA Scheduled Preload Execution can be imported using the id, which consists of ScheduledPreloadJobId and scheduled_preload_execution_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution example &lt;scheduled_preload_job_id&gt;:&lt;scheduled_preload_execution_id&gt;

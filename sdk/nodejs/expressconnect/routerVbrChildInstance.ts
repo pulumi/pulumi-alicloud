@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Express Connect Router Express Connect Router Vbr Child Instance can be imported using the id, e.g.
+ * Express Connect Router Express Connect Router Vbr Child Instance can be imported using the id, which consists of ecr_id, childInstanceId and child_instance_type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance example <ecr_id>:<child_instance_id>:<child_instance_type>

@@ -51,6 +51,36 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="enableSse")
+    private @Nullable Output<Boolean> enableSse;
+
+    /**
+     * @return Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> enableSse() {
+        return Optional.ofNullable(this.enableSse);
+    }
+
+    /**
+     * The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     * 
+     */
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    /**
+     * @return The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      * 
      */
@@ -141,6 +171,40 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+     * 
+     */
+    @Import(name="sseAlgorithm")
+    private @Nullable Output<String> sseAlgorithm;
+
+    /**
+     * @return The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+     * 
+     */
+    public Optional<Output<String>> sseAlgorithm() {
+        return Optional.ofNullable(this.sseAlgorithm);
+    }
+
+    /**
+     * The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     * 
+     */
+    @Import(name="sseType")
+    private @Nullable Output<String> sseType;
+
+    /**
+     * @return The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     * 
+     */
+    public Optional<Output<String>> sseType() {
+        return Optional.ofNullable(this.sseType);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -158,12 +222,20 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      * 
+     * &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     * 
+     * &gt; **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
+     * 
      */
     @Import(name="visibilityTimeout")
     private @Nullable Output<Integer> visibilityTimeout;
 
     /**
      * @return The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+     * 
+     * &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     * 
+     * &gt; **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
      * 
      */
     public Optional<Output<Integer>> visibilityTimeout() {
@@ -175,12 +247,16 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
     private ServiceQueueArgs(ServiceQueueArgs $) {
         this.delaySeconds = $.delaySeconds;
         this.dlqPolicy = $.dlqPolicy;
+        this.enableSse = $.enableSse;
+        this.kmsKeyId = $.kmsKeyId;
         this.loggingEnabled = $.loggingEnabled;
         this.maximumMessageSize = $.maximumMessageSize;
         this.messageRetentionPeriod = $.messageRetentionPeriod;
         this.pollingWaitSeconds = $.pollingWaitSeconds;
         this.queueName = $.queueName;
         this.queueType = $.queueType;
+        this.sseAlgorithm = $.sseAlgorithm;
+        this.sseType = $.sseType;
         this.tags = $.tags;
         this.visibilityTimeout = $.visibilityTimeout;
     }
@@ -243,6 +319,48 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dlqPolicy(ServiceQueueDlqPolicyArgs dlqPolicy) {
             return dlqPolicy(Output.of(dlqPolicy));
+        }
+
+        /**
+         * @param enableSse Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSse(@Nullable Output<Boolean> enableSse) {
+            $.enableSse = enableSse;
+            return this;
+        }
+
+        /**
+         * @param enableSse Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSse(Boolean enableSse) {
+            return enableSse(Output.of(enableSse));
+        }
+
+        /**
+         * @param kmsKeyId The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyId The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**
@@ -372,6 +490,52 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sseAlgorithm The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseAlgorithm(@Nullable Output<String> sseAlgorithm) {
+            $.sseAlgorithm = sseAlgorithm;
+            return this;
+        }
+
+        /**
+         * @param sseAlgorithm The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseAlgorithm(String sseAlgorithm) {
+            return sseAlgorithm(Output.of(sseAlgorithm));
+        }
+
+        /**
+         * @param sseType The type of server-side encryption (SSE). Valid values:
+         * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+         * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseType(@Nullable Output<String> sseType) {
+            $.sseType = sseType;
+            return this;
+        }
+
+        /**
+         * @param sseType The type of server-side encryption (SSE). Valid values:
+         * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+         * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseType(String sseType) {
+            return sseType(Output.of(sseType));
+        }
+
+        /**
          * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
@@ -395,6 +559,10 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param visibilityTimeout The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
          * 
+         * &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+         * 
+         * &gt; **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
+         * 
          * @return builder
          * 
          */
@@ -405,6 +573,10 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param visibilityTimeout The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+         * 
+         * &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+         * 
+         * &gt; **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
          * 
          * @return builder
          * 

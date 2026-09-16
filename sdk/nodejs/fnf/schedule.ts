@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Serverless Workflow Schedule can be imported using the id, e.g.
+ * Serverless Workflow Schedule can be imported using the id, which consists of scheduleName and flow_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>

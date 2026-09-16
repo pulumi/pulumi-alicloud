@@ -63,7 +63,7 @@ import (
 //
 // ## Import
 //
-// VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.
+// VPC Traffic Mirror Filter Ingress Rule can be imported using the id, which consists of trafficMirrorFilterId and traffic_mirror_filter_ingress_rule_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_ingress_rule_id>

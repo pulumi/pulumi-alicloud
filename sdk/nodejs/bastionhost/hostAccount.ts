@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Bastion Host Host Account can be imported using the id, e.g.
+ * Bastion Host Host Account can be imported using the id, which consists of instanceId and host_account_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:bastionhost/hostAccount:HostAccount example <instance_id>:<host_account_id>

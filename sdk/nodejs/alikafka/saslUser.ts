@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AliKafka Sasl User can be imported using the id, e.g.
+ * AliKafka Sasl User can be imported using the id, which consists of instanceId and username, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>

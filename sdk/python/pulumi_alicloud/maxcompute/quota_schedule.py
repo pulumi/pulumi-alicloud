@@ -263,7 +263,7 @@ class QuotaSchedule(pulumi.CustomResource):
 
         ## Import
 
-        Max Compute Quota Schedule can be imported using the id, e.g.
+        Max Compute Quota Schedule can be imported using the id, which consists of nickname and timezone, e.g.
 
         ```sh
         $ pulumi import alicloud:maxcompute/quotaSchedule:QuotaSchedule example <nickname>:<timezone>
@@ -405,7 +405,7 @@ class QuotaSchedule(pulumi.CustomResource):
 
         ## Import
 
-        Max Compute Quota Schedule can be imported using the id, e.g.
+        Max Compute Quota Schedule can be imported using the id, which consists of nickname and timezone, e.g.
 
         ```sh
         $ pulumi import alicloud:maxcompute/quotaSchedule:QuotaSchedule example <nickname>:<timezone>

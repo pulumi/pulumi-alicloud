@@ -209,7 +209,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager Service Linked Role can be imported using the id, e.g.
+        Resource Manager Service Linked Role can be imported using the id, which consists of service_name and role_name, e.g.
 
         ```sh
         $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default <service_name>:<role_name>
@@ -250,7 +250,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager Service Linked Role can be imported using the id, e.g.
+        Resource Manager Service Linked Role can be imported using the id, which consists of service_name and role_name, e.g.
 
         ```sh
         $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default <service_name>:<role_name>

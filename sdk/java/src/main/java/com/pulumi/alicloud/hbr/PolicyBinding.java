@@ -105,11 +105,107 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ECS Instance Backup With App-Consistent Snapshot Group
+ * 
+ * This example migrates an `alicloud.hbr.ServerBackupPlan` configuration (deprecated since v1.249.0) to `alicloud.hbr.PolicyBinding` using `alicloud.hbr.Policy` + `advanced_options.udm_detail` with `appConsistent` and `snapshotGroup`.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.hbr.Policy;
+ * import com.pulumi.alicloud.hbr.PolicyArgs;
+ * import com.pulumi.alicloud.hbr.inputs.PolicyRuleArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.hbr.PolicyBinding;
+ * import com.pulumi.alicloud.hbr.PolicyBindingArgs;
+ * import com.pulumi.alicloud.hbr.inputs.PolicyBindingAdvancedOptionsArgs;
+ * import com.pulumi.alicloud.hbr.inputs.PolicyBindingAdvancedOptionsUdmDetailArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
+ *             .vaultType("STANDARD")
+ *             .vaultName(String.format("example-value-%s", default_.result()))
+ *             .build());
+ * 
+ *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+ *             .policyName(String.format("example-value-%s", default_.result()))
+ *             .rules(PolicyRuleArgs.builder()
+ *                 .ruleType("BACKUP")
+ *                 .backupType("COMPLETE")
+ *                 .schedule("I|1631685600|P1D")
+ *                 .retention(7)
+ *                 .archiveDays(0)
+ *                 .vaultId(defaultVault.id())
+ *                 .build())
+ *             .policyDescription("policy example")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .instanceName(String.format("example-value-%s", default_.result()))
+ *             .instanceType("ecs.g7.large")
+ *             .imageId("aliyun_2_1903_x64_7h_cor_4.0.40_alibase")
+ *             .systemDisk(Arrays.asList(Map.ofEntries(
+ *                 Map.entry("category", "cloud_essd"),
+ *                 Map.entry("size", "40")
+ *             )))
+ *             .build());
+ * 
+ *         var defaultPolicyBinding = new PolicyBinding("defaultPolicyBinding", PolicyBindingArgs.builder()
+ *             .sourceType("UDM_ECS")
+ *             .policyId(defaultPolicy.id())
+ *             .dataSourceId(defaultInstance.id())
+ *             .disabled(false)
+ *             .advancedOptions(PolicyBindingAdvancedOptionsArgs.builder()
+ *                 .udmDetail(PolicyBindingAdvancedOptionsUdmDetailArgs.builder()
+ *                     .appConsistent(true)
+ *                     .snapshotGroup(true)
+ *                     .ramRoleName("AliyunECSBackupRole")
+ *                     .preScriptPath("/opt/prescript.sh")
+ *                     .postScriptPath("/opt/postscript.sh")
+ *                     .enableFsFreeze(true)
+ *                     .timeoutInSeconds(60)
+ *                     .enableWriters(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
- * Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, which consists of policy_id, sourceType and data_source_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example &lt;policy_id&gt;:&lt;source_type&gt;:&lt;data_source_id&gt;

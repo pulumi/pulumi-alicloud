@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Waiting Room Rule can be imported using the id, e.g.
+    /// ESA Waiting Room Rule can be imported using the id, which consists of site_id, WaitingRoomId and waiting_room_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/waitingRoomRule:WaitingRoomRule example &lt;site_id&gt;:&lt;waiting_room_id&gt;:&lt;waiting_room_rule_id&gt;

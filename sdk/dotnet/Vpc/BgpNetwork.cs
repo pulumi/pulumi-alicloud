@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Express Connect Bgp Network can be imported using the id, e.g.
+    /// Express Connect Bgp Network can be imported using the id, which consists of RouterId and dst_cidr_block, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example &lt;router_id&gt;:&lt;dst_cidr_block&gt;

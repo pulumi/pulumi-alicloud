@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -81,7 +81,7 @@ func GetVirtualBorderRouters(ctx *pulumi.Context, args *GetVirtualBorderRoutersA
 
 // A collection of arguments for invoking getVirtualBorderRouters.
 type GetVirtualBorderRoutersArgs struct {
-	// Custom filter block as described below.
+	// Custom filter block as described below. See `filter` below.
 	Filters []GetVirtualBorderRoutersFilter `pulumi:"filters"`
 	// A list of Virtual Border Router IDs.
 	Ids []string `pulumi:"ids"`
@@ -91,19 +91,26 @@ type GetVirtualBorderRoutersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status *string `pulumi:"status"`
+	// A map of tags to filter Virtual Border Routers that match the given tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getVirtualBorderRouters.
 type GetVirtualBorderRoutersResult struct {
 	Filters []GetVirtualBorderRoutersFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                          `pulumi:"id"`
-	Ids        []string                        `pulumi:"ids"`
-	NameRegex  *string                         `pulumi:"nameRegex"`
-	Names      []string                        `pulumi:"names"`
-	OutputFile *string                         `pulumi:"outputFile"`
-	Routers    []GetVirtualBorderRoutersRouter `pulumi:"routers"`
-	Status     *string                         `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Virtual Border Router names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
+	Routers []GetVirtualBorderRoutersRouter `pulumi:"routers"`
+	// The VBR state.
+	Status *string `pulumi:"status"`
+	// The tags of the Virtual Border Router.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetVirtualBorderRoutersOutput(ctx *pulumi.Context, args GetVirtualBorderRoutersOutputArgs, opts ...pulumi.InvokeOption) GetVirtualBorderRoutersResultOutput {
@@ -113,7 +120,7 @@ func GetVirtualBorderRoutersOutput(ctx *pulumi.Context, args GetVirtualBorderRou
 
 // A collection of arguments for invoking getVirtualBorderRouters.
 type GetVirtualBorderRoutersOutputArgs struct {
-	// Custom filter block as described below.
+	// Custom filter block as described below. See `filter` below.
 	Filters GetVirtualBorderRoutersFilterArrayInput `pulumi:"filters"`
 	// A list of Virtual Border Router IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -123,6 +130,8 @@ type GetVirtualBorderRoutersOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A map of tags to filter Virtual Border Routers that match the given tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetVirtualBorderRoutersOutputArgs) ElementType() reflect.Type {
@@ -161,6 +170,7 @@ func (o GetVirtualBorderRoutersResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetVirtualBorderRoutersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Virtual Border Router names.
 func (o GetVirtualBorderRoutersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualBorderRoutersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -169,12 +179,19 @@ func (o GetVirtualBorderRoutersResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetVirtualBorderRoutersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
 func (o GetVirtualBorderRoutersResultOutput) Routers() GetVirtualBorderRoutersRouterArrayOutput {
 	return o.ApplyT(func(v GetVirtualBorderRoutersResult) []GetVirtualBorderRoutersRouter { return v.Routers }).(GetVirtualBorderRoutersRouterArrayOutput)
 }
 
+// The VBR state.
 func (o GetVirtualBorderRoutersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualBorderRoutersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The tags of the Virtual Border Router.
+func (o GetVirtualBorderRoutersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

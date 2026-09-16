@@ -35,6 +35,11 @@ export type AlertRuleV2 = import("./alertRuleV2").AlertRuleV2;
 export const AlertRuleV2: typeof import("./alertRuleV2").AlertRuleV2 = null as any;
 utilities.lazyLoad(exports, ["AlertRuleV2"], () => require("./alertRuleV2"));
 
+export { DatasetArgs, DatasetState } from "./dataset";
+export type Dataset = import("./dataset").Dataset;
+export const Dataset: typeof import("./dataset").Dataset = null as any;
+utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
+
 export { DynamicTagGroupArgs, DynamicTagGroupState } from "./dynamicTagGroup";
 export type DynamicTagGroup = import("./dynamicTagGroup").DynamicTagGroup;
 export const DynamicTagGroup: typeof import("./dynamicTagGroup").DynamicTagGroup = null as any;
@@ -64,6 +69,11 @@ export { GetAlertRulesV2Args, GetAlertRulesV2Result, GetAlertRulesV2OutputArgs }
 export const getAlertRulesV2: typeof import("./getAlertRulesV2").getAlertRulesV2 = null as any;
 export const getAlertRulesV2Output: typeof import("./getAlertRulesV2").getAlertRulesV2Output = null as any;
 utilities.lazyLoad(exports, ["getAlertRulesV2","getAlertRulesV2Output"], () => require("./getAlertRulesV2"));
+
+export { GetDatasetsArgs, GetDatasetsResult, GetDatasetsOutputArgs } from "./getDatasets";
+export const getDatasets: typeof import("./getDatasets").getDatasets = null as any;
+export const getDatasetsOutput: typeof import("./getDatasets").getDatasetsOutput = null as any;
+utilities.lazyLoad(exports, ["getDatasets","getDatasetsOutput"], () => require("./getDatasets"));
 
 export { GetDynamicTagGroupsArgs, GetDynamicTagGroupsResult, GetDynamicTagGroupsOutputArgs } from "./getDynamicTagGroups";
 export const getDynamicTagGroups: typeof import("./getDynamicTagGroups").getDynamicTagGroups = null as any;
@@ -227,6 +237,8 @@ const _module = {
                 return new AlarmContactGroup(name, <any>undefined, { urn })
             case "alicloud:cms/alertRuleV2:AlertRuleV2":
                 return new AlertRuleV2(name, <any>undefined, { urn })
+            case "alicloud:cms/dataset:Dataset":
+                return new Dataset(name, <any>undefined, { urn })
             case "alicloud:cms/dynamicTagGroup:DynamicTagGroup":
                 return new DynamicTagGroup(name, <any>undefined, { urn })
             case "alicloud:cms/eventNotifyPolicy:EventNotifyPolicy":
@@ -272,6 +284,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alertRuleV2", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/dataset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/dynamicTagGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/eventNotifyPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/eventRule", _module)

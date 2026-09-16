@@ -222,7 +222,7 @@ class Version(pulumi.CustomResource):
 
         ## Import
 
-        ESA Site Version can be imported using the id, e.g.
+        ESA Site Version can be imported using the id, which consists of site_id and site_version, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/version:Version example <site_id>:<site_version>
@@ -277,7 +277,7 @@ class Version(pulumi.CustomResource):
 
         ## Import
 
-        ESA Site Version can be imported using the id, e.g.
+        ESA Site Version can be imported using the id, which consists of site_id and site_version, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/version:Version example <site_id>:<site_version>

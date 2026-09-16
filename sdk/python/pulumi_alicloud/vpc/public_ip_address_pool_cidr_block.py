@@ -210,7 +210,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
 
         ## Import
 
-        VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
+        VPC Public Ip Address Pool Cidr Block can be imported using the id, which consists of public_ip_address_pool_id and cidr_block, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example <public_ip_address_pool_id>:<cidr_block>
@@ -265,7 +265,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
 
         ## Import
 
-        VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
+        VPC Public Ip Address Pool Cidr Block can be imported using the id, which consists of public_ip_address_pool_id and cidr_block, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example <public_ip_address_pool_id>:<cidr_block>

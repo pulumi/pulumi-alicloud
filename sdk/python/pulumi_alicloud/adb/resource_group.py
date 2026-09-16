@@ -627,7 +627,7 @@ class ResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Adb Resource Group can be imported using the id, e.g.
+        Adb Resource Group can be imported using the id, which consists of db_cluster_id and group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example <db_cluster_id>:<group_name>
@@ -719,7 +719,7 @@ class ResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Adb Resource Group can be imported using the id, e.g.
+        Adb Resource Group can be imported using the id, which consists of db_cluster_id and group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example <db_cluster_id>:<group_name>

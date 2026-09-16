@@ -8,6 +8,8 @@ import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetAssetsPlainArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
@@ -36,6 +38,7 @@ import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsPlainArgs;
 import com.pulumi.alicloud.threatdetection.outputs.GetAntiBruteForceRulesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetAssetsResult;
+import com.pulumi.alicloud.threatdetection.outputs.GetAttackPathWhitelistsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetBackupPoliciesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetBaselineStrategiesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetCheckItemConfigsResult;
@@ -47,6 +50,7 @@ import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotPresetsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotProbesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetInstancesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetLogShipperResult;
+import com.pulumi.alicloud.threatdetection.outputs.GetRdDefaultSyncListResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetVulWhitelistsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetWebLockConfigsResult;
 import com.pulumi.core.Output;
@@ -54,6 +58,7 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
+import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class ThreatdetectionFunctions {
@@ -742,6 +747,468 @@ public final class ThreatdetectionFunctions {
      */
     public static CompletableFuture<GetAssetsResult> getAssetsPlain(GetAssetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getAssets:getAssets", TypeShape.of(GetAssetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAttackPathWhitelistsResult> getAttackPathWhitelists() {
+        return getAttackPathWhitelists(GetAttackPathWhitelistsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAttackPathWhitelistsResult> getAttackPathWhitelistsPlain() {
+        return getAttackPathWhitelistsPlain(GetAttackPathWhitelistsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAttackPathWhitelistsResult> getAttackPathWhitelists(GetAttackPathWhitelistsArgs args) {
+        return getAttackPathWhitelists(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAttackPathWhitelistsResult> getAttackPathWhitelistsPlain(GetAttackPathWhitelistsPlainArgs args) {
+        return getAttackPathWhitelistsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAttackPathWhitelistsResult> getAttackPathWhitelists(GetAttackPathWhitelistsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getAttackPathWhitelists:getAttackPathWhitelists", TypeShape.of(GetAttackPathWhitelistsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAttackPathWhitelistsResult> getAttackPathWhitelists(GetAttackPathWhitelistsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getAttackPathWhitelists:getAttackPathWhitelists", TypeShape.of(GetAttackPathWhitelistsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Attack Path Whitelist available to the user.[What is Attack Path Whitelist](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAttackPathWhitelist)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelist;
+     * import com.pulumi.alicloud.threatdetection.AttackPathWhitelistArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.AttackPathWhitelistAttackPathAssetListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAttackPathWhitelistsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAttackPathWhitelist = new AttackPathWhitelist("defaultAttackPathWhitelist", AttackPathWhitelistArgs.builder()
+     *             .pathType("role_escalation")
+     *             .whitelistType("PART_ASSET")
+     *             .whitelistName(name)
+     *             .pathName("ecs_get_credential_by_create_login_profile")
+     *             .remark(name)
+     *             .attackPathAssetLists(AttackPathWhitelistAttackPathAssetListArgs.builder()
+     *                 .instanceId("AliyunYundunSASReadOnlyAccess::System")
+     *                 .regionId("cn-hangzhou")
+     *                 .vendor(0)
+     *                 .assetType(15)
+     *                 .assetSubType(2)
+     *                 .nodeType("end")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAttackPathWhitelists(GetAttackPathWhitelistsArgs.builder()
+     *             .ids(defaultAttackPathWhitelist.id())
+     *             .pathType("role_escalation")
+     *             .whitelistName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAttackPathWhitelistExampleId", default_.applyValue(_default_ -> _default_.whitelists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAttackPathWhitelistsResult> getAttackPathWhitelistsPlain(GetAttackPathWhitelistsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getAttackPathWhitelists:getAttackPathWhitelists", TypeShape.of(GetAttackPathWhitelistsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
@@ -4480,6 +4947,328 @@ public final class ThreatdetectionFunctions {
      */
     public static CompletableFuture<GetLogShipperResult> getLogShipperPlain(GetLogShipperPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getLogShipper:getLogShipper", TypeShape.of(GetLogShipperResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRdDefaultSyncListResult> getRdDefaultSyncList() {
+        return getRdDefaultSyncList(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRdDefaultSyncListResult> getRdDefaultSyncListPlain() {
+        return getRdDefaultSyncListPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRdDefaultSyncListResult> getRdDefaultSyncList(InvokeArgs args) {
+        return getRdDefaultSyncList(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRdDefaultSyncListResult> getRdDefaultSyncListPlain(InvokeArgs args) {
+        return getRdDefaultSyncListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRdDefaultSyncListResult> getRdDefaultSyncList(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getRdDefaultSyncList:getRdDefaultSyncList", TypeShape.of(GetRdDefaultSyncListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRdDefaultSyncListResult> getRdDefaultSyncList(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getRdDefaultSyncList:getRdDefaultSyncList", TypeShape.of(GetRdDefaultSyncListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a Threat Detection Rd Default Sync List data source. The default synchronization list of resource directory folders for Threat Detection. The list is account-level (singleton): each Alibaba Cloud account holds at most one such list, and this data source reads the current account&#39;s list.
+     * 
+     * For information about Threat Detection Rd Default Sync List and how to use it, see [ListRdDefaultSyncList](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListRdDefaultSyncList).
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * &gt; **NOTE:** The resource folder ids can be obtained via the `GetRdTree` API. A resource directory management account or a Threat Detection delegated administrator account is required to call these APIs.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getRdDefaultSyncList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("rdDefaultSyncFolderIds", default_.folderIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRdDefaultSyncListResult> getRdDefaultSyncListPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getRdDefaultSyncList:getRdDefaultSyncList", TypeShape.of(GetRdDefaultSyncListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.

@@ -133,7 +133,7 @@ type GetForwardEntriesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+	// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
 	Status *string `pulumi:"status"`
 }
 
@@ -162,7 +162,7 @@ type GetForwardEntriesResult struct {
 	// A list of Forward Entries names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The status of forward entry.
+	// The status of the Forward Entry.
 	Status *string `pulumi:"status"`
 }
 
@@ -193,7 +193,7 @@ type GetForwardEntriesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+	// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -278,7 +278,7 @@ func (o GetForwardEntriesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The status of forward entry.
+// The status of the Forward Entry.
 func (o GetForwardEntriesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Sso User can be imported using the id, e.g.
+ * Cloud Sso User can be imported using the id, which consists of directoryId and user_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudsso/user:User example &lt;directory_id&gt;:&lt;user_id&gt;

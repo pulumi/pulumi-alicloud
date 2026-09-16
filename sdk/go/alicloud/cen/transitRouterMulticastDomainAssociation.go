@@ -115,7 +115,7 @@ import (
 //
 // ## Import
 //
-// Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association can be imported using the id, which consists of transit_router_multicast_domain_id, transitRouterAttachmentId and vswitch_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation example <transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>

@@ -226,6 +226,9 @@ class GetApplicationLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The payment type of the SLB.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
@@ -261,6 +264,9 @@ class GetApplicationLoadBalancersResult:
     @pulumi.getter
     @_utilities.deprecated("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
     def slbs(self) -> Sequence['outputs.GetApplicationLoadBalancersSlbResult']:
+        """
+        **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
+        """
         return pulumi.get(self, "slbs")
 
     @_builtins.property
@@ -362,7 +368,7 @@ def get_application_load_balancers(address: Optional[_builtins.str] = None,
     """
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.123.1+
+    > **NOTE:** Available since v1.123.1
 
     ## Example Usage
 
@@ -382,6 +388,7 @@ def get_application_load_balancers(address: Optional[_builtins.str] = None,
     :param _builtins.str address: Service address of the SLBs.
     :param _builtins.str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
     :param _builtins.str address_type: The address type of the SLB. Valid values `internet` and `intranet`.
+    :param _builtins.bool enable_details: Whether to enable details of the SLB. Default to `false`.
     :param Sequence[_builtins.str] ids: A list of SLBs IDs.
     :param _builtins.str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
     :param _builtins.str load_balancer_name: The name of the SLB.
@@ -394,7 +401,7 @@ def get_application_load_balancers(address: Optional[_builtins.str] = None,
     :param _builtins.str server_id: The server ID.
     :param _builtins.str server_intranet_address: The server intranet address.
     :param _builtins.str slave_zone_id: The slave zone id of the SLB.
-    :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+    :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
     :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
     :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
@@ -479,7 +486,7 @@ def get_application_load_balancers_output(address: pulumi.Input[Optional[Optiona
     """
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.123.1+
+    > **NOTE:** Available since v1.123.1
 
     ## Example Usage
 
@@ -499,6 +506,7 @@ def get_application_load_balancers_output(address: pulumi.Input[Optional[Optiona
     :param _builtins.str address: Service address of the SLBs.
     :param _builtins.str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
     :param _builtins.str address_type: The address type of the SLB. Valid values `internet` and `intranet`.
+    :param _builtins.bool enable_details: Whether to enable details of the SLB. Default to `false`.
     :param Sequence[_builtins.str] ids: A list of SLBs IDs.
     :param _builtins.str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
     :param _builtins.str load_balancer_name: The name of the SLB.
@@ -511,7 +519,7 @@ def get_application_load_balancers_output(address: pulumi.Input[Optional[Optiona
     :param _builtins.str server_id: The server ID.
     :param _builtins.str server_intranet_address: The server intranet address.
     :param _builtins.str slave_zone_id: The slave zone id of the SLB.
-    :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+    :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
     :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
     :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.

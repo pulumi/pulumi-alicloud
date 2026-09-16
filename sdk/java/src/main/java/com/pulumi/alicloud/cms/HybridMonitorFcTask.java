@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
+ * Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, which consists of hybridMonitorFcTaskId and namespace, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example &lt;hybrid_monitor_fc_task_id&gt;:&lt;namespace&gt;

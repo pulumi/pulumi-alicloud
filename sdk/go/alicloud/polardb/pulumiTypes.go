@@ -1228,6 +1228,263 @@ func (o DynamoTableTtlPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GatewayEndpoint struct {
+	// The endpoint address.
+	Address *string `pulumi:"address"`
+	// The endpoint ID.
+	EndpointId *string `pulumi:"endpointId"`
+	// The gateway ID.
+	GatewayId *string `pulumi:"gatewayId"`
+	// The network type. Valid values: `Private`, `Public`.
+	NetworkType *string `pulumi:"networkType"`
+	// The endpoint port.
+	Port *int `pulumi:"port"`
+	// The tunnel ID.
+	TunnelId *string `pulumi:"tunnelId"`
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
+}
+
+// GatewayEndpointInput is an input type that accepts GatewayEndpointArgs and GatewayEndpointOutput values.
+// You can construct a concrete instance of `GatewayEndpointInput` via:
+//
+//	GatewayEndpointArgs{...}
+type GatewayEndpointInput interface {
+	pulumi.Input
+
+	ToGatewayEndpointOutput() GatewayEndpointOutput
+	ToGatewayEndpointOutputWithContext(context.Context) GatewayEndpointOutput
+}
+
+type GatewayEndpointArgs struct {
+	// The endpoint address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The endpoint ID.
+	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
+	// The gateway ID.
+	GatewayId pulumi.StringPtrInput `pulumi:"gatewayId"`
+	// The network type. Valid values: `Private`, `Public`.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The endpoint port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The tunnel ID.
+	TunnelId pulumi.StringPtrInput `pulumi:"tunnelId"`
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GatewayEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEndpoint)(nil)).Elem()
+}
+
+func (i GatewayEndpointArgs) ToGatewayEndpointOutput() GatewayEndpointOutput {
+	return i.ToGatewayEndpointOutputWithContext(context.Background())
+}
+
+func (i GatewayEndpointArgs) ToGatewayEndpointOutputWithContext(ctx context.Context) GatewayEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointOutput)
+}
+
+// GatewayEndpointArrayInput is an input type that accepts GatewayEndpointArray and GatewayEndpointArrayOutput values.
+// You can construct a concrete instance of `GatewayEndpointArrayInput` via:
+//
+//	GatewayEndpointArray{ GatewayEndpointArgs{...} }
+type GatewayEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGatewayEndpointArrayOutput() GatewayEndpointArrayOutput
+	ToGatewayEndpointArrayOutputWithContext(context.Context) GatewayEndpointArrayOutput
+}
+
+type GatewayEndpointArray []GatewayEndpointInput
+
+func (GatewayEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayEndpoint)(nil)).Elem()
+}
+
+func (i GatewayEndpointArray) ToGatewayEndpointArrayOutput() GatewayEndpointArrayOutput {
+	return i.ToGatewayEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayEndpointArray) ToGatewayEndpointArrayOutputWithContext(ctx context.Context) GatewayEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointArrayOutput)
+}
+
+type GatewayEndpointOutput struct{ *pulumi.OutputState }
+
+func (GatewayEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEndpoint)(nil)).Elem()
+}
+
+func (o GatewayEndpointOutput) ToGatewayEndpointOutput() GatewayEndpointOutput {
+	return o
+}
+
+func (o GatewayEndpointOutput) ToGatewayEndpointOutputWithContext(ctx context.Context) GatewayEndpointOutput {
+	return o
+}
+
+// The endpoint address.
+func (o GatewayEndpointOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint ID.
+func (o GatewayEndpointOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+}
+
+// The gateway ID.
+func (o GatewayEndpointOutput) GatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *string { return v.GatewayId }).(pulumi.StringPtrOutput)
+}
+
+// The network type. Valid values: `Private`, `Public`.
+func (o GatewayEndpointOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint port.
+func (o GatewayEndpointOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The tunnel ID.
+func (o GatewayEndpointOutput) TunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *string { return v.TunnelId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC.
+func (o GatewayEndpointOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayEndpoint) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type GatewayEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayEndpoint)(nil)).Elem()
+}
+
+func (o GatewayEndpointArrayOutput) ToGatewayEndpointArrayOutput() GatewayEndpointArrayOutput {
+	return o
+}
+
+func (o GatewayEndpointArrayOutput) ToGatewayEndpointArrayOutputWithContext(ctx context.Context) GatewayEndpointArrayOutput {
+	return o
+}
+
+func (o GatewayEndpointArrayOutput) Index(i pulumi.IntInput) GatewayEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayEndpoint {
+		return vs[0].([]GatewayEndpoint)[vs[1].(int)]
+	}).(GatewayEndpointOutput)
+}
+
+type GatewaySecurityIpArray struct {
+	// The IP addresses in the whitelist group.
+	IpList *string `pulumi:"ipList"`
+	// The whitelist group name.
+	Name *string `pulumi:"name"`
+}
+
+// GatewaySecurityIpArrayInput is an input type that accepts GatewaySecurityIpArray and GatewaySecurityIpArrayOutput values.
+// You can construct a concrete instance of `GatewaySecurityIpArrayInput` via:
+//
+//	GatewaySecurityIpArray{ GatewaySecurityIpArgs{...} }
+type GatewaySecurityIpArrayInput interface {
+	pulumi.Input
+
+	ToGatewaySecurityIpArrayOutput() GatewaySecurityIpArrayOutput
+	ToGatewaySecurityIpArrayOutputWithContext(context.Context) GatewaySecurityIpArrayOutput
+}
+
+type GatewaySecurityIpArrayArgs struct {
+	// The IP addresses in the whitelist group.
+	IpList pulumi.StringPtrInput `pulumi:"ipList"`
+	// The whitelist group name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GatewaySecurityIpArrayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySecurityIpArray)(nil)).Elem()
+}
+
+func (i GatewaySecurityIpArrayArgs) ToGatewaySecurityIpArrayOutput() GatewaySecurityIpArrayOutput {
+	return i.ToGatewaySecurityIpArrayOutputWithContext(context.Background())
+}
+
+func (i GatewaySecurityIpArrayArgs) ToGatewaySecurityIpArrayOutputWithContext(ctx context.Context) GatewaySecurityIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityIpArrayOutput)
+}
+
+// GatewaySecurityIpArrayArrayInput is an input type that accepts GatewaySecurityIpArrayArray and GatewaySecurityIpArrayArrayOutput values.
+// You can construct a concrete instance of `GatewaySecurityIpArrayArrayInput` via:
+//
+//	GatewaySecurityIpArrayArray{ GatewaySecurityIpArrayArgs{...} }
+type GatewaySecurityIpArrayArrayInput interface {
+	pulumi.Input
+
+	ToGatewaySecurityIpArrayArrayOutput() GatewaySecurityIpArrayArrayOutput
+	ToGatewaySecurityIpArrayArrayOutputWithContext(context.Context) GatewaySecurityIpArrayArrayOutput
+}
+
+type GatewaySecurityIpArrayArray []GatewaySecurityIpArrayInput
+
+func (GatewaySecurityIpArrayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySecurityIpArray)(nil)).Elem()
+}
+
+func (i GatewaySecurityIpArrayArray) ToGatewaySecurityIpArrayArrayOutput() GatewaySecurityIpArrayArrayOutput {
+	return i.ToGatewaySecurityIpArrayArrayOutputWithContext(context.Background())
+}
+
+func (i GatewaySecurityIpArrayArray) ToGatewaySecurityIpArrayArrayOutputWithContext(ctx context.Context) GatewaySecurityIpArrayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityIpArrayArrayOutput)
+}
+
+type GatewaySecurityIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewaySecurityIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySecurityIpArray)(nil)).Elem()
+}
+
+func (o GatewaySecurityIpArrayOutput) ToGatewaySecurityIpArrayOutput() GatewaySecurityIpArrayOutput {
+	return o
+}
+
+func (o GatewaySecurityIpArrayOutput) ToGatewaySecurityIpArrayOutputWithContext(ctx context.Context) GatewaySecurityIpArrayOutput {
+	return o
+}
+
+// The IP addresses in the whitelist group.
+func (o GatewaySecurityIpArrayOutput) IpList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySecurityIpArray) *string { return v.IpList }).(pulumi.StringPtrOutput)
+}
+
+// The whitelist group name.
+func (o GatewaySecurityIpArrayOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySecurityIpArray) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GatewaySecurityIpArrayArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewaySecurityIpArrayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySecurityIpArray)(nil)).Elem()
+}
+
+func (o GatewaySecurityIpArrayArrayOutput) ToGatewaySecurityIpArrayArrayOutput() GatewaySecurityIpArrayArrayOutput {
+	return o
+}
+
+func (o GatewaySecurityIpArrayArrayOutput) ToGatewaySecurityIpArrayArrayOutputWithContext(ctx context.Context) GatewaySecurityIpArrayArrayOutput {
+	return o
+}
+
+func (o GatewaySecurityIpArrayArrayOutput) Index(i pulumi.IntInput) GatewaySecurityIpArrayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewaySecurityIpArray {
+		return vs[0].([]GatewaySecurityIpArray)[vs[1].(int)]
+	}).(GatewaySecurityIpArrayOutput)
+}
+
 type ParameterGroupParameter struct {
 	// The name of the parameter.
 	ParamName *string `pulumi:"paramName"`
@@ -3480,6 +3737,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableLocalSecondaryIndexArrayInput)(nil)).Elem(), DynamoTableLocalSecondaryIndexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableTtlInput)(nil)).Elem(), DynamoTableTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableTtlPtrInput)(nil)).Elem(), DynamoTableTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEndpointInput)(nil)).Elem(), GatewayEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEndpointArrayInput)(nil)).Elem(), GatewayEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySecurityIpArrayInput)(nil)).Elem(), GatewaySecurityIpArrayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySecurityIpArrayArrayInput)(nil)).Elem(), GatewaySecurityIpArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterInput)(nil)).Elem(), ParameterGroupParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterArrayInput)(nil)).Elem(), ParameterGroupParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
@@ -3532,6 +3793,10 @@ func init() {
 	pulumi.RegisterOutputType(DynamoTableLocalSecondaryIndexArrayOutput{})
 	pulumi.RegisterOutputType(DynamoTableTtlOutput{})
 	pulumi.RegisterOutputType(DynamoTableTtlPtrOutput{})
+	pulumi.RegisterOutputType(GatewayEndpointOutput{})
+	pulumi.RegisterOutputType(GatewayEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GatewaySecurityIpArrayOutput{})
+	pulumi.RegisterOutputType(GatewaySecurityIpArrayArrayOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})

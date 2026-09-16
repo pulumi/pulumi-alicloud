@@ -342,7 +342,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition Repository can be imported using the id, e.g.
+        Container Registry Enterprise Edition Repository can be imported using the id, which consists of instance_id, namespace and name, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
@@ -417,7 +417,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition Repository can be imported using the id, e.g.
+        Container Registry Enterprise Edition Repository can be imported using the id, which consists of instance_id, namespace and name, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>

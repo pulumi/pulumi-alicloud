@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
+ * Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, which consists of accelerator_id, accelerateIpId and endpoint_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>

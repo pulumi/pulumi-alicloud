@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * cr Artifact Subscription Rule can be imported using the id, e.g.
+ * cr Artifact Subscription Rule can be imported using the id, which consists of instanceId and artifact_subscription_rule_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cr/artifactSubscriptionRule:ArtifactSubscriptionRule example <instance_id>:<artifact_subscription_rule_id>

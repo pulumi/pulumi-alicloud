@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Simple Application Server Firewall Rule can be imported using the id, e.g.
+ * Simple Application Server Firewall Rule can be imported using the id, which consists of instanceId and firewall_rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example &lt;instance_id&gt;:&lt;firewall_rule_id&gt;

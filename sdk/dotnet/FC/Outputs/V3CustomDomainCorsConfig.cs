@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
         /// <summary>
-        /// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        /// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
         /// </summary>
         public readonly ImmutableArray<string> AllowOrigins;
         /// <summary>

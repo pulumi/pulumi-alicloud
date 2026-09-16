@@ -357,7 +357,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Http Request Header Modification Rule can be imported using the id, e.g.
+        ESA Http Request Header Modification Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule example <site_id>:<config_id>
@@ -437,7 +437,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Http Request Header Modification Rule can be imported using the id, e.g.
+        ESA Http Request Header Modification Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule example <site_id>:<config_id>

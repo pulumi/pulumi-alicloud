@@ -188,7 +188,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ENS Disk Instance Attachment can be imported using the id, e.g.
+        ENS Disk Instance Attachment can be imported using the id, which consists of disk_id and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example <disk_id>:<instance_id>
@@ -257,7 +257,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ENS Disk Instance Attachment can be imported using the id, e.g.
+        ENS Disk Instance Attachment can be imported using the id, which consists of disk_id and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example <disk_id>:<instance_id>

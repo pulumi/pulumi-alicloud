@@ -168,14 +168,14 @@ public final class GetForwardEntriesArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     * The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     * @return The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -437,7 +437,7 @@ public final class GetForwardEntriesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+         * @param status The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class GetForwardEntriesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+         * @param status The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
          * 
          * @return builder
          * 

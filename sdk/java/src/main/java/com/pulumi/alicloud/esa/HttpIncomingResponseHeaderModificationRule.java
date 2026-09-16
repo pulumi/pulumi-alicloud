@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Http Incoming Response Header Modification Rule can be imported using the id, e.g.
+ * ESA Http Incoming Response Header Modification Rule can be imported using the id, which consists of siteId and config_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/httpIncomingResponseHeaderModificationRule:HttpIncomingResponseHeaderModificationRule example &lt;site_id&gt;:&lt;config_id&gt;

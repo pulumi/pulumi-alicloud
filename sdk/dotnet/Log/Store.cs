@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ## Import
     /// 
-    /// SLS Log Store can be imported using the id, e.g.
+    /// SLS Log Store can be imported using the id, which consists of ProjectName and logstore_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:log/store:Store example &lt;project_name&gt;:&lt;logstore_name&gt;

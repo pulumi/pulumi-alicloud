@@ -27,7 +27,7 @@ class UserVpcAuthorizationArgs:
 
         :param pulumi.Input[_builtins.str] authorized_user_id: The primary account ID of the user who authorizes the resource.
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
-        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         """
         pulumi.set(__self__, "authorized_user_id", authorized_user_id)
         if auth_channel is not None:
@@ -63,7 +63,7 @@ class UserVpcAuthorizationArgs:
     @pulumi.getter(name="authType")
     def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         """
         return pulumi.get(self, "auth_type")
 
@@ -82,7 +82,7 @@ class _UserVpcAuthorizationState:
         Input properties used for looking up and filtering UserVpcAuthorization resources.
 
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
-        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         :param pulumi.Input[_builtins.str] authorized_user_id: The primary account ID of the user who authorizes the resource.
         """
         if auth_channel is not None:
@@ -108,7 +108,7 @@ class _UserVpcAuthorizationState:
     @pulumi.getter(name="authType")
     def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         """
         return pulumi.get(self, "auth_type")
 
@@ -161,11 +161,24 @@ class UserVpcAuthorization(pulumi.CustomResource):
             auth_channel="RESOURCE_DIRECTORY")
         ```
 
+        Omit `auth_type` to use the default `NORMAL`
+
+        When `auth_type` is not set, the server defaults to `NORMAL` and the resource ID formats as `<authorized_user_id>:NORMAL`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.pvtz.UserVpcAuthorization("default",
+            authorized_user_id="123456789",
+            auth_channel="RESOURCE_DIRECTORY")
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Private Zone User Vpc Authorization can be imported using the id, e.g.
+        Private Zone User Vpc Authorization can be imported using the id, which consists of authorized_user_id and auth_type, e.g.
 
         ```sh
         $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
@@ -175,7 +188,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
-        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         :param pulumi.Input[_builtins.str] authorized_user_id: The primary account ID of the user who authorizes the resource.
         """
         ...
@@ -206,11 +219,24 @@ class UserVpcAuthorization(pulumi.CustomResource):
             auth_channel="RESOURCE_DIRECTORY")
         ```
 
+        Omit `auth_type` to use the default `NORMAL`
+
+        When `auth_type` is not set, the server defaults to `NORMAL` and the resource ID formats as `<authorized_user_id>:NORMAL`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.pvtz.UserVpcAuthorization("default",
+            authorized_user_id="123456789",
+            auth_channel="RESOURCE_DIRECTORY")
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Private Zone User Vpc Authorization can be imported using the id, e.g.
+        Private Zone User Vpc Authorization can be imported using the id, which consists of authorized_user_id and auth_type, e.g.
 
         ```sh
         $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
@@ -270,7 +296,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
-        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        :param pulumi.Input[_builtins.str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         :param pulumi.Input[_builtins.str] authorized_user_id: The primary account ID of the user who authorizes the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -292,9 +318,9 @@ class UserVpcAuthorization(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def auth_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         """
         return pulumi.get(self, "auth_type")
 

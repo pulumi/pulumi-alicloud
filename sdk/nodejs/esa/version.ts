@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Site Version can be imported using the id, e.g.
+ * ESA Site Version can be imported using the id, which consists of siteId and site_version, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/version:Version example <site_id>:<site_version>

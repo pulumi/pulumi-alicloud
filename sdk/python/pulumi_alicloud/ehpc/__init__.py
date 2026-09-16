@@ -10,7 +10,9 @@ from .cluster import *
 from .cluster_v2 import *
 from .get_clusters import *
 from .get_job_templates import *
+from .get_users import *
 from .job_template import *
 from .queue import *
+from .user import *
 from ._inputs import *
 from . import outputs

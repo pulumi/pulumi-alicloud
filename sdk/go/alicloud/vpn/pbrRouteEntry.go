@@ -156,7 +156,7 @@ import (
 //
 // ## Import
 //
-// VPN Pbr route entry can be imported using the id, e.g.
+// VPN Pbr route entry can be imported using the id, which consists of vpn_gateway_id, next_hop, routeSource and route_dest, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>

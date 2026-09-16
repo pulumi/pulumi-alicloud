@@ -4427,6 +4427,356 @@ func (o MachineGroupGroupAttributePtrOutput) GroupTopic() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type MetricStoreEncryptConf struct {
+	// Specifies whether to enable encryption.
+	Enable bool `pulumi:"enable"`
+	// The encryption algorithm. Valid values: `default`.
+	EncryptType *string `pulumi:"encryptType"`
+	// The BYOK (Bring Your Own Key) configuration. See `userCmkInfo` below.
+	UserCmkInfo *MetricStoreEncryptConfUserCmkInfo `pulumi:"userCmkInfo"`
+}
+
+// MetricStoreEncryptConfInput is an input type that accepts MetricStoreEncryptConfArgs and MetricStoreEncryptConfOutput values.
+// You can construct a concrete instance of `MetricStoreEncryptConfInput` via:
+//
+//	MetricStoreEncryptConfArgs{...}
+type MetricStoreEncryptConfInput interface {
+	pulumi.Input
+
+	ToMetricStoreEncryptConfOutput() MetricStoreEncryptConfOutput
+	ToMetricStoreEncryptConfOutputWithContext(context.Context) MetricStoreEncryptConfOutput
+}
+
+type MetricStoreEncryptConfArgs struct {
+	// Specifies whether to enable encryption.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The encryption algorithm. Valid values: `default`.
+	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
+	// The BYOK (Bring Your Own Key) configuration. See `userCmkInfo` below.
+	UserCmkInfo MetricStoreEncryptConfUserCmkInfoPtrInput `pulumi:"userCmkInfo"`
+}
+
+func (MetricStoreEncryptConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricStoreEncryptConf)(nil)).Elem()
+}
+
+func (i MetricStoreEncryptConfArgs) ToMetricStoreEncryptConfOutput() MetricStoreEncryptConfOutput {
+	return i.ToMetricStoreEncryptConfOutputWithContext(context.Background())
+}
+
+func (i MetricStoreEncryptConfArgs) ToMetricStoreEncryptConfOutputWithContext(ctx context.Context) MetricStoreEncryptConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricStoreEncryptConfOutput)
+}
+
+func (i MetricStoreEncryptConfArgs) ToMetricStoreEncryptConfPtrOutput() MetricStoreEncryptConfPtrOutput {
+	return i.ToMetricStoreEncryptConfPtrOutputWithContext(context.Background())
+}
+
+func (i MetricStoreEncryptConfArgs) ToMetricStoreEncryptConfPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricStoreEncryptConfOutput).ToMetricStoreEncryptConfPtrOutputWithContext(ctx)
+}
+
+// MetricStoreEncryptConfPtrInput is an input type that accepts MetricStoreEncryptConfArgs, MetricStoreEncryptConfPtr and MetricStoreEncryptConfPtrOutput values.
+// You can construct a concrete instance of `MetricStoreEncryptConfPtrInput` via:
+//
+//	        MetricStoreEncryptConfArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricStoreEncryptConfPtrInput interface {
+	pulumi.Input
+
+	ToMetricStoreEncryptConfPtrOutput() MetricStoreEncryptConfPtrOutput
+	ToMetricStoreEncryptConfPtrOutputWithContext(context.Context) MetricStoreEncryptConfPtrOutput
+}
+
+type metricStoreEncryptConfPtrType MetricStoreEncryptConfArgs
+
+func MetricStoreEncryptConfPtr(v *MetricStoreEncryptConfArgs) MetricStoreEncryptConfPtrInput {
+	return (*metricStoreEncryptConfPtrType)(v)
+}
+
+func (*metricStoreEncryptConfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricStoreEncryptConf)(nil)).Elem()
+}
+
+func (i *metricStoreEncryptConfPtrType) ToMetricStoreEncryptConfPtrOutput() MetricStoreEncryptConfPtrOutput {
+	return i.ToMetricStoreEncryptConfPtrOutputWithContext(context.Background())
+}
+
+func (i *metricStoreEncryptConfPtrType) ToMetricStoreEncryptConfPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricStoreEncryptConfPtrOutput)
+}
+
+type MetricStoreEncryptConfOutput struct{ *pulumi.OutputState }
+
+func (MetricStoreEncryptConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricStoreEncryptConf)(nil)).Elem()
+}
+
+func (o MetricStoreEncryptConfOutput) ToMetricStoreEncryptConfOutput() MetricStoreEncryptConfOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfOutput) ToMetricStoreEncryptConfOutputWithContext(ctx context.Context) MetricStoreEncryptConfOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfOutput) ToMetricStoreEncryptConfPtrOutput() MetricStoreEncryptConfPtrOutput {
+	return o.ToMetricStoreEncryptConfPtrOutputWithContext(context.Background())
+}
+
+func (o MetricStoreEncryptConfOutput) ToMetricStoreEncryptConfPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricStoreEncryptConf) *MetricStoreEncryptConf {
+		return &v
+	}).(MetricStoreEncryptConfPtrOutput)
+}
+
+// Specifies whether to enable encryption.
+func (o MetricStoreEncryptConfOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetricStoreEncryptConf) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The encryption algorithm. Valid values: `default`.
+func (o MetricStoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricStoreEncryptConf) *string { return v.EncryptType }).(pulumi.StringPtrOutput)
+}
+
+// The BYOK (Bring Your Own Key) configuration. See `userCmkInfo` below.
+func (o MetricStoreEncryptConfOutput) UserCmkInfo() MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ApplyT(func(v MetricStoreEncryptConf) *MetricStoreEncryptConfUserCmkInfo { return v.UserCmkInfo }).(MetricStoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+type MetricStoreEncryptConfPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricStoreEncryptConfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricStoreEncryptConf)(nil)).Elem()
+}
+
+func (o MetricStoreEncryptConfPtrOutput) ToMetricStoreEncryptConfPtrOutput() MetricStoreEncryptConfPtrOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfPtrOutput) ToMetricStoreEncryptConfPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfPtrOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfPtrOutput) Elem() MetricStoreEncryptConfOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConf) MetricStoreEncryptConf {
+		if v != nil {
+			return *v
+		}
+		var ret MetricStoreEncryptConf
+		return ret
+	}).(MetricStoreEncryptConfOutput)
+}
+
+// Specifies whether to enable encryption.
+func (o MetricStoreEncryptConfPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConf) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The encryption algorithm. Valid values: `default`.
+func (o MetricStoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The BYOK (Bring Your Own Key) configuration. See `userCmkInfo` below.
+func (o MetricStoreEncryptConfPtrOutput) UserCmkInfo() MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConf) *MetricStoreEncryptConfUserCmkInfo {
+		if v == nil {
+			return nil
+		}
+		return v.UserCmkInfo
+	}).(MetricStoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+type MetricStoreEncryptConfUserCmkInfo struct {
+	// The ARN of the RAM role that is authorized to use the CMK.
+	Arn *string `pulumi:"arn"`
+	// The ID of the CMK (Customer Master Key).
+	CmkKeyId *string `pulumi:"cmkKeyId"`
+	// The region ID of the CMK.
+	RegionId *string `pulumi:"regionId"`
+}
+
+// MetricStoreEncryptConfUserCmkInfoInput is an input type that accepts MetricStoreEncryptConfUserCmkInfoArgs and MetricStoreEncryptConfUserCmkInfoOutput values.
+// You can construct a concrete instance of `MetricStoreEncryptConfUserCmkInfoInput` via:
+//
+//	MetricStoreEncryptConfUserCmkInfoArgs{...}
+type MetricStoreEncryptConfUserCmkInfoInput interface {
+	pulumi.Input
+
+	ToMetricStoreEncryptConfUserCmkInfoOutput() MetricStoreEncryptConfUserCmkInfoOutput
+	ToMetricStoreEncryptConfUserCmkInfoOutputWithContext(context.Context) MetricStoreEncryptConfUserCmkInfoOutput
+}
+
+type MetricStoreEncryptConfUserCmkInfoArgs struct {
+	// The ARN of the RAM role that is authorized to use the CMK.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The ID of the CMK (Customer Master Key).
+	CmkKeyId pulumi.StringPtrInput `pulumi:"cmkKeyId"`
+	// The region ID of the CMK.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+}
+
+func (MetricStoreEncryptConfUserCmkInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricStoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (i MetricStoreEncryptConfUserCmkInfoArgs) ToMetricStoreEncryptConfUserCmkInfoOutput() MetricStoreEncryptConfUserCmkInfoOutput {
+	return i.ToMetricStoreEncryptConfUserCmkInfoOutputWithContext(context.Background())
+}
+
+func (i MetricStoreEncryptConfUserCmkInfoArgs) ToMetricStoreEncryptConfUserCmkInfoOutputWithContext(ctx context.Context) MetricStoreEncryptConfUserCmkInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricStoreEncryptConfUserCmkInfoOutput)
+}
+
+func (i MetricStoreEncryptConfUserCmkInfoArgs) ToMetricStoreEncryptConfUserCmkInfoPtrOutput() MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return i.ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MetricStoreEncryptConfUserCmkInfoArgs) ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricStoreEncryptConfUserCmkInfoOutput).ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx)
+}
+
+// MetricStoreEncryptConfUserCmkInfoPtrInput is an input type that accepts MetricStoreEncryptConfUserCmkInfoArgs, MetricStoreEncryptConfUserCmkInfoPtr and MetricStoreEncryptConfUserCmkInfoPtrOutput values.
+// You can construct a concrete instance of `MetricStoreEncryptConfUserCmkInfoPtrInput` via:
+//
+//	        MetricStoreEncryptConfUserCmkInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricStoreEncryptConfUserCmkInfoPtrInput interface {
+	pulumi.Input
+
+	ToMetricStoreEncryptConfUserCmkInfoPtrOutput() MetricStoreEncryptConfUserCmkInfoPtrOutput
+	ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Context) MetricStoreEncryptConfUserCmkInfoPtrOutput
+}
+
+type metricStoreEncryptConfUserCmkInfoPtrType MetricStoreEncryptConfUserCmkInfoArgs
+
+func MetricStoreEncryptConfUserCmkInfoPtr(v *MetricStoreEncryptConfUserCmkInfoArgs) MetricStoreEncryptConfUserCmkInfoPtrInput {
+	return (*metricStoreEncryptConfUserCmkInfoPtrType)(v)
+}
+
+func (*metricStoreEncryptConfUserCmkInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricStoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (i *metricStoreEncryptConfUserCmkInfoPtrType) ToMetricStoreEncryptConfUserCmkInfoPtrOutput() MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return i.ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *metricStoreEncryptConfUserCmkInfoPtrType) ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricStoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+type MetricStoreEncryptConfUserCmkInfoOutput struct{ *pulumi.OutputState }
+
+func (MetricStoreEncryptConfUserCmkInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricStoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoOutput) ToMetricStoreEncryptConfUserCmkInfoOutput() MetricStoreEncryptConfUserCmkInfoOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoOutput) ToMetricStoreEncryptConfUserCmkInfoOutputWithContext(ctx context.Context) MetricStoreEncryptConfUserCmkInfoOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoOutput) ToMetricStoreEncryptConfUserCmkInfoPtrOutput() MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoOutput) ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricStoreEncryptConfUserCmkInfo) *MetricStoreEncryptConfUserCmkInfo {
+		return &v
+	}).(MetricStoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+// The ARN of the RAM role that is authorized to use the CMK.
+func (o MetricStoreEncryptConfUserCmkInfoOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricStoreEncryptConfUserCmkInfo) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CMK (Customer Master Key).
+func (o MetricStoreEncryptConfUserCmkInfoOutput) CmkKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricStoreEncryptConfUserCmkInfo) *string { return v.CmkKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the CMK.
+func (o MetricStoreEncryptConfUserCmkInfoOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricStoreEncryptConfUserCmkInfo) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+type MetricStoreEncryptConfUserCmkInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricStoreEncryptConfUserCmkInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricStoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoPtrOutput) ToMetricStoreEncryptConfUserCmkInfoPtrOutput() MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoPtrOutput) ToMetricStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) MetricStoreEncryptConfUserCmkInfoPtrOutput {
+	return o
+}
+
+func (o MetricStoreEncryptConfUserCmkInfoPtrOutput) Elem() MetricStoreEncryptConfUserCmkInfoOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConfUserCmkInfo) MetricStoreEncryptConfUserCmkInfo {
+		if v != nil {
+			return *v
+		}
+		var ret MetricStoreEncryptConfUserCmkInfo
+		return ret
+	}).(MetricStoreEncryptConfUserCmkInfoOutput)
+}
+
+// The ARN of the RAM role that is authorized to use the CMK.
+func (o MetricStoreEncryptConfUserCmkInfoPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConfUserCmkInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CMK (Customer Master Key).
+func (o MetricStoreEncryptConfUserCmkInfoPtrOutput) CmkKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConfUserCmkInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CmkKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the CMK.
+func (o MetricStoreEncryptConfUserCmkInfoPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricStoreEncryptConfUserCmkInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
 type OssExportSinkConfiguration struct {
 	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
 	FromTime int `pulumi:"fromTime"`
@@ -8379,6 +8729,193 @@ func (o GetMachineGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMachineGro
 	}).(GetMachineGroupsGroupOutput)
 }
 
+type GetMetricStoresMetricStore struct {
+	// Whether to record the IP address of the requester.
+	AppendMeta bool `pulumi:"appendMeta"`
+	// Whether automatic shard splitting is enabled.
+	AutoSplit bool `pulumi:"autoSplit"`
+	// The time when the MetricStore was created.
+	CreateTime int `pulumi:"createTime"`
+	// The data retention period in the hot storage tier, in days.
+	HotTtl int `pulumi:"hotTtl"`
+	// The ID of the MetricStore. The value is formatted as `<project_name>:<metric_store_name>`.
+	Id string `pulumi:"id"`
+	// The time when the MetricStore was last modified.
+	LastModifyTime int `pulumi:"lastModifyTime"`
+	// The maximum number of shards to split.
+	MaxSplitShardCount int `pulumi:"maxSplitShardCount"`
+	// The name of the MetricStore.
+	MetricStoreName string `pulumi:"metricStoreName"`
+	// The type of the MetricStore.
+	Mode string `pulumi:"mode"`
+	// The number of shards.
+	ShardCount int `pulumi:"shardCount"`
+	// The data retention period in days.
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetMetricStoresMetricStoreInput is an input type that accepts GetMetricStoresMetricStoreArgs and GetMetricStoresMetricStoreOutput values.
+// You can construct a concrete instance of `GetMetricStoresMetricStoreInput` via:
+//
+//	GetMetricStoresMetricStoreArgs{...}
+type GetMetricStoresMetricStoreInput interface {
+	pulumi.Input
+
+	ToGetMetricStoresMetricStoreOutput() GetMetricStoresMetricStoreOutput
+	ToGetMetricStoresMetricStoreOutputWithContext(context.Context) GetMetricStoresMetricStoreOutput
+}
+
+type GetMetricStoresMetricStoreArgs struct {
+	// Whether to record the IP address of the requester.
+	AppendMeta pulumi.BoolInput `pulumi:"appendMeta"`
+	// Whether automatic shard splitting is enabled.
+	AutoSplit pulumi.BoolInput `pulumi:"autoSplit"`
+	// The time when the MetricStore was created.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// The data retention period in the hot storage tier, in days.
+	HotTtl pulumi.IntInput `pulumi:"hotTtl"`
+	// The ID of the MetricStore. The value is formatted as `<project_name>:<metric_store_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The time when the MetricStore was last modified.
+	LastModifyTime pulumi.IntInput `pulumi:"lastModifyTime"`
+	// The maximum number of shards to split.
+	MaxSplitShardCount pulumi.IntInput `pulumi:"maxSplitShardCount"`
+	// The name of the MetricStore.
+	MetricStoreName pulumi.StringInput `pulumi:"metricStoreName"`
+	// The type of the MetricStore.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The number of shards.
+	ShardCount pulumi.IntInput `pulumi:"shardCount"`
+	// The data retention period in days.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetMetricStoresMetricStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricStoresMetricStore)(nil)).Elem()
+}
+
+func (i GetMetricStoresMetricStoreArgs) ToGetMetricStoresMetricStoreOutput() GetMetricStoresMetricStoreOutput {
+	return i.ToGetMetricStoresMetricStoreOutputWithContext(context.Background())
+}
+
+func (i GetMetricStoresMetricStoreArgs) ToGetMetricStoresMetricStoreOutputWithContext(ctx context.Context) GetMetricStoresMetricStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricStoresMetricStoreOutput)
+}
+
+// GetMetricStoresMetricStoreArrayInput is an input type that accepts GetMetricStoresMetricStoreArray and GetMetricStoresMetricStoreArrayOutput values.
+// You can construct a concrete instance of `GetMetricStoresMetricStoreArrayInput` via:
+//
+//	GetMetricStoresMetricStoreArray{ GetMetricStoresMetricStoreArgs{...} }
+type GetMetricStoresMetricStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricStoresMetricStoreArrayOutput() GetMetricStoresMetricStoreArrayOutput
+	ToGetMetricStoresMetricStoreArrayOutputWithContext(context.Context) GetMetricStoresMetricStoreArrayOutput
+}
+
+type GetMetricStoresMetricStoreArray []GetMetricStoresMetricStoreInput
+
+func (GetMetricStoresMetricStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricStoresMetricStore)(nil)).Elem()
+}
+
+func (i GetMetricStoresMetricStoreArray) ToGetMetricStoresMetricStoreArrayOutput() GetMetricStoresMetricStoreArrayOutput {
+	return i.ToGetMetricStoresMetricStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricStoresMetricStoreArray) ToGetMetricStoresMetricStoreArrayOutputWithContext(ctx context.Context) GetMetricStoresMetricStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricStoresMetricStoreArrayOutput)
+}
+
+type GetMetricStoresMetricStoreOutput struct{ *pulumi.OutputState }
+
+func (GetMetricStoresMetricStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricStoresMetricStore)(nil)).Elem()
+}
+
+func (o GetMetricStoresMetricStoreOutput) ToGetMetricStoresMetricStoreOutput() GetMetricStoresMetricStoreOutput {
+	return o
+}
+
+func (o GetMetricStoresMetricStoreOutput) ToGetMetricStoresMetricStoreOutputWithContext(ctx context.Context) GetMetricStoresMetricStoreOutput {
+	return o
+}
+
+// Whether to record the IP address of the requester.
+func (o GetMetricStoresMetricStoreOutput) AppendMeta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) bool { return v.AppendMeta }).(pulumi.BoolOutput)
+}
+
+// Whether automatic shard splitting is enabled.
+func (o GetMetricStoresMetricStoreOutput) AutoSplit() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) bool { return v.AutoSplit }).(pulumi.BoolOutput)
+}
+
+// The time when the MetricStore was created.
+func (o GetMetricStoresMetricStoreOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The data retention period in the hot storage tier, in days.
+func (o GetMetricStoresMetricStoreOutput) HotTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) int { return v.HotTtl }).(pulumi.IntOutput)
+}
+
+// The ID of the MetricStore. The value is formatted as `<project_name>:<metric_store_name>`.
+func (o GetMetricStoresMetricStoreOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The time when the MetricStore was last modified.
+func (o GetMetricStoresMetricStoreOutput) LastModifyTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) int { return v.LastModifyTime }).(pulumi.IntOutput)
+}
+
+// The maximum number of shards to split.
+func (o GetMetricStoresMetricStoreOutput) MaxSplitShardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) int { return v.MaxSplitShardCount }).(pulumi.IntOutput)
+}
+
+// The name of the MetricStore.
+func (o GetMetricStoresMetricStoreOutput) MetricStoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) string { return v.MetricStoreName }).(pulumi.StringOutput)
+}
+
+// The type of the MetricStore.
+func (o GetMetricStoresMetricStoreOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The number of shards.
+func (o GetMetricStoresMetricStoreOutput) ShardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) int { return v.ShardCount }).(pulumi.IntOutput)
+}
+
+// The data retention period in days.
+func (o GetMetricStoresMetricStoreOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetricStoresMetricStore) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetMetricStoresMetricStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricStoresMetricStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricStoresMetricStore)(nil)).Elem()
+}
+
+func (o GetMetricStoresMetricStoreArrayOutput) ToGetMetricStoresMetricStoreArrayOutput() GetMetricStoresMetricStoreArrayOutput {
+	return o
+}
+
+func (o GetMetricStoresMetricStoreArrayOutput) ToGetMetricStoresMetricStoreArrayOutputWithContext(ctx context.Context) GetMetricStoresMetricStoreArrayOutput {
+	return o
+}
+
+func (o GetMetricStoresMetricStoreArrayOutput) Index(i pulumi.IntInput) GetMetricStoresMetricStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricStoresMetricStore {
+		return vs[0].([]GetMetricStoresMetricStore)[vs[1].(int)]
+	}).(GetMetricStoresMetricStoreOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationInput)(nil)).Elem(), AlertConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationPtrInput)(nil)).Elem(), AlertConfigurationArgs{})
@@ -8428,6 +8965,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LogtailConfigOutputDetailPtrInput)(nil)).Elem(), LogtailConfigOutputDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupGroupAttributeInput)(nil)).Elem(), MachineGroupGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupGroupAttributePtrInput)(nil)).Elem(), MachineGroupGroupAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricStoreEncryptConfInput)(nil)).Elem(), MetricStoreEncryptConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricStoreEncryptConfPtrInput)(nil)).Elem(), MetricStoreEncryptConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricStoreEncryptConfUserCmkInfoInput)(nil)).Elem(), MetricStoreEncryptConfUserCmkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricStoreEncryptConfUserCmkInfoPtrInput)(nil)).Elem(), MetricStoreEncryptConfUserCmkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationPtrInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationSinkInput)(nil)).Elem(), OssExportSinkConfigurationSinkArgs{})
@@ -8470,6 +9011,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLogtailConfigsConfigArrayInput)(nil)).Elem(), GetLogtailConfigsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupsGroupInput)(nil)).Elem(), GetMachineGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupsGroupArrayInput)(nil)).Elem(), GetMachineGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricStoresMetricStoreInput)(nil)).Elem(), GetMetricStoresMetricStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricStoresMetricStoreArrayInput)(nil)).Elem(), GetMetricStoresMetricStoreArray{})
 	pulumi.RegisterOutputType(AlertConfigurationOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationAnnotationOutput{})
@@ -8518,6 +9061,10 @@ func init() {
 	pulumi.RegisterOutputType(LogtailConfigOutputDetailPtrOutput{})
 	pulumi.RegisterOutputType(MachineGroupGroupAttributeOutput{})
 	pulumi.RegisterOutputType(MachineGroupGroupAttributePtrOutput{})
+	pulumi.RegisterOutputType(MetricStoreEncryptConfOutput{})
+	pulumi.RegisterOutputType(MetricStoreEncryptConfPtrOutput{})
+	pulumi.RegisterOutputType(MetricStoreEncryptConfUserCmkInfoOutput{})
+	pulumi.RegisterOutputType(MetricStoreEncryptConfUserCmkInfoPtrOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationSinkOutput{})
@@ -8560,4 +9107,6 @@ func init() {
 	pulumi.RegisterOutputType(GetLogtailConfigsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetMachineGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetMetricStoresMetricStoreOutput{})
+	pulumi.RegisterOutputType(GetMetricStoresMetricStoreArrayOutput{})
 }

@@ -558,7 +558,7 @@ class StorageDomainRoutingRuleRoute(dict):
         """
         :param _builtins.str endpoint_type: Endpoint Type.
         :param _builtins.str instance_domain: Instance domain name.
-        :param _builtins.str storage_domain: Storage domain name.
+        :param _builtins.str storage_domain: Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
         """
         pulumi.set(__self__, "endpoint_type", endpoint_type)
         pulumi.set(__self__, "instance_domain", instance_domain)
@@ -584,7 +584,7 @@ class StorageDomainRoutingRuleRoute(dict):
     @pulumi.getter(name="storageDomain")
     def storage_domain(self) -> _builtins.str:
         """
-        Storage domain name.
+        Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
         """
         return pulumi.get(self, "storage_domain")
 

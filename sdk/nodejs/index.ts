@@ -147,6 +147,7 @@ import * as drds from "./drds";
 import * as dts from "./dts";
 import * as eais from "./eais";
 import * as ebs from "./ebs";
+import * as ecddesktop from "./ecddesktop";
 import * as eci from "./eci";
 import * as ecp from "./ecp";
 import * as ecs from "./ecs";
@@ -298,6 +299,7 @@ export {
     dts,
     eais,
     ebs,
+    ecddesktop,
     eci,
     ecp,
     ecs,

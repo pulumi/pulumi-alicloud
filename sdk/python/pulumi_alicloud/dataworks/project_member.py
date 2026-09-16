@@ -207,7 +207,7 @@ class ProjectMember(pulumi.CustomResource):
 
         ## Import
 
-        Data Works Project Member can be imported using the id, e.g.
+        Data Works Project Member can be imported using the id, which consists of project_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dataworks/projectMember:ProjectMember example <project_id>:<user_id>
@@ -277,7 +277,7 @@ class ProjectMember(pulumi.CustomResource):
 
         ## Import
 
-        Data Works Project Member can be imported using the id, e.g.
+        Data Works Project Member can be imported using the id, which consists of project_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dataworks/projectMember:ProjectMember example <project_id>:<user_id>

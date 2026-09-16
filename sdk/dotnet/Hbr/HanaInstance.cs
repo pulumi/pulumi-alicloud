@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// ## Import
     /// 
-    /// Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.
+    /// Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, which consists of VaultId and hana_instance_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:hbr/hanaInstance:HanaInstance example &lt;vault_id&gt;:&lt;hana_instance_id&gt;

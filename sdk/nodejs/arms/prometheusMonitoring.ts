@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ARMS Prometheus Monitoring can be imported using the id, e.g.
+ * ARMS Prometheus Monitoring can be imported using the id, which consists of cluster_id, monitoringName and type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>

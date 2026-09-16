@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Https Application Configuration can be imported using the id, e.g.
+ * ESA Https Application Configuration can be imported using the id, which consists of siteId and config_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration example &lt;site_id&gt;:&lt;config_id&gt;

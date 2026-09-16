@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
+    /// AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, which consists of DbInstanceId and service_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example &lt;db_instance_id&gt;:&lt;service_id&gt;

@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Resource Manager Control Policy Attachment can be imported using the id, e.g.
+ * Resource Manager Control Policy Attachment can be imported using the id, which consists of policyId and target_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>

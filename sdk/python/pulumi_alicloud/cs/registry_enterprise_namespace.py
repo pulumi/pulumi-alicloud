@@ -223,7 +223,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
+        Container Registry Enterprise Edition Namespace can be imported using the id, which consists of instance_id and name, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
@@ -288,7 +288,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
+        Container Registry Enterprise Edition Namespace can be imported using the id, which consists of instance_id and name, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>

@@ -485,7 +485,7 @@ class VbrPconnAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Vbr Pconn Association can be imported using the id, e.g.
+        Express Connect Vbr Pconn Association can be imported using the id, which consists of vbr_id and physical_connection_id, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <vbr_id>:<physical_connection_id>
@@ -572,7 +572,7 @@ class VbrPconnAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Vbr Pconn Association can be imported using the id, e.g.
+        Express Connect Vbr Pconn Association can be imported using the id, which consists of vbr_id and physical_connection_id, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <vbr_id>:<physical_connection_id>

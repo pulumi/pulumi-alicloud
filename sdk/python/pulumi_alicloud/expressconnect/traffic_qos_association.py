@@ -188,7 +188,7 @@ class TrafficQosAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Traffic Qos Association can be imported using the id, e.g.
+        Express Connect Traffic Qos Association can be imported using the id, which consists of qos_id, instance_id and instance_type, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation example <qos_id>:<instance_id>:<instance_type>
@@ -240,7 +240,7 @@ class TrafficQosAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Traffic Qos Association can be imported using the id, e.g.
+        Express Connect Traffic Qos Association can be imported using the id, which consists of qos_id, instance_id and instance_type, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation example <qos_id>:<instance_id>:<instance_type>

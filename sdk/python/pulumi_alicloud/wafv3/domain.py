@@ -339,7 +339,7 @@ class Domain(pulumi.CustomResource):
 
         ## Import
 
-        WAFV3 Domain can be imported using the id, e.g.
+        WAFV3 Domain can be imported using the id, which consists of instance_id and domain, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
@@ -374,7 +374,7 @@ class Domain(pulumi.CustomResource):
 
         ## Import
 
-        WAFV3 Domain can be imported using the id, e.g.
+        WAFV3 Domain can be imported using the id, which consists of instance_id and domain, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>

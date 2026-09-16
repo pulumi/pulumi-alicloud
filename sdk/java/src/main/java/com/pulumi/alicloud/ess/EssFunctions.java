@@ -2918,7 +2918,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 
@@ -2962,7 +2962,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 
@@ -3006,7 +3006,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 
@@ -3050,7 +3050,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 
@@ -3094,7 +3094,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 
@@ -3138,7 +3138,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 
@@ -3182,7 +3182,7 @@ public final class EssFunctions {
     /**
      * This data source provides available scheduled task resources.
      * 
-     * &gt; **NOTE:** Available in 1.72.0+
+     * &gt; **NOTE:** Available since v1.72.0.
      * 
      * ## Example Usage
      * 

@@ -199,7 +199,7 @@ class V3FunctionVersion(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Function Version can be imported using the id, e.g.
+        FCV3 Function Version can be imported using the id, which consists of function_name and version_id, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3FunctionVersion:V3FunctionVersion example <function_name>:<version_id>
@@ -262,7 +262,7 @@ class V3FunctionVersion(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Function Version can be imported using the id, e.g.
+        FCV3 Function Version can be imported using the id, which consists of function_name and version_id, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3FunctionVersion:V3FunctionVersion example <function_name>:<version_id>

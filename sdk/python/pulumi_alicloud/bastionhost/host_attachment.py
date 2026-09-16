@@ -190,7 +190,7 @@ class HostAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host Host Attachment can be imported using the id, e.g.
+        Bastion Host Host Attachment can be imported using the id, which consists of instance_id, host_group_id and host_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
@@ -262,7 +262,7 @@ class HostAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host Host Attachment can be imported using the id, e.g.
+        Bastion Host Host Attachment can be imported using the id, which consists of instance_id, host_group_id and host_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>

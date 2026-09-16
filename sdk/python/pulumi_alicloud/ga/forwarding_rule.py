@@ -383,7 +383,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         ## Import
 
-        Ga Forwarding Rule can be imported using the id, e.g.
+        Ga Forwarding Rule can be imported using the id, which consists of accelerator_id, listener_id and forwarding_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
@@ -519,7 +519,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         ## Import
 
-        Ga Forwarding Rule can be imported using the id, e.g.
+        Ga Forwarding Rule can be imported using the id, which consists of accelerator_id, listener_id and forwarding_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>

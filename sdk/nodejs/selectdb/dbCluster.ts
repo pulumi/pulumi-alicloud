@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * SelectDB DBCluster can be imported using the id, e.g.
+ * SelectDB DBCluster can be imported using the id, which consists of dbInstanceId and db_cluster_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:selectdb/dbCluster:DbCluster example <db_instance_id>:<db_cluster_id>

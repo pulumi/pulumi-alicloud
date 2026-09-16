@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * PAI Workspace Member can be imported using the id, e.g.
+ * PAI Workspace Member can be imported using the id, which consists of workspaceId and member_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:pai/workspaceMember:WorkspaceMember example <workspace_id>:<member_id>

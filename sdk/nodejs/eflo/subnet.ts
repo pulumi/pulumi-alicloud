@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Eflo Subnet can be imported using the id, e.g.
+ * Eflo Subnet can be imported using the id, which consists of vpdId and subnet_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>

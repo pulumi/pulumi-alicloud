@@ -1278,7 +1278,7 @@ type StorageDomainRoutingRuleRoute struct {
 	EndpointType string `pulumi:"endpointType"`
 	// Instance domain name.
 	InstanceDomain string `pulumi:"instanceDomain"`
-	// Storage domain name.
+	// Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
 	StorageDomain string `pulumi:"storageDomain"`
 }
 
@@ -1298,7 +1298,7 @@ type StorageDomainRoutingRuleRouteArgs struct {
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// Instance domain name.
 	InstanceDomain pulumi.StringInput `pulumi:"instanceDomain"`
-	// Storage domain name.
+	// Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
 	StorageDomain pulumi.StringInput `pulumi:"storageDomain"`
 }
 
@@ -1363,7 +1363,7 @@ func (o StorageDomainRoutingRuleRouteOutput) InstanceDomain() pulumi.StringOutpu
 	return o.ApplyT(func(v StorageDomainRoutingRuleRoute) string { return v.InstanceDomain }).(pulumi.StringOutput)
 }
 
-// Storage domain name.
+// Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
 func (o StorageDomainRoutingRuleRouteOutput) StorageDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageDomainRoutingRuleRoute) string { return v.StorageDomain }).(pulumi.StringOutput)
 }

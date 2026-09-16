@@ -287,7 +287,7 @@ class ClientCertificate(pulumi.CustomResource):
 
         ## Import
 
-        ESA Client Certificate can be imported using the id, e.g.
+        ESA Client Certificate can be imported using the id, which consists of site_id and client_cert_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/clientCertificate:ClientCertificate example <site_id>:<client_cert_id>
@@ -341,7 +341,7 @@ class ClientCertificate(pulumi.CustomResource):
 
         ## Import
 
-        ESA Client Certificate can be imported using the id, e.g.
+        ESA Client Certificate can be imported using the id, which consists of site_id and client_cert_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/clientCertificate:ClientCertificate example <site_id>:<client_cert_id>

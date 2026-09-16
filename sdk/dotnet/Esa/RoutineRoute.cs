@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Routine Route can be imported using the id, e.g.
+    /// ESA Routine Route can be imported using the id, which consists of site_id, RoutineName and config_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/routineRoute:RoutineRoute example &lt;site_id&gt;:&lt;routine_name&gt;:&lt;config_id&gt;

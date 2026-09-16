@@ -8,10 +8,14 @@ import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetAccountsPlainArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesPlainArgs;
+import com.pulumi.alicloud.mongodb.inputs.GetBackupsArgs;
+import com.pulumi.alicloud.mongodb.inputs.GetBackupsPlainArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesPlainArgs;
+import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersArgs;
+import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersPlainArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesPlainArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
@@ -20,8 +24,10 @@ import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
 import com.pulumi.alicloud.mongodb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.mongodb.outputs.GetAccountsResult;
 import com.pulumi.alicloud.mongodb.outputs.GetAuditPoliciesResult;
+import com.pulumi.alicloud.mongodb.outputs.GetBackupsResult;
 import com.pulumi.alicloud.mongodb.outputs.GetInstancesResult;
 import com.pulumi.alicloud.mongodb.outputs.GetServerlessInstancesResult;
+import com.pulumi.alicloud.mongodb.outputs.GetShardingAuditFiltersResult;
 import com.pulumi.alicloud.mongodb.outputs.GetShardingNetworkPrivateAddressesResult;
 import com.pulumi.alicloud.mongodb.outputs.GetShardingNetworkPublicAddressesResult;
 import com.pulumi.alicloud.mongodb.outputs.GetZonesResult;
@@ -487,6 +493,441 @@ public final class MongodbFunctions {
      */
     public static CompletableFuture<GetAuditPoliciesResult> getAuditPoliciesPlain(GetAuditPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getAuditPolicies:getAuditPolicies", TypeShape.of(GetAuditPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Mongodb Backup available to the user. [What is Backup](https://next.api.alibabacloud.com/document/Dds/2015-12-01/CreateBackup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import com.pulumi.alicloud.mongodb.Backup;
+     * import com.pulumi.alicloud.mongodb.BackupArgs;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetBackupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-b");
+     *         final var cidrBlock = config.get("cidrBlock").orElse("10.0.0.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("bgg-vpc-shanghai-b")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId)
+     *             .cidrBlock(cidrBlock)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("5.0")
+     *             .storageType("cloud_essd1")
+     *             .vswitchId(defaultSwitch.id())
+     *             .dbInstanceStorage(20)
+     *             .vpcId(defaultNetwork.id())
+     *             .dbInstanceClass("mdb.shard.4x.large.d")
+     *             .storageEngine("WiredTiger")
+     *             .networkType("VPC")
+     *             .zoneId(zoneId)
+     *             .replicationFactor(3)
+     *             .readonlyReplicas(0)
+     *             .build());
+     * 
+     *         var defaultBackup = new Backup("defaultBackup", BackupArgs.builder()
+     *             .backupMethod("Snapshot")
+     *             .dbInstanceId(defaultInstance.id())
+     *             .backupRetentionPeriod(7)
+     *             .build());
+     * 
+     *         final var default = MongodbFunctions.getBackups(GetBackupsArgs.builder()
+     *             .ids(defaultBackup.id())
+     *             .dbInstanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBackupsResult> getBackups(GetBackupsArgs args) {
+        return getBackups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Mongodb Backup available to the user. [What is Backup](https://next.api.alibabacloud.com/document/Dds/2015-12-01/CreateBackup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import com.pulumi.alicloud.mongodb.Backup;
+     * import com.pulumi.alicloud.mongodb.BackupArgs;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetBackupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-b");
+     *         final var cidrBlock = config.get("cidrBlock").orElse("10.0.0.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("bgg-vpc-shanghai-b")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId)
+     *             .cidrBlock(cidrBlock)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("5.0")
+     *             .storageType("cloud_essd1")
+     *             .vswitchId(defaultSwitch.id())
+     *             .dbInstanceStorage(20)
+     *             .vpcId(defaultNetwork.id())
+     *             .dbInstanceClass("mdb.shard.4x.large.d")
+     *             .storageEngine("WiredTiger")
+     *             .networkType("VPC")
+     *             .zoneId(zoneId)
+     *             .replicationFactor(3)
+     *             .readonlyReplicas(0)
+     *             .build());
+     * 
+     *         var defaultBackup = new Backup("defaultBackup", BackupArgs.builder()
+     *             .backupMethod("Snapshot")
+     *             .dbInstanceId(defaultInstance.id())
+     *             .backupRetentionPeriod(7)
+     *             .build());
+     * 
+     *         final var default = MongodbFunctions.getBackups(GetBackupsArgs.builder()
+     *             .ids(defaultBackup.id())
+     *             .dbInstanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBackupsResult> getBackupsPlain(GetBackupsPlainArgs args) {
+        return getBackupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Mongodb Backup available to the user. [What is Backup](https://next.api.alibabacloud.com/document/Dds/2015-12-01/CreateBackup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import com.pulumi.alicloud.mongodb.Backup;
+     * import com.pulumi.alicloud.mongodb.BackupArgs;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetBackupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-b");
+     *         final var cidrBlock = config.get("cidrBlock").orElse("10.0.0.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("bgg-vpc-shanghai-b")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId)
+     *             .cidrBlock(cidrBlock)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("5.0")
+     *             .storageType("cloud_essd1")
+     *             .vswitchId(defaultSwitch.id())
+     *             .dbInstanceStorage(20)
+     *             .vpcId(defaultNetwork.id())
+     *             .dbInstanceClass("mdb.shard.4x.large.d")
+     *             .storageEngine("WiredTiger")
+     *             .networkType("VPC")
+     *             .zoneId(zoneId)
+     *             .replicationFactor(3)
+     *             .readonlyReplicas(0)
+     *             .build());
+     * 
+     *         var defaultBackup = new Backup("defaultBackup", BackupArgs.builder()
+     *             .backupMethod("Snapshot")
+     *             .dbInstanceId(defaultInstance.id())
+     *             .backupRetentionPeriod(7)
+     *             .build());
+     * 
+     *         final var default = MongodbFunctions.getBackups(GetBackupsArgs.builder()
+     *             .ids(defaultBackup.id())
+     *             .dbInstanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBackupsResult> getBackups(GetBackupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getBackups:getBackups", TypeShape.of(GetBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Mongodb Backup available to the user. [What is Backup](https://next.api.alibabacloud.com/document/Dds/2015-12-01/CreateBackup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import com.pulumi.alicloud.mongodb.Backup;
+     * import com.pulumi.alicloud.mongodb.BackupArgs;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetBackupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-b");
+     *         final var cidrBlock = config.get("cidrBlock").orElse("10.0.0.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("bgg-vpc-shanghai-b")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId)
+     *             .cidrBlock(cidrBlock)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("5.0")
+     *             .storageType("cloud_essd1")
+     *             .vswitchId(defaultSwitch.id())
+     *             .dbInstanceStorage(20)
+     *             .vpcId(defaultNetwork.id())
+     *             .dbInstanceClass("mdb.shard.4x.large.d")
+     *             .storageEngine("WiredTiger")
+     *             .networkType("VPC")
+     *             .zoneId(zoneId)
+     *             .replicationFactor(3)
+     *             .readonlyReplicas(0)
+     *             .build());
+     * 
+     *         var defaultBackup = new Backup("defaultBackup", BackupArgs.builder()
+     *             .backupMethod("Snapshot")
+     *             .dbInstanceId(defaultInstance.id())
+     *             .backupRetentionPeriod(7)
+     *             .build());
+     * 
+     *         final var default = MongodbFunctions.getBackups(GetBackupsArgs.builder()
+     *             .ids(defaultBackup.id())
+     *             .dbInstanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBackupsResult> getBackups(GetBackupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getBackups:getBackups", TypeShape.of(GetBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Mongodb Backup available to the user. [What is Backup](https://next.api.alibabacloud.com/document/Dds/2015-12-01/CreateBackup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import com.pulumi.alicloud.mongodb.Backup;
+     * import com.pulumi.alicloud.mongodb.BackupArgs;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetBackupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-b");
+     *         final var cidrBlock = config.get("cidrBlock").orElse("10.0.0.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("bgg-vpc-shanghai-b")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId)
+     *             .cidrBlock(cidrBlock)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("5.0")
+     *             .storageType("cloud_essd1")
+     *             .vswitchId(defaultSwitch.id())
+     *             .dbInstanceStorage(20)
+     *             .vpcId(defaultNetwork.id())
+     *             .dbInstanceClass("mdb.shard.4x.large.d")
+     *             .storageEngine("WiredTiger")
+     *             .networkType("VPC")
+     *             .zoneId(zoneId)
+     *             .replicationFactor(3)
+     *             .readonlyReplicas(0)
+     *             .build());
+     * 
+     *         var defaultBackup = new Backup("defaultBackup", BackupArgs.builder()
+     *             .backupMethod("Snapshot")
+     *             .dbInstanceId(defaultInstance.id())
+     *             .backupRetentionPeriod(7)
+     *             .build());
+     * 
+     *         final var default = MongodbFunctions.getBackups(GetBackupsArgs.builder()
+     *             .ids(defaultBackup.id())
+     *             .dbInstanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBackupsResult> getBackupsPlain(GetBackupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:mongodb/getBackups:getBackups", TypeShape.of(GetBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
@@ -1467,6 +1908,496 @@ public final class MongodbFunctions {
      */
     public static CompletableFuture<GetServerlessInstancesResult> getServerlessInstancesPlain(GetServerlessInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getServerlessInstances:getServerlessInstances", TypeShape.of(GetServerlessInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Sharding Audit Filter of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.290.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingInstance;
+     * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilter;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilterArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .engineVersion("4.2")
+     *             .name(name)
+     *             .mongoLists(            
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build(),
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build())
+     *             .shardLists(            
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build(),
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build())
+     *             .build());
+     * 
+     *         var defaultShardingAuditFilter = new ShardingAuditFilter("defaultShardingAuditFilter", ShardingAuditFilterArgs.builder()
+     *             .dbInstanceId(defaultShardingInstance.id())
+     *             .auditStatus("enable")
+     *             .filter("admin,slow")
+     *             .build());
+     * 
+     *         final var defaultGetShardingAuditFilters = MongodbFunctions.getShardingAuditFilters(GetShardingAuditFiltersArgs.builder()
+     *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
+     *             .build());
+     * 
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetShardingAuditFiltersResult> getShardingAuditFilters(GetShardingAuditFiltersArgs args) {
+        return getShardingAuditFilters(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Mongodb Sharding Audit Filter of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.290.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingInstance;
+     * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilter;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilterArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .engineVersion("4.2")
+     *             .name(name)
+     *             .mongoLists(            
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build(),
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build())
+     *             .shardLists(            
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build(),
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build())
+     *             .build());
+     * 
+     *         var defaultShardingAuditFilter = new ShardingAuditFilter("defaultShardingAuditFilter", ShardingAuditFilterArgs.builder()
+     *             .dbInstanceId(defaultShardingInstance.id())
+     *             .auditStatus("enable")
+     *             .filter("admin,slow")
+     *             .build());
+     * 
+     *         final var defaultGetShardingAuditFilters = MongodbFunctions.getShardingAuditFilters(GetShardingAuditFiltersArgs.builder()
+     *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
+     *             .build());
+     * 
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetShardingAuditFiltersResult> getShardingAuditFiltersPlain(GetShardingAuditFiltersPlainArgs args) {
+        return getShardingAuditFiltersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Mongodb Sharding Audit Filter of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.290.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingInstance;
+     * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilter;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilterArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .engineVersion("4.2")
+     *             .name(name)
+     *             .mongoLists(            
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build(),
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build())
+     *             .shardLists(            
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build(),
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build())
+     *             .build());
+     * 
+     *         var defaultShardingAuditFilter = new ShardingAuditFilter("defaultShardingAuditFilter", ShardingAuditFilterArgs.builder()
+     *             .dbInstanceId(defaultShardingInstance.id())
+     *             .auditStatus("enable")
+     *             .filter("admin,slow")
+     *             .build());
+     * 
+     *         final var defaultGetShardingAuditFilters = MongodbFunctions.getShardingAuditFilters(GetShardingAuditFiltersArgs.builder()
+     *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
+     *             .build());
+     * 
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetShardingAuditFiltersResult> getShardingAuditFilters(GetShardingAuditFiltersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getShardingAuditFilters:getShardingAuditFilters", TypeShape.of(GetShardingAuditFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Sharding Audit Filter of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.290.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingInstance;
+     * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilter;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilterArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .engineVersion("4.2")
+     *             .name(name)
+     *             .mongoLists(            
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build(),
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build())
+     *             .shardLists(            
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build(),
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build())
+     *             .build());
+     * 
+     *         var defaultShardingAuditFilter = new ShardingAuditFilter("defaultShardingAuditFilter", ShardingAuditFilterArgs.builder()
+     *             .dbInstanceId(defaultShardingInstance.id())
+     *             .auditStatus("enable")
+     *             .filter("admin,slow")
+     *             .build());
+     * 
+     *         final var defaultGetShardingAuditFilters = MongodbFunctions.getShardingAuditFilters(GetShardingAuditFiltersArgs.builder()
+     *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
+     *             .build());
+     * 
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetShardingAuditFiltersResult> getShardingAuditFilters(GetShardingAuditFiltersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getShardingAuditFilters:getShardingAuditFilters", TypeShape.of(GetShardingAuditFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Sharding Audit Filter of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.290.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingInstance;
+     * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilter;
+     * import com.pulumi.alicloud.mongodb.ShardingAuditFilterArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingAuditFiltersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .engineVersion("4.2")
+     *             .name(name)
+     *             .mongoLists(            
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build(),
+     *                 ShardingInstanceMongoListArgs.builder()
+     *                     .nodeClass("dds.mongos.mid")
+     *                     .build())
+     *             .shardLists(            
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build(),
+     *                 ShardingInstanceShardListArgs.builder()
+     *                     .nodeClass("dds.shard.mid")
+     *                     .nodeStorage(10)
+     *                     .build())
+     *             .build());
+     * 
+     *         var defaultShardingAuditFilter = new ShardingAuditFilter("defaultShardingAuditFilter", ShardingAuditFilterArgs.builder()
+     *             .dbInstanceId(defaultShardingInstance.id())
+     *             .auditStatus("enable")
+     *             .filter("admin,slow")
+     *             .build());
+     * 
+     *         final var defaultGetShardingAuditFilters = MongodbFunctions.getShardingAuditFilters(GetShardingAuditFiltersArgs.builder()
+     *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
+     *             .build());
+     * 
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetShardingAuditFiltersResult> getShardingAuditFiltersPlain(GetShardingAuditFiltersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:mongodb/getShardingAuditFilters:getShardingAuditFilters", TypeShape.of(GetShardingAuditFiltersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.

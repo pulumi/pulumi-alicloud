@@ -69,7 +69,7 @@ public final class ServerGroupHealthCheckConfig {
      * 
      * The URL must start with a forward slash (/).
      * 
-     * &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+     * &gt; **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
      * 
      */
     private @Nullable String healthCheckPath;
@@ -168,7 +168,7 @@ public final class ServerGroupHealthCheckConfig {
      * 
      * The URL must start with a forward slash (/).
      * 
-     * &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+     * &gt; **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
      * 
      */
     public Optional<String> healthCheckPath() {

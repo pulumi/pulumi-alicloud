@@ -119,6 +119,7 @@ __all__ = [
     'GetAlertRulesV2RuleQueryConfigLabelFilterResult',
     'GetAlertRulesV2RuleQueryConfigMeasureListResult',
     'GetAlertRulesV2RuleScheduleConfigResult',
+    'GetDatasetsDatasetResult',
     'GetDynamicTagGroupsGroupResult',
     'GetDynamicTagGroupsGroupMatchExpressResult',
     'GetEventNotifyPoliciesPolicyResult',
@@ -7712,6 +7713,90 @@ class GetAlertRulesV2RuleScheduleConfigResult(dict):
         The scheduling type.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatasetsDatasetResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 dataset_name: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 region_id: _builtins.str,
+                 update_time: _builtins.str,
+                 workspace: _builtins.str):
+        """
+        :param _builtins.str create_time: The creation time of the resource.
+        :param _builtins.str dataset_name: The name of the resource.
+        :param _builtins.str description: The description of the dataset.
+        :param _builtins.str id: The ID of the resource. It is formatted as `<workspace>:<dataset_name>`.
+        :param _builtins.str region_id: The region ID of the resource.
+        :param _builtins.str update_time: The last modified time of the resource.
+        :param _builtins.str workspace: The name of the workspace to which the datasets belong.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "dataset_name", dataset_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "workspace", workspace)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="datasetName")
+    def dataset_name(self) -> _builtins.str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "dataset_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the dataset.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource. It is formatted as `<workspace>:<dataset_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the resource.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The last modified time of the resource.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def workspace(self) -> _builtins.str:
+        """
+        The name of the workspace to which the datasets belong.
+        """
+        return pulumi.get(self, "workspace")
 
 
 @pulumi.output_type

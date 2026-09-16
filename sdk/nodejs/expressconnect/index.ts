@@ -30,6 +30,16 @@ export const getPhysicalConnections: typeof import("./getPhysicalConnections").g
 export const getPhysicalConnectionsOutput: typeof import("./getPhysicalConnections").getPhysicalConnectionsOutput = null as any;
 utilities.lazyLoad(exports, ["getPhysicalConnections","getPhysicalConnectionsOutput"], () => require("./getPhysicalConnections"));
 
+export { GetRouterExpressConnectRoutersArgs, GetRouterExpressConnectRoutersResult, GetRouterExpressConnectRoutersOutputArgs } from "./getRouterExpressConnectRouters";
+export const getRouterExpressConnectRouters: typeof import("./getRouterExpressConnectRouters").getRouterExpressConnectRouters = null as any;
+export const getRouterExpressConnectRoutersOutput: typeof import("./getRouterExpressConnectRouters").getRouterExpressConnectRoutersOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterExpressConnectRouters","getRouterExpressConnectRoutersOutput"], () => require("./getRouterExpressConnectRouters"));
+
+export { GetRouterGrantAssociationsArgs, GetRouterGrantAssociationsResult, GetRouterGrantAssociationsOutputArgs } from "./getRouterGrantAssociations";
+export const getRouterGrantAssociations: typeof import("./getRouterGrantAssociations").getRouterGrantAssociations = null as any;
+export const getRouterGrantAssociationsOutput: typeof import("./getRouterGrantAssociations").getRouterGrantAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterGrantAssociations","getRouterGrantAssociationsOutput"], () => require("./getRouterGrantAssociations"));
+
 export { GetRouterInterfacesArgs, GetRouterInterfacesResult, GetRouterInterfacesOutputArgs } from "./getRouterInterfaces";
 export const getRouterInterfaces: typeof import("./getRouterInterfaces").getRouterInterfaces = null as any;
 export const getRouterInterfacesOutput: typeof import("./getRouterInterfaces").getRouterInterfacesOutput = null as any;

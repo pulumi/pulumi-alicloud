@@ -21,6 +21,8 @@ __all__ = [
     'LoadBalancerZoneMappingLoadBalancerAddressArgsDict',
     'ServerGroupConnectionDrainConfigArgs',
     'ServerGroupConnectionDrainConfigArgsDict',
+    'ServerGroupDrainingServerArgs',
+    'ServerGroupDrainingServerArgsDict',
     'ServerGroupHealthCheckConfigArgs',
     'ServerGroupHealthCheckConfigArgsDict',
     'ServerGroupServerArgs',
@@ -210,6 +212,95 @@ class ServerGroupConnectionDrainConfigArgs:
         pulumi.set(self, "connection_drain_timeout", value)
 
 
+class ServerGroupDrainingServerArgsDict(TypedDict):
+    server_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The backend server ID.
+    """
+    server_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP address of the backend server.
+    """
+    server_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Indicates the status of the backend server.
+    """
+
+@pulumi.input_type
+class ServerGroupDrainingServerArgs:
+    def __init__(__self__, *,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] server_id: The backend server ID.
+        :param pulumi.Input[_builtins.str] server_ip: The IP address of the backend server.
+        :param pulumi.Input[_builtins.str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        :param pulumi.Input[_builtins.str] status: Indicates the status of the backend server.
+        """
+        if server_id is not None:
+            pulumi.set(__self__, "server_id", server_id)
+        if server_ip is not None:
+            pulumi.set(__self__, "server_ip", server_ip)
+        if server_type is not None:
+            pulumi.set(__self__, "server_type", server_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The backend server ID.
+        """
+        return pulumi.get(self, "server_id")
+
+    @server_id.setter
+    def server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverIp")
+    def server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP address of the backend server.
+        """
+        return pulumi.get(self, "server_ip")
+
+    @server_ip.setter
+    def server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        """
+        return pulumi.get(self, "server_type")
+
+    @server_type.setter
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Indicates the status of the backend server.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
 class ServerGroupHealthCheckConfigArgsDict(TypedDict):
     health_check_connect_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -261,7 +352,7 @@ class ServerGroupHealthCheckConfigArgsDict(TypedDict):
 
     The URL must start with a forward slash (/).
 
-    > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+    > **NOTE:**  This parameter takes effect only if you set `health_check_protocol` to `HTTP`.
     """
     health_check_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -331,7 +422,7 @@ class ServerGroupHealthCheckConfigArgs:
                
                The URL must start with a forward slash (/).
                
-               > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+               > **NOTE:**  This parameter takes effect only if you set `health_check_protocol` to `HTTP`.
         :param pulumi.Input[_builtins.str] health_check_protocol: The protocol that is used for health checks. Valid values:
                
                - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
@@ -468,7 +559,7 @@ class ServerGroupHealthCheckConfigArgs:
 
         The URL must start with a forward slash (/).
 
-        > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+        > **NOTE:**  This parameter takes effect only if you set `health_check_protocol` to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 

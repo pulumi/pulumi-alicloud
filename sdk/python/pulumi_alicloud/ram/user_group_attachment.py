@@ -141,7 +141,7 @@ class UserGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM User Group Attachment can be imported using the id, e.g.
+        RAM User Group Attachment can be imported using the id, which consists of group_name and user_name, e.g.
 
         ```sh
         $ pulumi import alicloud:ram/userGroupAttachment:UserGroupAttachment example <group_name>:<user_name>
@@ -195,7 +195,7 @@ class UserGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM User Group Attachment can be imported using the id, e.g.
+        RAM User Group Attachment can be imported using the id, which consists of group_name and user_name, e.g.
 
         ```sh
         $ pulumi import alicloud:ram/userGroupAttachment:UserGroupAttachment example <group_name>:<user_name>

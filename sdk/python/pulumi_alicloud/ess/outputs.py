@@ -5046,6 +5046,7 @@ class GetScheduledTasksTaskResult(dict):
                  recurrence_end_time: _builtins.str,
                  recurrence_type: _builtins.str,
                  recurrence_value: _builtins.str,
+                 scaling_group_id: _builtins.str,
                  scheduled_action: _builtins.str,
                  task_enabled: _builtins.bool):
         """
@@ -5053,11 +5054,15 @@ class GetScheduledTasksTaskResult(dict):
         :param _builtins.str id: ID of the scheduled task id.
         :param _builtins.int launch_expiration_time: The time period during which a failed scheduled task is retried.
         :param _builtins.str launch_time: The time at which the scheduled task is triggered.
+        :param _builtins.int max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param _builtins.int min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param _builtins.str name: Name of the scheduled task name.
         :param _builtins.str recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated.
         :param _builtins.str recurrence_type: Specifies the recurrence type of the scheduled task.
         :param _builtins.str recurrence_value: Specifies how often a scheduled task recurs.
+        :param _builtins.str scaling_group_id: The id of the scaling group to which the scheduled task belongs.
         :param _builtins.str scheduled_action: The operation to be performed when a scheduled task is triggered.
+        :param _builtins.bool task_enabled: Whether to start the scheduled task.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -5069,6 +5074,7 @@ class GetScheduledTasksTaskResult(dict):
         pulumi.set(__self__, "recurrence_end_time", recurrence_end_time)
         pulumi.set(__self__, "recurrence_type", recurrence_type)
         pulumi.set(__self__, "recurrence_value", recurrence_value)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "scheduled_action", scheduled_action)
         pulumi.set(__self__, "task_enabled", task_enabled)
 
@@ -5107,11 +5113,17 @@ class GetScheduledTasksTaskResult(dict):
     @_builtins.property
     @pulumi.getter(name="maxValue")
     def max_value(self) -> _builtins.int:
+        """
+        The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        """
         return pulumi.get(self, "max_value")
 
     @_builtins.property
     @pulumi.getter(name="minValue")
     def min_value(self) -> _builtins.int:
+        """
+        The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        """
         return pulumi.get(self, "min_value")
 
     @_builtins.property
@@ -5147,6 +5159,14 @@ class GetScheduledTasksTaskResult(dict):
         return pulumi.get(self, "recurrence_value")
 
     @_builtins.property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> _builtins.str:
+        """
+        The id of the scaling group to which the scheduled task belongs.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @_builtins.property
     @pulumi.getter(name="scheduledAction")
     def scheduled_action(self) -> _builtins.str:
         """
@@ -5157,6 +5177,9 @@ class GetScheduledTasksTaskResult(dict):
     @_builtins.property
     @pulumi.getter(name="taskEnabled")
     def task_enabled(self) -> _builtins.bool:
+        """
+        Whether to start the scheduled task.
+        """
         return pulumi.get(self, "task_enabled")
 
 

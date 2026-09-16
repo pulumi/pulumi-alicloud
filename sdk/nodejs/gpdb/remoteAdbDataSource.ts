@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GPDB Remote ADB Data Source can be imported using the id, e.g.
+ * GPDB Remote ADB Data Source can be imported using the id, which consists of localDbInstanceId and remote_adb_data_source_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource example <local_db_instance_id>:<remote_adb_data_source_id>

@@ -2204,6 +2204,211 @@ func (o GetAuditPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAuditPoli
 	}).(GetAuditPoliciesPolicyOutput)
 }
 
+type GetBackupsBackup struct {
+	// Backup DB Names.
+	BackupDbNames string `pulumi:"backupDbNames"`
+	// Backup Download URL.
+	BackupDownloadUrl string `pulumi:"backupDownloadUrl"`
+	// The end time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+	BackupEndTime string `pulumi:"backupEndTime"`
+	// Backup Id.
+	BackupId string `pulumi:"backupId"`
+	// Backup Intranet DownloadURL.
+	BackupIntranetDownloadUrl string `pulumi:"backupIntranetDownloadUrl"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The backup task ID.
+	BackupJobId string `pulumi:"backupJobId"`
+	// Backup Method.
+	BackupMethod string `pulumi:"backupMethod"`
+	// Backup Mode.
+	BackupMode string `pulumi:"backupMode"`
+	// Backup Size.
+	BackupSize int `pulumi:"backupSize"`
+	// The start time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+	BackupStartTime string `pulumi:"backupStartTime"`
+	// Backup Type.
+	BackupType string `pulumi:"backupType"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetBackupsBackupInput is an input type that accepts GetBackupsBackupArgs and GetBackupsBackupOutput values.
+// You can construct a concrete instance of `GetBackupsBackupInput` via:
+//
+//	GetBackupsBackupArgs{...}
+type GetBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetBackupsBackupOutput() GetBackupsBackupOutput
+	ToGetBackupsBackupOutputWithContext(context.Context) GetBackupsBackupOutput
+}
+
+type GetBackupsBackupArgs struct {
+	// Backup DB Names.
+	BackupDbNames pulumi.StringInput `pulumi:"backupDbNames"`
+	// Backup Download URL.
+	BackupDownloadUrl pulumi.StringInput `pulumi:"backupDownloadUrl"`
+	// The end time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+	BackupEndTime pulumi.StringInput `pulumi:"backupEndTime"`
+	// Backup Id.
+	BackupId pulumi.StringInput `pulumi:"backupId"`
+	// Backup Intranet DownloadURL.
+	BackupIntranetDownloadUrl pulumi.StringInput `pulumi:"backupIntranetDownloadUrl"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The backup task ID.
+	BackupJobId pulumi.StringInput `pulumi:"backupJobId"`
+	// Backup Method.
+	BackupMethod pulumi.StringInput `pulumi:"backupMethod"`
+	// Backup Mode.
+	BackupMode pulumi.StringInput `pulumi:"backupMode"`
+	// Backup Size.
+	BackupSize pulumi.IntInput `pulumi:"backupSize"`
+	// The start time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+	BackupStartTime pulumi.StringInput `pulumi:"backupStartTime"`
+	// Backup Type.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupsBackup)(nil)).Elem()
+}
+
+func (i GetBackupsBackupArgs) ToGetBackupsBackupOutput() GetBackupsBackupOutput {
+	return i.ToGetBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetBackupsBackupArgs) ToGetBackupsBackupOutputWithContext(ctx context.Context) GetBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupsBackupOutput)
+}
+
+// GetBackupsBackupArrayInput is an input type that accepts GetBackupsBackupArray and GetBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetBackupsBackupArrayInput` via:
+//
+//	GetBackupsBackupArray{ GetBackupsBackupArgs{...} }
+type GetBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupsBackupArrayOutput() GetBackupsBackupArrayOutput
+	ToGetBackupsBackupArrayOutputWithContext(context.Context) GetBackupsBackupArrayOutput
+}
+
+type GetBackupsBackupArray []GetBackupsBackupInput
+
+func (GetBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupsBackup)(nil)).Elem()
+}
+
+func (i GetBackupsBackupArray) ToGetBackupsBackupArrayOutput() GetBackupsBackupArrayOutput {
+	return i.ToGetBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupsBackupArray) ToGetBackupsBackupArrayOutputWithContext(ctx context.Context) GetBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupsBackupArrayOutput)
+}
+
+type GetBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupsBackup)(nil)).Elem()
+}
+
+func (o GetBackupsBackupOutput) ToGetBackupsBackupOutput() GetBackupsBackupOutput {
+	return o
+}
+
+func (o GetBackupsBackupOutput) ToGetBackupsBackupOutputWithContext(ctx context.Context) GetBackupsBackupOutput {
+	return o
+}
+
+// Backup DB Names.
+func (o GetBackupsBackupOutput) BackupDbNames() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupDbNames }).(pulumi.StringOutput)
+}
+
+// Backup Download URL.
+func (o GetBackupsBackupOutput) BackupDownloadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupDownloadUrl }).(pulumi.StringOutput)
+}
+
+// The end time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+func (o GetBackupsBackupOutput) BackupEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupEndTime }).(pulumi.StringOutput)
+}
+
+// Backup Id.
+func (o GetBackupsBackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// Backup Intranet DownloadURL.
+func (o GetBackupsBackupOutput) BackupIntranetDownloadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupIntranetDownloadUrl }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The backup task ID.
+func (o GetBackupsBackupOutput) BackupJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupJobId }).(pulumi.StringOutput)
+}
+
+// Backup Method.
+func (o GetBackupsBackupOutput) BackupMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupMethod }).(pulumi.StringOutput)
+}
+
+// Backup Mode.
+func (o GetBackupsBackupOutput) BackupMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupMode }).(pulumi.StringOutput)
+}
+
+// Backup Size.
+func (o GetBackupsBackupOutput) BackupSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupsBackup) int { return v.BackupSize }).(pulumi.IntOutput)
+}
+
+// The start time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+func (o GetBackupsBackupOutput) BackupStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupStartTime }).(pulumi.StringOutput)
+}
+
+// Backup Type.
+func (o GetBackupsBackupOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetBackupsBackupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetBackupsBackupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupsBackup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupsBackup)(nil)).Elem()
+}
+
+func (o GetBackupsBackupArrayOutput) ToGetBackupsBackupArrayOutput() GetBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetBackupsBackupArrayOutput) ToGetBackupsBackupArrayOutputWithContext(ctx context.Context) GetBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupsBackup {
+		return vs[0].([]GetBackupsBackup)[vs[1].(int)]
+	}).(GetBackupsBackupOutput)
+}
+
 type GetInstancesInstance struct {
 	// The zone ID.
 	AvailabilityZone string `pulumi:"availabilityZone"`
@@ -3283,6 +3488,175 @@ func (o GetServerlessInstancesInstanceSecurityIpGroupArrayOutput) Index(i pulumi
 	}).(GetServerlessInstancesInstanceSecurityIpGroupOutput)
 }
 
+type GetShardingAuditFiltersFilter struct {
+	// Audit state. Valid values: `enable`, `disabled`.
+	AuditStatus string `pulumi:"auditStatus"`
+	// The ID of the sharding cluster instance.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The type of logs collected by the audit log feature of the instance. When every node role shares the same filter, this is that common value (for example `admin,slow`); otherwise it is the API's per-role merged view (for example `mongos@admin,slow-db@admin`).
+	Filter string `pulumi:"filter"`
+	// The hot storage duration of the audit log, in days.
+	HotStoragePeriod int `pulumi:"hotStoragePeriod"`
+	// The ID of the Sharding Audit Filter, same as `dbInstanceId`.
+	Id string `pulumi:"id"`
+	// The region ID of the sharding cluster instance.
+	RegionId string `pulumi:"regionId"`
+	// The node role scope of the returned filter. The data source reads every node role at once, so the API returns its merged-view marker `logic` rather than a single role.
+	RoleType string `pulumi:"roleType"`
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`.
+	ServiceType string `pulumi:"serviceType"`
+	// Audit log retention duration, in days.
+	StoragePeriod int `pulumi:"storagePeriod"`
+}
+
+// GetShardingAuditFiltersFilterInput is an input type that accepts GetShardingAuditFiltersFilterArgs and GetShardingAuditFiltersFilterOutput values.
+// You can construct a concrete instance of `GetShardingAuditFiltersFilterInput` via:
+//
+//	GetShardingAuditFiltersFilterArgs{...}
+type GetShardingAuditFiltersFilterInput interface {
+	pulumi.Input
+
+	ToGetShardingAuditFiltersFilterOutput() GetShardingAuditFiltersFilterOutput
+	ToGetShardingAuditFiltersFilterOutputWithContext(context.Context) GetShardingAuditFiltersFilterOutput
+}
+
+type GetShardingAuditFiltersFilterArgs struct {
+	// Audit state. Valid values: `enable`, `disabled`.
+	AuditStatus pulumi.StringInput `pulumi:"auditStatus"`
+	// The ID of the sharding cluster instance.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The type of logs collected by the audit log feature of the instance. When every node role shares the same filter, this is that common value (for example `admin,slow`); otherwise it is the API's per-role merged view (for example `mongos@admin,slow-db@admin`).
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The hot storage duration of the audit log, in days.
+	HotStoragePeriod pulumi.IntInput `pulumi:"hotStoragePeriod"`
+	// The ID of the Sharding Audit Filter, same as `dbInstanceId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The region ID of the sharding cluster instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The node role scope of the returned filter. The data source reads every node role at once, so the API returns its merged-view marker `logic` rather than a single role.
+	RoleType pulumi.StringInput `pulumi:"roleType"`
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+	// Audit log retention duration, in days.
+	StoragePeriod pulumi.IntInput `pulumi:"storagePeriod"`
+}
+
+func (GetShardingAuditFiltersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShardingAuditFiltersFilter)(nil)).Elem()
+}
+
+func (i GetShardingAuditFiltersFilterArgs) ToGetShardingAuditFiltersFilterOutput() GetShardingAuditFiltersFilterOutput {
+	return i.ToGetShardingAuditFiltersFilterOutputWithContext(context.Background())
+}
+
+func (i GetShardingAuditFiltersFilterArgs) ToGetShardingAuditFiltersFilterOutputWithContext(ctx context.Context) GetShardingAuditFiltersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShardingAuditFiltersFilterOutput)
+}
+
+// GetShardingAuditFiltersFilterArrayInput is an input type that accepts GetShardingAuditFiltersFilterArray and GetShardingAuditFiltersFilterArrayOutput values.
+// You can construct a concrete instance of `GetShardingAuditFiltersFilterArrayInput` via:
+//
+//	GetShardingAuditFiltersFilterArray{ GetShardingAuditFiltersFilterArgs{...} }
+type GetShardingAuditFiltersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetShardingAuditFiltersFilterArrayOutput() GetShardingAuditFiltersFilterArrayOutput
+	ToGetShardingAuditFiltersFilterArrayOutputWithContext(context.Context) GetShardingAuditFiltersFilterArrayOutput
+}
+
+type GetShardingAuditFiltersFilterArray []GetShardingAuditFiltersFilterInput
+
+func (GetShardingAuditFiltersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShardingAuditFiltersFilter)(nil)).Elem()
+}
+
+func (i GetShardingAuditFiltersFilterArray) ToGetShardingAuditFiltersFilterArrayOutput() GetShardingAuditFiltersFilterArrayOutput {
+	return i.ToGetShardingAuditFiltersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetShardingAuditFiltersFilterArray) ToGetShardingAuditFiltersFilterArrayOutputWithContext(ctx context.Context) GetShardingAuditFiltersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShardingAuditFiltersFilterArrayOutput)
+}
+
+type GetShardingAuditFiltersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetShardingAuditFiltersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShardingAuditFiltersFilter)(nil)).Elem()
+}
+
+func (o GetShardingAuditFiltersFilterOutput) ToGetShardingAuditFiltersFilterOutput() GetShardingAuditFiltersFilterOutput {
+	return o
+}
+
+func (o GetShardingAuditFiltersFilterOutput) ToGetShardingAuditFiltersFilterOutputWithContext(ctx context.Context) GetShardingAuditFiltersFilterOutput {
+	return o
+}
+
+// Audit state. Valid values: `enable`, `disabled`.
+func (o GetShardingAuditFiltersFilterOutput) AuditStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.AuditStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the sharding cluster instance.
+func (o GetShardingAuditFiltersFilterOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The type of logs collected by the audit log feature of the instance. When every node role shares the same filter, this is that common value (for example `admin,slow`); otherwise it is the API's per-role merged view (for example `mongos@admin,slow-db@admin`).
+func (o GetShardingAuditFiltersFilterOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The hot storage duration of the audit log, in days.
+func (o GetShardingAuditFiltersFilterOutput) HotStoragePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) int { return v.HotStoragePeriod }).(pulumi.IntOutput)
+}
+
+// The ID of the Sharding Audit Filter, same as `dbInstanceId`.
+func (o GetShardingAuditFiltersFilterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The region ID of the sharding cluster instance.
+func (o GetShardingAuditFiltersFilterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The node role scope of the returned filter. The data source reads every node role at once, so the API returns its merged-view marker `logic` rather than a single role.
+func (o GetShardingAuditFiltersFilterOutput) RoleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.RoleType }).(pulumi.StringOutput)
+}
+
+// The edition of the audit log. Valid values: `Standard`, `V2_Standard`.
+func (o GetShardingAuditFiltersFilterOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// Audit log retention duration, in days.
+func (o GetShardingAuditFiltersFilterOutput) StoragePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetShardingAuditFiltersFilter) int { return v.StoragePeriod }).(pulumi.IntOutput)
+}
+
+type GetShardingAuditFiltersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShardingAuditFiltersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShardingAuditFiltersFilter)(nil)).Elem()
+}
+
+func (o GetShardingAuditFiltersFilterArrayOutput) ToGetShardingAuditFiltersFilterArrayOutput() GetShardingAuditFiltersFilterArrayOutput {
+	return o
+}
+
+func (o GetShardingAuditFiltersFilterArrayOutput) ToGetShardingAuditFiltersFilterArrayOutputWithContext(ctx context.Context) GetShardingAuditFiltersFilterArrayOutput {
+	return o
+}
+
+func (o GetShardingAuditFiltersFilterArrayOutput) Index(i pulumi.IntInput) GetShardingAuditFiltersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShardingAuditFiltersFilter {
+		return vs[0].([]GetShardingAuditFiltersFilter)[vs[1].(int)]
+	}).(GetShardingAuditFiltersFilterOutput)
+}
+
 type GetShardingNetworkPrivateAddressesAddress struct {
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
@@ -3796,6 +4170,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditPoliciesPolicyInput)(nil)).Elem(), GetAuditPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditPoliciesPolicyArrayInput)(nil)).Elem(), GetAuditPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupsBackupInput)(nil)).Elem(), GetBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupsBackupArrayInput)(nil)).Elem(), GetBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoInput)(nil)).Elem(), GetInstancesInstanceMongoArgs{})
@@ -3808,6 +4184,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceArrayInput)(nil)).Elem(), GetServerlessInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroupInput)(nil)).Elem(), GetServerlessInstancesInstanceSecurityIpGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroupArrayInput)(nil)).Elem(), GetServerlessInstancesInstanceSecurityIpGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingAuditFiltersFilterInput)(nil)).Elem(), GetShardingAuditFiltersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingAuditFiltersFilterArrayInput)(nil)).Elem(), GetShardingAuditFiltersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingNetworkPrivateAddressesAddressInput)(nil)).Elem(), GetShardingNetworkPrivateAddressesAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingNetworkPrivateAddressesAddressArrayInput)(nil)).Elem(), GetShardingNetworkPrivateAddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingNetworkPublicAddressesAddressInput)(nil)).Elem(), GetShardingNetworkPublicAddressesAddressArgs{})
@@ -3846,6 +4224,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAuditPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetAuditPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceMongoOutput{})
@@ -3858,6 +4238,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceSecurityIpGroupOutput{})
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceSecurityIpGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetShardingAuditFiltersFilterOutput{})
+	pulumi.RegisterOutputType(GetShardingAuditFiltersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetShardingNetworkPrivateAddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetShardingNetworkPrivateAddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetShardingNetworkPublicAddressesAddressOutput{})

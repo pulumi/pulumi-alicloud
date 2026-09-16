@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Config Aggregate Delivery can be imported using the id, e.g.
+ * Config Aggregate Delivery can be imported using the id, which consists of aggregatorId and delivery_channel_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example &lt;aggregator_id&gt;:&lt;delivery_channel_id&gt;

@@ -56,7 +56,7 @@ import (
 //
 // ## Import
 //
-// EBS Replica Pair Drill can be imported using the id, e.g.
+// EBS Replica Pair Drill can be imported using the id, which consists of pairId and replica_pair_drill_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>

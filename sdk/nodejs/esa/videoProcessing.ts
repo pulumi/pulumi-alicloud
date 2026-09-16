@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Video Processing can be imported using the id, e.g.
+ * ESA Video Processing can be imported using the id, which consists of siteId and config_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/videoProcessing:VideoProcessing example <site_id>:<config_id>

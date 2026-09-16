@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.alikafka
     /// 
     /// ## Import
     /// 
-    /// AliKafka Instance Allowed Ip Attachment can be imported using the id, e.g.
+    /// AliKafka Instance Allowed Ip Attachment can be imported using the id, which consists of instance_id, allowed_type, PortRange and allowed_ip, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example &lt;instance_id&gt;:&lt;allowed_type&gt;:&lt;port_range&gt;:&lt;allowed_ip&gt;

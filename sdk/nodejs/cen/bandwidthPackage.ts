@@ -102,11 +102,11 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
     /**
-     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      */
     declare public readonly geographicRegionAId: pulumi.Output<string>;
     /**
-     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      */
     declare public readonly geographicRegionBId: pulumi.Output<string>;
     /**
@@ -220,11 +220,11 @@ export interface BandwidthPackageState {
      */
     expiredTime?: pulumi.Input<string | undefined>;
     /**
-     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      */
     geographicRegionAId?: pulumi.Input<string | undefined>;
     /**
-     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      */
     geographicRegionBId?: pulumi.Input<string | undefined>;
     /**
@@ -285,11 +285,11 @@ export interface BandwidthPackageArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      */
     geographicRegionAId?: pulumi.Input<string | undefined>;
     /**
-     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      */
     geographicRegionBId?: pulumi.Input<string | undefined>;
     /**

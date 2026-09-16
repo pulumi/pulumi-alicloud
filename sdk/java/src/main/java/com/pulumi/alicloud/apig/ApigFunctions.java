@@ -14,17 +14,23 @@ import com.pulumi.alicloud.apig.inputs.GetPluginClassesArgs;
 import com.pulumi.alicloud.apig.inputs.GetPluginClassesPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
 import com.pulumi.alicloud.apig.inputs.GetPluginsPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+import com.pulumi.alicloud.apig.inputs.GetPoliciesPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetRoutesArgs;
 import com.pulumi.alicloud.apig.inputs.GetRoutesPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
 import com.pulumi.alicloud.apig.inputs.GetServicesPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+import com.pulumi.alicloud.apig.inputs.GetSourcesPlainArgs;
 import com.pulumi.alicloud.apig.outputs.GetAiModelProvidersResult;
 import com.pulumi.alicloud.apig.outputs.GetDomainsResult;
 import com.pulumi.alicloud.apig.outputs.GetGatewaysResult;
 import com.pulumi.alicloud.apig.outputs.GetPluginClassesResult;
 import com.pulumi.alicloud.apig.outputs.GetPluginsResult;
+import com.pulumi.alicloud.apig.outputs.GetPoliciesResult;
 import com.pulumi.alicloud.apig.outputs.GetRoutesResult;
 import com.pulumi.alicloud.apig.outputs.GetServicesResult;
+import com.pulumi.alicloud.apig.outputs.GetSourcesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -2429,6 +2435,321 @@ public final class ApigFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:apig/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies() {
+        return getPolicies(GetPoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
+        return getPoliciesPlain(GetPoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args) {
+        return getPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args) {
+        return getPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Policy available to the user.[What is Policy](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAndAttachPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", default_.policies()[0].policyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides Apig Route available to the user.[What is Route](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateHttpApiRoute)
      * 
      * &gt; **NOTE:** Available since v1.287.0.
@@ -3830,5 +4151,306 @@ public final class ApigFunctions {
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:apig/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSourcesResult> getSources() {
+        return getSources(GetSourcesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSourcesResult> getSourcesPlain() {
+        return getSourcesPlain(GetSourcesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSourcesResult> getSources(GetSourcesArgs args) {
+        return getSources(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSourcesResult> getSourcesPlain(GetSourcesPlainArgs args) {
+        return getSourcesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSourcesResult> getSources(GetSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getSources:getSources", TypeShape.of(GetSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSourcesResult> getSources(GetSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getSources:getSources", TypeShape.of(GetSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Source available to the user. [What is Source](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateSource)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ApigFunctions.getSources(GetSourcesArgs.builder()
+     *             .gatewayId("gw-cq7l5s5lhtgi6q***")
+     *             .build());
+     * 
+     *         ctx.export("firstSourceId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSourcesResult> getSourcesPlain(GetSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getSources:getSources", TypeShape.of(GetSourcesResult.class), args, Utilities.withVersion(options));
     }
 }

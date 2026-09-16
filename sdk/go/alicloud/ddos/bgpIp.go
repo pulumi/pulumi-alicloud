@@ -82,7 +82,7 @@ import (
 //
 // ## Import
 //
-// Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
+// Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, which consists of instanceId and ip, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>

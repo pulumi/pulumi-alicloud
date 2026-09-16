@@ -252,7 +252,7 @@ import (
 //
 // ## Import
 //
-// Eflo Node Group can be imported using the id, e.g.
+// Eflo Node Group can be imported using the id, which consists of clusterId and node_group_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:eflo/nodeGroup:NodeGroup example <cluster_id>:<node_group_id>

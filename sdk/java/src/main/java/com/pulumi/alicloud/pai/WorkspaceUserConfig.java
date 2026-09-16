@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PAI Workspace User Config can be imported using the id, e.g.
+ * PAI Workspace User Config can be imported using the id, which consists of categoryName and config_key, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:pai/workspaceUserConfig:WorkspaceUserConfig example &lt;category_name&gt;:&lt;config_key&gt;

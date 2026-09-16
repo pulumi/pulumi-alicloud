@@ -479,7 +479,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Sso User can be imported using the id, e.g.
+        Cloud Sso User can be imported using the id, which consists of directory_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
@@ -551,7 +551,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Sso User can be imported using the id, e.g.
+        Cloud Sso User can be imported using the id, which consists of directory_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>

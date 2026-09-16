@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN RouteMap can be imported using the id, e.g.
+    /// CEN RouteMap can be imported using the id, which consists of CenId and route_map_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/routeMap:RouteMap default &lt;cen_id&gt;:&lt;route_map_id&gt;.

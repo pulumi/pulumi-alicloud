@@ -367,7 +367,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
+        Cloud Config Aggregate Compliance Pack can be imported using the id, which consists of aggregator_id and aggregator_compliance_pack_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
@@ -447,7 +447,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
+        Cloud Config Aggregate Compliance Pack can be imported using the id, which consists of aggregator_id and aggregator_compliance_pack_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>

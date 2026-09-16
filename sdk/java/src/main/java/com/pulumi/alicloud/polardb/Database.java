@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Polar Db Database can be imported using the id, e.g.
+ * Polar Db Database can be imported using the id, which consists of dbClusterId and db_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:polardb/database:Database example &lt;db_cluster_id&gt;:&lt;db_name&gt;

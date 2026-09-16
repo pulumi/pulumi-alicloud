@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.alicloud.fc.outputs.GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo;
 import com.pulumi.alicloud.fc.outputs.GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig;
+import com.pulumi.alicloud.fc.outputs.GetV3FunctionsFunctionCustomContainerConfigRegistryConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -54,6 +55,11 @@ public final class GetV3FunctionsFunctionCustomContainerConfig {
      * 
      */
     private Integer port;
+    /**
+     * @return The configuration of the custom image registry. The data source exposes `certConfig` and `networkConfig`; `authConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+     * 
+     */
+    private List<GetV3FunctionsFunctionCustomContainerConfigRegistryConfig> registryConfigs;
     /**
      * @return The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
      * 
@@ -118,6 +124,13 @@ public final class GetV3FunctionsFunctionCustomContainerConfig {
         return this.port;
     }
     /**
+     * @return The configuration of the custom image registry. The data source exposes `certConfig` and `networkConfig`; `authConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+     * 
+     */
+    public List<GetV3FunctionsFunctionCustomContainerConfigRegistryConfig> registryConfigs() {
+        return this.registryConfigs;
+    }
+    /**
      * @return The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
      * 
      */
@@ -142,6 +155,7 @@ public final class GetV3FunctionsFunctionCustomContainerConfig {
         private GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig healthCheckConfig;
         private String image;
         private Integer port;
+        private List<GetV3FunctionsFunctionCustomContainerConfigRegistryConfig> registryConfigs;
         private String resolvedImageUri;
         public Builder() {}
         public Builder(GetV3FunctionsFunctionCustomContainerConfig defaults) {
@@ -154,6 +168,7 @@ public final class GetV3FunctionsFunctionCustomContainerConfig {
     	      this.healthCheckConfig = defaults.healthCheckConfig;
     	      this.image = defaults.image;
     	      this.port = defaults.port;
+    	      this.registryConfigs = defaults.registryConfigs;
     	      this.resolvedImageUri = defaults.resolvedImageUri;
         }
 
@@ -228,6 +243,17 @@ public final class GetV3FunctionsFunctionCustomContainerConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder registryConfigs(List<GetV3FunctionsFunctionCustomContainerConfigRegistryConfig> registryConfigs) {
+            if (registryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetV3FunctionsFunctionCustomContainerConfig", "registryConfigs");
+            }
+            this.registryConfigs = registryConfigs;
+            return this;
+        }
+        public Builder registryConfigs(GetV3FunctionsFunctionCustomContainerConfigRegistryConfig... registryConfigs) {
+            return registryConfigs(List.of(registryConfigs));
+        }
+        @CustomType.Setter
         public Builder resolvedImageUri(String resolvedImageUri) {
             if (resolvedImageUri == null) {
               throw new MissingRequiredPropertyException("GetV3FunctionsFunctionCustomContainerConfig", "resolvedImageUri");
@@ -245,6 +271,7 @@ public final class GetV3FunctionsFunctionCustomContainerConfig {
             _resultValue.healthCheckConfig = healthCheckConfig;
             _resultValue.image = image;
             _resultValue.port = port;
+            _resultValue.registryConfigs = registryConfigs;
             _resultValue.resolvedImageUri = resolvedImageUri;
             return _resultValue;
         }

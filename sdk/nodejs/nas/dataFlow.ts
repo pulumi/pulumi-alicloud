@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * File Storage (NAS) Data Flow can be imported using the id, e.g.
+ * File Storage (NAS) Data Flow can be imported using the id, which consists of fileSystemId and data_flow_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>

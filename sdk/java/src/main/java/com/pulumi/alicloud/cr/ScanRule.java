@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CR Scan Rule can be imported using the id, e.g.
+ * CR Scan Rule can be imported using the id, which consists of instanceId and scan_rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cr/scanRule:ScanRule example &lt;instance_id&gt;:&lt;scan_rule_id&gt;

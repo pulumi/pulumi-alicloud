@@ -271,7 +271,7 @@ class StreamingDataService(pulumi.CustomResource):
 
         ## Import
 
-        AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, which consists of db_instance_id and service_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
@@ -344,7 +344,7 @@ class StreamingDataService(pulumi.CustomResource):
 
         ## Import
 
-        AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, which consists of db_instance_id and service_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>

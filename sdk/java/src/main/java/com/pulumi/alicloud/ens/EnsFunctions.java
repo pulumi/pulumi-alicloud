@@ -4,11 +4,20 @@
 package com.pulumi.alicloud.ens;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesArgs;
+import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesPlainArgs;
 import com.pulumi.alicloud.ens.inputs.GetKeyPairsArgs;
 import com.pulumi.alicloud.ens.inputs.GetKeyPairsPlainArgs;
+import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersArgs;
+import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersPlainArgs;
+import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesPlainArgs;
 import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsArgs;
 import com.pulumi.alicloud.ens.inputs.GetSecurityGroupsPlainArgs;
+import com.pulumi.alicloud.ens.outputs.GetBucketLifecyclesResult;
 import com.pulumi.alicloud.ens.outputs.GetKeyPairsResult;
+import com.pulumi.alicloud.ens.outputs.GetLoadBalancerUdpListenersResult;
+import com.pulumi.alicloud.ens.outputs.GetNetworkRouteTablesResult;
 import com.pulumi.alicloud.ens.outputs.GetSecurityGroupsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -18,6 +27,231 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EnsFunctions {
+    /**
+     * This data source provides the ENS Bucket Lifecycle rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getBucketLifecycles(GetBucketLifecyclesArgs.builder()
+     *             .bucketName("your-bucket-name")
+     *             .build());
+     * 
+     *         ctx.export("lifecycleRuleId", default_.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketLifecyclesResult> getBucketLifecycles(GetBucketLifecyclesArgs args) {
+        return getBucketLifecycles(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Bucket Lifecycle rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getBucketLifecycles(GetBucketLifecyclesArgs.builder()
+     *             .bucketName("your-bucket-name")
+     *             .build());
+     * 
+     *         ctx.export("lifecycleRuleId", default_.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBucketLifecyclesResult> getBucketLifecyclesPlain(GetBucketLifecyclesPlainArgs args) {
+        return getBucketLifecyclesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Bucket Lifecycle rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getBucketLifecycles(GetBucketLifecyclesArgs.builder()
+     *             .bucketName("your-bucket-name")
+     *             .build());
+     * 
+     *         ctx.export("lifecycleRuleId", default_.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketLifecyclesResult> getBucketLifecycles(GetBucketLifecyclesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getBucketLifecycles:getBucketLifecycles", TypeShape.of(GetBucketLifecyclesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Bucket Lifecycle rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getBucketLifecycles(GetBucketLifecyclesArgs.builder()
+     *             .bucketName("your-bucket-name")
+     *             .build());
+     * 
+     *         ctx.export("lifecycleRuleId", default_.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketLifecyclesResult> getBucketLifecycles(GetBucketLifecyclesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getBucketLifecycles:getBucketLifecycles", TypeShape.of(GetBucketLifecyclesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Bucket Lifecycle rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetBucketLifecyclesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EnsFunctions.getBucketLifecycles(GetBucketLifecyclesArgs.builder()
+     *             .bucketName("your-bucket-name")
+     *             .build());
+     * 
+     *         ctx.export("lifecycleRuleId", default_.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBucketLifecyclesResult> getBucketLifecyclesPlain(GetBucketLifecyclesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ens/getBucketLifecycles:getBucketLifecycles", TypeShape.of(GetBucketLifecyclesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
      * 
@@ -247,6 +481,886 @@ public final class EnsFunctions {
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ens/getKeyPairs:getKeyPairs", TypeShape.of(GetKeyPairsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides ENS Load Balancer Udp Listener available to the user. [What is Load Balancer Udp Listener](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createloadbalancerudplistener)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.Vswitch;
+     * import com.pulumi.alicloud.ens.VswitchArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancer;
+     * import com.pulumi.alicloud.ens.LoadBalancerArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListener;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListenerArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-chenzhou-telecom_unicom_cmcc");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()
+     *             .cidrBlock("10.0.6.0/24")
+     *             .vswitchName(name)
+     *             .ensRegionId(defaultNetwork.ensRegionId())
+     *             .networkId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultVswitch.id())
+     *             .paymentType("PayAsYouGo")
+     *             .ensRegionId(defaultVswitch.ensRegionId())
+     *             .networkId(defaultVswitch.networkId())
+     *             .loadBalancerSpec("elb.s1.small")
+     *             .build());
+     * 
+     *         var defaultLoadBalancerUdpListener = new LoadBalancerUdpListener("defaultLoadBalancerUdpListener", LoadBalancerUdpListenerArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .listenerPort(53)
+     *             .backendServerPort(53)
+     *             .description("example-udp-listener")
+     *             .status("Stopped")
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .ids(defaultLoadBalancerUdpListener.id())
+     *             .build());
+     * 
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadBalancerUdpListenersResult> getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs args) {
+        return getLoadBalancerUdpListeners(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides ENS Load Balancer Udp Listener available to the user. [What is Load Balancer Udp Listener](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createloadbalancerudplistener)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.Vswitch;
+     * import com.pulumi.alicloud.ens.VswitchArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancer;
+     * import com.pulumi.alicloud.ens.LoadBalancerArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListener;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListenerArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-chenzhou-telecom_unicom_cmcc");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()
+     *             .cidrBlock("10.0.6.0/24")
+     *             .vswitchName(name)
+     *             .ensRegionId(defaultNetwork.ensRegionId())
+     *             .networkId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultVswitch.id())
+     *             .paymentType("PayAsYouGo")
+     *             .ensRegionId(defaultVswitch.ensRegionId())
+     *             .networkId(defaultVswitch.networkId())
+     *             .loadBalancerSpec("elb.s1.small")
+     *             .build());
+     * 
+     *         var defaultLoadBalancerUdpListener = new LoadBalancerUdpListener("defaultLoadBalancerUdpListener", LoadBalancerUdpListenerArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .listenerPort(53)
+     *             .backendServerPort(53)
+     *             .description("example-udp-listener")
+     *             .status("Stopped")
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .ids(defaultLoadBalancerUdpListener.id())
+     *             .build());
+     * 
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerUdpListenersResult> getLoadBalancerUdpListenersPlain(GetLoadBalancerUdpListenersPlainArgs args) {
+        return getLoadBalancerUdpListenersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides ENS Load Balancer Udp Listener available to the user. [What is Load Balancer Udp Listener](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createloadbalancerudplistener)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.Vswitch;
+     * import com.pulumi.alicloud.ens.VswitchArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancer;
+     * import com.pulumi.alicloud.ens.LoadBalancerArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListener;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListenerArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-chenzhou-telecom_unicom_cmcc");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()
+     *             .cidrBlock("10.0.6.0/24")
+     *             .vswitchName(name)
+     *             .ensRegionId(defaultNetwork.ensRegionId())
+     *             .networkId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultVswitch.id())
+     *             .paymentType("PayAsYouGo")
+     *             .ensRegionId(defaultVswitch.ensRegionId())
+     *             .networkId(defaultVswitch.networkId())
+     *             .loadBalancerSpec("elb.s1.small")
+     *             .build());
+     * 
+     *         var defaultLoadBalancerUdpListener = new LoadBalancerUdpListener("defaultLoadBalancerUdpListener", LoadBalancerUdpListenerArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .listenerPort(53)
+     *             .backendServerPort(53)
+     *             .description("example-udp-listener")
+     *             .status("Stopped")
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .ids(defaultLoadBalancerUdpListener.id())
+     *             .build());
+     * 
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadBalancerUdpListenersResult> getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getLoadBalancerUdpListeners:getLoadBalancerUdpListeners", TypeShape.of(GetLoadBalancerUdpListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides ENS Load Balancer Udp Listener available to the user. [What is Load Balancer Udp Listener](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createloadbalancerudplistener)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.Vswitch;
+     * import com.pulumi.alicloud.ens.VswitchArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancer;
+     * import com.pulumi.alicloud.ens.LoadBalancerArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListener;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListenerArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-chenzhou-telecom_unicom_cmcc");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()
+     *             .cidrBlock("10.0.6.0/24")
+     *             .vswitchName(name)
+     *             .ensRegionId(defaultNetwork.ensRegionId())
+     *             .networkId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultVswitch.id())
+     *             .paymentType("PayAsYouGo")
+     *             .ensRegionId(defaultVswitch.ensRegionId())
+     *             .networkId(defaultVswitch.networkId())
+     *             .loadBalancerSpec("elb.s1.small")
+     *             .build());
+     * 
+     *         var defaultLoadBalancerUdpListener = new LoadBalancerUdpListener("defaultLoadBalancerUdpListener", LoadBalancerUdpListenerArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .listenerPort(53)
+     *             .backendServerPort(53)
+     *             .description("example-udp-listener")
+     *             .status("Stopped")
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .ids(defaultLoadBalancerUdpListener.id())
+     *             .build());
+     * 
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadBalancerUdpListenersResult> getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getLoadBalancerUdpListeners:getLoadBalancerUdpListeners", TypeShape.of(GetLoadBalancerUdpListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides ENS Load Balancer Udp Listener available to the user. [What is Load Balancer Udp Listener](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createloadbalancerudplistener)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.Vswitch;
+     * import com.pulumi.alicloud.ens.VswitchArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancer;
+     * import com.pulumi.alicloud.ens.LoadBalancerArgs;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListener;
+     * import com.pulumi.alicloud.ens.LoadBalancerUdpListenerArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetLoadBalancerUdpListenersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-chenzhou-telecom_unicom_cmcc");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()
+     *             .cidrBlock("10.0.6.0/24")
+     *             .vswitchName(name)
+     *             .ensRegionId(defaultNetwork.ensRegionId())
+     *             .networkId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultVswitch.id())
+     *             .paymentType("PayAsYouGo")
+     *             .ensRegionId(defaultVswitch.ensRegionId())
+     *             .networkId(defaultVswitch.networkId())
+     *             .loadBalancerSpec("elb.s1.small")
+     *             .build());
+     * 
+     *         var defaultLoadBalancerUdpListener = new LoadBalancerUdpListener("defaultLoadBalancerUdpListener", LoadBalancerUdpListenerArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .listenerPort(53)
+     *             .backendServerPort(53)
+     *             .description("example-udp-listener")
+     *             .status("Stopped")
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getLoadBalancerUdpListeners(GetLoadBalancerUdpListenersArgs.builder()
+     *             .loadBalancerId(defaultLoadBalancer.id())
+     *             .ids(defaultLoadBalancerUdpListener.id())
+     *             .build());
+     * 
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerUdpListenersResult> getLoadBalancerUdpListenersPlain(GetLoadBalancerUdpListenersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ens/getLoadBalancerUdpListeners:getLoadBalancerUdpListeners", TypeShape.of(GetLoadBalancerUdpListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkRouteTablesResult> getNetworkRouteTables() {
+        return getNetworkRouteTables(GetNetworkRouteTablesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkRouteTablesResult> getNetworkRouteTablesPlain() {
+        return getNetworkRouteTablesPlain(GetNetworkRouteTablesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkRouteTablesResult> getNetworkRouteTables(GetNetworkRouteTablesArgs args) {
+        return getNetworkRouteTables(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkRouteTablesResult> getNetworkRouteTablesPlain(GetNetworkRouteTablesPlainArgs args) {
+        return getNetworkRouteTablesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkRouteTablesResult> getNetworkRouteTables(GetNetworkRouteTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getNetworkRouteTables:getNetworkRouteTables", TypeShape.of(GetNetworkRouteTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkRouteTablesResult> getNetworkRouteTables(GetNetworkRouteTablesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ens/getNetworkRouteTables:getNetworkRouteTables", TypeShape.of(GetNetworkRouteTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ENS Network Route Tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.Network;
+     * import com.pulumi.alicloud.ens.NetworkArgs;
+     * import com.pulumi.alicloud.ens.NetworkRouteTable;
+     * import com.pulumi.alicloud.ens.NetworkRouteTableArgs;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ens.inputs.GetNetworkRouteTablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var ensRegionId = config.get("ensRegionId").orElse("cn-hangzhou-31");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .networkName(name)
+     *             .description(name)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .ensRegionId(ensRegionId)
+     *             .build());
+     * 
+     *         var defaultNetworkRouteTable = new NetworkRouteTable("defaultNetworkRouteTable", NetworkRouteTableArgs.builder()
+     *             .networkId(defaultNetwork.id())
+     *             .associateType("Gateway")
+     *             .routeTableName(name)
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var default = EnsFunctions.getNetworkRouteTables(GetNetworkRouteTablesArgs.builder()
+     *             .routeTableId(defaultNetworkRouteTable.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkRouteTablesResult> getNetworkRouteTablesPlain(GetNetworkRouteTablesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ens/getNetworkRouteTables:getNetworkRouteTables", TypeShape.of(GetNetworkRouteTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the ENS Security Groups of the current Alibaba Cloud user.

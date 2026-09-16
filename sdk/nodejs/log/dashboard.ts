@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Log Dashboard can be imported using the id, e.g.
+ * Log Dashboard can be imported using the id, which consists of projectName and dashboard_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>

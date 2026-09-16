@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         public Input<string> InstanceDomain { get; set; } = null!;
 
         /// <summary>
-        /// Storage domain name.
+        /// Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
         /// </summary>
         [Input("storageDomain", required: true)]
         public Input<string> StorageDomain { get; set; } = null!;

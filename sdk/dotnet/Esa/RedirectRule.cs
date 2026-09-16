@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Redirect Rule can be imported using the id, e.g.
+    /// ESA Redirect Rule can be imported using the id, which consists of SiteId and config_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/redirectRule:RedirectRule example &lt;site_id&gt;:&lt;config_id&gt;

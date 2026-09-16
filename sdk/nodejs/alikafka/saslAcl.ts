@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Alikafka Sasl Acl can be imported using the id, e.g.
+ * Alikafka Sasl Acl can be imported using the id, which consists of instance_id, username, acl_resource_type, acl_resource_name, aclResourcePatternType and acl_operation_type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example <instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>

@@ -227,7 +227,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
 
         ## Import
 
-        ESA Routine Code Deployment can be imported using the id, e.g.
+        ESA Routine Code Deployment can be imported using the id, which consists of routine_name and env, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/routineCodeDeployment:RoutineCodeDeployment example <routine_name>:<env>
@@ -286,7 +286,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
 
         ## Import
 
-        ESA Routine Code Deployment can be imported using the id, e.g.
+        ESA Routine Code Deployment can be imported using the id, which consists of routine_name and env, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/routineCodeDeployment:RoutineCodeDeployment example <routine_name>:<env>

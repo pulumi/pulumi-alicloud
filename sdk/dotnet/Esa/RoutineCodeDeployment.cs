@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Routine Code Deployment can be imported using the id, e.g.
+    /// ESA Routine Code Deployment can be imported using the id, which consists of RoutineName and env, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/routineCodeDeployment:RoutineCodeDeployment example &lt;routine_name&gt;:&lt;env&gt;

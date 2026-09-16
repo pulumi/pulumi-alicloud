@@ -90,7 +90,7 @@ import (
 //
 // ## Import
 //
-// Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Private Zone can be imported using the id, which consists of cenId and access_region_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>

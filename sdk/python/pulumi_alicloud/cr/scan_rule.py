@@ -411,7 +411,7 @@ class ScanRule(pulumi.CustomResource):
 
         ## Import
 
-        CR Scan Rule can be imported using the id, e.g.
+        CR Scan Rule can be imported using the id, which consists of instance_id and scan_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/scanRule:ScanRule example <instance_id>:<scan_rule_id>
@@ -491,7 +491,7 @@ class ScanRule(pulumi.CustomResource):
 
         ## Import
 
-        CR Scan Rule can be imported using the id, e.g.
+        CR Scan Rule can be imported using the id, which consists of instance_id and scan_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/scanRule:ScanRule example <instance_id>:<scan_rule_id>

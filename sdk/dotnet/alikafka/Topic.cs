@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.alikafka
     /// 
     /// ## Import
     /// 
-    /// Alikafka Topic can be imported using the id, e.g.
+    /// Alikafka Topic can be imported using the id, which consists of InstanceId and topic, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alikafka/topic:Topic example &lt;instance_id&gt;:&lt;topic&gt;

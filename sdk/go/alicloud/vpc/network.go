@@ -89,7 +89,7 @@ type Network struct {
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// Whether to enable the DNS hostname feature. Valid values: `ENABLED`, `DISABLED`.
 	DnsHostnameStatus pulumi.StringOutput `pulumi:"dnsHostnameStatus"`
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
@@ -214,7 +214,7 @@ type networkState struct {
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// Whether to enable the DNS hostname feature. Valid values: `ENABLED`, `DISABLED`.
 	DnsHostnameStatus *string `pulumi:"dnsHostnameStatus"`
 	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
@@ -310,7 +310,7 @@ type NetworkState struct {
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// Whether to enable the DNS hostname feature. Valid values: `ENABLED`, `DISABLED`.
 	DnsHostnameStatus pulumi.StringPtrInput
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
@@ -408,7 +408,7 @@ type networkArgs struct {
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// Whether to enable the DNS hostname feature. Valid values: `ENABLED`, `DISABLED`.
 	DnsHostnameStatus *string `pulumi:"dnsHostnameStatus"`
 	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
@@ -489,7 +489,7 @@ type NetworkArgs struct {
 	// The new description of the VPC.
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// Whether to enable the DNS hostname feature. Valid values: `ENABLED`, `DISABLED`.
 	DnsHostnameStatus pulumi.StringPtrInput
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
@@ -669,7 +669,7 @@ func (o NetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+// Whether to enable the DNS hostname feature. Valid values: `ENABLED`, `DISABLED`.
 func (o NetworkOutput) DnsHostnameStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.DnsHostnameStatus }).(pulumi.StringOutput)
 }

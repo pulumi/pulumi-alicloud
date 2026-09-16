@@ -173,7 +173,7 @@ class Kv(pulumi.CustomResource):
 
         ## Import
 
-        Dcdn Kv can be imported using the id, e.g.
+        Dcdn Kv can be imported using the id, which consists of namespace and key, e.g.
 
         ```sh
         $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
@@ -228,7 +228,7 @@ class Kv(pulumi.CustomResource):
 
         ## Import
 
-        Dcdn Kv can be imported using the id, e.g.
+        Dcdn Kv can be imported using the id, which consists of namespace and key, e.g.
 
         ```sh
         $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>

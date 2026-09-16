@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scheduled task resources. 
         /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
+        /// &gt; **NOTE:** Available since v1.72.0.
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scheduled task resources. 
         /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
+        /// &gt; **NOTE:** Available since v1.72.0.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scheduled task resources. 
         /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
+        /// &gt; **NOTE:** Available since v1.72.0.
         /// 
         /// ## Example Usage
         /// 
@@ -133,6 +133,12 @@ namespace Pulumi.AliCloud.Ess
         public string? OutputFile { get; set; }
 
         /// <summary>
+        /// The id of the scaling group to which the scheduled task belongs.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public string? ScalingGroupId { get; set; }
+
+        /// <summary>
         /// The operation to be performed when a scheduled task is triggered.
         /// </summary>
         [Input("scheduledAction")]
@@ -177,6 +183,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
+        /// The id of the scaling group to which the scheduled task belongs.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
+
+        /// <summary>
         /// The operation to be performed when a scheduled task is triggered.
         /// </summary>
         [Input("scheduledAction")]
@@ -213,6 +225,10 @@ namespace Pulumi.AliCloud.Ess
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
+        /// The id of the scaling group to which the scheduled task belongs.
+        /// </summary>
+        public readonly string? ScalingGroupId;
+        /// <summary>
         /// The operation to be performed when a scheduled task is triggered.
         /// </summary>
         public readonly string? ScheduledAction;
@@ -234,6 +250,8 @@ namespace Pulumi.AliCloud.Ess
 
             string? outputFile,
 
+            string? scalingGroupId,
+
             string? scheduledAction,
 
             string? scheduledTaskId,
@@ -245,6 +263,7 @@ namespace Pulumi.AliCloud.Ess
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            ScalingGroupId = scalingGroupId;
             ScheduledAction = scheduledAction;
             ScheduledTaskId = scheduledTaskId;
             Tasks = tasks;

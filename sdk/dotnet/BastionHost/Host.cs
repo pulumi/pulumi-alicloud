@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// ## Import
     /// 
-    /// Bastion Host Host can be imported using the id, e.g.
+    /// Bastion Host Host can be imported using the id, which consists of InstanceId and host_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:bastionhost/host:Host example &lt;instance_id&gt;:&lt;host_id&gt;

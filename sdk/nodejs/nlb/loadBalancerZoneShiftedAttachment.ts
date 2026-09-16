@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Network Load Balancer (NLB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.
+ * Network Load Balancer (NLB) Load Balancer Zone Shifted Attachment can be imported using the id, which consists of load_balancer_id, zoneId and vswitch_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment example <load_balancer_id>:<zone_id>:<vswitch_id>

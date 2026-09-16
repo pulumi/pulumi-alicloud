@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// ## Import
     /// 
-    /// Cloud Firewall Vpc Firewall Control Policy Order can be imported using the id, e.g.
+    /// Cloud Firewall Vpc Firewall Control Policy Order can be imported using the id, which consists of VpcFirewallId and acl_uuid, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cloudfirewall/vpcFirewallControlPolicyOrder:VpcFirewallControlPolicyOrder example &lt;vpc_firewall_id&gt;:&lt;acl_uuid&gt;

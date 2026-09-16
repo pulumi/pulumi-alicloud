@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Waf Ruleset can be imported using the id, e.g.
+ * ESA Waf Ruleset can be imported using the id, which consists of rulesetId and site_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/wafRuleset:WafRuleset example <ruleset_id>:<site_id>

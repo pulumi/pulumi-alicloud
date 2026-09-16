@@ -210,7 +210,7 @@ class Backup(pulumi.CustomResource):
 
         ## Import
 
-        Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup can be imported using the id, which consists of instance_id and backup_id, e.g.
 
         ```sh
         $ pulumi import alicloud:redis/backup:Backup example <instance_id>:<backup_id>
@@ -294,7 +294,7 @@ class Backup(pulumi.CustomResource):
 
         ## Import
 
-        Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup can be imported using the id, which consists of instance_id and backup_id, e.g.
 
         ```sh
         $ pulumi import alicloud:redis/backup:Backup example <instance_id>:<backup_id>

@@ -112,7 +112,7 @@ import (
 //
 // ## Import
 //
-// ESA Load Balancer can be imported using the id, e.g.
+// ESA Load Balancer can be imported using the id, which consists of siteId and load_balancer_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:esa/loadBalancer:LoadBalancer example <site_id>:<load_balancer_id>

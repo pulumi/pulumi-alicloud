@@ -170,7 +170,7 @@ import (
 //
 // ## Import
 //
-// ARMS Env Feature can be imported using the id, e.g.
+// ARMS Env Feature can be imported using the id, which consists of environmentId and env_feature_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>

@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Load Balancer can be imported using the id, e.g.
+    /// ESA Load Balancer can be imported using the id, which consists of SiteId and load_balancer_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/loadBalancer:LoadBalancer example &lt;site_id&gt;:&lt;load_balancer_id&gt;

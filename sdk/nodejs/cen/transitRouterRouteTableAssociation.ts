@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, which consists of transitRouterAttachmentId and transit_router_route_table_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>

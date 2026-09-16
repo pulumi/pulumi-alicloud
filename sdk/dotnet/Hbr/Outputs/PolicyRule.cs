@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string? RuleId;
         /// <summary>
-        /// Rule Type
+        /// Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
         /// </summary>
         public readonly string RuleType;
         /// <summary>

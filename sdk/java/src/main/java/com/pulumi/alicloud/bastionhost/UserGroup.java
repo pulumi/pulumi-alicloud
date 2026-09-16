@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Bastion Host User Group can be imported using the id, e.g.
+ * Bastion Host User Group can be imported using the id, which consists of instanceId and user_group_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:bastionhost/userGroup:UserGroup example &lt;instance_id&gt;:&lt;user_group_id&gt;

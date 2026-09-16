@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// ## Import
     /// 
-    /// Ga Bandwidth Package Attachment can be imported using the id, e.g.
+    /// Ga Bandwidth Package Attachment can be imported using the id, which consists of AcceleratorId and bandwidth_package_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example &lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;

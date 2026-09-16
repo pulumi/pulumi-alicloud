@@ -425,7 +425,7 @@ class UserProvisioning(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO User Provisioning can be imported using the id, e.g.
+        Cloud SSO User Provisioning can be imported using the id, which consists of directory_id and user_provisioning_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/userProvisioning:UserProvisioning example <directory_id>:<user_provisioning_id>
@@ -510,7 +510,7 @@ class UserProvisioning(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO User Provisioning can be imported using the id, e.g.
+        Cloud SSO User Provisioning can be imported using the id, which consists of directory_id and user_provisioning_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/userProvisioning:UserProvisioning example <directory_id>:<user_provisioning_id>

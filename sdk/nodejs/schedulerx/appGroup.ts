@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Schedulerx App Group can be imported using the id, e.g.
+ * Schedulerx App Group can be imported using the id, which consists of namespace and group_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:schedulerx/appGroup:AppGroup example <namespace>:<group_id>

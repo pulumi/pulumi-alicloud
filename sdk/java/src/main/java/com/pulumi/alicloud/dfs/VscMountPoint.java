@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, which consists of fileSystemId and mount_point_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;

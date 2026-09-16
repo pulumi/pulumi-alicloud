@@ -342,7 +342,7 @@ class AccessConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO Access Configuration can be imported using the id, e.g.
+        Cloud SSO Access Configuration can be imported using the id, which consists of directory_id and access_configuration_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
@@ -413,7 +413,7 @@ class AccessConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO Access Configuration can be imported using the id, e.g.
+        Cloud SSO Access Configuration can be imported using the id, which consists of directory_id and access_configuration_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>

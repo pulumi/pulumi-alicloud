@@ -82,6 +82,21 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     * 
+     */
+    @Import(name="certificateId")
+    private @Nullable Output<String> certificateId;
+
+    /**
+     * @return The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     * 
+     */
+    public Optional<Output<String>> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+
+    /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
      * 
      */
@@ -223,6 +238,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         this.apiVersion = $.apiVersion;
         this.authConfig = $.authConfig;
         this.certConfig = $.certConfig;
+        this.certificateId = $.certificateId;
         this.corsConfig = $.corsConfig;
         this.createTime = $.createTime;
         this.customDomainName = $.customDomainName;
@@ -334,6 +350,27 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
          */
         public Builder certConfig(V3CustomDomainCertConfigArgs certConfig) {
             return certConfig(Output.of(certConfig));
+        }
+
+        /**
+         * @param certificateId The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(@Nullable Output<String> certificateId) {
+            $.certificateId = certificateId;
+            return this;
+        }
+
+        /**
+         * @param certificateId The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(String certificateId) {
+            return certificateId(Output.of(certificateId));
         }
 
         /**

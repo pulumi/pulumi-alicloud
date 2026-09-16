@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * File Storage (NAS) Fileset can be imported using the id, e.g.
+ * File Storage (NAS) Fileset can be imported using the id, which consists of fileSystemId and fileset_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>

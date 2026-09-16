@@ -514,6 +514,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
                  auto_release_time: _builtins.int,
                  backend_servers: Sequence['outputs.GetApplicationLoadBalancersBalancerBackendServerResult'],
                  bandwidth: _builtins.int,
+                 create_time: _builtins.str,
                  create_time_stamp: _builtins.int,
                  delete_protection: _builtins.str,
                  end_time: _builtins.str,
@@ -547,6 +548,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         :param _builtins.int auto_release_time: The auto release time.
         :param Sequence['GetApplicationLoadBalancersBalancerBackendServerArgs'] backend_servers: The backend servers of the SLB.
         :param _builtins.int bandwidth: The bandwidth of the SLB.
+        :param _builtins.str create_time: The creation time of the SLB, mapped from the API `CreateTime` field.
         :param _builtins.int create_time_stamp: The create time stamp of the SLB.
         :param _builtins.str delete_protection: Whether the SLB should delete protection.
         :param _builtins.str end_time: The end time of the SLB.
@@ -569,7 +571,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         :param _builtins.str renewal_status: The renewal status of the SLB.
         :param _builtins.str resource_group_id: The Id of resource group which SLB belongs.
         :param _builtins.str slave_zone_id: The slave zone id of the SLB.
-        :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
         :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
@@ -580,6 +582,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         pulumi.set(__self__, "auto_release_time", auto_release_time)
         pulumi.set(__self__, "backend_servers", backend_servers)
         pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "create_time_stamp", create_time_stamp)
         pulumi.set(__self__, "delete_protection", delete_protection)
         pulumi.set(__self__, "end_time", end_time)
@@ -654,6 +657,14 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         The bandwidth of the SLB.
         """
         return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the SLB, mapped from the API `CreateTime` field.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="createTimeStamp")
@@ -835,7 +846,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         """
         return pulumi.get(self, "status")
 
@@ -1024,9 +1035,15 @@ class GetApplicationLoadBalancersSlbResult(dict):
                  vswitch_id: _builtins.str):
         """
         :param _builtins.str address: Service address of the SLBs.
+        :param _builtins.str creation_time: The creation time of the SLB.
         :param _builtins.str id: ID of the SLB.
+        :param _builtins.bool internet: Whether the SLB is internet-facing.
+        :param _builtins.str master_availability_zone: Master availability zone of the SLB.
+        :param _builtins.str name: The name of the SLB.
         :param _builtins.str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
-        :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param _builtins.str region_id: Region ID the SLB belongs to.
+        :param _builtins.str slave_availability_zone: Slave availability zone of the SLB.
+        :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
         :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
@@ -1056,6 +1073,9 @@ class GetApplicationLoadBalancersSlbResult(dict):
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
+        """
+        The creation time of the SLB.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
@@ -1069,16 +1089,25 @@ class GetApplicationLoadBalancersSlbResult(dict):
     @_builtins.property
     @pulumi.getter
     def internet(self) -> _builtins.bool:
+        """
+        Whether the SLB is internet-facing.
+        """
         return pulumi.get(self, "internet")
 
     @_builtins.property
     @pulumi.getter(name="masterAvailabilityZone")
     def master_availability_zone(self) -> _builtins.str:
+        """
+        Master availability zone of the SLB.
+        """
         return pulumi.get(self, "master_availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the SLB.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1092,18 +1121,24 @@ class GetApplicationLoadBalancersSlbResult(dict):
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
+        """
+        Region ID the SLB belongs to.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="slaveAvailabilityZone")
     def slave_availability_zone(self) -> _builtins.str:
+        """
+        Slave availability zone of the SLB.
+        """
         return pulumi.get(self, "slave_availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        The status of the SLB. Valid values: `active`, `inactive` and `locked`.
         """
         return pulumi.get(self, "status")
 
@@ -1821,6 +1856,7 @@ class GetLoadBalancersBalancerResult(dict):
                  auto_release_time: _builtins.int,
                  backend_servers: Sequence['outputs.GetLoadBalancersBalancerBackendServerResult'],
                  bandwidth: _builtins.int,
+                 create_time: _builtins.str,
                  create_time_stamp: _builtins.int,
                  delete_protection: _builtins.str,
                  end_time: _builtins.str,
@@ -1872,6 +1908,7 @@ class GetLoadBalancersBalancerResult(dict):
         pulumi.set(__self__, "auto_release_time", auto_release_time)
         pulumi.set(__self__, "backend_servers", backend_servers)
         pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "create_time_stamp", create_time_stamp)
         pulumi.set(__self__, "delete_protection", delete_protection)
         pulumi.set(__self__, "end_time", end_time)
@@ -1931,6 +1968,11 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
         return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="createTimeStamp")

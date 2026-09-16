@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Max Compute Quota Plan can be imported using the id, e.g.
+ * Max Compute Quota Plan can be imported using the id, which consists of nickname and plan_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:maxcompute/quotaPlan:QuotaPlan example &lt;nickname&gt;:&lt;plan_name&gt;

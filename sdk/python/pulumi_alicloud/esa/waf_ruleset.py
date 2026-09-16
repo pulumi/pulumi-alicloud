@@ -261,7 +261,7 @@ class WafRuleset(pulumi.CustomResource):
 
         ## Import
 
-        ESA Waf Ruleset can be imported using the id, e.g.
+        ESA Waf Ruleset can be imported using the id, which consists of ruleset_id and site_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/wafRuleset:WafRuleset example <ruleset_id>:<site_id>
@@ -317,7 +317,7 @@ class WafRuleset(pulumi.CustomResource):
 
         ## Import
 
-        ESA Waf Ruleset can be imported using the id, e.g.
+        ESA Waf Ruleset can be imported using the id, which consists of ruleset_id and site_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/wafRuleset:WafRuleset example <ruleset_id>:<site_id>

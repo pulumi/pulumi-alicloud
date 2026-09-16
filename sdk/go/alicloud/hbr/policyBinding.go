@@ -98,11 +98,107 @@ import (
 //
 // ```
 //
+// # ECS Instance Backup With App-Consistent Snapshot Group
+//
+// This example migrates an `hbr.ServerBackupPlan` configuration (deprecated since v1.249.0) to `hbr.PolicyBinding` using `hbr.Policy` + `advanced_options.udm_detail` with `appConsistent` and `snapshotGroup`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVault, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
+//				VaultType: pulumi.String("STANDARD"),
+//				VaultName: pulumi.Sprintf("example-value-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPolicy, err := hbr.NewPolicy(ctx, "default", &hbr.PolicyArgs{
+//				PolicyName: pulumi.Sprintf("example-value-%v", _default.Result),
+//				Rules: hbr.PolicyRuleArray{
+//					&hbr.PolicyRuleArgs{
+//						RuleType:    pulumi.String("BACKUP"),
+//						BackupType:  pulumi.String("COMPLETE"),
+//						Schedule:    pulumi.String("I|1631685600|P1D"),
+//						Retention:   pulumi.Int(7),
+//						ArchiveDays: pulumi.Int(0),
+//						VaultId:     defaultVault.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//				PolicyDescription: pulumi.String("policy example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+//				InstanceName: pulumi.Sprintf("example-value-%v", _default.Result),
+//				InstanceType: pulumi.String("ecs.g7.large"),
+//				ImageId:      pulumi.String("aliyun_2_1903_x64_7h_cor_4.0.40_alibase"),
+//				SystemDisk: []map[string]string{
+//					{
+//						"category": "cloud_essd",
+//						"size":     "40",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewPolicyBinding(ctx, "default", &hbr.PolicyBindingArgs{
+//				SourceType:   pulumi.String("UDM_ECS"),
+//				PolicyId:     defaultPolicy.ID().ToIDOutput().ToStringOutput(),
+//				DataSourceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				Disabled:     pulumi.Bool(false),
+//				AdvancedOptions: &hbr.PolicyBindingAdvancedOptionsArgs{
+//					UdmDetail: &hbr.PolicyBindingAdvancedOptionsUdmDetailArgs{
+//						AppConsistent:    pulumi.Bool(true),
+//						SnapshotGroup:    pulumi.Bool(true),
+//						RamRoleName:      pulumi.String("AliyunECSBackupRole"),
+//						PreScriptPath:    pulumi.String("/opt/prescript.sh"),
+//						PostScriptPath:   pulumi.String("/opt/postscript.sh"),
+//						EnableFsFreeze:   pulumi.Bool(true),
+//						TimeoutInSeconds: pulumi.Int(60),
+//						EnableWriters:    pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //
-// Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, which consists of policy_id, sourceType and data_source_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>

@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, which consists of TransitRouterId and transit_router_cidr_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;

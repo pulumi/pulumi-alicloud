@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:ens/bucketLifecycle:BucketLifecycle":
+		r = &BucketLifecycle{}
 	case "alicloud:ens/disk:Disk":
 		r = &Disk{}
 	case "alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment":
@@ -39,10 +41,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KeyPair{}
 	case "alicloud:ens/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
+	case "alicloud:ens/loadBalancerHttpListener:LoadBalancerHttpListener":
+		r = &LoadBalancerHttpListener{}
+	case "alicloud:ens/loadBalancerUdpListener:LoadBalancerUdpListener":
+		r = &LoadBalancerUdpListener{}
 	case "alicloud:ens/natGateway:NatGateway":
 		r = &NatGateway{}
 	case "alicloud:ens/network:Network":
 		r = &Network{}
+	case "alicloud:ens/networkRouteTable:NetworkRouteTable":
+		r = &NetworkRouteTable{}
 	case "alicloud:ens/securityGroup:SecurityGroup":
 		r = &SecurityGroup{}
 	case "alicloud:ens/snapshot:Snapshot":
@@ -62,6 +70,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/bucketLifecycle",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ens/disk",
@@ -109,12 +122,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ens/loadBalancerHttpListener",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/loadBalancerUdpListener",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ens/natGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ens/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/networkRouteTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

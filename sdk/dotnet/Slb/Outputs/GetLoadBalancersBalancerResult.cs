@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         public readonly int AutoReleaseTime;
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerBackendServerResult> BackendServers;
         public readonly int Bandwidth;
+        public readonly string CreateTime;
         public readonly int CreateTimeStamp;
         public readonly string DeleteProtection;
         public readonly string EndTime;
@@ -103,6 +104,8 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             int bandwidth,
 
+            string createTime,
+
             int createTimeStamp,
 
             string deleteProtection,
@@ -161,6 +164,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
             AutoReleaseTime = autoReleaseTime;
             BackendServers = backendServers;
             Bandwidth = bandwidth;
+            CreateTime = createTime;
             CreateTimeStamp = createTimeStamp;
             DeleteProtection = deleteProtection;
             EndTime = endTime;

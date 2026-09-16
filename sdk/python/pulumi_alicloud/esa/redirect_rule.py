@@ -486,7 +486,7 @@ class RedirectRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Redirect Rule can be imported using the id, e.g.
+        ESA Redirect Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/redirectRule:RedirectRule example <site_id>:<config_id>
@@ -577,7 +577,7 @@ class RedirectRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Redirect Rule can be imported using the id, e.g.
+        ESA Redirect Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/redirectRule:RedirectRule example <site_id>:<config_id>

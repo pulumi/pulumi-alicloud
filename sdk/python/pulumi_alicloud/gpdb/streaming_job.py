@@ -986,7 +986,7 @@ class StreamingJob(pulumi.CustomResource):
 
         ## Import
 
-        GPDB Streaming Job can be imported using the id, e.g.
+        GPDB Streaming Job can be imported using the id, which consists of db_instance_id and job_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingJob:StreamingJob example <db_instance_id>:<job_id>
@@ -1170,7 +1170,7 @@ class StreamingJob(pulumi.CustomResource):
 
         ## Import
 
-        GPDB Streaming Job can be imported using the id, e.g.
+        GPDB Streaming Job can be imported using the id, which consists of db_instance_id and job_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingJob:StreamingJob example <db_instance_id>:<job_id>

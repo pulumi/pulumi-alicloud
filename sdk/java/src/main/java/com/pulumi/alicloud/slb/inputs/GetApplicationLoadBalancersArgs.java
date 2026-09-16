@@ -64,9 +64,17 @@ public final class GetApplicationLoadBalancersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.addressType);
     }
 
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Whether to enable details of the SLB. Default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -266,14 +274,14 @@ public final class GetApplicationLoadBalancersArgs extends com.pulumi.resources.
     }
 
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -433,11 +441,23 @@ public final class GetApplicationLoadBalancersArgs extends com.pulumi.resources.
             return addressType(Output.of(addressType));
         }
 
+        /**
+         * @param enableDetails Whether to enable details of the SLB. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Whether to enable details of the SLB. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
@@ -723,7 +743,7 @@ public final class GetApplicationLoadBalancersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param status SLB current status. Possible values: `inactive`, `active` and `locked`.
+         * @param status The status of the SLB. Valid values: `active`, `inactive` and `locked`.
          * 
          * @return builder
          * 
@@ -734,7 +754,7 @@ public final class GetApplicationLoadBalancersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param status SLB current status. Possible values: `inactive`, `active` and `locked`.
+         * @param status The status of the SLB. Valid values: `active`, `inactive` and `locked`.
          * 
          * @return builder
          * 

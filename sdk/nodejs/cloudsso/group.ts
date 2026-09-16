@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud SSO Group can be imported using the id, e.g.
+ * Cloud SSO Group can be imported using the id, which consists of directoryId and group_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>

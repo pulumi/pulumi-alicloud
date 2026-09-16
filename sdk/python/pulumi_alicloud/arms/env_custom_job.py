@@ -257,7 +257,7 @@ class EnvCustomJob(pulumi.CustomResource):
 
         ## Import
 
-        ARMS Env Custom Job can be imported using the id, e.g.
+        ARMS Env Custom Job can be imported using the id, which consists of environment_id and env_custom_job_name, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/envCustomJob:EnvCustomJob example <environment_id>:<env_custom_job_name>
@@ -332,7 +332,7 @@ class EnvCustomJob(pulumi.CustomResource):
 
         ## Import
 
-        ARMS Env Custom Job can be imported using the id, e.g.
+        ARMS Env Custom Job can be imported using the id, which consists of environment_id and env_custom_job_name, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/envCustomJob:EnvCustomJob example <environment_id>:<env_custom_job_name>

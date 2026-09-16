@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Message Service Endpoint Acl can be imported using the id, e.g.
+ * Message Service Endpoint Acl can be imported using the id, which consists of endpoint_type, aclStrategy and cidr, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:message/serviceEndpointAcl:ServiceEndpointAcl example &lt;endpoint_type&gt;:&lt;acl_strategy&gt;:&lt;cidr&gt;

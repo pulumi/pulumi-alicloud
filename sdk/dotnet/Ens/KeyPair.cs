@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ens
     /// 
     /// ## Import
     /// 
-    /// ENS Key Pair can be imported using the id, e.g.
+    /// ENS Key Pair can be imported using the id, which consists of KeyPairName and version, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ens/keyPair:KeyPair example &lt;key_pair_name&gt;:&lt;version&gt;

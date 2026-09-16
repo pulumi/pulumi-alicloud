@@ -102,7 +102,7 @@ import (
 //
 // ## Import
 //
-// Data Works Project Member can be imported using the id, e.g.
+// Data Works Project Member can be imported using the id, which consists of projectId and user_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:dataworks/projectMember:ProjectMember example <project_id>:<user_id>

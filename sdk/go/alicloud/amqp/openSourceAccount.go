@@ -133,7 +133,7 @@ import (
 //
 // ## Import
 //
-// RabbitMQ (AMQP) Open Source Account can be imported using the id, e.g.
+// RabbitMQ (AMQP) Open Source Account can be imported using the id, which consists of userName and instance_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:amqp/openSourceAccount:OpenSourceAccount example <user_name>:<instance_id>

@@ -63,9 +63,17 @@ public final class GetApplicationLoadBalancersPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.addressType);
     }
 
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Whether to enable details of the SLB. Default to `false`.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -265,14 +273,14 @@ public final class GetApplicationLoadBalancersPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public Optional<String> status() {
@@ -402,6 +410,12 @@ public final class GetApplicationLoadBalancersPlainArgs extends com.pulumi.resou
             return this;
         }
 
+        /**
+         * @param enableDetails Whether to enable details of the SLB. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;
@@ -560,7 +574,7 @@ public final class GetApplicationLoadBalancersPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param status SLB current status. Possible values: `inactive`, `active` and `locked`.
+         * @param status The status of the SLB. Valid values: `active`, `inactive` and `locked`.
          * 
          * @return builder
          * 

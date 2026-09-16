@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Log Service (SLS) Logtail Config can be imported using the id, e.g.
+ * Log Service (SLS) Logtail Config can be imported using the id, which consists of projectName and logtail_config_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:sls/logtailConfig:LogtailConfig example <project_name>:<logtail_config_name>

@@ -626,7 +626,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Import
 
-        ESA Load Balancer can be imported using the id, e.g.
+        ESA Load Balancer can be imported using the id, which consists of site_id and load_balancer_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/loadBalancer:LoadBalancer example <site_id>:<load_balancer_id>
@@ -719,7 +719,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Import
 
-        ESA Load Balancer can be imported using the id, e.g.
+        ESA Load Balancer can be imported using the id, which consists of site_id and load_balancer_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/loadBalancer:LoadBalancer example <site_id>:<load_balancer_id>

@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// ## Import
     /// 
-    /// Express Connect Traffic Qos Association can be imported using the id, e.g.
+    /// Express Connect Traffic Qos Association can be imported using the id, which consists of qos_id, InstanceId and instance_type, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation example &lt;qos_id&gt;:&lt;instance_id&gt;:&lt;instance_type&gt;

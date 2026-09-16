@@ -25,11 +25,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Omit `authType` to use the default `NORMAL`
+ *
+ * When `authType` is not set, the server defaults to `NORMAL` and the resource ID formats as `<authorized_user_id>:NORMAL`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.pvtz.UserVpcAuthorization("default", {
+ *     authorizedUserId: "123456789",
+ *     authChannel: "RESOURCE_DIRECTORY",
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
- * Private Zone User Vpc Authorization can be imported using the id, e.g.
+ * Private Zone User Vpc Authorization can be imported using the id, which consists of authorizedUserId and auth_type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
@@ -68,9 +82,9 @@ export class UserVpcAuthorization extends pulumi.CustomResource {
      */
     declare public readonly authChannel: pulumi.Output<string | undefined>;
     /**
-     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      */
-    declare public readonly authType: pulumi.Output<string | undefined>;
+    declare public readonly authType: pulumi.Output<string>;
     /**
      * The primary account ID of the user who authorizes the resource.
      */
@@ -115,7 +129,7 @@ export interface UserVpcAuthorizationState {
      */
     authChannel?: pulumi.Input<string | undefined>;
     /**
-     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      */
     authType?: pulumi.Input<string | undefined>;
     /**
@@ -133,7 +147,7 @@ export interface UserVpcAuthorizationArgs {
      */
     authChannel?: pulumi.Input<string | undefined>;
     /**
-     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      */
     authType?: pulumi.Input<string | undefined>;
     /**

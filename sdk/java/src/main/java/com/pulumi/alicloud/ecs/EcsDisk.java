@@ -100,9 +100,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/ecsDisk:EcsDisk")
 public class EcsDisk extends com.pulumi.resources.CustomResource {
+    /**
+     * The advanced features configured for the disk.
+     * 
+     */
     @Export(name="advancedFeatures", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> advancedFeatures;
 
+    /**
+     * @return The advanced features configured for the disk.
+     * 
+     */
     public Output<Optional<String>> advancedFeatures() {
         return Codegen.optional(this.advancedFeatures);
     }
@@ -125,28 +133,28 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
      * 
      */
     @Export(name="burstingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> burstingEnabled;
 
     /**
-     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
      * 
      */
     public Output<Optional<Boolean>> burstingEnabled() {
         return Codegen.optional(this.burstingEnabled);
     }
     /**
-     * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+     * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
      * 
      */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
-     * @return The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+     * @return The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
      * 
      */
     public Output<Optional<String>> category() {
@@ -254,9 +262,17 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enableAutoSnapshot() {
         return this.enableAutoSnapshot;
     }
+    /**
+     * The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     @Export(name="encryptAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptAlgorithm;
 
+    /**
+     * @return The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     public Output<Optional<String>> encryptAlgorithm() {
         return Codegen.optional(this.encryptAlgorithm);
     }

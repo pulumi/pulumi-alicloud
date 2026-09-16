@@ -168,6 +168,8 @@ type ServerGroup struct {
 	ConnectionDrainConfig ServerGroupConnectionDrainConfigOutput `pulumi:"connectionDrainConfig"`
 	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+	DrainingServers ServerGroupDrainingServerArrayOutput `pulumi:"drainingServers"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Health check configurations. See `healthCheckConfig` below.
@@ -198,10 +200,11 @@ type ServerGroup struct {
 	// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
 	// - `Ip`: allows you to add servers of by specifying IP addresses.
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
-	// The backend servers that you want to remove.
+	// The backend servers that you want to remove. See `servers` below.
 	//
 	// > **NOTE:**  You can remove at most 200 backend servers in each call.
-	// See `servers` below.
+	//
+	// > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
 	// Indicates the status of the backend server.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -211,7 +214,7 @@ type ServerGroup struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID.
 	//
-	// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+	// > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -252,6 +255,8 @@ type serverGroupState struct {
 	ConnectionDrainConfig *ServerGroupConnectionDrainConfig `pulumi:"connectionDrainConfig"`
 	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+	DrainingServers []ServerGroupDrainingServer `pulumi:"drainingServers"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// Health check configurations. See `healthCheckConfig` below.
@@ -282,10 +287,11 @@ type serverGroupState struct {
 	// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
 	// - `Ip`: allows you to add servers of by specifying IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The backend servers that you want to remove.
+	// The backend servers that you want to remove. See `servers` below.
 	//
 	// > **NOTE:**  You can remove at most 200 backend servers in each call.
-	// See `servers` below.
+	//
+	// > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
 	Servers []ServerGroupServer `pulumi:"servers"`
 	// Indicates the status of the backend server.
 	Status *string `pulumi:"status"`
@@ -295,7 +301,7 @@ type serverGroupState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	//
-	// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+	// > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -304,6 +310,8 @@ type ServerGroupState struct {
 	ConnectionDrainConfig ServerGroupConnectionDrainConfigPtrInput
 	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
 	CreateTime pulumi.StringPtrInput
+	// (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+	DrainingServers ServerGroupDrainingServerArrayInput
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// Health check configurations. See `healthCheckConfig` below.
@@ -334,10 +342,11 @@ type ServerGroupState struct {
 	// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
 	// - `Ip`: allows you to add servers of by specifying IP addresses.
 	ServerGroupType pulumi.StringPtrInput
-	// The backend servers that you want to remove.
+	// The backend servers that you want to remove. See `servers` below.
 	//
 	// > **NOTE:**  You can remove at most 200 backend servers in each call.
-	// See `servers` below.
+	//
+	// > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
 	Servers ServerGroupServerArrayInput
 	// Indicates the status of the backend server.
 	Status pulumi.StringPtrInput
@@ -347,7 +356,7 @@ type ServerGroupState struct {
 	Tags pulumi.StringMapInput
 	// The VPC ID.
 	//
-	// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+	// > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -388,10 +397,11 @@ type serverGroupArgs struct {
 	// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
 	// - `Ip`: allows you to add servers of by specifying IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The backend servers that you want to remove.
+	// The backend servers that you want to remove. See `servers` below.
 	//
 	// > **NOTE:**  You can remove at most 200 backend servers in each call.
-	// See `servers` below.
+	//
+	// > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
 	Servers []ServerGroupServer `pulumi:"servers"`
 	// The tag keys.
 	//
@@ -399,7 +409,7 @@ type serverGroupArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	//
-	// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+	// > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -437,10 +447,11 @@ type ServerGroupArgs struct {
 	// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
 	// - `Ip`: allows you to add servers of by specifying IP addresses.
 	ServerGroupType pulumi.StringPtrInput
-	// The backend servers that you want to remove.
+	// The backend servers that you want to remove. See `servers` below.
 	//
 	// > **NOTE:**  You can remove at most 200 backend servers in each call.
-	// See `servers` below.
+	//
+	// > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
 	Servers ServerGroupServerArrayInput
 	// The tag keys.
 	//
@@ -448,7 +459,7 @@ type ServerGroupArgs struct {
 	Tags pulumi.StringMapInput
 	// The VPC ID.
 	//
-	// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+	// > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 	VpcId pulumi.StringInput
 }
 
@@ -549,6 +560,11 @@ func (o ServerGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+func (o ServerGroupOutput) DrainingServers() ServerGroupDrainingServerArrayOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupDrainingServerArrayOutput { return v.DrainingServers }).(ServerGroupDrainingServerArrayOutput)
+}
+
 // Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 func (o ServerGroupOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
@@ -603,10 +619,11 @@ func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupType }).(pulumi.StringOutput)
 }
 
-// The backend servers that you want to remove.
+// The backend servers that you want to remove. See `servers` below.
 //
 // > **NOTE:**  You can remove at most 200 backend servers in each call.
-// See `servers` below.
+//
+// > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
 }
@@ -625,7 +642,7 @@ func (o ServerGroupOutput) Tags() pulumi.StringMapOutput {
 
 // The VPC ID.
 //
-// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+// > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 func (o ServerGroupOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Waf Ruleset can be imported using the id, e.g.
+ * ESA Waf Ruleset can be imported using the id, which consists of rulesetId and site_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/wafRuleset:WafRuleset example &lt;ruleset_id&gt;:&lt;site_id&gt;

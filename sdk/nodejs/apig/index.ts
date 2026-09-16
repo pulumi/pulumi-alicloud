@@ -50,6 +50,11 @@ export const getPlugins: typeof import("./getPlugins").getPlugins = null as any;
 export const getPluginsOutput: typeof import("./getPlugins").getPluginsOutput = null as any;
 utilities.lazyLoad(exports, ["getPlugins","getPluginsOutput"], () => require("./getPlugins"));
 
+export { GetPoliciesArgs, GetPoliciesResult, GetPoliciesOutputArgs } from "./getPolicies";
+export const getPolicies: typeof import("./getPolicies").getPolicies = null as any;
+export const getPoliciesOutput: typeof import("./getPolicies").getPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicies","getPoliciesOutput"], () => require("./getPolicies"));
+
 export { GetRoutesArgs, GetRoutesResult, GetRoutesOutputArgs } from "./getRoutes";
 export const getRoutes: typeof import("./getRoutes").getRoutes = null as any;
 export const getRoutesOutput: typeof import("./getRoutes").getRoutesOutput = null as any;
@@ -59,6 +64,11 @@ export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./get
 export const getServices: typeof import("./getServices").getServices = null as any;
 export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;
 utilities.lazyLoad(exports, ["getServices","getServicesOutput"], () => require("./getServices"));
+
+export { GetSourcesArgs, GetSourcesResult, GetSourcesOutputArgs } from "./getSources";
+export const getSources: typeof import("./getSources").getSources = null as any;
+export const getSourcesOutput: typeof import("./getSources").getSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getSources","getSourcesOutput"], () => require("./getSources"));
 
 export { HttpApiArgs, HttpApiState } from "./httpApi";
 export type HttpApi = import("./httpApi").HttpApi;
@@ -75,6 +85,11 @@ export type PluginClass = import("./pluginClass").PluginClass;
 export const PluginClass: typeof import("./pluginClass").PluginClass = null as any;
 utilities.lazyLoad(exports, ["PluginClass"], () => require("./pluginClass"));
 
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
 export { RouteArgs, RouteState } from "./route";
 export type Route = import("./route").Route;
 export const Route: typeof import("./route").Route = null as any;
@@ -84,6 +99,11 @@ export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+
+export { SourceArgs, SourceState } from "./source";
+export type Source = import("./source").Source;
+export const Source: typeof import("./source").Source = null as any;
+utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
 
 const _module = {
@@ -104,10 +124,14 @@ const _module = {
                 return new Plugin(name, <any>undefined, { urn })
             case "alicloud:apig/pluginClass:PluginClass":
                 return new PluginClass(name, <any>undefined, { urn })
+            case "alicloud:apig/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
             case "alicloud:apig/route:Route":
                 return new Route(name, <any>undefined, { urn })
             case "alicloud:apig/service:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "alicloud:apig/source:Source":
+                return new Source(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -120,5 +144,7 @@ pulumi.runtime.registerResourceModule("alicloud", "apig/gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/httpApi", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/plugin", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/pluginClass", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/route", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/service", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/source", _module)

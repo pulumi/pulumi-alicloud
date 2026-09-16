@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
+        /// The creation time of the SLB, mapped from the API `CreateTime` field.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The create time stamp of the SLB.
         /// </summary>
         public readonly int CreateTimeStamp;
@@ -126,7 +130,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string SlaveZoneId;
         /// <summary>
-        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
+        /// The status of the SLB. Valid values: `Active`, `Inactive` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -155,6 +159,8 @@ namespace Pulumi.AliCloud.Slb.Outputs
             ImmutableArray<Outputs.GetApplicationLoadBalancersBalancerBackendServerResult> backendServers,
 
             int bandwidth,
+
+            string createTime,
 
             int createTimeStamp,
 
@@ -214,6 +220,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
             AutoReleaseTime = autoReleaseTime;
             BackendServers = backendServers;
             Bandwidth = bandwidth;
+            CreateTime = createTime;
             CreateTimeStamp = createTimeStamp;
             DeleteProtection = deleteProtection;
             EndTime = endTime;

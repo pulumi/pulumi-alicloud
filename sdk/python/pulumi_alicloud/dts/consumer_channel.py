@@ -276,7 +276,7 @@ class ConsumerChannel(pulumi.CustomResource):
 
         ## Import
 
-        DTS Consumer Channel can be imported using the id, e.g.
+        DTS Consumer Channel can be imported using the id, which consists of dts_instance_id and consumer_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example <dts_instance_id>:<consumer_group_id>
@@ -387,7 +387,7 @@ class ConsumerChannel(pulumi.CustomResource):
 
         ## Import
 
-        DTS Consumer Channel can be imported using the id, e.g.
+        DTS Consumer Channel can be imported using the id, which consists of dts_instance_id and consumer_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example <dts_instance_id>:<consumer_group_id>

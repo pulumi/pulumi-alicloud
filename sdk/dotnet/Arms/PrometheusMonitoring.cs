@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// ## Import
     /// 
-    /// ARMS Prometheus Monitoring can be imported using the id, e.g.
+    /// ARMS Prometheus Monitoring can be imported using the id, which consists of cluster_id, MonitoringName and type, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example &lt;cluster_id&gt;:&lt;monitoring_name&gt;:&lt;type&gt;

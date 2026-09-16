@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// ## Import
     /// 
-    /// Amqp Static Account can be imported using the id, e.g.
+    /// Amqp Static Account can be imported using the id, which consists of InstanceId and access_key, e.g.
     /// 
     /// ```sh
     /// $terraform import alicloud_amqp_static_account.example &lt;instance_id&gt;:&lt;access_key&gt;

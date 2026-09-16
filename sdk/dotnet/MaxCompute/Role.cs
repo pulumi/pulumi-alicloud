@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// ## Import
     /// 
-    /// Max Compute Role can be imported using the id, e.g.
+    /// Max Compute Role can be imported using the id, which consists of ProjectName and role_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:maxcompute/role:Role example &lt;project_name&gt;:&lt;role_name&gt;

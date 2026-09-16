@@ -413,7 +413,7 @@ class AggregateRemediation(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config (Config) Aggregate Remediation can be imported using the id, e.g.
+        Cloud Config (Config) Aggregate Remediation can be imported using the id, which consists of aggregator_id and remediation_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregateRemediation:AggregateRemediation example <aggregator_id>:<remediation_id>
@@ -531,7 +531,7 @@ class AggregateRemediation(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config (Config) Aggregate Remediation can be imported using the id, e.g.
+        Cloud Config (Config) Aggregate Remediation can be imported using the id, which consists of aggregator_id and remediation_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregateRemediation:AggregateRemediation example <aggregator_id>:<remediation_id>

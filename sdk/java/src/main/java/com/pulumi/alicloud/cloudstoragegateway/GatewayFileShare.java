@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
+ * Cloud Storage Gateway Gateway File Share can be imported using the id, which consists of gatewayId and index_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example &lt;gateway_id&gt;:&lt;index_id&gt;

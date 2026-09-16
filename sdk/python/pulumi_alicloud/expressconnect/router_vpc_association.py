@@ -294,7 +294,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Router Express Connect Router Vpc Association can be imported using the id, e.g.
+        Express Connect Router Express Connect Router Vpc Association can be imported using the id, which consists of ecr_id, association_id and vpc_id, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation example <ecr_id>:<association_id>:<vpc_id>
@@ -355,7 +355,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Express Connect Router Express Connect Router Vpc Association can be imported using the id, e.g.
+        Express Connect Router Express Connect Router Vpc Association can be imported using the id, which consists of ecr_id, association_id and vpc_id, e.g.
 
         ```sh
         $ pulumi import alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation example <ecr_id>:<association_id>:<vpc_id>

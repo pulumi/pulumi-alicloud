@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CR.Outputs
         /// </summary>
         public readonly string InstanceDomain;
         /// <summary>
-        /// Storage domain name.
+        /// Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
         /// </summary>
         public readonly string StorageDomain;
 

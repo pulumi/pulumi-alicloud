@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DCDN domain config can be imported using the id, e.g.
+ * DCDN domain config can be imported using the id, which consists of domain_name, functionName and config_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:dcdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>

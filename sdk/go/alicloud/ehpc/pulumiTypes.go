@@ -4506,6 +4506,148 @@ func (o GetJobTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTempl
 	}).(GetJobTemplatesTemplateOutput)
 }
 
+type GetUsersUser struct {
+	// The cluster ID.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the permission group.
+	Group string `pulumi:"group"`
+	// The permission group ID.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the User.
+	Id string `pulumi:"id"`
+	// The user ID.
+	UserId string `pulumi:"userId"`
+	// The username.
+	UserName string `pulumi:"userName"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//	GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	// The cluster ID.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the permission group.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The permission group ID.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the User.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The user ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// The username.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+// The cluster ID.
+func (o GetUsersUserOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the permission group.
+func (o GetUsersUserOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// The permission group ID.
+func (o GetUsersUserOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the User.
+func (o GetUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The user ID.
+func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The username.
+func (o GetUsersUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAdditionalVolumeInput)(nil)).Elem(), ClusterAdditionalVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAdditionalVolumeArrayInput)(nil)).Elem(), ClusterAdditionalVolumeArray{})
@@ -4559,6 +4701,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterPostInstallScriptArrayInput)(nil)).Elem(), GetClustersClusterPostInstallScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplatesTemplateInput)(nil)).Elem(), GetJobTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplatesTemplateArrayInput)(nil)).Elem(), GetJobTemplatesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(ClusterAdditionalVolumeOutput{})
 	pulumi.RegisterOutputType(ClusterAdditionalVolumeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAdditionalVolumeRoleOutput{})
@@ -4611,4 +4755,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClustersClusterPostInstallScriptArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetJobTemplatesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

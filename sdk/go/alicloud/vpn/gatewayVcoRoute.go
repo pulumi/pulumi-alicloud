@@ -157,7 +157,7 @@ import (
 //
 // ## Import
 //
-// VPN Gateway Vco Route can be imported using the id, e.g.
+// VPN Gateway Vco Route can be imported using the id, which consists of vpn_connection_id, route_dest, nextHop and weight, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>

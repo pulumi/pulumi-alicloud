@@ -51,6 +51,7 @@ from .get_public_ip_address_pool_cidr_blocks import *
 from .get_public_ip_address_pools import *
 from .get_route_entries import *
 from .get_route_tables import *
+from .get_route_target_groups import *
 from .get_router_interfaces import *
 from .get_snat_entries import *
 from .get_ssl_vpn_client_certs import *
@@ -96,6 +97,7 @@ from .public_ip_address_pool_cidr_block import *
 from .route_entry import *
 from .route_table import *
 from .route_table_attachment import *
+from .route_target_group import *
 from .router_interface import *
 from .router_interface_connection import *
 from .snat_entry import *

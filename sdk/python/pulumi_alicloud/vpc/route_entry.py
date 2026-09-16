@@ -371,7 +371,7 @@ class RouteEntry(pulumi.CustomResource):
 
         ## Import
 
-        Route Entry can be imported using the id, e.g.
+        Route Entry can be imported using the id, which consists of route_table_id, router_id, destination_cidrblock, nexthop_type and nexthop_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
@@ -470,7 +470,7 @@ class RouteEntry(pulumi.CustomResource):
 
         ## Import
 
-        Route Entry can be imported using the id, e.g.
+        Route Entry can be imported using the id, which consists of route_table_id, router_id, destination_cidrblock, nexthop_type and nexthop_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>

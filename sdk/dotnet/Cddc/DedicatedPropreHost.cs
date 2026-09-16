@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Cddc
     /// 
     /// ## Import
     /// 
-    /// CDDC Dedicated Propre Host can be imported using the id, e.g.
+    /// CDDC Dedicated Propre Host can be imported using the id, which consists of DedicatedHostGroupId and ecs_instance_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example &lt;dedicated_host_group_id&gt;:&lt;ecs_instance_id&gt;

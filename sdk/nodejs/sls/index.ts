@@ -45,6 +45,11 @@ export const getMachineGroups: typeof import("./getMachineGroups").getMachineGro
 export const getMachineGroupsOutput: typeof import("./getMachineGroups").getMachineGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getMachineGroups","getMachineGroupsOutput"], () => require("./getMachineGroups"));
 
+export { GetMetricStoresArgs, GetMetricStoresResult, GetMetricStoresOutputArgs } from "./getMetricStores";
+export const getMetricStores: typeof import("./getMetricStores").getMetricStores = null as any;
+export const getMetricStoresOutput: typeof import("./getMetricStores").getMetricStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getMetricStores","getMetricStoresOutput"], () => require("./getMetricStores"));
+
 export { IndexArgs, IndexState } from "./index_";
 export type Index = import("./index_").Index;
 export const Index: typeof import("./index_").Index = null as any;
@@ -64,6 +69,11 @@ export { MachineGroupArgs, MachineGroupState } from "./machineGroup";
 export type MachineGroup = import("./machineGroup").MachineGroup;
 export const MachineGroup: typeof import("./machineGroup").MachineGroup = null as any;
 utilities.lazyLoad(exports, ["MachineGroup"], () => require("./machineGroup"));
+
+export { MetricStoreArgs, MetricStoreState } from "./metricStore";
+export type MetricStore = import("./metricStore").MetricStore;
+export const MetricStore: typeof import("./metricStore").MetricStore = null as any;
+utilities.lazyLoad(exports, ["MetricStore"], () => require("./metricStore"));
 
 export { OssExportSinkArgs, OssExportSinkState } from "./ossExportSink";
 export type OssExportSink = import("./ossExportSink").OssExportSink;
@@ -94,6 +104,8 @@ const _module = {
                 return new LogtailPipelineConfig(name, <any>undefined, { urn })
             case "alicloud:sls/machineGroup:MachineGroup":
                 return new MachineGroup(name, <any>undefined, { urn })
+            case "alicloud:sls/metricStore:MetricStore":
+                return new MetricStore(name, <any>undefined, { urn })
             case "alicloud:sls/ossExportSink:OssExportSink":
                 return new OssExportSink(name, <any>undefined, { urn })
             case "alicloud:sls/scheduledSql:ScheduledSql":
@@ -110,5 +122,6 @@ pulumi.runtime.registerResourceModule("alicloud", "sls/index", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/logtailConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/logtailPipelineConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/machineGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/metricStore", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/ossExportSink", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/scheduledSql", _module)

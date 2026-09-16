@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Config (Config) Aggregate Remediation can be imported using the id, e.g.
+ * Cloud Config (Config) Aggregate Remediation can be imported using the id, which consists of aggregatorId and remediation_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cfg/aggregateRemediation:AggregateRemediation example &lt;aggregator_id&gt;:&lt;remediation_id&gt;

@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.222.0.
 //
+// > **NOTE:** This resource manages the full logging lifecycle of the bucket: creating or updating it enables logging (PutBucketLogging), and destroying it (or removing it from the configuration) disables logging (DeleteBucketLogging). If the same bucket is also managed by `oss.Bucket`, add `lifecycle { ignoreChanges = [logging] }` to the bucket resource; otherwise `oss.Bucket` will keep disabling the logging configuration set by this resource on every apply.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -49,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucket(ctx, "CreateLoggingBucket", &oss.BucketArgs{
+//			createLoggingBucket, err := oss.NewBucket(ctx, "CreateLoggingBucket", &oss.BucketArgs{
 //				StorageClass: pulumi.String("Standard"),
 //				Bucket:       pulumi.String("resource-example-logging-153"),
 //			})
@@ -58,7 +60,7 @@ import (
 //			}
 //			_, err = oss.NewBucketLogging(ctx, "default", &oss.BucketLoggingArgs{
 //				Bucket:       createBucket.ID().ToIDOutput().ToStringOutput(),
-//				TargetBucket: createBucket.ID().ToIDOutput().ToStringOutput(),
+//				TargetBucket: createLoggingBucket.ID().ToIDOutput().ToStringOutput(),
 //				TargetPrefix: pulumi.String("log/"),
 //				LoggingRole:  pulumi.String("example-role"),
 //			})

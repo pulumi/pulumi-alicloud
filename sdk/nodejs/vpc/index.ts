@@ -230,6 +230,11 @@ export const getRouteTables: typeof import("./getRouteTables").getRouteTables = 
 export const getRouteTablesOutput: typeof import("./getRouteTables").getRouteTablesOutput = null as any;
 utilities.lazyLoad(exports, ["getRouteTables","getRouteTablesOutput"], () => require("./getRouteTables"));
 
+export { GetRouteTargetGroupsArgs, GetRouteTargetGroupsResult, GetRouteTargetGroupsOutputArgs } from "./getRouteTargetGroups";
+export const getRouteTargetGroups: typeof import("./getRouteTargetGroups").getRouteTargetGroups = null as any;
+export const getRouteTargetGroupsOutput: typeof import("./getRouteTargetGroups").getRouteTargetGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getRouteTargetGroups","getRouteTargetGroupsOutput"], () => require("./getRouteTargetGroups"));
+
 export { GetRouterInterfacesArgs, GetRouterInterfacesResult, GetRouterInterfacesOutputArgs } from "./getRouterInterfaces";
 export const getRouterInterfaces: typeof import("./getRouterInterfaces").getRouterInterfaces = null as any;
 export const getRouterInterfacesOutput: typeof import("./getRouterInterfaces").getRouterInterfacesOutput = null as any;
@@ -455,6 +460,11 @@ export type RouteTableAttachment = import("./routeTableAttachment").RouteTableAt
 export const RouteTableAttachment: typeof import("./routeTableAttachment").RouteTableAttachment = null as any;
 utilities.lazyLoad(exports, ["RouteTableAttachment"], () => require("./routeTableAttachment"));
 
+export { RouteTargetGroupArgs, RouteTargetGroupState } from "./routeTargetGroup";
+export type RouteTargetGroup = import("./routeTargetGroup").RouteTargetGroup;
+export const RouteTargetGroup: typeof import("./routeTargetGroup").RouteTargetGroup = null as any;
+utilities.lazyLoad(exports, ["RouteTargetGroup"], () => require("./routeTargetGroup"));
+
 export { RouterInterfaceArgs, RouterInterfaceState } from "./routerInterface";
 export type RouterInterface = import("./routerInterface").RouterInterface;
 export const RouterInterface: typeof import("./routerInterface").RouterInterface = null as any;
@@ -617,6 +627,8 @@ const _module = {
                 return new RouteTable(name, <any>undefined, { urn })
             case "alicloud:vpc/routeTableAttachment:RouteTableAttachment":
                 return new RouteTableAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/routeTargetGroup:RouteTargetGroup":
+                return new RouteTargetGroup(name, <any>undefined, { urn })
             case "alicloud:vpc/routerInterface:RouterInterface":
                 return new RouterInterface(name, <any>undefined, { urn })
             case "alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection":
@@ -694,6 +706,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/publicIpAddressPoolCidrBl
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routeEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routeTable", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routeTableAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/routeTargetGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routerInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routerInterfaceConnection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/snatEntry", _module)

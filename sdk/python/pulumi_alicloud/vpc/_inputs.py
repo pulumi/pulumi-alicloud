@@ -37,6 +37,8 @@ __all__ = [
     'PrefixListEntryArgsDict',
     'PrefixListPrefixListAssociationArgs',
     'PrefixListPrefixListAssociationArgsDict',
+    'RouteTargetGroupRouteTargetMemberListArgs',
+    'RouteTargetGroupRouteTargetMemberListArgsDict',
     'TrafficMirrorFilterEgressRuleArgs',
     'TrafficMirrorFilterEgressRuleArgsDict',
     'TrafficMirrorFilterIngressRuleArgs',
@@ -47,6 +49,8 @@ __all__ = [
     'VPCRouteEntryNextHopNextHopRelatedInfoArgsDict',
     'VPCRouteEntryRoutePublishTargetArgs',
     'VPCRouteEntryRoutePublishTargetArgsDict',
+    'GetRouteTargetGroupsRouteTargetMemberListArgs',
+    'GetRouteTargetGroupsRouteTargetMemberListArgsDict',
 ]
 
 class DhcpOptionsSetAssociateVpcArgsDict(TypedDict):
@@ -1262,6 +1266,127 @@ class PrefixListPrefixListAssociationArgs:
         pulumi.set(self, "status", value)
 
 
+class RouteTargetGroupRouteTargetMemberListArgsDict(TypedDict):
+    member_id: pulumi.Input[_builtins.str]
+    """
+    The instance ID of the route target member.
+    """
+    member_type: pulumi.Input[_builtins.str]
+    """
+    The instance type of the route target configuration. The following type is currently supported:
+    - GatewayLoadBalancerEndpoint.
+    """
+    weight: pulumi.Input[_builtins.int]
+    """
+    Sets the weight attribute for the current route target configuration.
+
+    In active-standby mode, the weight can only be set to 0 or 100:
+    - Only one route target configuration can be set to 100, serving as the active instance.
+    - Only one route target configuration can be set to 0, serving as the standby instance.
+    """
+    enable_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+    """
+    health_check_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The health check status of the current route target configuration.
+    """
+
+@pulumi.input_type
+class RouteTargetGroupRouteTargetMemberListArgs:
+    def __init__(__self__, *,
+                 member_id: pulumi.Input[_builtins.str],
+                 member_type: pulumi.Input[_builtins.str],
+                 weight: pulumi.Input[_builtins.int],
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] member_id: The instance ID of the route target member.
+        :param pulumi.Input[_builtins.str] member_type: The instance type of the route target configuration. The following type is currently supported:
+               - GatewayLoadBalancerEndpoint.
+        :param pulumi.Input[_builtins.int] weight: Sets the weight attribute for the current route target configuration.
+               
+               In active-standby mode, the weight can only be set to 0 or 100:
+               - Only one route target configuration can be set to 100, serving as the active instance.
+               - Only one route target configuration can be set to 0, serving as the standby instance.
+        :param pulumi.Input[_builtins.str] enable_status: Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        :param pulumi.Input[_builtins.str] health_check_status: The health check status of the current route target configuration.
+        """
+        pulumi.set(__self__, "member_id", member_id)
+        pulumi.set(__self__, "member_type", member_type)
+        pulumi.set(__self__, "weight", weight)
+        if enable_status is not None:
+            pulumi.set(__self__, "enable_status", enable_status)
+        if health_check_status is not None:
+            pulumi.set(__self__, "health_check_status", health_check_status)
+
+    @_builtins.property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The instance ID of the route target member.
+        """
+        return pulumi.get(self, "member_id")
+
+    @member_id.setter
+    def member_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "member_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The instance type of the route target configuration. The following type is currently supported:
+        - GatewayLoadBalancerEndpoint.
+        """
+        return pulumi.get(self, "member_type")
+
+    @member_type.setter
+    def member_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "member_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[_builtins.int]:
+        """
+        Sets the weight attribute for the current route target configuration.
+
+        In active-standby mode, the weight can only be set to 0 or 100:
+        - Only one route target configuration can be set to 100, serving as the active instance.
+        - Only one route target configuration can be set to 0, serving as the standby instance.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "weight", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableStatus")
+    def enable_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        """
+        return pulumi.get(self, "enable_status")
+
+    @enable_status.setter
+    def enable_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "enable_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckStatus")
+    def health_check_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The health check status of the current route target configuration.
+        """
+        return pulumi.get(self, "health_check_status")
+
+    @health_check_status.setter
+    def health_check_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "health_check_status", value)
+
+
 class TrafficMirrorFilterEgressRuleArgsDict(TypedDict):
     action: pulumi.Input[_builtins.str]
     protocol: pulumi.Input[_builtins.str]
@@ -1744,5 +1869,109 @@ class VPCRouteEntryRoutePublishTargetArgs:
     @target_instance_id.setter
     def target_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_id", value)
+
+
+class GetRouteTargetGroupsRouteTargetMemberListArgsDict(TypedDict):
+    enable_status: _builtins.str
+    """
+    Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+    """
+    health_check_status: _builtins.str
+    """
+    The health check status of the current route target configuration.
+    """
+    member_id: _builtins.str
+    """
+    The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+    """
+    member_type: _builtins.str
+    """
+    The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+    """
+    weight: _builtins.int
+    """
+    Sets the weight attribute for the current route target configuration.
+    """
+
+@pulumi.input_type
+class GetRouteTargetGroupsRouteTargetMemberListArgs:
+    def __init__(__self__, *,
+                 enable_status: _builtins.str,
+                 health_check_status: _builtins.str,
+                 member_id: _builtins.str,
+                 member_type: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str enable_status: Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        :param _builtins.str health_check_status: The health check status of the current route target configuration.
+        :param _builtins.str member_id: The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+        :param _builtins.str member_type: The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+        :param _builtins.int weight: Sets the weight attribute for the current route target configuration.
+        """
+        pulumi.set(__self__, "enable_status", enable_status)
+        pulumi.set(__self__, "health_check_status", health_check_status)
+        pulumi.set(__self__, "member_id", member_id)
+        pulumi.set(__self__, "member_type", member_type)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter(name="enableStatus")
+    def enable_status(self) -> _builtins.str:
+        """
+        Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        """
+        return pulumi.get(self, "enable_status")
+
+    @enable_status.setter
+    def enable_status(self, value: _builtins.str):
+        pulumi.set(self, "enable_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckStatus")
+    def health_check_status(self) -> _builtins.str:
+        """
+        The health check status of the current route target configuration.
+        """
+        return pulumi.get(self, "health_check_status")
+
+    @health_check_status.setter
+    def health_check_status(self, value: _builtins.str):
+        pulumi.set(self, "health_check_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> _builtins.str:
+        """
+        The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+        """
+        return pulumi.get(self, "member_id")
+
+    @member_id.setter
+    def member_id(self, value: _builtins.str):
+        pulumi.set(self, "member_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> _builtins.str:
+        """
+        The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+        """
+        return pulumi.get(self, "member_type")
+
+    @member_type.setter
+    def member_type(self, value: _builtins.str):
+        pulumi.set(self, "member_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Sets the weight attribute for the current route target configuration.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: _builtins.int):
+        pulumi.set(self, "weight", value)
 
 

@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// ## Import
     /// 
-    /// Polar Db Database can be imported using the id, e.g.
+    /// Polar Db Database can be imported using the id, which consists of DbClusterId and db_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:polardb/database:Database example &lt;db_cluster_id&gt;:&lt;db_name&gt;

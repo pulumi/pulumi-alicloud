@@ -158,14 +158,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule Type
+     * Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
      * 
      */
     @Import(name="ruleType", required=true)
     private Output<String> ruleType;
 
     /**
-     * @return Rule Type
+     * @return Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
      * 
      */
     public Output<String> ruleType() {
@@ -463,7 +463,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleType Rule Type
+         * @param ruleType Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleType Rule Type
+         * @param ruleType Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
          * 
          * @return builder
          * 

@@ -290,7 +290,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, e.g.
+        EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, which consists of bandwidth_package_id and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
@@ -358,7 +358,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, e.g.
+        EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, which consists of bandwidth_package_id and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>

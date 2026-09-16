@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Express Connect Grant Rule To Cen can be imported using the id, e.g.
+ * Express Connect Grant Rule To Cen can be imported using the id, which consists of cen_id, cenOwnerId and instance_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:expressconnect/grantRuleToCen:GrantRuleToCen example &lt;cen_id&gt;:&lt;cen_owner_id&gt;:&lt;instance_id&gt;

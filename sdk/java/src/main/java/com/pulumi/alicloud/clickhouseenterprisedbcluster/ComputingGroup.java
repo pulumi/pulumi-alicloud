@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Click House Enterprise Db Cluster Computing Group can be imported using the id, e.g.
+ * Click House Enterprise Db Cluster Computing Group can be imported using the id, which consists of dbInstanceId and computing_group_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup example &lt;db_instance_id&gt;:&lt;computing_group_id&gt;

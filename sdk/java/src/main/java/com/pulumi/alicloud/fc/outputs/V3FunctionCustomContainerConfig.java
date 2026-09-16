@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.alicloud.fc.outputs.V3FunctionCustomContainerConfigAccelerationInfo;
 import com.pulumi.alicloud.fc.outputs.V3FunctionCustomContainerConfigHealthCheckConfig;
+import com.pulumi.alicloud.fc.outputs.V3FunctionCustomContainerConfigRegistryConfig;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
@@ -67,6 +68,11 @@ public final class V3FunctionCustomContainerConfig {
      * 
      */
     private @Nullable Integer port;
+    /**
+     * @return The configuration of the custom image registry. See `registryConfig` below.
+     * 
+     */
+    private @Nullable V3FunctionCustomContainerConfigRegistryConfig registryConfig;
     /**
      * @return The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
      * 
@@ -143,6 +149,13 @@ public final class V3FunctionCustomContainerConfig {
         return Optional.ofNullable(this.port);
     }
     /**
+     * @return The configuration of the custom image registry. See `registryConfig` below.
+     * 
+     */
+    public Optional<V3FunctionCustomContainerConfigRegistryConfig> registryConfig() {
+        return Optional.ofNullable(this.registryConfig);
+    }
+    /**
      * @return The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
      * 
      */
@@ -167,6 +180,7 @@ public final class V3FunctionCustomContainerConfig {
         private @Nullable V3FunctionCustomContainerConfigHealthCheckConfig healthCheckConfig;
         private @Nullable String image;
         private @Nullable Integer port;
+        private @Nullable V3FunctionCustomContainerConfigRegistryConfig registryConfig;
         private @Nullable String resolvedImageUri;
         public Builder() {}
         public Builder(V3FunctionCustomContainerConfig defaults) {
@@ -179,6 +193,7 @@ public final class V3FunctionCustomContainerConfig {
     	      this.healthCheckConfig = defaults.healthCheckConfig;
     	      this.image = defaults.image;
     	      this.port = defaults.port;
+    	      this.registryConfig = defaults.registryConfig;
     	      this.resolvedImageUri = defaults.resolvedImageUri;
         }
 
@@ -237,6 +252,12 @@ public final class V3FunctionCustomContainerConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder registryConfig(@Nullable V3FunctionCustomContainerConfigRegistryConfig registryConfig) {
+
+            this.registryConfig = registryConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resolvedImageUri(@Nullable String resolvedImageUri) {
 
             this.resolvedImageUri = resolvedImageUri;
@@ -252,6 +273,7 @@ public final class V3FunctionCustomContainerConfig {
             _resultValue.healthCheckConfig = healthCheckConfig;
             _resultValue.image = image;
             _resultValue.port = port;
+            _resultValue.registryConfig = registryConfig;
             _resultValue.resolvedImageUri = resolvedImageUri;
             return _resultValue;
         }

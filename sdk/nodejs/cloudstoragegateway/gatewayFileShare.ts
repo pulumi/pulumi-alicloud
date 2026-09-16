@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
+ * Cloud Storage Gateway Gateway File Share can be imported using the id, which consists of gatewayId and index_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>

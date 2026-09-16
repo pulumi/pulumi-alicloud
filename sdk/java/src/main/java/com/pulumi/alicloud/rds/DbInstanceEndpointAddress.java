@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RDS database endpoint public address feature can be imported using the id, e.g.
+ * RDS database endpoint public address feature can be imported using the id, which consists of dbInstanceId and db_instance_endpoint_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example &lt;db_instance_id&gt;:&lt;db_instance_endpoint_id&gt;

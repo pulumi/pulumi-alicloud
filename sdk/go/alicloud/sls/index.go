@@ -130,7 +130,7 @@ import (
 //
 // ## Import
 //
-// Log Service (SLS) Index can be imported using the id, e.g.
+// Log Service (SLS) Index can be imported using the id, which consists of projectName and logstore_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:sls/index:Index example <project_name>:<logstore_name>

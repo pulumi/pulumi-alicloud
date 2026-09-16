@@ -63,6 +63,10 @@ __all__ = [
     'LogtailConfigOutputDetailArgsDict',
     'MachineGroupGroupAttributeArgs',
     'MachineGroupGroupAttributeArgsDict',
+    'MetricStoreEncryptConfArgs',
+    'MetricStoreEncryptConfArgsDict',
+    'MetricStoreEncryptConfUserCmkInfoArgs',
+    'MetricStoreEncryptConfUserCmkInfoArgsDict',
     'OssExportSinkConfigurationArgs',
     'OssExportSinkConfigurationArgsDict',
     'OssExportSinkConfigurationSinkArgs',
@@ -2395,6 +2399,143 @@ class MachineGroupGroupAttributeArgs:
     @group_topic.setter
     def group_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_topic", value)
+
+
+class MetricStoreEncryptConfArgsDict(TypedDict):
+    enable: pulumi.Input[_builtins.bool]
+    """
+    Specifies whether to enable encryption.
+    """
+    encrypt_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The encryption algorithm. Valid values: `default`.
+    """
+    user_cmk_info: NotRequired[pulumi.Input[Optional['MetricStoreEncryptConfUserCmkInfoArgsDict']]]
+    """
+    The BYOK (Bring Your Own Key) configuration. See `user_cmk_info` below.
+    """
+
+@pulumi.input_type
+class MetricStoreEncryptConfArgs:
+    def __init__(__self__, *,
+                 enable: pulumi.Input[_builtins.bool],
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_cmk_info: pulumi.Input[Optional['MetricStoreEncryptConfUserCmkInfoArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable encryption.
+        :param pulumi.Input[_builtins.str] encrypt_type: The encryption algorithm. Valid values: `default`.
+        :param pulumi.Input['MetricStoreEncryptConfUserCmkInfoArgs'] user_cmk_info: The BYOK (Bring Your Own Key) configuration. See `user_cmk_info` below.
+        """
+        pulumi.set(__self__, "enable", enable)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
+        if user_cmk_info is not None:
+            pulumi.set(__self__, "user_cmk_info", user_cmk_info)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Specifies whether to enable encryption.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm. Valid values: `default`.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @encrypt_type.setter
+    def encrypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "encrypt_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userCmkInfo")
+    def user_cmk_info(self) -> pulumi.Input[Optional['MetricStoreEncryptConfUserCmkInfoArgs']]:
+        """
+        The BYOK (Bring Your Own Key) configuration. See `user_cmk_info` below.
+        """
+        return pulumi.get(self, "user_cmk_info")
+
+    @user_cmk_info.setter
+    def user_cmk_info(self, value: pulumi.Input[Optional['MetricStoreEncryptConfUserCmkInfoArgs']]):
+        pulumi.set(self, "user_cmk_info", value)
+
+
+class MetricStoreEncryptConfUserCmkInfoArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ARN of the RAM role that is authorized to use the CMK.
+    """
+    cmk_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the CMK (Customer Master Key).
+    """
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The region ID of the CMK.
+    """
+
+@pulumi.input_type
+class MetricStoreEncryptConfUserCmkInfoArgs:
+    def __init__(__self__, *,
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] arn: The ARN of the RAM role that is authorized to use the CMK.
+        :param pulumi.Input[_builtins.str] cmk_key_id: The ID of the CMK (Customer Master Key).
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the CMK.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if cmk_key_id is not None:
+            pulumi.set(__self__, "cmk_key_id", cmk_key_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ARN of the RAM role that is authorized to use the CMK.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cmkKeyId")
+    def cmk_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the CMK (Customer Master Key).
+        """
+        return pulumi.get(self, "cmk_key_id")
+
+    @cmk_key_id.setter
+    def cmk_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cmk_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the CMK.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
 
 class OssExportSinkConfigurationArgsDict(TypedDict):

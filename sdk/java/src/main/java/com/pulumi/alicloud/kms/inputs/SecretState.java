@@ -65,14 +65,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the KMS instance.
+     * The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     @Import(name="dkmsInstanceId")
     private @Nullable Output<String> dkmsInstanceId;
 
     /**
-     * @return The ID of the KMS instance.
+     * @return The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     public Optional<Output<String>> dkmsInstanceId() {
@@ -95,14 +95,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the KMS key.
+     * The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     @Import(name="encryptionKeyId")
     private @Nullable Output<String> encryptionKeyId;
 
     /**
-     * @return The ID of the KMS key.
+     * @return The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     public Optional<Output<String>> encryptionKeyId() {
@@ -110,14 +110,14 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     @Import(name="extendedConfig")
     private @Nullable Output<String> extendedConfig;
 
     /**
-     * @return The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * @return The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     public Optional<Output<String>> extendedConfig() {
@@ -200,14 +200,24 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{&#34;Accounts&#34;:[{&#34;AccountName&#34;:&#34;&lt;rds-account-name&gt;&#34;,&#34;AccountPassword&#34;:&#34;&lt;rds-account-password&gt;&#34;}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{&#34;AccessKeys&#34;:[{&#34;AccessKeyId&#34;:&#34;&lt;access-key-id&gt;&#34;,&#34;AccessKeySecret&#34;:&#34;&lt;access-key-secret&gt;&#34;}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;Password&#34;:&#34;&lt;password&gt;&#34;}`. When `SecretSubType` is `SSHKey`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;PublicKey&#34;:&#34;&lt;public-key&gt;&#34;,&#34;PrivateKey&#34;:&#34;&lt;private-key&gt;&#34;}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      * 
      */
     @Import(name="secretData")
     private @Nullable Output<String> secretData;
 
     /**
-     * @return The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{&#34;Accounts&#34;:[{&#34;AccountName&#34;:&#34;&lt;rds-account-name&gt;&#34;,&#34;AccountPassword&#34;:&#34;&lt;rds-account-password&gt;&#34;}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{&#34;AccessKeys&#34;:[{&#34;AccessKeyId&#34;:&#34;&lt;access-key-id&gt;&#34;,&#34;AccessKeySecret&#34;:&#34;&lt;access-key-secret&gt;&#34;}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;Password&#34;:&#34;&lt;password&gt;&#34;}`. When `SecretSubType` is `SSHKey`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;PublicKey&#34;:&#34;&lt;public-key&gt;&#34;,&#34;PrivateKey&#34;:&#34;&lt;private-key&gt;&#34;}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      * 
      */
     public Optional<Output<String>> secretData() {
@@ -422,7 +432,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dkmsInstanceId The ID of the KMS instance.
+         * @param dkmsInstanceId The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
          * 
          * @return builder
          * 
@@ -433,7 +443,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dkmsInstanceId The ID of the KMS instance.
+         * @param dkmsInstanceId The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
          * 
          * @return builder
          * 
@@ -464,7 +474,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKeyId The ID of the KMS key.
+         * @param encryptionKeyId The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
          * 
          * @return builder
          * 
@@ -475,7 +485,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKeyId The ID of the KMS key.
+         * @param encryptionKeyId The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
          * 
          * @return builder
          * 
@@ -485,7 +495,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extendedConfig The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+         * @param extendedConfig The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
          * 
          * @return builder
          * 
@@ -496,7 +506,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extendedConfig The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+         * @param extendedConfig The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
          * 
          * @return builder
          * 
@@ -611,7 +621,12 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+         * - `Generic`: any custom string.
+         * - `Rds`: a JSON string in the form `{&#34;Accounts&#34;:[{&#34;AccountName&#34;:&#34;&lt;rds-account-name&gt;&#34;,&#34;AccountPassword&#34;:&#34;&lt;rds-account-password&gt;&#34;}]}`.
+         * - `RAMCredentials`: a JSON string in the form `{&#34;AccessKeys&#34;:[{&#34;AccessKeyId&#34;:&#34;&lt;access-key-id&gt;&#34;,&#34;AccessKeySecret&#34;:&#34;&lt;access-key-secret&gt;&#34;}]}`.
+         * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;Password&#34;:&#34;&lt;password&gt;&#34;}`. When `SecretSubType` is `SSHKey`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;PublicKey&#34;:&#34;&lt;public-key&gt;&#34;,&#34;PrivateKey&#34;:&#34;&lt;private-key&gt;&#34;}`.
+         * - `Redis` and `PolarDB`: use the literal string `$Auto`.
          * 
          * @return builder
          * 
@@ -622,7 +637,12 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+         * - `Generic`: any custom string.
+         * - `Rds`: a JSON string in the form `{&#34;Accounts&#34;:[{&#34;AccountName&#34;:&#34;&lt;rds-account-name&gt;&#34;,&#34;AccountPassword&#34;:&#34;&lt;rds-account-password&gt;&#34;}]}`.
+         * - `RAMCredentials`: a JSON string in the form `{&#34;AccessKeys&#34;:[{&#34;AccessKeyId&#34;:&#34;&lt;access-key-id&gt;&#34;,&#34;AccessKeySecret&#34;:&#34;&lt;access-key-secret&gt;&#34;}]}`.
+         * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;Password&#34;:&#34;&lt;password&gt;&#34;}`. When `SecretSubType` is `SSHKey`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;PublicKey&#34;:&#34;&lt;public-key&gt;&#34;,&#34;PrivateKey&#34;:&#34;&lt;private-key&gt;&#34;}`.
+         * - `Redis` and `PolarDB`: use the literal string `$Auto`.
          * 
          * @return builder
          * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -52,6 +52,7 @@ export function getVirtualBorderRouters(args?: GetVirtualBorderRoutersArgs, opts
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "status": args.status,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -60,7 +61,7 @@ export function getVirtualBorderRouters(args?: GetVirtualBorderRoutersArgs, opts
  */
 export interface GetVirtualBorderRoutersArgs {
     /**
-     * Custom filter block as described below.
+     * Custom filter block as described below. See `filter` below.
      */
     filters?: inputs.expressconnect.GetVirtualBorderRoutersFilter[];
     /**
@@ -79,6 +80,10 @@ export interface GetVirtualBorderRoutersArgs {
      * The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
     status?: string;
+    /**
+     * A map of tags to filter Virtual Border Routers that match the given tags.
+     */
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -92,15 +97,28 @@ export interface GetVirtualBorderRoutersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Virtual Border Router names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
+     */
     readonly routers: outputs.expressconnect.GetVirtualBorderRoutersRouter[];
+    /**
+     * The VBR state.
+     */
     readonly status?: string;
+    /**
+     * The tags of the Virtual Border Router.
+     */
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -143,6 +161,7 @@ export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutp
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "status": args.status,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -151,7 +170,7 @@ export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutp
  */
 export interface GetVirtualBorderRoutersOutputArgs {
     /**
-     * Custom filter block as described below.
+     * Custom filter block as described below. See `filter` below.
      */
     filters?: pulumi.Input<pulumi.Input<inputs.expressconnect.GetVirtualBorderRoutersFilterArgs>[] | undefined>;
     /**
@@ -170,4 +189,8 @@ export interface GetVirtualBorderRoutersOutputArgs {
      * The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A map of tags to filter Virtual Border Routers that match the given tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

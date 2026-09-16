@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Pai
     /// 
     /// ## Import
     /// 
-    /// PAI Workspace Member can be imported using the id, e.g.
+    /// PAI Workspace Member can be imported using the id, which consists of WorkspaceId and member_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:pai/workspaceMember:WorkspaceMember example &lt;workspace_id&gt;:&lt;member_id&gt;

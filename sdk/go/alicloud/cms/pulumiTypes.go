@@ -16579,6 +16579,157 @@ func (o GetAlertRulesV2RuleScheduleConfigArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetAlertRulesV2RuleScheduleConfigOutput)
 }
 
+type GetDatasetsDataset struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The name of the resource.
+	DatasetName string `pulumi:"datasetName"`
+	// The description of the dataset.
+	Description string `pulumi:"description"`
+	// The ID of the resource. It is formatted as `<workspace>:<dataset_name>`.
+	Id string `pulumi:"id"`
+	// The region ID of the resource.
+	RegionId string `pulumi:"regionId"`
+	// The last modified time of the resource.
+	UpdateTime string `pulumi:"updateTime"`
+	// The name of the workspace to which the datasets belong.
+	Workspace string `pulumi:"workspace"`
+}
+
+// GetDatasetsDatasetInput is an input type that accepts GetDatasetsDatasetArgs and GetDatasetsDatasetOutput values.
+// You can construct a concrete instance of `GetDatasetsDatasetInput` via:
+//
+//	GetDatasetsDatasetArgs{...}
+type GetDatasetsDatasetInput interface {
+	pulumi.Input
+
+	ToGetDatasetsDatasetOutput() GetDatasetsDatasetOutput
+	ToGetDatasetsDatasetOutputWithContext(context.Context) GetDatasetsDatasetOutput
+}
+
+type GetDatasetsDatasetArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The name of the resource.
+	DatasetName pulumi.StringInput `pulumi:"datasetName"`
+	// The description of the dataset.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the resource. It is formatted as `<workspace>:<dataset_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The region ID of the resource.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The last modified time of the resource.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The name of the workspace to which the datasets belong.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (GetDatasetsDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetsDataset)(nil)).Elem()
+}
+
+func (i GetDatasetsDatasetArgs) ToGetDatasetsDatasetOutput() GetDatasetsDatasetOutput {
+	return i.ToGetDatasetsDatasetOutputWithContext(context.Background())
+}
+
+func (i GetDatasetsDatasetArgs) ToGetDatasetsDatasetOutputWithContext(ctx context.Context) GetDatasetsDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetsDatasetOutput)
+}
+
+// GetDatasetsDatasetArrayInput is an input type that accepts GetDatasetsDatasetArray and GetDatasetsDatasetArrayOutput values.
+// You can construct a concrete instance of `GetDatasetsDatasetArrayInput` via:
+//
+//	GetDatasetsDatasetArray{ GetDatasetsDatasetArgs{...} }
+type GetDatasetsDatasetArrayInput interface {
+	pulumi.Input
+
+	ToGetDatasetsDatasetArrayOutput() GetDatasetsDatasetArrayOutput
+	ToGetDatasetsDatasetArrayOutputWithContext(context.Context) GetDatasetsDatasetArrayOutput
+}
+
+type GetDatasetsDatasetArray []GetDatasetsDatasetInput
+
+func (GetDatasetsDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetsDataset)(nil)).Elem()
+}
+
+func (i GetDatasetsDatasetArray) ToGetDatasetsDatasetArrayOutput() GetDatasetsDatasetArrayOutput {
+	return i.ToGetDatasetsDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatasetsDatasetArray) ToGetDatasetsDatasetArrayOutputWithContext(ctx context.Context) GetDatasetsDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetsDatasetArrayOutput)
+}
+
+type GetDatasetsDatasetOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetsDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetsDataset)(nil)).Elem()
+}
+
+func (o GetDatasetsDatasetOutput) ToGetDatasetsDatasetOutput() GetDatasetsDatasetOutput {
+	return o
+}
+
+func (o GetDatasetsDatasetOutput) ToGetDatasetsDatasetOutputWithContext(ctx context.Context) GetDatasetsDatasetOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetDatasetsDatasetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetDatasetsDatasetOutput) DatasetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.DatasetName }).(pulumi.StringOutput)
+}
+
+// The description of the dataset.
+func (o GetDatasetsDatasetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the resource. It is formatted as `<workspace>:<dataset_name>`.
+func (o GetDatasetsDatasetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The region ID of the resource.
+func (o GetDatasetsDatasetOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The last modified time of the resource.
+func (o GetDatasetsDatasetOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The name of the workspace to which the datasets belong.
+func (o GetDatasetsDatasetOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type GetDatasetsDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetsDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetsDataset)(nil)).Elem()
+}
+
+func (o GetDatasetsDatasetArrayOutput) ToGetDatasetsDatasetArrayOutput() GetDatasetsDatasetArrayOutput {
+	return o
+}
+
+func (o GetDatasetsDatasetArrayOutput) ToGetDatasetsDatasetArrayOutputWithContext(ctx context.Context) GetDatasetsDatasetArrayOutput {
+	return o
+}
+
+func (o GetDatasetsDatasetArrayOutput) Index(i pulumi.IntInput) GetDatasetsDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetsDataset {
+		return vs[0].([]GetDatasetsDataset)[vs[1].(int)]
+	}).(GetDatasetsDatasetOutput)
+}
+
 type GetDynamicTagGroupsGroup struct {
 	// The ID of the tag rule.
 	DynamicTagRuleId string `pulumi:"dynamicTagRuleId"`
@@ -24192,6 +24343,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigMeasureListArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigMeasureListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleScheduleConfigInput)(nil)).Elem(), GetAlertRulesV2RuleScheduleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleScheduleConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleScheduleConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetsDatasetInput)(nil)).Elem(), GetDatasetsDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetsDatasetArrayInput)(nil)).Elem(), GetDatasetsDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupInput)(nil)).Elem(), GetDynamicTagGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArgs{})
@@ -24510,6 +24663,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertRulesV2RuleScheduleConfigOutput{})
 	pulumi.RegisterOutputType(GetAlertRulesV2RuleScheduleConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatasetsDatasetOutput{})
+	pulumi.RegisterOutputType(GetDatasetsDatasetArrayOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressOutput{})

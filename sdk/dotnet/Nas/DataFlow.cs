@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// File Storage (NAS) Data Flow can be imported using the id, e.g.
+    /// File Storage (NAS) Data Flow can be imported using the id, which consists of FileSystemId and data_flow_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nas/dataFlow:DataFlow example &lt;file_system_id&gt;:&lt;data_flow_id&gt;

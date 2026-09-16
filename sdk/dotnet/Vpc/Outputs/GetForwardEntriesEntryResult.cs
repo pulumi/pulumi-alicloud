@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        /// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         public readonly string Status;
 

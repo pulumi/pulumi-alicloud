@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Alidns Cloud Gtm Instance Config can be imported using the id, e.g.
+ * Alidns Cloud Gtm Instance Config can be imported using the id, which consists of configId and instance_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alidnscloudgtm/instanceConfig:InstanceConfig example &lt;config_id&gt;:&lt;instance_id&gt;

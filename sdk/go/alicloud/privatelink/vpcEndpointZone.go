@@ -127,7 +127,7 @@ import (
 //
 // ## Import
 //
-// Private Link Vpc Endpoint Zone can be imported using the id, e.g.
+// Private Link Vpc Endpoint Zone can be imported using the id, which consists of endpointId and zone_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>

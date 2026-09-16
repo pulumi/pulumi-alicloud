@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Certificate can be imported using the id, e.g.
+ * ESA Certificate can be imported using the id, which consists of siteId and cert_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/certificate:Certificate example &lt;site_id&gt;:&lt;cert_id&gt;

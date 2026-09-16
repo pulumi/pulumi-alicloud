@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log Dashboard can be imported using the id, e.g.
+ * Log Dashboard can be imported using the id, which consists of projectName and dashboard_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:log/dashboard:Dashboard example &lt;project_name&gt;:&lt;dashboard_name&gt;

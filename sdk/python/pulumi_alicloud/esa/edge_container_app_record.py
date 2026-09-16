@@ -208,7 +208,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
 
         ## Import
 
-        ESA Edge Container App Record can be imported using the id, e.g.
+        ESA Edge Container App Record can be imported using the id, which consists of site_id, app_id and record_name, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord example <site_id>:<app_id>:<record_name>
@@ -281,7 +281,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
 
         ## Import
 
-        ESA Edge Container App Record can be imported using the id, e.g.
+        ESA Edge Container App Record can be imported using the id, which consists of site_id, app_id and record_name, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord example <site_id>:<app_id>:<record_name>

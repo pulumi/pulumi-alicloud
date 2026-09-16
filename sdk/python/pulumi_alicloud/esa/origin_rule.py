@@ -825,7 +825,7 @@ class OriginRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Origin Rule can be imported using the id, e.g.
+        ESA Origin Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/originRule:OriginRule example <site_id>:<config_id>
@@ -900,7 +900,7 @@ class OriginRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Origin Rule can be imported using the id, e.g.
+        ESA Origin Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/originRule:OriginRule example <site_id>:<config_id>

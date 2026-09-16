@@ -248,7 +248,7 @@ class DomainConfig(pulumi.CustomResource):
 
         ## Import
 
-        CDN domain config can be imported using the id, e.g.
+        CDN domain config can be imported using the id, which consists of domain_name, function_name and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
@@ -318,7 +318,7 @@ class DomainConfig(pulumi.CustomResource):
 
         ## Import
 
-        CDN domain config can be imported using the id, e.g.
+        CDN domain config can be imported using the id, which consists of domain_name, function_name and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>

@@ -190,7 +190,7 @@ class UserAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host User Attachment can be imported using the id, e.g.
+        Bastion Host User Attachment can be imported using the id, which consists of instance_id, user_group_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
@@ -262,7 +262,7 @@ class UserAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host User Attachment can be imported using the id, e.g.
+        Bastion Host User Attachment can be imported using the id, which consists of instance_id, user_group_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>

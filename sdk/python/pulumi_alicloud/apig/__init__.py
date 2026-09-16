@@ -15,12 +15,16 @@ from .get_domains import *
 from .get_gateways import *
 from .get_plugin_classes import *
 from .get_plugins import *
+from .get_policies import *
 from .get_routes import *
 from .get_services import *
+from .get_sources import *
 from .http_api import *
 from .plugin import *
 from .plugin_class import *
+from .policy import *
 from .route import *
 from .service import *
+from .source import *
 from ._inputs import *
 from . import outputs

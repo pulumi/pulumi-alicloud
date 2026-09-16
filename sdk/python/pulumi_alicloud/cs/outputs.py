@@ -60,6 +60,7 @@ __all__ = [
     'NodePoolManagementAutoUpgradePolicy',
     'NodePoolManagementAutoVulFixPolicy',
     'NodePoolPrivatePoolOptions',
+    'NodePoolResourcePoolOptions',
     'NodePoolRollingPolicy',
     'NodePoolScalingConfig',
     'NodePoolSpotPriceLimit',
@@ -3998,6 +3999,60 @@ class NodePoolPrivatePoolOptions(dict):
         The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
         """
         return pulumi.get(self, "private_pool_options_match_criteria")
+
+
+@pulumi.output_type
+class NodePoolResourcePoolOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privatePoolIds":
+            suggest = "private_pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolResourcePoolOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolResourcePoolOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolResourcePoolOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_pool_ids: Optional[Sequence[_builtins.str]] = None,
+                 strategy: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] private_pool_ids: The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+        :param _builtins.str strategy: The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+               * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+               * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+               * `None`: Do not use the resource pool strategy.
+        """
+        if private_pool_ids is not None:
+            pulumi.set(__self__, "private_pool_ids", private_pool_ids)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @_builtins.property
+    @pulumi.getter(name="privatePoolIds")
+    def private_pool_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+        """
+        return pulumi.get(self, "private_pool_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> Optional[_builtins.str]:
+        """
+        The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+        * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+        * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+        * `None`: Do not use the resource pool strategy.
+        """
+        return pulumi.get(self, "strategy")
 
 
 @pulumi.output_type

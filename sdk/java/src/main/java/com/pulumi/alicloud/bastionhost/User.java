@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Bastion Host User can be imported using the id, e.g.
+ * Bastion Host User can be imported using the id, which consists of instanceId and user_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:bastionhost/user:User example &lt;instance_id&gt;:&lt;user_id&gt;

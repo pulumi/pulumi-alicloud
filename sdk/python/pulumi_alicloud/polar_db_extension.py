@@ -280,7 +280,7 @@ class PolarDbExtension(pulumi.CustomResource):
 
         ## Import
 
-        Polar Db Extension can be imported using the id, e.g.
+        Polar Db Extension can be imported using the id, which consists of db_cluster_id, account_name, db_name and extension_name, e.g.
 
         ```sh
         $ pulumi import alicloud:index/polarDbExtension:PolarDbExtension example <db_cluster_id>:<account_name>:<db_name>:<extension_name>
@@ -363,7 +363,7 @@ class PolarDbExtension(pulumi.CustomResource):
 
         ## Import
 
-        Polar Db Extension can be imported using the id, e.g.
+        Polar Db Extension can be imported using the id, which consists of db_cluster_id, account_name, db_name and extension_name, e.g.
 
         ```sh
         $ pulumi import alicloud:index/polarDbExtension:PolarDbExtension example <db_cluster_id>:<account_name>:<db_name>:<extension_name>

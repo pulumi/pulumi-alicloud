@@ -78,6 +78,10 @@ public final class GetApplicationLoadBalancersResult {
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The payment type of the SLB.
+     * 
+     */
     private @Nullable String paymentType;
     /**
      * @return The ID of the resource group.
@@ -96,6 +100,8 @@ public final class GetApplicationLoadBalancersResult {
      */
     private @Nullable String slaveZoneId;
     /**
+     * @return **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
+     * 
      * @deprecated
      * Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
      * 
@@ -217,6 +223,10 @@ public final class GetApplicationLoadBalancersResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The payment type of the SLB.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
@@ -245,6 +255,8 @@ public final class GetApplicationLoadBalancersResult {
         return Optional.ofNullable(this.slaveZoneId);
     }
     /**
+     * @return **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
+     * 
      * @deprecated
      * Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
      * 

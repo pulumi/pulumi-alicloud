@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.123.1+
+        /// &gt; **NOTE:** Available since v1.123.1
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.123.1+
+        /// &gt; **NOTE:** Available since v1.123.1
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.123.1+
+        /// &gt; **NOTE:** Available since v1.123.1
         /// 
         /// ## Example Usage
         /// 
@@ -138,6 +138,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("addressType")]
         public string? AddressType { get; set; }
 
+        /// <summary>
+        /// Whether to enable details of the SLB. Default to `False`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -226,7 +229,7 @@ namespace Pulumi.AliCloud.Slb
         public string? SlaveZoneId { get; set; }
 
         /// <summary>
-        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
+        /// The status of the SLB. Valid values: `Active`, `Inactive` and `Locked`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -281,6 +284,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
+        /// <summary>
+        /// Whether to enable details of the SLB. Default to `False`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -369,7 +375,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? SlaveZoneId { get; set; }
 
         /// <summary>
-        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
+        /// The status of the SLB. Valid values: `Active`, `Inactive` and `Locked`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -457,6 +463,9 @@ namespace Pulumi.AliCloud.Slb
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The payment type of the SLB.
+        /// </summary>
         public readonly string? PaymentType;
         /// <summary>
         /// The ID of the resource group.
@@ -471,6 +480,9 @@ namespace Pulumi.AliCloud.Slb
         /// Slave availability zone of the SLBs.
         /// </summary>
         public readonly string? SlaveZoneId;
+        /// <summary>
+        /// **Deprecated** It has been deprecated from v1.123.1 and replaced by `Balancers`. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationLoadBalancersSlbResult> Slbs;
         /// <summary>
         /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.

@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Ipv6 Egress Rule can be imported using the id, e.g.
+    /// VPC Ipv6 Egress Rule can be imported using the id, which consists of Ipv6GatewayId and ipv6_egress_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/ipv6EgressRule:Ipv6EgressRule example &lt;ipv6_gateway_id&gt;:&lt;ipv6_egress_rule_id&gt;

@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Data Works Data Source can be imported using the id, e.g.
+ * Data Works Data Source can be imported using the id, which consists of projectId and data_source_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:dataworks/dataSource:DataSource example <project_id>:<data_source_id>

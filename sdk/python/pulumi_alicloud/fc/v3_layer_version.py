@@ -372,7 +372,7 @@ class V3LayerVersion(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Layer Version can be imported using the id, e.g.
+        FCV3 Layer Version can be imported using the id, which consists of layer_name and version, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3LayerVersion:V3LayerVersion example <layer_name>:<version>
@@ -430,7 +430,7 @@ class V3LayerVersion(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Layer Version can be imported using the id, e.g.
+        FCV3 Layer Version can be imported using the id, which consists of layer_name and version, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3LayerVersion:V3LayerVersion example <layer_name>:<version>

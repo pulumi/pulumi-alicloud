@@ -4172,7 +4172,7 @@ type V3CustomDomainCorsConfig struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+	// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
 	AllowOrigins []string `pulumi:"allowOrigins"`
 	// List of response headers that can be exposed to the browser.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
@@ -4198,7 +4198,7 @@ type V3CustomDomainCorsConfigArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+	// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
 	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
 	// List of response headers that can be exposed to the browser.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
@@ -4298,7 +4298,7 @@ func (o V3CustomDomainCorsConfigOutput) AllowMethods() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v V3CustomDomainCorsConfig) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
 func (o V3CustomDomainCorsConfigOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainCorsConfig) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
@@ -4367,7 +4367,7 @@ func (o V3CustomDomainCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
 func (o V3CustomDomainCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V3CustomDomainCorsConfig) []string {
 		if v == nil {
@@ -5697,6 +5697,8 @@ type V3FunctionCustomContainerConfig struct {
 	Image *string `pulumi:"image"`
 	// The listening port of the HTTP Server when the custom container runs.
 	Port *int `pulumi:"port"`
+	// The configuration of the custom image registry. See `registryConfig` below.
+	RegistryConfig *V3FunctionCustomContainerConfigRegistryConfig `pulumi:"registryConfig"`
 	// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
 	ResolvedImageUri *string `pulumi:"resolvedImageUri"`
 }
@@ -5735,6 +5737,8 @@ type V3FunctionCustomContainerConfigArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The listening port of the HTTP Server when the custom container runs.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The configuration of the custom image registry. See `registryConfig` below.
+	RegistryConfig V3FunctionCustomContainerConfigRegistryConfigPtrInput `pulumi:"registryConfig"`
 	// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
 	ResolvedImageUri pulumi.StringPtrInput `pulumi:"resolvedImageUri"`
 }
@@ -5866,6 +5870,13 @@ func (o V3FunctionCustomContainerConfigOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// The configuration of the custom image registry. See `registryConfig` below.
+func (o V3FunctionCustomContainerConfigOutput) RegistryConfig() V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigRegistryConfig {
+		return v.RegistryConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigPtrOutput)
+}
+
 // The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
 func (o V3FunctionCustomContainerConfigOutput) ResolvedImageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *string { return v.ResolvedImageUri }).(pulumi.StringPtrOutput)
@@ -5979,6 +5990,16 @@ func (o V3FunctionCustomContainerConfigPtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// The configuration of the custom image registry. See `registryConfig` below.
+func (o V3FunctionCustomContainerConfigPtrOutput) RegistryConfig() V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigRegistryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigPtrOutput)
 }
 
 // The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
@@ -6342,6 +6363,666 @@ func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) TimeoutSecond
 		}
 		return v.TimeoutSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfig struct {
+	// The authentication configuration of the image registry. See `authConfig` below.
+	AuthConfig *V3FunctionCustomContainerConfigRegistryConfigAuthConfig `pulumi:"authConfig"`
+	// The certificate configuration of the image registry. See `certConfig` below.
+	CertConfig *V3FunctionCustomContainerConfigRegistryConfigCertConfig `pulumi:"certConfig"`
+	// The network configuration used to connect to the image registry. See `networkConfig` below.
+	NetworkConfig *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig `pulumi:"networkConfig"`
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigArgs and V3FunctionCustomContainerConfigRegistryConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigInput` via:
+//
+//	V3FunctionCustomContainerConfigRegistryConfigArgs{...}
+type V3FunctionCustomContainerConfigRegistryConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigOutput() V3FunctionCustomContainerConfigRegistryConfigOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigOutput
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigArgs struct {
+	// The authentication configuration of the image registry. See `authConfig` below.
+	AuthConfig V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrInput `pulumi:"authConfig"`
+	// The certificate configuration of the image registry. See `certConfig` below.
+	CertConfig V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrInput `pulumi:"certConfig"`
+	// The network configuration used to connect to the image registry. See `networkConfig` below.
+	NetworkConfig V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrInput `pulumi:"networkConfig"`
+}
+
+func (V3FunctionCustomContainerConfigRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigOutput() V3FunctionCustomContainerConfigRegistryConfigOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigOutput)
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigOutput).ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigPtrInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigArgs, V3FunctionCustomContainerConfigRegistryConfigPtr and V3FunctionCustomContainerConfigRegistryConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigRegistryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigRegistryConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigPtrOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigPtrOutput
+}
+
+type v3functionCustomContainerConfigRegistryConfigPtrType V3FunctionCustomContainerConfigRegistryConfigArgs
+
+func V3FunctionCustomContainerConfigRegistryConfigPtr(v *V3FunctionCustomContainerConfigRegistryConfigArgs) V3FunctionCustomContainerConfigRegistryConfigPtrInput {
+	return (*v3functionCustomContainerConfigRegistryConfigPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigRegistryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigOutput() V3FunctionCustomContainerConfigRegistryConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfig {
+		return &v
+	}).(V3FunctionCustomContainerConfigRegistryConfigPtrOutput)
+}
+
+// The authentication configuration of the image registry. See `authConfig` below.
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) AuthConfig() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfigAuthConfig {
+		return v.AuthConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput)
+}
+
+// The certificate configuration of the image registry. See `certConfig` below.
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) CertConfig() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfigCertConfig {
+		return v.CertConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput)
+}
+
+// The network configuration used to connect to the image registry. See `networkConfig` below.
+func (o V3FunctionCustomContainerConfigRegistryConfigOutput) NetworkConfig() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig {
+		return v.NetworkConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigPtrOutput) Elem() V3FunctionCustomContainerConfigRegistryConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfig) V3FunctionCustomContainerConfigRegistryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfigRegistryConfig
+		return ret
+	}).(V3FunctionCustomContainerConfigRegistryConfigOutput)
+}
+
+// The authentication configuration of the image registry. See `authConfig` below.
+func (o V3FunctionCustomContainerConfigRegistryConfigPtrOutput) AuthConfig() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfigAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput)
+}
+
+// The certificate configuration of the image registry. See `certConfig` below.
+func (o V3FunctionCustomContainerConfigRegistryConfigPtrOutput) CertConfig() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfigCertConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CertConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput)
+}
+
+// The network configuration used to connect to the image registry. See `networkConfig` below.
+func (o V3FunctionCustomContainerConfigRegistryConfigPtrOutput) NetworkConfig() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfig) *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfig
+	}).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigAuthConfig struct {
+	// The password of the image registry.
+	Password *string `pulumi:"password"`
+	// The username of the image registry.
+	UserName *string `pulumi:"userName"`
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigAuthConfigInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs and V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigAuthConfigInput` via:
+//
+//	V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs{...}
+type V3FunctionCustomContainerConfigRegistryConfigAuthConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs struct {
+	// The password of the image registry.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The username of the image registry.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigAuthConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput)
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput).ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs, V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtr and V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput
+}
+
+type v3functionCustomContainerConfigRegistryConfigAuthConfigPtrType V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs
+
+func V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtr(v *V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs) V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrInput {
+	return (*v3functionCustomContainerConfigRegistryConfigAuthConfigPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigRegistryConfigAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfigAuthConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigAuthConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigAuthConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigAuthConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfigRegistryConfigAuthConfig) *V3FunctionCustomContainerConfigRegistryConfigAuthConfig {
+		return &v
+	}).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput)
+}
+
+// The password of the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigAuthConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The username of the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigAuthConfig) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfigAuthConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput) Elem() V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigAuthConfig) V3FunctionCustomContainerConfigRegistryConfigAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfigRegistryConfigAuthConfig
+		return ret
+	}).(V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput)
+}
+
+// The password of the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username of the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigCertConfig struct {
+	// Specifies whether to skip certificate verification.
+	Insecure *bool `pulumi:"insecure"`
+	// The Base64-encoded root CA certificate of the image registry.
+	RootCaCertBase64 *string `pulumi:"rootCaCertBase64"`
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigCertConfigInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs and V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigCertConfigInput` via:
+//
+//	V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs{...}
+type V3FunctionCustomContainerConfigRegistryConfigCertConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs struct {
+	// Specifies whether to skip certificate verification.
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// The Base64-encoded root CA certificate of the image registry.
+	RootCaCertBase64 pulumi.StringPtrInput `pulumi:"rootCaCertBase64"`
+}
+
+func (V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput)
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput).ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs, V3FunctionCustomContainerConfigRegistryConfigCertConfigPtr and V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput
+}
+
+type v3functionCustomContainerConfigRegistryConfigCertConfigPtrType V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs
+
+func V3FunctionCustomContainerConfigRegistryConfigCertConfigPtr(v *V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs) V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrInput {
+	return (*v3functionCustomContainerConfigRegistryConfigCertConfigPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigRegistryConfigCertConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigCertConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigCertConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfigRegistryConfigCertConfig) *V3FunctionCustomContainerConfigRegistryConfigCertConfig {
+		return &v
+	}).(V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput)
+}
+
+// Specifies whether to skip certificate verification.
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigCertConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+// The Base64-encoded root CA certificate of the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput) RootCaCertBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigCertConfig) *string { return v.RootCaCertBase64 }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput) Elem() V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigCertConfig) V3FunctionCustomContainerConfigRegistryConfigCertConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfigRegistryConfigCertConfig
+		return ret
+	}).(V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput)
+}
+
+// Specifies whether to skip certificate verification.
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigCertConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Insecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Base64-encoded root CA certificate of the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput) RootCaCertBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootCaCertBase64
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigNetworkConfig struct {
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	VpcId           *string `pulumi:"vpcId"`
+	// The ID of the vSwitch that can connect to the image registry.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigNetworkConfigInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs and V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigNetworkConfigInput` via:
+//
+//	V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{...}
+type V3FunctionCustomContainerConfigRegistryConfigNetworkConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs struct {
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	VpcId           pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The ID of the vSwitch that can connect to the image registry.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput)
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput).ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrInput is an input type that accepts V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs, V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtr and V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput
+	ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput
+}
+
+type v3functionCustomContainerConfigRegistryConfigNetworkConfigPtrType V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs
+
+func V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtr(v *V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrInput {
+	return (*v3functionCustomContainerConfigRegistryConfigNetworkConfigPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigRegistryConfigNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigNetworkConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigRegistryConfigNetworkConfigPtrType) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig {
+		return &v
+	}).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the vSwitch that can connect to the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) ToV3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) Elem() V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) V3FunctionCustomContainerConfigRegistryConfigNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfigRegistryConfigNetworkConfig
+		return ret
+	}).(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput)
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the vSwitch that can connect to the image registry.
+func (o V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigRegistryConfigNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchId
+	}).(pulumi.StringPtrOutput)
 }
 
 type V3FunctionCustomDns struct {
@@ -11531,6 +12212,8 @@ type GetV3FunctionsFunctionCustomContainerConfig struct {
 	Image string `pulumi:"image"`
 	// The listening port of the HTTP Server.
 	Port int `pulumi:"port"`
+	// The configuration of the custom image registry. The data source exposes `certConfig` and `networkConfig`; `authConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+	RegistryConfigs []GetV3FunctionsFunctionCustomContainerConfigRegistryConfig `pulumi:"registryConfigs"`
 	// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
 	ResolvedImageUri string `pulumi:"resolvedImageUri"`
 }
@@ -11563,6 +12246,8 @@ type GetV3FunctionsFunctionCustomContainerConfigArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The listening port of the HTTP Server.
 	Port pulumi.IntInput `pulumi:"port"`
+	// The configuration of the custom image registry. The data source exposes `certConfig` and `networkConfig`; `authConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+	RegistryConfigs GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayInput `pulumi:"registryConfigs"`
 	// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
 	ResolvedImageUri pulumi.StringInput `pulumi:"resolvedImageUri"`
 }
@@ -11635,6 +12320,13 @@ func (o GetV3FunctionsFunctionCustomContainerConfigOutput) Image() pulumi.String
 // The listening port of the HTTP Server.
 func (o GetV3FunctionsFunctionCustomContainerConfigOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The configuration of the custom image registry. The data source exposes `certConfig` and `networkConfig`; `authConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+func (o GetV3FunctionsFunctionCustomContainerConfigOutput) RegistryConfigs() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfig) []GetV3FunctionsFunctionCustomContainerConfigRegistryConfig {
+		return v.RegistryConfigs
+	}).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput)
 }
 
 // The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
@@ -11789,6 +12481,343 @@ func (o GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigOutput) Succ
 // Health check timeout. Value range 1~3. The default value is 1.
 func (o GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfig struct {
+	// The certificate configuration of the image registry.
+	CertConfigs []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig `pulumi:"certConfigs"`
+	// The network configuration used to connect to the image registry.
+	NetworkConfigs []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig `pulumi:"networkConfigs"`
+}
+
+// GetV3FunctionsFunctionCustomContainerConfigRegistryConfigInput is an input type that accepts GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs and GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionCustomContainerConfigRegistryConfigInput` via:
+//
+//	GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs{...}
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutputWithContext(context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs struct {
+	// The certificate configuration of the image registry.
+	CertConfigs GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayInput `pulumi:"certConfigs"`
+	// The network configuration used to connect to the image registry.
+	NetworkConfigs GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayInput `pulumi:"networkConfigs"`
+}
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput {
+	return i.ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput)
+}
+
+// GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayInput is an input type that accepts GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray and GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayInput` via:
+//
+//	GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray{ GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs{...} }
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutputWithContext(context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigInput
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput {
+	return i.ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput {
+	return o
+}
+
+// The certificate configuration of the image registry.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput) CertConfigs() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfig) []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig {
+		return v.CertConfigs
+	}).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput)
+}
+
+// The network configuration used to connect to the image registry.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput) NetworkConfigs() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfig) []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig {
+		return v.NetworkConfigs
+	}).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionCustomContainerConfigRegistryConfig)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput) Index(i pulumi.IntInput) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV3FunctionsFunctionCustomContainerConfigRegistryConfig {
+		return vs[0].([]GetV3FunctionsFunctionCustomContainerConfigRegistryConfig)[vs[1].(int)]
+	}).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig struct {
+	// Specifies whether to skip certificate verification.
+	Insecure bool `pulumi:"insecure"`
+	// The Base64-encoded root CA certificate of the image registry.
+	RootCaCertBase64 string `pulumi:"rootCaCertBase64"`
+}
+
+// GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigInput is an input type that accepts GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs and GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigInput` via:
+//
+//	GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs{...}
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs struct {
+	// Specifies whether to skip certificate verification.
+	Insecure pulumi.BoolInput `pulumi:"insecure"`
+	// The Base64-encoded root CA certificate of the image registry.
+	RootCaCertBase64 pulumi.StringInput `pulumi:"rootCaCertBase64"`
+}
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return i.ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput)
+}
+
+// GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayInput is an input type that accepts GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray and GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayInput` via:
+//
+//	GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray{ GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs{...} }
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutputWithContext(context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigInput
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput {
+	return i.ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return o
+}
+
+// Specifies whether to skip certificate verification.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput) Insecure() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig) bool { return v.Insecure }).(pulumi.BoolOutput)
+}
+
+// The Base64-encoded root CA certificate of the image registry.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput) RootCaCertBase64() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig) string {
+		return v.RootCaCertBase64
+	}).(pulumi.StringOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput) Index(i pulumi.IntInput) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig {
+		return vs[0].([]GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig)[vs[1].(int)]
+	}).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig struct {
+	// Security group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// VPC network ID.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch that can connect to the image registry.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigInput is an input type that accepts GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs and GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigInput` via:
+//
+//	GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{...}
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs struct {
+	// Security group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// VPC network ID.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch that can connect to the image registry.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return i.ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput)
+}
+
+// GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayInput is an input type that accepts GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray and GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayInput` via:
+//
+//	GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray{ GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{...} }
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput
+	ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutputWithContext(context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray []GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigInput
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput {
+	return i.ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return o
+}
+
+// Security group ID.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig) string {
+		return v.SecurityGroupId
+	}).(pulumi.StringOutput)
+}
+
+// VPC network ID.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch that can connect to the image registry.
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig) string {
+		return v.VswitchId
+	}).(pulumi.StringOutput)
+}
+
+type GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput() GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput) ToGetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig {
+		return vs[0].([]GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig)[vs[1].(int)]
+	}).(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput)
 }
 
 type GetV3FunctionsFunctionCustomDns struct {
@@ -13624,6 +14653,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigAccelerationInfoPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigAccelerationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigHealthCheckConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigHealthCheckConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigAuthConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigCertConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigNetworkConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsInput)(nil)).Elem(), V3FunctionCustomDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsPtrInput)(nil)).Elem(), V3FunctionCustomDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsDnsOptionInput)(nil)).Elem(), V3FunctionCustomDnsDnsOptionArgs{})
@@ -13687,6 +14724,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayInput)(nil)).Elem(), GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomDnsInput)(nil)).Elem(), GetV3FunctionsFunctionCustomDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomDnsDnsOptionInput)(nil)).Elem(), GetV3FunctionsFunctionCustomDnsDnsOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionCustomDnsDnsOptionArrayInput)(nil)).Elem(), GetV3FunctionsFunctionCustomDnsDnsOptionArray{})
@@ -13791,6 +14834,14 @@ func init() {
 	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigAuthConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigCertConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigCertConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigRegistryConfigNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionCustomDnsOutput{})
 	pulumi.RegisterOutputType(V3FunctionCustomDnsPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionCustomDnsDnsOptionOutput{})
@@ -13854,6 +14905,12 @@ func init() {
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomDnsOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomDnsDnsOptionOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionCustomDnsDnsOptionArrayOutput{})

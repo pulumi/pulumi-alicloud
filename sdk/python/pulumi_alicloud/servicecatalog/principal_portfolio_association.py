@@ -192,7 +192,7 @@ class PrincipalPortfolioAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Service Catalog Principal Portfolio Association can be imported using the id, e.g.
+        Service Catalog Principal Portfolio Association can be imported using the id, which consists of principal_id, principal_type and portfolio_id, e.g.
 
         ```sh
         $ pulumi import alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example <principal_id>:<principal_type>:<portfolio_id>
@@ -266,7 +266,7 @@ class PrincipalPortfolioAssociation(pulumi.CustomResource):
 
         ## Import
 
-        Service Catalog Principal Portfolio Association can be imported using the id, e.g.
+        Service Catalog Principal Portfolio Association can be imported using the id, which consists of principal_id, principal_type and portfolio_id, e.g.
 
         ```sh
         $ pulumi import alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example <principal_id>:<principal_type>:<portfolio_id>

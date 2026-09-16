@@ -60,11 +60,71 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ECS Instance Backup With App-Consistent Snapshot Group
+ *
+ * This example migrates an `alicloud.hbr.ServerBackupPlan` configuration (deprecated since v1.249.0) to `alicloud.hbr.PolicyBinding` using `alicloud.hbr.Policy` + `advanced_options.udm_detail` with `appConsistent` and `snapshotGroup`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultVault = new alicloud.hbr.Vault("default", {
+ *     vaultType: "STANDARD",
+ *     vaultName: `example-value-${_default.result}`,
+ * });
+ * const defaultPolicy = new alicloud.hbr.Policy("default", {
+ *     policyName: `example-value-${_default.result}`,
+ *     rules: [{
+ *         ruleType: "BACKUP",
+ *         backupType: "COMPLETE",
+ *         schedule: "I|1631685600|P1D",
+ *         retention: 7,
+ *         archiveDays: 0,
+ *         vaultId: defaultVault.id,
+ *     }],
+ *     policyDescription: "policy example",
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     instanceName: `example-value-${_default.result}`,
+ *     instanceType: "ecs.g7.large",
+ *     imageId: "aliyun_2_1903_x64_7h_cor_4.0.40_alibase",
+ *     systemDisk: [{
+ *         category: "cloud_essd",
+ *         size: "40",
+ *     }],
+ * });
+ * const defaultPolicyBinding = new alicloud.hbr.PolicyBinding("default", {
+ *     sourceType: "UDM_ECS",
+ *     policyId: defaultPolicy.id,
+ *     dataSourceId: defaultInstance.id,
+ *     disabled: false,
+ *     advancedOptions: {
+ *         udmDetail: {
+ *             appConsistent: true,
+ *             snapshotGroup: true,
+ *             ramRoleName: "AliyunECSBackupRole",
+ *             preScriptPath: "/opt/prescript.sh",
+ *             postScriptPath: "/opt/postscript.sh",
+ *             enableFsFreeze: true,
+ *             timeoutInSeconds: 60,
+ *             enableWriters: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
- * Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, which consists of policy_id, sourceType and data_source_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>

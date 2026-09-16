@@ -151,6 +151,7 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     * > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      */
     declare public readonly creditSpecification: pulumi.Output<string>;
     /**
@@ -244,6 +245,10 @@ export class Instance extends pulumi.CustomResource {
      * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     declare public readonly instanceChargeType: pulumi.Output<string>;
+    /**
+     * Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+     */
+    declare public readonly instanceMetadataTags: pulumi.Output<string>;
     /**
      * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      */
@@ -444,6 +449,8 @@ export class Instance extends pulumi.CustomResource {
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
      * - Deactive: Disable security enhancement strategy, it works on all images.
+     *
+     * > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
      */
     declare public readonly securityEnhancementStrategy: pulumi.Output<string>;
     /**
@@ -614,6 +621,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["imageOptions"] = state?.imageOptions;
             resourceInputs["includeDataDisks"] = state?.includeDataDisks;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceMetadataTags"] = state?.instanceMetadataTags;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["internetChargeType"] = state?.internetChargeType;
@@ -708,6 +716,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["imageOptions"] = args?.imageOptions;
             resourceInputs["includeDataDisks"] = args?.includeDataDisks;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceMetadataTags"] = args?.instanceMetadataTags;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["internetChargeType"] = args?.internetChargeType;
@@ -828,6 +837,7 @@ export interface InstanceState {
     createTime?: pulumi.Input<string | undefined>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     * > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      */
     creditSpecification?: pulumi.Input<string | undefined>;
     /**
@@ -921,6 +931,10 @@ export interface InstanceState {
      * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     instanceChargeType?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+     */
+    instanceMetadataTags?: pulumi.Input<string | undefined>;
     /**
      * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      */
@@ -1121,6 +1135,8 @@ export interface InstanceState {
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
      * - Deactive: Disable security enhancement strategy, it works on all images.
+     *
+     * > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
      */
     securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
@@ -1283,6 +1299,7 @@ export interface InstanceArgs {
     cpuOptions?: pulumi.Input<inputs.ecs.InstanceCpuOptions | undefined>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     * > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      */
     creditSpecification?: pulumi.Input<string | undefined>;
     /**
@@ -1368,6 +1385,10 @@ export interface InstanceArgs {
      * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     instanceChargeType?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+     */
+    instanceMetadataTags?: pulumi.Input<string | undefined>;
     /**
      * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
      */
@@ -1548,6 +1569,8 @@ export interface InstanceArgs {
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
      * - Deactive: Disable security enhancement strategy, it works on all images.
+     *
+     * > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
      */
     securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**

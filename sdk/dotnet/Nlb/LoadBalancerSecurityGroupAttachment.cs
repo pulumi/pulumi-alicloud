@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// ## Import
     /// 
-    /// NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
+    /// NLB Load Balancer Security Group Attachment can be imported using the id, which consists of LoadBalancerId and security_group_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;load_balancer_id&gt;:&lt;security_group_id&gt;

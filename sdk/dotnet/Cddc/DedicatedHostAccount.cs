@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Cddc
     /// 
     /// ## Import
     /// 
-    /// ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
+    /// ApsaraDB for MyBase Dedicated Host Account can be imported using the id, which consists of DedicatedHostId and account_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example &lt;dedicated_host_id&gt;:&lt;account_name&gt;

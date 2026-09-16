@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Import
     /// 
-    /// Resource Manager Shared Target can be imported using the id, e.g.
+    /// Resource Manager Shared Target can be imported using the id, which consists of ResourceShareId and target_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example &lt;resource_share_id&gt;:&lt;target_id&gt;

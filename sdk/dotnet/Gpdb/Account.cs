@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB Account can be imported using the id, e.g.
+    /// GPDB Account can be imported using the id, which consists of DbInstanceId and account_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/account:Account example &lt;db_instance_id&gt;:&lt;account_name&gt;

@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Ipv4 Cidr Block can be imported using the id, e.g.
+    /// VPC Ipv4 Cidr Block can be imported using the id, which consists of VpcId and secondary_cidr_block, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example &lt;vpc_id&gt;:&lt;secondary_cidr_block&gt;

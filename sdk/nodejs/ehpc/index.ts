@@ -25,6 +25,11 @@ export const getJobTemplates: typeof import("./getJobTemplates").getJobTemplates
 export const getJobTemplatesOutput: typeof import("./getJobTemplates").getJobTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getJobTemplates","getJobTemplatesOutput"], () => require("./getJobTemplates"));
 
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
 export { JobTemplateArgs, JobTemplateState } from "./jobTemplate";
 export type JobTemplate = import("./jobTemplate").JobTemplate;
 export const JobTemplate: typeof import("./jobTemplate").JobTemplate = null as any;
@@ -34,6 +39,11 @@ export { QueueArgs, QueueState } from "./queue";
 export type Queue = import("./queue").Queue;
 export const Queue: typeof import("./queue").Queue = null as any;
 utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 
 const _module = {
@@ -48,6 +58,8 @@ const _module = {
                 return new JobTemplate(name, <any>undefined, { urn })
             case "alicloud:ehpc/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
+            case "alicloud:ehpc/user:User":
+                return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -57,3 +69,4 @@ pulumi.runtime.registerResourceModule("alicloud", "ehpc/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ehpc/clusterV2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ehpc/jobTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ehpc/queue", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ehpc/user", _module)

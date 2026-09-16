@@ -465,7 +465,7 @@ class Certificate(pulumi.CustomResource):
 
         ## Import
 
-        ESA Certificate can be imported using the id, e.g.
+        ESA Certificate can be imported using the id, which consists of site_id and cert_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/certificate:Certificate example <site_id>:<cert_id>
@@ -528,7 +528,7 @@ class Certificate(pulumi.CustomResource):
 
         ## Import
 
-        ESA Certificate can be imported using the id, e.g.
+        ESA Certificate can be imported using the id, which consists of site_id and cert_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/certificate:Certificate example <site_id>:<cert_id>

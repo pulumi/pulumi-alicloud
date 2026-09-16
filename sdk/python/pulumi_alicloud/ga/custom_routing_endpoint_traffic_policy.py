@@ -300,7 +300,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, e.g.
+        Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, which consists of endpoint_id and custom_routing_endpoint_traffic_policy_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy example <endpoint_id>:<custom_routing_endpoint_traffic_policy_id>
@@ -399,7 +399,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, e.g.
+        Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, which consists of endpoint_id and custom_routing_endpoint_traffic_policy_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy example <endpoint_id>:<custom_routing_endpoint_traffic_policy_id>

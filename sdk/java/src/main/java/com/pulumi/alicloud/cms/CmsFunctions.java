@@ -10,6 +10,8 @@ import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
 import com.pulumi.alicloud.cms.inputs.GetAlarmContactsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
 import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2PlainArgs;
+import com.pulumi.alicloud.cms.inputs.GetDatasetsArgs;
+import com.pulumi.alicloud.cms.inputs.GetDatasetsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetEventNotifyPoliciesArgs;
@@ -43,6 +45,7 @@ import com.pulumi.alicloud.cms.inputs.GetSlsGroupsPlainArgs;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactsResult;
 import com.pulumi.alicloud.cms.outputs.GetAlertRulesV2Result;
+import com.pulumi.alicloud.cms.outputs.GetDatasetsResult;
 import com.pulumi.alicloud.cms.outputs.GetDynamicTagGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetEventNotifyPoliciesResult;
 import com.pulumi.alicloud.cms.outputs.GetEventRulesResult;
@@ -1437,6 +1440,401 @@ public final class CmsFunctions {
      */
     public static CompletableFuture<GetAlertRulesV2Result> getAlertRulesV2Plain(GetAlertRulesV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getAlertRulesV2:getAlertRulesV2", TypeShape.of(GetAlertRulesV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Datasets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.cms.Workspace;
+     * import com.pulumi.alicloud.cms.WorkspaceArgs;
+     * import com.pulumi.alicloud.cms.Dataset;
+     * import com.pulumi.alicloud.cms.DatasetArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetDatasetsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(name)
+     *             .build());
+     * 
+     *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
+     *             .workspaceName(name)
+     *             .slsProject(defaultProject.projectName())
+     *             .build());
+     * 
+     *         var defaultDataset = new Dataset("defaultDataset", DatasetArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .datasetName(name)
+     *             .description("terraform-example")
+     *             .schema(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("type", "record"),
+     *                     jsonProperty("name", "example"),
+     *                     jsonProperty("fields", jsonArray(jsonObject(
+     *                         jsonProperty("name", "metric"),
+     *                         jsonProperty("type", "string")
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getDatasets(GetDatasetsArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .ids(defaultDataset.id())
+     *             .build());
+     * 
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatasetsResult> getDatasets(GetDatasetsArgs args) {
+        return getDatasets(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cms Datasets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.cms.Workspace;
+     * import com.pulumi.alicloud.cms.WorkspaceArgs;
+     * import com.pulumi.alicloud.cms.Dataset;
+     * import com.pulumi.alicloud.cms.DatasetArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetDatasetsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(name)
+     *             .build());
+     * 
+     *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
+     *             .workspaceName(name)
+     *             .slsProject(defaultProject.projectName())
+     *             .build());
+     * 
+     *         var defaultDataset = new Dataset("defaultDataset", DatasetArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .datasetName(name)
+     *             .description("terraform-example")
+     *             .schema(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("type", "record"),
+     *                     jsonProperty("name", "example"),
+     *                     jsonProperty("fields", jsonArray(jsonObject(
+     *                         jsonProperty("name", "metric"),
+     *                         jsonProperty("type", "string")
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getDatasets(GetDatasetsArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .ids(defaultDataset.id())
+     *             .build());
+     * 
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDatasetsResult> getDatasetsPlain(GetDatasetsPlainArgs args) {
+        return getDatasetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cms Datasets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.cms.Workspace;
+     * import com.pulumi.alicloud.cms.WorkspaceArgs;
+     * import com.pulumi.alicloud.cms.Dataset;
+     * import com.pulumi.alicloud.cms.DatasetArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetDatasetsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(name)
+     *             .build());
+     * 
+     *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
+     *             .workspaceName(name)
+     *             .slsProject(defaultProject.projectName())
+     *             .build());
+     * 
+     *         var defaultDataset = new Dataset("defaultDataset", DatasetArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .datasetName(name)
+     *             .description("terraform-example")
+     *             .schema(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("type", "record"),
+     *                     jsonProperty("name", "example"),
+     *                     jsonProperty("fields", jsonArray(jsonObject(
+     *                         jsonProperty("name", "metric"),
+     *                         jsonProperty("type", "string")
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getDatasets(GetDatasetsArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .ids(defaultDataset.id())
+     *             .build());
+     * 
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatasetsResult> getDatasets(GetDatasetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getDatasets:getDatasets", TypeShape.of(GetDatasetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Datasets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.cms.Workspace;
+     * import com.pulumi.alicloud.cms.WorkspaceArgs;
+     * import com.pulumi.alicloud.cms.Dataset;
+     * import com.pulumi.alicloud.cms.DatasetArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetDatasetsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(name)
+     *             .build());
+     * 
+     *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
+     *             .workspaceName(name)
+     *             .slsProject(defaultProject.projectName())
+     *             .build());
+     * 
+     *         var defaultDataset = new Dataset("defaultDataset", DatasetArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .datasetName(name)
+     *             .description("terraform-example")
+     *             .schema(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("type", "record"),
+     *                     jsonProperty("name", "example"),
+     *                     jsonProperty("fields", jsonArray(jsonObject(
+     *                         jsonProperty("name", "metric"),
+     *                         jsonProperty("type", "string")
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getDatasets(GetDatasetsArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .ids(defaultDataset.id())
+     *             .build());
+     * 
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatasetsResult> getDatasets(GetDatasetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getDatasets:getDatasets", TypeShape.of(GetDatasetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Datasets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.cms.Workspace;
+     * import com.pulumi.alicloud.cms.WorkspaceArgs;
+     * import com.pulumi.alicloud.cms.Dataset;
+     * import com.pulumi.alicloud.cms.DatasetArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetDatasetsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(name)
+     *             .build());
+     * 
+     *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
+     *             .workspaceName(name)
+     *             .slsProject(defaultProject.projectName())
+     *             .build());
+     * 
+     *         var defaultDataset = new Dataset("defaultDataset", DatasetArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .datasetName(name)
+     *             .description("terraform-example")
+     *             .schema(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("type", "record"),
+     *                     jsonProperty("name", "example"),
+     *                     jsonProperty("fields", jsonArray(jsonObject(
+     *                         jsonProperty("name", "metric"),
+     *                         jsonProperty("type", "string")
+     *                     )))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getDatasets(GetDatasetsArgs.builder()
+     *             .workspace(defaultWorkspace.workspaceName())
+     *             .ids(defaultDataset.id())
+     *             .build());
+     * 
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDatasetsResult> getDatasetsPlain(GetDatasetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cms/getDatasets:getDatasets", TypeShape.of(GetDatasetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.

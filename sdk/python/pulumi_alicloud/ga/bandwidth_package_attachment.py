@@ -172,7 +172,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Ga Bandwidth Package Attachment can be imported using the id, e.g.
+        Ga Bandwidth Package Attachment can be imported using the id, which consists of accelerator_id and bandwidth_package_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
@@ -225,7 +225,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Ga Bandwidth Package Attachment can be imported using the id, e.g.
+        Ga Bandwidth Package Attachment can be imported using the id, which consists of accelerator_id and bandwidth_package_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>

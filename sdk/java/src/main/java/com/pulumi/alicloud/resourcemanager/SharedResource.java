@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Resource Manager Shared Resource can be imported using the id, e.g.
+ * Resource Manager Shared Resource can be imported using the id, which consists of resource_share_id, resourceId and resource_type, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example &lt;resource_share_id&gt;:&lt;resource_id&gt;:&lt;resource_type&gt;

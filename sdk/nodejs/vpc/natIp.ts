@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Nat Gateway Nat Ip can be imported using the id, e.g.
+ * Nat Gateway Nat Ip can be imported using the id, which consists of natGatewayId and nat_ip_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>

@@ -267,7 +267,7 @@ import (
 //
 // ## Import
 //
-// GPDB Hadoop Data Source can be imported using the id, e.g.
+// GPDB Hadoop Data Source can be imported using the id, which consists of dbInstanceId and data_source_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:gpdb/hadoopDataSource:HadoopDataSource example <db_instance_id>:<data_source_id>

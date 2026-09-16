@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides available scheduled task resources.
  *
- * > **NOTE:** Available in 1.72.0+
+ * > **NOTE:** Available since v1.72.0.
  *
  * ## Example Usage
  *
@@ -31,6 +31,7 @@ export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.In
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "scalingGroupId": args.scalingGroupId,
         "scheduledAction": args.scheduledAction,
         "scheduledTaskId": args.scheduledTaskId,
     }, opts);
@@ -52,6 +53,10 @@ export interface GetScheduledTasksArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The id of the scaling group to which the scheduled task belongs.
+     */
+    scalingGroupId?: string;
     /**
      * The operation to be performed when a scheduled task is triggered.
      */
@@ -81,6 +86,10 @@ export interface GetScheduledTasksResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
+     * The id of the scaling group to which the scheduled task belongs.
+     */
+    readonly scalingGroupId?: string;
+    /**
      * The operation to be performed when a scheduled task is triggered.
      */
     readonly scheduledAction?: string;
@@ -93,7 +102,7 @@ export interface GetScheduledTasksResult {
 /**
  * This data source provides available scheduled task resources.
  *
- * > **NOTE:** Available in 1.72.0+
+ * > **NOTE:** Available since v1.72.0.
  *
  * ## Example Usage
  *
@@ -115,6 +124,7 @@ export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "scalingGroupId": args.scalingGroupId,
         "scheduledAction": args.scheduledAction,
         "scheduledTaskId": args.scheduledTaskId,
     }, opts);
@@ -136,6 +146,10 @@ export interface GetScheduledTasksOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The id of the scaling group to which the scheduled task belongs.
+     */
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * The operation to be performed when a scheduled task is triggered.
      */

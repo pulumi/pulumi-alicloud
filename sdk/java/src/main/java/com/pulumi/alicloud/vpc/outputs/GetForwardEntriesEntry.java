@@ -56,7 +56,7 @@ public final class GetForwardEntriesEntry {
      */
     private String name;
     /**
-     * @return The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     * @return The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     private String status;
@@ -126,7 +126,7 @@ public final class GetForwardEntriesEntry {
         return this.name;
     }
     /**
-     * @return The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     * @return The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     public String status() {

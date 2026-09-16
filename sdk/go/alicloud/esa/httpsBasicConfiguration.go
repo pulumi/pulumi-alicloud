@@ -89,7 +89,7 @@ import (
 //
 // ## Import
 //
-// ESA Https Basic Configuration can be imported using the id, e.g.
+// ESA Https Basic Configuration can be imported using the id, which consists of siteId and config_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration example <site_id>:<config_id>

@@ -73,7 +73,7 @@ import (
 //
 // ## Import
 //
-// Alidns Cloud Gtm Instance Config can be imported using the id, e.g.
+// Alidns Cloud Gtm Instance Config can be imported using the id, which consists of configId and instance_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:alidnscloudgtm/instanceConfig:InstanceConfig example <config_id>:<instance_id>

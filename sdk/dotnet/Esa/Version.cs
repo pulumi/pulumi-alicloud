@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Site Version can be imported using the id, e.g.
+    /// ESA Site Version can be imported using the id, which consists of SiteId and site_version, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/version:Version example &lt;site_id&gt;:&lt;site_version&gt;

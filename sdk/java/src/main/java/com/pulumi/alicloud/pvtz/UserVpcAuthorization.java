@@ -57,11 +57,47 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Omit `authType` to use the default `NORMAL`
+ * 
+ * When `authType` is not set, the server defaults to `NORMAL` and the resource ID formats as `&lt;authorized_user_id&gt;:NORMAL`.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.UserVpcAuthorization;
+ * import com.pulumi.alicloud.pvtz.UserVpcAuthorizationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new UserVpcAuthorization("default", UserVpcAuthorizationArgs.builder()
+ *             .authorizedUserId("123456789")
+ *             .authChannel("RESOURCE_DIRECTORY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
- * Private Zone User Vpc Authorization can be imported using the id, e.g.
+ * Private Zone User Vpc Authorization can be imported using the id, which consists of authorizedUserId and auth_type, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example &lt;authorized_user_id&gt;:&lt;auth_type&gt;
@@ -85,18 +121,18 @@ public class UserVpcAuthorization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authChannel);
     }
     /**
-     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      * 
      */
     @Export(name="authType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> authType;
+    private Output<String> authType;
 
     /**
-     * @return The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * @return The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      * 
      */
-    public Output<Optional<String>> authType() {
-        return Codegen.optional(this.authType);
+    public Output<String> authType() {
+        return this.authType;
     }
     /**
      * The primary account ID of the user who authorizes the resource.

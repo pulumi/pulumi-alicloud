@@ -410,7 +410,7 @@ class QosCar(pulumi.CustomResource):
 
         ## Import
 
-        The Sag Qos Car can be imported using the id, e.g.
+        The Sag Qos Car can be imported using the id, which consists of qos_id and qos_car_id, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
@@ -473,7 +473,7 @@ class QosCar(pulumi.CustomResource):
 
         ## Import
 
-        The Sag Qos Car can be imported using the id, e.g.
+        The Sag Qos Car can be imported using the id, which consists of qos_id and qos_car_id, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>

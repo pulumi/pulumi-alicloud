@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        /// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        /// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -452,7 +452,7 @@ namespace Pulumi.AliCloud.Vpc
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of forward entry.
+        /// The status of the Forward Entry.
         /// </summary>
         public readonly string? Status;
 

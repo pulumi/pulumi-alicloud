@@ -449,7 +449,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 
@@ -496,7 +496,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 
@@ -543,7 +543,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 
@@ -590,7 +590,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 
@@ -637,7 +637,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 
@@ -684,7 +684,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 
@@ -731,7 +731,7 @@ public final class SlbFunctions {
     /**
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.123.1+
+     * &gt; **NOTE:** Available since v1.123.1
      * 
      * ## Example Usage
      * 

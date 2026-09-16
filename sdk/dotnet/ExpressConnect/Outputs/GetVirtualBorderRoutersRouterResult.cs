@@ -114,9 +114,13 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string RouteTableId;
         /// <summary>
-        /// The VBR state.
+        /// The instance state with. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A map of tags to filter Virtual Border Routers that match the given tags.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The Most Recent Was Aborted by the Time.
         /// </summary>
@@ -196,6 +200,8 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
 
             string status,
 
+            ImmutableDictionary<string, string> tags,
+
             string terminationTime,
 
             string type,
@@ -234,6 +240,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
             RecoveryTime = recoveryTime;
             RouteTableId = routeTableId;
             Status = status;
+            Tags = tags;
             TerminationTime = terminationTime;
             Type = type;
             VirtualBorderRouterId = virtualBorderRouterId;

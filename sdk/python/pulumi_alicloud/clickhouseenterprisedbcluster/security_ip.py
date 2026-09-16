@@ -191,7 +191,7 @@ class SecurityIp(pulumi.CustomResource):
 
         ## Import
 
-        Click House Enterprise Db Cluster Security I P can be imported using the id, e.g.
+        Click House Enterprise Db Cluster Security I P can be imported using the id, which consists of db_instance_id and group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp example <db_instance_id>:<group_name>
@@ -264,7 +264,7 @@ class SecurityIp(pulumi.CustomResource):
 
         ## Import
 
-        Click House Enterprise Db Cluster Security I P can be imported using the id, e.g.
+        Click House Enterprise Db Cluster Security I P can be imported using the id, which consists of db_instance_id and group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp example <db_instance_id>:<group_name>

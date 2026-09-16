@@ -235,14 +235,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return this.contentLength;
     }
     /**
-     * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+     * The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform&#39;s `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
      * 
      */
     @Export(name="contentMd5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentMd5;
 
     /**
-     * @return The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+     * @return The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform&#39;s `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
      * 
      */
     public Output<Optional<String>> contentMd5() {

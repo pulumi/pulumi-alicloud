@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Alikafka Scheduled Scaling Rule can be imported using the id, e.g.
+ * Alikafka Scheduled Scaling Rule can be imported using the id, which consists of instanceId and rule_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule example &lt;instance_id&gt;:&lt;rule_name&gt;

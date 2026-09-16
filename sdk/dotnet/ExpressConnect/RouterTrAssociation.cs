@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// ## Import
     /// 
-    /// Express Connect Router Express Connect Router Tr Association can be imported using the id, e.g.
+    /// Express Connect Router Express Connect Router Tr Association can be imported using the id, which consists of ecr_id, AssociationId and transit_router_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:expressconnect/routerTrAssociation:RouterTrAssociation example &lt;ecr_id&gt;:&lt;association_id&gt;:&lt;transit_router_id&gt;

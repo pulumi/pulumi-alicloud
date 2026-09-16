@@ -330,7 +330,7 @@ class RocketMQTopic(pulumi.CustomResource):
 
         ## Import
 
-        RocketMQ Topic can be imported using the id, e.g.
+        RocketMQ Topic can be imported using the id, which consists of instance_id and topic_name, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example <instance_id>:<topic_name>
@@ -429,7 +429,7 @@ class RocketMQTopic(pulumi.CustomResource):
 
         ## Import
 
-        RocketMQ Topic can be imported using the id, e.g.
+        RocketMQ Topic can be imported using the id, which consists of instance_id and topic_name, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example <instance_id>:<topic_name>

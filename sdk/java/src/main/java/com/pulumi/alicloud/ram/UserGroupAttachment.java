@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM User Group Attachment can be imported using the id, e.g.
+ * RAM User Group Attachment can be imported using the id, which consists of groupName and user_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ram/userGroupAttachment:UserGroupAttachment example &lt;group_name&gt;:&lt;user_name&gt;

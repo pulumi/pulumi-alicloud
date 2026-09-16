@@ -46,6 +46,10 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
+        /// The configuration of the custom image registry. The data source exposes `CertConfig` and `NetworkConfig`; `AuthConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetV3FunctionsFunctionCustomContainerConfigRegistryConfigResult> RegistryConfigs;
+        /// <summary>
         /// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
         /// </summary>
         public readonly string ResolvedImageUri;
@@ -68,6 +72,8 @@ namespace Pulumi.AliCloud.FC.Outputs
 
             int port,
 
+            ImmutableArray<Outputs.GetV3FunctionsFunctionCustomContainerConfigRegistryConfigResult> registryConfigs,
+
             string resolvedImageUri)
         {
             AccelerationInfo = accelerationInfo;
@@ -78,6 +84,7 @@ namespace Pulumi.AliCloud.FC.Outputs
             HealthCheckConfig = healthCheckConfig;
             Image = image;
             Port = port;
+            RegistryConfigs = registryConfigs;
             ResolvedImageUri = resolvedImageUri;
         }
     }

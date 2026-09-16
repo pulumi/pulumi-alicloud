@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
+ * Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, which consists of server_group_id, serverId and port, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>

@@ -416,6 +416,130 @@ func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainTimeout() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
+type ServerGroupDrainingServer struct {
+	// The backend server ID.
+	ServerId *string `pulumi:"serverId"`
+	// The IP address of the backend server.
+	ServerIp *string `pulumi:"serverIp"`
+	// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+	ServerType *string `pulumi:"serverType"`
+	// Indicates the status of the backend server.
+	Status *string `pulumi:"status"`
+}
+
+// ServerGroupDrainingServerInput is an input type that accepts ServerGroupDrainingServerArgs and ServerGroupDrainingServerOutput values.
+// You can construct a concrete instance of `ServerGroupDrainingServerInput` via:
+//
+//	ServerGroupDrainingServerArgs{...}
+type ServerGroupDrainingServerInput interface {
+	pulumi.Input
+
+	ToServerGroupDrainingServerOutput() ServerGroupDrainingServerOutput
+	ToServerGroupDrainingServerOutputWithContext(context.Context) ServerGroupDrainingServerOutput
+}
+
+type ServerGroupDrainingServerArgs struct {
+	// The backend server ID.
+	ServerId pulumi.StringPtrInput `pulumi:"serverId"`
+	// The IP address of the backend server.
+	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
+	// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
+	// Indicates the status of the backend server.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ServerGroupDrainingServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupDrainingServer)(nil)).Elem()
+}
+
+func (i ServerGroupDrainingServerArgs) ToServerGroupDrainingServerOutput() ServerGroupDrainingServerOutput {
+	return i.ToServerGroupDrainingServerOutputWithContext(context.Background())
+}
+
+func (i ServerGroupDrainingServerArgs) ToServerGroupDrainingServerOutputWithContext(ctx context.Context) ServerGroupDrainingServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupDrainingServerOutput)
+}
+
+// ServerGroupDrainingServerArrayInput is an input type that accepts ServerGroupDrainingServerArray and ServerGroupDrainingServerArrayOutput values.
+// You can construct a concrete instance of `ServerGroupDrainingServerArrayInput` via:
+//
+//	ServerGroupDrainingServerArray{ ServerGroupDrainingServerArgs{...} }
+type ServerGroupDrainingServerArrayInput interface {
+	pulumi.Input
+
+	ToServerGroupDrainingServerArrayOutput() ServerGroupDrainingServerArrayOutput
+	ToServerGroupDrainingServerArrayOutputWithContext(context.Context) ServerGroupDrainingServerArrayOutput
+}
+
+type ServerGroupDrainingServerArray []ServerGroupDrainingServerInput
+
+func (ServerGroupDrainingServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupDrainingServer)(nil)).Elem()
+}
+
+func (i ServerGroupDrainingServerArray) ToServerGroupDrainingServerArrayOutput() ServerGroupDrainingServerArrayOutput {
+	return i.ToServerGroupDrainingServerArrayOutputWithContext(context.Background())
+}
+
+func (i ServerGroupDrainingServerArray) ToServerGroupDrainingServerArrayOutputWithContext(ctx context.Context) ServerGroupDrainingServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupDrainingServerArrayOutput)
+}
+
+type ServerGroupDrainingServerOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupDrainingServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupDrainingServer)(nil)).Elem()
+}
+
+func (o ServerGroupDrainingServerOutput) ToServerGroupDrainingServerOutput() ServerGroupDrainingServerOutput {
+	return o
+}
+
+func (o ServerGroupDrainingServerOutput) ToServerGroupDrainingServerOutputWithContext(ctx context.Context) ServerGroupDrainingServerOutput {
+	return o
+}
+
+// The backend server ID.
+func (o ServerGroupDrainingServerOutput) ServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupDrainingServer) *string { return v.ServerId }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the backend server.
+func (o ServerGroupDrainingServerOutput) ServerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupDrainingServer) *string { return v.ServerIp }).(pulumi.StringPtrOutput)
+}
+
+// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+func (o ServerGroupDrainingServerOutput) ServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupDrainingServer) *string { return v.ServerType }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the status of the backend server.
+func (o ServerGroupDrainingServerOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupDrainingServer) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupDrainingServerArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupDrainingServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupDrainingServer)(nil)).Elem()
+}
+
+func (o ServerGroupDrainingServerArrayOutput) ToServerGroupDrainingServerArrayOutput() ServerGroupDrainingServerArrayOutput {
+	return o
+}
+
+func (o ServerGroupDrainingServerArrayOutput) ToServerGroupDrainingServerArrayOutputWithContext(ctx context.Context) ServerGroupDrainingServerArrayOutput {
+	return o
+}
+
+func (o ServerGroupDrainingServerArrayOutput) Index(i pulumi.IntInput) ServerGroupDrainingServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroupDrainingServer {
+		return vs[0].([]ServerGroupDrainingServer)[vs[1].(int)]
+	}).(ServerGroupDrainingServerOutput)
+}
+
 type ServerGroupHealthCheckConfig struct {
 	// The backend server port that is used for health checks.
 	//
@@ -453,7 +577,7 @@ type ServerGroupHealthCheckConfig struct {
 	//
 	// The URL must start with a forward slash (/).
 	//
-	// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+	// > **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
 	// The protocol that is used for health checks. Valid values:
 	//
@@ -522,7 +646,7 @@ type ServerGroupHealthCheckConfigArgs struct {
 	//
 	// The URL must start with a forward slash (/).
 	//
-	// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+	// > **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
 	// The protocol that is used for health checks. Valid values:
 	//
@@ -674,7 +798,7 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntPtrO
 //
 // The URL must start with a forward slash (/).
 //
-// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+// > **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
@@ -813,7 +937,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntP
 //
 // The URL must start with a forward slash (/).
 //
-// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+// > **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -1170,6 +1294,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingLoadBalancerAddressArrayInput)(nil)).Elem(), LoadBalancerZoneMappingLoadBalancerAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupConnectionDrainConfigInput)(nil)).Elem(), ServerGroupConnectionDrainConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupConnectionDrainConfigPtrInput)(nil)).Elem(), ServerGroupConnectionDrainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupDrainingServerInput)(nil)).Elem(), ServerGroupDrainingServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupDrainingServerArrayInput)(nil)).Elem(), ServerGroupDrainingServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigPtrInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
@@ -1182,6 +1308,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingLoadBalancerAddressArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupConnectionDrainConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupConnectionDrainConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupDrainingServerOutput{})
+	pulumi.RegisterOutputType(ServerGroupDrainingServerArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})

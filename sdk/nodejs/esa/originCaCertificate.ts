@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Origin Ca Certificate can be imported using the id, e.g.
+ * ESA Origin Ca Certificate can be imported using the id, which consists of siteId and origin_ca_certificate_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/originCaCertificate:OriginCaCertificate example <site_id>:<origin_ca_certificate_id>

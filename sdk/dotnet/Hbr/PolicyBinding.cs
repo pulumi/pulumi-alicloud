@@ -82,11 +82,96 @@ namespace Pulumi.AliCloud.Hbr
     /// });
     /// ```
     /// 
+    /// ECS Instance Backup With App-Consistent Snapshot Group
+    /// 
+    /// This example migrates an `alicloud.hbr.ServerBackupPlan` configuration (deprecated since v1.249.0) to `alicloud.hbr.PolicyBinding` using `alicloud.hbr.Policy` + `advanced_options.udm_detail` with `AppConsistent` and `SnapshotGroup`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultVault = new AliCloud.Hbr.Vault("default", new()
+    ///     {
+    ///         VaultType = "STANDARD",
+    ///         VaultName = $"example-value-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultPolicy = new AliCloud.Hbr.Policy("default", new()
+    ///     {
+    ///         PolicyName = $"example-value-{@default.Result}",
+    ///         Rules = new[]
+    ///         {
+    ///             new AliCloud.Hbr.Inputs.PolicyRuleArgs
+    ///             {
+    ///                 RuleType = "BACKUP",
+    ///                 BackupType = "COMPLETE",
+    ///                 Schedule = "I|1631685600|P1D",
+    ///                 Retention = 7,
+    ///                 ArchiveDays = 0,
+    ///                 VaultId = defaultVault.Id,
+    ///             },
+    ///         },
+    ///         PolicyDescription = "policy example",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+    ///     {
+    ///         InstanceName = $"example-value-{@default.Result}",
+    ///         InstanceType = "ecs.g7.large",
+    ///         ImageId = "aliyun_2_1903_x64_7h_cor_4.0.40_alibase",
+    ///         SystemDisk = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "category", "cloud_essd" },
+    ///                 { "size", "40" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultPolicyBinding = new AliCloud.Hbr.PolicyBinding("default", new()
+    ///     {
+    ///         SourceType = "UDM_ECS",
+    ///         PolicyId = defaultPolicy.Id,
+    ///         DataSourceId = defaultInstance.Id,
+    ///         Disabled = false,
+    ///         AdvancedOptions = new AliCloud.Hbr.Inputs.PolicyBindingAdvancedOptionsArgs
+    ///         {
+    ///             UdmDetail = new AliCloud.Hbr.Inputs.PolicyBindingAdvancedOptionsUdmDetailArgs
+    ///             {
+    ///                 AppConsistent = true,
+    ///                 SnapshotGroup = true,
+    ///                 RamRoleName = "AliyunECSBackupRole",
+    ///                 PreScriptPath = "/opt/prescript.sh",
+    ///                 PostScriptPath = "/opt/postscript.sh",
+    ///                 EnableFsFreeze = true,
+    ///                 TimeoutInSeconds = 60,
+    ///                 EnableWriters = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
-    /// Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
+    /// Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, which consists of policy_id, SourceType and data_source_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example &lt;policy_id&gt;:&lt;source_type&gt;:&lt;data_source_id&gt;

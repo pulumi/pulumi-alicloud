@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Enterprise Network (CEN) Transit Router Peer Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Peer Attachment can be imported using the id, which consists of cenId and transit_router_attachment_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;

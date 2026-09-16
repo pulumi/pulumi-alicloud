@@ -32,7 +32,15 @@ public final class GetScheduledTasksTask {
      * 
      */
     private String launchTime;
+    /**
+     * @return The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     * 
+     */
     private Integer maxValue;
+    /**
+     * @return The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     * 
+     */
     private Integer minValue;
     /**
      * @return Name of the scheduled task name.
@@ -55,10 +63,19 @@ public final class GetScheduledTasksTask {
      */
     private String recurrenceValue;
     /**
+     * @return The id of the scaling group to which the scheduled task belongs.
+     * 
+     */
+    private String scalingGroupId;
+    /**
      * @return The operation to be performed when a scheduled task is triggered.
      * 
      */
     private String scheduledAction;
+    /**
+     * @return Whether to start the scheduled task.
+     * 
+     */
     private Boolean taskEnabled;
 
     private GetScheduledTasksTask() {}
@@ -90,9 +107,17 @@ public final class GetScheduledTasksTask {
     public String launchTime() {
         return this.launchTime;
     }
+    /**
+     * @return The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     * 
+     */
     public Integer maxValue() {
         return this.maxValue;
     }
+    /**
+     * @return The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     * 
+     */
     public Integer minValue() {
         return this.minValue;
     }
@@ -125,12 +150,23 @@ public final class GetScheduledTasksTask {
         return this.recurrenceValue;
     }
     /**
+     * @return The id of the scaling group to which the scheduled task belongs.
+     * 
+     */
+    public String scalingGroupId() {
+        return this.scalingGroupId;
+    }
+    /**
      * @return The operation to be performed when a scheduled task is triggered.
      * 
      */
     public String scheduledAction() {
         return this.scheduledAction;
     }
+    /**
+     * @return Whether to start the scheduled task.
+     * 
+     */
     public Boolean taskEnabled() {
         return this.taskEnabled;
     }
@@ -154,6 +190,7 @@ public final class GetScheduledTasksTask {
         private String recurrenceEndTime;
         private String recurrenceType;
         private String recurrenceValue;
+        private String scalingGroupId;
         private String scheduledAction;
         private Boolean taskEnabled;
         public Builder() {}
@@ -169,6 +206,7 @@ public final class GetScheduledTasksTask {
     	      this.recurrenceEndTime = defaults.recurrenceEndTime;
     	      this.recurrenceType = defaults.recurrenceType;
     	      this.recurrenceValue = defaults.recurrenceValue;
+    	      this.scalingGroupId = defaults.scalingGroupId;
     	      this.scheduledAction = defaults.scheduledAction;
     	      this.taskEnabled = defaults.taskEnabled;
         }
@@ -254,6 +292,14 @@ public final class GetScheduledTasksTask {
             return this;
         }
         @CustomType.Setter
+        public Builder scalingGroupId(String scalingGroupId) {
+            if (scalingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "scalingGroupId");
+            }
+            this.scalingGroupId = scalingGroupId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scheduledAction(String scheduledAction) {
             if (scheduledAction == null) {
               throw new MissingRequiredPropertyException("GetScheduledTasksTask", "scheduledAction");
@@ -281,6 +327,7 @@ public final class GetScheduledTasksTask {
             _resultValue.recurrenceEndTime = recurrenceEndTime;
             _resultValue.recurrenceType = recurrenceType;
             _resultValue.recurrenceValue = recurrenceValue;
+            _resultValue.scalingGroupId = scalingGroupId;
             _resultValue.scheduledAction = scheduledAction;
             _resultValue.taskEnabled = taskEnabled;
             return _resultValue;

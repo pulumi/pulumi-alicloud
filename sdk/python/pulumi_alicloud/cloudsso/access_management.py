@@ -343,7 +343,7 @@ class AccessManagement(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO Access Assignment can be imported using the id, e.g.
+        Cloud SSO Access Assignment can be imported using the id, which consists of directory_id, access_configuration_id, target_type, target_id, principal_type and principal_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
@@ -427,7 +427,7 @@ class AccessManagement(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO Access Assignment can be imported using the id, e.g.
+        Cloud SSO Access Assignment can be imported using the id, which consists of directory_id, access_configuration_id, target_type, target_id, principal_type and principal_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>

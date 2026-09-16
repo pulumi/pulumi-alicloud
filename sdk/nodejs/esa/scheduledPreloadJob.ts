@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Scheduled Preload Job can be imported using the id, e.g.
+ * ESA Scheduled Preload Job can be imported using the id, which consists of siteId and scheduled_preload_job_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob example <site_id>:<scheduled_preload_job_id>

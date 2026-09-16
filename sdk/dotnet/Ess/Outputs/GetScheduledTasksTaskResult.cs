@@ -29,7 +29,13 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// The time at which the scheduled task is triggered.
         /// </summary>
         public readonly string LaunchTime;
+        /// <summary>
+        /// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
         public readonly int MaxValue;
+        /// <summary>
+        /// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
         public readonly int MinValue;
         /// <summary>
         /// Name of the scheduled task name.
@@ -48,9 +54,16 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string RecurrenceValue;
         /// <summary>
+        /// The id of the scaling group to which the scheduled task belongs.
+        /// </summary>
+        public readonly string ScalingGroupId;
+        /// <summary>
         /// The operation to be performed when a scheduled task is triggered.
         /// </summary>
         public readonly string ScheduledAction;
+        /// <summary>
+        /// Whether to start the scheduled task.
+        /// </summary>
         public readonly bool TaskEnabled;
 
         [OutputConstructor]
@@ -75,6 +88,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string recurrenceValue,
 
+            string scalingGroupId,
+
             string scheduledAction,
 
             bool taskEnabled)
@@ -89,6 +104,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             RecurrenceEndTime = recurrenceEndTime;
             RecurrenceType = recurrenceType;
             RecurrenceValue = recurrenceValue;
+            ScalingGroupId = scalingGroupId;
             ScheduledAction = scheduledAction;
             TaskEnabled = taskEnabled;
         }

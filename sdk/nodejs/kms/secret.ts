@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.76.0.
  *
+ * > **NOTE:** Starting from KMS 3.0, secrets are created inside a dedicated KMS instance. When you create a secret in KMS 3.0, you must specify `dkmsInstanceId` and `encryptionKeyId`. The examples below show how to provide them. If your account still uses the legacy shared KMS and does not require a dedicated instance, these two parameters can be omitted, but this legacy behavior is no longer recommended.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -21,10 +23,215 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.kms.Secret("default", {
+ * // Replace the IDs with your own dedicated KMS instance and key.
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const defaultSecret = new alicloud.kms.Secret("default", {
  *     secretName: name,
  *     secretData: "Secret data",
  *     versionId: "v1",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     forceDeleteWithoutRecovery: true,
+ * });
+ * ```
+ *
+ * ### Create a generic secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const generic = new alicloud.kms.Secret("generic", {
+ *     secretName: name,
+ *     secretType: "Generic",
+ *     secretData: "Secret data",
+ *     versionId: "v1",
+ *     secretDataType: "text",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     forceDeleteWithoutRecovery: true,
+ * });
+ * ```
+ *
+ * ### Create an RDS secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const rds = new alicloud.kms.Secret("rds", {
+ *     secretName: name,
+ *     secretType: "Rds",
+ *     secretData: JSON.stringify({
+ *         Accounts: [{
+ *             AccountName: "rds_user",
+ *             AccountPassword: "YourPassword12345!",
+ *         }],
+ *     }),
+ *     versionId: "v1",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     extendedConfig: JSON.stringify({
+ *         SecretSubType: "SingleUser",
+ *         DBInstanceId: "rm-bp1b3dd3a506e****",
+ *     }),
+ *     forceDeleteWithoutRecovery: true,
+ * });
+ * ```
+ *
+ * ### Create a Redis/Tair secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const redis = new alicloud.kms.Secret("redis", {
+ *     secretName: name,
+ *     secretType: "Redis",
+ *     secretData: "$Auto",
+ *     versionId: "v1",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     extendedConfig: JSON.stringify({
+ *         SecretSubType: "DoubleUsers",
+ *         AccountName: "redis_user",
+ *         CloneAccountName: "redis_user_clone",
+ *         AccountPrivilege: "ROLE_READ_ONLY",
+ *         InstanceId: "r-bp1b3dd3a506e****",
+ *         RegionId: "cn-hangzhou",
+ *     }),
+ *     forceDeleteWithoutRecovery: true,
+ * });
+ * ```
+ *
+ * ### Create a RAM credentials secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const ram = new alicloud.kms.Secret("ram", {
+ *     secretName: "$Auto",
+ *     secretType: "RAMCredentials",
+ *     secretData: JSON.stringify({
+ *         AccessKeys: [{
+ *             AccessKeyId: "LTAI********************",
+ *             AccessKeySecret: "YourAccessKeySecret",
+ *         }],
+ *     }),
+ *     versionId: "v1",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     extendedConfig: JSON.stringify({
+ *         SecretSubType: "RamUserAccessKey",
+ *         UserName: "ram_user",
+ *     }),
+ *     forceDeleteWithoutRecovery: true,
+ * });
+ * ```
+ *
+ * ### Create an ECS secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const ecs = new alicloud.kms.Secret("ecs", {
+ *     secretName: `acs/ecs/${name}`,
+ *     secretType: "ECS",
+ *     secretData: JSON.stringify({
+ *         UserName: "root",
+ *         Password: "YourPassword12345!",
+ *     }),
+ *     versionId: "v1",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     extendedConfig: JSON.stringify({
+ *         SecretSubType: "Password",
+ *         RegionId: "cn-hangzhou",
+ *         InstanceId: "i-bp1b3dd3a506e****",
+ *     }),
+ *     forceDeleteWithoutRecovery: true,
+ * });
+ * ```
+ *
+ * ### Create a PolarDB secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.kms.getInstances({
+ *     ids: ["kst-bjj62d8f5e0sgtx8h****"],
+ * });
+ * const defaultGetKeys = alicloud.kms.getKeys({
+ *     ids: ["key-gzz63ff0db5hg3qje****"],
+ * });
+ * const polardb = new alicloud.kms.Secret("polardb", {
+ *     secretName: name,
+ *     secretType: "PolarDB",
+ *     secretData: "$Auto",
+ *     versionId: "v1",
+ *     dkmsInstanceId: _default.then(_default => _default.instances?.[0]?.instanceId),
+ *     encryptionKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.keys?.[0]?.id),
+ *     extendedConfig: JSON.stringify({
+ *         SecretSubType: "DoubleUsers",
+ *         RegionId: "cn-hangzhou",
+ *         DBClusterId: "pc-bp1b3dd3a506e****",
+ *         DBType: "MySQL",
+ *         AccountName: "polardb_user",
+ *         CloneAccountName: "polardb_user_clone",
+ *         AccountType: "Normal",
+ *         AccountPrivilege: "ReadOnly",
+ *         DBName: "testdb",
+ *     }),
  *     forceDeleteWithoutRecovery: true,
  * });
  * ```
@@ -80,7 +287,7 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The ID of the KMS instance.
+     * The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      */
     declare public readonly dkmsInstanceId: pulumi.Output<string | undefined>;
     /**
@@ -88,11 +295,11 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public readonly enableAutomaticRotation: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the KMS key.
+     * The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      */
     declare public readonly encryptionKeyId: pulumi.Output<string | undefined>;
     /**
-     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     declare public readonly extendedConfig: pulumi.Output<string | undefined>;
     /**
@@ -116,7 +323,12 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public readonly rotationInterval: pulumi.Output<string | undefined>;
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      */
     declare public readonly secretData: pulumi.Output<string>;
     /**
@@ -237,7 +449,7 @@ export interface SecretState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the KMS instance.
+     * The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      */
     dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -245,11 +457,11 @@ export interface SecretState {
      */
     enableAutomaticRotation?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID of the KMS key.
+     * The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      */
     encryptionKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     extendedConfig?: pulumi.Input<string | undefined>;
     /**
@@ -273,7 +485,12 @@ export interface SecretState {
      */
     rotationInterval?: pulumi.Input<string | undefined>;
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      */
     secretData?: pulumi.Input<string | undefined>;
     /**
@@ -317,7 +534,7 @@ export interface SecretArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the KMS instance.
+     * The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      */
     dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -325,11 +542,11 @@ export interface SecretArgs {
      */
     enableAutomaticRotation?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID of the KMS key.
+     * The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      */
     encryptionKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     extendedConfig?: pulumi.Input<string | undefined>;
     /**
@@ -349,7 +566,12 @@ export interface SecretArgs {
      */
     rotationInterval?: pulumi.Input<string | undefined>;
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      */
     secretData: pulumi.Input<string>;
     /**

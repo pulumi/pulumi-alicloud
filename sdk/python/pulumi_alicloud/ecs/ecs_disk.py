@@ -49,15 +49,17 @@ class EcsDiskArgs:
         """
         The set of arguments for constructing a EcsDisk resource.
 
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -162,6 +164,9 @@ class EcsDiskArgs:
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The advanced features configured for the disk.
+        """
         return pulumi.get(self, "advanced_features")
 
     @advanced_features.setter
@@ -185,7 +190,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="burstingEnabled")
     def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
         """
         return pulumi.get(self, "bursting_enabled")
 
@@ -197,7 +202,7 @@ class EcsDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         """
         return pulumi.get(self, "category")
 
@@ -281,6 +286,9 @@ class EcsDiskArgs:
     @_builtins.property
     @pulumi.getter(name="encryptAlgorithm")
     def encrypt_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        """
         return pulumi.get(self, "encrypt_algorithm")
 
     @encrypt_algorithm.setter
@@ -537,9 +545,10 @@ class _EcsDiskState:
         """
         Input properties used for looking up and filtering EcsDisk resources.
 
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the disk was created.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
@@ -547,6 +556,7 @@ class _EcsDiskState:
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -659,6 +669,9 @@ class _EcsDiskState:
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The advanced features configured for the disk.
+        """
         return pulumi.get(self, "advanced_features")
 
     @advanced_features.setter
@@ -682,7 +695,7 @@ class _EcsDiskState:
     @pulumi.getter(name="burstingEnabled")
     def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
         """
         return pulumi.get(self, "bursting_enabled")
 
@@ -694,7 +707,7 @@ class _EcsDiskState:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         """
         return pulumi.get(self, "category")
 
@@ -790,6 +803,9 @@ class _EcsDiskState:
     @_builtins.property
     @pulumi.getter(name="encryptAlgorithm")
     def encrypt_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        """
         return pulumi.get(self, "encrypt_algorithm")
 
     @encrypt_algorithm.setter
@@ -1121,15 +1137,17 @@ class EcsDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -1352,9 +1370,10 @@ class EcsDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the disk was created.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
@@ -1362,6 +1381,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -1440,6 +1460,9 @@ class EcsDisk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The advanced features configured for the disk.
+        """
         return pulumi.get(self, "advanced_features")
 
     @_builtins.property
@@ -1455,7 +1478,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="burstingEnabled")
     def bursting_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
         """
         return pulumi.get(self, "bursting_enabled")
 
@@ -1463,7 +1486,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
         """
         return pulumi.get(self, "category")
 
@@ -1527,6 +1550,9 @@ class EcsDisk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="encryptAlgorithm")
     def encrypt_algorithm(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        """
         return pulumi.get(self, "encrypt_algorithm")
 
     @_builtins.property

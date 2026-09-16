@@ -190,7 +190,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
+ * Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, which consists of listenerId and certificate_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>

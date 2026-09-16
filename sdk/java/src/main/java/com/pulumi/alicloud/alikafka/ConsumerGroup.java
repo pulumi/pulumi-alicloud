@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AliKafka Consumer Group can be imported using the id, e.g.
+ * AliKafka Consumer Group can be imported using the id, which consists of instanceId and consumer_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example &lt;instance_id&gt;:&lt;consumer_id&gt;

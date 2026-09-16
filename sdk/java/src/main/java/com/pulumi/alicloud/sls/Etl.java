@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log Service (SLS) Etl can be imported using the id, e.g.
+ * Log Service (SLS) Etl can be imported using the id, which consists of project and job_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:sls/etl:Etl example &lt;project&gt;:&lt;job_name&gt;

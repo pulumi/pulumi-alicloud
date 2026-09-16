@@ -649,7 +649,7 @@ class AggTaskGroup(pulumi.CustomResource):
 
         ## Import
 
-        Cms Agg Task Group can be imported using the id, e.g.
+        Cms Agg Task Group can be imported using the id, which consists of source_prometheus_id and agg_task_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cms/aggTaskGroup:AggTaskGroup example <source_prometheus_id>:<agg_task_group_id>
@@ -733,7 +733,7 @@ class AggTaskGroup(pulumi.CustomResource):
 
         ## Import
 
-        Cms Agg Task Group can be imported using the id, e.g.
+        Cms Agg Task Group can be imported using the id, which consists of source_prometheus_id and agg_task_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cms/aggTaskGroup:AggTaskGroup example <source_prometheus_id>:<agg_task_group_id>

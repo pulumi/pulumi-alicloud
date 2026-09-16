@@ -40,6 +40,8 @@ __all__ = [
     'IndexLine',
     'LogtailConfigOutputDetail',
     'MachineGroupGroupAttribute',
+    'MetricStoreEncryptConf',
+    'MetricStoreEncryptConfUserCmkInfo',
     'OssExportSinkConfiguration',
     'OssExportSinkConfigurationSink',
     'ScheduledSqlSchedule',
@@ -67,6 +69,7 @@ __all__ = [
     'GetIndexsIndexLineResult',
     'GetLogtailConfigsConfigResult',
     'GetMachineGroupsGroupResult',
+    'GetMetricStoresMetricStoreResult',
 ]
 
 @pulumi.output_type
@@ -1870,6 +1873,129 @@ class MachineGroupGroupAttribute(dict):
         The log topic of the machine group.
         """
         return pulumi.get(self, "group_topic")
+
+
+@pulumi.output_type
+class MetricStoreEncryptConf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptType":
+            suggest = "encrypt_type"
+        elif key == "userCmkInfo":
+            suggest = "user_cmk_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricStoreEncryptConf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricStoreEncryptConf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricStoreEncryptConf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: _builtins.bool,
+                 encrypt_type: Optional[_builtins.str] = None,
+                 user_cmk_info: Optional['outputs.MetricStoreEncryptConfUserCmkInfo'] = None):
+        """
+        :param _builtins.bool enable: Specifies whether to enable encryption.
+        :param _builtins.str encrypt_type: The encryption algorithm. Valid values: `default`.
+        :param 'MetricStoreEncryptConfUserCmkInfoArgs' user_cmk_info: The BYOK (Bring Your Own Key) configuration. See `user_cmk_info` below.
+        """
+        pulumi.set(__self__, "enable", enable)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
+        if user_cmk_info is not None:
+            pulumi.set(__self__, "user_cmk_info", user_cmk_info)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> _builtins.bool:
+        """
+        Specifies whether to enable encryption.
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> Optional[_builtins.str]:
+        """
+        The encryption algorithm. Valid values: `default`.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @_builtins.property
+    @pulumi.getter(name="userCmkInfo")
+    def user_cmk_info(self) -> Optional['outputs.MetricStoreEncryptConfUserCmkInfo']:
+        """
+        The BYOK (Bring Your Own Key) configuration. See `user_cmk_info` below.
+        """
+        return pulumi.get(self, "user_cmk_info")
+
+
+@pulumi.output_type
+class MetricStoreEncryptConfUserCmkInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cmkKeyId":
+            suggest = "cmk_key_id"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricStoreEncryptConfUserCmkInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricStoreEncryptConfUserCmkInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricStoreEncryptConfUserCmkInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arn: Optional[_builtins.str] = None,
+                 cmk_key_id: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str arn: The ARN of the RAM role that is authorized to use the CMK.
+        :param _builtins.str cmk_key_id: The ID of the CMK (Customer Master Key).
+        :param _builtins.str region_id: The region ID of the CMK.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if cmk_key_id is not None:
+            pulumi.set(__self__, "cmk_key_id", cmk_key_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> Optional[_builtins.str]:
+        """
+        The ARN of the RAM role that is authorized to use the CMK.
+        """
+        return pulumi.get(self, "arn")
+
+    @_builtins.property
+    @pulumi.getter(name="cmkKeyId")
+    def cmk_key_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the CMK (Customer Master Key).
+        """
+        return pulumi.get(self, "cmk_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region ID of the CMK.
+        """
+        return pulumi.get(self, "region_id")
 
 
 @pulumi.output_type
@@ -4017,5 +4143,133 @@ class GetMachineGroupsGroupResult(dict):
         The ID of the resource supplied above.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetMetricStoresMetricStoreResult(dict):
+    def __init__(__self__, *,
+                 append_meta: _builtins.bool,
+                 auto_split: _builtins.bool,
+                 create_time: _builtins.int,
+                 hot_ttl: _builtins.int,
+                 id: _builtins.str,
+                 last_modify_time: _builtins.int,
+                 max_split_shard_count: _builtins.int,
+                 metric_store_name: _builtins.str,
+                 mode: _builtins.str,
+                 shard_count: _builtins.int,
+                 ttl: _builtins.int):
+        """
+        :param _builtins.bool append_meta: Whether to record the IP address of the requester.
+        :param _builtins.bool auto_split: Whether automatic shard splitting is enabled.
+        :param _builtins.int create_time: The time when the MetricStore was created.
+        :param _builtins.int hot_ttl: The data retention period in the hot storage tier, in days.
+        :param _builtins.str id: The ID of the MetricStore. The value is formatted as `<project_name>:<metric_store_name>`.
+        :param _builtins.int last_modify_time: The time when the MetricStore was last modified.
+        :param _builtins.int max_split_shard_count: The maximum number of shards to split.
+        :param _builtins.str metric_store_name: The name of the MetricStore.
+        :param _builtins.str mode: The type of the MetricStore.
+        :param _builtins.int shard_count: The number of shards.
+        :param _builtins.int ttl: The data retention period in days.
+        """
+        pulumi.set(__self__, "append_meta", append_meta)
+        pulumi.set(__self__, "auto_split", auto_split)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "hot_ttl", hot_ttl)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modify_time", last_modify_time)
+        pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
+        pulumi.set(__self__, "metric_store_name", metric_store_name)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "shard_count", shard_count)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="appendMeta")
+    def append_meta(self) -> _builtins.bool:
+        """
+        Whether to record the IP address of the requester.
+        """
+        return pulumi.get(self, "append_meta")
+
+    @_builtins.property
+    @pulumi.getter(name="autoSplit")
+    def auto_split(self) -> _builtins.bool:
+        """
+        Whether automatic shard splitting is enabled.
+        """
+        return pulumi.get(self, "auto_split")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.int:
+        """
+        The time when the MetricStore was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="hotTtl")
+    def hot_ttl(self) -> _builtins.int:
+        """
+        The data retention period in the hot storage tier, in days.
+        """
+        return pulumi.get(self, "hot_ttl")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the MetricStore. The value is formatted as `<project_name>:<metric_store_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifyTime")
+    def last_modify_time(self) -> _builtins.int:
+        """
+        The time when the MetricStore was last modified.
+        """
+        return pulumi.get(self, "last_modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSplitShardCount")
+    def max_split_shard_count(self) -> _builtins.int:
+        """
+        The maximum number of shards to split.
+        """
+        return pulumi.get(self, "max_split_shard_count")
+
+    @_builtins.property
+    @pulumi.getter(name="metricStoreName")
+    def metric_store_name(self) -> _builtins.str:
+        """
+        The name of the MetricStore.
+        """
+        return pulumi.get(self, "metric_store_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The type of the MetricStore.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="shardCount")
+    def shard_count(self) -> _builtins.int:
+        """
+        The number of shards.
+        """
+        return pulumi.get(self, "shard_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> _builtins.int:
+        """
+        The data retention period in days.
+        """
+        return pulumi.get(self, "ttl")
 
 

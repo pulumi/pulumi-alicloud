@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Redis
     /// 
     /// ## Import
     /// 
-    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup can be imported using the id, e.g.
+    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup can be imported using the id, which consists of InstanceId and backup_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:redis/backup:Backup example &lt;instance_id&gt;:&lt;backup_id&gt;

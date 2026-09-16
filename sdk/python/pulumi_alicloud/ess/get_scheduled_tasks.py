@@ -27,7 +27,7 @@ class GetScheduledTasksResult:
     """
     A collection of values returned by getScheduledTasks.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, scheduled_action=None, scheduled_task_id=None, tasks=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, scaling_group_id=None, scheduled_action=None, scheduled_task_id=None, tasks=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,6 +43,9 @@ class GetScheduledTasksResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if scaling_group_id and not isinstance(scaling_group_id, str):
+            raise TypeError("Expected argument 'scaling_group_id' to be a str")
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if scheduled_action and not isinstance(scheduled_action, str):
             raise TypeError("Expected argument 'scheduled_action' to be a str")
         pulumi.set(__self__, "scheduled_action", scheduled_action)
@@ -88,6 +91,14 @@ class GetScheduledTasksResult:
         return pulumi.get(self, "output_file")
 
     @_builtins.property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[_builtins.str]:
+        """
+        The id of the scaling group to which the scheduled task belongs.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @_builtins.property
     @pulumi.getter(name="scheduledAction")
     def scheduled_action(self) -> Optional[_builtins.str]:
         """
@@ -120,6 +131,7 @@ class AwaitableGetScheduledTasksResult(GetScheduledTasksResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            scaling_group_id=self.scaling_group_id,
             scheduled_action=self.scheduled_action,
             scheduled_task_id=self.scheduled_task_id,
             tasks=self.tasks)
@@ -128,13 +140,14 @@ class AwaitableGetScheduledTasksResult(GetScheduledTasksResult):
 def get_scheduled_tasks(ids: Optional[Sequence[_builtins.str]] = None,
                         name_regex: Optional[_builtins.str] = None,
                         output_file: Optional[_builtins.str] = None,
+                        scaling_group_id: Optional[_builtins.str] = None,
                         scheduled_action: Optional[_builtins.str] = None,
                         scheduled_task_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetScheduledTasksResult:
     """
     This data source provides available scheduled task resources.
 
-    > **NOTE:** Available in 1.72.0+
+    > **NOTE:** Available since v1.72.0.
 
     ## Example Usage
 
@@ -151,6 +164,7 @@ def get_scheduled_tasks(ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] ids: A list of scheduled task IDs.
     :param _builtins.str name_regex: A regex string to filter resulting scheduled tasks by name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str scaling_group_id: The id of the scaling group to which the scheduled task belongs.
     :param _builtins.str scheduled_action: The operation to be performed when a scheduled task is triggered.
     :param _builtins.str scheduled_task_id: The id of the scheduled task.
     """
@@ -158,6 +172,7 @@ def get_scheduled_tasks(ids: Optional[Sequence[_builtins.str]] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['scalingGroupId'] = scaling_group_id
     __args__['scheduledAction'] = scheduled_action
     __args__['scheduledTaskId'] = scheduled_task_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -169,19 +184,21 @@ def get_scheduled_tasks(ids: Optional[Sequence[_builtins.str]] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
+        scaling_group_id=pulumi.get(__ret__, 'scaling_group_id'),
         scheduled_action=pulumi.get(__ret__, 'scheduled_action'),
         scheduled_task_id=pulumi.get(__ret__, 'scheduled_task_id'),
         tasks=pulumi.get(__ret__, 'tasks'))
 def get_scheduled_tasks_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               scaling_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                scheduled_action: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                scheduled_task_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScheduledTasksResult]:
     """
     This data source provides available scheduled task resources.
 
-    > **NOTE:** Available in 1.72.0+
+    > **NOTE:** Available since v1.72.0.
 
     ## Example Usage
 
@@ -198,6 +215,7 @@ def get_scheduled_tasks_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
     :param Sequence[_builtins.str] ids: A list of scheduled task IDs.
     :param _builtins.str name_regex: A regex string to filter resulting scheduled tasks by name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str scaling_group_id: The id of the scaling group to which the scheduled task belongs.
     :param _builtins.str scheduled_action: The operation to be performed when a scheduled task is triggered.
     :param _builtins.str scheduled_task_id: The id of the scheduled task.
     """
@@ -205,6 +223,7 @@ def get_scheduled_tasks_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['scalingGroupId'] = scaling_group_id
     __args__['scheduledAction'] = scheduled_action
     __args__['scheduledTaskId'] = scheduled_task_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -215,6 +234,7 @@ def get_scheduled_tasks_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),
         output_file=pulumi.get(__response__, 'output_file'),
+        scaling_group_id=pulumi.get(__response__, 'scaling_group_id'),
         scheduled_action=pulumi.get(__response__, 'scheduled_action'),
         scheduled_task_id=pulumi.get(__response__, 'scheduled_task_id'),
         tasks=pulumi.get(__response__, 'tasks')))

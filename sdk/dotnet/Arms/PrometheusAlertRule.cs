@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// ## Import
     /// 
-    /// Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
+    /// Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, which consists of ClusterId and prometheus_alert_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example &lt;cluster_id&gt;:&lt;prometheus_alert_rule_id&gt;

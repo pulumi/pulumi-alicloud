@@ -142,7 +142,7 @@ import (
 //
 // ## Import
 //
-// Container Registry Sync Rule can be imported using the id, e.g.
+// Container Registry Sync Rule can be imported using the id, which consists of instance_id, namespaceName and repo_sync_rule_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<repo_sync_rule_id>

@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Wafv3
     /// 
     /// ## Import
     /// 
-    /// WAFV3 Address Book can be imported using the id, e.g.
+    /// WAFV3 Address Book can be imported using the id, which consists of InstanceId and address_book_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:wafv3/addressBook:AddressBook example &lt;instance_id&gt;:&lt;address_book_id&gt;

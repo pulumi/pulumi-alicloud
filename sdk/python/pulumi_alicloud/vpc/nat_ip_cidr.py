@@ -311,7 +311,7 @@ class NatIpCidr(pulumi.CustomResource):
 
         ## Import
 
-        Nat Gateway Nat Ip Cidr can be imported using the id, e.g.
+        Nat Gateway Nat Ip Cidr can be imported using the id, which consists of nat_gateway_id and nat_ip_cidr, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>
@@ -384,7 +384,7 @@ class NatIpCidr(pulumi.CustomResource):
 
         ## Import
 
-        Nat Gateway Nat Ip Cidr can be imported using the id, e.g.
+        Nat Gateway Nat Ip Cidr can be imported using the id, which consists of nat_gateway_id and nat_ip_cidr, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>

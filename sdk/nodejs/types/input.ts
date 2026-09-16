@@ -1081,6 +1081,21 @@ export namespace alb {
         status?: pulumi.Input<string | undefined>;
     }
 
+    export interface AclEntryAttachmentEntry {
+        /**
+         * The description of the ACL entry. The description must be `1` to `256` characters in length.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * The CIDR block of the ACL entry.
+         */
+        entry: pulumi.Input<string>;
+        /**
+         * The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+         */
+        status?: pulumi.Input<string | undefined>;
+    }
+
     export interface ListenerAccessLogTracingConfig {
         /**
          * Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
@@ -2606,6 +2621,28 @@ export namespace apig {
          * > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
          */
         protocol?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SourceK8sSourceInfo {
+        /**
+         * The ID of the ACK cluster.
+         */
+        clusterId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SourceNacosSourceInfo {
+        /**
+         * The access address of the Nacos instance.
+         */
+        address?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the Nacos cluster.
+         */
+        clusterId?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the MSE Nacos instance.
+         */
+        instanceId?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -6861,7 +6898,7 @@ export namespace cr {
          */
         instanceDomain: pulumi.Input<string>;
         /**
-         * Storage domain name.
+         * Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
          */
         storageDomain: pulumi.Input<string>;
     }
@@ -8070,6 +8107,20 @@ export namespace cs {
          * The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
          */
         privatePoolOptionsMatchCriteria?: pulumi.Input<string | undefined>;
+    }
+
+    export interface NodePoolResourcePoolOptions {
+        /**
+         * The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+         */
+        privatePoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+         * * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+         * * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+         * * `None`: Do not use the resource pool strategy.
+         */
+        strategy?: pulumi.Input<string | undefined>;
     }
 
     export interface NodePoolRollingPolicy {
@@ -10212,6 +10263,9 @@ export namespace ebs {
          */
         parameterValue: pulumi.Input<string>;
     }
+}
+
+export namespace ecddesktop {
 }
 
 export namespace eci {
@@ -16369,7 +16423,7 @@ export namespace fc {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+         * List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
          */
         allowOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
@@ -16541,6 +16595,10 @@ export namespace fc {
          */
         port?: pulumi.Input<number | undefined>;
         /**
+         * The configuration of the custom image registry. See `registryConfig` below.
+         */
+        registryConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigRegistryConfig | undefined>;
+        /**
          * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
          */
         resolvedImageUri?: pulumi.Input<string | undefined>;
@@ -16562,6 +16620,52 @@ export namespace fc {
         periodSeconds?: pulumi.Input<number | undefined>;
         successThreshold?: pulumi.Input<number | undefined>;
         timeoutSeconds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfig {
+        /**
+         * The authentication configuration of the image registry. See `authConfig` below.
+         */
+        authConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigRegistryConfigAuthConfig | undefined>;
+        /**
+         * The certificate configuration of the image registry. See `certConfig` below.
+         */
+        certConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigRegistryConfigCertConfig | undefined>;
+        /**
+         * The network configuration used to connect to the image registry. See `networkConfig` below.
+         */
+        networkConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigRegistryConfigNetworkConfig | undefined>;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfigAuthConfig {
+        /**
+         * The password of the image registry.
+         */
+        password?: pulumi.Input<string | undefined>;
+        /**
+         * The username of the image registry.
+         */
+        userName?: pulumi.Input<string | undefined>;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfigCertConfig {
+        /**
+         * Specifies whether to skip certificate verification.
+         */
+        insecure?: pulumi.Input<boolean | undefined>;
+        /**
+         * The Base64-encoded root CA certificate of the image registry.
+         */
+        rootCaCertBase64?: pulumi.Input<string | undefined>;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfigNetworkConfig {
+        securityGroupId?: pulumi.Input<string | undefined>;
+        vpcId?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the vSwitch that can connect to the image registry.
+         */
+        vswitchId?: pulumi.Input<string | undefined>;
     }
 
     export interface V3FunctionCustomDns {
@@ -17344,6 +17448,25 @@ export namespace gwlb {
         connectionDrainTimeout?: pulumi.Input<number | undefined>;
     }
 
+    export interface ServerGroupDrainingServer {
+        /**
+         * The backend server ID.
+         */
+        serverId?: pulumi.Input<string | undefined>;
+        /**
+         * The IP address of the backend server.
+         */
+        serverIp?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+         */
+        serverType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates the status of the backend server.
+         */
+        status?: pulumi.Input<string | undefined>;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
          * The backend server port that is used for health checks.
@@ -17394,7 +17517,7 @@ export namespace gwlb {
          *
          * The URL must start with a forward slash (/).
          *
-         * > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+         * > **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
          */
         healthCheckPath?: pulumi.Input<string | undefined>;
         /**
@@ -17627,6 +17750,10 @@ export namespace hbr {
 
     export interface PolicyBindingAdvancedOptionsUdmDetail {
         /**
+         * Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+         */
+        appConsistent?: pulumi.Input<boolean | undefined>;
+        /**
          * Custom KMS key ID of encrypted copy
          */
         destinationKmsKeyId?: pulumi.Input<string | undefined>;
@@ -17635,9 +17762,41 @@ export namespace hbr {
          */
         diskIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
+         * Whether to enable file system freeze before taking a snapshot.
+         */
+        enableFsFreeze?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to enable VSS writers.
+         */
+        enableWriters?: pulumi.Input<boolean | undefined>;
+        /**
          * List of cloud disk IDs that are not backed up
          */
         excludeDiskIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+         */
+        postScriptPath?: pulumi.Input<string | undefined>;
+        /**
+         * The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+         */
+        preScriptPath?: pulumi.Input<string | undefined>;
+        /**
+         * The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+         */
+        ramRoleName?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+         */
+        snapshotGroup?: pulumi.Input<boolean | undefined>;
+        /**
+         * The timeout in seconds for the pre/post script execution.
+         *
+         * > **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+         *
+         * > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+         */
+        timeoutInSeconds?: pulumi.Input<number | undefined>;
     }
 
     export interface PolicyRule {
@@ -17678,7 +17837,7 @@ export namespace hbr {
          */
         ruleId?: pulumi.Input<string | undefined>;
         /**
-         * Rule Type
+         * Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
          */
         ruleType: pulumi.Input<string>;
         /**
@@ -20805,6 +20964,48 @@ export namespace polardb {
          * Whether TTL is enabled. Default to `false`.
          */
         enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface GatewayEndpoint {
+        /**
+         * The endpoint address.
+         */
+        address?: pulumi.Input<string | undefined>;
+        /**
+         * The endpoint ID.
+         */
+        endpointId?: pulumi.Input<string | undefined>;
+        /**
+         * The gateway ID.
+         */
+        gatewayId?: pulumi.Input<string | undefined>;
+        /**
+         * The network type. Valid values: `Private`, `Public`.
+         */
+        networkType?: pulumi.Input<string | undefined>;
+        /**
+         * The endpoint port.
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * The tunnel ID.
+         */
+        tunnelId?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewaySecurityIpArray {
+        /**
+         * The IP addresses in the whitelist group.
+         */
+        ipList?: pulumi.Input<string | undefined>;
+        /**
+         * The whitelist group name.
+         */
+        name?: pulumi.Input<string | undefined>;
     }
 
     export interface ParameterGroupParameter {
@@ -24489,6 +24690,36 @@ export namespace sls {
         groupTopic?: pulumi.Input<string | undefined>;
     }
 
+    export interface MetricStoreEncryptConf {
+        /**
+         * Specifies whether to enable encryption.
+         */
+        enable: pulumi.Input<boolean>;
+        /**
+         * The encryption algorithm. Valid values: `default`.
+         */
+        encryptType?: pulumi.Input<string | undefined>;
+        /**
+         * The BYOK (Bring Your Own Key) configuration. See `userCmkInfo` below.
+         */
+        userCmkInfo?: pulumi.Input<inputs.sls.MetricStoreEncryptConfUserCmkInfo | undefined>;
+    }
+
+    export interface MetricStoreEncryptConfUserCmkInfo {
+        /**
+         * The ARN of the RAM role that is authorized to use the CMK.
+         */
+        arn?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the CMK (Customer Master Key).
+         */
+        cmkKeyId?: pulumi.Input<string | undefined>;
+        /**
+         * The region ID of the CMK.
+         */
+        regionId?: pulumi.Input<string | undefined>;
+    }
+
     export interface OssExportSinkConfiguration {
         /**
          * The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
@@ -24948,6 +25179,33 @@ export namespace threatdetection {
         vendor: pulumi.Input<number>;
     }
 
+    export interface AttackPathWhitelistAttackPathAssetList {
+        /**
+         * The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+         */
+        assetSubType?: pulumi.Input<number | undefined>;
+        /**
+         * The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+         */
+        assetType?: pulumi.Input<number | undefined>;
+        /**
+         * The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+         */
+        instanceId?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+         */
+        nodeType?: pulumi.Input<string | undefined>;
+        /**
+         * The region ID of the cloud product asset instance.
+         */
+        regionId?: pulumi.Input<string | undefined>;
+        /**
+         * The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+         */
+        vendor: pulumi.Input<number>;
+    }
+
     export interface CheckConfigSelectedCheck {
         /**
          * The ID of the check item.
@@ -25111,6 +25369,52 @@ export namespace vpc {
          * The ID of the VPC network that is associated with the DHCP options set.
          */
         vpcId: pulumi.Input<string>;
+    }
+
+    export interface GetRouteTargetGroupsRouteTargetMemberList {
+        /**
+         * Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+         */
+        enableStatus?: string;
+        /**
+         * The health check status of the current route target configuration.
+         */
+        healthCheckStatus?: string;
+        /**
+         * The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+         */
+        memberId: string;
+        /**
+         * The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+         */
+        memberType: string;
+        /**
+         * Sets the weight attribute for the current route target configuration.
+         */
+        weight: number;
+    }
+
+    export interface GetRouteTargetGroupsRouteTargetMemberListArgs {
+        /**
+         * Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+         */
+        enableStatus?: pulumi.Input<string | undefined>;
+        /**
+         * The health check status of the current route target configuration.
+         */
+        healthCheckStatus?: pulumi.Input<string | undefined>;
+        /**
+         * The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+         */
+        memberId: pulumi.Input<string>;
+        /**
+         * The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+         */
+        memberType: pulumi.Input<string>;
+        /**
+         * Sets the weight attribute for the current route target configuration.
+         */
+        weight: pulumi.Input<number>;
     }
 
     export interface NatGatewayAccessMode {
@@ -25370,6 +25674,34 @@ export namespace vpc {
          * Resource attribute fields that represent the status of the resource.
          */
         status?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouteTargetGroupRouteTargetMemberList {
+        /**
+         * Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+         */
+        enableStatus?: pulumi.Input<string | undefined>;
+        /**
+         * The health check status of the current route target configuration.
+         */
+        healthCheckStatus?: pulumi.Input<string | undefined>;
+        /**
+         * The instance ID of the route target member.
+         */
+        memberId: pulumi.Input<string>;
+        /**
+         * The instance type of the route target configuration. The following type is currently supported:
+         * - GatewayLoadBalancerEndpoint.
+         */
+        memberType: pulumi.Input<string>;
+        /**
+         * Sets the weight attribute for the current route target configuration.
+         *
+         * In active-standby mode, the weight can only be set to 0 or 100:
+         * - Only one route target configuration can be set to 100, serving as the active instance.
+         * - Only one route target configuration can be set to 0, serving as the standby instance.
+         */
+        weight: pulumi.Input<number>;
     }
 
     export interface TrafficMirrorFilterEgressRule {

@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Origin Pool can be imported using the id, e.g.
+ * ESA Origin Pool can be imported using the id, which consists of siteId and origin_pool_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/originPool:OriginPool example <site_id>:<origin_pool_id>

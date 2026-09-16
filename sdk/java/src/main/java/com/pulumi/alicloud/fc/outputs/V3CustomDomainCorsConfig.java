@@ -30,7 +30,7 @@ public final class V3CustomDomainCorsConfig {
      */
     private @Nullable List<String> allowMethods;
     /**
-     * @return List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+     * @return List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
      * 
      */
     private @Nullable List<String> allowOrigins;
@@ -68,7 +68,7 @@ public final class V3CustomDomainCorsConfig {
         return this.allowMethods == null ? List.of() : this.allowMethods;
     }
     /**
-     * @return List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+     * @return List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
      * 
      */
     public List<String> allowOrigins() {

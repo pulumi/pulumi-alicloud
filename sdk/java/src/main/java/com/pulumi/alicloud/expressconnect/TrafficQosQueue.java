@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Express Connect Traffic Qos Queue can be imported using the id, e.g.
+ * Express Connect Traffic Qos Queue can be imported using the id, which consists of qosId and queue_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:expressconnect/trafficQosQueue:TrafficQosQueue example &lt;qos_id&gt;:&lt;queue_id&gt;

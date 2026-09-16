@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// ## Import
     /// 
-    /// Bastion Host Account Share Key Attachment can be imported using the id, e.g.
+    /// Bastion Host Account Share Key Attachment can be imported using the id, which consists of instance_id, HostShareKeyId and host_account_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment example &lt;instance_id&gt;:&lt;host_share_key_id&gt;:&lt;host_account_id&gt;

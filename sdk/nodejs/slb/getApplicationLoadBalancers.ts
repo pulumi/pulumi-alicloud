@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the server load balancers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.123.1+
+ * > **NOTE:** Available since v1.123.1
  *
  * ## Example Usage
  *
@@ -72,6 +72,9 @@ export interface GetApplicationLoadBalancersArgs {
      * The address type of the SLB. Valid values `internet` and `intranet`.
      */
     addressType?: string;
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     */
     enableDetails?: boolean;
     /**
      * A list of SLBs IDs.
@@ -124,7 +127,7 @@ export interface GetApplicationLoadBalancersArgs {
      */
     slaveZoneId?: string;
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      */
     status?: string;
     /**
@@ -194,6 +197,9 @@ export interface GetApplicationLoadBalancersResult {
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The payment type of the SLB.
+     */
     readonly paymentType?: string;
     /**
      * The ID of the resource group.
@@ -209,6 +215,8 @@ export interface GetApplicationLoadBalancersResult {
      */
     readonly slaveZoneId?: string;
     /**
+     * **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
+     *
      * @deprecated Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
      */
     readonly slbs: outputs.slb.GetApplicationLoadBalancersSlb[];
@@ -233,7 +241,7 @@ export interface GetApplicationLoadBalancersResult {
 /**
  * This data source provides the server load balancers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.123.1+
+ * > **NOTE:** Available since v1.123.1
  *
  * ## Example Usage
  *
@@ -296,6 +304,9 @@ export interface GetApplicationLoadBalancersOutputArgs {
      * The address type of the SLB. Valid values `internet` and `intranet`.
      */
     addressType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of SLBs IDs.
@@ -348,7 +359,7 @@ export interface GetApplicationLoadBalancersOutputArgs {
      */
     slaveZoneId?: pulumi.Input<string | undefined>;
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      */
     status?: pulumi.Input<string | undefined>;
     /**

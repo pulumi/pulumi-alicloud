@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
     /// 
     /// ## Import
     /// 
-    /// Realtime Compute Job can be imported using the id, e.g.
+    /// Realtime Compute Job can be imported using the id, which consists of resource_id, namespace and job_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:realtimecompute/job:Job example &lt;resource_id&gt;:&lt;namespace&gt;:&lt;job_id&gt;

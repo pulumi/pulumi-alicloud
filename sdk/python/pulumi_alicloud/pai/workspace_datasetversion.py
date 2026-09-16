@@ -562,7 +562,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
 
         ## Import
 
-        PAI Workspace Datasetversion can be imported using the id, e.g.
+        PAI Workspace Datasetversion can be imported using the id, which consists of dataset_id and version_name, e.g.
 
         ```sh
         $ pulumi import alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion example <dataset_id>:<version_name>
@@ -669,7 +669,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
 
         ## Import
 
-        PAI Workspace Datasetversion can be imported using the id, e.g.
+        PAI Workspace Datasetversion can be imported using the id, which consists of dataset_id and version_name, e.g.
 
         ```sh
         $ pulumi import alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion example <dataset_id>:<version_name>

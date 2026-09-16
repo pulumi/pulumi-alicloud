@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, which consists of vaultId and hana_instance_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:hbr/hanaInstance:HanaInstance example <vault_id>:<hana_instance_id>

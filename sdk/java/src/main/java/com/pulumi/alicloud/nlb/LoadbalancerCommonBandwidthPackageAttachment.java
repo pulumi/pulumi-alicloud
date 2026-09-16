@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NLB Loadbalancer Common Bandwidth Package Attachment can be imported using the id, e.g.
+ * NLB Loadbalancer Common Bandwidth Package Attachment can be imported using the id, which consists of loadBalancerId and bandwidth_package_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example &lt;load_balancer_id&gt;:&lt;bandwidth_package_id&gt;

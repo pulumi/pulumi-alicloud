@@ -252,7 +252,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, which consists of instance_type, instance_id, cen_owner_id and cen_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment example <instance_type>:<instance_id>:<cen_owner_id>:<cen_id>
@@ -311,7 +311,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, which consists of instance_type, instance_id, cen_owner_id and cen_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment example <instance_type>:<instance_id>:<cen_owner_id>:<cen_id>

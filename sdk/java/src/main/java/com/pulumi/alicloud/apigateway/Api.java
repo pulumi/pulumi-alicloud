@@ -206,6 +206,20 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.apiId;
     }
     /**
+     * The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     * 
+     */
+    @Export(name="appCodeAuthType", refs={String.class}, tree="[0]")
+    private Output<String> appCodeAuthType;
+
+    /**
+     * @return The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     * 
+     */
+    public Output<String> appCodeAuthType() {
+        return this.appCodeAuthType;
+    }
+    /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      * 
      */

@@ -7,7 +7,11 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .deployment import *
+from .get_members import *
+from .get_sql_files import *
 from .job import *
+from .member import *
+from .sql_file import *
 from .vvp_instance import *
 from ._inputs import *
 from . import outputs

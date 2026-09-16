@@ -327,7 +327,7 @@ class ClientInstanceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        EAIS Client Instance Attachment can be imported using the id, e.g.
+        EAIS Client Instance Attachment can be imported using the id, which consists of instance_id and client_instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment example <instance_id>:<client_instance_id>
@@ -439,7 +439,7 @@ class ClientInstanceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        EAIS Client Instance Attachment can be imported using the id, e.g.
+        EAIS Client Instance Attachment can be imported using the id, which consists of instance_id and client_instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment example <instance_id>:<client_instance_id>

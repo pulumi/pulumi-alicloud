@@ -5,6 +5,8 @@ package com.pulumi.alicloud.hbr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PolicyBindingAdvancedOptionsUdmDetailArgs Empty = new PolicyBindingAdvancedOptionsUdmDetailArgs();
+
+    /**
+     * Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+     * 
+     */
+    @Import(name="appConsistent")
+    private @Nullable Output<Boolean> appConsistent;
+
+    /**
+     * @return Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+     * 
+     */
+    public Optional<Output<Boolean>> appConsistent() {
+        return Optional.ofNullable(this.appConsistent);
+    }
 
     /**
      * Custom KMS key ID of encrypted copy
@@ -47,6 +64,36 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
     }
 
     /**
+     * Whether to enable file system freeze before taking a snapshot.
+     * 
+     */
+    @Import(name="enableFsFreeze")
+    private @Nullable Output<Boolean> enableFsFreeze;
+
+    /**
+     * @return Whether to enable file system freeze before taking a snapshot.
+     * 
+     */
+    public Optional<Output<Boolean>> enableFsFreeze() {
+        return Optional.ofNullable(this.enableFsFreeze);
+    }
+
+    /**
+     * Whether to enable VSS writers.
+     * 
+     */
+    @Import(name="enableWriters")
+    private @Nullable Output<Boolean> enableWriters;
+
+    /**
+     * @return Whether to enable VSS writers.
+     * 
+     */
+    public Optional<Output<Boolean>> enableWriters() {
+        return Optional.ofNullable(this.enableWriters);
+    }
+
+    /**
      * List of cloud disk IDs that are not backed up
      * 
      */
@@ -61,12 +108,103 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         return Optional.ofNullable(this.excludeDiskIdLists);
     }
 
+    /**
+     * The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    @Import(name="postScriptPath")
+    private @Nullable Output<String> postScriptPath;
+
+    /**
+     * @return The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<Output<String>> postScriptPath() {
+        return Optional.ofNullable(this.postScriptPath);
+    }
+
+    /**
+     * The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    @Import(name="preScriptPath")
+    private @Nullable Output<String> preScriptPath;
+
+    /**
+     * @return The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<Output<String>> preScriptPath() {
+        return Optional.ofNullable(this.preScriptPath);
+    }
+
+    /**
+     * The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+     * 
+     */
+    @Import(name="ramRoleName")
+    private @Nullable Output<String> ramRoleName;
+
+    /**
+     * @return The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<Output<String>> ramRoleName() {
+        return Optional.ofNullable(this.ramRoleName);
+    }
+
+    /**
+     * Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+     * 
+     */
+    @Import(name="snapshotGroup")
+    private @Nullable Output<Boolean> snapshotGroup;
+
+    /**
+     * @return Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> snapshotGroup() {
+        return Optional.ofNullable(this.snapshotGroup);
+    }
+
+    /**
+     * The timeout in seconds for the pre/post script execution.
+     * 
+     * &gt; **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+     * 
+     * &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+     * 
+     */
+    @Import(name="timeoutInSeconds")
+    private @Nullable Output<Integer> timeoutInSeconds;
+
+    /**
+     * @return The timeout in seconds for the pre/post script execution.
+     * 
+     * &gt; **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+     * 
+     * &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+     * 
+     */
+    public Optional<Output<Integer>> timeoutInSeconds() {
+        return Optional.ofNullable(this.timeoutInSeconds);
+    }
+
     private PolicyBindingAdvancedOptionsUdmDetailArgs() {}
 
     private PolicyBindingAdvancedOptionsUdmDetailArgs(PolicyBindingAdvancedOptionsUdmDetailArgs $) {
+        this.appConsistent = $.appConsistent;
         this.destinationKmsKeyId = $.destinationKmsKeyId;
         this.diskIdLists = $.diskIdLists;
+        this.enableFsFreeze = $.enableFsFreeze;
+        this.enableWriters = $.enableWriters;
         this.excludeDiskIdLists = $.excludeDiskIdLists;
+        this.postScriptPath = $.postScriptPath;
+        this.preScriptPath = $.preScriptPath;
+        this.ramRoleName = $.ramRoleName;
+        this.snapshotGroup = $.snapshotGroup;
+        this.timeoutInSeconds = $.timeoutInSeconds;
     }
 
     public static Builder builder() {
@@ -85,6 +223,27 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
 
         public Builder(PolicyBindingAdvancedOptionsUdmDetailArgs defaults) {
             $ = new PolicyBindingAdvancedOptionsUdmDetailArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param appConsistent Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appConsistent(@Nullable Output<Boolean> appConsistent) {
+            $.appConsistent = appConsistent;
+            return this;
+        }
+
+        /**
+         * @param appConsistent Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appConsistent(Boolean appConsistent) {
+            return appConsistent(Output.of(appConsistent));
         }
 
         /**
@@ -140,6 +299,48 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         }
 
         /**
+         * @param enableFsFreeze Whether to enable file system freeze before taking a snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFsFreeze(@Nullable Output<Boolean> enableFsFreeze) {
+            $.enableFsFreeze = enableFsFreeze;
+            return this;
+        }
+
+        /**
+         * @param enableFsFreeze Whether to enable file system freeze before taking a snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFsFreeze(Boolean enableFsFreeze) {
+            return enableFsFreeze(Output.of(enableFsFreeze));
+        }
+
+        /**
+         * @param enableWriters Whether to enable VSS writers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableWriters(@Nullable Output<Boolean> enableWriters) {
+            $.enableWriters = enableWriters;
+            return this;
+        }
+
+        /**
+         * @param enableWriters Whether to enable VSS writers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableWriters(Boolean enableWriters) {
+            return enableWriters(Output.of(enableWriters));
+        }
+
+        /**
          * @param excludeDiskIdLists List of cloud disk IDs that are not backed up
          * 
          * @return builder
@@ -168,6 +369,119 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
          */
         public Builder excludeDiskIdLists(String... excludeDiskIdLists) {
             return excludeDiskIdLists(List.of(excludeDiskIdLists));
+        }
+
+        /**
+         * @param postScriptPath The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postScriptPath(@Nullable Output<String> postScriptPath) {
+            $.postScriptPath = postScriptPath;
+            return this;
+        }
+
+        /**
+         * @param postScriptPath The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postScriptPath(String postScriptPath) {
+            return postScriptPath(Output.of(postScriptPath));
+        }
+
+        /**
+         * @param preScriptPath The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preScriptPath(@Nullable Output<String> preScriptPath) {
+            $.preScriptPath = preScriptPath;
+            return this;
+        }
+
+        /**
+         * @param preScriptPath The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preScriptPath(String preScriptPath) {
+            return preScriptPath(Output.of(preScriptPath));
+        }
+
+        /**
+         * @param ramRoleName The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramRoleName(@Nullable Output<String> ramRoleName) {
+            $.ramRoleName = ramRoleName;
+            return this;
+        }
+
+        /**
+         * @param ramRoleName The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramRoleName(String ramRoleName) {
+            return ramRoleName(Output.of(ramRoleName));
+        }
+
+        /**
+         * @param snapshotGroup Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotGroup(@Nullable Output<Boolean> snapshotGroup) {
+            $.snapshotGroup = snapshotGroup;
+            return this;
+        }
+
+        /**
+         * @param snapshotGroup Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotGroup(Boolean snapshotGroup) {
+            return snapshotGroup(Output.of(snapshotGroup));
+        }
+
+        /**
+         * @param timeoutInSeconds The timeout in seconds for the pre/post script execution.
+         * 
+         * &gt; **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+         * 
+         * &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutInSeconds(@Nullable Output<Integer> timeoutInSeconds) {
+            $.timeoutInSeconds = timeoutInSeconds;
+            return this;
+        }
+
+        /**
+         * @param timeoutInSeconds The timeout in seconds for the pre/post script execution.
+         * 
+         * &gt; **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+         * 
+         * &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutInSeconds(Integer timeoutInSeconds) {
+            return timeoutInSeconds(Output.of(timeoutInSeconds));
         }
 
         public PolicyBindingAdvancedOptionsUdmDetailArgs build() {

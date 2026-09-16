@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Import
     /// 
-    /// Container Registry Enterprise Edition Repository can be imported using the id, e.g.
+    /// Container Registry Enterprise Edition Repository can be imported using the id, which consists of instance_id, namespace and name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example &lt;instance_id&gt;:&lt;namespace&gt;:&lt;name&gt;

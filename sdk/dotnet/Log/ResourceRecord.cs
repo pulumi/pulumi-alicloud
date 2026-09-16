@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ## Import
     /// 
-    /// Log resource record can be imported using the id, e.g.
+    /// Log resource record can be imported using the id, which consists of ResourceName and record_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:log/resourceRecord:ResourceRecord example &lt;resource_name&gt;:&lt;record_id&gt;

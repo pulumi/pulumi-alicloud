@@ -133,7 +133,7 @@ import (
 //
 // ## Import
 //
-// Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
+// Cen Child Instance Route Entry To Attachment can be imported using the id, which consists of cen_id, child_instance_route_table_id, transitRouterAttachmentId and destination_cidr_block, e.g.
 //
 // ```sh
 // $terraform import alicloud_cen_child_instance_route_entry_to_attachment.example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>

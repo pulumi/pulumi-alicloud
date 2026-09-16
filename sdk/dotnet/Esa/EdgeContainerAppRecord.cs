@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Edge Container App Record can be imported using the id, e.g.
+    /// ESA Edge Container App Record can be imported using the id, which consists of site_id, AppId and record_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord example &lt;site_id&gt;:&lt;app_id&gt;:&lt;record_name&gt;

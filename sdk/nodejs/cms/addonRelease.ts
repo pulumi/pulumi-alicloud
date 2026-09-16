@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cms Addon Release can be imported using the id, e.g.
+ * Cms Addon Release can be imported using the id, which consists of integrationPolicyId and addon_release_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cms/addonRelease:AddonRelease example <integration_policy_id>:<addon_release_name>

@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// ## Import
     /// 
-    /// Bastion Host User Attachment can be imported using the id, e.g.
+    /// Bastion Host User Attachment can be imported using the id, which consists of instance_id, UserGroupId and user_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example &lt;instance_id&gt;:&lt;user_group_id&gt;:&lt;user_id&gt;

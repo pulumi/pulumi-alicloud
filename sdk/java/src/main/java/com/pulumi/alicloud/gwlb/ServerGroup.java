@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.gwlb.ServerGroupArgs;
 import com.pulumi.alicloud.gwlb.inputs.ServerGroupState;
 import com.pulumi.alicloud.gwlb.outputs.ServerGroupConnectionDrainConfig;
+import com.pulumi.alicloud.gwlb.outputs.ServerGroupDrainingServer;
 import com.pulumi.alicloud.gwlb.outputs.ServerGroupHealthCheckConfig;
 import com.pulumi.alicloud.gwlb.outputs.ServerGroupServer;
 import com.pulumi.core.Output;
@@ -191,6 +192,20 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+     * 
+     */
+    @Export(name="drainingServers", refs={List.class,ServerGroupDrainingServer.class}, tree="[0,1]")
+    private Output<List<ServerGroupDrainingServer>> drainingServers;
+
+    /**
+     * @return (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+     * 
+     */
+    public Output<List<ServerGroupDrainingServer>> drainingServers() {
+        return this.drainingServers;
+    }
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
@@ -331,20 +346,22 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.serverGroupType;
     }
     /**
-     * The backend servers that you want to remove.
+     * The backend servers that you want to remove. See `servers` below.
      * 
      * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     * 
+     * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      * 
      */
     @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerGroupServer>> servers;
 
     /**
-     * @return The backend servers that you want to remove.
+     * @return The backend servers that you want to remove. See `servers` below.
      * 
      * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     * 
+     * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      * 
      */
     public Output<Optional<List<ServerGroupServer>>> servers() {
@@ -385,7 +402,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
      * The VPC ID.
      * 
-     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * &gt; **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
@@ -394,7 +411,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The VPC ID.
      * 
-     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * &gt; **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     public Output<String> vpcId() {

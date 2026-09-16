@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cen Transit Router Multicast Domain Source can be imported using the id, e.g.
+ * Cen Transit Router Multicast Domain Source can be imported using the id, which consists of transit_router_multicast_domain_id, groupIpAddress and network_interface_id, e.g.
  * 
  * ```sh
  * $terraform import alicloud_cen_transit_router_multicast_domain_source.example &lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;network_interface_id&gt;

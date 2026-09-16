@@ -851,6 +851,404 @@ func (o GetPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetPhysicalConnectionsConnectionOutput)
 }
 
+type GetRouterExpressConnectRoutersRouter struct {
+	// The ASN of the ECR instance.
+	AlibabaSideAsn string `pulumi:"alibabaSideAsn"`
+	// The business status of the service instance.
+	BizStatus string `pulumi:"bizStatus"`
+	// The time when the ECR was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the ECR instance.
+	Description string `pulumi:"description"`
+	// The ID of ECR.
+	EcrId string `pulumi:"ecrId"`
+	// The name of ECR.
+	EcrName string `pulumi:"ecrName"`
+	// The ID of the Express Connect Router.
+	Id string `pulumi:"id"`
+	// The time when the ECR was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The ID of the Alibaba Cloud account to which the ECR belongs.
+	OwnerId string `pulumi:"ownerId"`
+	// The ID of the resource group to which the ECR belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The deployment status of the service instance. Valid values: `ACTIVE`, `UPDATING`, `ASSOCIATING`, `DISSOCIATING`, `LOCKED_ATTACHING`, `LOCKED_DETACHING`, `RECLAIMING`, `DELETING`.
+	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetRouterExpressConnectRoutersRouterInput is an input type that accepts GetRouterExpressConnectRoutersRouterArgs and GetRouterExpressConnectRoutersRouterOutput values.
+// You can construct a concrete instance of `GetRouterExpressConnectRoutersRouterInput` via:
+//
+//	GetRouterExpressConnectRoutersRouterArgs{...}
+type GetRouterExpressConnectRoutersRouterInput interface {
+	pulumi.Input
+
+	ToGetRouterExpressConnectRoutersRouterOutput() GetRouterExpressConnectRoutersRouterOutput
+	ToGetRouterExpressConnectRoutersRouterOutputWithContext(context.Context) GetRouterExpressConnectRoutersRouterOutput
+}
+
+type GetRouterExpressConnectRoutersRouterArgs struct {
+	// The ASN of the ECR instance.
+	AlibabaSideAsn pulumi.StringInput `pulumi:"alibabaSideAsn"`
+	// The business status of the service instance.
+	BizStatus pulumi.StringInput `pulumi:"bizStatus"`
+	// The time when the ECR was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the ECR instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of ECR.
+	EcrId pulumi.StringInput `pulumi:"ecrId"`
+	// The name of ECR.
+	EcrName pulumi.StringInput `pulumi:"ecrName"`
+	// The ID of the Express Connect Router.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The time when the ECR was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The ID of the Alibaba Cloud account to which the ECR belongs.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// The ID of the resource group to which the ECR belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The deployment status of the service instance. Valid values: `ACTIVE`, `UPDATING`, `ASSOCIATING`, `DISSOCIATING`, `LOCKED_ATTACHING`, `LOCKED_DETACHING`, `RECLAIMING`, `DELETING`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetRouterExpressConnectRoutersRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterExpressConnectRoutersRouter)(nil)).Elem()
+}
+
+func (i GetRouterExpressConnectRoutersRouterArgs) ToGetRouterExpressConnectRoutersRouterOutput() GetRouterExpressConnectRoutersRouterOutput {
+	return i.ToGetRouterExpressConnectRoutersRouterOutputWithContext(context.Background())
+}
+
+func (i GetRouterExpressConnectRoutersRouterArgs) ToGetRouterExpressConnectRoutersRouterOutputWithContext(ctx context.Context) GetRouterExpressConnectRoutersRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterExpressConnectRoutersRouterOutput)
+}
+
+// GetRouterExpressConnectRoutersRouterArrayInput is an input type that accepts GetRouterExpressConnectRoutersRouterArray and GetRouterExpressConnectRoutersRouterArrayOutput values.
+// You can construct a concrete instance of `GetRouterExpressConnectRoutersRouterArrayInput` via:
+//
+//	GetRouterExpressConnectRoutersRouterArray{ GetRouterExpressConnectRoutersRouterArgs{...} }
+type GetRouterExpressConnectRoutersRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterExpressConnectRoutersRouterArrayOutput() GetRouterExpressConnectRoutersRouterArrayOutput
+	ToGetRouterExpressConnectRoutersRouterArrayOutputWithContext(context.Context) GetRouterExpressConnectRoutersRouterArrayOutput
+}
+
+type GetRouterExpressConnectRoutersRouterArray []GetRouterExpressConnectRoutersRouterInput
+
+func (GetRouterExpressConnectRoutersRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterExpressConnectRoutersRouter)(nil)).Elem()
+}
+
+func (i GetRouterExpressConnectRoutersRouterArray) ToGetRouterExpressConnectRoutersRouterArrayOutput() GetRouterExpressConnectRoutersRouterArrayOutput {
+	return i.ToGetRouterExpressConnectRoutersRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterExpressConnectRoutersRouterArray) ToGetRouterExpressConnectRoutersRouterArrayOutputWithContext(ctx context.Context) GetRouterExpressConnectRoutersRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterExpressConnectRoutersRouterArrayOutput)
+}
+
+type GetRouterExpressConnectRoutersRouterOutput struct{ *pulumi.OutputState }
+
+func (GetRouterExpressConnectRoutersRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterExpressConnectRoutersRouter)(nil)).Elem()
+}
+
+func (o GetRouterExpressConnectRoutersRouterOutput) ToGetRouterExpressConnectRoutersRouterOutput() GetRouterExpressConnectRoutersRouterOutput {
+	return o
+}
+
+func (o GetRouterExpressConnectRoutersRouterOutput) ToGetRouterExpressConnectRoutersRouterOutputWithContext(ctx context.Context) GetRouterExpressConnectRoutersRouterOutput {
+	return o
+}
+
+// The ASN of the ECR instance.
+func (o GetRouterExpressConnectRoutersRouterOutput) AlibabaSideAsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.AlibabaSideAsn }).(pulumi.StringOutput)
+}
+
+// The business status of the service instance.
+func (o GetRouterExpressConnectRoutersRouterOutput) BizStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.BizStatus }).(pulumi.StringOutput)
+}
+
+// The time when the ECR was created.
+func (o GetRouterExpressConnectRoutersRouterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the ECR instance.
+func (o GetRouterExpressConnectRoutersRouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of ECR.
+func (o GetRouterExpressConnectRoutersRouterOutput) EcrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.EcrId }).(pulumi.StringOutput)
+}
+
+// The name of ECR.
+func (o GetRouterExpressConnectRoutersRouterOutput) EcrName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.EcrName }).(pulumi.StringOutput)
+}
+
+// The ID of the Express Connect Router.
+func (o GetRouterExpressConnectRoutersRouterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The time when the ECR was modified.
+func (o GetRouterExpressConnectRoutersRouterOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account to which the ECR belongs.
+func (o GetRouterExpressConnectRoutersRouterOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which the ECR belongs.
+func (o GetRouterExpressConnectRoutersRouterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The deployment status of the service instance. Valid values: `ACTIVE`, `UPDATING`, `ASSOCIATING`, `DISSOCIATING`, `LOCKED_ATTACHING`, `LOCKED_DETACHING`, `RECLAIMING`, `DELETING`.
+func (o GetRouterExpressConnectRoutersRouterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetRouterExpressConnectRoutersRouterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouterExpressConnectRoutersRouter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetRouterExpressConnectRoutersRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterExpressConnectRoutersRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterExpressConnectRoutersRouter)(nil)).Elem()
+}
+
+func (o GetRouterExpressConnectRoutersRouterArrayOutput) ToGetRouterExpressConnectRoutersRouterArrayOutput() GetRouterExpressConnectRoutersRouterArrayOutput {
+	return o
+}
+
+func (o GetRouterExpressConnectRoutersRouterArrayOutput) ToGetRouterExpressConnectRoutersRouterArrayOutputWithContext(ctx context.Context) GetRouterExpressConnectRoutersRouterArrayOutput {
+	return o
+}
+
+func (o GetRouterExpressConnectRoutersRouterArrayOutput) Index(i pulumi.IntInput) GetRouterExpressConnectRoutersRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterExpressConnectRoutersRouter {
+		return vs[0].([]GetRouterExpressConnectRoutersRouter)[vs[1].(int)]
+	}).(GetRouterExpressConnectRoutersRouterOutput)
+}
+
+type GetRouterGrantAssociationsAssociation struct {
+	// The time when the instance was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Express Connect Router instance.
+	EcrId string `pulumi:"ecrId"`
+	// The authorization ID.
+	GrantId string `pulumi:"grantId"`
+	// The ID of the Grant Association.
+	Id string `pulumi:"id"`
+	// The ID of the authorized instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The ID of the enterprise account to which the instance belongs.
+	InstanceOwnerBid string `pulumi:"instanceOwnerBid"`
+	// The ID of the Alibaba Cloud account to which the instance belongs.
+	InstanceOwnerId string `pulumi:"instanceOwnerId"`
+	// The region where the authorized network instance is located.
+	InstanceRegionId string `pulumi:"instanceRegionId"`
+	// The type of the network instance. Valid values:
+	// - `VBR`: virtual border router (VBR).
+	// - `VPC`: virtual private cloud (VPC).
+	InstanceType string `pulumi:"instanceType"`
+	// The time when the instance was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The ID of the Alibaba Cloud account that owns the Express Connect Router instance.
+	OwnerId string `pulumi:"ownerId"`
+	// The status of the authorized network instance.
+	Status string `pulumi:"status"`
+}
+
+// GetRouterGrantAssociationsAssociationInput is an input type that accepts GetRouterGrantAssociationsAssociationArgs and GetRouterGrantAssociationsAssociationOutput values.
+// You can construct a concrete instance of `GetRouterGrantAssociationsAssociationInput` via:
+//
+//	GetRouterGrantAssociationsAssociationArgs{...}
+type GetRouterGrantAssociationsAssociationInput interface {
+	pulumi.Input
+
+	ToGetRouterGrantAssociationsAssociationOutput() GetRouterGrantAssociationsAssociationOutput
+	ToGetRouterGrantAssociationsAssociationOutputWithContext(context.Context) GetRouterGrantAssociationsAssociationOutput
+}
+
+type GetRouterGrantAssociationsAssociationArgs struct {
+	// The time when the instance was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Express Connect Router instance.
+	EcrId pulumi.StringInput `pulumi:"ecrId"`
+	// The authorization ID.
+	GrantId pulumi.StringInput `pulumi:"grantId"`
+	// The ID of the Grant Association.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the authorized instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the enterprise account to which the instance belongs.
+	InstanceOwnerBid pulumi.StringInput `pulumi:"instanceOwnerBid"`
+	// The ID of the Alibaba Cloud account to which the instance belongs.
+	InstanceOwnerId pulumi.StringInput `pulumi:"instanceOwnerId"`
+	// The region where the authorized network instance is located.
+	InstanceRegionId pulumi.StringInput `pulumi:"instanceRegionId"`
+	// The type of the network instance. Valid values:
+	// - `VBR`: virtual border router (VBR).
+	// - `VPC`: virtual private cloud (VPC).
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The time when the instance was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The ID of the Alibaba Cloud account that owns the Express Connect Router instance.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// The status of the authorized network instance.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRouterGrantAssociationsAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterGrantAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetRouterGrantAssociationsAssociationArgs) ToGetRouterGrantAssociationsAssociationOutput() GetRouterGrantAssociationsAssociationOutput {
+	return i.ToGetRouterGrantAssociationsAssociationOutputWithContext(context.Background())
+}
+
+func (i GetRouterGrantAssociationsAssociationArgs) ToGetRouterGrantAssociationsAssociationOutputWithContext(ctx context.Context) GetRouterGrantAssociationsAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterGrantAssociationsAssociationOutput)
+}
+
+// GetRouterGrantAssociationsAssociationArrayInput is an input type that accepts GetRouterGrantAssociationsAssociationArray and GetRouterGrantAssociationsAssociationArrayOutput values.
+// You can construct a concrete instance of `GetRouterGrantAssociationsAssociationArrayInput` via:
+//
+//	GetRouterGrantAssociationsAssociationArray{ GetRouterGrantAssociationsAssociationArgs{...} }
+type GetRouterGrantAssociationsAssociationArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterGrantAssociationsAssociationArrayOutput() GetRouterGrantAssociationsAssociationArrayOutput
+	ToGetRouterGrantAssociationsAssociationArrayOutputWithContext(context.Context) GetRouterGrantAssociationsAssociationArrayOutput
+}
+
+type GetRouterGrantAssociationsAssociationArray []GetRouterGrantAssociationsAssociationInput
+
+func (GetRouterGrantAssociationsAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterGrantAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetRouterGrantAssociationsAssociationArray) ToGetRouterGrantAssociationsAssociationArrayOutput() GetRouterGrantAssociationsAssociationArrayOutput {
+	return i.ToGetRouterGrantAssociationsAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterGrantAssociationsAssociationArray) ToGetRouterGrantAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetRouterGrantAssociationsAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterGrantAssociationsAssociationArrayOutput)
+}
+
+type GetRouterGrantAssociationsAssociationOutput struct{ *pulumi.OutputState }
+
+func (GetRouterGrantAssociationsAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterGrantAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetRouterGrantAssociationsAssociationOutput) ToGetRouterGrantAssociationsAssociationOutput() GetRouterGrantAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetRouterGrantAssociationsAssociationOutput) ToGetRouterGrantAssociationsAssociationOutputWithContext(ctx context.Context) GetRouterGrantAssociationsAssociationOutput {
+	return o
+}
+
+// The time when the instance was created.
+func (o GetRouterGrantAssociationsAssociationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Express Connect Router instance.
+func (o GetRouterGrantAssociationsAssociationOutput) EcrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.EcrId }).(pulumi.StringOutput)
+}
+
+// The authorization ID.
+func (o GetRouterGrantAssociationsAssociationOutput) GrantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.GrantId }).(pulumi.StringOutput)
+}
+
+// The ID of the Grant Association.
+func (o GetRouterGrantAssociationsAssociationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the authorized instance.
+func (o GetRouterGrantAssociationsAssociationOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the enterprise account to which the instance belongs.
+func (o GetRouterGrantAssociationsAssociationOutput) InstanceOwnerBid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.InstanceOwnerBid }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account to which the instance belongs.
+func (o GetRouterGrantAssociationsAssociationOutput) InstanceOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.InstanceOwnerId }).(pulumi.StringOutput)
+}
+
+// The region where the authorized network instance is located.
+func (o GetRouterGrantAssociationsAssociationOutput) InstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.InstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of the network instance. Valid values:
+// - `VBR`: virtual border router (VBR).
+// - `VPC`: virtual private cloud (VPC).
+func (o GetRouterGrantAssociationsAssociationOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The time when the instance was modified.
+func (o GetRouterGrantAssociationsAssociationOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account that owns the Express Connect Router instance.
+func (o GetRouterGrantAssociationsAssociationOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The status of the authorized network instance.
+func (o GetRouterGrantAssociationsAssociationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterGrantAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRouterGrantAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterGrantAssociationsAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterGrantAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetRouterGrantAssociationsAssociationArrayOutput) ToGetRouterGrantAssociationsAssociationArrayOutput() GetRouterGrantAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetRouterGrantAssociationsAssociationArrayOutput) ToGetRouterGrantAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetRouterGrantAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetRouterGrantAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetRouterGrantAssociationsAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterGrantAssociationsAssociation {
+		return vs[0].([]GetRouterGrantAssociationsAssociation)[vs[1].(int)]
+	}).(GetRouterGrantAssociationsAssociationOutput)
+}
+
 type GetRouterInterfacesFilter struct {
 	Key    *string  `pulumi:"key"`
 	Values []string `pulumi:"values"`
@@ -2304,8 +2702,10 @@ type GetVirtualBorderRoutersRouter struct {
 	RecoveryTime string `pulumi:"recoveryTime"`
 	// Route Table ID.
 	RouteTableId string `pulumi:"routeTableId"`
-	// The VBR state.
+	// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status string `pulumi:"status"`
+	// A map of tags to filter Virtual Border Routers that match the given tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The Most Recent Was Aborted by the Time.
 	TerminationTime string `pulumi:"terminationTime"`
 	// VBR Type.
@@ -2382,8 +2782,10 @@ type GetVirtualBorderRoutersRouterArgs struct {
 	RecoveryTime pulumi.StringInput `pulumi:"recoveryTime"`
 	// Route Table ID.
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
-	// The VBR state.
+	// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// A map of tags to filter Virtual Border Routers that match the given tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The Most Recent Was Aborted by the Time.
 	TerminationTime pulumi.StringInput `pulumi:"terminationTime"`
 	// VBR Type.
@@ -2574,9 +2976,14 @@ func (o GetVirtualBorderRoutersRouterOutput) RouteTableId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The VBR state.
+// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 func (o GetVirtualBorderRoutersRouterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A map of tags to filter Virtual Border Routers that match the given tags.
+func (o GetVirtualBorderRoutersRouterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVirtualBorderRoutersRouter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The Most Recent Was Aborted by the Time.
@@ -2998,6 +3405,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrantRuleToCensCenArrayInput)(nil)).Elem(), GetGrantRuleToCensCenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterExpressConnectRoutersRouterInput)(nil)).Elem(), GetRouterExpressConnectRoutersRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterExpressConnectRoutersRouterArrayInput)(nil)).Elem(), GetRouterExpressConnectRoutersRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterGrantAssociationsAssociationInput)(nil)).Elem(), GetRouterGrantAssociationsAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterGrantAssociationsAssociationArrayInput)(nil)).Elem(), GetRouterGrantAssociationsAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesFilterInput)(nil)).Elem(), GetRouterInterfacesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesFilterArrayInput)(nil)).Elem(), GetRouterInterfacesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceInput)(nil)).Elem(), GetRouterInterfacesInterfaceArgs{})
@@ -3026,6 +3437,10 @@ func init() {
 	pulumi.RegisterOutputType(GetGrantRuleToCensCenArrayOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterExpressConnectRoutersRouterOutput{})
+	pulumi.RegisterOutputType(GetRouterExpressConnectRoutersRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterGrantAssociationsAssociationOutput{})
+	pulumi.RegisterOutputType(GetRouterGrantAssociationsAssociationArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesFilterOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceOutput{})

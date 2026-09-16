@@ -27,6 +27,7 @@ __all__ = [
     'NetworkIpv6CidrBlock',
     'PrefixListEntry',
     'PrefixListPrefixListAssociation',
+    'RouteTargetGroupRouteTargetMemberList',
     'TrafficMirrorFilterEgressRule',
     'TrafficMirrorFilterIngressRule',
     'VPCRouteEntryNextHop',
@@ -71,6 +72,9 @@ __all__ = [
     'GetPublicIpAddressPoolsPoolResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
+    'GetRouteTargetGroupsGroupResult',
+    'GetRouteTargetGroupsGroupRouteTargetMemberListResult',
+    'GetRouteTargetGroupsRouteTargetMemberListResult',
     'GetRouterInterfacesInterfaceResult',
     'GetSnatEntriesEntryResult',
     'GetSslVpnClientCertsCertResult',
@@ -1037,6 +1041,103 @@ class PrefixListPrefixListAssociation(dict):
         Resource attribute fields that represent the status of the resource.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class RouteTargetGroupRouteTargetMemberList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memberId":
+            suggest = "member_id"
+        elif key == "memberType":
+            suggest = "member_type"
+        elif key == "enableStatus":
+            suggest = "enable_status"
+        elif key == "healthCheckStatus":
+            suggest = "health_check_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteTargetGroupRouteTargetMemberList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteTargetGroupRouteTargetMemberList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteTargetGroupRouteTargetMemberList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 member_id: _builtins.str,
+                 member_type: _builtins.str,
+                 weight: _builtins.int,
+                 enable_status: Optional[_builtins.str] = None,
+                 health_check_status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str member_id: The instance ID of the route target member.
+        :param _builtins.str member_type: The instance type of the route target configuration. The following type is currently supported:
+               - GatewayLoadBalancerEndpoint.
+        :param _builtins.int weight: Sets the weight attribute for the current route target configuration.
+               
+               In active-standby mode, the weight can only be set to 0 or 100:
+               - Only one route target configuration can be set to 100, serving as the active instance.
+               - Only one route target configuration can be set to 0, serving as the standby instance.
+        :param _builtins.str enable_status: Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        :param _builtins.str health_check_status: The health check status of the current route target configuration.
+        """
+        pulumi.set(__self__, "member_id", member_id)
+        pulumi.set(__self__, "member_type", member_type)
+        pulumi.set(__self__, "weight", weight)
+        if enable_status is not None:
+            pulumi.set(__self__, "enable_status", enable_status)
+        if health_check_status is not None:
+            pulumi.set(__self__, "health_check_status", health_check_status)
+
+    @_builtins.property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> _builtins.str:
+        """
+        The instance ID of the route target member.
+        """
+        return pulumi.get(self, "member_id")
+
+    @_builtins.property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> _builtins.str:
+        """
+        The instance type of the route target configuration. The following type is currently supported:
+        - GatewayLoadBalancerEndpoint.
+        """
+        return pulumi.get(self, "member_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Sets the weight attribute for the current route target configuration.
+
+        In active-standby mode, the weight can only be set to 0 or 100:
+        - Only one route target configuration can be set to 100, serving as the active instance.
+        - Only one route target configuration can be set to 0, serving as the standby instance.
+        """
+        return pulumi.get(self, "weight")
+
+    @_builtins.property
+    @pulumi.getter(name="enableStatus")
+    def enable_status(self) -> Optional[_builtins.str]:
+        """
+        Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        """
+        return pulumi.get(self, "enable_status")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckStatus")
+    def health_check_status(self) -> Optional[_builtins.str]:
+        """
+        The health check status of the current route target configuration.
+        """
+        return pulumi.get(self, "health_check_status")
 
 
 @pulumi.output_type
@@ -2314,7 +2415,7 @@ class GetForwardEntriesEntryResult(dict):
         :param _builtins.str internal_port: The internal port.
         :param _builtins.str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
         :param _builtins.str name: The forward entry name.
-        :param _builtins.str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        :param _builtins.str status: The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
         """
         pulumi.set(__self__, "external_ip", external_ip)
         pulumi.set(__self__, "external_port", external_port)
@@ -2403,7 +2504,7 @@ class GetForwardEntriesEntryResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -6011,6 +6112,277 @@ class GetRouteTablesTableResult(dict):
         A list of vswitch id.
         """
         return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetRouteTargetGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 config_mode: _builtins.str,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 region_id: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 route_target_group_description: _builtins.str,
+                 route_target_group_id: _builtins.str,
+                 route_target_group_name: _builtins.str,
+                 route_target_member_lists: Sequence['outputs.GetRouteTargetGroupsGroupRouteTargetMemberListResult'],
+                 status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 vpc_id: _builtins.str):
+        """
+        :param _builtins.str config_mode: The configuration mode of the route target group.
+        :param _builtins.str create_time: The time when the route target group was created.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str region_id: The region ID of the VPC to which the route target group belongs.
+        :param _builtins.str resource_group_id: The ID of the resource group to which the route target group belongs.
+        :param _builtins.str route_target_group_description: The description of the route target group.
+        :param _builtins.str route_target_group_id: The ID of the route target group.
+               A maximum of 50 instance IDs can be specified in a single query.
+        :param _builtins.str route_target_group_name: The name of the route target group.
+        :param Sequence['GetRouteTargetGroupsGroupRouteTargetMemberListArgs'] route_target_member_lists: The member list of the route target group.
+               In active/standby mode, the following restrictions apply to route target group members:
+               1. The route target group must contain exactly two members.
+               2. The route target group members must belong to different zones. See `route_target_member_list` below.
+        :param _builtins.str status: The status of the route target group. Valid values: `Pending`, `Available`.
+        :param Mapping[str, _builtins.str] tags: The tags of the route target group.
+        :param _builtins.str vpc_id: The ID of the VPC to which the route target group belongs.
+        """
+        pulumi.set(__self__, "config_mode", config_mode)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "route_target_group_description", route_target_group_description)
+        pulumi.set(__self__, "route_target_group_id", route_target_group_id)
+        pulumi.set(__self__, "route_target_group_name", route_target_group_name)
+        pulumi.set(__self__, "route_target_member_lists", route_target_member_lists)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="configMode")
+    def config_mode(self) -> _builtins.str:
+        """
+        The configuration mode of the route target group.
+        """
+        return pulumi.get(self, "config_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the route target group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the VPC to which the route target group belongs.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group to which the route target group belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTargetGroupDescription")
+    def route_target_group_description(self) -> _builtins.str:
+        """
+        The description of the route target group.
+        """
+        return pulumi.get(self, "route_target_group_description")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTargetGroupId")
+    def route_target_group_id(self) -> _builtins.str:
+        """
+        The ID of the route target group.
+        A maximum of 50 instance IDs can be specified in a single query.
+        """
+        return pulumi.get(self, "route_target_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTargetGroupName")
+    def route_target_group_name(self) -> _builtins.str:
+        """
+        The name of the route target group.
+        """
+        return pulumi.get(self, "route_target_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTargetMemberLists")
+    def route_target_member_lists(self) -> Sequence['outputs.GetRouteTargetGroupsGroupRouteTargetMemberListResult']:
+        """
+        The member list of the route target group.
+        In active/standby mode, the following restrictions apply to route target group members:
+        1. The route target group must contain exactly two members.
+        2. The route target group members must belong to different zones. See `route_target_member_list` below.
+        """
+        return pulumi.get(self, "route_target_member_lists")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the route target group. Valid values: `Pending`, `Available`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        The tags of the route target group.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        The ID of the VPC to which the route target group belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetRouteTargetGroupsGroupRouteTargetMemberListResult(dict):
+    def __init__(__self__, *,
+                 enable_status: _builtins.str,
+                 health_check_status: _builtins.str,
+                 member_id: _builtins.str,
+                 member_type: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str enable_status: Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        :param _builtins.str health_check_status: The health check status of the current route target configuration.
+        :param _builtins.str member_id: The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+        :param _builtins.str member_type: The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+        :param _builtins.int weight: Sets the weight attribute for the current route target configuration.
+        """
+        pulumi.set(__self__, "enable_status", enable_status)
+        pulumi.set(__self__, "health_check_status", health_check_status)
+        pulumi.set(__self__, "member_id", member_id)
+        pulumi.set(__self__, "member_type", member_type)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter(name="enableStatus")
+    def enable_status(self) -> _builtins.str:
+        """
+        Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        """
+        return pulumi.get(self, "enable_status")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckStatus")
+    def health_check_status(self) -> _builtins.str:
+        """
+        The health check status of the current route target configuration.
+        """
+        return pulumi.get(self, "health_check_status")
+
+    @_builtins.property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> _builtins.str:
+        """
+        The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+        """
+        return pulumi.get(self, "member_id")
+
+    @_builtins.property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> _builtins.str:
+        """
+        The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+        """
+        return pulumi.get(self, "member_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Sets the weight attribute for the current route target configuration.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetRouteTargetGroupsRouteTargetMemberListResult(dict):
+    def __init__(__self__, *,
+                 enable_status: _builtins.str,
+                 health_check_status: _builtins.str,
+                 member_id: _builtins.str,
+                 member_type: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str enable_status: Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        :param _builtins.str health_check_status: The health check status of the current route target configuration.
+        :param _builtins.str member_id: The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+        :param _builtins.str member_type: The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+        :param _builtins.int weight: Sets the weight attribute for the current route target configuration.
+        """
+        pulumi.set(__self__, "enable_status", enable_status)
+        pulumi.set(__self__, "health_check_status", health_check_status)
+        pulumi.set(__self__, "member_id", member_id)
+        pulumi.set(__self__, "member_type", member_type)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter(name="enableStatus")
+    def enable_status(self) -> _builtins.str:
+        """
+        Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+        """
+        return pulumi.get(self, "enable_status")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckStatus")
+    def health_check_status(self) -> _builtins.str:
+        """
+        The health check status of the current route target configuration.
+        """
+        return pulumi.get(self, "health_check_status")
+
+    @_builtins.property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> _builtins.str:
+        """
+        The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+        """
+        return pulumi.get(self, "member_id")
+
+    @_builtins.property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> _builtins.str:
+        """
+        The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+        """
+        return pulumi.get(self, "member_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Sets the weight attribute for the current route target configuration.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type

@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Bastion Host User Attachment can be imported using the id, e.g.
+ * Bastion Host User Attachment can be imported using the id, which consists of instance_id, userGroupId and user_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example &lt;instance_id&gt;:&lt;user_group_id&gt;:&lt;user_id&gt;

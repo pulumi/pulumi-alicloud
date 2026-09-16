@@ -24,11 +24,15 @@ class ServiceQueueArgs:
                  queue_name: pulumi.Input[_builtins.str],
                  delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  dlq_policy: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -37,19 +41,33 @@ class ServiceQueueArgs:
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         :param pulumi.Input['ServiceQueueDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         pulumi.set(__self__, "queue_name", queue_name)
         if delay_seconds is not None:
             pulumi.set(__self__, "delay_seconds", delay_seconds)
         if dlq_policy is not None:
             pulumi.set(__self__, "dlq_policy", dlq_policy)
+        if enable_sse is not None:
+            pulumi.set(__self__, "enable_sse", enable_sse)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if logging_enabled is not None:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if maximum_message_size is not None:
@@ -60,6 +78,10 @@ class ServiceQueueArgs:
             pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
         if queue_type is not None:
             pulumi.set(__self__, "queue_type", queue_type)
+        if sse_algorithm is not None:
+            pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+        if sse_type is not None:
+            pulumi.set(__self__, "sse_type", sse_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if visibility_timeout is not None:
@@ -100,6 +122,30 @@ class ServiceQueueArgs:
     @dlq_policy.setter
     def dlq_policy(self, value: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']]):
         pulumi.set(self, "dlq_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSse")
+    def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_sse")
+
+    @enable_sse.setter
+    def enable_sse(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_sse", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
@@ -162,6 +208,32 @@ class ServiceQueueArgs:
         pulumi.set(self, "queue_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+    @sse_algorithm.setter
+    def sse_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sseType")
+    def sse_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of server-side encryption (SSE). Valid values:
+        - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        """
+        return pulumi.get(self, "sse_type")
+
+    @sse_type.setter
+    def sse_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -178,6 +250,10 @@ class ServiceQueueArgs:
     def visibility_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+
+        > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+
+        > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         return pulumi.get(self, "visibility_timeout")
 
@@ -192,12 +268,17 @@ class _ServiceQueueState:
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
                  delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  dlq_policy: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -206,14 +287,25 @@ class _ServiceQueueState:
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.223.2) The time when the queue was created.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         :param pulumi.Input['ServiceQueueDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] encryption_enabled: (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
         :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -221,6 +313,12 @@ class _ServiceQueueState:
             pulumi.set(__self__, "delay_seconds", delay_seconds)
         if dlq_policy is not None:
             pulumi.set(__self__, "dlq_policy", dlq_policy)
+        if enable_sse is not None:
+            pulumi.set(__self__, "enable_sse", enable_sse)
+        if encryption_enabled is not None:
+            pulumi.set(__self__, "encryption_enabled", encryption_enabled)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if logging_enabled is not None:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if maximum_message_size is not None:
@@ -233,6 +331,10 @@ class _ServiceQueueState:
             pulumi.set(__self__, "queue_name", queue_name)
         if queue_type is not None:
             pulumi.set(__self__, "queue_type", queue_type)
+        if sse_algorithm is not None:
+            pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+        if sse_type is not None:
+            pulumi.set(__self__, "sse_type", sse_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if visibility_timeout is not None:
@@ -273,6 +375,42 @@ class _ServiceQueueState:
     @dlq_policy.setter
     def dlq_policy(self, value: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']]):
         pulumi.set(self, "dlq_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSse")
+    def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_sse")
+
+    @enable_sse.setter
+    def enable_sse(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_sse", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionEnabled")
+    def encryption_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+        """
+        return pulumi.get(self, "encryption_enabled")
+
+    @encryption_enabled.setter
+    def encryption_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encryption_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
@@ -347,6 +485,32 @@ class _ServiceQueueState:
         pulumi.set(self, "queue_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+    @sse_algorithm.setter
+    def sse_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sseType")
+    def sse_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of server-side encryption (SSE). Valid values:
+        - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        """
+        return pulumi.get(self, "sse_type")
+
+    @sse_type.setter
+    def sse_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -363,6 +527,10 @@ class _ServiceQueueState:
     def visibility_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+
+        > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+
+        > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         return pulumi.get(self, "visibility_timeout")
 
@@ -379,12 +547,16 @@ class ServiceQueue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -431,14 +603,24 @@ class ServiceQueue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
         :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         ...
     @overload
@@ -502,12 +684,16 @@ class ServiceQueue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -521,6 +707,8 @@ class ServiceQueue(pulumi.CustomResource):
 
             __props__.__dict__["delay_seconds"] = delay_seconds
             __props__.__dict__["dlq_policy"] = dlq_policy
+            __props__.__dict__["enable_sse"] = enable_sse
+            __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["logging_enabled"] = logging_enabled
             __props__.__dict__["maximum_message_size"] = maximum_message_size
             __props__.__dict__["message_retention_period"] = message_retention_period
@@ -529,9 +717,12 @@ class ServiceQueue(pulumi.CustomResource):
                 raise TypeError("Missing required property 'queue_name'")
             __props__.__dict__["queue_name"] = queue_name
             __props__.__dict__["queue_type"] = queue_type
+            __props__.__dict__["sse_algorithm"] = sse_algorithm
+            __props__.__dict__["sse_type"] = sse_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["visibility_timeout"] = visibility_timeout
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["encryption_enabled"] = None
         super(ServiceQueue, __self__).__init__(
             'alicloud:message/serviceQueue:ServiceQueue',
             resource_name,
@@ -545,12 +736,17 @@ class ServiceQueue(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+            enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
             message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
             polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             queue_name: pulumi.Input[Optional[_builtins.str]] = None,
             queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_type: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'ServiceQueue':
         """
@@ -563,14 +759,25 @@ class ServiceQueue(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.223.2) The time when the queue was created.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] encryption_enabled: (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
         :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -579,12 +786,17 @@ class ServiceQueue(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delay_seconds"] = delay_seconds
         __props__.__dict__["dlq_policy"] = dlq_policy
+        __props__.__dict__["enable_sse"] = enable_sse
+        __props__.__dict__["encryption_enabled"] = encryption_enabled
+        __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["logging_enabled"] = logging_enabled
         __props__.__dict__["maximum_message_size"] = maximum_message_size
         __props__.__dict__["message_retention_period"] = message_retention_period
         __props__.__dict__["polling_wait_seconds"] = polling_wait_seconds
         __props__.__dict__["queue_name"] = queue_name
         __props__.__dict__["queue_type"] = queue_type
+        __props__.__dict__["sse_algorithm"] = sse_algorithm
+        __props__.__dict__["sse_type"] = sse_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["visibility_timeout"] = visibility_timeout
         return ServiceQueue(resource_name, opts=opts, __props__=__props__)
@@ -612,6 +824,30 @@ class ServiceQueue(pulumi.CustomResource):
         The dead-letter queue policy. See `dlq_policy` below.
         """
         return pulumi.get(self, "dlq_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="enableSse")
+    def enable_sse(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_sse")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionEnabled")
+    def encryption_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
+        """
+        return pulumi.get(self, "encryption_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
@@ -662,6 +898,24 @@ class ServiceQueue(pulumi.CustomResource):
         return pulumi.get(self, "queue_type")
 
     @_builtins.property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> pulumi.Output[_builtins.str]:
+        """
+        The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="sseType")
+    def sse_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of server-side encryption (SSE). Valid values:
+        - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        """
+        return pulumi.get(self, "sse_type")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
@@ -674,6 +928,10 @@ class ServiceQueue(pulumi.CustomResource):
     def visibility_timeout(self) -> pulumi.Output[_builtins.int]:
         """
         The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+
+        > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+
+        > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         return pulumi.get(self, "visibility_timeout")
 

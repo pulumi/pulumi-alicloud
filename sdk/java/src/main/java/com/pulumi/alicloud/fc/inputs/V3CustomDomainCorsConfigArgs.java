@@ -64,14 +64,14 @@ public final class V3CustomDomainCorsConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+     * List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
      * 
      */
     @Import(name="allowOrigins")
     private @Nullable Output<List<String>> allowOrigins;
 
     /**
-     * @return List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+     * @return List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
      * 
      */
     public Optional<Output<List<String>>> allowOrigins() {
@@ -221,7 +221,7 @@ public final class V3CustomDomainCorsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowOrigins List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+         * @param allowOrigins List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class V3CustomDomainCorsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowOrigins List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+         * @param allowOrigins List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class V3CustomDomainCorsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowOrigins List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like &#39;https://example.com&#39;, or an array of multiple domains.
+         * @param allowOrigins List of allowed origins. Supports wildcard &#39;*&#39; to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
          * 
          * @return builder
          * 

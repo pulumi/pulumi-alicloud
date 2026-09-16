@@ -170,7 +170,7 @@ class GetForwardEntriesResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        The status of forward entry.
+        The status of the Forward Entry.
         """
         return pulumi.get(self, "status")
 
@@ -264,7 +264,7 @@ def get_forward_entries(external_ip: Optional[_builtins.str] = None,
     :param _builtins.str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
     :param _builtins.str name_regex: A regex string to filter results by forward entry name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+    :param _builtins.str status: The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
     """
     __args__ = dict()
     __args__['externalIp'] = external_ip
@@ -363,7 +363,7 @@ def get_forward_entries_output(external_ip: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
     :param _builtins.str name_regex: A regex string to filter results by forward entry name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+    :param _builtins.str status: The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
     """
     __args__ = dict()
     __args__['externalIp'] = external_ip

@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OSS Bucket Cname Token can be imported using the id, e.g.
+ * OSS Bucket Cname Token can be imported using the id, which consists of bucket and domain, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:oss/bucketCnameToken:BucketCnameToken example &lt;bucket&gt;:&lt;domain&gt;

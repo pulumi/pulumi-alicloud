@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** Available since v1.166.0.
     /// 
+    /// &gt; **NOTE:** The `Entries` attribute is available since v1.292.0. In batch mode, the attachment takes ownership of all entries of the ACL: entries added out of band or by other `alicloud.alb.AclEntryAttachment` resources attached to the same ACL are removed on the next apply. Do not manage the entries of the same ACL from multiple resources.
+    /// 
+    /// &gt; **NOTE:** Exactly one of `Entry` and `Entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,39 +48,84 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// ### Batch mode
+    /// 
+    /// The `Entries` attribute manages all entries of the ACL in one resource. The entries are added and removed in batches of at most `20` entries per API call.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Alb.AclEntryAttachment("default", new()
+    ///     {
+    ///         AclId = defaultAlicloudAlbAcl.Id,
+    ///         Entries = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.AclEntryAttachmentEntryArgs
+    ///             {
+    ///                 Entry = "168.10.10.0/24",
+    ///                 Description = name,
+    ///             },
+    ///             new AliCloud.Alb.Inputs.AclEntryAttachmentEntryArgs
+    ///             {
+    ///                 Entry = "168.10.11.0/24",
+    ///                 Description = name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
-    /// Acl entry attachment can be imported using the id, e.g.
+    /// Acl entry attachment can be imported using the id, which consists of AclId and entry, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
+    /// ```
+    /// 
+    /// When `Entries` is used, the id is the acl id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/aclEntryAttachment:AclEntryAttachment")]
     public partial class AclEntryAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Acl.
+        /// The ID of the ACL.
         /// </summary>
         [Output("aclId")]
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the entry.
+        /// The description of the entry. Only valid when `Entry` is set. The description must be `1` to `256` characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR blocks.
+        /// One or more entry blocks. Exactly one of `Entry` and `Entries` must be specified. The order of the blocks is not significant. See `Entries` below for details.
         /// </summary>
-        [Output("entry")]
-        public Output<string> Entry { get; private set; } = null!;
+        [Output("entries")]
+        public Output<ImmutableArray<Outputs.AclEntryAttachmentEntry>> Entries { get; private set; } = null!;
 
         /// <summary>
-        /// The Status of the resource.
+        /// The CIDR block of the ACL entry. Exactly one of `Entry` and `Entries` must be specified. Field `Entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `Entries`.
+        /// </summary>
+        [Output("entry")]
+        public Output<string?> Entry { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource. Only exported when `Entry` is set. When `Entries` is set, the status of each entry is exported in its `Entries` block.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -128,22 +177,34 @@ namespace Pulumi.AliCloud.Alb
     public sealed class AclEntryAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Acl.
+        /// The ID of the ACL.
         /// </summary>
         [Input("aclId", required: true)]
         public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the entry.
+        /// The description of the entry. Only valid when `Entry` is set. The description must be `1` to `256` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("entries")]
+        private InputList<Inputs.AclEntryAttachmentEntryArgs>? _entries;
+
         /// <summary>
-        /// The CIDR blocks.
+        /// One or more entry blocks. Exactly one of `Entry` and `Entries` must be specified. The order of the blocks is not significant. See `Entries` below for details.
         /// </summary>
-        [Input("entry", required: true)]
-        public Input<string> Entry { get; set; } = null!;
+        public InputList<Inputs.AclEntryAttachmentEntryArgs> Entries
+        {
+            get => _entries ?? (_entries = new InputList<Inputs.AclEntryAttachmentEntryArgs>());
+            set => _entries = value;
+        }
+
+        /// <summary>
+        /// The CIDR block of the ACL entry. Exactly one of `Entry` and `Entries` must be specified. Field `Entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `Entries`.
+        /// </summary>
+        [Input("entry")]
+        public Input<string>? Entry { get; set; }
 
         public AclEntryAttachmentArgs()
         {
@@ -154,25 +215,37 @@ namespace Pulumi.AliCloud.Alb
     public sealed class AclEntryAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Acl.
+        /// The ID of the ACL.
         /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The description of the entry.
+        /// The description of the entry. Only valid when `Entry` is set. The description must be `1` to `256` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("entries")]
+        private InputList<Inputs.AclEntryAttachmentEntryGetArgs>? _entries;
+
         /// <summary>
-        /// The CIDR blocks.
+        /// One or more entry blocks. Exactly one of `Entry` and `Entries` must be specified. The order of the blocks is not significant. See `Entries` below for details.
+        /// </summary>
+        public InputList<Inputs.AclEntryAttachmentEntryGetArgs> Entries
+        {
+            get => _entries ?? (_entries = new InputList<Inputs.AclEntryAttachmentEntryGetArgs>());
+            set => _entries = value;
+        }
+
+        /// <summary>
+        /// The CIDR block of the ACL entry. Exactly one of `Entry` and `Entries` must be specified. Field `Entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `Entries`.
         /// </summary>
         [Input("entry")]
         public Input<string>? Entry { get; set; }
 
         /// <summary>
-        /// The Status of the resource.
+        /// The status of the resource. Only exported when `Entry` is set. When `Entries` is set, the status of each entry is exported in its `Entries` block.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

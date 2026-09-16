@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _allowOrigins;
 
         /// <summary>
-        /// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        /// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
         /// </summary>
         public InputList<string> AllowOrigins
         {

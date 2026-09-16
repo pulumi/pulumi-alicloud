@@ -210,7 +210,7 @@ class ChartNamespace(pulumi.CustomResource):
 
         ## Import
 
-        CR Chart Namespace can be imported using the id, e.g.
+        CR Chart Namespace can be imported using the id, which consists of instance_id and namespace_name, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
@@ -269,7 +269,7 @@ class ChartNamespace(pulumi.CustomResource):
 
         ## Import
 
-        CR Chart Namespace can be imported using the id, e.g.
+        CR Chart Namespace can be imported using the id, which consists of instance_id and namespace_name, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>

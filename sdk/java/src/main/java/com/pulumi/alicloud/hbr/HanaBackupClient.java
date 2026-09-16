@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Hybrid Backup Recovery (HBR) Hana Backup Client can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Hana Backup Client can be imported using the id, which consists of vaultId and client_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:hbr/hanaBackupClient:HanaBackupClient example &lt;vault_id&gt;:&lt;client_id&gt;

@@ -243,6 +243,121 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 	}).(AclAclEntryOutput)
 }
 
+type AclEntryAttachmentEntry struct {
+	// The description of the ACL entry. The description must be `1` to `256` characters in length.
+	Description *string `pulumi:"description"`
+	// The CIDR block of the ACL entry.
+	Entry string `pulumi:"entry"`
+	// The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+	Status *string `pulumi:"status"`
+}
+
+// AclEntryAttachmentEntryInput is an input type that accepts AclEntryAttachmentEntryArgs and AclEntryAttachmentEntryOutput values.
+// You can construct a concrete instance of `AclEntryAttachmentEntryInput` via:
+//
+//	AclEntryAttachmentEntryArgs{...}
+type AclEntryAttachmentEntryInput interface {
+	pulumi.Input
+
+	ToAclEntryAttachmentEntryOutput() AclEntryAttachmentEntryOutput
+	ToAclEntryAttachmentEntryOutputWithContext(context.Context) AclEntryAttachmentEntryOutput
+}
+
+type AclEntryAttachmentEntryArgs struct {
+	// The description of the ACL entry. The description must be `1` to `256` characters in length.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The CIDR block of the ACL entry.
+	Entry pulumi.StringInput `pulumi:"entry"`
+	// The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (AclEntryAttachmentEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (i AclEntryAttachmentEntryArgs) ToAclEntryAttachmentEntryOutput() AclEntryAttachmentEntryOutput {
+	return i.ToAclEntryAttachmentEntryOutputWithContext(context.Background())
+}
+
+func (i AclEntryAttachmentEntryArgs) ToAclEntryAttachmentEntryOutputWithContext(ctx context.Context) AclEntryAttachmentEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentEntryOutput)
+}
+
+// AclEntryAttachmentEntryArrayInput is an input type that accepts AclEntryAttachmentEntryArray and AclEntryAttachmentEntryArrayOutput values.
+// You can construct a concrete instance of `AclEntryAttachmentEntryArrayInput` via:
+//
+//	AclEntryAttachmentEntryArray{ AclEntryAttachmentEntryArgs{...} }
+type AclEntryAttachmentEntryArrayInput interface {
+	pulumi.Input
+
+	ToAclEntryAttachmentEntryArrayOutput() AclEntryAttachmentEntryArrayOutput
+	ToAclEntryAttachmentEntryArrayOutputWithContext(context.Context) AclEntryAttachmentEntryArrayOutput
+}
+
+type AclEntryAttachmentEntryArray []AclEntryAttachmentEntryInput
+
+func (AclEntryAttachmentEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (i AclEntryAttachmentEntryArray) ToAclEntryAttachmentEntryArrayOutput() AclEntryAttachmentEntryArrayOutput {
+	return i.ToAclEntryAttachmentEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AclEntryAttachmentEntryArray) ToAclEntryAttachmentEntryArrayOutputWithContext(ctx context.Context) AclEntryAttachmentEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentEntryArrayOutput)
+}
+
+type AclEntryAttachmentEntryOutput struct{ *pulumi.OutputState }
+
+func (AclEntryAttachmentEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (o AclEntryAttachmentEntryOutput) ToAclEntryAttachmentEntryOutput() AclEntryAttachmentEntryOutput {
+	return o
+}
+
+func (o AclEntryAttachmentEntryOutput) ToAclEntryAttachmentEntryOutputWithContext(ctx context.Context) AclEntryAttachmentEntryOutput {
+	return o
+}
+
+// The description of the ACL entry. The description must be `1` to `256` characters in length.
+func (o AclEntryAttachmentEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclEntryAttachmentEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block of the ACL entry.
+func (o AclEntryAttachmentEntryOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v AclEntryAttachmentEntry) string { return v.Entry }).(pulumi.StringOutput)
+}
+
+// The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+func (o AclEntryAttachmentEntryOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclEntryAttachmentEntry) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AclEntryAttachmentEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AclEntryAttachmentEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclEntryAttachmentEntry)(nil)).Elem()
+}
+
+func (o AclEntryAttachmentEntryArrayOutput) ToAclEntryAttachmentEntryArrayOutput() AclEntryAttachmentEntryArrayOutput {
+	return o
+}
+
+func (o AclEntryAttachmentEntryArrayOutput) ToAclEntryAttachmentEntryArrayOutputWithContext(ctx context.Context) AclEntryAttachmentEntryArrayOutput {
+	return o
+}
+
+func (o AclEntryAttachmentEntryArrayOutput) Index(i pulumi.IntInput) AclEntryAttachmentEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclEntryAttachmentEntry {
+		return vs[0].([]AclEntryAttachmentEntry)[vs[1].(int)]
+	}).(AclEntryAttachmentEntryOutput)
+}
+
 type ListenerAccessLogTracingConfig struct {
 	// Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 	//
@@ -15195,6 +15310,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AScriptExtAttributeArrayInput)(nil)).Elem(), AScriptExtAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryInput)(nil)).Elem(), AclAclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryArrayInput)(nil)).Elem(), AclAclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryAttachmentEntryInput)(nil)).Elem(), AclEntryAttachmentEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryAttachmentEntryArrayInput)(nil)).Elem(), AclEntryAttachmentEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAccessLogTracingConfigInput)(nil)).Elem(), ListenerAccessLogTracingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAccessLogTracingConfigPtrInput)(nil)).Elem(), ListenerAccessLogTracingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigInput)(nil)).Elem(), ListenerAclConfigArgs{})
@@ -15399,6 +15516,8 @@ func init() {
 	pulumi.RegisterOutputType(AScriptExtAttributeArrayOutput{})
 	pulumi.RegisterOutputType(AclAclEntryOutput{})
 	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(AclEntryAttachmentEntryOutput{})
+	pulumi.RegisterOutputType(AclEntryAttachmentEntryArrayOutput{})
 	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigOutput{})
 	pulumi.RegisterOutputType(ListenerAccessLogTracingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerAclConfigOutput{})

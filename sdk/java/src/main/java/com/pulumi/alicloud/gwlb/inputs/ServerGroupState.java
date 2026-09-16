@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.gwlb.inputs;
 
 import com.pulumi.alicloud.gwlb.inputs.ServerGroupConnectionDrainConfigArgs;
+import com.pulumi.alicloud.gwlb.inputs.ServerGroupDrainingServerArgs;
 import com.pulumi.alicloud.gwlb.inputs.ServerGroupHealthCheckConfigArgs;
 import com.pulumi.alicloud.gwlb.inputs.ServerGroupServerArgs;
 import com.pulumi.core.Output;
@@ -49,6 +50,21 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+     * 
+     */
+    @Import(name="drainingServers")
+    private @Nullable Output<List<ServerGroupDrainingServerArgs>> drainingServers;
+
+    /**
+     * @return (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+     * 
+     */
+    public Optional<Output<List<ServerGroupDrainingServerArgs>>> drainingServers() {
+        return Optional.ofNullable(this.drainingServers);
     }
 
     /**
@@ -200,20 +216,22 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend servers that you want to remove.
+     * The backend servers that you want to remove. See `servers` below.
      * 
      * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     * 
+     * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
     /**
-     * @return The backend servers that you want to remove.
+     * @return The backend servers that you want to remove. See `servers` below.
      * 
      * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     * 
+     * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      * 
      */
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
@@ -257,7 +275,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * The VPC ID.
      * 
-     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * &gt; **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     @Import(name="vpcId")
@@ -266,7 +284,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The VPC ID.
      * 
-     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * &gt; **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -278,6 +296,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     private ServerGroupState(ServerGroupState $) {
         this.connectionDrainConfig = $.connectionDrainConfig;
         this.createTime = $.createTime;
+        this.drainingServers = $.drainingServers;
         this.dryRun = $.dryRun;
         this.healthCheckConfig = $.healthCheckConfig;
         this.protocol = $.protocol;
@@ -350,6 +369,37 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param drainingServers (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingServers(@Nullable Output<List<ServerGroupDrainingServerArgs>> drainingServers) {
+            $.drainingServers = drainingServers;
+            return this;
+        }
+
+        /**
+         * @param drainingServers (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingServers(List<ServerGroupDrainingServerArgs> drainingServers) {
+            return drainingServers(Output.of(drainingServers));
+        }
+
+        /**
+         * @param drainingServers (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingServers(ServerGroupDrainingServerArgs... drainingServers) {
+            return drainingServers(List.of(drainingServers));
         }
 
         /**
@@ -549,10 +599,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend servers that you want to remove.
+         * @param servers The backend servers that you want to remove. See `servers` below.
          * 
          * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-         * See `servers` below.
+         * 
+         * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
          * 
          * @return builder
          * 
@@ -563,10 +614,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend servers that you want to remove.
+         * @param servers The backend servers that you want to remove. See `servers` below.
          * 
          * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-         * See `servers` below.
+         * 
+         * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
          * 
          * @return builder
          * 
@@ -576,10 +628,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend servers that you want to remove.
+         * @param servers The backend servers that you want to remove. See `servers` below.
          * 
          * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-         * See `servers` below.
+         * 
+         * &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
          * 
          * @return builder
          * 
@@ -637,7 +690,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpcId The VPC ID.
          * 
-         * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+         * &gt; **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
          * 
          * @return builder
          * 
@@ -650,7 +703,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpcId The VPC ID.
          * 
-         * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+         * &gt; **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
          * 
          * @return builder
          * 

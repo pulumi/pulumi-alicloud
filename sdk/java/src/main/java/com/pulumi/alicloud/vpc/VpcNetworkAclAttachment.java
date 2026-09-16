@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Network Acl Attachment can be imported using the id, e.g.
+ * VPC Network Acl Attachment can be imported using the id, which consists of networkAclId and resource_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example &lt;network_acl_id&gt;:&lt;resource_id&gt;

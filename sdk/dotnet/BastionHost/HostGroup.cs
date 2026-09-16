@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// ## Import
     /// 
-    /// Bastion Host Host Group can be imported using the id, e.g.
+    /// Bastion Host Host Group can be imported using the id, which consists of InstanceId and host_group_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:bastionhost/hostGroup:HostGroup example &lt;instance_id&gt;:&lt;host_group_id&gt;

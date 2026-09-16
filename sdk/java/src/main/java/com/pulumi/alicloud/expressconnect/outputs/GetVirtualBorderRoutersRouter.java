@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -138,10 +139,15 @@ public final class GetVirtualBorderRoutersRouter {
      */
     private String routeTableId;
     /**
-     * @return The VBR state.
+     * @return The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      * 
      */
     private String status;
+    /**
+     * @return A map of tags to filter Virtual Border Routers that match the given tags.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return The Most Recent Was Aborted by the Time.
      * 
@@ -350,11 +356,18 @@ public final class GetVirtualBorderRoutersRouter {
         return this.routeTableId;
     }
     /**
-     * @return The VBR state.
+     * @return The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return A map of tags to filter Virtual Border Routers that match the given tags.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
     }
     /**
      * @return The Most Recent Was Aborted by the Time.
@@ -434,6 +447,7 @@ public final class GetVirtualBorderRoutersRouter {
         private String recoveryTime;
         private String routeTableId;
         private String status;
+        private Map<String,String> tags;
         private String terminationTime;
         private String type;
         private String virtualBorderRouterId;
@@ -469,6 +483,7 @@ public final class GetVirtualBorderRoutersRouter {
     	      this.recoveryTime = defaults.recoveryTime;
     	      this.routeTableId = defaults.routeTableId;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.terminationTime = defaults.terminationTime;
     	      this.type = defaults.type;
     	      this.virtualBorderRouterId = defaults.virtualBorderRouterId;
@@ -686,6 +701,14 @@ public final class GetVirtualBorderRoutersRouter {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder terminationTime(String terminationTime) {
             if (terminationTime == null) {
               throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "terminationTime");
@@ -761,6 +784,7 @@ public final class GetVirtualBorderRoutersRouter {
             _resultValue.recoveryTime = recoveryTime;
             _resultValue.routeTableId = routeTableId;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.terminationTime = terminationTime;
             _resultValue.type = type;
             _resultValue.virtualBorderRouterId = virtualBorderRouterId;

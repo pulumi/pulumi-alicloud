@@ -45,14 +45,14 @@ public final class StorageDomainRoutingRuleRouteArgs extends com.pulumi.resource
     }
 
     /**
-     * Storage domain name.
+     * Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
      * 
      */
     @Import(name="storageDomain", required=true)
     private Output<String> storageDomain;
 
     /**
-     * @return Storage domain name.
+     * @return Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
      * 
      */
     public Output<String> storageDomain() {
@@ -128,7 +128,7 @@ public final class StorageDomainRoutingRuleRouteArgs extends com.pulumi.resource
         }
 
         /**
-         * @param storageDomain Storage domain name.
+         * @param storageDomain Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class StorageDomainRoutingRuleRouteArgs extends com.pulumi.resource
         }
 
         /**
-         * @param storageDomain Storage domain name.
+         * @param storageDomain Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
          * 
          * @return builder
          * 

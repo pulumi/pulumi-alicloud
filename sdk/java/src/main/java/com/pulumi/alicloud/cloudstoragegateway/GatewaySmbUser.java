@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
+ * Cloud Storage Gateway Gateway SMB User can be imported using the id, which consists of gatewayId and username, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example &lt;gateway_id&gt;:&lt;username&gt;

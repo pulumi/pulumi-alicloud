@@ -38,14 +38,19 @@ class SecretArgs:
         """
         The set of arguments for constructing a Secret resource.
 
-        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+               - `Generic`: any custom string.
+               - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+               - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+               - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+               - `Redis` and `PolarDB`: use the literal string `$Auto`.
         :param pulumi.Input[_builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.str] version_id: The version number of the initial version.
         :param pulumi.Input[_builtins.str] description: The description of the secret.
-        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance.
+        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key.
-        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
+        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
         :param pulumi.Input[_builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
@@ -95,7 +100,12 @@ class SecretArgs:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Input[_builtins.str]:
         """
-        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+        - `Generic`: any custom string.
+        - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+        - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+        - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+        - `Redis` and `PolarDB`: use the literal string `$Auto`.
         """
         return pulumi.get(self, "secret_data")
 
@@ -143,7 +153,7 @@ class SecretArgs:
     @pulumi.getter(name="dkmsInstanceId")
     def dkms_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the KMS instance.
+        The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         """
         return pulumi.get(self, "dkms_instance_id")
 
@@ -167,7 +177,7 @@ class SecretArgs:
     @pulumi.getter(name="encryptionKeyId")
     def encryption_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the KMS key.
+        The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
         """
         return pulumi.get(self, "encryption_key_id")
 
@@ -179,7 +189,7 @@ class SecretArgs:
     @pulumi.getter(name="extendedConfig")
     def extended_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "extended_config")
 
@@ -318,16 +328,21 @@ class _SecretState:
         :param pulumi.Input[_builtins.str] arn: The ARN of the secret.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.224.0) The time when the secret is created.
         :param pulumi.Input[_builtins.str] description: The description of the secret.
-        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance.
+        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key.
-        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
+        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[_builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
         :param pulumi.Input[_builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         :param pulumi.Input[_builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
-        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+               - `Generic`: any custom string.
+               - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+               - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+               - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+               - `Redis` and `PolarDB`: use the literal string `$Auto`.
         :param pulumi.Input[_builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         :param pulumi.Input[_builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.str] secret_type: The type of the secret. Valid values:
@@ -420,7 +435,7 @@ class _SecretState:
     @pulumi.getter(name="dkmsInstanceId")
     def dkms_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the KMS instance.
+        The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         """
         return pulumi.get(self, "dkms_instance_id")
 
@@ -444,7 +459,7 @@ class _SecretState:
     @pulumi.getter(name="encryptionKeyId")
     def encryption_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the KMS key.
+        The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
         """
         return pulumi.get(self, "encryption_key_id")
 
@@ -456,7 +471,7 @@ class _SecretState:
     @pulumi.getter(name="extendedConfig")
     def extended_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "extended_config")
 
@@ -528,7 +543,12 @@ class _SecretState:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+        - `Generic`: any custom string.
+        - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+        - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+        - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+        - `Redis` and `PolarDB`: use the literal string `$Auto`.
         """
         return pulumi.get(self, "secret_data")
 
@@ -645,6 +665,8 @@ class Secret(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.76.0.
 
+        > **NOTE:** Starting from KMS 3.0, secrets are created inside a dedicated KMS instance. When you create a secret in KMS 3.0, you must specify `dkms_instance_id` and `encryption_key_id`. The examples below show how to provide them. If your account still uses the legacy shared KMS and does not require a dedicated instance, these two parameters can be omitted, but this legacy behavior is no longer recommended.
+
         ## Example Usage
 
         Basic Usage
@@ -657,10 +679,198 @@ class Secret(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.kms.Secret("default",
+        # Replace the IDs with your own dedicated KMS instance and key.
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        default_secret = alicloud.kms.Secret("default",
             secret_name=name,
             secret_data="Secret data",
             version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a generic secret
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        generic = alicloud.kms.Secret("generic",
+            secret_name=name,
+            secret_type="Generic",
+            secret_data="Secret data",
+            version_id="v1",
+            secret_data_type="text",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create an RDS secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        rds = alicloud.kms.Secret("rds",
+            secret_name=name,
+            secret_type="Rds",
+            secret_data=json.dumps({
+                "Accounts": [{
+                    "AccountName": "rds_user",
+                    "AccountPassword": "YourPassword12345!",
+                }],
+            }),
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "SingleUser",
+                "DBInstanceId": "rm-bp1b3dd3a506e****",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a Redis/Tair secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        redis = alicloud.kms.Secret("redis",
+            secret_name=name,
+            secret_type="Redis",
+            secret_data="$Auto",
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "DoubleUsers",
+                "AccountName": "redis_user",
+                "CloneAccountName": "redis_user_clone",
+                "AccountPrivilege": "ROLE_READ_ONLY",
+                "InstanceId": "r-bp1b3dd3a506e****",
+                "RegionId": "cn-hangzhou",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a RAM credentials secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        ram = alicloud.kms.Secret("ram",
+            secret_name="$Auto",
+            secret_type="RAMCredentials",
+            secret_data=json.dumps({
+                "AccessKeys": [{
+                    "AccessKeyId": "LTAI********************",
+                    "AccessKeySecret": "YourAccessKeySecret",
+                }],
+            }),
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "RamUserAccessKey",
+                "UserName": "ram_user",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create an ECS secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        ecs = alicloud.kms.Secret("ecs",
+            secret_name=f"acs/ecs/{name}",
+            secret_type="ECS",
+            secret_data=json.dumps({
+                "UserName": "root",
+                "Password": "YourPassword12345!",
+            }),
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "Password",
+                "RegionId": "cn-hangzhou",
+                "InstanceId": "i-bp1b3dd3a506e****",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a PolarDB secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        polardb = alicloud.kms.Secret("polardb",
+            secret_name=name,
+            secret_type="PolarDB",
+            secret_data="$Auto",
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "DoubleUsers",
+                "RegionId": "cn-hangzhou",
+                "DBClusterId": "pc-bp1b3dd3a506e****",
+                "DBType": "MySQL",
+                "AccountName": "polardb_user",
+                "CloneAccountName": "polardb_user_clone",
+                "AccountType": "Normal",
+                "AccountPrivilege": "ReadOnly",
+                "DBName": "testdb",
+            }),
             force_delete_without_recovery=True)
         ```
 
@@ -678,15 +888,20 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the secret.
-        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance.
+        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key.
-        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
+        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
         :param pulumi.Input[_builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         :param pulumi.Input[_builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
-        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+               - `Generic`: any custom string.
+               - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+               - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+               - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+               - `Redis` and `PolarDB`: use the literal string `$Auto`.
         :param pulumi.Input[_builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         :param pulumi.Input[_builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.str] secret_type: The type of the secret. Valid values:
@@ -713,6 +928,8 @@ class Secret(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.76.0.
 
+        > **NOTE:** Starting from KMS 3.0, secrets are created inside a dedicated KMS instance. When you create a secret in KMS 3.0, you must specify `dkms_instance_id` and `encryption_key_id`. The examples below show how to provide them. If your account still uses the legacy shared KMS and does not require a dedicated instance, these two parameters can be omitted, but this legacy behavior is no longer recommended.
+
         ## Example Usage
 
         Basic Usage
@@ -725,10 +942,198 @@ class Secret(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.kms.Secret("default",
+        # Replace the IDs with your own dedicated KMS instance and key.
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        default_secret = alicloud.kms.Secret("default",
             secret_name=name,
             secret_data="Secret data",
             version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a generic secret
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        generic = alicloud.kms.Secret("generic",
+            secret_name=name,
+            secret_type="Generic",
+            secret_data="Secret data",
+            version_id="v1",
+            secret_data_type="text",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create an RDS secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        rds = alicloud.kms.Secret("rds",
+            secret_name=name,
+            secret_type="Rds",
+            secret_data=json.dumps({
+                "Accounts": [{
+                    "AccountName": "rds_user",
+                    "AccountPassword": "YourPassword12345!",
+                }],
+            }),
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "SingleUser",
+                "DBInstanceId": "rm-bp1b3dd3a506e****",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a Redis/Tair secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        redis = alicloud.kms.Secret("redis",
+            secret_name=name,
+            secret_type="Redis",
+            secret_data="$Auto",
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "DoubleUsers",
+                "AccountName": "redis_user",
+                "CloneAccountName": "redis_user_clone",
+                "AccountPrivilege": "ROLE_READ_ONLY",
+                "InstanceId": "r-bp1b3dd3a506e****",
+                "RegionId": "cn-hangzhou",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a RAM credentials secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        ram = alicloud.kms.Secret("ram",
+            secret_name="$Auto",
+            secret_type="RAMCredentials",
+            secret_data=json.dumps({
+                "AccessKeys": [{
+                    "AccessKeyId": "LTAI********************",
+                    "AccessKeySecret": "YourAccessKeySecret",
+                }],
+            }),
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "RamUserAccessKey",
+                "UserName": "ram_user",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create an ECS secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        ecs = alicloud.kms.Secret("ecs",
+            secret_name=f"acs/ecs/{name}",
+            secret_type="ECS",
+            secret_data=json.dumps({
+                "UserName": "root",
+                "Password": "YourPassword12345!",
+            }),
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "Password",
+                "RegionId": "cn-hangzhou",
+                "InstanceId": "i-bp1b3dd3a506e****",
+            }),
+            force_delete_without_recovery=True)
+        ```
+
+        ### Create a PolarDB secret
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.get_instances(ids=["kst-bjj62d8f5e0sgtx8h****"])
+        default_get_keys = alicloud.kms.get_keys(ids=["key-gzz63ff0db5hg3qje****"])
+        polardb = alicloud.kms.Secret("polardb",
+            secret_name=name,
+            secret_type="PolarDB",
+            secret_data="$Auto",
+            version_id="v1",
+            dkms_instance_id=default.instances[0].instance_id,
+            encryption_key_id=default_get_keys.keys[0].id,
+            extended_config=json.dumps({
+                "SecretSubType": "DoubleUsers",
+                "RegionId": "cn-hangzhou",
+                "DBClusterId": "pc-bp1b3dd3a506e****",
+                "DBType": "MySQL",
+                "AccountName": "polardb_user",
+                "CloneAccountName": "polardb_user_clone",
+                "AccountType": "Normal",
+                "AccountPrivilege": "ReadOnly",
+                "DBName": "testdb",
+            }),
             force_delete_without_recovery=True)
         ```
 
@@ -849,16 +1254,21 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] arn: The ARN of the secret.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.224.0) The time when the secret is created.
         :param pulumi.Input[_builtins.str] description: The description of the secret.
-        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance.
+        :param pulumi.Input[_builtins.str] dkms_instance_id: The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key.
-        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[_builtins.str] encryption_key_id: The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
+        :param pulumi.Input[_builtins.str] extended_config: The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[_builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
         :param pulumi.Input[_builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         :param pulumi.Input[_builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
-        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+               - `Generic`: any custom string.
+               - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+               - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+               - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+               - `Redis` and `PolarDB`: use the literal string `$Auto`.
         :param pulumi.Input[_builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         :param pulumi.Input[_builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.str] secret_type: The type of the secret. Valid values:
@@ -925,7 +1335,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="dkmsInstanceId")
     def dkms_instance_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the KMS instance.
+        The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
         """
         return pulumi.get(self, "dkms_instance_id")
 
@@ -941,7 +1351,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="encryptionKeyId")
     def encryption_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the KMS key.
+        The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
         """
         return pulumi.get(self, "encryption_key_id")
 
@@ -949,7 +1359,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="extendedConfig")
     def extended_config(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        The extended configuration of the secret. This parameter is required when `secret_type` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "extended_config")
 
@@ -997,7 +1407,12 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Output[_builtins.str]:
         """
-        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`. The expected format of `secret_data` depends on `secret_type`:
+        - `Generic`: any custom string.
+        - `Rds`: a JSON string in the form `{"Accounts":[{"AccountName":"<rds-account-name>","AccountPassword":"<rds-account-password>"}]}`.
+        - `RAMCredentials`: a JSON string in the form `{"AccessKeys":[{"AccessKeyId":"<access-key-id>","AccessKeySecret":"<access-key-secret>"}]}`.
+        - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{"UserName":"<user-name>","Password":"<password>"}`. When `SecretSubType` is `SSHKey`, use `{"UserName":"<user-name>","PublicKey":"<public-key>","PrivateKey":"<private-key>"}`.
+        - `Redis` and `PolarDB`: use the literal string `$Auto`.
         """
         return pulumi.get(self, "secret_data")
 

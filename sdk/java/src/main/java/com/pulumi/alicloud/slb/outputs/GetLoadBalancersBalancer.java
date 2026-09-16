@@ -26,6 +26,7 @@ public final class GetLoadBalancersBalancer {
     private Integer autoReleaseTime;
     private List<GetLoadBalancersBalancerBackendServer> backendServers;
     private Integer bandwidth;
+    private String createTime;
     private Integer createTimeStamp;
     private String deleteProtection;
     private String endTime;
@@ -136,6 +137,9 @@ public final class GetLoadBalancersBalancer {
     }
     public Integer bandwidth() {
         return this.bandwidth;
+    }
+    public String createTime() {
+        return this.createTime;
     }
     public Integer createTimeStamp() {
         return this.createTimeStamp;
@@ -292,6 +296,7 @@ public final class GetLoadBalancersBalancer {
         private Integer autoReleaseTime;
         private List<GetLoadBalancersBalancerBackendServer> backendServers;
         private Integer bandwidth;
+        private String createTime;
         private Integer createTimeStamp;
         private String deleteProtection;
         private String endTime;
@@ -327,6 +332,7 @@ public final class GetLoadBalancersBalancer {
     	      this.autoReleaseTime = defaults.autoReleaseTime;
     	      this.backendServers = defaults.backendServers;
     	      this.bandwidth = defaults.bandwidth;
+    	      this.createTime = defaults.createTime;
     	      this.createTimeStamp = defaults.createTimeStamp;
     	      this.deleteProtection = defaults.deleteProtection;
     	      this.endTime = defaults.endTime;
@@ -404,6 +410,14 @@ public final class GetLoadBalancersBalancer {
               throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "bandwidth");
             }
             this.bandwidth = bandwidth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -628,6 +642,7 @@ public final class GetLoadBalancersBalancer {
             _resultValue.autoReleaseTime = autoReleaseTime;
             _resultValue.backendServers = backendServers;
             _resultValue.bandwidth = bandwidth;
+            _resultValue.createTime = createTime;
             _resultValue.createTimeStamp = createTimeStamp;
             _resultValue.deleteProtection = deleteProtection;
             _resultValue.endTime = endTime;

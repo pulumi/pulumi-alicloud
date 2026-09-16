@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// ## Import
     /// 
-    /// RocketMQ Consumer Group can be imported using the id, e.g.
+    /// RocketMQ Consumer Group can be imported using the id, which consists of InstanceId and consumer_group_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example &lt;instance_id&gt;:&lt;consumer_group_id&gt;

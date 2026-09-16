@@ -178,7 +178,7 @@ class InstanceAclAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Api Gateway Instance Acl Attachment can be imported using the id, e.g.
+        Api Gateway Instance Acl Attachment can be imported using the id, which consists of instance_id, acl_id and acl_type, e.g.
 
         ```sh
         $ pulumi import alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment example <instance_id>:<acl_id>:<acl_type>
@@ -238,7 +238,7 @@ class InstanceAclAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Api Gateway Instance Acl Attachment can be imported using the id, e.g.
+        Api Gateway Instance Acl Attachment can be imported using the id, which consists of instance_id, acl_id and acl_type, e.g.
 
         ```sh
         $ pulumi import alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment example <instance_id>:<acl_id>:<acl_type>

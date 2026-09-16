@@ -13,6 +13,7 @@ import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolPrivatePoolOptionsArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolResourcePoolOptionsArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
@@ -863,6 +864,25 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The resource pool and resource pool strategy used when launching instances. See `resourcePoolOptions` below.
+     * 
+     * &gt; **NOTE:** `resourcePoolOptions` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+     * 
+     */
+    @Import(name="resourcePoolOptions")
+    private @Nullable Output<NodePoolResourcePoolOptionsArgs> resourcePoolOptions;
+
+    /**
+     * @return The resource pool and resource pool strategy used when launching instances. See `resourcePoolOptions` below.
+     * 
+     * &gt; **NOTE:** `resourcePoolOptions` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+     * 
+     */
+    public Optional<Output<NodePoolResourcePoolOptionsArgs>> resourcePoolOptions() {
+        return Optional.ofNullable(this.resourcePoolOptions);
+    }
+
+    /**
      * Rotary configuration. See `rollingPolicy` below.
      * 
      * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -1459,6 +1479,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.ramRoleName = $.ramRoleName;
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
+        this.resourcePoolOptions = $.resourcePoolOptions;
         this.rollingPolicy = $.rollingPolicy;
         this.runtimeName = $.runtimeName;
         this.runtimeVersion = $.runtimeVersion;
@@ -2691,6 +2712,31 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param resourcePoolOptions The resource pool and resource pool strategy used when launching instances. See `resourcePoolOptions` below.
+         * 
+         * &gt; **NOTE:** `resourcePoolOptions` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePoolOptions(@Nullable Output<NodePoolResourcePoolOptionsArgs> resourcePoolOptions) {
+            $.resourcePoolOptions = resourcePoolOptions;
+            return this;
+        }
+
+        /**
+         * @param resourcePoolOptions The resource pool and resource pool strategy used when launching instances. See `resourcePoolOptions` below.
+         * 
+         * &gt; **NOTE:** `resourcePoolOptions` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePoolOptions(NodePoolResourcePoolOptionsArgs resourcePoolOptions) {
+            return resourcePoolOptions(Output.of(resourcePoolOptions));
         }
 
         /**

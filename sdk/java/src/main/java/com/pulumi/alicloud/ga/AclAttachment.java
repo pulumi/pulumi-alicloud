@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
+ * Global Accelerator (GA) Acl Attachment can be imported using the id, which consists of listenerId and acl_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;

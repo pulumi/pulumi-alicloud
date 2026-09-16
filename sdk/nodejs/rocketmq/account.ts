@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RocketMQ Account can be imported using the id, e.g.
+ * RocketMQ Account can be imported using the id, which consists of instanceId and username, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:rocketmq/account:Account example <instance_id>:<username>

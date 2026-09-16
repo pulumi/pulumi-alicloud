@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.
+ * Cloud Firewall Vpc Firewall Control Policy can be imported using the id, which consists of vpcFirewallId and acl_uuid, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy example &lt;vpc_firewall_id&gt;:&lt;acl_uuid&gt;

@@ -237,7 +237,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
 
         ## Import
 
-        ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
+        ApsaraDB for MyBase Dedicated Host Account can be imported using the id, which consists of dedicated_host_id and account_name, e.g.
 
         ```sh
         $ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example <dedicated_host_id>:<account_name>
@@ -324,7 +324,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
 
         ## Import
 
-        ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
+        ApsaraDB for MyBase Dedicated Host Account can be imported using the id, which consists of dedicated_host_id and account_name, e.g.
 
         ```sh
         $ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example <dedicated_host_id>:<account_name>

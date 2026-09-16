@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Video Processing can be imported using the id, e.g.
+    /// ESA Video Processing can be imported using the id, which consists of SiteId and config_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/videoProcessing:VideoProcessing example &lt;site_id&gt;:&lt;config_id&gt;

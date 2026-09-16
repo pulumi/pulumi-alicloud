@@ -97,6 +97,7 @@ class ReadOnlyInstanceArgs:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[_builtins.bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -428,6 +429,7 @@ class ReadOnlyInstanceArgs:
         - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        - general_essd: general essd.
         """
         return pulumi.get(self, "db_instance_storage_type")
 
@@ -842,6 +844,7 @@ class _ReadOnlyInstanceState:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[_builtins.bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -1153,6 +1156,7 @@ class _ReadOnlyInstanceState:
         - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        - general_essd: general essd.
         """
         return pulumi.get(self, "db_instance_storage_type")
 
@@ -1699,6 +1703,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[_builtins.bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -2037,6 +2042,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[_builtins.bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -2267,6 +2273,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        - general_essd: general essd.
         """
         return pulumi.get(self, "db_instance_storage_type")
 

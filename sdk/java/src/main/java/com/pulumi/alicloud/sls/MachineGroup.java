@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log Service (SLS) Machine Group can be imported using the id, e.g.
+ * Log Service (SLS) Machine Group can be imported using the id, which consists of projectName and group_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:sls/machineGroup:MachineGroup example &lt;project_name&gt;:&lt;group_name&gt;

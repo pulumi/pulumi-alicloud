@@ -776,7 +776,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
         ## Import
 
-        ESA Waiting Room Event can be imported using the id, e.g.
+        ESA Waiting Room Event can be imported using the id, which consists of site_id, waiting_room_id and waiting_room_event_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/waitingRoomEvent:WaitingRoomEvent example <site_id>:<waiting_room_id>:<waiting_room_event_id>
@@ -882,7 +882,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
         ## Import
 
-        ESA Waiting Room Event can be imported using the id, e.g.
+        ESA Waiting Room Event can be imported using the id, which consists of site_id, waiting_room_id and waiting_room_event_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/waitingRoomEvent:WaitingRoomEvent example <site_id>:<waiting_room_id>:<waiting_room_event_id>

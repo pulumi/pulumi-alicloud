@@ -235,7 +235,7 @@ class PrivateZone(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Private Zone can be imported using the id, which consists of cen_id and access_region_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
@@ -299,7 +299,7 @@ class PrivateZone(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Private Zone can be imported using the id, which consists of cen_id and access_region_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>

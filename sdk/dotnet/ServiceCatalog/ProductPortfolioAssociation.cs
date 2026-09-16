@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// 
     /// ## Import
     /// 
-    /// Service Catalog Product Portfolio Association can be imported using the id, e.g.
+    /// Service Catalog Product Portfolio Association can be imported using the id, which consists of ProductId and portfolio_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation example &lt;product_id&gt;:&lt;portfolio_id&gt;

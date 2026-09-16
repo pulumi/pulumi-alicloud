@@ -704,7 +704,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
 
         ## Import
 
-        PAI Workspace Model Version can be imported using the id, e.g.
+        PAI Workspace Model Version can be imported using the id, which consists of model_id and version_name, e.g.
 
         ```sh
         $ pulumi import alicloud:pai/workspaceModelVersion:WorkspaceModelVersion example <model_id>:<version_name>
@@ -834,7 +834,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
 
         ## Import
 
-        PAI Workspace Model Version can be imported using the id, e.g.
+        PAI Workspace Model Version can be imported using the id, which consists of model_id and version_name, e.g.
 
         ```sh
         $ pulumi import alicloud:pai/workspaceModelVersion:WorkspaceModelVersion example <model_id>:<version_name>

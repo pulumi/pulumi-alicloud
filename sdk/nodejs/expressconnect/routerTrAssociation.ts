@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Express Connect Router Express Connect Router Tr Association can be imported using the id, e.g.
+ * Express Connect Router Express Connect Router Tr Association can be imported using the id, which consists of ecr_id, associationId and transit_router_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:expressconnect/routerTrAssociation:RouterTrAssociation example <ecr_id>:<association_id>:<transit_router_id>
