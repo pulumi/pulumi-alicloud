@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
 import com.pulumi.alicloud.ecs.inputs.SnapshotPolicyState;
 import com.pulumi.alicloud.ecs.outputs.SnapshotPolicyCopyEncryptionConfiguration;
+import com.pulumi.alicloud.ecs.outputs.SnapshotPolicyTargetTag;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -83,6 +84,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshotPolicy:SnapshotPolicy")
 public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
+    @Export(name="associationType", refs={String.class}, tree="[0]")
+    private Output<String> associationType;
+
+    public Output<String> associationType() {
+        return this.associationType;
+    }
     @Export(name="autoSnapshotPolicyName", refs={String.class}, tree="[0]")
     private Output<String> autoSnapshotPolicyName;
 
@@ -200,6 +207,12 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<String>>> targetCopyRegions() {
         return Codegen.optional(this.targetCopyRegions);
+    }
+    @Export(name="targetTags", refs={List.class,SnapshotPolicyTargetTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SnapshotPolicyTargetTag>> targetTags;
+
+    public Output<Optional<List<SnapshotPolicyTargetTag>>> targetTags() {
+        return Codegen.optional(this.targetTags);
     }
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.

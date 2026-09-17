@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpointType and entry, e.g.
+ * CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpointType and entry. The `endpointType` segment of the import ID accepts both `internet` and `Internet`, e.g. `cri-abc123:internet:10.0.0.0/8`.
  *
  * ```sh
  * $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
@@ -91,7 +91,7 @@ export class EndpointAclPolicy extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
      */
     declare public readonly endpointType: pulumi.Output<string>;
     /**
@@ -156,7 +156,7 @@ export interface EndpointAclPolicyState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
      */
     endpointType?: pulumi.Input<string | undefined>;
     /**
@@ -182,7 +182,7 @@ export interface EndpointAclPolicyArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
      */
     endpointType: pulumi.Input<string>;
     /**

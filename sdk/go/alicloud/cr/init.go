@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ChartRepository{}
 	case "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
 		r = &EndpointAclPolicy{}
+	case "alicloud:cr/instanceCustomizedDomain:InstanceCustomizedDomain":
+		r = &InstanceCustomizedDomain{}
 	case "alicloud:cr/internetEndpoint:InternetEndpoint":
 		r = &InternetEndpoint{}
 	case "alicloud:cr/namespace:Namespace":
@@ -88,6 +90,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cr/endpointAclPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/instanceCustomizedDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

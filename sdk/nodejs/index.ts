@@ -228,6 +228,7 @@ import * as sslcertificatesservice from "./sslcertificatesservice";
 import * as sslcertificatesservicecertificate from "./sslcertificatesservicecertificate";
 import * as sslcertificatesserviceinstance from "./sslcertificatesserviceinstance";
 import * as sslcertificatesservicepca from "./sslcertificatesservicepca";
+import * as sslcertificatesservicepcacert from "./sslcertificatesservicepcacert";
 import * as starrocks from "./starrocks";
 import * as tag from "./tag";
 import * as threatdetection from "./threatdetection";
@@ -380,6 +381,7 @@ export {
     sslcertificatesservicecertificate,
     sslcertificatesserviceinstance,
     sslcertificatesservicepca,
+    sslcertificatesservicepcacert,
     starrocks,
     tag,
     threatdetection,

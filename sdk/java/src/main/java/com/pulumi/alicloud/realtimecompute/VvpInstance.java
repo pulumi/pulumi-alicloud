@@ -132,6 +132,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:realtimecompute/vvpInstance:VvpInstance")
 public class VvpInstance extends com.pulumi.resources.CustomResource {
     /**
+     * The auto-renewal period of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     * 
+     */
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     * 
+     */
+    public Output<Optional<Integer>> autoRenewDuration() {
+        return Codegen.optional(this.autoRenewDuration);
+    }
+    /**
      * The creation time of the resource.
      * 
      */
@@ -186,6 +200,34 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * The renewal status of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     * 
+     */
+    @Export(name="renewStatus", refs={String.class}, tree="[0]")
+    private Output<String> renewStatus;
+
+    /**
+     * @return The renewal status of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     * 
+     */
+    public Output<String> renewStatus() {
+        return this.renewStatus;
+    }
+    /**
+     * The unit of the auto-renewal period. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `M` (month), `Y` (year).
+     * 
+     */
+    @Export(name="renewalDurationUnit", refs={String.class}, tree="[0]")
+    private Output<String> renewalDurationUnit;
+
+    /**
+     * @return The unit of the auto-renewal period. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `M` (month), `Y` (year).
+     * 
+     */
+    public Output<String> renewalDurationUnit() {
+        return this.renewalDurationUnit;
     }
     /**
      * The resource group to which the newly purchased instance belongs.

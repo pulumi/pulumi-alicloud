@@ -72,7 +72,7 @@ class RdsAccountArgs:
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -309,7 +309,7 @@ class RdsAccountArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource
+        The status of the resource. Valid values: `Available`, `Unavailable`.
         """
         return pulumi.get(self, "status")
 
@@ -389,7 +389,7 @@ class _RdsAccountState:
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -626,7 +626,7 @@ class _RdsAccountState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource
+        The status of the resource. Valid values: `Available`, `Unavailable`.
         """
         return pulumi.get(self, "status")
 
@@ -775,7 +775,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -975,7 +975,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -1135,7 +1135,7 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The status of the resource. Valid values: `Available`, `Unavailable`.
         """
         return pulumi.get(self, "status")
 

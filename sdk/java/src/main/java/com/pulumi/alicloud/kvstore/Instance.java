@@ -853,22 +853,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintainStartTime;
     }
     /**
-     * Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
-     * 
-     * @deprecated
-     * Field &#39;node_type&#39; has been deprecated from version 1.120.1
+     * The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      * 
      */
-    @Deprecated /* Field 'node_type' has been deprecated from version 1.120.1 */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
     private Output<String> nodeType;
 
     /**
-     * @return Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
+     * @return The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      * 
      */
     public Output<String> nodeType() {

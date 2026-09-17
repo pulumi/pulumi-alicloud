@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -46,7 +46,7 @@ export interface GetEndpointAclServiceArgs {
      */
     enable: boolean;
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      */
     endpointType: string;
     /**
@@ -75,6 +75,9 @@ export interface GetEndpointAclServiceResult {
     readonly id: string;
     readonly instanceId: string;
     readonly moduleName?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status: string;
 }
 /**
@@ -82,7 +85,7 @@ export interface GetEndpointAclServiceResult {
  *
  * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -119,7 +122,7 @@ export interface GetEndpointAclServiceOutputArgs {
      */
     enable: pulumi.Input<boolean>;
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      */
     endpointType: pulumi.Input<string>;
     /**

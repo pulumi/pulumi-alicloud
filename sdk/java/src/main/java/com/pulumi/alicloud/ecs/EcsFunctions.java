@@ -425,7 +425,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -471,7 +471,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -517,7 +517,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -563,7 +563,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -609,7 +609,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -655,7 +655,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -701,7 +701,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 

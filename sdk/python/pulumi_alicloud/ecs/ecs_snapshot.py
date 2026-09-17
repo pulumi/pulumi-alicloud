@@ -29,7 +29,8 @@ class EcsSnapshotArgs:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsSnapshot resource.
 
@@ -44,6 +45,7 @@ class EcsSnapshotArgs:
         :param pulumi.Input[_builtins.int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
         """
         pulumi.set(__self__, "disk_id", disk_id)
         if category is not None:
@@ -75,6 +77,8 @@ class EcsSnapshotArgs:
             pulumi.set(__self__, "snapshot_name", snapshot_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if wait_until is not None:
+            pulumi.set(__self__, "wait_until", wait_until)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -211,10 +215,23 @@ class EcsSnapshotArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitUntil")
+    def wait_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+        """
+        return pulumi.get(self, "wait_until")
+
+    @wait_until.setter
+    def wait_until(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "wait_until", value)
+
 
 @pulumi.input_type
 class _EcsSnapshotState:
     def __init__(__self__, *,
+                 available: pulumi.Input[Optional[_builtins.bool]] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -228,10 +245,12 @@ class _EcsSnapshotState:
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshot resources.
 
+        :param pulumi.Input[_builtins.bool] available: Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `wait_until` policy.
         :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.239.0) The time when the snapshot was created.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot.
@@ -246,7 +265,10 @@ class _EcsSnapshotState:
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[_builtins.str] status: The status of the Snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
         """
+        if available is not None:
+            pulumi.set(__self__, "available", available)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if create_time is not None:
@@ -284,6 +306,20 @@ class _EcsSnapshotState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if wait_until is not None:
+            pulumi.set(__self__, "wait_until", wait_until)
+
+    @_builtins.property
+    @pulumi.getter
+    def available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `wait_until` policy.
+        """
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "available", value)
 
     @_builtins.property
     @pulumi.getter
@@ -456,6 +492,18 @@ class _EcsSnapshotState:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitUntil")
+    def wait_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+        """
+        return pulumi.get(self, "wait_until")
+
+    @wait_until.setter
+    def wait_until(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "wait_until", value)
+
 
 @pulumi.type_token("alicloud:ecs/ecsSnapshot:EcsSnapshot")
 class EcsSnapshot(pulumi.CustomResource):
@@ -474,6 +522,7 @@ class EcsSnapshot(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Snapshot resource.
@@ -481,6 +530,8 @@ class EcsSnapshot(pulumi.CustomResource):
         For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
 
         > **NOTE:** Available since v1.120.0.
+
+        > **NOTE:** By default, creation waits for `status` to become `accomplished`. Set `wait_until = "available"` to finish when ECS reports `Available=true`. At this point, the snapshot can be used to create disks, roll back disks, or create images, and can be shared, even if background upload is still in progress and `status` remains `progressing`. Each operation's other requirements still apply. `wait_until` only controls when Terraform finishes waiting for snapshot creation; it does not change the snapshot's capabilities. Changing `retention_days` still requires `Status=accomplished`.
 
         ## Example Usage
 
@@ -546,6 +597,8 @@ class EcsSnapshot(pulumi.CustomResource):
         ## Import
 
         ECS Snapshot can be imported using the id, e.g.
+
+        `available` is populated from ECS when the imported snapshot is refreshed. `wait_until` is a local setting and cannot be recovered from the imported snapshot. Keep any explicitly selected waiting policy in the Terraform configuration; omitting it continues to wait for `Status=accomplished` on subsequent creation without adding a default policy to state.
 
         ```sh
         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
@@ -565,6 +618,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
         """
         ...
     @overload
@@ -578,6 +632,8 @@ class EcsSnapshot(pulumi.CustomResource):
         For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
 
         > **NOTE:** Available since v1.120.0.
+
+        > **NOTE:** By default, creation waits for `status` to become `accomplished`. Set `wait_until = "available"` to finish when ECS reports `Available=true`. At this point, the snapshot can be used to create disks, roll back disks, or create images, and can be shared, even if background upload is still in progress and `status` remains `progressing`. Each operation's other requirements still apply. `wait_until` only controls when Terraform finishes waiting for snapshot creation; it does not change the snapshot's capabilities. Changing `retention_days` still requires `Status=accomplished`.
 
         ## Example Usage
 
@@ -643,6 +699,8 @@ class EcsSnapshot(pulumi.CustomResource):
         ## Import
 
         ECS Snapshot can be imported using the id, e.g.
+
+        `available` is populated from ECS when the imported snapshot is refreshed. `wait_until` is a local setting and cannot be recovered from the imported snapshot. Keep any explicitly selected waiting policy in the Terraform configuration; omitting it continues to wait for `Status=accomplished` on subsequent creation without adding a default policy to state.
 
         ```sh
         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
@@ -675,6 +733,7 @@ class EcsSnapshot(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -697,6 +756,8 @@ class EcsSnapshot(pulumi.CustomResource):
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["snapshot_name"] = snapshot_name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["wait_until"] = wait_until
+            __props__.__dict__["available"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
@@ -710,6 +771,7 @@ class EcsSnapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            available: pulumi.Input[Optional[_builtins.bool]] = None,
             category: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -723,7 +785,8 @@ class EcsSnapshot(pulumi.CustomResource):
             retention_days: pulumi.Input[Optional[_builtins.int]] = None,
             snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'EcsSnapshot':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            wait_until: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsSnapshot':
         """
         Get an existing EcsSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -731,6 +794,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] available: Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `wait_until` policy.
         :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.239.0) The time when the snapshot was created.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot.
@@ -745,11 +809,13 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[_builtins.str] status: The status of the Snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _EcsSnapshotState.__new__(_EcsSnapshotState)
 
+        __props__.__dict__["available"] = available
         __props__.__dict__["category"] = category
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -764,7 +830,16 @@ class EcsSnapshot(pulumi.CustomResource):
         __props__.__dict__["snapshot_name"] = snapshot_name
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["wait_until"] = wait_until
         return EcsSnapshot(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def available(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `wait_until` policy.
+        """
+        return pulumi.get(self, "available")
 
     @_builtins.property
     @pulumi.getter
@@ -880,4 +955,12 @@ class EcsSnapshot(pulumi.CustomResource):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="waitUntil")
+    def wait_until(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `wait_until` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `wait_until` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshot_name`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retention_days` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+        """
+        return pulumi.get(self, "wait_until")
 

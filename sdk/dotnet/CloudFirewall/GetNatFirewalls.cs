@@ -551,7 +551,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// NAT firewall name
         /// </summary>
         public readonly string? ProxyName;
+        /// <summary>
+        /// The region ID of the NAT firewall.
+        /// </summary>
         public readonly string? RegionNo;
+        /// <summary>
+        /// The status of the NAT firewall.
+        /// </summary>
         public readonly string? Status;
         /// <summary>
         /// The ID of the VPC instance.

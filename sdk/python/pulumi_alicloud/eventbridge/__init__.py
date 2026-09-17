@@ -11,6 +11,7 @@ from .connection import *
 from .event_bus import *
 from .event_source import *
 from .event_source_v2 import *
+from .event_streaming import *
 from .get_event_buses import *
 from .get_event_sources import *
 from .get_rules import *

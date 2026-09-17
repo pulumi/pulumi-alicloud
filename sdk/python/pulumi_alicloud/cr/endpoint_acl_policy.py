@@ -27,7 +27,7 @@ class EndpointAclPolicyArgs:
         """
         The set of arguments for constructing a EndpointAclPolicy resource.
 
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         :param pulumi.Input[_builtins.str] entry: The IP segment that allowed to access.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CR Instance.
         :param pulumi.Input[_builtins.str] description: The description of the entry.
@@ -45,7 +45,7 @@ class EndpointAclPolicyArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of endpoint. Valid values: `internet`.
+        The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -114,7 +114,7 @@ class _EndpointAclPolicyState:
         Input properties used for looking up and filtering EndpointAclPolicy resources.
 
         :param pulumi.Input[_builtins.str] description: The description of the entry.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         :param pulumi.Input[_builtins.str] entry: The IP segment that allowed to access.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CR Instance.
         :param pulumi.Input[_builtins.str] module_name: The module that needs to set the access policy. Valid values: `Registry`.
@@ -146,7 +146,7 @@ class _EndpointAclPolicyState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of endpoint. Valid values: `internet`.
+        The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -248,7 +248,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         ## Import
 
-        CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpoint_type and entry, e.g.
+        CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpoint_type and entry. The `endpoint_type` segment of the import ID accepts both `internet` and `Internet`, e.g. `cri-abc123:internet:10.0.0.0/8`.
 
         ```sh
         $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
@@ -258,7 +258,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the entry.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         :param pulumi.Input[_builtins.str] entry: The IP segment that allowed to access.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CR Instance.
         :param pulumi.Input[_builtins.str] module_name: The module that needs to set the access policy. Valid values: `Registry`.
@@ -314,7 +314,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         ## Import
 
-        CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpoint_type and entry, e.g.
+        CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpoint_type and entry. The `endpoint_type` segment of the import ID accepts both `internet` and `Internet`, e.g. `cri-abc123:internet:10.0.0.0/8`.
 
         ```sh
         $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
@@ -384,7 +384,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the entry.
-        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`.
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         :param pulumi.Input[_builtins.str] entry: The IP segment that allowed to access.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CR Instance.
         :param pulumi.Input[_builtins.str] module_name: The module that needs to set the access policy. Valid values: `Registry`.
@@ -412,7 +412,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of endpoint. Valid values: `internet`.
+        The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
         """
         return pulumi.get(self, "endpoint_type")
 

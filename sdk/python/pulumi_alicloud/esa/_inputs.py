@@ -141,6 +141,8 @@ __all__ = [
     'WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict',
     'WaitingRoomHostNameAndPathArgs',
     'WaitingRoomHostNameAndPathArgsDict',
+    'GetListsQueryArgsArgs',
+    'GetListsQueryArgsArgsDict',
     'GetWafRulesetsQueryArgsArgs',
     'GetWafRulesetsQueryArgsArgsDict',
 ]
@@ -5355,6 +5357,181 @@ class WaitingRoomHostNameAndPathArgs:
     @subdomain.setter
     def subdomain(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "subdomain", value)
+
+
+class GetListsQueryArgsArgsDict(TypedDict):
+    desc: NotRequired[_builtins.bool]
+    """
+    Whether to sort in descending order. Valid values: `true`, `false`.
+
+    QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+    """
+    description_like: NotRequired[_builtins.str]
+    """
+    The fuzzy search for list description.
+    """
+    id_like: NotRequired[_builtins.str]
+    """
+    The fuzzy search for list ID.
+    """
+    item_like: NotRequired[_builtins.str]
+    """
+    The value passed to the ListLists API to filter list contents.
+    """
+    kind: NotRequired[_builtins.str]
+    """
+    The type of the custom list, e.g. `ip`.
+    """
+    name_item_like: NotRequired[_builtins.str]
+    """
+    The fuzzy search matching a list name or its items.
+    """
+    name_like: NotRequired[_builtins.str]
+    """
+    The fuzzy search for list name.
+    """
+    order_by: NotRequired[_builtins.str]
+    """
+    Specify the column to sort by.
+    """
+
+@pulumi.input_type
+class GetListsQueryArgsArgs:
+    def __init__(__self__, *,
+                 desc: Optional[_builtins.bool] = None,
+                 description_like: Optional[_builtins.str] = None,
+                 id_like: Optional[_builtins.str] = None,
+                 item_like: Optional[_builtins.str] = None,
+                 kind: Optional[_builtins.str] = None,
+                 name_item_like: Optional[_builtins.str] = None,
+                 name_like: Optional[_builtins.str] = None,
+                 order_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool desc: Whether to sort in descending order. Valid values: `true`, `false`.
+               
+               QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+        :param _builtins.str description_like: The fuzzy search for list description.
+        :param _builtins.str id_like: The fuzzy search for list ID.
+        :param _builtins.str item_like: The value passed to the ListLists API to filter list contents.
+        :param _builtins.str kind: The type of the custom list, e.g. `ip`.
+        :param _builtins.str name_item_like: The fuzzy search matching a list name or its items.
+        :param _builtins.str name_like: The fuzzy search for list name.
+        :param _builtins.str order_by: Specify the column to sort by.
+        """
+        if desc is not None:
+            pulumi.set(__self__, "desc", desc)
+        if description_like is not None:
+            pulumi.set(__self__, "description_like", description_like)
+        if id_like is not None:
+            pulumi.set(__self__, "id_like", id_like)
+        if item_like is not None:
+            pulumi.set(__self__, "item_like", item_like)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name_item_like is not None:
+            pulumi.set(__self__, "name_item_like", name_item_like)
+        if name_like is not None:
+            pulumi.set(__self__, "name_like", name_like)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def desc(self) -> Optional[_builtins.bool]:
+        """
+        Whether to sort in descending order. Valid values: `true`, `false`.
+
+        QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+        """
+        return pulumi.get(self, "desc")
+
+    @desc.setter
+    def desc(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "desc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="descriptionLike")
+    def description_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for list description.
+        """
+        return pulumi.get(self, "description_like")
+
+    @description_like.setter
+    def description_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description_like", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idLike")
+    def id_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for list ID.
+        """
+        return pulumi.get(self, "id_like")
+
+    @id_like.setter
+    def id_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "id_like", value)
+
+    @_builtins.property
+    @pulumi.getter(name="itemLike")
+    def item_like(self) -> Optional[_builtins.str]:
+        """
+        The value passed to the ListLists API to filter list contents.
+        """
+        return pulumi.get(self, "item_like")
+
+    @item_like.setter
+    def item_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "item_like", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[_builtins.str]:
+        """
+        The type of the custom list, e.g. `ip`.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameItemLike")
+    def name_item_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search matching a list name or its items.
+        """
+        return pulumi.get(self, "name_item_like")
+
+    @name_item_like.setter
+    def name_item_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name_item_like", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameLike")
+    def name_like(self) -> Optional[_builtins.str]:
+        """
+        The fuzzy search for list name.
+        """
+        return pulumi.get(self, "name_like")
+
+    @name_like.setter
+    def name_like(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name_like", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Specify the column to sort by.
+        """
+        return pulumi.get(self, "order_by")
+
+    @order_by.setter
+    def order_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "order_by", value)
 
 
 class GetWafRulesetsQueryArgsArgsDict(TypedDict):

@@ -302,6 +302,112 @@ func (o AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) KmsKeyId() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type AutoSnapshotPolicyTargetTag struct {
+	// The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+	TagKey *string `pulumi:"tagKey"`
+	// The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// AutoSnapshotPolicyTargetTagInput is an input type that accepts AutoSnapshotPolicyTargetTagArgs and AutoSnapshotPolicyTargetTagOutput values.
+// You can construct a concrete instance of `AutoSnapshotPolicyTargetTagInput` via:
+//
+//	AutoSnapshotPolicyTargetTagArgs{...}
+type AutoSnapshotPolicyTargetTagInput interface {
+	pulumi.Input
+
+	ToAutoSnapshotPolicyTargetTagOutput() AutoSnapshotPolicyTargetTagOutput
+	ToAutoSnapshotPolicyTargetTagOutputWithContext(context.Context) AutoSnapshotPolicyTargetTagOutput
+}
+
+type AutoSnapshotPolicyTargetTagArgs struct {
+	// The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (AutoSnapshotPolicyTargetTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoSnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (i AutoSnapshotPolicyTargetTagArgs) ToAutoSnapshotPolicyTargetTagOutput() AutoSnapshotPolicyTargetTagOutput {
+	return i.ToAutoSnapshotPolicyTargetTagOutputWithContext(context.Background())
+}
+
+func (i AutoSnapshotPolicyTargetTagArgs) ToAutoSnapshotPolicyTargetTagOutputWithContext(ctx context.Context) AutoSnapshotPolicyTargetTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapshotPolicyTargetTagOutput)
+}
+
+// AutoSnapshotPolicyTargetTagArrayInput is an input type that accepts AutoSnapshotPolicyTargetTagArray and AutoSnapshotPolicyTargetTagArrayOutput values.
+// You can construct a concrete instance of `AutoSnapshotPolicyTargetTagArrayInput` via:
+//
+//	AutoSnapshotPolicyTargetTagArray{ AutoSnapshotPolicyTargetTagArgs{...} }
+type AutoSnapshotPolicyTargetTagArrayInput interface {
+	pulumi.Input
+
+	ToAutoSnapshotPolicyTargetTagArrayOutput() AutoSnapshotPolicyTargetTagArrayOutput
+	ToAutoSnapshotPolicyTargetTagArrayOutputWithContext(context.Context) AutoSnapshotPolicyTargetTagArrayOutput
+}
+
+type AutoSnapshotPolicyTargetTagArray []AutoSnapshotPolicyTargetTagInput
+
+func (AutoSnapshotPolicyTargetTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoSnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (i AutoSnapshotPolicyTargetTagArray) ToAutoSnapshotPolicyTargetTagArrayOutput() AutoSnapshotPolicyTargetTagArrayOutput {
+	return i.ToAutoSnapshotPolicyTargetTagArrayOutputWithContext(context.Background())
+}
+
+func (i AutoSnapshotPolicyTargetTagArray) ToAutoSnapshotPolicyTargetTagArrayOutputWithContext(ctx context.Context) AutoSnapshotPolicyTargetTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapshotPolicyTargetTagArrayOutput)
+}
+
+type AutoSnapshotPolicyTargetTagOutput struct{ *pulumi.OutputState }
+
+func (AutoSnapshotPolicyTargetTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoSnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (o AutoSnapshotPolicyTargetTagOutput) ToAutoSnapshotPolicyTargetTagOutput() AutoSnapshotPolicyTargetTagOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyTargetTagOutput) ToAutoSnapshotPolicyTargetTagOutputWithContext(ctx context.Context) AutoSnapshotPolicyTargetTagOutput {
+	return o
+}
+
+// The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+func (o AutoSnapshotPolicyTargetTagOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoSnapshotPolicyTargetTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+func (o AutoSnapshotPolicyTargetTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoSnapshotPolicyTargetTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type AutoSnapshotPolicyTargetTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoSnapshotPolicyTargetTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoSnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (o AutoSnapshotPolicyTargetTagArrayOutput) ToAutoSnapshotPolicyTargetTagArrayOutput() AutoSnapshotPolicyTargetTagArrayOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyTargetTagArrayOutput) ToAutoSnapshotPolicyTargetTagArrayOutputWithContext(ctx context.Context) AutoSnapshotPolicyTargetTagArrayOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyTargetTagArrayOutput) Index(i pulumi.IntInput) AutoSnapshotPolicyTargetTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoSnapshotPolicyTargetTag {
+		return vs[0].([]AutoSnapshotPolicyTargetTag)[vs[1].(int)]
+	}).(AutoSnapshotPolicyTargetTagOutput)
+}
+
 type DedicatedHostNetworkAttribute struct {
 	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	SlbUdpTimeout *int `pulumi:"slbUdpTimeout"`
@@ -4435,6 +4541,106 @@ func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) KmsKeyId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type SnapshotPolicyTargetTag struct {
+	TagKey   *string `pulumi:"tagKey"`
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// SnapshotPolicyTargetTagInput is an input type that accepts SnapshotPolicyTargetTagArgs and SnapshotPolicyTargetTagOutput values.
+// You can construct a concrete instance of `SnapshotPolicyTargetTagInput` via:
+//
+//	SnapshotPolicyTargetTagArgs{...}
+type SnapshotPolicyTargetTagInput interface {
+	pulumi.Input
+
+	ToSnapshotPolicyTargetTagOutput() SnapshotPolicyTargetTagOutput
+	ToSnapshotPolicyTargetTagOutputWithContext(context.Context) SnapshotPolicyTargetTagOutput
+}
+
+type SnapshotPolicyTargetTagArgs struct {
+	TagKey   pulumi.StringPtrInput `pulumi:"tagKey"`
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (SnapshotPolicyTargetTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (i SnapshotPolicyTargetTagArgs) ToSnapshotPolicyTargetTagOutput() SnapshotPolicyTargetTagOutput {
+	return i.ToSnapshotPolicyTargetTagOutputWithContext(context.Background())
+}
+
+func (i SnapshotPolicyTargetTagArgs) ToSnapshotPolicyTargetTagOutputWithContext(ctx context.Context) SnapshotPolicyTargetTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyTargetTagOutput)
+}
+
+// SnapshotPolicyTargetTagArrayInput is an input type that accepts SnapshotPolicyTargetTagArray and SnapshotPolicyTargetTagArrayOutput values.
+// You can construct a concrete instance of `SnapshotPolicyTargetTagArrayInput` via:
+//
+//	SnapshotPolicyTargetTagArray{ SnapshotPolicyTargetTagArgs{...} }
+type SnapshotPolicyTargetTagArrayInput interface {
+	pulumi.Input
+
+	ToSnapshotPolicyTargetTagArrayOutput() SnapshotPolicyTargetTagArrayOutput
+	ToSnapshotPolicyTargetTagArrayOutputWithContext(context.Context) SnapshotPolicyTargetTagArrayOutput
+}
+
+type SnapshotPolicyTargetTagArray []SnapshotPolicyTargetTagInput
+
+func (SnapshotPolicyTargetTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (i SnapshotPolicyTargetTagArray) ToSnapshotPolicyTargetTagArrayOutput() SnapshotPolicyTargetTagArrayOutput {
+	return i.ToSnapshotPolicyTargetTagArrayOutputWithContext(context.Background())
+}
+
+func (i SnapshotPolicyTargetTagArray) ToSnapshotPolicyTargetTagArrayOutputWithContext(ctx context.Context) SnapshotPolicyTargetTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyTargetTagArrayOutput)
+}
+
+type SnapshotPolicyTargetTagOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPolicyTargetTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (o SnapshotPolicyTargetTagOutput) ToSnapshotPolicyTargetTagOutput() SnapshotPolicyTargetTagOutput {
+	return o
+}
+
+func (o SnapshotPolicyTargetTagOutput) ToSnapshotPolicyTargetTagOutputWithContext(ctx context.Context) SnapshotPolicyTargetTagOutput {
+	return o
+}
+
+func (o SnapshotPolicyTargetTagOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotPolicyTargetTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotPolicyTargetTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotPolicyTargetTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type SnapshotPolicyTargetTagArrayOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPolicyTargetTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotPolicyTargetTag)(nil)).Elem()
+}
+
+func (o SnapshotPolicyTargetTagArrayOutput) ToSnapshotPolicyTargetTagArrayOutput() SnapshotPolicyTargetTagArrayOutput {
+	return o
+}
+
+func (o SnapshotPolicyTargetTagArrayOutput) ToSnapshotPolicyTargetTagArrayOutputWithContext(ctx context.Context) SnapshotPolicyTargetTagArrayOutput {
+	return o
+}
+
+func (o SnapshotPolicyTargetTagArrayOutput) Index(i pulumi.IntInput) SnapshotPolicyTargetTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnapshotPolicyTargetTag {
+		return vs[0].([]SnapshotPolicyTargetTag)[vs[1].(int)]
+	}).(SnapshotPolicyTargetTagOutput)
+}
+
 type GetActivationsActivation struct {
 	// The ID of the activation code.
 	ActivationId string `pulumi:"activationId"`
@@ -4623,28 +4829,38 @@ func (o GetActivationsActivationArrayOutput) Index(i pulumi.IntInput) GetActivat
 }
 
 type GetAutoSnapshotPoliciesPolicy struct {
+	// The association type between the automatic snapshot policy and target resources.
+	AssociationType string `pulumi:"associationType"`
 	// The ID of the Auto Snapshot Policy.
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
+	// The name of the automatic snapshot policy.
+	AutoSnapshotPolicyName string `pulumi:"autoSnapshotPolicyName"`
 	// The retention period of the snapshot copied across regions.
 	CopiedSnapshotsRetentionDays int `pulumi:"copiedSnapshotsRetentionDays"`
+	// The time when the automatic snapshot policy was created.
+	CreateTime string `pulumi:"createTime"`
 	// The number of disks to which the automatic snapshot policy is applied.
 	DiskNums int `pulumi:"diskNums"`
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
 	EnableCrossRegionCopy bool `pulumi:"enableCrossRegionCopy"`
 	// The ID of the Auto Snapshot Policy.
 	Id string `pulumi:"id"`
-	// The snapshot policy name..
-	Name string `pulumi:"name"`
+	// The total number of records.
+	RecordTotal int `pulumi:"recordTotal"`
+	// The region ID of the automatic snapshot policy.
+	RegionId string `pulumi:"regionId"`
 	// The automatic snapshot repetition dates.
 	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
 	// The snapshot retention time, and the unit of measurement is day.
 	RetentionDays int `pulumi:"retentionDays"`
-	// The status of Auto Snapshot Policy.
+	// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The destination region to which the snapshot is copied.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
+	// The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+	TargetTags []GetAutoSnapshotPoliciesPolicyTargetTag `pulumi:"targetTags"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour.
 	TimePoints []string `pulumi:"timePoints"`
 	// The number of extended volumes on which this policy is enabled.
@@ -4663,28 +4879,38 @@ type GetAutoSnapshotPoliciesPolicyInput interface {
 }
 
 type GetAutoSnapshotPoliciesPolicyArgs struct {
+	// The association type between the automatic snapshot policy and target resources.
+	AssociationType pulumi.StringInput `pulumi:"associationType"`
 	// The ID of the Auto Snapshot Policy.
 	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
+	// The name of the automatic snapshot policy.
+	AutoSnapshotPolicyName pulumi.StringInput `pulumi:"autoSnapshotPolicyName"`
 	// The retention period of the snapshot copied across regions.
 	CopiedSnapshotsRetentionDays pulumi.IntInput `pulumi:"copiedSnapshotsRetentionDays"`
+	// The time when the automatic snapshot policy was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The number of disks to which the automatic snapshot policy is applied.
 	DiskNums pulumi.IntInput `pulumi:"diskNums"`
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
 	EnableCrossRegionCopy pulumi.BoolInput `pulumi:"enableCrossRegionCopy"`
 	// The ID of the Auto Snapshot Policy.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The snapshot policy name..
-	Name pulumi.StringInput `pulumi:"name"`
+	// The total number of records.
+	RecordTotal pulumi.IntInput `pulumi:"recordTotal"`
+	// The region ID of the automatic snapshot policy.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The automatic snapshot repetition dates.
 	RepeatWeekdays pulumi.StringArrayInput `pulumi:"repeatWeekdays"`
 	// The snapshot retention time, and the unit of measurement is day.
 	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
-	// The status of Auto Snapshot Policy.
+	// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The destination region to which the snapshot is copied.
 	TargetCopyRegions pulumi.StringArrayInput `pulumi:"targetCopyRegions"`
+	// The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+	TargetTags GetAutoSnapshotPoliciesPolicyTargetTagArrayInput `pulumi:"targetTags"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour.
 	TimePoints pulumi.StringArrayInput `pulumi:"timePoints"`
 	// The number of extended volumes on which this policy is enabled.
@@ -4742,14 +4968,29 @@ func (o GetAutoSnapshotPoliciesPolicyOutput) ToGetAutoSnapshotPoliciesPolicyOutp
 	return o
 }
 
+// The association type between the automatic snapshot policy and target resources.
+func (o GetAutoSnapshotPoliciesPolicyOutput) AssociationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.AssociationType }).(pulumi.StringOutput)
+}
+
 // The ID of the Auto Snapshot Policy.
 func (o GetAutoSnapshotPoliciesPolicyOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
 }
 
+// The name of the automatic snapshot policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) AutoSnapshotPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.AutoSnapshotPolicyName }).(pulumi.StringOutput)
+}
+
 // The retention period of the snapshot copied across regions.
 func (o GetAutoSnapshotPoliciesPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntOutput)
+}
+
+// The time when the automatic snapshot policy was created.
+func (o GetAutoSnapshotPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The number of disks to which the automatic snapshot policy is applied.
@@ -4767,9 +5008,14 @@ func (o GetAutoSnapshotPoliciesPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The snapshot policy name..
-func (o GetAutoSnapshotPoliciesPolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+// The total number of records.
+func (o GetAutoSnapshotPoliciesPolicyOutput) RecordTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.RecordTotal }).(pulumi.IntOutput)
+}
+
+// The region ID of the automatic snapshot policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The automatic snapshot repetition dates.
@@ -4782,7 +5028,7 @@ func (o GetAutoSnapshotPoliciesPolicyOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// The status of Auto Snapshot Policy.
+// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 func (o GetAutoSnapshotPoliciesPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4795,6 +5041,11 @@ func (o GetAutoSnapshotPoliciesPolicyOutput) Tags() pulumi.StringMapOutput {
 // The destination region to which the snapshot is copied.
 func (o GetAutoSnapshotPoliciesPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []string { return v.TargetCopyRegions }).(pulumi.StringArrayOutput)
+}
+
+// The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+func (o GetAutoSnapshotPoliciesPolicyOutput) TargetTags() GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []GetAutoSnapshotPoliciesPolicyTargetTag { return v.TargetTags }).(GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput)
 }
 
 // The automatic snapshot creation schedule, and the unit of measurement is hour.
@@ -4825,6 +5076,112 @@ func (o GetAutoSnapshotPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoSnapshotPoliciesPolicy {
 		return vs[0].([]GetAutoSnapshotPoliciesPolicy)[vs[1].(int)]
 	}).(GetAutoSnapshotPoliciesPolicyOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyTargetTag struct {
+	// The key of the target tag.
+	TagKey string `pulumi:"tagKey"`
+	// The value of the target tag.
+	TagValue string `pulumi:"tagValue"`
+}
+
+// GetAutoSnapshotPoliciesPolicyTargetTagInput is an input type that accepts GetAutoSnapshotPoliciesPolicyTargetTagArgs and GetAutoSnapshotPoliciesPolicyTargetTagOutput values.
+// You can construct a concrete instance of `GetAutoSnapshotPoliciesPolicyTargetTagInput` via:
+//
+//	GetAutoSnapshotPoliciesPolicyTargetTagArgs{...}
+type GetAutoSnapshotPoliciesPolicyTargetTagInput interface {
+	pulumi.Input
+
+	ToGetAutoSnapshotPoliciesPolicyTargetTagOutput() GetAutoSnapshotPoliciesPolicyTargetTagOutput
+	ToGetAutoSnapshotPoliciesPolicyTargetTagOutputWithContext(context.Context) GetAutoSnapshotPoliciesPolicyTargetTagOutput
+}
+
+type GetAutoSnapshotPoliciesPolicyTargetTagArgs struct {
+	// The key of the target tag.
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+	// The value of the target tag.
+	TagValue pulumi.StringInput `pulumi:"tagValue"`
+}
+
+func (GetAutoSnapshotPoliciesPolicyTargetTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyTargetTag)(nil)).Elem()
+}
+
+func (i GetAutoSnapshotPoliciesPolicyTargetTagArgs) ToGetAutoSnapshotPoliciesPolicyTargetTagOutput() GetAutoSnapshotPoliciesPolicyTargetTagOutput {
+	return i.ToGetAutoSnapshotPoliciesPolicyTargetTagOutputWithContext(context.Background())
+}
+
+func (i GetAutoSnapshotPoliciesPolicyTargetTagArgs) ToGetAutoSnapshotPoliciesPolicyTargetTagOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyTargetTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoSnapshotPoliciesPolicyTargetTagOutput)
+}
+
+// GetAutoSnapshotPoliciesPolicyTargetTagArrayInput is an input type that accepts GetAutoSnapshotPoliciesPolicyTargetTagArray and GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput values.
+// You can construct a concrete instance of `GetAutoSnapshotPoliciesPolicyTargetTagArrayInput` via:
+//
+//	GetAutoSnapshotPoliciesPolicyTargetTagArray{ GetAutoSnapshotPoliciesPolicyTargetTagArgs{...} }
+type GetAutoSnapshotPoliciesPolicyTargetTagArrayInput interface {
+	pulumi.Input
+
+	ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutput() GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput
+	ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutputWithContext(context.Context) GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput
+}
+
+type GetAutoSnapshotPoliciesPolicyTargetTagArray []GetAutoSnapshotPoliciesPolicyTargetTagInput
+
+func (GetAutoSnapshotPoliciesPolicyTargetTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoSnapshotPoliciesPolicyTargetTag)(nil)).Elem()
+}
+
+func (i GetAutoSnapshotPoliciesPolicyTargetTagArray) ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutput() GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput {
+	return i.ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutoSnapshotPoliciesPolicyTargetTagArray) ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyTargetTagOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesPolicyTargetTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyTargetTag)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesPolicyTargetTagOutput) ToGetAutoSnapshotPoliciesPolicyTargetTagOutput() GetAutoSnapshotPoliciesPolicyTargetTagOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyTargetTagOutput) ToGetAutoSnapshotPoliciesPolicyTargetTagOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyTargetTagOutput {
+	return o
+}
+
+// The key of the target tag.
+func (o GetAutoSnapshotPoliciesPolicyTargetTagOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicyTargetTag) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+// The value of the target tag.
+func (o GetAutoSnapshotPoliciesPolicyTargetTagOutput) TagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicyTargetTag) string { return v.TagValue }).(pulumi.StringOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoSnapshotPoliciesPolicyTargetTag)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput) ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutput() GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput) ToGetAutoSnapshotPoliciesPolicyTargetTagArrayOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput) Index(i pulumi.IntInput) GetAutoSnapshotPoliciesPolicyTargetTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoSnapshotPoliciesPolicyTargetTag {
+		return vs[0].([]GetAutoSnapshotPoliciesPolicyTargetTag)[vs[1].(int)]
+	}).(GetAutoSnapshotPoliciesPolicyTargetTagOutput)
 }
 
 type GetCapacityReservationsReservation struct {
@@ -17150,6 +17507,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfigArrayInput)(nil)).Elem(), AutoProvisioningGroupLaunchTemplateConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoSnapshotPolicyCopyEncryptionConfigurationInput)(nil)).Elem(), AutoSnapshotPolicyCopyEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput)(nil)).Elem(), AutoSnapshotPolicyCopyEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoSnapshotPolicyTargetTagInput)(nil)).Elem(), AutoSnapshotPolicyTargetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoSnapshotPolicyTargetTagArrayInput)(nil)).Elem(), AutoSnapshotPolicyTargetTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeInput)(nil)).Elem(), DedicatedHostNetworkAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeArrayInput)(nil)).Elem(), DedicatedHostNetworkAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetDataDiskInput)(nil)).Elem(), EcsInstanceSetDataDiskArgs{})
@@ -17196,10 +17555,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceOperationLockArrayInput)(nil)).Elem(), ReservedInstanceOperationLockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyCopyEncryptionConfigurationInput)(nil)).Elem(), SnapshotPolicyCopyEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyCopyEncryptionConfigurationPtrInput)(nil)).Elem(), SnapshotPolicyCopyEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyTargetTagInput)(nil)).Elem(), SnapshotPolicyTargetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyTargetTagArrayInput)(nil)).Elem(), SnapshotPolicyTargetTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationInput)(nil)).Elem(), GetActivationsActivationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationArrayInput)(nil)).Elem(), GetActivationsActivationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyArrayInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyTargetTagInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyTargetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyTargetTagArrayInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyTargetTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapacityReservationsReservationInput)(nil)).Elem(), GetCapacityReservationsReservationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapacityReservationsReservationArrayInput)(nil)).Elem(), GetCapacityReservationsReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInput)(nil)).Elem(), GetCommandsCommandArgs{})
@@ -17331,6 +17694,8 @@ func init() {
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
 	pulumi.RegisterOutputType(AutoSnapshotPolicyCopyEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AutoSnapshotPolicyTargetTagOutput{})
+	pulumi.RegisterOutputType(AutoSnapshotPolicyTargetTagArrayOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeArrayOutput{})
 	pulumi.RegisterOutputType(EcsInstanceSetDataDiskOutput{})
@@ -17377,10 +17742,14 @@ func init() {
 	pulumi.RegisterOutputType(ReservedInstanceOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(SnapshotPolicyCopyEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(SnapshotPolicyCopyEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotPolicyTargetTagOutput{})
+	pulumi.RegisterOutputType(SnapshotPolicyTargetTagArrayOutput{})
 	pulumi.RegisterOutputType(GetActivationsActivationOutput{})
 	pulumi.RegisterOutputType(GetActivationsActivationArrayOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyTargetTagOutput{})
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyTargetTagArrayOutput{})
 	pulumi.RegisterOutputType(GetCapacityReservationsReservationOutput{})
 	pulumi.RegisterOutputType(GetCapacityReservationsReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandOutput{})

@@ -3131,6 +3131,162 @@ func (o RouteMatchQueryParamArrayOutput) Index(i pulumi.IntInput) RouteMatchQuer
 	}).(RouteMatchQueryParamOutput)
 }
 
+type SecretKmsConfig struct {
+	// The KMS instance ID.
+	KmsInstanceId string `pulumi:"kmsInstanceId"`
+	// The KMS key ID.
+	KmsKeyId string `pulumi:"kmsKeyId"`
+}
+
+// SecretKmsConfigInput is an input type that accepts SecretKmsConfigArgs and SecretKmsConfigOutput values.
+// You can construct a concrete instance of `SecretKmsConfigInput` via:
+//
+//	SecretKmsConfigArgs{...}
+type SecretKmsConfigInput interface {
+	pulumi.Input
+
+	ToSecretKmsConfigOutput() SecretKmsConfigOutput
+	ToSecretKmsConfigOutputWithContext(context.Context) SecretKmsConfigOutput
+}
+
+type SecretKmsConfigArgs struct {
+	// The KMS instance ID.
+	KmsInstanceId pulumi.StringInput `pulumi:"kmsInstanceId"`
+	// The KMS key ID.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+}
+
+func (SecretKmsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretKmsConfig)(nil)).Elem()
+}
+
+func (i SecretKmsConfigArgs) ToSecretKmsConfigOutput() SecretKmsConfigOutput {
+	return i.ToSecretKmsConfigOutputWithContext(context.Background())
+}
+
+func (i SecretKmsConfigArgs) ToSecretKmsConfigOutputWithContext(ctx context.Context) SecretKmsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretKmsConfigOutput)
+}
+
+func (i SecretKmsConfigArgs) ToSecretKmsConfigPtrOutput() SecretKmsConfigPtrOutput {
+	return i.ToSecretKmsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecretKmsConfigArgs) ToSecretKmsConfigPtrOutputWithContext(ctx context.Context) SecretKmsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretKmsConfigOutput).ToSecretKmsConfigPtrOutputWithContext(ctx)
+}
+
+// SecretKmsConfigPtrInput is an input type that accepts SecretKmsConfigArgs, SecretKmsConfigPtr and SecretKmsConfigPtrOutput values.
+// You can construct a concrete instance of `SecretKmsConfigPtrInput` via:
+//
+//	        SecretKmsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretKmsConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecretKmsConfigPtrOutput() SecretKmsConfigPtrOutput
+	ToSecretKmsConfigPtrOutputWithContext(context.Context) SecretKmsConfigPtrOutput
+}
+
+type secretKmsConfigPtrType SecretKmsConfigArgs
+
+func SecretKmsConfigPtr(v *SecretKmsConfigArgs) SecretKmsConfigPtrInput {
+	return (*secretKmsConfigPtrType)(v)
+}
+
+func (*secretKmsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretKmsConfig)(nil)).Elem()
+}
+
+func (i *secretKmsConfigPtrType) ToSecretKmsConfigPtrOutput() SecretKmsConfigPtrOutput {
+	return i.ToSecretKmsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *secretKmsConfigPtrType) ToSecretKmsConfigPtrOutputWithContext(ctx context.Context) SecretKmsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretKmsConfigPtrOutput)
+}
+
+type SecretKmsConfigOutput struct{ *pulumi.OutputState }
+
+func (SecretKmsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretKmsConfig)(nil)).Elem()
+}
+
+func (o SecretKmsConfigOutput) ToSecretKmsConfigOutput() SecretKmsConfigOutput {
+	return o
+}
+
+func (o SecretKmsConfigOutput) ToSecretKmsConfigOutputWithContext(ctx context.Context) SecretKmsConfigOutput {
+	return o
+}
+
+func (o SecretKmsConfigOutput) ToSecretKmsConfigPtrOutput() SecretKmsConfigPtrOutput {
+	return o.ToSecretKmsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecretKmsConfigOutput) ToSecretKmsConfigPtrOutputWithContext(ctx context.Context) SecretKmsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretKmsConfig) *SecretKmsConfig {
+		return &v
+	}).(SecretKmsConfigPtrOutput)
+}
+
+// The KMS instance ID.
+func (o SecretKmsConfigOutput) KmsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretKmsConfig) string { return v.KmsInstanceId }).(pulumi.StringOutput)
+}
+
+// The KMS key ID.
+func (o SecretKmsConfigOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretKmsConfig) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+type SecretKmsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretKmsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretKmsConfig)(nil)).Elem()
+}
+
+func (o SecretKmsConfigPtrOutput) ToSecretKmsConfigPtrOutput() SecretKmsConfigPtrOutput {
+	return o
+}
+
+func (o SecretKmsConfigPtrOutput) ToSecretKmsConfigPtrOutputWithContext(ctx context.Context) SecretKmsConfigPtrOutput {
+	return o
+}
+
+func (o SecretKmsConfigPtrOutput) Elem() SecretKmsConfigOutput {
+	return o.ApplyT(func(v *SecretKmsConfig) SecretKmsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecretKmsConfig
+		return ret
+	}).(SecretKmsConfigOutput)
+}
+
+// The KMS instance ID.
+func (o SecretKmsConfigPtrOutput) KmsInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretKmsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The KMS key ID.
+func (o SecretKmsConfigPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretKmsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceHealthCheckConfig struct {
 	// Whether to enable health check
 	Enable *bool `pulumi:"enable"`
@@ -9798,6 +9954,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchPathPtrInput)(nil)).Elem(), RouteMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchQueryParamInput)(nil)).Elem(), RouteMatchQueryParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteMatchQueryParamArrayInput)(nil)).Elem(), RouteMatchQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKmsConfigInput)(nil)).Elem(), SecretKmsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKmsConfigPtrInput)(nil)).Elem(), SecretKmsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceHealthCheckConfigInput)(nil)).Elem(), ServiceHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceHealthCheckConfigPtrInput)(nil)).Elem(), ServiceHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceOutlierDetectionConfigInput)(nil)).Elem(), ServiceOutlierDetectionConfigArgs{})
@@ -9930,6 +10088,8 @@ func init() {
 	pulumi.RegisterOutputType(RouteMatchPathPtrOutput{})
 	pulumi.RegisterOutputType(RouteMatchQueryParamOutput{})
 	pulumi.RegisterOutputType(RouteMatchQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(SecretKmsConfigOutput{})
+	pulumi.RegisterOutputType(SecretKmsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(ServiceHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceOutlierDetectionConfigOutput{})

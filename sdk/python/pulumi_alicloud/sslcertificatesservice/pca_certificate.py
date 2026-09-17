@@ -684,13 +684,8 @@ class _PcaCertificateState:
         pulumi.set(self, "years", value)
 
 
-warnings.warn("""alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""", DeprecationWarning)
-
-
 @pulumi.type_token("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")
 class PcaCertificate(pulumi.CustomResource):
-    warnings.warn("""alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""", DeprecationWarning)
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -728,7 +723,7 @@ class PcaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.sslcertificatesservicepca.Certificate("default",
+        default = alicloud.sslcertificatesservice.PcaCertificate("default",
             organization="a",
             years=1,
             locality="a",
@@ -815,7 +810,7 @@ class PcaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.sslcertificatesservicepca.Certificate("default",
+        default = alicloud.sslcertificatesservice.PcaCertificate("default",
             organization="a",
             years=1,
             locality="a",
@@ -870,7 +865,6 @@ class PcaCertificate(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  years: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
-        pulumi.log.warn("""PcaCertificate is deprecated: alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -909,6 +903,8 @@ class PcaCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'years'")
             __props__.__dict__["years"] = years
             __props__.__dict__["status"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="alicloud:sslcertificatesservicepca/certificate:Certificate")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PcaCertificate, __self__).__init__(
             'alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate',
             resource_name,

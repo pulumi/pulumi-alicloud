@@ -46,6 +46,14 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string ProxyName;
         /// <summary>
+        /// Region
+        /// </summary>
+        public readonly string RegionNo;
+        /// <summary>
+        /// The status of the resource
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
         /// </summary>
         public readonly int StrictMode;
@@ -72,6 +80,10 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
 
             string proxyName,
 
+            string regionNo,
+
+            string status,
+
             int strictMode,
 
             string vpcId)
@@ -84,6 +96,8 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
             NatRouteEntryLists = natRouteEntryLists;
             ProxyId = proxyId;
             ProxyName = proxyName;
+            RegionNo = regionNo;
+            Status = status;
             StrictMode = strictMode;
             VpcId = vpcId;
         }

@@ -34,10 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.sslcertificatesservicepca.Certificate;
- * import com.pulumi.alicloud.sslcertificatesservicepca.CertificateArgs;
- * import com.pulumi.alicloud.sslcertificatesservicepca.Cert;
- * import com.pulumi.alicloud.sslcertificatesservicepca.CertArgs;
+ * import com.pulumi.alicloud.sslcertificatesservice.PcaCertificate;
+ * import com.pulumi.alicloud.sslcertificatesservice.PcaCertificateArgs;
+ * import com.pulumi.alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert;
+ * import com.pulumi.alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCertArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var root = new Certificate("root", CertificateArgs.builder()
+ *         var root = new PcaCertificate("root", PcaCertificateArgs.builder()
  *             .organization("a")
  *             .years(1)
  *             .locality("a")
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .commonName("cbc.certqa.cn")
  *             .build());
  * 
- *         var sub = new Certificate("sub", CertificateArgs.builder()
+ *         var sub = new PcaCertificate("sub", PcaCertificateArgs.builder()
  *             .parentIdentifier(root.id())
  *             .organization("a")
  *             .years(1)
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .enableCrl(true)
  *             .build());
  * 
- *         var default_ = new Cert("default", CertArgs.builder()
+ *         var default_ = new SslCertificatesServicePcaCert("default", SslCertificatesServicePcaCertArgs.builder()
  *             .immediately(0)
  *             .organization("terraform")
  *             .years(1)
@@ -112,7 +112,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example &lt;id&gt;
  * ```
  * 
+ * @deprecated
+ * alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert
+ * 
  */
+@Deprecated /* alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert */
 @ResourceType(type="alicloud:sslcertificatesservicepca/cert:Cert")
 public class Cert extends com.pulumi.resources.CustomResource {
     /**
@@ -446,7 +450,7 @@ public class Cert extends com.pulumi.resources.CustomResource {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -455,7 +459,7 @@ public class Cert extends com.pulumi.resources.CustomResource {
     /**
      * @return The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
     public Output<String> status() {
@@ -480,14 +484,14 @@ public class Cert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="uploadFlag", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> uploadFlag;
+    private Output<Integer> uploadFlag;
 
     /**
      * @return Indicates whether the certificate has been uploaded to the SSL certificate management platform.
      * 
      */
-    public Output<Optional<Integer>> uploadFlag() {
-        return Codegen.optional(this.uploadFlag);
+    public Output<Integer> uploadFlag() {
+        return this.uploadFlag;
     }
     /**
      * The duration for which the certificate is purchased, in years.

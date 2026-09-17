@@ -8,6 +8,8 @@ import com.pulumi.alicloud.esa.inputs.GetCacheReserveInstancesArgs;
 import com.pulumi.alicloud.esa.inputs.GetCacheReserveInstancesPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
 import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsPlainArgs;
+import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+import com.pulumi.alicloud.esa.inputs.GetListsPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
 import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
@@ -20,6 +22,7 @@ import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
 import com.pulumi.alicloud.esa.inputs.GetWafRulesetsPlainArgs;
 import com.pulumi.alicloud.esa.outputs.GetCacheReserveInstancesResult;
 import com.pulumi.alicloud.esa.outputs.GetHttpsBasicConfigurationsResult;
+import com.pulumi.alicloud.esa.outputs.GetListsResult;
 import com.pulumi.alicloud.esa.outputs.GetNetworkOptimizationsResult;
 import com.pulumi.alicloud.esa.outputs.GetOriginRulesResult;
 import com.pulumi.alicloud.esa.outputs.GetRoutineCodeVersionsResult;
@@ -796,6 +799,412 @@ public final class EsaFunctions {
      */
     public static CompletableFuture<GetHttpsBasicConfigurationsResult> getHttpsBasicConfigurationsPlain(GetHttpsBasicConfigurationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations", TypeShape.of(GetHttpsBasicConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListsResult> getLists() {
+        return getLists(GetListsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetListsResult> getListsPlain() {
+        return getListsPlain(GetListsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListsResult> getLists(GetListsArgs args) {
+        return getLists(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetListsResult> getListsPlain(GetListsPlainArgs args) {
+        return getListsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListsResult> getLists(GetListsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getLists:getLists", TypeShape.of(GetListsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListsResult> getLists(GetListsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getLists:getLists", TypeShape.of(GetListsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ESA Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.293.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.List;
+     * import com.pulumi.alicloud.esa.ListArgs;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetListsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var default_ = new List("default", ListArgs.builder()
+     *             .kind("ip")
+     *             .name(name)
+     *             .description(name)
+     *             .items(            
+     *                 "10.1.1.1",
+     *                 "10.1.1.2")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getLists(GetListsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetListsResult> getListsPlain(GetListsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:esa/getLists:getLists", TypeShape.of(GetListsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Esa Network Optimizations of the current Alibaba Cloud user.

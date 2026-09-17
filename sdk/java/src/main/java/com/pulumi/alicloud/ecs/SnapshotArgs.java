@@ -170,6 +170,13 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="waitUntil")
+    private @Nullable Output<String> waitUntil;
+
+    public Optional<Output<String>> waitUntil() {
+        return Optional.ofNullable(this.waitUntil);
+    }
+
     private SnapshotArgs() {}
 
     private SnapshotArgs(SnapshotArgs $) {
@@ -184,6 +191,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         this.retentionDays = $.retentionDays;
         this.snapshotName = $.snapshotName;
         this.tags = $.tags;
+        this.waitUntil = $.waitUntil;
     }
 
     public static Builder builder() {
@@ -403,6 +411,15 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        public Builder waitUntil(@Nullable Output<String> waitUntil) {
+            $.waitUntil = waitUntil;
+            return this;
+        }
+
+        public Builder waitUntil(String waitUntil) {
+            return waitUntil(Output.of(waitUntil));
         }
 
         public SnapshotArgs build() {

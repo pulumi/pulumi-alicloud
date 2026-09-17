@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// ## Example Usage
         /// 
+        /// Basic Usage
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -28,7 +30,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var open = AliCloud.PrivateLink.GetService.Invoke(new()
+        ///     var @default = AliCloud.PrivateLink.GetService.Invoke(new()
         ///     {
         ///         Enable = "On",
         ///     });
@@ -48,6 +50,8 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// ## Example Usage
         /// 
+        /// Basic Usage
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +60,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var open = AliCloud.PrivateLink.GetService.Invoke(new()
+        ///     var @default = AliCloud.PrivateLink.GetService.Invoke(new()
         ///     {
         ///         Enable = "On",
         ///     });
@@ -76,6 +80,8 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// ## Example Usage
         /// 
+        /// Basic Usage
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +90,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var open = AliCloud.PrivateLink.GetService.Invoke(new()
+        ///     var @default = AliCloud.PrivateLink.GetService.Invoke(new()
         ///     {
         ///         Enable = "On",
         ///     });
@@ -100,7 +106,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the Privatelink service that means you have read and agreed the [Privatelink Terms of Service](https://help.aliyun.com/document_detail/197619.html). The service can not closed once it is opened.
         /// </summary>
@@ -116,7 +122,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the Privatelink service that means you have read and agreed the [Privatelink Terms of Service](https://help.aliyun.com/document_detail/197619.html). The service can not closed once it is opened.
         /// </summary>

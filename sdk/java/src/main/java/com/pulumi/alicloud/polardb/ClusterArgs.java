@@ -85,6 +85,36 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    @Import(name="cnNodeClass")
+    private @Nullable Output<String> cnNodeClass;
+
+    /**
+     * @return The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    public Optional<Output<String>> cnNodeClass() {
+        return Optional.ofNullable(this.cnNodeClass);
+    }
+
+    /**
+     * The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     * 
+     */
+    @Import(name="cnNodeNum")
+    private @Nullable Output<Integer> cnNodeNum;
+
+    /**
+     * @return The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     * 
+     */
+    public Optional<Output<Integer>> cnNodeNum() {
+        return Optional.ofNullable(this.cnNodeNum);
+    }
+
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      * 
      */
@@ -181,28 +211,28 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dbNodeClass of cluster node.
+     * The dbNodeClass of cluster node. Required for non-distributed clusters.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
      * 
      */
-    @Import(name="dbNodeClass", required=true)
-    private Output<String> dbNodeClass;
+    @Import(name="dbNodeClass")
+    private @Nullable Output<String> dbNodeClass;
 
     /**
-     * @return The dbNodeClass of cluster node.
+     * @return The dbNodeClass of cluster node. Required for non-distributed clusters.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
      * 
      */
-    public Output<String> dbNodeClass() {
-        return this.dbNodeClass;
+    public Optional<Output<String>> dbNodeClass() {
+        return Optional.ofNullable(this.dbNodeClass);
     }
 
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
@@ -210,7 +240,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> dbNodeCount;
 
     /**
-     * @return Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * @return Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
@@ -327,6 +357,36 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    @Import(name="dnNodeClass")
+    private @Nullable Output<String> dnNodeClass;
+
+    /**
+     * @return The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    public Optional<Output<String>> dnNodeClass() {
+        return Optional.ofNullable(this.dnNodeClass);
+    }
+
+    /**
+     * The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     * 
+     */
+    @Import(name="dnNodeNum")
+    private @Nullable Output<Integer> dnNodeNum;
+
+    /**
+     * @return The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     * 
+     */
+    public Optional<Output<Integer>> dnNodeNum() {
+        return Optional.ofNullable(this.dnNodeNum);
     }
 
     /**
@@ -575,14 +635,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      * 
      */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * @return Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      * 
      */
     public Optional<Output<String>> modifyType() {
@@ -1249,6 +1309,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.cloneDataPoint = $.cloneDataPoint;
+        this.cnNodeClass = $.cnNodeClass;
+        this.cnNodeNum = $.cnNodeNum;
         this.collectorStatus = $.collectorStatus;
         this.compressStorage = $.compressStorage;
         this.creationCategory = $.creationCategory;
@@ -1264,6 +1326,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultTimeZone = $.defaultTimeZone;
         this.deletionLock = $.deletionLock;
         this.description = $.description;
+        this.dnNodeClass = $.dnNodeClass;
+        this.dnNodeNum = $.dnNodeNum;
         this.enableAutomaticRotation = $.enableAutomaticRotation;
         this.enableDynamodb = $.enableDynamodb;
         this.encryptNewTables = $.encryptNewTables;
@@ -1428,6 +1492,48 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cnNodeClass The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnNodeClass(@Nullable Output<String> cnNodeClass) {
+            $.cnNodeClass = cnNodeClass;
+            return this;
+        }
+
+        /**
+         * @param cnNodeClass The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnNodeClass(String cnNodeClass) {
+            return cnNodeClass(Output.of(cnNodeClass));
+        }
+
+        /**
+         * @param cnNodeNum The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnNodeNum(@Nullable Output<Integer> cnNodeNum) {
+            $.cnNodeNum = cnNodeNum;
+            return this;
+        }
+
+        /**
+         * @param cnNodeNum The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnNodeNum(Integer cnNodeNum) {
+            return cnNodeNum(Output.of(cnNodeNum));
+        }
+
+        /**
          * @param collectorStatus Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
          * 
          * @return builder
@@ -1570,7 +1676,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeClass The dbNodeClass of cluster node.
+         * @param dbNodeClass The dbNodeClass of cluster node. Required for non-distributed clusters.
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
          * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
          * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -1578,13 +1684,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dbNodeClass(Output<String> dbNodeClass) {
+        public Builder dbNodeClass(@Nullable Output<String> dbNodeClass) {
             $.dbNodeClass = dbNodeClass;
             return this;
         }
 
         /**
-         * @param dbNodeClass The dbNodeClass of cluster node.
+         * @param dbNodeClass The dbNodeClass of cluster node. Required for non-distributed clusters.
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
          * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
          * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -1597,7 +1703,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeCount Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+         * @param dbNodeCount Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
          * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
          * 
          * @return builder
@@ -1609,7 +1715,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeCount Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+         * @param dbNodeCount Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
          * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
          * 
          * @return builder
@@ -1770,6 +1876,48 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dnNodeClass The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnNodeClass(@Nullable Output<String> dnNodeClass) {
+            $.dnNodeClass = dnNodeClass;
+            return this;
+        }
+
+        /**
+         * @param dnNodeClass The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnNodeClass(String dnNodeClass) {
+            return dnNodeClass(Output.of(dnNodeClass));
+        }
+
+        /**
+         * @param dnNodeNum The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnNodeNum(@Nullable Output<Integer> dnNodeNum) {
+            $.dnNodeNum = dnNodeNum;
+            return this;
+        }
+
+        /**
+         * @param dnNodeNum The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnNodeNum(Integer dnNodeNum) {
+            return dnNodeNum(Output.of(dnNodeNum));
         }
 
         /**
@@ -2118,7 +2266,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+         * @param modifyType Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
          * 
          * @return builder
          * 
@@ -2129,7 +2277,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+         * @param modifyType Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
          * 
          * @return builder
          * 
@@ -3070,9 +3218,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            if ($.dbNodeClass == null) {
-                throw new MissingRequiredPropertyException("ClusterArgs", "dbNodeClass");
-            }
             if ($.dbType == null) {
                 throw new MissingRequiredPropertyException("ClusterArgs", "dbType");
             }

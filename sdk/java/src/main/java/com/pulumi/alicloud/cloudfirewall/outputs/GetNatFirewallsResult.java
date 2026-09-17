@@ -54,7 +54,15 @@ public final class GetNatFirewallsResult {
      * 
      */
     private @Nullable String proxyName;
+    /**
+     * @return The region ID of the NAT firewall.
+     * 
+     */
     private @Nullable String regionNo;
+    /**
+     * @return The status of the NAT firewall.
+     * 
+     */
     private @Nullable String status;
     /**
      * @return The ID of the VPC instance.
@@ -124,9 +132,17 @@ public final class GetNatFirewallsResult {
     public Optional<String> proxyName() {
         return Optional.ofNullable(this.proxyName);
     }
+    /**
+     * @return The region ID of the NAT firewall.
+     * 
+     */
     public Optional<String> regionNo() {
         return Optional.ofNullable(this.regionNo);
     }
+    /**
+     * @return The status of the NAT firewall.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

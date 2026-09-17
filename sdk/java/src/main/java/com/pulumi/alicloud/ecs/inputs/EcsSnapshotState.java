@@ -19,6 +19,21 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     public static final EcsSnapshotState Empty = new EcsSnapshotState();
 
     /**
+     * Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+     * 
+     */
+    @Import(name="available")
+    private @Nullable Output<Boolean> available;
+
+    /**
+     * @return Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+     * 
+     */
+    public Optional<Output<Boolean>> available() {
+        return Optional.ofNullable(this.available);
+    }
+
+    /**
      * The category of the snapshot. Valid values:
      * 
      */
@@ -252,9 +267,25 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+     * 
+     */
+    @Import(name="waitUntil")
+    private @Nullable Output<String> waitUntil;
+
+    /**
+     * @return Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+     * 
+     */
+    public Optional<Output<String>> waitUntil() {
+        return Optional.ofNullable(this.waitUntil);
+    }
+
     private EcsSnapshotState() {}
 
     private EcsSnapshotState(EcsSnapshotState $) {
+        this.available = $.available;
         this.category = $.category;
         this.createTime = $.createTime;
         this.description = $.description;
@@ -269,6 +300,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         this.snapshotName = $.snapshotName;
         this.status = $.status;
         this.tags = $.tags;
+        this.waitUntil = $.waitUntil;
     }
 
     public static Builder builder() {
@@ -287,6 +319,27 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(EcsSnapshotState defaults) {
             $ = new EcsSnapshotState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param available Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder available(@Nullable Output<Boolean> available) {
+            $.available = available;
+            return this;
+        }
+
+        /**
+         * @param available Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder available(Boolean available) {
+            return available(Output.of(available));
         }
 
         /**
@@ -605,6 +658,27 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param waitUntil Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitUntil(@Nullable Output<String> waitUntil) {
+            $.waitUntil = waitUntil;
+            return this;
+        }
+
+        /**
+         * @param waitUntil Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitUntil(String waitUntil) {
+            return waitUntil(Output.of(waitUntil));
         }
 
         public EcsSnapshotState build() {

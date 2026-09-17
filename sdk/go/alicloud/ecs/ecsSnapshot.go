@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.120.0.
 //
+// > **NOTE:** By default, creation waits for `status` to become `accomplished`. Set `waitUntil = "available"` to finish when ECS reports `Available=true`. At this point, the snapshot can be used to create disks, roll back disks, or create images, and can be shared, even if background upload is still in progress and `status` remains `progressing`. Each operation's other requirements still apply. `waitUntil` only controls when Terraform finishes waiting for snapshot creation; it does not change the snapshot's capabilities. Changing `retentionDays` still requires `Status=accomplished`.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -153,12 +155,16 @@ import (
 //
 // ECS Snapshot can be imported using the id, e.g.
 //
+// `available` is populated from ECS when the imported snapshot is refreshed. `waitUntil` is a local setting and cannot be recovered from the imported snapshot. Keep any explicitly selected waiting policy in the Terraform configuration; omitting it continues to wait for `Status=accomplished` on subsequent creation without adding a default policy to state.
+//
 // ```sh
 // $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
 // ```
 type EcsSnapshot struct {
 	pulumi.CustomResourceState
 
+	// Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+	Available pulumi.BoolOutput `pulumi:"available"`
 	// The category of the snapshot. Valid values:
 	Category pulumi.StringOutput `pulumi:"category"`
 	// (Available since v1.239.0) The time when the snapshot was created.
@@ -193,6 +199,8 @@ type EcsSnapshot struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+	WaitUntil pulumi.StringPtrOutput `pulumi:"waitUntil"`
 }
 
 // NewEcsSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -228,6 +236,8 @@ func GetEcsSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsSnapshot resources.
 type ecsSnapshotState struct {
+	// Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+	Available *bool `pulumi:"available"`
 	// The category of the snapshot. Valid values:
 	Category *string `pulumi:"category"`
 	// (Available since v1.239.0) The time when the snapshot was created.
@@ -262,9 +272,13 @@ type ecsSnapshotState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+	WaitUntil *string `pulumi:"waitUntil"`
 }
 
 type EcsSnapshotState struct {
+	// Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+	Available pulumi.BoolPtrInput
 	// The category of the snapshot. Valid values:
 	Category pulumi.StringPtrInput
 	// (Available since v1.239.0) The time when the snapshot was created.
@@ -299,6 +313,8 @@ type EcsSnapshotState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
+	// Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+	WaitUntil pulumi.StringPtrInput
 }
 
 func (EcsSnapshotState) ElementType() reflect.Type {
@@ -334,6 +350,8 @@ type ecsSnapshotArgs struct {
 	SnapshotName *string `pulumi:"snapshotName"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+	WaitUntil *string `pulumi:"waitUntil"`
 }
 
 // The set of arguments for constructing a EcsSnapshot resource.
@@ -366,6 +384,8 @@ type EcsSnapshotArgs struct {
 	SnapshotName pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
+	// Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+	WaitUntil pulumi.StringPtrInput
 }
 
 func (EcsSnapshotArgs) ElementType() reflect.Type {
@@ -455,6 +475,11 @@ func (o EcsSnapshotOutput) ToEcsSnapshotOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Whether ECS reports the snapshot as available. This read-only value can be `true` while `status` is still `progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `waitUntil` policy.
+func (o EcsSnapshotOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.BoolOutput { return v.Available }).(pulumi.BoolOutput)
+}
+
 // The category of the snapshot. Valid values:
 func (o EcsSnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
@@ -529,6 +554,11 @@ func (o EcsSnapshotOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 func (o EcsSnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Local waiting policy for creation only. Valid values: `accomplished`, which waits for `Status=accomplished`, and `available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `waitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `waitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`snapshotName`, `name`, `description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `retentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+func (o EcsSnapshotOutput) WaitUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.WaitUntil }).(pulumi.StringPtrOutput)
 }
 
 type EcsSnapshotArrayOutput struct{ *pulumi.OutputState }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sslcertificatesservice;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.sslcertificatesservice.PcaCertificateArgs;
 import com.pulumi.alicloud.sslcertificatesservice.inputs.PcaCertificateState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -36,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.sslcertificatesservicepca.Certificate;
- * import com.pulumi.alicloud.sslcertificatesservicepca.CertificateArgs;
+ * import com.pulumi.alicloud.sslcertificatesservice.PcaCertificate;
+ * import com.pulumi.alicloud.sslcertificatesservice.PcaCertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate("default", CertificateArgs.builder()
+ *         var default_ = new PcaCertificate("default", PcaCertificateArgs.builder()
  *             .organization("a")
  *             .years(1)
  *             .locality("a")
@@ -77,11 +78,7 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example &lt;identifier&gt;
  * ```
  * 
- * @deprecated
- * alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate
- * 
  */
-@Deprecated /* alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate */
 @ResourceType(type="alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")
 public class PcaCertificate extends com.pulumi.resources.CustomResource {
     /**
@@ -424,6 +421,9 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("alicloud:sslcertificatesservicepca/certificate:Certificate").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

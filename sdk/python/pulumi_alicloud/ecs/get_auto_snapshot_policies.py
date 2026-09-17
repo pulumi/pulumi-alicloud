@@ -74,6 +74,9 @@ class GetAutoSnapshotPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Auto Snapshot Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -84,16 +87,25 @@ class GetAutoSnapshotPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetAutoSnapshotPoliciesPolicyResult']:
+        """
+        A list of Ecs Auto Snapshot Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Auto Snapshot Policy.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -122,7 +134,7 @@ def get_auto_snapshot_policies(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.117.0+.
+    > **NOTE:** Available since v1.117.0.
 
     ## Example Usage
 
@@ -171,7 +183,7 @@ def get_auto_snapshot_policies_output(ids: pulumi.Input[Optional[Optional[Sequen
     """
     This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.117.0+.
+    > **NOTE:** Available since v1.117.0.
 
     ## Example Usage
 

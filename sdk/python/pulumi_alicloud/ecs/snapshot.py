@@ -29,7 +29,8 @@ class SnapshotArgs:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
 
@@ -70,6 +71,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "snapshot_name", snapshot_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if wait_until is not None:
+            pulumi.set(__self__, "wait_until", wait_until)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -189,10 +192,20 @@ class SnapshotArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitUntil")
+    def wait_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "wait_until")
+
+    @wait_until.setter
+    def wait_until(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "wait_until", value)
+
 
 @pulumi.input_type
 class _SnapshotState:
     def __init__(__self__, *,
+                 available: pulumi.Input[Optional[_builtins.bool]] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -206,7 +219,8 @@ class _SnapshotState:
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
 
@@ -217,6 +231,8 @@ class _SnapshotState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
+        if available is not None:
+            pulumi.set(__self__, "available", available)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if create_time is not None:
@@ -254,6 +270,17 @@ class _SnapshotState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if wait_until is not None:
+            pulumi.set(__self__, "wait_until", wait_until)
+
+    @_builtins.property
+    @pulumi.getter
+    def available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "available", value)
 
     @_builtins.property
     @pulumi.getter
@@ -400,6 +427,15 @@ class _SnapshotState:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitUntil")
+    def wait_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "wait_until")
+
+    @wait_until.setter
+    def wait_until(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "wait_until", value)
+
 
 @pulumi.type_token("alicloud:ecs/snapshot:Snapshot")
 class Snapshot(pulumi.CustomResource):
@@ -418,6 +454,7 @@ class Snapshot(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an ECS snapshot resource.
@@ -530,6 +567,7 @@ class Snapshot(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 wait_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -552,6 +590,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["snapshot_name"] = snapshot_name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["wait_until"] = wait_until
+            __props__.__dict__["available"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
@@ -565,6 +605,7 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            available: pulumi.Input[Optional[_builtins.bool]] = None,
             category: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -578,7 +619,8 @@ class Snapshot(pulumi.CustomResource):
             retention_days: pulumi.Input[Optional[_builtins.int]] = None,
             snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Snapshot':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            wait_until: pulumi.Input[Optional[_builtins.str]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -597,6 +639,7 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = _SnapshotState.__new__(_SnapshotState)
 
+        __props__.__dict__["available"] = available
         __props__.__dict__["category"] = category
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -611,7 +654,13 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["snapshot_name"] = snapshot_name
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["wait_until"] = wait_until
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def available(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "available")
 
     @_builtins.property
     @pulumi.getter
@@ -701,4 +750,9 @@ class Snapshot(pulumi.CustomResource):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="waitUntil")
+    def wait_until(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "wait_until")
 

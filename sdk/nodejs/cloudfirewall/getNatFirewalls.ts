@@ -192,7 +192,13 @@ export interface GetNatFirewallsResult {
      * NAT firewall name
      */
     readonly proxyName?: string;
+    /**
+     * The region ID of the NAT firewall.
+     */
     readonly regionNo?: string;
+    /**
+     * The status of the NAT firewall.
+     */
     readonly status?: string;
     /**
      * The ID of the VPC instance.

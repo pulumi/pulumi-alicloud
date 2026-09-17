@@ -375,11 +375,9 @@ type Instance struct {
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// Node type, valid values:
-	// - `MASTER_SLAVE`: High availability (dual copies)
-	// - `STAND_ALONE`: Single copy
-	//
-	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+	// The node type. Valid values:
+	// - `MASTER_SLAVE`: High availability (master-replica)
+	// - `STAND_ALONE`: Standalone
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
@@ -582,11 +580,9 @@ type instanceState struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// Node type, valid values:
-	// - `MASTER_SLAVE`: High availability (dual copies)
-	// - `STAND_ALONE`: Single copy
-	//
-	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+	// The node type. Valid values:
+	// - `MASTER_SLAVE`: High availability (master-replica)
+	// - `STAND_ALONE`: Standalone
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
@@ -753,11 +749,9 @@ type InstanceState struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// Node type, valid values:
-	// - `MASTER_SLAVE`: High availability (dual copies)
-	// - `STAND_ALONE`: Single copy
-	//
-	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+	// The node type. Valid values:
+	// - `MASTER_SLAVE`: High availability (master-replica)
+	// - `STAND_ALONE`: Standalone
 	NodeType pulumi.StringPtrInput
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
@@ -920,11 +914,9 @@ type instanceArgs struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// Node type, valid values:
-	// - `MASTER_SLAVE`: High availability (dual copies)
-	// - `STAND_ALONE`: Single copy
-	//
-	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+	// The node type. Valid values:
+	// - `MASTER_SLAVE`: High availability (master-replica)
+	// - `STAND_ALONE`: Standalone
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
@@ -1080,11 +1072,9 @@ type InstanceArgs struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// Node type, valid values:
-	// - `MASTER_SLAVE`: High availability (dual copies)
-	// - `STAND_ALONE`: Single copy
-	//
-	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+	// The node type. Valid values:
+	// - `MASTER_SLAVE`: High availability (master-replica)
+	// - `STAND_ALONE`: Standalone
 	NodeType pulumi.StringPtrInput
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
@@ -1447,11 +1437,9 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// Node type, valid values:
-// - `MASTER_SLAVE`: High availability (dual copies)
-// - `STAND_ALONE`: Single copy
-//
-// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+// The node type. Valid values:
+// - `MASTER_SLAVE`: High availability (master-replica)
+// - `STAND_ALONE`: Standalone
 func (o InstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }

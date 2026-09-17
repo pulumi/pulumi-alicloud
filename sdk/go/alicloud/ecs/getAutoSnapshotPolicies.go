@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.117.0+.
+// > **NOTE:** Available since v1.117.0.
 //
 // ## Example Usage
 //
@@ -73,14 +73,18 @@ type GetAutoSnapshotPoliciesArgs struct {
 // A collection of values returned by getAutoSnapshotPolicies.
 type GetAutoSnapshotPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                          `pulumi:"id"`
-	Ids        []string                        `pulumi:"ids"`
-	NameRegex  *string                         `pulumi:"nameRegex"`
-	Names      []string                        `pulumi:"names"`
-	OutputFile *string                         `pulumi:"outputFile"`
-	Policies   []GetAutoSnapshotPoliciesPolicy `pulumi:"policies"`
-	Status     *string                         `pulumi:"status"`
-	Tags       map[string]string               `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Auto Snapshot Policy names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecs Auto Snapshot Policies. Each element contains the following attributes:
+	Policies []GetAutoSnapshotPoliciesPolicy `pulumi:"policies"`
+	// The status of Auto Snapshot Policy.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetAutoSnapshotPoliciesOutput(ctx *pulumi.Context, args GetAutoSnapshotPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAutoSnapshotPoliciesResultOutput {
@@ -134,6 +138,7 @@ func (o GetAutoSnapshotPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Auto Snapshot Policy names.
 func (o GetAutoSnapshotPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -142,14 +147,17 @@ func (o GetAutoSnapshotPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Auto Snapshot Policies. Each element contains the following attributes:
 func (o GetAutoSnapshotPoliciesResultOutput) Policies() GetAutoSnapshotPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) []GetAutoSnapshotPoliciesPolicy { return v.Policies }).(GetAutoSnapshotPoliciesPolicyArrayOutput)
 }
 
+// The status of Auto Snapshot Policy.
 func (o GetAutoSnapshotPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetAutoSnapshotPoliciesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

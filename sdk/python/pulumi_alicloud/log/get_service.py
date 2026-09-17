@@ -54,7 +54,7 @@ class GetServiceResult:
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The current service enable status.
+        Returns `Opened` when `enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
         """
         return pulumi.get(self, "status")
 
@@ -73,7 +73,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(enable: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+    Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
 
     For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 
@@ -89,9 +89,7 @@ def get_service(enable: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-           
-           > **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+    :param _builtins.str enable: Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
     """
     __args__ = dict()
     __args__['enable'] = enable
@@ -105,7 +103,7 @@ def get_service(enable: Optional[_builtins.str] = None,
 def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
-    Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+    Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
 
     For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 
@@ -121,9 +119,7 @@ def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] =
     ```
 
 
-    :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-           
-           > **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+    :param _builtins.str enable: Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
     """
     __args__ = dict()
     __args__['enable'] = enable

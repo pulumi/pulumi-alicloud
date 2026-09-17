@@ -15,7 +15,7 @@ import (
 //
 // For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
 //
 // ## Example Usage
 //
@@ -61,7 +61,7 @@ func GetEndpointAclService(ctx *pulumi.Context, args *GetEndpointAclServiceArgs,
 type GetEndpointAclServiceArgs struct {
 	// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
 	Enable bool `pulumi:"enable"`
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 	EndpointType string `pulumi:"endpointType"`
 	// The ID of the CR Instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -81,7 +81,8 @@ type GetEndpointAclServiceResult struct {
 	Id         string  `pulumi:"id"`
 	InstanceId string  `pulumi:"instanceId"`
 	ModuleName *string `pulumi:"moduleName"`
-	Status     string  `pulumi:"status"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
 }
 
 func GetEndpointAclServiceOutput(ctx *pulumi.Context, args GetEndpointAclServiceOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclServiceResultOutput {
@@ -93,7 +94,7 @@ func GetEndpointAclServiceOutput(ctx *pulumi.Context, args GetEndpointAclService
 type GetEndpointAclServiceOutputArgs struct {
 	// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
 	Enable pulumi.BoolInput `pulumi:"enable"`
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// The ID of the CR Instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -145,6 +146,7 @@ func (o GetEndpointAclServiceResultOutput) ModuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEndpointAclServiceResult) *string { return v.ModuleName }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetEndpointAclServiceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointAclServiceResult) string { return v.Status }).(pulumi.StringOutput)
 }

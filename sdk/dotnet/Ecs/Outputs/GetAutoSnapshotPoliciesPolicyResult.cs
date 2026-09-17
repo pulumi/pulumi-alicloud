@@ -14,13 +14,25 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetAutoSnapshotPoliciesPolicyResult
     {
         /// <summary>
+        /// The association type between the automatic snapshot policy and target resources.
+        /// </summary>
+        public readonly string AssociationType;
+        /// <summary>
         /// The ID of the Auto Snapshot Policy.
         /// </summary>
         public readonly string AutoSnapshotPolicyId;
         /// <summary>
+        /// The name of the automatic snapshot policy.
+        /// </summary>
+        public readonly string AutoSnapshotPolicyName;
+        /// <summary>
         /// The retention period of the snapshot copied across regions.
         /// </summary>
         public readonly int CopiedSnapshotsRetentionDays;
+        /// <summary>
+        /// The time when the automatic snapshot policy was created.
+        /// </summary>
+        public readonly string CreateTime;
         /// <summary>
         /// The number of disks to which the automatic snapshot policy is applied.
         /// </summary>
@@ -34,9 +46,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The snapshot policy name..
+        /// The total number of records.
         /// </summary>
-        public readonly string Name;
+        public readonly int RecordTotal;
+        /// <summary>
+        /// The region ID of the automatic snapshot policy.
+        /// </summary>
+        public readonly string RegionId;
         /// <summary>
         /// The automatic snapshot repetition dates.
         /// </summary>
@@ -46,7 +62,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int RetentionDays;
         /// <summary>
-        /// The status of Auto Snapshot Policy.
+        /// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -58,6 +74,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TargetCopyRegions;
         /// <summary>
+        /// The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAutoSnapshotPoliciesPolicyTargetTagResult> TargetTags;
+        /// <summary>
         /// The automatic snapshot creation schedule, and the unit of measurement is hour.
         /// </summary>
         public readonly ImmutableArray<string> TimePoints;
@@ -68,9 +88,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
         [OutputConstructor]
         private GetAutoSnapshotPoliciesPolicyResult(
+            string associationType,
+
             string autoSnapshotPolicyId,
 
+            string autoSnapshotPolicyName,
+
             int copiedSnapshotsRetentionDays,
+
+            string createTime,
 
             int diskNums,
 
@@ -78,7 +104,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string id,
 
-            string name,
+            int recordTotal,
+
+            string regionId,
 
             ImmutableArray<string> repeatWeekdays,
 
@@ -90,21 +118,28 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             ImmutableArray<string> targetCopyRegions,
 
+            ImmutableArray<Outputs.GetAutoSnapshotPoliciesPolicyTargetTagResult> targetTags,
+
             ImmutableArray<string> timePoints,
 
             int volumeNums)
         {
+            AssociationType = associationType;
             AutoSnapshotPolicyId = autoSnapshotPolicyId;
+            AutoSnapshotPolicyName = autoSnapshotPolicyName;
             CopiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
+            CreateTime = createTime;
             DiskNums = diskNums;
             EnableCrossRegionCopy = enableCrossRegionCopy;
             Id = id;
-            Name = name;
+            RecordTotal = recordTotal;
+            RegionId = regionId;
             RepeatWeekdays = repeatWeekdays;
             RetentionDays = retentionDays;
             Status = status;
             Tags = tags;
             TargetCopyRegions = targetCopyRegions;
+            TargetTags = targetTags;
             TimePoints = timePoints;
             VolumeNums = volumeNums;
         }

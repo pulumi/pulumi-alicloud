@@ -155,7 +155,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly creditSpecification: pulumi.Output<string>;
     /**
-     * The list of data disks created with instance. See `dataDisks` below.
+     * The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      */
     declare public readonly dataDisks: pulumi.Output<outputs.ecs.InstanceDataDisk[] | undefined>;
     /**
@@ -195,6 +195,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly enableJumboFrame: pulumi.Output<boolean>;
     /**
+     * Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     */
+    declare public readonly enableNetworkEncryption: pulumi.Output<boolean>;
+    /**
      * (Available since v1.232.0) The expiration time of the instance.
      */
     declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
@@ -231,7 +237,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly imageId: pulumi.Output<string>;
     /**
-     * The options of images. See `imageOptions` below.
+     * The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      */
     declare public readonly imageOptions: pulumi.Output<outputs.ecs.InstanceImageOptions>;
     /**
@@ -280,7 +286,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly ipv6Addresses: pulumi.Output<string[]>;
     /**
-     * Whether to use outdated instance type.
+     * Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      */
     declare public readonly isOutdated: pulumi.Output<boolean | undefined>;
     /**
@@ -344,7 +350,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly networkInterfaceTrafficMode: pulumi.Output<string>;
     /**
-     * The list of network interfaces created with instance. See `networkInterfaces` below.
+     * The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      */
     declare public readonly networkInterfaces: pulumi.Output<outputs.ecs.InstanceNetworkInterfaces>;
     /**
@@ -464,7 +470,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly sourceDestCheck: pulumi.Output<boolean>;
     /**
-     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      */
     declare public readonly spotDuration: pulumi.Output<number>;
     /**
@@ -610,6 +616,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["enableHighDensityMode"] = state?.enableHighDensityMode;
             resourceInputs["enableJumboFrame"] = state?.enableJumboFrame;
+            resourceInputs["enableNetworkEncryption"] = state?.enableNetworkEncryption;
             resourceInputs["expiredTime"] = state?.expiredTime;
             resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["hostName"] = state?.hostName;
@@ -706,6 +713,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["enableHighDensityMode"] = args?.enableHighDensityMode;
             resourceInputs["enableJumboFrame"] = args?.enableJumboFrame;
+            resourceInputs["enableNetworkEncryption"] = args?.enableNetworkEncryption;
             resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["hostName"] = args?.hostName;
             resourceInputs["hpcClusterId"] = args?.hpcClusterId;
@@ -841,7 +849,7 @@ export interface InstanceState {
      */
     creditSpecification?: pulumi.Input<string | undefined>;
     /**
-     * The list of data disks created with instance. See `dataDisks` below.
+     * The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[] | undefined>;
     /**
@@ -881,6 +889,12 @@ export interface InstanceState {
      */
     enableJumboFrame?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     */
+    enableNetworkEncryption?: pulumi.Input<boolean | undefined>;
+    /**
      * (Available since v1.232.0) The expiration time of the instance.
      */
     expiredTime?: pulumi.Input<string | undefined>;
@@ -917,7 +931,7 @@ export interface InstanceState {
      */
     imageId?: pulumi.Input<string | undefined>;
     /**
-     * The options of images. See `imageOptions` below.
+     * The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      */
     imageOptions?: pulumi.Input<inputs.ecs.InstanceImageOptions | undefined>;
     /**
@@ -966,7 +980,7 @@ export interface InstanceState {
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Whether to use outdated instance type.
+     * Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      */
     isOutdated?: pulumi.Input<boolean | undefined>;
     /**
@@ -1030,7 +1044,7 @@ export interface InstanceState {
      */
     networkInterfaceTrafficMode?: pulumi.Input<string | undefined>;
     /**
-     * The list of network interfaces created with instance. See `networkInterfaces` below.
+     * The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      */
     networkInterfaces?: pulumi.Input<inputs.ecs.InstanceNetworkInterfaces | undefined>;
     /**
@@ -1150,7 +1164,7 @@ export interface InstanceState {
      */
     sourceDestCheck?: pulumi.Input<boolean | undefined>;
     /**
-     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      */
     spotDuration?: pulumi.Input<number | undefined>;
     /**
@@ -1303,7 +1317,7 @@ export interface InstanceArgs {
      */
     creditSpecification?: pulumi.Input<string | undefined>;
     /**
-     * The list of data disks created with instance. See `dataDisks` below.
+     * The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[] | undefined>;
     /**
@@ -1339,6 +1353,12 @@ export interface InstanceArgs {
      */
     enableJumboFrame?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     */
+    enableNetworkEncryption?: pulumi.Input<boolean | undefined>;
+    /**
      * If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
      */
@@ -1371,7 +1391,7 @@ export interface InstanceArgs {
      */
     imageId?: pulumi.Input<string | undefined>;
     /**
-     * The options of images. See `imageOptions` below.
+     * The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      */
     imageOptions?: pulumi.Input<inputs.ecs.InstanceImageOptions | undefined>;
     /**
@@ -1420,7 +1440,7 @@ export interface InstanceArgs {
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Whether to use outdated instance type.
+     * Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      */
     isOutdated?: pulumi.Input<boolean | undefined>;
     /**
@@ -1480,7 +1500,7 @@ export interface InstanceArgs {
      */
     networkInterfaceTrafficMode?: pulumi.Input<string | undefined>;
     /**
-     * The list of network interfaces created with instance. See `networkInterfaces` below.
+     * The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      */
     networkInterfaces?: pulumi.Input<inputs.ecs.InstanceNetworkInterfaces | undefined>;
     /**
@@ -1584,7 +1604,7 @@ export interface InstanceArgs {
      */
     sourceDestCheck?: pulumi.Input<boolean | undefined>;
     /**
-     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      */
     spotDuration?: pulumi.Input<number | undefined>;
     /**

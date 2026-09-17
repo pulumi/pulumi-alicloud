@@ -304,6 +304,8 @@ if typing.TYPE_CHECKING:
     sslcertificatesserviceinstance = __sslcertificatesserviceinstance
     import pulumi_alicloud.sslcertificatesservicepca as __sslcertificatesservicepca
     sslcertificatesservicepca = __sslcertificatesservicepca
+    import pulumi_alicloud.sslcertificatesservicepcacert as __sslcertificatesservicepcacert
+    sslcertificatesservicepcacert = __sslcertificatesservicepcacert
     import pulumi_alicloud.starrocks as __starrocks
     starrocks = __starrocks
     import pulumi_alicloud.tag as __tag
@@ -465,6 +467,7 @@ else:
     sslcertificatesservicecertificate = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservicecertificate')
     sslcertificatesserviceinstance = _utilities.lazy_import('pulumi_alicloud.sslcertificatesserviceinstance')
     sslcertificatesservicepca = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservicepca')
+    sslcertificatesservicepcacert = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservicepcacert')
     starrocks = _utilities.lazy_import('pulumi_alicloud.starrocks')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
     threatdetection = _utilities.lazy_import('pulumi_alicloud.threatdetection')
@@ -990,6 +993,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.apig",
   "classes": {
    "alicloud:apig/route:Route": "Route"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/secret",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/secret:Secret": "Secret"
   }
  },
  {
@@ -2718,6 +2729,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cr",
   "classes": {
    "alicloud:cr/endpointAclPolicy:EndpointAclPolicy": "EndpointAclPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cr/instanceCustomizedDomain",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/instanceCustomizedDomain:InstanceCustomizedDomain": "InstanceCustomizedDomain"
   }
  },
  {
@@ -5238,6 +5257,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eventbridge",
   "classes": {
    "alicloud:eventbridge/eventSourceV2:EventSourceV2": "EventSourceV2"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eventbridge/eventStreaming",
+  "fqn": "pulumi_alicloud.eventbridge",
+  "classes": {
+   "alicloud:eventbridge/eventStreaming:EventStreaming": "EventStreaming"
   }
  },
  {
@@ -9246,6 +9273,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sslcertificatesservicepca",
   "classes": {
    "alicloud:sslcertificatesservicepca/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservicepcacert/sslCertificatesServicePcaCert",
+  "fqn": "pulumi_alicloud.sslcertificatesservicepcacert",
+  "classes": {
+   "alicloud:sslcertificatesservicepcacert/sslCertificatesServicePcaCert:SslCertificatesServicePcaCert": "SslCertificatesServicePcaCert"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservicepcacert/sync",
+  "fqn": "pulumi_alicloud.sslcertificatesservicepcacert",
+  "classes": {
+   "alicloud:sslcertificatesservicepcacert/sync:Sync": "Sync"
   }
  },
  {

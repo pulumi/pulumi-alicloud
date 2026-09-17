@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.sslcertificatesservicepca.Certificate("default", {
+ * const _default = new alicloud.sslcertificatesservice.PcaCertificate("default", {
  *     organization: "a",
  *     years: 1,
  *     locality: "a",
@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example <identifier>
  * ```
+ *
+ * @deprecated alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate
  */
 export class Certificate extends pulumi.CustomResource {
     /**
@@ -52,6 +54,7 @@ export class Certificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CertificateState, opts?: pulumi.CustomResourceOptions): Certificate {
+        pulumi.log.warn("Certificate is deprecated: alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate")
         return new Certificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -173,8 +176,11 @@ export class Certificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate */
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate */
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Certificate is deprecated: alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -237,8 +243,6 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -24,6 +24,7 @@ class AutoSnapshotPolicyArgs:
                  repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  retention_days: pulumi.Input[_builtins.int],
                  time_points: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
@@ -31,7 +32,8 @@ class AutoSnapshotPolicyArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
 
@@ -45,6 +47,11 @@ class AutoSnapshotPolicyArgs:
                The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
                
                The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] association_type: The association type between the automatic snapshot policy and target resources. Valid values:
+               - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+               - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+               
+               > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
@@ -54,10 +61,13 @@ class AutoSnapshotPolicyArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
         """
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "retention_days", retention_days)
         pulumi.set(__self__, "time_points", time_points)
+        if association_type is not None:
+            pulumi.set(__self__, "association_type", association_type)
         if auto_snapshot_policy_name is not None:
             pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
@@ -77,6 +87,8 @@ class AutoSnapshotPolicyArgs:
             pulumi.set(__self__, "tags", tags)
         if target_copy_regions is not None:
             pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        if target_tags is not None:
+            pulumi.set(__self__, "target_tags", target_tags)
 
     @_builtins.property
     @pulumi.getter(name="repeatWeekdays")
@@ -120,6 +132,22 @@ class AutoSnapshotPolicyArgs:
     @time_points.setter
     def time_points(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "time_points", value)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The association type between the automatic snapshot policy and target resources. Valid values:
+        - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+        - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+
+        > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+        """
+        return pulumi.get(self, "association_type")
+
+    @association_type.setter
+    def association_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "association_type", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -219,10 +247,23 @@ class AutoSnapshotPolicyArgs:
     def target_copy_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_copy_regions", value)
 
+    @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]]]:
+        """
+        The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
+        """
+        return pulumi.get(self, "target_tags")
+
+    @target_tags.setter
+    def target_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]]]):
+        pulumi.set(self, "target_tags", value)
+
 
 @pulumi.input_type
 class _AutoSnapshotPolicyState:
     def __init__(__self__, *,
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
@@ -236,10 +277,16 @@ class _AutoSnapshotPolicyState:
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapshotPolicy resources.
 
+        :param pulumi.Input[_builtins.str] association_type: The association type between the automatic snapshot policy and target resources. Valid values:
+               - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+               - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+               
+               > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
@@ -255,6 +302,7 @@ class _AutoSnapshotPolicyState:
         :param pulumi.Input[_builtins.str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The points in time of the day at which to create automatic snapshots.
                
                The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -263,6 +311,8 @@ class _AutoSnapshotPolicyState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        if association_type is not None:
+            pulumi.set(__self__, "association_type", association_type)
         if auto_snapshot_policy_name is not None:
             pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
@@ -292,8 +342,26 @@ class _AutoSnapshotPolicyState:
             pulumi.set(__self__, "tags", tags)
         if target_copy_regions is not None:
             pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        if target_tags is not None:
+            pulumi.set(__self__, "target_tags", target_tags)
         if time_points is not None:
             pulumi.set(__self__, "time_points", time_points)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The association type between the automatic snapshot policy and target resources. Valid values:
+        - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+        - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+
+        > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+        """
+        return pulumi.get(self, "association_type")
+
+    @association_type.setter
+    def association_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "association_type", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -455,6 +523,18 @@ class _AutoSnapshotPolicyState:
         pulumi.set(self, "target_copy_regions", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]]]:
+        """
+        The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
+        """
+        return pulumi.get(self, "target_tags")
+
+    @target_tags.setter
+    def target_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AutoSnapshotPolicyTargetTagArgs']]]]):
+        pulumi.set(self, "target_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="timePoints")
     def time_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -479,6 +559,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
@@ -489,6 +570,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -534,6 +616,11 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] association_type: The association type between the automatic snapshot policy and target resources. Valid values:
+               - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+               - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+               
+               > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
@@ -546,6 +633,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - `-1`: Automatic snapshots are retained until they are deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The points in time of the day at which to create automatic snapshots.
                
                The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -616,6 +704,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
@@ -626,6 +715,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -636,6 +726,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoSnapshotPolicyArgs.__new__(AutoSnapshotPolicyArgs)
 
+            __props__.__dict__["association_type"] = association_type
             __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
             __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
             __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
@@ -650,6 +741,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_copy_regions"] = target_copy_regions
+            __props__.__dict__["target_tags"] = target_tags
             if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__.__dict__["time_points"] = time_points
@@ -666,6 +758,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            association_type: pulumi.Input[Optional[_builtins.str]] = None,
             auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
             copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
@@ -679,6 +772,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]]] = None,
             time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AutoSnapshotPolicy':
         """
         Get an existing AutoSnapshotPolicy resource's state with the given name, id, and optional extra
@@ -687,6 +781,11 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] association_type: The association type between the automatic snapshot policy and target resources. Valid values:
+               - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+               - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+               
+               > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
@@ -702,6 +801,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The points in time of the day at which to create automatic snapshots.
                
                The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -714,6 +814,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         __props__ = _AutoSnapshotPolicyState.__new__(_AutoSnapshotPolicyState)
 
+        __props__.__dict__["association_type"] = association_type
         __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
         __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
         __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
@@ -727,8 +828,21 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_copy_regions"] = target_copy_regions
+        __props__.__dict__["target_tags"] = target_tags
         __props__.__dict__["time_points"] = time_points
         return AutoSnapshotPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The association type between the automatic snapshot policy and target resources. Valid values:
+        - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+        - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `target_tags`. Changing this parameter creates a new resource.
+
+        > **NOTE:** Before you can set `association_type` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+        """
+        return pulumi.get(self, "association_type")
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -836,6 +950,14 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         The destination region to which to copy the snapshot. You can specify only a single destination region.
         """
         return pulumi.get(self, "target_copy_regions")
+
+    @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> pulumi.Output[Optional[Sequence['outputs.AutoSnapshotPolicyTargetTag']]]:
+        """
+        The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
+        """
+        return pulumi.get(self, "target_tags")
 
     @_builtins.property
     @pulumi.getter(name="timePoints")

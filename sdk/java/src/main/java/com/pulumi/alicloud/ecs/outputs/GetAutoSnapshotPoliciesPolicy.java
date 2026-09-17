@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ecs.outputs;
 
+import com.pulumi.alicloud.ecs.outputs.GetAutoSnapshotPoliciesPolicyTargetTag;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -15,15 +16,30 @@ import java.util.Objects;
 @CustomType
 public final class GetAutoSnapshotPoliciesPolicy {
     /**
+     * @return The association type between the automatic snapshot policy and target resources.
+     * 
+     */
+    private String associationType;
+    /**
      * @return The ID of the Auto Snapshot Policy.
      * 
      */
     private String autoSnapshotPolicyId;
     /**
+     * @return The name of the automatic snapshot policy.
+     * 
+     */
+    private String autoSnapshotPolicyName;
+    /**
      * @return The retention period of the snapshot copied across regions.
      * 
      */
     private Integer copiedSnapshotsRetentionDays;
+    /**
+     * @return The time when the automatic snapshot policy was created.
+     * 
+     */
+    private String createTime;
     /**
      * @return The number of disks to which the automatic snapshot policy is applied.
      * 
@@ -40,10 +56,15 @@ public final class GetAutoSnapshotPoliciesPolicy {
      */
     private String id;
     /**
-     * @return The snapshot policy name..
+     * @return The total number of records.
      * 
      */
-    private String name;
+    private Integer recordTotal;
+    /**
+     * @return The region ID of the automatic snapshot policy.
+     * 
+     */
+    private String regionId;
     /**
      * @return The automatic snapshot repetition dates.
      * 
@@ -55,7 +76,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
      */
     private Integer retentionDays;
     /**
-     * @return The status of Auto Snapshot Policy.
+     * @return The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
      * 
      */
     private String status;
@@ -70,6 +91,11 @@ public final class GetAutoSnapshotPoliciesPolicy {
      */
     private List<String> targetCopyRegions;
     /**
+     * @return The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+     * 
+     */
+    private List<GetAutoSnapshotPoliciesPolicyTargetTag> targetTags;
+    /**
      * @return The automatic snapshot creation schedule, and the unit of measurement is hour.
      * 
      */
@@ -82,6 +108,13 @@ public final class GetAutoSnapshotPoliciesPolicy {
 
     private GetAutoSnapshotPoliciesPolicy() {}
     /**
+     * @return The association type between the automatic snapshot policy and target resources.
+     * 
+     */
+    public String associationType() {
+        return this.associationType;
+    }
+    /**
      * @return The ID of the Auto Snapshot Policy.
      * 
      */
@@ -89,11 +122,25 @@ public final class GetAutoSnapshotPoliciesPolicy {
         return this.autoSnapshotPolicyId;
     }
     /**
+     * @return The name of the automatic snapshot policy.
+     * 
+     */
+    public String autoSnapshotPolicyName() {
+        return this.autoSnapshotPolicyName;
+    }
+    /**
      * @return The retention period of the snapshot copied across regions.
      * 
      */
     public Integer copiedSnapshotsRetentionDays() {
         return this.copiedSnapshotsRetentionDays;
+    }
+    /**
+     * @return The time when the automatic snapshot policy was created.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
     }
     /**
      * @return The number of disks to which the automatic snapshot policy is applied.
@@ -117,11 +164,18 @@ public final class GetAutoSnapshotPoliciesPolicy {
         return this.id;
     }
     /**
-     * @return The snapshot policy name..
+     * @return The total number of records.
      * 
      */
-    public String name() {
-        return this.name;
+    public Integer recordTotal() {
+        return this.recordTotal;
+    }
+    /**
+     * @return The region ID of the automatic snapshot policy.
+     * 
+     */
+    public String regionId() {
+        return this.regionId;
     }
     /**
      * @return The automatic snapshot repetition dates.
@@ -138,7 +192,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
         return this.retentionDays;
     }
     /**
-     * @return The status of Auto Snapshot Policy.
+     * @return The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
      * 
      */
     public String status() {
@@ -157,6 +211,13 @@ public final class GetAutoSnapshotPoliciesPolicy {
      */
     public List<String> targetCopyRegions() {
         return this.targetCopyRegions;
+    }
+    /**
+     * @return The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+     * 
+     */
+    public List<GetAutoSnapshotPoliciesPolicyTargetTag> targetTags() {
+        return this.targetTags;
     }
     /**
      * @return The automatic snapshot creation schedule, and the unit of measurement is hour.
@@ -182,37 +243,55 @@ public final class GetAutoSnapshotPoliciesPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String associationType;
         private String autoSnapshotPolicyId;
+        private String autoSnapshotPolicyName;
         private Integer copiedSnapshotsRetentionDays;
+        private String createTime;
         private Integer diskNums;
         private Boolean enableCrossRegionCopy;
         private String id;
-        private String name;
+        private Integer recordTotal;
+        private String regionId;
         private List<String> repeatWeekdays;
         private Integer retentionDays;
         private String status;
         private Map<String,String> tags;
         private List<String> targetCopyRegions;
+        private List<GetAutoSnapshotPoliciesPolicyTargetTag> targetTags;
         private List<String> timePoints;
         private Integer volumeNums;
         public Builder() {}
         public Builder(GetAutoSnapshotPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.associationType = defaults.associationType;
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
+    	      this.autoSnapshotPolicyName = defaults.autoSnapshotPolicyName;
     	      this.copiedSnapshotsRetentionDays = defaults.copiedSnapshotsRetentionDays;
+    	      this.createTime = defaults.createTime;
     	      this.diskNums = defaults.diskNums;
     	      this.enableCrossRegionCopy = defaults.enableCrossRegionCopy;
     	      this.id = defaults.id;
-    	      this.name = defaults.name;
+    	      this.recordTotal = defaults.recordTotal;
+    	      this.regionId = defaults.regionId;
     	      this.repeatWeekdays = defaults.repeatWeekdays;
     	      this.retentionDays = defaults.retentionDays;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
     	      this.targetCopyRegions = defaults.targetCopyRegions;
+    	      this.targetTags = defaults.targetTags;
     	      this.timePoints = defaults.timePoints;
     	      this.volumeNums = defaults.volumeNums;
         }
 
+        @CustomType.Setter
+        public Builder associationType(String associationType) {
+            if (associationType == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "associationType");
+            }
+            this.associationType = associationType;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
             if (autoSnapshotPolicyId == null) {
@@ -222,11 +301,27 @@ public final class GetAutoSnapshotPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
+            if (autoSnapshotPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "autoSnapshotPolicyName");
+            }
+            this.autoSnapshotPolicyName = autoSnapshotPolicyName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder copiedSnapshotsRetentionDays(Integer copiedSnapshotsRetentionDays) {
             if (copiedSnapshotsRetentionDays == null) {
               throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "copiedSnapshotsRetentionDays");
             }
             this.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -254,11 +349,19 @@ public final class GetAutoSnapshotPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "name");
+        public Builder recordTotal(Integer recordTotal) {
+            if (recordTotal == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "recordTotal");
             }
-            this.name = name;
+            this.recordTotal = recordTotal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regionId(String regionId) {
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
@@ -308,6 +411,17 @@ public final class GetAutoSnapshotPoliciesPolicy {
             return targetCopyRegions(List.of(targetCopyRegions));
         }
         @CustomType.Setter
+        public Builder targetTags(List<GetAutoSnapshotPoliciesPolicyTargetTag> targetTags) {
+            if (targetTags == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "targetTags");
+            }
+            this.targetTags = targetTags;
+            return this;
+        }
+        public Builder targetTags(GetAutoSnapshotPoliciesPolicyTargetTag... targetTags) {
+            return targetTags(List.of(targetTags));
+        }
+        @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
             if (timePoints == null) {
               throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "timePoints");
@@ -328,17 +442,22 @@ public final class GetAutoSnapshotPoliciesPolicy {
         }
         public GetAutoSnapshotPoliciesPolicy build() {
             final var _resultValue = new GetAutoSnapshotPoliciesPolicy();
+            _resultValue.associationType = associationType;
             _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.autoSnapshotPolicyName = autoSnapshotPolicyName;
             _resultValue.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
+            _resultValue.createTime = createTime;
             _resultValue.diskNums = diskNums;
             _resultValue.enableCrossRegionCopy = enableCrossRegionCopy;
             _resultValue.id = id;
-            _resultValue.name = name;
+            _resultValue.recordTotal = recordTotal;
+            _resultValue.regionId = regionId;
             _resultValue.repeatWeekdays = repeatWeekdays;
             _resultValue.retentionDays = retentionDays;
             _resultValue.status = status;
             _resultValue.tags = tags;
             _resultValue.targetCopyRegions = targetCopyRegions;
+            _resultValue.targetTags = targetTags;
             _resultValue.timePoints = timePoints;
             _resultValue.volumeNums = volumeNums;
             return _resultValue;

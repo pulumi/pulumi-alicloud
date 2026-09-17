@@ -367,7 +367,7 @@ public final class CertState extends com.pulumi.resources.ResourceArgs {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
     @Import(name="status")
@@ -376,7 +376,7 @@ public final class CertState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      * 
      */
     public Optional<Output<String>> status() {
@@ -942,7 +942,7 @@ public final class CertState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param status The status of the certificate. Valid values:
          * - `REVOKE`: indicates that the certificate has been revoked.
-         * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+         * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
          * 
          * @return builder
          * 
@@ -955,7 +955,7 @@ public final class CertState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param status The status of the certificate. Valid values:
          * - `REVOKE`: indicates that the certificate has been revoked.
-         * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+         * &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
          * 
          * @return builder
          * 

@@ -55,6 +55,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshot:Snapshot")]
     public partial class Snapshot : global::Pulumi.CustomResource
     {
+        [Output("available")]
+        public Output<bool> Available { get; private set; } = null!;
+
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
 
@@ -112,6 +115,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        [Output("waitUntil")]
+        public Output<string?> WaitUntil { get; private set; } = null!;
 
 
         /// <summary>
@@ -214,6 +220,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        [Input("waitUntil")]
+        public Input<string>? WaitUntil { get; set; }
+
         public SnapshotArgs()
         {
         }
@@ -222,6 +231,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
+        [Input("available")]
+        public Input<bool>? Available { get; set; }
+
         [Input("category")]
         public Input<string>? Category { get; set; }
 
@@ -285,6 +297,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        [Input("waitUntil")]
+        public Input<string>? WaitUntil { get; set; }
 
         public SnapshotState()
         {

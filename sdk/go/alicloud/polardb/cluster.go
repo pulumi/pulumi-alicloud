@@ -92,6 +92,67 @@ import (
 //
 // ```
 //
+// # Create a PolarDB PostgreSQL distributed cluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("PostgreSQL"),
+//				DbVersion: pulumi.StringRef("16"),
+//				Category:  pulumi.StringRef("Normal"),
+//				PayType:   "PostPaid",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = polardb.NewCluster(ctx, "default", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("PostgreSQL"),
+//				DbVersion:   pulumi.String("16"),
+//				PayType:     pulumi.String("PostPaid"),
+//				CnNodeClass: pulumi.String("polar.pg.x4.medium"),
+//				DnNodeClass: pulumi.String("polar.pg.x4.medium"),
+//				CnNodeNum:   pulumi.Int(1),
+//				DnNodeNum:   pulumi.Int(2),
+//				VswitchId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Description: pulumi.String("terraform-example-distributed"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
 // Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
 //
@@ -224,6 +285,12 @@ type Cluster struct {
 	// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
 	// > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
 	CloneDataPoint pulumi.StringPtrOutput `pulumi:"cloneDataPoint"`
+	// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+	CnNodeClass pulumi.StringOutput `pulumi:"cnNodeClass"`
+	// (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+	CnNodeIds pulumi.StringArrayOutput `pulumi:"cnNodeIds"`
+	// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+	CnNodeNum pulumi.IntOutput `pulumi:"cnNodeNum"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
 	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
@@ -243,12 +310,12 @@ type Cluster struct {
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayOutput `pulumi:"dbClusterIpArrays"`
 	// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
 	DbMinorVersion pulumi.StringOutput `pulumi:"dbMinorVersion"`
-	// The dbNodeClass of cluster node.
+	// The dbNodeClass of cluster node. Required for non-distributed clusters.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
 	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	DbNodeClass pulumi.StringPtrOutput `pulumi:"dbNodeClass"`
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -270,6 +337,12 @@ type Cluster struct {
 	DeletionLock pulumi.IntPtrOutput `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+	DnNodeClass pulumi.StringOutput `pulumi:"dnNodeClass"`
+	// (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+	DnNodeIds pulumi.StringArrayOutput `pulumi:"dnNodeIds"`
+	// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+	DnNodeNum pulumi.IntOutput `pulumi:"dnNodeNum"`
 	// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
 	EnableAutomaticRotation pulumi.BoolPtrOutput `pulumi:"enableAutomaticRotation"`
 	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
@@ -310,7 +383,7 @@ type Cluster struct {
 	LowerCaseTableNames pulumi.IntOutput `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
-	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// The ID of the parameter template
 	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -432,9 +505,6 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DbNodeClass == nil {
-		return nil, errors.New("invalid value for required argument 'DbNodeClass'")
-	}
 	if args.DbType == nil {
 		return nil, errors.New("invalid value for required argument 'DbType'")
 	}
@@ -475,6 +545,12 @@ type clusterState struct {
 	// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
 	// > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
 	CloneDataPoint *string `pulumi:"cloneDataPoint"`
+	// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+	CnNodeClass *string `pulumi:"cnNodeClass"`
+	// (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+	CnNodeIds []string `pulumi:"cnNodeIds"`
+	// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+	CnNodeNum *int `pulumi:"cnNodeNum"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
@@ -494,12 +570,12 @@ type clusterState struct {
 	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
 	DbMinorVersion *string `pulumi:"dbMinorVersion"`
-	// The dbNodeClass of cluster node.
+	// The dbNodeClass of cluster node. Required for non-distributed clusters.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
 	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
 	DbNodeClass *string `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -521,6 +597,12 @@ type clusterState struct {
 	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
+	// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+	DnNodeClass *string `pulumi:"dnNodeClass"`
+	// (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+	DnNodeIds []string `pulumi:"dnNodeIds"`
+	// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+	DnNodeNum *int `pulumi:"dnNodeNum"`
 	// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
 	EnableAutomaticRotation *bool `pulumi:"enableAutomaticRotation"`
 	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
@@ -561,7 +643,7 @@ type clusterState struct {
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
 	// The ID of the parameter template
 	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -688,6 +770,12 @@ type ClusterState struct {
 	// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
 	// > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
 	CloneDataPoint pulumi.StringPtrInput
+	// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+	CnNodeClass pulumi.StringPtrInput
+	// (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+	CnNodeIds pulumi.StringArrayInput
+	// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+	CnNodeNum pulumi.IntPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
 	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
@@ -707,12 +795,12 @@ type ClusterState struct {
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
 	DbMinorVersion pulumi.StringPtrInput
-	// The dbNodeClass of cluster node.
+	// The dbNodeClass of cluster node. Required for non-distributed clusters.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
 	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
 	DbNodeClass pulumi.StringPtrInput
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -734,6 +822,12 @@ type ClusterState struct {
 	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
+	// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+	DnNodeClass pulumi.StringPtrInput
+	// (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+	DnNodeIds pulumi.StringArrayInput
+	// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+	DnNodeNum pulumi.IntPtrInput
 	// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
 	EnableAutomaticRotation pulumi.BoolPtrInput
 	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
@@ -774,7 +868,7 @@ type ClusterState struct {
 	LowerCaseTableNames pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
 	// The ID of the parameter template
 	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -903,6 +997,10 @@ type clusterArgs struct {
 	// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
 	// > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
 	CloneDataPoint *string `pulumi:"cloneDataPoint"`
+	// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+	CnNodeClass *string `pulumi:"cnNodeClass"`
+	// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+	CnNodeNum *int `pulumi:"cnNodeNum"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
@@ -918,12 +1016,12 @@ type clusterArgs struct {
 	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
 	DbMinorVersion *string `pulumi:"dbMinorVersion"`
-	// The dbNodeClass of cluster node.
+	// The dbNodeClass of cluster node. Required for non-distributed clusters.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
 	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-	DbNodeClass string `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	DbNodeClass *string `pulumi:"dbNodeClass"`
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -943,6 +1041,10 @@ type clusterArgs struct {
 	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
+	// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+	DnNodeClass *string `pulumi:"dnNodeClass"`
+	// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+	DnNodeNum *int `pulumi:"dnNodeNum"`
 	// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
 	EnableAutomaticRotation *bool `pulumi:"enableAutomaticRotation"`
 	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
@@ -983,7 +1085,7 @@ type clusterArgs struct {
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
 	// The ID of the parameter template
 	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -1099,6 +1201,10 @@ type ClusterArgs struct {
 	// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
 	// > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
 	CloneDataPoint pulumi.StringPtrInput
+	// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+	CnNodeClass pulumi.StringPtrInput
+	// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+	CnNodeNum pulumi.IntPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
 	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
@@ -1114,12 +1220,12 @@ type ClusterArgs struct {
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
 	DbMinorVersion pulumi.StringPtrInput
-	// The dbNodeClass of cluster node.
+	// The dbNodeClass of cluster node. Required for non-distributed clusters.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
 	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-	DbNodeClass pulumi.StringInput
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	DbNodeClass pulumi.StringPtrInput
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -1139,6 +1245,10 @@ type ClusterArgs struct {
 	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
+	// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+	DnNodeClass pulumi.StringPtrInput
+	// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+	DnNodeNum pulumi.IntPtrInput
 	// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
 	EnableAutomaticRotation pulumi.BoolPtrInput
 	// Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
@@ -1179,7 +1289,7 @@ type ClusterArgs struct {
 	LowerCaseTableNames pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
 	// The ID of the parameter template
 	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -1397,6 +1507,21 @@ func (o ClusterOutput) CloneDataPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.CloneDataPoint }).(pulumi.StringPtrOutput)
 }
 
+// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+func (o ClusterOutput) CnNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CnNodeClass }).(pulumi.StringOutput)
+}
+
+// (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+func (o ClusterOutput) CnNodeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.CnNodeIds }).(pulumi.StringArrayOutput)
+}
+
+// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+func (o ClusterOutput) CnNodeNum() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.CnNodeNum }).(pulumi.IntOutput)
+}
+
 // Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 func (o ClusterOutput) CollectorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CollectorStatus }).(pulumi.StringOutput)
@@ -1440,15 +1565,15 @@ func (o ClusterOutput) DbMinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbMinorVersion }).(pulumi.StringOutput)
 }
 
-// The dbNodeClass of cluster node.
+// The dbNodeClass of cluster node. Required for non-distributed clusters.
 // > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 // From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
 // From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-func (o ClusterOutput) DbNodeClass() pulumi.StringOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
+func (o ClusterOutput) DbNodeClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DbNodeClass }).(pulumi.StringPtrOutput)
 }
 
-// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
 // > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 func (o ClusterOutput) DbNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DbNodeCount }).(pulumi.IntOutput)
@@ -1495,6 +1620,21 @@ func (o ClusterOutput) DeletionLock() pulumi.IntPtrOutput {
 // The description of cluster.
 func (o ClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+func (o ClusterOutput) DnNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DnNodeClass }).(pulumi.StringOutput)
+}
+
+// (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+func (o ClusterOutput) DnNodeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.DnNodeIds }).(pulumi.StringArrayOutput)
+}
+
+// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+func (o ClusterOutput) DnNodeNum() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DnNodeNum }).(pulumi.IntOutput)
 }
 
 // Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
@@ -1582,7 +1722,7 @@ func (o ClusterOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
 }
 
-// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+// Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
 func (o ClusterOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }

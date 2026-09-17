@@ -22,6 +22,10 @@ public final class GetEndpointAclServiceResult {
     private String id;
     private String instanceId;
     private @Nullable String moduleName;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private String status;
 
     private GetEndpointAclServiceResult() {}
@@ -44,6 +48,10 @@ public final class GetEndpointAclServiceResult {
     public Optional<String> moduleName() {
         return Optional.ofNullable(this.moduleName);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public String status() {
         return this.status;
     }

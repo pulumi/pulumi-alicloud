@@ -69,6 +69,12 @@ import (
 type AutoSnapshotPolicy struct {
 	pulumi.CustomResourceState
 
+	// The association type between the automatic snapshot policy and target resources. Valid values:
+	// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+	// - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+	//
+	// > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+	AssociationType pulumi.StringOutput `pulumi:"associationType"`
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	AutoSnapshotPolicyName pulumi.StringOutput `pulumi:"autoSnapshotPolicyName"`
 	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
@@ -99,6 +105,8 @@ type AutoSnapshotPolicy struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions pulumi.StringArrayOutput `pulumi:"targetCopyRegions"`
+	// The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+	TargetTags AutoSnapshotPolicyTargetTagArrayOutput `pulumi:"targetTags"`
 	// The points in time of the day at which to create automatic snapshots.
 	//
 	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -148,6 +156,12 @@ func GetAutoSnapshotPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutoSnapshotPolicy resources.
 type autoSnapshotPolicyState struct {
+	// The association type between the automatic snapshot policy and target resources. Valid values:
+	// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+	// - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+	//
+	// > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+	AssociationType *string `pulumi:"associationType"`
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	AutoSnapshotPolicyName *string `pulumi:"autoSnapshotPolicyName"`
 	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
@@ -178,6 +192,8 @@ type autoSnapshotPolicyState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
+	// The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+	TargetTags []AutoSnapshotPolicyTargetTag `pulumi:"targetTags"`
 	// The points in time of the day at which to create automatic snapshots.
 	//
 	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -189,6 +205,12 @@ type autoSnapshotPolicyState struct {
 }
 
 type AutoSnapshotPolicyState struct {
+	// The association type between the automatic snapshot policy and target resources. Valid values:
+	// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+	// - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+	//
+	// > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+	AssociationType pulumi.StringPtrInput
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	AutoSnapshotPolicyName pulumi.StringPtrInput
 	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
@@ -219,6 +241,8 @@ type AutoSnapshotPolicyState struct {
 	Tags pulumi.StringMapInput
 	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions pulumi.StringArrayInput
+	// The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+	TargetTags AutoSnapshotPolicyTargetTagArrayInput
 	// The points in time of the day at which to create automatic snapshots.
 	//
 	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -234,6 +258,12 @@ func (AutoSnapshotPolicyState) ElementType() reflect.Type {
 }
 
 type autoSnapshotPolicyArgs struct {
+	// The association type between the automatic snapshot policy and target resources. Valid values:
+	// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+	// - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+	//
+	// > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+	AssociationType *string `pulumi:"associationType"`
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	AutoSnapshotPolicyName *string `pulumi:"autoSnapshotPolicyName"`
 	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
@@ -258,6 +288,8 @@ type autoSnapshotPolicyArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
+	// The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+	TargetTags []AutoSnapshotPolicyTargetTag `pulumi:"targetTags"`
 	// The points in time of the day at which to create automatic snapshots.
 	//
 	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -270,6 +302,12 @@ type autoSnapshotPolicyArgs struct {
 
 // The set of arguments for constructing a AutoSnapshotPolicy resource.
 type AutoSnapshotPolicyArgs struct {
+	// The association type between the automatic snapshot policy and target resources. Valid values:
+	// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+	// - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+	//
+	// > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+	AssociationType pulumi.StringPtrInput
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	AutoSnapshotPolicyName pulumi.StringPtrInput
 	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
@@ -294,6 +332,8 @@ type AutoSnapshotPolicyArgs struct {
 	Tags pulumi.StringMapInput
 	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions pulumi.StringArrayInput
+	// The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+	TargetTags AutoSnapshotPolicyTargetTagArrayInput
 	// The points in time of the day at which to create automatic snapshots.
 	//
 	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -391,6 +431,15 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 	return o
 }
 
+// The association type between the automatic snapshot policy and target resources. Valid values:
+// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+// - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+//
+// > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+func (o AutoSnapshotPolicyOutput) AssociationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.AssociationType }).(pulumi.StringOutput)
+}
+
 // The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 func (o AutoSnapshotPolicyOutput) AutoSnapshotPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.AutoSnapshotPolicyName }).(pulumi.StringOutput)
@@ -460,6 +509,11 @@ func (o AutoSnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
 // The destination region to which to copy the snapshot. You can specify only a single destination region.
 func (o AutoSnapshotPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.TargetCopyRegions }).(pulumi.StringArrayOutput)
+}
+
+// The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+func (o AutoSnapshotPolicyOutput) TargetTags() AutoSnapshotPolicyTargetTagArrayOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) AutoSnapshotPolicyTargetTagArrayOutput { return v.TargetTags }).(AutoSnapshotPolicyTargetTagArrayOutput)
 }
 
 // The points in time of the day at which to create automatic snapshots.

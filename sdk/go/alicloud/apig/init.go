@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "alicloud:apig/route:Route":
 		r = &Route{}
+	case "alicloud:apig/secret:Secret":
+		r = &Secret{}
 	case "alicloud:apig/service:Service":
 		r = &Service{}
 	case "alicloud:apig/source:Source":
@@ -99,6 +101,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apig/route",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apig/secret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

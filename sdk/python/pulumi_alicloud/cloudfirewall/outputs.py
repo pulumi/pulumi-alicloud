@@ -2722,6 +2722,8 @@ class GetNatFirewallsFirewallResult(dict):
                  nat_route_entry_lists: Sequence['outputs.GetNatFirewallsFirewallNatRouteEntryListResult'],
                  proxy_id: _builtins.str,
                  proxy_name: _builtins.str,
+                 region_no: _builtins.str,
+                 status: _builtins.str,
                  strict_mode: _builtins.int,
                  vpc_id: _builtins.str):
         """
@@ -2733,6 +2735,8 @@ class GetNatFirewallsFirewallResult(dict):
         :param Sequence['GetNatFirewallsFirewallNatRouteEntryListArgs'] nat_route_entry_lists: The list of routes to be switched by the NAT gateway.
         :param _builtins.str proxy_id: NAT firewall ID
         :param _builtins.str proxy_name: NAT firewall name
+        :param _builtins.str region_no: Region
+        :param _builtins.str status: The status of the resource
         :param _builtins.int strict_mode: Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
         :param _builtins.str vpc_id: The ID of the VPC instance.
         """
@@ -2744,6 +2748,8 @@ class GetNatFirewallsFirewallResult(dict):
         pulumi.set(__self__, "nat_route_entry_lists", nat_route_entry_lists)
         pulumi.set(__self__, "proxy_id", proxy_id)
         pulumi.set(__self__, "proxy_name", proxy_name)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "strict_mode", strict_mode)
         pulumi.set(__self__, "vpc_id", vpc_id)
 
@@ -2810,6 +2816,22 @@ class GetNatFirewallsFirewallResult(dict):
         NAT firewall name
         """
         return pulumi.get(self, "proxy_name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionNo")
+    def region_no(self) -> _builtins.str:
+        """
+        Region
+        """
+        return pulumi.get(self, "region_no")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="strictMode")

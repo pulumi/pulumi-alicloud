@@ -594,28 +594,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
-     * 
-     * @deprecated
-     * Field &#39;node_type&#39; has been deprecated from version 1.120.1
+     * The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      * 
      */
-    @Deprecated /* Field 'node_type' has been deprecated from version 1.120.1 */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
-     * 
-     * @deprecated
-     * Field &#39;node_type&#39; has been deprecated from version 1.120.1
+     * @return The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      * 
      */
-    @Deprecated /* Field 'node_type' has been deprecated from version 1.120.1 */
     public Optional<Output<String>> nodeType() {
         return Optional.ofNullable(this.nodeType);
     }
@@ -1957,34 +1949,26 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, valid values:
-         * - `MASTER_SLAVE`: High availability (dual copies)
-         * - `STAND_ALONE`: Single copy
+         * @param nodeType The node type. Valid values:
+         * - `MASTER_SLAVE`: High availability (master-replica)
+         * - `STAND_ALONE`: Standalone
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_type&#39; has been deprecated from version 1.120.1
-         * 
          */
-        @Deprecated /* Field 'node_type' has been deprecated from version 1.120.1 */
         public Builder nodeType(@Nullable Output<String> nodeType) {
             $.nodeType = nodeType;
             return this;
         }
 
         /**
-         * @param nodeType Node type, valid values:
-         * - `MASTER_SLAVE`: High availability (dual copies)
-         * - `STAND_ALONE`: Single copy
+         * @param nodeType The node type. Valid values:
+         * - `MASTER_SLAVE`: High availability (master-replica)
+         * - `STAND_ALONE`: Standalone
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_type&#39; has been deprecated from version 1.120.1
-         * 
          */
-        @Deprecated /* Field 'node_type' has been deprecated from version 1.120.1 */
         public Builder nodeType(String nodeType) {
             return nodeType(Output.of(nodeType));
         }

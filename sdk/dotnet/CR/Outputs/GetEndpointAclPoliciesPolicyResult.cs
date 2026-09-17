@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CR.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The type of endpoint.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the attributes.
         /// </summary>
         public readonly string EndpointType;
         /// <summary>

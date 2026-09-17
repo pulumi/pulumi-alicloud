@@ -164,14 +164,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of data disks created with instance. See `dataDisks` below.
+     * The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<InstanceDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `dataDisks` below.
+     * @return The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      * 
      */
     public Optional<Output<List<InstanceDataDiskArgs>>> dataDisks() {
@@ -307,6 +307,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     * 
+     */
+    @Import(name="enableNetworkEncryption")
+    private @Nullable Output<Boolean> enableNetworkEncryption;
+
+    /**
+     * @return Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     * 
+     */
+    public Optional<Output<Boolean>> enableNetworkEncryption() {
+        return Optional.ofNullable(this.enableNetworkEncryption);
+    }
+
+    /**
      * (Available since v1.232.0) The expiration time of the instance.
      * 
      */
@@ -435,14 +454,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The options of images. See `imageOptions` below.
+     * The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      * 
      */
     @Import(name="imageOptions")
     private @Nullable Output<InstanceImageOptionsArgs> imageOptions;
 
     /**
-     * @return The options of images. See `imageOptions` below.
+     * @return The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      * 
      */
     public Optional<Output<InstanceImageOptionsArgs>> imageOptions() {
@@ -614,14 +633,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to use outdated instance type.
+     * Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      * 
      */
     @Import(name="isOutdated")
     private @Nullable Output<Boolean> isOutdated;
 
     /**
-     * @return Whether to use outdated instance type.
+     * @return Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      * 
      */
     public Optional<Output<Boolean>> isOutdated() {
@@ -840,14 +859,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of network interfaces created with instance. See `networkInterfaces` below.
+     * The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<InstanceNetworkInterfacesArgs> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
+     * @return The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      * 
      */
     public Optional<Output<InstanceNetworkInterfacesArgs>> networkInterfaces() {
@@ -1238,14 +1257,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      * 
      */
     @Import(name="spotDuration")
     private @Nullable Output<Integer> spotDuration;
 
     /**
-     * @return The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * @return The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      * 
      */
     public Optional<Output<Integer>> spotDuration() {
@@ -1664,6 +1683,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.dryRun = $.dryRun;
         this.enableHighDensityMode = $.enableHighDensityMode;
         this.enableJumboFrame = $.enableJumboFrame;
+        this.enableNetworkEncryption = $.enableNetworkEncryption;
         this.expiredTime = $.expiredTime;
         this.forceDelete = $.forceDelete;
         this.hostName = $.hostName;
@@ -1951,7 +1971,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
+         * @param dataDisks The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1962,7 +1982,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
+         * @param dataDisks The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1972,7 +1992,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
+         * @param dataDisks The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -2158,6 +2178,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableNetworkEncryption Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNetworkEncryption(@Nullable Output<Boolean> enableNetworkEncryption) {
+            $.enableNetworkEncryption = enableNetworkEncryption;
+            return this;
+        }
+
+        /**
+         * @param enableNetworkEncryption Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNetworkEncryption(Boolean enableNetworkEncryption) {
+            return enableNetworkEncryption(Output.of(enableNetworkEncryption));
+        }
+
+        /**
          * @param expiredTime (Available since v1.232.0) The expiration time of the instance.
          * 
          * @return builder
@@ -2334,7 +2379,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageOptions The options of images. See `imageOptions` below.
+         * @param imageOptions The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
          * 
          * @return builder
          * 
@@ -2345,7 +2390,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageOptions The options of images. See `imageOptions` below.
+         * @param imageOptions The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
          * 
          * @return builder
          * 
@@ -2589,7 +2634,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isOutdated Whether to use outdated instance type.
+         * @param isOutdated Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
          * 
          * @return builder
          * 
@@ -2600,7 +2645,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isOutdated Whether to use outdated instance type.
+         * @param isOutdated Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
          * 
          * @return builder
          * 
@@ -2899,7 +2944,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
+         * @param networkInterfaces The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -2910,7 +2955,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance. See `networkInterfaces` below.
+         * @param networkInterfaces The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -3451,7 +3496,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotDuration The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+         * @param spotDuration The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
          * 
          * @return builder
          * 
@@ -3462,7 +3507,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotDuration The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+         * @param spotDuration The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
          * 
          * @return builder
          * 

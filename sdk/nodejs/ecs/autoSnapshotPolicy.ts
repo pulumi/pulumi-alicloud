@@ -76,6 +76,14 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     *
+     * > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     */
+    declare public readonly associationType: pulumi.Output<string>;
+    /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     declare public readonly autoSnapshotPolicyName: pulumi.Output<string>;
@@ -132,6 +140,10 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
      */
     declare public readonly targetCopyRegions: pulumi.Output<string[] | undefined>;
     /**
+     * The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     */
+    declare public readonly targetTags: pulumi.Output<outputs.ecs.AutoSnapshotPolicyTargetTag[] | undefined>;
+    /**
      * The points in time of the day at which to create automatic snapshots.
      *
      * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -155,6 +167,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoSnapshotPolicyState | undefined;
+            resourceInputs["associationType"] = state?.associationType;
             resourceInputs["autoSnapshotPolicyName"] = state?.autoSnapshotPolicyName;
             resourceInputs["copiedSnapshotsRetentionDays"] = state?.copiedSnapshotsRetentionDays;
             resourceInputs["copyEncryptionConfiguration"] = state?.copyEncryptionConfiguration;
@@ -168,6 +181,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["targetCopyRegions"] = state?.targetCopyRegions;
+            resourceInputs["targetTags"] = state?.targetTags;
             resourceInputs["timePoints"] = state?.timePoints;
         } else {
             const args = argsOrState as AutoSnapshotPolicyArgs | undefined;
@@ -180,6 +194,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
             if (args?.timePoints === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
+            resourceInputs["associationType"] = args?.associationType;
             resourceInputs["autoSnapshotPolicyName"] = args?.autoSnapshotPolicyName;
             resourceInputs["copiedSnapshotsRetentionDays"] = args?.copiedSnapshotsRetentionDays;
             resourceInputs["copyEncryptionConfiguration"] = args?.copyEncryptionConfiguration;
@@ -190,6 +205,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
             resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["targetCopyRegions"] = args?.targetCopyRegions;
+            resourceInputs["targetTags"] = args?.targetTags;
             resourceInputs["timePoints"] = args?.timePoints;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
@@ -204,6 +220,14 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AutoSnapshotPolicy resources.
  */
 export interface AutoSnapshotPolicyState {
+    /**
+     * The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     *
+     * > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     */
+    associationType?: pulumi.Input<string | undefined>;
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
@@ -261,6 +285,10 @@ export interface AutoSnapshotPolicyState {
      */
     targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     */
+    targetTags?: pulumi.Input<pulumi.Input<inputs.ecs.AutoSnapshotPolicyTargetTag>[] | undefined>;
+    /**
      * The points in time of the day at which to create automatic snapshots.
      *
      * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -276,6 +304,14 @@ export interface AutoSnapshotPolicyState {
  * The set of arguments for constructing a AutoSnapshotPolicy resource.
  */
 export interface AutoSnapshotPolicyArgs {
+    /**
+     * The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     *
+     * > **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     */
+    associationType?: pulumi.Input<string | undefined>;
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
@@ -320,6 +356,10 @@ export interface AutoSnapshotPolicyArgs {
      * The destination region to which to copy the snapshot. You can specify only a single destination region.
      */
     targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     */
+    targetTags?: pulumi.Input<pulumi.Input<inputs.ecs.AutoSnapshotPolicyTargetTag>[] | undefined>;
     /**
      * The points in time of the day at which to create automatic snapshots.
      *

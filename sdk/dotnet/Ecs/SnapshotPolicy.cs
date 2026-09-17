@@ -62,6 +62,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshotPolicy:SnapshotPolicy")]
     public partial class SnapshotPolicy : global::Pulumi.CustomResource
     {
+        [Output("associationType")]
+        public Output<string> AssociationType { get; private set; } = null!;
+
         [Output("autoSnapshotPolicyName")]
         public Output<string> AutoSnapshotPolicyName { get; private set; } = null!;
 
@@ -115,6 +118,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Output("targetCopyRegions")]
         public Output<ImmutableArray<string>> TargetCopyRegions { get; private set; } = null!;
+
+        [Output("targetTags")]
+        public Output<ImmutableArray<Outputs.SnapshotPolicyTargetTag>> TargetTags { get; private set; } = null!;
 
         /// <summary>
         /// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -170,6 +176,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("associationType")]
+        public Input<string>? AssociationType { get; set; }
+
         [Input("autoSnapshotPolicyName")]
         public Input<string>? AutoSnapshotPolicyName { get; set; }
 
@@ -231,6 +240,14 @@ namespace Pulumi.AliCloud.Ecs
             set => _targetCopyRegions = value;
         }
 
+        [Input("targetTags")]
+        private InputList<Inputs.SnapshotPolicyTargetTagArgs>? _targetTags;
+        public InputList<Inputs.SnapshotPolicyTargetTagArgs> TargetTags
+        {
+            get => _targetTags ?? (_targetTags = new InputList<Inputs.SnapshotPolicyTargetTagArgs>());
+            set => _targetTags = value;
+        }
+
         [Input("timePoints", required: true)]
         private InputList<string>? _timePoints;
 
@@ -253,6 +270,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("associationType")]
+        public Input<string>? AssociationType { get; set; }
+
         [Input("autoSnapshotPolicyName")]
         public Input<string>? AutoSnapshotPolicyName { get; set; }
 
@@ -321,6 +341,14 @@ namespace Pulumi.AliCloud.Ecs
         {
             get => _targetCopyRegions ?? (_targetCopyRegions = new InputList<string>());
             set => _targetCopyRegions = value;
+        }
+
+        [Input("targetTags")]
+        private InputList<Inputs.SnapshotPolicyTargetTagGetArgs>? _targetTags;
+        public InputList<Inputs.SnapshotPolicyTargetTagGetArgs> TargetTags
+        {
+            get => _targetTags ?? (_targetTags = new InputList<Inputs.SnapshotPolicyTargetTagGetArgs>());
+            set => _targetTags = value;
         }
 
         [Input("timePoints")]

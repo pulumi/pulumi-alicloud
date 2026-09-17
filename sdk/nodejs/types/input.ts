@@ -2544,6 +2544,17 @@ export namespace apig {
         value?: pulumi.Input<string | undefined>;
     }
 
+    export interface SecretKmsConfig {
+        /**
+         * The KMS instance ID.
+         */
+        kmsInstanceId: pulumi.Input<string>;
+        /**
+         * The KMS key ID.
+         */
+        kmsKeyId: pulumi.Input<string>;
+    }
+
     export interface ServiceHealthCheckConfig {
         /**
          * Whether to enable health check
@@ -10787,6 +10798,17 @@ export namespace ecs {
         kmsKeyId?: pulumi.Input<string | undefined>;
     }
 
+    export interface AutoSnapshotPolicyTargetTag {
+        /**
+         * The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+         */
+        tagKey?: pulumi.Input<string | undefined>;
+        /**
+         * The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+         */
+        tagValue?: pulumi.Input<string | undefined>;
+    }
+
     export interface DedicatedHostNetworkAttribute {
         /**
          * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
@@ -11388,6 +11410,11 @@ export namespace ecs {
     export interface SnapshotPolicyCopyEncryptionConfiguration {
         encrypted?: pulumi.Input<boolean | undefined>;
         kmsKeyId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SnapshotPolicyTargetTag {
+        tagKey?: pulumi.Input<string | undefined>;
+        tagValue?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -13631,6 +13658,80 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface GetListsQueryArgs {
+        /**
+         * Whether to sort in descending order. Valid values: `true`, `false`.
+         *
+         * QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+         */
+        desc?: boolean;
+        /**
+         * The fuzzy search for list description.
+         */
+        descriptionLike?: string;
+        /**
+         * The fuzzy search for list ID.
+         */
+        idLike?: string;
+        /**
+         * The value passed to the ListLists API to filter list contents.
+         */
+        itemLike?: string;
+        /**
+         * The type of the custom list, e.g. `ip`.
+         */
+        kind?: string;
+        /**
+         * The fuzzy search matching a list name or its items.
+         */
+        nameItemLike?: string;
+        /**
+         * The fuzzy search for list name.
+         */
+        nameLike?: string;
+        /**
+         * Specify the column to sort by.
+         */
+        orderBy?: string;
+    }
+
+    export interface GetListsQueryArgsArgs {
+        /**
+         * Whether to sort in descending order. Valid values: `true`, `false`.
+         *
+         * QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+         */
+        desc?: pulumi.Input<boolean | undefined>;
+        /**
+         * The fuzzy search for list description.
+         */
+        descriptionLike?: pulumi.Input<string | undefined>;
+        /**
+         * The fuzzy search for list ID.
+         */
+        idLike?: pulumi.Input<string | undefined>;
+        /**
+         * The value passed to the ListLists API to filter list contents.
+         */
+        itemLike?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the custom list, e.g. `ip`.
+         */
+        kind?: pulumi.Input<string | undefined>;
+        /**
+         * The fuzzy search matching a list name or its items.
+         */
+        nameItemLike?: pulumi.Input<string | undefined>;
+        /**
+         * The fuzzy search for list name.
+         */
+        nameLike?: pulumi.Input<string | undefined>;
+        /**
+         * Specify the column to sort by.
+         */
+        orderBy?: pulumi.Input<string | undefined>;
+    }
+
     export interface GetWafRulesetsQueryArgs {
         /**
          * The fuzzy search for rule set ID, rule set name, rule ID, and rule name.

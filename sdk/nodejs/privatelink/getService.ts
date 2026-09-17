@@ -13,11 +13,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = alicloud.privatelink.getService({
+ * const _default = alicloud.privatelink.getService({
  *     enable: "On",
  * });
  * ```
@@ -35,7 +37,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetServiceArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
      *
      * > **NOTE:** Setting `enable = "On"` to open the Privatelink service that means you have read and agreed the [Privatelink Terms of Service](https://help.aliyun.com/document_detail/197619.html). The service can not closed once it is opened.
      */
@@ -65,11 +67,13 @@ export interface GetServiceResult {
  *
  * ## Example Usage
  *
+ * Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = alicloud.privatelink.getService({
+ * const _default = alicloud.privatelink.getService({
  *     enable: "On",
  * });
  * ```
@@ -87,7 +91,7 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
  */
 export interface GetServiceOutputArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
      *
      * > **NOTE:** Setting `enable = "On"` to open the Privatelink service that means you have read and agreed the [Privatelink Terms of Service](https://help.aliyun.com/document_detail/197619.html). The service can not closed once it is opened.
      */

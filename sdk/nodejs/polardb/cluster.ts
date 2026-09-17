@@ -60,6 +60,42 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Create a PolarDB PostgreSQL distributed cluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.polardb.getNodeClasses({
+ *     dbType: "PostgreSQL",
+ *     dbVersion: "16",
+ *     category: "Normal",
+ *     payType: "PostPaid",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.classes?.[0]?.zoneId),
+ *     vswitchName: "terraform-example",
+ * });
+ * const defaultCluster = new alicloud.polardb.Cluster("default", {
+ *     dbType: "PostgreSQL",
+ *     dbVersion: "16",
+ *     payType: "PostPaid",
+ *     cnNodeClass: "polar.pg.x4.medium",
+ *     dnNodeClass: "polar.pg.x4.medium",
+ *     cnNodeNum: 1,
+ *     dnNodeNum: 2,
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     description: "terraform-example-distributed",
+ * });
+ * ```
+ *
  * When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
  * Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
  *
@@ -173,6 +209,18 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly cloneDataPoint: pulumi.Output<string | undefined>;
     /**
+     * The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     */
+    declare public readonly cnNodeClass: pulumi.Output<string>;
+    /**
+     * (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+     */
+    declare public /*out*/ readonly cnNodeIds: pulumi.Output<string[]>;
+    /**
+     * The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     */
+    declare public readonly cnNodeNum: pulumi.Output<number>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     declare public readonly collectorStatus: pulumi.Output<string>;
@@ -208,14 +256,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly dbMinorVersion: pulumi.Output<string>;
     /**
-     * The dbNodeClass of cluster node.
+     * The dbNodeClass of cluster node. Required for non-distributed clusters.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
      */
-    declare public readonly dbNodeClass: pulumi.Output<string>;
+    declare public readonly dbNodeClass: pulumi.Output<string | undefined>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     declare public readonly dbNodeCount: pulumi.Output<number>;
@@ -254,6 +302,18 @@ export class Cluster extends pulumi.CustomResource {
      * The description of cluster.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     */
+    declare public readonly dnNodeClass: pulumi.Output<string>;
+    /**
+     * (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+     */
+    declare public /*out*/ readonly dnNodeIds: pulumi.Output<string[]>;
+    /**
+     * The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     */
+    declare public readonly dnNodeNum: pulumi.Output<number>;
     /**
      * Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
      */
@@ -325,7 +385,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly maintainTime: pulumi.Output<string>;
     /**
-     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      */
     declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
@@ -548,6 +608,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["automaticRotation"] = state?.automaticRotation;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
             resourceInputs["cloneDataPoint"] = state?.cloneDataPoint;
+            resourceInputs["cnNodeClass"] = state?.cnNodeClass;
+            resourceInputs["cnNodeIds"] = state?.cnNodeIds;
+            resourceInputs["cnNodeNum"] = state?.cnNodeNum;
             resourceInputs["collectorStatus"] = state?.collectorStatus;
             resourceInputs["compressStorage"] = state?.compressStorage;
             resourceInputs["connectionString"] = state?.connectionString;
@@ -566,6 +629,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["defaultTimeZone"] = state?.defaultTimeZone;
             resourceInputs["deletionLock"] = state?.deletionLock;
             resourceInputs["description"] = state?.description;
+            resourceInputs["dnNodeClass"] = state?.dnNodeClass;
+            resourceInputs["dnNodeIds"] = state?.dnNodeIds;
+            resourceInputs["dnNodeNum"] = state?.dnNodeNum;
             resourceInputs["enableAutomaticRotation"] = state?.enableAutomaticRotation;
             resourceInputs["enableDynamodb"] = state?.enableDynamodb;
             resourceInputs["encryptNewTables"] = state?.encryptNewTables;
@@ -629,9 +695,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (args?.dbNodeClass === undefined && !opts.urn) {
-                throw new Error("Missing required property 'dbNodeClass'");
-            }
             if (args?.dbType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbType'");
             }
@@ -642,6 +705,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
             resourceInputs["cloneDataPoint"] = args?.cloneDataPoint;
+            resourceInputs["cnNodeClass"] = args?.cnNodeClass;
+            resourceInputs["cnNodeNum"] = args?.cnNodeNum;
             resourceInputs["collectorStatus"] = args?.collectorStatus;
             resourceInputs["compressStorage"] = args?.compressStorage;
             resourceInputs["creationCategory"] = args?.creationCategory;
@@ -657,6 +722,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["defaultTimeZone"] = args?.defaultTimeZone;
             resourceInputs["deletionLock"] = args?.deletionLock;
             resourceInputs["description"] = args?.description;
+            resourceInputs["dnNodeClass"] = args?.dnNodeClass;
+            resourceInputs["dnNodeNum"] = args?.dnNodeNum;
             resourceInputs["enableAutomaticRotation"] = args?.enableAutomaticRotation;
             resourceInputs["enableDynamodb"] = args?.enableDynamodb;
             resourceInputs["encryptNewTables"] = args?.encryptNewTables;
@@ -715,9 +782,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["automaticRotation"] = undefined /*out*/;
+            resourceInputs["cnNodeIds"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbRevisionVersionLists"] = undefined /*out*/;
+            resourceInputs["dnNodeIds"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["rotationInterval"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -754,6 +823,18 @@ export interface ClusterState {
      */
     cloneDataPoint?: pulumi.Input<string | undefined>;
     /**
+     * The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     */
+    cnNodeClass?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+     */
+    cnNodeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     */
+    cnNodeNum?: pulumi.Input<number | undefined>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     collectorStatus?: pulumi.Input<string | undefined>;
@@ -789,14 +870,14 @@ export interface ClusterState {
      */
     dbMinorVersion?: pulumi.Input<string | undefined>;
     /**
-     * The dbNodeClass of cluster node.
+     * The dbNodeClass of cluster node. Required for non-distributed clusters.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
      */
     dbNodeClass?: pulumi.Input<string | undefined>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     dbNodeCount?: pulumi.Input<number | undefined>;
@@ -835,6 +916,18 @@ export interface ClusterState {
      * The description of cluster.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     */
+    dnNodeClass?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+     */
+    dnNodeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     */
+    dnNodeNum?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
      */
@@ -906,7 +999,7 @@ export interface ClusterState {
      */
     maintainTime?: pulumi.Input<string | undefined>;
     /**
-     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      */
     modifyType?: pulumi.Input<string | undefined>;
     /**
@@ -1134,6 +1227,14 @@ export interface ClusterArgs {
      */
     cloneDataPoint?: pulumi.Input<string | undefined>;
     /**
+     * The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     */
+    cnNodeClass?: pulumi.Input<string | undefined>;
+    /**
+     * The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     */
+    cnNodeNum?: pulumi.Input<number | undefined>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     collectorStatus?: pulumi.Input<string | undefined>;
@@ -1161,14 +1262,14 @@ export interface ClusterArgs {
      */
     dbMinorVersion?: pulumi.Input<string | undefined>;
     /**
-     * The dbNodeClass of cluster node.
+     * The dbNodeClass of cluster node. Required for non-distributed clusters.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
      */
-    dbNodeClass: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string | undefined>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     dbNodeCount?: pulumi.Input<number | undefined>;
@@ -1203,6 +1304,14 @@ export interface ClusterArgs {
      * The description of cluster.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     */
+    dnNodeClass?: pulumi.Input<string | undefined>;
+    /**
+     * The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     */
+    dnNodeNum?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
      */
@@ -1274,7 +1383,7 @@ export interface ClusterArgs {
      */
     maintainTime?: pulumi.Input<string | undefined>;
     /**
-     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      */
     modifyType?: pulumi.Input<string | undefined>;
     /**

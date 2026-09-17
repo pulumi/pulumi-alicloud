@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfig',
     'AutoSnapshotPolicyCopyEncryptionConfiguration',
+    'AutoSnapshotPolicyTargetTag',
     'DedicatedHostNetworkAttribute',
     'EcsInstanceSetDataDisk',
     'EcsInstanceSetExcludeInstanceFilter',
@@ -41,8 +42,10 @@ __all__ = [
     'LaunchTemplateSystemDisk',
     'ReservedInstanceOperationLock',
     'SnapshotPolicyCopyEncryptionConfiguration',
+    'SnapshotPolicyTargetTag',
     'GetActivationsActivationResult',
     'GetAutoSnapshotPoliciesPolicyResult',
+    'GetAutoSnapshotPoliciesPolicyTargetTagResult',
     'GetCapacityReservationsReservationResult',
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
@@ -243,6 +246,56 @@ class AutoSnapshotPolicyCopyEncryptionConfiguration(dict):
         The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
         """
         return pulumi.get(self, "kms_key_id")
+
+
+@pulumi.output_type
+class AutoSnapshotPolicyTargetTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoSnapshotPolicyTargetTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoSnapshotPolicyTargetTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoSnapshotPolicyTargetTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: Optional[_builtins.str] = None,
+                 tag_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str tag_key: The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+        :param _builtins.str tag_value: The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[_builtins.str]:
+        """
+        The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[_builtins.str]:
+        """
+        The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+        """
+        return pulumi.get(self, "tag_value")
 
 
 @pulumi.output_type
@@ -2331,6 +2384,46 @@ class SnapshotPolicyCopyEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
+class SnapshotPolicyTargetTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SnapshotPolicyTargetTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SnapshotPolicyTargetTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SnapshotPolicyTargetTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: Optional[_builtins.str] = None,
+                 tag_value: Optional[_builtins.str] = None):
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
 class GetActivationsActivationResult(dict):
     def __init__(__self__, *,
                  activation_id: _builtins.str,
@@ -2461,47 +2554,70 @@ class GetActivationsActivationResult(dict):
 @pulumi.output_type
 class GetAutoSnapshotPoliciesPolicyResult(dict):
     def __init__(__self__, *,
+                 association_type: _builtins.str,
                  auto_snapshot_policy_id: _builtins.str,
+                 auto_snapshot_policy_name: _builtins.str,
                  copied_snapshots_retention_days: _builtins.int,
+                 create_time: _builtins.str,
                  disk_nums: _builtins.int,
                  enable_cross_region_copy: _builtins.bool,
                  id: _builtins.str,
-                 name: _builtins.str,
+                 record_total: _builtins.int,
+                 region_id: _builtins.str,
                  repeat_weekdays: Sequence[_builtins.str],
                  retention_days: _builtins.int,
                  status: _builtins.str,
                  tags: Mapping[str, _builtins.str],
                  target_copy_regions: Sequence[_builtins.str],
+                 target_tags: Sequence['outputs.GetAutoSnapshotPoliciesPolicyTargetTagResult'],
                  time_points: Sequence[_builtins.str],
                  volume_nums: _builtins.int):
         """
+        :param _builtins.str association_type: The association type between the automatic snapshot policy and target resources.
         :param _builtins.str auto_snapshot_policy_id: The ID of the Auto Snapshot Policy.
+        :param _builtins.str auto_snapshot_policy_name: The name of the automatic snapshot policy.
         :param _builtins.int copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
+        :param _builtins.str create_time: The time when the automatic snapshot policy was created.
         :param _builtins.int disk_nums: The number of disks to which the automatic snapshot policy is applied.
         :param _builtins.bool enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
         :param _builtins.str id: The ID of the Auto Snapshot Policy.
-        :param _builtins.str name: The snapshot policy name..
+        :param _builtins.int record_total: The total number of records.
+        :param _builtins.str region_id: The region ID of the automatic snapshot policy.
         :param Sequence[_builtins.str] repeat_weekdays: The automatic snapshot repetition dates.
         :param _builtins.int retention_days: The snapshot retention time, and the unit of measurement is day.
-        :param _builtins.str status: The status of Auto Snapshot Policy.
+        :param _builtins.str status: The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param Sequence[_builtins.str] target_copy_regions: The destination region to which the snapshot is copied.
+        :param Sequence['GetAutoSnapshotPoliciesPolicyTargetTagArgs'] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
         :param Sequence[_builtins.str] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour.
         :param _builtins.int volume_nums: The number of extended volumes on which this policy is enabled.
         """
+        pulumi.set(__self__, "association_type", association_type)
         pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "disk_nums", disk_nums)
         pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "record_total", record_total)
+        pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "retention_days", retention_days)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        pulumi.set(__self__, "target_tags", target_tags)
         pulumi.set(__self__, "time_points", time_points)
         pulumi.set(__self__, "volume_nums", volume_nums)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> _builtins.str:
+        """
+        The association type between the automatic snapshot policy and target resources.
+        """
+        return pulumi.get(self, "association_type")
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -2512,12 +2628,28 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @_builtins.property
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> _builtins.str:
+        """
+        The name of the automatic snapshot policy.
+        """
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @_builtins.property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> _builtins.int:
         """
         The retention period of the snapshot copied across regions.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the automatic snapshot policy was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="diskNums")
@@ -2544,12 +2676,20 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
+    @pulumi.getter(name="recordTotal")
+    def record_total(self) -> _builtins.int:
         """
-        The snapshot policy name..
+        The total number of records.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "record_total")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the automatic snapshot policy.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="repeatWeekdays")
@@ -2571,7 +2711,7 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of Auto Snapshot Policy.
+        The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
         """
         return pulumi.get(self, "status")
 
@@ -2592,6 +2732,14 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         return pulumi.get(self, "target_copy_regions")
 
     @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> Sequence['outputs.GetAutoSnapshotPoliciesPolicyTargetTagResult']:
+        """
+        The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "target_tags")
+
+    @_builtins.property
     @pulumi.getter(name="timePoints")
     def time_points(self) -> Sequence[_builtins.str]:
         """
@@ -2606,6 +2754,35 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         The number of extended volumes on which this policy is enabled.
         """
         return pulumi.get(self, "volume_nums")
+
+
+@pulumi.output_type
+class GetAutoSnapshotPoliciesPolicyTargetTagResult(dict):
+    def __init__(__self__, *,
+                 tag_key: _builtins.str,
+                 tag_value: _builtins.str):
+        """
+        :param _builtins.str tag_key: The key of the target tag.
+        :param _builtins.str tag_value: The value of the target tag.
+        """
+        pulumi.set(__self__, "tag_key", tag_key)
+        pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        The key of the target tag.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> _builtins.str:
+        """
+        The value of the target tag.
+        """
+        return pulumi.get(self, "tag_value")
 
 
 @pulumi.output_type

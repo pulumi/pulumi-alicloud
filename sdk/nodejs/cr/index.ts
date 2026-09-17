@@ -95,6 +95,11 @@ export const getVpcEndpointLinkedVpcs: typeof import("./getVpcEndpointLinkedVpcs
 export const getVpcEndpointLinkedVpcsOutput: typeof import("./getVpcEndpointLinkedVpcs").getVpcEndpointLinkedVpcsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpcEndpointLinkedVpcs","getVpcEndpointLinkedVpcsOutput"], () => require("./getVpcEndpointLinkedVpcs"));
 
+export { InstanceCustomizedDomainArgs, InstanceCustomizedDomainState } from "./instanceCustomizedDomain";
+export type InstanceCustomizedDomain = import("./instanceCustomizedDomain").InstanceCustomizedDomain;
+export const InstanceCustomizedDomain: typeof import("./instanceCustomizedDomain").InstanceCustomizedDomain = null as any;
+utilities.lazyLoad(exports, ["InstanceCustomizedDomain"], () => require("./instanceCustomizedDomain"));
+
 export { InternetEndpointArgs, InternetEndpointState } from "./internetEndpoint";
 export type InternetEndpoint = import("./internetEndpoint").InternetEndpoint;
 export const InternetEndpoint: typeof import("./internetEndpoint").InternetEndpoint = null as any;
@@ -147,6 +152,8 @@ const _module = {
                 return new ChartRepository(name, <any>undefined, { urn })
             case "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
                 return new EndpointAclPolicy(name, <any>undefined, { urn })
+            case "alicloud:cr/instanceCustomizedDomain:InstanceCustomizedDomain":
+                return new InstanceCustomizedDomain(name, <any>undefined, { urn })
             case "alicloud:cr/internetEndpoint:InternetEndpoint":
                 return new InternetEndpoint(name, <any>undefined, { urn })
             case "alicloud:cr/namespace:Namespace":
@@ -172,6 +179,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cr/chain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chartNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chartRepository", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/endpointAclPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/instanceCustomizedDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/internetEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/registryEnterpriseInstance", _module)

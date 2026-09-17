@@ -186,7 +186,7 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     declare public readonly resetPermissionFlag: pulumi.Output<boolean | undefined>;
     /**
-     * The status of the resource
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -338,7 +338,7 @@ export interface RdsAccountState {
      */
     resetPermissionFlag?: pulumi.Input<boolean | undefined>;
     /**
-     * The status of the resource
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -438,7 +438,7 @@ export interface RdsAccountArgs {
      */
     resetPermissionFlag?: pulumi.Input<boolean | undefined>;
     /**
-     * The status of the resource
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
     status?: pulumi.Input<string | undefined>;
     /**

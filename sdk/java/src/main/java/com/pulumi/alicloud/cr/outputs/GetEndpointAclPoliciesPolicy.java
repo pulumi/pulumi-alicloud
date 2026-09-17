@@ -16,7 +16,7 @@ public final class GetEndpointAclPoliciesPolicy {
      */
     private String description;
     /**
-     * @return The type of endpoint.
+     * @return The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     private String endpointType;
@@ -45,7 +45,7 @@ public final class GetEndpointAclPoliciesPolicy {
         return this.description;
     }
     /**
-     * @return The type of endpoint.
+     * @return The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     public String endpointType() {

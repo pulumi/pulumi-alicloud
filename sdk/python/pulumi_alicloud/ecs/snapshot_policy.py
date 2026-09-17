@@ -24,6 +24,7 @@ class SnapshotPolicyArgs:
                  repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  retention_days: pulumi.Input[_builtins.int],
                  time_points: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional['SnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
@@ -31,7 +32,8 @@ class SnapshotPolicyArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]] = None):
         """
         The set of arguments for constructing a SnapshotPolicy resource.
 
@@ -51,6 +53,8 @@ class SnapshotPolicyArgs:
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "retention_days", retention_days)
         pulumi.set(__self__, "time_points", time_points)
+        if association_type is not None:
+            pulumi.set(__self__, "association_type", association_type)
         if auto_snapshot_policy_name is not None:
             pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
@@ -70,6 +74,8 @@ class SnapshotPolicyArgs:
             pulumi.set(__self__, "tags", tags)
         if target_copy_regions is not None:
             pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        if target_tags is not None:
+            pulumi.set(__self__, "target_tags", target_tags)
 
     @_builtins.property
     @pulumi.getter(name="repeatWeekdays")
@@ -114,6 +120,15 @@ class SnapshotPolicyArgs:
     @time_points.setter
     def time_points(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "time_points", value)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "association_type")
+
+    @association_type.setter
+    def association_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "association_type", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -191,10 +206,20 @@ class SnapshotPolicyArgs:
     def target_copy_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_copy_regions", value)
 
+    @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]]:
+        return pulumi.get(self, "target_tags")
+
+    @target_tags.setter
+    def target_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]]):
+        pulumi.set(self, "target_tags", value)
+
 
 @pulumi.input_type
 class _SnapshotPolicyState:
     def __init__(__self__, *,
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional['SnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
@@ -208,6 +233,7 @@ class _SnapshotPolicyState:
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SnapshotPolicy resources.
@@ -225,6 +251,8 @@ class _SnapshotPolicyState:
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         """
+        if association_type is not None:
+            pulumi.set(__self__, "association_type", association_type)
         if auto_snapshot_policy_name is not None:
             pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
@@ -254,8 +282,19 @@ class _SnapshotPolicyState:
             pulumi.set(__self__, "tags", tags)
         if target_copy_regions is not None:
             pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        if target_tags is not None:
+            pulumi.set(__self__, "target_tags", target_tags)
         if time_points is not None:
             pulumi.set(__self__, "time_points", time_points)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "association_type")
+
+    @association_type.setter
+    def association_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "association_type", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -391,6 +430,15 @@ class _SnapshotPolicyState:
         pulumi.set(self, "target_copy_regions", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]]:
+        return pulumi.get(self, "target_tags")
+
+    @target_tags.setter
+    def target_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPolicyTargetTagArgs']]]]):
+        pulumi.set(self, "target_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="timePoints")
     def time_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -411,6 +459,7 @@ class SnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
@@ -421,6 +470,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -541,6 +591,7 @@ class SnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
@@ -551,6 +602,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -561,6 +613,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SnapshotPolicyArgs.__new__(SnapshotPolicyArgs)
 
+            __props__.__dict__["association_type"] = association_type
             __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
             __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
             __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
@@ -575,6 +628,7 @@ class SnapshotPolicy(pulumi.CustomResource):
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_copy_regions"] = target_copy_regions
+            __props__.__dict__["target_tags"] = target_tags
             if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__.__dict__["time_points"] = time_points
@@ -591,6 +645,7 @@ class SnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            association_type: pulumi.Input[Optional[_builtins.str]] = None,
             auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
             copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
@@ -604,6 +659,7 @@ class SnapshotPolicy(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict']]]]] = None,
             time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SnapshotPolicy':
         """
         Get an existing SnapshotPolicy resource's state with the given name, id, and optional extra
@@ -629,6 +685,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         __props__ = _SnapshotPolicyState.__new__(_SnapshotPolicyState)
 
+        __props__.__dict__["association_type"] = association_type
         __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
         __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
         __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
@@ -642,8 +699,14 @@ class SnapshotPolicy(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_copy_regions"] = target_copy_regions
+        __props__.__dict__["target_tags"] = target_tags
         __props__.__dict__["time_points"] = time_points
         return SnapshotPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="associationType")
+    def association_type(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "association_type")
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -725,6 +788,11 @@ class SnapshotPolicy(pulumi.CustomResource):
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         return pulumi.get(self, "target_copy_regions")
+
+    @_builtins.property
+    @pulumi.getter(name="targetTags")
+    def target_tags(self) -> pulumi.Output[Optional[Sequence['outputs.SnapshotPolicyTargetTag']]]:
+        return pulumi.get(self, "target_tags")
 
     @_builtins.property
     @pulumi.getter(name="timePoints")

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
 //
 // ## Example Usage
 //
@@ -60,25 +60,31 @@ func GetEndpointAclPolicies(ctx *pulumi.Context, args *GetEndpointAclPoliciesArg
 
 // A collection of arguments for invoking getEndpointAclPolicies.
 type GetEndpointAclPoliciesArgs struct {
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 	EndpointType string `pulumi:"endpointType"`
 	// A list of Endpoint Acl Policy IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the CR Instance.
 	InstanceId string `pulumi:"instanceId"`
+	// The module that needs to set the access policy. Valid values: `Registry`.
+	ModuleName *string `pulumi:"moduleName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getEndpointAclPolicies.
 type GetEndpointAclPoliciesResult struct {
+	// The type of endpoint.
 	EndpointType string `pulumi:"endpointType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                         `pulumi:"id"`
-	Ids        []string                       `pulumi:"ids"`
-	InstanceId string                         `pulumi:"instanceId"`
-	OutputFile *string                        `pulumi:"outputFile"`
-	Policies   []GetEndpointAclPoliciesPolicy `pulumi:"policies"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the CR Instance.
+	InstanceId string  `pulumi:"instanceId"`
+	ModuleName *string `pulumi:"moduleName"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
+	Policies []GetEndpointAclPoliciesPolicy `pulumi:"policies"`
 }
 
 func GetEndpointAclPoliciesOutput(ctx *pulumi.Context, args GetEndpointAclPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclPoliciesResultOutput {
@@ -88,12 +94,14 @@ func GetEndpointAclPoliciesOutput(ctx *pulumi.Context, args GetEndpointAclPolici
 
 // A collection of arguments for invoking getEndpointAclPolicies.
 type GetEndpointAclPoliciesOutputArgs struct {
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// A list of Endpoint Acl Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the CR Instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The module that needs to set the access policy. Valid values: `Registry`.
+	ModuleName pulumi.StringPtrInput `pulumi:"moduleName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
@@ -117,6 +125,7 @@ func (o GetEndpointAclPoliciesResultOutput) ToGetEndpointAclPoliciesResultOutput
 	return o
 }
 
+// The type of endpoint.
 func (o GetEndpointAclPoliciesResultOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -130,14 +139,20 @@ func (o GetEndpointAclPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the CR Instance.
 func (o GetEndpointAclPoliciesResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointAclPoliciesResultOutput) ModuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointAclPoliciesResult) *string { return v.ModuleName }).(pulumi.StringPtrOutput)
 }
 
 func (o GetEndpointAclPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
 func (o GetEndpointAclPoliciesResultOutput) Policies() GetEndpointAclPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesResult) []GetEndpointAclPoliciesPolicy { return v.Policies }).(GetEndpointAclPoliciesPolicyArrayOutput)
 }

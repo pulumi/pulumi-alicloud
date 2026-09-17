@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.alicloud.ecs.inputs.SnapshotPolicyCopyEncryptionConfigurationArgs;
+import com.pulumi.alicloud.ecs.inputs.SnapshotPolicyTargetTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -19,6 +20,13 @@ import javax.annotation.Nullable;
 public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final SnapshotPolicyState Empty = new SnapshotPolicyState();
+
+    @Import(name="associationType")
+    private @Nullable Output<String> associationType;
+
+    public Optional<Output<String>> associationType() {
+        return Optional.ofNullable(this.associationType);
+    }
 
     @Import(name="autoSnapshotPolicyName")
     private @Nullable Output<String> autoSnapshotPolicyName;
@@ -155,6 +163,13 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.targetCopyRegions);
     }
 
+    @Import(name="targetTags")
+    private @Nullable Output<List<SnapshotPolicyTargetTagArgs>> targetTags;
+
+    public Optional<Output<List<SnapshotPolicyTargetTagArgs>>> targetTags() {
+        return Optional.ofNullable(this.targetTags);
+    }
+
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.
@@ -177,6 +192,7 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
     private SnapshotPolicyState() {}
 
     private SnapshotPolicyState(SnapshotPolicyState $) {
+        this.associationType = $.associationType;
         this.autoSnapshotPolicyName = $.autoSnapshotPolicyName;
         this.copiedSnapshotsRetentionDays = $.copiedSnapshotsRetentionDays;
         this.copyEncryptionConfiguration = $.copyEncryptionConfiguration;
@@ -190,6 +206,7 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
         this.status = $.status;
         this.tags = $.tags;
         this.targetCopyRegions = $.targetCopyRegions;
+        this.targetTags = $.targetTags;
         this.timePoints = $.timePoints;
     }
 
@@ -209,6 +226,15 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
 
         public Builder(SnapshotPolicyState defaults) {
             $ = new SnapshotPolicyState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder associationType(@Nullable Output<String> associationType) {
+            $.associationType = associationType;
+            return this;
+        }
+
+        public Builder associationType(String associationType) {
+            return associationType(Output.of(associationType));
         }
 
         public Builder autoSnapshotPolicyName(@Nullable Output<String> autoSnapshotPolicyName) {
@@ -398,6 +424,19 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
 
         public Builder targetCopyRegions(String... targetCopyRegions) {
             return targetCopyRegions(List.of(targetCopyRegions));
+        }
+
+        public Builder targetTags(@Nullable Output<List<SnapshotPolicyTargetTagArgs>> targetTags) {
+            $.targetTags = targetTags;
+            return this;
+        }
+
+        public Builder targetTags(List<SnapshotPolicyTargetTagArgs> targetTags) {
+            return targetTags(Output.of(targetTags));
+        }
+
+        public Builder targetTags(SnapshotPolicyTargetTagArgs... targetTags) {
+            return targetTags(List.of(targetTags));
         }
 
         /**

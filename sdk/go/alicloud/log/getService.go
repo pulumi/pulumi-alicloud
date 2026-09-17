@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+// Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
 //
 // For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 //
@@ -54,9 +54,7 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-	//
-	// > **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+	// Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
 	Enable *string `pulumi:"enable"`
 }
 
@@ -65,7 +63,7 @@ type GetServiceResult struct {
 	Enable *string `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The current service enable status.
+	// Returns `Opened` when `enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
 	Status string `pulumi:"status"`
 }
 
@@ -76,9 +74,7 @@ func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getService.
 type GetServiceOutputArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-	//
-	// > **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+	// Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 
@@ -110,7 +106,7 @@ func (o GetServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The current service enable status.
+// Returns `Opened` when `enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
 func (o GetServiceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Status }).(pulumi.StringOutput)
 }

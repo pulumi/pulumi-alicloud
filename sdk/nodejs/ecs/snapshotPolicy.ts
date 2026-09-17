@@ -75,6 +75,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnapshotPolicy.__pulumiType;
     }
 
+    declare public readonly associationType: pulumi.Output<string>;
     declare public readonly autoSnapshotPolicyName: pulumi.Output<string>;
     declare public readonly copiedSnapshotsRetentionDays: pulumi.Output<number>;
     declare public readonly copyEncryptionConfiguration: pulumi.Output<outputs.ecs.SnapshotPolicyCopyEncryptionConfiguration | undefined>;
@@ -105,6 +106,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly targetCopyRegions: pulumi.Output<string[] | undefined>;
+    declare public readonly targetTags: pulumi.Output<outputs.ecs.SnapshotPolicyTargetTag[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.
@@ -125,6 +127,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotPolicyState | undefined;
+            resourceInputs["associationType"] = state?.associationType;
             resourceInputs["autoSnapshotPolicyName"] = state?.autoSnapshotPolicyName;
             resourceInputs["copiedSnapshotsRetentionDays"] = state?.copiedSnapshotsRetentionDays;
             resourceInputs["copyEncryptionConfiguration"] = state?.copyEncryptionConfiguration;
@@ -138,6 +141,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["targetCopyRegions"] = state?.targetCopyRegions;
+            resourceInputs["targetTags"] = state?.targetTags;
             resourceInputs["timePoints"] = state?.timePoints;
         } else {
             const args = argsOrState as SnapshotPolicyArgs | undefined;
@@ -150,6 +154,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             if (args?.timePoints === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
+            resourceInputs["associationType"] = args?.associationType;
             resourceInputs["autoSnapshotPolicyName"] = args?.autoSnapshotPolicyName;
             resourceInputs["copiedSnapshotsRetentionDays"] = args?.copiedSnapshotsRetentionDays;
             resourceInputs["copyEncryptionConfiguration"] = args?.copyEncryptionConfiguration;
@@ -160,6 +165,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["targetCopyRegions"] = args?.targetCopyRegions;
+            resourceInputs["targetTags"] = args?.targetTags;
             resourceInputs["timePoints"] = args?.timePoints;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
@@ -174,6 +180,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotPolicy resources.
  */
 export interface SnapshotPolicyState {
+    associationType?: pulumi.Input<string | undefined>;
     autoSnapshotPolicyName?: pulumi.Input<string | undefined>;
     copiedSnapshotsRetentionDays?: pulumi.Input<number | undefined>;
     copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration | undefined>;
@@ -204,6 +211,7 @@ export interface SnapshotPolicyState {
     status?: pulumi.Input<string | undefined>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    targetTags?: pulumi.Input<pulumi.Input<inputs.ecs.SnapshotPolicyTargetTag>[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.
@@ -216,6 +224,7 @@ export interface SnapshotPolicyState {
  * The set of arguments for constructing a SnapshotPolicy resource.
  */
 export interface SnapshotPolicyArgs {
+    associationType?: pulumi.Input<string | undefined>;
     autoSnapshotPolicyName?: pulumi.Input<string | undefined>;
     copiedSnapshotsRetentionDays?: pulumi.Input<number | undefined>;
     copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration | undefined>;
@@ -243,6 +252,7 @@ export interface SnapshotPolicyArgs {
     retentionDays: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    targetTags?: pulumi.Input<pulumi.Input<inputs.ecs.SnapshotPolicyTargetTag>[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.

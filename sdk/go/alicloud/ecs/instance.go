@@ -170,7 +170,7 @@ type Instance struct {
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringOutput `pulumi:"creditSpecification"`
-	// The list of data disks created with instance. See `dataDisks` below.
+	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrOutput `pulumi:"dedicatedHostId"`
@@ -192,6 +192,10 @@ type Instance struct {
 	EnableHighDensityMode pulumi.BoolPtrOutput `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolOutput `pulumi:"enableJumboFrame"`
+	// Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	EnableNetworkEncryption pulumi.BoolOutput `pulumi:"enableNetworkEncryption"`
 	// (Available since v1.232.0) The expiration time of the instance.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -212,7 +216,7 @@ type Instance struct {
 	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
-	// The options of images. See `imageOptions` below.
+	// The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
 	ImageOptions InstanceImageOptionsOutput `pulumi:"imageOptions"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrOutput `pulumi:"includeDataDisks"`
@@ -239,7 +243,7 @@ type Instance struct {
 	Ipv6AddressCount pulumi.IntOutput `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
-	// Whether to use outdated instance type.
+	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
@@ -275,7 +279,7 @@ type Instance struct {
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode pulumi.StringOutput `pulumi:"networkInterfaceTrafficMode"`
-	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
 	NetworkInterfaces InstanceNetworkInterfacesOutput `pulumi:"networkInterfaces"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrOutput `pulumi:"operatorType"`
@@ -351,7 +355,7 @@ type Instance struct {
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
 	SourceDestCheck pulumi.BoolOutput `pulumi:"sourceDestCheck"`
-	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
 	SpotDuration pulumi.IntOutput `pulumi:"spotDuration"`
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
 	// - `Terminate`: The instance is released.
@@ -479,7 +483,7 @@ type instanceState struct {
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification *string `pulumi:"creditSpecification"`
-	// The list of data disks created with instance. See `dataDisks` below.
+	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
@@ -501,6 +505,10 @@ type instanceState struct {
 	EnableHighDensityMode *bool `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
+	// Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	EnableNetworkEncryption *bool `pulumi:"enableNetworkEncryption"`
 	// (Available since v1.232.0) The expiration time of the instance.
 	ExpiredTime *string `pulumi:"expiredTime"`
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -521,7 +529,7 @@ type instanceState struct {
 	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId *string `pulumi:"imageId"`
-	// The options of images. See `imageOptions` below.
+	// The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
 	ImageOptions *InstanceImageOptions `pulumi:"imageOptions"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
@@ -548,7 +556,7 @@ type instanceState struct {
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
-	// Whether to use outdated instance type.
+	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
@@ -584,7 +592,7 @@ type instanceState struct {
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
-	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
 	NetworkInterfaces *InstanceNetworkInterfaces `pulumi:"networkInterfaces"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType *string `pulumi:"operatorType"`
@@ -660,7 +668,7 @@ type instanceState struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
 	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
-	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
 	SpotDuration *int `pulumi:"spotDuration"`
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
 	// - `Terminate`: The instance is released.
@@ -752,7 +760,7 @@ type InstanceState struct {
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringPtrInput
-	// The list of data disks created with instance. See `dataDisks` below.
+	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
@@ -774,6 +782,10 @@ type InstanceState struct {
 	EnableHighDensityMode pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
+	// Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	EnableNetworkEncryption pulumi.BoolPtrInput
 	// (Available since v1.232.0) The expiration time of the instance.
 	ExpiredTime pulumi.StringPtrInput
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -794,7 +806,7 @@ type InstanceState struct {
 	HttpTokens pulumi.StringPtrInput
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId pulumi.StringPtrInput
-	// The options of images. See `imageOptions` below.
+	// The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
 	ImageOptions InstanceImageOptionsPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrInput
@@ -821,7 +833,7 @@ type InstanceState struct {
 	Ipv6AddressCount pulumi.IntPtrInput
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses pulumi.StringArrayInput
-	// Whether to use outdated instance type.
+	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated pulumi.BoolPtrInput
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
@@ -857,7 +869,7 @@ type InstanceState struct {
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode pulumi.StringPtrInput
-	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
 	NetworkInterfaces InstanceNetworkInterfacesPtrInput
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrInput
@@ -933,7 +945,7 @@ type InstanceState struct {
 	SecurityGroups pulumi.StringArrayInput
 	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
 	SourceDestCheck pulumi.BoolPtrInput
-	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
 	SpotDuration pulumi.IntPtrInput
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
 	// - `Terminate`: The instance is released.
@@ -1025,7 +1037,7 @@ type instanceArgs struct {
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification *string `pulumi:"creditSpecification"`
-	// The list of data disks created with instance. See `dataDisks` below.
+	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
@@ -1045,6 +1057,10 @@ type instanceArgs struct {
 	EnableHighDensityMode *bool `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
+	// Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	EnableNetworkEncryption *bool `pulumi:"enableNetworkEncryption"`
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete *bool `pulumi:"forceDelete"`
@@ -1063,7 +1079,7 @@ type instanceArgs struct {
 	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId *string `pulumi:"imageId"`
-	// The options of images. See `imageOptions` below.
+	// The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
 	ImageOptions *InstanceImageOptions `pulumi:"imageOptions"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
@@ -1090,7 +1106,7 @@ type instanceArgs struct {
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
-	// Whether to use outdated instance type.
+	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
@@ -1124,7 +1140,7 @@ type instanceArgs struct {
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
-	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
 	NetworkInterfaces *InstanceNetworkInterfaces `pulumi:"networkInterfaces"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType *string `pulumi:"operatorType"`
@@ -1192,7 +1208,7 @@ type instanceArgs struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
 	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
-	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
 	SpotDuration *int `pulumi:"spotDuration"`
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
 	// - `Terminate`: The instance is released.
@@ -1277,7 +1293,7 @@ type InstanceArgs struct {
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringPtrInput
-	// The list of data disks created with instance. See `dataDisks` below.
+	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
@@ -1297,6 +1313,10 @@ type InstanceArgs struct {
 	EnableHighDensityMode pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
+	// Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	EnableNetworkEncryption pulumi.BoolPtrInput
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete pulumi.BoolPtrInput
@@ -1315,7 +1335,7 @@ type InstanceArgs struct {
 	HttpTokens pulumi.StringPtrInput
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
 	ImageId pulumi.StringPtrInput
-	// The options of images. See `imageOptions` below.
+	// The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
 	ImageOptions InstanceImageOptionsPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrInput
@@ -1342,7 +1362,7 @@ type InstanceArgs struct {
 	Ipv6AddressCount pulumi.IntPtrInput
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses pulumi.StringArrayInput
-	// Whether to use outdated instance type.
+	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated pulumi.BoolPtrInput
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
@@ -1376,7 +1396,7 @@ type InstanceArgs struct {
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode pulumi.StringPtrInput
-	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
 	NetworkInterfaces InstanceNetworkInterfacesPtrInput
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrInput
@@ -1444,7 +1464,7 @@ type InstanceArgs struct {
 	SecurityGroups pulumi.StringArrayInput
 	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
 	SourceDestCheck pulumi.BoolPtrInput
-	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
 	SpotDuration pulumi.IntPtrInput
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
 	// - `Terminate`: The instance is released.
@@ -1642,7 +1662,7 @@ func (o InstanceOutput) CreditSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreditSpecification }).(pulumi.StringOutput)
 }
 
-// The list of data disks created with instance. See `dataDisks` below.
+// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
 func (o InstanceOutput) DataDisks() InstanceDataDiskArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDataDiskArrayOutput { return v.DataDisks }).(InstanceDataDiskArrayOutput)
 }
@@ -1691,6 +1711,13 @@ func (o InstanceOutput) EnableJumboFrame() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnableJumboFrame }).(pulumi.BoolOutput)
 }
 
+// Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+//
+// > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+func (o InstanceOutput) EnableNetworkEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnableNetworkEncryption }).(pulumi.BoolOutput)
+}
+
 // (Available since v1.232.0) The expiration time of the instance.
 func (o InstanceOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
@@ -1735,7 +1762,7 @@ func (o InstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// The options of images. See `imageOptions` below.
+// The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
 func (o InstanceOutput) ImageOptions() InstanceImageOptionsOutput {
 	return o.ApplyT(func(v *Instance) InstanceImageOptionsOutput { return v.ImageOptions }).(InstanceImageOptionsOutput)
 }
@@ -1795,7 +1822,7 @@ func (o InstanceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
 }
 
-// Whether to use outdated instance type.
+// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 func (o InstanceOutput) IsOutdated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.IsOutdated }).(pulumi.BoolPtrOutput)
 }
@@ -1873,7 +1900,7 @@ func (o InstanceOutput) NetworkInterfaceTrafficMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NetworkInterfaceTrafficMode }).(pulumi.StringOutput)
 }
 
-// The list of network interfaces created with instance. See `networkInterfaces` below.
+// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
 func (o InstanceOutput) NetworkInterfaces() InstanceNetworkInterfacesOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkInterfacesOutput { return v.NetworkInterfaces }).(InstanceNetworkInterfacesOutput)
 }
@@ -2015,7 +2042,7 @@ func (o InstanceOutput) SourceDestCheck() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SourceDestCheck }).(pulumi.BoolOutput)
 }
 
-// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
 func (o InstanceOutput) SpotDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SpotDuration }).(pulumi.IntOutput)
 }

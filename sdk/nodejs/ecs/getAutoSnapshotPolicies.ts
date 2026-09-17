@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.117.0+.
+ * > **NOTE:** Available since v1.117.0.
  *
  * ## Example Usage
  *
@@ -74,16 +74,28 @@ export interface GetAutoSnapshotPoliciesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Auto Snapshot Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecs Auto Snapshot Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.ecs.GetAutoSnapshotPoliciesPolicy[];
+    /**
+     * The status of Auto Snapshot Policy.
+     */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.117.0+.
+ * > **NOTE:** Available since v1.117.0.
  *
  * ## Example Usage
  *
