@@ -180,7 +180,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
 
         ## Import
 
-        CR Storage Domain Routing Rule can be imported using the id, e.g.
+        CR Storage Domain Routing Rule can be imported using the id, which consists of instance_id and rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule example <instance_id>:<rule_id>
@@ -239,7 +239,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
 
         ## Import
 
-        CR Storage Domain Routing Rule can be imported using the id, e.g.
+        CR Storage Domain Routing Rule can be imported using the id, which consists of instance_id and rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule example <instance_id>:<rule_id>

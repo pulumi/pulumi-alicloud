@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Polar Db Database can be imported using the id, e.g.
+ * Polar Db Database can be imported using the id, which consists of dbClusterId and db_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:polardb/database:Database example <db_cluster_id>:<db_name>

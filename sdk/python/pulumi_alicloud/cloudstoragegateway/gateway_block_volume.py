@@ -640,7 +640,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
+        Cloud Storage Gateway Gateway Block Volume can be imported using the id, which consists of gateway_id and index_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
@@ -748,7 +748,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
+        Cloud Storage Gateway Gateway Block Volume can be imported using the id, which consists of gateway_id and index_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>

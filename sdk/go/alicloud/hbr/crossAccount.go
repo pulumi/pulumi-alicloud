@@ -60,7 +60,7 @@ import (
 //
 // ## Import
 //
-// Hybrid Backup Recovery (HBR) Cross Account can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Cross Account can be imported using the id, which consists of crossAccountUserId and cross_account_role_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:hbr/crossAccount:CrossAccount example <cross_account_user_id>:<cross_account_role_name>

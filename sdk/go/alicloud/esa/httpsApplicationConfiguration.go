@@ -79,7 +79,7 @@ import (
 //
 // ## Import
 //
-// ESA Https Application Configuration can be imported using the id, e.g.
+// ESA Https Application Configuration can be imported using the id, which consists of siteId and config_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration example <site_id>:<config_id>

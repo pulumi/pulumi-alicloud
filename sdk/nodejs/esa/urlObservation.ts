@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Url Observation can be imported using the id, e.g.
+ * ESA Url Observation can be imported using the id, which consists of siteId and config_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/urlObservation:UrlObservation example <site_id>:<config_id>

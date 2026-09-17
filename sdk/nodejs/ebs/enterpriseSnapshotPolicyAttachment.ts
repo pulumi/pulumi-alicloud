@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * EBS Enterprise Snapshot Policy Attachment can be imported using the id, e.g.
+ * EBS Enterprise Snapshot Policy Attachment can be imported using the id, which consists of policyId and disk_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>

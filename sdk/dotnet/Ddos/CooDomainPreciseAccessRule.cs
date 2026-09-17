@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// DdosCoo Domain Precise Access Rule can be imported using the id, e.g.
+    /// DdosCoo Domain Precise Access Rule can be imported using the id, which consists of domain and name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule example &lt;domain&gt;:&lt;name&gt;

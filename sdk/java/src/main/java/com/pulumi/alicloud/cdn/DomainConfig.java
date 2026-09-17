@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CDN domain config can be imported using the id, e.g.
+ * CDN domain config can be imported using the id, which consists of domain_name, functionName and config_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;:&lt;config_id&gt;

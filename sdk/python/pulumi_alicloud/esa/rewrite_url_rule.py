@@ -446,7 +446,7 @@ class RewriteUrlRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Rewrite Url Rule can be imported using the id, e.g.
+        ESA Rewrite Url Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/rewriteUrlRule:RewriteUrlRule example <site_id>:<config_id>
@@ -526,7 +526,7 @@ class RewriteUrlRule(pulumi.CustomResource):
 
         ## Import
 
-        ESA Rewrite Url Rule can be imported using the id, e.g.
+        ESA Rewrite Url Rule can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/rewriteUrlRule:RewriteUrlRule example <site_id>:<config_id>

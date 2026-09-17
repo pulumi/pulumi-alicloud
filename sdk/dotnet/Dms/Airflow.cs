@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// ## Import
     /// 
-    /// Dms Airflow can be imported using the id, e.g.
+    /// Dms Airflow can be imported using the id, which consists of WorkspaceId and airflow_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dms/airflow:Airflow example &lt;workspace_id&gt;:&lt;airflow_id&gt;

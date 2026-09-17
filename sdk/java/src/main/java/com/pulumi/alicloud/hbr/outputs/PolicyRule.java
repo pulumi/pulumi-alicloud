@@ -64,7 +64,7 @@ public final class PolicyRule {
      */
     private @Nullable String ruleId;
     /**
-     * @return Rule Type
+     * @return Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
      * 
      */
     private String ruleType;
@@ -149,7 +149,7 @@ public final class PolicyRule {
         return Optional.ofNullable(this.ruleId);
     }
     /**
-     * @return Rule Type
+     * @return Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
      * 
      */
     public String ruleType() {

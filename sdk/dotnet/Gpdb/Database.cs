@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB Database can be imported using the id, e.g.
+    /// GPDB Database can be imported using the id, which consists of DbInstanceId and database_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/database:Database example &lt;db_instance_id&gt;:&lt;database_name&gt;

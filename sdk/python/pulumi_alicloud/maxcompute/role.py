@@ -236,7 +236,7 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Max Compute Role can be imported using the id, e.g.
+        Max Compute Role can be imported using the id, which consists of project_name and role_name, e.g.
 
         ```sh
         $ pulumi import alicloud:maxcompute/role:Role example <project_name>:<role_name>
@@ -307,7 +307,7 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Max Compute Role can be imported using the id, e.g.
+        Max Compute Role can be imported using the id, which consists of project_name and role_name, e.g.
 
         ```sh
         $ pulumi import alicloud:maxcompute/role:Role example <project_name>:<role_name>

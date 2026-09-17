@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
+ * VPC Public Ip Address Pool Cidr Block can be imported using the id, which consists of publicIpAddressPoolId and cidr_block, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example <public_ip_address_pool_id>:<cidr_block>

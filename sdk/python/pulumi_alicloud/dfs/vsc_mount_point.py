@@ -214,7 +214,7 @@ class VscMountPoint(pulumi.CustomResource):
 
         ## Import
 
-        Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, which consists of file_system_id and mount_point_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>
@@ -274,7 +274,7 @@ class VscMountPoint(pulumi.CustomResource):
 
         ## Import
 
-        Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, which consists of file_system_id and mount_point_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>

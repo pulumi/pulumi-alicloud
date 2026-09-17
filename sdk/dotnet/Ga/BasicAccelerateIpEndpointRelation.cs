@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// ## Import
     /// 
-    /// Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
+    /// Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, which consists of accelerator_id, AccelerateIpId and endpoint_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example &lt;accelerator_id&gt;:&lt;accelerate_ip_id&gt;:&lt;endpoint_id&gt;

@@ -34,11 +34,11 @@ class EcsInvocationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
         :param pulumi.Input[_builtins.str] frequency: The schedule on which the recurring execution of the command takes place. Take note of the following items:
                * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-               * When you set Timed to true, you must specify Frequency.
+               * When you set `repeat_mode` to `Period`, you must specify `frequency`.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
-        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
+        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
+        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
@@ -53,6 +53,9 @@ class EcsInvocationArgs:
             pulumi.set(__self__, "parameters", parameters)
         if repeat_mode is not None:
             pulumi.set(__self__, "repeat_mode", repeat_mode)
+        if timed is not None:
+            warnings.warn("""Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""", DeprecationWarning)
+            pulumi.log.warn("""timed is deprecated: Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""")
         if timed is not None:
             pulumi.set(__self__, "timed", timed)
         if username is not None:
@@ -90,7 +93,7 @@ class EcsInvocationArgs:
         """
         The schedule on which the recurring execution of the command takes place. Take note of the following items:
         * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-        * When you set Timed to true, you must specify Frequency.
+        * When you set `repeat_mode` to `Period`, you must specify `frequency`.
         * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         """
         return pulumi.get(self, "frequency")
@@ -115,7 +118,7 @@ class EcsInvocationArgs:
     @pulumi.getter(name="repeatMode")
     def repeat_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
         """
         return pulumi.get(self, "repeat_mode")
 
@@ -125,9 +128,10 @@ class EcsInvocationArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""")
     def timed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to periodically run the command. Default value: `false`.
+        Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         """
         return pulumi.get(self, "timed")
 
@@ -181,13 +185,13 @@ class _EcsInvocationState:
         :param pulumi.Input[_builtins.str] command_id: The ID of the command.
         :param pulumi.Input[_builtins.str] frequency: The schedule on which the recurring execution of the command takes place. Take note of the following items:
                * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-               * When you set Timed to true, you must specify Frequency.
+               * When you set `repeat_mode` to `Period`, you must specify `frequency`.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
-        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
+        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
@@ -206,6 +210,9 @@ class _EcsInvocationState:
             pulumi.set(__self__, "repeat_mode", repeat_mode)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if timed is not None:
+            warnings.warn("""Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""", DeprecationWarning)
+            pulumi.log.warn("""timed is deprecated: Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""")
         if timed is not None:
             pulumi.set(__self__, "timed", timed)
         if username is not None:
@@ -231,7 +238,7 @@ class _EcsInvocationState:
         """
         The schedule on which the recurring execution of the command takes place. Take note of the following items:
         * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-        * When you set Timed to true, you must specify Frequency.
+        * When you set `repeat_mode` to `Period`, you must specify `frequency`.
         * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         """
         return pulumi.get(self, "frequency")
@@ -268,7 +275,7 @@ class _EcsInvocationState:
     @pulumi.getter(name="repeatMode")
     def repeat_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
         """
         return pulumi.get(self, "repeat_mode")
 
@@ -290,9 +297,10 @@ class _EcsInvocationState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""")
     def timed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to periodically run the command. Default value: `false`.
+        Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         """
         return pulumi.get(self, "timed")
 
@@ -428,12 +436,12 @@ class EcsInvocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] command_id: The ID of the command.
         :param pulumi.Input[_builtins.str] frequency: The schedule on which the recurring execution of the command takes place. Take note of the following items:
                * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-               * When you set Timed to true, you must specify Frequency.
+               * When you set `repeat_mode` to `Period`, you must specify `frequency`.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
-        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
+        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
+        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
@@ -600,13 +608,13 @@ class EcsInvocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] command_id: The ID of the command.
         :param pulumi.Input[_builtins.str] frequency: The schedule on which the recurring execution of the command takes place. Take note of the following items:
                * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-               * When you set Timed to true, you must specify Frequency.
+               * When you set `repeat_mode` to `Period`, you must specify `frequency`.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
-        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
+        :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
@@ -642,7 +650,7 @@ class EcsInvocation(pulumi.CustomResource):
         """
         The schedule on which the recurring execution of the command takes place. Take note of the following items:
         * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-        * When you set Timed to true, you must specify Frequency.
+        * When you set `repeat_mode` to `Period`, you must specify `frequency`.
         * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         """
         return pulumi.get(self, "frequency")
@@ -667,7 +675,7 @@ class EcsInvocation(pulumi.CustomResource):
     @pulumi.getter(name="repeatMode")
     def repeat_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
+        Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeat_mode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeat_mode` regardless of whether `repeat_mode` is specified.
         """
         return pulumi.get(self, "repeat_mode")
 
@@ -681,9 +689,10 @@ class EcsInvocation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency`.""")
     def timed(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether to periodically run the command. Default value: `false`.
+        Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeat_mode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
         """
         return pulumi.get(self, "timed")
 

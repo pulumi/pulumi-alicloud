@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// ## Import
     /// 
-    /// Log Service (SLS) Logtail Pipeline Config can be imported using the id, e.g.
+    /// Log Service (SLS) Logtail Pipeline Config can be imported using the id, which consists of project and config_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig example &lt;project&gt;:&lt;config_name&gt;

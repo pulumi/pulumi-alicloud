@@ -36,7 +36,7 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
     /**
      * The schedule on which the recurring execution of the command takes place. Take note of the following items:
      * * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-     * * When you set Timed to true, you must specify Frequency.
+     * * When you set `repeatMode` to `Period`, you must specify `frequency`.
      * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
      * 
      */
@@ -46,7 +46,7 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The schedule on which the recurring execution of the command takes place. Take note of the following items:
      * * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-     * * When you set Timed to true, you must specify Frequency.
+     * * When you set `repeatMode` to `Period`, you must specify `frequency`.
      * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
      * 
      */
@@ -85,14 +85,14 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
+     * Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeatMode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeatMode` regardless of whether `repeatMode` is specified.
      * 
      */
     @Import(name="repeatMode")
     private @Nullable Output<String> repeatMode;
 
     /**
-     * @return Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
+     * @return Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeatMode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeatMode` regardless of whether `repeatMode` is specified.
      * 
      */
     public Optional<Output<String>> repeatMode() {
@@ -115,16 +115,24 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies whether to periodically run the command. Default value: `false`.
+     * Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
+     * 
+     * @deprecated
+     * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
      * 
      */
+    @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
     @Import(name="timed")
     private @Nullable Output<Boolean> timed;
 
     /**
-     * @return Specifies whether to periodically run the command. Default value: `false`.
+     * @return Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
+     * 
+     * @deprecated
+     * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
      * 
      */
+    @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
     public Optional<Output<Boolean>> timed() {
         return Optional.ofNullable(this.timed);
     }
@@ -221,7 +229,7 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param frequency The schedule on which the recurring execution of the command takes place. Take note of the following items:
          * * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-         * * When you set Timed to true, you must specify Frequency.
+         * * When you set `repeatMode` to `Period`, you must specify `frequency`.
          * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
          * 
          * @return builder
@@ -235,7 +243,7 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param frequency The schedule on which the recurring execution of the command takes place. Take note of the following items:
          * * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-         * * When you set Timed to true, you must specify Frequency.
+         * * When you set `repeatMode` to `Period`, you must specify `frequency`.
          * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
          * 
          * @return builder
@@ -298,7 +306,7 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param repeatMode Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
+         * @param repeatMode Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeatMode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeatMode` regardless of whether `repeatMode` is specified.
          * 
          * @return builder
          * 
@@ -309,7 +317,7 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param repeatMode Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
+         * @param repeatMode Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `frequency` is not specified, the default value of `repeatMode` is `Once`. When `frequency` is specified, `Period` is used as the value of `repeatMode` regardless of whether `repeatMode` is specified.
          * 
          * @return builder
          * 
@@ -340,22 +348,30 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timed Specifies whether to periodically run the command. Default value: `false`.
+         * @param timed Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+         * 
          */
+        @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
         public Builder timed(@Nullable Output<Boolean> timed) {
             $.timed = timed;
             return this;
         }
 
         /**
-         * @param timed Specifies whether to periodically run the command. Default value: `false`.
+         * @param timed Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+         * 
          */
+        @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
         public Builder timed(Boolean timed) {
             return timed(Output.of(timed));
         }

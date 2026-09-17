@@ -266,7 +266,7 @@ class AddressBook(pulumi.CustomResource):
 
         ## Import
 
-        WAFV3 Address Book can be imported using the id, e.g.
+        WAFV3 Address Book can be imported using the id, which consists of instance_id and address_book_id, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/addressBook:AddressBook example <instance_id>:<address_book_id>
@@ -327,7 +327,7 @@ class AddressBook(pulumi.CustomResource):
 
         ## Import
 
-        WAFV3 Address Book can be imported using the id, e.g.
+        WAFV3 Address Book can be imported using the id, which consists of instance_id and address_book_id, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/addressBook:AddressBook example <instance_id>:<address_book_id>

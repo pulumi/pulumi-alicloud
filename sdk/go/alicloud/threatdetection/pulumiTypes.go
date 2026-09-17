@@ -321,6 +321,148 @@ func (o AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput) Index(i pu
 	}).(AttackPathSensitiveAssetConfigAttackPathAssetListOutput)
 }
 
+type AttackPathWhitelistAttackPathAssetList struct {
+	// The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+	AssetSubType *int `pulumi:"assetSubType"`
+	// The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+	AssetType *int `pulumi:"assetType"`
+	// The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+	InstanceId *string `pulumi:"instanceId"`
+	// The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+	NodeType *string `pulumi:"nodeType"`
+	// The region ID of the cloud product asset instance.
+	RegionId *string `pulumi:"regionId"`
+	// The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+	Vendor int `pulumi:"vendor"`
+}
+
+// AttackPathWhitelistAttackPathAssetListInput is an input type that accepts AttackPathWhitelistAttackPathAssetListArgs and AttackPathWhitelistAttackPathAssetListOutput values.
+// You can construct a concrete instance of `AttackPathWhitelistAttackPathAssetListInput` via:
+//
+//	AttackPathWhitelistAttackPathAssetListArgs{...}
+type AttackPathWhitelistAttackPathAssetListInput interface {
+	pulumi.Input
+
+	ToAttackPathWhitelistAttackPathAssetListOutput() AttackPathWhitelistAttackPathAssetListOutput
+	ToAttackPathWhitelistAttackPathAssetListOutputWithContext(context.Context) AttackPathWhitelistAttackPathAssetListOutput
+}
+
+type AttackPathWhitelistAttackPathAssetListArgs struct {
+	// The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+	AssetSubType pulumi.IntPtrInput `pulumi:"assetSubType"`
+	// The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+	AssetType pulumi.IntPtrInput `pulumi:"assetType"`
+	// The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	// The region ID of the cloud product asset instance.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+	Vendor pulumi.IntInput `pulumi:"vendor"`
+}
+
+func (AttackPathWhitelistAttackPathAssetListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackPathWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (i AttackPathWhitelistAttackPathAssetListArgs) ToAttackPathWhitelistAttackPathAssetListOutput() AttackPathWhitelistAttackPathAssetListOutput {
+	return i.ToAttackPathWhitelistAttackPathAssetListOutputWithContext(context.Background())
+}
+
+func (i AttackPathWhitelistAttackPathAssetListArgs) ToAttackPathWhitelistAttackPathAssetListOutputWithContext(ctx context.Context) AttackPathWhitelistAttackPathAssetListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackPathWhitelistAttackPathAssetListOutput)
+}
+
+// AttackPathWhitelistAttackPathAssetListArrayInput is an input type that accepts AttackPathWhitelistAttackPathAssetListArray and AttackPathWhitelistAttackPathAssetListArrayOutput values.
+// You can construct a concrete instance of `AttackPathWhitelistAttackPathAssetListArrayInput` via:
+//
+//	AttackPathWhitelistAttackPathAssetListArray{ AttackPathWhitelistAttackPathAssetListArgs{...} }
+type AttackPathWhitelistAttackPathAssetListArrayInput interface {
+	pulumi.Input
+
+	ToAttackPathWhitelistAttackPathAssetListArrayOutput() AttackPathWhitelistAttackPathAssetListArrayOutput
+	ToAttackPathWhitelistAttackPathAssetListArrayOutputWithContext(context.Context) AttackPathWhitelistAttackPathAssetListArrayOutput
+}
+
+type AttackPathWhitelistAttackPathAssetListArray []AttackPathWhitelistAttackPathAssetListInput
+
+func (AttackPathWhitelistAttackPathAssetListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttackPathWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (i AttackPathWhitelistAttackPathAssetListArray) ToAttackPathWhitelistAttackPathAssetListArrayOutput() AttackPathWhitelistAttackPathAssetListArrayOutput {
+	return i.ToAttackPathWhitelistAttackPathAssetListArrayOutputWithContext(context.Background())
+}
+
+func (i AttackPathWhitelistAttackPathAssetListArray) ToAttackPathWhitelistAttackPathAssetListArrayOutputWithContext(ctx context.Context) AttackPathWhitelistAttackPathAssetListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackPathWhitelistAttackPathAssetListArrayOutput)
+}
+
+type AttackPathWhitelistAttackPathAssetListOutput struct{ *pulumi.OutputState }
+
+func (AttackPathWhitelistAttackPathAssetListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackPathWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (o AttackPathWhitelistAttackPathAssetListOutput) ToAttackPathWhitelistAttackPathAssetListOutput() AttackPathWhitelistAttackPathAssetListOutput {
+	return o
+}
+
+func (o AttackPathWhitelistAttackPathAssetListOutput) ToAttackPathWhitelistAttackPathAssetListOutputWithContext(ctx context.Context) AttackPathWhitelistAttackPathAssetListOutput {
+	return o
+}
+
+// The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+func (o AttackPathWhitelistAttackPathAssetListOutput) AssetSubType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackPathWhitelistAttackPathAssetList) *int { return v.AssetSubType }).(pulumi.IntPtrOutput)
+}
+
+// The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+func (o AttackPathWhitelistAttackPathAssetListOutput) AssetType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackPathWhitelistAttackPathAssetList) *int { return v.AssetType }).(pulumi.IntPtrOutput)
+}
+
+// The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+func (o AttackPathWhitelistAttackPathAssetListOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackPathWhitelistAttackPathAssetList) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+func (o AttackPathWhitelistAttackPathAssetListOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackPathWhitelistAttackPathAssetList) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the cloud product asset instance.
+func (o AttackPathWhitelistAttackPathAssetListOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackPathWhitelistAttackPathAssetList) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+func (o AttackPathWhitelistAttackPathAssetListOutput) Vendor() pulumi.IntOutput {
+	return o.ApplyT(func(v AttackPathWhitelistAttackPathAssetList) int { return v.Vendor }).(pulumi.IntOutput)
+}
+
+type AttackPathWhitelistAttackPathAssetListArrayOutput struct{ *pulumi.OutputState }
+
+func (AttackPathWhitelistAttackPathAssetListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttackPathWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (o AttackPathWhitelistAttackPathAssetListArrayOutput) ToAttackPathWhitelistAttackPathAssetListArrayOutput() AttackPathWhitelistAttackPathAssetListArrayOutput {
+	return o
+}
+
+func (o AttackPathWhitelistAttackPathAssetListArrayOutput) ToAttackPathWhitelistAttackPathAssetListArrayOutputWithContext(ctx context.Context) AttackPathWhitelistAttackPathAssetListArrayOutput {
+	return o
+}
+
+func (o AttackPathWhitelistAttackPathAssetListArrayOutput) Index(i pulumi.IntInput) AttackPathWhitelistAttackPathAssetListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttackPathWhitelistAttackPathAssetList {
+		return vs[0].([]AttackPathWhitelistAttackPathAssetList)[vs[1].(int)]
+	}).(AttackPathWhitelistAttackPathAssetListOutput)
+}
+
 type CheckConfigSelectedCheck struct {
 	// The ID of the check item.
 	CheckId *int `pulumi:"checkId"`
@@ -1704,6 +1846,310 @@ func (o GetAssetsAssetArrayOutput) Index(i pulumi.IntInput) GetAssetsAssetOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAssetsAsset {
 		return vs[0].([]GetAssetsAsset)[vs[1].(int)]
 	}).(GetAssetsAssetOutput)
+}
+
+type GetAttackPathWhitelistsWhitelist struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The list of attack path cloud product assets.
+	AttackPathAssetLists []GetAttackPathWhitelistsWhitelistAttackPathAssetList `pulumi:"attackPathAssetLists"`
+	// The ID of the attack path whitelist.
+	AttackPathWhitelistId string `pulumi:"attackPathWhitelistId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The path name of the whitelist.
+	PathName string `pulumi:"pathName"`
+	// The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
+	PathType string `pulumi:"pathType"`
+	// The remarks of the whitelist.
+	Remark string `pulumi:"remark"`
+	// The name of the whitelist.
+	WhitelistName string `pulumi:"whitelistName"`
+	// The type of the whitelist.
+	WhitelistType string `pulumi:"whitelistType"`
+}
+
+// GetAttackPathWhitelistsWhitelistInput is an input type that accepts GetAttackPathWhitelistsWhitelistArgs and GetAttackPathWhitelistsWhitelistOutput values.
+// You can construct a concrete instance of `GetAttackPathWhitelistsWhitelistInput` via:
+//
+//	GetAttackPathWhitelistsWhitelistArgs{...}
+type GetAttackPathWhitelistsWhitelistInput interface {
+	pulumi.Input
+
+	ToGetAttackPathWhitelistsWhitelistOutput() GetAttackPathWhitelistsWhitelistOutput
+	ToGetAttackPathWhitelistsWhitelistOutputWithContext(context.Context) GetAttackPathWhitelistsWhitelistOutput
+}
+
+type GetAttackPathWhitelistsWhitelistArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The list of attack path cloud product assets.
+	AttackPathAssetLists GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayInput `pulumi:"attackPathAssetLists"`
+	// The ID of the attack path whitelist.
+	AttackPathWhitelistId pulumi.StringInput `pulumi:"attackPathWhitelistId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The path name of the whitelist.
+	PathName pulumi.StringInput `pulumi:"pathName"`
+	// The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
+	PathType pulumi.StringInput `pulumi:"pathType"`
+	// The remarks of the whitelist.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// The name of the whitelist.
+	WhitelistName pulumi.StringInput `pulumi:"whitelistName"`
+	// The type of the whitelist.
+	WhitelistType pulumi.StringInput `pulumi:"whitelistType"`
+}
+
+func (GetAttackPathWhitelistsWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackPathWhitelistsWhitelist)(nil)).Elem()
+}
+
+func (i GetAttackPathWhitelistsWhitelistArgs) ToGetAttackPathWhitelistsWhitelistOutput() GetAttackPathWhitelistsWhitelistOutput {
+	return i.ToGetAttackPathWhitelistsWhitelistOutputWithContext(context.Background())
+}
+
+func (i GetAttackPathWhitelistsWhitelistArgs) ToGetAttackPathWhitelistsWhitelistOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackPathWhitelistsWhitelistOutput)
+}
+
+// GetAttackPathWhitelistsWhitelistArrayInput is an input type that accepts GetAttackPathWhitelistsWhitelistArray and GetAttackPathWhitelistsWhitelistArrayOutput values.
+// You can construct a concrete instance of `GetAttackPathWhitelistsWhitelistArrayInput` via:
+//
+//	GetAttackPathWhitelistsWhitelistArray{ GetAttackPathWhitelistsWhitelistArgs{...} }
+type GetAttackPathWhitelistsWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackPathWhitelistsWhitelistArrayOutput() GetAttackPathWhitelistsWhitelistArrayOutput
+	ToGetAttackPathWhitelistsWhitelistArrayOutputWithContext(context.Context) GetAttackPathWhitelistsWhitelistArrayOutput
+}
+
+type GetAttackPathWhitelistsWhitelistArray []GetAttackPathWhitelistsWhitelistInput
+
+func (GetAttackPathWhitelistsWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackPathWhitelistsWhitelist)(nil)).Elem()
+}
+
+func (i GetAttackPathWhitelistsWhitelistArray) ToGetAttackPathWhitelistsWhitelistArrayOutput() GetAttackPathWhitelistsWhitelistArrayOutput {
+	return i.ToGetAttackPathWhitelistsWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackPathWhitelistsWhitelistArray) ToGetAttackPathWhitelistsWhitelistArrayOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackPathWhitelistsWhitelistArrayOutput)
+}
+
+type GetAttackPathWhitelistsWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GetAttackPathWhitelistsWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackPathWhitelistsWhitelist)(nil)).Elem()
+}
+
+func (o GetAttackPathWhitelistsWhitelistOutput) ToGetAttackPathWhitelistsWhitelistOutput() GetAttackPathWhitelistsWhitelistOutput {
+	return o
+}
+
+func (o GetAttackPathWhitelistsWhitelistOutput) ToGetAttackPathWhitelistsWhitelistOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The list of attack path cloud product assets.
+func (o GetAttackPathWhitelistsWhitelistOutput) AttackPathAssetLists() GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) []GetAttackPathWhitelistsWhitelistAttackPathAssetList {
+		return v.AttackPathAssetLists
+	}).(GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput)
+}
+
+// The ID of the attack path whitelist.
+func (o GetAttackPathWhitelistsWhitelistOutput) AttackPathWhitelistId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.AttackPathWhitelistId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetAttackPathWhitelistsWhitelistOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The path name of the whitelist.
+func (o GetAttackPathWhitelistsWhitelistOutput) PathName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.PathName }).(pulumi.StringOutput)
+}
+
+// The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
+func (o GetAttackPathWhitelistsWhitelistOutput) PathType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.PathType }).(pulumi.StringOutput)
+}
+
+// The remarks of the whitelist.
+func (o GetAttackPathWhitelistsWhitelistOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// The name of the whitelist.
+func (o GetAttackPathWhitelistsWhitelistOutput) WhitelistName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.WhitelistName }).(pulumi.StringOutput)
+}
+
+// The type of the whitelist.
+func (o GetAttackPathWhitelistsWhitelistOutput) WhitelistType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelist) string { return v.WhitelistType }).(pulumi.StringOutput)
+}
+
+type GetAttackPathWhitelistsWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackPathWhitelistsWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackPathWhitelistsWhitelist)(nil)).Elem()
+}
+
+func (o GetAttackPathWhitelistsWhitelistArrayOutput) ToGetAttackPathWhitelistsWhitelistArrayOutput() GetAttackPathWhitelistsWhitelistArrayOutput {
+	return o
+}
+
+func (o GetAttackPathWhitelistsWhitelistArrayOutput) ToGetAttackPathWhitelistsWhitelistArrayOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistArrayOutput {
+	return o
+}
+
+func (o GetAttackPathWhitelistsWhitelistArrayOutput) Index(i pulumi.IntInput) GetAttackPathWhitelistsWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackPathWhitelistsWhitelist {
+		return vs[0].([]GetAttackPathWhitelistsWhitelist)[vs[1].(int)]
+	}).(GetAttackPathWhitelistsWhitelistOutput)
+}
+
+type GetAttackPathWhitelistsWhitelistAttackPathAssetList struct {
+	// The subtype of the cloud product asset.
+	AssetSubType int `pulumi:"assetSubType"`
+	// The type of the cloud product asset.
+	AssetType int `pulumi:"assetType"`
+	// The instance ID of the cloud product asset.
+	InstanceId string `pulumi:"instanceId"`
+	// The type of the whitelist node.
+	NodeType string `pulumi:"nodeType"`
+	// The region ID of the cloud product asset instance.
+	RegionId string `pulumi:"regionId"`
+	// The vendor of the cloud product asset.
+	Vendor int `pulumi:"vendor"`
+}
+
+// GetAttackPathWhitelistsWhitelistAttackPathAssetListInput is an input type that accepts GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs and GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput values.
+// You can construct a concrete instance of `GetAttackPathWhitelistsWhitelistAttackPathAssetListInput` via:
+//
+//	GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs{...}
+type GetAttackPathWhitelistsWhitelistAttackPathAssetListInput interface {
+	pulumi.Input
+
+	ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutput() GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput
+	ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutputWithContext(context.Context) GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput
+}
+
+type GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs struct {
+	// The subtype of the cloud product asset.
+	AssetSubType pulumi.IntInput `pulumi:"assetSubType"`
+	// The type of the cloud product asset.
+	AssetType pulumi.IntInput `pulumi:"assetType"`
+	// The instance ID of the cloud product asset.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The type of the whitelist node.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// The region ID of the cloud product asset instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The vendor of the cloud product asset.
+	Vendor pulumi.IntInput `pulumi:"vendor"`
+}
+
+func (GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackPathWhitelistsWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (i GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutput() GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput {
+	return i.ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutputWithContext(context.Background())
+}
+
+func (i GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput)
+}
+
+// GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayInput is an input type that accepts GetAttackPathWhitelistsWhitelistAttackPathAssetListArray and GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput values.
+// You can construct a concrete instance of `GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayInput` via:
+//
+//	GetAttackPathWhitelistsWhitelistAttackPathAssetListArray{ GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs{...} }
+type GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput() GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput
+	ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutputWithContext(context.Context) GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput
+}
+
+type GetAttackPathWhitelistsWhitelistAttackPathAssetListArray []GetAttackPathWhitelistsWhitelistAttackPathAssetListInput
+
+func (GetAttackPathWhitelistsWhitelistAttackPathAssetListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackPathWhitelistsWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (i GetAttackPathWhitelistsWhitelistAttackPathAssetListArray) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput() GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput {
+	return i.ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackPathWhitelistsWhitelistAttackPathAssetListArray) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput)
+}
+
+type GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput struct{ *pulumi.OutputState }
+
+func (GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackPathWhitelistsWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutput() GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput {
+	return o
+}
+
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput {
+	return o
+}
+
+// The subtype of the cloud product asset.
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) AssetSubType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelistAttackPathAssetList) int { return v.AssetSubType }).(pulumi.IntOutput)
+}
+
+// The type of the cloud product asset.
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) AssetType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelistAttackPathAssetList) int { return v.AssetType }).(pulumi.IntOutput)
+}
+
+// The instance ID of the cloud product asset.
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelistAttackPathAssetList) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The type of the whitelist node.
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelistAttackPathAssetList) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The region ID of the cloud product asset instance.
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelistAttackPathAssetList) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The vendor of the cloud product asset.
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput) Vendor() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackPathWhitelistsWhitelistAttackPathAssetList) int { return v.Vendor }).(pulumi.IntOutput)
+}
+
+type GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackPathWhitelistsWhitelistAttackPathAssetList)(nil)).Elem()
+}
+
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput() GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput {
+	return o
+}
+
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput) ToGetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutputWithContext(ctx context.Context) GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput {
+	return o
+}
+
+func (o GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput) Index(i pulumi.IntInput) GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackPathWhitelistsWhitelistAttackPathAssetList {
+		return vs[0].([]GetAttackPathWhitelistsWhitelistAttackPathAssetList)[vs[1].(int)]
+	}).(GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput)
 }
 
 type GetBackupPoliciesPolicy struct {
@@ -4614,6 +5060,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AntiBruteForceRuleProtocolTypePtrInput)(nil)).Elem(), AntiBruteForceRuleProtocolTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetListInput)(nil)).Elem(), AttackPathSensitiveAssetConfigAttackPathAssetListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetListArrayInput)(nil)).Elem(), AttackPathSensitiveAssetConfigAttackPathAssetListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathWhitelistAttackPathAssetListInput)(nil)).Elem(), AttackPathWhitelistAttackPathAssetListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathWhitelistAttackPathAssetListArrayInput)(nil)).Elem(), AttackPathWhitelistAttackPathAssetListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CheckConfigSelectedCheckInput)(nil)).Elem(), CheckConfigSelectedCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CheckConfigSelectedCheckArrayInput)(nil)).Elem(), CheckConfigSelectedCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotPresetMetaInput)(nil)).Elem(), HoneypotPresetMetaArgs{})
@@ -4630,6 +5078,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAntiBruteForceRulesRuleArrayInput)(nil)).Elem(), GetAntiBruteForceRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetsAssetInput)(nil)).Elem(), GetAssetsAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetsAssetArrayInput)(nil)).Elem(), GetAssetsAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackPathWhitelistsWhitelistInput)(nil)).Elem(), GetAttackPathWhitelistsWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackPathWhitelistsWhitelistArrayInput)(nil)).Elem(), GetAttackPathWhitelistsWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackPathWhitelistsWhitelistAttackPathAssetListInput)(nil)).Elem(), GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayInput)(nil)).Elem(), GetAttackPathWhitelistsWhitelistAttackPathAssetListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPoliciesPolicyInput)(nil)).Elem(), GetBackupPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPoliciesPolicyArrayInput)(nil)).Elem(), GetBackupPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBaselineStrategiesStrategyInput)(nil)).Elem(), GetBaselineStrategiesStrategyArgs{})
@@ -4673,6 +5125,8 @@ func init() {
 	pulumi.RegisterOutputType(AntiBruteForceRuleProtocolTypePtrOutput{})
 	pulumi.RegisterOutputType(AttackPathSensitiveAssetConfigAttackPathAssetListOutput{})
 	pulumi.RegisterOutputType(AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput{})
+	pulumi.RegisterOutputType(AttackPathWhitelistAttackPathAssetListOutput{})
+	pulumi.RegisterOutputType(AttackPathWhitelistAttackPathAssetListArrayOutput{})
 	pulumi.RegisterOutputType(CheckConfigSelectedCheckOutput{})
 	pulumi.RegisterOutputType(CheckConfigSelectedCheckArrayOutput{})
 	pulumi.RegisterOutputType(HoneypotPresetMetaOutput{})
@@ -4689,6 +5143,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAntiBruteForceRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAssetsAssetOutput{})
 	pulumi.RegisterOutputType(GetAssetsAssetArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackPathWhitelistsWhitelistOutput{})
+	pulumi.RegisterOutputType(GetAttackPathWhitelistsWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackPathWhitelistsWhitelistAttackPathAssetListOutput{})
+	pulumi.RegisterOutputType(GetAttackPathWhitelistsWhitelistAttackPathAssetListArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetBackupPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBaselineStrategiesStrategyOutput{})

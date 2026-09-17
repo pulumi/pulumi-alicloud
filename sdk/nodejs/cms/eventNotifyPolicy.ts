@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cms Event Notify Policy can be imported using the id, e.g.
+ * Cms Event Notify Policy can be imported using the id, which consists of uuid and workspace, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cms/eventNotifyPolicy:EventNotifyPolicy example <uuid>:<workspace>

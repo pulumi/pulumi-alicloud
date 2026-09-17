@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Express Connect Traffic Qos Association can be imported using the id, e.g.
+ * Express Connect Traffic Qos Association can be imported using the id, which consists of qos_id, instanceId and instance_type, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation example <qos_id>:<instance_id>:<instance_type>

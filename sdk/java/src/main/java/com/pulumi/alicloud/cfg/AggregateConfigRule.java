@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Config Aggregate Config Rule can be imported using the id, e.g.
+ * Cloud Config Aggregate Config Rule can be imported using the id, which consists of aggregatorId and config_rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example &#34;&lt;aggregator_id&gt;:&lt;config_rule_id&gt;&#34;

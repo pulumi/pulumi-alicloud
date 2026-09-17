@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.222.0.
  * 
+ * &gt; **NOTE:** This resource manages the full logging lifecycle of the bucket: creating or updating it enables logging (PutBucketLogging), and destroying it (or removing it from the configuration) disables logging (DeleteBucketLogging). If the same bucket is also managed by `alicloud.oss.Bucket`, add `lifecycle { ignoreChanges = [logging] }` to the bucket resource; otherwise `alicloud.oss.Bucket` will keep disabling the logging configuration set by this resource on every apply.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -65,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new BucketLogging("default", BucketLoggingArgs.builder()
  *             .bucket(createBucket.id())
- *             .targetBucket(createBucket.id())
+ *             .targetBucket(createLoggingBucket.id())
  *             .targetPrefix("log/")
  *             .loggingRole("example-role")
  *             .build());

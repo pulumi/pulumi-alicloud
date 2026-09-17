@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Mongodb Account can be imported using the id, e.g.
+ * Mongodb Account can be imported using the id, which consists of instanceId and account_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>

@@ -46,6 +46,10 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// The configuration of the custom image registry. See `RegistryConfig` below.
+        /// </summary>
+        public readonly Outputs.V3FunctionCustomContainerConfigRegistryConfig? RegistryConfig;
+        /// <summary>
         /// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
         /// </summary>
         public readonly string? ResolvedImageUri;
@@ -68,6 +72,8 @@ namespace Pulumi.AliCloud.FC.Outputs
 
             int? port,
 
+            Outputs.V3FunctionCustomContainerConfigRegistryConfig? registryConfig,
+
             string? resolvedImageUri)
         {
             AccelerationInfo = accelerationInfo;
@@ -78,6 +84,7 @@ namespace Pulumi.AliCloud.FC.Outputs
             HealthCheckConfig = healthCheckConfig;
             Image = image;
             Port = port;
+            RegistryConfig = registryConfig;
             ResolvedImageUri = resolvedImageUri;
         }
     }

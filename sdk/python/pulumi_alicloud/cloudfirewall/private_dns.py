@@ -618,7 +618,7 @@ class PrivateDns(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Firewall Private Dns can be imported using the id, e.g.
+        Cloud Firewall Private Dns can be imported using the id, which consists of access_instance_id and region_no, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudfirewall/privateDns:PrivateDns example <access_instance_id>:<region_no>
@@ -704,7 +704,7 @@ class PrivateDns(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Firewall Private Dns can be imported using the id, e.g.
+        Cloud Firewall Private Dns can be imported using the id, which consists of access_instance_id and region_no, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudfirewall/privateDns:PrivateDns example <access_instance_id>:<region_no>

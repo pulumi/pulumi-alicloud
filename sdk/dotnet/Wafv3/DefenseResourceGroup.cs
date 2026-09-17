@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Wafv3
     /// 
     /// ## Import
     /// 
-    /// WAFV3 Defense Resource Group can be imported using the id, e.g.
+    /// WAFV3 Defense Resource Group can be imported using the id, which consists of InstanceId and group_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup example &lt;instance_id&gt;:&lt;group_name&gt;

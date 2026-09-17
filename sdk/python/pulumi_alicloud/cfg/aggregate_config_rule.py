@@ -673,7 +673,7 @@ class AggregateConfigRule(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config Aggregate Config Rule can be imported using the id, e.g.
+        Cloud Config Aggregate Config Rule can be imported using the id, which consists of aggregator_id and config_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"
@@ -757,7 +757,7 @@ class AggregateConfigRule(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config Aggregate Config Rule can be imported using the id, e.g.
+        Cloud Config Aggregate Config Rule can be imported using the id, which consists of aggregator_id and config_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"

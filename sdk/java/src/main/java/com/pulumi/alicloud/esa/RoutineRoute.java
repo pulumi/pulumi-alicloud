@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Routine Route can be imported using the id, e.g.
+ * ESA Routine Route can be imported using the id, which consists of site_id, routineName and config_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/routineRoute:RoutineRoute example &lt;site_id&gt;:&lt;routine_name&gt;:&lt;config_id&gt;

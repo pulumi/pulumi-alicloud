@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Origin Ca Certificate can be imported using the id, e.g.
+    /// ESA Origin Ca Certificate can be imported using the id, which consists of SiteId and origin_ca_certificate_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/originCaCertificate:OriginCaCertificate example &lt;site_id&gt;:&lt;origin_ca_certificate_id&gt;

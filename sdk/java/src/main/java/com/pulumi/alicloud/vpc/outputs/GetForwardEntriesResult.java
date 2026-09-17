@@ -68,7 +68,7 @@ public final class GetForwardEntriesResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return The status of forward entry.
+     * @return The status of the Forward Entry.
      * 
      */
     private @Nullable String status;
@@ -154,7 +154,7 @@ public final class GetForwardEntriesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The status of forward entry.
+     * @return The status of the Forward Entry.
      * 
      */
     public Optional<String> status() {

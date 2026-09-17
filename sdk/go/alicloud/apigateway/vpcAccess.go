@@ -136,7 +136,7 @@ import (
 //
 // ## Import
 //
-// Api Gateway Vpc Access can be imported using the id, e.g.
+// Api Gateway Vpc Access can be imported using the id, which consists of name, vpc_id, instanceId and port, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>

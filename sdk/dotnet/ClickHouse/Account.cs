@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.ClickHouse
     /// 
     /// ## Import
     /// 
-    /// Click House Account can be imported using the id, e.g.
+    /// Click House Account can be imported using the id, which consists of DbClusterId and account_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:clickhouse/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;

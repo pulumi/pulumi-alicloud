@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// ## Import
     /// 
-    /// Application Real-Time Monitoring Service (ARMS) Integration Exporter can be imported using the id, e.g.
+    /// Application Real-Time Monitoring Service (ARMS) Integration Exporter can be imported using the id, which consists of cluster_id, IntegrationType and instance_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:arms/integrationExporter:IntegrationExporter example &lt;cluster_id&gt;:&lt;integration_type&gt;:&lt;instance_id&gt;

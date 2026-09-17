@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OSS Bucket Data Redundancy Transition can be imported using the id, e.g.
+ * OSS Bucket Data Redundancy Transition can be imported using the id, which consists of bucket and task_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition example &lt;bucket&gt;:&lt;task_id&gt;

@@ -14,11 +14,14 @@ import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
 import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsPlainArgs;
 import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
 import com.pulumi.alicloud.sls.inputs.GetMachineGroupsPlainArgs;
+import com.pulumi.alicloud.sls.inputs.GetMetricStoresArgs;
+import com.pulumi.alicloud.sls.inputs.GetMetricStoresPlainArgs;
 import com.pulumi.alicloud.sls.outputs.GetAlertsResult;
 import com.pulumi.alicloud.sls.outputs.GetEtlsResult;
 import com.pulumi.alicloud.sls.outputs.GetIndexsResult;
 import com.pulumi.alicloud.sls.outputs.GetLogtailConfigsResult;
 import com.pulumi.alicloud.sls.outputs.GetMachineGroupsResult;
+import com.pulumi.alicloud.sls.outputs.GetMetricStoresResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -2911,5 +2914,245 @@ public final class SlsFunctions {
      */
     public static CompletableFuture<GetMachineGroupsResult> getMachineGroupsPlain(GetMachineGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sls/getMachineGroups:getMachineGroups", TypeShape.of(GetMachineGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the SLS MetricStores of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMetricStoresArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SlsFunctions.getMetricStores(GetMetricStoresArgs.builder()
+     *             .projectName("your-project-name")
+     *             .nameRegex(".*")
+     *             .build());
+     * 
+     *         ctx.export("firstMetricStoreName", default_.names()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMetricStoresResult> getMetricStores(GetMetricStoresArgs args) {
+        return getMetricStores(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the SLS MetricStores of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMetricStoresArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SlsFunctions.getMetricStores(GetMetricStoresArgs.builder()
+     *             .projectName("your-project-name")
+     *             .nameRegex(".*")
+     *             .build());
+     * 
+     *         ctx.export("firstMetricStoreName", default_.names()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMetricStoresResult> getMetricStoresPlain(GetMetricStoresPlainArgs args) {
+        return getMetricStoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the SLS MetricStores of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMetricStoresArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SlsFunctions.getMetricStores(GetMetricStoresArgs.builder()
+     *             .projectName("your-project-name")
+     *             .nameRegex(".*")
+     *             .build());
+     * 
+     *         ctx.export("firstMetricStoreName", default_.names()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMetricStoresResult> getMetricStores(GetMetricStoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getMetricStores:getMetricStores", TypeShape.of(GetMetricStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the SLS MetricStores of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMetricStoresArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SlsFunctions.getMetricStores(GetMetricStoresArgs.builder()
+     *             .projectName("your-project-name")
+     *             .nameRegex(".*")
+     *             .build());
+     * 
+     *         ctx.export("firstMetricStoreName", default_.names()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMetricStoresResult> getMetricStores(GetMetricStoresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getMetricStores:getMetricStores", TypeShape.of(GetMetricStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the SLS MetricStores of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMetricStoresArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = SlsFunctions.getMetricStores(GetMetricStoresArgs.builder()
+     *             .projectName("your-project-name")
+     *             .nameRegex(".*")
+     *             .build());
+     * 
+     *         ctx.export("firstMetricStoreName", default_.names()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMetricStoresResult> getMetricStoresPlain(GetMetricStoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sls/getMetricStores:getMetricStores", TypeShape.of(GetMetricStoresResult.class), args, Utilities.withVersion(options));
     }
 }

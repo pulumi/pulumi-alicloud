@@ -116,7 +116,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly contentLength: pulumi.Output<string>;
     /**
-     * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+     * The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
      */
     declare public readonly contentMd5: pulumi.Output<string | undefined>;
     /**
@@ -258,7 +258,7 @@ export interface BucketObjectState {
      */
     contentLength?: pulumi.Input<string | undefined>;
     /**
-     * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+     * The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
      */
     contentMd5?: pulumi.Input<string | undefined>;
     /**
@@ -334,7 +334,7 @@ export interface BucketObjectArgs {
      */
     contentEncoding?: pulumi.Input<string | undefined>;
     /**
-     * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+     * The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
      */
     contentMd5?: pulumi.Input<string | undefined>;
     /**

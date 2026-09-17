@@ -225,7 +225,7 @@ class BucketStyle(pulumi.CustomResource):
 
         ## Import
 
-        OSS Bucket Style can be imported using the id, e.g.
+        OSS Bucket Style can be imported using the id, which consists of bucket and style_name, e.g.
 
         ```sh
         $ pulumi import alicloud:oss/bucketStyle:BucketStyle example <bucket>:<style_name>
@@ -284,7 +284,7 @@ class BucketStyle(pulumi.CustomResource):
 
         ## Import
 
-        OSS Bucket Style can be imported using the id, e.g.
+        OSS Bucket Style can be imported using the id, which consists of bucket and style_name, e.g.
 
         ```sh
         $ pulumi import alicloud:oss/bucketStyle:BucketStyle example <bucket>:<style_name>

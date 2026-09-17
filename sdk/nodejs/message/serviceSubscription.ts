@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Message Service Subscription can be imported using the id, e.g.
+ * Message Service Subscription can be imported using the id, which consists of topicName and subscription_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>

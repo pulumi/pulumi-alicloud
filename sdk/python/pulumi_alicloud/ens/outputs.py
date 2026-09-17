@@ -20,7 +20,10 @@ __all__ = [
     'InstanceSystemDisk',
     'LoadBalancerBackendServer',
     'SecurityGroupPermission',
+    'GetBucketLifecyclesRuleResult',
     'GetKeyPairsPairResult',
+    'GetLoadBalancerUdpListenersListenerResult',
+    'GetNetworkRouteTablesTableResult',
     'GetSecurityGroupsGroupResult',
     'GetSecurityGroupsGroupPermissionResult',
 ]
@@ -436,6 +439,79 @@ class SecurityGroupPermission(dict):
 
 
 @pulumi.output_type
+class GetBucketLifecyclesRuleResult(dict):
+    def __init__(__self__, *,
+                 bucket_name: _builtins.str,
+                 expiration_days: _builtins.int,
+                 id: _builtins.str,
+                 prefix: _builtins.str,
+                 rule_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str bucket_name: The name of the ENS bucket whose lifecycle rules are to be listed.
+        :param _builtins.int expiration_days: The number of days after the last update of the object before the lifecycle rule takes effect.
+        :param _builtins.str id: The ID of the lifecycle rule, formatted as `<bucket_name>:<rule_id>`.
+        :param _builtins.str prefix: The prefix that the rule applies to.
+        :param _builtins.str rule_id: A specific rule ID used to filter results to a single rule.
+        :param _builtins.str status: The rule status. Valid values: `Enabled`, `Disabled`.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> _builtins.str:
+        """
+        The name of the ENS bucket whose lifecycle rules are to be listed.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> _builtins.int:
+        """
+        The number of days after the last update of the object before the lifecycle rule takes effect.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the lifecycle rule, formatted as `<bucket_name>:<rule_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix that the rule applies to.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.str:
+        """
+        A specific rule ID used to filter results to a single rule.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The rule status. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetKeyPairsPairResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
@@ -495,6 +571,317 @@ class GetKeyPairsPairResult(dict):
         The version number.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetLoadBalancerUdpListenersListenerResult(dict):
+    def __init__(__self__, *,
+                 backend_server_port: _builtins.int,
+                 description: _builtins.str,
+                 eip_transmit: _builtins.str,
+                 established_timeout: _builtins.int,
+                 health_check_connect_port: _builtins.int,
+                 health_check_connect_timeout: _builtins.int,
+                 health_check_exp: _builtins.str,
+                 health_check_interval: _builtins.int,
+                 health_check_req: _builtins.str,
+                 healthy_threshold: _builtins.int,
+                 id: _builtins.str,
+                 listener_port: _builtins.int,
+                 load_balancer_id: _builtins.str,
+                 protocol: _builtins.str,
+                 scheduler: _builtins.str,
+                 status: _builtins.str,
+                 unhealthy_threshold: _builtins.int):
+        """
+        :param _builtins.int backend_server_port: **NOTE:** This field is only available when `enable_details` is `true`. The port used by the backend server of the load balancer instance.
+        :param _builtins.str description: The description of the listener.
+        :param _builtins.str eip_transmit: **NOTE:** This field is only available when `enable_details` is `true`. Whether EIP transparent transmission is enabled.
+        :param _builtins.int established_timeout: **NOTE:** This field is only available when `enable_details` is `true`. The timeout period of the connection. Unit: seconds.
+        :param _builtins.int health_check_connect_port: **NOTE:** This field is only available when `enable_details` is `true`. The port used for health checks.
+        :param _builtins.int health_check_connect_timeout: **NOTE:** This field is only available when `enable_details` is `true`. The amount of time to wait for a response from the health check. Unit: seconds.
+        :param _builtins.str health_check_exp: **NOTE:** This field is only available when `enable_details` is `true`. The expected response string for the UDP listener health check.
+        :param _builtins.int health_check_interval: **NOTE:** This field is only available when `enable_details` is `true`. The interval between two consecutive health checks. Unit: seconds.
+        :param _builtins.str health_check_req: **NOTE:** This field is only available when `enable_details` is `true`. The request string for the UDP listener health check.
+        :param _builtins.int healthy_threshold: **NOTE:** This field is only available when `enable_details` is `true`. The number of consecutive successful health checks that must occur before a backend server is declared healthy.
+        :param _builtins.str id: The ID of the listener. The value is formulated as `<load_balancer_id>:<listener_port>`.
+        :param _builtins.int listener_port: The frontend port used by the load balancer instance.
+        :param _builtins.str load_balancer_id: The ID of the load balancer instance.
+        :param _builtins.str protocol: The protocol of the listener. The value is `udp`.
+        :param _builtins.str scheduler: **NOTE:** This field is only available when `enable_details` is `true`. The scheduling algorithm.
+        :param _builtins.str status: The status of the listener.
+        :param _builtins.int unhealthy_threshold: **NOTE:** This field is only available when `enable_details` is `true`. The number of consecutive failed health checks that must occur before a backend server is declared unhealthy.
+        """
+        pulumi.set(__self__, "backend_server_port", backend_server_port)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "eip_transmit", eip_transmit)
+        pulumi.set(__self__, "established_timeout", established_timeout)
+        pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+        pulumi.set(__self__, "health_check_connect_timeout", health_check_connect_timeout)
+        pulumi.set(__self__, "health_check_exp", health_check_exp)
+        pulumi.set(__self__, "health_check_interval", health_check_interval)
+        pulumi.set(__self__, "health_check_req", health_check_req)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "scheduler", scheduler)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @_builtins.property
+    @pulumi.getter(name="backendServerPort")
+    def backend_server_port(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The port used by the backend server of the load balancer instance.
+        """
+        return pulumi.get(self, "backend_server_port")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the listener.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="eipTransmit")
+    def eip_transmit(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Whether EIP transparent transmission is enabled.
+        """
+        return pulumi.get(self, "eip_transmit")
+
+    @_builtins.property
+    @pulumi.getter(name="establishedTimeout")
+    def established_timeout(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The timeout period of the connection. Unit: seconds.
+        """
+        return pulumi.get(self, "established_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckConnectPort")
+    def health_check_connect_port(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The port used for health checks.
+        """
+        return pulumi.get(self, "health_check_connect_port")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckConnectTimeout")
+    def health_check_connect_timeout(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The amount of time to wait for a response from the health check. Unit: seconds.
+        """
+        return pulumi.get(self, "health_check_connect_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckExp")
+    def health_check_exp(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The expected response string for the UDP listener health check.
+        """
+        return pulumi.get(self, "health_check_exp")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckInterval")
+    def health_check_interval(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The interval between two consecutive health checks. Unit: seconds.
+        """
+        return pulumi.get(self, "health_check_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckReq")
+    def health_check_req(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The request string for the UDP listener health check.
+        """
+        return pulumi.get(self, "health_check_req")
+
+    @_builtins.property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The number of consecutive successful health checks that must occur before a backend server is declared healthy.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the listener. The value is formulated as `<load_balancer_id>:<listener_port>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> _builtins.int:
+        """
+        The frontend port used by the load balancer instance.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> _builtins.str:
+        """
+        The ID of the load balancer instance.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The protocol of the listener. The value is `udp`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def scheduler(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The scheduling algorithm.
+        """
+        return pulumi.get(self, "scheduler")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the listener.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> _builtins.int:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The number of consecutive failed health checks that must occur before a backend server is declared unhealthy.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+
+@pulumi.output_type
+class GetNetworkRouteTablesTableResult(dict):
+    def __init__(__self__, *,
+                 associate_type: _builtins.str,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 is_default_gateway_route_table: _builtins.bool,
+                 network_id: _builtins.str,
+                 route_table_id: _builtins.str,
+                 route_table_name: _builtins.str,
+                 route_table_type: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str associate_type: The binding type of the routing table. Value: `VSwitch`, `Gateway`.
+        :param _builtins.str create_time: The creation time of the routing table.
+        :param _builtins.str description: The description of the routing table.
+        :param _builtins.str id: The ID of the routing table. Same as `route_table_id`.
+        :param _builtins.bool is_default_gateway_route_table: Whether it is the default gateway route table.
+        :param _builtins.str network_id: The network ID.
+        :param _builtins.str route_table_id: The ID of the routing table.
+        :param _builtins.str route_table_name: The name of the routing table.
+        :param _builtins.str route_table_type: The type of the routing table. Value: `Custom`, `System`.
+        :param _builtins.str status: The status of the routing table.
+        """
+        pulumi.set(__self__, "associate_type", associate_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default_gateway_route_table", is_default_gateway_route_table)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "route_table_name", route_table_name)
+        pulumi.set(__self__, "route_table_type", route_table_type)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="associateType")
+    def associate_type(self) -> _builtins.str:
+        """
+        The binding type of the routing table. Value: `VSwitch`, `Gateway`.
+        """
+        return pulumi.get(self, "associate_type")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the routing table.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the routing table.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the routing table. Same as `route_table_id`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefaultGatewayRouteTable")
+    def is_default_gateway_route_table(self) -> _builtins.bool:
+        """
+        Whether it is the default gateway route table.
+        """
+        return pulumi.get(self, "is_default_gateway_route_table")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> _builtins.str:
+        """
+        The network ID.
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> _builtins.str:
+        """
+        The ID of the routing table.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTableName")
+    def route_table_name(self) -> _builtins.str:
+        """
+        The name of the routing table.
+        """
+        return pulumi.get(self, "route_table_name")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTableType")
+    def route_table_type(self) -> _builtins.str:
+        """
+        The type of the routing table. Value: `Custom`, `System`.
+        """
+        return pulumi.get(self, "route_table_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the routing table.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

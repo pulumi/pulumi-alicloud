@@ -22,7 +22,7 @@ import (
 //
 // ## Import
 //
-// FCV2 Function can be imported using the id, e.g.
+// FCV2 Function can be imported using the id, which consists of serviceName and function_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:fc/v2Function:V2Function example <service_name>:<function_name>

@@ -440,7 +440,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
 
         ## Import
 
-        Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
+        Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, which consists of cluster_id and prometheus_alert_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
@@ -506,7 +506,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
 
         ## Import
 
-        Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
+        Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, which consists of cluster_id and prometheus_alert_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>

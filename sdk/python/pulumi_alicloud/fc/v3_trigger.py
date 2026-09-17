@@ -512,7 +512,7 @@ class V3Trigger(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Trigger can be imported using the id, e.g.
+        FCV3 Trigger can be imported using the id, which consists of function_name and trigger_name, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3Trigger:V3Trigger example <function_name>:<trigger_name>
@@ -648,7 +648,7 @@ class V3Trigger(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Trigger can be imported using the id, e.g.
+        FCV3 Trigger can be imported using the id, which consists of function_name and trigger_name, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3Trigger:V3Trigger example <function_name>:<trigger_name>

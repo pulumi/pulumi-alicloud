@@ -7658,6 +7658,174 @@ func (o NodePoolPrivatePoolOptionsPtrOutput) PrivatePoolOptionsMatchCriteria() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type NodePoolResourcePoolOptions struct {
+	// The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+	PrivatePoolIds []string `pulumi:"privatePoolIds"`
+	// The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+	// * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+	// * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+	// * `None`: Do not use the resource pool strategy.
+	Strategy *string `pulumi:"strategy"`
+}
+
+// NodePoolResourcePoolOptionsInput is an input type that accepts NodePoolResourcePoolOptionsArgs and NodePoolResourcePoolOptionsOutput values.
+// You can construct a concrete instance of `NodePoolResourcePoolOptionsInput` via:
+//
+//	NodePoolResourcePoolOptionsArgs{...}
+type NodePoolResourcePoolOptionsInput interface {
+	pulumi.Input
+
+	ToNodePoolResourcePoolOptionsOutput() NodePoolResourcePoolOptionsOutput
+	ToNodePoolResourcePoolOptionsOutputWithContext(context.Context) NodePoolResourcePoolOptionsOutput
+}
+
+type NodePoolResourcePoolOptionsArgs struct {
+	// The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+	PrivatePoolIds pulumi.StringArrayInput `pulumi:"privatePoolIds"`
+	// The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+	// * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+	// * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+	// * `None`: Do not use the resource pool strategy.
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
+}
+
+func (NodePoolResourcePoolOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolResourcePoolOptions)(nil)).Elem()
+}
+
+func (i NodePoolResourcePoolOptionsArgs) ToNodePoolResourcePoolOptionsOutput() NodePoolResourcePoolOptionsOutput {
+	return i.ToNodePoolResourcePoolOptionsOutputWithContext(context.Background())
+}
+
+func (i NodePoolResourcePoolOptionsArgs) ToNodePoolResourcePoolOptionsOutputWithContext(ctx context.Context) NodePoolResourcePoolOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolResourcePoolOptionsOutput)
+}
+
+func (i NodePoolResourcePoolOptionsArgs) ToNodePoolResourcePoolOptionsPtrOutput() NodePoolResourcePoolOptionsPtrOutput {
+	return i.ToNodePoolResourcePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolResourcePoolOptionsArgs) ToNodePoolResourcePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolResourcePoolOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolResourcePoolOptionsOutput).ToNodePoolResourcePoolOptionsPtrOutputWithContext(ctx)
+}
+
+// NodePoolResourcePoolOptionsPtrInput is an input type that accepts NodePoolResourcePoolOptionsArgs, NodePoolResourcePoolOptionsPtr and NodePoolResourcePoolOptionsPtrOutput values.
+// You can construct a concrete instance of `NodePoolResourcePoolOptionsPtrInput` via:
+//
+//	        NodePoolResourcePoolOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolResourcePoolOptionsPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolResourcePoolOptionsPtrOutput() NodePoolResourcePoolOptionsPtrOutput
+	ToNodePoolResourcePoolOptionsPtrOutputWithContext(context.Context) NodePoolResourcePoolOptionsPtrOutput
+}
+
+type nodePoolResourcePoolOptionsPtrType NodePoolResourcePoolOptionsArgs
+
+func NodePoolResourcePoolOptionsPtr(v *NodePoolResourcePoolOptionsArgs) NodePoolResourcePoolOptionsPtrInput {
+	return (*nodePoolResourcePoolOptionsPtrType)(v)
+}
+
+func (*nodePoolResourcePoolOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolResourcePoolOptions)(nil)).Elem()
+}
+
+func (i *nodePoolResourcePoolOptionsPtrType) ToNodePoolResourcePoolOptionsPtrOutput() NodePoolResourcePoolOptionsPtrOutput {
+	return i.ToNodePoolResourcePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolResourcePoolOptionsPtrType) ToNodePoolResourcePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolResourcePoolOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolResourcePoolOptionsPtrOutput)
+}
+
+type NodePoolResourcePoolOptionsOutput struct{ *pulumi.OutputState }
+
+func (NodePoolResourcePoolOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolResourcePoolOptions)(nil)).Elem()
+}
+
+func (o NodePoolResourcePoolOptionsOutput) ToNodePoolResourcePoolOptionsOutput() NodePoolResourcePoolOptionsOutput {
+	return o
+}
+
+func (o NodePoolResourcePoolOptionsOutput) ToNodePoolResourcePoolOptionsOutputWithContext(ctx context.Context) NodePoolResourcePoolOptionsOutput {
+	return o
+}
+
+func (o NodePoolResourcePoolOptionsOutput) ToNodePoolResourcePoolOptionsPtrOutput() NodePoolResourcePoolOptionsPtrOutput {
+	return o.ToNodePoolResourcePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolResourcePoolOptionsOutput) ToNodePoolResourcePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolResourcePoolOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolResourcePoolOptions) *NodePoolResourcePoolOptions {
+		return &v
+	}).(NodePoolResourcePoolOptionsPtrOutput)
+}
+
+// The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+func (o NodePoolResourcePoolOptionsOutput) PrivatePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolResourcePoolOptions) []string { return v.PrivatePoolIds }).(pulumi.StringArrayOutput)
+}
+
+// The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+// * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+// * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+// * `None`: Do not use the resource pool strategy.
+func (o NodePoolResourcePoolOptionsOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolResourcePoolOptions) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolResourcePoolOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolResourcePoolOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolResourcePoolOptions)(nil)).Elem()
+}
+
+func (o NodePoolResourcePoolOptionsPtrOutput) ToNodePoolResourcePoolOptionsPtrOutput() NodePoolResourcePoolOptionsPtrOutput {
+	return o
+}
+
+func (o NodePoolResourcePoolOptionsPtrOutput) ToNodePoolResourcePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolResourcePoolOptionsPtrOutput {
+	return o
+}
+
+func (o NodePoolResourcePoolOptionsPtrOutput) Elem() NodePoolResourcePoolOptionsOutput {
+	return o.ApplyT(func(v *NodePoolResourcePoolOptions) NodePoolResourcePoolOptions {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolResourcePoolOptions
+		return ret
+	}).(NodePoolResourcePoolOptionsOutput)
+}
+
+// The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+func (o NodePoolResourcePoolOptionsPtrOutput) PrivatePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolResourcePoolOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePoolIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+// * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+// * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+// * `None`: Do not use the resource pool strategy.
+func (o NodePoolResourcePoolOptionsPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolResourcePoolOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
 type NodePoolRollingPolicy struct {
 	// The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
 	BatchInterval *string `pulumi:"batchInterval"`
@@ -16131,6 +16299,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoVulFixPolicyPtrInput)(nil)).Elem(), NodePoolManagementAutoVulFixPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPrivatePoolOptionsInput)(nil)).Elem(), NodePoolPrivatePoolOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPrivatePoolOptionsPtrInput)(nil)).Elem(), NodePoolPrivatePoolOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolResourcePoolOptionsInput)(nil)).Elem(), NodePoolResourcePoolOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolResourcePoolOptionsPtrInput)(nil)).Elem(), NodePoolResourcePoolOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRollingPolicyInput)(nil)).Elem(), NodePoolRollingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRollingPolicyPtrInput)(nil)).Elem(), NodePoolRollingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
@@ -16314,6 +16484,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolManagementAutoVulFixPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolPrivatePoolOptionsOutput{})
 	pulumi.RegisterOutputType(NodePoolPrivatePoolOptionsPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolResourcePoolOptionsOutput{})
+	pulumi.RegisterOutputType(NodePoolResourcePoolOptionsPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolRollingPolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolRollingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigOutput{})

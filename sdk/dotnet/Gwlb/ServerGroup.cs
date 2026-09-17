@@ -153,6 +153,12 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+        /// </summary>
+        [Output("drainingServers")]
+        public Output<ImmutableArray<Outputs.ServerGroupDrainingServer>> DrainingServers { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Output("dryRun")]
@@ -215,10 +221,11 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<string> ServerGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The backend servers that you want to remove.
+        /// The backend servers that you want to remove. See `Servers` below.
         /// 
         /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-        /// See `Servers` below.
+        /// 
+        /// &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `Servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `DrainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `Servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
@@ -363,10 +370,11 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// The backend servers that you want to remove.
+        /// The backend servers that you want to remove. See `Servers` below.
         /// 
         /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-        /// See `Servers` below.
+        /// 
+        /// &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `Servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `DrainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `Servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -415,6 +423,18 @@ namespace Pulumi.AliCloud.Gwlb
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("drainingServers")]
+        private InputList<Inputs.ServerGroupDrainingServerGetArgs>? _drainingServers;
+
+        /// <summary>
+        /// (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+        /// </summary>
+        public InputList<Inputs.ServerGroupDrainingServerGetArgs> DrainingServers
+        {
+            get => _drainingServers ?? (_drainingServers = new InputList<Inputs.ServerGroupDrainingServerGetArgs>());
+            set => _drainingServers = value;
+        }
 
         /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -482,10 +502,11 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// The backend servers that you want to remove.
+        /// The backend servers that you want to remove. See `Servers` below.
         /// 
         /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
-        /// See `Servers` below.
+        /// 
+        /// &gt; **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `Servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `DrainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `Servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {

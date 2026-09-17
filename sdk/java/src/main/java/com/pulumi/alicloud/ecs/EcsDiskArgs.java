@@ -18,9 +18,17 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EcsDiskArgs Empty = new EcsDiskArgs();
 
+    /**
+     * The advanced features configured for the disk.
+     * 
+     */
     @Import(name="advancedFeatures")
     private @Nullable Output<String> advancedFeatures;
 
+    /**
+     * @return The advanced features configured for the disk.
+     * 
+     */
     public Optional<Output<String>> advancedFeatures() {
         return Optional.ofNullable(this.advancedFeatures);
     }
@@ -49,14 +57,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
      * 
      */
     @Import(name="burstingEnabled")
     private @Nullable Output<Boolean> burstingEnabled;
 
     /**
-     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
      * 
      */
     public Optional<Output<Boolean>> burstingEnabled() {
@@ -64,14 +72,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+     * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+     * @return The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
      * 
      */
     public Optional<Output<String>> category() {
@@ -176,9 +184,17 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
 
+    /**
+     * The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     @Import(name="encryptAlgorithm")
     private @Nullable Output<String> encryptAlgorithm;
 
+    /**
+     * @return The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     public Optional<Output<String>> encryptAlgorithm() {
         return Optional.ofNullable(this.encryptAlgorithm);
     }
@@ -521,11 +537,23 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
             $ = new EcsDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param advancedFeatures The advanced features configured for the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder advancedFeatures(@Nullable Output<String> advancedFeatures) {
             $.advancedFeatures = advancedFeatures;
             return this;
         }
 
+        /**
+         * @param advancedFeatures The advanced features configured for the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder advancedFeatures(String advancedFeatures) {
             return advancedFeatures(Output.of(advancedFeatures));
         }
@@ -560,7 +588,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
          * 
          * @return builder
          * 
@@ -571,7 +599,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
          * 
          * @return builder
          * 
@@ -581,7 +609,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+         * @param category The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
          * 
          * @return builder
          * 
@@ -592,7 +620,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+         * @param category The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
          * 
          * @return builder
          * 
@@ -735,11 +763,23 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
             return enableAutoSnapshot(Output.of(enableAutoSnapshot));
         }
 
+        /**
+         * @param encryptAlgorithm The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptAlgorithm(@Nullable Output<String> encryptAlgorithm) {
             $.encryptAlgorithm = encryptAlgorithm;
             return this;
         }
 
+        /**
+         * @param encryptAlgorithm The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptAlgorithm(String encryptAlgorithm) {
             return encryptAlgorithm(Output.of(encryptAlgorithm));
         }

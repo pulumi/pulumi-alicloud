@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// ## Import
     /// 
-    /// Api Gateway Model can be imported using the id, e.g.
+    /// Api Gateway Model can be imported using the id, which consists of GroupId and model_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:apigateway/model:Model example &lt;group_id&gt;:&lt;model_name&gt;

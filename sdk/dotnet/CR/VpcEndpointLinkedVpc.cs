@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// ## Import
     /// 
-    /// CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
+    /// CR Vpc Endpoint Linked Vpc can be imported using the id, which consists of instance_id, vpc_id, VswitchId and module_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example &lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;

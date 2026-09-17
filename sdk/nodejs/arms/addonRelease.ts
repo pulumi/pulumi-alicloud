@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ARMS Addon Release can be imported using the id, e.g.
+ * ARMS Addon Release can be imported using the id, which consists of environmentId and addon_release_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:arms/addonRelease:AddonRelease example <environment_id>:<addon_release_name>

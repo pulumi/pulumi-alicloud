@@ -24,7 +24,8 @@ class UserArgs:
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  mobile: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -34,6 +35,7 @@ class UserArgs:
         :param pulumi.Input[_builtins.bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[_builtins.str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[_builtins.str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RAM user.
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -47,6 +49,8 @@ class UserArgs:
             pulumi.set(__self__, "mobile", mobile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -119,6 +123,18 @@ class UserArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the RAM user.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -129,7 +145,8 @@ class _UserState:
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  mobile: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -139,6 +156,7 @@ class _UserState:
         :param pulumi.Input[_builtins.bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[_builtins.str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[_builtins.str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RAM user.
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -152,6 +170,8 @@ class _UserState:
             pulumi.set(__self__, "mobile", mobile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -224,6 +244,18 @@ class _UserState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the RAM user.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.type_token("alicloud:ram/user:User")
@@ -238,6 +270,7 @@ class User(pulumi.CustomResource):
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  mobile: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a RAM User resource.
@@ -288,6 +321,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[_builtins.str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[_builtins.str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RAM user.
         """
         ...
     @overload
@@ -357,6 +391,7 @@ class User(pulumi.CustomResource):
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  mobile: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,6 +407,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["force"] = force
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
         super(User, __self__).__init__(
             'alicloud:ram/user:User',
             resource_name,
@@ -387,7 +423,8 @@ class User(pulumi.CustomResource):
             email: pulumi.Input[Optional[_builtins.str]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             mobile: pulumi.Input[Optional[_builtins.str]] = None,
-            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -401,6 +438,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[_builtins.str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[_builtins.str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RAM user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -412,6 +450,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["force"] = force
         __props__.__dict__["mobile"] = mobile
         __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         return User(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -461,4 +500,12 @@ class User(pulumi.CustomResource):
         Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the RAM user.
+        """
+        return pulumi.get(self, "tags")
 

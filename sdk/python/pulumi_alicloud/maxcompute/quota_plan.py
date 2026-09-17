@@ -231,7 +231,7 @@ class QuotaPlan(pulumi.CustomResource):
 
         ## Import
 
-        Max Compute Quota Plan can be imported using the id, e.g.
+        Max Compute Quota Plan can be imported using the id, which consists of nickname and plan_name, e.g.
 
         ```sh
         $ pulumi import alicloud:maxcompute/quotaPlan:QuotaPlan example <nickname>:<plan_name>
@@ -306,7 +306,7 @@ class QuotaPlan(pulumi.CustomResource):
 
         ## Import
 
-        Max Compute Quota Plan can be imported using the id, e.g.
+        Max Compute Quota Plan can be imported using the id, which consists of nickname and plan_name, e.g.
 
         ```sh
         $ pulumi import alicloud:maxcompute/quotaPlan:QuotaPlan example <nickname>:<plan_name>

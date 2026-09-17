@@ -165,6 +165,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// &gt; **NOTE:** `CreditSpecification` is only supported by burstable instance families (e.g. `T5`, `T6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         /// </summary>
         [Output("creditSpecification")]
         public Output<string> CreditSpecification { get; private set; } = null!;
@@ -299,6 +300,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `Enabled`, `Disabled`. Default value: `Disabled`.
+        /// </summary>
+        [Output("instanceMetadataTags")]
+        public Output<string> InstanceMetadataTags { get; private set; } = null!;
 
         /// <summary>
         /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
@@ -576,6 +583,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The security enhancement strategy.
         /// - Active: Enable security enhancement strategy, it only works on system images.
         /// - Deactive: Disable security enhancement strategy, it works on all images.
+        /// 
+        /// &gt; **NOTE:** The ECS API does not return `SecurityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `SecurityEnhancementStrategy` is ignored and will not force the instance to be recreated.
         /// </summary>
         [Output("securityEnhancementStrategy")]
         public Output<string> SecurityEnhancementStrategy { get; private set; } = null!;
@@ -846,6 +855,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// &gt; **NOTE:** `CreditSpecification` is only supported by burstable instance families (e.g. `T5`, `T6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         /// </summary>
         [Input("creditSpecification")]
         public Input<string>? CreditSpecification { get; set; }
@@ -974,6 +984,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `Enabled`, `Disabled`. Default value: `Disabled`.
+        /// </summary>
+        [Input("instanceMetadataTags")]
+        public Input<string>? InstanceMetadataTags { get; set; }
 
         /// <summary>
         /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
@@ -1249,6 +1265,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The security enhancement strategy.
         /// - Active: Enable security enhancement strategy, it only works on system images.
         /// - Deactive: Disable security enhancement strategy, it works on all images.
+        /// 
+        /// &gt; **NOTE:** The ECS API does not return `SecurityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `SecurityEnhancementStrategy` is ignored and will not force the instance to be recreated.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -1495,6 +1513,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// &gt; **NOTE:** `CreditSpecification` is only supported by burstable instance families (e.g. `T5`, `T6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
         /// </summary>
         [Input("creditSpecification")]
         public Input<string>? CreditSpecification { get; set; }
@@ -1635,6 +1654,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `Enabled`, `Disabled`. Default value: `Disabled`.
+        /// </summary>
+        [Input("instanceMetadataTags")]
+        public Input<string>? InstanceMetadataTags { get; set; }
 
         /// <summary>
         /// The name of the ECS. This InstanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
@@ -1940,6 +1965,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The security enhancement strategy.
         /// - Active: Enable security enhancement strategy, it only works on system images.
         /// - Deactive: Disable security enhancement strategy, it works on all images.
+        /// 
+        /// &gt; **NOTE:** The ECS API does not return `SecurityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `SecurityEnhancementStrategy` is ignored and will not force the instance to be recreated.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }

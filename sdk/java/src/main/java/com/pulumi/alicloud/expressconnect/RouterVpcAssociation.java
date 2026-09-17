@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Express Connect Router Express Connect Router Vpc Association can be imported using the id, e.g.
+ * Express Connect Router Express Connect Router Vpc Association can be imported using the id, which consists of ecr_id, associationId and vpc_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation example &lt;ecr_id&gt;:&lt;association_id&gt;:&lt;vpc_id&gt;

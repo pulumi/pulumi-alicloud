@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Resource Manager Shared Target can be imported using the id, e.g.
+ * Resource Manager Shared Target can be imported using the id, which consists of resourceShareId and target_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>

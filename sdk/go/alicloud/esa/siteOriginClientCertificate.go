@@ -108,7 +108,7 @@ import (
 //
 // ## Import
 //
-// ESA Site Origin Client Certificate can be imported using the id, e.g.
+// ESA Site Origin Client Certificate can be imported using the id, which consists of siteId and site_origin_client_certificate_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate example <site_id>:<site_origin_client_certificate_id>

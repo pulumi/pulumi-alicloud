@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB DB Instance IP Array can be imported using the id, e.g.
+    /// GPDB DB Instance IP Array can be imported using the id, which consists of DbInstanceId and db_instance_ip_array_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray example &lt;db_instance_id&gt;:&lt;db_instance_ip_array_name&gt;

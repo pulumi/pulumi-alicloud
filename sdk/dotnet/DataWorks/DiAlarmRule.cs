@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// ## Import
     /// 
-    /// Data Works Di Alarm Rule can be imported using the id, e.g.
+    /// Data Works Di Alarm Rule can be imported using the id, which consists of DiJobId and di_alarm_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dataworks/diAlarmRule:DiAlarmRule example &lt;di_job_id&gt;:&lt;di_alarm_rule_id&gt;

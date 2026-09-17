@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Eflo
     /// 
     /// ## Import
     /// 
-    /// Eflo Subnet can be imported using the id, e.g.
+    /// Eflo Subnet can be imported using the id, which consists of VpdId and subnet_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:eflo/subnet:Subnet example &lt;vpd_id&gt;:&lt;subnet_id&gt;

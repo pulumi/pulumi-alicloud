@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, e.g.
+    /// AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, which consists of DbInstanceId and resource_group_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example &lt;db_instance_id&gt;:&lt;resource_group_name&gt;

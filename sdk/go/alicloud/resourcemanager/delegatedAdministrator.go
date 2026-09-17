@@ -57,7 +57,7 @@ import (
 //
 // ## Import
 //
-// Resource Manager Delegated Administrator can be imported using the id, e.g.
+// Resource Manager Delegated Administrator can be imported using the id, which consists of accountId and service_principal, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>

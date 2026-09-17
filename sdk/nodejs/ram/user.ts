@@ -98,6 +98,10 @@ export class User extends pulumi.CustomResource {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the RAM user.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -118,6 +122,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["force"] = state?.force;
             resourceInputs["mobile"] = state?.mobile;
             resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as UserArgs | undefined;
             resourceInputs["comments"] = args?.comments;
@@ -126,6 +131,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["force"] = args?.force;
             resourceInputs["mobile"] = args?.mobile;
             resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);
@@ -160,6 +166,10 @@ export interface UserState {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the RAM user.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -190,4 +200,8 @@ export interface UserArgs {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the RAM user.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

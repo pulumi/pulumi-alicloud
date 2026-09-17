@@ -248,7 +248,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        RocketMQ Account can be imported using the id, e.g.
+        RocketMQ Account can be imported using the id, which consists of instance_id and username, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/account:Account example <instance_id>:<username>
@@ -346,7 +346,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        RocketMQ Account can be imported using the id, e.g.
+        RocketMQ Account can be imported using the id, which consists of instance_id and username, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/account:Account example <instance_id>:<username>

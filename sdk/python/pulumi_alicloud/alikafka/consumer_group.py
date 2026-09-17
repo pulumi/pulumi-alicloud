@@ -275,7 +275,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
         ## Import
 
-        AliKafka Consumer Group can be imported using the id, e.g.
+        AliKafka Consumer Group can be imported using the id, which consists of instance_id and consumer_id, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>
@@ -327,7 +327,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
         ## Import
 
-        AliKafka Consumer Group can be imported using the id, e.g.
+        AliKafka Consumer Group can be imported using the id, which consists of instance_id and consumer_id, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>

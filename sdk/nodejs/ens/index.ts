@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BucketLifecycleArgs, BucketLifecycleState } from "./bucketLifecycle";
+export type BucketLifecycle = import("./bucketLifecycle").BucketLifecycle;
+export const BucketLifecycle: typeof import("./bucketLifecycle").BucketLifecycle = null as any;
+utilities.lazyLoad(exports, ["BucketLifecycle"], () => require("./bucketLifecycle"));
+
 export { DiskArgs, DiskState } from "./disk";
 export type Disk = import("./disk").Disk;
 export const Disk: typeof import("./disk").Disk = null as any;
@@ -25,10 +30,25 @@ export type EipInstanceAttachment = import("./eipInstanceAttachment").EipInstanc
 export const EipInstanceAttachment: typeof import("./eipInstanceAttachment").EipInstanceAttachment = null as any;
 utilities.lazyLoad(exports, ["EipInstanceAttachment"], () => require("./eipInstanceAttachment"));
 
+export { GetBucketLifecyclesArgs, GetBucketLifecyclesResult, GetBucketLifecyclesOutputArgs } from "./getBucketLifecycles";
+export const getBucketLifecycles: typeof import("./getBucketLifecycles").getBucketLifecycles = null as any;
+export const getBucketLifecyclesOutput: typeof import("./getBucketLifecycles").getBucketLifecyclesOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketLifecycles","getBucketLifecyclesOutput"], () => require("./getBucketLifecycles"));
+
 export { GetKeyPairsArgs, GetKeyPairsResult, GetKeyPairsOutputArgs } from "./getKeyPairs";
 export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as any;
 export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyPairs","getKeyPairsOutput"], () => require("./getKeyPairs"));
+
+export { GetLoadBalancerUdpListenersArgs, GetLoadBalancerUdpListenersResult, GetLoadBalancerUdpListenersOutputArgs } from "./getLoadBalancerUdpListeners";
+export const getLoadBalancerUdpListeners: typeof import("./getLoadBalancerUdpListeners").getLoadBalancerUdpListeners = null as any;
+export const getLoadBalancerUdpListenersOutput: typeof import("./getLoadBalancerUdpListeners").getLoadBalancerUdpListenersOutput = null as any;
+utilities.lazyLoad(exports, ["getLoadBalancerUdpListeners","getLoadBalancerUdpListenersOutput"], () => require("./getLoadBalancerUdpListeners"));
+
+export { GetNetworkRouteTablesArgs, GetNetworkRouteTablesResult, GetNetworkRouteTablesOutputArgs } from "./getNetworkRouteTables";
+export const getNetworkRouteTables: typeof import("./getNetworkRouteTables").getNetworkRouteTables = null as any;
+export const getNetworkRouteTablesOutput: typeof import("./getNetworkRouteTables").getNetworkRouteTablesOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkRouteTables","getNetworkRouteTablesOutput"], () => require("./getNetworkRouteTables"));
 
 export { GetSecurityGroupsArgs, GetSecurityGroupsResult, GetSecurityGroupsOutputArgs } from "./getSecurityGroups";
 export const getSecurityGroups: typeof import("./getSecurityGroups").getSecurityGroups = null as any;
@@ -60,6 +80,16 @@ export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
+export { LoadBalancerHttpListenerArgs, LoadBalancerHttpListenerState } from "./loadBalancerHttpListener";
+export type LoadBalancerHttpListener = import("./loadBalancerHttpListener").LoadBalancerHttpListener;
+export const LoadBalancerHttpListener: typeof import("./loadBalancerHttpListener").LoadBalancerHttpListener = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerHttpListener"], () => require("./loadBalancerHttpListener"));
+
+export { LoadBalancerUdpListenerArgs, LoadBalancerUdpListenerState } from "./loadBalancerUdpListener";
+export type LoadBalancerUdpListener = import("./loadBalancerUdpListener").LoadBalancerUdpListener;
+export const LoadBalancerUdpListener: typeof import("./loadBalancerUdpListener").LoadBalancerUdpListener = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerUdpListener"], () => require("./loadBalancerUdpListener"));
+
 export { NatGatewayArgs, NatGatewayState } from "./natGateway";
 export type NatGateway = import("./natGateway").NatGateway;
 export const NatGateway: typeof import("./natGateway").NatGateway = null as any;
@@ -69,6 +99,11 @@ export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
+export { NetworkRouteTableArgs, NetworkRouteTableState } from "./networkRouteTable";
+export type NetworkRouteTable = import("./networkRouteTable").NetworkRouteTable;
+export const NetworkRouteTable: typeof import("./networkRouteTable").NetworkRouteTable = null as any;
+utilities.lazyLoad(exports, ["NetworkRouteTable"], () => require("./networkRouteTable"));
 
 export { SecurityGroupArgs, SecurityGroupState } from "./securityGroup";
 export type SecurityGroup = import("./securityGroup").SecurityGroup;
@@ -90,6 +125,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ens/bucketLifecycle:BucketLifecycle":
+                return new BucketLifecycle(name, <any>undefined, { urn })
             case "alicloud:ens/disk:Disk":
                 return new Disk(name, <any>undefined, { urn })
             case "alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment":
@@ -108,10 +145,16 @@ const _module = {
                 return new KeyPair(name, <any>undefined, { urn })
             case "alicloud:ens/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "alicloud:ens/loadBalancerHttpListener:LoadBalancerHttpListener":
+                return new LoadBalancerHttpListener(name, <any>undefined, { urn })
+            case "alicloud:ens/loadBalancerUdpListener:LoadBalancerUdpListener":
+                return new LoadBalancerUdpListener(name, <any>undefined, { urn })
             case "alicloud:ens/natGateway:NatGateway":
                 return new NatGateway(name, <any>undefined, { urn })
             case "alicloud:ens/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "alicloud:ens/networkRouteTable:NetworkRouteTable":
+                return new NetworkRouteTable(name, <any>undefined, { urn })
             case "alicloud:ens/securityGroup:SecurityGroup":
                 return new SecurityGroup(name, <any>undefined, { urn })
             case "alicloud:ens/snapshot:Snapshot":
@@ -123,6 +166,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ens/bucketLifecycle", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/diskInstanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/eip", _module)
@@ -132,8 +176,11 @@ pulumi.runtime.registerResourceModule("alicloud", "ens/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/instanceSecurityGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/keyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/loadBalancerHttpListener", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/loadBalancerUdpListener", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/natGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/network", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/networkRouteTable", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/securityGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/snapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/vswitch", _module)

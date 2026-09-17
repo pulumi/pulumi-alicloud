@@ -30,6 +30,11 @@ export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
+export { DbExtensionArgs, DbExtensionState } from "./dbExtension";
+export type DbExtension = import("./dbExtension").DbExtension;
+export const DbExtension: typeof import("./dbExtension").DbExtension = null as any;
+utilities.lazyLoad(exports, ["DbExtension"], () => require("./dbExtension"));
+
 export { DbInstanceIpArrayArgs, DbInstanceIpArrayState } from "./dbInstanceIpArray";
 export type DbInstanceIpArray = import("./dbInstanceIpArray").DbInstanceIpArray;
 export const DbInstanceIpArray: typeof import("./dbInstanceIpArray").DbInstanceIpArray = null as any;
@@ -69,6 +74,11 @@ export { GetDataBackupsArgs, GetDataBackupsResult, GetDataBackupsOutputArgs } fr
 export const getDataBackups: typeof import("./getDataBackups").getDataBackups = null as any;
 export const getDataBackupsOutput: typeof import("./getDataBackups").getDataBackupsOutput = null as any;
 utilities.lazyLoad(exports, ["getDataBackups","getDataBackupsOutput"], () => require("./getDataBackups"));
+
+export { GetDbExtensionsArgs, GetDbExtensionsResult, GetDbExtensionsOutputArgs } from "./getDbExtensions";
+export const getDbExtensions: typeof import("./getDbExtensions").getDbExtensions = null as any;
+export const getDbExtensionsOutput: typeof import("./getDbExtensions").getDbExtensionsOutput = null as any;
+utilities.lazyLoad(exports, ["getDbExtensions","getDbExtensionsOutput"], () => require("./getDbExtensions"));
 
 export { GetDbInstancePlansArgs, GetDbInstancePlansResult, GetDbInstancePlansOutputArgs } from "./getDbInstancePlans";
 export const getDbInstancePlans: typeof import("./getDbInstancePlans").getDbInstancePlans = null as any;
@@ -145,6 +155,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "alicloud:gpdb/database:Database":
                 return new Database(name, <any>undefined, { urn })
+            case "alicloud:gpdb/dbExtension:DbExtension":
+                return new DbExtension(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray":
                 return new DbInstanceIpArray(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
@@ -181,6 +193,7 @@ pulumi.runtime.registerResourceModule("alicloud", "gpdb/apiKey", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/database", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbExtension", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstanceIpArray", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbResourceGroup", _module)

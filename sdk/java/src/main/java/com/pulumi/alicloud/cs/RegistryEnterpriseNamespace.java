@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
+ * Container Registry Enterprise Edition Namespace can be imported using the id, which consists of instanceId and name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example &lt;instance_id&gt;:&lt;name&gt;

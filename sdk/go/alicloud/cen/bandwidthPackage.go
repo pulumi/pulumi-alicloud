@@ -85,9 +85,9 @@ type BandwidthPackage struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The time of the bandwidth package to expire.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
-	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionAId pulumi.StringOutput `pulumi:"geographicRegionAId"`
-	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionBId pulumi.StringOutput `pulumi:"geographicRegionBId"`
 	// Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
 	//
@@ -157,9 +157,9 @@ type bandwidthPackageState struct {
 	Description *string `pulumi:"description"`
 	// The time of the bandwidth package to expire.
 	ExpiredTime *string `pulumi:"expiredTime"`
-	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionAId *string `pulumi:"geographicRegionAId"`
-	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionBId *string `pulumi:"geographicRegionBId"`
 	// Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
 	//
@@ -197,9 +197,9 @@ type BandwidthPackageState struct {
 	Description pulumi.StringPtrInput
 	// The time of the bandwidth package to expire.
 	ExpiredTime pulumi.StringPtrInput
-	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionAId pulumi.StringPtrInput
-	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionBId pulumi.StringPtrInput
 	// Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
 	//
@@ -239,9 +239,9 @@ type bandwidthPackageArgs struct {
 	ChargeType *string `pulumi:"chargeType"`
 	// The description of the bandwidth package. Default to null.
 	Description *string `pulumi:"description"`
-	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionAId *string `pulumi:"geographicRegionAId"`
-	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionBId *string `pulumi:"geographicRegionBId"`
 	// Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
 	//
@@ -276,9 +276,9 @@ type BandwidthPackageArgs struct {
 	ChargeType pulumi.StringPtrInput
 	// The description of the bandwidth package. Default to null.
 	Description pulumi.StringPtrInput
-	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionAId pulumi.StringPtrInput
-	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+	// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 	GeographicRegionBId pulumi.StringPtrInput
 	// Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
 	//
@@ -418,12 +418,12 @@ func (o BandwidthPackageOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
-// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 func (o BandwidthPackageOutput) GeographicRegionAId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.GeographicRegionAId }).(pulumi.StringOutput)
 }
 
-// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
 func (o BandwidthPackageOutput) GeographicRegionBId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.GeographicRegionBId }).(pulumi.StringOutput)
 }

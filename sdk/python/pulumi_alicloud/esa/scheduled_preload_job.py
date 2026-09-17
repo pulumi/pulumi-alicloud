@@ -283,7 +283,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
 
         ## Import
 
-        ESA Scheduled Preload Job can be imported using the id, e.g.
+        ESA Scheduled Preload Job can be imported using the id, which consists of site_id and scheduled_preload_job_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob example <site_id>:<scheduled_preload_job_id>
@@ -340,7 +340,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
 
         ## Import
 
-        ESA Scheduled Preload Job can be imported using the id, e.g.
+        ESA Scheduled Preload Job can be imported using the id, which consists of site_id and scheduled_preload_job_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob example <site_id>:<scheduled_preload_job_id>

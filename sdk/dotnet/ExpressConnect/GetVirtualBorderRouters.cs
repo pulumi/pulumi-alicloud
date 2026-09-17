@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private List<Inputs.GetVirtualBorderRoutersFilterArgs>? _filters;
 
         /// <summary>
-        /// Custom filter block as described below.
+        /// Custom filter block as described below. See `Filter` below.
         /// </summary>
         public List<Inputs.GetVirtualBorderRoutersFilterArgs> Filters
         {
@@ -237,6 +237,18 @@ namespace Pulumi.AliCloud.ExpressConnect
         [Input("status")]
         public string? Status { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A map of tags to filter Virtual Border Routers that match the given tags.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
         public GetVirtualBorderRoutersArgs()
         {
         }
@@ -249,7 +261,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<Inputs.GetVirtualBorderRoutersFilterInputArgs>? _filters;
 
         /// <summary>
-        /// Custom filter block as described below.
+        /// Custom filter block as described below. See `Filter` below.
         /// </summary>
         public InputList<Inputs.GetVirtualBorderRoutersFilterInputArgs> Filters
         {
@@ -287,6 +299,18 @@ namespace Pulumi.AliCloud.ExpressConnect
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags to filter Virtual Border Routers that match the given tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public GetVirtualBorderRoutersInvokeArgs()
         {
         }
@@ -304,10 +328,23 @@ namespace Pulumi.AliCloud.ExpressConnect
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Virtual Border Router names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualBorderRoutersRouterResult> Routers;
+        /// <summary>
+        /// The VBR state.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the Virtual Border Router.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetVirtualBorderRoutersResult(
@@ -325,7 +362,9 @@ namespace Pulumi.AliCloud.ExpressConnect
 
             ImmutableArray<Outputs.GetVirtualBorderRoutersRouterResult> routers,
 
-            string? status)
+            string? status,
+
+            ImmutableDictionary<string, string>? tags)
         {
             Filters = filters;
             Id = id;
@@ -335,6 +374,7 @@ namespace Pulumi.AliCloud.ExpressConnect
             OutputFile = outputFile;
             Routers = routers;
             Status = status;
+            Tags = tags;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ens
     /// 
     /// ## Import
     /// 
-    /// ENS Instance Security Group Attachment can be imported using the id, e.g.
+    /// ENS Instance Security Group Attachment can be imported using the id, which consists of InstanceId and security_group_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment example &lt;instance_id&gt;:&lt;security_group_id&gt;

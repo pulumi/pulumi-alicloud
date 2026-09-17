@@ -479,7 +479,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
 
         ## Import
 
-        Alikafka Scheduled Scaling Rule can be imported using the id, e.g.
+        Alikafka Scheduled Scaling Rule can be imported using the id, which consists of instance_id and rule_name, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule example <instance_id>:<rule_name>
@@ -577,7 +577,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
 
         ## Import
 
-        Alikafka Scheduled Scaling Rule can be imported using the id, e.g.
+        Alikafka Scheduled Scaling Rule can be imported using the id, which consists of instance_id and rule_name, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule example <instance_id>:<rule_name>

@@ -75,6 +75,24 @@ namespace Pulumi.AliCloud.Message
         public Output<Outputs.ServiceQueueDlqPolicy> DlqPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `False`. Valid values:
+        /// </summary>
+        [Output("enableSse")]
+        public Output<bool> EnableSse { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `True` after server-side encryption is disabled because existing messages are still stored as encrypted.
+        /// </summary>
+        [Output("encryptionEnabled")]
+        public Output<bool> EncryptionEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `SseType` is set to `KMS`.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Output("loggingEnabled")]
@@ -111,6 +129,20 @@ namespace Pulumi.AliCloud.Message
         public Output<string> QueueType { get; private set; } = null!;
 
         /// <summary>
+        /// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        /// </summary>
+        [Output("sseAlgorithm")]
+        public Output<string> SseAlgorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of server-side encryption (SSE). Valid values:
+        /// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        /// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        /// </summary>
+        [Output("sseType")]
+        public Output<string> SseType { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
@@ -118,6 +150,10 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+        /// 
+        /// &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `SseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+        /// 
+        /// &gt; **NOTE:** To disable SSE, you must set `EnableSse` to `False` and remove `SseType`, `SseAlgorithm`, and `KmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         /// </summary>
         [Output("visibilityTimeout")]
         public Output<int> VisibilityTimeout { get; private set; } = null!;
@@ -181,6 +217,18 @@ namespace Pulumi.AliCloud.Message
         public Input<Inputs.ServiceQueueDlqPolicyArgs>? DlqPolicy { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `False`. Valid values:
+        /// </summary>
+        [Input("enableSse")]
+        public Input<bool>? EnableSse { get; set; }
+
+        /// <summary>
+        /// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `SseType` is set to `KMS`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
         /// </summary>
         [Input("loggingEnabled")]
@@ -216,6 +264,20 @@ namespace Pulumi.AliCloud.Message
         [Input("queueType")]
         public Input<string>? QueueType { get; set; }
 
+        /// <summary>
+        /// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        /// </summary>
+        [Input("sseAlgorithm")]
+        public Input<string>? SseAlgorithm { get; set; }
+
+        /// <summary>
+        /// The type of server-side encryption (SSE). Valid values:
+        /// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        /// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        /// </summary>
+        [Input("sseType")]
+        public Input<string>? SseType { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -230,6 +292,10 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+        /// 
+        /// &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `SseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+        /// 
+        /// &gt; **NOTE:** To disable SSE, you must set `EnableSse` to `False` and remove `SseType`, `SseAlgorithm`, and `KmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         /// </summary>
         [Input("visibilityTimeout")]
         public Input<int>? VisibilityTimeout { get; set; }
@@ -259,6 +325,24 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Input("dlqPolicy")]
         public Input<Inputs.ServiceQueueDlqPolicyGetArgs>? DlqPolicy { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `False`. Valid values:
+        /// </summary>
+        [Input("enableSse")]
+        public Input<bool>? EnableSse { get; set; }
+
+        /// <summary>
+        /// (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `True` after server-side encryption is disabled because existing messages are still stored as encrypted.
+        /// </summary>
+        [Input("encryptionEnabled")]
+        public Input<bool>? EncryptionEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `SseType` is set to `KMS`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the logging feature. Default value: `False`. Valid values:
@@ -296,6 +380,20 @@ namespace Pulumi.AliCloud.Message
         [Input("queueType")]
         public Input<string>? QueueType { get; set; }
 
+        /// <summary>
+        /// The encryption algorithm that is used to encrypt the messages in the queue. Valid value: `AES-256-GCM`.
+        /// </summary>
+        [Input("sseAlgorithm")]
+        public Input<string>? SseAlgorithm { get; set; }
+
+        /// <summary>
+        /// The type of server-side encryption (SSE). Valid values:
+        /// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        /// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        /// </summary>
+        [Input("sseType")]
+        public Input<string>? SseType { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -310,6 +408,10 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
+        /// 
+        /// &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `SseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the queue, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+        /// 
+        /// &gt; **NOTE:** To disable SSE, you must set `EnableSse` to `False` and remove `SseType`, `SseAlgorithm`, and `KmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         /// </summary>
         [Input("visibilityTimeout")]
         public Input<int>? VisibilityTimeout { get; set; }

@@ -147,7 +147,7 @@ import (
 //
 // ## Import
 //
-// RDS database endpoint public address feature can be imported using the id, e.g.
+// RDS database endpoint public address feature can be imported using the id, which consists of dbInstanceId and db_instance_endpoint_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>

@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The Sag Qos Car can be imported using the id, e.g.
+ * The Sag Qos Car can be imported using the id, which consists of qosId and qos_car_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:sag/qosCar:QosCar example &lt;qos_id&gt;:&lt;qos_car_id&gt;

@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Route Entry can be imported using the id, e.g.
+    /// Route Entry can be imported using the id, which consists of route_table_id, router_id, destination_cidrblock, NexthopType and nexthop_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/routeEntry:RouteEntry example &lt;route_table_id&gt;:&lt;router_id&gt;:&lt;destination_cidrblock&gt;:&lt;nexthop_type&gt;:&lt;nexthop_id&gt;

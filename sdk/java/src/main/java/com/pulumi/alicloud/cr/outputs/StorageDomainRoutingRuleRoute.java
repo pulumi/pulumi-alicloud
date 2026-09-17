@@ -21,7 +21,7 @@ public final class StorageDomainRoutingRuleRoute {
      */
     private String instanceDomain;
     /**
-     * @return Storage domain name.
+     * @return Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
      * 
      */
     private String storageDomain;
@@ -42,7 +42,7 @@ public final class StorageDomainRoutingRuleRoute {
         return this.instanceDomain;
     }
     /**
-     * @return Storage domain name.
+     * @return Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
      * 
      */
     public String storageDomain() {

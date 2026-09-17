@@ -401,7 +401,7 @@ class MountPoint(pulumi.CustomResource):
 
         ## Import
 
-        Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, which consists of file_system_id and mount_point_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
@@ -478,7 +478,7 @@ class MountPoint(pulumi.CustomResource):
 
         ## Import
 
-        Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, which consists of file_system_id and mount_point_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>

@@ -677,6 +677,148 @@ func (o SecurityGroupPermissionArrayOutput) Index(i pulumi.IntInput) SecurityGro
 	}).(SecurityGroupPermissionOutput)
 }
 
+type GetBucketLifecyclesRule struct {
+	// The name of the ENS bucket whose lifecycle rules are to be listed.
+	BucketName string `pulumi:"bucketName"`
+	// The number of days after the last update of the object before the lifecycle rule takes effect.
+	ExpirationDays int `pulumi:"expirationDays"`
+	// The ID of the lifecycle rule, formatted as `<bucket_name>:<rule_id>`.
+	Id string `pulumi:"id"`
+	// The prefix that the rule applies to.
+	Prefix string `pulumi:"prefix"`
+	// A specific rule ID used to filter results to a single rule.
+	RuleId string `pulumi:"ruleId"`
+	// The rule status. Valid values: `Enabled`, `Disabled`.
+	Status string `pulumi:"status"`
+}
+
+// GetBucketLifecyclesRuleInput is an input type that accepts GetBucketLifecyclesRuleArgs and GetBucketLifecyclesRuleOutput values.
+// You can construct a concrete instance of `GetBucketLifecyclesRuleInput` via:
+//
+//	GetBucketLifecyclesRuleArgs{...}
+type GetBucketLifecyclesRuleInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecyclesRuleOutput() GetBucketLifecyclesRuleOutput
+	ToGetBucketLifecyclesRuleOutputWithContext(context.Context) GetBucketLifecyclesRuleOutput
+}
+
+type GetBucketLifecyclesRuleArgs struct {
+	// The name of the ENS bucket whose lifecycle rules are to be listed.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The number of days after the last update of the object before the lifecycle rule takes effect.
+	ExpirationDays pulumi.IntInput `pulumi:"expirationDays"`
+	// The ID of the lifecycle rule, formatted as `<bucket_name>:<rule_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The prefix that the rule applies to.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// A specific rule ID used to filter results to a single rule.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The rule status. Valid values: `Enabled`, `Disabled`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBucketLifecyclesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecyclesRule)(nil)).Elem()
+}
+
+func (i GetBucketLifecyclesRuleArgs) ToGetBucketLifecyclesRuleOutput() GetBucketLifecyclesRuleOutput {
+	return i.ToGetBucketLifecyclesRuleOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecyclesRuleArgs) ToGetBucketLifecyclesRuleOutputWithContext(ctx context.Context) GetBucketLifecyclesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecyclesRuleOutput)
+}
+
+// GetBucketLifecyclesRuleArrayInput is an input type that accepts GetBucketLifecyclesRuleArray and GetBucketLifecyclesRuleArrayOutput values.
+// You can construct a concrete instance of `GetBucketLifecyclesRuleArrayInput` via:
+//
+//	GetBucketLifecyclesRuleArray{ GetBucketLifecyclesRuleArgs{...} }
+type GetBucketLifecyclesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecyclesRuleArrayOutput() GetBucketLifecyclesRuleArrayOutput
+	ToGetBucketLifecyclesRuleArrayOutputWithContext(context.Context) GetBucketLifecyclesRuleArrayOutput
+}
+
+type GetBucketLifecyclesRuleArray []GetBucketLifecyclesRuleInput
+
+func (GetBucketLifecyclesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecyclesRule)(nil)).Elem()
+}
+
+func (i GetBucketLifecyclesRuleArray) ToGetBucketLifecyclesRuleArrayOutput() GetBucketLifecyclesRuleArrayOutput {
+	return i.ToGetBucketLifecyclesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecyclesRuleArray) ToGetBucketLifecyclesRuleArrayOutputWithContext(ctx context.Context) GetBucketLifecyclesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecyclesRuleArrayOutput)
+}
+
+type GetBucketLifecyclesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecyclesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecyclesRule)(nil)).Elem()
+}
+
+func (o GetBucketLifecyclesRuleOutput) ToGetBucketLifecyclesRuleOutput() GetBucketLifecyclesRuleOutput {
+	return o
+}
+
+func (o GetBucketLifecyclesRuleOutput) ToGetBucketLifecyclesRuleOutputWithContext(ctx context.Context) GetBucketLifecyclesRuleOutput {
+	return o
+}
+
+// The name of the ENS bucket whose lifecycle rules are to be listed.
+func (o GetBucketLifecyclesRuleOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecyclesRule) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The number of days after the last update of the object before the lifecycle rule takes effect.
+func (o GetBucketLifecyclesRuleOutput) ExpirationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecyclesRule) int { return v.ExpirationDays }).(pulumi.IntOutput)
+}
+
+// The ID of the lifecycle rule, formatted as `<bucket_name>:<rule_id>`.
+func (o GetBucketLifecyclesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecyclesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The prefix that the rule applies to.
+func (o GetBucketLifecyclesRuleOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecyclesRule) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// A specific rule ID used to filter results to a single rule.
+func (o GetBucketLifecyclesRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecyclesRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The rule status. Valid values: `Enabled`, `Disabled`.
+func (o GetBucketLifecyclesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecyclesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBucketLifecyclesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecyclesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecyclesRule)(nil)).Elem()
+}
+
+func (o GetBucketLifecyclesRuleArrayOutput) ToGetBucketLifecyclesRuleArrayOutput() GetBucketLifecyclesRuleArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecyclesRuleArrayOutput) ToGetBucketLifecyclesRuleArrayOutputWithContext(ctx context.Context) GetBucketLifecyclesRuleArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecyclesRuleArrayOutput) Index(i pulumi.IntInput) GetBucketLifecyclesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketLifecyclesRule {
+		return vs[0].([]GetBucketLifecyclesRule)[vs[1].(int)]
+	}).(GetBucketLifecyclesRuleOutput)
+}
+
 type GetKeyPairsPair struct {
 	// The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime string `pulumi:"createTime"`
@@ -808,6 +950,425 @@ func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPairsPair {
 		return vs[0].([]GetKeyPairsPair)[vs[1].(int)]
 	}).(GetKeyPairsPairOutput)
+}
+
+type GetLoadBalancerUdpListenersListener struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The port used by the backend server of the load balancer instance.
+	BackendServerPort int `pulumi:"backendServerPort"`
+	// The description of the listener.
+	Description string `pulumi:"description"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether EIP transparent transmission is enabled.
+	EipTransmit string `pulumi:"eipTransmit"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The timeout period of the connection. Unit: seconds.
+	EstablishedTimeout int `pulumi:"establishedTimeout"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The port used for health checks.
+	HealthCheckConnectPort int `pulumi:"healthCheckConnectPort"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The amount of time to wait for a response from the health check. Unit: seconds.
+	HealthCheckConnectTimeout int `pulumi:"healthCheckConnectTimeout"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The expected response string for the UDP listener health check.
+	HealthCheckExp string `pulumi:"healthCheckExp"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckInterval int `pulumi:"healthCheckInterval"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The request string for the UDP listener health check.
+	HealthCheckReq string `pulumi:"healthCheckReq"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive successful health checks that must occur before a backend server is declared healthy.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// The ID of the listener. The value is formulated as `<load_balancer_id>:<listener_port>`.
+	Id string `pulumi:"id"`
+	// The frontend port used by the load balancer instance.
+	ListenerPort int `pulumi:"listenerPort"`
+	// The ID of the load balancer instance.
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// The protocol of the listener. The value is `udp`.
+	Protocol string `pulumi:"protocol"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The scheduling algorithm.
+	Scheduler string `pulumi:"scheduler"`
+	// The status of the listener.
+	Status string `pulumi:"status"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive failed health checks that must occur before a backend server is declared unhealthy.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+// GetLoadBalancerUdpListenersListenerInput is an input type that accepts GetLoadBalancerUdpListenersListenerArgs and GetLoadBalancerUdpListenersListenerOutput values.
+// You can construct a concrete instance of `GetLoadBalancerUdpListenersListenerInput` via:
+//
+//	GetLoadBalancerUdpListenersListenerArgs{...}
+type GetLoadBalancerUdpListenersListenerInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerUdpListenersListenerOutput() GetLoadBalancerUdpListenersListenerOutput
+	ToGetLoadBalancerUdpListenersListenerOutputWithContext(context.Context) GetLoadBalancerUdpListenersListenerOutput
+}
+
+type GetLoadBalancerUdpListenersListenerArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The port used by the backend server of the load balancer instance.
+	BackendServerPort pulumi.IntInput `pulumi:"backendServerPort"`
+	// The description of the listener.
+	Description pulumi.StringInput `pulumi:"description"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Whether EIP transparent transmission is enabled.
+	EipTransmit pulumi.StringInput `pulumi:"eipTransmit"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The timeout period of the connection. Unit: seconds.
+	EstablishedTimeout pulumi.IntInput `pulumi:"establishedTimeout"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The port used for health checks.
+	HealthCheckConnectPort pulumi.IntInput `pulumi:"healthCheckConnectPort"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The amount of time to wait for a response from the health check. Unit: seconds.
+	HealthCheckConnectTimeout pulumi.IntInput `pulumi:"healthCheckConnectTimeout"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The expected response string for the UDP listener health check.
+	HealthCheckExp pulumi.StringInput `pulumi:"healthCheckExp"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckInterval pulumi.IntInput `pulumi:"healthCheckInterval"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The request string for the UDP listener health check.
+	HealthCheckReq pulumi.StringInput `pulumi:"healthCheckReq"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive successful health checks that must occur before a backend server is declared healthy.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// The ID of the listener. The value is formulated as `<load_balancer_id>:<listener_port>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The frontend port used by the load balancer instance.
+	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
+	// The ID of the load balancer instance.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// The protocol of the listener. The value is `udp`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The scheduling algorithm.
+	Scheduler pulumi.StringInput `pulumi:"scheduler"`
+	// The status of the listener.
+	Status pulumi.StringInput `pulumi:"status"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive failed health checks that must occur before a backend server is declared unhealthy.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+}
+
+func (GetLoadBalancerUdpListenersListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerUdpListenersListener)(nil)).Elem()
+}
+
+func (i GetLoadBalancerUdpListenersListenerArgs) ToGetLoadBalancerUdpListenersListenerOutput() GetLoadBalancerUdpListenersListenerOutput {
+	return i.ToGetLoadBalancerUdpListenersListenerOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerUdpListenersListenerArgs) ToGetLoadBalancerUdpListenersListenerOutputWithContext(ctx context.Context) GetLoadBalancerUdpListenersListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerUdpListenersListenerOutput)
+}
+
+// GetLoadBalancerUdpListenersListenerArrayInput is an input type that accepts GetLoadBalancerUdpListenersListenerArray and GetLoadBalancerUdpListenersListenerArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerUdpListenersListenerArrayInput` via:
+//
+//	GetLoadBalancerUdpListenersListenerArray{ GetLoadBalancerUdpListenersListenerArgs{...} }
+type GetLoadBalancerUdpListenersListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerUdpListenersListenerArrayOutput() GetLoadBalancerUdpListenersListenerArrayOutput
+	ToGetLoadBalancerUdpListenersListenerArrayOutputWithContext(context.Context) GetLoadBalancerUdpListenersListenerArrayOutput
+}
+
+type GetLoadBalancerUdpListenersListenerArray []GetLoadBalancerUdpListenersListenerInput
+
+func (GetLoadBalancerUdpListenersListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerUdpListenersListener)(nil)).Elem()
+}
+
+func (i GetLoadBalancerUdpListenersListenerArray) ToGetLoadBalancerUdpListenersListenerArrayOutput() GetLoadBalancerUdpListenersListenerArrayOutput {
+	return i.ToGetLoadBalancerUdpListenersListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerUdpListenersListenerArray) ToGetLoadBalancerUdpListenersListenerArrayOutputWithContext(ctx context.Context) GetLoadBalancerUdpListenersListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerUdpListenersListenerArrayOutput)
+}
+
+type GetLoadBalancerUdpListenersListenerOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerUdpListenersListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerUdpListenersListener)(nil)).Elem()
+}
+
+func (o GetLoadBalancerUdpListenersListenerOutput) ToGetLoadBalancerUdpListenersListenerOutput() GetLoadBalancerUdpListenersListenerOutput {
+	return o
+}
+
+func (o GetLoadBalancerUdpListenersListenerOutput) ToGetLoadBalancerUdpListenersListenerOutputWithContext(ctx context.Context) GetLoadBalancerUdpListenersListenerOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The port used by the backend server of the load balancer instance.
+func (o GetLoadBalancerUdpListenersListenerOutput) BackendServerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.BackendServerPort }).(pulumi.IntOutput)
+}
+
+// The description of the listener.
+func (o GetLoadBalancerUdpListenersListenerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Whether EIP transparent transmission is enabled.
+func (o GetLoadBalancerUdpListenersListenerOutput) EipTransmit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.EipTransmit }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The timeout period of the connection. Unit: seconds.
+func (o GetLoadBalancerUdpListenersListenerOutput) EstablishedTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.EstablishedTimeout }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The port used for health checks.
+func (o GetLoadBalancerUdpListenersListenerOutput) HealthCheckConnectPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The amount of time to wait for a response from the health check. Unit: seconds.
+func (o GetLoadBalancerUdpListenersListenerOutput) HealthCheckConnectTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.HealthCheckConnectTimeout }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The expected response string for the UDP listener health check.
+func (o GetLoadBalancerUdpListenersListenerOutput) HealthCheckExp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.HealthCheckExp }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The interval between two consecutive health checks. Unit: seconds.
+func (o GetLoadBalancerUdpListenersListenerOutput) HealthCheckInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.HealthCheckInterval }).(pulumi.IntOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The request string for the UDP listener health check.
+func (o GetLoadBalancerUdpListenersListenerOutput) HealthCheckReq() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.HealthCheckReq }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive successful health checks that must occur before a backend server is declared healthy.
+func (o GetLoadBalancerUdpListenersListenerOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// The ID of the listener. The value is formulated as `<load_balancer_id>:<listener_port>`.
+func (o GetLoadBalancerUdpListenersListenerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The frontend port used by the load balancer instance.
+func (o GetLoadBalancerUdpListenersListenerOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+// The ID of the load balancer instance.
+func (o GetLoadBalancerUdpListenersListenerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// The protocol of the listener. The value is `udp`.
+func (o GetLoadBalancerUdpListenersListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The scheduling algorithm.
+func (o GetLoadBalancerUdpListenersListenerOutput) Scheduler() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.Scheduler }).(pulumi.StringOutput)
+}
+
+// The status of the listener.
+func (o GetLoadBalancerUdpListenersListenerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive failed health checks that must occur before a backend server is declared unhealthy.
+func (o GetLoadBalancerUdpListenersListenerOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerUdpListenersListener) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type GetLoadBalancerUdpListenersListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerUdpListenersListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerUdpListenersListener)(nil)).Elem()
+}
+
+func (o GetLoadBalancerUdpListenersListenerArrayOutput) ToGetLoadBalancerUdpListenersListenerArrayOutput() GetLoadBalancerUdpListenersListenerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerUdpListenersListenerArrayOutput) ToGetLoadBalancerUdpListenersListenerArrayOutputWithContext(ctx context.Context) GetLoadBalancerUdpListenersListenerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerUdpListenersListenerArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerUdpListenersListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerUdpListenersListener {
+		return vs[0].([]GetLoadBalancerUdpListenersListener)[vs[1].(int)]
+	}).(GetLoadBalancerUdpListenersListenerOutput)
+}
+
+type GetNetworkRouteTablesTable struct {
+	// The binding type of the routing table. Value: `VSwitch`, `Gateway`.
+	AssociateType string `pulumi:"associateType"`
+	// The creation time of the routing table.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the routing table.
+	Description string `pulumi:"description"`
+	// The ID of the routing table. Same as `routeTableId`.
+	Id string `pulumi:"id"`
+	// Whether it is the default gateway route table.
+	IsDefaultGatewayRouteTable bool `pulumi:"isDefaultGatewayRouteTable"`
+	// The network ID.
+	NetworkId string `pulumi:"networkId"`
+	// The ID of the routing table.
+	RouteTableId string `pulumi:"routeTableId"`
+	// The name of the routing table.
+	RouteTableName string `pulumi:"routeTableName"`
+	// The type of the routing table. Value: `Custom`, `System`.
+	RouteTableType string `pulumi:"routeTableType"`
+	// The status of the routing table.
+	Status string `pulumi:"status"`
+}
+
+// GetNetworkRouteTablesTableInput is an input type that accepts GetNetworkRouteTablesTableArgs and GetNetworkRouteTablesTableOutput values.
+// You can construct a concrete instance of `GetNetworkRouteTablesTableInput` via:
+//
+//	GetNetworkRouteTablesTableArgs{...}
+type GetNetworkRouteTablesTableInput interface {
+	pulumi.Input
+
+	ToGetNetworkRouteTablesTableOutput() GetNetworkRouteTablesTableOutput
+	ToGetNetworkRouteTablesTableOutputWithContext(context.Context) GetNetworkRouteTablesTableOutput
+}
+
+type GetNetworkRouteTablesTableArgs struct {
+	// The binding type of the routing table. Value: `VSwitch`, `Gateway`.
+	AssociateType pulumi.StringInput `pulumi:"associateType"`
+	// The creation time of the routing table.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the routing table.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the routing table. Same as `routeTableId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether it is the default gateway route table.
+	IsDefaultGatewayRouteTable pulumi.BoolInput `pulumi:"isDefaultGatewayRouteTable"`
+	// The network ID.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The ID of the routing table.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+	// The name of the routing table.
+	RouteTableName pulumi.StringInput `pulumi:"routeTableName"`
+	// The type of the routing table. Value: `Custom`, `System`.
+	RouteTableType pulumi.StringInput `pulumi:"routeTableType"`
+	// The status of the routing table.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNetworkRouteTablesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkRouteTablesTable)(nil)).Elem()
+}
+
+func (i GetNetworkRouteTablesTableArgs) ToGetNetworkRouteTablesTableOutput() GetNetworkRouteTablesTableOutput {
+	return i.ToGetNetworkRouteTablesTableOutputWithContext(context.Background())
+}
+
+func (i GetNetworkRouteTablesTableArgs) ToGetNetworkRouteTablesTableOutputWithContext(ctx context.Context) GetNetworkRouteTablesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkRouteTablesTableOutput)
+}
+
+// GetNetworkRouteTablesTableArrayInput is an input type that accepts GetNetworkRouteTablesTableArray and GetNetworkRouteTablesTableArrayOutput values.
+// You can construct a concrete instance of `GetNetworkRouteTablesTableArrayInput` via:
+//
+//	GetNetworkRouteTablesTableArray{ GetNetworkRouteTablesTableArgs{...} }
+type GetNetworkRouteTablesTableArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkRouteTablesTableArrayOutput() GetNetworkRouteTablesTableArrayOutput
+	ToGetNetworkRouteTablesTableArrayOutputWithContext(context.Context) GetNetworkRouteTablesTableArrayOutput
+}
+
+type GetNetworkRouteTablesTableArray []GetNetworkRouteTablesTableInput
+
+func (GetNetworkRouteTablesTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkRouteTablesTable)(nil)).Elem()
+}
+
+func (i GetNetworkRouteTablesTableArray) ToGetNetworkRouteTablesTableArrayOutput() GetNetworkRouteTablesTableArrayOutput {
+	return i.ToGetNetworkRouteTablesTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkRouteTablesTableArray) ToGetNetworkRouteTablesTableArrayOutputWithContext(ctx context.Context) GetNetworkRouteTablesTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkRouteTablesTableArrayOutput)
+}
+
+type GetNetworkRouteTablesTableOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkRouteTablesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkRouteTablesTable)(nil)).Elem()
+}
+
+func (o GetNetworkRouteTablesTableOutput) ToGetNetworkRouteTablesTableOutput() GetNetworkRouteTablesTableOutput {
+	return o
+}
+
+func (o GetNetworkRouteTablesTableOutput) ToGetNetworkRouteTablesTableOutputWithContext(ctx context.Context) GetNetworkRouteTablesTableOutput {
+	return o
+}
+
+// The binding type of the routing table. Value: `VSwitch`, `Gateway`.
+func (o GetNetworkRouteTablesTableOutput) AssociateType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.AssociateType }).(pulumi.StringOutput)
+}
+
+// The creation time of the routing table.
+func (o GetNetworkRouteTablesTableOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the routing table.
+func (o GetNetworkRouteTablesTableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the routing table. Same as `routeTableId`.
+func (o GetNetworkRouteTablesTableOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether it is the default gateway route table.
+func (o GetNetworkRouteTablesTableOutput) IsDefaultGatewayRouteTable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) bool { return v.IsDefaultGatewayRouteTable }).(pulumi.BoolOutput)
+}
+
+// The network ID.
+func (o GetNetworkRouteTablesTableOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The ID of the routing table.
+func (o GetNetworkRouteTablesTableOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The name of the routing table.
+func (o GetNetworkRouteTablesTableOutput) RouteTableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.RouteTableName }).(pulumi.StringOutput)
+}
+
+// The type of the routing table. Value: `Custom`, `System`.
+func (o GetNetworkRouteTablesTableOutput) RouteTableType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.RouteTableType }).(pulumi.StringOutput)
+}
+
+// The status of the routing table.
+func (o GetNetworkRouteTablesTableOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkRouteTablesTable) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNetworkRouteTablesTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkRouteTablesTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkRouteTablesTable)(nil)).Elem()
+}
+
+func (o GetNetworkRouteTablesTableArrayOutput) ToGetNetworkRouteTablesTableArrayOutput() GetNetworkRouteTablesTableArrayOutput {
+	return o
+}
+
+func (o GetNetworkRouteTablesTableArrayOutput) ToGetNetworkRouteTablesTableArrayOutputWithContext(ctx context.Context) GetNetworkRouteTablesTableArrayOutput {
+	return o
+}
+
+func (o GetNetworkRouteTablesTableArrayOutput) Index(i pulumi.IntInput) GetNetworkRouteTablesTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkRouteTablesTable {
+		return vs[0].([]GetNetworkRouteTablesTable)[vs[1].(int)]
+	}).(GetNetworkRouteTablesTableOutput)
 }
 
 type GetSecurityGroupsGroup struct {
@@ -1166,8 +1727,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendServerArrayInput)(nil)).Elem(), LoadBalancerBackendServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupPermissionInput)(nil)).Elem(), SecurityGroupPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupPermissionArrayInput)(nil)).Elem(), SecurityGroupPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecyclesRuleInput)(nil)).Elem(), GetBucketLifecyclesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecyclesRuleArrayInput)(nil)).Elem(), GetBucketLifecyclesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerUdpListenersListenerInput)(nil)).Elem(), GetLoadBalancerUdpListenersListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerUdpListenersListenerArrayInput)(nil)).Elem(), GetLoadBalancerUdpListenersListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkRouteTablesTableInput)(nil)).Elem(), GetNetworkRouteTablesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkRouteTablesTableArrayInput)(nil)).Elem(), GetNetworkRouteTablesTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupInput)(nil)).Elem(), GetSecurityGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupArrayInput)(nil)).Elem(), GetSecurityGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupPermissionInput)(nil)).Elem(), GetSecurityGroupsGroupPermissionArgs{})
@@ -1180,8 +1747,14 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerBackendServerArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupPermissionOutput{})
 	pulumi.RegisterOutputType(SecurityGroupPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecyclesRuleOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecyclesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerUdpListenersListenerOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerUdpListenersListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkRouteTablesTableOutput{})
+	pulumi.RegisterOutputType(GetNetworkRouteTablesTableArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupsGroupPermissionOutput{})

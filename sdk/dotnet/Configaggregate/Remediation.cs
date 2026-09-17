@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Configaggregate
     /// 
     /// ## Import
     /// 
-    /// Cloud Config (Config) Aggregate Remediation can be imported using the id, e.g.
+    /// Cloud Config (Config) Aggregate Remediation can be imported using the id, which consists of AggregatorId and remediation_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:configaggregate/remediation:Remediation example &lt;aggregator_id&gt;:&lt;remediation_id&gt;

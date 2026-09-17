@@ -185,6 +185,40 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Bind an HTTPS certificate managed by SSL Certificates Service (CAS) by id, instead of pasting the PEM material:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net";
+ * const functionName1 = config.get("functionName1") || "terraform-custom-domain-t1";
+ * const _default = new alicloud.cas.ServiceCertificate("default", {
+ *     certificateName: "tf-cert-example",
+ *     cert: std.file({
+ *         input: "cert.pem",
+ *     }).then(invoke => invoke.result),
+ *     key: std.file({
+ *         input: "key.pem",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultV3CustomDomain = new alicloud.fc.V3CustomDomain("default", {
+ *     customDomainName: name,
+ *     protocol: "HTTP,HTTPS",
+ *     certificateId: _default.id,
+ *     routeConfig: {
+ *         routes: [{
+ *             functionName: functionName1,
+ *             path: "/a",
+ *             qualifier: "LATEST",
+ *             methods: ["GET"],
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
@@ -240,6 +274,10 @@ export class V3CustomDomain extends pulumi.CustomResource {
      */
     declare public readonly certConfig: pulumi.Output<outputs.fc.V3CustomDomainCertConfig>;
     /**
+     * The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     */
+    declare public readonly certificateId: pulumi.Output<string>;
+    /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
      */
     declare public readonly corsConfig: pulumi.Output<outputs.fc.V3CustomDomainCorsConfig | undefined>;
@@ -293,6 +331,7 @@ export class V3CustomDomain extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = state?.apiVersion;
             resourceInputs["authConfig"] = state?.authConfig;
             resourceInputs["certConfig"] = state?.certConfig;
+            resourceInputs["certificateId"] = state?.certificateId;
             resourceInputs["corsConfig"] = state?.corsConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customDomainName"] = state?.customDomainName;
@@ -306,6 +345,7 @@ export class V3CustomDomain extends pulumi.CustomResource {
             const args = argsOrState as V3CustomDomainArgs | undefined;
             resourceInputs["authConfig"] = args?.authConfig;
             resourceInputs["certConfig"] = args?.certConfig;
+            resourceInputs["certificateId"] = args?.certificateId;
             resourceInputs["corsConfig"] = args?.corsConfig;
             resourceInputs["customDomainName"] = args?.customDomainName;
             resourceInputs["protocol"] = args?.protocol;
@@ -343,6 +383,10 @@ export interface V3CustomDomainState {
      * HTTPS certificate information See `certConfig` below.
      */
     certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig | undefined>;
+    /**
+     * The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     */
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
      */
@@ -393,6 +437,10 @@ export interface V3CustomDomainArgs {
      * HTTPS certificate information See `certConfig` below.
      */
     certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig | undefined>;
+    /**
+     * The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+     */
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
      */

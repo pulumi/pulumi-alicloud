@@ -150,7 +150,7 @@ import (
 //
 // ## Import
 //
-// Bastion Host Share Key can be imported using the id, e.g.
+// Bastion Host Share Key can be imported using the id, which consists of instanceId and host_share_key_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>

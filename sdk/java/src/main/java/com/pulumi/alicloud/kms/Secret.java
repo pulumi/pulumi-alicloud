@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.76.0.
  * 
+ * &gt; **NOTE:** Starting from KMS 3.0, secrets are created inside a dedicated KMS instance. When you create a secret in KMS 3.0, you must specify `dkmsInstanceId` and `encryptionKeyId`. The examples below show how to provide them. If your account still uses the legacy shared KMS and does not require a dedicated instance, these two parameters can be omitted, but this legacy behavior is no longer recommended.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -36,6 +38,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
  * import com.pulumi.alicloud.kms.Secret;
  * import com.pulumi.alicloud.kms.SecretArgs;
  * import java.util.ArrayList;
@@ -53,10 +58,392 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Secret("default", SecretArgs.builder()
+ *         // Replace the IDs with your own dedicated KMS instance and key.
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var defaultSecret = new Secret("defaultSecret", SecretArgs.builder()
  *             .secretName(name)
  *             .secretData("Secret data")
  *             .versionId("v1")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .forceDeleteWithoutRecovery(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a generic secret
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+ * import com.pulumi.alicloud.kms.Secret;
+ * import com.pulumi.alicloud.kms.SecretArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var generic = new Secret("generic", SecretArgs.builder()
+ *             .secretName(name)
+ *             .secretType("Generic")
+ *             .secretData("Secret data")
+ *             .versionId("v1")
+ *             .secretDataType("text")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .forceDeleteWithoutRecovery(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create an RDS secret
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+ * import com.pulumi.alicloud.kms.Secret;
+ * import com.pulumi.alicloud.kms.SecretArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var rds = new Secret("rds", SecretArgs.builder()
+ *             .secretName(name)
+ *             .secretType("Rds")
+ *             .secretData(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Accounts", jsonArray(jsonObject(
+ *                         jsonProperty("AccountName", "rds_user"),
+ *                         jsonProperty("AccountPassword", "YourPassword12345!")
+ *                     )))
+ *                 )))
+ *             .versionId("v1")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .extendedConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("SecretSubType", "SingleUser"),
+ *                     jsonProperty("DBInstanceId", "rm-bp1b3dd3a506e****")
+ *                 )))
+ *             .forceDeleteWithoutRecovery(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a Redis/Tair secret
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+ * import com.pulumi.alicloud.kms.Secret;
+ * import com.pulumi.alicloud.kms.SecretArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var redis = new Secret("redis", SecretArgs.builder()
+ *             .secretName(name)
+ *             .secretType("Redis")
+ *             .secretData("$Auto")
+ *             .versionId("v1")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .extendedConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("SecretSubType", "DoubleUsers"),
+ *                     jsonProperty("AccountName", "redis_user"),
+ *                     jsonProperty("CloneAccountName", "redis_user_clone"),
+ *                     jsonProperty("AccountPrivilege", "ROLE_READ_ONLY"),
+ *                     jsonProperty("InstanceId", "r-bp1b3dd3a506e****"),
+ *                     jsonProperty("RegionId", "cn-hangzhou")
+ *                 )))
+ *             .forceDeleteWithoutRecovery(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a RAM credentials secret
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+ * import com.pulumi.alicloud.kms.Secret;
+ * import com.pulumi.alicloud.kms.SecretArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var ram = new Secret("ram", SecretArgs.builder()
+ *             .secretName("$Auto")
+ *             .secretType("RAMCredentials")
+ *             .secretData(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("AccessKeys", jsonArray(jsonObject(
+ *                         jsonProperty("AccessKeyId", "LTAI********************"),
+ *                         jsonProperty("AccessKeySecret", "YourAccessKeySecret")
+ *                     )))
+ *                 )))
+ *             .versionId("v1")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .extendedConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("SecretSubType", "RamUserAccessKey"),
+ *                     jsonProperty("UserName", "ram_user")
+ *                 )))
+ *             .forceDeleteWithoutRecovery(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create an ECS secret
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+ * import com.pulumi.alicloud.kms.Secret;
+ * import com.pulumi.alicloud.kms.SecretArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var ecs = new Secret("ecs", SecretArgs.builder()
+ *             .secretName(String.format("acs/ecs/%s", name))
+ *             .secretType("ECS")
+ *             .secretData(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("UserName", "root"),
+ *                     jsonProperty("Password", "YourPassword12345!")
+ *                 )))
+ *             .versionId("v1")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .extendedConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("SecretSubType", "Password"),
+ *                     jsonProperty("RegionId", "cn-hangzhou"),
+ *                     jsonProperty("InstanceId", "i-bp1b3dd3a506e****")
+ *                 )))
+ *             .forceDeleteWithoutRecovery(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a PolarDB secret
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+ * import com.pulumi.alicloud.kms.Secret;
+ * import com.pulumi.alicloud.kms.SecretArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = KmsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .ids("kst-bjj62d8f5e0sgtx8h****")
+ *             .build());
+ * 
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .ids("key-gzz63ff0db5hg3qje****")
+ *             .build());
+ * 
+ *         var polardb = new Secret("polardb", SecretArgs.builder()
+ *             .secretName(name)
+ *             .secretType("PolarDB")
+ *             .secretData("$Auto")
+ *             .versionId("v1")
+ *             .dkmsInstanceId(default_.instances()[0].instanceId())
+ *             .encryptionKeyId(defaultGetKeys.keys()[0].id())
+ *             .extendedConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("SecretSubType", "DoubleUsers"),
+ *                     jsonProperty("RegionId", "cn-hangzhou"),
+ *                     jsonProperty("DBClusterId", "pc-bp1b3dd3a506e****"),
+ *                     jsonProperty("DBType", "MySQL"),
+ *                     jsonProperty("AccountName", "polardb_user"),
+ *                     jsonProperty("CloneAccountName", "polardb_user_clone"),
+ *                     jsonProperty("AccountType", "Normal"),
+ *                     jsonProperty("AccountPrivilege", "ReadOnly"),
+ *                     jsonProperty("DBName", "testdb")
+ *                 )))
  *             .forceDeleteWithoutRecovery(true)
  *             .build());
  * 
@@ -121,14 +508,14 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The ID of the KMS instance.
+     * The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dkmsInstanceId;
 
     /**
-     * @return The ID of the KMS instance.
+     * @return The ID of the KMS instance. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     public Output<Optional<String>> dkmsInstanceId() {
@@ -149,28 +536,28 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableAutomaticRotation);
     }
     /**
-     * The ID of the KMS key.
+     * The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     @Export(name="encryptionKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKeyId;
 
     /**
-     * @return The ID of the KMS key.
+     * @return The ID of the KMS key used to encrypt the secret value. The key and the secret must belong to the same KMS instance, and the key must be a symmetric key. **NOTE:** In KMS 3.0, this parameter is required.
      * 
      */
     public Output<Optional<String>> encryptionKeyId() {
         return Codegen.optional(this.encryptionKeyId);
     }
     /**
-     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     @Export(name="extendedConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> extendedConfig;
 
     /**
-     * @return The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * @return The extended configuration of the secret. This parameter is required when `secretType` is `Rds`, `Redis`, `RAMCredentials`, `ECS` or `PolarDB`. The value is a JSON string. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     public Output<Optional<String>> extendedConfig() {
@@ -247,14 +634,24 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{&#34;Accounts&#34;:[{&#34;AccountName&#34;:&#34;&lt;rds-account-name&gt;&#34;,&#34;AccountPassword&#34;:&#34;&lt;rds-account-password&gt;&#34;}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{&#34;AccessKeys&#34;:[{&#34;AccessKeyId&#34;:&#34;&lt;access-key-id&gt;&#34;,&#34;AccessKeySecret&#34;:&#34;&lt;access-key-secret&gt;&#34;}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;Password&#34;:&#34;&lt;password&gt;&#34;}`. When `SecretSubType` is `SSHKey`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;PublicKey&#34;:&#34;&lt;public-key&gt;&#34;,&#34;PrivateKey&#34;:&#34;&lt;private-key&gt;&#34;}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
     private Output<String> secretData;
 
     /**
-     * @return The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`. The expected format of `secretData` depends on `secretType`:
+     * - `Generic`: any custom string.
+     * - `Rds`: a JSON string in the form `{&#34;Accounts&#34;:[{&#34;AccountName&#34;:&#34;&lt;rds-account-name&gt;&#34;,&#34;AccountPassword&#34;:&#34;&lt;rds-account-password&gt;&#34;}]}`.
+     * - `RAMCredentials`: a JSON string in the form `{&#34;AccessKeys&#34;:[{&#34;AccessKeyId&#34;:&#34;&lt;access-key-id&gt;&#34;,&#34;AccessKeySecret&#34;:&#34;&lt;access-key-secret&gt;&#34;}]}`.
+     * - `ECS`: a JSON string. When `extended_config.SecretSubType` is `Password`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;Password&#34;:&#34;&lt;password&gt;&#34;}`. When `SecretSubType` is `SSHKey`, use `{&#34;UserName&#34;:&#34;&lt;user-name&gt;&#34;,&#34;PublicKey&#34;:&#34;&lt;public-key&gt;&#34;,&#34;PrivateKey&#34;:&#34;&lt;private-key&gt;&#34;}`.
+     * - `Redis` and `PolarDB`: use the literal string `$Auto`.
      * 
      */
     public Output<String> secretData() {

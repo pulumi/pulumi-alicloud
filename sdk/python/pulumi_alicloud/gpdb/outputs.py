@@ -28,6 +28,7 @@ __all__ = [
     'GetAccountsAccountResult',
     'GetApiKeysKeyResult',
     'GetDataBackupsBackupResult',
+    'GetDbExtensionsExtensionResult',
     'GetDbInstancePlansPlanResult',
     'GetDbInstancePlansPlanPlanConfigResult',
     'GetDbInstancePlansPlanPlanConfigPauseResult',
@@ -1043,6 +1044,112 @@ class GetDataBackupsBackupResult(dict):
     def status(self) -> _builtins.str:
         """
         Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDbExtensionsExtensionResult(dict):
+    def __init__(__self__, *,
+                 current_version: _builtins.str,
+                 description: _builtins.str,
+                 extension_id: _builtins.str,
+                 extension_name: _builtins.str,
+                 id: _builtins.str,
+                 is_install_need_restart: _builtins.bool,
+                 is_latest_version: _builtins.bool,
+                 latest_version: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str current_version: **NOTE:** This field is only available when `enable_details` is `true`. Plug-in current version.
+        :param _builtins.str description: Plug-in description.
+        :param _builtins.str extension_id: **NOTE:** This field is only available when `enable_details` is `true`. Plug-in id.
+        :param _builtins.str extension_name: The name of the extension to install.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.bool is_install_need_restart: **NOTE:** This field is only available when `enable_details` is `true`. Whether the instance needs to be restarted for installation.
+        :param _builtins.bool is_latest_version: **NOTE:** This field is only available when `enable_details` is `true`. Whether the extension is at its latest version.
+        :param _builtins.str latest_version: **NOTE:** This field is only available when `enable_details` is `true`. Plug-in latest version.
+        :param _builtins.str status: The status of the extension.
+        """
+        pulumi.set(__self__, "current_version", current_version)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "extension_id", extension_id)
+        pulumi.set(__self__, "extension_name", extension_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_install_need_restart", is_install_need_restart)
+        pulumi.set(__self__, "is_latest_version", is_latest_version)
+        pulumi.set(__self__, "latest_version", latest_version)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Plug-in current version.
+        """
+        return pulumi.get(self, "current_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Plug-in description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="extensionId")
+    def extension_id(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Plug-in id.
+        """
+        return pulumi.get(self, "extension_id")
+
+    @_builtins.property
+    @pulumi.getter(name="extensionName")
+    def extension_name(self) -> _builtins.str:
+        """
+        The name of the extension to install.
+        """
+        return pulumi.get(self, "extension_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isInstallNeedRestart")
+    def is_install_need_restart(self) -> _builtins.bool:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Whether the instance needs to be restarted for installation.
+        """
+        return pulumi.get(self, "is_install_need_restart")
+
+    @_builtins.property
+    @pulumi.getter(name="isLatestVersion")
+    def is_latest_version(self) -> _builtins.bool:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Whether the extension is at its latest version.
+        """
+        return pulumi.get(self, "is_latest_version")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersion")
+    def latest_version(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Plug-in latest version.
+        """
+        return pulumi.get(self, "latest_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the extension.
         """
         return pulumi.get(self, "status")
 

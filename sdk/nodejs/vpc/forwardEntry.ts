@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Nat Gateway Forward Entry can be imported using the id, e.g.
+ * Nat Gateway Forward Entry can be imported using the id, which consists of forwardTableId and forward_entry_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry example <forward_table_id>:<forward_entry_id>

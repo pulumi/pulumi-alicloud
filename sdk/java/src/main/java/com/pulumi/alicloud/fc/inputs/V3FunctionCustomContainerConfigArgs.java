@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.alicloud.fc.inputs.V3FunctionCustomContainerConfigAccelerationInfoArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionCustomContainerConfigHealthCheckConfigArgs;
+import com.pulumi.alicloud.fc.inputs.V3FunctionCustomContainerConfigRegistryConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -164,6 +165,21 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     }
 
     /**
+     * The configuration of the custom image registry. See `registryConfig` below.
+     * 
+     */
+    @Import(name="registryConfig")
+    private @Nullable Output<V3FunctionCustomContainerConfigRegistryConfigArgs> registryConfig;
+
+    /**
+     * @return The configuration of the custom image registry. See `registryConfig` below.
+     * 
+     */
+    public Optional<Output<V3FunctionCustomContainerConfigRegistryConfigArgs>> registryConfig() {
+        return Optional.ofNullable(this.registryConfig);
+    }
+
+    /**
      * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
      * 
      */
@@ -189,6 +205,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         this.healthCheckConfig = $.healthCheckConfig;
         this.image = $.image;
         this.port = $.port;
+        this.registryConfig = $.registryConfig;
         this.resolvedImageUri = $.resolvedImageUri;
     }
 
@@ -420,6 +437,27 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param registryConfig The configuration of the custom image registry. See `registryConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryConfig(@Nullable Output<V3FunctionCustomContainerConfigRegistryConfigArgs> registryConfig) {
+            $.registryConfig = registryConfig;
+            return this;
+        }
+
+        /**
+         * @param registryConfig The configuration of the custom image registry. See `registryConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryConfig(V3FunctionCustomContainerConfigRegistryConfigArgs registryConfig) {
+            return registryConfig(Output.of(registryConfig));
         }
 
         /**

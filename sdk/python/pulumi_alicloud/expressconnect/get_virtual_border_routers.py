@@ -28,7 +28,7 @@ class GetVirtualBorderRoutersResult:
     """
     A collection of values returned by getVirtualBorderRouters.
     """
-    def __init__(__self__, filters=None, id=None, ids=None, name_regex=None, names=None, output_file=None, routers=None, status=None):
+    def __init__(__self__, filters=None, id=None, ids=None, name_regex=None, names=None, output_file=None, routers=None, status=None, tags=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
@@ -53,6 +53,9 @@ class GetVirtualBorderRoutersResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -80,6 +83,9 @@ class GetVirtualBorderRoutersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Virtual Border Router names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -90,12 +96,26 @@ class GetVirtualBorderRoutersResult:
     @_builtins.property
     @pulumi.getter
     def routers(self) -> Sequence['outputs.GetVirtualBorderRoutersRouterResult']:
+        """
+        A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
+        """
         return pulumi.get(self, "routers")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The VBR state.
+        """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tags of the Virtual Border Router.
+        """
+        return pulumi.get(self, "tags")
 
 
 class AwaitableGetVirtualBorderRoutersResult(GetVirtualBorderRoutersResult):
@@ -111,7 +131,8 @@ class AwaitableGetVirtualBorderRoutersResult(GetVirtualBorderRoutersResult):
             names=self.names,
             output_file=self.output_file,
             routers=self.routers,
-            status=self.status)
+            status=self.status,
+            tags=self.tags)
 
 
 def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]] = None,
@@ -119,11 +140,12 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
                                name_regex: Optional[_builtins.str] = None,
                                output_file: Optional[_builtins.str] = None,
                                status: Optional[_builtins.str] = None,
+                               tags: Optional[Mapping[str, _builtins.str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualBorderRoutersResult:
     """
     This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -154,11 +176,12 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
     ```
 
 
-    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below.
+    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Virtual Border Router IDs.
     :param _builtins.str name_regex: A regex string to filter results by Virtual Border Router name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+    :param Mapping[str, _builtins.str] tags: A map of tags to filter Virtual Border Routers that match the given tags.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -166,6 +189,7 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters', __args__, opts=opts, typ=GetVirtualBorderRoutersResult).value
 
@@ -177,17 +201,19 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         routers=pulumi.get(__ret__, 'routers'),
-        status=pulumi.get(__ret__, 'status'))
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]]]] = None,
                                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualBorderRoutersResult]:
     """
     This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -218,11 +244,12 @@ def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Se
     ```
 
 
-    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below.
+    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Virtual Border Router IDs.
     :param _builtins.str name_regex: A regex string to filter results by Virtual Border Router name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+    :param Mapping[str, _builtins.str] tags: A map of tags to filter Virtual Border Routers that match the given tags.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -230,6 +257,7 @@ def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Se
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters', __args__, opts=opts, typ=GetVirtualBorderRoutersResult)
     return __ret__.apply(lambda __response__: GetVirtualBorderRoutersResult(
@@ -240,4 +268,5 @@ def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Se
         names=pulumi.get(__response__, 'names'),
         output_file=pulumi.get(__response__, 'output_file'),
         routers=pulumi.get(__response__, 'routers'),
-        status=pulumi.get(__response__, 'status')))
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

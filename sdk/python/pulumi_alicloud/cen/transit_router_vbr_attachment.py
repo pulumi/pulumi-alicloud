@@ -607,7 +607,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, which consists of cen_id and transit_router_attachment_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
@@ -685,7 +685,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, which consists of cen_id and transit_router_attachment_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>

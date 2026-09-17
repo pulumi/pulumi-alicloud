@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.CloudControl
     /// 
     /// ## Import
     /// 
-    /// Cloud Control Resource can be imported using the id, e.g.
+    /// Cloud Control Resource can be imported using the id, which consists of provider, product, ResourceCode and resource_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cloudcontrol/resource:Resource example &lt;provider&gt;:&lt;product&gt;:&lt;resource_code&gt;:&lt;resource_id&gt;

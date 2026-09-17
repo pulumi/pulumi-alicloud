@@ -19,6 +19,8 @@ __all__ = [
     'AntiBruteForceRuleProtocolTypeArgsDict',
     'AttackPathSensitiveAssetConfigAttackPathAssetListArgs',
     'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict',
+    'AttackPathWhitelistAttackPathAssetListArgs',
+    'AttackPathWhitelistAttackPathAssetListArgsDict',
     'CheckConfigSelectedCheckArgs',
     'CheckConfigSelectedCheckArgsDict',
     'HoneypotPresetMetaArgs',
@@ -204,6 +206,134 @@ class AttackPathSensitiveAssetConfigAttackPathAssetListArgs:
     @vendor.setter
     def vendor(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "vendor", value)
+
+
+class AttackPathWhitelistAttackPathAssetListArgsDict(TypedDict):
+    vendor: pulumi.Input[_builtins.int]
+    """
+    The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+    """
+    asset_sub_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+    """
+    asset_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+    """
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+    """
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+    """
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The region ID of the cloud product asset instance.
+    """
+
+@pulumi.input_type
+class AttackPathWhitelistAttackPathAssetListArgs:
+    def __init__(__self__, *,
+                 vendor: pulumi.Input[_builtins.int],
+                 asset_sub_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 asset_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] vendor: The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+        :param pulumi.Input[_builtins.int] asset_sub_type: The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+        :param pulumi.Input[_builtins.int] asset_type: The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+        :param pulumi.Input[_builtins.str] node_type: The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the cloud product asset instance.
+        """
+        pulumi.set(__self__, "vendor", vendor)
+        if asset_sub_type is not None:
+            pulumi.set(__self__, "asset_sub_type", asset_sub_type)
+        if asset_type is not None:
+            pulumi.set(__self__, "asset_type", asset_type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> pulumi.Input[_builtins.int]:
+        """
+        The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+        """
+        return pulumi.get(self, "vendor")
+
+    @vendor.setter
+    def vendor(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "vendor", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetSubType")
+    def asset_sub_type(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+        """
+        return pulumi.get(self, "asset_sub_type")
+
+    @asset_sub_type.setter
+    def asset_sub_type(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "asset_sub_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @asset_type.setter
+    def asset_type(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "asset_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the cloud product asset instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
 
 class CheckConfigSelectedCheckArgsDict(TypedDict):

@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Schedulerx Job can be imported using the id, e.g.
+ * Schedulerx Job can be imported using the id, which consists of namespace, groupId and job_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:schedulerx/job:Job example <namespace>:<group_id>:<job_id>

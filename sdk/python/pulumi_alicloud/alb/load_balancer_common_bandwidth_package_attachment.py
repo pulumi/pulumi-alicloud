@@ -227,7 +227,7 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.
+        Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, which consists of load_balancer_id and bandwidth_package_id, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
@@ -319,7 +319,7 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.
+        Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, which consists of load_balancer_id and bandwidth_package_id, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>

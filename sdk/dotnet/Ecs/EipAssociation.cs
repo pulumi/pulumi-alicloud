@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Import
     /// 
-    /// EIP Association can be imported using the id, e.g.
+    /// EIP Association can be imported using the id, which consists of AllocationId and instance_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example &lt;allocation_id&gt;:&lt;instance_id&gt;

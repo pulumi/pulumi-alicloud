@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FCV3 Alias can be imported using the id, e.g.
+ * FCV3 Alias can be imported using the id, which consists of functionName and alias_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:fc/v3Alias:V3Alias example &lt;function_name&gt;:&lt;alias_name&gt;

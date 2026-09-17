@@ -32,12 +32,14 @@ __all__ = [
     'ShardingNetworkPublicAddressNetworkAddress',
     'GetAccountsAccountResult',
     'GetAuditPoliciesPolicyResult',
+    'GetBackupsBackupResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceMongoResult',
     'GetInstancesInstanceRestoreRangeResult',
     'GetInstancesInstanceShardResult',
     'GetServerlessInstancesInstanceResult',
     'GetServerlessInstancesInstanceSecurityIpGroupResult',
+    'GetShardingAuditFiltersFilterResult',
     'GetShardingNetworkPrivateAddressesAddressResult',
     'GetShardingNetworkPublicAddressesAddressResult',
     'GetZonesZoneResult',
@@ -1475,6 +1477,156 @@ class GetAuditPoliciesPolicyResult(dict):
 
 
 @pulumi.output_type
+class GetBackupsBackupResult(dict):
+    def __init__(__self__, *,
+                 backup_db_names: _builtins.str,
+                 backup_download_url: _builtins.str,
+                 backup_end_time: _builtins.str,
+                 backup_id: _builtins.str,
+                 backup_intranet_download_url: _builtins.str,
+                 backup_job_id: _builtins.str,
+                 backup_method: _builtins.str,
+                 backup_mode: _builtins.str,
+                 backup_size: _builtins.int,
+                 backup_start_time: _builtins.str,
+                 backup_type: _builtins.str,
+                 id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str backup_db_names: Backup DB Names.
+        :param _builtins.str backup_download_url: Backup Download URL.
+        :param _builtins.str backup_end_time: The end time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+        :param _builtins.str backup_id: Backup Id.
+        :param _builtins.str backup_intranet_download_url: Backup Intranet DownloadURL.
+        :param _builtins.str backup_job_id: **NOTE:** This field is only available when `enable_details` is `true`. The backup task ID.
+        :param _builtins.str backup_method: Backup Method.
+        :param _builtins.str backup_mode: Backup Mode.
+        :param _builtins.int backup_size: Backup Size.
+        :param _builtins.str backup_start_time: The start time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+        :param _builtins.str backup_type: Backup Type.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str status: The status of the resource.
+        """
+        pulumi.set(__self__, "backup_db_names", backup_db_names)
+        pulumi.set(__self__, "backup_download_url", backup_download_url)
+        pulumi.set(__self__, "backup_end_time", backup_end_time)
+        pulumi.set(__self__, "backup_id", backup_id)
+        pulumi.set(__self__, "backup_intranet_download_url", backup_intranet_download_url)
+        pulumi.set(__self__, "backup_job_id", backup_job_id)
+        pulumi.set(__self__, "backup_method", backup_method)
+        pulumi.set(__self__, "backup_mode", backup_mode)
+        pulumi.set(__self__, "backup_size", backup_size)
+        pulumi.set(__self__, "backup_start_time", backup_start_time)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="backupDbNames")
+    def backup_db_names(self) -> _builtins.str:
+        """
+        Backup DB Names.
+        """
+        return pulumi.get(self, "backup_db_names")
+
+    @_builtins.property
+    @pulumi.getter(name="backupDownloadUrl")
+    def backup_download_url(self) -> _builtins.str:
+        """
+        Backup Download URL.
+        """
+        return pulumi.get(self, "backup_download_url")
+
+    @_builtins.property
+    @pulumi.getter(name="backupEndTime")
+    def backup_end_time(self) -> _builtins.str:
+        """
+        The end time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+        """
+        return pulumi.get(self, "backup_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> _builtins.str:
+        """
+        Backup Id.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backupIntranetDownloadUrl")
+    def backup_intranet_download_url(self) -> _builtins.str:
+        """
+        Backup Intranet DownloadURL.
+        """
+        return pulumi.get(self, "backup_intranet_download_url")
+
+    @_builtins.property
+    @pulumi.getter(name="backupJobId")
+    def backup_job_id(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The backup task ID.
+        """
+        return pulumi.get(self, "backup_job_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backupMethod")
+    def backup_method(self) -> _builtins.str:
+        """
+        Backup Method.
+        """
+        return pulumi.get(self, "backup_method")
+
+    @_builtins.property
+    @pulumi.getter(name="backupMode")
+    def backup_mode(self) -> _builtins.str:
+        """
+        Backup Mode.
+        """
+        return pulumi.get(self, "backup_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="backupSize")
+    def backup_size(self) -> _builtins.int:
+        """
+        Backup Size.
+        """
+        return pulumi.get(self, "backup_size")
+
+    @_builtins.property
+    @pulumi.getter(name="backupStartTime")
+    def backup_start_time(self) -> _builtins.str:
+        """
+        The start time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+        """
+        return pulumi.get(self, "backup_start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> _builtins.str:
+        """
+        Backup Type.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str,
@@ -2185,6 +2337,112 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
         The IP addresses in the whitelist.
         """
         return pulumi.get(self, "security_ip_list")
+
+
+@pulumi.output_type
+class GetShardingAuditFiltersFilterResult(dict):
+    def __init__(__self__, *,
+                 audit_status: _builtins.str,
+                 db_instance_id: _builtins.str,
+                 filter: _builtins.str,
+                 hot_storage_period: _builtins.int,
+                 id: _builtins.str,
+                 region_id: _builtins.str,
+                 role_type: _builtins.str,
+                 service_type: _builtins.str,
+                 storage_period: _builtins.int):
+        """
+        :param _builtins.str audit_status: Audit state. Valid values: `enable`, `disabled`.
+        :param _builtins.str db_instance_id: The ID of the sharding cluster instance.
+        :param _builtins.str filter: The type of logs collected by the audit log feature of the instance. When every node role shares the same filter, this is that common value (for example `admin,slow`); otherwise it is the API's per-role merged view (for example `mongos@admin,slow-db@admin`).
+        :param _builtins.int hot_storage_period: The hot storage duration of the audit log, in days.
+        :param _builtins.str id: The ID of the Sharding Audit Filter, same as `db_instance_id`.
+        :param _builtins.str region_id: The region ID of the sharding cluster instance.
+        :param _builtins.str role_type: The node role scope of the returned filter. The data source reads every node role at once, so the API returns its merged-view marker `logic` rather than a single role.
+        :param _builtins.str service_type: The edition of the audit log. Valid values: `Standard`, `V2_Standard`.
+        :param _builtins.int storage_period: Audit log retention duration, in days.
+        """
+        pulumi.set(__self__, "audit_status", audit_status)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "hot_storage_period", hot_storage_period)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "role_type", role_type)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "storage_period", storage_period)
+
+    @_builtins.property
+    @pulumi.getter(name="auditStatus")
+    def audit_status(self) -> _builtins.str:
+        """
+        Audit state. Valid values: `enable`, `disabled`.
+        """
+        return pulumi.get(self, "audit_status")
+
+    @_builtins.property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> _builtins.str:
+        """
+        The ID of the sharding cluster instance.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> _builtins.str:
+        """
+        The type of logs collected by the audit log feature of the instance. When every node role shares the same filter, this is that common value (for example `admin,slow`); otherwise it is the API's per-role merged view (for example `mongos@admin,slow-db@admin`).
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="hotStoragePeriod")
+    def hot_storage_period(self) -> _builtins.int:
+        """
+        The hot storage duration of the audit log, in days.
+        """
+        return pulumi.get(self, "hot_storage_period")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Sharding Audit Filter, same as `db_instance_id`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the sharding cluster instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> _builtins.str:
+        """
+        The node role scope of the returned filter. The data source reads every node role at once, so the API returns its merged-view marker `logic` rather than a single role.
+        """
+        return pulumi.get(self, "role_type")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        The edition of the audit log. Valid values: `Standard`, `V2_Standard`.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter(name="storagePeriod")
+    def storage_period(self) -> _builtins.int:
+        """
+        Audit log retention duration, in days.
+        """
+        return pulumi.get(self, "storage_period")
 
 
 @pulumi.output_type

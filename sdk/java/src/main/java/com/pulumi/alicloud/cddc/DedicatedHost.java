@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
+ * ApsaraDB for MyBase Dedicated Host can be imported using the id, which consists of dedicatedHostGroupId and dedicated_host_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example &lt;dedicated_host_group_id&gt;:&lt;dedicated_host_id&gt;

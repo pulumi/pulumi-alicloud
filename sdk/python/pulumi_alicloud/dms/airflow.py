@@ -613,7 +613,7 @@ class Airflow(pulumi.CustomResource):
 
         ## Import
 
-        Dms Airflow can be imported using the id, e.g.
+        Dms Airflow can be imported using the id, which consists of workspace_id and airflow_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dms/airflow:Airflow example <workspace_id>:<airflow_id>
@@ -700,7 +700,7 @@ class Airflow(pulumi.CustomResource):
 
         ## Import
 
-        Dms Airflow can be imported using the id, e.g.
+        Dms Airflow can be imported using the id, which consists of workspace_id and airflow_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dms/airflow:Airflow example <workspace_id>:<airflow_id>

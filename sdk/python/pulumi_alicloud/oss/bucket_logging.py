@@ -180,6 +180,8 @@ class BucketLogging(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.222.0.
 
+        > **NOTE:** This resource manages the full logging lifecycle of the bucket: creating or updating it enables logging (PutBucketLogging), and destroying it (or removing it from the configuration) disables logging (DeleteBucketLogging). If the same bucket is also managed by `oss.Bucket`, add `lifecycle { ignore_changes = [logging] }` to the bucket resource; otherwise `oss.Bucket` will keep disabling the logging configuration set by this resource on every apply.
+
         ## Example Usage
 
         Basic Usage
@@ -200,7 +202,7 @@ class BucketLogging(pulumi.CustomResource):
             bucket="resource-example-logging-153")
         default = alicloud.oss.BucketLogging("default",
             bucket=create_bucket.id,
-            target_bucket=create_bucket.id,
+            target_bucket=create_logging_bucket.id,
             target_prefix="log/",
             logging_role="example-role")
         ```
@@ -238,6 +240,8 @@ class BucketLogging(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.222.0.
 
+        > **NOTE:** This resource manages the full logging lifecycle of the bucket: creating or updating it enables logging (PutBucketLogging), and destroying it (or removing it from the configuration) disables logging (DeleteBucketLogging). If the same bucket is also managed by `oss.Bucket`, add `lifecycle { ignore_changes = [logging] }` to the bucket resource; otherwise `oss.Bucket` will keep disabling the logging configuration set by this resource on every apply.
+
         ## Example Usage
 
         Basic Usage
@@ -258,7 +262,7 @@ class BucketLogging(pulumi.CustomResource):
             bucket="resource-example-logging-153")
         default = alicloud.oss.BucketLogging("default",
             bucket=create_bucket.id,
-            target_bucket=create_bucket.id,
+            target_bucket=create_logging_bucket.id,
             target_prefix="log/",
             logging_role="example-role")
         ```

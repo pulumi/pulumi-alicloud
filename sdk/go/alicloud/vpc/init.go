@@ -113,6 +113,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouteTable{}
 	case "alicloud:vpc/routeTableAttachment:RouteTableAttachment":
 		r = &RouteTableAttachment{}
+	case "alicloud:vpc/routeTargetGroup:RouteTargetGroup":
+		r = &RouteTargetGroup{}
 	case "alicloud:vpc/routerInterface:RouterInterface":
 		r = &RouterInterface{}
 	case "alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection":
@@ -380,6 +382,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/routeTableAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/routeTargetGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

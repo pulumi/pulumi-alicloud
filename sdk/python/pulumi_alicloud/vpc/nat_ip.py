@@ -320,7 +320,7 @@ class NatIp(pulumi.CustomResource):
 
         ## Import
 
-        Nat Gateway Nat Ip can be imported using the id, e.g.
+        Nat Gateway Nat Ip can be imported using the id, which consists of nat_gateway_id and nat_ip_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
@@ -393,7 +393,7 @@ class NatIp(pulumi.CustomResource):
 
         ## Import
 
-        Nat Gateway Nat Ip can be imported using the id, e.g.
+        Nat Gateway Nat Ip can be imported using the id, which consists of nat_gateway_id and nat_ip_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>

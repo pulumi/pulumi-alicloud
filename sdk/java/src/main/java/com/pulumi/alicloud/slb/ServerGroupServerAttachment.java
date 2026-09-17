@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
+ * Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, which consists of server_group_id, serverId and port, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;port&gt;

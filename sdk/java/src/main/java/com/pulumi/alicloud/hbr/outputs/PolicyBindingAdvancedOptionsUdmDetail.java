@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PolicyBindingAdvancedOptionsUdmDetail {
+    /**
+     * @return Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+     * 
+     */
+    private @Nullable Boolean appConsistent;
     /**
      * @return Custom KMS key ID of encrypted copy
      * 
@@ -23,12 +30,58 @@ public final class PolicyBindingAdvancedOptionsUdmDetail {
      */
     private @Nullable List<String> diskIdLists;
     /**
+     * @return Whether to enable file system freeze before taking a snapshot.
+     * 
+     */
+    private @Nullable Boolean enableFsFreeze;
+    /**
+     * @return Whether to enable VSS writers.
+     * 
+     */
+    private @Nullable Boolean enableWriters;
+    /**
      * @return List of cloud disk IDs that are not backed up
      * 
      */
     private @Nullable List<String> excludeDiskIdLists;
+    /**
+     * @return The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    private @Nullable String postScriptPath;
+    /**
+     * @return The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    private @Nullable String preScriptPath;
+    /**
+     * @return The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+     * 
+     */
+    private @Nullable String ramRoleName;
+    /**
+     * @return Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+     * 
+     */
+    private @Nullable Boolean snapshotGroup;
+    /**
+     * @return The timeout in seconds for the pre/post script execution.
+     * 
+     * &gt; **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+     * 
+     * &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+     * 
+     */
+    private @Nullable Integer timeoutInSeconds;
 
     private PolicyBindingAdvancedOptionsUdmDetail() {}
+    /**
+     * @return Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+     * 
+     */
+    public Optional<Boolean> appConsistent() {
+        return Optional.ofNullable(this.appConsistent);
+    }
     /**
      * @return Custom KMS key ID of encrypted copy
      * 
@@ -44,11 +97,64 @@ public final class PolicyBindingAdvancedOptionsUdmDetail {
         return this.diskIdLists == null ? List.of() : this.diskIdLists;
     }
     /**
+     * @return Whether to enable file system freeze before taking a snapshot.
+     * 
+     */
+    public Optional<Boolean> enableFsFreeze() {
+        return Optional.ofNullable(this.enableFsFreeze);
+    }
+    /**
+     * @return Whether to enable VSS writers.
+     * 
+     */
+    public Optional<Boolean> enableWriters() {
+        return Optional.ofNullable(this.enableWriters);
+    }
+    /**
      * @return List of cloud disk IDs that are not backed up
      * 
      */
     public List<String> excludeDiskIdLists() {
         return this.excludeDiskIdLists == null ? List.of() : this.excludeDiskIdLists;
+    }
+    /**
+     * @return The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<String> postScriptPath() {
+        return Optional.ofNullable(this.postScriptPath);
+    }
+    /**
+     * @return The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<String> preScriptPath() {
+        return Optional.ofNullable(this.preScriptPath);
+    }
+    /**
+     * @return The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<String> ramRoleName() {
+        return Optional.ofNullable(this.ramRoleName);
+    }
+    /**
+     * @return Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+     * 
+     */
+    public Optional<Boolean> snapshotGroup() {
+        return Optional.ofNullable(this.snapshotGroup);
+    }
+    /**
+     * @return The timeout in seconds for the pre/post script execution.
+     * 
+     * &gt; **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+     * 
+     * &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+     * 
+     */
+    public Optional<Integer> timeoutInSeconds() {
+        return Optional.ofNullable(this.timeoutInSeconds);
     }
 
     public static Builder builder() {
@@ -60,17 +166,39 @@ public final class PolicyBindingAdvancedOptionsUdmDetail {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean appConsistent;
         private @Nullable String destinationKmsKeyId;
         private @Nullable List<String> diskIdLists;
+        private @Nullable Boolean enableFsFreeze;
+        private @Nullable Boolean enableWriters;
         private @Nullable List<String> excludeDiskIdLists;
+        private @Nullable String postScriptPath;
+        private @Nullable String preScriptPath;
+        private @Nullable String ramRoleName;
+        private @Nullable Boolean snapshotGroup;
+        private @Nullable Integer timeoutInSeconds;
         public Builder() {}
         public Builder(PolicyBindingAdvancedOptionsUdmDetail defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.appConsistent = defaults.appConsistent;
     	      this.destinationKmsKeyId = defaults.destinationKmsKeyId;
     	      this.diskIdLists = defaults.diskIdLists;
+    	      this.enableFsFreeze = defaults.enableFsFreeze;
+    	      this.enableWriters = defaults.enableWriters;
     	      this.excludeDiskIdLists = defaults.excludeDiskIdLists;
+    	      this.postScriptPath = defaults.postScriptPath;
+    	      this.preScriptPath = defaults.preScriptPath;
+    	      this.ramRoleName = defaults.ramRoleName;
+    	      this.snapshotGroup = defaults.snapshotGroup;
+    	      this.timeoutInSeconds = defaults.timeoutInSeconds;
         }
 
+        @CustomType.Setter
+        public Builder appConsistent(@Nullable Boolean appConsistent) {
+
+            this.appConsistent = appConsistent;
+            return this;
+        }
         @CustomType.Setter
         public Builder destinationKmsKeyId(@Nullable String destinationKmsKeyId) {
 
@@ -87,6 +215,18 @@ public final class PolicyBindingAdvancedOptionsUdmDetail {
             return diskIdLists(List.of(diskIdLists));
         }
         @CustomType.Setter
+        public Builder enableFsFreeze(@Nullable Boolean enableFsFreeze) {
+
+            this.enableFsFreeze = enableFsFreeze;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableWriters(@Nullable Boolean enableWriters) {
+
+            this.enableWriters = enableWriters;
+            return this;
+        }
+        @CustomType.Setter
         public Builder excludeDiskIdLists(@Nullable List<String> excludeDiskIdLists) {
 
             this.excludeDiskIdLists = excludeDiskIdLists;
@@ -95,11 +235,49 @@ public final class PolicyBindingAdvancedOptionsUdmDetail {
         public Builder excludeDiskIdLists(String... excludeDiskIdLists) {
             return excludeDiskIdLists(List.of(excludeDiskIdLists));
         }
+        @CustomType.Setter
+        public Builder postScriptPath(@Nullable String postScriptPath) {
+
+            this.postScriptPath = postScriptPath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder preScriptPath(@Nullable String preScriptPath) {
+
+            this.preScriptPath = preScriptPath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ramRoleName(@Nullable String ramRoleName) {
+
+            this.ramRoleName = ramRoleName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder snapshotGroup(@Nullable Boolean snapshotGroup) {
+
+            this.snapshotGroup = snapshotGroup;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timeoutInSeconds(@Nullable Integer timeoutInSeconds) {
+
+            this.timeoutInSeconds = timeoutInSeconds;
+            return this;
+        }
         public PolicyBindingAdvancedOptionsUdmDetail build() {
             final var _resultValue = new PolicyBindingAdvancedOptionsUdmDetail();
+            _resultValue.appConsistent = appConsistent;
             _resultValue.destinationKmsKeyId = destinationKmsKeyId;
             _resultValue.diskIdLists = diskIdLists;
+            _resultValue.enableFsFreeze = enableFsFreeze;
+            _resultValue.enableWriters = enableWriters;
             _resultValue.excludeDiskIdLists = excludeDiskIdLists;
+            _resultValue.postScriptPath = postScriptPath;
+            _resultValue.preScriptPath = preScriptPath;
+            _resultValue.ramRoleName = ramRoleName;
+            _resultValue.snapshotGroup = snapshotGroup;
+            _resultValue.timeoutInSeconds = timeoutInSeconds;
             return _resultValue;
         }
     }

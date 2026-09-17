@@ -360,7 +360,7 @@ class Acl(pulumi.CustomResource):
 
         ## Import
 
-        RocketMQ Acl can be imported using the id, e.g.
+        RocketMQ Acl can be imported using the id, which consists of instance_id, username, resource_type and resource_name, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
@@ -471,7 +471,7 @@ class Acl(pulumi.CustomResource):
 
         ## Import
 
-        RocketMQ Acl can be imported using the id, e.g.
+        RocketMQ Acl can be imported using the id, which consists of instance_id, username, resource_type and resource_name, e.g.
 
         ```sh
         $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>

@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Eflo Subnet can be imported using the id, e.g.
+ * Eflo Subnet can be imported using the id, which consists of vpdId and subnet_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:eflo/subnet:Subnet example &lt;vpd_id&gt;:&lt;subnet_id&gt;

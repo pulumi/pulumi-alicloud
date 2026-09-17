@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Origin Rule can be imported using the id, e.g.
+ * ESA Origin Rule can be imported using the id, which consists of siteId and config_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/originRule:OriginRule example &lt;site_id&gt;:&lt;config_id&gt;

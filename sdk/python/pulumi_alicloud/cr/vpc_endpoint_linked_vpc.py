@@ -277,7 +277,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
 
         ## Import
 
-        CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
+        CR Vpc Endpoint Linked Vpc can be imported using the id, which consists of instance_id, vpc_id, vswitch_id and module_name, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example <instance_id>:<vpc_id>:<vswitch_id>:<module_name>
@@ -351,7 +351,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
 
         ## Import
 
-        CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
+        CR Vpc Endpoint Linked Vpc can be imported using the id, which consists of instance_id, vpc_id, vswitch_id and module_name, e.g.
 
         ```sh
         $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example <instance_id>:<vpc_id>:<vswitch_id>:<module_name>

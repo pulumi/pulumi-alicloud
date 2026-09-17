@@ -432,7 +432,7 @@ class DefenseTemplate(pulumi.CustomResource):
 
         ## Import
 
-        WAFV3 Defense Template can be imported using the id, e.g.
+        WAFV3 Defense Template can be imported using the id, which consists of instance_id and defense_template_id, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/defenseTemplate:DefenseTemplate example <instance_id>:<defense_template_id>
@@ -497,7 +497,7 @@ class DefenseTemplate(pulumi.CustomResource):
 
         ## Import
 
-        WAFV3 Defense Template can be imported using the id, e.g.
+        WAFV3 Defense Template can be imported using the id, which consists of instance_id and defense_template_id, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/defenseTemplate:DefenseTemplate example <instance_id>:<defense_template_id>

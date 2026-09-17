@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// ## Import
     /// 
-    /// Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
+    /// Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, which consists of ListenerId and certificate_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example &lt;listener_id&gt;:&lt;certificate_id&gt;

@@ -86,7 +86,7 @@ import (
 //
 // ## Import
 //
-// ESA Transport Layer Application can be imported using the id, e.g.
+// ESA Transport Layer Application can be imported using the id, which consists of siteId and application_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:esa/transportLayerApplication:TransportLayerApplication example <site_id>:<application_id>

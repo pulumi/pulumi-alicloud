@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Api Gateway Backend Model can be imported using the id, e.g.
+ * Api Gateway Backend Model can be imported using the id, which consists of backendId and stage_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:apigateway/backendModel:BackendModel example &lt;backend_id&gt;:&lt;stage_name&gt;

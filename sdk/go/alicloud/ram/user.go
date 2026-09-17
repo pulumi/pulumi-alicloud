@@ -84,6 +84,8 @@ type User struct {
 	Mobile pulumi.StringPtrOutput `pulumi:"mobile"`
 	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A mapping of tags to assign to the RAM user.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +130,8 @@ type userState struct {
 	Mobile *string `pulumi:"mobile"`
 	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
+	// A mapping of tags to assign to the RAM user.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type UserState struct {
@@ -143,6 +147,8 @@ type UserState struct {
 	Mobile pulumi.StringPtrInput
 	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
+	// A mapping of tags to assign to the RAM user.
+	Tags pulumi.StringMapInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -162,6 +168,8 @@ type userArgs struct {
 	Mobile *string `pulumi:"mobile"`
 	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
+	// A mapping of tags to assign to the RAM user.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a User resource.
@@ -178,6 +186,8 @@ type UserArgs struct {
 	Mobile pulumi.StringPtrInput
 	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
+	// A mapping of tags to assign to the RAM user.
+	Tags pulumi.StringMapInput
 }
 
 func (UserArgs) ElementType() reflect.Type {
@@ -295,6 +305,11 @@ func (o UserOutput) Mobile() pulumi.StringPtrOutput {
 // Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 func (o UserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the RAM user.
+func (o UserOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type UserArrayOutput struct{ *pulumi.OutputState }

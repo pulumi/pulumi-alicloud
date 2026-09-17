@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CR Artifact Lifecycle Rule can be imported using the id, e.g.
+ * CR Artifact Lifecycle Rule can be imported using the id, which consists of instanceId and artifact_lifecycle_rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule example &lt;instance_id&gt;:&lt;artifact_lifecycle_rule_id&gt;

@@ -130,7 +130,7 @@ import (
 //
 // ## Import
 //
-// Star Rocks Node Group can be imported using the id, e.g.
+// Star Rocks Node Group can be imported using the id, which consists of instanceId and node_group_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:starrocks/nodeGroup:NodeGroup example <instance_id>:<node_group_id>

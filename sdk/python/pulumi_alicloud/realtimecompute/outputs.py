@@ -43,6 +43,8 @@ __all__ = [
     'VvpInstanceResourceSpec',
     'VvpInstanceStorage',
     'VvpInstanceStorageOss',
+    'GetMembersMemberResult',
+    'GetSqlFilesFileResult',
 ]
 
 @pulumi.output_type
@@ -1340,5 +1342,184 @@ class VvpInstanceStorageOss(dict):
         OSS Bucket name.
         """
         return pulumi.get(self, "bucket")
+
+
+@pulumi.output_type
+class GetMembersMemberResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 member: _builtins.str,
+                 namespace: _builtins.str,
+                 resource_id: _builtins.str,
+                 role: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the Member.
+        :param _builtins.str member: The member UID.
+        :param _builtins.str namespace: The name of the namespace.
+        :param _builtins.str resource_id: The workspace ID.
+        :param _builtins.str role: The member role.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Member.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def member(self) -> _builtins.str:
+        """
+        The member UID.
+        """
+        return pulumi.get(self, "member")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        The workspace ID.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The member role.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetSqlFilesFileResult(dict):
+    def __init__(__self__, *,
+                 batch_mode: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 parent_id: _builtins.str,
+                 session_cluster_name: _builtins.str,
+                 sql_file_id: _builtins.str,
+                 sql_script: _builtins.str,
+                 workspace: _builtins.str):
+        """
+        :param _builtins.str batch_mode: Whether the SQL query script runs in batch mode.
+        :param _builtins.str description: The description of the SQL file.
+        :param _builtins.str id: The ID of the SQL file. The value is formulated as `<workspace>:<namespace>:<sql_file_id>`.
+        :param _builtins.str name: The name of the SQL file.
+        :param _builtins.str namespace: The name of the namespace.
+        :param _builtins.str parent_id: The ID of the parent folder of the SQL file.
+        :param _builtins.str session_cluster_name: The name of the session cluster that runs the SQL query script.
+        :param _builtins.str sql_file_id: The ID of the SQL file.
+        :param _builtins.str sql_script: The SQL script content.
+        :param _builtins.str workspace: The ID of the workspace.
+        """
+        pulumi.set(__self__, "batch_mode", batch_mode)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "session_cluster_name", session_cluster_name)
+        pulumi.set(__self__, "sql_file_id", sql_file_id)
+        pulumi.set(__self__, "sql_script", sql_script)
+        pulumi.set(__self__, "workspace", workspace)
+
+    @_builtins.property
+    @pulumi.getter(name="batchMode")
+    def batch_mode(self) -> _builtins.str:
+        """
+        Whether the SQL query script runs in batch mode.
+        """
+        return pulumi.get(self, "batch_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the SQL file.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the SQL file. The value is formulated as `<workspace>:<namespace>:<sql_file_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the SQL file.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> _builtins.str:
+        """
+        The ID of the parent folder of the SQL file.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionClusterName")
+    def session_cluster_name(self) -> _builtins.str:
+        """
+        The name of the session cluster that runs the SQL query script.
+        """
+        return pulumi.get(self, "session_cluster_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlFileId")
+    def sql_file_id(self) -> _builtins.str:
+        """
+        The ID of the SQL file.
+        """
+        return pulumi.get(self, "sql_file_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlScript")
+    def sql_script(self) -> _builtins.str:
+        """
+        The SQL script content.
+        """
+        return pulumi.get(self, "sql_script")
+
+    @_builtins.property
+    @pulumi.getter
+    def workspace(self) -> _builtins.str:
+        """
+        The ID of the workspace.
+        """
+        return pulumi.get(self, "workspace")
 
 

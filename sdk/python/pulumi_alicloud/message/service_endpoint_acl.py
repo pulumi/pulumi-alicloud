@@ -177,7 +177,7 @@ class ServiceEndpointAcl(pulumi.CustomResource):
 
         ## Import
 
-        Message Service Endpoint Acl can be imported using the id, e.g.
+        Message Service Endpoint Acl can be imported using the id, which consists of endpoint_type, acl_strategy and cidr, e.g.
 
         ```sh
         $ pulumi import alicloud:message/serviceEndpointAcl:ServiceEndpointAcl example <endpoint_type>:<acl_strategy>:<cidr>
@@ -227,7 +227,7 @@ class ServiceEndpointAcl(pulumi.CustomResource):
 
         ## Import
 
-        Message Service Endpoint Acl can be imported using the id, e.g.
+        Message Service Endpoint Acl can be imported using the id, which consists of endpoint_type, acl_strategy and cidr, e.g.
 
         ```sh
         $ pulumi import alicloud:message/serviceEndpointAcl:ServiceEndpointAcl example <endpoint_type>:<acl_strategy>:<cidr>

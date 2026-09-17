@@ -119,7 +119,7 @@ import (
 //
 // ## Import
 //
-// Bastion Host Host Attachment can be imported using the id, e.g.
+// Bastion Host Host Attachment can be imported using the id, which consists of instance_id, hostGroupId and host_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>

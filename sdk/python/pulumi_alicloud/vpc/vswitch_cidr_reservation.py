@@ -376,7 +376,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Vswitch Cidr Reservation can be imported using the id, e.g.
+        Vpc Vswitch Cidr Reservation can be imported using the id, which consists of vswitch_id and vswitch_cidr_reservation_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example <vswitch_id>:<vswitch_cidr_reservation_id>
@@ -440,7 +440,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Vswitch Cidr Reservation can be imported using the id, e.g.
+        Vpc Vswitch Cidr Reservation can be imported using the id, which consists of vswitch_id and vswitch_cidr_reservation_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example <vswitch_id>:<vswitch_cidr_reservation_id>

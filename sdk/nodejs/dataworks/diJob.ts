@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Data Works Di Job can be imported using the id, e.g.
+ * Data Works Di Job can be imported using the id, which consists of projectId and di_job_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:dataworks/diJob:DiJob example <project_id>:<di_job_id>

@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Import
     /// 
-    /// Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
+    /// Container Registry Enterprise Edition Namespace can be imported using the id, which consists of InstanceId and name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example &lt;instance_id&gt;:&lt;name&gt;

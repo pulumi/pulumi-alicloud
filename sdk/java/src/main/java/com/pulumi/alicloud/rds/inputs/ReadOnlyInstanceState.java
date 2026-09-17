@@ -220,6 +220,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      * 
      */
     @Import(name="dbInstanceStorageType")
@@ -232,6 +233,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      * 
      */
     public Optional<Output<String>> dbInstanceStorageType() {
@@ -1097,6 +1099,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
          * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
          * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+         * - general_essd: general essd.
          * 
          * @return builder
          * 
@@ -1113,6 +1116,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
          * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
          * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+         * - general_essd: general essd.
          * 
          * @return builder
          * 

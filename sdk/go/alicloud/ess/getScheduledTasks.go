@@ -13,7 +13,7 @@ import (
 
 // This data source provides available scheduled task resources.
 //
-// > **NOTE:** Available in 1.72.0+
+// > **NOTE:** Available since v1.72.0.
 //
 // ## Example Usage
 //
@@ -60,6 +60,8 @@ type GetScheduledTasksArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
+	// The id of the scaling group to which the scheduled task belongs.
+	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction *string `pulumi:"scheduledAction"`
 	// The id of the scheduled task.
@@ -76,6 +78,8 @@ type GetScheduledTasksResult struct {
 	// A list of scheduled task names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The id of the scaling group to which the scheduled task belongs.
+	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction *string `pulumi:"scheduledAction"`
 	ScheduledTaskId *string `pulumi:"scheduledTaskId"`
@@ -96,6 +100,8 @@ type GetScheduledTasksOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The id of the scaling group to which the scheduled task belongs.
+	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction pulumi.StringPtrInput `pulumi:"scheduledAction"`
 	// The id of the scheduled task.
@@ -142,6 +148,11 @@ func (o GetScheduledTasksResultOutput) Names() pulumi.StringArrayOutput {
 
 func (o GetScheduledTasksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetScheduledTasksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The id of the scaling group to which the scheduled task belongs.
+func (o GetScheduledTasksResultOutput) ScalingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScheduledTasksResult) *string { return v.ScalingGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The operation to be performed when a scheduled task is triggered.

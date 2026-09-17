@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Site Version can be imported using the id, e.g.
+ * ESA Site Version can be imported using the id, which consists of siteId and site_version, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/version:Version example &lt;site_id&gt;:&lt;site_version&gt;

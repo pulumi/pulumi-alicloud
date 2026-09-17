@@ -230,6 +230,78 @@ import (
 //
 // ```
 //
+// Bind an HTTPS certificate managed by SSL Certificates Service (CAS) by id, instead of pasting the PEM material:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			functionName1 := "terraform-custom-domain-t1"
+//			if param := cfg.Get("functionName1"); param != "" {
+//				functionName1 = param
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
+//				CertificateName: pulumi.String("tf-cert-example"),
+//				Cert:            pulumi.String(invokeFile.Result),
+//				Key:             pulumi.String(invokeFile1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewV3CustomDomain(ctx, "default", &fc.V3CustomDomainArgs{
+//				CustomDomainName: pulumi.String(name),
+//				Protocol:         pulumi.String("HTTP,HTTPS"),
+//				CertificateId:    _default.ID().ToIDOutput().ToStringOutput(),
+//				RouteConfig: &fc.V3CustomDomainRouteConfigArgs{
+//					Routes: fc.V3CustomDomainRouteConfigRouteArray{
+//						&fc.V3CustomDomainRouteConfigRouteArgs{
+//							FunctionName: pulumi.String(functionName1),
+//							Path:         pulumi.String("/a"),
+//							Qualifier:    pulumi.String("LATEST"),
+//							Methods: pulumi.StringArray{
+//								pulumi.String("GET"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -250,6 +322,8 @@ type V3CustomDomain struct {
 	AuthConfig V3CustomDomainAuthConfigPtrOutput `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig V3CustomDomainCertConfigOutput `pulumi:"certConfig"`
+	// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
 	CorsConfig V3CustomDomainCorsConfigPtrOutput `pulumi:"corsConfig"`
 	// The creation time of the resource.
@@ -308,6 +382,8 @@ type v3customDomainState struct {
 	AuthConfig *V3CustomDomainAuthConfig `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig *V3CustomDomainCertConfig `pulumi:"certConfig"`
+	// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+	CertificateId *string `pulumi:"certificateId"`
 	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
 	CorsConfig *V3CustomDomainCorsConfig `pulumi:"corsConfig"`
 	// The creation time of the resource.
@@ -337,6 +413,8 @@ type V3CustomDomainState struct {
 	AuthConfig V3CustomDomainAuthConfigPtrInput
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig V3CustomDomainCertConfigPtrInput
+	// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+	CertificateId pulumi.StringPtrInput
 	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
 	CorsConfig V3CustomDomainCorsConfigPtrInput
 	// The creation time of the resource.
@@ -366,6 +444,8 @@ type v3customDomainArgs struct {
 	AuthConfig *V3CustomDomainAuthConfig `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig *V3CustomDomainCertConfig `pulumi:"certConfig"`
+	// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+	CertificateId *string `pulumi:"certificateId"`
 	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
 	CorsConfig *V3CustomDomainCorsConfig `pulumi:"corsConfig"`
 	// The name of the resource
@@ -386,6 +466,8 @@ type V3CustomDomainArgs struct {
 	AuthConfig V3CustomDomainAuthConfigPtrInput
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig V3CustomDomainCertConfigPtrInput
+	// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+	CertificateId pulumi.StringPtrInput
 	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
 	CorsConfig V3CustomDomainCorsConfigPtrInput
 	// The name of the resource
@@ -505,6 +587,11 @@ func (o V3CustomDomainOutput) AuthConfig() V3CustomDomainAuthConfigPtrOutput {
 // HTTPS certificate information See `certConfig` below.
 func (o V3CustomDomainOutput) CertConfig() V3CustomDomainCertConfigOutput {
 	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainCertConfigOutput { return v.CertConfig }).(V3CustomDomainCertConfigOutput)
+}
+
+// The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+func (o V3CustomDomainOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
 
 // Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.

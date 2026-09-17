@@ -1589,6 +1589,154 @@ func (o PrefixListPrefixListAssociationArrayOutput) Index(i pulumi.IntInput) Pre
 	}).(PrefixListPrefixListAssociationOutput)
 }
 
+type RouteTargetGroupRouteTargetMemberList struct {
+	// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+	EnableStatus *string `pulumi:"enableStatus"`
+	// The health check status of the current route target configuration.
+	HealthCheckStatus *string `pulumi:"healthCheckStatus"`
+	// The instance ID of the route target member.
+	MemberId string `pulumi:"memberId"`
+	// The instance type of the route target configuration. The following type is currently supported:
+	// - GatewayLoadBalancerEndpoint.
+	MemberType string `pulumi:"memberType"`
+	// Sets the weight attribute for the current route target configuration.
+	//
+	// In active-standby mode, the weight can only be set to 0 or 100:
+	// - Only one route target configuration can be set to 100, serving as the active instance.
+	// - Only one route target configuration can be set to 0, serving as the standby instance.
+	Weight int `pulumi:"weight"`
+}
+
+// RouteTargetGroupRouteTargetMemberListInput is an input type that accepts RouteTargetGroupRouteTargetMemberListArgs and RouteTargetGroupRouteTargetMemberListOutput values.
+// You can construct a concrete instance of `RouteTargetGroupRouteTargetMemberListInput` via:
+//
+//	RouteTargetGroupRouteTargetMemberListArgs{...}
+type RouteTargetGroupRouteTargetMemberListInput interface {
+	pulumi.Input
+
+	ToRouteTargetGroupRouteTargetMemberListOutput() RouteTargetGroupRouteTargetMemberListOutput
+	ToRouteTargetGroupRouteTargetMemberListOutputWithContext(context.Context) RouteTargetGroupRouteTargetMemberListOutput
+}
+
+type RouteTargetGroupRouteTargetMemberListArgs struct {
+	// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+	EnableStatus pulumi.StringPtrInput `pulumi:"enableStatus"`
+	// The health check status of the current route target configuration.
+	HealthCheckStatus pulumi.StringPtrInput `pulumi:"healthCheckStatus"`
+	// The instance ID of the route target member.
+	MemberId pulumi.StringInput `pulumi:"memberId"`
+	// The instance type of the route target configuration. The following type is currently supported:
+	// - GatewayLoadBalancerEndpoint.
+	MemberType pulumi.StringInput `pulumi:"memberType"`
+	// Sets the weight attribute for the current route target configuration.
+	//
+	// In active-standby mode, the weight can only be set to 0 or 100:
+	// - Only one route target configuration can be set to 100, serving as the active instance.
+	// - Only one route target configuration can be set to 0, serving as the standby instance.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (RouteTargetGroupRouteTargetMemberListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (i RouteTargetGroupRouteTargetMemberListArgs) ToRouteTargetGroupRouteTargetMemberListOutput() RouteTargetGroupRouteTargetMemberListOutput {
+	return i.ToRouteTargetGroupRouteTargetMemberListOutputWithContext(context.Background())
+}
+
+func (i RouteTargetGroupRouteTargetMemberListArgs) ToRouteTargetGroupRouteTargetMemberListOutputWithContext(ctx context.Context) RouteTargetGroupRouteTargetMemberListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetGroupRouteTargetMemberListOutput)
+}
+
+// RouteTargetGroupRouteTargetMemberListArrayInput is an input type that accepts RouteTargetGroupRouteTargetMemberListArray and RouteTargetGroupRouteTargetMemberListArrayOutput values.
+// You can construct a concrete instance of `RouteTargetGroupRouteTargetMemberListArrayInput` via:
+//
+//	RouteTargetGroupRouteTargetMemberListArray{ RouteTargetGroupRouteTargetMemberListArgs{...} }
+type RouteTargetGroupRouteTargetMemberListArrayInput interface {
+	pulumi.Input
+
+	ToRouteTargetGroupRouteTargetMemberListArrayOutput() RouteTargetGroupRouteTargetMemberListArrayOutput
+	ToRouteTargetGroupRouteTargetMemberListArrayOutputWithContext(context.Context) RouteTargetGroupRouteTargetMemberListArrayOutput
+}
+
+type RouteTargetGroupRouteTargetMemberListArray []RouteTargetGroupRouteTargetMemberListInput
+
+func (RouteTargetGroupRouteTargetMemberListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteTargetGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (i RouteTargetGroupRouteTargetMemberListArray) ToRouteTargetGroupRouteTargetMemberListArrayOutput() RouteTargetGroupRouteTargetMemberListArrayOutput {
+	return i.ToRouteTargetGroupRouteTargetMemberListArrayOutputWithContext(context.Background())
+}
+
+func (i RouteTargetGroupRouteTargetMemberListArray) ToRouteTargetGroupRouteTargetMemberListArrayOutputWithContext(ctx context.Context) RouteTargetGroupRouteTargetMemberListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetGroupRouteTargetMemberListArrayOutput)
+}
+
+type RouteTargetGroupRouteTargetMemberListOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetGroupRouteTargetMemberListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (o RouteTargetGroupRouteTargetMemberListOutput) ToRouteTargetGroupRouteTargetMemberListOutput() RouteTargetGroupRouteTargetMemberListOutput {
+	return o
+}
+
+func (o RouteTargetGroupRouteTargetMemberListOutput) ToRouteTargetGroupRouteTargetMemberListOutputWithContext(ctx context.Context) RouteTargetGroupRouteTargetMemberListOutput {
+	return o
+}
+
+// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+func (o RouteTargetGroupRouteTargetMemberListOutput) EnableStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTargetGroupRouteTargetMemberList) *string { return v.EnableStatus }).(pulumi.StringPtrOutput)
+}
+
+// The health check status of the current route target configuration.
+func (o RouteTargetGroupRouteTargetMemberListOutput) HealthCheckStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTargetGroupRouteTargetMemberList) *string { return v.HealthCheckStatus }).(pulumi.StringPtrOutput)
+}
+
+// The instance ID of the route target member.
+func (o RouteTargetGroupRouteTargetMemberListOutput) MemberId() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTargetGroupRouteTargetMemberList) string { return v.MemberId }).(pulumi.StringOutput)
+}
+
+// The instance type of the route target configuration. The following type is currently supported:
+// - GatewayLoadBalancerEndpoint.
+func (o RouteTargetGroupRouteTargetMemberListOutput) MemberType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTargetGroupRouteTargetMemberList) string { return v.MemberType }).(pulumi.StringOutput)
+}
+
+// Sets the weight attribute for the current route target configuration.
+//
+// In active-standby mode, the weight can only be set to 0 or 100:
+// - Only one route target configuration can be set to 100, serving as the active instance.
+// - Only one route target configuration can be set to 0, serving as the standby instance.
+func (o RouteTargetGroupRouteTargetMemberListOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v RouteTargetGroupRouteTargetMemberList) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type RouteTargetGroupRouteTargetMemberListArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetGroupRouteTargetMemberListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteTargetGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (o RouteTargetGroupRouteTargetMemberListArrayOutput) ToRouteTargetGroupRouteTargetMemberListArrayOutput() RouteTargetGroupRouteTargetMemberListArrayOutput {
+	return o
+}
+
+func (o RouteTargetGroupRouteTargetMemberListArrayOutput) ToRouteTargetGroupRouteTargetMemberListArrayOutputWithContext(ctx context.Context) RouteTargetGroupRouteTargetMemberListArrayOutput {
+	return o
+}
+
+func (o RouteTargetGroupRouteTargetMemberListArrayOutput) Index(i pulumi.IntInput) RouteTargetGroupRouteTargetMemberListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteTargetGroupRouteTargetMemberList {
+		return vs[0].([]RouteTargetGroupRouteTargetMemberList)[vs[1].(int)]
+	}).(RouteTargetGroupRouteTargetMemberListOutput)
+}
+
 type TrafficMirrorFilterEgressRuleType struct {
 	Action                        string  `pulumi:"action"`
 	DestinationCidrBlock          *string `pulumi:"destinationCidrBlock"`
@@ -3589,7 +3737,7 @@ type GetForwardEntriesEntry struct {
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The forward entry name.
 	Name string `pulumi:"name"`
-	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+	// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
 	Status string `pulumi:"status"`
 }
 
@@ -3623,7 +3771,7 @@ type GetForwardEntriesEntryArgs struct {
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// The forward entry name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+	// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -3723,7 +3871,7 @@ func (o GetForwardEntriesEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+// The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
 func (o GetForwardEntriesEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -9248,6 +9396,482 @@ func (o GetRouteTablesTableArrayOutput) Index(i pulumi.IntInput) GetRouteTablesT
 	}).(GetRouteTablesTableOutput)
 }
 
+type GetRouteTargetGroupsGroup struct {
+	// The configuration mode of the route target group.
+	ConfigMode string `pulumi:"configMode"`
+	// The time when the route target group was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The region ID of the VPC to which the route target group belongs.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the resource group to which the route target group belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The description of the route target group.
+	RouteTargetGroupDescription string `pulumi:"routeTargetGroupDescription"`
+	// The ID of the route target group.
+	// A maximum of 50 instance IDs can be specified in a single query.
+	RouteTargetGroupId string `pulumi:"routeTargetGroupId"`
+	// The name of the route target group.
+	RouteTargetGroupName string `pulumi:"routeTargetGroupName"`
+	// The member list of the route target group.
+	// In active/standby mode, the following restrictions apply to route target group members:
+	// 1. The route target group must contain exactly two members.
+	// 2. The route target group members must belong to different zones. See `routeTargetMemberList` below.
+	RouteTargetMemberLists []GetRouteTargetGroupsGroupRouteTargetMemberList `pulumi:"routeTargetMemberLists"`
+	// The status of the route target group. Valid values: `Pending`, `Available`.
+	Status string `pulumi:"status"`
+	// The tags of the route target group.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the VPC to which the route target group belongs.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetRouteTargetGroupsGroupInput is an input type that accepts GetRouteTargetGroupsGroupArgs and GetRouteTargetGroupsGroupOutput values.
+// You can construct a concrete instance of `GetRouteTargetGroupsGroupInput` via:
+//
+//	GetRouteTargetGroupsGroupArgs{...}
+type GetRouteTargetGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetRouteTargetGroupsGroupOutput() GetRouteTargetGroupsGroupOutput
+	ToGetRouteTargetGroupsGroupOutputWithContext(context.Context) GetRouteTargetGroupsGroupOutput
+}
+
+type GetRouteTargetGroupsGroupArgs struct {
+	// The configuration mode of the route target group.
+	ConfigMode pulumi.StringInput `pulumi:"configMode"`
+	// The time when the route target group was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The region ID of the VPC to which the route target group belongs.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the resource group to which the route target group belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The description of the route target group.
+	RouteTargetGroupDescription pulumi.StringInput `pulumi:"routeTargetGroupDescription"`
+	// The ID of the route target group.
+	// A maximum of 50 instance IDs can be specified in a single query.
+	RouteTargetGroupId pulumi.StringInput `pulumi:"routeTargetGroupId"`
+	// The name of the route target group.
+	RouteTargetGroupName pulumi.StringInput `pulumi:"routeTargetGroupName"`
+	// The member list of the route target group.
+	// In active/standby mode, the following restrictions apply to route target group members:
+	// 1. The route target group must contain exactly two members.
+	// 2. The route target group members must belong to different zones. See `routeTargetMemberList` below.
+	RouteTargetMemberLists GetRouteTargetGroupsGroupRouteTargetMemberListArrayInput `pulumi:"routeTargetMemberLists"`
+	// The status of the route target group. Valid values: `Pending`, `Available`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tags of the route target group.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The ID of the VPC to which the route target group belongs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetRouteTargetGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTargetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetRouteTargetGroupsGroupArgs) ToGetRouteTargetGroupsGroupOutput() GetRouteTargetGroupsGroupOutput {
+	return i.ToGetRouteTargetGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetRouteTargetGroupsGroupArgs) ToGetRouteTargetGroupsGroupOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTargetGroupsGroupOutput)
+}
+
+// GetRouteTargetGroupsGroupArrayInput is an input type that accepts GetRouteTargetGroupsGroupArray and GetRouteTargetGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetRouteTargetGroupsGroupArrayInput` via:
+//
+//	GetRouteTargetGroupsGroupArray{ GetRouteTargetGroupsGroupArgs{...} }
+type GetRouteTargetGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteTargetGroupsGroupArrayOutput() GetRouteTargetGroupsGroupArrayOutput
+	ToGetRouteTargetGroupsGroupArrayOutputWithContext(context.Context) GetRouteTargetGroupsGroupArrayOutput
+}
+
+type GetRouteTargetGroupsGroupArray []GetRouteTargetGroupsGroupInput
+
+func (GetRouteTargetGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTargetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetRouteTargetGroupsGroupArray) ToGetRouteTargetGroupsGroupArrayOutput() GetRouteTargetGroupsGroupArrayOutput {
+	return i.ToGetRouteTargetGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteTargetGroupsGroupArray) ToGetRouteTargetGroupsGroupArrayOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTargetGroupsGroupArrayOutput)
+}
+
+type GetRouteTargetGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTargetGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTargetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetRouteTargetGroupsGroupOutput) ToGetRouteTargetGroupsGroupOutput() GetRouteTargetGroupsGroupOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsGroupOutput) ToGetRouteTargetGroupsGroupOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupOutput {
+	return o
+}
+
+// The configuration mode of the route target group.
+func (o GetRouteTargetGroupsGroupOutput) ConfigMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.ConfigMode }).(pulumi.StringOutput)
+}
+
+// The time when the route target group was created.
+func (o GetRouteTargetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetRouteTargetGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The region ID of the VPC to which the route target group belongs.
+func (o GetRouteTargetGroupsGroupOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which the route target group belongs.
+func (o GetRouteTargetGroupsGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The description of the route target group.
+func (o GetRouteTargetGroupsGroupOutput) RouteTargetGroupDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.RouteTargetGroupDescription }).(pulumi.StringOutput)
+}
+
+// The ID of the route target group.
+// A maximum of 50 instance IDs can be specified in a single query.
+func (o GetRouteTargetGroupsGroupOutput) RouteTargetGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.RouteTargetGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the route target group.
+func (o GetRouteTargetGroupsGroupOutput) RouteTargetGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.RouteTargetGroupName }).(pulumi.StringOutput)
+}
+
+// The member list of the route target group.
+// In active/standby mode, the following restrictions apply to route target group members:
+// 1. The route target group must contain exactly two members.
+// 2. The route target group members must belong to different zones. See `routeTargetMemberList` below.
+func (o GetRouteTargetGroupsGroupOutput) RouteTargetMemberLists() GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) []GetRouteTargetGroupsGroupRouteTargetMemberList {
+		return v.RouteTargetMemberLists
+	}).(GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput)
+}
+
+// The status of the route target group. Valid values: `Pending`, `Available`.
+func (o GetRouteTargetGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of the route target group.
+func (o GetRouteTargetGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the VPC to which the route target group belongs.
+func (o GetRouteTargetGroupsGroupOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetRouteTargetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTargetGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTargetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetRouteTargetGroupsGroupArrayOutput) ToGetRouteTargetGroupsGroupArrayOutput() GetRouteTargetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsGroupArrayOutput) ToGetRouteTargetGroupsGroupArrayOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetRouteTargetGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteTargetGroupsGroup {
+		return vs[0].([]GetRouteTargetGroupsGroup)[vs[1].(int)]
+	}).(GetRouteTargetGroupsGroupOutput)
+}
+
+type GetRouteTargetGroupsGroupRouteTargetMemberList struct {
+	// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+	EnableStatus string `pulumi:"enableStatus"`
+	// The health check status of the current route target configuration.
+	HealthCheckStatus string `pulumi:"healthCheckStatus"`
+	// The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+	MemberId string `pulumi:"memberId"`
+	// The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+	MemberType string `pulumi:"memberType"`
+	// Sets the weight attribute for the current route target configuration.
+	Weight int `pulumi:"weight"`
+}
+
+// GetRouteTargetGroupsGroupRouteTargetMemberListInput is an input type that accepts GetRouteTargetGroupsGroupRouteTargetMemberListArgs and GetRouteTargetGroupsGroupRouteTargetMemberListOutput values.
+// You can construct a concrete instance of `GetRouteTargetGroupsGroupRouteTargetMemberListInput` via:
+//
+//	GetRouteTargetGroupsGroupRouteTargetMemberListArgs{...}
+type GetRouteTargetGroupsGroupRouteTargetMemberListInput interface {
+	pulumi.Input
+
+	ToGetRouteTargetGroupsGroupRouteTargetMemberListOutput() GetRouteTargetGroupsGroupRouteTargetMemberListOutput
+	ToGetRouteTargetGroupsGroupRouteTargetMemberListOutputWithContext(context.Context) GetRouteTargetGroupsGroupRouteTargetMemberListOutput
+}
+
+type GetRouteTargetGroupsGroupRouteTargetMemberListArgs struct {
+	// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+	EnableStatus pulumi.StringInput `pulumi:"enableStatus"`
+	// The health check status of the current route target configuration.
+	HealthCheckStatus pulumi.StringInput `pulumi:"healthCheckStatus"`
+	// The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+	MemberId pulumi.StringInput `pulumi:"memberId"`
+	// The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+	MemberType pulumi.StringInput `pulumi:"memberType"`
+	// Sets the weight attribute for the current route target configuration.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetRouteTargetGroupsGroupRouteTargetMemberListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTargetGroupsGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (i GetRouteTargetGroupsGroupRouteTargetMemberListArgs) ToGetRouteTargetGroupsGroupRouteTargetMemberListOutput() GetRouteTargetGroupsGroupRouteTargetMemberListOutput {
+	return i.ToGetRouteTargetGroupsGroupRouteTargetMemberListOutputWithContext(context.Background())
+}
+
+func (i GetRouteTargetGroupsGroupRouteTargetMemberListArgs) ToGetRouteTargetGroupsGroupRouteTargetMemberListOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupRouteTargetMemberListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTargetGroupsGroupRouteTargetMemberListOutput)
+}
+
+// GetRouteTargetGroupsGroupRouteTargetMemberListArrayInput is an input type that accepts GetRouteTargetGroupsGroupRouteTargetMemberListArray and GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput values.
+// You can construct a concrete instance of `GetRouteTargetGroupsGroupRouteTargetMemberListArrayInput` via:
+//
+//	GetRouteTargetGroupsGroupRouteTargetMemberListArray{ GetRouteTargetGroupsGroupRouteTargetMemberListArgs{...} }
+type GetRouteTargetGroupsGroupRouteTargetMemberListArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput() GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput
+	ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutputWithContext(context.Context) GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput
+}
+
+type GetRouteTargetGroupsGroupRouteTargetMemberListArray []GetRouteTargetGroupsGroupRouteTargetMemberListInput
+
+func (GetRouteTargetGroupsGroupRouteTargetMemberListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTargetGroupsGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (i GetRouteTargetGroupsGroupRouteTargetMemberListArray) ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput() GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput {
+	return i.ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteTargetGroupsGroupRouteTargetMemberListArray) ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput)
+}
+
+type GetRouteTargetGroupsGroupRouteTargetMemberListOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTargetGroupsGroupRouteTargetMemberListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTargetGroupsGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) ToGetRouteTargetGroupsGroupRouteTargetMemberListOutput() GetRouteTargetGroupsGroupRouteTargetMemberListOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) ToGetRouteTargetGroupsGroupRouteTargetMemberListOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupRouteTargetMemberListOutput {
+	return o
+}
+
+// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) EnableStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroupRouteTargetMemberList) string { return v.EnableStatus }).(pulumi.StringOutput)
+}
+
+// The health check status of the current route target configuration.
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) HealthCheckStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroupRouteTargetMemberList) string { return v.HealthCheckStatus }).(pulumi.StringOutput)
+}
+
+// The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) MemberId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroupRouteTargetMemberList) string { return v.MemberId }).(pulumi.StringOutput)
+}
+
+// The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) MemberType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroupRouteTargetMemberList) string { return v.MemberType }).(pulumi.StringOutput)
+}
+
+// Sets the weight attribute for the current route target configuration.
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsGroupRouteTargetMemberList) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTargetGroupsGroupRouteTargetMemberList)(nil)).Elem()
+}
+
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput) ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput() GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput) ToGetRouteTargetGroupsGroupRouteTargetMemberListArrayOutputWithContext(ctx context.Context) GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput) Index(i pulumi.IntInput) GetRouteTargetGroupsGroupRouteTargetMemberListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteTargetGroupsGroupRouteTargetMemberList {
+		return vs[0].([]GetRouteTargetGroupsGroupRouteTargetMemberList)[vs[1].(int)]
+	}).(GetRouteTargetGroupsGroupRouteTargetMemberListOutput)
+}
+
+type GetRouteTargetGroupsRouteTargetMemberList struct {
+	// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+	EnableStatus string `pulumi:"enableStatus"`
+	// The health check status of the current route target configuration.
+	HealthCheckStatus string `pulumi:"healthCheckStatus"`
+	// The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+	MemberId string `pulumi:"memberId"`
+	// The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+	MemberType string `pulumi:"memberType"`
+	// Sets the weight attribute for the current route target configuration.
+	Weight int `pulumi:"weight"`
+}
+
+// GetRouteTargetGroupsRouteTargetMemberListInput is an input type that accepts GetRouteTargetGroupsRouteTargetMemberListArgs and GetRouteTargetGroupsRouteTargetMemberListOutput values.
+// You can construct a concrete instance of `GetRouteTargetGroupsRouteTargetMemberListInput` via:
+//
+//	GetRouteTargetGroupsRouteTargetMemberListArgs{...}
+type GetRouteTargetGroupsRouteTargetMemberListInput interface {
+	pulumi.Input
+
+	ToGetRouteTargetGroupsRouteTargetMemberListOutput() GetRouteTargetGroupsRouteTargetMemberListOutput
+	ToGetRouteTargetGroupsRouteTargetMemberListOutputWithContext(context.Context) GetRouteTargetGroupsRouteTargetMemberListOutput
+}
+
+type GetRouteTargetGroupsRouteTargetMemberListArgs struct {
+	// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+	EnableStatus pulumi.StringInput `pulumi:"enableStatus"`
+	// The health check status of the current route target configuration.
+	HealthCheckStatus pulumi.StringInput `pulumi:"healthCheckStatus"`
+	// The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+	MemberId pulumi.StringInput `pulumi:"memberId"`
+	// The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+	MemberType pulumi.StringInput `pulumi:"memberType"`
+	// Sets the weight attribute for the current route target configuration.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetRouteTargetGroupsRouteTargetMemberListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTargetGroupsRouteTargetMemberList)(nil)).Elem()
+}
+
+func (i GetRouteTargetGroupsRouteTargetMemberListArgs) ToGetRouteTargetGroupsRouteTargetMemberListOutput() GetRouteTargetGroupsRouteTargetMemberListOutput {
+	return i.ToGetRouteTargetGroupsRouteTargetMemberListOutputWithContext(context.Background())
+}
+
+func (i GetRouteTargetGroupsRouteTargetMemberListArgs) ToGetRouteTargetGroupsRouteTargetMemberListOutputWithContext(ctx context.Context) GetRouteTargetGroupsRouteTargetMemberListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTargetGroupsRouteTargetMemberListOutput)
+}
+
+// GetRouteTargetGroupsRouteTargetMemberListArrayInput is an input type that accepts GetRouteTargetGroupsRouteTargetMemberListArray and GetRouteTargetGroupsRouteTargetMemberListArrayOutput values.
+// You can construct a concrete instance of `GetRouteTargetGroupsRouteTargetMemberListArrayInput` via:
+//
+//	GetRouteTargetGroupsRouteTargetMemberListArray{ GetRouteTargetGroupsRouteTargetMemberListArgs{...} }
+type GetRouteTargetGroupsRouteTargetMemberListArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteTargetGroupsRouteTargetMemberListArrayOutput() GetRouteTargetGroupsRouteTargetMemberListArrayOutput
+	ToGetRouteTargetGroupsRouteTargetMemberListArrayOutputWithContext(context.Context) GetRouteTargetGroupsRouteTargetMemberListArrayOutput
+}
+
+type GetRouteTargetGroupsRouteTargetMemberListArray []GetRouteTargetGroupsRouteTargetMemberListInput
+
+func (GetRouteTargetGroupsRouteTargetMemberListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTargetGroupsRouteTargetMemberList)(nil)).Elem()
+}
+
+func (i GetRouteTargetGroupsRouteTargetMemberListArray) ToGetRouteTargetGroupsRouteTargetMemberListArrayOutput() GetRouteTargetGroupsRouteTargetMemberListArrayOutput {
+	return i.ToGetRouteTargetGroupsRouteTargetMemberListArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteTargetGroupsRouteTargetMemberListArray) ToGetRouteTargetGroupsRouteTargetMemberListArrayOutputWithContext(ctx context.Context) GetRouteTargetGroupsRouteTargetMemberListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTargetGroupsRouteTargetMemberListArrayOutput)
+}
+
+type GetRouteTargetGroupsRouteTargetMemberListOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTargetGroupsRouteTargetMemberListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTargetGroupsRouteTargetMemberList)(nil)).Elem()
+}
+
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) ToGetRouteTargetGroupsRouteTargetMemberListOutput() GetRouteTargetGroupsRouteTargetMemberListOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) ToGetRouteTargetGroupsRouteTargetMemberListOutputWithContext(ctx context.Context) GetRouteTargetGroupsRouteTargetMemberListOutput {
+	return o
+}
+
+// Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) EnableStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsRouteTargetMemberList) string { return v.EnableStatus }).(pulumi.StringOutput)
+}
+
+// The health check status of the current route target configuration.
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) HealthCheckStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsRouteTargetMemberList) string { return v.HealthCheckStatus }).(pulumi.StringOutput)
+}
+
+// The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) MemberId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsRouteTargetMemberList) string { return v.MemberId }).(pulumi.StringOutput)
+}
+
+// The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) MemberType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsRouteTargetMemberList) string { return v.MemberType }).(pulumi.StringOutput)
+}
+
+// Sets the weight attribute for the current route target configuration.
+func (o GetRouteTargetGroupsRouteTargetMemberListOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteTargetGroupsRouteTargetMemberList) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetRouteTargetGroupsRouteTargetMemberListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTargetGroupsRouteTargetMemberListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTargetGroupsRouteTargetMemberList)(nil)).Elem()
+}
+
+func (o GetRouteTargetGroupsRouteTargetMemberListArrayOutput) ToGetRouteTargetGroupsRouteTargetMemberListArrayOutput() GetRouteTargetGroupsRouteTargetMemberListArrayOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsRouteTargetMemberListArrayOutput) ToGetRouteTargetGroupsRouteTargetMemberListArrayOutputWithContext(ctx context.Context) GetRouteTargetGroupsRouteTargetMemberListArrayOutput {
+	return o
+}
+
+func (o GetRouteTargetGroupsRouteTargetMemberListArrayOutput) Index(i pulumi.IntInput) GetRouteTargetGroupsRouteTargetMemberListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteTargetGroupsRouteTargetMemberList {
+		return vs[0].([]GetRouteTargetGroupsRouteTargetMemberList)[vs[1].(int)]
+	}).(GetRouteTargetGroupsRouteTargetMemberListOutput)
+}
+
 type GetRouterInterfacesInterface struct {
 	// ID of the access point used by the VBR.
 	AccessPointId string `pulumi:"accessPointId"`
@@ -11162,6 +11786,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListEntryArrayInput)(nil)).Elem(), PrefixListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListPrefixListAssociationInput)(nil)).Elem(), PrefixListPrefixListAssociationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListPrefixListAssociationArrayInput)(nil)).Elem(), PrefixListPrefixListAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteTargetGroupRouteTargetMemberListInput)(nil)).Elem(), RouteTargetGroupRouteTargetMemberListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteTargetGroupRouteTargetMemberListArrayInput)(nil)).Elem(), RouteTargetGroupRouteTargetMemberListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleTypeInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleTypeArrayInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterIngressRuleTypeInput)(nil)).Elem(), TrafficMirrorFilterIngressRuleTypeArgs{})
@@ -11250,6 +11876,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryArrayInput)(nil)).Elem(), GetRouteEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTablesTableInput)(nil)).Elem(), GetRouteTablesTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTablesTableArrayInput)(nil)).Elem(), GetRouteTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTargetGroupsGroupInput)(nil)).Elem(), GetRouteTargetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTargetGroupsGroupArrayInput)(nil)).Elem(), GetRouteTargetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTargetGroupsGroupRouteTargetMemberListInput)(nil)).Elem(), GetRouteTargetGroupsGroupRouteTargetMemberListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTargetGroupsGroupRouteTargetMemberListArrayInput)(nil)).Elem(), GetRouteTargetGroupsGroupRouteTargetMemberListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTargetGroupsRouteTargetMemberListInput)(nil)).Elem(), GetRouteTargetGroupsRouteTargetMemberListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTargetGroupsRouteTargetMemberListArrayInput)(nil)).Elem(), GetRouteTargetGroupsRouteTargetMemberListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceInput)(nil)).Elem(), GetRouterInterfacesInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceArrayInput)(nil)).Elem(), GetRouterInterfacesInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnatEntriesEntryInput)(nil)).Elem(), GetSnatEntriesEntryArgs{})
@@ -11292,6 +11924,8 @@ func init() {
 	pulumi.RegisterOutputType(PrefixListEntryArrayOutput{})
 	pulumi.RegisterOutputType(PrefixListPrefixListAssociationOutput{})
 	pulumi.RegisterOutputType(PrefixListPrefixListAssociationArrayOutput{})
+	pulumi.RegisterOutputType(RouteTargetGroupRouteTargetMemberListOutput{})
+	pulumi.RegisterOutputType(RouteTargetGroupRouteTargetMemberListArrayOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleTypeOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterIngressRuleTypeOutput{})
@@ -11380,6 +12014,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteTablesTableOutput{})
 	pulumi.RegisterOutputType(GetRouteTablesTableArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteTargetGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetRouteTargetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteTargetGroupsGroupRouteTargetMemberListOutput{})
+	pulumi.RegisterOutputType(GetRouteTargetGroupsGroupRouteTargetMemberListArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteTargetGroupsRouteTargetMemberListOutput{})
+	pulumi.RegisterOutputType(GetRouteTargetGroupsRouteTargetMemberListArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetSnatEntriesEntryOutput{})

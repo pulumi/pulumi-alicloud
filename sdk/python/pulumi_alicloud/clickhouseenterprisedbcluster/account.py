@@ -319,7 +319,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        Click House Enterprise Db Cluster Account can be imported using the id, e.g.
+        Click House Enterprise Db Cluster Account can be imported using the id, which consists of db_instance_id and account, e.g.
 
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/account:Account example <db_instance_id>:<account>
@@ -408,7 +408,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        Click House Enterprise Db Cluster Account can be imported using the id, e.g.
+        Click House Enterprise Db Cluster Account can be imported using the id, which consists of db_instance_id and account, e.g.
 
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/account:Account example <db_instance_id>:<account>

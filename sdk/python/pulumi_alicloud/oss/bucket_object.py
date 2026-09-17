@@ -44,7 +44,7 @@ class BucketObjectArgs:
         :param pulumi.Input[_builtins.str] content: The literal content being uploaded to the bucket.
         :param pulumi.Input[_builtins.str] content_disposition: Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-        :param pulumi.Input[_builtins.str] content_md5: The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        :param pulumi.Input[_builtins.str] content_md5: The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
@@ -172,7 +172,7 @@ class BucketObjectArgs:
     @pulumi.getter(name="contentMd5")
     def content_md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         """
         return pulumi.get(self, "content_md5")
 
@@ -298,7 +298,7 @@ class _BucketObjectState:
         :param pulumi.Input[_builtins.str] content_disposition: Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] content_length: the content length of request.
-        :param pulumi.Input[_builtins.str] content_md5: The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        :param pulumi.Input[_builtins.str] content_md5: The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] etag: the ETag generated for the object (an MD5 sum of the object content).
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
@@ -437,7 +437,7 @@ class _BucketObjectState:
     @pulumi.getter(name="contentMd5")
     def content_md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         """
         return pulumi.get(self, "content_md5")
 
@@ -648,7 +648,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content: The literal content being uploaded to the bucket.
         :param pulumi.Input[_builtins.str] content_disposition: Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-        :param pulumi.Input[_builtins.str] content_md5: The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        :param pulumi.Input[_builtins.str] content_md5: The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
@@ -819,7 +819,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_disposition: Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] content_length: the content length of request.
-        :param pulumi.Input[_builtins.str] content_md5: The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        :param pulumi.Input[_builtins.str] content_md5: The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] etag: the ETag generated for the object (an MD5 sum of the object content).
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
@@ -917,7 +917,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="contentMd5")
     def content_md5(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         """
         return pulumi.get(self, "content_md5")
 

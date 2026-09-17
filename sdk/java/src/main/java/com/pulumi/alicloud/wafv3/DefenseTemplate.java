@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * WAFV3 Defense Template can be imported using the id, e.g.
+ * WAFV3 Defense Template can be imported using the id, which consists of instanceId and defense_template_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:wafv3/defenseTemplate:DefenseTemplate example &lt;instance_id&gt;:&lt;defense_template_id&gt;

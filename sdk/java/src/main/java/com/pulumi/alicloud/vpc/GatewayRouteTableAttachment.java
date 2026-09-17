@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Gateway Route Table Attachment can be imported using the id, e.g.
+ * VPC Gateway Route Table Attachment can be imported using the id, which consists of routeTableId and ipv4_gateway_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example &lt;route_table_id&gt;:&lt;ipv4_gateway_id&gt;

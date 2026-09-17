@@ -2,12 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-addentriestoacl).
  *
  * > **NOTE:** Available since v1.166.0.
+ *
+ * > **NOTE:** The `entries` attribute is available since v1.292.0. In batch mode, the attachment takes ownership of all entries of the ACL: entries added out of band or by other `alicloud.alb.AclEntryAttachment` resources attached to the same ACL are removed on the next apply. Do not manage the entries of the same ACL from multiple resources.
+ *
+ * > **NOTE:** Exactly one of `entry` and `entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
  *
  * ## Example Usage
  *
@@ -29,14 +35,43 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Batch mode
+ *
+ * The `entries` attribute manages all entries of the ACL in one resource. The entries are added and removed in batches of at most `20` entries per API call.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.alb.AclEntryAttachment("default", {
+ *     aclId: defaultAlicloudAlbAcl.id,
+ *     entries: [
+ *         {
+ *             entry: "168.10.10.0/24",
+ *             description: name,
+ *         },
+ *         {
+ *             entry: "168.10.11.0/24",
+ *             description: name,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
- * Acl entry attachment can be imported using the id, e.g.
+ * Acl entry attachment can be imported using the id, which consists of aclId and entry, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+ * ```
+ *
+ * When `entries` is used, the id is the acl id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>
  * ```
  */
 export class AclEntryAttachment extends pulumi.CustomResource {
@@ -68,19 +103,25 @@ export class AclEntryAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Acl.
+     * The ID of the ACL.
      */
     declare public readonly aclId: pulumi.Output<string>;
     /**
-     * The description of the entry.
+     * The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The CIDR blocks.
+     * One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      */
-    declare public readonly entry: pulumi.Output<string>;
+    declare public readonly entries: pulumi.Output<outputs.alb.AclEntryAttachmentEntry[] | undefined>;
     /**
-     * The Status of the resource.
+     * The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+     *
+     * @deprecated Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.
+     */
+    declare public readonly entry: pulumi.Output<string | undefined>;
+    /**
+     * The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -99,6 +140,7 @@ export class AclEntryAttachment extends pulumi.CustomResource {
             const state = argsOrState as AclEntryAttachmentState | undefined;
             resourceInputs["aclId"] = state?.aclId;
             resourceInputs["description"] = state?.description;
+            resourceInputs["entries"] = state?.entries;
             resourceInputs["entry"] = state?.entry;
             resourceInputs["status"] = state?.status;
         } else {
@@ -106,11 +148,9 @@ export class AclEntryAttachment extends pulumi.CustomResource {
             if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if (args?.entry === undefined && !opts.urn) {
-                throw new Error("Missing required property 'entry'");
-            }
             resourceInputs["aclId"] = args?.aclId;
             resourceInputs["description"] = args?.description;
+            resourceInputs["entries"] = args?.entries;
             resourceInputs["entry"] = args?.entry;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -124,19 +164,25 @@ export class AclEntryAttachment extends pulumi.CustomResource {
  */
 export interface AclEntryAttachmentState {
     /**
-     * The ID of the Acl.
+     * The ID of the ACL.
      */
     aclId?: pulumi.Input<string | undefined>;
     /**
-     * The description of the entry.
+     * The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The CIDR blocks.
+     * One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+     */
+    entries?: pulumi.Input<pulumi.Input<inputs.alb.AclEntryAttachmentEntry>[] | undefined>;
+    /**
+     * The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+     *
+     * @deprecated Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.
      */
     entry?: pulumi.Input<string | undefined>;
     /**
-     * The Status of the resource.
+     * The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
      */
     status?: pulumi.Input<string | undefined>;
 }
@@ -146,15 +192,21 @@ export interface AclEntryAttachmentState {
  */
 export interface AclEntryAttachmentArgs {
     /**
-     * The ID of the Acl.
+     * The ID of the ACL.
      */
     aclId: pulumi.Input<string>;
     /**
-     * The description of the entry.
+     * The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The CIDR blocks.
+     * One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      */
-    entry: pulumi.Input<string>;
+    entries?: pulumi.Input<pulumi.Input<inputs.alb.AclEntryAttachmentEntry>[] | undefined>;
+    /**
+     * The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+     *
+     * @deprecated Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'.
+     */
+    entry?: pulumi.Input<string | undefined>;
 }

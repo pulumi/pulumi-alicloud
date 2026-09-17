@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
+ * RabbitMQ (AMQP) Exchange can be imported using the id, which consists of instance_id, virtualHostName and exchange_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:amqp/exchange:Exchange example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;exchange_name&gt;

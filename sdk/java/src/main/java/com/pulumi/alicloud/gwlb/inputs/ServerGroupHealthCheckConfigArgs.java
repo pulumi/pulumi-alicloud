@@ -151,7 +151,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
      * 
      * The URL must start with a forward slash (/).
      * 
-     * &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+     * &gt; **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
      * 
      */
     @Import(name="healthCheckPath")
@@ -164,7 +164,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
      * 
      * The URL must start with a forward slash (/).
      * 
-     * &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+     * &gt; **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
      * 
      */
     public Optional<Output<String>> healthCheckPath() {
@@ -450,7 +450,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
          * 
          * The URL must start with a forward slash (/).
          * 
-         * &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+         * &gt; **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
          * 
          * The URL must start with a forward slash (/).
          * 
-         * &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+         * &gt; **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
          * 
          * @return builder
          * 

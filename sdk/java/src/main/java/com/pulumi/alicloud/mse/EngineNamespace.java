@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
+ * Microservice Engine (MSE) Engine Namespace can be imported using the id, which consists of instanceId and namespace_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example &lt;instance_id&gt;:&lt;namespace_id&gt;

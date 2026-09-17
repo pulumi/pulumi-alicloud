@@ -35,10 +35,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Plugin{}
 	case "alicloud:apig/pluginClass:PluginClass":
 		r = &PluginClass{}
+	case "alicloud:apig/policy:Policy":
+		r = &Policy{}
 	case "alicloud:apig/route:Route":
 		r = &Route{}
 	case "alicloud:apig/service:Service":
 		r = &Service{}
+	case "alicloud:apig/source:Source":
+		r = &Source{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -89,12 +93,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"apig/policy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"apig/route",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apig/service",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apig/source",
 		&module{version},
 	)
 }

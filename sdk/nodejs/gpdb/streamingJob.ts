@@ -133,7 +133,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GPDB Streaming Job can be imported using the id, e.g.
+ * GPDB Streaming Job can be imported using the id, which consists of dbInstanceId and job_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/streamingJob:StreamingJob example <db_instance_id>:<job_id>

@@ -146,6 +146,10 @@ export class Api extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly apiId: pulumi.Output<string>;
     /**
+     * The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     */
+    declare public readonly appCodeAuthType: pulumi.Output<string>;
+    /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
     declare public readonly authType: pulumi.Output<string>;
@@ -228,6 +232,7 @@ export class Api extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiState | undefined;
             resourceInputs["apiId"] = state?.apiId;
+            resourceInputs["appCodeAuthType"] = state?.appCodeAuthType;
             resourceInputs["authType"] = state?.authType;
             resourceInputs["backendEnabled"] = state?.backendEnabled;
             resourceInputs["backendId"] = state?.backendId;
@@ -262,6 +267,7 @@ export class Api extends pulumi.CustomResource {
             if (args?.serviceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
+            resourceInputs["appCodeAuthType"] = args?.appCodeAuthType;
             resourceInputs["authType"] = args?.authType;
             resourceInputs["backendEnabled"] = args?.backendEnabled;
             resourceInputs["backendId"] = args?.backendId;
@@ -294,6 +300,10 @@ export interface ApiState {
      * The ID of the api of api gateway.
      */
     apiId?: pulumi.Input<string | undefined>;
+    /**
+     * The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     */
+    appCodeAuthType?: pulumi.Input<string | undefined>;
     /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
@@ -368,6 +378,10 @@ export interface ApiState {
  * The set of arguments for constructing a Api resource.
  */
 export interface ApiArgs {
+    /**
+     * The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     */
+    appCodeAuthType?: pulumi.Input<string | undefined>;
     /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */

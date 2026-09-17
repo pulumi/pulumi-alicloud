@@ -41,6 +41,8 @@ __all__ = [
     'ServiceHealthCheckConfig',
     'ServiceOutlierDetectionConfig',
     'ServicePort',
+    'SourceK8sSourceInfo',
+    'SourceNacosSourceInfo',
     'GetAiModelProvidersProviderResult',
     'GetAiModelProvidersProviderBoundServiceResult',
     'GetAiModelProvidersProviderModelCardResult',
@@ -58,6 +60,7 @@ __all__ = [
     'GetGatewaysGatewayZoneResult',
     'GetPluginClassesClassResult',
     'GetPluginsPluginResult',
+    'GetPoliciesPolicyResult',
     'GetRoutesEnvironmentInfoResult',
     'GetRoutesEnvironmentInfoGatewayInfoResult',
     'GetRoutesEnvironmentInfoSubDomainResult',
@@ -76,6 +79,9 @@ __all__ = [
     'GetServicesServiceHealthCheckConfigResult',
     'GetServicesServiceOutlierDetectionConfigResult',
     'GetServicesServicePortResult',
+    'GetSourcesSourceResult',
+    'GetSourcesSourceK8sSourceInfoResult',
+    'GetSourcesSourceNacosSourceInfoResult',
 ]
 
 @pulumi.output_type
@@ -1568,6 +1574,104 @@ class ServicePort(dict):
 
 
 @pulumi.output_type
+class SourceK8sSourceInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceK8sSourceInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceK8sSourceInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceK8sSourceInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cluster_id: The ID of the ACK cluster.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the ACK cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+
+@pulumi.output_type
+class SourceNacosSourceInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceNacosSourceInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceNacosSourceInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceNacosSourceInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 cluster_id: Optional[_builtins.str] = None,
+                 instance_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: The access address of the Nacos instance.
+        :param _builtins.str cluster_id: The ID of the Nacos cluster.
+        :param _builtins.str instance_id: The ID of the MSE Nacos instance.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The access address of the Nacos instance.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Nacos cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the MSE Nacos instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
 class GetAiModelProvidersProviderResult(dict):
     def __init__(__self__, *,
                  bound_services: Sequence['outputs.GetAiModelProvidersProviderBoundServiceResult'],
@@ -2930,6 +3034,134 @@ class GetPluginsPluginResult(dict):
 
 
 @pulumi.output_type
+class GetPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 attach_resource_ids: Sequence[_builtins.str],
+                 attach_resource_type: _builtins.str,
+                 environment_id: _builtins.str,
+                 gateway_id: _builtins.str,
+                 id: _builtins.str,
+                 policy_attachment_id: _builtins.str,
+                 policy_class_id: _builtins.str,
+                 policy_class_name: _builtins.str,
+                 policy_config: _builtins.str,
+                 policy_id: _builtins.str,
+                 policy_name: _builtins.str):
+        """
+        :param Sequence[_builtins.str] attach_resource_ids: The ID of the attach point resource to filter policies by.
+        :param _builtins.str attach_resource_type: Policies support mount point types. Valid values: `HttpApi`, `Operation`, `GatewayRoute`, `GatewayService`, `GatewayServicePort`, `Domain`, `Gateway`.
+        :param _builtins.str environment_id: Environment id.
+        :param _builtins.str gateway_id: Gateway id.
+        :param _builtins.str id: The ID of the Policy.
+        :param _builtins.str policy_attachment_id: Policy attachment id.
+        :param _builtins.str policy_class_id: Policy class id.
+        :param _builtins.str policy_class_name: Policy class name.
+        :param _builtins.str policy_config: Policy configuration.
+        :param _builtins.str policy_id: The first ID of the resource.
+        :param _builtins.str policy_name: Policy name.
+        """
+        pulumi.set(__self__, "attach_resource_ids", attach_resource_ids)
+        pulumi.set(__self__, "attach_resource_type", attach_resource_type)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_attachment_id", policy_attachment_id)
+        pulumi.set(__self__, "policy_class_id", policy_class_id)
+        pulumi.set(__self__, "policy_class_name", policy_class_name)
+        pulumi.set(__self__, "policy_config", policy_config)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_name", policy_name)
+
+    @_builtins.property
+    @pulumi.getter(name="attachResourceIds")
+    def attach_resource_ids(self) -> Sequence[_builtins.str]:
+        """
+        The ID of the attach point resource to filter policies by.
+        """
+        return pulumi.get(self, "attach_resource_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="attachResourceType")
+    def attach_resource_type(self) -> _builtins.str:
+        """
+        Policies support mount point types. Valid values: `HttpApi`, `Operation`, `GatewayRoute`, `GatewayService`, `GatewayServicePort`, `Domain`, `Gateway`.
+        """
+        return pulumi.get(self, "attach_resource_type")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        Environment id.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        Gateway id.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="policyAttachmentId")
+    def policy_attachment_id(self) -> _builtins.str:
+        """
+        Policy attachment id.
+        """
+        return pulumi.get(self, "policy_attachment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="policyClassId")
+    def policy_class_id(self) -> _builtins.str:
+        """
+        Policy class id.
+        """
+        return pulumi.get(self, "policy_class_id")
+
+    @_builtins.property
+    @pulumi.getter(name="policyClassName")
+    def policy_class_name(self) -> _builtins.str:
+        """
+        Policy class name.
+        """
+        return pulumi.get(self, "policy_class_name")
+
+    @_builtins.property
+    @pulumi.getter(name="policyConfig")
+    def policy_config(self) -> _builtins.str:
+        """
+        Policy configuration.
+        """
+        return pulumi.get(self, "policy_config")
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> _builtins.str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> _builtins.str:
+        """
+        Policy name.
+        """
+        return pulumi.get(self, "policy_name")
+
+
+@pulumi.output_type
 class GetRoutesEnvironmentInfoResult(dict):
     def __init__(__self__, *,
                  alias: _builtins.str,
@@ -4165,5 +4397,202 @@ class GetServicesServicePortResult(dict):
         Service protocol.
         """
         return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetSourcesSourceResult(dict):
+    def __init__(__self__, *,
+                 association_reason: _builtins.str,
+                 association_status: _builtins.str,
+                 create_time: _builtins.int,
+                 gateway_id: _builtins.str,
+                 id: _builtins.str,
+                 k8s_source_infos: Sequence['outputs.GetSourcesSourceK8sSourceInfoResult'],
+                 nacos_source_infos: Sequence['outputs.GetSourcesSourceNacosSourceInfoResult'],
+                 resource_group_id: _builtins.str,
+                 source_id: _builtins.str,
+                 source_name: _builtins.str,
+                 type: _builtins.str,
+                 update_time: _builtins.int):
+        """
+        :param _builtins.str association_reason: The reason for the association status.
+        :param _builtins.str association_status: The association status of the source.
+        :param _builtins.int create_time: The creation timestamp of the source.
+        :param _builtins.str gateway_id: The ID of the gateway instance.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param Sequence['GetSourcesSourceK8sSourceInfoArgs'] k8s_source_infos: The ACK cluster source information.
+        :param Sequence['GetSourcesSourceNacosSourceInfoArgs'] nacos_source_infos: The MSE Nacos source information.
+        :param _builtins.str resource_group_id: The ID of the resource group.
+        :param _builtins.str source_id: The ID of the source.
+        :param _builtins.str source_name: The name of the source.
+        :param _builtins.str type: The type of the source. Valid values: `K8S`, `MSE_NACOS`.
+        :param _builtins.int update_time: The update timestamp of the source.
+        """
+        pulumi.set(__self__, "association_reason", association_reason)
+        pulumi.set(__self__, "association_status", association_status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "k8s_source_infos", k8s_source_infos)
+        pulumi.set(__self__, "nacos_source_infos", nacos_source_infos)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "source_name", source_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="associationReason")
+    def association_reason(self) -> _builtins.str:
+        """
+        The reason for the association status.
+        """
+        return pulumi.get(self, "association_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="associationStatus")
+    def association_status(self) -> _builtins.str:
+        """
+        The association status of the source.
+        """
+        return pulumi.get(self, "association_status")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.int:
+        """
+        The creation timestamp of the source.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the gateway instance.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="k8sSourceInfos")
+    def k8s_source_infos(self) -> Sequence['outputs.GetSourcesSourceK8sSourceInfoResult']:
+        """
+        The ACK cluster source information.
+        """
+        return pulumi.get(self, "k8s_source_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="nacosSourceInfos")
+    def nacos_source_infos(self) -> Sequence['outputs.GetSourcesSourceNacosSourceInfoResult']:
+        """
+        The MSE Nacos source information.
+        """
+        return pulumi.get(self, "nacos_source_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> _builtins.str:
+        """
+        The ID of the source.
+        """
+        return pulumi.get(self, "source_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> _builtins.str:
+        """
+        The name of the source.
+        """
+        return pulumi.get(self, "source_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the source. Valid values: `K8S`, `MSE_NACOS`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.int:
+        """
+        The update timestamp of the source.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetSourcesSourceK8sSourceInfoResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: _builtins.str):
+        """
+        :param _builtins.str cluster_id: The ID of the Nacos cluster.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> _builtins.str:
+        """
+        The ID of the Nacos cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+
+@pulumi.output_type
+class GetSourcesSourceNacosSourceInfoResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 cluster_id: _builtins.str,
+                 instance_id: _builtins.str):
+        """
+        :param _builtins.str address: The access address of the Nacos instance.
+        :param _builtins.str cluster_id: The ID of the Nacos cluster.
+        :param _builtins.str instance_id: The ID of the MSE Nacos instance.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The access address of the Nacos instance.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> _builtins.str:
+        """
+        The ID of the Nacos cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The ID of the MSE Nacos instance.
+        """
+        return pulumi.get(self, "instance_id")
 
 

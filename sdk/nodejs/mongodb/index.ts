@@ -15,6 +15,11 @@ export type AuditPolicy = import("./auditPolicy").AuditPolicy;
 export const AuditPolicy: typeof import("./auditPolicy").AuditPolicy = null as any;
 utilities.lazyLoad(exports, ["AuditPolicy"], () => require("./auditPolicy"));
 
+export { BackupArgs, BackupState } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+
 export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
 export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
@@ -25,6 +30,11 @@ export const getAuditPolicies: typeof import("./getAuditPolicies").getAuditPolic
 export const getAuditPoliciesOutput: typeof import("./getAuditPolicies").getAuditPoliciesOutput = null as any;
 utilities.lazyLoad(exports, ["getAuditPolicies","getAuditPoliciesOutput"], () => require("./getAuditPolicies"));
 
+export { GetBackupsArgs, GetBackupsResult, GetBackupsOutputArgs } from "./getBackups";
+export const getBackups: typeof import("./getBackups").getBackups = null as any;
+export const getBackupsOutput: typeof import("./getBackups").getBackupsOutput = null as any;
+utilities.lazyLoad(exports, ["getBackups","getBackupsOutput"], () => require("./getBackups"));
+
 export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
 export const getInstances: typeof import("./getInstances").getInstances = null as any;
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
@@ -34,6 +44,11 @@ export { GetServerlessInstancesArgs, GetServerlessInstancesResult, GetServerless
 export const getServerlessInstances: typeof import("./getServerlessInstances").getServerlessInstances = null as any;
 export const getServerlessInstancesOutput: typeof import("./getServerlessInstances").getServerlessInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getServerlessInstances","getServerlessInstancesOutput"], () => require("./getServerlessInstances"));
+
+export { GetShardingAuditFiltersArgs, GetShardingAuditFiltersResult, GetShardingAuditFiltersOutputArgs } from "./getShardingAuditFilters";
+export const getShardingAuditFilters: typeof import("./getShardingAuditFilters").getShardingAuditFilters = null as any;
+export const getShardingAuditFiltersOutput: typeof import("./getShardingAuditFilters").getShardingAuditFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getShardingAuditFilters","getShardingAuditFiltersOutput"], () => require("./getShardingAuditFilters"));
 
 export { GetShardingNetworkPrivateAddressesArgs, GetShardingNetworkPrivateAddressesResult, GetShardingNetworkPrivateAddressesOutputArgs } from "./getShardingNetworkPrivateAddresses";
 export const getShardingNetworkPrivateAddresses: typeof import("./getShardingNetworkPrivateAddresses").getShardingNetworkPrivateAddresses = null as any;
@@ -85,6 +100,11 @@ export type ServerlessInstance = import("./serverlessInstance").ServerlessInstan
 export const ServerlessInstance: typeof import("./serverlessInstance").ServerlessInstance = null as any;
 utilities.lazyLoad(exports, ["ServerlessInstance"], () => require("./serverlessInstance"));
 
+export { ShardingAuditFilterArgs, ShardingAuditFilterState } from "./shardingAuditFilter";
+export type ShardingAuditFilter = import("./shardingAuditFilter").ShardingAuditFilter;
+export const ShardingAuditFilter: typeof import("./shardingAuditFilter").ShardingAuditFilter = null as any;
+utilities.lazyLoad(exports, ["ShardingAuditFilter"], () => require("./shardingAuditFilter"));
+
 export { ShardingInstanceArgs, ShardingInstanceState } from "./shardingInstance";
 export type ShardingInstance = import("./shardingInstance").ShardingInstance;
 export const ShardingInstance: typeof import("./shardingInstance").ShardingInstance = null as any;
@@ -109,6 +129,8 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "alicloud:mongodb/auditPolicy:AuditPolicy":
                 return new AuditPolicy(name, <any>undefined, { urn })
+            case "alicloud:mongodb/backup:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup":
                 return new GlobalSecurityIpGroup(name, <any>undefined, { urn })
             case "alicloud:mongodb/instance:Instance":
@@ -123,6 +145,8 @@ const _module = {
                 return new ReplicaSetRole(name, <any>undefined, { urn })
             case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
                 return new ServerlessInstance(name, <any>undefined, { urn })
+            case "alicloud:mongodb/shardingAuditFilter:ShardingAuditFilter":
+                return new ShardingAuditFilter(name, <any>undefined, { urn })
             case "alicloud:mongodb/shardingInstance:ShardingInstance":
                 return new ShardingInstance(name, <any>undefined, { urn })
             case "alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress":
@@ -136,6 +160,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/backup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/globalSecurityIpGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/node", _module)
@@ -143,6 +168,7 @@ pulumi.runtime.registerResourceModule("alicloud", "mongodb/privateSrvNetworkAddr
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/publicNetworkAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/replicaSetRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/serverlessInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingAuditFilter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingNetworkPrivateAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingNetworkPublicAddress", _module)

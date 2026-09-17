@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PAI Workspace Datasetversion can be imported using the id, e.g.
+ * PAI Workspace Datasetversion can be imported using the id, which consists of datasetId and version_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion example &lt;dataset_id&gt;:&lt;version_name&gt;

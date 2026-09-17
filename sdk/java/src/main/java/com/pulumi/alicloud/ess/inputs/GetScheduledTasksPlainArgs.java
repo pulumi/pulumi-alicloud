@@ -61,6 +61,21 @@ public final class GetScheduledTasksPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
+     * The id of the scaling group to which the scheduled task belongs.
+     * 
+     */
+    @Import(name="scalingGroupId")
+    private @Nullable String scalingGroupId;
+
+    /**
+     * @return The id of the scaling group to which the scheduled task belongs.
+     * 
+     */
+    public Optional<String> scalingGroupId() {
+        return Optional.ofNullable(this.scalingGroupId);
+    }
+
+    /**
      * The operation to be performed when a scheduled task is triggered.
      * 
      */
@@ -96,6 +111,7 @@ public final class GetScheduledTasksPlainArgs extends com.pulumi.resources.Invok
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.scalingGroupId = $.scalingGroupId;
         this.scheduledAction = $.scheduledAction;
         this.scheduledTaskId = $.scheduledTaskId;
     }
@@ -158,6 +174,17 @@ public final class GetScheduledTasksPlainArgs extends com.pulumi.resources.Invok
          */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
+            return this;
+        }
+
+        /**
+         * @param scalingGroupId The id of the scaling group to which the scheduled task belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingGroupId(@Nullable String scalingGroupId) {
+            $.scalingGroupId = scalingGroupId;
             return this;
         }
 

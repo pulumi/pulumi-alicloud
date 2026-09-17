@@ -79,19 +79,23 @@ type Key struct {
 	DeletionWindowInDays pulumi.IntPtrOutput `pulumi:"deletionWindowInDays"`
 	// The description of the key.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the KMS instance.
+	// The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+	//
+	// **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 	DkmsInstanceId pulumi.StringOutput `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	//
-	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
 	//
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	//
 	// Deprecated: Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	IsEnabled pulumi.BoolOutput `pulumi:"isEnabled"`
 	// The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+	//
+	// **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
 	KeySpec pulumi.StringOutput `pulumi:"keySpec"`
 	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
@@ -112,12 +116,18 @@ type Key struct {
 	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrOutput `pulumi:"pendingWindowInDays"`
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+	//
+	// **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
 	Policy pulumi.StringOutput `pulumi:"policy"`
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion pulumi.StringOutput `pulumi:"primaryKeyVersion"`
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
+	//
+	// **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
 	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+	//
+	// **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
 	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -175,19 +185,23 @@ type keyState struct {
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
 	// The description of the key.
 	Description *string `pulumi:"description"`
-	// The ID of the KMS instance.
+	// The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+	//
+	// **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	//
-	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
 	//
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	//
 	// Deprecated: Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+	//
+	// **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
 	KeySpec *string `pulumi:"keySpec"`
 	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
@@ -208,12 +222,18 @@ type keyState struct {
 	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+	//
+	// **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
 	Policy *string `pulumi:"policy"`
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion *string `pulumi:"primaryKeyVersion"`
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
+	//
+	// **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+	//
+	// **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
@@ -242,19 +262,23 @@ type KeyState struct {
 	DeletionWindowInDays pulumi.IntPtrInput
 	// The description of the key.
 	Description pulumi.StringPtrInput
-	// The ID of the KMS instance.
+	// The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+	//
+	// **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 	DkmsInstanceId pulumi.StringPtrInput
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	//
-	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
 	//
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	//
 	// Deprecated: Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	IsEnabled pulumi.BoolPtrInput
 	// The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+	//
+	// **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
 	KeySpec pulumi.StringPtrInput
 	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
@@ -275,12 +299,18 @@ type KeyState struct {
 	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+	//
+	// **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
 	Policy pulumi.StringPtrInput
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion pulumi.StringPtrInput
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
+	//
+	// **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
 	ProtectionLevel pulumi.StringPtrInput
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+	//
+	// **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
 	RotationInterval pulumi.StringPtrInput
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringPtrInput
@@ -305,19 +335,23 @@ type keyArgs struct {
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
 	// The description of the key.
 	Description *string `pulumi:"description"`
-	// The ID of the KMS instance.
+	// The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+	//
+	// **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	//
-	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
 	//
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	//
 	// Deprecated: Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+	//
+	// **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
 	KeySpec *string `pulumi:"keySpec"`
 	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
@@ -332,10 +366,16 @@ type keyArgs struct {
 	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+	//
+	// **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
 	Policy *string `pulumi:"policy"`
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
+	//
+	// **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+	//
+	// **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
@@ -357,19 +397,23 @@ type KeyArgs struct {
 	DeletionWindowInDays pulumi.IntPtrInput
 	// The description of the key.
 	Description pulumi.StringPtrInput
-	// The ID of the KMS instance.
+	// The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+	//
+	// **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 	DkmsInstanceId pulumi.StringPtrInput
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	//
-	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+	// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
 	//
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	//
 	// Deprecated: Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	IsEnabled pulumi.BoolPtrInput
 	// The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+	//
+	// **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
 	KeySpec pulumi.StringPtrInput
 	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
@@ -384,10 +428,16 @@ type KeyArgs struct {
 	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+	//
+	// **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
 	Policy pulumi.StringPtrInput
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
+	//
+	// **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
 	ProtectionLevel pulumi.StringPtrInput
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+	//
+	// **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
 	RotationInterval pulumi.StringPtrInput
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringPtrInput
@@ -529,7 +579,9 @@ func (o KeyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the KMS instance.
+// The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+//
+// **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 func (o KeyOutput) DkmsInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DkmsInstanceId }).(pulumi.StringOutput)
 }
@@ -538,7 +590,7 @@ func (o KeyOutput) DkmsInstanceId() pulumi.StringOutput {
 //
 // > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 //
-// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+// > **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
 //
 // > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 //
@@ -548,6 +600,8 @@ func (o KeyOutput) IsEnabled() pulumi.BoolOutput {
 }
 
 // The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+//
+// **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
 func (o KeyOutput) KeySpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeySpec }).(pulumi.StringOutput)
 }
@@ -592,6 +646,8 @@ func (o KeyOutput) PendingWindowInDays() pulumi.IntPtrOutput {
 }
 
 // The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+//
+// **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
 func (o KeyOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
@@ -602,11 +658,15 @@ func (o KeyOutput) PrimaryKeyVersion() pulumi.StringOutput {
 }
 
 // The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
+//
+// **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
 func (o KeyOutput) ProtectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
 
-// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+//
+// **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
 func (o KeyOutput) RotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.RotationInterval }).(pulumi.StringPtrOutput)
 }

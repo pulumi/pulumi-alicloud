@@ -10,6 +10,8 @@ import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetApiKeysPlainArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDataBackupsArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDataBackupsPlainArgs;
+import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsArgs;
+import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsPlainArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDbInstancePlansArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDbInstancePlansPlainArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetInstancesArgs;
@@ -21,6 +23,7 @@ import com.pulumi.alicloud.gpdb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.gpdb.outputs.GetAccountsResult;
 import com.pulumi.alicloud.gpdb.outputs.GetApiKeysResult;
 import com.pulumi.alicloud.gpdb.outputs.GetDataBackupsResult;
+import com.pulumi.alicloud.gpdb.outputs.GetDbExtensionsResult;
 import com.pulumi.alicloud.gpdb.outputs.GetDbInstancePlansResult;
 import com.pulumi.alicloud.gpdb.outputs.GetInstancesResult;
 import com.pulumi.alicloud.gpdb.outputs.GetLogBackupsResult;
@@ -767,6 +770,556 @@ public final class GpdbFunctions {
      */
     public static CompletableFuture<GetDataBackupsResult> getDataBackupsPlain(GetDataBackupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:gpdb/getDataBackups:getDataBackups", TypeShape.of(GetDataBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Db Extension available to the user.[What is Db Extension](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExtensions)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gpdb.Instance;
+     * import com.pulumi.alicloud.gpdb.InstanceArgs;
+     * import com.pulumi.alicloud.gpdb.Account;
+     * import com.pulumi.alicloud.gpdb.AccountArgs;
+     * import com.pulumi.alicloud.gpdb.Database;
+     * import com.pulumi.alicloud.gpdb.DatabaseArgs;
+     * import com.pulumi.alicloud.gpdb.DbExtension;
+     * import com.pulumi.alicloud.gpdb.DbExtensionArgs;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultiYyNGW = new Network("defaultiYyNGW", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultPlruct = new Switch("defaultPlruct", SwitchArgs.builder()
+     *             .vpcId(defaultiYyNGW.id())
+     *             .zoneId("cn-beijing-h")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         var defaultqsmpIy = new Instance("defaultqsmpIy", InstanceArgs.builder()
+     *             .instanceSpec("2C8G")
+     *             .segNodeNum(2)
+     *             .segStorageType("cloud_essd")
+     *             .instanceNetworkType("VPC")
+     *             .dbInstanceCategory("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .sslEnabled(0)
+     *             .engineVersion("6.0")
+     *             .engine("gpdb")
+     *             .zoneId("cn-beijing-h")
+     *             .vswitchId(defaultPlruct.id())
+     *             .storageSize(50)
+     *             .masterCu(4)
+     *             .vpcId(defaultiYyNGW.id())
+     *             .dbInstanceMode("StorageElastic")
+     *             .build());
+     * 
+     *         var defaultOwner = new Account("defaultOwner", AccountArgs.builder()
+     *             .accountName("tf_example")
+     *             .accountPassword("Example1234")
+     *             .accountDescription("tf_example")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .build());
+     * 
+     *         var defaultPPmRVa = new Database("defaultPPmRVa", DatabaseArgs.builder()
+     *             .owner(defaultOwner.accountName())
+     *             .databaseName("seagull")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .characterSetName("UTF8")
+     *             .collate("en_US.utf8")
+     *             .ctype("en_US.utf8")
+     *             .build());
+     * 
+     *         var defaultDbExtension = new DbExtension("defaultDbExtension", DbExtensionArgs.builder()
+     *             .extensionName("uuid-ossp")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .isLatestVersion(true)
+     *             .build());
+     * 
+     *         final var default = GpdbFunctions.getDbExtensions(GetDbExtensionsArgs.builder()
+     *             .ids(defaultDbExtension.id())
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDbExtensionsResult> getDbExtensions(GetDbExtensionsArgs args) {
+        return getDbExtensions(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Gpdb Db Extension available to the user.[What is Db Extension](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExtensions)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gpdb.Instance;
+     * import com.pulumi.alicloud.gpdb.InstanceArgs;
+     * import com.pulumi.alicloud.gpdb.Account;
+     * import com.pulumi.alicloud.gpdb.AccountArgs;
+     * import com.pulumi.alicloud.gpdb.Database;
+     * import com.pulumi.alicloud.gpdb.DatabaseArgs;
+     * import com.pulumi.alicloud.gpdb.DbExtension;
+     * import com.pulumi.alicloud.gpdb.DbExtensionArgs;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultiYyNGW = new Network("defaultiYyNGW", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultPlruct = new Switch("defaultPlruct", SwitchArgs.builder()
+     *             .vpcId(defaultiYyNGW.id())
+     *             .zoneId("cn-beijing-h")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         var defaultqsmpIy = new Instance("defaultqsmpIy", InstanceArgs.builder()
+     *             .instanceSpec("2C8G")
+     *             .segNodeNum(2)
+     *             .segStorageType("cloud_essd")
+     *             .instanceNetworkType("VPC")
+     *             .dbInstanceCategory("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .sslEnabled(0)
+     *             .engineVersion("6.0")
+     *             .engine("gpdb")
+     *             .zoneId("cn-beijing-h")
+     *             .vswitchId(defaultPlruct.id())
+     *             .storageSize(50)
+     *             .masterCu(4)
+     *             .vpcId(defaultiYyNGW.id())
+     *             .dbInstanceMode("StorageElastic")
+     *             .build());
+     * 
+     *         var defaultOwner = new Account("defaultOwner", AccountArgs.builder()
+     *             .accountName("tf_example")
+     *             .accountPassword("Example1234")
+     *             .accountDescription("tf_example")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .build());
+     * 
+     *         var defaultPPmRVa = new Database("defaultPPmRVa", DatabaseArgs.builder()
+     *             .owner(defaultOwner.accountName())
+     *             .databaseName("seagull")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .characterSetName("UTF8")
+     *             .collate("en_US.utf8")
+     *             .ctype("en_US.utf8")
+     *             .build());
+     * 
+     *         var defaultDbExtension = new DbExtension("defaultDbExtension", DbExtensionArgs.builder()
+     *             .extensionName("uuid-ossp")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .isLatestVersion(true)
+     *             .build());
+     * 
+     *         final var default = GpdbFunctions.getDbExtensions(GetDbExtensionsArgs.builder()
+     *             .ids(defaultDbExtension.id())
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDbExtensionsResult> getDbExtensionsPlain(GetDbExtensionsPlainArgs args) {
+        return getDbExtensionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Gpdb Db Extension available to the user.[What is Db Extension](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExtensions)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gpdb.Instance;
+     * import com.pulumi.alicloud.gpdb.InstanceArgs;
+     * import com.pulumi.alicloud.gpdb.Account;
+     * import com.pulumi.alicloud.gpdb.AccountArgs;
+     * import com.pulumi.alicloud.gpdb.Database;
+     * import com.pulumi.alicloud.gpdb.DatabaseArgs;
+     * import com.pulumi.alicloud.gpdb.DbExtension;
+     * import com.pulumi.alicloud.gpdb.DbExtensionArgs;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultiYyNGW = new Network("defaultiYyNGW", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultPlruct = new Switch("defaultPlruct", SwitchArgs.builder()
+     *             .vpcId(defaultiYyNGW.id())
+     *             .zoneId("cn-beijing-h")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         var defaultqsmpIy = new Instance("defaultqsmpIy", InstanceArgs.builder()
+     *             .instanceSpec("2C8G")
+     *             .segNodeNum(2)
+     *             .segStorageType("cloud_essd")
+     *             .instanceNetworkType("VPC")
+     *             .dbInstanceCategory("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .sslEnabled(0)
+     *             .engineVersion("6.0")
+     *             .engine("gpdb")
+     *             .zoneId("cn-beijing-h")
+     *             .vswitchId(defaultPlruct.id())
+     *             .storageSize(50)
+     *             .masterCu(4)
+     *             .vpcId(defaultiYyNGW.id())
+     *             .dbInstanceMode("StorageElastic")
+     *             .build());
+     * 
+     *         var defaultOwner = new Account("defaultOwner", AccountArgs.builder()
+     *             .accountName("tf_example")
+     *             .accountPassword("Example1234")
+     *             .accountDescription("tf_example")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .build());
+     * 
+     *         var defaultPPmRVa = new Database("defaultPPmRVa", DatabaseArgs.builder()
+     *             .owner(defaultOwner.accountName())
+     *             .databaseName("seagull")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .characterSetName("UTF8")
+     *             .collate("en_US.utf8")
+     *             .ctype("en_US.utf8")
+     *             .build());
+     * 
+     *         var defaultDbExtension = new DbExtension("defaultDbExtension", DbExtensionArgs.builder()
+     *             .extensionName("uuid-ossp")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .isLatestVersion(true)
+     *             .build());
+     * 
+     *         final var default = GpdbFunctions.getDbExtensions(GetDbExtensionsArgs.builder()
+     *             .ids(defaultDbExtension.id())
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDbExtensionsResult> getDbExtensions(GetDbExtensionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getDbExtensions:getDbExtensions", TypeShape.of(GetDbExtensionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Db Extension available to the user.[What is Db Extension](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExtensions)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gpdb.Instance;
+     * import com.pulumi.alicloud.gpdb.InstanceArgs;
+     * import com.pulumi.alicloud.gpdb.Account;
+     * import com.pulumi.alicloud.gpdb.AccountArgs;
+     * import com.pulumi.alicloud.gpdb.Database;
+     * import com.pulumi.alicloud.gpdb.DatabaseArgs;
+     * import com.pulumi.alicloud.gpdb.DbExtension;
+     * import com.pulumi.alicloud.gpdb.DbExtensionArgs;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultiYyNGW = new Network("defaultiYyNGW", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultPlruct = new Switch("defaultPlruct", SwitchArgs.builder()
+     *             .vpcId(defaultiYyNGW.id())
+     *             .zoneId("cn-beijing-h")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         var defaultqsmpIy = new Instance("defaultqsmpIy", InstanceArgs.builder()
+     *             .instanceSpec("2C8G")
+     *             .segNodeNum(2)
+     *             .segStorageType("cloud_essd")
+     *             .instanceNetworkType("VPC")
+     *             .dbInstanceCategory("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .sslEnabled(0)
+     *             .engineVersion("6.0")
+     *             .engine("gpdb")
+     *             .zoneId("cn-beijing-h")
+     *             .vswitchId(defaultPlruct.id())
+     *             .storageSize(50)
+     *             .masterCu(4)
+     *             .vpcId(defaultiYyNGW.id())
+     *             .dbInstanceMode("StorageElastic")
+     *             .build());
+     * 
+     *         var defaultOwner = new Account("defaultOwner", AccountArgs.builder()
+     *             .accountName("tf_example")
+     *             .accountPassword("Example1234")
+     *             .accountDescription("tf_example")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .build());
+     * 
+     *         var defaultPPmRVa = new Database("defaultPPmRVa", DatabaseArgs.builder()
+     *             .owner(defaultOwner.accountName())
+     *             .databaseName("seagull")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .characterSetName("UTF8")
+     *             .collate("en_US.utf8")
+     *             .ctype("en_US.utf8")
+     *             .build());
+     * 
+     *         var defaultDbExtension = new DbExtension("defaultDbExtension", DbExtensionArgs.builder()
+     *             .extensionName("uuid-ossp")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .isLatestVersion(true)
+     *             .build());
+     * 
+     *         final var default = GpdbFunctions.getDbExtensions(GetDbExtensionsArgs.builder()
+     *             .ids(defaultDbExtension.id())
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDbExtensionsResult> getDbExtensions(GetDbExtensionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getDbExtensions:getDbExtensions", TypeShape.of(GetDbExtensionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Db Extension available to the user.[What is Db Extension](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExtensions)
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gpdb.Instance;
+     * import com.pulumi.alicloud.gpdb.InstanceArgs;
+     * import com.pulumi.alicloud.gpdb.Account;
+     * import com.pulumi.alicloud.gpdb.AccountArgs;
+     * import com.pulumi.alicloud.gpdb.Database;
+     * import com.pulumi.alicloud.gpdb.DatabaseArgs;
+     * import com.pulumi.alicloud.gpdb.DbExtension;
+     * import com.pulumi.alicloud.gpdb.DbExtensionArgs;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDbExtensionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultiYyNGW = new Network("defaultiYyNGW", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultPlruct = new Switch("defaultPlruct", SwitchArgs.builder()
+     *             .vpcId(defaultiYyNGW.id())
+     *             .zoneId("cn-beijing-h")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         var defaultqsmpIy = new Instance("defaultqsmpIy", InstanceArgs.builder()
+     *             .instanceSpec("2C8G")
+     *             .segNodeNum(2)
+     *             .segStorageType("cloud_essd")
+     *             .instanceNetworkType("VPC")
+     *             .dbInstanceCategory("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .sslEnabled(0)
+     *             .engineVersion("6.0")
+     *             .engine("gpdb")
+     *             .zoneId("cn-beijing-h")
+     *             .vswitchId(defaultPlruct.id())
+     *             .storageSize(50)
+     *             .masterCu(4)
+     *             .vpcId(defaultiYyNGW.id())
+     *             .dbInstanceMode("StorageElastic")
+     *             .build());
+     * 
+     *         var defaultOwner = new Account("defaultOwner", AccountArgs.builder()
+     *             .accountName("tf_example")
+     *             .accountPassword("Example1234")
+     *             .accountDescription("tf_example")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .build());
+     * 
+     *         var defaultPPmRVa = new Database("defaultPPmRVa", DatabaseArgs.builder()
+     *             .owner(defaultOwner.accountName())
+     *             .databaseName("seagull")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .characterSetName("UTF8")
+     *             .collate("en_US.utf8")
+     *             .ctype("en_US.utf8")
+     *             .build());
+     * 
+     *         var defaultDbExtension = new DbExtension("defaultDbExtension", DbExtensionArgs.builder()
+     *             .extensionName("uuid-ossp")
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .isLatestVersion(true)
+     *             .build());
+     * 
+     *         final var default = GpdbFunctions.getDbExtensions(GetDbExtensionsArgs.builder()
+     *             .ids(defaultDbExtension.id())
+     *             .dbInstanceId(defaultqsmpIy.id())
+     *             .databaseName(defaultPPmRVa.databaseName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDbExtensionsResult> getDbExtensionsPlain(GetDbExtensionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:gpdb/getDbExtensions:getDbExtensions", TypeShape.of(GetDbExtensionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.

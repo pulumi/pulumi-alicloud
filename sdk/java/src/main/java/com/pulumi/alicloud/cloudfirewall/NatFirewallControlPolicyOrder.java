@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Firewall Nat Firewall Control Policy Order can be imported using the id, e.g.
+ * Cloud Firewall Nat Firewall Control Policy Order can be imported using the id, which consists of acl_uuid, natGatewayId and direction, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder example &lt;acl_uuid&gt;:&lt;nat_gateway_id&gt;:&lt;direction&gt;

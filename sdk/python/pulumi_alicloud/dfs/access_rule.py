@@ -269,7 +269,7 @@ class AccessRule(pulumi.CustomResource):
 
         ## Import
 
-        DFS Access Rule can be imported using the id, e.g.
+        DFS Access Rule can be imported using the id, which consists of access_group_id and access_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
@@ -325,7 +325,7 @@ class AccessRule(pulumi.CustomResource):
 
         ## Import
 
-        DFS Access Rule can be imported using the id, e.g.
+        DFS Access Rule can be imported using the id, which consists of access_group_id and access_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>

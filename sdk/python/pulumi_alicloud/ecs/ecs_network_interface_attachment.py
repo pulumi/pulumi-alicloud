@@ -270,7 +270,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ECS Network Interface Attachment can be imported using the id, e.g.
+        ECS Network Interface Attachment can be imported using the id, which consists of network_interface_id and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
@@ -357,7 +357,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ECS Network Interface Attachment can be imported using the id, e.g.
+        ECS Network Interface Attachment can be imported using the id, which consists of network_interface_id and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>

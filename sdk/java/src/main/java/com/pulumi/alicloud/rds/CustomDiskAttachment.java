@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RDS Custom Disk Attachment can be imported using the id, e.g.
+ * RDS Custom Disk Attachment can be imported using the id, which consists of diskId and instance_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:rds/customDiskAttachment:CustomDiskAttachment example &lt;disk_id&gt;:&lt;instance_id&gt;

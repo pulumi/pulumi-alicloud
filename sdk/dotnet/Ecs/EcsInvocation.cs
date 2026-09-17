@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The schedule on which the recurring execution of the command takes place. Take note of the following items:
         /// * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-        /// * When you set Timed to true, you must specify Frequency.
+        /// * When you set `RepeatMode` to `Period`, you must specify `Frequency`.
         /// * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         /// </summary>
         [Output("frequency")]
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Timed` is set to false and Frequency is not specified, the default value of `RepeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `Period` is used as the value of RepeatMode regardless of whether `RepeatMode` is specified.
+        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Frequency` is not specified, the default value of `RepeatMode` is `Once`. When `Frequency` is specified, `Period` is used as the value of `RepeatMode` regardless of whether `RepeatMode` is specified.
         /// </summary>
         [Output("repeatMode")]
         public Output<string> RepeatMode { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to periodically run the command. Default value: `False`.
+        /// Specifies whether to periodically run the command. Default value: `False`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `RepeatMode` to `Period` and specify `Frequency` instead. Existing configurations in which `Timed` is set to `True` together with `Frequency` are not affected because the command runs periodically as long as `Frequency` is specified.
         /// </summary>
         [Output("timed")]
         public Output<bool> Timed { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The schedule on which the recurring execution of the command takes place. Take note of the following items:
         /// * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-        /// * When you set Timed to true, you must specify Frequency.
+        /// * When you set `RepeatMode` to `Period`, you must specify `Frequency`.
         /// * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         /// </summary>
         [Input("frequency")]
@@ -279,13 +279,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Timed` is set to false and Frequency is not specified, the default value of `RepeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `Period` is used as the value of RepeatMode regardless of whether `RepeatMode` is specified.
+        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Frequency` is not specified, the default value of `RepeatMode` is `Once`. When `Frequency` is specified, `Period` is used as the value of `RepeatMode` regardless of whether `RepeatMode` is specified.
         /// </summary>
         [Input("repeatMode")]
         public Input<string>? RepeatMode { get; set; }
 
         /// <summary>
-        /// Specifies whether to periodically run the command. Default value: `False`.
+        /// Specifies whether to periodically run the command. Default value: `False`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `RepeatMode` to `Period` and specify `Frequency` instead. Existing configurations in which `Timed` is set to `True` together with `Frequency` are not affected because the command runs periodically as long as `Frequency` is specified.
         /// </summary>
         [Input("timed")]
         public Input<bool>? Timed { get; set; }
@@ -322,7 +322,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The schedule on which the recurring execution of the command takes place. Take note of the following items:
         /// * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
-        /// * When you set Timed to true, you must specify Frequency.
+        /// * When you set `RepeatMode` to `Period`, you must specify `Frequency`.
         /// * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         /// </summary>
         [Input("frequency")]
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Timed` is set to false and Frequency is not specified, the default value of `RepeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `Period` is used as the value of RepeatMode regardless of whether `RepeatMode` is specified.
+        /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `Frequency` is not specified, the default value of `RepeatMode` is `Once`. When `Frequency` is specified, `Period` is used as the value of `RepeatMode` regardless of whether `RepeatMode` is specified.
         /// </summary>
         [Input("repeatMode")]
         public Input<string>? RepeatMode { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Specifies whether to periodically run the command. Default value: `False`.
+        /// Specifies whether to periodically run the command. Default value: `False`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `RepeatMode` to `Period` and specify `Frequency` instead. Existing configurations in which `Timed` is set to `True` together with `Frequency` are not affected because the command runs periodically as long as `Frequency` is specified.
         /// </summary>
         [Input("timed")]
         public Input<bool>? Timed { get; set; }

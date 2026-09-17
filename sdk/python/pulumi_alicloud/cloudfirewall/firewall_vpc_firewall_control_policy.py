@@ -1075,7 +1075,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.
+        Cloud Firewall Vpc Firewall Control Policy can be imported using the id, which consists of vpc_firewall_id and acl_uuid, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy example <vpc_firewall_id>:<acl_uuid>
@@ -1182,7 +1182,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.
+        Cloud Firewall Vpc Firewall Control Policy can be imported using the id, which consists of vpc_firewall_id and acl_uuid, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy example <vpc_firewall_id>:<acl_uuid>

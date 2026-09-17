@@ -11,6 +11,8 @@ from .get_access_points import *
 from .get_grant_rule_to_cens import *
 from .get_physical_connection_service import *
 from .get_physical_connections import *
+from .get_router_express_connect_routers import *
+from .get_router_grant_associations import *
 from .get_router_interfaces import *
 from .get_router_tr_associations import *
 from .get_router_vbr_child_instances import *

@@ -412,7 +412,7 @@ class VPCRouteEntry(pulumi.CustomResource):
 
         ## Import
 
-        VPC Route Entry can be imported using the id, e.g.
+        VPC Route Entry can be imported using the id, which consists of route_table_id and destination_cidr_block, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vPCRouteEntry:VPCRouteEntry example <route_table_id>:<destination_cidr_block>
@@ -488,7 +488,7 @@ class VPCRouteEntry(pulumi.CustomResource):
 
         ## Import
 
-        VPC Route Entry can be imported using the id, e.g.
+        VPC Route Entry can be imported using the id, which consists of route_table_id and destination_cidr_block, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vPCRouteEntry:VPCRouteEntry example <route_table_id>:<destination_cidr_block>

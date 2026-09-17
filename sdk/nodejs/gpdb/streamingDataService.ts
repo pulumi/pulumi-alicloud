@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, which consists of dbInstanceId and service_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud SSO SCIM Server Credential can be imported using the id, e.g.
+ * Cloud SSO SCIM Server Credential can be imported using the id, which consists of directoryId and credential_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>

@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     /// 
     /// ## Import
     /// 
-    /// Click House Enterprise Db Cluster Account can be imported using the id, e.g.
+    /// Click House Enterprise Db Cluster Account can be imported using the id, which consists of DbInstanceId and account, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:clickhouseenterprisedbcluster/account:Account example &lt;db_instance_id&gt;:&lt;account&gt;

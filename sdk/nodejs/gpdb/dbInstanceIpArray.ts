@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GPDB DB Instance IP Array can be imported using the id, e.g.
+ * GPDB DB Instance IP Array can be imported using the id, which consists of dbInstanceId and db_instance_ip_array_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray example <db_instance_id>:<db_instance_ip_array_name>

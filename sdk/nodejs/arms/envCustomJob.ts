@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ARMS Env Custom Job can be imported using the id, e.g.
+ * ARMS Env Custom Job can be imported using the id, which consists of environmentId and env_custom_job_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:arms/envCustomJob:EnvCustomJob example <environment_id>:<env_custom_job_name>

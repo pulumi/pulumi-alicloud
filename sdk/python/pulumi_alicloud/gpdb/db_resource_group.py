@@ -229,7 +229,7 @@ class DbResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, which consists of db_instance_id and resource_group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
@@ -308,7 +308,7 @@ class DbResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, which consists of db_instance_id and resource_group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>

@@ -7507,8 +7507,10 @@ type GetScheduledTasksTask struct {
 	LaunchExpirationTime int `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered.
 	LaunchTime string `pulumi:"launchTime"`
-	MaxValue   int    `pulumi:"maxValue"`
-	MinValue   int    `pulumi:"minValue"`
+	// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+	MaxValue int `pulumi:"maxValue"`
+	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+	MinValue int `pulumi:"minValue"`
 	// Name of the scheduled task name.
 	Name string `pulumi:"name"`
 	// Specifies the end time after which the scheduled task is no longer repeated.
@@ -7517,9 +7519,12 @@ type GetScheduledTasksTask struct {
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// Specifies how often a scheduled task recurs.
 	RecurrenceValue string `pulumi:"recurrenceValue"`
+	// The id of the scaling group to which the scheduled task belongs.
+	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction string `pulumi:"scheduledAction"`
-	TaskEnabled     bool   `pulumi:"taskEnabled"`
+	// Whether to start the scheduled task.
+	TaskEnabled bool `pulumi:"taskEnabled"`
 }
 
 // GetScheduledTasksTaskInput is an input type that accepts GetScheduledTasksTaskArgs and GetScheduledTasksTaskOutput values.
@@ -7542,8 +7547,10 @@ type GetScheduledTasksTaskArgs struct {
 	LaunchExpirationTime pulumi.IntInput `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered.
 	LaunchTime pulumi.StringInput `pulumi:"launchTime"`
-	MaxValue   pulumi.IntInput    `pulumi:"maxValue"`
-	MinValue   pulumi.IntInput    `pulumi:"minValue"`
+	// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+	MaxValue pulumi.IntInput `pulumi:"maxValue"`
+	// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+	MinValue pulumi.IntInput `pulumi:"minValue"`
 	// Name of the scheduled task name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies the end time after which the scheduled task is no longer repeated.
@@ -7552,9 +7559,12 @@ type GetScheduledTasksTaskArgs struct {
 	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
 	// Specifies how often a scheduled task recurs.
 	RecurrenceValue pulumi.StringInput `pulumi:"recurrenceValue"`
+	// The id of the scaling group to which the scheduled task belongs.
+	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction pulumi.StringInput `pulumi:"scheduledAction"`
-	TaskEnabled     pulumi.BoolInput   `pulumi:"taskEnabled"`
+	// Whether to start the scheduled task.
+	TaskEnabled pulumi.BoolInput `pulumi:"taskEnabled"`
 }
 
 func (GetScheduledTasksTaskArgs) ElementType() reflect.Type {
@@ -7628,10 +7638,12 @@ func (o GetScheduledTasksTaskOutput) LaunchTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.LaunchTime }).(pulumi.StringOutput)
 }
 
+// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 func (o GetScheduledTasksTaskOutput) MaxValue() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScheduledTasksTask) int { return v.MaxValue }).(pulumi.IntOutput)
 }
 
+// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
 func (o GetScheduledTasksTaskOutput) MinValue() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScheduledTasksTask) int { return v.MinValue }).(pulumi.IntOutput)
 }
@@ -7656,11 +7668,17 @@ func (o GetScheduledTasksTaskOutput) RecurrenceValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.RecurrenceValue }).(pulumi.StringOutput)
 }
 
+// The id of the scaling group to which the scheduled task belongs.
+func (o GetScheduledTasksTaskOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
 // The operation to be performed when a scheduled task is triggered.
 func (o GetScheduledTasksTaskOutput) ScheduledAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.ScheduledAction }).(pulumi.StringOutput)
 }
 
+// Whether to start the scheduled task.
 func (o GetScheduledTasksTaskOutput) TaskEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetScheduledTasksTask) bool { return v.TaskEnabled }).(pulumi.BoolOutput)
 }

@@ -119,7 +119,7 @@ export interface GetForwardEntriesArgs {
      */
     outputFile?: string;
     /**
-     * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     * The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
      */
     status?: string;
 }
@@ -172,7 +172,7 @@ export interface GetForwardEntriesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The status of forward entry.
+     * The status of the Forward Entry.
      */
     readonly status?: string;
 }
@@ -289,7 +289,7 @@ export interface GetForwardEntriesOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     * The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
      */
     status?: pulumi.Input<string | undefined>;
 }

@@ -90,7 +90,7 @@ import (
 //
 // ## Import
 //
-// ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
+// ECS Auto Snapshot Policy Attachment can be imported using the id, which consists of autoSnapshotPolicyId and disk_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>

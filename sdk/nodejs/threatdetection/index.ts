@@ -25,6 +25,11 @@ export type AttackPathSensitiveAssetConfig = import("./attackPathSensitiveAssetC
 export const AttackPathSensitiveAssetConfig: typeof import("./attackPathSensitiveAssetConfig").AttackPathSensitiveAssetConfig = null as any;
 utilities.lazyLoad(exports, ["AttackPathSensitiveAssetConfig"], () => require("./attackPathSensitiveAssetConfig"));
 
+export { AttackPathWhitelistArgs, AttackPathWhitelistState } from "./attackPathWhitelist";
+export type AttackPathWhitelist = import("./attackPathWhitelist").AttackPathWhitelist;
+export const AttackPathWhitelist: typeof import("./attackPathWhitelist").AttackPathWhitelist = null as any;
+utilities.lazyLoad(exports, ["AttackPathWhitelist"], () => require("./attackPathWhitelist"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
@@ -69,6 +74,11 @@ export { GetAssetsArgs, GetAssetsResult, GetAssetsOutputArgs } from "./getAssets
 export const getAssets: typeof import("./getAssets").getAssets = null as any;
 export const getAssetsOutput: typeof import("./getAssets").getAssetsOutput = null as any;
 utilities.lazyLoad(exports, ["getAssets","getAssetsOutput"], () => require("./getAssets"));
+
+export { GetAttackPathWhitelistsArgs, GetAttackPathWhitelistsResult, GetAttackPathWhitelistsOutputArgs } from "./getAttackPathWhitelists";
+export const getAttackPathWhitelists: typeof import("./getAttackPathWhitelists").getAttackPathWhitelists = null as any;
+export const getAttackPathWhitelistsOutput: typeof import("./getAttackPathWhitelists").getAttackPathWhitelistsOutput = null as any;
+utilities.lazyLoad(exports, ["getAttackPathWhitelists","getAttackPathWhitelistsOutput"], () => require("./getAttackPathWhitelists"));
 
 export { GetBackupPoliciesArgs, GetBackupPoliciesResult, GetBackupPoliciesOutputArgs } from "./getBackupPolicies";
 export const getBackupPolicies: typeof import("./getBackupPolicies").getBackupPolicies = null as any;
@@ -125,6 +135,11 @@ export const getLogShipper: typeof import("./getLogShipper").getLogShipper = nul
 export const getLogShipperOutput: typeof import("./getLogShipper").getLogShipperOutput = null as any;
 utilities.lazyLoad(exports, ["getLogShipper","getLogShipperOutput"], () => require("./getLogShipper"));
 
+export { GetRdDefaultSyncListResult } from "./getRdDefaultSyncList";
+export const getRdDefaultSyncList: typeof import("./getRdDefaultSyncList").getRdDefaultSyncList = null as any;
+export const getRdDefaultSyncListOutput: typeof import("./getRdDefaultSyncList").getRdDefaultSyncListOutput = null as any;
+utilities.lazyLoad(exports, ["getRdDefaultSyncList","getRdDefaultSyncListOutput"], () => require("./getRdDefaultSyncList"));
+
 export { GetVulWhitelistsArgs, GetVulWhitelistsResult, GetVulWhitelistsOutputArgs } from "./getVulWhitelists";
 export const getVulWhitelists: typeof import("./getVulWhitelists").getVulWhitelists = null as any;
 export const getVulWhitelistsOutput: typeof import("./getVulWhitelists").getVulWhitelistsOutput = null as any;
@@ -175,10 +190,20 @@ export type MaliciousFileWhitelistConfig = import("./maliciousFileWhitelistConfi
 export const MaliciousFileWhitelistConfig: typeof import("./maliciousFileWhitelistConfig").MaliciousFileWhitelistConfig = null as any;
 utilities.lazyLoad(exports, ["MaliciousFileWhitelistConfig"], () => require("./maliciousFileWhitelistConfig"));
 
+export { MonitorAccountArgs, MonitorAccountState } from "./monitorAccount";
+export type MonitorAccount = import("./monitorAccount").MonitorAccount;
+export const MonitorAccount: typeof import("./monitorAccount").MonitorAccount = null as any;
+utilities.lazyLoad(exports, ["MonitorAccount"], () => require("./monitorAccount"));
+
 export { OssScanConfigArgs, OssScanConfigState } from "./ossScanConfig";
 export type OssScanConfig = import("./ossScanConfig").OssScanConfig;
 export const OssScanConfig: typeof import("./ossScanConfig").OssScanConfig = null as any;
 utilities.lazyLoad(exports, ["OssScanConfig"], () => require("./ossScanConfig"));
+
+export { RdDefaultSyncListArgs, RdDefaultSyncListState } from "./rdDefaultSyncList";
+export type RdDefaultSyncList = import("./rdDefaultSyncList").RdDefaultSyncList;
+export const RdDefaultSyncList: typeof import("./rdDefaultSyncList").RdDefaultSyncList = null as any;
+utilities.lazyLoad(exports, ["RdDefaultSyncList"], () => require("./rdDefaultSyncList"));
 
 export { SasTrailArgs, SasTrailState } from "./sasTrail";
 export type SasTrail = import("./sasTrail").SasTrail;
@@ -213,6 +238,8 @@ const _module = {
                 return new AssetSelectionConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig":
                 return new AttackPathSensitiveAssetConfig(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/attackPathWhitelist:AttackPathWhitelist":
+                return new AttackPathWhitelist(name, <any>undefined, { urn })
             case "alicloud:threatdetection/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
@@ -243,8 +270,12 @@ const _module = {
                 return new LogMeta(name, <any>undefined, { urn })
             case "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig":
                 return new MaliciousFileWhitelistConfig(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/monitorAccount:MonitorAccount":
+                return new MonitorAccount(name, <any>undefined, { urn })
             case "alicloud:threatdetection/ossScanConfig:OssScanConfig":
                 return new OssScanConfig(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/rdDefaultSyncList:RdDefaultSyncList":
+                return new RdDefaultSyncList(name, <any>undefined, { urn })
             case "alicloud:threatdetection/sasTrail:SasTrail":
                 return new SasTrail(name, <any>undefined, { urn })
             case "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole":
@@ -262,6 +293,7 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/antiBruteForc
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetBind", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetSelectionConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/attackPathSensitiveAssetConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/attackPathWhitelist", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/baselineStrategy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/checkConfig", _module)
@@ -277,7 +309,9 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/imageEventOpe
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/logMeta", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/maliciousFileWhitelistConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/monitorAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/ossScanConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/rdDefaultSyncList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/sasTrail", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/serviceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/vulWhitelist", _module)

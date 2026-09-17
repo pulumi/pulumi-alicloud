@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OSS Bucket Style can be imported using the id, e.g.
+ * OSS Bucket Style can be imported using the id, which consists of bucket and style_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:oss/bucketStyle:BucketStyle example <bucket>:<style_name>

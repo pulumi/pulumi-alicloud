@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.FNF
     /// 
     /// ## Import
     /// 
-    /// Serverless Workflow Execution can be imported using the id, e.g.
+    /// Serverless Workflow Execution can be imported using the id, which consists of FlowName and execution_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:fnf/execution:Execution example &lt;flow_name&gt;:&lt;execution_name&gt;

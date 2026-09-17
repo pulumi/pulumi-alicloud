@@ -149,7 +149,7 @@ import (
 //
 // ## Import
 //
-// Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.
+// Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, which consists of load_balancer_id, vswitchId and zone_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment example <load_balancer_id>:<vswitch_id>:<zone_id>

@@ -31,14 +31,14 @@ public final class UserVpcAuthorizationState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+     * @return The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
      * 
      */
     public Optional<Output<String>> authType() {
@@ -108,7 +108,7 @@ public final class UserVpcAuthorizationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param authType The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+         * @param authType The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class UserVpcAuthorizationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param authType The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+         * @param authType The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
          * 
          * @return builder
          * 

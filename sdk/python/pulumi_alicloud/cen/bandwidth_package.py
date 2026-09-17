@@ -42,8 +42,8 @@ class BandwidthPackageArgs:
         :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
-        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
-        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
+        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
@@ -150,7 +150,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="geographicRegionAId")
     def geographic_region_a_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         """
         return pulumi.get(self, "geographic_region_a_id")
 
@@ -162,7 +162,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="geographicRegionBId")
     def geographic_region_b_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         """
         return pulumi.get(self, "geographic_region_b_id")
 
@@ -251,8 +251,8 @@ class _BandwidthPackageState:
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[_builtins.str] expired_time: The time of the bandwidth package to expire.
-        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
-        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
+        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
@@ -377,7 +377,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="geographicRegionAId")
     def geographic_region_a_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         """
         return pulumi.get(self, "geographic_region_a_id")
 
@@ -389,7 +389,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="geographicRegionBId")
     def geographic_region_b_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         """
         return pulumi.get(self, "geographic_region_b_id")
 
@@ -529,8 +529,8 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
-        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
-        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
+        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
@@ -672,8 +672,8 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[_builtins.str] expired_time: The time of the bandwidth package to expire.
-        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
-        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
+        :param pulumi.Input[_builtins.str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
@@ -757,7 +757,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="geographicRegionAId")
     def geographic_region_a_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         """
         return pulumi.get(self, "geographic_region_a_id")
 
@@ -765,7 +765,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="geographicRegionBId")
     def geographic_region_b_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         """
         return pulumi.get(self, "geographic_region_b_id")
 

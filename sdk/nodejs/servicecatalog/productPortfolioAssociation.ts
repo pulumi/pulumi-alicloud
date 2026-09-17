@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Service Catalog Product Portfolio Association can be imported using the id, e.g.
+ * Service Catalog Product Portfolio Association can be imported using the id, which consists of productId and portfolio_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation example <product_id>:<portfolio_id>

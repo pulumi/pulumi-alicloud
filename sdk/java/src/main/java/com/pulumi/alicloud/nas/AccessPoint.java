@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * File Storage (NAS) Access Point can be imported using the id, e.g.
+ * File Storage (NAS) Access Point can be imported using the id, which consists of fileSystemId and access_point_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nas/accessPoint:AccessPoint example &lt;file_system_id&gt;:&lt;access_point_id&gt;

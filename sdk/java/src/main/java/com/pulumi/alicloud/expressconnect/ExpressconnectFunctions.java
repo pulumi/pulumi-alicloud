@@ -12,6 +12,10 @@ import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArg
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServicePlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsPlainArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersPlainArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
@@ -30,6 +34,8 @@ import com.pulumi.alicloud.expressconnect.outputs.GetAccessPointsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetGrantRuleToCensResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetPhysicalConnectionServiceResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetPhysicalConnectionsResult;
+import com.pulumi.alicloud.expressconnect.outputs.GetRouterExpressConnectRoutersResult;
+import com.pulumi.alicloud.expressconnect.outputs.GetRouterGrantAssociationsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetRouterInterfacesResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetRouterTrAssociationsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetRouterVbrChildInstancesResult;
@@ -1282,6 +1288,687 @@ public final class ExpressconnectFunctions {
      */
     public static CompletableFuture<GetPhysicalConnectionsResult> getPhysicalConnectionsPlain(GetPhysicalConnectionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", TypeShape.of(GetPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRouters() {
+        return getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRoutersPlain() {
+        return getRouterExpressConnectRoutersPlain(GetRouterExpressConnectRoutersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs args) {
+        return getRouterExpressConnectRouters(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRoutersPlain(GetRouterExpressConnectRoutersPlainArgs args) {
+        return getRouterExpressConnectRoutersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterExpressConnectRouters:getRouterExpressConnectRouters", TypeShape.of(GetRouterExpressConnectRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterExpressConnectRouters:getRouterExpressConnectRouters", TypeShape.of(GetRouterExpressConnectRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Express Connect Router of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterExpressConnectRoutersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new RouterExpressConnectRouter("default", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65533)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterExpressConnectRouters(GetRouterExpressConnectRoutersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterExpressConnectRoutersResult> getRouterExpressConnectRoutersPlain(GetRouterExpressConnectRoutersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterExpressConnectRouters:getRouterExpressConnectRouters", TypeShape.of(GetRouterExpressConnectRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Grant Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var vpcId = config.get("vpcId").orElse("vpc-xxx");
+     *         final var ecrOwnerUid = config.get("ecrOwnerUid").orElse("18xxx");
+     *         final var ecrId = config.get("ecrId").orElse("ecr-xxx");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         var default_ = new RouterGrantAssociation("default", RouterGrantAssociationArgs.builder()
+     *             .ecrId(ecrId)
+     *             .instanceRegionId(region)
+     *             .instanceId(vpcId)
+     *             .ecrOwnerAliUid(ecrOwnerUid)
+     *             .instanceType("VPC")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterGrantAssociations(GetRouterGrantAssociationsArgs.builder()
+     *             .ids(default_.id())
+     *             .ecrId(default_.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterGrantAssociationsResult> getRouterGrantAssociations(GetRouterGrantAssociationsArgs args) {
+        return getRouterGrantAssociations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Grant Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var vpcId = config.get("vpcId").orElse("vpc-xxx");
+     *         final var ecrOwnerUid = config.get("ecrOwnerUid").orElse("18xxx");
+     *         final var ecrId = config.get("ecrId").orElse("ecr-xxx");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         var default_ = new RouterGrantAssociation("default", RouterGrantAssociationArgs.builder()
+     *             .ecrId(ecrId)
+     *             .instanceRegionId(region)
+     *             .instanceId(vpcId)
+     *             .ecrOwnerAliUid(ecrOwnerUid)
+     *             .instanceType("VPC")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterGrantAssociations(GetRouterGrantAssociationsArgs.builder()
+     *             .ids(default_.id())
+     *             .ecrId(default_.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterGrantAssociationsResult> getRouterGrantAssociationsPlain(GetRouterGrantAssociationsPlainArgs args) {
+        return getRouterGrantAssociationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Grant Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var vpcId = config.get("vpcId").orElse("vpc-xxx");
+     *         final var ecrOwnerUid = config.get("ecrOwnerUid").orElse("18xxx");
+     *         final var ecrId = config.get("ecrId").orElse("ecr-xxx");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         var default_ = new RouterGrantAssociation("default", RouterGrantAssociationArgs.builder()
+     *             .ecrId(ecrId)
+     *             .instanceRegionId(region)
+     *             .instanceId(vpcId)
+     *             .ecrOwnerAliUid(ecrOwnerUid)
+     *             .instanceType("VPC")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterGrantAssociations(GetRouterGrantAssociationsArgs.builder()
+     *             .ids(default_.id())
+     *             .ecrId(default_.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterGrantAssociationsResult> getRouterGrantAssociations(GetRouterGrantAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterGrantAssociations:getRouterGrantAssociations", TypeShape.of(GetRouterGrantAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Grant Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var vpcId = config.get("vpcId").orElse("vpc-xxx");
+     *         final var ecrOwnerUid = config.get("ecrOwnerUid").orElse("18xxx");
+     *         final var ecrId = config.get("ecrId").orElse("ecr-xxx");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         var default_ = new RouterGrantAssociation("default", RouterGrantAssociationArgs.builder()
+     *             .ecrId(ecrId)
+     *             .instanceRegionId(region)
+     *             .instanceId(vpcId)
+     *             .ecrOwnerAliUid(ecrOwnerUid)
+     *             .instanceType("VPC")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterGrantAssociations(GetRouterGrantAssociationsArgs.builder()
+     *             .ids(default_.id())
+     *             .ecrId(default_.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterGrantAssociationsResult> getRouterGrantAssociations(GetRouterGrantAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterGrantAssociations:getRouterGrantAssociations", TypeShape.of(GetRouterGrantAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Grant Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.291.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterGrantAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterGrantAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var vpcId = config.get("vpcId").orElse("vpc-xxx");
+     *         final var ecrOwnerUid = config.get("ecrOwnerUid").orElse("18xxx");
+     *         final var ecrId = config.get("ecrId").orElse("ecr-xxx");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         var default_ = new RouterGrantAssociation("default", RouterGrantAssociationArgs.builder()
+     *             .ecrId(ecrId)
+     *             .instanceRegionId(region)
+     *             .instanceId(vpcId)
+     *             .ecrOwnerAliUid(ecrOwnerUid)
+     *             .instanceType("VPC")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterGrantAssociations(GetRouterGrantAssociationsArgs.builder()
+     *             .ids(default_.id())
+     *             .ecrId(default_.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterGrantAssociationsResult> getRouterGrantAssociationsPlain(GetRouterGrantAssociationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterGrantAssociations:getRouterGrantAssociations", TypeShape.of(GetRouterGrantAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
@@ -3187,7 +3874,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -3252,7 +3939,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -3317,7 +4004,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -3382,7 +4069,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -3447,7 +4134,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -3512,7 +4199,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -3577,7 +4264,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 

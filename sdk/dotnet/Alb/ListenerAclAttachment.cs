@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// ## Import
     /// 
-    /// ALB Listener Acl Attachment can be imported using the id, e.g.
+    /// ALB Listener Acl Attachment can be imported using the id, which consists of ListenerId and acl_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;

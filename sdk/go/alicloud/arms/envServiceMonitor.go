@@ -199,7 +199,7 @@ import (
 //
 // ## Import
 //
-// ARMS Env Service Monitor can be imported using the id, e.g.
+// ARMS Env Service Monitor can be imported using the id, which consists of environment_id, namespace and env_service_monitor_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>

@@ -73,6 +73,12 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// The configuration of the custom image registry. See `RegistryConfig` below.
+        /// </summary>
+        [Input("registryConfig")]
+        public Input<Inputs.V3FunctionCustomContainerConfigRegistryConfigArgs>? RegistryConfig { get; set; }
+
+        /// <summary>
         /// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
         /// </summary>
         [Input("resolvedImageUri")]

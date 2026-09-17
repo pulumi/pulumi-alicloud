@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Data Works Project Member can be imported using the id, e.g.
+ * Data Works Project Member can be imported using the id, which consists of projectId and user_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dataworks/projectMember:ProjectMember example &lt;project_id&gt;:&lt;user_id&gt;

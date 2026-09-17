@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Http Response Header Modification Rule can be imported using the id, e.g.
+ * ESA Http Response Header Modification Rule can be imported using the id, which consists of siteId and config_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule example <site_id>:<config_id>

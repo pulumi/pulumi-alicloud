@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source can be imported using the id, which consists of dbInstanceId and data_source_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:gpdb/jdbcDataSource:JdbcDataSource example &lt;db_instance_id&gt;:&lt;data_source_id&gt;

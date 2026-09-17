@@ -122,7 +122,7 @@ import (
 //
 // ## Import
 //
-// Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.
+// Cloud Storage Gateway Gateway Cache Disk can be imported using the id, which consists of gateway_id, cacheId and local_file_path, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk example <gateway_id>:<cache_id>:<local_file_path>

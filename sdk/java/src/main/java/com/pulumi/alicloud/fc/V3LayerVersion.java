@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FCV3 Layer Version can be imported using the id, e.g.
+ * FCV3 Layer Version can be imported using the id, which consists of layerName and version, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:fc/v3LayerVersion:V3LayerVersion example &lt;layer_name&gt;:&lt;version&gt;

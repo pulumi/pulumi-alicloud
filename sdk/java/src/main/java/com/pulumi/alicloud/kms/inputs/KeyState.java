@@ -162,14 +162,18 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the KMS instance.
+     * The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+     * 
+     * **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
      * 
      */
     @Import(name="dkmsInstanceId")
     private @Nullable Output<String> dkmsInstanceId;
 
     /**
-     * @return The ID of the KMS instance.
+     * @return The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+     * 
+     * **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
      * 
      */
     public Optional<Output<String>> dkmsInstanceId() {
@@ -181,7 +185,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      * 
-     * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+     * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
@@ -198,7 +202,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      * 
-     * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+     * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
@@ -214,12 +218,16 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
      * 
+     * **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
+     * 
      */
     @Import(name="keySpec")
     private @Nullable Output<String> keySpec;
 
     /**
      * @return The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * 
+     * **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
      * 
      */
     public Optional<Output<String>> keySpec() {
@@ -346,12 +354,16 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
      * 
+     * **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
+     * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
      * @return The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+     * 
+     * **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -376,6 +388,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      * 
+     * **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
+     * 
      */
     @Import(name="protectionLevel")
     private @Nullable Output<String> protectionLevel;
@@ -383,20 +397,26 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      * 
+     * **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
+     * 
      */
     public Optional<Output<String>> protectionLevel() {
         return Optional.ofNullable(this.protectionLevel);
     }
 
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+     * 
+     * **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
      * 
      */
     @Import(name="rotationInterval")
     private @Nullable Output<String> rotationInterval;
 
     /**
-     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+     * 
+     * **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
      * 
      */
     public Optional<Output<String>> rotationInterval() {
@@ -679,7 +699,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dkmsInstanceId The ID of the KMS instance.
+         * @param dkmsInstanceId The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+         * 
+         * **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
          * 
          * @return builder
          * 
@@ -690,7 +712,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dkmsInstanceId The ID of the KMS instance.
+         * @param dkmsInstanceId The ID of the KMS instance. If specified, the key is created in the specified KMS instance; if omitted, a default key (master key) is created in the current region.
+         * 
+         * **NOTE:** The two types of keys differ in capability: only keys in KMS instances support key policies (`policy`), and the valid values of `keySpec` and `rotationInterval` are determined by the key management type. For more information, see [CreateKey](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
          * 
          * @return builder
          * 
@@ -704,7 +728,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
          * 
-         * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+         * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
          * 
          * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
          * 
@@ -725,7 +749,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
          * 
-         * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+         * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only keys in KMS instances support `Aliyun_AES_128` and `Aliyun_AES_192`.
          * 
          * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
          * 
@@ -743,6 +767,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keySpec The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
          * 
+         * **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
+         * 
          * @return builder
          * 
          */
@@ -753,6 +779,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keySpec The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+         * 
+         * **NOTE:** The valid values vary based on the key management type. For keys in KMS instances, the supported specifications are determined by the instance type.
          * 
          * @return builder
          * 
@@ -923,6 +951,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param policy The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
          * 
+         * **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
+         * 
          * @return builder
          * 
          */
@@ -933,6 +963,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param policy The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+         * 
+         * **NOTE:** This parameter takes effect only on keys in KMS instances (`dkmsInstanceId` specified). Default keys do not support key policies, and this parameter does not take effect on them.
          * 
          * @return builder
          * 
@@ -965,6 +997,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protectionLevel The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
          * 
+         * **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
+         * 
          * @return builder
          * 
          */
@@ -976,6 +1010,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protectionLevel The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
          * 
+         * **NOTE:** The default value does not take effect when `dkmsInstanceId` is specified. In this case, this parameter is ignored and the instance type determines the protection level: keys in a software key management instance are `SOFTWARE`, and keys in a hardware key management instance are `HSM`. For keys whose actual protection level is `HSM` (such as hardware instance keys), explicitly set `protectionLevel` to `HSM`. Otherwise, the configuration (default `SOFTWARE`) never matches the actual level and Terraform forces key recreation on every apply.
+         * 
          * @return builder
          * 
          */
@@ -984,7 +1020,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+         * 
+         * **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
          * 
          * @return builder
          * 
@@ -995,7 +1033,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+         * 
+         * **NOTE:** This parameter is required if `automaticRotation` is set to `Enabled`, and takes effect only when the key management type supports automatic rotation: default keys support only a fixed period of 365 days, software-protected keys support 7 to 365 days, and hardware-protected keys do not support automatic rotation.
          * 
          * @return builder
          * 

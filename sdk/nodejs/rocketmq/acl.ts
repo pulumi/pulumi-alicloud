@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RocketMQ Acl can be imported using the id, e.g.
+ * RocketMQ Acl can be imported using the id, which consists of instance_id, username, resourceType and resource_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>

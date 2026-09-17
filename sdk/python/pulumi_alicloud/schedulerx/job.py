@@ -929,7 +929,7 @@ class Job(pulumi.CustomResource):
 
         ## Import
 
-        Schedulerx Job can be imported using the id, e.g.
+        Schedulerx Job can be imported using the id, which consists of namespace, group_id and job_id, e.g.
 
         ```sh
         $ pulumi import alicloud:schedulerx/job:Job example <namespace>:<group_id>:<job_id>
@@ -1079,7 +1079,7 @@ class Job(pulumi.CustomResource):
 
         ## Import
 
-        Schedulerx Job can be imported using the id, e.g.
+        Schedulerx Job can be imported using the id, which consists of namespace, group_id and job_id, e.g.
 
         ```sh
         $ pulumi import alicloud:schedulerx/job:Job example <namespace>:<group_id>:<job_id>

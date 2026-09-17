@@ -37,11 +37,32 @@ namespace Pulumi.AliCloud.Pvtz
     /// });
     /// ```
     /// 
+    /// Omit `AuthType` to use the default `NORMAL`
+    /// 
+    /// When `AuthType` is not set, the server defaults to `NORMAL` and the resource ID formats as `&lt;authorized_user_id&gt;:NORMAL`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Pvtz.UserVpcAuthorization("default", new()
+    ///     {
+    ///         AuthorizedUserId = "123456789",
+    ///         AuthChannel = "RESOURCE_DIRECTORY",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
-    /// Private Zone User Vpc Authorization can be imported using the id, e.g.
+    /// Private Zone User Vpc Authorization can be imported using the id, which consists of AuthorizedUserId and auth_type, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example &lt;authorized_user_id&gt;:&lt;auth_type&gt;
@@ -57,10 +78,10 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> AuthChannel { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         /// </summary>
         [Output("authType")]
-        public Output<string?> AuthType { get; private set; } = null!;
+        public Output<string> AuthType { get; private set; } = null!;
 
         /// <summary>
         /// The primary account ID of the user who authorizes the resource.
@@ -121,7 +142,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? AuthChannel { get; set; }
 
         /// <summary>
-        /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -147,7 +168,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? AuthChannel { get; set; }
 
         /// <summary>
-        /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+        /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }

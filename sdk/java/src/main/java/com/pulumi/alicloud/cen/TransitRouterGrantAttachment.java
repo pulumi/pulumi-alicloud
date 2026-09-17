@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, which consists of instance_type, instance_id, cenOwnerId and cen_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment example &lt;instance_type&gt;:&lt;instance_id&gt;:&lt;cen_owner_id&gt;:&lt;cen_id&gt;

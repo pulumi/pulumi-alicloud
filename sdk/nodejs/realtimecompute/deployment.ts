@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Realtime Compute Deployment can be imported using the id, e.g.
+ * Realtime Compute Deployment can be imported using the id, which consists of resource_id, namespace and deployment_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:realtimecompute/deployment:Deployment example <resource_id>:<namespace>:<deployment_id>

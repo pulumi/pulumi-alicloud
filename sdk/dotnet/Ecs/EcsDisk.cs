@@ -78,6 +78,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/ecsDisk:EcsDisk")]
     public partial class EcsDisk : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The advanced features configured for the disk.
+        /// </summary>
         [Output("advancedFeatures")]
         public Output<string?> AdvancedFeatures { get; private set; } = null!;
 
@@ -88,13 +91,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`.
+        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`; specifying it for other categories is rejected by the API. When `Category` is changed to `CloudAuto` in the same apply (for example from `CloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `CloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`CloudAuto` disk.
         /// </summary>
         [Output("burstingEnabled")]
         public Output<bool?> BurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -141,6 +144,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("enableAutoSnapshot")]
         public Output<bool> EnableAutoSnapshot { get; private set; } = null!;
 
+        /// <summary>
+        /// The encryption algorithm used to encrypt the disk. **NOTE:** `EncryptAlgorithm` is only valid when `Encrypted` is `True`.
+        /// </summary>
         [Output("encryptAlgorithm")]
         public Output<string?> EncryptAlgorithm { get; private set; } = null!;
 
@@ -318,6 +324,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EcsDiskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The advanced features configured for the disk.
+        /// </summary>
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
 
@@ -328,13 +337,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`.
+        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`; specifying it for other categories is rejected by the API. When `Category` is changed to `CloudAuto` in the same apply (for example from `CloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `CloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`CloudAuto` disk.
         /// </summary>
         [Input("burstingEnabled")]
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -375,6 +384,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
+        /// <summary>
+        /// The encryption algorithm used to encrypt the disk. **NOTE:** `EncryptAlgorithm` is only valid when `Encrypted` is `True`.
+        /// </summary>
         [Input("encryptAlgorithm")]
         public Input<string>? EncryptAlgorithm { get; set; }
 
@@ -508,6 +520,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EcsDiskState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The advanced features configured for the disk.
+        /// </summary>
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
 
@@ -518,13 +533,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`.
+        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`; specifying it for other categories is rejected by the API. When `Category` is changed to `CloudAuto` in the same apply (for example from `CloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `CloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`CloudAuto` disk.
         /// </summary>
         [Input("burstingEnabled")]
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -571,6 +586,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
+        /// <summary>
+        /// The encryption algorithm used to encrypt the disk. **NOTE:** `EncryptAlgorithm` is only valid when `Encrypted` is `True`.
+        /// </summary>
         [Input("encryptAlgorithm")]
         public Input<string>? EncryptAlgorithm { get; set; }
 

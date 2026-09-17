@@ -417,7 +417,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         ## Import
 
-        Message Service Subscription can be imported using the id, e.g.
+        Message Service Subscription can be imported using the id, which consists of topic_name and subscription_name, e.g.
 
         ```sh
         $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
@@ -486,7 +486,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         ## Import
 
-        Message Service Subscription can be imported using the id, e.g.
+        Message Service Subscription can be imported using the id, which consists of topic_name and subscription_name, e.g.
 
         ```sh
         $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>

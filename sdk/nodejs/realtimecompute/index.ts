@@ -10,10 +10,30 @@ export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
 utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
 
+export { GetMembersArgs, GetMembersResult, GetMembersOutputArgs } from "./getMembers";
+export const getMembers: typeof import("./getMembers").getMembers = null as any;
+export const getMembersOutput: typeof import("./getMembers").getMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getMembers","getMembersOutput"], () => require("./getMembers"));
+
+export { GetSqlFilesArgs, GetSqlFilesResult, GetSqlFilesOutputArgs } from "./getSqlFiles";
+export const getSqlFiles: typeof import("./getSqlFiles").getSqlFiles = null as any;
+export const getSqlFilesOutput: typeof import("./getSqlFiles").getSqlFilesOutput = null as any;
+utilities.lazyLoad(exports, ["getSqlFiles","getSqlFilesOutput"], () => require("./getSqlFiles"));
+
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+
+export { MemberArgs, MemberState } from "./member";
+export type Member = import("./member").Member;
+export const Member: typeof import("./member").Member = null as any;
+utilities.lazyLoad(exports, ["Member"], () => require("./member"));
+
+export { SqlFileArgs, SqlFileState } from "./sqlFile";
+export type SqlFile = import("./sqlFile").SqlFile;
+export const SqlFile: typeof import("./sqlFile").SqlFile = null as any;
+utilities.lazyLoad(exports, ["SqlFile"], () => require("./sqlFile"));
 
 export { VvpInstanceArgs, VvpInstanceState } from "./vvpInstance";
 export type VvpInstance = import("./vvpInstance").VvpInstance;
@@ -29,6 +49,10 @@ const _module = {
                 return new Deployment(name, <any>undefined, { urn })
             case "alicloud:realtimecompute/job:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "alicloud:realtimecompute/member:Member":
+                return new Member(name, <any>undefined, { urn })
+            case "alicloud:realtimecompute/sqlFile:SqlFile":
+                return new SqlFile(name, <any>undefined, { urn })
             case "alicloud:realtimecompute/vvpInstance:VvpInstance":
                 return new VvpInstance(name, <any>undefined, { urn })
             default:
@@ -38,4 +62,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/deployment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/job", _module)
+pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/member", _module)
+pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/sqlFile", _module)
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/vvpInstance", _module)

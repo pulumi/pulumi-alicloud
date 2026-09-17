@@ -68,7 +68,7 @@ import (
 //
 // ## Import
 //
-// FCV3 Alias can be imported using the id, e.g.
+// FCV3 Alias can be imported using the id, which consists of functionName and alias_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:fc/v3Alias:V3Alias example <function_name>:<alias_name>

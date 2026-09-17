@@ -65,6 +65,10 @@ __all__ = [
     'ServiceOutlierDetectionConfigArgsDict',
     'ServicePortArgs',
     'ServicePortArgsDict',
+    'SourceK8sSourceInfoArgs',
+    'SourceK8sSourceInfoArgsDict',
+    'SourceNacosSourceInfoArgs',
+    'SourceNacosSourceInfoArgsDict',
     'GetRoutesEnvironmentInfoArgs',
     'GetRoutesEnvironmentInfoArgsDict',
     'GetRoutesEnvironmentInfoGatewayInfoArgs',
@@ -1972,6 +1976,104 @@ class ServicePortArgs:
     @protocol.setter
     def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
+
+
+class SourceK8sSourceInfoArgsDict(TypedDict):
+    cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the ACK cluster.
+    """
+
+@pulumi.input_type
+class SourceK8sSourceInfoArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cluster_id: The ID of the ACK cluster.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the ACK cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
+
+
+class SourceNacosSourceInfoArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The access address of the Nacos instance.
+    """
+    cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the Nacos cluster.
+    """
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the MSE Nacos instance.
+    """
+
+@pulumi.input_type
+class SourceNacosSourceInfoArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The access address of the Nacos instance.
+        :param pulumi.Input[_builtins.str] cluster_id: The ID of the Nacos cluster.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the MSE Nacos instance.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The access address of the Nacos instance.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Nacos cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the MSE Nacos instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_id", value)
 
 
 class GetRoutesEnvironmentInfoArgsDict(TypedDict):

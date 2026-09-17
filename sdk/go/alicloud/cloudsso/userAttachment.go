@@ -126,7 +126,7 @@ import (
 //
 // ## Import
 //
-// Cloud SSO User Attachment can be imported using the id, e.g.
+// Cloud SSO User Attachment can be imported using the id, which consists of directory_id, groupId and user_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>

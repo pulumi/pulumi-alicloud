@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class PolicyBindingAdvancedOptionsUdmDetail
     {
         /// <summary>
+        /// Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+        /// </summary>
+        public readonly bool? AppConsistent;
+        /// <summary>
         /// Custom KMS key ID of encrypted copy
         /// </summary>
         public readonly string? DestinationKmsKeyId;
@@ -22,21 +26,77 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DiskIdLists;
         /// <summary>
+        /// Whether to enable file system freeze before taking a snapshot.
+        /// </summary>
+        public readonly bool? EnableFsFreeze;
+        /// <summary>
+        /// Whether to enable VSS writers.
+        /// </summary>
+        public readonly bool? EnableWriters;
+        /// <summary>
         /// List of cloud disk IDs that are not backed up
         /// </summary>
         public readonly ImmutableArray<string> ExcludeDiskIdLists;
+        /// <summary>
+        /// The path of the post-backup script, executed after the snapshot is taken. Required when `AppConsistent` is `True`.
+        /// </summary>
+        public readonly string? PostScriptPath;
+        /// <summary>
+        /// The path of the pre-backup script, executed before the snapshot is taken. Required when `AppConsistent` is `True`.
+        /// </summary>
+        public readonly string? PreScriptPath;
+        /// <summary>
+        /// The RAM role name used by ECS to run the pre/post scripts. Required when `AppConsistent` is `True`.
+        /// </summary>
+        public readonly string? RamRoleName;
+        /// <summary>
+        /// Whether to use a snapshot group. Valid when `AppConsistent` is `True`.
+        /// </summary>
+        public readonly bool? SnapshotGroup;
+        /// <summary>
+        /// The timeout in seconds for the pre/post script execution.
+        /// 
+        /// &gt; **NOTE:** `AppConsistent`, `SnapshotGroup`, `RamRoleName`, `PreScriptPath`, `PostScriptPath`, `EnableFsFreeze`, `TimeoutInSeconds` and `EnableWriters` are only supported when `SourceType` is `UDM_ECS`. When `AppConsistent` is set to `True`, `RamRoleName`, `PreScriptPath` and `PostScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `Detail` block.
+        /// 
+        /// &gt; **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+        /// </summary>
+        public readonly int? TimeoutInSeconds;
 
         [OutputConstructor]
         private PolicyBindingAdvancedOptionsUdmDetail(
+            bool? appConsistent,
+
             string? destinationKmsKeyId,
 
             ImmutableArray<string> diskIdLists,
 
-            ImmutableArray<string> excludeDiskIdLists)
+            bool? enableFsFreeze,
+
+            bool? enableWriters,
+
+            ImmutableArray<string> excludeDiskIdLists,
+
+            string? postScriptPath,
+
+            string? preScriptPath,
+
+            string? ramRoleName,
+
+            bool? snapshotGroup,
+
+            int? timeoutInSeconds)
         {
+            AppConsistent = appConsistent;
             DestinationKmsKeyId = destinationKmsKeyId;
             DiskIdLists = diskIdLists;
+            EnableFsFreeze = enableFsFreeze;
+            EnableWriters = enableWriters;
             ExcludeDiskIdLists = excludeDiskIdLists;
+            PostScriptPath = postScriptPath;
+            PreScriptPath = preScriptPath;
+            RamRoleName = ramRoleName;
+            SnapshotGroup = snapshotGroup;
+            TimeoutInSeconds = timeoutInSeconds;
         }
     }
 }

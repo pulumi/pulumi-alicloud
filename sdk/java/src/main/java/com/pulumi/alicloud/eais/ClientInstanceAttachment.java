@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EAIS Client Instance Attachment can be imported using the id, e.g.
+ * EAIS Client Instance Attachment can be imported using the id, which consists of instanceId and client_instance_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment example &lt;instance_id&gt;:&lt;client_instance_id&gt;

@@ -81,7 +81,7 @@ import (
 //
 // ## Import
 //
-// ESA Waf Rule can be imported using the id, e.g.
+// ESA Waf Rule can be imported using the id, which consists of siteId and waf_rule_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:esa/wafRule:WafRule example <site_id>:<waf_rule_id>

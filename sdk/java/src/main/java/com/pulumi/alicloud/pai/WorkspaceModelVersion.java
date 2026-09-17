@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PAI Workspace Model Version can be imported using the id, e.g.
+ * PAI Workspace Model Version can be imported using the id, which consists of modelId and version_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:pai/workspaceModelVersion:WorkspaceModelVersion example &lt;model_id&gt;:&lt;version_name&gt;

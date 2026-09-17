@@ -232,7 +232,7 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host Host Account can be imported using the id, e.g.
+        Bastion Host Host Account can be imported using the id, which consists of instance_id, user_group_id and host_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment example <instance_id>:<user_group_id>:<host_group_id>
@@ -315,7 +315,7 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host Host Account can be imported using the id, e.g.
+        Bastion Host Host Account can be imported using the id, which consists of instance_id, user_group_id and host_group_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment example <instance_id>:<user_group_id>:<host_group_id>

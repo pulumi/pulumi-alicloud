@@ -118,6 +118,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
+     * &gt; **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      * 
      */
     @Import(name="creditSpecification")
@@ -125,6 +126,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
+     * &gt; **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      * 
      */
     public Optional<Output<String>> creditSpecification() {
@@ -421,6 +423,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
+    }
+
+    /**
+     * Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+     * 
+     */
+    @Import(name="instanceMetadataTags")
+    private @Nullable Output<String> instanceMetadataTags;
+
+    /**
+     * @return Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+     * 
+     */
+    public Optional<Output<String>> instanceMetadataTags() {
+        return Optional.ofNullable(this.instanceMetadataTags);
     }
 
     /**
@@ -1033,6 +1050,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - Active: Enable security enhancement strategy, it only works on system images.
      * - Deactive: Disable security enhancement strategy, it works on all images.
      * 
+     * &gt; **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
+     * 
      */
     @Import(name="securityEnhancementStrategy")
     private @Nullable Output<String> securityEnhancementStrategy;
@@ -1041,6 +1060,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
      * - Deactive: Disable security enhancement strategy, it works on all images.
+     * 
+     * &gt; **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
      * 
      */
     public Optional<Output<String>> securityEnhancementStrategy() {
@@ -1485,6 +1506,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.imageOptions = $.imageOptions;
         this.includeDataDisks = $.includeDataDisks;
         this.instanceChargeType = $.instanceChargeType;
+        this.instanceMetadataTags = $.instanceMetadataTags;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
         this.internetChargeType = $.internetChargeType;
@@ -1689,6 +1711,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param creditSpecification Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
+         * &gt; **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
          * 
          * @return builder
          * 
@@ -1700,6 +1723,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param creditSpecification Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
+         * &gt; **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
          * 
          * @return builder
          * 
@@ -2116,6 +2140,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
+        }
+
+        /**
+         * @param instanceMetadataTags Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataTags(@Nullable Output<String> instanceMetadataTags) {
+            $.instanceMetadataTags = instanceMetadataTags;
+            return this;
+        }
+
+        /**
+         * @param instanceMetadataTags Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataTags(String instanceMetadataTags) {
+            return instanceMetadataTags(Output.of(instanceMetadataTags));
         }
 
         /**
@@ -2958,6 +3003,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - Active: Enable security enhancement strategy, it only works on system images.
          * - Deactive: Disable security enhancement strategy, it works on all images.
          * 
+         * &gt; **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
+         * 
          * @return builder
          * 
          */
@@ -2970,6 +3017,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param securityEnhancementStrategy The security enhancement strategy.
          * - Active: Enable security enhancement strategy, it only works on system images.
          * - Deactive: Disable security enhancement strategy, it works on all images.
+         * 
+         * &gt; **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
          * 
          * @return builder
          * 

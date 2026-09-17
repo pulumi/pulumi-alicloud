@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
+ * VPC Public Ip Address Pool Cidr Block can be imported using the id, which consists of publicIpAddressPoolId and cidr_block, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example &lt;public_ip_address_pool_id&gt;:&lt;cidr_block&gt;

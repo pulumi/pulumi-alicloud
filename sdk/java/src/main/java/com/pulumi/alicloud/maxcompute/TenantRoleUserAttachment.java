@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Max Compute Tenant Role User Attachment can be imported using the id, e.g.
+ * Max Compute Tenant Role User Attachment can be imported using the id, which consists of accountId and tenant_role, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment example &lt;account_id&gt;:&lt;tenant_role&gt;

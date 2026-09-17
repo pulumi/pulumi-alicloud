@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OSS Access Point can be imported using the id, e.g.
+ * OSS Access Point can be imported using the id, which consists of bucket and access_point_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:oss/accessPoint:AccessPoint example <bucket>:<access_point_name>

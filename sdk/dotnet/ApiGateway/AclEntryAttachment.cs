@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// ## Import
     /// 
-    /// Api Gateway Acl Entry Attachment can be imported using the id, e.g.
+    /// Api Gateway Acl Entry Attachment can be imported using the id, which consists of AclId and entry, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:apigateway/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;

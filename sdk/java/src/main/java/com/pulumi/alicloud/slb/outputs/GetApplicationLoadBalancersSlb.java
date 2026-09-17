@@ -17,24 +17,48 @@ public final class GetApplicationLoadBalancersSlb {
      * 
      */
     private String address;
+    /**
+     * @return The creation time of the SLB.
+     * 
+     */
     private String creationTime;
     /**
      * @return ID of the SLB.
      * 
      */
     private String id;
+    /**
+     * @return Whether the SLB is internet-facing.
+     * 
+     */
     private Boolean internet;
+    /**
+     * @return Master availability zone of the SLB.
+     * 
+     */
     private String masterAvailabilityZone;
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     private String name;
     /**
      * @return Network type of the SLBs. Valid values: `vpc` and `classic`.
      * 
      */
     private String networkType;
+    /**
+     * @return Region ID the SLB belongs to.
+     * 
+     */
     private String regionId;
+    /**
+     * @return Slave availability zone of the SLB.
+     * 
+     */
     private String slaveAvailabilityZone;
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     private String status;
@@ -62,6 +86,10 @@ public final class GetApplicationLoadBalancersSlb {
     public String address() {
         return this.address;
     }
+    /**
+     * @return The creation time of the SLB.
+     * 
+     */
     public String creationTime() {
         return this.creationTime;
     }
@@ -72,12 +100,24 @@ public final class GetApplicationLoadBalancersSlb {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Whether the SLB is internet-facing.
+     * 
+     */
     public Boolean internet() {
         return this.internet;
     }
+    /**
+     * @return Master availability zone of the SLB.
+     * 
+     */
     public String masterAvailabilityZone() {
         return this.masterAvailabilityZone;
     }
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -88,14 +128,22 @@ public final class GetApplicationLoadBalancersSlb {
     public String networkType() {
         return this.networkType;
     }
+    /**
+     * @return Region ID the SLB belongs to.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }
+    /**
+     * @return Slave availability zone of the SLB.
+     * 
+     */
     public String slaveAvailabilityZone() {
         return this.slaveAvailabilityZone;
     }
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public String status() {

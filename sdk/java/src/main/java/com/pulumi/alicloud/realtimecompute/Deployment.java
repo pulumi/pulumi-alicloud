@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Realtime Compute Deployment can be imported using the id, e.g.
+ * Realtime Compute Deployment can be imported using the id, which consists of resource_id, namespace and deployment_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:realtimecompute/deployment:Deployment example &lt;resource_id&gt;:&lt;namespace&gt;:&lt;deployment_id&gt;

@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.SchedulerX
     /// 
     /// ## Import
     /// 
-    /// Schedulerx Job can be imported using the id, e.g.
+    /// Schedulerx Job can be imported using the id, which consists of namespace, GroupId and job_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:schedulerx/job:Job example &lt;namespace&gt;:&lt;group_id&gt;:&lt;job_id&gt;

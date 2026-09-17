@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DMS Enterprise Authority Template can be imported using the id, e.g.
+ * DMS Enterprise Authority Template can be imported using the id, which consists of tid and authority_template_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example &lt;tid&gt;:&lt;authority_template_id&gt;

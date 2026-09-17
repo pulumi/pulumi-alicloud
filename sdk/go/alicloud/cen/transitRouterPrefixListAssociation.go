@@ -91,7 +91,7 @@ import (
 //
 // ## Import
 //
-// Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, which consists of prefix_list_id, transit_router_id, transitRouterTableId and next_hop, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation default <prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>.

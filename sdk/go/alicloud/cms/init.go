@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlarmContactGroup{}
 	case "alicloud:cms/alertRuleV2:AlertRuleV2":
 		r = &AlertRuleV2{}
+	case "alicloud:cms/dataset:Dataset":
+		r = &Dataset{}
 	case "alicloud:cms/dynamicTagGroup:DynamicTagGroup":
 		r = &DynamicTagGroup{}
 	case "alicloud:cms/eventNotifyPolicy:EventNotifyPolicy":
@@ -108,6 +110,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/alertRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/dataset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

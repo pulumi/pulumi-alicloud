@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GPDB Streaming Data Source can be imported using the id, e.g.
+ * GPDB Streaming Data Source can be imported using the id, which consists of dbInstanceId and data_source_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:gpdb/streamingDataSource:StreamingDataSource example &lt;db_instance_id&gt;:&lt;data_source_id&gt;

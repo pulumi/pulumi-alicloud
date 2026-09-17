@@ -11,6 +11,7 @@ from .api_key import *
 from .backup_policy import *
 from .connection import *
 from .database import *
+from .db_extension import *
 from .db_instance_ip_array import *
 from .db_instance_plan import *
 from .db_resource_group import *
@@ -19,6 +20,7 @@ from .external_data_service import *
 from .get_accounts import *
 from .get_api_keys import *
 from .get_data_backups import *
+from .get_db_extensions import *
 from .get_db_instance_plans import *
 from .get_instances import *
 from .get_log_backups import *

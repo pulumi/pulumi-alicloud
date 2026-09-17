@@ -678,7 +678,7 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Import
 
-        ESA Waiting Room can be imported using the id, e.g.
+        ESA Waiting Room can be imported using the id, which consists of site_id and waiting_room_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/waitingRoom:WaitingRoom example <site_id>:<waiting_room_id>
@@ -774,7 +774,7 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Import
 
-        ESA Waiting Room can be imported using the id, e.g.
+        ESA Waiting Room can be imported using the id, which consists of site_id and waiting_room_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/waitingRoom:WaitingRoom example <site_id>:<waiting_room_id>

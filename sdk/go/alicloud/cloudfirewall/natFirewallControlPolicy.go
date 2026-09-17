@@ -235,7 +235,7 @@ import (
 //
 // ## Import
 //
-// Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.
+// Cloud Firewall Nat Firewall Control Policy can be imported using the id, which consists of acl_uuid, natGatewayId and direction, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy example <acl_uuid>:<nat_gateway_id>:<direction>

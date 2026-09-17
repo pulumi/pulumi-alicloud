@@ -374,7 +374,7 @@ class RoutineRoute(pulumi.CustomResource):
 
         ## Import
 
-        ESA Routine Route can be imported using the id, e.g.
+        ESA Routine Route can be imported using the id, which consists of site_id, routine_name and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/routineRoute:RoutineRoute example <site_id>:<routine_name>:<config_id>
@@ -444,7 +444,7 @@ class RoutineRoute(pulumi.CustomResource):
 
         ## Import
 
-        ESA Routine Route can be imported using the id, e.g.
+        ESA Routine Route can be imported using the id, which consists of site_id, routine_name and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/routineRoute:RoutineRoute example <site_id>:<routine_name>:<config_id>

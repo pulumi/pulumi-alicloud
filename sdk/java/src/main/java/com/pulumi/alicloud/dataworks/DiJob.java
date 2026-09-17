@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Data Works Di Job can be imported using the id, e.g.
+ * Data Works Di Job can be imported using the id, which consists of projectId and di_job_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dataworks/diJob:DiJob example &lt;project_id&gt;:&lt;di_job_id&gt;

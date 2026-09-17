@@ -3754,6 +3754,318 @@ func (o ServicePortArrayOutput) Index(i pulumi.IntInput) ServicePortOutput {
 	}).(ServicePortOutput)
 }
 
+type SourceK8sSourceInfo struct {
+	// The ID of the ACK cluster.
+	ClusterId *string `pulumi:"clusterId"`
+}
+
+// SourceK8sSourceInfoInput is an input type that accepts SourceK8sSourceInfoArgs and SourceK8sSourceInfoOutput values.
+// You can construct a concrete instance of `SourceK8sSourceInfoInput` via:
+//
+//	SourceK8sSourceInfoArgs{...}
+type SourceK8sSourceInfoInput interface {
+	pulumi.Input
+
+	ToSourceK8sSourceInfoOutput() SourceK8sSourceInfoOutput
+	ToSourceK8sSourceInfoOutputWithContext(context.Context) SourceK8sSourceInfoOutput
+}
+
+type SourceK8sSourceInfoArgs struct {
+	// The ID of the ACK cluster.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+}
+
+func (SourceK8sSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (i SourceK8sSourceInfoArgs) ToSourceK8sSourceInfoOutput() SourceK8sSourceInfoOutput {
+	return i.ToSourceK8sSourceInfoOutputWithContext(context.Background())
+}
+
+func (i SourceK8sSourceInfoArgs) ToSourceK8sSourceInfoOutputWithContext(ctx context.Context) SourceK8sSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceK8sSourceInfoOutput)
+}
+
+func (i SourceK8sSourceInfoArgs) ToSourceK8sSourceInfoPtrOutput() SourceK8sSourceInfoPtrOutput {
+	return i.ToSourceK8sSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SourceK8sSourceInfoArgs) ToSourceK8sSourceInfoPtrOutputWithContext(ctx context.Context) SourceK8sSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceK8sSourceInfoOutput).ToSourceK8sSourceInfoPtrOutputWithContext(ctx)
+}
+
+// SourceK8sSourceInfoPtrInput is an input type that accepts SourceK8sSourceInfoArgs, SourceK8sSourceInfoPtr and SourceK8sSourceInfoPtrOutput values.
+// You can construct a concrete instance of `SourceK8sSourceInfoPtrInput` via:
+//
+//	        SourceK8sSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceK8sSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToSourceK8sSourceInfoPtrOutput() SourceK8sSourceInfoPtrOutput
+	ToSourceK8sSourceInfoPtrOutputWithContext(context.Context) SourceK8sSourceInfoPtrOutput
+}
+
+type sourceK8sSourceInfoPtrType SourceK8sSourceInfoArgs
+
+func SourceK8sSourceInfoPtr(v *SourceK8sSourceInfoArgs) SourceK8sSourceInfoPtrInput {
+	return (*sourceK8sSourceInfoPtrType)(v)
+}
+
+func (*sourceK8sSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (i *sourceK8sSourceInfoPtrType) ToSourceK8sSourceInfoPtrOutput() SourceK8sSourceInfoPtrOutput {
+	return i.ToSourceK8sSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceK8sSourceInfoPtrType) ToSourceK8sSourceInfoPtrOutputWithContext(ctx context.Context) SourceK8sSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceK8sSourceInfoPtrOutput)
+}
+
+type SourceK8sSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (SourceK8sSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (o SourceK8sSourceInfoOutput) ToSourceK8sSourceInfoOutput() SourceK8sSourceInfoOutput {
+	return o
+}
+
+func (o SourceK8sSourceInfoOutput) ToSourceK8sSourceInfoOutputWithContext(ctx context.Context) SourceK8sSourceInfoOutput {
+	return o
+}
+
+func (o SourceK8sSourceInfoOutput) ToSourceK8sSourceInfoPtrOutput() SourceK8sSourceInfoPtrOutput {
+	return o.ToSourceK8sSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SourceK8sSourceInfoOutput) ToSourceK8sSourceInfoPtrOutputWithContext(ctx context.Context) SourceK8sSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceK8sSourceInfo) *SourceK8sSourceInfo {
+		return &v
+	}).(SourceK8sSourceInfoPtrOutput)
+}
+
+// The ID of the ACK cluster.
+func (o SourceK8sSourceInfoOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceK8sSourceInfo) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+type SourceK8sSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceK8sSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (o SourceK8sSourceInfoPtrOutput) ToSourceK8sSourceInfoPtrOutput() SourceK8sSourceInfoPtrOutput {
+	return o
+}
+
+func (o SourceK8sSourceInfoPtrOutput) ToSourceK8sSourceInfoPtrOutputWithContext(ctx context.Context) SourceK8sSourceInfoPtrOutput {
+	return o
+}
+
+func (o SourceK8sSourceInfoPtrOutput) Elem() SourceK8sSourceInfoOutput {
+	return o.ApplyT(func(v *SourceK8sSourceInfo) SourceK8sSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SourceK8sSourceInfo
+		return ret
+	}).(SourceK8sSourceInfoOutput)
+}
+
+// The ID of the ACK cluster.
+func (o SourceK8sSourceInfoPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceK8sSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+type SourceNacosSourceInfo struct {
+	// The access address of the Nacos instance.
+	Address *string `pulumi:"address"`
+	// The ID of the Nacos cluster.
+	ClusterId *string `pulumi:"clusterId"`
+	// The ID of the MSE Nacos instance.
+	InstanceId *string `pulumi:"instanceId"`
+}
+
+// SourceNacosSourceInfoInput is an input type that accepts SourceNacosSourceInfoArgs and SourceNacosSourceInfoOutput values.
+// You can construct a concrete instance of `SourceNacosSourceInfoInput` via:
+//
+//	SourceNacosSourceInfoArgs{...}
+type SourceNacosSourceInfoInput interface {
+	pulumi.Input
+
+	ToSourceNacosSourceInfoOutput() SourceNacosSourceInfoOutput
+	ToSourceNacosSourceInfoOutputWithContext(context.Context) SourceNacosSourceInfoOutput
+}
+
+type SourceNacosSourceInfoArgs struct {
+	// The access address of the Nacos instance.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The ID of the Nacos cluster.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The ID of the MSE Nacos instance.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+}
+
+func (SourceNacosSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (i SourceNacosSourceInfoArgs) ToSourceNacosSourceInfoOutput() SourceNacosSourceInfoOutput {
+	return i.ToSourceNacosSourceInfoOutputWithContext(context.Background())
+}
+
+func (i SourceNacosSourceInfoArgs) ToSourceNacosSourceInfoOutputWithContext(ctx context.Context) SourceNacosSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceNacosSourceInfoOutput)
+}
+
+func (i SourceNacosSourceInfoArgs) ToSourceNacosSourceInfoPtrOutput() SourceNacosSourceInfoPtrOutput {
+	return i.ToSourceNacosSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SourceNacosSourceInfoArgs) ToSourceNacosSourceInfoPtrOutputWithContext(ctx context.Context) SourceNacosSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceNacosSourceInfoOutput).ToSourceNacosSourceInfoPtrOutputWithContext(ctx)
+}
+
+// SourceNacosSourceInfoPtrInput is an input type that accepts SourceNacosSourceInfoArgs, SourceNacosSourceInfoPtr and SourceNacosSourceInfoPtrOutput values.
+// You can construct a concrete instance of `SourceNacosSourceInfoPtrInput` via:
+//
+//	        SourceNacosSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceNacosSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToSourceNacosSourceInfoPtrOutput() SourceNacosSourceInfoPtrOutput
+	ToSourceNacosSourceInfoPtrOutputWithContext(context.Context) SourceNacosSourceInfoPtrOutput
+}
+
+type sourceNacosSourceInfoPtrType SourceNacosSourceInfoArgs
+
+func SourceNacosSourceInfoPtr(v *SourceNacosSourceInfoArgs) SourceNacosSourceInfoPtrInput {
+	return (*sourceNacosSourceInfoPtrType)(v)
+}
+
+func (*sourceNacosSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (i *sourceNacosSourceInfoPtrType) ToSourceNacosSourceInfoPtrOutput() SourceNacosSourceInfoPtrOutput {
+	return i.ToSourceNacosSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceNacosSourceInfoPtrType) ToSourceNacosSourceInfoPtrOutputWithContext(ctx context.Context) SourceNacosSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceNacosSourceInfoPtrOutput)
+}
+
+type SourceNacosSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (SourceNacosSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (o SourceNacosSourceInfoOutput) ToSourceNacosSourceInfoOutput() SourceNacosSourceInfoOutput {
+	return o
+}
+
+func (o SourceNacosSourceInfoOutput) ToSourceNacosSourceInfoOutputWithContext(ctx context.Context) SourceNacosSourceInfoOutput {
+	return o
+}
+
+func (o SourceNacosSourceInfoOutput) ToSourceNacosSourceInfoPtrOutput() SourceNacosSourceInfoPtrOutput {
+	return o.ToSourceNacosSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SourceNacosSourceInfoOutput) ToSourceNacosSourceInfoPtrOutputWithContext(ctx context.Context) SourceNacosSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceNacosSourceInfo) *SourceNacosSourceInfo {
+		return &v
+	}).(SourceNacosSourceInfoPtrOutput)
+}
+
+// The access address of the Nacos instance.
+func (o SourceNacosSourceInfoOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceNacosSourceInfo) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Nacos cluster.
+func (o SourceNacosSourceInfoOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceNacosSourceInfo) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the MSE Nacos instance.
+func (o SourceNacosSourceInfoOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceNacosSourceInfo) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+type SourceNacosSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceNacosSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (o SourceNacosSourceInfoPtrOutput) ToSourceNacosSourceInfoPtrOutput() SourceNacosSourceInfoPtrOutput {
+	return o
+}
+
+func (o SourceNacosSourceInfoPtrOutput) ToSourceNacosSourceInfoPtrOutputWithContext(ctx context.Context) SourceNacosSourceInfoPtrOutput {
+	return o
+}
+
+func (o SourceNacosSourceInfoPtrOutput) Elem() SourceNacosSourceInfoOutput {
+	return o.ApplyT(func(v *SourceNacosSourceInfo) SourceNacosSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SourceNacosSourceInfo
+		return ret
+	}).(SourceNacosSourceInfoOutput)
+}
+
+// The access address of the Nacos instance.
+func (o SourceNacosSourceInfoPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceNacosSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Nacos cluster.
+func (o SourceNacosSourceInfoPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceNacosSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the MSE Nacos instance.
+func (o SourceNacosSourceInfoPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceNacosSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAiModelProvidersProvider struct {
 	// A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
 	BoundServices []GetAiModelProvidersProviderBoundService `pulumi:"boundServices"`
@@ -6267,6 +6579,193 @@ func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPluginsPlugin {
 		return vs[0].([]GetPluginsPlugin)[vs[1].(int)]
 	}).(GetPluginsPluginOutput)
+}
+
+type GetPoliciesPolicy struct {
+	// The ID of the attach point resource to filter policies by.
+	AttachResourceIds []string `pulumi:"attachResourceIds"`
+	// Policies support mount point types. Valid values: `HttpApi`, `Operation`, `GatewayRoute`, `GatewayService`, `GatewayServicePort`, `Domain`, `Gateway`.
+	AttachResourceType string `pulumi:"attachResourceType"`
+	// Environment id.
+	EnvironmentId string `pulumi:"environmentId"`
+	// Gateway id.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the Policy.
+	Id string `pulumi:"id"`
+	// Policy attachment id.
+	PolicyAttachmentId string `pulumi:"policyAttachmentId"`
+	// Policy class id.
+	PolicyClassId string `pulumi:"policyClassId"`
+	// Policy class name.
+	PolicyClassName string `pulumi:"policyClassName"`
+	// Policy configuration.
+	PolicyConfig string `pulumi:"policyConfig"`
+	// The first ID of the resource.
+	PolicyId string `pulumi:"policyId"`
+	// Policy name.
+	PolicyName string `pulumi:"policyName"`
+}
+
+// GetPoliciesPolicyInput is an input type that accepts GetPoliciesPolicyArgs and GetPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetPoliciesPolicyInput` via:
+//
+//	GetPoliciesPolicyArgs{...}
+type GetPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetPoliciesPolicyOutput() GetPoliciesPolicyOutput
+	ToGetPoliciesPolicyOutputWithContext(context.Context) GetPoliciesPolicyOutput
+}
+
+type GetPoliciesPolicyArgs struct {
+	// The ID of the attach point resource to filter policies by.
+	AttachResourceIds pulumi.StringArrayInput `pulumi:"attachResourceIds"`
+	// Policies support mount point types. Valid values: `HttpApi`, `Operation`, `GatewayRoute`, `GatewayService`, `GatewayServicePort`, `Domain`, `Gateway`.
+	AttachResourceType pulumi.StringInput `pulumi:"attachResourceType"`
+	// Environment id.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// Gateway id.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Policy attachment id.
+	PolicyAttachmentId pulumi.StringInput `pulumi:"policyAttachmentId"`
+	// Policy class id.
+	PolicyClassId pulumi.StringInput `pulumi:"policyClassId"`
+	// Policy class name.
+	PolicyClassName pulumi.StringInput `pulumi:"policyClassName"`
+	// Policy configuration.
+	PolicyConfig pulumi.StringInput `pulumi:"policyConfig"`
+	// The first ID of the resource.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// Policy name.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+}
+
+func (GetPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutput() GetPoliciesPolicyOutput {
+	return i.ToGetPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutputWithContext(ctx context.Context) GetPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyOutput)
+}
+
+// GetPoliciesPolicyArrayInput is an input type that accepts GetPoliciesPolicyArray and GetPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetPoliciesPolicyArrayInput` via:
+//
+//	GetPoliciesPolicyArray{ GetPoliciesPolicyArgs{...} }
+type GetPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetPoliciesPolicyArrayOutput() GetPoliciesPolicyArrayOutput
+	ToGetPoliciesPolicyArrayOutputWithContext(context.Context) GetPoliciesPolicyArrayOutput
+}
+
+type GetPoliciesPolicyArray []GetPoliciesPolicyInput
+
+func (GetPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetPoliciesPolicyArray) ToGetPoliciesPolicyArrayOutput() GetPoliciesPolicyArrayOutput {
+	return i.ToGetPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoliciesPolicyArray) ToGetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyArrayOutput)
+}
+
+type GetPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutput() GetPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutputWithContext(ctx context.Context) GetPoliciesPolicyOutput {
+	return o
+}
+
+// The ID of the attach point resource to filter policies by.
+func (o GetPoliciesPolicyOutput) AttachResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) []string { return v.AttachResourceIds }).(pulumi.StringArrayOutput)
+}
+
+// Policies support mount point types. Valid values: `HttpApi`, `Operation`, `GatewayRoute`, `GatewayService`, `GatewayServicePort`, `Domain`, `Gateway`.
+func (o GetPoliciesPolicyOutput) AttachResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.AttachResourceType }).(pulumi.StringOutput)
+}
+
+// Environment id.
+func (o GetPoliciesPolicyOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// Gateway id.
+func (o GetPoliciesPolicyOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the Policy.
+func (o GetPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Policy attachment id.
+func (o GetPoliciesPolicyOutput) PolicyAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyAttachmentId }).(pulumi.StringOutput)
+}
+
+// Policy class id.
+func (o GetPoliciesPolicyOutput) PolicyClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyClassId }).(pulumi.StringOutput)
+}
+
+// Policy class name.
+func (o GetPoliciesPolicyOutput) PolicyClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyClassName }).(pulumi.StringOutput)
+}
+
+// Policy configuration.
+func (o GetPoliciesPolicyOutput) PolicyConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyConfig }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetPoliciesPolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// Policy name.
+func (o GetPoliciesPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+type GetPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutput() GetPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoliciesPolicy {
+		return vs[0].([]GetPoliciesPolicy)[vs[1].(int)]
+	}).(GetPoliciesPolicyOutput)
 }
 
 type GetRoutesEnvironmentInfo struct {
@@ -8846,6 +9345,414 @@ func (o GetServicesServicePortArrayOutput) Index(i pulumi.IntInput) GetServicesS
 	}).(GetServicesServicePortOutput)
 }
 
+type GetSourcesSource struct {
+	// The reason for the association status.
+	AssociationReason string `pulumi:"associationReason"`
+	// The association status of the source.
+	AssociationStatus string `pulumi:"associationStatus"`
+	// The creation timestamp of the source.
+	CreateTime int `pulumi:"createTime"`
+	// The ID of the gateway instance.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The ACK cluster source information.
+	K8sSourceInfos []GetSourcesSourceK8sSourceInfo `pulumi:"k8sSourceInfos"`
+	// The MSE Nacos source information.
+	NacosSourceInfos []GetSourcesSourceNacosSourceInfo `pulumi:"nacosSourceInfos"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The ID of the source.
+	SourceId string `pulumi:"sourceId"`
+	// The name of the source.
+	SourceName string `pulumi:"sourceName"`
+	// The type of the source. Valid values: `K8S`, `MSE_NACOS`.
+	Type string `pulumi:"type"`
+	// The update timestamp of the source.
+	UpdateTime int `pulumi:"updateTime"`
+}
+
+// GetSourcesSourceInput is an input type that accepts GetSourcesSourceArgs and GetSourcesSourceOutput values.
+// You can construct a concrete instance of `GetSourcesSourceInput` via:
+//
+//	GetSourcesSourceArgs{...}
+type GetSourcesSourceInput interface {
+	pulumi.Input
+
+	ToGetSourcesSourceOutput() GetSourcesSourceOutput
+	ToGetSourcesSourceOutputWithContext(context.Context) GetSourcesSourceOutput
+}
+
+type GetSourcesSourceArgs struct {
+	// The reason for the association status.
+	AssociationReason pulumi.StringInput `pulumi:"associationReason"`
+	// The association status of the source.
+	AssociationStatus pulumi.StringInput `pulumi:"associationStatus"`
+	// The creation timestamp of the source.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// The ID of the gateway instance.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ACK cluster source information.
+	K8sSourceInfos GetSourcesSourceK8sSourceInfoArrayInput `pulumi:"k8sSourceInfos"`
+	// The MSE Nacos source information.
+	NacosSourceInfos GetSourcesSourceNacosSourceInfoArrayInput `pulumi:"nacosSourceInfos"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The ID of the source.
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+	// The name of the source.
+	SourceName pulumi.StringInput `pulumi:"sourceName"`
+	// The type of the source. Valid values: `K8S`, `MSE_NACOS`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The update timestamp of the source.
+	UpdateTime pulumi.IntInput `pulumi:"updateTime"`
+}
+
+func (GetSourcesSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSourcesSource)(nil)).Elem()
+}
+
+func (i GetSourcesSourceArgs) ToGetSourcesSourceOutput() GetSourcesSourceOutput {
+	return i.ToGetSourcesSourceOutputWithContext(context.Background())
+}
+
+func (i GetSourcesSourceArgs) ToGetSourcesSourceOutputWithContext(ctx context.Context) GetSourcesSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSourcesSourceOutput)
+}
+
+// GetSourcesSourceArrayInput is an input type that accepts GetSourcesSourceArray and GetSourcesSourceArrayOutput values.
+// You can construct a concrete instance of `GetSourcesSourceArrayInput` via:
+//
+//	GetSourcesSourceArray{ GetSourcesSourceArgs{...} }
+type GetSourcesSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetSourcesSourceArrayOutput() GetSourcesSourceArrayOutput
+	ToGetSourcesSourceArrayOutputWithContext(context.Context) GetSourcesSourceArrayOutput
+}
+
+type GetSourcesSourceArray []GetSourcesSourceInput
+
+func (GetSourcesSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSourcesSource)(nil)).Elem()
+}
+
+func (i GetSourcesSourceArray) ToGetSourcesSourceArrayOutput() GetSourcesSourceArrayOutput {
+	return i.ToGetSourcesSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSourcesSourceArray) ToGetSourcesSourceArrayOutputWithContext(ctx context.Context) GetSourcesSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSourcesSourceArrayOutput)
+}
+
+type GetSourcesSourceOutput struct{ *pulumi.OutputState }
+
+func (GetSourcesSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSourcesSource)(nil)).Elem()
+}
+
+func (o GetSourcesSourceOutput) ToGetSourcesSourceOutput() GetSourcesSourceOutput {
+	return o
+}
+
+func (o GetSourcesSourceOutput) ToGetSourcesSourceOutputWithContext(ctx context.Context) GetSourcesSourceOutput {
+	return o
+}
+
+// The reason for the association status.
+func (o GetSourcesSourceOutput) AssociationReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.AssociationReason }).(pulumi.StringOutput)
+}
+
+// The association status of the source.
+func (o GetSourcesSourceOutput) AssociationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.AssociationStatus }).(pulumi.StringOutput)
+}
+
+// The creation timestamp of the source.
+func (o GetSourcesSourceOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSourcesSource) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The ID of the gateway instance.
+func (o GetSourcesSourceOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetSourcesSourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ACK cluster source information.
+func (o GetSourcesSourceOutput) K8sSourceInfos() GetSourcesSourceK8sSourceInfoArrayOutput {
+	return o.ApplyT(func(v GetSourcesSource) []GetSourcesSourceK8sSourceInfo { return v.K8sSourceInfos }).(GetSourcesSourceK8sSourceInfoArrayOutput)
+}
+
+// The MSE Nacos source information.
+func (o GetSourcesSourceOutput) NacosSourceInfos() GetSourcesSourceNacosSourceInfoArrayOutput {
+	return o.ApplyT(func(v GetSourcesSource) []GetSourcesSourceNacosSourceInfo { return v.NacosSourceInfos }).(GetSourcesSourceNacosSourceInfoArrayOutput)
+}
+
+// The ID of the resource group.
+func (o GetSourcesSourceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the source.
+func (o GetSourcesSourceOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// The name of the source.
+func (o GetSourcesSourceOutput) SourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.SourceName }).(pulumi.StringOutput)
+}
+
+// The type of the source. Valid values: `K8S`, `MSE_NACOS`.
+func (o GetSourcesSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The update timestamp of the source.
+func (o GetSourcesSourceOutput) UpdateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSourcesSource) int { return v.UpdateTime }).(pulumi.IntOutput)
+}
+
+type GetSourcesSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSourcesSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSourcesSource)(nil)).Elem()
+}
+
+func (o GetSourcesSourceArrayOutput) ToGetSourcesSourceArrayOutput() GetSourcesSourceArrayOutput {
+	return o
+}
+
+func (o GetSourcesSourceArrayOutput) ToGetSourcesSourceArrayOutputWithContext(ctx context.Context) GetSourcesSourceArrayOutput {
+	return o
+}
+
+func (o GetSourcesSourceArrayOutput) Index(i pulumi.IntInput) GetSourcesSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSourcesSource {
+		return vs[0].([]GetSourcesSource)[vs[1].(int)]
+	}).(GetSourcesSourceOutput)
+}
+
+type GetSourcesSourceK8sSourceInfo struct {
+	// The ID of the Nacos cluster.
+	ClusterId string `pulumi:"clusterId"`
+}
+
+// GetSourcesSourceK8sSourceInfoInput is an input type that accepts GetSourcesSourceK8sSourceInfoArgs and GetSourcesSourceK8sSourceInfoOutput values.
+// You can construct a concrete instance of `GetSourcesSourceK8sSourceInfoInput` via:
+//
+//	GetSourcesSourceK8sSourceInfoArgs{...}
+type GetSourcesSourceK8sSourceInfoInput interface {
+	pulumi.Input
+
+	ToGetSourcesSourceK8sSourceInfoOutput() GetSourcesSourceK8sSourceInfoOutput
+	ToGetSourcesSourceK8sSourceInfoOutputWithContext(context.Context) GetSourcesSourceK8sSourceInfoOutput
+}
+
+type GetSourcesSourceK8sSourceInfoArgs struct {
+	// The ID of the Nacos cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+}
+
+func (GetSourcesSourceK8sSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSourcesSourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (i GetSourcesSourceK8sSourceInfoArgs) ToGetSourcesSourceK8sSourceInfoOutput() GetSourcesSourceK8sSourceInfoOutput {
+	return i.ToGetSourcesSourceK8sSourceInfoOutputWithContext(context.Background())
+}
+
+func (i GetSourcesSourceK8sSourceInfoArgs) ToGetSourcesSourceK8sSourceInfoOutputWithContext(ctx context.Context) GetSourcesSourceK8sSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSourcesSourceK8sSourceInfoOutput)
+}
+
+// GetSourcesSourceK8sSourceInfoArrayInput is an input type that accepts GetSourcesSourceK8sSourceInfoArray and GetSourcesSourceK8sSourceInfoArrayOutput values.
+// You can construct a concrete instance of `GetSourcesSourceK8sSourceInfoArrayInput` via:
+//
+//	GetSourcesSourceK8sSourceInfoArray{ GetSourcesSourceK8sSourceInfoArgs{...} }
+type GetSourcesSourceK8sSourceInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSourcesSourceK8sSourceInfoArrayOutput() GetSourcesSourceK8sSourceInfoArrayOutput
+	ToGetSourcesSourceK8sSourceInfoArrayOutputWithContext(context.Context) GetSourcesSourceK8sSourceInfoArrayOutput
+}
+
+type GetSourcesSourceK8sSourceInfoArray []GetSourcesSourceK8sSourceInfoInput
+
+func (GetSourcesSourceK8sSourceInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSourcesSourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (i GetSourcesSourceK8sSourceInfoArray) ToGetSourcesSourceK8sSourceInfoArrayOutput() GetSourcesSourceK8sSourceInfoArrayOutput {
+	return i.ToGetSourcesSourceK8sSourceInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSourcesSourceK8sSourceInfoArray) ToGetSourcesSourceK8sSourceInfoArrayOutputWithContext(ctx context.Context) GetSourcesSourceK8sSourceInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSourcesSourceK8sSourceInfoArrayOutput)
+}
+
+type GetSourcesSourceK8sSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSourcesSourceK8sSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSourcesSourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (o GetSourcesSourceK8sSourceInfoOutput) ToGetSourcesSourceK8sSourceInfoOutput() GetSourcesSourceK8sSourceInfoOutput {
+	return o
+}
+
+func (o GetSourcesSourceK8sSourceInfoOutput) ToGetSourcesSourceK8sSourceInfoOutputWithContext(ctx context.Context) GetSourcesSourceK8sSourceInfoOutput {
+	return o
+}
+
+// The ID of the Nacos cluster.
+func (o GetSourcesSourceK8sSourceInfoOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSourceK8sSourceInfo) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+type GetSourcesSourceK8sSourceInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSourcesSourceK8sSourceInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSourcesSourceK8sSourceInfo)(nil)).Elem()
+}
+
+func (o GetSourcesSourceK8sSourceInfoArrayOutput) ToGetSourcesSourceK8sSourceInfoArrayOutput() GetSourcesSourceK8sSourceInfoArrayOutput {
+	return o
+}
+
+func (o GetSourcesSourceK8sSourceInfoArrayOutput) ToGetSourcesSourceK8sSourceInfoArrayOutputWithContext(ctx context.Context) GetSourcesSourceK8sSourceInfoArrayOutput {
+	return o
+}
+
+func (o GetSourcesSourceK8sSourceInfoArrayOutput) Index(i pulumi.IntInput) GetSourcesSourceK8sSourceInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSourcesSourceK8sSourceInfo {
+		return vs[0].([]GetSourcesSourceK8sSourceInfo)[vs[1].(int)]
+	}).(GetSourcesSourceK8sSourceInfoOutput)
+}
+
+type GetSourcesSourceNacosSourceInfo struct {
+	// The access address of the Nacos instance.
+	Address string `pulumi:"address"`
+	// The ID of the Nacos cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The ID of the MSE Nacos instance.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetSourcesSourceNacosSourceInfoInput is an input type that accepts GetSourcesSourceNacosSourceInfoArgs and GetSourcesSourceNacosSourceInfoOutput values.
+// You can construct a concrete instance of `GetSourcesSourceNacosSourceInfoInput` via:
+//
+//	GetSourcesSourceNacosSourceInfoArgs{...}
+type GetSourcesSourceNacosSourceInfoInput interface {
+	pulumi.Input
+
+	ToGetSourcesSourceNacosSourceInfoOutput() GetSourcesSourceNacosSourceInfoOutput
+	ToGetSourcesSourceNacosSourceInfoOutputWithContext(context.Context) GetSourcesSourceNacosSourceInfoOutput
+}
+
+type GetSourcesSourceNacosSourceInfoArgs struct {
+	// The access address of the Nacos instance.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The ID of the Nacos cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The ID of the MSE Nacos instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetSourcesSourceNacosSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSourcesSourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (i GetSourcesSourceNacosSourceInfoArgs) ToGetSourcesSourceNacosSourceInfoOutput() GetSourcesSourceNacosSourceInfoOutput {
+	return i.ToGetSourcesSourceNacosSourceInfoOutputWithContext(context.Background())
+}
+
+func (i GetSourcesSourceNacosSourceInfoArgs) ToGetSourcesSourceNacosSourceInfoOutputWithContext(ctx context.Context) GetSourcesSourceNacosSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSourcesSourceNacosSourceInfoOutput)
+}
+
+// GetSourcesSourceNacosSourceInfoArrayInput is an input type that accepts GetSourcesSourceNacosSourceInfoArray and GetSourcesSourceNacosSourceInfoArrayOutput values.
+// You can construct a concrete instance of `GetSourcesSourceNacosSourceInfoArrayInput` via:
+//
+//	GetSourcesSourceNacosSourceInfoArray{ GetSourcesSourceNacosSourceInfoArgs{...} }
+type GetSourcesSourceNacosSourceInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSourcesSourceNacosSourceInfoArrayOutput() GetSourcesSourceNacosSourceInfoArrayOutput
+	ToGetSourcesSourceNacosSourceInfoArrayOutputWithContext(context.Context) GetSourcesSourceNacosSourceInfoArrayOutput
+}
+
+type GetSourcesSourceNacosSourceInfoArray []GetSourcesSourceNacosSourceInfoInput
+
+func (GetSourcesSourceNacosSourceInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSourcesSourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (i GetSourcesSourceNacosSourceInfoArray) ToGetSourcesSourceNacosSourceInfoArrayOutput() GetSourcesSourceNacosSourceInfoArrayOutput {
+	return i.ToGetSourcesSourceNacosSourceInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSourcesSourceNacosSourceInfoArray) ToGetSourcesSourceNacosSourceInfoArrayOutputWithContext(ctx context.Context) GetSourcesSourceNacosSourceInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSourcesSourceNacosSourceInfoArrayOutput)
+}
+
+type GetSourcesSourceNacosSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSourcesSourceNacosSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSourcesSourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (o GetSourcesSourceNacosSourceInfoOutput) ToGetSourcesSourceNacosSourceInfoOutput() GetSourcesSourceNacosSourceInfoOutput {
+	return o
+}
+
+func (o GetSourcesSourceNacosSourceInfoOutput) ToGetSourcesSourceNacosSourceInfoOutputWithContext(ctx context.Context) GetSourcesSourceNacosSourceInfoOutput {
+	return o
+}
+
+// The access address of the Nacos instance.
+func (o GetSourcesSourceNacosSourceInfoOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSourceNacosSourceInfo) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The ID of the Nacos cluster.
+func (o GetSourcesSourceNacosSourceInfoOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSourceNacosSourceInfo) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the MSE Nacos instance.
+func (o GetSourcesSourceNacosSourceInfoOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSourcesSourceNacosSourceInfo) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetSourcesSourceNacosSourceInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSourcesSourceNacosSourceInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSourcesSourceNacosSourceInfo)(nil)).Elem()
+}
+
+func (o GetSourcesSourceNacosSourceInfoArrayOutput) ToGetSourcesSourceNacosSourceInfoArrayOutput() GetSourcesSourceNacosSourceInfoArrayOutput {
+	return o
+}
+
+func (o GetSourcesSourceNacosSourceInfoArrayOutput) ToGetSourcesSourceNacosSourceInfoArrayOutputWithContext(ctx context.Context) GetSourcesSourceNacosSourceInfoArrayOutput {
+	return o
+}
+
+func (o GetSourcesSourceNacosSourceInfoArrayOutput) Index(i pulumi.IntInput) GetSourcesSourceNacosSourceInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSourcesSourceNacosSourceInfo {
+		return vs[0].([]GetSourcesSourceNacosSourceInfo)[vs[1].(int)]
+	}).(GetSourcesSourceNacosSourceInfoOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainTlsCipherSuitesConfigInput)(nil)).Elem(), DomainTlsCipherSuitesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainTlsCipherSuitesConfigPtrInput)(nil)).Elem(), DomainTlsCipherSuitesConfigArgs{})
@@ -8897,6 +9804,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceOutlierDetectionConfigPtrInput)(nil)).Elem(), ServiceOutlierDetectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePortInput)(nil)).Elem(), ServicePortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePortArrayInput)(nil)).Elem(), ServicePortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceK8sSourceInfoInput)(nil)).Elem(), SourceK8sSourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceK8sSourceInfoPtrInput)(nil)).Elem(), SourceK8sSourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceNacosSourceInfoInput)(nil)).Elem(), SourceNacosSourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceNacosSourceInfoPtrInput)(nil)).Elem(), SourceNacosSourceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderInput)(nil)).Elem(), GetAiModelProvidersProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderArrayInput)(nil)).Elem(), GetAiModelProvidersProviderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiModelProvidersProviderBoundServiceInput)(nil)).Elem(), GetAiModelProvidersProviderBoundServiceArgs{})
@@ -8931,6 +9842,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginClassesClassArrayInput)(nil)).Elem(), GetPluginClassesClassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesPolicyInput)(nil)).Elem(), GetPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesPolicyArrayInput)(nil)).Elem(), GetPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoInput)(nil)).Elem(), GetRoutesEnvironmentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoPtrInput)(nil)).Elem(), GetRoutesEnvironmentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesEnvironmentInfoGatewayInfoInput)(nil)).Elem(), GetRoutesEnvironmentInfoGatewayInfoArgs{})
@@ -8967,6 +9880,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceOutlierDetectionConfigArrayInput)(nil)).Elem(), GetServicesServiceOutlierDetectionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServicePortInput)(nil)).Elem(), GetServicesServicePortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServicePortArrayInput)(nil)).Elem(), GetServicesServicePortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSourcesSourceInput)(nil)).Elem(), GetSourcesSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSourcesSourceArrayInput)(nil)).Elem(), GetSourcesSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSourcesSourceK8sSourceInfoInput)(nil)).Elem(), GetSourcesSourceK8sSourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSourcesSourceK8sSourceInfoArrayInput)(nil)).Elem(), GetSourcesSourceK8sSourceInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSourcesSourceNacosSourceInfoInput)(nil)).Elem(), GetSourcesSourceNacosSourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSourcesSourceNacosSourceInfoArrayInput)(nil)).Elem(), GetSourcesSourceNacosSourceInfoArray{})
 	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigOutput{})
 	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainTlsCipherSuitesConfigTlsCipherSuiteOutput{})
@@ -9017,6 +9936,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceOutlierDetectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServicePortOutput{})
 	pulumi.RegisterOutputType(ServicePortArrayOutput{})
+	pulumi.RegisterOutputType(SourceK8sSourceInfoOutput{})
+	pulumi.RegisterOutputType(SourceK8sSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(SourceNacosSourceInfoOutput{})
+	pulumi.RegisterOutputType(SourceNacosSourceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetAiModelProvidersProviderOutput{})
 	pulumi.RegisterOutputType(GetAiModelProvidersProviderArrayOutput{})
 	pulumi.RegisterOutputType(GetAiModelProvidersProviderBoundServiceOutput{})
@@ -9051,6 +9974,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPluginClassesClassArrayOutput{})
 	pulumi.RegisterOutputType(GetPluginsPluginOutput{})
 	pulumi.RegisterOutputType(GetPluginsPluginArrayOutput{})
+	pulumi.RegisterOutputType(GetPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoOutput{})
 	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetRoutesEnvironmentInfoGatewayInfoOutput{})
@@ -9087,4 +10012,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServicesServiceOutlierDetectionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServicePortOutput{})
 	pulumi.RegisterOutputType(GetServicesServicePortArrayOutput{})
+	pulumi.RegisterOutputType(GetSourcesSourceOutput{})
+	pulumi.RegisterOutputType(GetSourcesSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetSourcesSourceK8sSourceInfoOutput{})
+	pulumi.RegisterOutputType(GetSourcesSourceK8sSourceInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSourcesSourceNacosSourceInfoOutput{})
+	pulumi.RegisterOutputType(GetSourcesSourceNacosSourceInfoArrayOutput{})
 }

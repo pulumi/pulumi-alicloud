@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Firewall Private Dns can be imported using the id, e.g.
+ * Cloud Firewall Private Dns can be imported using the id, which consists of accessInstanceId and region_no, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudfirewall/privateDns:PrivateDns example &lt;access_instance_id&gt;:&lt;region_no&gt;

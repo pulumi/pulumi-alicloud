@@ -23,6 +23,7 @@ class V3CustomDomainArgs:
     def __init__(__self__, *,
                  auth_config: pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']] = None,
                  cert_config: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_config: pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']] = None,
                  custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,7 @@ class V3CustomDomainArgs:
 
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input['V3CustomDomainCertConfigArgs'] cert_config: HTTPS certificate information See `cert_config` below.
+        :param pulumi.Input[_builtins.str] certificate_id: The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
         :param pulumi.Input['V3CustomDomainCorsConfigArgs'] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
         :param pulumi.Input[_builtins.str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
@@ -45,6 +47,8 @@ class V3CustomDomainArgs:
             pulumi.set(__self__, "auth_config", auth_config)
         if cert_config is not None:
             pulumi.set(__self__, "cert_config", cert_config)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if cors_config is not None:
             pulumi.set(__self__, "cors_config", cors_config)
         if custom_domain_name is not None:
@@ -81,6 +85,18 @@ class V3CustomDomainArgs:
     @cert_config.setter
     def cert_config(self, value: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="corsConfig")
@@ -162,6 +178,7 @@ class _V3CustomDomainState:
                  api_version: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_config: pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']] = None,
                  cert_config: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_config: pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -178,6 +195,7 @@ class _V3CustomDomainState:
         :param pulumi.Input[_builtins.str] api_version: API version of Function Compute.
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input['V3CustomDomainCertConfigArgs'] cert_config: HTTPS certificate information See `cert_config` below.
+        :param pulumi.Input[_builtins.str] certificate_id: The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
         :param pulumi.Input['V3CustomDomainCorsConfigArgs'] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
@@ -196,6 +214,8 @@ class _V3CustomDomainState:
             pulumi.set(__self__, "auth_config", auth_config)
         if cert_config is not None:
             pulumi.set(__self__, "cert_config", cert_config)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if cors_config is not None:
             pulumi.set(__self__, "cors_config", cors_config)
         if create_time is not None:
@@ -262,6 +282,18 @@ class _V3CustomDomainState:
     @cert_config.setter
     def cert_config(self, value: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="corsConfig")
@@ -380,6 +412,7 @@ class V3CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
                  cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
                  custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -575,6 +608,38 @@ class V3CustomDomain(pulumi.CustomResource):
             })
         ```
 
+        Bind an HTTPS certificate managed by SSL Certificates Service (CAS) by id, instead of pasting the PEM material:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
+        function_name1 = config.get("functionName1")
+        if function_name1 is None:
+            function_name1 = "terraform-custom-domain-t1"
+        default = alicloud.cas.ServiceCertificate("default",
+            certificate_name="tf-cert-example",
+            cert=std.file(input="cert.pem").result,
+            key=std.file(input="key.pem").result)
+        default_v3_custom_domain = alicloud.fc.V3CustomDomain("default",
+            custom_domain_name=name,
+            protocol="HTTP,HTTPS",
+            certificate_id=default.id,
+            route_config={
+                "routes": [{
+                    "function_name": function_name1,
+                    "path": "/a",
+                    "qualifier": "LATEST",
+                    "methods": ["GET"],
+                }],
+            })
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -590,6 +655,7 @@ class V3CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']] cert_config: HTTPS certificate information See `cert_config` below.
+        :param pulumi.Input[_builtins.str] certificate_id: The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
         :param pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
         :param pulumi.Input[_builtins.str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
@@ -791,6 +857,38 @@ class V3CustomDomain(pulumi.CustomResource):
             })
         ```
 
+        Bind an HTTPS certificate managed by SSL Certificates Service (CAS) by id, instead of pasting the PEM material:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
+        function_name1 = config.get("functionName1")
+        if function_name1 is None:
+            function_name1 = "terraform-custom-domain-t1"
+        default = alicloud.cas.ServiceCertificate("default",
+            certificate_name="tf-cert-example",
+            cert=std.file(input="cert.pem").result,
+            key=std.file(input="key.pem").result)
+        default_v3_custom_domain = alicloud.fc.V3CustomDomain("default",
+            custom_domain_name=name,
+            protocol="HTTP,HTTPS",
+            certificate_id=default.id,
+            route_config={
+                "routes": [{
+                    "function_name": function_name1,
+                    "path": "/a",
+                    "qualifier": "LATEST",
+                    "methods": ["GET"],
+                }],
+            })
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -819,6 +917,7 @@ class V3CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
                  cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
                  custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -836,6 +935,7 @@ class V3CustomDomain(pulumi.CustomResource):
 
             __props__.__dict__["auth_config"] = auth_config
             __props__.__dict__["cert_config"] = cert_config
+            __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["cors_config"] = cors_config
             __props__.__dict__["custom_domain_name"] = custom_domain_name
             __props__.__dict__["protocol"] = protocol
@@ -861,6 +961,7 @@ class V3CustomDomain(pulumi.CustomResource):
             api_version: pulumi.Input[Optional[_builtins.str]] = None,
             auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
             cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
             cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -881,6 +982,7 @@ class V3CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_version: API version of Function Compute.
         :param pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']] cert_config: HTTPS certificate information See `cert_config` below.
+        :param pulumi.Input[_builtins.str] certificate_id: The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
         :param pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
@@ -899,6 +1001,7 @@ class V3CustomDomain(pulumi.CustomResource):
         __props__.__dict__["api_version"] = api_version
         __props__.__dict__["auth_config"] = auth_config
         __props__.__dict__["cert_config"] = cert_config
+        __props__.__dict__["certificate_id"] = certificate_id
         __props__.__dict__["cors_config"] = cors_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_domain_name"] = custom_domain_name
@@ -941,6 +1044,14 @@ class V3CustomDomain(pulumi.CustomResource):
         HTTPS certificate information See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of an SSL certificate managed by SSL Certificates Service (CAS). When set, the provider resolves the certificate and private key from the referenced SSL certificate and binds them as the HTTPS certificate for the custom domain, so that a certificate managed in SSL Certificates Service can be referenced without pasting the PEM material. It conflicts with `cert_config.0.certificate` and `cert_config.0.private_key`. The resolved private key is never persisted to state.
+        """
+        return pulumi.get(self, "certificate_id")
 
     @_builtins.property
     @pulumi.getter(name="corsConfig")

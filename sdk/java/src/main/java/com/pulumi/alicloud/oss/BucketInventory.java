@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OSS Bucket Inventory can be imported using the id, e.g.
+ * OSS Bucket Inventory can be imported using the id, which consists of bucket and inventory_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:oss/bucketInventory:BucketInventory example &lt;bucket&gt;:&lt;inventory_id&gt;

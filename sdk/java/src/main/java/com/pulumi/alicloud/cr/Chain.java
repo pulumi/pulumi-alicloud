@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CR Chain can be imported using the id, e.g.
+ * CR Chain can be imported using the id, which consists of instanceId and chain_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cr/chain:Chain example &lt;instance_id&gt;:&lt;chain_id&gt;

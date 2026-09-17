@@ -20,6 +20,7 @@ from .dynamo_item import *
 from .dynamo_table import *
 from .endpoint import *
 from .endpoint_address import *
+from .gateway import *
 from .get_accounts import *
 from .get_clusters import *
 from .get_databases import *

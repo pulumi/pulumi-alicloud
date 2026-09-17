@@ -51,11 +51,40 @@ import (
 //
 // ```
 //
+// Omit `authType` to use the default `NORMAL`
+//
+// When `authType` is not set, the server defaults to `NORMAL` and the resource ID formats as `<authorized_user_id>:NORMAL`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pvtz.NewUserVpcAuthorization(ctx, "default", &pvtz.UserVpcAuthorizationArgs{
+//				AuthorizedUserId: pulumi.String("123456789"),
+//				AuthChannel:      pulumi.String("RESOURCE_DIRECTORY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //
-// Private Zone User Vpc Authorization can be imported using the id, e.g.
+// Private Zone User Vpc Authorization can be imported using the id, which consists of authorizedUserId and auth_type, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
@@ -65,8 +94,8 @@ type UserVpcAuthorization struct {
 
 	// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
 	AuthChannel pulumi.StringPtrOutput `pulumi:"authChannel"`
-	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
-	AuthType pulumi.StringPtrOutput `pulumi:"authType"`
+	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
+	AuthType pulumi.StringOutput `pulumi:"authType"`
 	// The primary account ID of the user who authorizes the resource.
 	AuthorizedUserId pulumi.StringOutput `pulumi:"authorizedUserId"`
 }
@@ -106,7 +135,7 @@ func GetUserVpcAuthorization(ctx *pulumi.Context,
 type userVpcAuthorizationState struct {
 	// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
 	AuthChannel *string `pulumi:"authChannel"`
-	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
 	AuthType *string `pulumi:"authType"`
 	// The primary account ID of the user who authorizes the resource.
 	AuthorizedUserId *string `pulumi:"authorizedUserId"`
@@ -115,7 +144,7 @@ type userVpcAuthorizationState struct {
 type UserVpcAuthorizationState struct {
 	// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
 	AuthChannel pulumi.StringPtrInput
-	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
 	AuthType pulumi.StringPtrInput
 	// The primary account ID of the user who authorizes the resource.
 	AuthorizedUserId pulumi.StringPtrInput
@@ -128,7 +157,7 @@ func (UserVpcAuthorizationState) ElementType() reflect.Type {
 type userVpcAuthorizationArgs struct {
 	// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
 	AuthChannel *string `pulumi:"authChannel"`
-	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
 	AuthType *string `pulumi:"authType"`
 	// The primary account ID of the user who authorizes the resource.
 	AuthorizedUserId string `pulumi:"authorizedUserId"`
@@ -138,7 +167,7 @@ type userVpcAuthorizationArgs struct {
 type UserVpcAuthorizationArgs struct {
 	// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
 	AuthChannel pulumi.StringPtrInput
-	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+	// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
 	AuthType pulumi.StringPtrInput
 	// The primary account ID of the user who authorizes the resource.
 	AuthorizedUserId pulumi.StringInput
@@ -236,9 +265,9 @@ func (o UserVpcAuthorizationOutput) AuthChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserVpcAuthorization) pulumi.StringPtrOutput { return v.AuthChannel }).(pulumi.StringPtrOutput)
 }
 
-// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
-func (o UserVpcAuthorizationOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserVpcAuthorization) pulumi.StringPtrOutput { return v.AuthType }).(pulumi.StringPtrOutput)
+// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`. If omitted, defaults to `NORMAL`.
+func (o UserVpcAuthorizationOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserVpcAuthorization) pulumi.StringOutput { return v.AuthType }).(pulumi.StringOutput)
 }
 
 // The primary account ID of the user who authorizes the resource.

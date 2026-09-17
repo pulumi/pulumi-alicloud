@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// ## Import
     /// 
-    /// cr Artifact Subscription Rule can be imported using the id, e.g.
+    /// cr Artifact Subscription Rule can be imported using the id, which consists of InstanceId and artifact_subscription_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cr/artifactSubscriptionRule:ArtifactSubscriptionRule example &lt;instance_id&gt;:&lt;artifact_subscription_rule_id&gt;

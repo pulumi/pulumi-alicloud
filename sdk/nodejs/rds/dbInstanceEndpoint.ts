@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RDS database endpoint feature can be imported using the id, e.g.
+ * RDS database endpoint feature can be imported using the id, which consists of dbInstanceId and db_instance_endpoint_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>

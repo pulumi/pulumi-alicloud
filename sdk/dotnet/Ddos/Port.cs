@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// Ddos Coo Port can be imported using the id, e.g.
+    /// Ddos Coo Port can be imported using the id, which consists of instance_id, FrontendPort and frontend_protocol, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ddos/port:Port example &lt;instance_id&gt;:&lt;frontend_port&gt;:&lt;frontend_protocol&gt;

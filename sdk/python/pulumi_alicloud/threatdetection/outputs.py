@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'AntiBruteForceRuleProtocolType',
     'AttackPathSensitiveAssetConfigAttackPathAssetList',
+    'AttackPathWhitelistAttackPathAssetList',
     'CheckConfigSelectedCheck',
     'HoneypotPresetMeta',
     'HoneypotProbeHoneypotBindList',
@@ -26,6 +27,8 @@ __all__ = [
     'SasTrailServiceTrail',
     'GetAntiBruteForceRulesRuleResult',
     'GetAssetsAssetResult',
+    'GetAttackPathWhitelistsWhitelistResult',
+    'GetAttackPathWhitelistsWhitelistAttackPathAssetListResult',
     'GetBackupPoliciesPolicyResult',
     'GetBaselineStrategiesStrategyResult',
     'GetCheckItemConfigsConfigResult',
@@ -191,6 +194,109 @@ class AttackPathSensitiveAssetConfigAttackPathAssetList(dict):
         Cloud product asset vendor. Valid values: `0`.
         """
         return pulumi.get(self, "vendor")
+
+
+@pulumi.output_type
+class AttackPathWhitelistAttackPathAssetList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assetSubType":
+            suggest = "asset_sub_type"
+        elif key == "assetType":
+            suggest = "asset_type"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "nodeType":
+            suggest = "node_type"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackPathWhitelistAttackPathAssetList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackPathWhitelistAttackPathAssetList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackPathWhitelistAttackPathAssetList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vendor: _builtins.int,
+                 asset_sub_type: Optional[_builtins.int] = None,
+                 asset_type: Optional[_builtins.int] = None,
+                 instance_id: Optional[_builtins.str] = None,
+                 node_type: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int vendor: The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+        :param _builtins.int asset_sub_type: The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+        :param _builtins.int asset_type: The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+        :param _builtins.str instance_id: The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+        :param _builtins.str node_type: The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+        :param _builtins.str region_id: The region ID of the cloud product asset instance.
+        """
+        pulumi.set(__self__, "vendor", vendor)
+        if asset_sub_type is not None:
+            pulumi.set(__self__, "asset_sub_type", asset_sub_type)
+        if asset_type is not None:
+            pulumi.set(__self__, "asset_type", asset_type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> _builtins.int:
+        """
+        The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+        """
+        return pulumi.get(self, "vendor")
+
+    @_builtins.property
+    @pulumi.getter(name="assetSubType")
+    def asset_sub_type(self) -> Optional[_builtins.int]:
+        """
+        The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+        """
+        return pulumi.get(self, "asset_sub_type")
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> Optional[_builtins.int]:
+        """
+        The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+        """
+        return pulumi.get(self, "node_type")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region ID of the cloud product asset instance.
+        """
+        return pulumi.get(self, "region_id")
 
 
 @pulumi.output_type
@@ -897,6 +1003,174 @@ class GetAssetsAssetResult(dict):
         The ID of the VPC to which the asset belongs.
         """
         return pulumi.get(self, "vpc_instance_id")
+
+
+@pulumi.output_type
+class GetAttackPathWhitelistsWhitelistResult(dict):
+    def __init__(__self__, *,
+                 attack_path_asset_lists: Sequence['outputs.GetAttackPathWhitelistsWhitelistAttackPathAssetListResult'],
+                 attack_path_whitelist_id: _builtins.str,
+                 id: _builtins.str,
+                 path_name: _builtins.str,
+                 path_type: _builtins.str,
+                 remark: _builtins.str,
+                 whitelist_name: _builtins.str,
+                 whitelist_type: _builtins.str):
+        """
+        :param Sequence['GetAttackPathWhitelistsWhitelistAttackPathAssetListArgs'] attack_path_asset_lists: **NOTE:** This field is only available when `enable_details` is `true`. The list of attack path cloud product assets.
+        :param _builtins.str attack_path_whitelist_id: The ID of the attack path whitelist.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str path_name: The path name of the whitelist.
+        :param _builtins.str path_type: The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
+        :param _builtins.str remark: The remarks of the whitelist.
+        :param _builtins.str whitelist_name: The name of the whitelist.
+        :param _builtins.str whitelist_type: The type of the whitelist.
+        """
+        pulumi.set(__self__, "attack_path_asset_lists", attack_path_asset_lists)
+        pulumi.set(__self__, "attack_path_whitelist_id", attack_path_whitelist_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "path_name", path_name)
+        pulumi.set(__self__, "path_type", path_type)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "whitelist_name", whitelist_name)
+        pulumi.set(__self__, "whitelist_type", whitelist_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attackPathAssetLists")
+    def attack_path_asset_lists(self) -> Sequence['outputs.GetAttackPathWhitelistsWhitelistAttackPathAssetListResult']:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The list of attack path cloud product assets.
+        """
+        return pulumi.get(self, "attack_path_asset_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="attackPathWhitelistId")
+    def attack_path_whitelist_id(self) -> _builtins.str:
+        """
+        The ID of the attack path whitelist.
+        """
+        return pulumi.get(self, "attack_path_whitelist_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="pathName")
+    def path_name(self) -> _builtins.str:
+        """
+        The path name of the whitelist.
+        """
+        return pulumi.get(self, "path_name")
+
+    @_builtins.property
+    @pulumi.getter(name="pathType")
+    def path_type(self) -> _builtins.str:
+        """
+        The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
+        """
+        return pulumi.get(self, "path_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def remark(self) -> _builtins.str:
+        """
+        The remarks of the whitelist.
+        """
+        return pulumi.get(self, "remark")
+
+    @_builtins.property
+    @pulumi.getter(name="whitelistName")
+    def whitelist_name(self) -> _builtins.str:
+        """
+        The name of the whitelist.
+        """
+        return pulumi.get(self, "whitelist_name")
+
+    @_builtins.property
+    @pulumi.getter(name="whitelistType")
+    def whitelist_type(self) -> _builtins.str:
+        """
+        The type of the whitelist.
+        """
+        return pulumi.get(self, "whitelist_type")
+
+
+@pulumi.output_type
+class GetAttackPathWhitelistsWhitelistAttackPathAssetListResult(dict):
+    def __init__(__self__, *,
+                 asset_sub_type: _builtins.int,
+                 asset_type: _builtins.int,
+                 instance_id: _builtins.str,
+                 node_type: _builtins.str,
+                 region_id: _builtins.str,
+                 vendor: _builtins.int):
+        """
+        :param _builtins.int asset_sub_type: The subtype of the cloud product asset.
+        :param _builtins.int asset_type: The type of the cloud product asset.
+        :param _builtins.str instance_id: The instance ID of the cloud product asset.
+        :param _builtins.str node_type: The type of the whitelist node.
+        :param _builtins.str region_id: The region ID of the cloud product asset instance.
+        :param _builtins.int vendor: The vendor of the cloud product asset.
+        """
+        pulumi.set(__self__, "asset_sub_type", asset_sub_type)
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "node_type", node_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @_builtins.property
+    @pulumi.getter(name="assetSubType")
+    def asset_sub_type(self) -> _builtins.int:
+        """
+        The subtype of the cloud product asset.
+        """
+        return pulumi.get(self, "asset_sub_type")
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> _builtins.int:
+        """
+        The type of the cloud product asset.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The instance ID of the cloud product asset.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> _builtins.str:
+        """
+        The type of the whitelist node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the cloud product asset instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> _builtins.int:
+        """
+        The vendor of the cloud product asset.
+        """
+        return pulumi.get(self, "vendor")
 
 
 @pulumi.output_type

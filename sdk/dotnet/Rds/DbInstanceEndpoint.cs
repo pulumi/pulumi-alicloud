@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// ## Import
     /// 
-    /// RDS database endpoint feature can be imported using the id, e.g.
+    /// RDS database endpoint feature can be imported using the id, which consists of DbInstanceId and db_instance_endpoint_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example &lt;db_instance_id&gt;:&lt;db_instance_endpoint_id&gt;

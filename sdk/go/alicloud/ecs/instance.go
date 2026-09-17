@@ -168,6 +168,7 @@ type Instance struct {
 	// (Available since v1.232.0) The time when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringOutput `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
@@ -220,6 +221,8 @@ type Instance struct {
 	// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+	InstanceMetadataTags pulumi.StringOutput `pulumi:"instanceMetadataTags"`
 	// The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
@@ -339,6 +342,8 @@ type Instance struct {
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
+	//
+	// > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
 	SecurityEnhancementStrategy pulumi.StringOutput `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	//
@@ -472,6 +477,7 @@ type instanceState struct {
 	// (Available since v1.232.0) The time when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
@@ -524,6 +530,8 @@ type instanceState struct {
 	// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+	InstanceMetadataTags *string `pulumi:"instanceMetadataTags"`
 	// The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
 	InstanceName *string `pulumi:"instanceName"`
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
@@ -643,6 +651,8 @@ type instanceState struct {
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
+	//
+	// > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	//
@@ -740,6 +750,7 @@ type InstanceState struct {
 	// (Available since v1.232.0) The time when the instance was created.
 	CreateTime pulumi.StringPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayInput
@@ -792,6 +803,8 @@ type InstanceState struct {
 	// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType pulumi.StringPtrInput
+	// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+	InstanceMetadataTags pulumi.StringPtrInput
 	// The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
 	InstanceName pulumi.StringPtrInput
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
@@ -911,6 +924,8 @@ type InstanceState struct {
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
+	//
+	// > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	//
@@ -1008,6 +1023,7 @@ type instanceArgs struct {
 	// The options of cpu. See `cpuOptions` below.
 	CpuOptions *InstanceCpuOptions `pulumi:"cpuOptions"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
@@ -1056,6 +1072,8 @@ type instanceArgs struct {
 	// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+	InstanceMetadataTags *string `pulumi:"instanceMetadataTags"`
 	// The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
 	InstanceName *string `pulumi:"instanceName"`
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
@@ -1165,6 +1183,8 @@ type instanceArgs struct {
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
+	//
+	// > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	//
@@ -1255,6 +1275,7 @@ type InstanceArgs struct {
 	// The options of cpu. See `cpuOptions` below.
 	CpuOptions InstanceCpuOptionsPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayInput
@@ -1303,6 +1324,8 @@ type InstanceArgs struct {
 	// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType pulumi.StringPtrInput
+	// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+	InstanceMetadataTags pulumi.StringPtrInput
 	// The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
 	InstanceName pulumi.StringPtrInput
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
@@ -1412,6 +1435,8 @@ type InstanceArgs struct {
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
+	//
+	// > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	//
@@ -1612,6 +1637,7 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 func (o InstanceOutput) CreditSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreditSpecification }).(pulumi.StringOutput)
 }
@@ -1725,6 +1751,11 @@ func (o InstanceOutput) IncludeDataDisks() pulumi.BoolPtrOutput {
 // there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to expose the tags of the instance in the instance metadata. Valid values: `enabled`, `disabled`. Default value: `disabled`.
+func (o InstanceOutput) InstanceMetadataTags() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceMetadataTags }).(pulumi.StringOutput)
 }
 
 // The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
@@ -1966,6 +1997,8 @@ func (o InstanceOutput) SecondaryPrivateIps() pulumi.StringArrayOutput {
 // The security enhancement strategy.
 // - Active: Enable security enhancement strategy, it only works on system images.
 // - Deactive: Disable security enhancement strategy, it works on all images.
+//
+// > **NOTE:** The ECS API does not return `securityEnhancementStrategy`, so the provider cannot read it back into the state. For an imported instance (or an instance created without this field), the state value is empty; in this case, configuring or changing `securityEnhancementStrategy` is ignored and will not force the instance to be recreated.
 func (o InstanceOutput) SecurityEnhancementStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringOutput)
 }

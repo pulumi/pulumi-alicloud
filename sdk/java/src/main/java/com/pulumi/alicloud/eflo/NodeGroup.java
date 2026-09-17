@@ -244,7 +244,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Eflo Node Group can be imported using the id, e.g.
+ * Eflo Node Group can be imported using the id, which consists of clusterId and node_group_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:eflo/nodeGroup:NodeGroup example &lt;cluster_id&gt;:&lt;node_group_id&gt;

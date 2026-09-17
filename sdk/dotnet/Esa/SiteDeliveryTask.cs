@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Site Delivery Task can be imported using the id, e.g.
+    /// ESA Site Delivery Task can be imported using the id, which consists of SiteId and task_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/siteDeliveryTask:SiteDeliveryTask example &lt;site_id&gt;:&lt;task_name&gt;

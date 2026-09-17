@@ -3,9 +3,11 @@
 
 package com.pulumi.alicloud.alb.inputs;
 
+import com.pulumi.alicloud.alb.inputs.AclEntryAttachmentEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,14 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
     public static final AclEntryAttachmentState Empty = new AclEntryAttachmentState();
 
     /**
-     * The ID of the Acl.
+     * The ID of the ACL.
      * 
      */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
     /**
-     * @return The ID of the Acl.
+     * @return The ID of the ACL.
      * 
      */
     public Optional<Output<String>> aclId() {
@@ -31,14 +33,14 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The description of the entry.
+     * The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the entry.
+     * @return The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,29 +48,52 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The CIDR blocks.
+     * One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      * 
      */
+    @Import(name="entries")
+    private @Nullable Output<List<AclEntryAttachmentEntryArgs>> entries;
+
+    /**
+     * @return One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+     * 
+     */
+    public Optional<Output<List<AclEntryAttachmentEntryArgs>>> entries() {
+        return Optional.ofNullable(this.entries);
+    }
+
+    /**
+     * The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+     * 
+     * @deprecated
+     * Field &#39;entry&#39; has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+     * 
+     */
+    @Deprecated /* Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'. */
     @Import(name="entry")
     private @Nullable Output<String> entry;
 
     /**
-     * @return The CIDR blocks.
+     * @return The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+     * 
+     * @deprecated
+     * Field &#39;entry&#39; has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
      * 
      */
+    @Deprecated /* Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'. */
     public Optional<Output<String>> entry() {
         return Optional.ofNullable(this.entry);
     }
 
     /**
-     * The Status of the resource.
+     * The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Status of the resource.
+     * @return The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
      * 
      */
     public Optional<Output<String>> status() {
@@ -80,6 +105,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
     private AclEntryAttachmentState(AclEntryAttachmentState $) {
         this.aclId = $.aclId;
         this.description = $.description;
+        this.entries = $.entries;
         this.entry = $.entry;
         this.status = $.status;
     }
@@ -103,7 +129,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param aclId The ID of the Acl.
+         * @param aclId The ID of the ACL.
          * 
          * @return builder
          * 
@@ -114,7 +140,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param aclId The ID of the Acl.
+         * @param aclId The ID of the ACL.
          * 
          * @return builder
          * 
@@ -124,7 +150,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the entry.
+         * @param description The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
          * 
          * @return builder
          * 
@@ -135,7 +161,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the entry.
+         * @param description The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
          * 
          * @return builder
          * 
@@ -145,28 +171,67 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param entry The CIDR blocks.
+         * @param entries One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
          * 
          * @return builder
          * 
          */
+        public Builder entries(@Nullable Output<List<AclEntryAttachmentEntryArgs>> entries) {
+            $.entries = entries;
+            return this;
+        }
+
+        /**
+         * @param entries One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entries(List<AclEntryAttachmentEntryArgs> entries) {
+            return entries(Output.of(entries));
+        }
+
+        /**
+         * @param entries One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entries(AclEntryAttachmentEntryArgs... entries) {
+            return entries(List.of(entries));
+        }
+
+        /**
+         * @param entry The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;entry&#39; has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+         * 
+         */
+        @Deprecated /* Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'. */
         public Builder entry(@Nullable Output<String> entry) {
             $.entry = entry;
             return this;
         }
 
         /**
-         * @param entry The CIDR blocks.
+         * @param entry The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;entry&#39; has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+         * 
          */
+        @Deprecated /* Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'. */
         public Builder entry(String entry) {
             return entry(Output.of(entry));
         }
 
         /**
-         * @param status The Status of the resource.
+         * @param status The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
          * 
          * @return builder
          * 
@@ -177,7 +242,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The Status of the resource.
+         * @param status The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
          * 
          * @return builder
          * 

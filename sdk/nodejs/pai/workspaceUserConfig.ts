@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * PAI Workspace User Config can be imported using the id, e.g.
+ * PAI Workspace User Config can be imported using the id, which consists of categoryName and config_key, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:pai/workspaceUserConfig:WorkspaceUserConfig example <category_name>:<config_key>

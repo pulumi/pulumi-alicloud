@@ -1487,6 +1487,21 @@ export namespace alb {
         status: string;
     }
 
+    export interface AclEntryAttachmentEntry {
+        /**
+         * The description of the ACL entry. The description must be `1` to `256` characters in length.
+         */
+        description?: string;
+        /**
+         * The CIDR block of the ACL entry.
+         */
+        entry: string;
+        /**
+         * The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+         */
+        status: string;
+    }
+
     export interface GetAclsAcl {
         /**
          * ACL Entries.
@@ -4550,6 +4565,53 @@ export namespace apig {
         pluginId: string;
     }
 
+    export interface GetPoliciesPolicy {
+        /**
+         * The ID of the attach point resource to filter policies by.
+         */
+        attachResourceIds: string[];
+        /**
+         * Policies support mount point types. Valid values: `HttpApi`, `Operation`, `GatewayRoute`, `GatewayService`, `GatewayServicePort`, `Domain`, `Gateway`.
+         */
+        attachResourceType: string;
+        /**
+         * Environment id.
+         */
+        environmentId: string;
+        /**
+         * Gateway id.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the Policy.
+         */
+        id: string;
+        /**
+         * Policy attachment id.
+         */
+        policyAttachmentId: string;
+        /**
+         * Policy class id.
+         */
+        policyClassId: string;
+        /**
+         * Policy class name.
+         */
+        policyClassName: string;
+        /**
+         * Policy configuration.
+         */
+        policyConfig: string;
+        /**
+         * The first ID of the resource.
+         */
+        policyId: string;
+        /**
+         * Policy name.
+         */
+        policyName: string;
+    }
+
     export interface GetRoutesEnvironmentInfo {
         /**
          * The alias of the environment name.
@@ -5008,6 +5070,79 @@ export namespace apig {
         protocol: string;
     }
 
+    export interface GetSourcesSource {
+        /**
+         * The reason for the association status.
+         */
+        associationReason: string;
+        /**
+         * The association status of the source.
+         */
+        associationStatus: string;
+        /**
+         * The creation timestamp of the source.
+         */
+        createTime: number;
+        /**
+         * The ID of the gateway instance.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The ACK cluster source information.
+         */
+        k8sSourceInfos: outputs.apig.GetSourcesSourceK8sSourceInfo[];
+        /**
+         * The MSE Nacos source information.
+         */
+        nacosSourceInfos: outputs.apig.GetSourcesSourceNacosSourceInfo[];
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The ID of the source.
+         */
+        sourceId: string;
+        /**
+         * The name of the source.
+         */
+        sourceName: string;
+        /**
+         * The type of the source. Valid values: `K8S`, `MSE_NACOS`.
+         */
+        type: string;
+        /**
+         * The update timestamp of the source.
+         */
+        updateTime: number;
+    }
+
+    export interface GetSourcesSourceK8sSourceInfo {
+        /**
+         * The ID of the Nacos cluster.
+         */
+        clusterId: string;
+    }
+
+    export interface GetSourcesSourceNacosSourceInfo {
+        /**
+         * The access address of the Nacos instance.
+         */
+        address: string;
+        /**
+         * The ID of the Nacos cluster.
+         */
+        clusterId: string;
+        /**
+         * The ID of the MSE Nacos instance.
+         */
+        instanceId: string;
+    }
+
     export interface RouteBackend {
         /**
          * The backend service scenario.
@@ -5248,6 +5383,28 @@ export namespace apig {
          * > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
          */
         protocol: string;
+    }
+
+    export interface SourceK8sSourceInfo {
+        /**
+         * The ID of the ACK cluster.
+         */
+        clusterId?: string;
+    }
+
+    export interface SourceNacosSourceInfo {
+        /**
+         * The access address of the Nacos instance.
+         */
+        address: string;
+        /**
+         * The ID of the Nacos cluster.
+         */
+        clusterId: string;
+        /**
+         * The ID of the MSE Nacos instance.
+         */
+        instanceId?: string;
     }
 
 }
@@ -16287,6 +16444,37 @@ export namespace cms {
         type: string;
     }
 
+    export interface GetDatasetsDataset {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The name of the resource.
+         */
+        datasetName: string;
+        /**
+         * The description of the dataset.
+         */
+        description: string;
+        /**
+         * The ID of the resource. It is formatted as `<workspace>:<dataset_name>`.
+         */
+        id: string;
+        /**
+         * The region ID of the resource.
+         */
+        regionId: string;
+        /**
+         * The last modified time of the resource.
+         */
+        updateTime: string;
+        /**
+         * The name of the workspace to which the datasets belong.
+         */
+        workspace: string;
+    }
+
     export interface GetDynamicTagGroupsGroup {
         /**
          * The ID of the tag rule.
@@ -19540,7 +19728,7 @@ export namespace cr {
          */
         instanceDomain: string;
         /**
-         * Storage domain name.
+         * Storage domain name. The API returns this value with an `https://` prefix; the prefix is optional in the configuration and is ignored when comparing the configured value with the returned one.
          */
         storageDomain: string;
     }
@@ -22302,6 +22490,20 @@ export namespace cs {
          * The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
          */
         privatePoolOptionsMatchCriteria?: string;
+    }
+
+    export interface NodePoolResourcePoolOptions {
+        /**
+         * The list of private pool IDs, that is, the IDs of elasticity assurance services or capacity reservation services. Only Target mode private pool IDs can be passed in. The value of N ranges from 1 to 20. For example, `eap-bp67acfmxazb4****`.
+         */
+        privatePoolIds?: string[];
+        /**
+         * The resource pool strategy used when launching instances. Default value: `None`. Valid values:
+         * * `PrivatePoolFirst`: Private pool first. When this strategy is selected and `resource_pool_options.private_pool_ids` is specified, the specified private pools are used first. If no private pool is specified or the specified private pool does not have enough capacity, an Open type private pool is automatically matched. If no eligible private pool is available, the public pool is used to launch instances.
+         * * `PrivatePoolOnly`: Private pool only. When this strategy is selected, `resource_pool_options.private_pool_ids` must be specified. If the specified private pool does not have enough capacity, the instances fail to start.
+         * * `None`: Do not use the resource pool strategy.
+         */
+        strategy?: string;
     }
 
     export interface NodePoolRollingPolicy {
@@ -27946,6 +28148,144 @@ export namespace ebs {
          * Create parameter Value.
          */
         parameterValue: string;
+    }
+
+}
+
+export namespace ecddesktop {
+    export interface GetGroupsGroup {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Whether cloud desktops can be automatically created for the subscription desktop group.
+         */
+        allowAutoSetup: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of cloud desktops that are reserved in the desktop group.
+         */
+        allowBufferCount: number;
+        /**
+         * The ID of the desktop template.
+         */
+        bundleId: string;
+        /**
+         * The remarks of the desktop group.
+         */
+        comments: string;
+        /**
+         * The number of vCPUs.
+         */
+        cpu: number;
+        /**
+         * The time when the desktop group was created. The time follows the ISO 8601 standard in UTC.
+         */
+        createTime: string;
+        /**
+         * The ID of the Alibaba Cloud account that created the desktop group.
+         */
+        creator: string;
+        /**
+         * The category of the data disk.
+         */
+        dataDiskCategory: string;
+        /**
+         * The size of the data disk. Unit: GiB.
+         */
+        dataDiskSize: string;
+        /**
+         * The ID of the desktop group.
+         */
+        desktopGroupId: string;
+        /**
+         * The name of the desktop group. Fuzzy search is supported.
+         */
+        desktopGroupName: string;
+        /**
+         * The ID of the directory.
+         */
+        directoryId: string;
+        /**
+         * The type of the directory.
+         */
+        directoryType: string;
+        /**
+         * The number of end users authorized to use the desktop group.
+         */
+        endUserCount: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The list of IDs of the end users authorized to use the desktop group.
+         */
+        endUserIds: string[];
+        /**
+         * The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
+         */
+        expiredTime: string;
+        /**
+         * The number of GPUs.
+         */
+        gpuCount: number;
+        /**
+         * The GPU specifications.
+         */
+        gpuSpec: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The retention duration of a session after it is disconnected. Unit: milliseconds.
+         */
+        keepDuration: number;
+        /**
+         * The maximum number of cloud desktops that the desktop group can contain.
+         */
+        maxDesktopsCount: number;
+        /**
+         * The memory size. Unit: MiB.
+         */
+        memory: number;
+        /**
+         * The minimum number of cloud desktops that the desktop group automatically creates.
+         */
+        minDesktopsCount: number;
+        /**
+         * The ID of the office network to which the desktop groups belong.
+         */
+        officeSiteId: string;
+        /**
+         * The name of the office network.
+         */
+        officeSiteName: string;
+        /**
+         * The type of the account system of the office network.
+         */
+        officeSiteType: string;
+        /**
+         * The name of the desktop template.
+         */
+        ownBundleName: string;
+        /**
+         * The billing method.
+         */
+        payType: string;
+        /**
+         * The ID of the policy group.
+         */
+        policyGroupId: string;
+        /**
+         * The name of the policy group.
+         */
+        policyGroupName: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The type of the resource.
+         */
+        resType: number;
+        /**
+         * The category of the system disk.
+         */
+        systemDiskCategory: string;
+        /**
+         * The size of the system disk. Unit: GiB.
+         */
+        systemDiskSize: number;
     }
 
 }
@@ -35619,6 +35959,33 @@ export namespace ehpc {
         variables: string;
     }
 
+    export interface GetUsersUser {
+        /**
+         * The cluster ID.
+         */
+        clusterId: string;
+        /**
+         * The name of the permission group.
+         */
+        group: string;
+        /**
+         * The permission group ID.
+         */
+        groupId: string;
+        /**
+         * The ID of the User.
+         */
+        id: string;
+        /**
+         * The user ID.
+         */
+        userId: string;
+        /**
+         * The username.
+         */
+        userName: string;
+    }
+
     export interface QueueComputeNode {
         /**
          * AutoRenew
@@ -37328,6 +37695,33 @@ export namespace emrv2 {
 }
 
 export namespace ens {
+    export interface GetBucketLifecyclesRule {
+        /**
+         * The name of the ENS bucket whose lifecycle rules are to be listed.
+         */
+        bucketName: string;
+        /**
+         * The number of days after the last update of the object before the lifecycle rule takes effect.
+         */
+        expirationDays: number;
+        /**
+         * The ID of the lifecycle rule, formatted as `<bucket_name>:<rule_id>`.
+         */
+        id: string;
+        /**
+         * The prefix that the rule applies to.
+         */
+        prefix: string;
+        /**
+         * A specific rule ID used to filter results to a single rule.
+         */
+        ruleId: string;
+        /**
+         * The rule status. Valid values: `Enabled`, `Disabled`.
+         */
+        status: string;
+    }
+
     export interface GetKeyPairsPair {
         /**
          * The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
@@ -37349,6 +37743,120 @@ export namespace ens {
          * The version number.
          */
         version: string;
+    }
+
+    export interface GetLoadBalancerUdpListenersListener {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The port used by the backend server of the load balancer instance.
+         */
+        backendServerPort: number;
+        /**
+         * The description of the listener.
+         */
+        description: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Whether EIP transparent transmission is enabled.
+         */
+        eipTransmit: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The timeout period of the connection. Unit: seconds.
+         */
+        establishedTimeout: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The port used for health checks.
+         */
+        healthCheckConnectPort: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The amount of time to wait for a response from the health check. Unit: seconds.
+         */
+        healthCheckConnectTimeout: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The expected response string for the UDP listener health check.
+         */
+        healthCheckExp: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The interval between two consecutive health checks. Unit: seconds.
+         */
+        healthCheckInterval: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The request string for the UDP listener health check.
+         */
+        healthCheckReq: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive successful health checks that must occur before a backend server is declared healthy.
+         */
+        healthyThreshold: number;
+        /**
+         * The ID of the listener. The value is formulated as `<load_balancer_id>:<listener_port>`.
+         */
+        id: string;
+        /**
+         * The frontend port used by the load balancer instance.
+         */
+        listenerPort: number;
+        /**
+         * The ID of the load balancer instance.
+         */
+        loadBalancerId: string;
+        /**
+         * The protocol of the listener. The value is `udp`.
+         */
+        protocol: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The scheduling algorithm.
+         */
+        scheduler: string;
+        /**
+         * The status of the listener.
+         */
+        status: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of consecutive failed health checks that must occur before a backend server is declared unhealthy.
+         */
+        unhealthyThreshold: number;
+    }
+
+    export interface GetNetworkRouteTablesTable {
+        /**
+         * The binding type of the routing table. Value: `VSwitch`, `Gateway`.
+         */
+        associateType: string;
+        /**
+         * The creation time of the routing table.
+         */
+        createTime: string;
+        /**
+         * The description of the routing table.
+         */
+        description: string;
+        /**
+         * The ID of the routing table. Same as `routeTableId`.
+         */
+        id: string;
+        /**
+         * Whether it is the default gateway route table.
+         */
+        isDefaultGatewayRouteTable: boolean;
+        /**
+         * The network ID.
+         */
+        networkId: string;
+        /**
+         * The ID of the routing table.
+         */
+        routeTableId: string;
+        /**
+         * The name of the routing table.
+         */
+        routeTableName: string;
+        /**
+         * The type of the routing table. Value: `Custom`, `System`.
+         */
+        routeTableType: string;
+        /**
+         * The status of the routing table.
+         */
+        status: string;
     }
 
     export interface GetSecurityGroupsGroup {
@@ -40151,7 +40659,13 @@ export namespace ess {
          * The time at which the scheduled task is triggered.
          */
         launchTime: string;
+        /**
+         * The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+         */
         maxValue: number;
+        /**
+         * The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+         */
         minValue: number;
         /**
          * Name of the scheduled task name.
@@ -40170,9 +40684,16 @@ export namespace ess {
          */
         recurrenceValue: string;
         /**
+         * The id of the scaling group to which the scheduled task belongs.
+         */
+        scalingGroupId: string;
+        /**
          * The operation to be performed when a scheduled task is triggered.
          */
         scheduledAction: string;
+        /**
+         * Whether to start the scheduled task.
+         */
         taskEnabled: boolean;
     }
 
@@ -41312,6 +41833,110 @@ export namespace expressconnect {
         type: string;
     }
 
+    export interface GetRouterExpressConnectRoutersRouter {
+        /**
+         * The ASN of the ECR instance.
+         */
+        alibabaSideAsn: string;
+        /**
+         * The business status of the service instance.
+         */
+        bizStatus: string;
+        /**
+         * The time when the ECR was created.
+         */
+        createTime: string;
+        /**
+         * The description of the ECR instance.
+         */
+        description: string;
+        /**
+         * The ID of ECR.
+         */
+        ecrId: string;
+        /**
+         * The name of ECR.
+         */
+        ecrName: string;
+        /**
+         * The ID of the Express Connect Router.
+         */
+        id: string;
+        /**
+         * The time when the ECR was modified.
+         */
+        modifyTime: string;
+        /**
+         * The ID of the Alibaba Cloud account to which the ECR belongs.
+         */
+        ownerId: string;
+        /**
+         * The ID of the resource group to which the ECR belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The deployment status of the service instance. Valid values: `ACTIVE`, `UPDATING`, `ASSOCIATING`, `DISSOCIATING`, `LOCKED_ATTACHING`, `LOCKED_DETACHING`, `RECLAIMING`, `DELETING`.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: string};
+    }
+
+    export interface GetRouterGrantAssociationsAssociation {
+        /**
+         * The time when the instance was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the Express Connect Router instance.
+         */
+        ecrId: string;
+        /**
+         * The authorization ID.
+         */
+        grantId: string;
+        /**
+         * The ID of the Grant Association.
+         */
+        id: string;
+        /**
+         * The ID of the authorized instance.
+         */
+        instanceId: string;
+        /**
+         * The ID of the enterprise account to which the instance belongs.
+         */
+        instanceOwnerBid: string;
+        /**
+         * The ID of the Alibaba Cloud account to which the instance belongs.
+         */
+        instanceOwnerId: string;
+        /**
+         * The region where the authorized network instance is located.
+         */
+        instanceRegionId: string;
+        /**
+         * The type of the network instance. Valid values:
+         * - `VBR`: virtual border router (VBR).
+         * - `VPC`: virtual private cloud (VPC).
+         */
+        instanceType: string;
+        /**
+         * The time when the instance was modified.
+         */
+        modifyTime: string;
+        /**
+         * The ID of the Alibaba Cloud account that owns the Express Connect Router instance.
+         */
+        ownerId: string;
+        /**
+         * The status of the authorized network instance.
+         */
+        status: string;
+    }
+
     export interface GetRouterInterfacesFilter {
         key?: string;
         values?: string[];
@@ -41779,9 +42404,13 @@ export namespace expressconnect {
          */
         routeTableId: string;
         /**
-         * The VBR state.
+         * The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
          */
         status: string;
+        /**
+         * A map of tags to filter Virtual Border Routers that match the given tags.
+         */
+        tags: {[key: string]: string};
         /**
          * The Most Recent Was Aborted by the Time.
          */
@@ -42526,6 +43155,10 @@ export namespace fc {
          */
         port: number;
         /**
+         * The configuration of the custom image registry. The data source exposes `certConfig` and `networkConfig`; `authConfig` (registry username/password) is not returned by the ListFunctions API and is not available in the data source.
+         */
+        registryConfigs: outputs.fc.GetV3FunctionsFunctionCustomContainerConfigRegistryConfig[];
+        /**
          * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
          */
         resolvedImageUri: string;
@@ -42563,6 +43196,43 @@ export namespace fc {
          * Health check timeout. Value range 1~3. The default value is 1.
          */
         timeoutSeconds: number;
+    }
+
+    export interface GetV3FunctionsFunctionCustomContainerConfigRegistryConfig {
+        /**
+         * The certificate configuration of the image registry.
+         */
+        certConfigs: outputs.fc.GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig[];
+        /**
+         * The network configuration used to connect to the image registry.
+         */
+        networkConfigs: outputs.fc.GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig[];
+    }
+
+    export interface GetV3FunctionsFunctionCustomContainerConfigRegistryConfigCertConfig {
+        /**
+         * Specifies whether to skip certificate verification.
+         */
+        insecure: boolean;
+        /**
+         * The Base64-encoded root CA certificate of the image registry.
+         */
+        rootCaCertBase64: string;
+    }
+
+    export interface GetV3FunctionsFunctionCustomContainerConfigRegistryConfigNetworkConfig {
+        /**
+         * Security group ID.
+         */
+        securityGroupId: string;
+        /**
+         * VPC network ID.
+         */
+        vpcId: string;
+        /**
+         * The ID of the vSwitch that can connect to the image registry.
+         */
+        vswitchId: string;
     }
 
     export interface GetV3FunctionsFunctionCustomDns {
@@ -43168,7 +43838,7 @@ export namespace fc {
          */
         allowMethods?: string[];
         /**
-         * List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+         * List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
          */
         allowOrigins?: string[];
         /**
@@ -43340,6 +44010,10 @@ export namespace fc {
          */
         port?: number;
         /**
+         * The configuration of the custom image registry. See `registryConfig` below.
+         */
+        registryConfig?: outputs.fc.V3FunctionCustomContainerConfigRegistryConfig;
+        /**
          * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
          */
         resolvedImageUri: string;
@@ -43361,6 +44035,52 @@ export namespace fc {
         periodSeconds: number;
         successThreshold: number;
         timeoutSeconds: number;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfig {
+        /**
+         * The authentication configuration of the image registry. See `authConfig` below.
+         */
+        authConfig?: outputs.fc.V3FunctionCustomContainerConfigRegistryConfigAuthConfig;
+        /**
+         * The certificate configuration of the image registry. See `certConfig` below.
+         */
+        certConfig?: outputs.fc.V3FunctionCustomContainerConfigRegistryConfigCertConfig;
+        /**
+         * The network configuration used to connect to the image registry. See `networkConfig` below.
+         */
+        networkConfig?: outputs.fc.V3FunctionCustomContainerConfigRegistryConfigNetworkConfig;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfigAuthConfig {
+        /**
+         * The password of the image registry.
+         */
+        password?: string;
+        /**
+         * The username of the image registry.
+         */
+        userName?: string;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfigCertConfig {
+        /**
+         * Specifies whether to skip certificate verification.
+         */
+        insecure?: boolean;
+        /**
+         * The Base64-encoded root CA certificate of the image registry.
+         */
+        rootCaCertBase64?: string;
+    }
+
+    export interface V3FunctionCustomContainerConfigRegistryConfigNetworkConfig {
+        securityGroupId?: string;
+        vpcId?: string;
+        /**
+         * The ID of the vSwitch that can connect to the image registry.
+         */
+        vswitchId?: string;
     }
 
     export interface V3FunctionCustomDns {
@@ -45226,6 +45946,45 @@ export namespace gpdb {
         status: string;
     }
 
+    export interface GetDbExtensionsExtension {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in current version.
+         */
+        currentVersion: string;
+        /**
+         * Plug-in description.
+         */
+        description: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in id.
+         */
+        extensionId: string;
+        /**
+         * The name of the extension to install.
+         */
+        extensionName: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Whether the instance needs to be restarted for installation.
+         */
+        isInstallNeedRestart: boolean;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Whether the extension is at its latest version.
+         */
+        isLatestVersion: boolean;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Plug-in latest version.
+         */
+        latestVersion: string;
+        /**
+         * The status of the extension.
+         */
+        status: string;
+    }
+
     export interface GetDbInstancePlansPlan {
         /**
          * The name of the Plan.
@@ -45803,6 +46562,25 @@ export namespace gwlb {
         connectionDrainTimeout: number;
     }
 
+    export interface ServerGroupDrainingServer {
+        /**
+         * The backend server ID.
+         */
+        serverId: string;
+        /**
+         * The IP address of the backend server.
+         */
+        serverIp: string;
+        /**
+         * The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+         */
+        serverType: string;
+        /**
+         * Indicates the status of the backend server.
+         */
+        status: string;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
          * The backend server port that is used for health checks.
@@ -45853,7 +46631,7 @@ export namespace gwlb {
          *
          * The URL must start with a forward slash (/).
          *
-         * > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+         * > **NOTE:**  This parameter takes effect only if you set `healthCheckProtocol` to `HTTP`.
          */
         healthCheckPath: string;
         /**
@@ -47418,6 +48196,10 @@ export namespace hbr {
 
     export interface PolicyBindingAdvancedOptionsUdmDetail {
         /**
+         * Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+         */
+        appConsistent?: boolean;
+        /**
          * Custom KMS key ID of encrypted copy
          */
         destinationKmsKeyId?: string;
@@ -47426,9 +48208,41 @@ export namespace hbr {
          */
         diskIdLists?: string[];
         /**
+         * Whether to enable file system freeze before taking a snapshot.
+         */
+        enableFsFreeze?: boolean;
+        /**
+         * Whether to enable VSS writers.
+         */
+        enableWriters?: boolean;
+        /**
          * List of cloud disk IDs that are not backed up
          */
         excludeDiskIdLists?: string[];
+        /**
+         * The path of the post-backup script, executed after the snapshot is taken. Required when `appConsistent` is `true`.
+         */
+        postScriptPath?: string;
+        /**
+         * The path of the pre-backup script, executed before the snapshot is taken. Required when `appConsistent` is `true`.
+         */
+        preScriptPath?: string;
+        /**
+         * The RAM role name used by ECS to run the pre/post scripts. Required when `appConsistent` is `true`.
+         */
+        ramRoleName?: string;
+        /**
+         * Whether to use a snapshot group. Valid when `appConsistent` is `true`.
+         */
+        snapshotGroup?: boolean;
+        /**
+         * The timeout in seconds for the pre/post script execution.
+         *
+         * > **NOTE:** `appConsistent`, `snapshotGroup`, `ramRoleName`, `preScriptPath`, `postScriptPath`, `enableFsFreeze`, `timeoutInSeconds` and `enableWriters` are only supported when `sourceType` is `UDM_ECS`. When `appConsistent` is set to `true`, `ramRoleName`, `preScriptPath` and `postScriptPath` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `alicloud.hbr.ServerBackupPlan` `detail` block.
+         *
+         * > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+         */
+        timeoutInSeconds?: number;
     }
 
     export interface PolicyRule {
@@ -47469,7 +48283,7 @@ export namespace hbr {
          */
         ruleId: string;
         /**
-         * Rule Type
+         * Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
          */
         ruleType: string;
         /**
@@ -50098,6 +50912,61 @@ export namespace mongodb {
         storagePeriod: number;
     }
 
+    export interface GetBackupsBackup {
+        /**
+         * Backup DB Names.
+         */
+        backupDbNames: string;
+        /**
+         * Backup Download URL.
+         */
+        backupDownloadUrl: string;
+        /**
+         * The end time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+         */
+        backupEndTime: string;
+        /**
+         * Backup Id.
+         */
+        backupId: string;
+        /**
+         * Backup Intranet DownloadURL.
+         */
+        backupIntranetDownloadUrl: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The backup task ID.
+         */
+        backupJobId: string;
+        /**
+         * Backup Method.
+         */
+        backupMethod: string;
+        /**
+         * Backup Mode.
+         */
+        backupMode: string;
+        /**
+         * Backup Size.
+         */
+        backupSize: number;
+        /**
+         * The start time of this backup, in the format of `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+         */
+        backupStartTime: string;
+        /**
+         * Backup Type.
+         */
+        backupType: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * The zone ID.
@@ -50358,6 +51227,45 @@ export namespace mongodb {
          * The IP addresses in the whitelist.
          */
         securityIpList: string;
+    }
+
+    export interface GetShardingAuditFiltersFilter {
+        /**
+         * Audit state. Valid values: `enable`, `disabled`.
+         */
+        auditStatus: string;
+        /**
+         * The ID of the sharding cluster instance.
+         */
+        dbInstanceId: string;
+        /**
+         * The type of logs collected by the audit log feature of the instance. When every node role shares the same filter, this is that common value (for example `admin,slow`); otherwise it is the API's per-role merged view (for example `mongos@admin,slow-db@admin`).
+         */
+        filter: string;
+        /**
+         * The hot storage duration of the audit log, in days.
+         */
+        hotStoragePeriod: number;
+        /**
+         * The ID of the Sharding Audit Filter, same as `dbInstanceId`.
+         */
+        id: string;
+        /**
+         * The region ID of the sharding cluster instance.
+         */
+        regionId: string;
+        /**
+         * The node role scope of the returned filter. The data source reads every node role at once, so the API returns its merged-view marker `logic` rather than a single role.
+         */
+        roleType: string;
+        /**
+         * The edition of the audit log. Valid values: `Standard`, `V2_Standard`.
+         */
+        serviceType: string;
+        /**
+         * Audit log retention duration, in days.
+         */
+        storagePeriod: number;
     }
 
     export interface GetShardingNetworkPrivateAddressesAddress {
@@ -55157,6 +56065,48 @@ export namespace polardb {
         enabled?: boolean;
     }
 
+    export interface GatewayEndpoint {
+        /**
+         * The endpoint address.
+         */
+        address: string;
+        /**
+         * The endpoint ID.
+         */
+        endpointId: string;
+        /**
+         * The gateway ID.
+         */
+        gatewayId: string;
+        /**
+         * The network type. Valid values: `Private`, `Public`.
+         */
+        networkType: string;
+        /**
+         * The endpoint port.
+         */
+        port: number;
+        /**
+         * The tunnel ID.
+         */
+        tunnelId: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+    }
+
+    export interface GatewaySecurityIpArray {
+        /**
+         * The IP addresses in the whitelist group.
+         */
+        ipList: string;
+        /**
+         * The whitelist group name.
+         */
+        name: string;
+    }
+
     export interface GetAccountsAccount {
         /**
          * Account description.
@@ -58261,6 +59211,72 @@ export namespace realtimecompute {
     export interface DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
         cpu?: number;
         memory?: string;
+    }
+
+    export interface GetMembersMember {
+        /**
+         * The ID of the Member.
+         */
+        id: string;
+        /**
+         * The member UID.
+         */
+        member: string;
+        /**
+         * The name of the namespace.
+         */
+        namespace: string;
+        /**
+         * The workspace ID.
+         */
+        resourceId: string;
+        /**
+         * The member role.
+         */
+        role: string;
+    }
+
+    export interface GetSqlFilesFile {
+        /**
+         * Whether the SQL query script runs in batch mode.
+         */
+        batchMode: string;
+        /**
+         * The description of the SQL file.
+         */
+        description: string;
+        /**
+         * The ID of the SQL file. The value is formulated as `<workspace>:<namespace>:<sql_file_id>`.
+         */
+        id: string;
+        /**
+         * The name of the SQL file.
+         */
+        name: string;
+        /**
+         * The name of the namespace.
+         */
+        namespace: string;
+        /**
+         * The ID of the parent folder of the SQL file.
+         */
+        parentId: string;
+        /**
+         * The name of the session cluster that runs the SQL query script.
+         */
+        sessionClusterName: string;
+        /**
+         * The ID of the SQL file.
+         */
+        sqlFileId: string;
+        /**
+         * The SQL script content.
+         */
+        sqlScript: string;
+        /**
+         * The ID of the workspace.
+         */
+        workspace: string;
     }
 
     export interface JobLocalVariable {
@@ -63845,6 +64861,10 @@ export namespace slb {
          */
         bandwidth: number;
         /**
+         * The creation time of the SLB, mapped from the API `CreateTime` field.
+         */
+        createTime: string;
+        /**
          * The create time stamp of the SLB.
          */
         createTimeStamp: number;
@@ -63933,7 +64953,7 @@ export namespace slb {
          */
         slaveZoneId: string;
         /**
-         * SLB current status. Possible values: `inactive`, `active` and `locked`.
+         * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
          */
         status: string;
         /**
@@ -64008,22 +65028,40 @@ export namespace slb {
          * Service address of the SLBs.
          */
         address: string;
+        /**
+         * The creation time of the SLB.
+         */
         creationTime: string;
         /**
          * ID of the SLB.
          */
         id: string;
+        /**
+         * Whether the SLB is internet-facing.
+         */
         internet: boolean;
+        /**
+         * Master availability zone of the SLB.
+         */
         masterAvailabilityZone: string;
+        /**
+         * The name of the SLB.
+         */
         name: string;
         /**
          * Network type of the SLBs. Valid values: `vpc` and `classic`.
          */
         networkType: string;
+        /**
+         * Region ID the SLB belongs to.
+         */
         regionId: string;
+        /**
+         * Slave availability zone of the SLB.
+         */
         slaveAvailabilityZone: string;
         /**
-         * SLB current status. Possible values: `inactive`, `active` and `locked`.
+         * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
          */
         status: string;
         /**
@@ -64298,6 +65336,7 @@ export namespace slb {
         autoReleaseTime: number;
         backendServers: outputs.slb.GetLoadBalancersBalancerBackendServer[];
         bandwidth: number;
+        createTime: string;
         createTimeStamp: number;
         deleteProtection: string;
         endTime: string;
@@ -65722,6 +66761,53 @@ export namespace sls {
         id: string;
     }
 
+    export interface GetMetricStoresMetricStore {
+        /**
+         * Whether to record the IP address of the requester.
+         */
+        appendMeta: boolean;
+        /**
+         * Whether automatic shard splitting is enabled.
+         */
+        autoSplit: boolean;
+        /**
+         * The time when the MetricStore was created.
+         */
+        createTime: number;
+        /**
+         * The data retention period in the hot storage tier, in days.
+         */
+        hotTtl: number;
+        /**
+         * The ID of the MetricStore. The value is formatted as `<project_name>:<metric_store_name>`.
+         */
+        id: string;
+        /**
+         * The time when the MetricStore was last modified.
+         */
+        lastModifyTime: number;
+        /**
+         * The maximum number of shards to split.
+         */
+        maxSplitShardCount: number;
+        /**
+         * The name of the MetricStore.
+         */
+        metricStoreName: string;
+        /**
+         * The type of the MetricStore.
+         */
+        mode: string;
+        /**
+         * The number of shards.
+         */
+        shardCount: number;
+        /**
+         * The data retention period in days.
+         */
+        ttl: number;
+    }
+
     export interface IndexLine {
         /**
          * Is case sensitive
@@ -65769,6 +66855,36 @@ export namespace sls {
          * The log topic of the machine group.
          */
         groupTopic?: string;
+    }
+
+    export interface MetricStoreEncryptConf {
+        /**
+         * Specifies whether to enable encryption.
+         */
+        enable: boolean;
+        /**
+         * The encryption algorithm. Valid values: `default`.
+         */
+        encryptType?: string;
+        /**
+         * The BYOK (Bring Your Own Key) configuration. See `userCmkInfo` below.
+         */
+        userCmkInfo?: outputs.sls.MetricStoreEncryptConfUserCmkInfo;
+    }
+
+    export interface MetricStoreEncryptConfUserCmkInfo {
+        /**
+         * The ARN of the RAM role that is authorized to use the CMK.
+         */
+        arn: string;
+        /**
+         * The ID of the CMK (Customer Master Key).
+         */
+        cmkKeyId: string;
+        /**
+         * The region ID of the CMK.
+         */
+        regionId: string;
     }
 
     export interface OssExportSinkConfiguration {
@@ -66793,6 +67909,33 @@ export namespace threatdetection {
         vendor: number;
     }
 
+    export interface AttackPathWhitelistAttackPathAssetList {
+        /**
+         * The subtype of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset subtypes.
+         */
+        assetSubType?: number;
+        /**
+         * The type of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the asset types.
+         */
+        assetType?: number;
+        /**
+         * The instance ID of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the instance IDs.
+         */
+        instanceId?: string;
+        /**
+         * The type of the whitelist node. Valid values: `start` (starting point), `end` (end point).
+         */
+        nodeType?: string;
+        /**
+         * The region ID of the cloud product asset instance.
+         */
+        regionId?: string;
+        /**
+         * The vendor of the cloud product asset. You can call [ListCloudAssetInstances](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCloudAssetInstances) to query the vendors.
+         */
+        vendor: number;
+    }
+
     export interface CheckConfigSelectedCheck {
         /**
          * The ID of the check item.
@@ -66886,6 +68029,68 @@ export namespace threatdetection {
          * The ID of the VPC to which the asset belongs.
          */
         vpcInstanceId: string;
+    }
+
+    export interface GetAttackPathWhitelistsWhitelist {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The list of attack path cloud product assets.
+         */
+        attackPathAssetLists: outputs.threatdetection.GetAttackPathWhitelistsWhitelistAttackPathAssetList[];
+        /**
+         * The ID of the attack path whitelist.
+         */
+        attackPathWhitelistId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The path name of the whitelist.
+         */
+        pathName: string;
+        /**
+         * The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
+         */
+        pathType: string;
+        /**
+         * The remarks of the whitelist.
+         */
+        remark: string;
+        /**
+         * The name of the whitelist.
+         */
+        whitelistName: string;
+        /**
+         * The type of the whitelist.
+         */
+        whitelistType: string;
+    }
+
+    export interface GetAttackPathWhitelistsWhitelistAttackPathAssetList {
+        /**
+         * The subtype of the cloud product asset.
+         */
+        assetSubType: number;
+        /**
+         * The type of the cloud product asset.
+         */
+        assetType: number;
+        /**
+         * The instance ID of the cloud product asset.
+         */
+        instanceId: string;
+        /**
+         * The type of the whitelist node.
+         */
+        nodeType: string;
+        /**
+         * The region ID of the cloud product asset instance.
+         */
+        regionId: string;
+        /**
+         * The vendor of the cloud product asset.
+         */
+        vendor: number;
     }
 
     export interface GetBackupPoliciesPolicy {
@@ -68174,7 +69379,7 @@ export namespace vpc {
          */
         name: string;
         /**
-         * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+         * The status of forward entry. Valid values: `Available`, `Deleting` and `Pending`.
          */
         status: string;
     }
@@ -69504,6 +70709,107 @@ export namespace vpc {
         vswitchIds: string[];
     }
 
+    export interface GetRouteTargetGroupsGroup {
+        /**
+         * The configuration mode of the route target group.
+         */
+        configMode: string;
+        /**
+         * The time when the route target group was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The region ID of the VPC to which the route target group belongs.
+         */
+        regionId: string;
+        /**
+         * The ID of the resource group to which the route target group belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The description of the route target group.
+         */
+        routeTargetGroupDescription: string;
+        /**
+         * The ID of the route target group.
+         * A maximum of 50 instance IDs can be specified in a single query.
+         */
+        routeTargetGroupId: string;
+        /**
+         * The name of the route target group.
+         */
+        routeTargetGroupName: string;
+        /**
+         * The member list of the route target group.
+         * In active/standby mode, the following restrictions apply to route target group members:
+         * 1. The route target group must contain exactly two members.
+         * 2. The route target group members must belong to different zones. See `routeTargetMemberList` below.
+         */
+        routeTargetMemberLists: outputs.vpc.GetRouteTargetGroupsGroupRouteTargetMemberList[];
+        /**
+         * The status of the route target group. Valid values: `Pending`, `Available`.
+         */
+        status: string;
+        /**
+         * The tags of the route target group.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The ID of the VPC to which the route target group belongs.
+         */
+        vpcId: string;
+    }
+
+    export interface GetRouteTargetGroupsGroupRouteTargetMemberList {
+        /**
+         * Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+         */
+        enableStatus: string;
+        /**
+         * The health check status of the current route target configuration.
+         */
+        healthCheckStatus: string;
+        /**
+         * The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+         */
+        memberId: string;
+        /**
+         * The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+         */
+        memberType: string;
+        /**
+         * Sets the weight attribute for the current route target configuration.
+         */
+        weight: number;
+    }
+
+    export interface GetRouteTargetGroupsRouteTargetMemberList {
+        /**
+         * Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+         */
+        enableStatus: string;
+        /**
+         * The health check status of the current route target configuration.
+         */
+        healthCheckStatus: string;
+        /**
+         * The instance ID of the route target member. Used to filter route target groups that contain the specified member.
+         */
+        memberId: string;
+        /**
+         * The instance type of the route target configuration. The following type is currently supported: GatewayLoadBalancerEndpoint.
+         */
+        memberType: string;
+        /**
+         * Sets the weight attribute for the current route target configuration.
+         */
+        weight: number;
+    }
+
     export interface GetRouterInterfacesInterface {
         /**
          * ID of the access point used by the VBR.
@@ -70240,6 +71546,34 @@ export namespace vpc {
          * Resource attribute fields that represent the status of the resource.
          */
         status: string;
+    }
+
+    export interface RouteTargetGroupRouteTargetMemberList {
+        /**
+         * Indicates the enable status of the current route target configuration. Valid values: `Enable`, `Disable`.
+         */
+        enableStatus: string;
+        /**
+         * The health check status of the current route target configuration.
+         */
+        healthCheckStatus: string;
+        /**
+         * The instance ID of the route target member.
+         */
+        memberId: string;
+        /**
+         * The instance type of the route target configuration. The following type is currently supported:
+         * - GatewayLoadBalancerEndpoint.
+         */
+        memberType: string;
+        /**
+         * Sets the weight attribute for the current route target configuration.
+         *
+         * In active-standby mode, the weight can only be set to 0 or 100:
+         * - Only one route target configuration can be set to 100, serving as the active instance.
+         * - Only one route target configuration can be set to 0, serving as the standby instance.
+         */
+        weight: number;
     }
 
     export interface TrafficMirrorFilterEgressRule {

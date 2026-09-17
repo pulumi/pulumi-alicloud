@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,10 +24,27 @@ public final class GetVirtualBorderRoutersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Virtual Border Router names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
+     * 
+     */
     private List<GetVirtualBorderRoutersRouter> routers;
+    /**
+     * @return The VBR state.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags of the Virtual Border Router.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
 
     private GetVirtualBorderRoutersResult() {}
     public List<GetVirtualBorderRoutersFilter> filters() {
@@ -45,17 +63,36 @@ public final class GetVirtualBorderRoutersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Virtual Border Router names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Express Connect Virtual Border Routers. Each element contains the following attributes:
+     * 
+     */
     public List<GetVirtualBorderRoutersRouter> routers() {
         return this.routers;
     }
+    /**
+     * @return The VBR state.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return The tags of the Virtual Border Router.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
     }
 
     public static Builder builder() {
@@ -75,6 +112,7 @@ public final class GetVirtualBorderRoutersResult {
         private @Nullable String outputFile;
         private List<GetVirtualBorderRoutersRouter> routers;
         private @Nullable String status;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetVirtualBorderRoutersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -86,6 +124,7 @@ public final class GetVirtualBorderRoutersResult {
     	      this.outputFile = defaults.outputFile;
     	      this.routers = defaults.routers;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -156,6 +195,12 @@ public final class GetVirtualBorderRoutersResult {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public GetVirtualBorderRoutersResult build() {
             final var _resultValue = new GetVirtualBorderRoutersResult();
             _resultValue.filters = filters;
@@ -166,6 +211,7 @@ public final class GetVirtualBorderRoutersResult {
             _resultValue.outputFile = outputFile;
             _resultValue.routers = routers;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

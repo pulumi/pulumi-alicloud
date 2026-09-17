@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Kv can be imported using the id, e.g.
+    /// ESA Kv can be imported using the id, which consists of namespace and key, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/kv:Kv example &lt;namespace&gt;:&lt;key&gt;

@@ -27,6 +27,21 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApiArgs Empty = new ApiArgs();
 
     /**
+     * The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     * 
+     */
+    @Import(name="appCodeAuthType")
+    private @Nullable Output<String> appCodeAuthType;
+
+    /**
+     * @return The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+     * 
+     */
+    public Optional<Output<String>> appCodeAuthType() {
+        return Optional.ofNullable(this.appCodeAuthType);
+    }
+
+    /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      * 
      */
@@ -284,6 +299,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     private ApiArgs() {}
 
     private ApiArgs(ApiArgs $) {
+        this.appCodeAuthType = $.appCodeAuthType;
         this.authType = $.authType;
         this.backendEnabled = $.backendEnabled;
         this.backendId = $.backendId;
@@ -319,6 +335,27 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ApiArgs defaults) {
             $ = new ApiArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param appCodeAuthType The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appCodeAuthType(@Nullable Output<String> appCodeAuthType) {
+            $.appCodeAuthType = appCodeAuthType;
+            return this;
+        }
+
+        /**
+         * @param appCodeAuthType The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appCodeAuthType(String appCodeAuthType) {
+            return appCodeAuthType(Output.of(appCodeAuthType));
         }
 
         /**

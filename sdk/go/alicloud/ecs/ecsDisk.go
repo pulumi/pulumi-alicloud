@@ -89,14 +89,15 @@ import (
 type EcsDisk struct {
 	pulumi.CustomResourceState
 
+	// The advanced features configured for the disk.
 	AdvancedFeatures pulumi.StringPtrOutput `pulumi:"advancedFeatures"`
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -113,8 +114,9 @@ type EcsDisk struct {
 	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
-	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
-	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
+	EnableAutoSnapshot pulumi.BoolOutput `pulumi:"enableAutoSnapshot"`
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
@@ -205,14 +207,15 @@ func GetEcsDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsDisk resources.
 type ecsDiskState struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
 	Category *string `pulumi:"category"`
 	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -229,8 +232,9 @@ type ecsDiskState struct {
 	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
-	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
-	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
+	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm *string `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
@@ -292,14 +296,15 @@ type ecsDiskState struct {
 }
 
 type EcsDiskState struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures pulumi.StringPtrInput
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled pulumi.BoolPtrInput
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
 	Category pulumi.StringPtrInput
 	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime pulumi.StringPtrInput
@@ -317,7 +322,8 @@ type EcsDiskState struct {
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
-	EncryptAlgorithm   pulumi.StringPtrInput
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm pulumi.StringPtrInput
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
@@ -383,14 +389,15 @@ func (EcsDiskState) ElementType() reflect.Type {
 }
 
 type ecsDiskArgs struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
 	Category *string `pulumi:"category"`
 	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -405,8 +412,9 @@ type ecsDiskArgs struct {
 	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
-	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
-	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
+	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm *string `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
@@ -465,14 +473,15 @@ type ecsDiskArgs struct {
 
 // The set of arguments for constructing a EcsDisk resource.
 type EcsDiskArgs struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures pulumi.StringPtrInput
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 	BurstingEnabled pulumi.BoolPtrInput
-	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
 	Category pulumi.StringPtrInput
 	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
@@ -488,7 +497,8 @@ type EcsDiskArgs struct {
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
-	EncryptAlgorithm   pulumi.StringPtrInput
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm pulumi.StringPtrInput
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
@@ -632,6 +642,7 @@ func (o EcsDiskOutput) ToEcsDiskOutputWithContext(ctx context.Context) EcsDiskOu
 	return o
 }
 
+// The advanced features configured for the disk.
 func (o EcsDiskOutput) AdvancedFeatures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.AdvancedFeatures }).(pulumi.StringPtrOutput)
 }
@@ -643,12 +654,12 @@ func (o EcsDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
+// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 func (o EcsDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolPtrOutput { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
+// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories.
 func (o EcsDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -690,6 +701,7 @@ func (o EcsDiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolOutput { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
 }
 
+// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
 func (o EcsDiskOutput) EncryptAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.EncryptAlgorithm }).(pulumi.StringPtrOutput)
 }

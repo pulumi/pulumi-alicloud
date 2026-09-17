@@ -21,6 +21,8 @@ __all__ = [
     'GetAccessPointsPointAccessPointFeatureModelResult',
     'GetGrantRuleToCensCenResult',
     'GetPhysicalConnectionsConnectionResult',
+    'GetRouterExpressConnectRoutersRouterResult',
+    'GetRouterGrantAssociationsAssociationResult',
     'GetRouterInterfacesFilterResult',
     'GetRouterInterfacesInterfaceResult',
     'GetRouterTrAssociationsAssociationResult',
@@ -570,6 +572,288 @@ class GetPhysicalConnectionsConnectionResult(dict):
         Physical Private Line of Type. Default Value: VPC.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRouterExpressConnectRoutersRouterResult(dict):
+    def __init__(__self__, *,
+                 alibaba_side_asn: _builtins.str,
+                 biz_status: _builtins.str,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 ecr_id: _builtins.str,
+                 ecr_name: _builtins.str,
+                 id: _builtins.str,
+                 modify_time: _builtins.str,
+                 owner_id: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 status: _builtins.str,
+                 tags: Mapping[str, _builtins.str]):
+        """
+        :param _builtins.str alibaba_side_asn: The ASN of the ECR instance.
+        :param _builtins.str biz_status: The business status of the service instance.
+        :param _builtins.str create_time: The time when the ECR was created.
+        :param _builtins.str description: The description of the ECR instance.
+        :param _builtins.str ecr_id: The ID of ECR.
+        :param _builtins.str ecr_name: The name of ECR.
+        :param _builtins.str id: The ID of the Express Connect Router.
+        :param _builtins.str modify_time: The time when the ECR was modified.
+        :param _builtins.str owner_id: The ID of the Alibaba Cloud account to which the ECR belongs.
+        :param _builtins.str resource_group_id: The ID of the resource group to which the ECR belongs.
+        :param _builtins.str status: The deployment status of the service instance. Valid values: `ACTIVE`, `UPDATING`, `ASSOCIATING`, `DISSOCIATING`, `LOCKED_ATTACHING`, `LOCKED_DETACHING`, `RECLAIMING`, `DELETING`.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "alibaba_side_asn", alibaba_side_asn)
+        pulumi.set(__self__, "biz_status", biz_status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ecr_id", ecr_id)
+        pulumi.set(__self__, "ecr_name", ecr_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="alibabaSideAsn")
+    def alibaba_side_asn(self) -> _builtins.str:
+        """
+        The ASN of the ECR instance.
+        """
+        return pulumi.get(self, "alibaba_side_asn")
+
+    @_builtins.property
+    @pulumi.getter(name="bizStatus")
+    def biz_status(self) -> _builtins.str:
+        """
+        The business status of the service instance.
+        """
+        return pulumi.get(self, "biz_status")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the ECR was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the ECR instance.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="ecrId")
+    def ecr_id(self) -> _builtins.str:
+        """
+        The ID of ECR.
+        """
+        return pulumi.get(self, "ecr_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ecrName")
+    def ecr_name(self) -> _builtins.str:
+        """
+        The name of ECR.
+        """
+        return pulumi.get(self, "ecr_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Express Connect Router.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The time when the ECR was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> _builtins.str:
+        """
+        The ID of the Alibaba Cloud account to which the ECR belongs.
+        """
+        return pulumi.get(self, "owner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group to which the ECR belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The deployment status of the service instance. Valid values: `ACTIVE`, `UPDATING`, `ASSOCIATING`, `DISSOCIATING`, `LOCKED_ATTACHING`, `LOCKED_DETACHING`, `RECLAIMING`, `DELETING`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetRouterGrantAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 ecr_id: _builtins.str,
+                 grant_id: _builtins.str,
+                 id: _builtins.str,
+                 instance_id: _builtins.str,
+                 instance_owner_bid: _builtins.str,
+                 instance_owner_id: _builtins.str,
+                 instance_region_id: _builtins.str,
+                 instance_type: _builtins.str,
+                 modify_time: _builtins.str,
+                 owner_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str create_time: The time when the instance was created.
+        :param _builtins.str ecr_id: The ID of the Express Connect Router instance.
+        :param _builtins.str grant_id: The authorization ID.
+        :param _builtins.str id: The ID of the Grant Association.
+        :param _builtins.str instance_id: The ID of the authorized instance.
+        :param _builtins.str instance_owner_bid: The ID of the enterprise account to which the instance belongs.
+        :param _builtins.str instance_owner_id: The ID of the Alibaba Cloud account to which the instance belongs.
+        :param _builtins.str instance_region_id: The region where the authorized network instance is located.
+        :param _builtins.str instance_type: The type of the network instance. Valid values:
+               - `VBR`: virtual border router (VBR).
+               - `VPC`: virtual private cloud (VPC).
+        :param _builtins.str modify_time: The time when the instance was modified.
+        :param _builtins.str owner_id: The ID of the Alibaba Cloud account that owns the Express Connect Router instance.
+        :param _builtins.str status: The status of the authorized network instance.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "ecr_id", ecr_id)
+        pulumi.set(__self__, "grant_id", grant_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_owner_bid", instance_owner_bid)
+        pulumi.set(__self__, "instance_owner_id", instance_owner_id)
+        pulumi.set(__self__, "instance_region_id", instance_region_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ecrId")
+    def ecr_id(self) -> _builtins.str:
+        """
+        The ID of the Express Connect Router instance.
+        """
+        return pulumi.get(self, "ecr_id")
+
+    @_builtins.property
+    @pulumi.getter(name="grantId")
+    def grant_id(self) -> _builtins.str:
+        """
+        The authorization ID.
+        """
+        return pulumi.get(self, "grant_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Grant Association.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The ID of the authorized instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceOwnerBid")
+    def instance_owner_bid(self) -> _builtins.str:
+        """
+        The ID of the enterprise account to which the instance belongs.
+        """
+        return pulumi.get(self, "instance_owner_bid")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceOwnerId")
+    def instance_owner_id(self) -> _builtins.str:
+        """
+        The ID of the Alibaba Cloud account to which the instance belongs.
+        """
+        return pulumi.get(self, "instance_owner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceRegionId")
+    def instance_region_id(self) -> _builtins.str:
+        """
+        The region where the authorized network instance is located.
+        """
+        return pulumi.get(self, "instance_region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> _builtins.str:
+        """
+        The type of the network instance. Valid values:
+        - `VBR`: virtual border router (VBR).
+        - `VPC`: virtual private cloud (VPC).
+        """
+        return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The time when the instance was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> _builtins.str:
+        """
+        The ID of the Alibaba Cloud account that owns the Express Connect Router instance.
+        """
+        return pulumi.get(self, "owner_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the authorized network instance.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -1610,6 +1894,7 @@ class GetVirtualBorderRoutersRouterResult(dict):
                  recovery_time: _builtins.str,
                  route_table_id: _builtins.str,
                  status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
                  termination_time: _builtins.str,
                  type: _builtins.str,
                  virtual_border_router_id: _builtins.str,
@@ -1642,7 +1927,8 @@ class GetVirtualBorderRoutersRouterResult(dict):
         :param _builtins.str physical_connection_status: Physical Private Line State.
         :param _builtins.str recovery_time: The Last from a Terminated State to the Active State of the Time.
         :param _builtins.str route_table_id: Route Table ID.
-        :param _builtins.str status: The VBR state.
+        :param _builtins.str status: The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        :param Mapping[str, _builtins.str] tags: A map of tags to filter Virtual Border Routers that match the given tags.
         :param _builtins.str termination_time: The Most Recent Was Aborted by the Time.
         :param _builtins.str type: VBR Type.
         :param _builtins.str virtual_border_router_id: The VBR ID.
@@ -1676,6 +1962,7 @@ class GetVirtualBorderRoutersRouterResult(dict):
         pulumi.set(__self__, "recovery_time", recovery_time)
         pulumi.set(__self__, "route_table_id", route_table_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "termination_time", termination_time)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "virtual_border_router_id", virtual_border_router_id)
@@ -1887,9 +2174,17 @@ class GetVirtualBorderRoutersRouterResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The VBR state.
+        The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A map of tags to filter Virtual Border Routers that match the given tags.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")

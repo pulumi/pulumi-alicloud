@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RabbitMQ (AMQP) Binding can be imported using the id, e.g.
+ * RabbitMQ (AMQP) Binding can be imported using the id, which consists of instance_id, virtual_host_name, sourceExchange and destination_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>

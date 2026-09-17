@@ -82,7 +82,7 @@ import (
 //
 // ## Import
 //
-// FCV3 Vpc Binding can be imported using the id, e.g.
+// FCV3 Vpc Binding can be imported using the id, which consists of functionName and vpc_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:fc/v3VpcBinding:V3VpcBinding example <function_name>:<vpc_id>

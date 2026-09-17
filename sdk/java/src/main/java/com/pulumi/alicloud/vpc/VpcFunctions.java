@@ -70,6 +70,8 @@ import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteTablesPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
@@ -125,6 +127,7 @@ import com.pulumi.alicloud.vpc.outputs.GetPublicIpAddressPoolCidrBlocksResult;
 import com.pulumi.alicloud.vpc.outputs.GetPublicIpAddressPoolsResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouteEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouteTablesResult;
+import com.pulumi.alicloud.vpc.outputs.GetRouteTargetGroupsResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouterInterfacesResult;
 import com.pulumi.alicloud.vpc.outputs.GetSnatEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetSslVpnClientCertsResult;
@@ -12912,6 +12915,1301 @@ public final class VpcFunctions {
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain(GetRouteTablesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getRouteTables:getRouteTables", TypeShape.of(GetRouteTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouteTargetGroupsResult> getRouteTargetGroups() {
+        return getRouteTargetGroups(GetRouteTargetGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouteTargetGroupsResult> getRouteTargetGroupsPlain() {
+        return getRouteTargetGroupsPlain(GetRouteTargetGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouteTargetGroupsResult> getRouteTargetGroups(GetRouteTargetGroupsArgs args) {
+        return getRouteTargetGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouteTargetGroupsResult> getRouteTargetGroupsPlain(GetRouteTargetGroupsPlainArgs args) {
+        return getRouteTargetGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouteTargetGroupsResult> getRouteTargetGroups(GetRouteTargetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getRouteTargetGroups:getRouteTargetGroups", TypeShape.of(GetRouteTargetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouteTargetGroupsResult> getRouteTargetGroups(GetRouteTargetGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getRouteTargetGroups:getRouteTargetGroups", TypeShape.of(GetRouteTargetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPC Route Target Group available to the user.[What is Route Target Group](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouteTargetGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.292.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.gwlb.LoadBalancer;
+     * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroup;
+     * import com.pulumi.alicloud.vpc.RouteTargetGroupArgs;
+     * import com.pulumi.alicloud.vpc.inputs.RouteTargetGroupRouteTargetMemberListArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTargetGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("cn-wulanchabu");
+     *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+     *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId1)
+     *             .cidrBlock("192.168.0.0/24")
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zoneId2)
+     *             .cidrBlock("192.168.1.0/24")
+     *             .build());
+     * 
+     *         // Active member (zone A): GWLB load balancer + GWLB-type endpoint service +
+     *         // service-resource attachment + GatewayLoadBalancer endpoint.
+     *         var active = new LoadBalancer("active", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-active", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneA.id())
+     *                 .zoneId(zoneId1)
+     *                 .build())
+     *             .build());
+     * 
+     *         var activeVpcEndpointService = new VpcEndpointService("activeVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-active", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var activeVpcEndpointServiceResource = new VpcEndpointServiceResource("activeVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(active.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .zoneId(zoneId1)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var activeVpcEndpoint = new VpcEndpoint("activeVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(activeVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-active", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(activeVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone A to the GWLB endpoint. The route target group backend looks up
+     *         // the member endpoint by zone, so the endpoint must carry a non-empty zone.
+     *         var activeVpcEndpointZone = new VpcEndpointZone("activeVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(activeVpcEndpoint.id())
+     *             .vswitchId(zoneA.id())
+     *             .build());
+     * 
+     *         // Standby member (zone B): identical chain in a different zone.
+     *         var standby = new LoadBalancer("standby", LoadBalancerArgs.builder()
+     *             .loadBalancerName(String.format("%s-gwlb-standby", name))
+     *             .addressIpVersion("Ipv4")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+     *                 .vswitchId(zoneB.id())
+     *                 .zoneId(zoneId2)
+     *                 .build())
+     *             .build());
+     * 
+     *         var standbyVpcEndpointService = new VpcEndpointService("standbyVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .autoAcceptConnection(true)
+     *             .serviceDescription(String.format("%s-eps-standby", name))
+     *             .serviceResourceType("gwlb")
+     *             .build());
+     * 
+     *         var standbyVpcEndpointServiceResource = new VpcEndpointServiceResource("standbyVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
+     *             .resourceId(standby.id())
+     *             .resourceType("gwlb")
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .zoneId(zoneId2)
+     *             .dryRun(false)
+     *             .build());
+     * 
+     *         var standbyVpcEndpoint = new VpcEndpoint("standbyVpcEndpoint", VpcEndpointArgs.builder()
+     *             .serviceId(standbyVpcEndpointService.id())
+     *             .vpcEndpointName(String.format("%s-ep-standby", name))
+     *             .vpcId(defaultNetwork.id())
+     *             .serviceName(standbyVpcEndpointService.vpcEndpointServiceName())
+     *             .endpointType("GatewayLoadBalancer")
+     *             .build());
+     * 
+     *         // Attach zone B to the standby GWLB endpoint (different zone from active).
+     *         var standbyVpcEndpointZone = new VpcEndpointZone("standbyVpcEndpointZone", VpcEndpointZoneArgs.builder()
+     *             .endpointId(standbyVpcEndpoint.id())
+     *             .vswitchId(zoneB.id())
+     *             .build());
+     * 
+     *         // The route target group depends_on both endpoint zones: the backend looks up
+     *         // each member endpoint by zone, so the zones must exist before Create is called.
+     *         var defaultRouteTargetGroup = new RouteTargetGroup("defaultRouteTargetGroup", RouteTargetGroupArgs.builder()
+     *             .routeTargetGroupName(name)
+     *             .routeTargetGroupDescription(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .configMode("Active-Standby")
+     *             .routeTargetMemberLists(            
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(activeVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(100)
+     *                     .build(),
+     *                 RouteTargetGroupRouteTargetMemberListArgs.builder()
+     *                     .memberId(standbyVpcEndpoint.id())
+     *                     .memberType("GatewayLoadBalancerEndpoint")
+     *                     .weight(0)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getRouteTargetGroups(GetRouteTargetGroupsArgs.builder()
+     *             .ids(defaultRouteTargetGroup.id())
+     *             .nameRegex(defaultRouteTargetGroup.routeTargetGroupName())
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouteTargetGroupsResult> getRouteTargetGroupsPlain(GetRouteTargetGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getRouteTargetGroups:getRouteTargetGroups", TypeShape.of(GetRouteTargetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)

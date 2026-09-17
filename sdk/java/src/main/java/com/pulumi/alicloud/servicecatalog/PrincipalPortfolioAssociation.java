@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Service Catalog Principal Portfolio Association can be imported using the id, e.g.
+ * Service Catalog Principal Portfolio Association can be imported using the id, which consists of principal_id, principalType and portfolio_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example &lt;principal_id&gt;:&lt;principal_type&gt;:&lt;portfolio_id&gt;

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "alicloud:mongodb/auditPolicy:AuditPolicy":
 		r = &AuditPolicy{}
+	case "alicloud:mongodb/backup:Backup":
+		r = &Backup{}
 	case "alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup":
 		r = &GlobalSecurityIpGroup{}
 	case "alicloud:mongodb/instance:Instance":
@@ -39,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReplicaSetRole{}
 	case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
 		r = &ServerlessInstance{}
+	case "alicloud:mongodb/shardingAuditFilter:ShardingAuditFilter":
+		r = &ShardingAuditFilter{}
 	case "alicloud:mongodb/shardingInstance:ShardingInstance":
 		r = &ShardingInstance{}
 	case "alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress":
@@ -66,6 +70,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mongodb/auditPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/backup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -101,6 +110,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mongodb/serverlessInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/shardingAuditFilter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

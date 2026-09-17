@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ddos Coo Port can be imported using the id, e.g.
+ * Ddos Coo Port can be imported using the id, which consists of instance_id, frontendPort and frontend_protocol, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>

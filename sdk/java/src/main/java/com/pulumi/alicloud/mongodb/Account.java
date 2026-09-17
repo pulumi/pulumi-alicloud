@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Mongodb Account can be imported using the id, e.g.
+ * Mongodb Account can be imported using the id, which consists of instanceId and account_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:mongodb/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;

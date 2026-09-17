@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ESA Site Delivery Task can be imported using the id, e.g.
+ * ESA Site Delivery Task can be imported using the id, which consists of siteId and task_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:esa/siteDeliveryTask:SiteDeliveryTask example &lt;site_id&gt;:&lt;task_name&gt;

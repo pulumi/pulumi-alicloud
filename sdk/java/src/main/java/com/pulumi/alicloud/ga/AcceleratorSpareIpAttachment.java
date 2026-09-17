@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
+ * Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, which consists of acceleratorId and spare_ip, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example &lt;accelerator_id&gt;:&lt;spare_ip&gt;

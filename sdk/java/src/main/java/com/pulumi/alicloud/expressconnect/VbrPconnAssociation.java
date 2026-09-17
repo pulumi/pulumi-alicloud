@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Express Connect Vbr Pconn Association can be imported using the id, e.g.
+ * Express Connect Vbr Pconn Association can be imported using the id, which consists of vbrId and physical_connection_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;vbr_id&gt;:&lt;physical_connection_id&gt;

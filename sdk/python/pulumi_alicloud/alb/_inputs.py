@@ -19,6 +19,8 @@ __all__ = [
     'AScriptExtAttributeArgsDict',
     'AclAclEntryArgs',
     'AclAclEntryArgsDict',
+    'AclEntryAttachmentEntryArgs',
+    'AclEntryAttachmentEntryArgsDict',
     'ListenerAccessLogTracingConfigArgs',
     'ListenerAccessLogTracingConfigArgsDict',
     'ListenerAclConfigArgs',
@@ -236,6 +238,74 @@ class AclAclEntryArgs:
         - `Adding`: The ACL entry is being added.
         - `Available`: The ACL entry is added and available.
         - `Removing`: The ACL entry is being removed.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+class AclEntryAttachmentEntryArgsDict(TypedDict):
+    entry: pulumi.Input[_builtins.str]
+    """
+    The CIDR block of the ACL entry.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description of the ACL entry. The description must be `1` to `256` characters in length.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+    """
+
+@pulumi.input_type
+class AclEntryAttachmentEntryArgs:
+    def __init__(__self__, *,
+                 entry: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry.
+        :param pulumi.Input[_builtins.str] description: The description of the ACL entry. The description must be `1` to `256` characters in length.
+        :param pulumi.Input[_builtins.str] status: The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+        """
+        pulumi.set(__self__, "entry", entry)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> pulumi.Input[_builtins.str]:
+        """
+        The CIDR block of the ACL entry.
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entry", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the ACL entry. The description must be `1` to `256` characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
         """
         return pulumi.get(self, "status")
 

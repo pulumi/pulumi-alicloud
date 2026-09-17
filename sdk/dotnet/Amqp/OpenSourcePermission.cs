@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// ## Import
     /// 
-    /// RabbitMQ (AMQP) Open Source Permission can be imported using the id, e.g.
+    /// RabbitMQ (AMQP) Open Source Permission can be imported using the id, which consists of user_name, vhost and instance_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:amqp/openSourcePermission:OpenSourcePermission example &lt;user_name&gt;:&lt;vhost&gt;:&lt;instance_id&gt;

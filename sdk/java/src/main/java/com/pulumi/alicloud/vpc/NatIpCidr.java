@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Nat Gateway Nat Ip Cidr can be imported using the id, e.g.
+ * Nat Gateway Nat Ip Cidr can be imported using the id, which consists of natGatewayId and nat_ip_cidr, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example &lt;nat_gateway_id&gt;:&lt;nat_ip_cidr&gt;

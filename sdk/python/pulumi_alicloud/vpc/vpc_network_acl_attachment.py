@@ -192,7 +192,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
 
         ## Import
 
-        VPC Network Acl Attachment can be imported using the id, e.g.
+        VPC Network Acl Attachment can be imported using the id, which consists of network_acl_id and resource_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example <network_acl_id>:<resource_id>
@@ -250,7 +250,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
 
         ## Import
 
-        VPC Network Acl Attachment can be imported using the id, e.g.
+        VPC Network Acl Attachment can be imported using the id, which consists of network_acl_id and resource_id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example <network_acl_id>:<resource_id>

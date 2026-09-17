@@ -127,7 +127,7 @@ import (
 //
 // ## Import
 //
-// Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
+// Global Accelerator (GA) Basic Endpoint can be imported using the id, which consists of endpointGroupId and endpoint_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>

@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SelectDB DBCluster can be imported using the id, e.g.
+ * SelectDB DBCluster can be imported using the id, which consists of dbInstanceId and db_cluster_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:selectdb/dbCluster:DbCluster example &lt;db_instance_id&gt;:&lt;db_cluster_id&gt;

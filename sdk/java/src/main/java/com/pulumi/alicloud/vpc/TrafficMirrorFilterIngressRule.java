@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.
+ * VPC Traffic Mirror Filter Ingress Rule can be imported using the id, which consists of trafficMirrorFilterId and traffic_mirror_filter_ingress_rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule example &lt;traffic_mirror_filter_id&gt;:&lt;traffic_mirror_filter_ingress_rule_id&gt;

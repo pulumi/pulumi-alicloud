@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// ## Import
     /// 
-    /// ARMS Env Custom Job can be imported using the id, e.g.
+    /// ARMS Env Custom Job can be imported using the id, which consists of EnvironmentId and env_custom_job_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:arms/envCustomJob:EnvCustomJob example &lt;environment_id&gt;:&lt;env_custom_job_name&gt;

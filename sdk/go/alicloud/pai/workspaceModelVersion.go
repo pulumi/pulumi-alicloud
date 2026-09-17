@@ -123,7 +123,7 @@ import (
 //
 // ## Import
 //
-// PAI Workspace Model Version can be imported using the id, e.g.
+// PAI Workspace Model Version can be imported using the id, which consists of modelId and version_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:pai/workspaceModelVersion:WorkspaceModelVersion example <model_id>:<version_name>

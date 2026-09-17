@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// NAT Gateway Snat Entry can be imported using the id, e.g.
+    /// NAT Gateway Snat Entry can be imported using the id, which consists of SnatTableId and snat_entry_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_table_id&gt;:&lt;snat_entry_id&gt;

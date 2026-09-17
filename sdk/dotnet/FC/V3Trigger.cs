@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// ## Import
     /// 
-    /// FCV3 Trigger can be imported using the id, e.g.
+    /// FCV3 Trigger can be imported using the id, which consists of FunctionName and trigger_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:fc/v3Trigger:V3Trigger example &lt;function_name&gt;:&lt;trigger_name&gt;

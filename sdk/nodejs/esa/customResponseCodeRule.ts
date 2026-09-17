@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Custom Response Code Rule can be imported using the id, e.g.
+ * ESA Custom Response Code Rule can be imported using the id, which consists of siteId and config_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/customResponseCodeRule:CustomResponseCodeRule example <site_id>:<config_id>

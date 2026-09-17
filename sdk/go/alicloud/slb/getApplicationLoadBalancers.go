@@ -13,7 +13,7 @@ import (
 
 // This data source provides the server load balancers of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in 1.123.1+
+// > **NOTE:** Available since v1.123.1
 //
 // ## Example Usage
 //
@@ -62,8 +62,9 @@ type GetApplicationLoadBalancersArgs struct {
 	// The address ip version. Valid values `ipv4` and `ipv6`.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// The address type of the SLB. Valid values `internet` and `intranet`.
-	AddressType   *string `pulumi:"addressType"`
-	EnableDetails *bool   `pulumi:"enableDetails"`
+	AddressType *string `pulumi:"addressType"`
+	// Whether to enable details of the SLB. Default to `false`.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of SLBs IDs.
 	Ids []string `pulumi:"ids"`
 	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
@@ -90,7 +91,7 @@ type GetApplicationLoadBalancersArgs struct {
 	ServerIntranetAddress *string `pulumi:"serverIntranetAddress"`
 	// The slave zone id of the SLB.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	Tags map[string]string `pulumi:"tags"`
@@ -129,6 +130,7 @@ type GetApplicationLoadBalancersResult struct {
 	OutputFile  *string `pulumi:"outputFile"`
 	PageNumber  *int    `pulumi:"pageNumber"`
 	PageSize    *int    `pulumi:"pageSize"`
+	// The payment type of the SLB.
 	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -137,6 +139,8 @@ type GetApplicationLoadBalancersResult struct {
 	ServerIntranetAddress *string `pulumi:"serverIntranetAddress"`
 	// Slave availability zone of the SLBs.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
+	// **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
+	//
 	// Deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
 	Slbs []GetApplicationLoadBalancersSlb `pulumi:"slbs"`
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
@@ -162,8 +166,9 @@ type GetApplicationLoadBalancersOutputArgs struct {
 	// The address ip version. Valid values `ipv4` and `ipv6`.
 	AddressIpVersion pulumi.StringPtrInput `pulumi:"addressIpVersion"`
 	// The address type of the SLB. Valid values `internet` and `intranet`.
-	AddressType   pulumi.StringPtrInput `pulumi:"addressType"`
-	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
+	// Whether to enable details of the SLB. Default to `false`.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of SLBs IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
@@ -190,7 +195,7 @@ type GetApplicationLoadBalancersOutputArgs struct {
 	ServerIntranetAddress pulumi.StringPtrInput `pulumi:"serverIntranetAddress"`
 	// The slave zone id of the SLB.
 	SlaveZoneId pulumi.StringPtrInput `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -294,6 +299,7 @@ func (o GetApplicationLoadBalancersResultOutput) PageSize() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The payment type of the SLB.
 func (o GetApplicationLoadBalancersResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
@@ -317,6 +323,8 @@ func (o GetApplicationLoadBalancersResultOutput) SlaveZoneId() pulumi.StringPtrO
 	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.SlaveZoneId }).(pulumi.StringPtrOutput)
 }
 
+// **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
+//
 // Deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
 func (o GetApplicationLoadBalancersResultOutput) Slbs() GetApplicationLoadBalancersSlbArrayOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersResult) []GetApplicationLoadBalancersSlb { return v.Slbs }).(GetApplicationLoadBalancersSlbArrayOutput)

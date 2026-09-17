@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DdosCoo Web Cc Rule can be imported using the id, e.g.
+ * DdosCoo Web Cc Rule can be imported using the id, which consists of domain and name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ddos/cooWebCcRule:CooWebCcRule example <domain>:<name>

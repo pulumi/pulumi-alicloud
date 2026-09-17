@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Monitor Service Monitoring Agent Process can be imported using the id, e.g.
+ * Cloud Monitor Service Monitoring Agent Process can be imported using the id, which consists of instanceId and process_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess example &lt;instance_id&gt;:&lt;process_id&gt;

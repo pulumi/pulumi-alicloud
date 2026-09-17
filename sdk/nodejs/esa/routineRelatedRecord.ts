@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Routine Related Record can be imported using the id, e.g.
+ * ESA Routine Related Record can be imported using the id, which consists of name and record_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example <name>:<record_id>

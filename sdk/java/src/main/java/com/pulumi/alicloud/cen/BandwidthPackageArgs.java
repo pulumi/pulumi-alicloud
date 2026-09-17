@@ -111,14 +111,14 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     @Import(name="geographicRegionAId")
     private @Nullable Output<String> geographicRegionAId;
 
     /**
-     * @return The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * @return The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     public Optional<Output<String>> geographicRegionAId() {
@@ -126,14 +126,14 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     @Import(name="geographicRegionBId")
     private @Nullable Output<String> geographicRegionBId;
 
     /**
-     * @return The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * @return The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     public Optional<Output<String>> geographicRegionBId() {
@@ -374,7 +374,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionAId The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+         * @param geographicRegionAId The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionAId The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+         * @param geographicRegionAId The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionBId The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+         * @param geographicRegionBId The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param geographicRegionBId The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+         * @param geographicRegionBId The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
          * 
          * @return builder
          * 

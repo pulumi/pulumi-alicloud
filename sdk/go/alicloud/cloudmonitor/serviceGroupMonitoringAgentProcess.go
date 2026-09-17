@@ -106,7 +106,7 @@ import (
 //
 // ## Import
 //
-// Cloud Monitor Service Group Monitoring Agent Process can be imported using the id, e.g.
+// Cloud Monitor Service Group Monitoring Agent Process can be imported using the id, which consists of groupId and group_monitoring_agent_process_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>

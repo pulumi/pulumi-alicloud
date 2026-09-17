@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Adb Resource Group can be imported using the id, e.g.
+ * Adb Resource Group can be imported using the id, which consists of dbClusterId and group_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example &lt;db_cluster_id&gt;:&lt;group_name&gt;

@@ -303,6 +303,10 @@ class PolicyBindingAdvancedOptionsOssDetailArgs:
 
 
 class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
+    app_consistent: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+    """
     destination_kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom KMS key ID of encrypted copy
@@ -311,28 +315,108 @@ class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
     """
     The list of backup disks. If it is empty, all disks are backed up.
     """
+    enable_fs_freeze: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable file system freeze before taking a snapshot.
+    """
+    enable_writers: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable VSS writers.
+    """
     exclude_disk_id_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of cloud disk IDs that are not backed up
+    """
+    post_script_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The path of the post-backup script, executed after the snapshot is taken. Required when `app_consistent` is `true`.
+    """
+    pre_script_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The path of the pre-backup script, executed before the snapshot is taken. Required when `app_consistent` is `true`.
+    """
+    ram_role_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The RAM role name used by ECS to run the pre/post scripts. Required when `app_consistent` is `true`.
+    """
+    snapshot_group: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to use a snapshot group. Valid when `app_consistent` is `true`.
+    """
+    timeout_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The timeout in seconds for the pre/post script execution.
+
+    > **NOTE:** `app_consistent`, `snapshot_group`, `ram_role_name`, `pre_script_path`, `post_script_path`, `enable_fs_freeze`, `timeout_in_seconds` and `enable_writers` are only supported when `source_type` is `UDM_ECS`. When `app_consistent` is set to `true`, `ram_role_name`, `pre_script_path` and `post_script_path` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+
+    > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
     """
 
 @pulumi.input_type
 class PolicyBindingAdvancedOptionsUdmDetailArgs:
     def __init__(__self__, *,
+                 app_consistent: pulumi.Input[Optional[_builtins.bool]] = None,
                  destination_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_disk_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enable_fs_freeze: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_writers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_disk_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 post_script_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_script_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.bool] app_consistent: Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
         :param pulumi.Input[_builtins.str] destination_kms_key_id: Custom KMS key ID of encrypted copy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
+        :param pulumi.Input[_builtins.bool] enable_fs_freeze: Whether to enable file system freeze before taking a snapshot.
+        :param pulumi.Input[_builtins.bool] enable_writers: Whether to enable VSS writers.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_disk_id_lists: List of cloud disk IDs that are not backed up
+        :param pulumi.Input[_builtins.str] post_script_path: The path of the post-backup script, executed after the snapshot is taken. Required when `app_consistent` is `true`.
+        :param pulumi.Input[_builtins.str] pre_script_path: The path of the pre-backup script, executed before the snapshot is taken. Required when `app_consistent` is `true`.
+        :param pulumi.Input[_builtins.str] ram_role_name: The RAM role name used by ECS to run the pre/post scripts. Required when `app_consistent` is `true`.
+        :param pulumi.Input[_builtins.bool] snapshot_group: Whether to use a snapshot group. Valid when `app_consistent` is `true`.
+        :param pulumi.Input[_builtins.int] timeout_in_seconds: The timeout in seconds for the pre/post script execution.
+               
+               > **NOTE:** `app_consistent`, `snapshot_group`, `ram_role_name`, `pre_script_path`, `post_script_path`, `enable_fs_freeze`, `timeout_in_seconds` and `enable_writers` are only supported when `source_type` is `UDM_ECS`. When `app_consistent` is set to `true`, `ram_role_name`, `pre_script_path` and `post_script_path` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+               
+               > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
         """
+        if app_consistent is not None:
+            pulumi.set(__self__, "app_consistent", app_consistent)
         if destination_kms_key_id is not None:
             pulumi.set(__self__, "destination_kms_key_id", destination_kms_key_id)
         if disk_id_lists is not None:
             pulumi.set(__self__, "disk_id_lists", disk_id_lists)
+        if enable_fs_freeze is not None:
+            pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
+        if enable_writers is not None:
+            pulumi.set(__self__, "enable_writers", enable_writers)
         if exclude_disk_id_lists is not None:
             pulumi.set(__self__, "exclude_disk_id_lists", exclude_disk_id_lists)
+        if post_script_path is not None:
+            pulumi.set(__self__, "post_script_path", post_script_path)
+        if pre_script_path is not None:
+            pulumi.set(__self__, "pre_script_path", pre_script_path)
+        if ram_role_name is not None:
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
+        if snapshot_group is not None:
+            pulumi.set(__self__, "snapshot_group", snapshot_group)
+        if timeout_in_seconds is not None:
+            pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="appConsistent")
+    def app_consistent(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable application-consistent backup. When enabled, the system uses a snapshot group together with pre/post scripts to guarantee application data consistency. Only supported when all cloud disk types of the instance are ESSD.
+        """
+        return pulumi.get(self, "app_consistent")
+
+    @app_consistent.setter
+    def app_consistent(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "app_consistent", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationKmsKeyId")
@@ -359,6 +443,30 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
         pulumi.set(self, "disk_id_lists", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableFsFreeze")
+    def enable_fs_freeze(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable file system freeze before taking a snapshot.
+        """
+        return pulumi.get(self, "enable_fs_freeze")
+
+    @enable_fs_freeze.setter
+    def enable_fs_freeze(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_fs_freeze", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableWriters")
+    def enable_writers(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable VSS writers.
+        """
+        return pulumi.get(self, "enable_writers")
+
+    @enable_writers.setter
+    def enable_writers(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_writers", value)
+
+    @_builtins.property
     @pulumi.getter(name="excludeDiskIdLists")
     def exclude_disk_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -370,11 +478,75 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
     def exclude_disk_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_disk_id_lists", value)
 
+    @_builtins.property
+    @pulumi.getter(name="postScriptPath")
+    def post_script_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The path of the post-backup script, executed after the snapshot is taken. Required when `app_consistent` is `true`.
+        """
+        return pulumi.get(self, "post_script_path")
+
+    @post_script_path.setter
+    def post_script_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "post_script_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preScriptPath")
+    def pre_script_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The path of the pre-backup script, executed before the snapshot is taken. Required when `app_consistent` is `true`.
+        """
+        return pulumi.get(self, "pre_script_path")
+
+    @pre_script_path.setter
+    def pre_script_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pre_script_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The RAM role name used by ECS to run the pre/post scripts. Required when `app_consistent` is `true`.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @ram_role_name.setter
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ram_role_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotGroup")
+    def snapshot_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use a snapshot group. Valid when `app_consistent` is `true`.
+        """
+        return pulumi.get(self, "snapshot_group")
+
+    @snapshot_group.setter
+    def snapshot_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "snapshot_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutInSeconds")
+    def timeout_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The timeout in seconds for the pre/post script execution.
+
+        > **NOTE:** `app_consistent`, `snapshot_group`, `ram_role_name`, `pre_script_path`, `post_script_path`, `enable_fs_freeze`, `timeout_in_seconds` and `enable_writers` are only supported when `source_type` is `UDM_ECS`. When `app_consistent` is set to `true`, `ram_role_name`, `pre_script_path` and `post_script_path` are required by the [CreatePolicyBindings API](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings). This set of options supersedes the deprecated `hbr.ServerBackupPlan` `detail` block.
+
+        > **NOTE:** Application-consistent backup relies on [ECS snapshot consistency groups](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot-consistency-group), which have the following runtime constraints: every disk attached to the instance must be an ESSD; multi-attach (`Multi-Attach`) shared disks are not supported; the disks in a consistency group must be in the same zone (the group can span multiple instances); a single consistency group contains at most 128 disks and at most 256 TiB of total capacity; and snapshots produced by a consistency group are retained permanently by default and are not subject to the backup policy retention period. When [Cloud Backup](https://help.aliyun.com/zh/cloud-backup/user-guide/back-up-ecs-instances) runs a whole-instance backup, it creates a consistency group if the instance supports application-consistent backup; otherwise it falls back to per-disk crash-consistent snapshots.
+        """
+        return pulumi.get(self, "timeout_in_seconds")
+
+    @timeout_in_seconds.setter
+    def timeout_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_in_seconds", value)
+
 
 class PolicyRuleArgsDict(TypedDict):
     rule_type: pulumi.Input[_builtins.str]
     """
-    Rule Type
+    Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
     """
     archive_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -442,7 +614,7 @@ class PolicyRuleArgs:
                  tag_filters: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]] = None,
                  vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] rule_type: Rule Type
+        :param pulumi.Input[_builtins.str] rule_type: Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
         :param pulumi.Input[_builtins.int] archive_days: This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
         :param pulumi.Input[_builtins.str] backup_type: This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
         :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]] data_source_filters: This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
@@ -486,7 +658,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Rule Type
+        Rule Type. Valid values: `BACKUP`, `TRANSITION`, `REPLICATION`, `TAG` and `SECURITY`. The `SECURITY` value is used for immutable backup rules, where backups cannot be deleted until the retention period expires.
         """
         return pulumi.get(self, "rule_type")
 

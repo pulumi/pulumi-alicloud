@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// ## Import
     /// 
-    /// Cms Agg Task Group can be imported using the id, e.g.
+    /// Cms Agg Task Group can be imported using the id, which consists of SourcePrometheusId and agg_task_group_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cms/aggTaskGroup:AggTaskGroup example &lt;source_prometheus_id&gt;:&lt;agg_task_group_id&gt;

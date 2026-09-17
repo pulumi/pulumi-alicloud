@@ -340,7 +340,7 @@ class SaslUser(pulumi.CustomResource):
 
         ## Import
 
-        AliKafka Sasl User can be imported using the id, e.g.
+        AliKafka Sasl User can be imported using the id, which consists of instance_id and username, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
@@ -424,7 +424,7 @@ class SaslUser(pulumi.CustomResource):
 
         ## Import
 
-        AliKafka Sasl User can be imported using the id, e.g.
+        AliKafka Sasl User can be imported using the id, which consists of instance_id and username, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>

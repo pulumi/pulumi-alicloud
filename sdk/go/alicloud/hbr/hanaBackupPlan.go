@@ -94,7 +94,7 @@ import (
 //
 // ## Import
 //
-// Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, which consists of plan_id, vaultId and cluster_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>

@@ -178,28 +178,28 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return this.expiredTime;
     }
     /**
-     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     @Export(name="geographicRegionAId", refs={String.class}, tree="[0]")
     private Output<String> geographicRegionAId;
 
     /**
-     * @return The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * @return The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     public Output<String> geographicRegionAId() {
         return this.geographicRegionAId;
     }
     /**
-     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     @Export(name="geographicRegionBId", refs={String.class}, tree="[0]")
     private Output<String> geographicRegionBId;
 
     /**
-     * @return The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     * @return The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
      * 
      */
     public Output<String> geographicRegionBId() {

@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'AScriptExtAttribute',
     'AclAclEntry',
+    'AclEntryAttachmentEntry',
     'ListenerAccessLogTracingConfig',
     'ListenerAclConfig',
     'ListenerAclConfigAclRelation',
@@ -215,6 +216,48 @@ class AclAclEntry(dict):
         - `Adding`: The ACL entry is being added.
         - `Available`: The ACL entry is added and available.
         - `Removing`: The ACL entry is being removed.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class AclEntryAttachmentEntry(dict):
+    def __init__(__self__, *,
+                 entry: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str entry: The CIDR block of the ACL entry.
+        :param _builtins.str description: The description of the ACL entry. The description must be `1` to `256` characters in length.
+        :param _builtins.str status: The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
+        """
+        pulumi.set(__self__, "entry", entry)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> _builtins.str:
+        """
+        The CIDR block of the ACL entry.
+        """
+        return pulumi.get(self, "entry")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the ACL entry. The description must be `1` to `256` characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the ACL entry. Valid values: `Adding`, `Available` and `Removing`.
         """
         return pulumi.get(self, "status")
 

@@ -78,7 +78,7 @@ import (
 //
 // ## Import
 //
-// NAS Access Rule can be imported using the id, e.g.
+// NAS Access Rule can be imported using the id, which consists of access_group_name, fileSystemType and access_rule_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>

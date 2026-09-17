@@ -155,6 +155,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> ApiId { get; private set; } = null!;
 
         /// <summary>
+        /// The App Code authentication type, only valid when `AuthType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+        /// </summary>
+        [Output("appCodeAuthType")]
+        public Output<string> AppCodeAuthType { get; private set; } = null!;
+
+        /// <summary>
         /// The authorization Type including APP and ANONYMOUS. Defaults to null.
         /// </summary>
         [Output("authType")]
@@ -303,6 +309,12 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class ApiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The App Code authentication type, only valid when `AuthType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+        /// </summary>
+        [Input("appCodeAuthType")]
+        public Input<string>? AppCodeAuthType { get; set; }
+
+        /// <summary>
         /// The authorization Type including APP and ANONYMOUS. Defaults to null.
         /// </summary>
         [Input("authType", required: true)]
@@ -441,6 +453,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }
+
+        /// <summary>
+        /// The App Code authentication type, only valid when `AuthType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
+        /// </summary>
+        [Input("appCodeAuthType")]
+        public Input<string>? AppCodeAuthType { get; set; }
 
         /// <summary>
         /// The authorization Type including APP and ANONYMOUS. Defaults to null.

@@ -108,7 +108,7 @@ import (
 //
 // ## Import
 //
-// Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
+// Cloud Config Aggregate Compliance Pack can be imported using the id, which consists of aggregatorId and aggregator_compliance_pack_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>

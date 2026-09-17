@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ESA Client Certificate can be imported using the id, e.g.
+ * ESA Client Certificate can be imported using the id, which consists of siteId and client_cert_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:esa/clientCertificate:ClientCertificate example <site_id>:<client_cert_id>

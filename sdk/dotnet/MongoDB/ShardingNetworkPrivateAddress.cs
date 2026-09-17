@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// ## Import
     /// 
-    /// MongoDB Sharding Network Private Address can be imported using the id, e.g.
+    /// MongoDB Sharding Network Private Address can be imported using the id, which consists of DbInstanceId and node_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example &lt;db_instance_id&gt;:&lt;node_id&gt;

@@ -275,7 +275,7 @@ class V3Alias(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Alias can be imported using the id, e.g.
+        FCV3 Alias can be imported using the id, which consists of function_name and alias_name, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3Alias:V3Alias example <function_name>:<alias_name>
@@ -334,7 +334,7 @@ class V3Alias(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Alias can be imported using the id, e.g.
+        FCV3 Alias can be imported using the id, which consists of function_name and alias_name, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3Alias:V3Alias example <function_name>:<alias_name>

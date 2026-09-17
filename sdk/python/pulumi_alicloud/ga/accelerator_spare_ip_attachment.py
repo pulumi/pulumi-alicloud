@@ -197,7 +197,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
+        Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, which consists of accelerator_id and spare_ip, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
@@ -259,7 +259,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
+        Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, which consists of accelerator_id and spare_ip, e.g.
 
         ```sh
         $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>

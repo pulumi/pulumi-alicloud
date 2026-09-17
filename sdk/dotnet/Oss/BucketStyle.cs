@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ## Import
     /// 
-    /// OSS Bucket Style can be imported using the id, e.g.
+    /// OSS Bucket Style can be imported using the id, which consists of bucket and style_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:oss/bucketStyle:BucketStyle example &lt;bucket&gt;:&lt;style_name&gt;

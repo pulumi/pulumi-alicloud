@@ -571,11 +571,68 @@ class PolicyBinding(pulumi.CustomResource):
             source="prefix-example-update/")
         ```
 
+        ECS Instance Backup With App-Consistent Snapshot Group
+
+        This example migrates an `hbr.ServerBackupPlan` configuration (deprecated since v1.249.0) to `hbr.PolicyBinding` using `hbr.Policy` + `advanced_options.udm_detail` with `app_consistent` and `snapshot_group`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.Integer("default",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("default",
+            vault_type="STANDARD",
+            vault_name=f"example-value-{default['result']}")
+        default_policy = alicloud.hbr.Policy("default",
+            policy_name=f"example-value-{default['result']}",
+            rules=[{
+                "rule_type": "BACKUP",
+                "backup_type": "COMPLETE",
+                "schedule": "I|1631685600|P1D",
+                "retention": 7,
+                "archive_days": 0,
+                "vault_id": default_vault.id,
+            }],
+            policy_description="policy example")
+        default_instance = alicloud.ecs.Instance("default",
+            instance_name=f"example-value-{default['result']}",
+            instance_type="ecs.g7.large",
+            image_id="aliyun_2_1903_x64_7h_cor_4.0.40_alibase",
+            system_disk=[{
+                "category": "cloud_essd",
+                "size": "40",
+            }])
+        default_policy_binding = alicloud.hbr.PolicyBinding("default",
+            source_type="UDM_ECS",
+            policy_id=default_policy.id,
+            data_source_id=default_instance.id,
+            disabled=False,
+            advanced_options={
+                "udm_detail": {
+                    "app_consistent": True,
+                    "snapshot_group": True,
+                    "ram_role_name": "AliyunECSBackupRole",
+                    "pre_script_path": "/opt/prescript.sh",
+                    "post_script_path": "/opt/postscript.sh",
+                    "enable_fs_freeze": True,
+                    "timeout_in_seconds": 60,
+                    "enable_writers": True,
+                },
+            })
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, which consists of policy_id, source_type and data_source_id, e.g.
 
         ```sh
         $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>
@@ -663,11 +720,68 @@ class PolicyBinding(pulumi.CustomResource):
             source="prefix-example-update/")
         ```
 
+        ECS Instance Backup With App-Consistent Snapshot Group
+
+        This example migrates an `hbr.ServerBackupPlan` configuration (deprecated since v1.249.0) to `hbr.PolicyBinding` using `hbr.Policy` + `advanced_options.udm_detail` with `app_consistent` and `snapshot_group`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.Integer("default",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("default",
+            vault_type="STANDARD",
+            vault_name=f"example-value-{default['result']}")
+        default_policy = alicloud.hbr.Policy("default",
+            policy_name=f"example-value-{default['result']}",
+            rules=[{
+                "rule_type": "BACKUP",
+                "backup_type": "COMPLETE",
+                "schedule": "I|1631685600|P1D",
+                "retention": 7,
+                "archive_days": 0,
+                "vault_id": default_vault.id,
+            }],
+            policy_description="policy example")
+        default_instance = alicloud.ecs.Instance("default",
+            instance_name=f"example-value-{default['result']}",
+            instance_type="ecs.g7.large",
+            image_id="aliyun_2_1903_x64_7h_cor_4.0.40_alibase",
+            system_disk=[{
+                "category": "cloud_essd",
+                "size": "40",
+            }])
+        default_policy_binding = alicloud.hbr.PolicyBinding("default",
+            source_type="UDM_ECS",
+            policy_id=default_policy.id,
+            data_source_id=default_instance.id,
+            disabled=False,
+            advanced_options={
+                "udm_detail": {
+                    "app_consistent": True,
+                    "snapshot_group": True,
+                    "ram_role_name": "AliyunECSBackupRole",
+                    "pre_script_path": "/opt/prescript.sh",
+                    "post_script_path": "/opt/postscript.sh",
+                    "enable_fs_freeze": True,
+                    "timeout_in_seconds": 60,
+                    "enable_writers": True,
+                },
+            })
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, which consists of policy_id, source_type and data_source_id, e.g.
 
         ```sh
         $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>

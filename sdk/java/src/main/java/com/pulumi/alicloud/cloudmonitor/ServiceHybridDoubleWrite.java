@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
+ * Cloud Monitor Service Hybrid Double Write can be imported using the id, which consists of sourceNamespace and source_user_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example &lt;source_namespace&gt;:&lt;source_user_id&gt;

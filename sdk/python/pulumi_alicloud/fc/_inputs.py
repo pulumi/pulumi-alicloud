@@ -93,6 +93,14 @@ __all__ = [
     'V3FunctionCustomContainerConfigAccelerationInfoArgsDict',
     'V3FunctionCustomContainerConfigHealthCheckConfigArgs',
     'V3FunctionCustomContainerConfigHealthCheckConfigArgsDict',
+    'V3FunctionCustomContainerConfigRegistryConfigArgs',
+    'V3FunctionCustomContainerConfigRegistryConfigArgsDict',
+    'V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs',
+    'V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgsDict',
+    'V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs',
+    'V3FunctionCustomContainerConfigRegistryConfigCertConfigArgsDict',
+    'V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs',
+    'V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgsDict',
     'V3FunctionCustomDnsArgs',
     'V3FunctionCustomDnsArgsDict',
     'V3FunctionCustomDnsDnsOptionArgs',
@@ -1684,7 +1692,7 @@ class V3CustomDomainCorsConfigArgsDict(TypedDict):
     """
     allow_origins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+    List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
     """
     expose_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -1708,7 +1716,7 @@ class V3CustomDomainCorsConfigArgs:
         :param pulumi.Input[_builtins.bool] allow_credentials: Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_headers: List of allowed request headers, such as Content-Type, Authorization, etc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_methods: List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_origins: List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_origins: List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expose_headers: List of response headers that can be exposed to the browser.
         :param pulumi.Input[_builtins.int] max_age: Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
         """
@@ -1765,7 +1773,7 @@ class V3CustomDomainCorsConfigArgs:
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like `https://example.com`, or an array of multiple domains.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -2372,6 +2380,10 @@ class V3FunctionCustomContainerConfigArgsDict(TypedDict):
     """
     The listening port of the HTTP Server when the custom container runs.
     """
+    registry_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigArgsDict']]]
+    """
+    The configuration of the custom image registry. See `registry_config` below.
+    """
     resolved_image_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
@@ -2388,6 +2400,7 @@ class V3FunctionCustomContainerConfigArgs:
                  health_check_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgs']] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
+                 registry_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigArgs']] = None,
                  resolved_image_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
@@ -2398,6 +2411,7 @@ class V3FunctionCustomContainerConfigArgs:
         :param pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs'] health_check_config: Function custom health check configuration See `health_check_config` below.
         :param pulumi.Input[_builtins.str] image: The container Image address.
         :param pulumi.Input[_builtins.int] port: The listening port of the HTTP Server when the custom container runs.
+        :param pulumi.Input['V3FunctionCustomContainerConfigRegistryConfigArgs'] registry_config: The configuration of the custom image registry. See `registry_config` below.
         :param pulumi.Input[_builtins.str] resolved_image_uri: The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
         """
         if acceleration_info is not None:
@@ -2425,6 +2439,8 @@ class V3FunctionCustomContainerConfigArgs:
             pulumi.set(__self__, "image", image)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if registry_config is not None:
+            pulumi.set(__self__, "registry_config", registry_config)
         if resolved_image_uri is not None:
             pulumi.set(__self__, "resolved_image_uri", resolved_image_uri)
 
@@ -2526,6 +2542,18 @@ class V3FunctionCustomContainerConfigArgs:
     @port.setter
     def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="registryConfig")
+    def registry_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigArgs']]:
+        """
+        The configuration of the custom image registry. See `registry_config` below.
+        """
+        return pulumi.get(self, "registry_config")
+
+    @registry_config.setter
+    def registry_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigArgs']]):
+        pulumi.set(self, "registry_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resolvedImageUri")
@@ -2656,6 +2684,228 @@ class V3FunctionCustomContainerConfigHealthCheckConfigArgs:
     @timeout_seconds.setter
     def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
+
+
+class V3FunctionCustomContainerConfigRegistryConfigArgsDict(TypedDict):
+    auth_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgsDict']]]
+    """
+    The authentication configuration of the image registry. See `auth_config` below.
+    """
+    cert_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigCertConfigArgsDict']]]
+    """
+    The certificate configuration of the image registry. See `cert_config` below.
+    """
+    network_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgsDict']]]
+    """
+    The network configuration used to connect to the image registry. See `network_config` below.
+    """
+
+@pulumi.input_type
+class V3FunctionCustomContainerConfigRegistryConfigArgs:
+    def __init__(__self__, *,
+                 auth_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs']] = None,
+                 cert_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs']] = None,
+                 network_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs']] = None):
+        """
+        :param pulumi.Input['V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs'] auth_config: The authentication configuration of the image registry. See `auth_config` below.
+        :param pulumi.Input['V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs'] cert_config: The certificate configuration of the image registry. See `cert_config` below.
+        :param pulumi.Input['V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs'] network_config: The network configuration used to connect to the image registry. See `network_config` below.
+        """
+        if auth_config is not None:
+            pulumi.set(__self__, "auth_config", auth_config)
+        if cert_config is not None:
+            pulumi.set(__self__, "cert_config", cert_config)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
+
+    @_builtins.property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs']]:
+        """
+        The authentication configuration of the image registry. See `auth_config` below.
+        """
+        return pulumi.get(self, "auth_config")
+
+    @auth_config.setter
+    def auth_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs']]):
+        pulumi.set(self, "auth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certConfig")
+    def cert_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs']]:
+        """
+        The certificate configuration of the image registry. See `cert_config` below.
+        """
+        return pulumi.get(self, "cert_config")
+
+    @cert_config.setter
+    def cert_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs']]):
+        pulumi.set(self, "cert_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs']]:
+        """
+        The network configuration used to connect to the image registry. See `network_config` below.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+
+class V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The password of the image registry.
+    """
+    user_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The username of the image registry.
+    """
+
+@pulumi.input_type
+class V3FunctionCustomContainerConfigRegistryConfigAuthConfigArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] password: The password of the image registry.
+        :param pulumi.Input[_builtins.str] user_name: The username of the image registry.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password of the image registry.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The username of the image registry.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "user_name", value)
+
+
+class V3FunctionCustomContainerConfigRegistryConfigCertConfigArgsDict(TypedDict):
+    insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to skip certificate verification.
+    """
+    root_ca_cert_base64: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Base64-encoded root CA certificate of the image registry.
+    """
+
+@pulumi.input_type
+class V3FunctionCustomContainerConfigRegistryConfigCertConfigArgs:
+    def __init__(__self__, *,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_ca_cert_base64: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] insecure: Specifies whether to skip certificate verification.
+        :param pulumi.Input[_builtins.str] root_ca_cert_base64: The Base64-encoded root CA certificate of the image registry.
+        """
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if root_ca_cert_base64 is not None:
+            pulumi.set(__self__, "root_ca_cert_base64", root_ca_cert_base64)
+
+    @_builtins.property
+    @pulumi.getter
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to skip certificate verification.
+        """
+        return pulumi.get(self, "insecure")
+
+    @insecure.setter
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "insecure", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rootCaCertBase64")
+    def root_ca_cert_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Base64-encoded root CA certificate of the image registry.
+        """
+        return pulumi.get(self, "root_ca_cert_base64")
+
+    @root_ca_cert_base64.setter
+    def root_ca_cert_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "root_ca_cert_base64", value)
+
+
+class V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgsDict(TypedDict):
+    security_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the vSwitch that can connect to the image registry.
+    """
+
+@pulumi.input_type
+class V3FunctionCustomContainerConfigRegistryConfigNetworkConfigArgs:
+    def __init__(__self__, *,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vSwitch that can connect to the image registry.
+        """
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the vSwitch that can connect to the image registry.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class V3FunctionCustomDnsArgsDict(TypedDict):

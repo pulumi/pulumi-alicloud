@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RocketMQ Account can be imported using the id, e.g.
+ * RocketMQ Account can be imported using the id, which consists of instanceId and username, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:rocketmq/account:Account example &lt;instance_id&gt;:&lt;username&gt;

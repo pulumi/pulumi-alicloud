@@ -131,7 +131,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
 
         ## Import
 
-        EBS Replica Group Drill can be imported using the id, e.g.
+        EBS Replica Group Drill can be imported using the id, which consists of group_id and replica_group_drill_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill example <group_id>:<replica_group_drill_id>
@@ -174,7 +174,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
 
         ## Import
 
-        EBS Replica Group Drill can be imported using the id, e.g.
+        EBS Replica Group Drill can be imported using the id, which consists of group_id and replica_group_drill_id, e.g.
 
         ```sh
         $ pulumi import alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill example <group_id>:<replica_group_drill_id>

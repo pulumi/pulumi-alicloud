@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// ## Import
     /// 
-    /// Cloud SSO Group can be imported using the id, e.g.
+    /// Cloud SSO Group can be imported using the id, which consists of DirectoryId and group_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cloudsso/group:Group example &lt;directory_id&gt;:&lt;group_id&gt;

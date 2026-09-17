@@ -70,7 +70,7 @@ import (
 //
 // ## Import
 //
-// Ddos Basic Antiddos can be imported using the id, e.g.
+// Ddos Basic Antiddos can be imported using the id, which consists of instance_id, instanceType and ddos_type, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>

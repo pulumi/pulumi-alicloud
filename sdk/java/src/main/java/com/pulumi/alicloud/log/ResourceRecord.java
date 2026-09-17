@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log resource record can be imported using the id, e.g.
+ * Log resource record can be imported using the id, which consists of resourceName and record_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:log/resourceRecord:ResourceRecord example &lt;resource_name&gt;:&lt;record_id&gt;

@@ -8,10 +8,13 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .audit_policy import *
+from .backup import *
 from .get_accounts import *
 from .get_audit_policies import *
+from .get_backups import *
 from .get_instances import *
 from .get_serverless_instances import *
+from .get_sharding_audit_filters import *
 from .get_sharding_network_private_addresses import *
 from .get_sharding_network_public_addresses import *
 from .get_zones import *
@@ -22,6 +25,7 @@ from .private_srv_network_address import *
 from .public_network_address import *
 from .replica_set_role import *
 from .serverless_instance import *
+from .sharding_audit_filter import *
 from .sharding_instance import *
 from .sharding_network_private_address import *
 from .sharding_network_public_address import *

@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// ## Import
     /// 
-    /// FCV3 Function Version can be imported using the id, e.g.
+    /// FCV3 Function Version can be imported using the id, which consists of FunctionName and version_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:fc/v3FunctionVersion:V3FunctionVersion example &lt;function_name&gt;:&lt;version_id&gt;

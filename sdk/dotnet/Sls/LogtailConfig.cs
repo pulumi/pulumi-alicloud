@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// ## Import
     /// 
-    /// Log Service (SLS) Logtail Config can be imported using the id, e.g.
+    /// Log Service (SLS) Logtail Config can be imported using the id, which consists of ProjectName and logtail_config_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:sls/logtailConfig:LogtailConfig example &lt;project_name&gt;:&lt;logtail_config_name&gt;

@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// ## Import
     /// 
-    /// Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
+    /// Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, which consists of FileSystemId and mount_point_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dfs/mountPoint:MountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;

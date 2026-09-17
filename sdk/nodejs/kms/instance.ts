@@ -116,6 +116,7 @@ import * as utilities from "../utilities";
  *     paymentType: "Subscription",
  * });
  * ```
+ *
  * Create a pay-as-you-go kms instance
  *
  * ```typescript
@@ -336,7 +337,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly secretNum: pulumi.Output<number | undefined>;
     /**
-     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The computation performance level of the KMS instance. Valid values: `0`, `200`, `1000`, `2000` and `4000`. The attribute is valid when the attribute `paymentType` is `Subscription`. Valid values `1000` and above require a KMS 3.0 instance (`productVersion` = `3`): a legacy instance with `spec` = `200` cannot be directly upgraded to a higher spec, and the instance must be upgraded to KMS 3.0 first. For more information, see [How to enable, view, upgrade, and renew KMS instances](https://www.alibabacloud.com/help/en/kms/key-management-service/user-guide/manage-kms-instances).
      */
     declare public readonly spec: pulumi.Output<number | undefined>;
     /**
@@ -356,11 +357,17 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly vpcNum: pulumi.Output<number | undefined>;
     /**
-     * Instance bind vswitches
+     * The IDs of the vSwitches that the KMS instance is bound to. Every vSwitch must reside in a zone declared in `zoneIds`, and that zone must be available for KMS.
      */
     declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
-     * zone id
+     * The IDs of the zones in which the KMS instance is deployed. Each zone must be available for KMS.
+     *
+     * > **NOTE:** A KMS instance is always deployed across two zones, so `zoneIds` must list both of them. Two combinations are supported, written here as the number of `vswitchIds` to the number of `zoneIds`: `1:2` and `2:2`. With `2:2` the two lists are paired by position - the first zone hosts the first vSwitch, the second zone hosts the second vSwitch - so order them consistently. With a single vSwitch the order carries no meaning, because the API derives that vSwitch's own zone.
+     *
+     * > **NOTE:** Do not declare a single zone. The API accepts it and picks the second zone itself, so the created instance spans two zones while the configuration lists one. Since `zoneIds` is `ForceNew`, every subsequent plan then proposes to destroy and recreate the instance, and each new instance is completed the same way. A difference in the number of zones is a real difference, not an ordering one, so it is not suppressed.
+     *
+     * > **NOTE:** Since v1.290.0 `vswitchIds` and `zoneIds` are ordered lists instead of sets. Previously the provider reordered each list independently before submitting it, which could pair a vSwitch with a zone it does not belong to. The change applies to instances created from v1.290.0 on. Existing instances are not replaced by the upgrade and keep the pairing they were created with: the API does not report the order back, so a difference in order alone never produces a diff, and reordering either list in the configuration of an existing instance has no effect. Re-pairing an existing instance means recreating it, with `pulumi up -replace`.
      */
     declare public readonly zoneIds: pulumi.Output<string[]>;
 
@@ -534,7 +541,7 @@ export interface InstanceState {
      */
     secretNum?: pulumi.Input<number | undefined>;
     /**
-     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The computation performance level of the KMS instance. Valid values: `0`, `200`, `1000`, `2000` and `4000`. The attribute is valid when the attribute `paymentType` is `Subscription`. Valid values `1000` and above require a KMS 3.0 instance (`productVersion` = `3`): a legacy instance with `spec` = `200` cannot be directly upgraded to a higher spec, and the instance must be upgraded to KMS 3.0 first. For more information, see [How to enable, view, upgrade, and renew KMS instances](https://www.alibabacloud.com/help/en/kms/key-management-service/user-guide/manage-kms-instances).
      */
     spec?: pulumi.Input<number | undefined>;
     /**
@@ -554,11 +561,17 @@ export interface InstanceState {
      */
     vpcNum?: pulumi.Input<number | undefined>;
     /**
-     * Instance bind vswitches
+     * The IDs of the vSwitches that the KMS instance is bound to. Every vSwitch must reside in a zone declared in `zoneIds`, and that zone must be available for KMS.
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * zone id
+     * The IDs of the zones in which the KMS instance is deployed. Each zone must be available for KMS.
+     *
+     * > **NOTE:** A KMS instance is always deployed across two zones, so `zoneIds` must list both of them. Two combinations are supported, written here as the number of `vswitchIds` to the number of `zoneIds`: `1:2` and `2:2`. With `2:2` the two lists are paired by position - the first zone hosts the first vSwitch, the second zone hosts the second vSwitch - so order them consistently. With a single vSwitch the order carries no meaning, because the API derives that vSwitch's own zone.
+     *
+     * > **NOTE:** Do not declare a single zone. The API accepts it and picks the second zone itself, so the created instance spans two zones while the configuration lists one. Since `zoneIds` is `ForceNew`, every subsequent plan then proposes to destroy and recreate the instance, and each new instance is completed the same way. A difference in the number of zones is a real difference, not an ordering one, so it is not suppressed.
+     *
+     * > **NOTE:** Since v1.290.0 `vswitchIds` and `zoneIds` are ordered lists instead of sets. Previously the provider reordered each list independently before submitting it, which could pair a vSwitch with a zone it does not belong to. The change applies to instances created from v1.290.0 on. Existing instances are not replaced by the upgrade and keep the pairing they were created with: the API does not report the order back, so a difference in order alone never produces a diff, and reordering either list in the configuration of an existing instance has no effect. Re-pairing an existing instance means recreating it, with `pulumi up -replace`.
      */
     zoneIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -643,7 +656,7 @@ export interface InstanceArgs {
      */
     secretNum?: pulumi.Input<number | undefined>;
     /**
-     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The computation performance level of the KMS instance. Valid values: `0`, `200`, `1000`, `2000` and `4000`. The attribute is valid when the attribute `paymentType` is `Subscription`. Valid values `1000` and above require a KMS 3.0 instance (`productVersion` = `3`): a legacy instance with `spec` = `200` cannot be directly upgraded to a higher spec, and the instance must be upgraded to KMS 3.0 first. For more information, see [How to enable, view, upgrade, and renew KMS instances](https://www.alibabacloud.com/help/en/kms/key-management-service/user-guide/manage-kms-instances).
      */
     spec?: pulumi.Input<number | undefined>;
     /**
@@ -659,11 +672,17 @@ export interface InstanceArgs {
      */
     vpcNum?: pulumi.Input<number | undefined>;
     /**
-     * Instance bind vswitches
+     * The IDs of the vSwitches that the KMS instance is bound to. Every vSwitch must reside in a zone declared in `zoneIds`, and that zone must be available for KMS.
      */
     vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * zone id
+     * The IDs of the zones in which the KMS instance is deployed. Each zone must be available for KMS.
+     *
+     * > **NOTE:** A KMS instance is always deployed across two zones, so `zoneIds` must list both of them. Two combinations are supported, written here as the number of `vswitchIds` to the number of `zoneIds`: `1:2` and `2:2`. With `2:2` the two lists are paired by position - the first zone hosts the first vSwitch, the second zone hosts the second vSwitch - so order them consistently. With a single vSwitch the order carries no meaning, because the API derives that vSwitch's own zone.
+     *
+     * > **NOTE:** Do not declare a single zone. The API accepts it and picks the second zone itself, so the created instance spans two zones while the configuration lists one. Since `zoneIds` is `ForceNew`, every subsequent plan then proposes to destroy and recreate the instance, and each new instance is completed the same way. A difference in the number of zones is a real difference, not an ordering one, so it is not suppressed.
+     *
+     * > **NOTE:** Since v1.290.0 `vswitchIds` and `zoneIds` are ordered lists instead of sets. Previously the provider reordered each list independently before submitting it, which could pair a vSwitch with a zone it does not belong to. The change applies to instances created from v1.290.0 on. Existing instances are not replaced by the upgrade and keep the pairing they were created with: the API does not report the order back, so a difference in order alone never produces a diff, and reordering either list in the configuration of an existing instance has no effect. Re-pairing an existing instance means recreating it, with `pulumi up -replace`.
      */
     zoneIds: pulumi.Input<pulumi.Input<string>[]>;
 }

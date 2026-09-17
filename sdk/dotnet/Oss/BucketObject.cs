@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> ContentLength { get; private set; } = null!;
 
         /// <summary>
-        /// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        /// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         /// </summary>
         [Output("contentMd5")]
         public Output<string?> ContentMd5 { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? ContentEncoding { get; set; }
 
         /// <summary>
-        /// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        /// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         /// </summary>
         [Input("contentMd5")]
         public Input<string>? ContentMd5 { get; set; }
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? ContentLength { get; set; }
 
         /// <summary>
-        /// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        /// The MD5 digest of the content for OSS data-integrity verification. Accepts a 32-character **hex** MD5 digest (as produced by Terraform's `md5()` and `filemd5()` functions; the provider converts it to base64), or a **base64**-encoded MD5 digest (RFC 1864, 16 bytes). Values that are neither a valid hex MD5 digest nor valid base64 are rejected by the provider. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for the computing method.
         /// </summary>
         [Input("contentMd5")]
         public Input<string>? ContentMd5 { get; set; }

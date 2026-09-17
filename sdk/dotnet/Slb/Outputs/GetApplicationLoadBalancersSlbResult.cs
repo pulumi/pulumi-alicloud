@@ -17,22 +17,40 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// Service address of the SLBs.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The creation time of the SLB.
+        /// </summary>
         public readonly string CreationTime;
         /// <summary>
         /// ID of the SLB.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether the SLB is internet-facing.
+        /// </summary>
         public readonly bool Internet;
+        /// <summary>
+        /// Master availability zone of the SLB.
+        /// </summary>
         public readonly string MasterAvailabilityZone;
+        /// <summary>
+        /// The name of the SLB.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         public readonly string NetworkType;
+        /// <summary>
+        /// Region ID the SLB belongs to.
+        /// </summary>
         public readonly string RegionId;
+        /// <summary>
+        /// Slave availability zone of the SLB.
+        /// </summary>
         public readonly string SlaveAvailabilityZone;
         /// <summary>
-        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
+        /// The status of the SLB. Valid values: `Active`, `Inactive` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>

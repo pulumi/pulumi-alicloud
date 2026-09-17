@@ -84,7 +84,7 @@ import (
 //
 // ## Import
 //
-// CR Endpoint Acl Policy can be imported using the id, e.g.
+// CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpointType and entry, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>

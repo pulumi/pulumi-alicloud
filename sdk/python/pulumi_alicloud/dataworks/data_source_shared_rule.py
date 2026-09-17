@@ -273,7 +273,7 @@ class DataSourceSharedRule(pulumi.CustomResource):
 
         ## Import
 
-        Data Works Data Source Shared Rule can be imported using the id, e.g.
+        Data Works Data Source Shared Rule can be imported using the id, which consists of data_source_id and data_source_shared_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule example <data_source_id>:<data_source_shared_rule_id>
@@ -364,7 +364,7 @@ class DataSourceSharedRule(pulumi.CustomResource):
 
         ## Import
 
-        Data Works Data Source Shared Rule can be imported using the id, e.g.
+        Data Works Data Source Shared Rule can be imported using the id, which consists of data_source_id and data_source_shared_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule example <data_source_id>:<data_source_shared_rule_id>

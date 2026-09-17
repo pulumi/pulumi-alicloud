@@ -141,6 +141,10 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+     */
+    declare public /*out*/ readonly drainingServers: pulumi.Output<outputs.gwlb.ServerGroupDrainingServer[]>;
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
@@ -187,10 +191,11 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     declare public readonly serverGroupType: pulumi.Output<string>;
     /**
-     * The backend servers that you want to remove.
+     * The backend servers that you want to remove. See `servers` below.
      *
      * > **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     *
+     * > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      */
     declare public readonly servers: pulumi.Output<outputs.gwlb.ServerGroupServer[] | undefined>;
     /**
@@ -206,7 +211,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The VPC ID.
      *
-     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -225,6 +230,7 @@ export class ServerGroup extends pulumi.CustomResource {
             const state = argsOrState as ServerGroupState | undefined;
             resourceInputs["connectionDrainConfig"] = state?.connectionDrainConfig;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["drainingServers"] = state?.drainingServers;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["healthCheckConfig"] = state?.healthCheckConfig;
             resourceInputs["protocol"] = state?.protocol;
@@ -255,6 +261,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["drainingServers"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -274,6 +281,10 @@ export interface ServerGroupState {
      * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+     */
+    drainingServers?: pulumi.Input<pulumi.Input<inputs.gwlb.ServerGroupDrainingServer>[] | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
@@ -321,10 +332,11 @@ export interface ServerGroupState {
      */
     serverGroupType?: pulumi.Input<string | undefined>;
     /**
-     * The backend servers that you want to remove.
+     * The backend servers that you want to remove. See `servers` below.
      *
      * > **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     *
+     * > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      */
     servers?: pulumi.Input<pulumi.Input<inputs.gwlb.ServerGroupServer>[] | undefined>;
     /**
@@ -340,7 +352,7 @@ export interface ServerGroupState {
     /**
      * The VPC ID.
      *
-     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
     vpcId?: pulumi.Input<string | undefined>;
 }
@@ -400,10 +412,11 @@ export interface ServerGroupArgs {
      */
     serverGroupType?: pulumi.Input<string | undefined>;
     /**
-     * The backend servers that you want to remove.
+     * The backend servers that you want to remove. See `servers` below.
      *
      * > **NOTE:**  You can remove at most 200 backend servers in each call.
-     * See `servers` below.
+     *
+     * > **NOTE:**  When connection draining is enabled, a removed backend server enters the `Draining` status before it is released. Servers in the `Draining` or `Removing` status are not kept in `servers`, because the removal has already happened and the drain process finishes it. They are exposed through the computed `drainingServers` attribute instead. If a removal request still contains such a server, the provider skips it. If such a server is added back to `servers`, Terraform re-adds it to the server group (rescuing it back to the `Available` status).
      */
     servers?: pulumi.Input<pulumi.Input<inputs.gwlb.ServerGroupServer>[] | undefined>;
     /**
@@ -415,7 +428,7 @@ export interface ServerGroupArgs {
     /**
      * The VPC ID.
      *
-     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     * > **NOTE:**  If `serverGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
     vpcId: pulumi.Input<string>;
 }

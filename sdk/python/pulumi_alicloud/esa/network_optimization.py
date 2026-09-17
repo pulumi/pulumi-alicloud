@@ -469,7 +469,7 @@ class NetworkOptimization(pulumi.CustomResource):
 
         ## Import
 
-        ESA Network Optimization can be imported using the id, e.g.
+        ESA Network Optimization can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/networkOptimization:NetworkOptimization example <site_id>:<config_id>
@@ -540,7 +540,7 @@ class NetworkOptimization(pulumi.CustomResource):
 
         ## Import
 
-        ESA Network Optimization can be imported using the id, e.g.
+        ESA Network Optimization can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/networkOptimization:NetworkOptimization example <site_id>:<config_id>

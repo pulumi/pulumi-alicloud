@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// ## Import
     /// 
-    /// Ga Forwarding Rule can be imported using the id, e.g.
+    /// Ga Forwarding Rule can be imported using the id, which consists of accelerator_id, ListenerId and forwarding_rule_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;forwarding_rule_id&gt;

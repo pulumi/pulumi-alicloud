@@ -317,7 +317,7 @@ class MachineGroup(pulumi.CustomResource):
 
         ## Import
 
-        Log Service (SLS) Machine Group can be imported using the id, e.g.
+        Log Service (SLS) Machine Group can be imported using the id, which consists of project_name and group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:sls/machineGroup:MachineGroup example <project_name>:<group_name>
@@ -389,7 +389,7 @@ class MachineGroup(pulumi.CustomResource):
 
         ## Import
 
-        Log Service (SLS) Machine Group can be imported using the id, e.g.
+        Log Service (SLS) Machine Group can be imported using the id, which consists of project_name and group_name, e.g.
 
         ```sh
         $ pulumi import alicloud:sls/machineGroup:MachineGroup example <project_name>:<group_name>

@@ -143,7 +143,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.
+ * Global Accelerator (GA) Additional Certificate can be imported using the id, which consists of accelerator_id, listenerId and domain, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>

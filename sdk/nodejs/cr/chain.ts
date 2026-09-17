@@ -171,7 +171,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CR Chain can be imported using the id, e.g.
+ * CR Chain can be imported using the id, which consists of instanceId and chain_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>

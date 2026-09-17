@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// ## Import
     /// 
-    /// Polar Db Account can be imported using the id, e.g.
+    /// Polar Db Account can be imported using the id, which consists of DbClusterId and account_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:polardb/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;

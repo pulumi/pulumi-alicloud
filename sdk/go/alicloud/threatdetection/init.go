@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssetSelectionConfig{}
 	case "alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig":
 		r = &AttackPathSensitiveAssetConfig{}
+	case "alicloud:threatdetection/attackPathWhitelist:AttackPathWhitelist":
+		r = &AttackPathWhitelist{}
 	case "alicloud:threatdetection/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
@@ -59,8 +61,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogMeta{}
 	case "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig":
 		r = &MaliciousFileWhitelistConfig{}
+	case "alicloud:threatdetection/monitorAccount:MonitorAccount":
+		r = &MonitorAccount{}
 	case "alicloud:threatdetection/ossScanConfig:OssScanConfig":
 		r = &OssScanConfig{}
+	case "alicloud:threatdetection/rdDefaultSyncList:RdDefaultSyncList":
+		r = &RdDefaultSyncList{}
 	case "alicloud:threatdetection/sasTrail:SasTrail":
 		r = &SasTrail{}
 	case "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole":
@@ -100,6 +106,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/attackPathSensitiveAssetConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/attackPathWhitelist",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -179,7 +190,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"threatdetection/monitorAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"threatdetection/ossScanConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/rdDefaultSyncList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

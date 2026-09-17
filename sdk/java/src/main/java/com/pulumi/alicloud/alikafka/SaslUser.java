@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AliKafka Sasl User can be imported using the id, e.g.
+ * AliKafka Sasl User can be imported using the id, which consists of instanceId and username, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alikafka/saslUser:SaslUser example &lt;instance_id&gt;:&lt;username&gt;

@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OSS Access Point can be imported using the id, e.g.
+ * OSS Access Point can be imported using the id, which consists of bucket and access_point_name, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:oss/accessPoint:AccessPoint example &lt;bucket&gt;:&lt;access_point_name&gt;

@@ -582,7 +582,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host User can be imported using the id, e.g.
+        Bastion Host User can be imported using the id, which consists of instance_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
@@ -696,7 +696,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Bastion Host User can be imported using the id, e.g.
+        Bastion Host User can be imported using the id, which consists of instance_id and user_id, e.g.
 
         ```sh
         $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>

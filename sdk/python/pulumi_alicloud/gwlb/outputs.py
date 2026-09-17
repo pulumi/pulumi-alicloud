@@ -19,6 +19,7 @@ __all__ = [
     'LoadBalancerZoneMapping',
     'LoadBalancerZoneMappingLoadBalancerAddress',
     'ServerGroupConnectionDrainConfig',
+    'ServerGroupDrainingServer',
     'ServerGroupHealthCheckConfig',
     'ServerGroupServer',
     'GetZonesZoneResult',
@@ -199,6 +200,82 @@ class ServerGroupConnectionDrainConfig(dict):
 
 
 @pulumi.output_type
+class ServerGroupDrainingServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverId":
+            suggest = "server_id"
+        elif key == "serverIp":
+            suggest = "server_ip"
+        elif key == "serverType":
+            suggest = "server_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerGroupDrainingServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerGroupDrainingServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerGroupDrainingServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_id: Optional[_builtins.str] = None,
+                 server_ip: Optional[_builtins.str] = None,
+                 server_type: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str server_id: The backend server ID.
+        :param _builtins.str server_ip: The IP address of the backend server.
+        :param _builtins.str server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        :param _builtins.str status: Indicates the status of the backend server.
+        """
+        if server_id is not None:
+            pulumi.set(__self__, "server_id", server_id)
+        if server_ip is not None:
+            pulumi.set(__self__, "server_ip", server_ip)
+        if server_type is not None:
+            pulumi.set(__self__, "server_type", server_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> Optional[_builtins.str]:
+        """
+        The backend server ID.
+        """
+        return pulumi.get(self, "server_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serverIp")
+    def server_ip(self) -> Optional[_builtins.str]:
+        """
+        The IP address of the backend server.
+        """
+        return pulumi.get(self, "server_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        """
+        return pulumi.get(self, "server_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Indicates the status of the backend server.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class ServerGroupHealthCheckConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -277,7 +354,7 @@ class ServerGroupHealthCheckConfig(dict):
                
                The URL must start with a forward slash (/).
                
-               > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+               > **NOTE:**  This parameter takes effect only if you set `health_check_protocol` to `HTTP`.
         :param _builtins.str health_check_protocol: The protocol that is used for health checks. Valid values:
                
                - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
@@ -390,7 +467,7 @@ class ServerGroupHealthCheckConfig(dict):
 
         The URL must start with a forward slash (/).
 
-        > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+        > **NOTE:**  This parameter takes effect only if you set `health_check_protocol` to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 

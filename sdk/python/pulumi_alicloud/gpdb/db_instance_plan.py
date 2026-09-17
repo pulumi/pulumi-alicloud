@@ -360,7 +360,7 @@ class DbInstancePlan(pulumi.CustomResource):
 
         ## Import
 
-        GPDB DB Instance Plan can be imported using the id, e.g.
+        GPDB DB Instance Plan can be imported using the id, which consists of db_instance_id and plan_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example <db_instance_id>:<plan_id>
@@ -394,7 +394,7 @@ class DbInstancePlan(pulumi.CustomResource):
 
         ## Import
 
-        GPDB DB Instance Plan can be imported using the id, e.g.
+        GPDB DB Instance Plan can be imported using the id, which consists of db_instance_id and plan_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example <db_instance_id>:<plan_id>

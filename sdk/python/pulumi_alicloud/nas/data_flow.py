@@ -405,7 +405,7 @@ class DataFlow(pulumi.CustomResource):
 
         ## Import
 
-        File Storage (NAS) Data Flow can be imported using the id, e.g.
+        File Storage (NAS) Data Flow can be imported using the id, which consists of file_system_id and data_flow_id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
@@ -502,7 +502,7 @@ class DataFlow(pulumi.CustomResource):
 
         ## Import
 
-        File Storage (NAS) Data Flow can be imported using the id, e.g.
+        File Storage (NAS) Data Flow can be imported using the id, which consists of file_system_id and data_flow_id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>

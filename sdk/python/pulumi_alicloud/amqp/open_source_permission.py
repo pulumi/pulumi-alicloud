@@ -318,7 +318,7 @@ class OpenSourcePermission(pulumi.CustomResource):
 
         ## Import
 
-        RabbitMQ (AMQP) Open Source Permission can be imported using the id, e.g.
+        RabbitMQ (AMQP) Open Source Permission can be imported using the id, which consists of user_name, vhost and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:amqp/openSourcePermission:OpenSourcePermission example <user_name>:<vhost>:<instance_id>
@@ -421,7 +421,7 @@ class OpenSourcePermission(pulumi.CustomResource):
 
         ## Import
 
-        RabbitMQ (AMQP) Open Source Permission can be imported using the id, e.g.
+        RabbitMQ (AMQP) Open Source Permission can be imported using the id, which consists of user_name, vhost and instance_id, e.g.
 
         ```sh
         $ pulumi import alicloud:amqp/openSourcePermission:OpenSourcePermission example <user_name>:<vhost>:<instance_id>

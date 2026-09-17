@@ -82,7 +82,7 @@ import (
 //
 // ## Import
 //
-// CR Storage Domain Routing Rule can be imported using the id, e.g.
+// CR Storage Domain Routing Rule can be imported using the id, which consists of instanceId and rule_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule example <instance_id>:<rule_id>

@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CR Storage Domain Routing Rule can be imported using the id, e.g.
+ * CR Storage Domain Routing Rule can be imported using the id, which consists of instanceId and rule_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule example &lt;instance_id&gt;:&lt;rule_id&gt;

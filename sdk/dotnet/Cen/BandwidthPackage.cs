@@ -99,13 +99,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> ExpiredTime { get; private set; } = null!;
 
         /// <summary>
-        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         /// </summary>
         [Output("geographicRegionAId")]
         public Output<string> GeographicRegionAId { get; private set; } = null!;
 
         /// <summary>
-        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         /// </summary>
         [Output("geographicRegionBId")]
         public Output<string> GeographicRegionBId { get; private set; } = null!;
@@ -222,13 +222,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         /// </summary>
         [Input("geographicRegionAId")]
         public Input<string>? GeographicRegionAId { get; set; }
 
         /// <summary>
-        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         /// </summary>
         [Input("geographicRegionBId")]
         public Input<string>? GeographicRegionBId { get; set; }
@@ -314,13 +314,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ExpiredTime { get; set; }
 
         /// <summary>
-        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         /// </summary>
         [Input("geographicRegionAId")]
         public Input<string>? GeographicRegionAId { get; set; }
 
         /// <summary>
-        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia` | `Middle-East` | `South-America`.
         /// </summary>
         [Input("geographicRegionBId")]
         public Input<string>? GeographicRegionBId { get; set; }

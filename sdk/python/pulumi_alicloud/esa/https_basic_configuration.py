@@ -691,7 +691,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        ESA Https Basic Configuration can be imported using the id, e.g.
+        ESA Https Basic Configuration can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration example <site_id>:<config_id>
@@ -793,7 +793,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        ESA Https Basic Configuration can be imported using the id, e.g.
+        ESA Https Basic Configuration can be imported using the id, which consists of site_id and config_id, e.g.
 
         ```sh
         $ pulumi import alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration example <site_id>:<config_id>

@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Bastion Host Host Account can be imported using the id, e.g.
+ * Bastion Host Host Account can be imported using the id, which consists of instance_id, userGroupId and host_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment example &lt;instance_id&gt;:&lt;user_group_id&gt;:&lt;host_id&gt;

@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Log Service (SLS) Logtail Pipeline Config can be imported using the id, e.g.
+ * Log Service (SLS) Logtail Pipeline Config can be imported using the id, which consists of project and config_name, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig example <project>:<config_name>

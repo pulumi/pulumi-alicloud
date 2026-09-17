@@ -32,6 +32,11 @@ public final class GetScheduledTasksResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
+     * @return The id of the scaling group to which the scheduled task belongs.
+     * 
+     */
+    private @Nullable String scalingGroupId;
+    /**
      * @return The operation to be performed when a scheduled task is triggered.
      * 
      */
@@ -72,6 +77,13 @@ public final class GetScheduledTasksResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
+     * @return The id of the scaling group to which the scheduled task belongs.
+     * 
+     */
+    public Optional<String> scalingGroupId() {
+        return Optional.ofNullable(this.scalingGroupId);
+    }
+    /**
      * @return The operation to be performed when a scheduled task is triggered.
      * 
      */
@@ -103,6 +115,7 @@ public final class GetScheduledTasksResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable String scalingGroupId;
         private @Nullable String scheduledAction;
         private @Nullable String scheduledTaskId;
         private List<GetScheduledTasksTask> tasks;
@@ -114,6 +127,7 @@ public final class GetScheduledTasksResult {
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.scalingGroupId = defaults.scalingGroupId;
     	      this.scheduledAction = defaults.scheduledAction;
     	      this.scheduledTaskId = defaults.scheduledTaskId;
     	      this.tasks = defaults.tasks;
@@ -162,6 +176,12 @@ public final class GetScheduledTasksResult {
             return this;
         }
         @CustomType.Setter
+        public Builder scalingGroupId(@Nullable String scalingGroupId) {
+
+            this.scalingGroupId = scalingGroupId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scheduledAction(@Nullable String scheduledAction) {
 
             this.scheduledAction = scheduledAction;
@@ -191,6 +211,7 @@ public final class GetScheduledTasksResult {
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
+            _resultValue.scalingGroupId = scalingGroupId;
             _resultValue.scheduledAction = scheduledAction;
             _resultValue.scheduledTaskId = scheduledTaskId;
             _resultValue.tasks = tasks;

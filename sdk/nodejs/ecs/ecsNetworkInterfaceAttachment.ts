@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ECS Network Interface Attachment can be imported using the id, e.g.
+ * ECS Network Interface Attachment can be imported using the id, which consists of networkInterfaceId and instance_id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>

@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
+// Global Accelerator (GA) Acl Entry Attachment can be imported using the id, which consists of aclId and entry, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>

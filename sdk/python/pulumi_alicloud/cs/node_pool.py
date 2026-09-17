@@ -69,6 +69,7 @@ class NodePoolArgs:
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options: pulumi.Input[Optional['NodePoolResourcePoolOptionsArgs']] = None,
                  rolling_policy: pulumi.Input[Optional['NodePoolRollingPolicyArgs']] = None,
                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -182,6 +183,9 @@ class NodePoolArgs:
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input['NodePoolResourcePoolOptionsArgs'] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+               
+               > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -343,6 +347,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_pool_options is not None:
+            pulumi.set(__self__, "resource_pool_options", resource_pool_options)
         if rolling_policy is not None:
             pulumi.set(__self__, "rolling_policy", rolling_policy)
         if runtime_name is not None:
@@ -1022,6 +1028,20 @@ class NodePoolArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourcePoolOptions")
+    def resource_pool_options(self) -> pulumi.Input[Optional['NodePoolResourcePoolOptionsArgs']]:
+        """
+        The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+
+        > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+        """
+        return pulumi.get(self, "resource_pool_options")
+
+    @resource_pool_options.setter
+    def resource_pool_options(self, value: pulumi.Input[Optional['NodePoolResourcePoolOptionsArgs']]):
+        pulumi.set(self, "resource_pool_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> pulumi.Input[Optional['NodePoolRollingPolicyArgs']]:
         """
@@ -1480,6 +1500,7 @@ class _NodePoolState:
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options: pulumi.Input[Optional['NodePoolResourcePoolOptionsArgs']] = None,
                  rolling_policy: pulumi.Input[Optional['NodePoolRollingPolicyArgs']] = None,
                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1595,6 +1616,9 @@ class _NodePoolState:
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input['NodePoolResourcePoolOptionsArgs'] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+               
+               > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -1760,6 +1784,8 @@ class _NodePoolState:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_pool_options is not None:
+            pulumi.set(__self__, "resource_pool_options", resource_pool_options)
         if rolling_policy is not None:
             pulumi.set(__self__, "rolling_policy", rolling_policy)
         if runtime_name is not None:
@@ -2453,6 +2479,20 @@ class _NodePoolState:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourcePoolOptions")
+    def resource_pool_options(self) -> pulumi.Input[Optional['NodePoolResourcePoolOptionsArgs']]:
+        """
+        The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+
+        > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+        """
+        return pulumi.get(self, "resource_pool_options")
+
+    @resource_pool_options.setter
+    def resource_pool_options(self, value: pulumi.Input[Optional['NodePoolResourcePoolOptionsArgs']]):
+        pulumi.set(self, "resource_pool_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> pulumi.Input[Optional['NodePoolRollingPolicyArgs']]:
         """
@@ -2925,6 +2965,7 @@ class NodePool(pulumi.CustomResource):
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']]] = None,
                  rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3221,6 +3262,85 @@ class NodePool(pulumi.CustomResource):
             },
             rolling_policy={
                 "max_parallelism": 1,
+            })
+        ```
+
+        NodePool with resource_pool_options (private pool):
+
+        Create Target mode private pools with `ecs.CapacityReservation` and `ecs.ElasticityAssurance`, then reference them in the node pool via `resource_pool_options`. To use a private pool, the node pool must specify `instance_types` that include the private pool's instance type, and its vSwitch must be in the same zone as the private pool.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-resource-pool-options"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        cloud_essd = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_essd")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING-ACK$")
+        vsw1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                newbits=8,
+                netnum=8).result)
+        default_get_managed_kubernetes_clusters = alicloud.cs.get_managed_kubernetes_clusters(name_regex="^cluster-")
+        # Target mode private pool generated by a capacity reservation service.
+        default_capacity_reservation = alicloud.ecs.CapacityReservation("default",
+            description=name,
+            platform="linux",
+            capacity_reservation_name=name,
+            end_time_type="Unlimited",
+            instance_amount=1,
+            instance_type=cloud_essd.instance_types[0].id,
+            match_criteria="Target",
+            zone_ids=[default.zones[0].id])
+        # Target mode private pool generated by an elasticity assurance service.
+        default_elasticity_assurance = alicloud.ecs.ElasticityAssurance("default",
+            instance_amount=1,
+            description=name,
+            zone_ids=[default.zones[0].id],
+            private_pool_options_name=name,
+            period=1,
+            private_pool_options_match_criteria="Target",
+            instance_type=cloud_essd.instance_types[0].id,
+            period_unit="Month",
+            assurance_times="Unlimited")
+        # PrivatePoolFirst: prefer the specified private pool, and fall back to the public pool when it is unavailable.
+        private_pool_first = alicloud.cs.NodePool("private_pool_first",
+            node_pool_name=f"{name}-first",
+            cluster_id=default_get_managed_kubernetes_clusters.ids[0],
+            vswitch_ids=[vsw1.ids[0]],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
+            system_disk_size=120,
+            multi_az_policy="PRIORITY",
+            desired_size="0",
+            instance_types=[cloud_essd.instance_types[0].id],
+            resource_pool_options={
+                "strategy": "PrivatePoolFirst",
+                "private_pool_ids": [default_capacity_reservation.id],
+            })
+        # PrivatePoolOnly: use the specified private pools only; private_pool_ids is required.
+        private_pool_only = alicloud.cs.NodePool("private_pool_only",
+            node_pool_name=f"{name}-only",
+            cluster_id=default_get_managed_kubernetes_clusters.ids[0],
+            vswitch_ids=[vsw1.ids[0]],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
+            system_disk_size=120,
+            multi_az_policy="PRIORITY",
+            desired_size="0",
+            instance_types=[cloud_essd.instance_types[0].id],
+            resource_pool_options={
+                "strategy": "PrivatePoolOnly",
+                "private_pool_ids": [
+                    default_capacity_reservation.id,
+                    default_elasticity_assurance.elasticity_assurance_id,
+                ],
             })
         ```
 
@@ -3533,7 +3653,7 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
+        Container Service for Kubernetes (ACK) Nodepool can be imported using the id, which consists of cluster_id and node_pool_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
@@ -3620,6 +3740,9 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+               
+               > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
         :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -3946,6 +4069,85 @@ class NodePool(pulumi.CustomResource):
             })
         ```
 
+        NodePool with resource_pool_options (private pool):
+
+        Create Target mode private pools with `ecs.CapacityReservation` and `ecs.ElasticityAssurance`, then reference them in the node pool via `resource_pool_options`. To use a private pool, the node pool must specify `instance_types` that include the private pool's instance type, and its vSwitch must be in the same zone as the private pool.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-resource-pool-options"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        cloud_essd = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_essd")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING-ACK$")
+        vsw1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                newbits=8,
+                netnum=8).result)
+        default_get_managed_kubernetes_clusters = alicloud.cs.get_managed_kubernetes_clusters(name_regex="^cluster-")
+        # Target mode private pool generated by a capacity reservation service.
+        default_capacity_reservation = alicloud.ecs.CapacityReservation("default",
+            description=name,
+            platform="linux",
+            capacity_reservation_name=name,
+            end_time_type="Unlimited",
+            instance_amount=1,
+            instance_type=cloud_essd.instance_types[0].id,
+            match_criteria="Target",
+            zone_ids=[default.zones[0].id])
+        # Target mode private pool generated by an elasticity assurance service.
+        default_elasticity_assurance = alicloud.ecs.ElasticityAssurance("default",
+            instance_amount=1,
+            description=name,
+            zone_ids=[default.zones[0].id],
+            private_pool_options_name=name,
+            period=1,
+            private_pool_options_match_criteria="Target",
+            instance_type=cloud_essd.instance_types[0].id,
+            period_unit="Month",
+            assurance_times="Unlimited")
+        # PrivatePoolFirst: prefer the specified private pool, and fall back to the public pool when it is unavailable.
+        private_pool_first = alicloud.cs.NodePool("private_pool_first",
+            node_pool_name=f"{name}-first",
+            cluster_id=default_get_managed_kubernetes_clusters.ids[0],
+            vswitch_ids=[vsw1.ids[0]],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
+            system_disk_size=120,
+            multi_az_policy="PRIORITY",
+            desired_size="0",
+            instance_types=[cloud_essd.instance_types[0].id],
+            resource_pool_options={
+                "strategy": "PrivatePoolFirst",
+                "private_pool_ids": [default_capacity_reservation.id],
+            })
+        # PrivatePoolOnly: use the specified private pools only; private_pool_ids is required.
+        private_pool_only = alicloud.cs.NodePool("private_pool_only",
+            node_pool_name=f"{name}-only",
+            cluster_id=default_get_managed_kubernetes_clusters.ids[0],
+            vswitch_ids=[vsw1.ids[0]],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
+            system_disk_size=120,
+            multi_az_policy="PRIORITY",
+            desired_size="0",
+            instance_types=[cloud_essd.instance_types[0].id],
+            resource_pool_options={
+                "strategy": "PrivatePoolOnly",
+                "private_pool_ids": [
+                    default_capacity_reservation.id,
+                    default_elasticity_assurance.elasticity_assurance_id,
+                ],
+            })
+        ```
+
         ACK Auto Mode NodePool:
 
         ACK nodepool with Auto Mode
@@ -4255,7 +4457,7 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
+        Container Service for Kubernetes (ACK) Nodepool can be imported using the id, which consists of cluster_id and node_pool_id, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
@@ -4325,6 +4527,7 @@ class NodePool(pulumi.CustomResource):
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']]] = None,
                  rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4416,6 +4619,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["resource_pool_options"] = resource_pool_options
             __props__.__dict__["rolling_policy"] = rolling_policy
             __props__.__dict__["runtime_name"] = runtime_name
             __props__.__dict__["runtime_version"] = runtime_version
@@ -4511,6 +4715,7 @@ class NodePool(pulumi.CustomResource):
             ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']]] = None,
             rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
             runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
             runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4630,6 +4835,9 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+               
+               > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
         :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -4738,6 +4946,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resource_pool_options"] = resource_pool_options
         __props__.__dict__["rolling_policy"] = rolling_policy
         __props__.__dict__["runtime_name"] = runtime_name
         __props__.__dict__["runtime_version"] = runtime_version
@@ -5198,6 +5407,16 @@ class NodePool(pulumi.CustomResource):
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptions")
+    def resource_pool_options(self) -> pulumi.Output[Optional['outputs.NodePoolResourcePoolOptions']]:
+        """
+        The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+
+        > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
+        """
+        return pulumi.get(self, "resource_pool_options")
 
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")

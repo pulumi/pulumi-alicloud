@@ -225,7 +225,7 @@ class FirewallRule(pulumi.CustomResource):
 
         ## Import
 
-        Simple Application Server Firewall Rule can be imported using the id, e.g.
+        Simple Application Server Firewall Rule can be imported using the id, which consists of instance_id and firewall_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example <instance_id>:<firewall_rule_id>
@@ -284,7 +284,7 @@ class FirewallRule(pulumi.CustomResource):
 
         ## Import
 
-        Simple Application Server Firewall Rule can be imported using the id, e.g.
+        Simple Application Server Firewall Rule can be imported using the id, which consists of instance_id and firewall_rule_id, e.g.
 
         ```sh
         $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example <instance_id>:<firewall_rule_id>

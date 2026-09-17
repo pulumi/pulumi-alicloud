@@ -293,7 +293,7 @@ class BasicThreshold(pulumi.CustomResource):
 
         ## Import
 
-        Ddos Basic Threshold can be imported using the id, e.g.
+        Ddos Basic Threshold can be imported using the id, which consists of instance_type, instance_id and internet_ip, e.g.
 
         ```sh
         $ pulumi import alicloud:ddos/basicThreshold:BasicThreshold example <instance_type>:<instance_id>:<internet_ip>
@@ -374,7 +374,7 @@ class BasicThreshold(pulumi.CustomResource):
 
         ## Import
 
-        Ddos Basic Threshold can be imported using the id, e.g.
+        Ddos Basic Threshold can be imported using the id, which consists of instance_type, instance_id and internet_ip, e.g.
 
         ```sh
         $ pulumi import alicloud:ddos/basicThreshold:BasicThreshold example <instance_type>:<instance_id>:<internet_ip>

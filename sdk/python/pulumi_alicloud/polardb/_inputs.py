@@ -35,6 +35,10 @@ __all__ = [
     'DynamoTableLocalSecondaryIndexArgsDict',
     'DynamoTableTtlArgs',
     'DynamoTableTtlArgsDict',
+    'GatewayEndpointArgs',
+    'GatewayEndpointArgsDict',
+    'GatewaySecurityIpArrayArgs',
+    'GatewaySecurityIpArrayArgsDict',
     'ParameterGroupParameterArgs',
     'ParameterGroupParameterArgsDict',
 ]
@@ -743,6 +747,204 @@ class DynamoTableTtlArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+
+class GatewayEndpointArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The endpoint address.
+    """
+    endpoint_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The endpoint ID.
+    """
+    gateway_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The gateway ID.
+    """
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The network type. Valid values: `Private`, `Public`.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The endpoint port.
+    """
+    tunnel_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The tunnel ID.
+    """
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the VPC.
+    """
+
+@pulumi.input_type
+class GatewayEndpointArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The endpoint address.
+        :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[_builtins.str] gateway_id: The gateway ID.
+        :param pulumi.Input[_builtins.str] network_type: The network type. Valid values: `Private`, `Public`.
+        :param pulumi.Input[_builtins.int] port: The endpoint port.
+        :param pulumi.Input[_builtins.str] tunnel_id: The tunnel ID.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if endpoint_id is not None:
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
+        if gateway_id is not None:
+            pulumi.set(__self__, "gateway_id", gateway_id)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if tunnel_id is not None:
+            pulumi.set(__self__, "tunnel_id", tunnel_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The endpoint address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The endpoint ID.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The gateway ID.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @gateway_id.setter
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network type. Valid values: `Private`, `Public`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The endpoint port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tunnelId")
+    def tunnel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tunnel ID.
+        """
+        return pulumi.get(self, "tunnel_id")
+
+    @tunnel_id.setter
+    def tunnel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tunnel_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+
+class GatewaySecurityIpArrayArgsDict(TypedDict):
+    ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP addresses in the whitelist group.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The whitelist group name.
+    """
+
+@pulumi.input_type
+class GatewaySecurityIpArrayArgs:
+    def __init__(__self__, *,
+                 ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ip_list: The IP addresses in the whitelist group.
+        :param pulumi.Input[_builtins.str] name: The whitelist group name.
+        """
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP addresses in the whitelist group.
+        """
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_list", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The whitelist group name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 class ParameterGroupParameterArgsDict(TypedDict):

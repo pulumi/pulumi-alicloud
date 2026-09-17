@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// ## Import
     /// 
-    /// Data Works Data Source can be imported using the id, e.g.
+    /// Data Works Data Source can be imported using the id, which consists of ProjectId and data_source_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dataworks/dataSource:DataSource example &lt;project_id&gt;:&lt;data_source_id&gt;

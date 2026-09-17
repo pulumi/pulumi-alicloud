@@ -64,7 +64,7 @@ import (
 //
 // ## Import
 //
-// Eflo Node Group Attachment can be imported using the id, e.g.
+// Eflo Node Group Attachment can be imported using the id, which consists of cluster_id, nodeGroupId and node_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment example <cluster_id>:<node_group_id>:<node_id>

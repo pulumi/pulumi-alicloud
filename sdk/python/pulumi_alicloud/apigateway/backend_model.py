@@ -257,7 +257,7 @@ class BackendModel(pulumi.CustomResource):
 
         ## Import
 
-        Api Gateway Backend Model can be imported using the id, e.g.
+        Api Gateway Backend Model can be imported using the id, which consists of backend_id and stage_name, e.g.
 
         ```sh
         $ pulumi import alicloud:apigateway/backendModel:BackendModel example <backend_id>:<stage_name>
@@ -317,7 +317,7 @@ class BackendModel(pulumi.CustomResource):
 
         ## Import
 
-        Api Gateway Backend Model can be imported using the id, e.g.
+        Api Gateway Backend Model can be imported using the id, which consists of backend_id and stage_name, e.g.
 
         ```sh
         $ pulumi import alicloud:apigateway/backendModel:BackendModel example <backend_id>:<stage_name>

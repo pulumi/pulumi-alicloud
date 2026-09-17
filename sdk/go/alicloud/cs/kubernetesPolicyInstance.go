@@ -222,7 +222,7 @@ import (
 //
 // ## Import
 //
-// Container Service for Kubernetes (ACK) Policy Instance can be imported using the id, e.g.
+// Container Service for Kubernetes (ACK) Policy Instance can be imported using the id, which consists of cluster_id, policyName and instance_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance example <cluster_id>:<policy_name>:<instance_name>

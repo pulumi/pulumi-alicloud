@@ -370,7 +370,7 @@ class StreamingDataSource(pulumi.CustomResource):
 
         ## Import
 
-        GPDB Streaming Data Source can be imported using the id, e.g.
+        GPDB Streaming Data Source can be imported using the id, which consists of db_instance_id and data_source_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataSource:StreamingDataSource example <db_instance_id>:<data_source_id>
@@ -474,7 +474,7 @@ class StreamingDataSource(pulumi.CustomResource):
 
         ## Import
 
-        GPDB Streaming Data Source can be imported using the id, e.g.
+        GPDB Streaming Data Source can be imported using the id, which consists of db_instance_id and data_source_id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataSource:StreamingDataSource example <db_instance_id>:<data_source_id>

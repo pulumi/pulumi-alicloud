@@ -259,7 +259,7 @@ class EnvFeature(pulumi.CustomResource):
 
         ## Import
 
-        ARMS Env Feature can be imported using the id, e.g.
+        ARMS Env Feature can be imported using the id, which consists of environment_id and env_feature_name, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>
@@ -368,7 +368,7 @@ class EnvFeature(pulumi.CustomResource):
 
         ## Import
 
-        ARMS Env Feature can be imported using the id, e.g.
+        ARMS Env Feature can be imported using the id, which consists of environment_id and env_feature_name, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>

@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// ## Import
     /// 
-    /// Log Service (SLS) Index can be imported using the id, e.g.
+    /// Log Service (SLS) Index can be imported using the id, which consists of ProjectName and logstore_name, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:sls/index:Index example &lt;project_name&gt;:&lt;logstore_name&gt;

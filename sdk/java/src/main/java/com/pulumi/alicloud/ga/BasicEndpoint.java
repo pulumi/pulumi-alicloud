@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
+ * Global Accelerator (GA) Basic Endpoint can be imported using the id, which consists of endpointGroupId and endpoint_id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example &lt;endpoint_group_id&gt;:&lt;endpoint_id&gt;

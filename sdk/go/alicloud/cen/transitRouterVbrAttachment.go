@@ -94,7 +94,7 @@ import (
 //
 // ## Import
 //
-// Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router Vbr Attachment can be imported using the id, which consists of cenId and transit_router_attachment_id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>

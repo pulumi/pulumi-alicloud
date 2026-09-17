@@ -76,7 +76,7 @@ import (
 //
 // ## Import
 //
-// VPC Route Entry can be imported using the id, e.g.
+// VPC Route Entry can be imported using the id, which consists of routeTableId and destination_cidr_block, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/vPCRouteEntry:VPCRouteEntry example <route_table_id>:<destination_cidr_block>

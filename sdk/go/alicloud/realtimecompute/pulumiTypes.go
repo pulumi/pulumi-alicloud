@@ -4366,6 +4366,317 @@ func (o VvpInstanceStorageOssPtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetMembersMember struct {
+	// The ID of the Member.
+	Id string `pulumi:"id"`
+	// The member UID.
+	Member string `pulumi:"member"`
+	// The name of the namespace.
+	Namespace string `pulumi:"namespace"`
+	// The workspace ID.
+	ResourceId string `pulumi:"resourceId"`
+	// The member role.
+	Role string `pulumi:"role"`
+}
+
+// GetMembersMemberInput is an input type that accepts GetMembersMemberArgs and GetMembersMemberOutput values.
+// You can construct a concrete instance of `GetMembersMemberInput` via:
+//
+//	GetMembersMemberArgs{...}
+type GetMembersMemberInput interface {
+	pulumi.Input
+
+	ToGetMembersMemberOutput() GetMembersMemberOutput
+	ToGetMembersMemberOutputWithContext(context.Context) GetMembersMemberOutput
+}
+
+type GetMembersMemberArgs struct {
+	// The ID of the Member.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The member UID.
+	Member pulumi.StringInput `pulumi:"member"`
+	// The name of the namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The workspace ID.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The member role.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetMembersMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembersMember)(nil)).Elem()
+}
+
+func (i GetMembersMemberArgs) ToGetMembersMemberOutput() GetMembersMemberOutput {
+	return i.ToGetMembersMemberOutputWithContext(context.Background())
+}
+
+func (i GetMembersMemberArgs) ToGetMembersMemberOutputWithContext(ctx context.Context) GetMembersMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembersMemberOutput)
+}
+
+// GetMembersMemberArrayInput is an input type that accepts GetMembersMemberArray and GetMembersMemberArrayOutput values.
+// You can construct a concrete instance of `GetMembersMemberArrayInput` via:
+//
+//	GetMembersMemberArray{ GetMembersMemberArgs{...} }
+type GetMembersMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetMembersMemberArrayOutput() GetMembersMemberArrayOutput
+	ToGetMembersMemberArrayOutputWithContext(context.Context) GetMembersMemberArrayOutput
+}
+
+type GetMembersMemberArray []GetMembersMemberInput
+
+func (GetMembersMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembersMember)(nil)).Elem()
+}
+
+func (i GetMembersMemberArray) ToGetMembersMemberArrayOutput() GetMembersMemberArrayOutput {
+	return i.ToGetMembersMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetMembersMemberArray) ToGetMembersMemberArrayOutputWithContext(ctx context.Context) GetMembersMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembersMemberArrayOutput)
+}
+
+type GetMembersMemberOutput struct{ *pulumi.OutputState }
+
+func (GetMembersMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembersMember)(nil)).Elem()
+}
+
+func (o GetMembersMemberOutput) ToGetMembersMemberOutput() GetMembersMemberOutput {
+	return o
+}
+
+func (o GetMembersMemberOutput) ToGetMembersMemberOutputWithContext(ctx context.Context) GetMembersMemberOutput {
+	return o
+}
+
+// The ID of the Member.
+func (o GetMembersMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembersMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The member UID.
+func (o GetMembersMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembersMember) string { return v.Member }).(pulumi.StringOutput)
+}
+
+// The name of the namespace.
+func (o GetMembersMemberOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembersMember) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The workspace ID.
+func (o GetMembersMemberOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembersMember) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The member role.
+func (o GetMembersMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembersMember) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetMembersMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMembersMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembersMember)(nil)).Elem()
+}
+
+func (o GetMembersMemberArrayOutput) ToGetMembersMemberArrayOutput() GetMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetMembersMemberArrayOutput) ToGetMembersMemberArrayOutputWithContext(ctx context.Context) GetMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetMembersMemberArrayOutput) Index(i pulumi.IntInput) GetMembersMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembersMember {
+		return vs[0].([]GetMembersMember)[vs[1].(int)]
+	}).(GetMembersMemberOutput)
+}
+
+type GetSqlFilesFile struct {
+	// Whether the SQL query script runs in batch mode.
+	BatchMode string `pulumi:"batchMode"`
+	// The description of the SQL file.
+	Description string `pulumi:"description"`
+	// The ID of the SQL file. The value is formulated as `<workspace>:<namespace>:<sql_file_id>`.
+	Id string `pulumi:"id"`
+	// The name of the SQL file.
+	Name string `pulumi:"name"`
+	// The name of the namespace.
+	Namespace string `pulumi:"namespace"`
+	// The ID of the parent folder of the SQL file.
+	ParentId string `pulumi:"parentId"`
+	// The name of the session cluster that runs the SQL query script.
+	SessionClusterName string `pulumi:"sessionClusterName"`
+	// The ID of the SQL file.
+	SqlFileId string `pulumi:"sqlFileId"`
+	// The SQL script content.
+	SqlScript string `pulumi:"sqlScript"`
+	// The ID of the workspace.
+	Workspace string `pulumi:"workspace"`
+}
+
+// GetSqlFilesFileInput is an input type that accepts GetSqlFilesFileArgs and GetSqlFilesFileOutput values.
+// You can construct a concrete instance of `GetSqlFilesFileInput` via:
+//
+//	GetSqlFilesFileArgs{...}
+type GetSqlFilesFileInput interface {
+	pulumi.Input
+
+	ToGetSqlFilesFileOutput() GetSqlFilesFileOutput
+	ToGetSqlFilesFileOutputWithContext(context.Context) GetSqlFilesFileOutput
+}
+
+type GetSqlFilesFileArgs struct {
+	// Whether the SQL query script runs in batch mode.
+	BatchMode pulumi.StringInput `pulumi:"batchMode"`
+	// The description of the SQL file.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the SQL file. The value is formulated as `<workspace>:<namespace>:<sql_file_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the SQL file.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The ID of the parent folder of the SQL file.
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+	// The name of the session cluster that runs the SQL query script.
+	SessionClusterName pulumi.StringInput `pulumi:"sessionClusterName"`
+	// The ID of the SQL file.
+	SqlFileId pulumi.StringInput `pulumi:"sqlFileId"`
+	// The SQL script content.
+	SqlScript pulumi.StringInput `pulumi:"sqlScript"`
+	// The ID of the workspace.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (GetSqlFilesFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlFilesFile)(nil)).Elem()
+}
+
+func (i GetSqlFilesFileArgs) ToGetSqlFilesFileOutput() GetSqlFilesFileOutput {
+	return i.ToGetSqlFilesFileOutputWithContext(context.Background())
+}
+
+func (i GetSqlFilesFileArgs) ToGetSqlFilesFileOutputWithContext(ctx context.Context) GetSqlFilesFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlFilesFileOutput)
+}
+
+// GetSqlFilesFileArrayInput is an input type that accepts GetSqlFilesFileArray and GetSqlFilesFileArrayOutput values.
+// You can construct a concrete instance of `GetSqlFilesFileArrayInput` via:
+//
+//	GetSqlFilesFileArray{ GetSqlFilesFileArgs{...} }
+type GetSqlFilesFileArrayInput interface {
+	pulumi.Input
+
+	ToGetSqlFilesFileArrayOutput() GetSqlFilesFileArrayOutput
+	ToGetSqlFilesFileArrayOutputWithContext(context.Context) GetSqlFilesFileArrayOutput
+}
+
+type GetSqlFilesFileArray []GetSqlFilesFileInput
+
+func (GetSqlFilesFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlFilesFile)(nil)).Elem()
+}
+
+func (i GetSqlFilesFileArray) ToGetSqlFilesFileArrayOutput() GetSqlFilesFileArrayOutput {
+	return i.ToGetSqlFilesFileArrayOutputWithContext(context.Background())
+}
+
+func (i GetSqlFilesFileArray) ToGetSqlFilesFileArrayOutputWithContext(ctx context.Context) GetSqlFilesFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlFilesFileArrayOutput)
+}
+
+type GetSqlFilesFileOutput struct{ *pulumi.OutputState }
+
+func (GetSqlFilesFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlFilesFile)(nil)).Elem()
+}
+
+func (o GetSqlFilesFileOutput) ToGetSqlFilesFileOutput() GetSqlFilesFileOutput {
+	return o
+}
+
+func (o GetSqlFilesFileOutput) ToGetSqlFilesFileOutputWithContext(ctx context.Context) GetSqlFilesFileOutput {
+	return o
+}
+
+// Whether the SQL query script runs in batch mode.
+func (o GetSqlFilesFileOutput) BatchMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.BatchMode }).(pulumi.StringOutput)
+}
+
+// The description of the SQL file.
+func (o GetSqlFilesFileOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the SQL file. The value is formulated as `<workspace>:<namespace>:<sql_file_id>`.
+func (o GetSqlFilesFileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the SQL file.
+func (o GetSqlFilesFileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the namespace.
+func (o GetSqlFilesFileOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The ID of the parent folder of the SQL file.
+func (o GetSqlFilesFileOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// The name of the session cluster that runs the SQL query script.
+func (o GetSqlFilesFileOutput) SessionClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.SessionClusterName }).(pulumi.StringOutput)
+}
+
+// The ID of the SQL file.
+func (o GetSqlFilesFileOutput) SqlFileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.SqlFileId }).(pulumi.StringOutput)
+}
+
+// The SQL script content.
+func (o GetSqlFilesFileOutput) SqlScript() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.SqlScript }).(pulumi.StringOutput)
+}
+
+// The ID of the workspace.
+func (o GetSqlFilesFileOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlFilesFile) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type GetSqlFilesFileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSqlFilesFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlFilesFile)(nil)).Elem()
+}
+
+func (o GetSqlFilesFileArrayOutput) ToGetSqlFilesFileArrayOutput() GetSqlFilesFileArrayOutput {
+	return o
+}
+
+func (o GetSqlFilesFileArrayOutput) ToGetSqlFilesFileArrayOutputWithContext(ctx context.Context) GetSqlFilesFileArrayOutput {
+	return o
+}
+
+func (o GetSqlFilesFileArrayOutput) Index(i pulumi.IntInput) GetSqlFilesFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSqlFilesFile {
+		return vs[0].([]GetSqlFilesFile)[vs[1].(int)]
+	}).(GetSqlFilesFileOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactInput)(nil)).Elem(), DeploymentArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactPtrInput)(nil)).Elem(), DeploymentArtifactArgs{})
@@ -4421,6 +4732,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStoragePtrInput)(nil)).Elem(), VvpInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStorageOssInput)(nil)).Elem(), VvpInstanceStorageOssArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStorageOssPtrInput)(nil)).Elem(), VvpInstanceStorageOssArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembersMemberInput)(nil)).Elem(), GetMembersMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembersMemberArrayInput)(nil)).Elem(), GetMembersMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlFilesFileInput)(nil)).Elem(), GetSqlFilesFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlFilesFileArrayInput)(nil)).Elem(), GetSqlFilesFileArray{})
 	pulumi.RegisterOutputType(DeploymentArtifactOutput{})
 	pulumi.RegisterOutputType(DeploymentArtifactPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentArtifactJarArtifactOutput{})
@@ -4475,4 +4790,8 @@ func init() {
 	pulumi.RegisterOutputType(VvpInstanceStoragePtrOutput{})
 	pulumi.RegisterOutputType(VvpInstanceStorageOssOutput{})
 	pulumi.RegisterOutputType(VvpInstanceStorageOssPtrOutput{})
+	pulumi.RegisterOutputType(GetMembersMemberOutput{})
+	pulumi.RegisterOutputType(GetMembersMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetSqlFilesFileOutput{})
+	pulumi.RegisterOutputType(GetSqlFilesFileArrayOutput{})
 }

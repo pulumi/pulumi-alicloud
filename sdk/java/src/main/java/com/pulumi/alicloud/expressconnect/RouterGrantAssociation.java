@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Express Connect Router Grant Association can be imported using the id, e.g.
+ * Express Connect Router Grant Association can be imported using the id, which consists of ecr_id, instance_id, instance_region_id, ecrOwnerAliUid and instance_type, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation example &lt;ecr_id&gt;:&lt;instance_id&gt;:&lt;instance_region_id&gt;:&lt;ecr_owner_ali_uid&gt;:&lt;instance_type&gt;

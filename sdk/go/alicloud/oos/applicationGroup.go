@@ -92,7 +92,7 @@ import (
 //
 // ## Import
 //
-// OOS Application Group can be imported using the id, e.g.
+// OOS Application Group can be imported using the id, which consists of applicationName and application_group_name, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>

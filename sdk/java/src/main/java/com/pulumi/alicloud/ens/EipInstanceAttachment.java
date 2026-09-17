@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ens Eip Instance Attachment can be imported using the id, e.g.
+ * Ens Eip Instance Attachment can be imported using the id, which consists of allocation_id, instanceId and instance_type, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ens/eipInstanceAttachment:EipInstanceAttachment example &lt;allocation_id&gt;:&lt;instance_id&gt;:&lt;instance_type&gt;

@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// ## Import
     /// 
-    /// ESA Origin Pool can be imported using the id, e.g.
+    /// ESA Origin Pool can be imported using the id, which consists of SiteId and origin_pool_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:esa/originPool:OriginPool example &lt;site_id&gt;:&lt;origin_pool_id&gt;
