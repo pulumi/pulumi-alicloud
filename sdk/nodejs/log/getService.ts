@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+ * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
  *
  * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
  *
@@ -35,9 +35,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetServiceArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-     *
-     * > **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+     * Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
      */
     enable?: string;
 }
@@ -52,12 +50,12 @@ export interface GetServiceResult {
      */
     readonly id: string;
     /**
-     * The current service enable status.
+     * Returns `Opened` when `enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
      */
     readonly status: string;
 }
 /**
- * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+ * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
  *
  * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
  *
@@ -87,9 +85,7 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
  */
 export interface GetServiceOutputArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-     *
-     * > **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+     * Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
      */
     enable?: pulumi.Input<string | undefined>;
 }

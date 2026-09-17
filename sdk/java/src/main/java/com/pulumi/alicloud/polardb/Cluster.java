@@ -105,6 +105,73 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Create a PolarDB PostgreSQL distributed cluster
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.polardb.PolardbFunctions;
+ * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.polardb.Cluster;
+ * import com.pulumi.alicloud.polardb.ClusterArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *             .dbType("PostgreSQL")
+ *             .dbVersion("16")
+ *             .category("Normal")
+ *             .payType("PostPaid")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(default_.classes()[0].zoneId())
+ *             .vswitchName("terraform-example")
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+ *             .dbType("PostgreSQL")
+ *             .dbVersion("16")
+ *             .payType("PostPaid")
+ *             .cnNodeClass("polar.pg.x4.medium")
+ *             .dnNodeClass("polar.pg.x4.medium")
+ *             .cnNodeNum(1)
+ *             .dnNodeNum(2)
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .description("terraform-example-distributed")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
  * Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
  * 
@@ -276,6 +343,48 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloneDataPoint);
     }
     /**
+     * The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    @Export(name="cnNodeClass", refs={String.class}, tree="[0]")
+    private Output<String> cnNodeClass;
+
+    /**
+     * @return The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `dnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    public Output<String> cnNodeClass() {
+        return this.cnNodeClass;
+    }
+    /**
+     * (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+     * 
+     */
+    @Export(name="cnNodeIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> cnNodeIds;
+
+    /**
+     * @return (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+     * 
+     */
+    public Output<List<String>> cnNodeIds() {
+        return this.cnNodeIds;
+    }
+    /**
+     * The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     * 
+     */
+    @Export(name="cnNodeNum", refs={Integer.class}, tree="[0]")
+    private Output<Integer> cnNodeNum;
+
+    /**
+     * @return The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+     * 
+     */
+    public Output<Integer> cnNodeNum() {
+        return this.cnNodeNum;
+    }
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      * 
      */
@@ -394,27 +503,27 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.dbMinorVersion;
     }
     /**
-     * The dbNodeClass of cluster node.
+     * The dbNodeClass of cluster node. Required for non-distributed clusters.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
      * 
      */
     @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
-    private Output<String> dbNodeClass;
+    private Output</* @Nullable */ String> dbNodeClass;
 
     /**
-     * @return The dbNodeClass of cluster node.
+     * @return The dbNodeClass of cluster node. Required for non-distributed clusters.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
      * 
      */
-    public Output<String> dbNodeClass() {
-        return this.dbNodeClass;
+    public Output<Optional<String>> dbNodeClass() {
+        return Codegen.optional(this.dbNodeClass);
     }
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
@@ -422,7 +531,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<Integer> dbNodeCount;
 
     /**
-     * @return Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * @return Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
@@ -546,6 +655,48 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    @Export(name="dnNodeClass", refs={String.class}, tree="[0]")
+    private Output<String> dnNodeClass;
+
+    /**
+     * @return The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `dbNodeClass` and must be specified together with `cnNodeClass` when creating a distributed cluster.
+     * 
+     */
+    public Output<String> dnNodeClass() {
+        return this.dnNodeClass;
+    }
+    /**
+     * (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+     * 
+     */
+    @Export(name="dnNodeIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> dnNodeIds;
+
+    /**
+     * @return (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+     * 
+     */
+    public Output<List<String>> dnNodeIds() {
+        return this.dnNodeIds;
+    }
+    /**
+     * The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     * 
+     */
+    @Export(name="dnNodeNum", refs={Integer.class}, tree="[0]")
+    private Output<Integer> dnNodeNum;
+
+    /**
+     * @return The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+     * 
+     */
+    public Output<Integer> dnNodeNum() {
+        return this.dnNodeNum;
     }
     /**
      * Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
@@ -778,14 +929,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.maintainTime;
     }
     /**
-     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      * 
      */
     @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
-     * @return Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * @return Defines whether a `dbNodeClass`, `cnNodeClass`, or `dnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
      * 
      */
     public Output<Optional<String>> modifyType() {

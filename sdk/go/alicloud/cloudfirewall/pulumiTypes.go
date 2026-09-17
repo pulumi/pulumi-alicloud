@@ -4877,6 +4877,10 @@ type GetNatFirewallsFirewall struct {
 	ProxyId string `pulumi:"proxyId"`
 	// NAT firewall name
 	ProxyName string `pulumi:"proxyName"`
+	// Region
+	RegionNo string `pulumi:"regionNo"`
+	// The status of the resource
+	Status string `pulumi:"status"`
 	// Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
 	StrictMode int `pulumi:"strictMode"`
 	// The ID of the VPC instance.
@@ -4911,6 +4915,10 @@ type GetNatFirewallsFirewallArgs struct {
 	ProxyId pulumi.StringInput `pulumi:"proxyId"`
 	// NAT firewall name
 	ProxyName pulumi.StringInput `pulumi:"proxyName"`
+	// Region
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
 	// Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
 	StrictMode pulumi.IntInput `pulumi:"strictMode"`
 	// The ID of the VPC instance.
@@ -5008,6 +5016,16 @@ func (o GetNatFirewallsFirewallOutput) ProxyId() pulumi.StringOutput {
 // NAT firewall name
 func (o GetNatFirewallsFirewallOutput) ProxyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.ProxyName }).(pulumi.StringOutput)
+}
+
+// Region
+func (o GetNatFirewallsFirewallOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetNatFirewallsFirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Whether strict mode is enabled1-Enable strict mode0-Disable strict mode

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.sslCertificatesServicePca
+namespace Pulumi.AliCloud.Sslcertificatesservicepca
 {
     /// <summary>
     /// Provides a SSL Certificates Pca Cert resource.
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var root = new AliCloud.SslCertificatesServicePca.Certificate("root", new()
+    ///     var root = new AliCloud.SslCertificatesService.PcaCertificate("root", new()
     ///     {
     ///         Organization = "a",
     ///         Years = 1,
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
     ///         CommonName = "cbc.certqa.cn",
     ///     });
     /// 
-    ///     var sub = new AliCloud.SslCertificatesServicePca.Certificate("sub", new()
+    ///     var sub = new AliCloud.SslCertificatesService.PcaCertificate("sub", new()
     ///     {
     ///         ParentIdentifier = root.Id,
     ///         Organization = "a",
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
     ///         EnableCrl = true,
     ///     });
     /// 
-    ///     var @default = new AliCloud.SslCertificatesServicePca.Cert("default", new()
+    ///     var @default = new AliCloud.SslCertificatesServicePcaCert.SslCertificatesServicePcaCert("default", new()
     ///     {
     ///         Immediately = 0,
     ///         Organization = "terraform",
@@ -90,6 +90,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
     /// $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example &lt;id&gt;
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert")]
     [AliCloudResourceType("alicloud:sslcertificatesservicepca/cert:Cert")]
     public partial class Cert : global::Pulumi.CustomResource
     {
@@ -242,7 +243,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
         /// <summary>
         /// The status of the certificate. Valid values:
         /// - `REVOKE`: indicates that the certificate has been revoked.
-        /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `Status` must be set to `REVOKE`
+        /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `Status` must be set to `REVOKE`
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -257,7 +258,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
         /// Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         /// </summary>
         [Output("uploadFlag")]
-        public Output<int?> UploadFlag { get; private set; } = null!;
+        public Output<int> UploadFlag { get; private set; } = null!;
 
         /// <summary>
         /// The duration for which the certificate is purchased, in years.
@@ -462,7 +463,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
         /// <summary>
         /// The status of the certificate. Valid values:
         /// - `REVOKE`: indicates that the certificate has been revoked.
-        /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `Status` must be set to `REVOKE`
+        /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `Status` must be set to `REVOKE`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -650,7 +651,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePca
         /// <summary>
         /// The status of the certificate. Valid values:
         /// - `REVOKE`: indicates that the certificate has been revoked.
-        /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `Status` must be set to `REVOKE`
+        /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `Status` must be set to `REVOKE`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

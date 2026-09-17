@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointAclPoliciesResult {
+    /**
+     * @return The type of endpoint.
+     * 
+     */
     private String endpointType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,11 +25,24 @@ public final class GetEndpointAclPoliciesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the CR Instance.
+     * 
+     */
     private String instanceId;
+    private @Nullable String moduleName;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetEndpointAclPoliciesPolicy> policies;
 
     private GetEndpointAclPoliciesResult() {}
+    /**
+     * @return The type of endpoint.
+     * 
+     */
     public String endpointType() {
         return this.endpointType;
     }
@@ -39,12 +56,23 @@ public final class GetEndpointAclPoliciesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the CR Instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
+    }
+    public Optional<String> moduleName() {
+        return Optional.ofNullable(this.moduleName);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetEndpointAclPoliciesPolicy> policies() {
         return this.policies;
     }
@@ -62,6 +90,7 @@ public final class GetEndpointAclPoliciesResult {
         private String id;
         private List<String> ids;
         private String instanceId;
+        private @Nullable String moduleName;
         private @Nullable String outputFile;
         private List<GetEndpointAclPoliciesPolicy> policies;
         public Builder() {}
@@ -71,6 +100,7 @@ public final class GetEndpointAclPoliciesResult {
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.instanceId = defaults.instanceId;
+    	      this.moduleName = defaults.moduleName;
     	      this.outputFile = defaults.outputFile;
     	      this.policies = defaults.policies;
         }
@@ -111,6 +141,12 @@ public final class GetEndpointAclPoliciesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder moduleName(@Nullable String moduleName) {
+
+            this.moduleName = moduleName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
 
             this.outputFile = outputFile;
@@ -133,6 +169,7 @@ public final class GetEndpointAclPoliciesResult {
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.instanceId = instanceId;
+            _resultValue.moduleName = moduleName;
             _resultValue.outputFile = outputFile;
             _resultValue.policies = policies;
             return _resultValue;

@@ -77,6 +77,9 @@ class GetEndpointAclServiceResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -104,7 +107,7 @@ def get_endpoint_acl_service(enable: Optional[_builtins.bool] = None,
 
     For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -122,7 +125,7 @@ def get_endpoint_acl_service(enable: Optional[_builtins.bool] = None,
 
 
     :param _builtins.bool enable: Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
-    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`.
+    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
     :param _builtins.str instance_id: The ID of the CR Instance.
     :param _builtins.str module_name: The ModuleName. Valid values: `Registry`.
            
@@ -155,7 +158,7 @@ def get_endpoint_acl_service_output(enable: pulumi.Input[Optional[_builtins.bool
 
     For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -173,7 +176,7 @@ def get_endpoint_acl_service_output(enable: pulumi.Input[Optional[_builtins.bool
 
 
     :param _builtins.bool enable: Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
-    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`.
+    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
     :param _builtins.str instance_id: The ID of the CR Instance.
     :param _builtins.str module_name: The ModuleName. Valid values: `Registry`.
            

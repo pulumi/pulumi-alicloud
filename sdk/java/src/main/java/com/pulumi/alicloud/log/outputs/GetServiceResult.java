@@ -19,7 +19,7 @@ public final class GetServiceResult {
      */
     private String id;
     /**
-     * @return The current service enable status.
+     * @return Returns `Opened` when `enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
      * 
      */
     private String status;
@@ -36,7 +36,7 @@ public final class GetServiceResult {
         return this.id;
     }
     /**
-     * @return The current service enable status.
+     * @return Returns `Opened` when `enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
      * 
      */
     public String status() {

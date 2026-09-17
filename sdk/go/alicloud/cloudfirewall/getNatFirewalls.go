@@ -191,8 +191,10 @@ type GetNatFirewallsResult struct {
 	ProxyId *string `pulumi:"proxyId"`
 	// NAT firewall name
 	ProxyName *string `pulumi:"proxyName"`
-	RegionNo  *string `pulumi:"regionNo"`
-	Status    *string `pulumi:"status"`
+	// The region ID of the NAT firewall.
+	RegionNo *string `pulumi:"regionNo"`
+	// The status of the NAT firewall.
+	Status *string `pulumi:"status"`
 	// The ID of the VPC instance.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -300,10 +302,12 @@ func (o GetNatFirewallsResultOutput) ProxyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatFirewallsResult) *string { return v.ProxyName }).(pulumi.StringPtrOutput)
 }
 
+// The region ID of the NAT firewall.
 func (o GetNatFirewallsResultOutput) RegionNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatFirewallsResult) *string { return v.RegionNo }).(pulumi.StringPtrOutput)
 }
 
+// The status of the NAT firewall.
 func (o GetNatFirewallsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatFirewallsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

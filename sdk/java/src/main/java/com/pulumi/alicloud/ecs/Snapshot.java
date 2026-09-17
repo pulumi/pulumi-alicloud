@@ -75,6 +75,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshot:Snapshot")
 public class Snapshot extends com.pulumi.resources.CustomResource {
+    @Export(name="available", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> available;
+
+    public Output<Boolean> available() {
+        return this.available;
+    }
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
@@ -216,6 +222,12 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    @Export(name="waitUntil", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> waitUntil;
+
+    public Output<Optional<String>> waitUntil() {
+        return Codegen.optional(this.waitUntil);
     }
 
     /**

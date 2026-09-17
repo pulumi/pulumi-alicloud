@@ -1443,7 +1443,7 @@ class GetEndpointAclPoliciesPolicyResult(dict):
                  instance_id: _builtins.str):
         """
         :param _builtins.str description: The description of the entry.
-        :param _builtins.str endpoint_type: The type of endpoint.
+        :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
         :param _builtins.str entry: The IP segment that allowed to access.
         :param _builtins.str id: The ID of the Endpoint Acl Policy.
         :param _builtins.str instance_id: The ID of the CR Instance.
@@ -1466,7 +1466,7 @@ class GetEndpointAclPoliciesPolicyResult(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        The type of endpoint.
+        The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
         """
         return pulumi.get(self, "endpoint_type")
 

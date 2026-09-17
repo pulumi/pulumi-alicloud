@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
     /// 
+    /// &gt; **NOTE:** By default, creation waits for `Status` to become `Accomplished`. Set `WaitUntil = "available"` to finish when ECS reports `Available=true`. At this point, the snapshot can be used to create disks, roll back disks, or create images, and can be shared, even if background upload is still in progress and `Status` remains `Progressing`. Each operation's other requirements still apply. `WaitUntil` only controls when Terraform finishes waiting for snapshot creation; it does not change the snapshot's capabilities. Changing `RetentionDays` still requires `Status=accomplished`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -124,6 +126,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ECS Snapshot can be imported using the id, e.g.
     /// 
+    /// `Available` is populated from ECS when the imported snapshot is refreshed. `WaitUntil` is a local setting and cannot be recovered from the imported snapshot. Keep any explicitly selected waiting policy in the Terraform configuration; omitting it continues to wait for `Status=accomplished` on subsequent creation without adding a default policy to state.
+    /// 
     /// ```sh
     /// $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example &lt;id&gt;
     /// ```
@@ -131,6 +135,12 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/ecsSnapshot:EcsSnapshot")]
     public partial class EcsSnapshot : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether ECS reports the snapshot as available. This read-only value can be `True` while `Status` is still `Progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `WaitUntil` policy.
+        /// </summary>
+        [Output("available")]
+        public Output<bool> Available { get; private set; } = null!;
+
         /// <summary>
         /// The category of the snapshot. Valid values:
         /// </summary>
@@ -214,6 +224,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Local waiting policy for creation only. Valid values: `Accomplished`, which waits for `Status=accomplished`, and `Available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `WaitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `WaitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`SnapshotName`, `Name`, `Description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `RetentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+        /// </summary>
+        [Output("waitUntil")]
+        public Output<string?> WaitUntil { get; private set; } = null!;
 
 
         /// <summary>
@@ -333,6 +349,12 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Local waiting policy for creation only. Valid values: `Accomplished`, which waits for `Status=accomplished`, and `Available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `WaitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `WaitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`SnapshotName`, `Name`, `Description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `RetentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+        /// </summary>
+        [Input("waitUntil")]
+        public Input<string>? WaitUntil { get; set; }
+
         public EcsSnapshotArgs()
         {
         }
@@ -341,6 +363,12 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EcsSnapshotState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether ECS reports the snapshot as available. This read-only value can be `True` while `Status` is still `Progressing`, allowing the operations described in the availability note above. It reflects the most recent refresh, not the configured `WaitUntil` policy.
+        /// </summary>
+        [Input("available")]
+        public Input<bool>? Available { get; set; }
+
         /// <summary>
         /// The category of the snapshot. Valid values:
         /// </summary>
@@ -430,6 +458,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Local waiting policy for creation only. Valid values: `Accomplished`, which waits for `Status=accomplished`, and `Available`, which waits for `Available=true`. When omitted, creation still waits for `Status=accomplished`, but no default waiting policy is inserted into state, avoiding a new `WaitUntil` default-value diff for existing configurations. This argument is not sent to ECS or read from ECS. Changing only `WaitUntil` neither recreates nor modifies the snapshot and is not a readiness barrier; it affects subsequent creation only. Metadata updates (`SnapshotName`, `Name`, `Description`) do not wait for background upload after ECS accepts the update; Read preserves the actual status. Resource-group and tag updates are also unaffected. **NOTE:** Independently of this policy, `RetentionDays` changes, including mixed attribute updates, must wait for `Status=accomplished` before sending the update, with no additional wait afterward.
+        /// </summary>
+        [Input("waitUntil")]
+        public Input<string>? WaitUntil { get; set; }
 
         public EcsSnapshotState()
         {

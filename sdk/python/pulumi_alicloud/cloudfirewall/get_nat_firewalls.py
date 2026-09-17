@@ -150,11 +150,17 @@ class GetNatFirewallsResult:
     @_builtins.property
     @pulumi.getter(name="regionNo")
     def region_no(self) -> Optional[_builtins.str]:
+        """
+        The region ID of the NAT firewall.
+        """
         return pulumi.get(self, "region_no")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the NAT firewall.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property

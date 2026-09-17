@@ -32,14 +32,14 @@ public final class GetEndpointAclServicePlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     @Import(name="endpointType", required=true)
     private String endpointType;
 
     /**
-     * @return The type of endpoint. Valid values: `internet`.
+     * @return The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     public String endpointType() {
@@ -123,7 +123,7 @@ public final class GetEndpointAclServicePlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param endpointType The type of endpoint. Valid values: `internet`.
+         * @param endpointType The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
          * 
          * @return builder
          * 

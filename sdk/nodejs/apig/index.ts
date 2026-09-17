@@ -95,6 +95,11 @@ export type Route = import("./route").Route;
 export const Route: typeof import("./route").Route = null as any;
 utilities.lazyLoad(exports, ["Route"], () => require("./route"));
 
+export { SecretArgs, SecretState } from "./secret";
+export type Secret = import("./secret").Secret;
+export const Secret: typeof import("./secret").Secret = null as any;
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
@@ -128,6 +133,8 @@ const _module = {
                 return new Policy(name, <any>undefined, { urn })
             case "alicloud:apig/route:Route":
                 return new Route(name, <any>undefined, { urn })
+            case "alicloud:apig/secret:Secret":
+                return new Secret(name, <any>undefined, { urn })
             case "alicloud:apig/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "alicloud:apig/source:Source":
@@ -146,5 +153,6 @@ pulumi.runtime.registerResourceModule("alicloud", "apig/plugin", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/pluginClass", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/route", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/secret", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/service", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/source", _module)

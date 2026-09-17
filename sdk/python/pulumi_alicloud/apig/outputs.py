@@ -38,6 +38,7 @@ __all__ = [
     'RouteMatchHeader',
     'RouteMatchPath',
     'RouteMatchQueryParam',
+    'SecretKmsConfig',
     'ServiceHealthCheckConfig',
     'ServiceOutlierDetectionConfig',
     'ServicePort',
@@ -1296,6 +1297,54 @@ class RouteMatchQueryParam(dict):
         The query parameter value that incoming requests must supply to be routed by this route.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SecretKmsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsInstanceId":
+            suggest = "kms_instance_id"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretKmsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretKmsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretKmsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_instance_id: _builtins.str,
+                 kms_key_id: _builtins.str):
+        """
+        :param _builtins.str kms_instance_id: The KMS instance ID.
+        :param _builtins.str kms_key_id: The KMS key ID.
+        """
+        pulumi.set(__self__, "kms_instance_id", kms_instance_id)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsInstanceId")
+    def kms_instance_id(self) -> _builtins.str:
+        """
+        The KMS instance ID.
+        """
+        return pulumi.get(self, "kms_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> _builtins.str:
+        """
+        The KMS key ID.
+        """
+        return pulumi.get(self, "kms_key_id")
 
 
 @pulumi.output_type

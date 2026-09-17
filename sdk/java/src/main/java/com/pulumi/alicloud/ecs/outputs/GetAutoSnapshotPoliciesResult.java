@@ -22,10 +22,26 @@ public final class GetAutoSnapshotPoliciesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Auto Snapshot Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecs Auto Snapshot Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetAutoSnapshotPoliciesPolicy> policies;
+    /**
+     * @return The status of Auto Snapshot Policy.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetAutoSnapshotPoliciesResult() {}
@@ -42,18 +58,34 @@ public final class GetAutoSnapshotPoliciesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Auto Snapshot Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecs Auto Snapshot Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetAutoSnapshotPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return The status of Auto Snapshot Policy.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

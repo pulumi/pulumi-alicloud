@@ -24,6 +24,7 @@ from .get_namespaces import *
 from .get_repos import *
 from .get_service import *
 from .get_vpc_endpoint_linked_vpcs import *
+from .instance_customized_domain import *
 from .internet_endpoint import *
 from .namespace import *
 from .registry_enterprise_instance import *

@@ -370,14 +370,14 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resetPermissionFlag);
     }
     /**
-     * The status of the resource
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
      * 
      */
     public Output<String> status() {

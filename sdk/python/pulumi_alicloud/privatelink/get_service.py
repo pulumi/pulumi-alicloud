@@ -81,15 +81,17 @@ def get_service(enable: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    Basic Usage
+
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    open = alicloud.privatelink.get_service(enable="On")
+    default = alicloud.privatelink.get_service(enable="On")
     ```
 
 
-    :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+    :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
            
            > **NOTE:** Setting `enable = "On"` to open the Privatelink service that means you have read and agreed the [Privatelink Terms of Service](https://help.aliyun.com/document_detail/197619.html). The service can not closed once it is opened.
     """
@@ -113,15 +115,17 @@ def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] =
 
     ## Example Usage
 
+    Basic Usage
+
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    open = alicloud.privatelink.get_service(enable="On")
+    default = alicloud.privatelink.get_service(enable="On")
     ```
 
 
-    :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+    :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
            
            > **NOTE:** Setting `enable = "On"` to open the Privatelink service that means you have read and agreed the [Privatelink Terms of Service](https://help.aliyun.com/document_detail/197619.html). The service can not closed once it is opened.
     """

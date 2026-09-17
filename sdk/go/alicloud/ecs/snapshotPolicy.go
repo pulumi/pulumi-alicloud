@@ -69,6 +69,7 @@ import (
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 
+	AssociationType              pulumi.StringOutput                                `pulumi:"associationType"`
 	AutoSnapshotPolicyName       pulumi.StringOutput                                `pulumi:"autoSnapshotPolicyName"`
 	CopiedSnapshotsRetentionDays pulumi.IntOutput                                   `pulumi:"copiedSnapshotsRetentionDays"`
 	CopyEncryptionConfiguration  SnapshotPolicyCopyEncryptionConfigurationPtrOutput `pulumi:"copyEncryptionConfiguration"`
@@ -89,10 +90,11 @@ type SnapshotPolicy struct {
 	// - [1, 65536]: The number of days retained.
 	//
 	// Default value: -1.
-	RetentionDays     pulumi.IntOutput         `pulumi:"retentionDays"`
-	Status            pulumi.StringOutput      `pulumi:"status"`
-	Tags              pulumi.StringMapOutput   `pulumi:"tags"`
-	TargetCopyRegions pulumi.StringArrayOutput `pulumi:"targetCopyRegions"`
+	RetentionDays     pulumi.IntOutput                   `pulumi:"retentionDays"`
+	Status            pulumi.StringOutput                `pulumi:"status"`
+	Tags              pulumi.StringMapOutput             `pulumi:"tags"`
+	TargetCopyRegions pulumi.StringArrayOutput           `pulumi:"targetCopyRegions"`
+	TargetTags        SnapshotPolicyTargetTagArrayOutput `pulumi:"targetTags"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -138,6 +140,7 @@ func GetSnapshotPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnapshotPolicy resources.
 type snapshotPolicyState struct {
+	AssociationType              *string                                    `pulumi:"associationType"`
 	AutoSnapshotPolicyName       *string                                    `pulumi:"autoSnapshotPolicyName"`
 	CopiedSnapshotsRetentionDays *int                                       `pulumi:"copiedSnapshotsRetentionDays"`
 	CopyEncryptionConfiguration  *SnapshotPolicyCopyEncryptionConfiguration `pulumi:"copyEncryptionConfiguration"`
@@ -158,10 +161,11 @@ type snapshotPolicyState struct {
 	// - [1, 65536]: The number of days retained.
 	//
 	// Default value: -1.
-	RetentionDays     *int              `pulumi:"retentionDays"`
-	Status            *string           `pulumi:"status"`
-	Tags              map[string]string `pulumi:"tags"`
-	TargetCopyRegions []string          `pulumi:"targetCopyRegions"`
+	RetentionDays     *int                      `pulumi:"retentionDays"`
+	Status            *string                   `pulumi:"status"`
+	Tags              map[string]string         `pulumi:"tags"`
+	TargetCopyRegions []string                  `pulumi:"targetCopyRegions"`
+	TargetTags        []SnapshotPolicyTargetTag `pulumi:"targetTags"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -169,6 +173,7 @@ type snapshotPolicyState struct {
 }
 
 type SnapshotPolicyState struct {
+	AssociationType              pulumi.StringPtrInput
 	AutoSnapshotPolicyName       pulumi.StringPtrInput
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
 	CopyEncryptionConfiguration  SnapshotPolicyCopyEncryptionConfigurationPtrInput
@@ -193,6 +198,7 @@ type SnapshotPolicyState struct {
 	Status            pulumi.StringPtrInput
 	Tags              pulumi.StringMapInput
 	TargetCopyRegions pulumi.StringArrayInput
+	TargetTags        SnapshotPolicyTargetTagArrayInput
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -204,6 +210,7 @@ func (SnapshotPolicyState) ElementType() reflect.Type {
 }
 
 type snapshotPolicyArgs struct {
+	AssociationType              *string                                    `pulumi:"associationType"`
 	AutoSnapshotPolicyName       *string                                    `pulumi:"autoSnapshotPolicyName"`
 	CopiedSnapshotsRetentionDays *int                                       `pulumi:"copiedSnapshotsRetentionDays"`
 	CopyEncryptionConfiguration  *SnapshotPolicyCopyEncryptionConfiguration `pulumi:"copyEncryptionConfiguration"`
@@ -222,9 +229,10 @@ type snapshotPolicyArgs struct {
 	// - [1, 65536]: The number of days retained.
 	//
 	// Default value: -1.
-	RetentionDays     int               `pulumi:"retentionDays"`
-	Tags              map[string]string `pulumi:"tags"`
-	TargetCopyRegions []string          `pulumi:"targetCopyRegions"`
+	RetentionDays     int                       `pulumi:"retentionDays"`
+	Tags              map[string]string         `pulumi:"tags"`
+	TargetCopyRegions []string                  `pulumi:"targetCopyRegions"`
+	TargetTags        []SnapshotPolicyTargetTag `pulumi:"targetTags"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -233,6 +241,7 @@ type snapshotPolicyArgs struct {
 
 // The set of arguments for constructing a SnapshotPolicy resource.
 type SnapshotPolicyArgs struct {
+	AssociationType              pulumi.StringPtrInput
 	AutoSnapshotPolicyName       pulumi.StringPtrInput
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
 	CopyEncryptionConfiguration  SnapshotPolicyCopyEncryptionConfigurationPtrInput
@@ -254,6 +263,7 @@ type SnapshotPolicyArgs struct {
 	RetentionDays     pulumi.IntInput
 	Tags              pulumi.StringMapInput
 	TargetCopyRegions pulumi.StringArrayInput
+	TargetTags        SnapshotPolicyTargetTagArrayInput
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -347,6 +357,10 @@ func (o SnapshotPolicyOutput) ToSnapshotPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SnapshotPolicyOutput) AssociationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.AssociationType }).(pulumi.StringOutput)
+}
+
 func (o SnapshotPolicyOutput) AutoSnapshotPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.AutoSnapshotPolicyName }).(pulumi.StringOutput)
 }
@@ -410,6 +424,10 @@ func (o SnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
 
 func (o SnapshotPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringArrayOutput { return v.TargetCopyRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o SnapshotPolicyOutput) TargetTags() SnapshotPolicyTargetTagArrayOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) SnapshotPolicyTargetTagArrayOutput { return v.TargetTags }).(SnapshotPolicyTargetTagArrayOutput)
 }
 
 // The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.

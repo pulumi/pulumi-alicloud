@@ -97,7 +97,7 @@ class CertArgs:
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
-               > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+               > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         :param pulumi.Input[_builtins.int] years: The duration for which the certificate is purchased, in years.
@@ -415,7 +415,7 @@ class CertArgs:
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
-        > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+        > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         """
         return pulumi.get(self, "status")
 
@@ -543,7 +543,7 @@ class _CertState:
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
-               > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+               > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         :param pulumi.Input[_builtins.int] years: The duration for which the certificate is purchased, in years.
@@ -862,7 +862,7 @@ class _CertState:
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
-        > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+        > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         """
         return pulumi.get(self, "status")
 
@@ -909,8 +909,13 @@ class _CertState:
         pulumi.set(self, "years", value)
 
 
+warnings.warn("""alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert""", DeprecationWarning)
+
+
 @pulumi.type_token("alicloud:sslcertificatesservicepca/cert:Cert")
 class Cert(pulumi.CustomResource):
+    warnings.warn("""alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -954,14 +959,14 @@ class Cert(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        root = alicloud.sslcertificatesservicepca.Certificate("root",
+        root = alicloud.sslcertificatesservice.PcaCertificate("root",
             organization="a",
             years=1,
             locality="a",
             organization_unit="a",
             state="a",
             common_name="cbc.certqa.cn")
-        sub = alicloud.sslcertificatesservicepca.Certificate("sub",
+        sub = alicloud.sslcertificatesservice.PcaCertificate("sub",
             parent_identifier=root.id,
             organization="a",
             years=1,
@@ -972,7 +977,7 @@ class Cert(pulumi.CustomResource):
             algorithm="RSA_2048",
             certificate_type="SUB_ROOT",
             enable_crl=True)
-        default = alicloud.sslcertificatesservicepca.Cert("default",
+        default = alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert("default",
             immediately=0,
             organization="terraform",
             years=1,
@@ -1061,7 +1066,7 @@ class Cert(pulumi.CustomResource):
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
-               > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+               > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         :param pulumi.Input[_builtins.int] years: The duration for which the certificate is purchased, in years.
@@ -1089,14 +1094,14 @@ class Cert(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        root = alicloud.sslcertificatesservicepca.Certificate("root",
+        root = alicloud.sslcertificatesservice.PcaCertificate("root",
             organization="a",
             years=1,
             locality="a",
             organization_unit="a",
             state="a",
             common_name="cbc.certqa.cn")
-        sub = alicloud.sslcertificatesservicepca.Certificate("sub",
+        sub = alicloud.sslcertificatesservice.PcaCertificate("sub",
             parent_identifier=root.id,
             organization="a",
             years=1,
@@ -1107,7 +1112,7 @@ class Cert(pulumi.CustomResource):
             algorithm="RSA_2048",
             certificate_type="SUB_ROOT",
             enable_crl=True)
-        default = alicloud.sslcertificatesservicepca.Cert("default",
+        default = alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert("default",
             immediately=0,
             organization="terraform",
             years=1,
@@ -1181,6 +1186,7 @@ class Cert(pulumi.CustomResource):
                  upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
                  years: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""Cert is deprecated: alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -1306,7 +1312,7 @@ class Cert(pulumi.CustomResource):
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
-               > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+               > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         :param pulumi.Input[_builtins.int] years: The duration for which the certificate is purchased, in years.
@@ -1531,7 +1537,7 @@ class Cert(pulumi.CustomResource):
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
-        > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+        > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         """
         return pulumi.get(self, "status")
 
@@ -1545,7 +1551,7 @@ class Cert(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="uploadFlag")
-    def upload_flag(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def upload_flag(self) -> pulumi.Output[_builtins.int]:
         """
         Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         """

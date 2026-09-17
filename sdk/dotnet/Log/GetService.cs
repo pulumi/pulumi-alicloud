@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Log
     public static class GetService
     {
         /// <summary>
-        /// Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+        /// Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
         /// 
         /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Log
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:log/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+        /// Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
         /// 
         /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Log
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:log/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+        /// Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
         /// 
         /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
         /// 
@@ -100,9 +100,7 @@ namespace Pulumi.AliCloud.Log
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-        /// 
-        /// &gt; **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+        /// Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }
@@ -116,9 +114,7 @@ namespace Pulumi.AliCloud.Log
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-        /// 
-        /// &gt; **NOTE:** Setting `enable = "On"` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+        /// Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: "On" or "Off". Default to "Off".
         /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }
@@ -139,7 +135,7 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The current service enable status.
+        /// Returns `Opened` when `Enable` is `On`, or an empty string otherwise. This is a compatibility value, not the actual service status.
         /// </summary>
         public readonly string Status;
 

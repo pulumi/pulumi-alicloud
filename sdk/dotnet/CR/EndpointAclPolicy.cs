@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// ## Import
     /// 
-    /// CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, EndpointType and entry, e.g.
+    /// CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, EndpointType and entry. The `EndpointType` segment of the import ID accepts both `Internet` and `Internet`, e.g. `cri-abc123:internet:10.0.0.0/8`.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example &lt;instance_id&gt;:&lt;endpoint_type&gt;:&lt;entry&gt;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the state and the resource ID.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the state and the resource ID.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the state and the resource ID.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }

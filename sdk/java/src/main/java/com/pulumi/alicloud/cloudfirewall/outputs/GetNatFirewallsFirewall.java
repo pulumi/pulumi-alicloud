@@ -54,6 +54,16 @@ public final class GetNatFirewallsFirewall {
      */
     private String proxyName;
     /**
+     * @return Region
+     * 
+     */
+    private String regionNo;
+    /**
+     * @return The status of the resource
+     * 
+     */
+    private String status;
+    /**
      * @return Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
      * 
      */
@@ -122,6 +132,20 @@ public final class GetNatFirewallsFirewall {
         return this.proxyName;
     }
     /**
+     * @return Region
+     * 
+     */
+    public String regionNo() {
+        return this.regionNo;
+    }
+    /**
+     * @return The status of the resource
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
      * @return Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
      * 
      */
@@ -153,6 +177,8 @@ public final class GetNatFirewallsFirewall {
         private List<GetNatFirewallsFirewallNatRouteEntryList> natRouteEntryLists;
         private String proxyId;
         private String proxyName;
+        private String regionNo;
+        private String status;
         private Integer strictMode;
         private String vpcId;
         public Builder() {}
@@ -166,6 +192,8 @@ public final class GetNatFirewallsFirewall {
     	      this.natRouteEntryLists = defaults.natRouteEntryLists;
     	      this.proxyId = defaults.proxyId;
     	      this.proxyName = defaults.proxyName;
+    	      this.regionNo = defaults.regionNo;
+    	      this.status = defaults.status;
     	      this.strictMode = defaults.strictMode;
     	      this.vpcId = defaults.vpcId;
         }
@@ -238,6 +266,22 @@ public final class GetNatFirewallsFirewall {
             return this;
         }
         @CustomType.Setter
+        public Builder regionNo(String regionNo) {
+            if (regionNo == null) {
+              throw new MissingRequiredPropertyException("GetNatFirewallsFirewall", "regionNo");
+            }
+            this.regionNo = regionNo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNatFirewallsFirewall", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder strictMode(Integer strictMode) {
             if (strictMode == null) {
               throw new MissingRequiredPropertyException("GetNatFirewallsFirewall", "strictMode");
@@ -263,6 +307,8 @@ public final class GetNatFirewallsFirewall {
             _resultValue.natRouteEntryLists = natRouteEntryLists;
             _resultValue.proxyId = proxyId;
             _resultValue.proxyName = proxyName;
+            _resultValue.regionNo = regionNo;
+            _resultValue.status = status;
             _resultValue.strictMode = strictMode;
             _resultValue.vpcId = vpcId;
             return _resultValue;

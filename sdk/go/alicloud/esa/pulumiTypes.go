@@ -11155,6 +11155,435 @@ func (o GetHttpsBasicConfigurationsConfigurationArrayOutput) Index(i pulumi.IntI
 	}).(GetHttpsBasicConfigurationsConfigurationOutput)
 }
 
+type GetListsList struct {
+	// The description of the List.
+	Description string `pulumi:"description"`
+	// The ID of the List.
+	Id string `pulumi:"id"`
+	// The type of the List.
+	Kind string `pulumi:"kind"`
+	// The number of items contained in the List.
+	Length int `pulumi:"length"`
+	// The ID of the List.
+	ListId string `pulumi:"listId"`
+	// The name of the List.
+	Name string `pulumi:"name"`
+	// The last modification time of the List.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetListsListInput is an input type that accepts GetListsListArgs and GetListsListOutput values.
+// You can construct a concrete instance of `GetListsListInput` via:
+//
+//	GetListsListArgs{...}
+type GetListsListInput interface {
+	pulumi.Input
+
+	ToGetListsListOutput() GetListsListOutput
+	ToGetListsListOutputWithContext(context.Context) GetListsListOutput
+}
+
+type GetListsListArgs struct {
+	// The description of the List.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the List.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type of the List.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The number of items contained in the List.
+	Length pulumi.IntInput `pulumi:"length"`
+	// The ID of the List.
+	ListId pulumi.StringInput `pulumi:"listId"`
+	// The name of the List.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The last modification time of the List.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetListsListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsList)(nil)).Elem()
+}
+
+func (i GetListsListArgs) ToGetListsListOutput() GetListsListOutput {
+	return i.ToGetListsListOutputWithContext(context.Background())
+}
+
+func (i GetListsListArgs) ToGetListsListOutputWithContext(ctx context.Context) GetListsListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsListOutput)
+}
+
+// GetListsListArrayInput is an input type that accepts GetListsListArray and GetListsListArrayOutput values.
+// You can construct a concrete instance of `GetListsListArrayInput` via:
+//
+//	GetListsListArray{ GetListsListArgs{...} }
+type GetListsListArrayInput interface {
+	pulumi.Input
+
+	ToGetListsListArrayOutput() GetListsListArrayOutput
+	ToGetListsListArrayOutputWithContext(context.Context) GetListsListArrayOutput
+}
+
+type GetListsListArray []GetListsListInput
+
+func (GetListsListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListsList)(nil)).Elem()
+}
+
+func (i GetListsListArray) ToGetListsListArrayOutput() GetListsListArrayOutput {
+	return i.ToGetListsListArrayOutputWithContext(context.Background())
+}
+
+func (i GetListsListArray) ToGetListsListArrayOutputWithContext(ctx context.Context) GetListsListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsListArrayOutput)
+}
+
+type GetListsListOutput struct{ *pulumi.OutputState }
+
+func (GetListsListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsList)(nil)).Elem()
+}
+
+func (o GetListsListOutput) ToGetListsListOutput() GetListsListOutput {
+	return o
+}
+
+func (o GetListsListOutput) ToGetListsListOutputWithContext(ctx context.Context) GetListsListOutput {
+	return o
+}
+
+// The description of the List.
+func (o GetListsListOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsList) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the List.
+func (o GetListsListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of the List.
+func (o GetListsListOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsList) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The number of items contained in the List.
+func (o GetListsListOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListsList) int { return v.Length }).(pulumi.IntOutput)
+}
+
+// The ID of the List.
+func (o GetListsListOutput) ListId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsList) string { return v.ListId }).(pulumi.StringOutput)
+}
+
+// The name of the List.
+func (o GetListsListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsList) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last modification time of the List.
+func (o GetListsListOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsList) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetListsListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListsListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListsList)(nil)).Elem()
+}
+
+func (o GetListsListArrayOutput) ToGetListsListArrayOutput() GetListsListArrayOutput {
+	return o
+}
+
+func (o GetListsListArrayOutput) ToGetListsListArrayOutputWithContext(ctx context.Context) GetListsListArrayOutput {
+	return o
+}
+
+func (o GetListsListArrayOutput) Index(i pulumi.IntInput) GetListsListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListsList {
+		return vs[0].([]GetListsList)[vs[1].(int)]
+	}).(GetListsListOutput)
+}
+
+type GetListsQueryArgs struct {
+	// Whether to sort in descending order. Valid values: `true`, `false`.
+	//
+	// QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+	Desc *bool `pulumi:"desc"`
+	// The fuzzy search for list description.
+	DescriptionLike *string `pulumi:"descriptionLike"`
+	// The fuzzy search for list ID.
+	IdLike *string `pulumi:"idLike"`
+	// The value passed to the ListLists API to filter list contents.
+	ItemLike *string `pulumi:"itemLike"`
+	// The type of the custom list, e.g. `ip`.
+	Kind *string `pulumi:"kind"`
+	// The fuzzy search matching a list name or its items.
+	NameItemLike *string `pulumi:"nameItemLike"`
+	// The fuzzy search for list name.
+	NameLike *string `pulumi:"nameLike"`
+	// Specify the column to sort by.
+	OrderBy *string `pulumi:"orderBy"`
+}
+
+// GetListsQueryArgsInput is an input type that accepts GetListsQueryArgsArgs and GetListsQueryArgsOutput values.
+// You can construct a concrete instance of `GetListsQueryArgsInput` via:
+//
+//	GetListsQueryArgsArgs{...}
+type GetListsQueryArgsInput interface {
+	pulumi.Input
+
+	ToGetListsQueryArgsOutput() GetListsQueryArgsOutput
+	ToGetListsQueryArgsOutputWithContext(context.Context) GetListsQueryArgsOutput
+}
+
+type GetListsQueryArgsArgs struct {
+	// Whether to sort in descending order. Valid values: `true`, `false`.
+	//
+	// QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+	Desc pulumi.BoolPtrInput `pulumi:"desc"`
+	// The fuzzy search for list description.
+	DescriptionLike pulumi.StringPtrInput `pulumi:"descriptionLike"`
+	// The fuzzy search for list ID.
+	IdLike pulumi.StringPtrInput `pulumi:"idLike"`
+	// The value passed to the ListLists API to filter list contents.
+	ItemLike pulumi.StringPtrInput `pulumi:"itemLike"`
+	// The type of the custom list, e.g. `ip`.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// The fuzzy search matching a list name or its items.
+	NameItemLike pulumi.StringPtrInput `pulumi:"nameItemLike"`
+	// The fuzzy search for list name.
+	NameLike pulumi.StringPtrInput `pulumi:"nameLike"`
+	// Specify the column to sort by.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+}
+
+func (GetListsQueryArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsQueryArgs)(nil)).Elem()
+}
+
+func (i GetListsQueryArgsArgs) ToGetListsQueryArgsOutput() GetListsQueryArgsOutput {
+	return i.ToGetListsQueryArgsOutputWithContext(context.Background())
+}
+
+func (i GetListsQueryArgsArgs) ToGetListsQueryArgsOutputWithContext(ctx context.Context) GetListsQueryArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsQueryArgsOutput)
+}
+
+func (i GetListsQueryArgsArgs) ToGetListsQueryArgsPtrOutput() GetListsQueryArgsPtrOutput {
+	return i.ToGetListsQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GetListsQueryArgsArgs) ToGetListsQueryArgsPtrOutputWithContext(ctx context.Context) GetListsQueryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsQueryArgsOutput).ToGetListsQueryArgsPtrOutputWithContext(ctx)
+}
+
+// GetListsQueryArgsPtrInput is an input type that accepts GetListsQueryArgsArgs, GetListsQueryArgsPtr and GetListsQueryArgsPtrOutput values.
+// You can construct a concrete instance of `GetListsQueryArgsPtrInput` via:
+//
+//	        GetListsQueryArgsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetListsQueryArgsPtrInput interface {
+	pulumi.Input
+
+	ToGetListsQueryArgsPtrOutput() GetListsQueryArgsPtrOutput
+	ToGetListsQueryArgsPtrOutputWithContext(context.Context) GetListsQueryArgsPtrOutput
+}
+
+type getListsQueryArgsPtrType GetListsQueryArgsArgs
+
+func GetListsQueryArgsPtr(v *GetListsQueryArgsArgs) GetListsQueryArgsPtrInput {
+	return (*getListsQueryArgsPtrType)(v)
+}
+
+func (*getListsQueryArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetListsQueryArgs)(nil)).Elem()
+}
+
+func (i *getListsQueryArgsPtrType) ToGetListsQueryArgsPtrOutput() GetListsQueryArgsPtrOutput {
+	return i.ToGetListsQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *getListsQueryArgsPtrType) ToGetListsQueryArgsPtrOutputWithContext(ctx context.Context) GetListsQueryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsQueryArgsPtrOutput)
+}
+
+type GetListsQueryArgsOutput struct{ *pulumi.OutputState }
+
+func (GetListsQueryArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsQueryArgs)(nil)).Elem()
+}
+
+func (o GetListsQueryArgsOutput) ToGetListsQueryArgsOutput() GetListsQueryArgsOutput {
+	return o
+}
+
+func (o GetListsQueryArgsOutput) ToGetListsQueryArgsOutputWithContext(ctx context.Context) GetListsQueryArgsOutput {
+	return o
+}
+
+func (o GetListsQueryArgsOutput) ToGetListsQueryArgsPtrOutput() GetListsQueryArgsPtrOutput {
+	return o.ToGetListsQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GetListsQueryArgsOutput) ToGetListsQueryArgsPtrOutputWithContext(ctx context.Context) GetListsQueryArgsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetListsQueryArgs) *GetListsQueryArgs {
+		return &v
+	}).(GetListsQueryArgsPtrOutput)
+}
+
+// Whether to sort in descending order. Valid values: `true`, `false`.
+//
+// QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+func (o GetListsQueryArgsOutput) Desc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *bool { return v.Desc }).(pulumi.BoolPtrOutput)
+}
+
+// The fuzzy search for list description.
+func (o GetListsQueryArgsOutput) DescriptionLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.DescriptionLike }).(pulumi.StringPtrOutput)
+}
+
+// The fuzzy search for list ID.
+func (o GetListsQueryArgsOutput) IdLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.IdLike }).(pulumi.StringPtrOutput)
+}
+
+// The value passed to the ListLists API to filter list contents.
+func (o GetListsQueryArgsOutput) ItemLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.ItemLike }).(pulumi.StringPtrOutput)
+}
+
+// The type of the custom list, e.g. `ip`.
+func (o GetListsQueryArgsOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The fuzzy search matching a list name or its items.
+func (o GetListsQueryArgsOutput) NameItemLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.NameItemLike }).(pulumi.StringPtrOutput)
+}
+
+// The fuzzy search for list name.
+func (o GetListsQueryArgsOutput) NameLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.NameLike }).(pulumi.StringPtrOutput)
+}
+
+// Specify the column to sort by.
+func (o GetListsQueryArgsOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsQueryArgs) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+type GetListsQueryArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetListsQueryArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetListsQueryArgs)(nil)).Elem()
+}
+
+func (o GetListsQueryArgsPtrOutput) ToGetListsQueryArgsPtrOutput() GetListsQueryArgsPtrOutput {
+	return o
+}
+
+func (o GetListsQueryArgsPtrOutput) ToGetListsQueryArgsPtrOutputWithContext(ctx context.Context) GetListsQueryArgsPtrOutput {
+	return o
+}
+
+func (o GetListsQueryArgsPtrOutput) Elem() GetListsQueryArgsOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) GetListsQueryArgs {
+		if v != nil {
+			return *v
+		}
+		var ret GetListsQueryArgs
+		return ret
+	}).(GetListsQueryArgsOutput)
+}
+
+// Whether to sort in descending order. Valid values: `true`, `false`.
+//
+// QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+func (o GetListsQueryArgsPtrOutput) Desc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Desc
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The fuzzy search for list description.
+func (o GetListsQueryArgsPtrOutput) DescriptionLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DescriptionLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fuzzy search for list ID.
+func (o GetListsQueryArgsPtrOutput) IdLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value passed to the ListLists API to filter list contents.
+func (o GetListsQueryArgsPtrOutput) ItemLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ItemLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the custom list, e.g. `ip`.
+func (o GetListsQueryArgsPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fuzzy search matching a list name or its items.
+func (o GetListsQueryArgsPtrOutput) NameItemLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameItemLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fuzzy search for list name.
+func (o GetListsQueryArgsPtrOutput) NameLike() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameLike
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the column to sort by.
+func (o GetListsQueryArgsPtrOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetListsQueryArgs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderBy
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetNetworkOptimizationsOptimization struct {
 	// The ID of the Configuration.
 	ConfigId string `pulumi:"configId"`
@@ -12505,6 +12934,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCacheReserveInstancesInstanceArrayInput)(nil)).Elem(), GetCacheReserveInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHttpsBasicConfigurationsConfigurationInput)(nil)).Elem(), GetHttpsBasicConfigurationsConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHttpsBasicConfigurationsConfigurationArrayInput)(nil)).Elem(), GetHttpsBasicConfigurationsConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListInput)(nil)).Elem(), GetListsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListArrayInput)(nil)).Elem(), GetListsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsQueryArgsInput)(nil)).Elem(), GetListsQueryArgsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsQueryArgsPtrInput)(nil)).Elem(), GetListsQueryArgsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkOptimizationsOptimizationInput)(nil)).Elem(), GetNetworkOptimizationsOptimizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkOptimizationsOptimizationArrayInput)(nil)).Elem(), GetNetworkOptimizationsOptimizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOriginRulesRuleInput)(nil)).Elem(), GetOriginRulesRuleArgs{})
@@ -12647,6 +13080,10 @@ func init() {
 	pulumi.RegisterOutputType(GetCacheReserveInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetHttpsBasicConfigurationsConfigurationOutput{})
 	pulumi.RegisterOutputType(GetHttpsBasicConfigurationsConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetListsListOutput{})
+	pulumi.RegisterOutputType(GetListsListArrayOutput{})
+	pulumi.RegisterOutputType(GetListsQueryArgsOutput{})
+	pulumi.RegisterOutputType(GetListsQueryArgsPtrOutput{})
 	pulumi.RegisterOutputType(GetNetworkOptimizationsOptimizationOutput{})
 	pulumi.RegisterOutputType(GetNetworkOptimizationsOptimizationArrayOutput{})
 	pulumi.RegisterOutputType(GetOriginRulesRuleOutput{})

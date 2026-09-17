@@ -83,6 +83,55 @@ namespace Pulumi.AliCloud.PolarDB
     /// });
     /// ```
     /// 
+    /// Create a PolarDB PostgreSQL distributed cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+    ///     {
+    ///         DbType = "PostgreSQL",
+    ///         DbVersion = "16",
+    ///         Category = "Normal",
+    ///         PayType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+    ///         VswitchName = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("default", new()
+    ///     {
+    ///         DbType = "PostgreSQL",
+    ///         DbVersion = "16",
+    ///         PayType = "PostPaid",
+    ///         CnNodeClass = "polar.pg.x4.medium",
+    ///         DnNodeClass = "polar.pg.x4.medium",
+    ///         CnNodeNum = 1,
+    ///         DnNodeNum = 2,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         Description = "terraform-example-distributed",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
     /// Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
     /// 
@@ -198,6 +247,24 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> CloneDataPoint { get; private set; } = null!;
 
         /// <summary>
+        /// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `DbNodeClass` and must be specified together with `DnNodeClass` when creating a distributed cluster.
+        /// </summary>
+        [Output("cnNodeClass")]
+        public Output<string> CnNodeClass { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+        /// </summary>
+        [Output("cnNodeIds")]
+        public Output<ImmutableArray<string>> CnNodeIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+        /// </summary>
+        [Output("cnNodeNum")]
+        public Output<int> CnNodeNum { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Output("collectorStatus")]
@@ -249,16 +316,16 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbMinorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The DbNodeClass of cluster node.
+        /// The DbNodeClass of cluster node. Required for non-distributed clusters.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
         /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
         /// </summary>
         [Output("dbNodeClass")]
-        public Output<string> DbNodeClass { get; private set; } = null!;
+        public Output<string?> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `CnNodeNum` and `DnNodeNum`.
         /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Output("dbNodeCount")]
@@ -314,6 +381,24 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `DbNodeClass` and must be specified together with `CnNodeClass` when creating a distributed cluster.
+        /// </summary>
+        [Output("dnNodeClass")]
+        public Output<string> DnNodeClass { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+        /// </summary>
+        [Output("dnNodeIds")]
+        public Output<ImmutableArray<string>> DnNodeIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+        /// </summary>
+        [Output("dnNodeNum")]
+        public Output<int> DnNodeNum { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `False`. Valid values are `True`, `False`. This parameter takes effect only after TDE is enabled.
@@ -416,7 +501,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// Use as `DbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Defines whether a `DbNodeClass`, `CnNodeClass`, or `DnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -784,6 +869,18 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CloneDataPoint { get; set; }
 
         /// <summary>
+        /// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `DbNodeClass` and must be specified together with `DnNodeClass` when creating a distributed cluster.
+        /// </summary>
+        [Input("cnNodeClass")]
+        public Input<string>? CnNodeClass { get; set; }
+
+        /// <summary>
+        /// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+        /// </summary>
+        [Input("cnNodeNum")]
+        public Input<int>? CnNodeNum { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Input("collectorStatus")]
@@ -829,16 +926,16 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbMinorVersion { get; set; }
 
         /// <summary>
-        /// The DbNodeClass of cluster node.
+        /// The DbNodeClass of cluster node. Required for non-distributed clusters.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
         /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
         /// </summary>
-        [Input("dbNodeClass", required: true)]
-        public Input<string> DbNodeClass { get; set; } = null!;
+        [Input("dbNodeClass")]
+        public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `CnNodeNum` and `DnNodeNum`.
         /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
@@ -888,6 +985,18 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `DbNodeClass` and must be specified together with `CnNodeClass` when creating a distributed cluster.
+        /// </summary>
+        [Input("dnNodeClass")]
+        public Input<string>? DnNodeClass { get; set; }
+
+        /// <summary>
+        /// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+        /// </summary>
+        [Input("dnNodeNum")]
+        public Input<int>? DnNodeNum { get; set; }
 
         /// <summary>
         /// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `False`. Valid values are `True`, `False`. This parameter takes effect only after TDE is enabled.
@@ -996,7 +1105,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// Use as `DbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Defines whether a `DbNodeClass`, `CnNodeClass`, or `DnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -1330,6 +1439,30 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CloneDataPoint { get; set; }
 
         /// <summary>
+        /// The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `DbNodeClass` and must be specified together with `DnNodeClass` when creating a distributed cluster.
+        /// </summary>
+        [Input("cnNodeClass")]
+        public Input<string>? CnNodeClass { get; set; }
+
+        [Input("cnNodeIds")]
+        private InputList<string>? _cnNodeIds;
+
+        /// <summary>
+        /// (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+        /// </summary>
+        public InputList<string> CnNodeIds
+        {
+            get => _cnNodeIds ?? (_cnNodeIds = new InputList<string>());
+            set => _cnNodeIds = value;
+        }
+
+        /// <summary>
+        /// The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+        /// </summary>
+        [Input("cnNodeNum")]
+        public Input<int>? CnNodeNum { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Input("collectorStatus")]
@@ -1387,7 +1520,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbMinorVersion { get; set; }
 
         /// <summary>
-        /// The DbNodeClass of cluster node.
+        /// The DbNodeClass of cluster node. Required for non-distributed clusters.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `DbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
         /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `DbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -1396,7 +1529,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `CnNodeNum` and `DnNodeNum`.
         /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
@@ -1458,6 +1591,30 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `DbNodeClass` and must be specified together with `CnNodeClass` when creating a distributed cluster.
+        /// </summary>
+        [Input("dnNodeClass")]
+        public Input<string>? DnNodeClass { get; set; }
+
+        [Input("dnNodeIds")]
+        private InputList<string>? _dnNodeIds;
+
+        /// <summary>
+        /// (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+        /// </summary>
+        public InputList<string> DnNodeIds
+        {
+            get => _dnNodeIds ?? (_dnNodeIds = new InputList<string>());
+            set => _dnNodeIds = value;
+        }
+
+        /// <summary>
+        /// The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+        /// </summary>
+        [Input("dnNodeNum")]
+        public Input<int>? DnNodeNum { get; set; }
 
         /// <summary>
         /// Specifies whether to enable automatic rotation of the TDE encryption key. Default to `False`. Valid values are `True`, `False`. This parameter takes effect only after TDE is enabled.
@@ -1566,7 +1723,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// Use as `DbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Defines whether a `DbNodeClass`, `CnNodeClass`, or `DnNodeClass` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }

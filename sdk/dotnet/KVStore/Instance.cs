@@ -471,9 +471,9 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Node type, valid values:
-        /// - `MASTER_SLAVE`: High availability (dual copies)
-        /// - `STAND_ALONE`: Single copy
+        /// The node type. Valid values:
+        /// - `MASTER_SLAVE`: High availability (master-replica)
+        /// - `STAND_ALONE`: Standalone
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
@@ -953,9 +953,9 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// Node type, valid values:
-        /// - `MASTER_SLAVE`: High availability (dual copies)
-        /// - `STAND_ALONE`: Single copy
+        /// The node type. Valid values:
+        /// - `MASTER_SLAVE`: High availability (master-replica)
+        /// - `STAND_ALONE`: Standalone
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -1428,9 +1428,9 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// Node type, valid values:
-        /// - `MASTER_SLAVE`: High availability (dual copies)
-        /// - `STAND_ALONE`: Single copy
+        /// The node type. Valid values:
+        /// - `MASTER_SLAVE`: High availability (master-replica)
+        /// - `STAND_ALONE`: Standalone
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }

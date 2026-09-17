@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CR
         /// <summary>
         /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.CR
         /// <summary>
         /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CR
         /// <summary>
         /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetEndpointAclPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the attributes.
         /// </summary>
         [Input("endpointType", required: true)]
         public string EndpointType { get; set; } = null!;
@@ -154,6 +154,12 @@ namespace Pulumi.AliCloud.CR
         public string InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// The module that needs to set the access policy. Valid values: `Registry`.
+        /// </summary>
+        [Input("moduleName")]
+        public string? ModuleName { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
@@ -168,7 +174,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetEndpointAclPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the attributes.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -192,6 +198,12 @@ namespace Pulumi.AliCloud.CR
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// The module that needs to set the access policy. Valid values: `Registry`.
+        /// </summary>
+        [Input("moduleName")]
+        public Input<string>? ModuleName { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
@@ -207,14 +219,24 @@ namespace Pulumi.AliCloud.CR
     [OutputType]
     public sealed class GetEndpointAclPoliciesResult
     {
+        /// <summary>
+        /// The type of endpoint.
+        /// </summary>
         public readonly string EndpointType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the CR Instance.
+        /// </summary>
         public readonly string InstanceId;
+        public readonly string? ModuleName;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointAclPoliciesPolicyResult> Policies;
 
         [OutputConstructor]
@@ -227,6 +249,8 @@ namespace Pulumi.AliCloud.CR
 
             string instanceId,
 
+            string? moduleName,
+
             string? outputFile,
 
             ImmutableArray<Outputs.GetEndpointAclPoliciesPolicyResult> policies)
@@ -235,6 +259,7 @@ namespace Pulumi.AliCloud.CR
             Id = id;
             Ids = ids;
             InstanceId = instanceId;
+            ModuleName = moduleName;
             OutputFile = outputFile;
             Policies = policies;
         }

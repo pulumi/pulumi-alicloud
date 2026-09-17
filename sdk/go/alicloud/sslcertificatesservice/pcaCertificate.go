@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicepca"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservice"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sslcertificatesservicepca.NewCertificate(ctx, "default", &sslcertificatesservicepca.CertificateArgs{
+//			_, err := sslcertificatesservice.NewPcaCertificate(ctx, "default", &sslcertificatesservice.PcaCertificateArgs{
 //				Organization:     pulumi.String("a"),
 //				Years:            pulumi.Int(1),
 //				Locality:         pulumi.String("a"),
@@ -62,8 +62,6 @@ import (
 // ```sh
 // $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <identifier>
 // ```
-//
-// Deprecated: alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate
 type PcaCertificate struct {
 	pulumi.CustomResourceState
 
@@ -154,6 +152,12 @@ func NewPcaCertificate(ctx *pulumi.Context,
 	if args.Years == nil {
 		return nil, errors.New("invalid value for required argument 'Years'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("alicloud:sslcertificatesservicepca/certificate:Certificate"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PcaCertificate
 	err := ctx.RegisterResource("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate", name, args, &resource, opts...)

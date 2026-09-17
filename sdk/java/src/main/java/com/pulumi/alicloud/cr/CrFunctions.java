@@ -1281,7 +1281,7 @@ public final class CrFunctions {
     /**
      * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1330,7 +1330,7 @@ public final class CrFunctions {
     /**
      * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1379,7 +1379,7 @@ public final class CrFunctions {
     /**
      * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1428,7 +1428,7 @@ public final class CrFunctions {
     /**
      * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1477,7 +1477,7 @@ public final class CrFunctions {
     /**
      * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1528,7 +1528,7 @@ public final class CrFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1577,7 +1577,7 @@ public final class CrFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1626,7 +1626,7 @@ public final class CrFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1675,7 +1675,7 @@ public final class CrFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1724,7 +1724,7 @@ public final class CrFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 

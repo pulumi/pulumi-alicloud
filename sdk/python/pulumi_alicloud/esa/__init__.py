@@ -18,6 +18,7 @@ from .edge_container_app import *
 from .edge_container_app_record import *
 from .get_cache_reserve_instances import *
 from .get_https_basic_configurations import *
+from .get_lists import *
 from .get_network_optimizations import *
 from .get_origin_rules import *
 from .get_routine_code_versions import *

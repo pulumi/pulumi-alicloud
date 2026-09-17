@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -36,6 +36,7 @@ export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: 
         "endpointType": args.endpointType,
         "ids": args.ids,
         "instanceId": args.instanceId,
+        "moduleName": args.moduleName,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -45,7 +46,7 @@ export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: 
  */
 export interface GetEndpointAclPoliciesArgs {
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      */
     endpointType: string;
     /**
@@ -57,6 +58,10 @@ export interface GetEndpointAclPoliciesArgs {
      */
     instanceId: string;
     /**
+     * The module that needs to set the access policy. Valid values: `Registry`.
+     */
+    moduleName?: string;
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
@@ -66,20 +71,30 @@ export interface GetEndpointAclPoliciesArgs {
  * A collection of values returned by getEndpointAclPolicies.
  */
 export interface GetEndpointAclPoliciesResult {
+    /**
+     * The type of endpoint.
+     */
     readonly endpointType: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the CR Instance.
+     */
     readonly instanceId: string;
+    readonly moduleName?: string;
     readonly outputFile?: string;
+    /**
+     * A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.cr.GetEndpointAclPoliciesPolicy[];
 }
 /**
  * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -106,6 +121,7 @@ export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputA
         "endpointType": args.endpointType,
         "ids": args.ids,
         "instanceId": args.instanceId,
+        "moduleName": args.moduleName,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -115,7 +131,7 @@ export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputA
  */
 export interface GetEndpointAclPoliciesOutputArgs {
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -126,6 +142,10 @@ export interface GetEndpointAclPoliciesOutputArgs {
      * The ID of the CR Instance.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The module that needs to set the access policy. Valid values: `Registry`.
+     */
+    moduleName?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */

@@ -65,6 +65,11 @@ export const getHttpsBasicConfigurations: typeof import("./getHttpsBasicConfigur
 export const getHttpsBasicConfigurationsOutput: typeof import("./getHttpsBasicConfigurations").getHttpsBasicConfigurationsOutput = null as any;
 utilities.lazyLoad(exports, ["getHttpsBasicConfigurations","getHttpsBasicConfigurationsOutput"], () => require("./getHttpsBasicConfigurations"));
 
+export { GetListsArgs, GetListsResult, GetListsOutputArgs } from "./getLists";
+export const getLists: typeof import("./getLists").getLists = null as any;
+export const getListsOutput: typeof import("./getLists").getListsOutput = null as any;
+utilities.lazyLoad(exports, ["getLists","getListsOutput"], () => require("./getLists"));
+
 export { GetNetworkOptimizationsArgs, GetNetworkOptimizationsResult, GetNetworkOptimizationsOutputArgs } from "./getNetworkOptimizations";
 export const getNetworkOptimizations: typeof import("./getNetworkOptimizations").getNetworkOptimizations = null as any;
 export const getNetworkOptimizationsOutput: typeof import("./getNetworkOptimizations").getNetworkOptimizationsOutput = null as any;

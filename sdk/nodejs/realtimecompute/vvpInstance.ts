@@ -102,6 +102,10 @@ export class VvpInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     */
+    declare public readonly autoRenewDuration: pulumi.Output<number | undefined>;
+    /**
      * The creation time of the resource.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -117,6 +121,14 @@ export class VvpInstance extends pulumi.CustomResource {
      * The subscription period. If the payment type is PRE, this parameter is required.
      */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
+    /**
+     * The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     */
+    declare public readonly renewStatus: pulumi.Output<string>;
+    /**
+     * The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+     */
+    declare public readonly renewalDurationUnit: pulumi.Output<string>;
     /**
      * The resource group to which the newly purchased instance belongs.
      */
@@ -171,10 +183,13 @@ export class VvpInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VvpInstanceState | undefined;
+            resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["duration"] = state?.duration;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["renewStatus"] = state?.renewStatus;
+            resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["resourceSpec"] = state?.resourceSpec;
@@ -205,9 +220,12 @@ export class VvpInstance extends pulumi.CustomResource {
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
             resourceInputs["duration"] = args?.duration;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["renewStatus"] = args?.renewStatus;
+            resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["resourceSpec"] = args?.resourceSpec;
             resourceInputs["storage"] = args?.storage;
@@ -230,6 +248,10 @@ export class VvpInstance extends pulumi.CustomResource {
  */
 export interface VvpInstanceState {
     /**
+     * The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     */
+    autoRenewDuration?: pulumi.Input<number | undefined>;
+    /**
      * The creation time of the resource.
      */
     createTime?: pulumi.Input<string | undefined>;
@@ -245,6 +267,14 @@ export interface VvpInstanceState {
      * The subscription period. If the payment type is PRE, this parameter is required.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
+    /**
+     * The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     */
+    renewStatus?: pulumi.Input<string | undefined>;
+    /**
+     * The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+     */
+    renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The resource group to which the newly purchased instance belongs.
      */
@@ -292,6 +322,10 @@ export interface VvpInstanceState {
  */
 export interface VvpInstanceArgs {
     /**
+     * The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     */
+    autoRenewDuration?: pulumi.Input<number | undefined>;
+    /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
     duration?: pulumi.Input<number | undefined>;
@@ -303,6 +337,14 @@ export interface VvpInstanceArgs {
      * The subscription period. If the payment type is PRE, this parameter is required.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
+    /**
+     * The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     */
+    renewStatus?: pulumi.Input<string | undefined>;
+    /**
+     * The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+     */
+    renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The resource group to which the newly purchased instance belongs.
      */

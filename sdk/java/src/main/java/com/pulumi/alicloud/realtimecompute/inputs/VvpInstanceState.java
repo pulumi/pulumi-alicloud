@@ -21,6 +21,21 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
     public static final VvpInstanceState Empty = new VvpInstanceState();
 
     /**
+     * The auto-renewal period of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     * 
+     */
+    @Import(name="autoRenewDuration")
+    private @Nullable Output<Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewDuration() {
+        return Optional.ofNullable(this.autoRenewDuration);
+    }
+
+    /**
      * The creation time of the resource.
      * 
      */
@@ -78,6 +93,36 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> pricingCycle() {
         return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * The renewal status of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     * 
+     */
+    @Import(name="renewStatus")
+    private @Nullable Output<String> renewStatus;
+
+    /**
+     * @return The renewal status of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+     * 
+     */
+    public Optional<Output<String>> renewStatus() {
+        return Optional.ofNullable(this.renewStatus);
+    }
+
+    /**
+     * The unit of the auto-renewal period. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `M` (month), `Y` (year).
+     * 
+     */
+    @Import(name="renewalDurationUnit")
+    private @Nullable Output<String> renewalDurationUnit;
+
+    /**
+     * @return The unit of the auto-renewal period. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `M` (month), `Y` (year).
+     * 
+     */
+    public Optional<Output<String>> renewalDurationUnit() {
+        return Optional.ofNullable(this.renewalDurationUnit);
     }
 
     /**
@@ -233,10 +278,13 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
     private VvpInstanceState() {}
 
     private VvpInstanceState(VvpInstanceState $) {
+        this.autoRenewDuration = $.autoRenewDuration;
         this.createTime = $.createTime;
         this.duration = $.duration;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
+        this.renewStatus = $.renewStatus;
+        this.renewalDurationUnit = $.renewalDurationUnit;
         this.resourceGroupId = $.resourceGroupId;
         this.resourceId = $.resourceId;
         this.resourceSpec = $.resourceSpec;
@@ -265,6 +313,27 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(VvpInstanceState defaults) {
             $ = new VvpInstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(@Nullable Output<Integer> autoRenewDuration) {
+            $.autoRenewDuration = autoRenewDuration;
+            return this;
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(Integer autoRenewDuration) {
+            return autoRenewDuration(Output.of(autoRenewDuration));
         }
 
         /**
@@ -349,6 +418,48 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param renewStatus The renewal status of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewStatus(@Nullable Output<String> renewStatus) {
+            $.renewStatus = renewStatus;
+            return this;
+        }
+
+        /**
+         * @param renewStatus The renewal status of the subscription instance. It only takes effect when `paymentType = &#34;Subscription&#34;`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewStatus(String renewStatus) {
+            return renewStatus(Output.of(renewStatus));
+        }
+
+        /**
+         * @param renewalDurationUnit The unit of the auto-renewal period. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `M` (month), `Y` (year).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDurationUnit(@Nullable Output<String> renewalDurationUnit) {
+            $.renewalDurationUnit = renewalDurationUnit;
+            return this;
+        }
+
+        /**
+         * @param renewalDurationUnit The unit of the auto-renewal period. It only takes effect when `paymentType = &#34;Subscription&#34;` and `renewStatus = &#34;AutoRenewal&#34;`. Valid values: `M` (month), `Y` (year).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDurationUnit(String renewalDurationUnit) {
+            return renewalDurationUnit(Output.of(renewalDurationUnit));
         }
 
         /**

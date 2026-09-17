@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> CreditSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance. See `DataDisks` below.
+        /// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `DataDisks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
@@ -229,6 +229,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool> EnableJumboFrame { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable network encryption for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+        /// </summary>
+        [Output("enableNetworkEncryption")]
+        public Output<bool> EnableNetworkEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since v1.232.0) The expiration time of the instance.
         /// </summary>
         [Output("expiredTime")]
@@ -281,7 +289,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The options of images. See `ImageOptions` below.
+        /// The options of images. **Note: The parameter is immutable after resource creation.** See `ImageOptions` below.
         /// </summary>
         [Output("imageOptions")]
         public Output<Outputs.InstanceImageOptions> ImageOptions { get; private set; } = null!;
@@ -350,7 +358,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use outdated instance type.
+        /// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         /// </summary>
         [Output("isOutdated")]
         public Output<bool?> IsOutdated { get; private set; } = null!;
@@ -442,7 +450,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> NetworkInterfaceTrafficMode { get; private set; } = null!;
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
+        /// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `NetworkInterfaces` below.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<Outputs.InstanceNetworkInterfaces> NetworkInterfaces { get; private set; } = null!;
@@ -604,7 +612,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool> SourceDestCheck { get; private set; } = null!;
 
         /// <summary>
-        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         /// </summary>
         [Output("spotDuration")]
         public Output<int> SpotDuration { get; private set; } = null!;
@@ -864,7 +872,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.InstanceDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `DataDisks` below.
+        /// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskArgs> DataDisks
         {
@@ -919,6 +927,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableJumboFrame { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable network encryption for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+        /// </summary>
+        [Input("enableNetworkEncryption")]
+        public Input<bool>? EnableNetworkEncryption { get; set; }
+
+        /// <summary>
         /// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         /// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         /// </summary>
@@ -965,7 +981,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The options of images. See `ImageOptions` below.
+        /// The options of images. **Note: The parameter is immutable after resource creation.** See `ImageOptions` below.
         /// </summary>
         [Input("imageOptions")]
         public Input<Inputs.InstanceImageOptionsArgs>? ImageOptions { get; set; }
@@ -1040,7 +1056,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether to use outdated instance type.
+        /// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         /// </summary>
         [Input("isOutdated")]
         public Input<bool>? IsOutdated { get; set; }
@@ -1132,7 +1148,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
+        /// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.InstanceNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
@@ -1292,7 +1308,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? SourceDestCheck { get; set; }
 
         /// <summary>
-        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         /// </summary>
         [Input("spotDuration")]
         public Input<int>? SpotDuration { get; set; }
@@ -1522,7 +1538,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.InstanceDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `DataDisks` below.
+        /// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskGetArgs> DataDisks
         {
@@ -1583,6 +1599,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableJumboFrame { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable network encryption for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+        /// </summary>
+        [Input("enableNetworkEncryption")]
+        public Input<bool>? EnableNetworkEncryption { get; set; }
+
+        /// <summary>
         /// (Available since v1.232.0) The expiration time of the instance.
         /// </summary>
         [Input("expiredTime")]
@@ -1635,7 +1659,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The options of images. See `ImageOptions` below.
+        /// The options of images. **Note: The parameter is immutable after resource creation.** See `ImageOptions` below.
         /// </summary>
         [Input("imageOptions")]
         public Input<Inputs.InstanceImageOptionsGetArgs>? ImageOptions { get; set; }
@@ -1710,7 +1734,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether to use outdated instance type.
+        /// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         /// </summary>
         [Input("isOutdated")]
         public Input<bool>? IsOutdated { get; set; }
@@ -1808,7 +1832,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance. See `NetworkInterfaces` below.
+        /// The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `NetworkInterfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.InstanceNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
@@ -1992,7 +2016,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? SourceDestCheck { get; set; }
 
         /// <summary>
-        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         /// </summary>
         [Input("spotDuration")]
         public Input<int>? SpotDuration { get; set; }

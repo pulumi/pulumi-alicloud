@@ -63,6 +63,7 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
+	Available  pulumi.BoolOutput   `pulumi:"available"`
 	Category   pulumi.StringOutput `pulumi:"category"`
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -86,7 +87,8 @@ type Snapshot struct {
 	SnapshotName    pulumi.StringOutput    `pulumi:"snapshotName"`
 	Status          pulumi.StringOutput    `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags      pulumi.StringMapOutput `pulumi:"tags"`
+	WaitUntil pulumi.StringPtrOutput `pulumi:"waitUntil"`
 }
 
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -122,6 +124,7 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
+	Available  *bool   `pulumi:"available"`
 	Category   *string `pulumi:"category"`
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -145,10 +148,12 @@ type snapshotState struct {
 	SnapshotName    *string `pulumi:"snapshotName"`
 	Status          *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Tags      map[string]string `pulumi:"tags"`
+	WaitUntil *string           `pulumi:"waitUntil"`
 }
 
 type SnapshotState struct {
+	Available  pulumi.BoolPtrInput
 	Category   pulumi.StringPtrInput
 	CreateTime pulumi.StringPtrInput
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -172,7 +177,8 @@ type SnapshotState struct {
 	SnapshotName    pulumi.StringPtrInput
 	Status          pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags      pulumi.StringMapInput
+	WaitUntil pulumi.StringPtrInput
 }
 
 func (SnapshotState) ElementType() reflect.Type {
@@ -200,7 +206,8 @@ type snapshotArgs struct {
 	RetentionDays   *int    `pulumi:"retentionDays"`
 	SnapshotName    *string `pulumi:"snapshotName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Tags      map[string]string `pulumi:"tags"`
+	WaitUntil *string           `pulumi:"waitUntil"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
@@ -225,7 +232,8 @@ type SnapshotArgs struct {
 	RetentionDays   pulumi.IntPtrInput
 	SnapshotName    pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags      pulumi.StringMapInput
+	WaitUntil pulumi.StringPtrInput
 }
 
 func (SnapshotArgs) ElementType() reflect.Type {
@@ -315,6 +323,10 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+func (o SnapshotOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.Available }).(pulumi.BoolOutput)
+}
+
 func (o SnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
@@ -379,6 +391,10 @@ func (o SnapshotOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 func (o SnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o SnapshotOutput) WaitUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.WaitUntil }).(pulumi.StringPtrOutput)
 }
 
 type SnapshotArrayOutput struct{ *pulumi.OutputState }

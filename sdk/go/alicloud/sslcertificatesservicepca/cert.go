@@ -27,14 +27,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicepca"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservice"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicepcacert"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			root, err := sslcertificatesservicepca.NewCertificate(ctx, "root", &sslcertificatesservicepca.CertificateArgs{
+//			root, err := sslcertificatesservice.NewPcaCertificate(ctx, "root", &sslcertificatesservice.PcaCertificateArgs{
 //				Organization:     pulumi.String("a"),
 //				Years:            pulumi.Int(1),
 //				Locality:         pulumi.String("a"),
@@ -45,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sub, err := sslcertificatesservicepca.NewCertificate(ctx, "sub", &sslcertificatesservicepca.CertificateArgs{
+//			sub, err := sslcertificatesservice.NewPcaCertificate(ctx, "sub", &sslcertificatesservice.PcaCertificateArgs{
 //				ParentIdentifier: root.ID().ToIDOutput().ToStringOutput(),
 //				Organization:     pulumi.String("a"),
 //				Years:            pulumi.Int(1),
@@ -60,7 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sslcertificatesservicepca.NewCert(ctx, "default", &sslcertificatesservicepca.CertArgs{
+//			_, err = sslcertificatesservicepcacert.NewSslCertificatesServicePcaCert(ctx, "default", &sslcertificatesservicepcacert.SslCertificatesServicePcaCertArgs{
 //				Immediately:      pulumi.Int(0),
 //				Organization:     pulumi.String("terraform"),
 //				Years:            pulumi.Int(1),
@@ -101,6 +102,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example <id>
 // ```
+//
+// Deprecated: alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert
 type Cert struct {
 	pulumi.CustomResourceState
 
@@ -175,12 +178,12 @@ type Cert struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
-	// > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Information about the queried instances and their associated tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Indicates whether the certificate has been uploaded to the SSL certificate management platform.
-	UploadFlag pulumi.IntPtrOutput `pulumi:"uploadFlag"`
+	UploadFlag pulumi.IntOutput `pulumi:"uploadFlag"`
 	// The duration for which the certificate is purchased, in years.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -291,7 +294,7 @@ type certState struct {
 	State *string `pulumi:"state"`
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
-	// > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status *string `pulumi:"status"`
 	// Information about the queried instances and their associated tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -375,7 +378,7 @@ type CertState struct {
 	State pulumi.StringPtrInput
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
-	// > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status pulumi.StringPtrInput
 	// Information about the queried instances and their associated tags.
 	Tags pulumi.StringMapInput
@@ -463,7 +466,7 @@ type certArgs struct {
 	State *string `pulumi:"state"`
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
-	// > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status *string `pulumi:"status"`
 	// Information about the queried instances and their associated tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -548,7 +551,7 @@ type CertArgs struct {
 	State pulumi.StringPtrInput
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
-	// > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status pulumi.StringPtrInput
 	// Information about the queried instances and their associated tags.
 	Tags pulumi.StringMapInput
@@ -775,7 +778,7 @@ func (o CertOutput) State() pulumi.StringPtrOutput {
 
 // The status of the certificate. Valid values:
 // - `REVOKE`: indicates that the certificate has been revoked.
-// > **NOTE:** If you want to destroy `sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 func (o CertOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cert) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -786,8 +789,8 @@ func (o CertOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Indicates whether the certificate has been uploaded to the SSL certificate management platform.
-func (o CertOutput) UploadFlag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Cert) pulumi.IntPtrOutput { return v.UploadFlag }).(pulumi.IntPtrOutput)
+func (o CertOutput) UploadFlag() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cert) pulumi.IntOutput { return v.UploadFlag }).(pulumi.IntOutput)
 }
 
 // The duration for which the certificate is purchased, in years.

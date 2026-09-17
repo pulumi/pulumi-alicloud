@@ -289,14 +289,14 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -718,7 +718,7 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource. Valid values: `Available`, `Unavailable`.
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource. Valid values: `Available`, `Unavailable`.
          * 
          * @return builder
          * 

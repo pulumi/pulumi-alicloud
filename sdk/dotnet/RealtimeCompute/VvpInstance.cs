@@ -106,6 +106,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
     public partial class VvpInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The auto-renewal period of the subscription instance. It only takes effect when `PaymentType = "Subscription"` and `RenewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `RenewalDurationUnit`.
+        /// </summary>
+        [Output("autoRenewDuration")]
+        public Output<int?> AutoRenewDuration { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
@@ -128,6 +134,18 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// The renewal status of the subscription instance. It only takes effect when `PaymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        /// </summary>
+        [Output("renewStatus")]
+        public Output<string> RenewStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The unit of the auto-renewal period. It only takes effect when `PaymentType = "Subscription"` and `RenewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+        /// </summary>
+        [Output("renewalDurationUnit")]
+        public Output<string> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
         /// The resource group to which the newly purchased instance belongs.
@@ -236,6 +254,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
     public sealed class VvpInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The auto-renewal period of the subscription instance. It only takes effect when `PaymentType = "Subscription"` and `RenewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `RenewalDurationUnit`.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
         /// The number of subscription periods. If the payment type is PRE, this parameter is required.
         /// </summary>
         [Input("duration")]
@@ -252,6 +276,18 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The renewal status of the subscription instance. It only takes effect when `PaymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        /// </summary>
+        [Input("renewStatus")]
+        public Input<string>? RenewStatus { get; set; }
+
+        /// <summary>
+        /// The unit of the auto-renewal period. It only takes effect when `PaymentType = "Subscription"` and `RenewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+        /// </summary>
+        [Input("renewalDurationUnit")]
+        public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
         /// The resource group to which the newly purchased instance belongs.
@@ -322,6 +358,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
     public sealed class VvpInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The auto-renewal period of the subscription instance. It only takes effect when `PaymentType = "Subscription"` and `RenewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `RenewalDurationUnit`.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
@@ -344,6 +386,18 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The renewal status of the subscription instance. It only takes effect when `PaymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        /// </summary>
+        [Input("renewStatus")]
+        public Input<string>? RenewStatus { get; set; }
+
+        /// <summary>
+        /// The unit of the auto-renewal period. It only takes effect when `PaymentType = "Subscription"` and `RenewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+        /// </summary>
+        [Input("renewalDurationUnit")]
+        public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
         /// The resource group to which the newly purchased instance belongs.

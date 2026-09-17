@@ -21,25 +21,29 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 db_node_class: pulumi.Input[_builtins.str],
                  db_type: pulumi.Input[_builtins.str],
                  db_version: pulumi.Input[_builtins.str],
                  allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_category: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_option: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
@@ -100,10 +104,6 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
 
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-               From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
         :param pulumi.Input[_builtins.str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[_builtins.str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[_builtins.str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
@@ -111,6 +111,8 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         :param pulumi.Input[_builtins.str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
+        :param pulumi.Input[_builtins.str] cn_node_class: The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[_builtins.int] cn_node_num: The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
         :param pulumi.Input[_builtins.str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[_builtins.str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
                > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
@@ -120,7 +122,11 @@ class ClusterArgs:
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[_builtins.str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
-        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node. Required for non-distributed clusters.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
+        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[_builtins.int] db_node_num: The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
@@ -130,6 +136,8 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.str] dn_node_class: The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[_builtins.int] dn_node_num: The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
@@ -155,7 +163,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[_builtins.str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[_builtins.str] modify_type: Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         :param pulumi.Input[_builtins.str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -217,7 +225,6 @@ class ClusterArgs:
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
         """
-        pulumi.set(__self__, "db_node_class", db_node_class)
         pulumi.set(__self__, "db_type", db_type)
         pulumi.set(__self__, "db_version", db_version)
         if allow_shut_down is not None:
@@ -228,6 +235,10 @@ class ClusterArgs:
             pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if clone_data_point is not None:
             pulumi.set(__self__, "clone_data_point", clone_data_point)
+        if cn_node_class is not None:
+            pulumi.set(__self__, "cn_node_class", cn_node_class)
+        if cn_node_num is not None:
+            pulumi.set(__self__, "cn_node_num", cn_node_num)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
         if compress_storage is not None:
@@ -240,6 +251,8 @@ class ClusterArgs:
             pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_minor_version is not None:
             pulumi.set(__self__, "db_minor_version", db_minor_version)
+        if db_node_class is not None:
+            pulumi.set(__self__, "db_node_class", db_node_class)
         if db_node_count is not None:
             pulumi.set(__self__, "db_node_count", db_node_count)
         if db_node_id is not None:
@@ -252,6 +265,10 @@ class ClusterArgs:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dn_node_class is not None:
+            pulumi.set(__self__, "dn_node_class", dn_node_class)
+        if dn_node_num is not None:
+            pulumi.set(__self__, "dn_node_num", dn_node_num)
         if enable_automatic_rotation is not None:
             pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if enable_dynamodb is not None:
@@ -368,21 +385,6 @@ class ClusterArgs:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
-    @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> pulumi.Input[_builtins.str]:
-        """
-        The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
-        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-        """
-        return pulumi.get(self, "db_node_class")
-
-    @db_node_class.setter
-    def db_node_class(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "db_node_class", value)
-
-    @_builtins.property
     @pulumi.getter(name="dbType")
     def db_type(self) -> pulumi.Input[_builtins.str]:
         """
@@ -454,6 +456,30 @@ class ClusterArgs:
     @clone_data_point.setter
     def clone_data_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clone_data_point", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeClass")
+    def cn_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        """
+        return pulumi.get(self, "cn_node_class")
+
+    @cn_node_class.setter
+    def cn_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cn_node_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeNum")
+    def cn_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+        """
+        return pulumi.get(self, "cn_node_num")
+
+    @cn_node_num.setter
+    def cn_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cn_node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="collectorStatus")
@@ -531,10 +557,25 @@ class ClusterArgs:
         pulumi.set(self, "db_minor_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="dbNodeClass")
+    def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The db_node_class of cluster node. Required for non-distributed clusters.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
+        """
+        return pulumi.get(self, "db_node_class")
+
+    @db_node_class.setter
+    def db_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "db_node_class", value)
+
+    @_builtins.property
     @pulumi.getter(name="dbNodeCount")
     def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
         > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         """
         return pulumi.get(self, "db_node_count")
@@ -605,6 +646,30 @@ class ClusterArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeClass")
+    def dn_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        """
+        return pulumi.get(self, "dn_node_class")
+
+    @dn_node_class.setter
+    def dn_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dn_node_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeNum")
+    def dn_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+        """
+        return pulumi.get(self, "dn_node_num")
+
+    @dn_node_num.setter
+    def dn_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "dn_node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticRotation")
@@ -800,7 +865,7 @@ class ClusterArgs:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
 
@@ -1328,6 +1393,9 @@ class _ClusterState:
                  automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1346,6 +1414,9 @@ class _ClusterState:
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1416,6 +1487,9 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         :param pulumi.Input[_builtins.str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
+        :param pulumi.Input[_builtins.str] cn_node_class: The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cn_node_ids: (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+        :param pulumi.Input[_builtins.int] cn_node_num: The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
         :param pulumi.Input[_builtins.str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[_builtins.str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
                > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
@@ -1427,11 +1501,11 @@ class _ClusterState:
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[_builtins.str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
+        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node. Required for non-distributed clusters.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
                From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[_builtins.int] db_node_num: The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
@@ -1444,6 +1518,9 @@ class _ClusterState:
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.str] dn_node_class: The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dn_node_ids: (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+        :param pulumi.Input[_builtins.int] dn_node_num: The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
@@ -1469,7 +1546,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[_builtins.str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[_builtins.str] modify_type: Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         :param pulumi.Input[_builtins.str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -1547,6 +1624,12 @@ class _ClusterState:
             pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if clone_data_point is not None:
             pulumi.set(__self__, "clone_data_point", clone_data_point)
+        if cn_node_class is not None:
+            pulumi.set(__self__, "cn_node_class", cn_node_class)
+        if cn_node_ids is not None:
+            pulumi.set(__self__, "cn_node_ids", cn_node_ids)
+        if cn_node_num is not None:
+            pulumi.set(__self__, "cn_node_num", cn_node_num)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
         if compress_storage is not None:
@@ -1583,6 +1666,12 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dn_node_class is not None:
+            pulumi.set(__self__, "dn_node_class", dn_node_class)
+        if dn_node_ids is not None:
+            pulumi.set(__self__, "dn_node_ids", dn_node_ids)
+        if dn_node_num is not None:
+            pulumi.set(__self__, "dn_node_num", dn_node_num)
         if enable_automatic_rotation is not None:
             pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if enable_dynamodb is not None:
@@ -1768,6 +1857,42 @@ class _ClusterState:
         pulumi.set(self, "clone_data_point", value)
 
     @_builtins.property
+    @pulumi.getter(name="cnNodeClass")
+    def cn_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        """
+        return pulumi.get(self, "cn_node_class")
+
+    @cn_node_class.setter
+    def cn_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cn_node_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeIds")
+    def cn_node_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+        """
+        return pulumi.get(self, "cn_node_ids")
+
+    @cn_node_ids.setter
+    def cn_node_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "cn_node_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeNum")
+    def cn_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+        """
+        return pulumi.get(self, "cn_node_num")
+
+    @cn_node_num.setter
+    def cn_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cn_node_num", value)
+
+    @_builtins.property
     @pulumi.getter(name="collectorStatus")
     def collector_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1870,7 +1995,7 @@ class _ClusterState:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The db_node_class of cluster node.
+        The db_node_class of cluster node. Required for non-distributed clusters.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
         From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
@@ -1885,7 +2010,7 @@ class _ClusterState:
     @pulumi.getter(name="dbNodeCount")
     def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
         > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         """
         return pulumi.get(self, "db_node_count")
@@ -1992,6 +2117,42 @@ class _ClusterState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeClass")
+    def dn_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        """
+        return pulumi.get(self, "dn_node_class")
+
+    @dn_node_class.setter
+    def dn_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dn_node_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeIds")
+    def dn_node_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+        """
+        return pulumi.get(self, "dn_node_ids")
+
+    @dn_node_ids.setter
+    def dn_node_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dn_node_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeNum")
+    def dn_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+        """
+        return pulumi.get(self, "dn_node_num")
+
+    @dn_node_num.setter
+    def dn_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "dn_node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticRotation")
@@ -2187,7 +2348,7 @@ class _ClusterState:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
 
@@ -2767,6 +2928,8 @@ class Cluster(pulumi.CustomResource):
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2782,6 +2945,8 @@ class Cluster(pulumi.CustomResource):
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2889,6 +3054,37 @@ class Cluster(pulumi.CustomResource):
             ])
         ```
 
+        Create a PolarDB PostgreSQL distributed cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.polardb.get_node_classes(db_type="PostgreSQL",
+            db_version="16",
+            category="Normal",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("default",
+            db_type="PostgreSQL",
+            db_version="16",
+            pay_type="PostPaid",
+            cn_node_class="polar.pg.x4.medium",
+            dn_node_class="polar.pg.x4.medium",
+            cn_node_num=1,
+            dn_node_num=2,
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            description="terraform-example-distributed")
+        ```
+
         When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
         Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
 
@@ -2961,6 +3157,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         :param pulumi.Input[_builtins.str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
+        :param pulumi.Input[_builtins.str] cn_node_class: The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[_builtins.int] cn_node_num: The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
         :param pulumi.Input[_builtins.str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[_builtins.str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
                > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
@@ -2970,11 +3168,11 @@ class Cluster(pulumi.CustomResource):
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[_builtins.str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
+        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node. Required for non-distributed clusters.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
                From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[_builtins.int] db_node_num: The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
@@ -2986,6 +3184,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.str] dn_node_class: The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[_builtins.int] dn_node_num: The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
@@ -3011,7 +3211,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[_builtins.str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[_builtins.str] modify_type: Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         :param pulumi.Input[_builtins.str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -3128,6 +3328,37 @@ class Cluster(pulumi.CustomResource):
             ])
         ```
 
+        Create a PolarDB PostgreSQL distributed cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.polardb.get_node_classes(db_type="PostgreSQL",
+            db_version="16",
+            category="Normal",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("default",
+            db_type="PostgreSQL",
+            db_version="16",
+            pay_type="PostPaid",
+            cn_node_class="polar.pg.x4.medium",
+            dn_node_class="polar.pg.x4.medium",
+            cn_node_num=1,
+            dn_node_num=2,
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            description="terraform-example-distributed")
+        ```
+
         When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
         Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
 
@@ -3212,6 +3443,8 @@ class Cluster(pulumi.CustomResource):
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3227,6 +3460,8 @@ class Cluster(pulumi.CustomResource):
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3297,14 +3532,14 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["clone_data_point"] = clone_data_point
+            __props__.__dict__["cn_node_class"] = cn_node_class
+            __props__.__dict__["cn_node_num"] = cn_node_num
             __props__.__dict__["collector_status"] = collector_status
             __props__.__dict__["compress_storage"] = compress_storage
             __props__.__dict__["creation_category"] = creation_category
             __props__.__dict__["creation_option"] = creation_option
             __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
             __props__.__dict__["db_minor_version"] = db_minor_version
-            if db_node_class is None and not opts.urn:
-                raise TypeError("Missing required property 'db_node_class'")
             __props__.__dict__["db_node_class"] = db_node_class
             __props__.__dict__["db_node_count"] = db_node_count
             __props__.__dict__["db_node_id"] = db_node_id
@@ -3318,6 +3553,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_time_zone"] = default_time_zone
             __props__.__dict__["deletion_lock"] = deletion_lock
             __props__.__dict__["description"] = description
+            __props__.__dict__["dn_node_class"] = dn_node_class
+            __props__.__dict__["dn_node_num"] = dn_node_num
             __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
             __props__.__dict__["enable_dynamodb"] = enable_dynamodb
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
@@ -3376,9 +3613,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["automatic_rotation"] = None
+            __props__.__dict__["cn_node_ids"] = None
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["db_revision_version_lists"] = None
+            __props__.__dict__["dn_node_ids"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["rotation_interval"] = None
             __props__.__dict__["status"] = None
@@ -3398,6 +3637,9 @@ class Cluster(pulumi.CustomResource):
             automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
             clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+            cn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            cn_node_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
             collector_status: pulumi.Input[Optional[_builtins.str]] = None,
             compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
             connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3416,6 +3658,9 @@ class Cluster(pulumi.CustomResource):
             default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            dn_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            dn_node_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dn_node_num: pulumi.Input[Optional[_builtins.int]] = None,
             enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
             encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3490,6 +3735,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         :param pulumi.Input[_builtins.str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
+        :param pulumi.Input[_builtins.str] cn_node_class: The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cn_node_ids: (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+        :param pulumi.Input[_builtins.int] cn_node_num: The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
         :param pulumi.Input[_builtins.str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[_builtins.str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
                > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
@@ -3501,11 +3749,11 @@ class Cluster(pulumi.CustomResource):
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[_builtins.str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
-        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.
+        :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node. Required for non-distributed clusters.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
                From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
-        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        :param pulumi.Input[_builtins.int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[_builtins.int] db_node_num: The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
@@ -3518,6 +3766,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
+        :param pulumi.Input[_builtins.str] dn_node_class: The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dn_node_ids: (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+        :param pulumi.Input[_builtins.int] dn_node_num: The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
         :param pulumi.Input[_builtins.bool] enable_automatic_rotation: Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
         :param pulumi.Input[_builtins.bool] enable_dynamodb: Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
@@ -3543,7 +3794,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[_builtins.str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[_builtins.str] modify_type: Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         :param pulumi.Input[_builtins.str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -3620,6 +3871,9 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["automatic_rotation"] = automatic_rotation
         __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["clone_data_point"] = clone_data_point
+        __props__.__dict__["cn_node_class"] = cn_node_class
+        __props__.__dict__["cn_node_ids"] = cn_node_ids
+        __props__.__dict__["cn_node_num"] = cn_node_num
         __props__.__dict__["collector_status"] = collector_status
         __props__.__dict__["compress_storage"] = compress_storage
         __props__.__dict__["connection_string"] = connection_string
@@ -3638,6 +3892,9 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["default_time_zone"] = default_time_zone
         __props__.__dict__["deletion_lock"] = deletion_lock
         __props__.__dict__["description"] = description
+        __props__.__dict__["dn_node_class"] = dn_node_class
+        __props__.__dict__["dn_node_ids"] = dn_node_ids
+        __props__.__dict__["dn_node_num"] = dn_node_num
         __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
         __props__.__dict__["enable_dynamodb"] = enable_dynamodb
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
@@ -3743,6 +4000,30 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "clone_data_point")
 
     @_builtins.property
+    @pulumi.getter(name="cnNodeClass")
+    def cn_node_class(self) -> pulumi.Output[_builtins.str]:
+        """
+        The node class for CN (Coordinator Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `dn_node_class` when creating a distributed cluster.
+        """
+        return pulumi.get(self, "cn_node_class")
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeIds")
+    def cn_node_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        (Available since v1.293.0) The IDs of the CN (Coordinator Node) nodes in a distributed cluster.
+        """
+        return pulumi.get(self, "cn_node_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeNum")
+    def cn_node_num(self) -> pulumi.Output[_builtins.int]:
+        """
+        The desired number of CN (Coordinator Node) nodes in a distributed cluster. Valid values: 1 or more.
+        """
+        return pulumi.get(self, "cn_node_num")
+
+    @_builtins.property
     @pulumi.getter(name="collectorStatus")
     def collector_status(self) -> pulumi.Output[_builtins.str]:
         """
@@ -3811,9 +4092,9 @@ class Cluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> pulumi.Output[_builtins.str]:
+    def db_node_class(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The db_node_class of cluster node.
+        The db_node_class of cluster node. Required for non-distributed clusters.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
         From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `db_node_class` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(<https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC>).
@@ -3824,7 +4105,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeCount")
     def db_node_count(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cn_node_num` and `dn_node_num`.
         > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         """
         return pulumi.get(self, "db_node_count")
@@ -3895,6 +4176,30 @@ class Cluster(pulumi.CustomResource):
         The description of cluster.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeClass")
+    def dn_node_class(self) -> pulumi.Output[_builtins.str]:
+        """
+        The node class for DN (Data Node) in a distributed cluster. For example: `polar.pg.x4.medium`. This argument conflicts with `db_node_class` and must be specified together with `cn_node_class` when creating a distributed cluster.
+        """
+        return pulumi.get(self, "dn_node_class")
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeIds")
+    def dn_node_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        (Available since v1.293.0) The IDs of the DN (Data Node) nodes in a distributed cluster.
+        """
+        return pulumi.get(self, "dn_node_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeNum")
+    def dn_node_num(self) -> pulumi.Output[_builtins.int]:
+        """
+        The desired number of DN (Data Node) nodes in a distributed cluster. Valid values: 2 or more.
+        """
+        return pulumi.get(self, "dn_node_num")
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticRotation")
@@ -4030,7 +4335,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
 

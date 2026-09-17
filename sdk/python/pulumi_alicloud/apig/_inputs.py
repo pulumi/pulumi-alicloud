@@ -59,6 +59,8 @@ __all__ = [
     'RouteMatchPathArgsDict',
     'RouteMatchQueryParamArgs',
     'RouteMatchQueryParamArgsDict',
+    'SecretKmsConfigArgs',
+    'SecretKmsConfigArgsDict',
     'ServiceHealthCheckConfigArgs',
     'ServiceHealthCheckConfigArgsDict',
     'ServiceOutlierDetectionConfigArgs',
@@ -1603,6 +1605,53 @@ class RouteMatchQueryParamArgs:
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class SecretKmsConfigArgsDict(TypedDict):
+    kms_instance_id: pulumi.Input[_builtins.str]
+    """
+    The KMS instance ID.
+    """
+    kms_key_id: pulumi.Input[_builtins.str]
+    """
+    The KMS key ID.
+    """
+
+@pulumi.input_type
+class SecretKmsConfigArgs:
+    def __init__(__self__, *,
+                 kms_instance_id: pulumi.Input[_builtins.str],
+                 kms_key_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_instance_id: The KMS instance ID.
+        :param pulumi.Input[_builtins.str] kms_key_id: The KMS key ID.
+        """
+        pulumi.set(__self__, "kms_instance_id", kms_instance_id)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsInstanceId")
+    def kms_instance_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The KMS instance ID.
+        """
+        return pulumi.get(self, "kms_instance_id")
+
+    @kms_instance_id.setter
+    def kms_instance_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The KMS key ID.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_id", value)
 
 
 class ServiceHealthCheckConfigArgsDict(TypedDict):

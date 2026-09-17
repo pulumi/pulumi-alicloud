@@ -24,6 +24,7 @@ from .plugin import *
 from .plugin_class import *
 from .policy import *
 from .route import *
+from .secret import *
 from .service import *
 from .source import *
 from ._inputs import *

@@ -15,18 +15,14 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetServicePlainArgs Empty = new GetServicePlainArgs();
 
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
-     * 
-     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+     * Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
      */
     @Import(name="enable")
     private @Nullable String enable;
 
     /**
-     * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
-     * 
-     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+     * @return Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
      */
     public Optional<String> enable() {
@@ -58,9 +54,7 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
-         * 
-         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Log service that means you have read and agreed the [Log Terms of Service](https://help.aliyun.com/document_detail/53476.html). The service can not closed once it is opened.
+         * @param enable Setting the value to `On` returns `Opened`. Setting it to `Off` returns an empty status. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
          * 
          * @return builder
          * 

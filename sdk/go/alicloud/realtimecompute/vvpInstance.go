@@ -128,6 +128,8 @@ import (
 type VvpInstance struct {
 	pulumi.CustomResourceState
 
+	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -136,6 +138,10 @@ type VvpInstance struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The subscription period. If the payment type is PRE, this parameter is required.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+	RenewStatus pulumi.StringOutput `pulumi:"renewStatus"`
+	// The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+	RenewalDurationUnit pulumi.StringOutput `pulumi:"renewalDurationUnit"`
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// (Available since v1.264.0) The ID of the K8s cluster.
@@ -206,6 +212,8 @@ func GetVvpInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VvpInstance resources.
 type vvpInstanceState struct {
+	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -214,6 +222,10 @@ type vvpInstanceState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription period. If the payment type is PRE, this parameter is required.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+	RenewStatus *string `pulumi:"renewStatus"`
+	// The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available since v1.264.0) The ID of the K8s cluster.
@@ -237,6 +249,8 @@ type vvpInstanceState struct {
 }
 
 type VvpInstanceState struct {
+	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+	AutoRenewDuration pulumi.IntPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -245,6 +259,10 @@ type VvpInstanceState struct {
 	PaymentType pulumi.StringPtrInput
 	// The subscription period. If the payment type is PRE, this parameter is required.
 	PricingCycle pulumi.StringPtrInput
+	// The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+	RenewStatus pulumi.StringPtrInput
+	// The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+	RenewalDurationUnit pulumi.StringPtrInput
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// (Available since v1.264.0) The ID of the K8s cluster.
@@ -272,12 +290,18 @@ func (VvpInstanceState) ElementType() reflect.Type {
 }
 
 type vvpInstanceArgs struct {
+	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration *int `pulumi:"duration"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
 	// The subscription period. If the payment type is PRE, this parameter is required.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+	RenewStatus *string `pulumi:"renewStatus"`
+	// The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resource specifications. See `resourceSpec` below.
@@ -298,12 +322,18 @@ type vvpInstanceArgs struct {
 
 // The set of arguments for constructing a VvpInstance resource.
 type VvpInstanceArgs struct {
+	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+	AutoRenewDuration pulumi.IntPtrInput
 	// The number of subscription periods. If the payment type is PRE, this parameter is required.
 	Duration pulumi.IntPtrInput
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput
 	// The subscription period. If the payment type is PRE, this parameter is required.
 	PricingCycle pulumi.StringPtrInput
+	// The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+	RenewStatus pulumi.StringPtrInput
+	// The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+	RenewalDurationUnit pulumi.StringPtrInput
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// Resource specifications. See `resourceSpec` below.
@@ -409,6 +439,11 @@ func (o VvpInstanceOutput) ToVvpInstanceOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
+func (o VvpInstanceOutput) AutoRenewDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VvpInstance) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
+}
+
 // The creation time of the resource.
 func (o VvpInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -427,6 +462,16 @@ func (o VvpInstanceOutput) PaymentType() pulumi.StringOutput {
 // The subscription period. If the payment type is PRE, this parameter is required.
 func (o VvpInstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// The renewal status of the subscription instance. It only takes effect when `paymentType = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+func (o VvpInstanceOutput) RenewStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.RenewStatus }).(pulumi.StringOutput)
+}
+
+// The unit of the auto-renewal period. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+func (o VvpInstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.RenewalDurationUnit }).(pulumi.StringOutput)
 }
 
 // The resource group to which the newly purchased instance belongs.

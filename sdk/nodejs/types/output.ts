@@ -5306,6 +5306,17 @@ export namespace apig {
         value?: string;
     }
 
+    export interface SecretKmsConfig {
+        /**
+         * The KMS instance ID.
+         */
+        kmsInstanceId: string;
+        /**
+         * The KMS key ID.
+         */
+        kmsKeyId: string;
+    }
+
     export interface ServiceHealthCheckConfig {
         /**
          * Whether to enable health check
@@ -12464,6 +12475,14 @@ export namespace cloudfirewall {
          */
         proxyName: string;
         /**
+         * Region
+         */
+        regionNo: string;
+        /**
+         * The status of the resource
+         */
+        status: string;
+        /**
          * Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
          */
         strictMode: number;
@@ -19511,7 +19530,7 @@ export namespace cr {
          */
         description: string;
         /**
-         * The type of endpoint.
+         * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
          */
         endpointType: string;
         /**
@@ -29549,6 +29568,17 @@ export namespace ecs {
         kmsKeyId?: string;
     }
 
+    export interface AutoSnapshotPolicyTargetTag {
+        /**
+         * The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+         */
+        tagKey?: string;
+        /**
+         * The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+         */
+        tagValue?: string;
+    }
+
     export interface DedicatedHostNetworkAttribute {
         /**
          * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
@@ -29819,13 +29849,25 @@ export namespace ecs {
 
     export interface GetAutoSnapshotPoliciesPolicy {
         /**
+         * The association type between the automatic snapshot policy and target resources.
+         */
+        associationType: string;
+        /**
          * The ID of the Auto Snapshot Policy.
          */
         autoSnapshotPolicyId: string;
         /**
+         * The name of the automatic snapshot policy.
+         */
+        autoSnapshotPolicyName: string;
+        /**
          * The retention period of the snapshot copied across regions.
          */
         copiedSnapshotsRetentionDays: number;
+        /**
+         * The time when the automatic snapshot policy was created.
+         */
+        createTime: string;
         /**
          * The number of disks to which the automatic snapshot policy is applied.
          */
@@ -29839,9 +29881,13 @@ export namespace ecs {
          */
         id: string;
         /**
-         * The snapshot policy name..
+         * The total number of records.
          */
-        name: string;
+        recordTotal: number;
+        /**
+         * The region ID of the automatic snapshot policy.
+         */
+        regionId: string;
         /**
          * The automatic snapshot repetition dates.
          */
@@ -29851,7 +29897,7 @@ export namespace ecs {
          */
         retentionDays: number;
         /**
-         * The status of Auto Snapshot Policy.
+         * The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
          */
         status: string;
         /**
@@ -29863,6 +29909,10 @@ export namespace ecs {
          */
         targetCopyRegions: string[];
         /**
+         * The tags used to associate the automatic snapshot policy with ECS instances. Each element contains the following attributes:
+         */
+        targetTags: outputs.ecs.GetAutoSnapshotPoliciesPolicyTargetTag[];
+        /**
          * The automatic snapshot creation schedule, and the unit of measurement is hour.
          */
         timePoints: string[];
@@ -29870,6 +29920,17 @@ export namespace ecs {
          * The number of extended volumes on which this policy is enabled.
          */
         volumeNums: number;
+    }
+
+    export interface GetAutoSnapshotPoliciesPolicyTargetTag {
+        /**
+         * The key of the target tag.
+         */
+        tagKey: string;
+        /**
+         * The value of the target tag.
+         */
+        tagValue: string;
     }
 
     export interface GetCapacityReservationsReservation {
@@ -33173,6 +33234,11 @@ export namespace ecs {
     export interface SnapshotPolicyCopyEncryptionConfiguration {
         encrypted?: boolean;
         kmsKeyId?: string;
+    }
+
+    export interface SnapshotPolicyTargetTag {
+        tagKey?: string;
+        tagValue?: string;
     }
 
 }
@@ -38174,6 +38240,74 @@ export namespace esa {
          * Whether to enable TLS1.3.
          */
         tls13: string;
+    }
+
+    export interface GetListsList {
+        /**
+         * The description of the List.
+         */
+        description: string;
+        /**
+         * The ID of the List.
+         */
+        id: string;
+        /**
+         * The type of the List.
+         */
+        kind: string;
+        /**
+         * The number of items contained in the List.
+         */
+        length: number;
+        /**
+         * The ID of the List.
+         */
+        listId: string;
+        /**
+         * The name of the List.
+         */
+        name: string;
+        /**
+         * The last modification time of the List.
+         */
+        updateTime: string;
+    }
+
+    export interface GetListsQueryArgs {
+        /**
+         * Whether to sort in descending order. Valid values: `true`, `false`.
+         *
+         * QueryArgs values are passed unchanged for server-side interpretation; filtering behavior depends on the ESA API.
+         */
+        desc?: boolean;
+        /**
+         * The fuzzy search for list description.
+         */
+        descriptionLike?: string;
+        /**
+         * The fuzzy search for list ID.
+         */
+        idLike?: string;
+        /**
+         * The value passed to the ListLists API to filter list contents.
+         */
+        itemLike?: string;
+        /**
+         * The type of the custom list, e.g. `ip`.
+         */
+        kind?: string;
+        /**
+         * The fuzzy search matching a list name or its items.
+         */
+        nameItemLike?: string;
+        /**
+         * The fuzzy search for list name.
+         */
+        nameLike?: string;
+        /**
+         * Specify the column to sort by.
+         */
+        orderBy?: string;
     }
 
     export interface GetNetworkOptimizationsOptimization {

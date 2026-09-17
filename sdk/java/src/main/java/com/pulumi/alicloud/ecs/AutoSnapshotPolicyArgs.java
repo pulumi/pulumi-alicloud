@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs;
 
 import com.pulumi.alicloud.ecs.inputs.AutoSnapshotPolicyCopyEncryptionConfigurationArgs;
+import com.pulumi.alicloud.ecs.inputs.AutoSnapshotPolicyTargetTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -20,6 +21,29 @@ import javax.annotation.Nullable;
 public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AutoSnapshotPolicyArgs Empty = new AutoSnapshotPolicyArgs();
+
+    /**
+     * The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     * 
+     * &gt; **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     * 
+     */
+    @Import(name="associationType")
+    private @Nullable Output<String> associationType;
+
+    /**
+     * @return The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     * 
+     * &gt; **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     * 
+     */
+    public Optional<Output<String>> associationType() {
+        return Optional.ofNullable(this.associationType);
+    }
 
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -184,6 +208,21 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     * 
+     */
+    @Import(name="targetTags")
+    private @Nullable Output<List<AutoSnapshotPolicyTargetTagArgs>> targetTags;
+
+    /**
+     * @return The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     * 
+     */
+    public Optional<Output<List<AutoSnapshotPolicyTargetTagArgs>>> targetTags() {
+        return Optional.ofNullable(this.targetTags);
+    }
+
+    /**
      * The points in time of the day at which to create automatic snapshots.
      * 
      * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -213,6 +252,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     private AutoSnapshotPolicyArgs() {}
 
     private AutoSnapshotPolicyArgs(AutoSnapshotPolicyArgs $) {
+        this.associationType = $.associationType;
         this.autoSnapshotPolicyName = $.autoSnapshotPolicyName;
         this.copiedSnapshotsRetentionDays = $.copiedSnapshotsRetentionDays;
         this.copyEncryptionConfiguration = $.copyEncryptionConfiguration;
@@ -223,6 +263,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         this.retentionDays = $.retentionDays;
         this.tags = $.tags;
         this.targetCopyRegions = $.targetCopyRegions;
+        this.targetTags = $.targetTags;
         this.timePoints = $.timePoints;
     }
 
@@ -242,6 +283,35 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
 
         public Builder(AutoSnapshotPolicyArgs defaults) {
             $ = new AutoSnapshotPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param associationType The association type between the automatic snapshot policy and target resources. Valid values:
+         * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+         * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+         * 
+         * &gt; **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associationType(@Nullable Output<String> associationType) {
+            $.associationType = associationType;
+            return this;
+        }
+
+        /**
+         * @param associationType The association type between the automatic snapshot policy and target resources. Valid values:
+         * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+         * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+         * 
+         * &gt; **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associationType(String associationType) {
+            return associationType(Output.of(associationType));
         }
 
         /**
@@ -484,6 +554,37 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
          */
         public Builder targetCopyRegions(String... targetCopyRegions) {
             return targetCopyRegions(List.of(targetCopyRegions));
+        }
+
+        /**
+         * @param targetTags The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetTags(@Nullable Output<List<AutoSnapshotPolicyTargetTagArgs>> targetTags) {
+            $.targetTags = targetTags;
+            return this;
+        }
+
+        /**
+         * @param targetTags The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetTags(List<AutoSnapshotPolicyTargetTagArgs> targetTags) {
+            return targetTags(Output.of(targetTags));
+        }
+
+        /**
+         * @param targetTags The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetTags(AutoSnapshotPolicyTargetTagArgs... targetTags) {
+            return targetTags(List.of(targetTags));
         }
 
         /**

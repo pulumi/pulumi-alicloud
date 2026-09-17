@@ -35,6 +35,7 @@ class InstanceArgs:
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_network_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -121,7 +122,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
@@ -133,6 +134,9 @@ class InstanceArgs:
                
                > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_network_encryption: Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[_builtins.str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -144,7 +148,7 @@ class InstanceArgs:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
-        :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -158,7 +162,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type.
+        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -179,7 +183,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[_builtins.str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
@@ -227,7 +231,7 @@ class InstanceArgs:
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
                - `Stop`: The instance is stopped in economical mode.
@@ -298,6 +302,8 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_high_density_mode", enable_high_density_mode)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
+        if enable_network_encryption is not None:
+            pulumi.set(__self__, "enable_network_encryption", enable_network_encryption)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
@@ -531,7 +537,7 @@ class InstanceArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDataDiskArgs']]]]:
         """
-        The list of data disks created with instance. See `data_disks` below.
+        The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -628,6 +634,20 @@ class InstanceArgs:
         pulumi.set(self, "enable_jumbo_frame", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableNetworkEncryption")
+    def enable_network_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+        """
+        return pulumi.get(self, "enable_network_encryption")
+
+    @enable_network_encryption.setter
+    def enable_network_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_network_encryption", value)
+
+    @_builtins.property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -719,7 +739,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageOptions")
     def image_options(self) -> pulumi.Input[Optional['InstanceImageOptionsArgs']]:
         """
-        The options of images. See `image_options` below.
+        The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         """
         return pulumi.get(self, "image_options")
 
@@ -855,7 +875,7 @@ class InstanceArgs:
     @pulumi.getter(name="isOutdated")
     def is_outdated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to use outdated instance type.
+        Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         """
         return pulumi.get(self, "is_outdated")
 
@@ -1019,7 +1039,7 @@ class InstanceArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Input[Optional['InstanceNetworkInterfacesArgs']]:
         """
-        The list of network interfaces created with instance. See `network_interfaces` below.
+        The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1266,7 +1286,7 @@ class InstanceArgs:
     @pulumi.getter(name="spotDuration")
     def spot_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         """
         return pulumi.get(self, "spot_duration")
 
@@ -1575,6 +1595,7 @@ class _InstanceState:
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_network_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  expired_time: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1671,7 +1692,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         :param pulumi.Input[_builtins.str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
@@ -1684,6 +1705,9 @@ class _InstanceState:
                
                > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_network_encryption: Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
         :param pulumi.Input[_builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -1696,7 +1720,7 @@ class _InstanceState:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
-        :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -1710,7 +1734,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type.
+        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -1732,7 +1756,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[_builtins.str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system of the instance.
@@ -1784,7 +1808,7 @@ class _InstanceState:
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
                - `Stop`: The instance is stopped in economical mode.
@@ -1863,6 +1887,8 @@ class _InstanceState:
             pulumi.set(__self__, "enable_high_density_mode", enable_high_density_mode)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
+        if enable_network_encryption is not None:
+            pulumi.set(__self__, "enable_network_encryption", enable_network_encryption)
         if expired_time is not None:
             pulumi.set(__self__, "expired_time", expired_time)
         if force_delete is not None:
@@ -2136,7 +2162,7 @@ class _InstanceState:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDataDiskArgs']]]]:
         """
-        The list of data disks created with instance. See `data_disks` below.
+        The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -2245,6 +2271,20 @@ class _InstanceState:
         pulumi.set(self, "enable_jumbo_frame", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableNetworkEncryption")
+    def enable_network_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+        """
+        return pulumi.get(self, "enable_network_encryption")
+
+    @enable_network_encryption.setter
+    def enable_network_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_network_encryption", value)
+
+    @_builtins.property
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -2348,7 +2388,7 @@ class _InstanceState:
     @pulumi.getter(name="imageOptions")
     def image_options(self) -> pulumi.Input[Optional['InstanceImageOptionsArgs']]:
         """
-        The options of images. See `image_options` below.
+        The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         """
         return pulumi.get(self, "image_options")
 
@@ -2484,7 +2524,7 @@ class _InstanceState:
     @pulumi.getter(name="isOutdated")
     def is_outdated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to use outdated instance type.
+        Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         """
         return pulumi.get(self, "is_outdated")
 
@@ -2660,7 +2700,7 @@ class _InstanceState:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Input[Optional['InstanceNetworkInterfacesArgs']]:
         """
-        The list of network interfaces created with instance. See `network_interfaces` below.
+        The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2955,7 +2995,7 @@ class _InstanceState:
     @pulumi.getter(name="spotDuration")
     def spot_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         """
         return pulumi.get(self, "spot_duration")
 
@@ -3288,6 +3328,7 @@ class Instance(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_network_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3455,7 +3496,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
@@ -3467,6 +3508,9 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_network_encryption: Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[_builtins.str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -3478,7 +3522,7 @@ class Instance(pulumi.CustomResource):
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
-        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -3492,7 +3536,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type.
+        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -3513,7 +3557,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[_builtins.str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
@@ -3561,7 +3605,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
                - `Stop`: The instance is stopped in economical mode.
@@ -3717,6 +3761,7 @@ class Instance(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_network_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3812,6 +3857,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["enable_high_density_mode"] = enable_high_density_mode
             __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
+            __props__.__dict__["enable_network_encryption"] = enable_network_encryption
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
@@ -3924,6 +3970,7 @@ class Instance(pulumi.CustomResource):
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_network_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
             expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4024,7 +4071,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         :param pulumi.Input[_builtins.str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
@@ -4037,6 +4084,9 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_network_encryption: Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
         :param pulumi.Input[_builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -4049,7 +4099,7 @@ class Instance(pulumi.CustomResource):
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
-        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -4063,7 +4113,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[_builtins.int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type.
+        :param pulumi.Input[_builtins.bool] is_outdated: Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `key_name` can be modified. If you want to use `key_name`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
                > **NOTE:** When modifying `key_name`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -4085,7 +4135,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[_builtins.str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system of the instance.
@@ -4137,7 +4187,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
                - `Stop`: The instance is stopped in economical mode.
@@ -4200,6 +4250,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["enable_high_density_mode"] = enable_high_density_mode
         __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
+        __props__.__dict__["enable_network_encryption"] = enable_network_encryption
         __props__.__dict__["expired_time"] = expired_time
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["host_name"] = host_name
@@ -4356,7 +4407,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDataDisk']]]:
         """
-        The list of data disks created with instance. See `data_disks` below.
+        The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -4427,6 +4478,16 @@ class Instance(pulumi.CustomResource):
         Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_jumbo_frame")
+
+    @_builtins.property
+    @pulumi.getter(name="enableNetworkEncryption")
+    def enable_network_encryption(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+        """
+        return pulumi.get(self, "enable_network_encryption")
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
@@ -4500,7 +4561,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageOptions")
     def image_options(self) -> pulumi.Output['outputs.InstanceImageOptions']:
         """
-        The options of images. See `image_options` below.
+        The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         """
         return pulumi.get(self, "image_options")
 
@@ -4592,7 +4653,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="isOutdated")
     def is_outdated(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to use outdated instance type.
+        Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
         """
         return pulumi.get(self, "is_outdated")
 
@@ -4712,7 +4773,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output['outputs.InstanceNetworkInterfaces']:
         """
-        The list of network interfaces created with instance. See `network_interfaces` below.
+        The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -4919,7 +4980,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="spotDuration")
     def spot_duration(self) -> pulumi.Output[_builtins.int]:
         """
-        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
         """
         return pulumi.get(self, "spot_duration")
 

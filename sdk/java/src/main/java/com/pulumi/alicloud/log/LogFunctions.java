@@ -575,7 +575,7 @@ public final class LogFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:log/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 
@@ -619,7 +619,7 @@ public final class LogFunctions {
         return getService(GetServiceArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 
@@ -663,7 +663,7 @@ public final class LogFunctions {
         return getServicePlain(GetServicePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 
@@ -707,7 +707,7 @@ public final class LogFunctions {
         return getService(args, InvokeOptions.Empty);
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 
@@ -751,7 +751,7 @@ public final class LogFunctions {
         return getServicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 
@@ -795,7 +795,7 @@ public final class LogFunctions {
         return Deployment.getInstance().invoke("alicloud:log/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 
@@ -839,7 +839,7 @@ public final class LogFunctions {
         return Deployment.getInstance().invoke("alicloud:log/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+     * Log service is enabled automatically when a project is created. This data source is retained for compatibility and no longer calls service APIs.
      * 
      * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
      * 

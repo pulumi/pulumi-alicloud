@@ -17,14 +17,14 @@ public final class GetEndpointAclPoliciesPlainArgs extends com.pulumi.resources.
     public static final GetEndpointAclPoliciesPlainArgs Empty = new GetEndpointAclPoliciesPlainArgs();
 
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     @Import(name="endpointType", required=true)
     private String endpointType;
 
     /**
-     * @return The type of endpoint. Valid values: `internet`.
+     * @return The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     public String endpointType() {
@@ -62,6 +62,21 @@ public final class GetEndpointAclPoliciesPlainArgs extends com.pulumi.resources.
     }
 
     /**
+     * The module that needs to set the access policy. Valid values: `Registry`.
+     * 
+     */
+    @Import(name="moduleName")
+    private @Nullable String moduleName;
+
+    /**
+     * @return The module that needs to set the access policy. Valid values: `Registry`.
+     * 
+     */
+    public Optional<String> moduleName() {
+        return Optional.ofNullable(this.moduleName);
+    }
+
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
      */
@@ -82,6 +97,7 @@ public final class GetEndpointAclPoliciesPlainArgs extends com.pulumi.resources.
         this.endpointType = $.endpointType;
         this.ids = $.ids;
         this.instanceId = $.instanceId;
+        this.moduleName = $.moduleName;
         this.outputFile = $.outputFile;
     }
 
@@ -104,7 +120,7 @@ public final class GetEndpointAclPoliciesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param endpointType The type of endpoint. Valid values: `internet`.
+         * @param endpointType The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
          * 
          * @return builder
          * 
@@ -143,6 +159,17 @@ public final class GetEndpointAclPoliciesPlainArgs extends com.pulumi.resources.
          */
         public Builder instanceId(String instanceId) {
             $.instanceId = instanceId;
+            return this;
+        }
+
+        /**
+         * @param moduleName The module that needs to set the access policy. Valid values: `Registry`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder moduleName(@Nullable String moduleName) {
+            $.moduleName = moduleName;
             return this;
         }
 

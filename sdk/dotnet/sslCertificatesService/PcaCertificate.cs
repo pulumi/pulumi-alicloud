@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.SslCertificatesServicePca.Certificate("default", new()
+    ///     var @default = new AliCloud.SslCertificatesService.PcaCertificate("default", new()
     ///     {
     ///         Organization = "a",
     ///         Years = 1,
@@ -53,7 +53,6 @@ namespace Pulumi.AliCloud.sslCertificatesService
     /// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example &lt;identifier&gt;
     /// ```
     /// </summary>
-    [Obsolete(@"alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate")]
     [AliCloudResourceType("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")]
     public partial class PcaCertificate : global::Pulumi.CustomResource
     {
@@ -212,6 +211,10 @@ namespace Pulumi.AliCloud.sslCertificatesService
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "alicloud:sslcertificatesservicepca/certificate:Certificate" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

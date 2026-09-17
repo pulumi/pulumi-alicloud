@@ -84,7 +84,7 @@ import (
 //
 // ## Import
 //
-// CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpointType and entry, e.g.
+// CR Endpoint Acl Policy can be imported using the id, which consists of instance_id, endpointType and entry. The `endpointType` segment of the import ID accepts both `internet` and `Internet`, e.g. `cri-abc123:internet:10.0.0.0/8`.
 //
 // ```sh
 // $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
@@ -94,7 +94,7 @@ type EndpointAclPolicy struct {
 
 	// The description of the entry.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// The IP segment that allowed to access.
 	Entry pulumi.StringOutput `pulumi:"entry"`
@@ -145,7 +145,7 @@ func GetEndpointAclPolicy(ctx *pulumi.Context,
 type endpointAclPolicyState struct {
 	// The description of the entry.
 	Description *string `pulumi:"description"`
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
 	EndpointType *string `pulumi:"endpointType"`
 	// The IP segment that allowed to access.
 	Entry *string `pulumi:"entry"`
@@ -158,7 +158,7 @@ type endpointAclPolicyState struct {
 type EndpointAclPolicyState struct {
 	// The description of the entry.
 	Description pulumi.StringPtrInput
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
 	EndpointType pulumi.StringPtrInput
 	// The IP segment that allowed to access.
 	Entry pulumi.StringPtrInput
@@ -175,7 +175,7 @@ func (EndpointAclPolicyState) ElementType() reflect.Type {
 type endpointAclPolicyArgs struct {
 	// The description of the entry.
 	Description *string `pulumi:"description"`
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
 	EndpointType string `pulumi:"endpointType"`
 	// The IP segment that allowed to access.
 	Entry string `pulumi:"entry"`
@@ -189,7 +189,7 @@ type endpointAclPolicyArgs struct {
 type EndpointAclPolicyArgs struct {
 	// The description of the entry.
 	Description pulumi.StringPtrInput
-	// The type of endpoint. Valid values: `internet`.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
 	EndpointType pulumi.StringInput
 	// The IP segment that allowed to access.
 	Entry pulumi.StringInput
@@ -291,7 +291,7 @@ func (o EndpointAclPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The type of endpoint. Valid values: `internet`.
+// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
 func (o EndpointAclPolicyOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }

@@ -31,14 +31,14 @@ public final class EndpointAclPolicyState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The type of endpoint. Valid values: `internet`.
+     * @return The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -140,7 +140,7 @@ public final class EndpointAclPolicyState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointType The type of endpoint. Valid values: `internet`.
+         * @param endpointType The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class EndpointAclPolicyState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointType The type of endpoint. Valid values: `internet`.
+         * @param endpointType The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the state and the resource ID.
          * 
          * @return builder
          * 

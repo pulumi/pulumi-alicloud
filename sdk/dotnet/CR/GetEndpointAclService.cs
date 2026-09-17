@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.CR
         public bool Enable { get; set; }
 
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the attributes.
         /// </summary>
         [Input("endpointType", required: true)]
         public string EndpointType { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.CR
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// The type of endpoint. Valid values: `Internet`.
+        /// The type of endpoint. Valid values: `Internet`, `Internet`. The value is normalized to lowercase `Internet` in the attributes.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -196,6 +196,9 @@ namespace Pulumi.AliCloud.CR
         public readonly string Id;
         public readonly string InstanceId;
         public readonly string? ModuleName;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

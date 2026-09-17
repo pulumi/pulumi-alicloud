@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const root = new alicloud.sslcertificatesservicepca.Certificate("root", {
+ * const root = new alicloud.sslcertificatesservice.PcaCertificate("root", {
  *     organization: "a",
  *     years: 1,
  *     locality: "a",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     state: "a",
  *     commonName: "cbc.certqa.cn",
  * });
- * const sub = new alicloud.sslcertificatesservicepca.Certificate("sub", {
+ * const sub = new alicloud.sslcertificatesservice.PcaCertificate("sub", {
  *     parentIdentifier: root.id,
  *     organization: "a",
  *     years: 1,
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     certificateType: "SUB_ROOT",
  *     enableCrl: true,
  * });
- * const _default = new alicloud.sslcertificatesservicepca.Cert("default", {
+ * const _default = new alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert("default", {
  *     immediately: 0,
  *     organization: "terraform",
  *     years: 1,
@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example <id>
  * ```
+ *
+ * @deprecated alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert
  */
 export class Cert extends pulumi.CustomResource {
     /**
@@ -85,6 +87,7 @@ export class Cert extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CertState, opts?: pulumi.CustomResourceOptions): Cert {
+        pulumi.log.warn("Cert is deprecated: alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert")
         return new Cert(name, <any>state, { ...opts, id: id });
     }
 
@@ -212,7 +215,7 @@ export class Cert extends pulumi.CustomResource {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -222,7 +225,7 @@ export class Cert extends pulumi.CustomResource {
     /**
      * Indicates whether the certificate has been uploaded to the SSL certificate management platform.
      */
-    declare public readonly uploadFlag: pulumi.Output<number | undefined>;
+    declare public readonly uploadFlag: pulumi.Output<number>;
     /**
      * The duration for which the certificate is purchased, in years.
      *
@@ -237,8 +240,11 @@ export class Cert extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert */
     constructor(name: string, args: CertArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert */
     constructor(name: string, argsOrState?: CertArgs | CertState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Cert is deprecated: alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -414,7 +420,7 @@ export interface CertState {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -547,7 +553,7 @@ export interface CertArgs {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
-     * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
+     * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      */
     status?: pulumi.Input<string | undefined>;
     /**

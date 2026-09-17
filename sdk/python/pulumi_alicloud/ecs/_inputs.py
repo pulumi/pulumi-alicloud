@@ -19,6 +19,8 @@ __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfigArgsDict',
     'AutoSnapshotPolicyCopyEncryptionConfigurationArgs',
     'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict',
+    'AutoSnapshotPolicyTargetTagArgs',
+    'AutoSnapshotPolicyTargetTagArgsDict',
     'DedicatedHostNetworkAttributeArgs',
     'DedicatedHostNetworkAttributeArgsDict',
     'EcsInstanceSetDataDiskArgs',
@@ -65,6 +67,8 @@ __all__ = [
     'ReservedInstanceOperationLockArgsDict',
     'SnapshotPolicyCopyEncryptionConfigurationArgs',
     'SnapshotPolicyCopyEncryptionConfigurationArgsDict',
+    'SnapshotPolicyTargetTagArgs',
+    'SnapshotPolicyTargetTagArgsDict',
     'GetDedicatedHostsOperationLockArgs',
     'GetDedicatedHostsOperationLockArgsDict',
     'GetDisksOperationLockArgs',
@@ -226,6 +230,55 @@ class AutoSnapshotPolicyCopyEncryptionConfigurationArgs:
     @kms_key_id.setter
     def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
+
+
+class AutoSnapshotPolicyTargetTagArgsDict(TypedDict):
+    tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+    """
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+    """
+
+@pulumi.input_type
+class AutoSnapshotPolicyTargetTagArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] tag_key: The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+        :param pulumi.Input[_builtins.str] tag_value: The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of target tag N. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. Valid values of N: 1 to 10.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of target tag N. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`.
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_value", value)
 
 
 class DedicatedHostNetworkAttributeArgsDict(TypedDict):
@@ -2866,6 +2919,39 @@ class SnapshotPolicyCopyEncryptionConfigurationArgs:
     @kms_key_id.setter
     def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
+
+
+class SnapshotPolicyTargetTagArgsDict(TypedDict):
+    tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class SnapshotPolicyTargetTagArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag_value", value)
 
 
 class GetDedicatedHostsOperationLockArgsDict(TypedDict):

@@ -18,6 +18,13 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
     public static final SnapshotState Empty = new SnapshotState();
 
+    @Import(name="available")
+    private @Nullable Output<Boolean> available;
+
+    public Optional<Output<Boolean>> available() {
+        return Optional.ofNullable(this.available);
+    }
+
     @Import(name="category")
     private @Nullable Output<String> category;
 
@@ -190,9 +197,17 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="waitUntil")
+    private @Nullable Output<String> waitUntil;
+
+    public Optional<Output<String>> waitUntil() {
+        return Optional.ofNullable(this.waitUntil);
+    }
+
     private SnapshotState() {}
 
     private SnapshotState(SnapshotState $) {
+        this.available = $.available;
         this.category = $.category;
         this.createTime = $.createTime;
         this.description = $.description;
@@ -207,6 +222,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.snapshotName = $.snapshotName;
         this.status = $.status;
         this.tags = $.tags;
+        this.waitUntil = $.waitUntil;
     }
 
     public static Builder builder() {
@@ -225,6 +241,15 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SnapshotState defaults) {
             $ = new SnapshotState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder available(@Nullable Output<Boolean> available) {
+            $.available = available;
+            return this;
+        }
+
+        public Builder available(Boolean available) {
+            return available(Output.of(available));
         }
 
         public Builder category(@Nullable Output<String> category) {
@@ -453,6 +478,15 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        public Builder waitUntil(@Nullable Output<String> waitUntil) {
+            $.waitUntil = waitUntil;
+            return this;
+        }
+
+        public Builder waitUntil(String waitUntil) {
+            return waitUntil(Output.of(waitUntil));
         }
 
         public SnapshotState build() {

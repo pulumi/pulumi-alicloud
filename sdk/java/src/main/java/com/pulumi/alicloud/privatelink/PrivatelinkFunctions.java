@@ -42,6 +42,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -64,7 +66,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 
@@ -86,6 +88,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -108,7 +112,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 
@@ -130,6 +134,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -152,7 +158,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 
@@ -174,6 +180,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -196,7 +204,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 
@@ -218,6 +226,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -240,7 +250,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 
@@ -262,6 +272,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -284,7 +296,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 
@@ -306,6 +318,8 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -328,7 +342,7 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *         final var default = PrivatelinkFunctions.getService(GetServiceArgs.builder()
      *             .enable("On")
      *             .build());
      * 

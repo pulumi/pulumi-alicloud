@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -393,7 +393,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ResetPermissionFlag { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ResetPermissionFlag { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

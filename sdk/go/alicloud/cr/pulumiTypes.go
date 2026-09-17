@@ -3070,7 +3070,7 @@ func (o GetChartRepositoriesRepositoryArrayOutput) Index(i pulumi.IntInput) GetC
 type GetEndpointAclPoliciesPolicy struct {
 	// The description of the entry.
 	Description string `pulumi:"description"`
-	// The type of endpoint.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 	EndpointType string `pulumi:"endpointType"`
 	// The IP segment that allowed to access.
 	Entry string `pulumi:"entry"`
@@ -3094,7 +3094,7 @@ type GetEndpointAclPoliciesPolicyInput interface {
 type GetEndpointAclPoliciesPolicyArgs struct {
 	// The description of the entry.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The type of endpoint.
+	// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// The IP segment that allowed to access.
 	Entry pulumi.StringInput `pulumi:"entry"`
@@ -3160,7 +3160,7 @@ func (o GetEndpointAclPoliciesPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The type of endpoint.
+// The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
 func (o GetEndpointAclPoliciesPolicyOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointAclPoliciesPolicy) string { return v.EndpointType }).(pulumi.StringOutput)
 }

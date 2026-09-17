@@ -67,6 +67,7 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
+    declare public /*out*/ readonly available: pulumi.Output<boolean>;
     declare public readonly category: pulumi.Output<string>;
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -105,6 +106,7 @@ export class Snapshot extends pulumi.CustomResource {
      * A mapping of tags to assign to the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly waitUntil: pulumi.Output<string | undefined>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -119,6 +121,7 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
+            resourceInputs["available"] = state?.available;
             resourceInputs["category"] = state?.category;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
@@ -133,6 +136,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["snapshotName"] = state?.snapshotName;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["waitUntil"] = state?.waitUntil;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
             if (args?.diskId === undefined && !opts.urn) {
@@ -149,6 +153,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["snapshotName"] = args?.snapshotName;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["waitUntil"] = args?.waitUntil;
+            resourceInputs["available"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -162,6 +168,7 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
+    available?: pulumi.Input<boolean | undefined>;
     category?: pulumi.Input<string | undefined>;
     createTime?: pulumi.Input<string | undefined>;
     /**
@@ -200,6 +207,7 @@ export interface SnapshotState {
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    waitUntil?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -241,4 +249,5 @@ export interface SnapshotArgs {
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    waitUntil?: pulumi.Input<string | undefined>;
 }

@@ -27,8 +27,11 @@ class VvpInstanceArgs:
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  vvp_instance_name: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_spec: pulumi.Input[Optional['VvpInstanceResourceSpecArgs']] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
@@ -41,8 +44,11 @@ class VvpInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[_builtins.str] vvp_instance_name: The name of the workspace.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input['VvpInstanceResourceSpecArgs'] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
@@ -53,10 +59,16 @@ class VvpInstanceArgs:
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         pulumi.set(__self__, "vvp_instance_name", vvp_instance_name)
         pulumi.set(__self__, "zone_id", zone_id)
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if renew_status is not None:
+            pulumi.set(__self__, "renew_status", renew_status)
+        if renewal_duration_unit is not None:
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_spec is not None:
@@ -137,6 +149,18 @@ class VvpInstanceArgs:
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_renew_duration", value)
+
+    @_builtins.property
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -159,6 +183,30 @@ class VvpInstanceArgs:
     @pricing_cycle.setter
     def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renewStatus")
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        """
+        return pulumi.get(self, "renew_status")
+
+    @renew_status.setter
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "renew_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @renewal_duration_unit.setter
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -200,10 +248,13 @@ class VvpInstanceArgs:
 @pulumi.input_type
 class _VvpInstanceState:
     def __init__(__self__, *,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_spec: pulumi.Input[Optional['VvpInstanceResourceSpecArgs']] = None,
@@ -217,10 +268,13 @@ class _VvpInstanceState:
         """
         Input properties used for looking up and filtering VvpInstance resources.
 
+        :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input[_builtins.str] resource_id: (Available since v1.264.0) The ID of the K8s cluster.
         :param pulumi.Input['VvpInstanceResourceSpecArgs'] resource_spec: Resource specifications. See `resource_spec` below.
@@ -232,6 +286,8 @@ class _VvpInstanceState:
         :param pulumi.Input[_builtins.str] vvp_instance_name: The name of the workspace.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
         """
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if duration is not None:
@@ -240,6 +296,10 @@ class _VvpInstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if renew_status is not None:
+            pulumi.set(__self__, "renew_status", renew_status)
+        if renewal_duration_unit is not None:
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_id is not None:
@@ -260,6 +320,18 @@ class _VvpInstanceState:
             pulumi.set(__self__, "vvp_instance_name", vvp_instance_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -308,6 +380,30 @@ class _VvpInstanceState:
     @pricing_cycle.setter
     def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renewStatus")
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        """
+        return pulumi.get(self, "renew_status")
+
+    @renew_status.setter
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "renew_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @renewal_duration_unit.setter
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -436,9 +532,12 @@ class VvpInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
                  storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
@@ -512,9 +611,12 @@ class VvpInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
@@ -607,9 +709,12 @@ class VvpInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
                  storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
@@ -627,11 +732,14 @@ class VvpInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VvpInstanceArgs.__new__(VvpInstanceArgs)
 
+            __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["duration"] = duration
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["renew_status"] = renew_status
+            __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["resource_spec"] = resource_spec
             if storage is None and not opts.urn:
@@ -663,10 +771,13 @@ class VvpInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
@@ -684,10 +795,13 @@ class VvpInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input[_builtins.str] resource_id: (Available since v1.264.0) The ID of the K8s cluster.
         :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
@@ -703,10 +817,13 @@ class VvpInstance(pulumi.CustomResource):
 
         __props__ = _VvpInstanceState.__new__(_VvpInstanceState)
 
+        __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["duration"] = duration
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["renew_status"] = renew_status
+        __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_spec"] = resource_spec
@@ -718,6 +835,14 @@ class VvpInstance(pulumi.CustomResource):
         __props__.__dict__["vvp_instance_name"] = vvp_instance_name
         __props__.__dict__["zone_id"] = zone_id
         return VvpInstance(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
+        """
+        return pulumi.get(self, "auto_renew_duration")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -750,6 +875,22 @@ class VvpInstance(pulumi.CustomResource):
         The subscription period. If the payment type is PRE, this parameter is required.
         """
         return pulumi.get(self, "pricing_cycle")
+
+    @_builtins.property
+    @pulumi.getter(name="renewStatus")
+    def renew_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
+        """
+        return pulumi.get(self, "renew_status")
+
+    @_builtins.property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
+        """
+        return pulumi.get(self, "renewal_duration_unit")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")

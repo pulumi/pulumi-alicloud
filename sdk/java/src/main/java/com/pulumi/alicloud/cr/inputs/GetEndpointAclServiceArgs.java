@@ -33,14 +33,14 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The type of endpoint. Valid values: `internet`.
+     * The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return The type of endpoint. Valid values: `internet`.
+     * @return The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
      * 
      */
     public Output<String> endpointType() {
@@ -134,7 +134,7 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param endpointType The type of endpoint. Valid values: `internet`.
+         * @param endpointType The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param endpointType The type of endpoint. Valid values: `internet`.
+         * @param endpointType The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
          * 
          * @return builder
          * 

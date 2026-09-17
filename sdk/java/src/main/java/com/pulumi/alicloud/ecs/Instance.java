@@ -273,14 +273,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.creditSpecification;
     }
     /**
-     * The list of data disks created with instance. See `dataDisks` below.
+     * The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `dataDisks` below.
+     * @return The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
      * 
      */
     public Output<Optional<List<InstanceDataDisk>>> dataDisks() {
@@ -407,6 +407,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.enableJumboFrame;
     }
     /**
+     * Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     * 
+     */
+    @Export(name="enableNetworkEncryption", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableNetworkEncryption;
+
+    /**
+     * @return Specifies whether to enable network encryption for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** VPC traffic encryption is currently in private preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+     * 
+     */
+    public Output<Boolean> enableNetworkEncryption() {
+        return this.enableNetworkEncryption;
+    }
+    /**
      * (Available since v1.232.0) The expiration time of the instance.
      * 
      */
@@ -527,14 +545,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.imageId;
     }
     /**
-     * The options of images. See `imageOptions` below.
+     * The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      * 
      */
     @Export(name="imageOptions", refs={InstanceImageOptions.class}, tree="[0]")
     private Output<InstanceImageOptions> imageOptions;
 
     /**
-     * @return The options of images. See `imageOptions` below.
+     * @return The options of images. **Note: The parameter is immutable after resource creation.** See `imageOptions` below.
      * 
      */
     public Output<InstanceImageOptions> imageOptions() {
@@ -691,14 +709,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipv6Addresses;
     }
     /**
-     * Whether to use outdated instance type.
+     * Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      * 
      */
     @Export(name="isOutdated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOutdated;
 
     /**
-     * @return Whether to use outdated instance type.
+     * @return Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
      * 
      */
     public Output<Optional<Boolean>> isOutdated() {
@@ -903,14 +921,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.networkInterfaceTrafficMode;
     }
     /**
-     * The list of network interfaces created with instance. See `networkInterfaces` below.
+     * The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      * 
      */
     @Export(name="networkInterfaces", refs={InstanceNetworkInterfaces.class}, tree="[0]")
     private Output<InstanceNetworkInterfaces> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
+     * @return The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `networkInterfaces` below.
      * 
      */
     public Output<InstanceNetworkInterfaces> networkInterfaces() {
@@ -1275,14 +1293,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.sourceDestCheck;
     }
     /**
-     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      * 
      */
     @Export(name="spotDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> spotDuration;
 
     /**
-     * @return The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * @return The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`. **Note: The parameter is immutable after resource creation.** This resource sends it only when creating the instance.
      * 
      */
     public Output<Integer> spotDuration() {

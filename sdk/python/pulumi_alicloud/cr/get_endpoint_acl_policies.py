@@ -27,7 +27,7 @@ class GetEndpointAclPoliciesResult:
     """
     A collection of values returned by getEndpointAclPolicies.
     """
-    def __init__(__self__, endpoint_type=None, id=None, ids=None, instance_id=None, output_file=None, policies=None):
+    def __init__(__self__, endpoint_type=None, id=None, ids=None, instance_id=None, module_name=None, output_file=None, policies=None):
         if endpoint_type and not isinstance(endpoint_type, str):
             raise TypeError("Expected argument 'endpoint_type' to be a str")
         pulumi.set(__self__, "endpoint_type", endpoint_type)
@@ -40,6 +40,9 @@ class GetEndpointAclPoliciesResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if module_name and not isinstance(module_name, str):
+            raise TypeError("Expected argument 'module_name' to be a str")
+        pulumi.set(__self__, "module_name", module_name)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -50,6 +53,9 @@ class GetEndpointAclPoliciesResult:
     @_builtins.property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
+        """
+        The type of endpoint.
+        """
         return pulumi.get(self, "endpoint_type")
 
     @_builtins.property
@@ -68,7 +74,15 @@ class GetEndpointAclPoliciesResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The ID of the CR Instance.
+        """
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="moduleName")
+    def module_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "module_name")
 
     @_builtins.property
     @pulumi.getter(name="outputFile")
@@ -78,6 +92,9 @@ class GetEndpointAclPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetEndpointAclPoliciesPolicyResult']:
+        """
+        A list of Cr Endpoint Acl Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
 
@@ -91,6 +108,7 @@ class AwaitableGetEndpointAclPoliciesResult(GetEndpointAclPoliciesResult):
             id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
+            module_name=self.module_name,
             output_file=self.output_file,
             policies=self.policies)
 
@@ -98,12 +116,13 @@ class AwaitableGetEndpointAclPoliciesResult(GetEndpointAclPoliciesResult):
 def get_endpoint_acl_policies(endpoint_type: Optional[_builtins.str] = None,
                               ids: Optional[Sequence[_builtins.str]] = None,
                               instance_id: Optional[_builtins.str] = None,
+                              module_name: Optional[_builtins.str] = None,
                               output_file: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointAclPoliciesResult:
     """
     This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -123,15 +142,17 @@ def get_endpoint_acl_policies(endpoint_type: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`.
+    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
     :param Sequence[_builtins.str] ids: A list of Endpoint Acl Policy IDs.
     :param _builtins.str instance_id: The ID of the CR Instance.
+    :param _builtins.str module_name: The module that needs to set the access policy. Valid values: `Registry`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['endpointType'] = endpoint_type
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
+    __args__['moduleName'] = module_name
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies', __args__, opts=opts, typ=GetEndpointAclPoliciesResult).value
@@ -141,17 +162,19 @@ def get_endpoint_acl_policies(endpoint_type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
+        module_name=pulumi.get(__ret__, 'module_name'),
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'))
 def get_endpoint_acl_policies_output(endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                      instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     module_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointAclPoliciesResult]:
     """
     This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -171,15 +194,17 @@ def get_endpoint_acl_policies_output(endpoint_type: pulumi.Input[Optional[_built
     ```
 
 
-    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`.
+    :param _builtins.str endpoint_type: The type of endpoint. Valid values: `internet`, `Internet`. The value is normalized to lowercase `internet` in the attributes.
     :param Sequence[_builtins.str] ids: A list of Endpoint Acl Policy IDs.
     :param _builtins.str instance_id: The ID of the CR Instance.
+    :param _builtins.str module_name: The module that needs to set the access policy. Valid values: `Registry`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['endpointType'] = endpoint_type
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
+    __args__['moduleName'] = module_name
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies', __args__, opts=opts, typ=GetEndpointAclPoliciesResult)
@@ -188,5 +213,6 @@ def get_endpoint_acl_policies_output(endpoint_type: pulumi.Input[Optional[_built
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         instance_id=pulumi.get(__response__, 'instance_id'),
+        module_name=pulumi.get(__response__, 'module_name'),
         output_file=pulumi.get(__response__, 'output_file'),
         policies=pulumi.get(__response__, 'policies')))

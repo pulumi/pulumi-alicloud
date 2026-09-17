@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.AutoSnapshotPolicyArgs;
 import com.pulumi.alicloud.ecs.inputs.AutoSnapshotPolicyState;
 import com.pulumi.alicloud.ecs.outputs.AutoSnapshotPolicyCopyEncryptionConfiguration;
+import com.pulumi.alicloud.ecs.outputs.AutoSnapshotPolicyTargetTag;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -83,6 +84,28 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy")
 public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     * 
+     * &gt; **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     * 
+     */
+    @Export(name="associationType", refs={String.class}, tree="[0]")
+    private Output<String> associationType;
+
+    /**
+     * @return The association type between the automatic snapshot policy and target resources. Valid values:
+     * - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.
+     * - `AssociatedWithInstanceTag`: The automatic snapshot policy is associated with ECS instances that have the specified `targetTags`. Changing this parameter creates a new resource.
+     * 
+     * &gt; **NOTE:** Before you can set `associationType` to `AssociatedWithInstanceTag`, you must contact the ECS product team to add your Alibaba Cloud account to the `AssociatedWithInstanceTag` whitelist. If your account is not on the whitelist, `CreateAutoSnapshotPolicy` returns the `InvalidOperation.UserNotInWhiteList` error. You can submit a ticket to apply for the whitelist.
+     * 
+     */
+    public Output<String> associationType() {
+        return this.associationType;
+    }
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
@@ -272,6 +295,20 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> targetCopyRegions() {
         return Codegen.optional(this.targetCopyRegions);
+    }
+    /**
+     * The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     * 
+     */
+    @Export(name="targetTags", refs={List.class,AutoSnapshotPolicyTargetTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AutoSnapshotPolicyTargetTag>> targetTags;
+
+    /**
+     * @return The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `associationType` is set to `AssociatedWithInstanceTag`. See `targetTags` below.
+     * 
+     */
+    public Output<Optional<List<AutoSnapshotPolicyTargetTag>>> targetTags() {
+        return Codegen.optional(this.targetTags);
     }
     /**
      * The points in time of the day at which to create automatic snapshots.

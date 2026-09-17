@@ -367,11 +367,9 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
-     * Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
-     *
-     * @deprecated Field 'node_type' has been deprecated from version 1.120.1
+     * The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      */
     declare public readonly nodeType: pulumi.Output<string>;
     /**
@@ -843,11 +841,9 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string | undefined>;
     /**
-     * Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
-     *
-     * @deprecated Field 'node_type' has been deprecated from version 1.120.1
+     * The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**
@@ -1143,11 +1139,9 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string | undefined>;
     /**
-     * Node type, valid values:
-     * - `MASTER_SLAVE`: High availability (dual copies)
-     * - `STAND_ALONE`: Single copy
-     *
-     * @deprecated Field 'node_type' has been deprecated from version 1.120.1
+     * The node type. Valid values:
+     * - `MASTER_SLAVE`: High availability (master-replica)
+     * - `STAND_ALONE`: Standalone
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**

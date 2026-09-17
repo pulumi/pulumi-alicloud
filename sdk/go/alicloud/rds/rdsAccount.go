@@ -174,7 +174,7 @@ type RdsAccount struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
-	// The status of the resource
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -281,7 +281,7 @@ type rdsAccountState struct {
 	Password *string `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
-	// The status of the resource
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status *string `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -348,7 +348,7 @@ type RdsAccountState struct {
 	Password pulumi.StringPtrInput
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
-	// The status of the resource
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -419,7 +419,7 @@ type rdsAccountArgs struct {
 	Password *string `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
-	// The status of the resource
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status *string `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -487,7 +487,7 @@ type RdsAccountArgs struct {
 	Password pulumi.StringPtrInput
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
-	// The status of the resource
+	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -679,7 +679,7 @@ func (o RdsAccountOutput) ResetPermissionFlag() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.BoolPtrOutput { return v.ResetPermissionFlag }).(pulumi.BoolPtrOutput)
 }
 
-// The status of the resource
+// The status of the resource. Valid values: `Available`, `Unavailable`.
 func (o RdsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
