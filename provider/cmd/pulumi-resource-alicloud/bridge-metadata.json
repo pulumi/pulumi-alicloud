@@ -925,6 +925,14 @@
                     }
                 }
             },
+            "alicloud_apig_secret": {
+                "current": "alicloud:apig/secret:Secret",
+                "fields": {
+                    "kms_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_apig_service": {
                 "current": "alicloud:apig/service:Service",
                 "fields": {
@@ -2844,6 +2852,9 @@
             "alicloud_cr_endpoint_acl_policy": {
                 "current": "alicloud:cr/endpointAclPolicy:EndpointAclPolicy"
             },
+            "alicloud_cr_instance_customized_domain": {
+                "current": "alicloud:cr/instanceCustomizedDomain:InstanceCustomizedDomain"
+            },
             "alicloud_cr_internet_endpoint": {
                 "current": "alicloud:cr/internetEndpoint:InternetEndpoint",
                 "fields": {
@@ -4719,6 +4730,9 @@
                         "maxItemsOne": false
                     },
                     "target_copy_regions": {
+                        "maxItemsOne": false
+                    },
+                    "target_tags": {
                         "maxItemsOne": false
                     },
                     "time_points": {
@@ -6652,6 +6666,9 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "alicloud_event_bridge_event_streaming": {
+                "current": "alicloud:eventbridge/eventStreaming:EventStreaming"
             },
             "alicloud_event_bridge_rule": {
                 "current": "alicloud:eventbridge/rule:Rule",
@@ -9577,6 +9594,9 @@
             "alicloud_polardb_cluster": {
                 "current": "alicloud:polardb/cluster:Cluster",
                 "fields": {
+                    "cn_node_ids": {
+                        "maxItemsOne": false
+                    },
                     "db_cluster_ip_array": {
                         "maxItemsOne": false,
                         "elem": {
@@ -9588,6 +9608,9 @@
                         }
                     },
                     "db_revision_version_list": {
+                        "maxItemsOne": false
+                    },
+                    "dn_node_ids": {
                         "maxItemsOne": false
                     },
                     "global_security_group_list": {
@@ -11533,6 +11556,9 @@
                     "target_copy_regions": {
                         "maxItemsOne": false
                     },
+                    "target_tags": {
+                        "maxItemsOne": false
+                    },
                     "time_points": {
                         "maxItemsOne": false
                     }
@@ -11594,13 +11620,28 @@
                 }
             },
             "alicloud_ssl_certificates_service_pca_cert": {
-                "current": "alicloud:sslcertificatesservicepca/cert:Cert"
-            },
-            "alicloud_ssl_certificates_service_pca_certificate": {
-                "current": "alicloud:sslcertificatesservicepca/certificate:Certificate",
+                "current": "alicloud:sslcertificatesservicepcacert/sslCertificatesServicePcaCert:SslCertificatesServicePcaCert",
                 "past": [
                     {
-                        "name": "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate",
+                        "name": "alicloud:sslcertificatesservicepca/cert:Cert",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
+            },
+            "alicloud_ssl_certificates_service_pca_cert_sync": {
+                "current": "alicloud:sslcertificatesservicepcacert/sync:Sync",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_ssl_certificates_service_pca_certificate": {
+                "current": "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate",
+                "past": [
+                    {
+                        "name": "alicloud:sslcertificatesservicepca/certificate:Certificate",
                         "inCodegen": true,
                         "majorVersion": 0
                     }
@@ -18763,6 +18804,9 @@
                                 "target_copy_regions": {
                                     "maxItemsOne": false
                                 },
+                                "target_tags": {
+                                    "maxItemsOne": false
+                                },
                                 "time_points": {
                                     "maxItemsOne": false
                                 }
@@ -19727,6 +19771,23 @@
                     },
                     "names": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_esa_lists": {
+                "current": "alicloud:esa/getLists:getLists",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "lists": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "query_args": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -27157,9 +27218,14 @@
                     "network.$.vswitche_list": true
                 }
             },
+            "alicloud_ssl_certificates_service_pca_cert": {
+                "aliases": [
+                    "alicloud:sslcertificatesservicepca/cert:Cert"
+                ]
+            },
             "alicloud_ssl_certificates_service_pca_certificate": {
                 "aliases": [
-                    "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate"
+                    "alicloud:sslcertificatesservicepca/certificate:Certificate"
                 ]
             },
             "alicloud_star_rocks_instance": {
