@@ -619,7 +619,7 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]]] = None,
+                 multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict', 'outputs.ClickHouseEnterpriseDbClusterMultiZone']]]]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
                  node_scale_min: pulumi.Input[Optional[_builtins.int]] = None,
@@ -725,7 +725,7 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Cluster description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]] multi_zones: The multi-zone configuration. See `multi_zones` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict', 'outputs.ClickHouseEnterpriseDbClusterMultiZone']]]] multi_zones: The multi-zone configuration. See `multi_zones` below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
         :param pulumi.Input[_builtins.int] node_scale_max: Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
         :param pulumi.Input[_builtins.int] node_scale_min: The minimum value for serverless node auto-scaling. Valid values: 4–32.
@@ -850,7 +850,7 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]]] = None,
+                 multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict', 'outputs.ClickHouseEnterpriseDbClusterMultiZone']]]]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
                  node_scale_min: pulumi.Input[Optional[_builtins.int]] = None,
@@ -909,10 +909,10 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
             computing_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict', 'outputs.ClickHouseEnterpriseDbClusterEndpoint']]]]] = None,
             engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
             instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
-            multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]]] = None,
+            multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict', 'outputs.ClickHouseEnterpriseDbClusterMultiZone']]]]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
             node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
             node_scale_min: pulumi.Input[Optional[_builtins.int]] = None,
@@ -940,10 +940,10 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] computing_group_ids: List of computing group IDs.
         :param pulumi.Input[_builtins.str] create_time: The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
         :param pulumi.Input[_builtins.str] description: Cluster description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict']]]] endpoints: List of endpoint details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict', 'outputs.ClickHouseEnterpriseDbClusterEndpoint']]]] endpoints: List of endpoint details.
         :param pulumi.Input[_builtins.str] engine_minor_version: The minor version number of the cluster engine.
         :param pulumi.Input[_builtins.str] instance_network_type: Network type of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]] multi_zones: The multi-zone configuration. See `multi_zones` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict', 'outputs.ClickHouseEnterpriseDbClusterMultiZone']]]] multi_zones: The multi-zone configuration. See `multi_zones` below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
         :param pulumi.Input[_builtins.int] node_scale_max: Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
         :param pulumi.Input[_builtins.int] node_scale_min: The minimum value for serverless node auto-scaling. Valid values: 4–32.

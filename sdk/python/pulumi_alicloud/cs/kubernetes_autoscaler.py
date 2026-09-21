@@ -233,7 +233,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  defer_scale_in_duration: pulumi.Input[Optional[_builtins.str]] = None,
-                 nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]]] = None,
+                 nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict', 'outputs.KubernetesAutoscalerNodepool']]]]] = None,
                  use_ecs_ram_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  utilization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -333,7 +333,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[_builtins.str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]] nodepools: The list of the node pools. See `nodepools` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict', 'outputs.KubernetesAutoscalerNodepool']]]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[_builtins.bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[_builtins.str] utilization: The utilization option of cluster-autoscaler.
         """
@@ -452,7 +452,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  defer_scale_in_duration: pulumi.Input[Optional[_builtins.str]] = None,
-                 nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]]] = None,
+                 nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict', 'outputs.KubernetesAutoscalerNodepool']]]]] = None,
                  use_ecs_ram_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  utilization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -491,7 +491,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
             defer_scale_in_duration: pulumi.Input[Optional[_builtins.str]] = None,
-            nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]]] = None,
+            nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict', 'outputs.KubernetesAutoscalerNodepool']]]]] = None,
             use_ecs_ram_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
             utilization: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesAutoscaler':
         """
@@ -504,7 +504,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[_builtins.str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]] nodepools: The list of the node pools. See `nodepools` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict', 'outputs.KubernetesAutoscalerNodepool']]]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[_builtins.bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[_builtins.str] utilization: The utilization option of cluster-autoscaler.
         """

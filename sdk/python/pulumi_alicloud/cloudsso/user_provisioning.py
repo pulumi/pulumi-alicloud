@@ -596,7 +596,7 @@ class UserProvisioning(pulumi.CustomResource):
             target_id: pulumi.Input[Optional[_builtins.str]] = None,
             target_type: pulumi.Input[Optional[_builtins.str]] = None,
             user_provisioning_id: pulumi.Input[Optional[_builtins.str]] = None,
-            user_provisioning_statistics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict']]]]] = None) -> 'UserProvisioning':
+            user_provisioning_statistics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict', 'outputs.UserProvisioningUserProvisioningStatistic']]]]] = None) -> 'UserProvisioning':
         """
         Get an existing UserProvisioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -615,7 +615,7 @@ class UserProvisioning(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] target_id: The ID of the destination associated with the synchronization.
         :param pulumi.Input[_builtins.str] target_type: The target type associated with the synchronization
         :param pulumi.Input[_builtins.str] user_provisioning_id: The first ID of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict']]]] user_provisioning_statistics: User Provisioning statistics
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict', 'outputs.UserProvisioningUserProvisioningStatistic']]]] user_provisioning_statistics: User Provisioning statistics
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

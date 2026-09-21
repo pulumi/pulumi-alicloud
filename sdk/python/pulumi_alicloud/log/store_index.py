@@ -304,8 +304,8 @@ class StoreIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
-                 full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
+                 field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict', 'outputs.StoreIndexFieldSearch']]]]] = None,
+                 full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict', 'outputs.StoreIndexFullText']]] = None,
                  log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -376,10 +376,10 @@ class StoreIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. See `field_search` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict', 'outputs.StoreIndexFieldSearch']]]] field_searches: List configurations of field search index. See `field_search` below.
                
                > **Note:** At least one of the "full_text" and "field_search" should be specified.
-        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. See `full_text` below.
+        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict', 'outputs.StoreIndexFullText']] full_text: The configuration of full text index. See `full_text` below.
         :param pulumi.Input[_builtins.bool] log_reduce: Whether to enable log reduce. Default to false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The black list of log reduce.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The white list of log reduce.
@@ -469,8 +469,8 @@ class StoreIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
-                 full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
+                 field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict', 'outputs.StoreIndexFieldSearch']]]]] = None,
+                 full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict', 'outputs.StoreIndexFullText']]] = None,
                  log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -508,8 +508,8 @@ class StoreIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
-            full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
+            field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict', 'outputs.StoreIndexFieldSearch']]]]] = None,
+            full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict', 'outputs.StoreIndexFullText']]] = None,
             log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
             log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -523,10 +523,10 @@ class StoreIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. See `field_search` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict', 'outputs.StoreIndexFieldSearch']]]] field_searches: List configurations of field search index. See `field_search` below.
                
                > **Note:** At least one of the "full_text" and "field_search" should be specified.
-        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. See `full_text` below.
+        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict', 'outputs.StoreIndexFullText']] full_text: The configuration of full text index. See `full_text` below.
         :param pulumi.Input[_builtins.bool] log_reduce: Whether to enable log reduce. Default to false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The black list of log reduce.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The white list of log reduce.

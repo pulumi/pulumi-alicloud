@@ -292,7 +292,7 @@ class AccessConfiguration(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
-                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
+                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict', 'outputs.AccessConfigurationPermissionPolicy']]]]] = None,
                  relay_state: pulumi.Input[Optional[_builtins.str]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -357,7 +357,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]] permission_policies: The Policy List. See `permission_policies` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict', 'outputs.AccessConfigurationPermissionPolicy']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[_builtins.str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[_builtins.int] session_duration: The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
@@ -439,7 +439,7 @@ class AccessConfiguration(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
-                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
+                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict', 'outputs.AccessConfigurationPermissionPolicy']]]]] = None,
                  relay_state: pulumi.Input[Optional[_builtins.str]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -478,7 +478,7 @@ class AccessConfiguration(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             directory_id: pulumi.Input[Optional[_builtins.str]] = None,
             force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
-            permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
+            permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict', 'outputs.AccessConfigurationPermissionPolicy']]]]] = None,
             relay_state: pulumi.Input[Optional[_builtins.str]] = None,
             session_duration: pulumi.Input[Optional[_builtins.int]] = None) -> 'AccessConfiguration':
         """
@@ -495,7 +495,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]] permission_policies: The Policy List. See `permission_policies` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict', 'outputs.AccessConfigurationPermissionPolicy']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[_builtins.str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[_builtins.int] session_duration: The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """

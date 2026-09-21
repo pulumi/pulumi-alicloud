@@ -297,7 +297,7 @@ class Index(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  keys: pulumi.Input[Optional[_builtins.str]] = None,
-                 line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
+                 line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict', 'outputs.IndexLine']]] = None,
                  log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -395,7 +395,7 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] keys: Field index
-        :param pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict']] line: Full-text index See `line` below.
+        :param pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict', 'outputs.IndexLine']] line: Full-text index See `line` below.
         :param pulumi.Input[_builtins.bool] log_reduce: Whether log clustering is enabled
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
@@ -512,7 +512,7 @@ class Index(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  keys: pulumi.Input[Optional[_builtins.str]] = None,
-                 line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
+                 line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict', 'outputs.IndexLine']]] = None,
                  log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -551,7 +551,7 @@ class Index(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             keys: pulumi.Input[Optional[_builtins.str]] = None,
-            line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
+            line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict', 'outputs.IndexLine']]] = None,
             log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
             log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -566,7 +566,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] keys: Field index
-        :param pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict']] line: Full-text index See `line` below.
+        :param pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict', 'outputs.IndexLine']] line: Full-text index See `line` below.
         :param pulumi.Input[_builtins.bool] log_reduce: Whether log clustering is enabled
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.

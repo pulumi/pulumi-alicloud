@@ -243,7 +243,7 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict', 'outputs.PortConfig']]] = None,
                  frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
                  frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -302,7 +302,7 @@ class Port(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
-        :param pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        :param pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict', 'outputs.PortConfig']] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
                - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
         :param pulumi.Input[_builtins.str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
         :param pulumi.Input[_builtins.str] frontend_protocol: The type of the forwarding protocol to query. Valid values:
@@ -383,7 +383,7 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict', 'outputs.PortConfig']]] = None,
                  frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
                  frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -422,7 +422,7 @@ class Port(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_port: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict', 'outputs.PortConfig']]] = None,
             frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
             frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -435,7 +435,7 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
-        :param pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        :param pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict', 'outputs.PortConfig']] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
                - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
         :param pulumi.Input[_builtins.str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
         :param pulumi.Input[_builtins.str] frontend_protocol: The type of the forwarding protocol to query. Valid values:

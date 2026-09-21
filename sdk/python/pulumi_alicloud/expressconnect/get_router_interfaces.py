@@ -141,7 +141,7 @@ class AwaitableGetRouterInterfacesResult(GetRouterInterfacesResult):
             page_size=self.page_size)
 
 
-def get_router_interfaces(filters: Optional[Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict']]] = None,
+def get_router_interfaces(filters: Optional[Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict', 'outputs.GetRouterInterfacesFilterResult']]] = None,
                           ids: Optional[Sequence[_builtins.str]] = None,
                           include_reservation_data: Optional[_builtins.str] = None,
                           name_regex: Optional[_builtins.str] = None,
@@ -193,7 +193,7 @@ def get_router_interfaces(filters: Optional[Sequence[Union['GetRouterInterfacesF
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_router_interfaces_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict']]]]] = None,
+def get_router_interfaces_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict', 'outputs.GetRouterInterfacesFilterResult']]]]] = None,
                                  ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                  include_reservation_data: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

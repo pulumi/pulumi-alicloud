@@ -324,7 +324,7 @@ class ReportTemplate(pulumi.CustomResource):
                  report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
                  report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
                  report_language: pulumi.Input[Optional[_builtins.str]] = None,
-                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
+                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict', 'outputs.ReportTemplateReportScope']]]]] = None,
                  report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
                  report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -380,7 +380,7 @@ class ReportTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] report_file_formats: Report Format
         :param pulumi.Input[_builtins.str] report_granularity: Report Aggregation Granularity
         :param pulumi.Input[_builtins.str] report_language: This property does not have a description in the spec, please add it before generating code.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]] report_scopes: Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict', 'outputs.ReportTemplateReportScope']]]] report_scopes: Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
         :param pulumi.Input[_builtins.str] report_template_description: Report Template Description
         :param pulumi.Input[_builtins.str] report_template_name: Report Template Name
         :param pulumi.Input[_builtins.str] subscription_frequency: Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
@@ -469,7 +469,7 @@ class ReportTemplate(pulumi.CustomResource):
                  report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
                  report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
                  report_language: pulumi.Input[Optional[_builtins.str]] = None,
-                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
+                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict', 'outputs.ReportTemplateReportScope']]]]] = None,
                  report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
                  report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -506,7 +506,7 @@ class ReportTemplate(pulumi.CustomResource):
             report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
             report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
             report_language: pulumi.Input[Optional[_builtins.str]] = None,
-            report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
+            report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict', 'outputs.ReportTemplateReportScope']]]]] = None,
             report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
             report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
             subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReportTemplate':
@@ -520,7 +520,7 @@ class ReportTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] report_file_formats: Report Format
         :param pulumi.Input[_builtins.str] report_granularity: Report Aggregation Granularity
         :param pulumi.Input[_builtins.str] report_language: This property does not have a description in the spec, please add it before generating code.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]] report_scopes: Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict', 'outputs.ReportTemplateReportScope']]]] report_scopes: Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
         :param pulumi.Input[_builtins.str] report_template_description: Report Template Description
         :param pulumi.Input[_builtins.str] report_template_name: Report Template Name
         :param pulumi.Input[_builtins.str] subscription_frequency: Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.

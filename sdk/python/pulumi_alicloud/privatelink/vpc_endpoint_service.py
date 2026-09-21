@@ -568,7 +568,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  payer: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict', 'outputs.VpcEndpointServiceResource']]]]] = None,
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -622,7 +622,7 @@ class VpcEndpointService(pulumi.CustomResource):
                - `Endpoint`: the service consumer.
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict', 'outputs.VpcEndpointServiceResource']]]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
@@ -693,7 +693,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  payer: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict', 'outputs.VpcEndpointServiceResource']]]]] = None,
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -746,7 +746,7 @@ class VpcEndpointService(pulumi.CustomResource):
             payer: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict', 'outputs.VpcEndpointServiceResource']]]]] = None,
             service_business_status: pulumi.Input[Optional[_builtins.str]] = None,
             service_description: pulumi.Input[Optional[_builtins.str]] = None,
             service_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -774,7 +774,7 @@ class VpcEndpointService(pulumi.CustomResource):
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict']]]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict', 'outputs.VpcEndpointServiceResource']]]] resources: The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
         :param pulumi.Input[_builtins.str] service_business_status: The service state of the endpoint service.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_domain: The domain name of the endpoint service.

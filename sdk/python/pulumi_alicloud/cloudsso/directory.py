@@ -380,14 +380,14 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
-                 mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
+                 login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict', 'outputs.DirectoryLoginPreference']]] = None,
+                 mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict', 'outputs.DirectoryMfaAuthenticationSettingInfo']]] = None,
                  mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
-                 password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
-                 saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-                 saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+                 password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict', 'outputs.DirectoryPasswordPolicy']]] = None,
+                 saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict', 'outputs.DirectorySamlIdentityProviderConfiguration']]] = None,
+                 saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict', 'outputs.DirectorySamlServiceProvider']]] = None,
                  scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
+                 user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict', 'outputs.DirectoryUserProvisioningConfiguration']]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO Directory resource.
@@ -426,14 +426,14 @@ class Directory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] directory_global_access_status: Directory Global Acceleration activation status
         :param pulumi.Input[_builtins.str] directory_name: DirectoryName
-        :param pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']] login_preference: Login preferences See `login_preference` below.
-        :param pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        :param pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict', 'outputs.DirectoryLoginPreference']] login_preference: Login preferences See `login_preference` below.
+        :param pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict', 'outputs.DirectoryMfaAuthenticationSettingInfo']] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
         :param pulumi.Input[_builtins.str] mfa_authentication_status: MFA Authentication Status
-        :param pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']] password_policy: Password policy See `password_policy` below.
-        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
-        :param pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']] saml_service_provider: SP information. See `saml_service_provider` below.
+        :param pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict', 'outputs.DirectoryPasswordPolicy']] password_policy: Password policy See `password_policy` below.
+        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict', 'outputs.DirectorySamlIdentityProviderConfiguration']] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        :param pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict', 'outputs.DirectorySamlServiceProvider']] saml_service_provider: SP information. See `saml_service_provider` below.
         :param pulumi.Input[_builtins.str] scim_synchronization_status: SCIM Synchronization Status
-        :param pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
+        :param pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict', 'outputs.DirectoryUserProvisioningConfiguration']] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
         """
         ...
     @overload
@@ -491,14 +491,14 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
-                 mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
+                 login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict', 'outputs.DirectoryLoginPreference']]] = None,
+                 mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict', 'outputs.DirectoryMfaAuthenticationSettingInfo']]] = None,
                  mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
-                 password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
-                 saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-                 saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+                 password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict', 'outputs.DirectoryPasswordPolicy']]] = None,
+                 saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict', 'outputs.DirectorySamlIdentityProviderConfiguration']]] = None,
+                 saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict', 'outputs.DirectorySamlServiceProvider']]] = None,
                  scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
+                 user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict', 'outputs.DirectoryUserProvisioningConfiguration']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -532,14 +532,14 @@ class Directory(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
             directory_name: pulumi.Input[Optional[_builtins.str]] = None,
-            login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
-            mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
+            login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict', 'outputs.DirectoryLoginPreference']]] = None,
+            mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict', 'outputs.DirectoryMfaAuthenticationSettingInfo']]] = None,
             mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
-            password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
-            saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-            saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+            password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict', 'outputs.DirectoryPasswordPolicy']]] = None,
+            saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict', 'outputs.DirectorySamlIdentityProviderConfiguration']]] = None,
+            saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict', 'outputs.DirectorySamlServiceProvider']]] = None,
             scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
-            user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None) -> 'Directory':
+            user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict', 'outputs.DirectoryUserProvisioningConfiguration']]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -550,14 +550,14 @@ class Directory(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: CreateTime
         :param pulumi.Input[_builtins.str] directory_global_access_status: Directory Global Acceleration activation status
         :param pulumi.Input[_builtins.str] directory_name: DirectoryName
-        :param pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']] login_preference: Login preferences See `login_preference` below.
-        :param pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        :param pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict', 'outputs.DirectoryLoginPreference']] login_preference: Login preferences See `login_preference` below.
+        :param pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict', 'outputs.DirectoryMfaAuthenticationSettingInfo']] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
         :param pulumi.Input[_builtins.str] mfa_authentication_status: MFA Authentication Status
-        :param pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']] password_policy: Password policy See `password_policy` below.
-        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
-        :param pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']] saml_service_provider: SP information. See `saml_service_provider` below.
+        :param pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict', 'outputs.DirectoryPasswordPolicy']] password_policy: Password policy See `password_policy` below.
+        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict', 'outputs.DirectorySamlIdentityProviderConfiguration']] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        :param pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict', 'outputs.DirectorySamlServiceProvider']] saml_service_provider: SP information. See `saml_service_provider` below.
         :param pulumi.Input[_builtins.str] scim_synchronization_status: SCIM Synchronization Status
-        :param pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
+        :param pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict', 'outputs.DirectoryUserProvisioningConfiguration']] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

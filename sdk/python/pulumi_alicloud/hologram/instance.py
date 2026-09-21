@@ -775,7 +775,7 @@ class Instance(pulumi.CustomResource):
                  cpu: pulumi.Input[Optional[_builtins.int]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict', 'outputs.InstanceEndpoint']]]]] = None,
                  gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
                  initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -871,7 +871,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: List of domain names. See `endpoints` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict', 'outputs.InstanceEndpoint']]]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[_builtins.int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[_builtins.str] initial_databases: Initialize the database and split multiple database names ",".
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource.
@@ -987,7 +987,7 @@ class Instance(pulumi.CustomResource):
                  cpu: pulumi.Input[Optional[_builtins.int]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict', 'outputs.InstanceEndpoint']]]]] = None,
                  gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
                  initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1055,7 +1055,7 @@ class Instance(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
             enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict', 'outputs.InstanceEndpoint']]]]] = None,
             gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
             initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1094,7 +1094,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: List of domain names. See `endpoints` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict', 'outputs.InstanceEndpoint']]]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[_builtins.int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[_builtins.str] initial_databases: Initialize the database and split multiple database names ",".
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource.

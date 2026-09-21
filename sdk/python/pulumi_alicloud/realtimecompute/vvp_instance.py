@@ -539,8 +539,8 @@ class VvpInstance(pulumi.CustomResource):
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
-                 storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict', 'outputs.VvpInstanceResourceSpec']]] = None,
+                 storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict', 'outputs.VvpInstanceStorage']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -618,8 +618,8 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renew_status: The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
-        :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
-        :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
+        :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict', 'outputs.VvpInstanceResourceSpec']] resource_spec: Resource specifications. See `resource_spec` below.
+        :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict', 'outputs.VvpInstanceStorage']] storage: Store information. See `storage` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.
@@ -716,8 +716,8 @@ class VvpInstance(pulumi.CustomResource):
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
-                 storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict', 'outputs.VvpInstanceResourceSpec']]] = None,
+                 storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict', 'outputs.VvpInstanceStorage']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -780,9 +780,9 @@ class VvpInstance(pulumi.CustomResource):
             renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
+            resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict', 'outputs.VvpInstanceResourceSpec']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
+            storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict', 'outputs.VvpInstanceStorage']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -804,9 +804,9 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `M` (month), `Y` (year).
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input[_builtins.str] resource_id: (Available since v1.264.0) The ID of the K8s cluster.
-        :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
+        :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict', 'outputs.VvpInstanceResourceSpec']] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
-        :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
+        :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict', 'outputs.VvpInstanceStorage']] storage: Store information. See `storage` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.

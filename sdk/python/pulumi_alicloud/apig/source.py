@@ -281,8 +281,8 @@ class Source(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict']]] = None,
-                 nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict']]] = None,
+                 k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict', 'outputs.SourceK8sSourceInfo']]] = None,
+                 nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict', 'outputs.SourceNacosSourceInfo']]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -362,8 +362,8 @@ class Source(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the gateway instance.
-        :param pulumi.Input[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict']] k8s_source_info: The ACK cluster source information. Required when `type` is `K8S`. See `k8s_source_info` below.
-        :param pulumi.Input[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict']] nacos_source_info: The MSE Nacos source information. Required when `type` is `MSE_NACOS`. See `nacos_source_info` below.
+        :param pulumi.Input[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict', 'outputs.SourceK8sSourceInfo']] k8s_source_info: The ACK cluster source information. Required when `type` is `K8S`. See `k8s_source_info` below.
+        :param pulumi.Input[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict', 'outputs.SourceNacosSourceInfo']] nacos_source_info: The MSE Nacos source information. Required when `type` is `MSE_NACOS`. See `nacos_source_info` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] type: The type of the source. Valid values: `K8S` (Container Service for Kubernetes), `MSE_NACOS` (MSE Nacos).
         """
@@ -462,8 +462,8 @@ class Source(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict']]] = None,
-                 nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict']]] = None,
+                 k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict', 'outputs.SourceK8sSourceInfo']]] = None,
+                 nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict', 'outputs.SourceNacosSourceInfo']]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -503,8 +503,8 @@ class Source(pulumi.CustomResource):
             association_status: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-            k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict']]] = None,
-            nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict']]] = None,
+            k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict', 'outputs.SourceK8sSourceInfo']]] = None,
+            nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict', 'outputs.SourceNacosSourceInfo']]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -520,8 +520,8 @@ class Source(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] association_status: The association status of the source.
         :param pulumi.Input[_builtins.int] create_time: The creation timestamp of the source.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the gateway instance.
-        :param pulumi.Input[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict']] k8s_source_info: The ACK cluster source information. Required when `type` is `K8S`. See `k8s_source_info` below.
-        :param pulumi.Input[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict']] nacos_source_info: The MSE Nacos source information. Required when `type` is `MSE_NACOS`. See `nacos_source_info` below.
+        :param pulumi.Input[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict', 'outputs.SourceK8sSourceInfo']] k8s_source_info: The ACK cluster source information. Required when `type` is `K8S`. See `k8s_source_info` below.
+        :param pulumi.Input[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict', 'outputs.SourceNacosSourceInfo']] nacos_source_info: The MSE Nacos source information. Required when `type` is `MSE_NACOS`. See `nacos_source_info` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] source_name: The name of the source.
         :param pulumi.Input[_builtins.str] type: The type of the source. Valid values: `K8S` (Container Service for Kubernetes), `MSE_NACOS` (MSE Nacos).

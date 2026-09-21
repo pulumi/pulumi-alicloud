@@ -458,7 +458,7 @@ class TemplateApplications(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  env_language: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -524,7 +524,7 @@ class TemplateApplications(pulumi.CustomResource):
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]] dimensions: Quota dimension. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
                > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota application result notification. Value:
@@ -618,7 +618,7 @@ class TemplateApplications(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  env_language: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -672,14 +672,14 @@ class TemplateApplications(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]]] = None,
             effective_time: pulumi.Input[Optional[_builtins.str]] = None,
             env_language: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             notice_type: pulumi.Input[Optional[_builtins.int]] = None,
             product_code: pulumi.Input[Optional[_builtins.str]] = None,
             quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
-            quota_application_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict']]]]] = None,
+            quota_application_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict', 'outputs.TemplateApplicationsQuotaApplicationDetail']]]]] = None,
             quota_category: pulumi.Input[Optional[_builtins.str]] = None,
             reason: pulumi.Input[Optional[_builtins.str]] = None) -> 'TemplateApplications':
         """
@@ -693,7 +693,7 @@ class TemplateApplications(pulumi.CustomResource):
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]] dimensions: Quota dimension. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
                > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota application result notification. Value:
@@ -707,7 +707,7 @@ class TemplateApplications(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] product_code: Cloud service name abbreviation.
                > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         :param pulumi.Input[_builtins.str] quota_action_code: The quota ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict']]]] quota_application_details: List of quota application details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict', 'outputs.TemplateApplicationsQuotaApplicationDetail']]]] quota_application_details: List of quota application details.
         :param pulumi.Input[_builtins.str] quota_category: The quota type. Value:
                - CommonQuota (default): Generic quota.
                - FlowControl:API rate quota.

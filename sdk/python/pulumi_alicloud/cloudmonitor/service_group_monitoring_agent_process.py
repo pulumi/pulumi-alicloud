@@ -215,10 +215,10 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]]]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
-                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessMatchExpress']]]]] = None,
                  process_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -290,10 +290,10 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]] alert_configs: The alert rule configurations. See `alert_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]]] alert_configs: The alert rule configurations. See `alert_config` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] match_express_filter_relation: The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]] match_expresses: The expressions used to match instances. See `match_express` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessMatchExpress']]]] match_expresses: The expressions used to match instances. See `match_express` below.
         :param pulumi.Input[_builtins.str] process_name: The name of the process.
         """
         ...
@@ -384,10 +384,10 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]]]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
-                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessMatchExpress']]]]] = None,
                  process_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -420,11 +420,11 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
+            alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]]]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_monitoring_agent_process_id: pulumi.Input[Optional[_builtins.str]] = None,
             match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
-            match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
+            match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessMatchExpress']]]]] = None,
             process_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceGroupMonitoringAgentProcess':
         """
         Get an existing ServiceGroupMonitoringAgentProcess resource's state with the given name, id, and optional extra
@@ -433,11 +433,11 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]] alert_configs: The alert rule configurations. See `alert_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]]] alert_configs: The alert rule configurations. See `alert_config` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] group_monitoring_agent_process_id: The ID of the Group Monitoring Agent Process.
         :param pulumi.Input[_builtins.str] match_express_filter_relation: The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]] match_expresses: The expressions used to match instances. See `match_express` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessMatchExpress']]]] match_expresses: The expressions used to match instances. See `match_express` below.
         :param pulumi.Input[_builtins.str] process_name: The name of the process.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

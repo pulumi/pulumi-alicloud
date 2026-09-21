@@ -462,7 +462,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                  association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+                 copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.SnapshotPolicyCopyEncryptionConfiguration']]] = None,
                  enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -470,7 +470,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict']]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict', 'outputs.SnapshotPolicyTargetTag']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -594,7 +594,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                  association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+                 copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.SnapshotPolicyCopyEncryptionConfiguration']]] = None,
                  enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -602,7 +602,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict']]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict', 'outputs.SnapshotPolicyTargetTag']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -648,7 +648,7 @@ class SnapshotPolicy(pulumi.CustomResource):
             association_type: pulumi.Input[Optional[_builtins.str]] = None,
             auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-            copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+            copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.SnapshotPolicyCopyEncryptionConfiguration']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -659,7 +659,7 @@ class SnapshotPolicy(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict']]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict', 'outputs.SnapshotPolicyTargetTag']]]]] = None,
             time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SnapshotPolicy':
         """
         Get an existing SnapshotPolicy resource's state with the given name, id, and optional extra

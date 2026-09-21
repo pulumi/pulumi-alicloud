@@ -137,7 +137,7 @@ class BackendServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict', 'outputs.BackendServerBackendServer']]]]] = None,
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -157,7 +157,7 @@ class BackendServer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict', 'outputs.BackendServerBackendServer']]]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] load_balancer_id: ID of the load balancer.
         """
@@ -196,7 +196,7 @@ class BackendServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict', 'outputs.BackendServerBackendServer']]]]] = None,
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -223,7 +223,7 @@ class BackendServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
+            backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict', 'outputs.BackendServerBackendServer']]]]] = None,
             delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackendServer':
         """
@@ -233,7 +233,7 @@ class BackendServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict', 'outputs.BackendServerBackendServer']]]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] load_balancer_id: ID of the load balancer.
         """

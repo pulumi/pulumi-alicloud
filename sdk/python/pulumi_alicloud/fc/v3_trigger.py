@@ -720,7 +720,7 @@ class V3Trigger(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             function_name: pulumi.Input[Optional[_builtins.str]] = None,
-            http_trigger: pulumi.Input[Optional[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict']]] = None,
+            http_trigger: pulumi.Input[Optional[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict', 'outputs.V3TriggerHttpTrigger']]] = None,
             invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
             qualifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -741,7 +741,7 @@ class V3Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Creation time
         :param pulumi.Input[_builtins.str] description: Description of the trigger
         :param pulumi.Input[_builtins.str] function_name: Function Name
-        :param pulumi.Input[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict']] http_trigger: (Available since v1.234.0) HTTP trigger information
+        :param pulumi.Input[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict', 'outputs.V3TriggerHttpTrigger']] http_trigger: (Available since v1.234.0) HTTP trigger information
         :param pulumi.Input[_builtins.str] invocation_role: The role required by the event source (such as OSS) to call the function.
         :param pulumi.Input[_builtins.str] last_modified_time: (Available since v1.234.0) The last modified time of the trigger
         :param pulumi.Input[_builtins.str] qualifier: The version or alias of the function

@@ -269,7 +269,7 @@ class Policy(pulumi.CustomResource):
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
-                 net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
+                 net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict', 'outputs.PolicyNetRedirectPolicy']]] = None,
                  policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
                  resolution_width: pulumi.Input[Optional[_builtins.int]] = None,
@@ -329,7 +329,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to turn on local camera redirection.
         :param pulumi.Input[_builtins.str] clipboard: Clipboard permissions.
         :param pulumi.Input[_builtins.str] lock_resolution: Whether to lock the resolution.
-        :param pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']] net_redirect_policy: Network redirection. See `net_redirect_policy` below.
+        :param pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict', 'outputs.PolicyNetRedirectPolicy']] net_redirect_policy: Network redirection. See `net_redirect_policy` below.
         :param pulumi.Input[_builtins.str] policy_group_name: The policy name.
         :param pulumi.Input[_builtins.int] resolution_height: The height of the resolution. Unit: Pixels.
         :param pulumi.Input[_builtins.int] resolution_width: The width of the resolution. Unit: Pixels.
@@ -408,7 +408,7 @@ class Policy(pulumi.CustomResource):
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
-                 net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
+                 net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict', 'outputs.PolicyNetRedirectPolicy']]] = None,
                  policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
                  resolution_width: pulumi.Input[Optional[_builtins.int]] = None,
@@ -441,7 +441,7 @@ class Policy(pulumi.CustomResource):
             camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
             clipboard: pulumi.Input[Optional[_builtins.str]] = None,
             lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
-            net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
+            net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict', 'outputs.PolicyNetRedirectPolicy']]] = None,
             policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
             resolution_width: pulumi.Input[Optional[_builtins.int]] = None) -> 'Policy':
@@ -455,7 +455,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to turn on local camera redirection.
         :param pulumi.Input[_builtins.str] clipboard: Clipboard permissions.
         :param pulumi.Input[_builtins.str] lock_resolution: Whether to lock the resolution.
-        :param pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']] net_redirect_policy: Network redirection. See `net_redirect_policy` below.
+        :param pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict', 'outputs.PolicyNetRedirectPolicy']] net_redirect_policy: Network redirection. See `net_redirect_policy` below.
         :param pulumi.Input[_builtins.str] policy_group_name: The policy name.
         :param pulumi.Input[_builtins.int] resolution_height: The height of the resolution. Unit: Pixels.
         :param pulumi.Input[_builtins.int] resolution_width: The width of the resolution. Unit: Pixels.

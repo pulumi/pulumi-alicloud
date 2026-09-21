@@ -215,7 +215,7 @@ class IntegrationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
+                 entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict', 'outputs.IntegrationPolicyEntityGroup']]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -269,7 +269,7 @@ class IntegrationPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']] entity_group: The entity group used to create the policy. See `entity_group` below.
+        :param pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict', 'outputs.IntegrationPolicyEntityGroup']] entity_group: The entity group used to create the policy. See `entity_group` below.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the cloud native appliance. Valid values:
         :param pulumi.Input[_builtins.str] integration_policy_name: The policy name.
         :param pulumi.Input[_builtins.str] policy_type: The policy type.
@@ -342,7 +342,7 @@ class IntegrationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
+                 entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict', 'outputs.IntegrationPolicyEntityGroup']]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -378,7 +378,7 @@ class IntegrationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
+            entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict', 'outputs.IntegrationPolicyEntityGroup']]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -391,7 +391,7 @@ class IntegrationPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']] entity_group: The entity group used to create the policy. See `entity_group` below.
+        :param pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict', 'outputs.IntegrationPolicyEntityGroup']] entity_group: The entity group used to create the policy. See `entity_group` below.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the cloud native appliance. Valid values:
         :param pulumi.Input[_builtins.str] integration_policy_name: The policy name.
         :param pulumi.Input[_builtins.str] policy_type: The policy type.

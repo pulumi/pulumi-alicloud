@@ -329,12 +329,12 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict', 'outputs.JobLocalVariable']]]]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
-                 status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
+                 restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict', 'outputs.JobRestoreStrategy']]] = None,
+                 status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]] = None,
                  stop_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -431,14 +431,14 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deployment_id: deploymentId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]] local_variables: Local variables See `local_variables` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict', 'outputs.JobLocalVariable']]]] local_variables: Local variables See `local_variables` below.
         :param pulumi.Input[_builtins.str] namespace: namespace
         :param pulumi.Input[_builtins.str] resource_id: workspace
         :param pulumi.Input[_builtins.str] resource_queue_name: Resource Queue for Job Run
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']] restore_strategy: Restore strategy See `restore_strategy` below.
-        :param pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']] status: job status See `status` below.
+        :param pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict', 'outputs.JobRestoreStrategy']] restore_strategy: Restore strategy See `restore_strategy` below.
+        :param pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']] status: job status See `status` below.
         :param pulumi.Input[_builtins.str] stop_strategy: Job Stop Policy
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -556,12 +556,12 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict', 'outputs.JobLocalVariable']]]]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
-                 status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
+                 restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict', 'outputs.JobRestoreStrategy']]] = None,
+                 status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]] = None,
                  stop_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -597,12 +597,12 @@ class Job(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
             job_id: pulumi.Input[Optional[_builtins.str]] = None,
-            local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
+            local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict', 'outputs.JobLocalVariable']]]]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-            restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
+            restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict', 'outputs.JobRestoreStrategy']]] = None,
+            status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]] = None,
             stop_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -613,14 +613,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deployment_id: deploymentId
         :param pulumi.Input[_builtins.str] job_id: The first ID of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]] local_variables: Local variables See `local_variables` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict', 'outputs.JobLocalVariable']]]] local_variables: Local variables See `local_variables` below.
         :param pulumi.Input[_builtins.str] namespace: namespace
         :param pulumi.Input[_builtins.str] resource_id: workspace
         :param pulumi.Input[_builtins.str] resource_queue_name: Resource Queue for Job Run
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']] restore_strategy: Restore strategy See `restore_strategy` below.
-        :param pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']] status: job status See `status` below.
+        :param pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict', 'outputs.JobRestoreStrategy']] restore_strategy: Restore strategy See `restore_strategy` below.
+        :param pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']] status: job status See `status` below.
         :param pulumi.Input[_builtins.str] stop_strategy: Job Stop Policy
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.

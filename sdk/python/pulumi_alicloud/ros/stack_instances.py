@@ -386,11 +386,11 @@ class StackInstances(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deployment_options: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']]] = None,
+                 deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict', 'outputs.StackInstancesDeploymentTargets']]] = None,
                  disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
                  operation_description: pulumi.Input[Optional[_builtins.str]] = None,
-                 operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict']]] = None,
-                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict']]]]] = None,
+                 operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict', 'outputs.StackInstancesOperationPreferences']]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict', 'outputs.StackInstancesParameterOverride']]]]] = None,
                  region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  timeout_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -472,13 +472,13 @@ class StackInstances(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deployment_targets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
         :param pulumi.Input[_builtins.str] deployment_options: List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
-        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
+        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict', 'outputs.StackInstancesDeploymentTargets']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
                
                > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable the rollback policy when creating stack instances fails. Valid values: `true`, `false`. Default value: `false`. This parameter cannot be modified after creation.
         :param pulumi.Input[_builtins.str] operation_description: Description of the stack instances operation. The description must be 1 to 256 characters in length.
-        :param pulumi.Input[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict']] operation_preferences: Configuration block defining preferences for how the operation is performed across multiple accounts and regions. See `operation_preferences` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict']]]] parameter_overrides: A set of parameters to override in the stack instances. See `parameter_overrides` below.
+        :param pulumi.Input[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict', 'outputs.StackInstancesOperationPreferences']] operation_preferences: Configuration block defining preferences for how the operation is performed across multiple accounts and regions. See `operation_preferences` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict', 'outputs.StackInstancesParameterOverride']]]] parameter_overrides: A set of parameters to override in the stack instances. See `parameter_overrides` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] region_ids: List of target region IDs where stack instances will be deployed. You can specify 1 to 20 regions. This parameter cannot be modified after creation. Example: `["cn-beijing", "cn-shanghai"]`.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
         :param pulumi.Input[_builtins.int] timeout_in_minutes: The amount of time in minutes that can elapse before the stack operation status is set to `TIMED_OUT`. Valid values: 1 to 1440. Default value: 60.
@@ -579,11 +579,11 @@ class StackInstances(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deployment_options: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']]] = None,
+                 deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict', 'outputs.StackInstancesDeploymentTargets']]] = None,
                  disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
                  operation_description: pulumi.Input[Optional[_builtins.str]] = None,
-                 operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict']]] = None,
-                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict']]]]] = None,
+                 operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict', 'outputs.StackInstancesOperationPreferences']]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict', 'outputs.StackInstancesParameterOverride']]]]] = None,
                  region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  timeout_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -625,14 +625,14 @@ class StackInstances(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deployment_options: pulumi.Input[Optional[_builtins.str]] = None,
-            deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']]] = None,
+            deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict', 'outputs.StackInstancesDeploymentTargets']]] = None,
             disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
             operation_description: pulumi.Input[Optional[_builtins.str]] = None,
-            operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict']]] = None,
-            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict']]]]] = None,
+            operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict', 'outputs.StackInstancesOperationPreferences']]] = None,
+            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict', 'outputs.StackInstancesParameterOverride']]]]] = None,
             region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            stack_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesStackInstanceArgs', 'StackInstancesStackInstanceArgsDict']]]]] = None,
+            stack_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesStackInstanceArgs', 'StackInstancesStackInstanceArgsDict', 'outputs.StackInstancesStackInstance']]]]] = None,
             timeout_in_minutes: pulumi.Input[Optional[_builtins.int]] = None) -> 'StackInstances':
         """
         Get an existing StackInstances resource's state with the given name, id, and optional extra
@@ -643,16 +643,16 @@ class StackInstances(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deployment_targets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
         :param pulumi.Input[_builtins.str] deployment_options: List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
-        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
+        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict', 'outputs.StackInstancesDeploymentTargets']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
                
                > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable the rollback policy when creating stack instances fails. Valid values: `true`, `false`. Default value: `false`. This parameter cannot be modified after creation.
         :param pulumi.Input[_builtins.str] operation_description: Description of the stack instances operation. The description must be 1 to 256 characters in length.
-        :param pulumi.Input[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict']] operation_preferences: Configuration block defining preferences for how the operation is performed across multiple accounts and regions. See `operation_preferences` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict']]]] parameter_overrides: A set of parameters to override in the stack instances. See `parameter_overrides` below.
+        :param pulumi.Input[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict', 'outputs.StackInstancesOperationPreferences']] operation_preferences: Configuration block defining preferences for how the operation is performed across multiple accounts and regions. See `operation_preferences` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict', 'outputs.StackInstancesParameterOverride']]]] parameter_overrides: A set of parameters to override in the stack instances. See `parameter_overrides` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] region_ids: List of target region IDs where stack instances will be deployed. You can specify 1 to 20 regions. This parameter cannot be modified after creation. Example: `["cn-beijing", "cn-shanghai"]`.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstancesStackInstanceArgs', 'StackInstancesStackInstanceArgsDict']]]] stack_instances: A list of stack instances with their latest operation tracking information. See `stack_instances` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstancesStackInstanceArgs', 'StackInstancesStackInstanceArgsDict', 'outputs.StackInstancesStackInstance']]]] stack_instances: A list of stack instances with their latest operation tracking information. See `stack_instances` below.
         :param pulumi.Input[_builtins.int] timeout_in_minutes: The amount of time in minutes that can elapse before the stack operation status is set to `TIMED_OUT`. Valid values: 1 to 1440. Default value: 60.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

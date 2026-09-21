@@ -278,11 +278,11 @@ class Alert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict', 'outputs.AlertConfiguration']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -457,11 +457,11 @@ class Alert(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_name: Alert rule ID, unique under Project.
-        :param pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
+        :param pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict', 'outputs.AlertConfiguration']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
         :param pulumi.Input[_builtins.str] description: Compatible fields, set to empty strings.
         :param pulumi.Input[_builtins.str] display_name: Display name of the alarm rule.
         :param pulumi.Input[_builtins.str] project_name: Project Name.
-        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: Check the frequency-dependent configuration. See `schedule` below.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: Check the frequency-dependent configuration. See `schedule` below.
         :param pulumi.Input[_builtins.str] status: Resource attribute field representing alarm status.
         """
         ...
@@ -655,11 +655,11 @@ class Alert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict', 'outputs.AlertConfiguration']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -699,12 +699,12 @@ class Alert(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alert_name: pulumi.Input[Optional[_builtins.str]] = None,
-            configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']]] = None,
+            configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict', 'outputs.AlertConfiguration']]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             project_name: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alert':
         """
         Get an existing Alert resource's state with the given name, id, and optional extra
@@ -714,12 +714,12 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_name: Alert rule ID, unique under Project.
-        :param pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
+        :param pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict', 'outputs.AlertConfiguration']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
         :param pulumi.Input[_builtins.int] create_time: Alarm rule creation time.
         :param pulumi.Input[_builtins.str] description: Compatible fields, set to empty strings.
         :param pulumi.Input[_builtins.str] display_name: Display name of the alarm rule.
         :param pulumi.Input[_builtins.str] project_name: Project Name.
-        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: Check the frequency-dependent configuration. See `schedule` below.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: Check the frequency-dependent configuration. See `schedule` below.
         :param pulumi.Input[_builtins.str] status: Resource attribute field representing alarm status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

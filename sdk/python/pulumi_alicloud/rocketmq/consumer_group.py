@@ -279,7 +279,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
+                 consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict', 'outputs.ConsumerGroupConsumeRetryPolicy']]] = None,
                  consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -377,7 +377,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
+        :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict', 'outputs.ConsumerGroupConsumeRetryPolicy']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
         :param pulumi.Input[_builtins.str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] delivery_order_type: Delivery order.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
@@ -494,7 +494,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
+                 consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict', 'outputs.ConsumerGroupConsumeRetryPolicy']]] = None,
                  consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,7 +534,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
+            consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict', 'outputs.ConsumerGroupConsumeRetryPolicy']]] = None,
             consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -550,7 +550,7 @@ class ConsumerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
+        :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict', 'outputs.ConsumerGroupConsumeRetryPolicy']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
         :param pulumi.Input[_builtins.str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] delivery_order_type: Delivery order.

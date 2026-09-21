@@ -562,7 +562,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+                 copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.AutoSnapshotPolicyCopyEncryptionConfiguration']]] = None,
                  enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -570,7 +570,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict', 'outputs.AutoSnapshotPolicyTargetTag']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -624,7 +624,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
-        :param pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        :param pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.AutoSnapshotPolicyCopyEncryptionConfiguration']] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
         :param pulumi.Input[_builtins.bool] enable_cross_region_copy: Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] name: . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
@@ -633,7 +633,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - `-1`: Automatic snapshots are retained until they are deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict', 'outputs.AutoSnapshotPolicyTargetTag']]]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The points in time of the day at which to create automatic snapshots.
                
                The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
@@ -707,7 +707,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  association_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+                 copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.AutoSnapshotPolicyCopyEncryptionConfiguration']]] = None,
                  enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -715,7 +715,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict', 'outputs.AutoSnapshotPolicyTargetTag']]]]] = None,
                  time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -761,7 +761,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             association_type: pulumi.Input[Optional[_builtins.str]] = None,
             auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-            copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+            copy_encryption_configuration: pulumi.Input[Optional[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.AutoSnapshotPolicyCopyEncryptionConfiguration']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -772,7 +772,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict', 'outputs.AutoSnapshotPolicyTargetTag']]]]] = None,
             time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AutoSnapshotPolicy':
         """
         Get an existing AutoSnapshotPolicy resource's state with the given name, id, and optional extra
@@ -789,7 +789,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
                - `-1`: The snapshot copy is retained until it is deleted.
-        :param pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        :param pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.AutoSnapshotPolicyCopyEncryptionConfiguration']] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.bool] enable_cross_region_copy: Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] name: . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
@@ -801,7 +801,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict']]]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoSnapshotPolicyTargetTagArgs', 'AutoSnapshotPolicyTargetTagArgsDict', 'outputs.AutoSnapshotPolicyTargetTag']]]] target_tags: The tags used to associate the automatic snapshot policy with ECS instances. This parameter takes effect only when `association_type` is set to `AssociatedWithInstanceTag`. See `target_tags` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_points: The points in time of the day at which to create automatic snapshots.
                
                The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.

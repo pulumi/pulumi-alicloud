@@ -363,7 +363,7 @@ class ResourceGroup(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            region_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupRegionStatusArgs', 'ResourceGroupRegionStatusArgsDict']]]]] = None,
+            region_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceGroupRegionStatusArgs', 'ResourceGroupRegionStatusArgsDict', 'outputs.ResourceGroupRegionStatus']]]]] = None,
             resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ResourceGroup':
@@ -377,7 +377,7 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
         :param pulumi.Input[_builtins.str] display_name: The display name of the resource group. The name must be 1 to 50 characters in length.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupRegionStatusArgs', 'ResourceGroupRegionStatusArgsDict']]]] region_statuses: The status of the resource group in all regions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupRegionStatusArgs', 'ResourceGroupRegionStatusArgsDict', 'outputs.ResourceGroupRegionStatus']]]] region_statuses: The status of the resource group in all regions.
         :param pulumi.Input[_builtins.str] resource_group_name: The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
         :param pulumi.Input[_builtins.str] status: The status of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.

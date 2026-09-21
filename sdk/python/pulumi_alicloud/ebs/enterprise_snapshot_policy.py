@@ -406,15 +406,15 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
+                 cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict', 'outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo']]] = None,
                  desc: pulumi.Input[Optional[_builtins.str]] = None,
                  enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
-                 special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
+                 retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyRetainRule']]] = None,
+                 schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict', 'outputs.EnterpriseSnapshotPolicySchedule']]] = None,
+                 special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict', 'outputs.EnterpriseSnapshotPolicySpecialRetainRules']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
+                 storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyStorageRule']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -471,15 +471,15 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']] cross_region_copy_info: Snapshot replication information. See `cross_region_copy_info` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict', 'outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo']] cross_region_copy_info: Snapshot replication information. See `cross_region_copy_info` below.
         :param pulumi.Input[_builtins.str] desc: Description information representing the resource.
         :param pulumi.Input[_builtins.str] enterprise_snapshot_policy_name: The name of the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']] retain_rule: Snapshot retention policy representing resources. See `retain_rule` below.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']] schedule: The scheduling plan that represents the resource. See `schedule` below.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyRetainRule']] retain_rule: Snapshot retention policy representing resources. See `retain_rule` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict', 'outputs.EnterpriseSnapshotPolicySchedule']] schedule: The scheduling plan that represents the resource. See `schedule` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict', 'outputs.EnterpriseSnapshotPolicySpecialRetainRules']] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']] storage_rule: Snapshot storage policy. See `storage_rule` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyStorageRule']] storage_rule: Snapshot storage policy. See `storage_rule` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[_builtins.str] target_type: Represents the target type of resource binding.
         """
@@ -555,15 +555,15 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
+                 cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict', 'outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo']]] = None,
                  desc: pulumi.Input[Optional[_builtins.str]] = None,
                  enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
-                 special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
+                 retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyRetainRule']]] = None,
+                 schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict', 'outputs.EnterpriseSnapshotPolicySchedule']]] = None,
+                 special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict', 'outputs.EnterpriseSnapshotPolicySpecialRetainRules']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
+                 storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyStorageRule']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -606,15 +606,15 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
+            cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict', 'outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo']]] = None,
             desc: pulumi.Input[Optional[_builtins.str]] = None,
             enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
-            schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
-            special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
+            retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyRetainRule']]] = None,
+            schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict', 'outputs.EnterpriseSnapshotPolicySchedule']]] = None,
+            special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict', 'outputs.EnterpriseSnapshotPolicySpecialRetainRules']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
+            storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyStorageRule']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseSnapshotPolicy':
         """
@@ -625,15 +625,15 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']] cross_region_copy_info: Snapshot replication information. See `cross_region_copy_info` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict', 'outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo']] cross_region_copy_info: Snapshot replication information. See `cross_region_copy_info` below.
         :param pulumi.Input[_builtins.str] desc: Description information representing the resource.
         :param pulumi.Input[_builtins.str] enterprise_snapshot_policy_name: The name of the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']] retain_rule: Snapshot retention policy representing resources. See `retain_rule` below.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']] schedule: The scheduling plan that represents the resource. See `schedule` below.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyRetainRule']] retain_rule: Snapshot retention policy representing resources. See `retain_rule` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict', 'outputs.EnterpriseSnapshotPolicySchedule']] schedule: The scheduling plan that represents the resource. See `schedule` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict', 'outputs.EnterpriseSnapshotPolicySpecialRetainRules']] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
-        :param pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']] storage_rule: Snapshot storage policy. See `storage_rule` below.
+        :param pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyStorageRule']] storage_rule: Snapshot storage policy. See `storage_rule` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[_builtins.str] target_type: Represents the target type of resource binding.
         """

@@ -203,7 +203,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[_builtins.str] = None,
                         dedicated_host_type: Optional[_builtins.str] = None,
                         ids: Optional[Sequence[_builtins.str]] = None,
                         name_regex: Optional[_builtins.str] = None,
-                        operation_locks: Optional[Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']]] = None,
+                        operation_locks: Optional[Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict', 'outputs.GetDedicatedHostsOperationLockResult']]] = None,
                         output_file: Optional[_builtins.str] = None,
                         resource_group_id: Optional[_builtins.str] = None,
                         status: Optional[_builtins.str] = None,
@@ -246,7 +246,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[_builtins.str] = None,
     :param _builtins.str dedicated_host_type: The type of the dedicated host.
     :param Sequence[_builtins.str] ids: A list of ECS Dedicated Host ids.
     :param _builtins.str name_regex: A regex string to filter results by the ECS Dedicated Host name.
-    :param Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']] operation_locks: The reason why the dedicated host resource is locked. See `operation_locks` below.
+    :param Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict', 'outputs.GetDedicatedHostsOperationLockResult']] operation_locks: The reason why the dedicated host resource is locked. See `operation_locks` below.
     :param _builtins.str output_file: Save the result to the file.
     :param _builtins.str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param _builtins.str status: The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
@@ -288,7 +288,7 @@ def get_dedicated_hosts_output(dedicated_host_id: pulumi.Input[Optional[Optional
                                dedicated_host_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               operation_locks: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']]]]] = None,
+                               operation_locks: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict', 'outputs.GetDedicatedHostsOperationLockResult']]]]] = None,
                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -331,7 +331,7 @@ def get_dedicated_hosts_output(dedicated_host_id: pulumi.Input[Optional[Optional
     :param _builtins.str dedicated_host_type: The type of the dedicated host.
     :param Sequence[_builtins.str] ids: A list of ECS Dedicated Host ids.
     :param _builtins.str name_regex: A regex string to filter results by the ECS Dedicated Host name.
-    :param Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']] operation_locks: The reason why the dedicated host resource is locked. See `operation_locks` below.
+    :param Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict', 'outputs.GetDedicatedHostsOperationLockResult']] operation_locks: The reason why the dedicated host resource is locked. See `operation_locks` below.
     :param _builtins.str output_file: Save the result to the file.
     :param _builtins.str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param _builtins.str status: The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.

@@ -217,8 +217,8 @@ class Resource(pulumi.CustomResource):
                  cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
-                 user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
+                 machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict', 'outputs.ResourceMachineTypes']]] = None,
+                 user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict', 'outputs.ResourceUserAccessParam']]] = None,
                  __props__=None):
         """
         Provides a Eflo Resource resource.
@@ -287,8 +287,8 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_desc: Used to provide a description or comment on the compute cluster.
         :param pulumi.Input[_builtins.str] cluster_id: Used to uniquely identify a computing cluster.
         :param pulumi.Input[_builtins.str] cluster_name: Represents the name of the compute cluster, usually including the model number.
-        :param pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']] machine_types: Generally refers to the type or instance type of a computing resource. See `machine_types` below.
-        :param pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']] user_access_param: Used to define the access parameters for the user. See `user_access_param` below.
+        :param pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict', 'outputs.ResourceMachineTypes']] machine_types: Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+        :param pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict', 'outputs.ResourceUserAccessParam']] user_access_param: Used to define the access parameters for the user. See `user_access_param` below.
         """
         ...
     @overload
@@ -376,8 +376,8 @@ class Resource(pulumi.CustomResource):
                  cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
-                 user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
+                 machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict', 'outputs.ResourceMachineTypes']]] = None,
+                 user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict', 'outputs.ResourceUserAccessParam']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,9 +414,9 @@ class Resource(pulumi.CustomResource):
             cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
-            machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
+            machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict', 'outputs.ResourceMachineTypes']]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-            user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None) -> 'Resource':
+            user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict', 'outputs.ResourceUserAccessParam']]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -427,9 +427,9 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_desc: Used to provide a description or comment on the compute cluster.
         :param pulumi.Input[_builtins.str] cluster_id: Used to uniquely identify a computing cluster.
         :param pulumi.Input[_builtins.str] cluster_name: Represents the name of the compute cluster, usually including the model number.
-        :param pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']] machine_types: Generally refers to the type or instance type of a computing resource. See `machine_types` below.
+        :param pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict', 'outputs.ResourceMachineTypes']] machine_types: Generally refers to the type or instance type of a computing resource. See `machine_types` below.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the Resource.
-        :param pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']] user_access_param: Used to define the access parameters for the user. See `user_access_param` below.
+        :param pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict', 'outputs.ResourceUserAccessParam']] user_access_param: Used to define the access parameters for the user. See `user_access_param` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

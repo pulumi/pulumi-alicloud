@@ -609,7 +609,7 @@ class ServerGroup(pulumi.CustomResource):
                  connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
-                 health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
+                 health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
                  preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -691,7 +691,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         :param pulumi.Input[_builtins.bool] connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
         :param pulumi.Input[_builtins.int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
-        :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']] health_check: Health check configuration information. See `health_check` below.
         :param pulumi.Input[_builtins.bool] preserve_client_ip_enabled: Specifies whether to enable client IP preservation. Valid values:
         :param pulumi.Input[_builtins.str] protocol: The protocol used to forward requests to the backend servers. Valid values:
                
@@ -811,7 +811,7 @@ class ServerGroup(pulumi.CustomResource):
                  connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
-                 health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
+                 health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
                  preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -864,7 +864,7 @@ class ServerGroup(pulumi.CustomResource):
             connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
             connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
-            health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
+            health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
             preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -887,7 +887,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         :param pulumi.Input[_builtins.bool] connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
         :param pulumi.Input[_builtins.int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
-        :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']] health_check: Health check configuration information. See `health_check` below.
         :param pulumi.Input[_builtins.bool] preserve_client_ip_enabled: Specifies whether to enable client IP preservation. Valid values:
         :param pulumi.Input[_builtins.str] protocol: The protocol used to forward requests to the backend servers. Valid values:
                

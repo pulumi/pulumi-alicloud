@@ -431,7 +431,7 @@ class AutoGroupingRule(pulumi.CustomResource):
                  resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
+                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict', 'outputs.AutoGroupingRuleRuleContent']]]]] = None,
                  rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,7 +514,7 @@ class AutoGroupingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_ids_scope: The IDs of resource groups. Separate multiple IDs with commas (,).
         :param pulumi.Input[_builtins.str] resource_ids_scope: The IDs of resources. Separate multiple IDs with commas (,).
         :param pulumi.Input[_builtins.str] resource_types_scope: The resource types. Separate multiple resource types with commas (,).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]] rule_contents: The content records of the rule. See `rule_contents` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict', 'outputs.AutoGroupingRuleRuleContent']]]] rule_contents: The content records of the rule. See `rule_contents` below.
         :param pulumi.Input[_builtins.str] rule_desc: The description of the rule.
         :param pulumi.Input[_builtins.str] rule_name: The name of the rule.
         :param pulumi.Input[_builtins.str] rule_type: The type of the rule. Valid values:
@@ -616,7 +616,7 @@ class AutoGroupingRule(pulumi.CustomResource):
                  resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
+                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict', 'outputs.AutoGroupingRuleRuleContent']]]]] = None,
                  rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,7 +665,7 @@ class AutoGroupingRule(pulumi.CustomResource):
             resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
             resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
             resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
-            rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
+            rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict', 'outputs.AutoGroupingRuleRuleContent']]]]] = None,
             rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             rule_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutoGroupingRule':
@@ -684,7 +684,7 @@ class AutoGroupingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_ids_scope: The IDs of resource groups. Separate multiple IDs with commas (,).
         :param pulumi.Input[_builtins.str] resource_ids_scope: The IDs of resources. Separate multiple IDs with commas (,).
         :param pulumi.Input[_builtins.str] resource_types_scope: The resource types. Separate multiple resource types with commas (,).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]] rule_contents: The content records of the rule. See `rule_contents` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict', 'outputs.AutoGroupingRuleRuleContent']]]] rule_contents: The content records of the rule. See `rule_contents` below.
         :param pulumi.Input[_builtins.str] rule_desc: The description of the rule.
         :param pulumi.Input[_builtins.str] rule_name: The name of the rule.
         :param pulumi.Input[_builtins.str] rule_type: The type of the rule. Valid values:

@@ -169,7 +169,7 @@ class CustomLine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
+                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict', 'outputs.CustomLineIpSegmentList']]]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -211,7 +211,7 @@ class CustomLine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_line_name: The name of the Custom Line.
         :param pulumi.Input[_builtins.str] domain_name: The Domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict', 'outputs.CustomLineIpSegmentList']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[_builtins.str] lang: The lang.
         """
         ...
@@ -272,7 +272,7 @@ class CustomLine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
+                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict', 'outputs.CustomLineIpSegmentList']]]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -305,7 +305,7 @@ class CustomLine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
+            ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict', 'outputs.CustomLineIpSegmentList']]]]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomLine':
         """
         Get an existing CustomLine resource's state with the given name, id, and optional extra
@@ -316,7 +316,7 @@ class CustomLine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_line_name: The name of the Custom Line.
         :param pulumi.Input[_builtins.str] domain_name: The Domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict', 'outputs.CustomLineIpSegmentList']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[_builtins.str] lang: The lang.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

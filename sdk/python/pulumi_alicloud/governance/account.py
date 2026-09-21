@@ -363,7 +363,7 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.int]] = None,
                  account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
+                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict', 'outputs.AccountAccountTag']]]]] = None,
                  baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -429,7 +429,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_name_prefix: Account name prefix.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]] account_tags: The tags of the account See `account_tags` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict', 'outputs.AccountAccountTag']]]] account_tags: The tags of the account See `account_tags` below.
         :param pulumi.Input[_builtins.str] baseline_id: The baseline ID.
                
                If it is left blank, the system default baseline is used by default.
@@ -518,7 +518,7 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.int]] = None,
                  account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
+                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict', 'outputs.AccountAccountTag']]]]] = None,
                  baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -556,7 +556,7 @@ class Account(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.int]] = None,
             account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-            account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
+            account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict', 'outputs.AccountAccountTag']]]]] = None,
             baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -576,7 +576,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_name_prefix: Account name prefix.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]] account_tags: The tags of the account See `account_tags` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict', 'outputs.AccountAccountTag']]]] account_tags: The tags of the account See `account_tags` below.
         :param pulumi.Input[_builtins.str] baseline_id: The baseline ID.
                
                If it is left blank, the system default baseline is used by default.

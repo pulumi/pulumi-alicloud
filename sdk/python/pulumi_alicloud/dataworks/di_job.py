@@ -475,17 +475,17 @@ class DiJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict']]]]] = None,
+                 destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict', 'outputs.DiJobDestinationDataSourceSetting']]]]] = None,
                  destination_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  job_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict']]] = None,
+                 job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict', 'outputs.DiJobJobSettings']]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict']]] = None,
-                 source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict']]]]] = None,
+                 resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict', 'outputs.DiJobResourceSettings']]] = None,
+                 source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict', 'outputs.DiJobSourceDataSourceSetting']]]]] = None,
                  source_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict']]]]] = None,
-                 transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict']]]]] = None,
+                 table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict', 'outputs.DiJobTableMapping']]]]] = None,
+                 transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict', 'outputs.DiJobTransformationRule']]]]] = None,
                  __props__=None):
         """
         Provides a Data Works Di Job resource.
@@ -612,10 +612,10 @@ class DiJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the integration task
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict']]]] destination_data_source_settings: Destination data source See `destination_data_source_settings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict', 'outputs.DiJobDestinationDataSourceSetting']]]] destination_data_source_settings: Destination data source See `destination_data_source_settings` below.
         :param pulumi.Input[_builtins.str] destination_data_source_type: The type of the target data source. Enumerated values: Hologres and Hive.
         :param pulumi.Input[_builtins.str] job_name: Task Name.
-        :param pulumi.Input[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict']] job_settings: The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+        :param pulumi.Input[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict', 'outputs.DiJobJobSettings']] job_settings: The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
         :param pulumi.Input[_builtins.str] migration_type: Synchronization type, optional enumeration values are:
                
                Fulllandrealtimeincremental (full and real-time incremental)
@@ -628,11 +628,11 @@ class DiJob(pulumi.CustomResource):
                
                FullAndOfflineIncremental (full amount + offline increment)
         :param pulumi.Input[_builtins.int] project_id: Project Id
-        :param pulumi.Input[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict']] resource_settings: Resource Group Properties See `resource_settings` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict']]]] source_data_source_settings: Source data source setting List See `source_data_source_settings` below.
+        :param pulumi.Input[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict', 'outputs.DiJobResourceSettings']] resource_settings: Resource Group Properties See `resource_settings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict', 'outputs.DiJobSourceDataSourceSetting']]]] source_data_source_settings: Source data source setting List See `source_data_source_settings` below.
         :param pulumi.Input[_builtins.str] source_data_source_type: The type of the source data source. The enumerated value is MySQL.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict']]]] table_mappings: Synchronize object transformation mapping list See `table_mappings` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict']]]] transformation_rules: Definition list of synchronization object conversion rules See `transformation_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict', 'outputs.DiJobTableMapping']]]] table_mappings: Synchronize object transformation mapping list See `table_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict', 'outputs.DiJobTransformationRule']]]] transformation_rules: Definition list of synchronization object conversion rules See `transformation_rules` below.
         """
         ...
     @overload
@@ -778,17 +778,17 @@ class DiJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict']]]]] = None,
+                 destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict', 'outputs.DiJobDestinationDataSourceSetting']]]]] = None,
                  destination_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  job_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict']]] = None,
+                 job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict', 'outputs.DiJobJobSettings']]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict']]] = None,
-                 source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict']]]]] = None,
+                 resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict', 'outputs.DiJobResourceSettings']]] = None,
+                 source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict', 'outputs.DiJobSourceDataSourceSetting']]]]] = None,
                  source_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict']]]]] = None,
-                 transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict']]]]] = None,
+                 table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict', 'outputs.DiJobTableMapping']]]]] = None,
+                 transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict', 'outputs.DiJobTransformationRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -838,18 +838,18 @@ class DiJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict']]]]] = None,
+            destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict', 'outputs.DiJobDestinationDataSourceSetting']]]]] = None,
             destination_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
             di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
             job_name: pulumi.Input[Optional[_builtins.str]] = None,
-            job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict']]] = None,
+            job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict', 'outputs.DiJobJobSettings']]] = None,
             migration_type: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.int]] = None,
-            resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict']]] = None,
-            source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict']]]]] = None,
+            resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict', 'outputs.DiJobResourceSettings']]] = None,
+            source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict', 'outputs.DiJobSourceDataSourceSetting']]]]] = None,
             source_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
-            table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict']]]]] = None,
-            transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict']]]]] = None) -> 'DiJob':
+            table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict', 'outputs.DiJobTableMapping']]]]] = None,
+            transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict', 'outputs.DiJobTransformationRule']]]]] = None) -> 'DiJob':
         """
         Get an existing DiJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -858,11 +858,11 @@ class DiJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the integration task
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict']]]] destination_data_source_settings: Destination data source See `destination_data_source_settings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict', 'outputs.DiJobDestinationDataSourceSetting']]]] destination_data_source_settings: Destination data source See `destination_data_source_settings` below.
         :param pulumi.Input[_builtins.str] destination_data_source_type: The type of the target data source. Enumerated values: Hologres and Hive.
         :param pulumi.Input[_builtins.int] di_job_id: Integration Task Id
         :param pulumi.Input[_builtins.str] job_name: Task Name.
-        :param pulumi.Input[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict']] job_settings: The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
+        :param pulumi.Input[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict', 'outputs.DiJobJobSettings']] job_settings: The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
         :param pulumi.Input[_builtins.str] migration_type: Synchronization type, optional enumeration values are:
                
                Fulllandrealtimeincremental (full and real-time incremental)
@@ -875,11 +875,11 @@ class DiJob(pulumi.CustomResource):
                
                FullAndOfflineIncremental (full amount + offline increment)
         :param pulumi.Input[_builtins.int] project_id: Project Id
-        :param pulumi.Input[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict']] resource_settings: Resource Group Properties See `resource_settings` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict']]]] source_data_source_settings: Source data source setting List See `source_data_source_settings` below.
+        :param pulumi.Input[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict', 'outputs.DiJobResourceSettings']] resource_settings: Resource Group Properties See `resource_settings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict', 'outputs.DiJobSourceDataSourceSetting']]]] source_data_source_settings: Source data source setting List See `source_data_source_settings` below.
         :param pulumi.Input[_builtins.str] source_data_source_type: The type of the source data source. The enumerated value is MySQL.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict']]]] table_mappings: Synchronize object transformation mapping list See `table_mappings` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict']]]] transformation_rules: Definition list of synchronization object conversion rules See `transformation_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict', 'outputs.DiJobTableMapping']]]] table_mappings: Synchronize object transformation mapping list See `table_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict', 'outputs.DiJobTransformationRule']]]] transformation_rules: Definition list of synchronization object conversion rules See `transformation_rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

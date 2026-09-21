@@ -682,7 +682,7 @@ class Instance(pulumi.CustomResource):
                  advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
+                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict', 'outputs.InstanceEcsList']]]]] = None,
                  enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  fs_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -744,7 +744,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
         :param pulumi.Input[_builtins.str] category: Category of database file system.
         :param pulumi.Input[_builtins.bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict', 'outputs.InstanceEcsList']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         :param pulumi.Input[_builtins.bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[_builtins.bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[_builtins.str] fs_name: Database file system name.
@@ -837,7 +837,7 @@ class Instance(pulumi.CustomResource):
                  advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
+                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict', 'outputs.InstanceEcsList']]]]] = None,
                  enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  fs_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -899,7 +899,7 @@ class Instance(pulumi.CustomResource):
             category: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
-            ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
+            ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict', 'outputs.InstanceEcsList']]]]] = None,
             enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption: pulumi.Input[Optional[_builtins.bool]] = None,
             fs_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -925,7 +925,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] category: Category of database file system.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict', 'outputs.InstanceEcsList']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         :param pulumi.Input[_builtins.bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[_builtins.bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[_builtins.str] fs_name: Database file system name.

@@ -175,7 +175,7 @@ class QuotaPlan(pulumi.CustomResource):
                  is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None,
+                 quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict', 'outputs.QuotaPlanQuota']]] = None,
                  __props__=None):
         """
         Provides a Max Compute Quota Plan resource.
@@ -244,7 +244,7 @@ class QuotaPlan(pulumi.CustomResource):
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
-        :param pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']] quota: Quota property See `quota` below.
+        :param pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict', 'outputs.QuotaPlanQuota']] quota: Quota property See `quota` below.
         """
         ...
     @overload
@@ -331,7 +331,7 @@ class QuotaPlan(pulumi.CustomResource):
                  is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None,
+                 quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict', 'outputs.QuotaPlanQuota']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -362,7 +362,7 @@ class QuotaPlan(pulumi.CustomResource):
             is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
             nickname: pulumi.Input[Optional[_builtins.str]] = None,
             plan_name: pulumi.Input[Optional[_builtins.str]] = None,
-            quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None) -> 'QuotaPlan':
+            quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict', 'outputs.QuotaPlanQuota']]] = None) -> 'QuotaPlan':
         """
         Get an existing QuotaPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -374,7 +374,7 @@ class QuotaPlan(pulumi.CustomResource):
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
-        :param pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']] quota: Quota property See `quota` below.
+        :param pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict', 'outputs.QuotaPlanQuota']] quota: Quota property See `quota` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

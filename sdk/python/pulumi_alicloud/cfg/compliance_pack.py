@@ -257,8 +257,8 @@ class CompliancePack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
                  compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict', 'outputs.CompliancePackConfigRuleId']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict', 'outputs.CompliancePackConfigRule']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -336,8 +336,8 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict', 'outputs.CompliancePackConfigRuleId']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict', 'outputs.CompliancePackConfigRule']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[_builtins.str] description: The Description of compliance pack.
         :param pulumi.Input[_builtins.int] risk_level: The Risk Level. Valid values:
         """
@@ -434,8 +434,8 @@ class CompliancePack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
                  compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict', 'outputs.CompliancePackConfigRuleId']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict', 'outputs.CompliancePackConfigRule']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -472,8 +472,8 @@ class CompliancePack(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
             compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
-            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
+            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict', 'outputs.CompliancePackConfigRuleId']]]]] = None,
+            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict', 'outputs.CompliancePackConfigRule']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             risk_level: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CompliancePack':
@@ -486,8 +486,8 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict', 'outputs.CompliancePackConfigRuleId']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict', 'outputs.CompliancePackConfigRule']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[_builtins.str] description: The Description of compliance pack.
         :param pulumi.Input[_builtins.int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the Compliance Pack.

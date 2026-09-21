@@ -516,7 +516,7 @@ class Domain(pulumi.CustomResource):
                  m_tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict']]] = None,
+                 tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict', 'outputs.DomainTlsCipherSuitesConfig']]] = None,
                  tls_max: pulumi.Input[Optional[_builtins.str]] = None,
                  tls_min: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -573,7 +573,7 @@ class Domain(pulumi.CustomResource):
                - HTTP: Supports HTTP only.
                - HTTPS: Supports HTTPS only.
         :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID (https://help.aliyun.com/document_detail/151181.html).
-        :param pulumi.Input[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict']] tls_cipher_suites_config: TLS cipher suites configuration. See `tls_cipher_suites_config` below.
+        :param pulumi.Input[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict', 'outputs.DomainTlsCipherSuitesConfig']] tls_cipher_suites_config: TLS cipher suites configuration. See `tls_cipher_suites_config` below.
         :param pulumi.Input[_builtins.str] tls_max: The maximum version of the TLS protocol supported, up to TLS 1.3.
         :param pulumi.Input[_builtins.str] tls_min: Minimum TLS protocol version. TLS 1.0 is the minimum supported version.
         """
@@ -645,7 +645,7 @@ class Domain(pulumi.CustomResource):
                  m_tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict']]] = None,
+                 tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict', 'outputs.DomainTlsCipherSuitesConfig']]] = None,
                  tls_max: pulumi.Input[Optional[_builtins.str]] = None,
                  tls_min: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -694,7 +694,7 @@ class Domain(pulumi.CustomResource):
             m_tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict']]] = None,
+            tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict', 'outputs.DomainTlsCipherSuitesConfig']]] = None,
             tls_max: pulumi.Input[Optional[_builtins.str]] = None,
             tls_min: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
@@ -719,7 +719,7 @@ class Domain(pulumi.CustomResource):
                - HTTP: Supports HTTP only.
                - HTTPS: Supports HTTPS only.
         :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID (https://help.aliyun.com/document_detail/151181.html).
-        :param pulumi.Input[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict']] tls_cipher_suites_config: TLS cipher suites configuration. See `tls_cipher_suites_config` below.
+        :param pulumi.Input[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict', 'outputs.DomainTlsCipherSuitesConfig']] tls_cipher_suites_config: TLS cipher suites configuration. See `tls_cipher_suites_config` below.
         :param pulumi.Input[_builtins.str] tls_max: The maximum version of the TLS protocol supported, up to TLS 1.3.
         :param pulumi.Input[_builtins.str] tls_min: Minimum TLS protocol version. TLS 1.0 is the minimum supported version.
         """

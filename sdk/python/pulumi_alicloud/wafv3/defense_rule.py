@@ -386,7 +386,7 @@ class DefenseRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict', 'outputs.DefenseRuleConfig']]] = None,
                  defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
                  defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
                  defense_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -467,7 +467,7 @@ class DefenseRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']] config: Rule configuration content, in JSON format, constructed with a series of parameters.
+        :param pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict', 'outputs.DefenseRuleConfig']] config: Rule configuration content, in JSON format, constructed with a series of parameters.
                
                > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
                See `config` below.
@@ -574,7 +574,7 @@ class DefenseRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict', 'outputs.DefenseRuleConfig']]] = None,
                  defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
                  defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
                  defense_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -621,7 +621,7 @@ class DefenseRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict', 'outputs.DefenseRuleConfig']]] = None,
             defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
             defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
             defense_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -639,7 +639,7 @@ class DefenseRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']] config: Rule configuration content, in JSON format, constructed with a series of parameters.
+        :param pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict', 'outputs.DefenseRuleConfig']] config: Rule configuration content, in JSON format, constructed with a series of parameters.
                
                > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
                See `config` below.

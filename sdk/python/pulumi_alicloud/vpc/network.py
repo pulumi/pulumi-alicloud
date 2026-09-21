@@ -1257,7 +1257,7 @@ class Network(pulumi.CustomResource):
             ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
             ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
-            ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict']]]]] = None,
+            ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict', 'outputs.NetworkIpv6CidrBlock']]]]] = None,
             ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1301,7 +1301,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
                
                > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict']]]] ipv6_cidr_blocks: The IPv6 CIDR block information of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict', 'outputs.NetworkIpv6CidrBlock']]]] ipv6_cidr_blocks: The IPv6 CIDR block information of the VPC.
         :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
                - `BGP` (default): Alibaba Cloud BGP IPv6.
                - `ChinaMobile`: China Mobile (single line).

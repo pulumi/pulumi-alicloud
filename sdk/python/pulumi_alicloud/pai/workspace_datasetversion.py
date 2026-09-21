@@ -491,7 +491,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
                  data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict', 'outputs.WorkspaceDatasetversionLabel']]]]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
                  property: pulumi.Input[Optional[_builtins.str]] = None,
                  source_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -578,7 +578,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
                - NAS: Alibaba cloud file storage (NAS).
         :param pulumi.Input[_builtins.str] dataset_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] description: Description of dataset version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]] labels: The tag of the resource See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict', 'outputs.WorkspaceDatasetversionLabel']]]] labels: The tag of the resource See `labels` below.
         :param pulumi.Input[_builtins.str] options: The extended field, which is of the JsonString type.
                
                When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
@@ -696,7 +696,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
                  data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict', 'outputs.WorkspaceDatasetversionLabel']]]]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
                  property: pulumi.Input[Optional[_builtins.str]] = None,
                  source_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -748,7 +748,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
             data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict', 'outputs.WorkspaceDatasetversionLabel']]]]] = None,
             options: pulumi.Input[Optional[_builtins.str]] = None,
             property: pulumi.Input[Optional[_builtins.str]] = None,
             source_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -770,7 +770,7 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
                - NAS: Alibaba cloud file storage (NAS).
         :param pulumi.Input[_builtins.str] dataset_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] description: Description of dataset version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]] labels: The tag of the resource See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict', 'outputs.WorkspaceDatasetversionLabel']]]] labels: The tag of the resource See `labels` below.
         :param pulumi.Input[_builtins.str] options: The extended field, which is of the JsonString type.
                
                When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.

@@ -204,7 +204,7 @@ class ZoneAttachment(pulumi.CustomResource):
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict', 'outputs.ZoneAttachmentVpc']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -310,7 +310,7 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] lang: The language of code.
         :param pulumi.Input[_builtins.str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict', 'outputs.ZoneAttachmentVpc']]]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         """
         ...
@@ -435,7 +435,7 @@ class ZoneAttachment(pulumi.CustomResource):
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict', 'outputs.ZoneAttachmentVpc']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -466,7 +466,7 @@ class ZoneAttachment(pulumi.CustomResource):
             lang: pulumi.Input[Optional[_builtins.str]] = None,
             user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict', 'outputs.ZoneAttachmentVpc']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneAttachment':
         """
         Get an existing ZoneAttachment resource's state with the given name, id, and optional extra
@@ -478,7 +478,7 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] lang: The language of code.
         :param pulumi.Input[_builtins.str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict', 'outputs.ZoneAttachmentVpc']]]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

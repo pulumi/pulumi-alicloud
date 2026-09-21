@@ -248,7 +248,7 @@ class Aggregator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregator_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
+                 aggregator_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict', 'outputs.AggregatorAggregatorAccount']]]]] = None,
                  aggregator_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aggregator_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -299,7 +299,7 @@ class Aggregator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict', 'outputs.AggregatorAggregatorAccount']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
                > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
         :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
         :param pulumi.Input[_builtins.str] aggregator_type: The type of the account group. Default value: `CUSTOM`. Valid values:
@@ -373,7 +373,7 @@ class Aggregator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregator_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
+                 aggregator_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict', 'outputs.AggregatorAggregatorAccount']]]]] = None,
                  aggregator_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aggregator_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -408,7 +408,7 @@ class Aggregator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregator_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
+            aggregator_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict', 'outputs.AggregatorAggregatorAccount']]]]] = None,
             aggregator_name: pulumi.Input[Optional[_builtins.str]] = None,
             aggregator_type: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
@@ -422,7 +422,7 @@ class Aggregator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict', 'outputs.AggregatorAggregatorAccount']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
                > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
         :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
         :param pulumi.Input[_builtins.str] aggregator_type: The type of the account group. Default value: `CUSTOM`. Valid values:

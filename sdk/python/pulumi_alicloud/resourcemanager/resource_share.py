@@ -421,9 +421,9 @@ class ResourceShare(pulumi.CustomResource):
                  permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
+                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict', 'outputs.ResourceShareResourceProperty']]]]] = None,
                  resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict', 'outputs.ResourceShareResource']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -474,9 +474,9 @@ class ResourceShare(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]] resource_properties: A list of resource properties. See `resource_properties` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict', 'outputs.ResourceShareResourceProperty']]]] resource_properties: A list of resource properties. See `resource_properties` below.
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]] resources: List of shared resources. See `resources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict', 'outputs.ResourceShareResource']]]] resources: List of shared resources. See `resources` below.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -544,9 +544,9 @@ class ResourceShare(pulumi.CustomResource):
                  permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
+                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict', 'outputs.ResourceShareResourceProperty']]]]] = None,
                  resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict', 'outputs.ResourceShareResource']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -587,10 +587,10 @@ class ResourceShare(pulumi.CustomResource):
             permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
+            resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict', 'outputs.ResourceShareResourceProperty']]]]] = None,
             resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
             resource_share_owner: pulumi.Input[Optional[_builtins.str]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict', 'outputs.ResourceShareResource']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceShare':
@@ -612,10 +612,10 @@ class ResourceShare(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]] resource_properties: A list of resource properties. See `resource_properties` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict', 'outputs.ResourceShareResourceProperty']]]] resource_properties: A list of resource properties. See `resource_properties` below.
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
         :param pulumi.Input[_builtins.str] resource_share_owner: The owner of resource share,  `Self` and `OtherAccounts`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]] resources: List of shared resources. See `resources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict', 'outputs.ResourceShareResource']]]] resources: List of shared resources. See `resources` below.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of resource share.  `Active`,`Deleted` and `Deleting`.

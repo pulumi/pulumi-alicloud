@@ -204,7 +204,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict', 'outputs.CooDomainPreciseAccessRuleCondition']]]]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  expires: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -270,7 +270,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action to take on match. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict']]]] conditions: List of matching conditions. See `condition` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict', 'outputs.CooDomainPreciseAccessRuleCondition']]]] conditions: List of matching conditions. See `condition` below.
         :param pulumi.Input[_builtins.str] domain: Domain name of the website service.
                > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.int] expires: Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
@@ -356,7 +356,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict', 'outputs.CooDomainPreciseAccessRuleCondition']]]]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  expires: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -391,7 +391,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict', 'outputs.CooDomainPreciseAccessRuleCondition']]]]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             expires: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'CooDomainPreciseAccessRule':
@@ -403,7 +403,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action to take on match. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict']]]] conditions: List of matching conditions. See `condition` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict', 'outputs.CooDomainPreciseAccessRuleCondition']]]] conditions: List of matching conditions. See `condition` below.
         :param pulumi.Input[_builtins.str] domain: Domain name of the website service.
                > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.int] expires: Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.

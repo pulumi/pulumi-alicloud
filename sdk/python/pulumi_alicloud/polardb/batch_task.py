@@ -234,7 +234,7 @@ class BatchTask(pulumi.CustomResource):
                  instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  task_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict']]]]] = None,
+                 task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict', 'outputs.BatchTaskTaskParam']]]]] = None,
                  task_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -284,7 +284,7 @@ class BatchTask(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A list of PolarDB application IDs to which the task will be applied.
         :param pulumi.Input[_builtins.str] region_id: The region ID where the PolarDB applications are located. If not specified, the provider's region is used.
         :param pulumi.Input[_builtins.str] task_name: The name of the batch task.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict']]]] task_params: The parameters for the task. See `task_params` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict', 'outputs.BatchTaskTaskParam']]]] task_params: The parameters for the task. See `task_params` below.
         :param pulumi.Input[_builtins.str] task_type: The type of the batch task. Valid values: `polarclaw_install_skills`, `polarclaw_uninstall_skills`.
         """
         ...
@@ -353,7 +353,7 @@ class BatchTask(pulumi.CustomResource):
                  instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  task_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict']]]]] = None,
+                 task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict', 'outputs.BatchTaskTaskParam']]]]] = None,
                  task_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -391,7 +391,7 @@ class BatchTask(pulumi.CustomResource):
             instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             task_name: pulumi.Input[Optional[_builtins.str]] = None,
-            task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict']]]]] = None,
+            task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict', 'outputs.BatchTaskTaskParam']]]]] = None,
             task_status: pulumi.Input[Optional[_builtins.str]] = None,
             task_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'BatchTask':
         """
@@ -405,7 +405,7 @@ class BatchTask(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A list of PolarDB application IDs to which the task will be applied.
         :param pulumi.Input[_builtins.str] region_id: The region ID where the PolarDB applications are located. If not specified, the provider's region is used.
         :param pulumi.Input[_builtins.str] task_name: The name of the batch task.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict']]]] task_params: The parameters for the task. See `task_params` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict', 'outputs.BatchTaskTaskParam']]]] task_params: The parameters for the task. See `task_params` below.
         :param pulumi.Input[_builtins.str] task_status: The status of the task. Valid values may include `Running`, `Success`, `Failed`, etc.
         :param pulumi.Input[_builtins.str] task_type: The type of the batch task. Valid values: `polarclaw_install_skills`, `polarclaw_uninstall_skills`.
         """

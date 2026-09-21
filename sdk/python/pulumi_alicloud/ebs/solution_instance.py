@@ -234,7 +234,7 @@ class SolutionInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict', 'outputs.SolutionInstanceParameter']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -348,7 +348,7 @@ class SolutionInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Solution Instance Description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict', 'outputs.SolutionInstanceParameter']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] solution_id: Solution ID.
         :param pulumi.Input[_builtins.str] solution_instance_name: Solution Instance Name.
@@ -481,7 +481,7 @@ class SolutionInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict', 'outputs.SolutionInstanceParameter']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,7 +515,7 @@ class SolutionInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict', 'outputs.SolutionInstanceParameter']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             solution_id: pulumi.Input[Optional[_builtins.str]] = None,
             solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -529,7 +529,7 @@ class SolutionInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Solution Instance Creation Time.
         :param pulumi.Input[_builtins.str] description: Solution Instance Description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict', 'outputs.SolutionInstanceParameter']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] solution_id: Solution ID.
         :param pulumi.Input[_builtins.str] solution_instance_name: Solution Instance Name.

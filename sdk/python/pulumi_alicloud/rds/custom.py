@@ -1417,7 +1417,7 @@ class Custom(pulumi.CustomResource):
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_extra_param: pulumi.Input[Optional[_builtins.str]] = None,
                  create_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict', 'outputs.CustomDataDisk']]]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1443,7 +1443,7 @@ class Custom(pulumi.CustomResource):
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  support_case: pulumi.Input[Optional[_builtins.str]] = None,
-                 system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
+                 system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict', 'outputs.CustomSystemDisk']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1562,7 +1562,7 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[_builtins.str] create_mode: Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: List of data disks.   See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict', 'outputs.CustomDataDisk']]]] data_disks: List of data disks.   See `data_disk` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: Deployment set ID.
         :param pulumi.Input[_builtins.str] description: The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] direction: The instance specification change type. Valid values:
@@ -1634,7 +1634,7 @@ class Custom(pulumi.CustomResource):
                - `Stopping`: The instance is stopping.
                - `Stopped`: The instance is stopped.
         :param pulumi.Input[_builtins.str] support_case: The deployment type of RDS Custom. Valid values:
-        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: The system disk specification. See `system_disk` below.
+        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict', 'outputs.CustomSystemDisk']] system_disk: The system disk specification. See `system_disk` below.
                
                > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Details of the queried instances and their tags.
@@ -1775,7 +1775,7 @@ class Custom(pulumi.CustomResource):
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_extra_param: pulumi.Input[Optional[_builtins.str]] = None,
                  create_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict', 'outputs.CustomDataDisk']]]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1801,7 +1801,7 @@ class Custom(pulumi.CustomResource):
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  support_case: pulumi.Input[Optional[_builtins.str]] = None,
-                 system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
+                 system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict', 'outputs.CustomSystemDisk']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1870,7 +1870,7 @@ class Custom(pulumi.CustomResource):
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             create_extra_param: pulumi.Input[Optional[_builtins.str]] = None,
             create_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict', 'outputs.CustomDataDisk']]]]] = None,
             deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             direction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1897,7 +1897,7 @@ class Custom(pulumi.CustomResource):
             spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             support_case: pulumi.Input[Optional[_builtins.str]] = None,
-            system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
+            system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict', 'outputs.CustomSystemDisk']]] = None,
             system_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1917,7 +1917,7 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[_builtins.str] create_mode: Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: List of data disks.   See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict', 'outputs.CustomDataDisk']]]] data_disks: List of data disks.   See `data_disk` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: Deployment set ID.
         :param pulumi.Input[_builtins.str] description: The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] direction: The instance specification change type. Valid values:
@@ -1990,7 +1990,7 @@ class Custom(pulumi.CustomResource):
                - `Stopping`: The instance is stopping.
                - `Stopped`: The instance is stopped.
         :param pulumi.Input[_builtins.str] support_case: The deployment type of RDS Custom. Valid values:
-        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: The system disk specification. See `system_disk` below.
+        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict', 'outputs.CustomSystemDisk']] system_disk: The system disk specification. See `system_disk` below.
                
                > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
         :param pulumi.Input[_builtins.str] system_disk_id: The ID of the system disk attached to the Custom instance.

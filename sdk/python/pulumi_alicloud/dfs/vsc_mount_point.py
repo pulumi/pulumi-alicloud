@@ -328,7 +328,7 @@ class VscMountPoint(pulumi.CustomResource):
             alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
-            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict']]]]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict', 'outputs.VscMountPointInstance']]]]] = None,
             mount_point_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VscMountPoint':
         """
         Get an existing VscMountPoint resource's state with the given name, id, and optional extra
@@ -340,7 +340,7 @@ class VscMountPoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alias_prefix: Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
         :param pulumi.Input[_builtins.str] description: The description of the Mount point.  The length is 0 to 100 characters.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the HDFS file system resource associated with the VSC mount point.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict']]]] instances: The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict', 'outputs.VscMountPointInstance']]]] instances: The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
         :param pulumi.Input[_builtins.str] mount_point_id: VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

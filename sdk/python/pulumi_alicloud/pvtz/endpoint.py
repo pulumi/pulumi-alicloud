@@ -214,7 +214,7 @@ class Endpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict', 'outputs.EndpointIpConfig']]]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -289,7 +289,7 @@ class Endpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict', 'outputs.EndpointIpConfig']]]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vpc_region_id: The Region of the VPC.
@@ -383,7 +383,7 @@ class Endpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict', 'outputs.EndpointIpConfig']]]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -423,7 +423,7 @@ class Endpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
+            ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict', 'outputs.EndpointIpConfig']]]]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -436,7 +436,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict', 'outputs.EndpointIpConfig']]]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.

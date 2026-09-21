@@ -154,7 +154,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None,
+                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict', 'outputs.LoadBalancerIntranetIntranet']]]]] = None,
                  __props__=None):
         """
         Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
@@ -240,7 +240,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[_builtins.str] intranet_slb_id: The intranet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]] intranets: The bound private network SLB. See `intranet` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict', 'outputs.LoadBalancerIntranetIntranet']]]] intranets: The bound private network SLB. See `intranet` below.
         """
         ...
     @overload
@@ -345,7 +345,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None,
+                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict', 'outputs.LoadBalancerIntranetIntranet']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -376,7 +376,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             intranet_ip: pulumi.Input[Optional[_builtins.str]] = None,
             intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
-            intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None) -> 'LoadBalancerIntranet':
+            intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict', 'outputs.LoadBalancerIntranetIntranet']]]]] = None) -> 'LoadBalancerIntranet':
         """
         Get an existing LoadBalancerIntranet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -387,7 +387,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[_builtins.str] intranet_ip: Use designated private network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[_builtins.str] intranet_slb_id: The intranet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]] intranets: The bound private network SLB. See `intranet` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict', 'outputs.LoadBalancerIntranetIntranet']]]] intranets: The bound private network SLB. See `intranet` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

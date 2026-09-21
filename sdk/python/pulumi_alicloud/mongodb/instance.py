@@ -1897,7 +1897,7 @@ class Instance(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
                  readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1907,7 +1907,7 @@ class Instance(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict', 'outputs.InstanceSecurityIpGroup']]]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2024,7 +2024,7 @@ class Instance(pulumi.CustomResource):
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                > **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -2035,7 +2035,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict', 'outputs.InstanceSecurityIpGroup']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
@@ -2171,7 +2171,7 @@ class Instance(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
                  readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2181,7 +2181,7 @@ class Instance(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict', 'outputs.InstanceSecurityIpGroup']]]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2309,12 +2309,12 @@ class Instance(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_type: pulumi.Input[Optional[_builtins.str]] = None,
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
             readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
             replica_set_name: pulumi.Input[Optional[_builtins.str]] = None,
-            replica_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict']]]]] = None,
+            replica_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict', 'outputs.InstanceReplicaSet']]]]] = None,
             replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             restore_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2322,7 +2322,7 @@ class Instance(pulumi.CustomResource):
             role_arn: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]]] = None,
+            security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict', 'outputs.InstanceSecurityIpGroup']]]]] = None,
             security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
             src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2335,7 +2335,7 @@ class Instance(pulumi.CustomResource):
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
-            zone_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneInfoArgs', 'InstanceZoneInfoArgsDict']]]]] = None) -> 'Instance':
+            zone_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneInfoArgs', 'InstanceZoneInfoArgsDict', 'outputs.InstanceZoneInfo']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2382,12 +2382,12 @@ class Instance(pulumi.CustomResource):
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                > **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[_builtins.str] replica_set_name: The name of the mongo replica set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict']]]] replica_sets: Replica set instance information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict', 'outputs.InstanceReplicaSet']]]] replica_sets: Replica set instance information.
         :param pulumi.Input[_builtins.int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
@@ -2396,7 +2396,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict', 'outputs.InstanceSecurityIpGroup']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
@@ -2417,7 +2417,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneInfoArgs', 'InstanceZoneInfoArgsDict']]]] zone_infos: (Available since v1.271.0) The information of nodes in the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneInfoArgs', 'InstanceZoneInfoArgsDict', 'outputs.InstanceZoneInfo']]]] zone_infos: (Available since v1.271.0) The information of nodes in the zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

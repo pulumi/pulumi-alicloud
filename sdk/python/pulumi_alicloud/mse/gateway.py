@@ -590,7 +590,7 @@ class Gateway(pulumi.CustomResource):
             gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
             internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
             replica: pulumi.Input[Optional[_builtins.int]] = None,
-            slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict']]]]] = None,
+            slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict', 'outputs.GatewaySlbList']]]]] = None,
             slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
             spec: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -609,7 +609,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway .
         :param pulumi.Input[_builtins.str] internet_slb_spec: Public network SLB specifications.
         :param pulumi.Input[_builtins.int] replica: Number of Gateway Nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict']]]] slb_lists: A list of gateway Slb.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict', 'outputs.GatewaySlbList']]]] slb_lists: A list of gateway Slb.
         :param pulumi.Input[_builtins.str] slb_spec: Private network SLB specifications.
         :param pulumi.Input[_builtins.str] spec: Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
         :param pulumi.Input[_builtins.str] status: The status of the gateway.

@@ -105,7 +105,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]]] = None,
                  __props__=None):
         """
         Provides a network acl attachment resource to associate network acls to vswitches.
@@ -155,7 +155,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
         ...
     @overload
@@ -224,7 +224,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -251,7 +251,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None) -> 'NetworkAclAttachment':
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]]] = None) -> 'NetworkAclAttachment':
         """
         Get an existing NetworkAclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -260,7 +260,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict', 'outputs.NetworkAclAttachmentResource']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

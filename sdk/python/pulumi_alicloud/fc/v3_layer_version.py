@@ -330,7 +330,7 @@ class V3LayerVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
-                 code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict', 'outputs.V3LayerVersionCode']]] = None,
                  compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  layer_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -382,7 +382,7 @@ class V3LayerVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The access permission of the layer, 1: public, 0: private, default is private
-        :param pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']] code: Layer code configuration See `code` below.
+        :param pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict', 'outputs.V3LayerVersionCode']] code: Layer code configuration See `code` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatible_runtimes: List of runtime environments supported by the layer
         :param pulumi.Input[_builtins.str] description: Description of the version
         :param pulumi.Input[_builtins.str] layer_name: Name of the layer
@@ -453,7 +453,7 @@ class V3LayerVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
-                 code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict', 'outputs.V3LayerVersionCode']]] = None,
                  compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  layer_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -492,7 +492,7 @@ class V3LayerVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl: pulumi.Input[Optional[_builtins.str]] = None,
-            code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+            code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict', 'outputs.V3LayerVersionCode']]] = None,
             code_size: pulumi.Input[Optional[_builtins.str]] = None,
             compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -510,7 +510,7 @@ class V3LayerVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The access permission of the layer, 1: public, 0: private, default is private
-        :param pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']] code: Layer code configuration See `code` below.
+        :param pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict', 'outputs.V3LayerVersionCode']] code: Layer code configuration See `code` below.
         :param pulumi.Input[_builtins.str] code_size: (Available since v1.234.0) The code package size of the layer, in bytes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatible_runtimes: List of runtime environments supported by the layer
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource

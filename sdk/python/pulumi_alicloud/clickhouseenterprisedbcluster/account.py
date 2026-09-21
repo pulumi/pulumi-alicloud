@@ -254,7 +254,7 @@ class Account(pulumi.CustomResource):
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
+                 dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict', 'outputs.AccountDmlAuthSetting']]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -334,7 +334,7 @@ class Account(pulumi.CustomResource):
                - `SuperAccount`: The privileged account.
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
         :param pulumi.Input[_builtins.str] description: Note information.
-        :param pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']] dml_auth_setting: Authorization information. See `dml_auth_setting` below.
+        :param pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict', 'outputs.AccountDmlAuthSetting']] dml_auth_setting: Authorization information. See `dml_auth_setting` below.
         :param pulumi.Input[_builtins.str] password: Database account password. Set the following rules.
                - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
                - Oh-! @#$%^& *()_+-= is a special character.
@@ -434,7 +434,7 @@ class Account(pulumi.CustomResource):
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
+                 dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict', 'outputs.AccountDmlAuthSetting']]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -475,7 +475,7 @@ class Account(pulumi.CustomResource):
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
+            dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict', 'outputs.AccountDmlAuthSetting']]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
@@ -490,7 +490,7 @@ class Account(pulumi.CustomResource):
                - `SuperAccount`: The privileged account.
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
         :param pulumi.Input[_builtins.str] description: Note information.
-        :param pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']] dml_auth_setting: Authorization information. See `dml_auth_setting` below.
+        :param pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict', 'outputs.AccountDmlAuthSetting']] dml_auth_setting: Authorization information. See `dml_auth_setting` below.
         :param pulumi.Input[_builtins.str] password: Database account password. Set the following rules.
                - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
                - Oh-! @#$%^& *()_+-= is a special character.

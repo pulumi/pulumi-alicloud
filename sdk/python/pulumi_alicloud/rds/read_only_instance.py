@@ -1592,7 +1592,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict', 'outputs.ReadOnlyInstanceParameter']]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1726,7 +1726,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict', 'outputs.ReadOnlyInstanceParameter']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -1876,7 +1876,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict', 'outputs.ReadOnlyInstanceParameter']]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1986,7 +1986,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict', 'outputs.ReadOnlyInstanceParameter']]]]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
             replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2066,7 +2066,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict', 'outputs.ReadOnlyInstanceParameter']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] port: RDS database connection port.
         :param pulumi.Input[_builtins.str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:

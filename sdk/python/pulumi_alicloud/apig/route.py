@@ -378,12 +378,12 @@ class Route(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict']]] = None,
+                 backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict', 'outputs.RouteBackend']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict']]] = None,
+                 environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict', 'outputs.RouteEnvironmentInfo']]] = None,
                  http_api_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict', 'outputs.RouteMatch']]] = None,
                  route_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -489,14 +489,14 @@ class Route(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RouteBackendArgs', 'RouteBackendArgsDict']] backend: Backend service. See `backend` below.
+        :param pulumi.Input[Union['RouteBackendArgs', 'RouteBackendArgsDict', 'outputs.RouteBackend']] backend: Backend service. See `backend` below.
         :param pulumi.Input[_builtins.str] description: The description of the route.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_ids: The list of domain name identifiers associated with this APIG route for inbound traffic routing.
                
                > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
-        :param pulumi.Input[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict']] environment_info: The environment information of the route. See `environment_info` below.
+        :param pulumi.Input[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict', 'outputs.RouteEnvironmentInfo']] environment_info: The environment information of the route. See `environment_info` below.
         :param pulumi.Input[_builtins.str] http_api_id: The ID of the HTTP API to which the route belongs.
-        :param pulumi.Input[Union['RouteMatchArgs', 'RouteMatchArgsDict']] match: The route match rule. See `match` below.
+        :param pulumi.Input[Union['RouteMatchArgs', 'RouteMatchArgsDict', 'outputs.RouteMatch']] match: The route match rule. See `match` below.
         :param pulumi.Input[_builtins.str] route_name: The name of the route.
                
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
@@ -623,12 +623,12 @@ class Route(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict']]] = None,
+                 backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict', 'outputs.RouteBackend']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict']]] = None,
+                 environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict', 'outputs.RouteEnvironmentInfo']]] = None,
                  http_api_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict', 'outputs.RouteMatch']]] = None,
                  route_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -662,15 +662,15 @@ class Route(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict']]] = None,
+            backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict', 'outputs.RouteBackend']]] = None,
             builtin: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             domain_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict']]] = None,
+            environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict', 'outputs.RouteEnvironmentInfo']]] = None,
             gateway_status: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             http_api_id: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict', 'outputs.RouteMatch']]] = None,
             route_id: pulumi.Input[Optional[_builtins.str]] = None,
             route_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -682,17 +682,17 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RouteBackendArgs', 'RouteBackendArgsDict']] backend: Backend service. See `backend` below.
+        :param pulumi.Input[Union['RouteBackendArgs', 'RouteBackendArgsDict', 'outputs.RouteBackend']] backend: Backend service. See `backend` below.
         :param pulumi.Input[_builtins.str] builtin: Indicates whether the route is a built-in route.
         :param pulumi.Input[_builtins.str] create_time: The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
         :param pulumi.Input[_builtins.str] description: The description of the route.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_ids: The list of domain name identifiers associated with this APIG route for inbound traffic routing.
                
                > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
-        :param pulumi.Input[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict']] environment_info: The environment information of the route. See `environment_info` below.
+        :param pulumi.Input[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict', 'outputs.RouteEnvironmentInfo']] environment_info: The environment information of the route. See `environment_info` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] gateway_status: The publishing status of the route on each gateway.
         :param pulumi.Input[_builtins.str] http_api_id: The ID of the HTTP API to which the route belongs.
-        :param pulumi.Input[Union['RouteMatchArgs', 'RouteMatchArgsDict']] match: The route match rule. See `match` below.
+        :param pulumi.Input[Union['RouteMatchArgs', 'RouteMatchArgsDict', 'outputs.RouteMatch']] match: The route match rule. See `match` below.
         :param pulumi.Input[_builtins.str] route_id: The unique identifier of the APIG HTTP API route generated by the service backend.
         :param pulumi.Input[_builtins.str] route_name: The name of the route.
                

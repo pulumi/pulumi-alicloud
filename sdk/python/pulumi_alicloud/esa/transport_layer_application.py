@@ -267,7 +267,7 @@ class TransportLayerApplication(pulumi.CustomResource):
                  ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.str]] = None,
                  record_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict', 'outputs.TransportLayerApplicationRule']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -333,7 +333,7 @@ class TransportLayerApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_access_rule: IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
         :param pulumi.Input[_builtins.str] ipv6: IPv6 switch.
         :param pulumi.Input[_builtins.str] record_name: Domain name of the transport layer application
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]] rules: The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict', 'outputs.TransportLayerApplicationRule']]]] rules: The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
         :param pulumi.Input[_builtins.str] site_id: Site ID.
         """
         ...
@@ -418,7 +418,7 @@ class TransportLayerApplication(pulumi.CustomResource):
                  ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.str]] = None,
                  record_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict', 'outputs.TransportLayerApplicationRule']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -458,7 +458,7 @@ class TransportLayerApplication(pulumi.CustomResource):
             ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6: pulumi.Input[Optional[_builtins.str]] = None,
             record_name: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict', 'outputs.TransportLayerApplicationRule']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransportLayerApplication':
         """
@@ -473,7 +473,7 @@ class TransportLayerApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_access_rule: IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
         :param pulumi.Input[_builtins.str] ipv6: IPv6 switch.
         :param pulumi.Input[_builtins.str] record_name: Domain name of the transport layer application
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]] rules: The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict', 'outputs.TransportLayerApplicationRule']]]] rules: The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
         :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.str] status: Status of the transport layer application, modification and deletion are not allowed.
         """

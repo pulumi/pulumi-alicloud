@@ -618,18 +618,18 @@ class AlertRuleV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict']]] = None,
+                 action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict', 'outputs.AlertRuleV2ActionIntegrationConfig']]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict']]] = None,
-                 condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict']]] = None,
+                 arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict', 'outputs.AlertRuleV2ArmsIntegrationConfig']]] = None,
+                 condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict', 'outputs.AlertRuleV2ConditionConfig']]] = None,
                  content_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict']]] = None,
+                 datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict', 'outputs.AlertRuleV2DatasourceConfig']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict']]] = None,
-                 query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict']]] = None,
-                 schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict']]] = None,
+                 notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict', 'outputs.AlertRuleV2NotifyConfig']]] = None,
+                 query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict', 'outputs.AlertRuleV2QueryConfig']]] = None,
+                 schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict', 'outputs.AlertRuleV2ScheduleConfig']]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -718,18 +718,18 @@ class AlertRuleV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict']] action_integration_config: Action integration configuration. See `action_integration_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict', 'outputs.AlertRuleV2ActionIntegrationConfig']] action_integration_config: Action integration configuration. See `action_integration_config` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations.
-        :param pulumi.Input[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict']] arms_integration_config: ARMS integration configuration. See `arms_integration_config` below.
-        :param pulumi.Input[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict']] condition_config: Unified alert condition configuration. See `condition_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict', 'outputs.AlertRuleV2ArmsIntegrationConfig']] arms_integration_config: ARMS integration configuration. See `arms_integration_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict', 'outputs.AlertRuleV2ConditionConfig']] condition_config: Unified alert condition configuration. See `condition_config` below.
         :param pulumi.Input[_builtins.str] content_template: The alert content template.
-        :param pulumi.Input[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict']] datasource_config: Unified data source configuration. See `datasource_config` below.
+        :param pulumi.Input[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict', 'outputs.AlertRuleV2DatasourceConfig']] datasource_config: Unified data source configuration. See `datasource_config` below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert rule.
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether the alert rule is enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
-        :param pulumi.Input[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict']] notify_config: Unified notification configuration. See `notify_config` below.
-        :param pulumi.Input[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict']] query_config: Unified query configuration. See `query_config` below.
-        :param pulumi.Input[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict']] schedule_config: Unified scheduling configuration. See `schedule_config` below.
+        :param pulumi.Input[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict', 'outputs.AlertRuleV2NotifyConfig']] notify_config: Unified notification configuration. See `notify_config` below.
+        :param pulumi.Input[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict', 'outputs.AlertRuleV2QueryConfig']] query_config: Unified query configuration. See `query_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict', 'outputs.AlertRuleV2ScheduleConfig']] schedule_config: Unified scheduling configuration. See `schedule_config` below.
         :param pulumi.Input[_builtins.str] workspace: Workspace.
         """
         ...
@@ -837,18 +837,18 @@ class AlertRuleV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict']]] = None,
+                 action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict', 'outputs.AlertRuleV2ActionIntegrationConfig']]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict']]] = None,
-                 condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict']]] = None,
+                 arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict', 'outputs.AlertRuleV2ArmsIntegrationConfig']]] = None,
+                 condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict', 'outputs.AlertRuleV2ConditionConfig']]] = None,
                  content_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict']]] = None,
+                 datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict', 'outputs.AlertRuleV2DatasourceConfig']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict']]] = None,
-                 query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict']]] = None,
-                 schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict']]] = None,
+                 notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict', 'outputs.AlertRuleV2NotifyConfig']]] = None,
+                 query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict', 'outputs.AlertRuleV2QueryConfig']]] = None,
+                 schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict', 'outputs.AlertRuleV2ScheduleConfig']]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -892,25 +892,25 @@ class AlertRuleV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict']]] = None,
+            action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict', 'outputs.AlertRuleV2ActionIntegrationConfig']]] = None,
             alert_rule_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict']]] = None,
-            condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict']]] = None,
+            arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict', 'outputs.AlertRuleV2ArmsIntegrationConfig']]] = None,
+            condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict', 'outputs.AlertRuleV2ConditionConfig']]] = None,
             content_template: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict']]] = None,
+            datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict', 'outputs.AlertRuleV2DatasourceConfig']]] = None,
             datasource_type: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict']]] = None,
+            notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict', 'outputs.AlertRuleV2NotifyConfig']]] = None,
             notify_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
             observe_resource_global_scope: pulumi.Input[Optional[_builtins.bool]] = None,
             observe_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
             partition_key: pulumi.Input[Optional[_builtins.str]] = None,
-            query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict']]] = None,
-            schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict']]] = None,
+            query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict', 'outputs.AlertRuleV2QueryConfig']]] = None,
+            schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict', 'outputs.AlertRuleV2ScheduleConfig']]] = None,
             severity_levels: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -922,25 +922,25 @@ class AlertRuleV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict']] action_integration_config: Action integration configuration. See `action_integration_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict', 'outputs.AlertRuleV2ActionIntegrationConfig']] action_integration_config: Action integration configuration. See `action_integration_config` below.
         :param pulumi.Input[_builtins.str] alert_rule_v2_id: The unique identifier of the alert rule, mapped to a UUID (system-generated).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations.
-        :param pulumi.Input[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict']] arms_integration_config: ARMS integration configuration. See `arms_integration_config` below.
-        :param pulumi.Input[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict']] condition_config: Unified alert condition configuration. See `condition_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict', 'outputs.AlertRuleV2ArmsIntegrationConfig']] arms_integration_config: ARMS integration configuration. See `arms_integration_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict', 'outputs.AlertRuleV2ConditionConfig']] condition_config: Unified alert condition configuration. See `condition_config` below.
         :param pulumi.Input[_builtins.str] content_template: The alert content template.
         :param pulumi.Input[_builtins.str] created_at: Creation time (read-only), in ISO 8601 format.
-        :param pulumi.Input[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict']] datasource_config: Unified data source configuration. See `datasource_config` below.
+        :param pulumi.Input[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict', 'outputs.AlertRuleV2DatasourceConfig']] datasource_config: Unified data source configuration. See `datasource_config` below.
         :param pulumi.Input[_builtins.str] datasource_type: Data source type (read-only, derived).
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert rule.
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether the alert rule is enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
-        :param pulumi.Input[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict']] notify_config: Unified notification configuration. See `notify_config` below.
+        :param pulumi.Input[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict', 'outputs.AlertRuleV2NotifyConfig']] notify_config: Unified notification configuration. See `notify_config` below.
         :param pulumi.Input[_builtins.str] notify_strategy_id: Notification policy ID (read-only, derived).
         :param pulumi.Input[_builtins.bool] observe_resource_global_scope: Indicates whether the rule applies to all resources of this resource type (read-only, derived).
         :param pulumi.Input[_builtins.str] observe_resource_type: Observable resource type (read-only, derived).
         :param pulumi.Input[_builtins.str] partition_key: The partition key.
-        :param pulumi.Input[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict']] query_config: Unified query configuration. See `query_config` below.
-        :param pulumi.Input[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict']] schedule_config: Unified scheduling configuration. See `schedule_config` below.
+        :param pulumi.Input[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict', 'outputs.AlertRuleV2QueryConfig']] query_config: Unified query configuration. See `query_config` below.
+        :param pulumi.Input[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict', 'outputs.AlertRuleV2ScheduleConfig']] schedule_config: Unified scheduling configuration. See `schedule_config` below.
         :param pulumi.Input[_builtins.str] severity_levels: The severity levels covered by this rule, separated by commas (read-only derived).
         :param pulumi.Input[_builtins.str] status: Alert status (read-only).
         :param pulumi.Input[_builtins.str] updated_at: The update time (read-only), in ISO 8601 format.

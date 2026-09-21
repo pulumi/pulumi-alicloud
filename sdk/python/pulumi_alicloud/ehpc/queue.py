@@ -471,7 +471,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict', 'outputs.QueueComputeNode']]]]] = None,
                  enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
@@ -693,7 +693,7 @@ class Queue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID.
                You can call the ListClusters operation to query the cluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]] compute_nodes: The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict', 'outputs.QueueComputeNode']]]] compute_nodes: The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
         :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the queue. Valid values:
                
                - true
@@ -939,7 +939,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict', 'outputs.QueueComputeNode']]]]] = None,
                  enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
@@ -983,7 +983,7 @@ class Queue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
+            compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict', 'outputs.QueueComputeNode']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1004,7 +1004,7 @@ class Queue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID.
                You can call the ListClusters operation to query the cluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]] compute_nodes: The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict', 'outputs.QueueComputeNode']]]] compute_nodes: The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.bool] enable_scale_in: Specifies whether to enable auto scale-in for the queue. Valid values:
                

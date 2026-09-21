@@ -138,7 +138,7 @@ class BucketObjectWormConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  object_worm_enabled: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict']]] = None,
+                 rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict', 'outputs.BucketObjectWormConfigurationRule']]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Object Worm Configuration resource.
@@ -195,7 +195,7 @@ class BucketObjectWormConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: Bucket name
         :param pulumi.Input[_builtins.str] object_worm_enabled: Specifies whether to enable the object-level compliance retention policy configuration.
-        :param pulumi.Input[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict']] rule: Container that stores the list of retention policies.   See `rule` below.
+        :param pulumi.Input[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict', 'outputs.BucketObjectWormConfigurationRule']] rule: Container that stores the list of retention policies.   See `rule` below.
         """
         ...
     @overload
@@ -271,7 +271,7 @@ class BucketObjectWormConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  object_worm_enabled: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict']]] = None,
+                 rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict', 'outputs.BucketObjectWormConfigurationRule']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,7 +300,7 @@ class BucketObjectWormConfiguration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
             object_worm_enabled: pulumi.Input[Optional[_builtins.str]] = None,
-            rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict']]] = None) -> 'BucketObjectWormConfiguration':
+            rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict', 'outputs.BucketObjectWormConfigurationRule']]] = None) -> 'BucketObjectWormConfiguration':
         """
         Get an existing BucketObjectWormConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -310,7 +310,7 @@ class BucketObjectWormConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: Bucket name
         :param pulumi.Input[_builtins.str] object_worm_enabled: Specifies whether to enable the object-level compliance retention policy configuration.
-        :param pulumi.Input[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict']] rule: Container that stores the list of retention policies.   See `rule` below.
+        :param pulumi.Input[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict', 'outputs.BucketObjectWormConfigurationRule']] rule: Container that stores the list of retention policies.   See `rule` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

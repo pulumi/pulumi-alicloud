@@ -205,9 +205,9 @@ class ServiceEventRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict', 'outputs.ServiceEventRuleEndpoint']]] = None,
                  event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
+                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict', 'outputs.ServiceEventRuleMatchRule']]]]]]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -290,9 +290,9 @@ class ServiceEventRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_mode: DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
                - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
-        :param pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']] endpoint: Message Receiving Terminal Endpoint Object. See `endpoint` below.
+        :param pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict', 'outputs.ServiceEventRuleEndpoint']] endpoint: Message Receiving Terminal Endpoint Object. See `endpoint` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] event_types: Event Type List
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]] match_rules: Matching rules, or relationships between multiple rules. See `match_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict', 'outputs.ServiceEventRuleMatchRule']]]]]] match_rules: Matching rules, or relationships between multiple rules. See `match_rules` below.
         :param pulumi.Input[_builtins.str] rule_name: The event notification rule name.
         """
         ...
@@ -393,9 +393,9 @@ class ServiceEventRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict', 'outputs.ServiceEventRuleEndpoint']]] = None,
                  event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
+                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict', 'outputs.ServiceEventRuleMatchRule']]]]]]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -426,9 +426,9 @@ class ServiceEventRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
+            endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict', 'outputs.ServiceEventRuleEndpoint']]] = None,
             event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
+            match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict', 'outputs.ServiceEventRuleMatchRule']]]]]]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceEventRule':
         """
         Get an existing ServiceEventRule resource's state with the given name, id, and optional extra
@@ -439,9 +439,9 @@ class ServiceEventRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_mode: DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
                - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
-        :param pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']] endpoint: Message Receiving Terminal Endpoint Object. See `endpoint` below.
+        :param pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict', 'outputs.ServiceEventRuleEndpoint']] endpoint: Message Receiving Terminal Endpoint Object. See `endpoint` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] event_types: Event Type List
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]] match_rules: Matching rules, or relationships between multiple rules. See `match_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict', 'outputs.ServiceEventRuleMatchRule']]]]]] match_rules: Matching rules, or relationships between multiple rules. See `match_rules` below.
         :param pulumi.Input[_builtins.str] rule_name: The event notification rule name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

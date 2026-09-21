@@ -470,11 +470,11 @@ class InstanceRefresh(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checkpoint_pause_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict']]]]] = None,
-                 desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict']]]]] = None,
+                 checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict', 'outputs.InstanceRefreshCheckpoint']]]]] = None,
+                 desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict', 'outputs.InstanceRefreshDesiredConfigurationContainer']]]]] = None,
                  desired_configuration_image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_configuration_launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict']]]]] = None,
+                 desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict', 'outputs.InstanceRefreshDesiredConfigurationLaunchTemplateOverride']]]]] = None,
                  desired_configuration_launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  max_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  min_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -575,11 +575,11 @@ class InstanceRefresh(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] checkpoint_pause_time: The duration of the pause when the task reaches a checkpoint. Unit: minutes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict']]]] checkpoints: The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict']]]] desired_configuration_containers: The list of containers in the instance. See `desired_configuration_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict', 'outputs.InstanceRefreshCheckpoint']]]] checkpoints: The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict', 'outputs.InstanceRefreshDesiredConfigurationContainer']]]] desired_configuration_containers: The list of containers in the instance. See `desired_configuration_containers` below for details.
         :param pulumi.Input[_builtins.str] desired_configuration_image_id: The ID of the image file. This is the image resource used for automatic instance creation.
         :param pulumi.Input[_builtins.str] desired_configuration_launch_template_id: The ID of the launch template. The scaling group uses this template to obtain launch configuration information.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict']]]] desired_configuration_launch_template_overrides: The instance type information in the launch template overrides. See `desired_configuration_launch_template_overrides` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict', 'outputs.InstanceRefreshDesiredConfigurationLaunchTemplateOverride']]]] desired_configuration_launch_template_overrides: The instance type information in the launch template overrides. See `desired_configuration_launch_template_overrides` below for details.
         :param pulumi.Input[_builtins.str] desired_configuration_launch_template_version: The version of the launch template.
         :param pulumi.Input[_builtins.int] max_healthy_percentage: The percentage by which the number of instances in the scaling group can exceed the group's capacity during the instance refresh.
         :param pulumi.Input[_builtins.int] min_healthy_percentage: The percentage of instances that must be healthy in the scaling group during the instance refresh. The value is a percentage of the scaling group's capacity.
@@ -710,11 +710,11 @@ class InstanceRefresh(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checkpoint_pause_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict']]]]] = None,
-                 desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict']]]]] = None,
+                 checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict', 'outputs.InstanceRefreshCheckpoint']]]]] = None,
+                 desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict', 'outputs.InstanceRefreshDesiredConfigurationContainer']]]]] = None,
                  desired_configuration_image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_configuration_launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict']]]]] = None,
+                 desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict', 'outputs.InstanceRefreshDesiredConfigurationLaunchTemplateOverride']]]]] = None,
                  desired_configuration_launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  max_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  min_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -755,11 +755,11 @@ class InstanceRefresh(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             checkpoint_pause_time: pulumi.Input[Optional[_builtins.int]] = None,
-            checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict']]]]] = None,
-            desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict']]]]] = None,
+            checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict', 'outputs.InstanceRefreshCheckpoint']]]]] = None,
+            desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict', 'outputs.InstanceRefreshDesiredConfigurationContainer']]]]] = None,
             desired_configuration_image_id: pulumi.Input[Optional[_builtins.str]] = None,
             desired_configuration_launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict']]]]] = None,
+            desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict', 'outputs.InstanceRefreshDesiredConfigurationLaunchTemplateOverride']]]]] = None,
             desired_configuration_launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
             max_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
             min_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -774,11 +774,11 @@ class InstanceRefresh(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] checkpoint_pause_time: The duration of the pause when the task reaches a checkpoint. Unit: minutes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict']]]] checkpoints: The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict']]]] desired_configuration_containers: The list of containers in the instance. See `desired_configuration_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict', 'outputs.InstanceRefreshCheckpoint']]]] checkpoints: The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict', 'outputs.InstanceRefreshDesiredConfigurationContainer']]]] desired_configuration_containers: The list of containers in the instance. See `desired_configuration_containers` below for details.
         :param pulumi.Input[_builtins.str] desired_configuration_image_id: The ID of the image file. This is the image resource used for automatic instance creation.
         :param pulumi.Input[_builtins.str] desired_configuration_launch_template_id: The ID of the launch template. The scaling group uses this template to obtain launch configuration information.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict']]]] desired_configuration_launch_template_overrides: The instance type information in the launch template overrides. See `desired_configuration_launch_template_overrides` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict', 'outputs.InstanceRefreshDesiredConfigurationLaunchTemplateOverride']]]] desired_configuration_launch_template_overrides: The instance type information in the launch template overrides. See `desired_configuration_launch_template_overrides` below for details.
         :param pulumi.Input[_builtins.str] desired_configuration_launch_template_version: The version of the launch template.
         :param pulumi.Input[_builtins.int] max_healthy_percentage: The percentage by which the number of instances in the scaling group can exceed the group's capacity during the instance refresh.
         :param pulumi.Input[_builtins.int] min_healthy_percentage: The percentage of instances that must be healthy in the scaling group during the instance refresh. The value is a percentage of the scaling group's capacity.

@@ -660,7 +660,7 @@ class Domain(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scene: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
                  ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
@@ -731,7 +731,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[_builtins.str] scene: The Acceleration scen. Supported:
         :param pulumi.Input[_builtins.str] scope: The region where the acceleration service is deployed. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: Source  See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: Source  See `sources` below.
         :param pulumi.Input[_builtins.str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
         :param pulumi.Input[_builtins.str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[_builtins.str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
@@ -821,7 +821,7 @@ class Domain(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scene: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
                  ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
@@ -884,7 +884,7 @@ class Domain(pulumi.CustomResource):
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             scene: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
             ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
@@ -911,7 +911,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[_builtins.str] scene: The Acceleration scen. Supported:
         :param pulumi.Input[_builtins.str] scope: The region where the acceleration service is deployed. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: Source  See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: Source  See `sources` below.
         :param pulumi.Input[_builtins.str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
         :param pulumi.Input[_builtins.str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[_builtins.str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.

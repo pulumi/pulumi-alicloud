@@ -666,8 +666,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
-                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
+                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
+                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -735,8 +735,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[_builtins.str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
@@ -823,8 +823,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
-                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
+                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
+                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -881,8 +881,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
-            authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
+            authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
+            authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
             camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
             clipboard: pulumi.Input[Optional[_builtins.str]] = None,
             domain_list: pulumi.Input[Optional[_builtins.str]] = None,
@@ -908,8 +908,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[_builtins.str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.

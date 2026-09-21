@@ -843,7 +843,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict', 'outputs.InstanceBindVpc']]]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1058,7 +1058,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict', 'outputs.InstanceBindVpc']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
                
@@ -1317,7 +1317,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict', 'outputs.InstanceBindVpc']]]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1386,7 +1386,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+            bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict', 'outputs.InstanceBindVpc']]]]] = None,
             ca_certificate_chain_pem: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1417,7 +1417,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict', 'outputs.InstanceBindVpc']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[_builtins.str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Default value: `false`. Valid values:

@@ -135,7 +135,7 @@ class AwaitableGetVirtualBorderRoutersResult(GetVirtualBorderRoutersResult):
             tags=self.tags)
 
 
-def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]] = None,
+def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict', 'outputs.GetVirtualBorderRoutersFilterResult']]] = None,
                                ids: Optional[Sequence[_builtins.str]] = None,
                                name_regex: Optional[_builtins.str] = None,
                                output_file: Optional[_builtins.str] = None,
@@ -176,7 +176,7 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
     ```
 
 
-    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below. See `filter` below.
+    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict', 'outputs.GetVirtualBorderRoutersFilterResult']] filters: Custom filter block as described below. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Virtual Border Router IDs.
     :param _builtins.str name_regex: A regex string to filter results by Virtual Border Router name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -203,7 +203,7 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
         routers=pulumi.get(__ret__, 'routers'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]]]] = None,
+def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict', 'outputs.GetVirtualBorderRoutersFilterResult']]]]] = None,
                                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -244,7 +244,7 @@ def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Se
     ```
 
 
-    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below. See `filter` below.
+    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict', 'outputs.GetVirtualBorderRoutersFilterResult']] filters: Custom filter block as described below. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Virtual Border Router IDs.
     :param _builtins.str name_regex: A regex string to filter results by Virtual Border Router name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

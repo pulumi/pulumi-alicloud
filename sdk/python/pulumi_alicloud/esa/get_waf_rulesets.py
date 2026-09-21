@@ -157,7 +157,7 @@ def get_waf_rulesets(ids: Optional[Sequence[_builtins.str]] = None,
                      name_regex: Optional[_builtins.str] = None,
                      output_file: Optional[_builtins.str] = None,
                      phase: Optional[_builtins.str] = None,
-                     query_args: Optional[Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict']] = None,
+                     query_args: Optional[Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict', 'outputs.GetWafRulesetsQueryArgsResult']] = None,
                      site_id: Optional[_builtins.str] = None,
                      site_version: Optional[_builtins.int] = None,
                      status: Optional[_builtins.str] = None,
@@ -197,7 +197,7 @@ def get_waf_rulesets(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str name_regex: A regex string to filter results by Waf Ruleset name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str phase: The WAF operation phase.
-    :param Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict'] query_args: The query parameters. See `query_args` below.
+    :param Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict', 'outputs.GetWafRulesetsQueryArgsResult'] query_args: The query parameters. See `query_args` below.
     :param _builtins.str site_id: The ID of the Site.
     :param _builtins.int site_version: The version of the Site.
     :param _builtins.str status: The status of the rule set. Valid values: `on`, `off`.
@@ -230,7 +230,7 @@ def get_waf_rulesets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             phase: pulumi.Input[Optional[_builtins.str]] = None,
-                            query_args: pulumi.Input[Optional[Optional[Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict']]]] = None,
+                            query_args: pulumi.Input[Optional[Optional[Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict', 'outputs.GetWafRulesetsQueryArgsResult']]]] = None,
                             site_id: pulumi.Input[Optional[_builtins.str]] = None,
                             site_version: pulumi.Input[Optional[_builtins.int]] = None,
                             status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -270,7 +270,7 @@ def get_waf_rulesets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     :param _builtins.str name_regex: A regex string to filter results by Waf Ruleset name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str phase: The WAF operation phase.
-    :param Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict'] query_args: The query parameters. See `query_args` below.
+    :param Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict', 'outputs.GetWafRulesetsQueryArgsResult'] query_args: The query parameters. See `query_args` below.
     :param _builtins.str site_id: The ID of the Site.
     :param _builtins.int site_version: The version of the Site.
     :param _builtins.str status: The status of the rule set. Valid values: `on`, `off`.

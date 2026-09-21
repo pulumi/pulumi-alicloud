@@ -680,7 +680,7 @@ class EndpointGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]]] = None,
+                 endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict', 'outputs.EndpointGroupEndpointConfiguration']]]]] = None,
                  endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_protocol_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -692,7 +692,7 @@ class EndpointGroup(pulumi.CustomResource):
                  health_check_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict']]] = None,
+                 port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict', 'outputs.EndpointGroupPortOverrides']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  threshold_count: pulumi.Input[Optional[_builtins.int]] = None,
                  traffic_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -788,7 +788,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict', 'outputs.EndpointGroupEndpointConfiguration']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[_builtins.str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
@@ -807,7 +807,7 @@ class EndpointGroup(pulumi.CustomResource):
                > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[_builtins.str] name: The name of the endpoint group.
-        :param pulumi.Input[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
+        :param pulumi.Input[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict', 'outputs.EndpointGroupPortOverrides']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
@@ -923,7 +923,7 @@ class EndpointGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]]] = None,
+                 endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict', 'outputs.EndpointGroupEndpointConfiguration']]]]] = None,
                  endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_protocol_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -935,7 +935,7 @@ class EndpointGroup(pulumi.CustomResource):
                  health_check_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict']]] = None,
+                 port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict', 'outputs.EndpointGroupPortOverrides']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  threshold_count: pulumi.Input[Optional[_builtins.int]] = None,
                  traffic_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -988,7 +988,7 @@ class EndpointGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]]] = None,
+            endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict', 'outputs.EndpointGroupEndpointConfiguration']]]]] = None,
             endpoint_group_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_group_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1001,7 +1001,7 @@ class EndpointGroup(pulumi.CustomResource):
             health_check_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             listener_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict']]] = None,
+            port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict', 'outputs.EndpointGroupPortOverrides']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             threshold_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1015,7 +1015,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict', 'outputs.EndpointGroupEndpointConfiguration']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoint_group_ip_lists: (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
         :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[_builtins.str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
@@ -1035,7 +1035,7 @@ class EndpointGroup(pulumi.CustomResource):
                > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[_builtins.str] name: The name of the endpoint group.
-        :param pulumi.Input[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
+        :param pulumi.Input[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict', 'outputs.EndpointGroupPortOverrides']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[_builtins.str] status: The status of the endpoint group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.

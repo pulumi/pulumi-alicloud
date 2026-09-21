@@ -903,21 +903,21 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
+                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]]] = None,
                  charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]]] = None,
                  deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
                  eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
                  high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
-                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]]] = None,
                  is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
                  master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
-                 meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
+                 meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']]] = None,
                  meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
+                 modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1404,21 +1404,21 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]] bootstrap_actions: Boot action parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]] configs: The custom configurations of emr-cluster service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]] configs: The custom configurations of emr-cluster service.
         :param pulumi.Input[_builtins.str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[_builtins.bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         :param pulumi.Input[_builtins.bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[_builtins.str] key_pair_name: Ssh key pair.
         :param pulumi.Input[_builtins.str] master_pwd: Master ssh password.
-        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         :param pulumi.Input[_builtins.str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
-        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
+        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
         :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] option_software_lists: Optional software list.
         :param pulumi.Input[_builtins.int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
@@ -1924,21 +1924,21 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
+                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]]] = None,
                  charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]]] = None,
                  deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
                  eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
                  high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
-                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]]] = None,
                  is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
                  master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
-                 meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
+                 meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']]] = None,
                  meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
+                 modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2003,21 +2003,21 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
+            bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]]] = None,
             charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]]] = None,
             deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
             eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
             emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
             high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
-            host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
+            host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]]] = None,
             is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
             master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
-            meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
+            meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']]] = None,
             meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
-            modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
+            modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2037,21 +2037,21 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]] bootstrap_actions: Boot action parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]] configs: The custom configurations of emr-cluster service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]] configs: The custom configurations of emr-cluster service.
         :param pulumi.Input[_builtins.str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[_builtins.bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         :param pulumi.Input[_builtins.bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[_builtins.str] key_pair_name: Ssh key pair.
         :param pulumi.Input[_builtins.str] master_pwd: Master ssh password.
-        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         :param pulumi.Input[_builtins.str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
-        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
+        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
         :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] option_software_lists: Optional software list.
         :param pulumi.Input[_builtins.int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.

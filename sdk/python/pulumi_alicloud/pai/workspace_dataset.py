@@ -610,7 +610,7 @@ class WorkspaceDataset(pulumi.CustomResource):
                  data_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict', 'outputs.WorkspaceDatasetLabel']]]]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
                  property: pulumi.Input[Optional[_builtins.str]] = None,
                  source_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -691,7 +691,7 @@ class WorkspaceDataset(pulumi.CustomResource):
                - Can contain an underscore (_) or a dash (-).
                - 1~127 characters in length.
         :param pulumi.Input[_builtins.str] description: Custom descriptions of datasets to distinguish between different datasets.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]] labels: Labels added to the dataset See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict', 'outputs.WorkspaceDatasetLabel']]]] labels: Labels added to the dataset See `labels` below.
         :param pulumi.Input[_builtins.str] options: The extended field, which is of the JsonString type.
                
                When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
@@ -801,7 +801,7 @@ class WorkspaceDataset(pulumi.CustomResource):
                  data_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict', 'outputs.WorkspaceDatasetLabel']]]]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
                  property: pulumi.Input[Optional[_builtins.str]] = None,
                  source_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -858,7 +858,7 @@ class WorkspaceDataset(pulumi.CustomResource):
             data_type: pulumi.Input[Optional[_builtins.str]] = None,
             dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict', 'outputs.WorkspaceDatasetLabel']]]]] = None,
             options: pulumi.Input[Optional[_builtins.str]] = None,
             property: pulumi.Input[Optional[_builtins.str]] = None,
             source_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -891,7 +891,7 @@ class WorkspaceDataset(pulumi.CustomResource):
                - Can contain an underscore (_) or a dash (-).
                - 1~127 characters in length.
         :param pulumi.Input[_builtins.str] description: Custom descriptions of datasets to distinguish between different datasets.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]] labels: Labels added to the dataset See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict', 'outputs.WorkspaceDatasetLabel']]]] labels: Labels added to the dataset See `labels` below.
         :param pulumi.Input[_builtins.str] options: The extended field, which is of the JsonString type.
                
                When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.

@@ -360,7 +360,7 @@ class MonitorTemplate(pulumi.CustomResource):
                  failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict', 'outputs.MonitorTemplateIspCityNode']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -432,7 +432,7 @@ class MonitorTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] failure_rate: The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         :param pulumi.Input[_builtins.str] interval: The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the probing node. Valid values: `IPv4`, `IPv6`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]] isp_city_nodes: The set of monitoring nodes that this template will probe from. Use the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html) API to look up available `city_code` / `isp_code` combinations. See `isp_city_nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict', 'outputs.MonitorTemplateIspCityNode']]]] isp_city_nodes: The set of monitoring nodes that this template will probe from. Use the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html) API to look up available `city_code` / `isp_code` combinations. See `isp_city_nodes` below.
         :param pulumi.Input[_builtins.str] name: The name of the monitor template. It is recommended to use a name that reflects the health-check protocol for easier identification.
         :param pulumi.Input[_builtins.str] protocol: The probing protocol of the template. Valid values: `ping`, `tcp`, `http`, `https`.
         :param pulumi.Input[_builtins.str] remark: The remark of the monitor template. Passing an empty value clears the existing remark.
@@ -523,7 +523,7 @@ class MonitorTemplate(pulumi.CustomResource):
                  failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict', 'outputs.MonitorTemplateIspCityNode']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -576,7 +576,7 @@ class MonitorTemplate(pulumi.CustomResource):
             failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
             interval: pulumi.Input[Optional[_builtins.str]] = None,
             ip_version: pulumi.Input[Optional[_builtins.str]] = None,
-            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
+            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict', 'outputs.MonitorTemplateIspCityNode']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -593,7 +593,7 @@ class MonitorTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] failure_rate: The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         :param pulumi.Input[_builtins.str] interval: The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the probing node. Valid values: `IPv4`, `IPv6`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]] isp_city_nodes: The set of monitoring nodes that this template will probe from. Use the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html) API to look up available `city_code` / `isp_code` combinations. See `isp_city_nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict', 'outputs.MonitorTemplateIspCityNode']]]] isp_city_nodes: The set of monitoring nodes that this template will probe from. Use the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html) API to look up available `city_code` / `isp_code` combinations. See `isp_city_nodes` below.
         :param pulumi.Input[_builtins.str] name: The name of the monitor template. It is recommended to use a name that reflects the health-check protocol for easier identification.
         :param pulumi.Input[_builtins.str] protocol: The probing protocol of the template. Valid values: `ping`, `tcp`, `http`, `https`.
         :param pulumi.Input[_builtins.str] remark: The remark of the monitor template. Passing an empty value clears the existing remark.

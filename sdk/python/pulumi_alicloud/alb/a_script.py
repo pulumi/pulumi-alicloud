@@ -314,7 +314,7 @@ class AScript(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
+                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict', 'outputs.AScriptExtAttribute']]]]] = None,
                  listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  position: pulumi.Input[Optional[_builtins.str]] = None,
                  script_content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -429,7 +429,7 @@ class AScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request
         :param pulumi.Input[_builtins.bool] enabled: Whether AScript is enabled.
         :param pulumi.Input[_builtins.bool] ext_attribute_enabled: Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]] ext_attributes: Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict', 'outputs.AScriptExtAttribute']]]] ext_attributes: Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         :param pulumi.Input[_builtins.str] listener_id: Listener ID of script attribution
         :param pulumi.Input[_builtins.str] position: Script execution location.
         :param pulumi.Input[_builtins.str] script_content: AScript script content.
@@ -563,7 +563,7 @@ class AScript(pulumi.CustomResource):
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
+                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict', 'outputs.AScriptExtAttribute']]]]] = None,
                  listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  position: pulumi.Input[Optional[_builtins.str]] = None,
                  script_content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -607,7 +607,7 @@ class AScript(pulumi.CustomResource):
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
+            ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict', 'outputs.AScriptExtAttribute']]]]] = None,
             listener_id: pulumi.Input[Optional[_builtins.str]] = None,
             position: pulumi.Input[Optional[_builtins.str]] = None,
             script_content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -623,7 +623,7 @@ class AScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request
         :param pulumi.Input[_builtins.bool] enabled: Whether AScript is enabled.
         :param pulumi.Input[_builtins.bool] ext_attribute_enabled: Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]] ext_attributes: Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict', 'outputs.AScriptExtAttribute']]]] ext_attributes: Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         :param pulumi.Input[_builtins.str] listener_id: Listener ID of script attribution
         :param pulumi.Input[_builtins.str] position: Script execution location.
         :param pulumi.Input[_builtins.str] script_content: AScript script content.

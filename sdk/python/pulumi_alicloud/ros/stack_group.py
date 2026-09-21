@@ -534,11 +534,11 @@ class StackGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+                 auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict', 'outputs.StackGroupAutoDeployment']]] = None,
                  capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict', 'outputs.StackGroupParameter']]]]] = None,
                  permission_model: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -587,12 +587,12 @@ class StackGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
-        :param pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']] auto_deployment: Automatic deployment setting information. Description
+        :param pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict', 'outputs.StackGroupAutoDeployment']] auto_deployment: Automatic deployment setting information. Description
                This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The list of resource stack group options. The maximum length is 1.
         :param pulumi.Input[_builtins.str] description: The description of the stack group.
         :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: Parameters See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict', 'outputs.StackGroupParameter']]]] parameters: Parameters See `parameters` below.
         :param pulumi.Input[_builtins.str] permission_model: The permission model.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] stack_group_name: StackGroupName
@@ -662,11 +662,11 @@ class StackGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+                 auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict', 'outputs.StackGroupAutoDeployment']]] = None,
                  capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict', 'outputs.StackGroupParameter']]]]] = None,
                  permission_model: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -713,11 +713,11 @@ class StackGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
-            auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+            auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict', 'outputs.StackGroupAutoDeployment']]] = None,
             capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict', 'outputs.StackGroupParameter']]]]] = None,
             permission_model: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             stack_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -736,12 +736,12 @@ class StackGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
-        :param pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']] auto_deployment: Automatic deployment setting information. Description
+        :param pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict', 'outputs.StackGroupAutoDeployment']] auto_deployment: Automatic deployment setting information. Description
                This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The list of resource stack group options. The maximum length is 1.
         :param pulumi.Input[_builtins.str] description: The description of the stack group.
         :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: Parameters See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict', 'outputs.StackGroupParameter']]]] parameters: Parameters See `parameters` below.
         :param pulumi.Input[_builtins.str] permission_model: The permission model.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] stack_group_id: The ID of stack group.

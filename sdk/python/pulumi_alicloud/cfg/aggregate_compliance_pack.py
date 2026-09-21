@@ -305,8 +305,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
                  aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict', 'outputs.AggregateCompliancePackConfigRuleId']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict', 'outputs.AggregateCompliancePackConfigRule']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -379,8 +379,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[_builtins.str] compliance_pack_template_id: The Template ID of compliance package.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict', 'outputs.AggregateCompliancePackConfigRuleId']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict', 'outputs.AggregateCompliancePackConfigRule']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[_builtins.str] description: The description of compliance package.
         :param pulumi.Input[_builtins.int] risk_level: The Risk Level. Valid values:
         """
@@ -472,8 +472,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
                  aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict', 'outputs.AggregateCompliancePackConfigRuleId']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict', 'outputs.AggregateCompliancePackConfigRule']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -516,8 +516,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
             aggregator_compliance_pack_id: pulumi.Input[Optional[_builtins.str]] = None,
             aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
             compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
-            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
+            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict', 'outputs.AggregateCompliancePackConfigRuleId']]]]] = None,
+            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict', 'outputs.AggregateCompliancePackConfigRule']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             risk_level: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AggregateCompliancePack':
@@ -532,8 +532,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aggregator_compliance_pack_id: The ID of the compliance package.
         :param pulumi.Input[_builtins.str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[_builtins.str] compliance_pack_template_id: The Template ID of compliance package.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict', 'outputs.AggregateCompliancePackConfigRuleId']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict', 'outputs.AggregateCompliancePackConfigRule']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[_builtins.str] description: The description of compliance package.
         :param pulumi.Input[_builtins.int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the Aggregate Compliance Pack.

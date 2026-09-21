@@ -1449,7 +1449,7 @@ class Instance(pulumi.CustomResource):
                  auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
                  billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  carrier: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
                  ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_stop: pulumi.Input[Optional[_builtins.str]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1477,7 +1477,7 @@ class Instance(pulumi.CustomResource):
                  security_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']]] = None,
+                 system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict', 'outputs.InstanceSystemDisk']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_data: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1576,7 +1576,7 @@ class Instance(pulumi.CustomResource):
                - cmcc (mobile)
                - unicom
                - telecom
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: Data disk specifications See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]] data_disks: Data disk specifications See `data_disk` below.
         :param pulumi.Input[_builtins.str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         :param pulumi.Input[_builtins.str] force_stop: Whether to force the identity when operating the instance. Optional values:
                - true: Force
@@ -1633,7 +1633,7 @@ class Instance(pulumi.CustomResource):
                - NoSpot: normal pay-as-you-go instance (default)
                - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
         :param pulumi.Input[_builtins.str] status: Status of the instance
-        :param pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict', 'outputs.InstanceSystemDisk']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag bound to the instance
         :param pulumi.Input[_builtins.bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         :param pulumi.Input[_builtins.str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
@@ -1741,7 +1741,7 @@ class Instance(pulumi.CustomResource):
                  auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
                  billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  carrier: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
                  ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_stop: pulumi.Input[Optional[_builtins.str]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1769,7 +1769,7 @@ class Instance(pulumi.CustomResource):
                  security_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']]] = None,
+                 system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict', 'outputs.InstanceSystemDisk']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_data: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1846,7 +1846,7 @@ class Instance(pulumi.CustomResource):
             auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
             billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
             carrier: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
             ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
             force_stop: pulumi.Input[Optional[_builtins.str]] = None,
             host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1874,7 +1874,7 @@ class Instance(pulumi.CustomResource):
             security_id: pulumi.Input[Optional[_builtins.str]] = None,
             spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']]] = None,
+            system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict', 'outputs.InstanceSystemDisk']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
             user_data: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1902,7 +1902,7 @@ class Instance(pulumi.CustomResource):
                - cmcc (mobile)
                - unicom
                - telecom
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: Data disk specifications See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]] data_disks: Data disk specifications See `data_disk` below.
         :param pulumi.Input[_builtins.str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         :param pulumi.Input[_builtins.str] force_stop: Whether to force the identity when operating the instance. Optional values:
                - true: Force
@@ -1959,7 +1959,7 @@ class Instance(pulumi.CustomResource):
                - NoSpot: normal pay-as-you-go instance (default)
                - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
         :param pulumi.Input[_builtins.str] status: Status of the instance
-        :param pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict', 'outputs.InstanceSystemDisk']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag bound to the instance
         :param pulumi.Input[_builtins.bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         :param pulumi.Input[_builtins.str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.

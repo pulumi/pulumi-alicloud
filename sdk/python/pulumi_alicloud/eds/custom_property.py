@@ -106,7 +106,7 @@ class CustomProperty(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  property_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None,
+                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict', 'outputs.CustomPropertyPropertyValue']]]]] = None,
                  __props__=None):
         """
         Provides a ECD Custom Property resource.
@@ -146,7 +146,7 @@ class CustomProperty(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] property_key: The Custom attribute key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]] property_values: Custom attribute sets the value of. See `property_values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict', 'outputs.CustomPropertyPropertyValue']]]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
         ...
     @overload
@@ -205,7 +205,7 @@ class CustomProperty(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  property_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None,
+                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict', 'outputs.CustomPropertyPropertyValue']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -230,7 +230,7 @@ class CustomProperty(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             property_key: pulumi.Input[Optional[_builtins.str]] = None,
-            property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None) -> 'CustomProperty':
+            property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict', 'outputs.CustomPropertyPropertyValue']]]]] = None) -> 'CustomProperty':
         """
         Get an existing CustomProperty resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -239,7 +239,7 @@ class CustomProperty(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] property_key: The Custom attribute key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]] property_values: Custom attribute sets the value of. See `property_values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict', 'outputs.CustomPropertyPropertyValue']]]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

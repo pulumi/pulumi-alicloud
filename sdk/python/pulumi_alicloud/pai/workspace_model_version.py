@@ -617,7 +617,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
                  format_type: pulumi.Input[Optional[_builtins.str]] = None,
                  framework_type: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict', 'outputs.WorkspaceModelVersionLabel']]]]] = None,
                  metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  model_id: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -738,7 +738,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
                - Xflow
                - TensorFlow
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] inference_spec: Describes how to apply to downstream inference services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]] labels: List of model version labels. See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict', 'outputs.WorkspaceModelVersionLabel']]]] labels: List of model version labels. See `labels` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metrics: The metrics for the model. The serialized length is limited to 8192.
         :param pulumi.Input[_builtins.str] model_id: The model ID.
         :param pulumi.Input[_builtins.str] options: The extended field. This is a JSON string.
@@ -861,7 +861,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
                  format_type: pulumi.Input[Optional[_builtins.str]] = None,
                  framework_type: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict', 'outputs.WorkspaceModelVersionLabel']]]]] = None,
                  metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  model_id: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -914,7 +914,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
             format_type: pulumi.Input[Optional[_builtins.str]] = None,
             framework_type: pulumi.Input[Optional[_builtins.str]] = None,
             inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict', 'outputs.WorkspaceModelVersionLabel']]]]] = None,
             metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             model_id: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -956,7 +956,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
                - Xflow
                - TensorFlow
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] inference_spec: Describes how to apply to downstream inference services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]] labels: List of model version labels. See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict', 'outputs.WorkspaceModelVersionLabel']]]] labels: List of model version labels. See `labels` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metrics: The metrics for the model. The serialized length is limited to 8192.
         :param pulumi.Input[_builtins.str] model_id: The model ID.
         :param pulumi.Input[_builtins.str] options: The extended field. This is a JSON string.

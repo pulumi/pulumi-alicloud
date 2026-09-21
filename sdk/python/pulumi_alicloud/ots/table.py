@@ -422,12 +422,12 @@ class Table(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
                  deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]]] = None,
                  sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
                  sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,12 +515,12 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
@@ -627,12 +627,12 @@ class Table(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
                  deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]]] = None,
                  sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
                  sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -680,12 +680,12 @@ class Table(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
-            defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
+            defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
             deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
             enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             max_version: pulumi.Input[Optional[_builtins.int]] = None,
-            primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
+            primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]]] = None,
             sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
             sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -699,12 +699,12 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.

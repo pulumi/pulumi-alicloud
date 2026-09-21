@@ -839,7 +839,7 @@ class DbInstance(pulumi.CustomResource):
                  cache_size: pulumi.Input[Optional[_builtins.int]] = None,
                  db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
+                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict', 'outputs.DbInstanceDesiredSecurityIpList']]]]] = None,
                  enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -902,7 +902,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cache_size: The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         :param pulumi.Input[_builtins.str] db_instance_class: The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         :param pulumi.Input[_builtins.str] db_instance_description: The DBInstance description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict', 'outputs.DbInstanceDesiredSecurityIpList']]]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[_builtins.bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
         :param pulumi.Input[_builtins.str] engine_minor_version: The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
@@ -986,7 +986,7 @@ class DbInstance(pulumi.CustomResource):
                  cache_size: pulumi.Input[Optional[_builtins.int]] = None,
                  db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
+                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict', 'outputs.DbInstanceDesiredSecurityIpList']]]]] = None,
                  enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1076,14 +1076,14 @@ class DbInstance(pulumi.CustomResource):
             cpu_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
             db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
             db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
-            desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
+            desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict', 'outputs.DbInstanceDesiredSecurityIpList']]]]] = None,
             enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
             engine: pulumi.Input[Optional[_builtins.str]] = None,
             engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_expired: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_net_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict']]]]] = None,
+            instance_net_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict', 'outputs.DbInstanceInstanceNetInfo']]]]] = None,
             lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
             lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
             memory_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1092,7 +1092,7 @@ class DbInstance(pulumi.CustomResource):
             period: pulumi.Input[Optional[_builtins.str]] = None,
             period_time: pulumi.Input[Optional[_builtins.int]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
-            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict']]]]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict', 'outputs.DbInstanceSecurityIpList']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1117,14 +1117,14 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cpu_prepaid: The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
         :param pulumi.Input[_builtins.str] db_instance_class: The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         :param pulumi.Input[_builtins.str] db_instance_description: The DBInstance description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict', 'outputs.DbInstanceDesiredSecurityIpList']]]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[_builtins.bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
         :param pulumi.Input[_builtins.str] engine: The engine of DBInstance. Always `selectdb`.
         :param pulumi.Input[_builtins.str] engine_minor_version: The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         :param pulumi.Input[_builtins.str] gmt_created: The time when DBInstance is created.
         :param pulumi.Input[_builtins.str] gmt_expired: The time when DBInstance will be expired. Available on `Subscription` DBInstance.
         :param pulumi.Input[_builtins.str] gmt_modified: The time when DBInstance is modified.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict']]]] instance_net_infos: The net infos for instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict', 'outputs.DbInstanceInstanceNetInfo']]]] instance_net_infos: The net infos for instances.
         :param pulumi.Input[_builtins.str] lock_mode: The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
         :param pulumi.Input[_builtins.str] lock_reason: The reason why the instance is locked.
         :param pulumi.Input[_builtins.int] memory_postpaid: The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
@@ -1133,7 +1133,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] period: It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
         :param pulumi.Input[_builtins.int] period_time: The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict']]]] security_ip_lists: The details about each IP address whitelist returned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict', 'outputs.DbInstanceSecurityIpList']]]] security_ip_lists: The details about each IP address whitelist returned.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         :param pulumi.Input[_builtins.str] sub_domain: The sub domain of DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.

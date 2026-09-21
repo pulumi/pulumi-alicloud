@@ -288,7 +288,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 response_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]]] = None,
+                 response_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict', 'outputs.HttpResponseHeaderModificationRuleResponseHeaderModification']]]]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -369,7 +369,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict', 'outputs.HttpResponseHeaderModificationRuleResponseHeaderModification']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
@@ -471,7 +471,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 response_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]]] = None,
+                 response_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict', 'outputs.HttpResponseHeaderModificationRuleResponseHeaderModification']]]]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -510,7 +510,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config_id: pulumi.Input[Optional[_builtins.int]] = None,
-            response_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]]] = None,
+            response_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict', 'outputs.HttpResponseHeaderModificationRuleResponseHeaderModification']]]]] = None,
             rule: pulumi.Input[Optional[_builtins.str]] = None,
             rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -525,7 +525,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] config_id: Config Id
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict', 'outputs.HttpResponseHeaderModificationRuleResponseHeaderModification']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")

@@ -272,7 +272,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  alibaba_side_asn: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -320,7 +320,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] alibaba_side_asn: ASN representing resources.
         :param pulumi.Input[_builtins.str] description: Represents the description of the leased line gateway.
         :param pulumi.Input[_builtins.str] ecr_name: Name of the Gateway representing the leased line.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]] regions: List of regions representing leased line gateways. See `regions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
@@ -388,7 +388,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  alibaba_side_asn: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -424,7 +424,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
-            regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'RouterExpressConnectRouter':
@@ -439,7 +439,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Represents the creation time of the resource.
         :param pulumi.Input[_builtins.str] description: Represents the description of the leased line gateway.
         :param pulumi.Input[_builtins.str] ecr_name: Name of the Gateway representing the leased line.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]] regions: List of regions representing leased line gateways. See `regions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
         :param pulumi.Input[_builtins.str] status: The status of the resource.

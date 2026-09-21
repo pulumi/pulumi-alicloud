@@ -280,8 +280,8 @@ class ScheduledSql(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
-                 scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict', 'outputs.ScheduledSqlSchedule']]] = None,
+                 scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict', 'outputs.ScheduledSqlScheduledSqlConfiguration']]] = None,
                  scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -366,8 +366,8 @@ class ScheduledSql(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Job description.
         :param pulumi.Input[_builtins.str] display_name: Task display name.
         :param pulumi.Input[_builtins.str] project: A short description of struct.
-        :param pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']] schedule: Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
-        :param pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']] scheduled_sql_configuration: Task configuration. See `scheduled_sql_configuration` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict', 'outputs.ScheduledSqlSchedule']] schedule: Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict', 'outputs.ScheduledSqlScheduledSqlConfiguration']] scheduled_sql_configuration: Task configuration. See `scheduled_sql_configuration` below.
         :param pulumi.Input[_builtins.str] scheduled_sql_name: The job name. The naming rules are as follows:
                - Job names must be unique within the same project.
                - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
@@ -475,8 +475,8 @@ class ScheduledSql(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
-                 scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict', 'outputs.ScheduledSqlSchedule']]] = None,
+                 scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict', 'outputs.ScheduledSqlScheduledSqlConfiguration']]] = None,
                  scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -518,8 +518,8 @@ class ScheduledSql(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
-            scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict', 'outputs.ScheduledSqlSchedule']]] = None,
+            scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict', 'outputs.ScheduledSqlScheduledSqlConfiguration']]] = None,
             scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ScheduledSql':
         """
@@ -532,8 +532,8 @@ class ScheduledSql(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Job description.
         :param pulumi.Input[_builtins.str] display_name: Task display name.
         :param pulumi.Input[_builtins.str] project: A short description of struct.
-        :param pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']] schedule: Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
-        :param pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']] scheduled_sql_configuration: Task configuration. See `scheduled_sql_configuration` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict', 'outputs.ScheduledSqlSchedule']] schedule: Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict', 'outputs.ScheduledSqlScheduledSqlConfiguration']] scheduled_sql_configuration: Task configuration. See `scheduled_sql_configuration` below.
         :param pulumi.Input[_builtins.str] scheduled_sql_name: The job name. The naming rules are as follows:
                - Job names must be unique within the same project.
                - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).

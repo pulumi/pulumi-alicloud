@@ -430,10 +430,10 @@ class Record(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
+                 auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict', 'outputs.RecordAuthConf']]] = None,
                  biz_name: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']]] = None,
                  host_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  record_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -501,10 +501,10 @@ class Record(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
+        :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict', 'outputs.RecordAuthConf']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
         :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
-        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] host_policy: The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
         :param pulumi.Input[_builtins.bool] proxied: Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.
@@ -597,10 +597,10 @@ class Record(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
+                 auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict', 'outputs.RecordAuthConf']]] = None,
                  biz_name: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']]] = None,
                  host_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  record_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -647,11 +647,11 @@ class Record(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
+            auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict', 'outputs.RecordAuthConf']]] = None,
             biz_name: pulumi.Input[Optional[_builtins.str]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
+            data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']]] = None,
             host_policy: pulumi.Input[Optional[_builtins.str]] = None,
             proxied: pulumi.Input[Optional[_builtins.bool]] = None,
             record_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -666,11 +666,11 @@ class Record(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
+        :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict', 'outputs.RecordAuthConf']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
         :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
         :param pulumi.Input[_builtins.str] create_time: The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] host_policy: The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
         :param pulumi.Input[_builtins.bool] proxied: Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.

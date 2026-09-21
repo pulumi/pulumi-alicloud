@@ -2934,7 +2934,7 @@ class Cluster(pulumi.CustomResource):
                  compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_category: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_option: pulumi.Input[Optional[_builtins.str]] = None,
-                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict', 'outputs.ClusterDbClusterIpArray']]]]] = None,
                  db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2964,7 +2964,7 @@ class Cluster(pulumi.CustomResource):
                  maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict', 'outputs.ClusterParameter']]]]] = None,
                  pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3166,7 +3166,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[_builtins.str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict', 'outputs.ClusterDbClusterIpArray']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[_builtins.str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node. Required for non-distributed clusters.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -3214,7 +3214,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modify_type: Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         :param pulumi.Input[_builtins.str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict', 'outputs.ClusterParameter']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -3449,7 +3449,7 @@ class Cluster(pulumi.CustomResource):
                  compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_category: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_option: pulumi.Input[Optional[_builtins.str]] = None,
-                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict', 'outputs.ClusterDbClusterIpArray']]]]] = None,
                  db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3479,7 +3479,7 @@ class Cluster(pulumi.CustomResource):
                  maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict', 'outputs.ClusterParameter']]]]] = None,
                  pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3646,13 +3646,13 @@ class Cluster(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creation_category: pulumi.Input[Optional[_builtins.str]] = None,
             creation_option: pulumi.Input[Optional[_builtins.str]] = None,
-            db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+            db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict', 'outputs.ClusterDbClusterIpArray']]]]] = None,
             db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
             db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
             db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
             db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
-            db_revision_version_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]]] = None,
+            db_revision_version_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict', 'outputs.ClusterDbRevisionVersionList']]]]] = None,
             db_type: pulumi.Input[Optional[_builtins.str]] = None,
             db_version: pulumi.Input[Optional[_builtins.str]] = None,
             default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3678,7 +3678,7 @@ class Cluster(pulumi.CustomResource):
             maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
             modify_type: pulumi.Input[Optional[_builtins.str]] = None,
             parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict', 'outputs.ClusterParameter']]]]] = None,
             pay_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3747,7 +3747,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[_builtins.str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict', 'outputs.ClusterDbClusterIpArray']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[_builtins.str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node. Required for non-distributed clusters.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -3758,7 +3758,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[_builtins.int] db_node_num: The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
                > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `db_node_count`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict', 'outputs.ClusterDbRevisionVersionList']]]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
         :param pulumi.Input[_builtins.str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[_builtins.str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[_builtins.str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
@@ -3797,7 +3797,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modify_type: Defines whether a `db_node_class`, `cn_node_class`, or `dn_node_class` change is an upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`. Default to `Upgrade`.
         :param pulumi.Input[_builtins.str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict', 'outputs.ClusterParameter']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.

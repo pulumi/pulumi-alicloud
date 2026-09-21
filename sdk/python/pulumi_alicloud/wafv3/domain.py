@@ -325,8 +325,8 @@ class Domain(pulumi.CustomResource):
                  access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
-                 redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+                 listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict', 'outputs.DomainListen']]] = None,
+                 redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict', 'outputs.DomainRedirect']]] = None,
                  resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -354,8 +354,8 @@ class Domain(pulumi.CustomResource):
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
-        :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
-        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] redirect: Configure forwarding information. See `redirect` below.
+        :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict', 'outputs.DomainListen']] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict', 'outputs.DomainRedirect']] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
@@ -399,8 +399,8 @@ class Domain(pulumi.CustomResource):
                  access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
-                 redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+                 listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict', 'outputs.DomainListen']]] = None,
+                 redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict', 'outputs.DomainRedirect']]] = None,
                  resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -445,8 +445,8 @@ class Domain(pulumi.CustomResource):
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             domain_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-            listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
-            redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+            listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict', 'outputs.DomainListen']]] = None,
+            redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict', 'outputs.DomainRedirect']]] = None,
             resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.int]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Domain':
@@ -465,8 +465,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
-        :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
-        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] redirect: Configure forwarding information. See `redirect` below.
+        :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict', 'outputs.DomainListen']] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict', 'outputs.DomainRedirect']] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
         :param pulumi.Input[_builtins.int] status: The status of the domain name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.

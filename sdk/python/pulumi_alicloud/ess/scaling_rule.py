@@ -819,11 +819,11 @@ class ScalingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
-                 alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
+                 alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict', 'outputs.ScalingRuleAlarmDimension']]] = None,
                  cooldown: pulumi.Input[Optional[_builtins.int]] = None,
                  disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
-                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict', 'outputs.ScalingRuleHybridMetric']]]]] = None,
                  hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  metric_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -838,7 +838,7 @@ class ScalingRule(pulumi.CustomResource):
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
+                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict', 'outputs.ScalingRuleStepAdjustment']]]]] = None,
                  target_value: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
@@ -938,11 +938,11 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
-        :param pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        :param pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict', 'outputs.ScalingRuleAlarmDimension']] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         :param pulumi.Input[_builtins.int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[_builtins.bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[_builtins.int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict', 'outputs.ScalingRuleHybridMetric']]]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
         :param pulumi.Input[_builtins.str] hybrid_monitor_namespace: The ID of the Hybrid Cloud Monitoring metric repository.
         :param pulumi.Input[_builtins.int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[_builtins.str] metric_name: A CloudMonitor metric name.
@@ -957,7 +957,7 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[_builtins.str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[_builtins.str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict', 'outputs.ScalingRuleStepAdjustment']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[_builtins.float] target_value: The target value for the metric.
         """
         ...
@@ -1070,11 +1070,11 @@ class ScalingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
-                 alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
+                 alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict', 'outputs.ScalingRuleAlarmDimension']]] = None,
                  cooldown: pulumi.Input[Optional[_builtins.int]] = None,
                  disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
-                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict', 'outputs.ScalingRuleHybridMetric']]]]] = None,
                  hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  metric_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1089,7 +1089,7 @@ class ScalingRule(pulumi.CustomResource):
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
+                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict', 'outputs.ScalingRuleStepAdjustment']]]]] = None,
                  target_value: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1138,12 +1138,12 @@ class ScalingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
             adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
-            alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
+            alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict', 'outputs.ScalingRuleAlarmDimension']]] = None,
             ari: pulumi.Input[Optional[_builtins.str]] = None,
             cooldown: pulumi.Input[Optional[_builtins.int]] = None,
             disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
             estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
-            hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+            hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict', 'outputs.ScalingRuleHybridMetric']]]]] = None,
             hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
             initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
             metric_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1158,7 +1158,7 @@ class ScalingRule(pulumi.CustomResource):
             scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
-            step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
+            step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict', 'outputs.ScalingRuleStepAdjustment']]]]] = None,
             target_value: pulumi.Input[Optional[_builtins.float]] = None) -> 'ScalingRule':
         """
         Get an existing ScalingRule resource's state with the given name, id, and optional extra
@@ -1175,12 +1175,12 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
-        :param pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        :param pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict', 'outputs.ScalingRuleAlarmDimension']] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         :param pulumi.Input[_builtins.str] ari: The unique identifier of the scaling rule.
         :param pulumi.Input[_builtins.int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[_builtins.bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[_builtins.int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict', 'outputs.ScalingRuleHybridMetric']]]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
         :param pulumi.Input[_builtins.str] hybrid_monitor_namespace: The ID of the Hybrid Cloud Monitoring metric repository.
         :param pulumi.Input[_builtins.int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[_builtins.str] metric_name: A CloudMonitor metric name.
@@ -1195,7 +1195,7 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[_builtins.str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[_builtins.str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict', 'outputs.ScalingRuleStepAdjustment']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[_builtins.float] target_value: The target value for the metric.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

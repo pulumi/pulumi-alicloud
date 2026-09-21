@@ -187,7 +187,7 @@ class SasTrail(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
-            service_trail: pulumi.Input[Optional[Union['SasTrailServiceTrailArgs', 'SasTrailServiceTrailArgsDict']]] = None) -> 'SasTrail':
+            service_trail: pulumi.Input[Optional[Union['SasTrailServiceTrailArgs', 'SasTrailServiceTrailArgsDict', 'outputs.SasTrailServiceTrail']]] = None) -> 'SasTrail':
         """
         Get an existing SasTrail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -196,7 +196,7 @@ class SasTrail(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] create_time: The service trace creation timestamp, in milliseconds.
-        :param pulumi.Input[Union['SasTrailServiceTrailArgs', 'SasTrailServiceTrailArgsDict']] service_trail: Service trace configuration information.
+        :param pulumi.Input[Union['SasTrailServiceTrailArgs', 'SasTrailServiceTrailArgsDict', 'outputs.SasTrailServiceTrail']] service_trail: Service trace configuration information.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

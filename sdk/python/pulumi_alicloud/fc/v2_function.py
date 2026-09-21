@@ -863,13 +863,13 @@ class V2Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_port: pulumi.Input[Optional[_builtins.int]] = None,
-                 code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict', 'outputs.V2FunctionCode']]] = None,
                  code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
                  cpu: pulumi.Input[Optional[_builtins.float]] = None,
-                 custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
-                 custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
-                 custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict', 'outputs.V2FunctionCustomContainerConfig']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict', 'outputs.V2FunctionCustomDns']]] = None,
+                 custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict', 'outputs.V2FunctionCustomHealthCheckConfig']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict', 'outputs.V2FunctionCustomRuntimeConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -879,7 +879,7 @@ class V2Function(pulumi.CustomResource):
                  initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  initializer: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
-                 instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict', 'outputs.V2FunctionInstanceLifecycleConfig']]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  memory_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -908,13 +908,13 @@ class V2Function(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        :param pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        :param pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict', 'outputs.V2FunctionCode']] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
         :param pulumi.Input[_builtins.str] code_checksum: crc64 of function code.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        :param pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
-        :param pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']] custom_dns: Function custom DNS configuration. See `custom_dns` below.
-        :param pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        :param pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        :param pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict', 'outputs.V2FunctionCustomContainerConfig']] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
+        :param pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict', 'outputs.V2FunctionCustomDns']] custom_dns: Function custom DNS configuration. See `custom_dns` below.
+        :param pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict', 'outputs.V2FunctionCustomHealthCheckConfig']] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        :param pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict', 'outputs.V2FunctionCustomRuntimeConfig']] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
         :param pulumi.Input[_builtins.str] description: description of function.
         :param pulumi.Input[_builtins.int] disk_size: The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
@@ -924,7 +924,7 @@ class V2Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] initialization_timeout: max running time of initializer.
         :param pulumi.Input[_builtins.str] initializer: initializer entry point of function.
         :param pulumi.Input[_builtins.int] instance_concurrency: The maximum concurrency allowed for a single function instance.
-        :param pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        :param pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict', 'outputs.V2FunctionInstanceLifecycleConfig']] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
         :param pulumi.Input[_builtins.str] instance_type: The instance type of the function. Valid values:
                - **e1**: Elastic instance.
                - **c1**: performance instance.
@@ -978,13 +978,13 @@ class V2Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_port: pulumi.Input[Optional[_builtins.int]] = None,
-                 code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict', 'outputs.V2FunctionCode']]] = None,
                  code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
                  cpu: pulumi.Input[Optional[_builtins.float]] = None,
-                 custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
-                 custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
-                 custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict', 'outputs.V2FunctionCustomContainerConfig']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict', 'outputs.V2FunctionCustomDns']]] = None,
+                 custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict', 'outputs.V2FunctionCustomHealthCheckConfig']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict', 'outputs.V2FunctionCustomRuntimeConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -994,7 +994,7 @@ class V2Function(pulumi.CustomResource):
                  initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  initializer: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
-                 instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict', 'outputs.V2FunctionInstanceLifecycleConfig']]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  memory_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1055,14 +1055,14 @@ class V2Function(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ca_port: pulumi.Input[Optional[_builtins.int]] = None,
-            code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
+            code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict', 'outputs.V2FunctionCode']]] = None,
             code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
             cpu: pulumi.Input[Optional[_builtins.float]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
-            custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
-            custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
-            custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
+            custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict', 'outputs.V2FunctionCustomContainerConfig']]] = None,
+            custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict', 'outputs.V2FunctionCustomDns']]] = None,
+            custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict', 'outputs.V2FunctionCustomHealthCheckConfig']]] = None,
+            custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict', 'outputs.V2FunctionCustomRuntimeConfig']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disk_size: pulumi.Input[Optional[_builtins.int]] = None,
             environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1073,7 +1073,7 @@ class V2Function(pulumi.CustomResource):
             initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             initializer: pulumi.Input[Optional[_builtins.str]] = None,
             instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
-            instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
+            instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict', 'outputs.V2FunctionInstanceLifecycleConfig']]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             memory_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1088,14 +1088,14 @@ class V2Function(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        :param pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        :param pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict', 'outputs.V2FunctionCode']] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
         :param pulumi.Input[_builtins.str] code_checksum: crc64 of function code.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[_builtins.str] create_time: create time of function.
-        :param pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
-        :param pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']] custom_dns: Function custom DNS configuration. See `custom_dns` below.
-        :param pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        :param pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        :param pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict', 'outputs.V2FunctionCustomContainerConfig']] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
+        :param pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict', 'outputs.V2FunctionCustomDns']] custom_dns: Function custom DNS configuration. See `custom_dns` below.
+        :param pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict', 'outputs.V2FunctionCustomHealthCheckConfig']] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        :param pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict', 'outputs.V2FunctionCustomRuntimeConfig']] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
         :param pulumi.Input[_builtins.str] description: description of function.
         :param pulumi.Input[_builtins.int] disk_size: The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
@@ -1106,7 +1106,7 @@ class V2Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] initialization_timeout: max running time of initializer.
         :param pulumi.Input[_builtins.str] initializer: initializer entry point of function.
         :param pulumi.Input[_builtins.int] instance_concurrency: The maximum concurrency allowed for a single function instance.
-        :param pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        :param pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict', 'outputs.V2FunctionInstanceLifecycleConfig']] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
         :param pulumi.Input[_builtins.str] instance_type: The instance type of the function. Valid values:
                - **e1**: Elastic instance.
                - **c1**: performance instance.

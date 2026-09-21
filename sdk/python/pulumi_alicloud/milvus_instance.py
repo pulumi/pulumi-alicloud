@@ -768,7 +768,7 @@ class MilvusInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
-                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict', 'outputs.MilvusInstanceComponent']]]]] = None,
                  configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  db_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -783,7 +783,7 @@ class MilvusInstance(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict', 'outputs.MilvusInstanceVswitchId']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -863,7 +863,7 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically.
                
                > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict', 'outputs.MilvusInstanceComponent']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
                  2.5: proxy ,mix_coordinator,data,query,index
@@ -894,7 +894,7 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: User Defined Label
         :param pulumi.Input[_builtins.str] vpc_id: The VPC network ID. vpc-xxx.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]] vswitch_ids: Switch list, configure the switch and zone. See `vswitch_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict', 'outputs.MilvusInstanceVswitchId']]]] vswitch_ids: Switch list, configure the switch and zone. See `vswitch_ids` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone id. When multi-zone is enabled, it represents the primary zone.
         """
         ...
@@ -991,7 +991,7 @@ class MilvusInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
-                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict', 'outputs.MilvusInstanceComponent']]]]] = None,
                  configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  db_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1006,7 +1006,7 @@ class MilvusInstance(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict', 'outputs.MilvusInstanceVswitchId']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1061,7 +1061,7 @@ class MilvusInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
-            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict', 'outputs.MilvusInstanceComponent']]]]] = None,
             configuration: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1079,7 +1079,7 @@ class MilvusInstance(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict', 'outputs.MilvusInstanceVswitchId']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MilvusInstance':
         """
         Get an existing MilvusInstance resource's state with the given name, id, and optional extra
@@ -1092,7 +1092,7 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically.
                
                > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict', 'outputs.MilvusInstanceComponent']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
                  2.5: proxy ,mix_coordinator,data,query,index
@@ -1126,7 +1126,7 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: Instance status. Value range:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: User Defined Label
         :param pulumi.Input[_builtins.str] vpc_id: The VPC network ID. vpc-xxx.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]] vswitch_ids: Switch list, configure the switch and zone. See `vswitch_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict', 'outputs.MilvusInstanceVswitchId']]]] vswitch_ids: Switch list, configure the switch and zone. See `vswitch_ids` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone id. When multi-zone is enabled, it represents the primary zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

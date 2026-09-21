@@ -332,7 +332,7 @@ class ServerBackupPlan(pulumi.CustomResource):
                  cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict']]]]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ecs_server_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -411,7 +411,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict']]]] details: ECS server backup plan details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]] details: ECS server backup plan details.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
@@ -510,7 +510,7 @@ class ServerBackupPlan(pulumi.CustomResource):
                  cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict']]]]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ecs_server_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -557,7 +557,7 @@ class ServerBackupPlan(pulumi.CustomResource):
             cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
             cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
-            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict']]]]] = None,
+            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             ecs_server_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -573,7 +573,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict']]]] details: ECS server backup plan details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]] details: ECS server backup plan details.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.

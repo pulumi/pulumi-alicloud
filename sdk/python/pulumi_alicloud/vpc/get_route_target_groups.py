@@ -170,7 +170,7 @@ def get_route_target_groups(ids: Optional[Sequence[_builtins.str]] = None,
                             output_file: Optional[_builtins.str] = None,
                             resource_group_id: Optional[_builtins.str] = None,
                             route_target_group_id: Optional[_builtins.str] = None,
-                            route_target_member_lists: Optional[Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict']]] = None,
+                            route_target_member_lists: Optional[Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict', 'outputs.GetRouteTargetGroupsRouteTargetMemberListResult']]] = None,
                             tags: Optional[Mapping[str, _builtins.str]] = None,
                             vpc_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTargetGroupsResult:
@@ -301,7 +301,7 @@ def get_route_target_groups(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str resource_group_id: The ID of the resource group to which the route target group belongs.
     :param _builtins.str route_target_group_id: The ID of the route target group.
            A maximum of 50 instance IDs can be specified in a single query.
-    :param Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict']] route_target_member_lists: The member list of the route target group.
+    :param Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict', 'outputs.GetRouteTargetGroupsRouteTargetMemberListResult']] route_target_member_lists: The member list of the route target group.
            In active/standby mode, the following restrictions apply to route target group members:
            1. The route target group must contain exactly two members.
            2. The route target group members must belong to different zones. See `route_target_member_list` below.
@@ -337,7 +337,7 @@ def get_route_target_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[
                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    route_target_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                   route_target_member_lists: pulumi.Input[Optional[Optional[Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict']]]]] = None,
+                                   route_target_member_lists: pulumi.Input[Optional[Optional[Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict', 'outputs.GetRouteTargetGroupsRouteTargetMemberListResult']]]]] = None,
                                    tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                    vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteTargetGroupsResult]:
@@ -468,7 +468,7 @@ def get_route_target_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[
     :param _builtins.str resource_group_id: The ID of the resource group to which the route target group belongs.
     :param _builtins.str route_target_group_id: The ID of the route target group.
            A maximum of 50 instance IDs can be specified in a single query.
-    :param Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict']] route_target_member_lists: The member list of the route target group.
+    :param Sequence[Union['GetRouteTargetGroupsRouteTargetMemberListArgs', 'GetRouteTargetGroupsRouteTargetMemberListArgsDict', 'outputs.GetRouteTargetGroupsRouteTargetMemberListResult']] route_target_member_lists: The member list of the route target group.
            In active/standby mode, the following restrictions apply to route target group members:
            1. The route target group must contain exactly two members.
            2. The route target group members must belong to different zones. See `route_target_member_list` below.

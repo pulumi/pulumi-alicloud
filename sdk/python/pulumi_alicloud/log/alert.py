@@ -994,27 +994,27 @@ class Alert(pulumi.CustomResource):
                  alert_description: pulumi.Input[Optional[_builtins.str]] = None,
                  alert_displayname: pulumi.Input[Optional[_builtins.str]] = None,
                  alert_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]]] = None,
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]]] = None,
                  auto_annotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  condition: pulumi.Input[Optional[_builtins.str]] = None,
                  dashboard: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']]] = None,
-                 join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]]] = None,
+                 group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']]] = None,
+                 join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]]] = None,
                  mute_until: pulumi.Input[Optional[_builtins.int]] = None,
                  no_data_fire: pulumi.Input[Optional[_builtins.bool]] = None,
                  no_data_severity: pulumi.Input[Optional[_builtins.int]] = None,
-                 notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]]] = None,
+                 notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]]] = None,
                  notify_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-                 policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']]] = None,
+                 policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]]] = None,
-                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
+                 query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
                  schedule_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  send_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
-                 severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]]] = None,
-                 template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']]] = None,
+                 severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]]] = None,
+                 template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']]] = None,
                  threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  throttling: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1290,27 +1290,27 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]] annotations: Annotations for new alert.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]] labels: Labels for new alert.
+        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]] labels: Labels for new alert.
         :param pulumi.Input[_builtins.int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[_builtins.bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[_builtins.int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[_builtins.str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: schedule for alert.
         :param pulumi.Input[_builtins.str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[_builtins.str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[_builtins.bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']] template_configuration: Template configuration for alert, when `type` is `tpl`.
         :param pulumi.Input[_builtins.int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[_builtins.str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.
@@ -1605,27 +1605,27 @@ class Alert(pulumi.CustomResource):
                  alert_description: pulumi.Input[Optional[_builtins.str]] = None,
                  alert_displayname: pulumi.Input[Optional[_builtins.str]] = None,
                  alert_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]]] = None,
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]]] = None,
                  auto_annotation: pulumi.Input[Optional[_builtins.bool]] = None,
                  condition: pulumi.Input[Optional[_builtins.str]] = None,
                  dashboard: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']]] = None,
-                 join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]]] = None,
+                 group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']]] = None,
+                 join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]]] = None,
                  mute_until: pulumi.Input[Optional[_builtins.int]] = None,
                  no_data_fire: pulumi.Input[Optional[_builtins.bool]] = None,
                  no_data_severity: pulumi.Input[Optional[_builtins.int]] = None,
-                 notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]]] = None,
+                 notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]]] = None,
                  notify_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-                 policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']]] = None,
+                 policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]]] = None,
-                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
+                 query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
                  schedule_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  send_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
-                 severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]]] = None,
-                 template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']]] = None,
+                 severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]]] = None,
+                 template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']]] = None,
                  threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  throttling: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1686,27 +1686,27 @@ class Alert(pulumi.CustomResource):
             alert_description: pulumi.Input[Optional[_builtins.str]] = None,
             alert_displayname: pulumi.Input[Optional[_builtins.str]] = None,
             alert_name: pulumi.Input[Optional[_builtins.str]] = None,
-            annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]]] = None,
+            annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]]] = None,
             auto_annotation: pulumi.Input[Optional[_builtins.bool]] = None,
             condition: pulumi.Input[Optional[_builtins.str]] = None,
             dashboard: pulumi.Input[Optional[_builtins.str]] = None,
-            group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']]] = None,
-            join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]]] = None,
+            group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']]] = None,
+            join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]]] = None,
             mute_until: pulumi.Input[Optional[_builtins.int]] = None,
             no_data_fire: pulumi.Input[Optional[_builtins.bool]] = None,
             no_data_severity: pulumi.Input[Optional[_builtins.int]] = None,
-            notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]]] = None,
+            notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]]] = None,
             notify_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-            policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']]] = None,
+            policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']]] = None,
             project_name: pulumi.Input[Optional[_builtins.str]] = None,
-            query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]]] = None,
-            schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
+            query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
             schedule_interval: pulumi.Input[Optional[_builtins.str]] = None,
             schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
             send_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
-            severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]]] = None,
-            template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']]] = None,
+            severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]]] = None,
+            template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']]] = None,
             threshold: pulumi.Input[Optional[_builtins.int]] = None,
             throttling: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1721,27 +1721,27 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]] annotations: Annotations for new alert.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]] labels: Labels for new alert.
+        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]] labels: Labels for new alert.
         :param pulumi.Input[_builtins.int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[_builtins.bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[_builtins.int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[_builtins.str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: schedule for alert.
         :param pulumi.Input[_builtins.str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[_builtins.str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[_builtins.bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']] template_configuration: Template configuration for alert, when `type` is `tpl`.
         :param pulumi.Input[_builtins.int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[_builtins.str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.

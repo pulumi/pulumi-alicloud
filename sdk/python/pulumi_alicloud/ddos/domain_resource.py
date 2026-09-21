@@ -997,7 +997,7 @@ class DomainResource(pulumi.CustomResource):
                  instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
+                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict', 'outputs.DomainResourceProxyType']]]]] = None,
                  real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: pulumi.Input[Optional[_builtins.int]] = None,
                  ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1120,7 +1120,7 @@ class DomainResource(pulumi.CustomResource):
                
                > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
         :param pulumi.Input[_builtins.bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict', 'outputs.DomainResourceProxyType']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
         :param pulumi.Input[_builtins.bool] ssl13_enabled: Specifies whether to enable TLS 1.3. Valid values:
@@ -1228,7 +1228,7 @@ class DomainResource(pulumi.CustomResource):
                  instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
+                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict', 'outputs.DomainResourceProxyType']]]]] = None,
                  real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: pulumi.Input[Optional[_builtins.int]] = None,
                  ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1309,7 +1309,7 @@ class DomainResource(pulumi.CustomResource):
             instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
+            proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict', 'outputs.DomainResourceProxyType']]]]] = None,
             real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             rs_type: pulumi.Input[Optional[_builtins.int]] = None,
             ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1378,7 +1378,7 @@ class DomainResource(pulumi.CustomResource):
                
                > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
         :param pulumi.Input[_builtins.bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict', 'outputs.DomainResourceProxyType']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
         :param pulumi.Input[_builtins.bool] ssl13_enabled: Specifies whether to enable TLS 1.3. Valid values:

@@ -432,7 +432,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict', 'outputs.InstanceEnvironmentVar']]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,7 +505,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict', 'outputs.InstanceEnvironmentVar']]]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
         :param pulumi.Input[_builtins.bool] force: Whether to force the deletion when the instance status does not meet the deletion conditions.
         :param pulumi.Input[_builtins.str] image: EAIS instance image.
         :param pulumi.Input[_builtins.str] instance_name: Name of the instance
@@ -597,7 +597,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict', 'outputs.InstanceEnvironmentVar']]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -647,7 +647,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             category: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
+            environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict', 'outputs.InstanceEnvironmentVar']]]]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             image: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -667,7 +667,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict', 'outputs.InstanceEnvironmentVar']]]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
         :param pulumi.Input[_builtins.bool] force: Whether to force the deletion when the instance status does not meet the deletion conditions.
         :param pulumi.Input[_builtins.str] image: EAIS instance image.
         :param pulumi.Input[_builtins.str] instance_name: Name of the instance

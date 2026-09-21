@@ -1001,7 +1001,7 @@ class Rule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.int]] = None,
-            compliance: pulumi.Input[Optional[Union['RuleComplianceArgs', 'RuleComplianceArgsDict']]] = None,
+            compliance: pulumi.Input[Optional[Union['RuleComplianceArgs', 'RuleComplianceArgsDict', 'outputs.RuleCompliance']]] = None,
             compliance_pack_id: pulumi.Input[Optional[_builtins.str]] = None,
             config_rule_arn: pulumi.Input[Optional[_builtins.str]] = None,
             config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1034,7 +1034,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] account_id: The ID of Alicloud account.
-        :param pulumi.Input[Union['RuleComplianceArgs', 'RuleComplianceArgsDict']] compliance: compliance information.
+        :param pulumi.Input[Union['RuleComplianceArgs', 'RuleComplianceArgsDict', 'outputs.RuleCompliance']] compliance: compliance information.
         :param pulumi.Input[_builtins.str] compliance_pack_id: Compliance Package ID.
         :param pulumi.Input[_builtins.str] config_rule_arn: config rule arn.
         :param pulumi.Input[_builtins.str] config_rule_id: The ID of the rule.

@@ -546,7 +546,7 @@ class ServiceQueue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict', 'outputs.ServiceQueueDlqPolicy']]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -602,7 +602,7 @@ class ServiceQueue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
-        :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict', 'outputs.ServiceQueueDlqPolicy']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
@@ -683,7 +683,7 @@ class ServiceQueue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict', 'outputs.ServiceQueueDlqPolicy']]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -735,7 +735,7 @@ class ServiceQueue(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-            dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+            dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict', 'outputs.ServiceQueueDlqPolicy']]] = None,
             enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -758,7 +758,7 @@ class ServiceQueue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.223.2) The time when the queue was created.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
-        :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict', 'outputs.ServiceQueueDlqPolicy']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the queue. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] encryption_enabled: (Available since v1.291.0) Indicates whether server-side encryption is applied to the queue. The value remains `true` after server-side encryption is disabled because existing messages are still stored as encrypted.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.

@@ -268,7 +268,7 @@ class SearchIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  index_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
+                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict', 'outputs.SearchIndexSchema']]]]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  time_to_live: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -389,7 +389,7 @@ class SearchIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict', 'outputs.SearchIndexSchema']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
                If the retention period exceeds the TTL value, OTS automatically deletes expired data.
@@ -530,7 +530,7 @@ class SearchIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  index_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
+                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict', 'outputs.SearchIndexSchema']]]]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  time_to_live: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -574,7 +574,7 @@ class SearchIndex(pulumi.CustomResource):
             index_id: pulumi.Input[Optional[_builtins.str]] = None,
             index_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-            schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
+            schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict', 'outputs.SearchIndexSchema']]]]] = None,
             sync_phase: pulumi.Input[Optional[_builtins.str]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
             time_to_live: pulumi.Input[Optional[_builtins.int]] = None) -> 'SearchIndex':
@@ -590,7 +590,7 @@ class SearchIndex(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] index_id: The index id of the search index which could not be changed.
         :param pulumi.Input[_builtins.str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict', 'outputs.SearchIndexSchema']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[_builtins.str] sync_phase: The search index sync phase. possible values: `Full`, `Incr`.
         :param pulumi.Input[_builtins.str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[_builtins.int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.

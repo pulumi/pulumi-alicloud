@@ -201,7 +201,7 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']]] = None,
+                 routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict', 'outputs.AliasRoutingConfig']]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -251,7 +251,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[_builtins.str] description: Description of the alias.
-        :param pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
+        :param pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict', 'outputs.AliasRoutingConfig']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[_builtins.str] service_name: The Function Compute service name.
         :param pulumi.Input[_builtins.str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -320,7 +320,7 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']]] = None,
+                 routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict', 'outputs.AliasRoutingConfig']]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -355,7 +355,7 @@ class Alias(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias_name: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']]] = None,
+            routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict', 'outputs.AliasRoutingConfig']]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             service_version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alias':
         """
@@ -367,7 +367,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[_builtins.str] description: Description of the alias.
-        :param pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
+        :param pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict', 'outputs.AliasRoutingConfig']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[_builtins.str] service_name: The Function Compute service name.
         :param pulumi.Input[_builtins.str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """

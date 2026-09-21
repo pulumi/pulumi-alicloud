@@ -653,23 +653,23 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict']]] = None,
+                 access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict', 'outputs.LoadBalancerAccessLogConfig']]] = None,
                  address_allocated_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
+                 deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict', 'outputs.LoadBalancerDeletionProtectionConfig']]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']]] = None,
+                 load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict', 'outputs.LoadBalancerLoadBalancerBillingConfig']]] = None,
                  load_balancer_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
+                 modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict', 'outputs.LoadBalancerModificationProtectionConfig']]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Load Balancer resource.
@@ -748,25 +748,25 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict']] access_log_config: The configuration of the access log. See `access_log_config` below.
+        :param pulumi.Input[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict', 'outputs.LoadBalancerAccessLogConfig']] access_log_config: The configuration of the access log. See `access_log_config` below.
         :param pulumi.Input[_builtins.str] address_allocated_mode: The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Value:
                - `IPv4`:IPv4 type.
                - `DualStack`: the dual-stack type.
         :param pulumi.Input[_builtins.str] address_type: The type of IP address that the SLB instance uses to provide services.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
-        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict', 'outputs.LoadBalancerDeletionProtectionConfig']] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
         :param pulumi.Input[_builtins.str] ipv6_address_type: The address type of Ipv6
-        :param pulumi.Input[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
+        :param pulumi.Input[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict', 'outputs.LoadBalancerLoadBalancerBillingConfig']] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
         :param pulumi.Input[_builtins.str] load_balancer_edition: The edition of the ALB instance.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the resource
-        :param pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']] modification_protection_config: Modify the Protection Configuration See `modification_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict', 'outputs.LoadBalancerModificationProtectionConfig']] modification_protection_config: Modify the Protection Configuration See `modification_protection_config` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
         """
         ...
     @overload
@@ -864,23 +864,23 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict']]] = None,
+                 access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict', 'outputs.LoadBalancerAccessLogConfig']]] = None,
                  address_allocated_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
+                 deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict', 'outputs.LoadBalancerDeletionProtectionConfig']]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']]] = None,
+                 load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict', 'outputs.LoadBalancerLoadBalancerBillingConfig']]] = None,
                  load_balancer_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
+                 modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict', 'outputs.LoadBalancerModificationProtectionConfig']]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -931,27 +931,27 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict']]] = None,
+            access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict', 'outputs.LoadBalancerAccessLogConfig']]] = None,
             address_allocated_mode: pulumi.Input[Optional[_builtins.str]] = None,
             address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
             address_type: pulumi.Input[Optional[_builtins.str]] = None,
             bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
+            deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict', 'outputs.LoadBalancerDeletionProtectionConfig']]] = None,
             deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
-            load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']]] = None,
+            load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict', 'outputs.LoadBalancerLoadBalancerBillingConfig']]] = None,
             load_balancer_edition: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
-            modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
+            modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict', 'outputs.LoadBalancerModificationProtectionConfig']]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None) -> 'LoadBalancer':
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -959,7 +959,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict']] access_log_config: The configuration of the access log. See `access_log_config` below.
+        :param pulumi.Input[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict', 'outputs.LoadBalancerAccessLogConfig']] access_log_config: The configuration of the access log. See `access_log_config` below.
         :param pulumi.Input[_builtins.str] address_allocated_mode: The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Value:
                - `IPv4`:IPv4 type.
@@ -967,21 +967,21 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address_type: The type of IP address that the SLB instance uses to provide services.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict', 'outputs.LoadBalancerDeletionProtectionConfig']] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] dns_name: DNS Domain Name
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
         :param pulumi.Input[_builtins.str] ipv6_address_type: The address type of Ipv6
-        :param pulumi.Input[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
+        :param pulumi.Input[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict', 'outputs.LoadBalancerLoadBalancerBillingConfig']] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
         :param pulumi.Input[_builtins.str] load_balancer_edition: The edition of the ALB instance.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the resource
-        :param pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']] modification_protection_config: Modify the Protection Configuration See `modification_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict', 'outputs.LoadBalancerModificationProtectionConfig']] modification_protection_config: Modify the Protection Configuration See `modification_protection_config` below.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] status: Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

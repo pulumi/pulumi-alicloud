@@ -154,7 +154,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]]] = None,
+                 internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict', 'outputs.LoadBalancerInternetInternet']]]]] = None,
                  __props__=None):
         """
         Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
@@ -240,7 +240,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[_builtins.str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]] internets: The bound private network SLB. See `internet` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict', 'outputs.LoadBalancerInternetInternet']]]] internets: The bound private network SLB. See `internet` below.
         """
         ...
     @overload
@@ -345,7 +345,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]]] = None,
+                 internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict', 'outputs.LoadBalancerInternetInternet']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -376,7 +376,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
             internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
-            internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]]] = None) -> 'LoadBalancerInternet':
+            internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict', 'outputs.LoadBalancerInternetInternet']]]]] = None) -> 'LoadBalancerInternet':
         """
         Get an existing LoadBalancerInternet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -387,7 +387,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[_builtins.str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[_builtins.str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]] internets: The bound private network SLB. See `internet` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict', 'outputs.LoadBalancerInternetInternet']]]] internets: The bound private network SLB. See `internet` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

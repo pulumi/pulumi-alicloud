@@ -233,7 +233,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict', 'outputs.TransitRouterMulticastDomainOptions']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -285,7 +285,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']] options: The function options of the multicast domain. See `options` below.
+        :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict', 'outputs.TransitRouterMulticastDomainOptions']] options: The function options of the multicast domain. See `options` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the forwarding router instance.
         :param pulumi.Input[_builtins.str] transit_router_multicast_domain_description: The description of the multicast domain.
@@ -356,7 +356,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict', 'outputs.TransitRouterMulticastDomainOptions']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -389,7 +389,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+            options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict', 'outputs.TransitRouterMulticastDomainOptions']]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -403,7 +403,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']] options: The function options of the multicast domain. See `options` below.
+        :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict', 'outputs.TransitRouterMulticastDomainOptions']] options: The function options of the multicast domain. See `options` below.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.242.0) The region ID of the transit router.
         :param pulumi.Input[_builtins.str] status: The status of the Transit Router Multicast Domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.

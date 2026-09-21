@@ -252,7 +252,7 @@ class Quota(pulumi.CustomResource):
                  commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
                  part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]]] = None,
                  __props__=None):
         """
         Provides a Max Compute Quota resource.
@@ -360,7 +360,7 @@ class Quota(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
                
                > **NOTE:** -- PayAsYouGo only needs to be opened once per region
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]] sub_quota_info_lists: Secondary Quota list
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]] sub_quota_info_lists: Secondary Quota list
                
                > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
                See `sub_quota_info_list` below.
@@ -481,7 +481,7 @@ class Quota(pulumi.CustomResource):
                  commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
                  part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -514,7 +514,7 @@ class Quota(pulumi.CustomResource):
             commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
             part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
-            sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None) -> 'Quota':
+            sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]]] = None) -> 'Quota':
         """
         Get an existing Quota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -535,7 +535,7 @@ class Quota(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
                
                > **NOTE:** -- PayAsYouGo only needs to be opened once per region
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]] sub_quota_info_lists: Secondary Quota list
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]] sub_quota_info_lists: Secondary Quota list
                
                > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
                See `sub_quota_info_list` below.

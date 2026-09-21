@@ -1052,12 +1052,12 @@ class ClusterV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]]] = None,
-                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
+                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict', 'outputs.ClusterV2AdditionalPackage']]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict', 'outputs.ClusterV2Addon']]]]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
-                 cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']]] = None,
+                 cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict', 'outputs.ClusterV2ClusterCredentials']]] = None,
+                 cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict', 'outputs.ClusterV2ClusterCustomConfiguration']]] = None,
                  cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1069,15 +1069,15 @@ class ClusterV2(pulumi.CustomResource):
                  grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
-                 manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+                 manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict', 'outputs.ClusterV2Manager']]] = None,
                  max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']]] = None,
-                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]]] = None,
+                 monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict', 'outputs.ClusterV2MonitorSpec']]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict', 'outputs.ClusterV2Queue']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']]] = None,
+                 scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict', 'outputs.ClusterV2SchedulerSpec']]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict', 'outputs.ClusterV2SharedStorage']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -1219,15 +1219,15 @@ class ClusterV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict', 'outputs.ClusterV2AdditionalPackage']]]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict', 'outputs.ClusterV2Addon']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
         :param pulumi.Input[_builtins.str] client_version: The version of the E-HPC client.
         :param pulumi.Input[_builtins.str] cluster_category: The cluster type. Valid values:
                
                - Standard
                - Serverless
-        :param pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
-        :param pulumi.Input[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        :param pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict', 'outputs.ClusterV2ClusterCredentials']] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
+        :param pulumi.Input[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict', 'outputs.ClusterV2ClusterCustomConfiguration']] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
         :param pulumi.Input[_builtins.str] cluster_description: The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] cluster_mode: The deployment mode of the cluster. Valid values:
                
@@ -1256,16 +1256,16 @@ class ClusterV2(pulumi.CustomResource):
                
                - true: An enterprise security group is automatically created and used.
                - false: A basic security group is automatically created and used.
-        :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']] manager: The configurations of the cluster management node. See `manager` below.
+        :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict', 'outputs.ClusterV2Manager']] manager: The configurations of the cluster management node. See `manager` below.
         :param pulumi.Input[_builtins.int] max_core_count: The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
         :param pulumi.Input[_builtins.int] max_count: The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
-        :param pulumi.Input[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+        :param pulumi.Input[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict', 'outputs.ClusterV2MonitorSpec']] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict', 'outputs.ClusterV2Queue']]]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
                You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
-        :param pulumi.Input[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
+        :param pulumi.Input[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict', 'outputs.ClusterV2SchedulerSpec']] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict', 'outputs.ClusterV2SharedStorage']]]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -1426,12 +1426,12 @@ class ClusterV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]]] = None,
-                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
+                 additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict', 'outputs.ClusterV2AdditionalPackage']]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict', 'outputs.ClusterV2Addon']]]]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
-                 cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']]] = None,
+                 cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict', 'outputs.ClusterV2ClusterCredentials']]] = None,
+                 cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict', 'outputs.ClusterV2ClusterCustomConfiguration']]] = None,
                  cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1443,15 +1443,15 @@ class ClusterV2(pulumi.CustomResource):
                  grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
-                 manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+                 manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict', 'outputs.ClusterV2Manager']]] = None,
                  max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']]] = None,
-                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]]] = None,
+                 monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict', 'outputs.ClusterV2MonitorSpec']]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict', 'outputs.ClusterV2Queue']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']]] = None,
+                 scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict', 'outputs.ClusterV2SchedulerSpec']]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict', 'outputs.ClusterV2SharedStorage']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1509,12 +1509,12 @@ class ClusterV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]]] = None,
-            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
+            additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict', 'outputs.ClusterV2AdditionalPackage']]]]] = None,
+            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict', 'outputs.ClusterV2Addon']]]]] = None,
             client_version: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
-            cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
-            cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']]] = None,
+            cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict', 'outputs.ClusterV2ClusterCredentials']]] = None,
+            cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict', 'outputs.ClusterV2ClusterCustomConfiguration']]] = None,
             cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1529,16 +1529,16 @@ class ClusterV2(pulumi.CustomResource):
             grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
             idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
             is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
-            manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+            manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict', 'outputs.ClusterV2Manager']]] = None,
             max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
             max_count: pulumi.Input[Optional[_builtins.int]] = None,
             modify_time: pulumi.Input[Optional[_builtins.str]] = None,
-            monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']]] = None,
-            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]]] = None,
+            monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict', 'outputs.ClusterV2MonitorSpec']]] = None,
+            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict', 'outputs.ClusterV2Queue']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']]] = None,
+            scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict', 'outputs.ClusterV2SchedulerSpec']]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+            shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict', 'outputs.ClusterV2SharedStorage']]]]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ClusterV2':
         """
         Get an existing ClusterV2 resource's state with the given name, id, and optional extra
@@ -1547,15 +1547,15 @@ class ClusterV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict']]]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict', 'outputs.ClusterV2AdditionalPackage']]]] additional_packages: The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additional_packages` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict', 'outputs.ClusterV2Addon']]]] addons: The cluster custom service component configuration. Only one component is supported. See `addons` below.
         :param pulumi.Input[_builtins.str] client_version: The version of the E-HPC client.
         :param pulumi.Input[_builtins.str] cluster_category: The cluster type. Valid values:
                
                - Standard
                - Serverless
-        :param pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
-        :param pulumi.Input[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict']] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
+        :param pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict', 'outputs.ClusterV2ClusterCredentials']] cluster_credentials: Security credentials for the cluster. See `cluster_credentials` below.
+        :param pulumi.Input[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict', 'outputs.ClusterV2ClusterCustomConfiguration']] cluster_custom_configuration: The post-processing script configuration of the cluster. See `cluster_custom_configuration` below.
         :param pulumi.Input[_builtins.str] cluster_description: The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
         :param pulumi.Input[_builtins.str] cluster_mode: The deployment mode of the cluster. Valid values:
                
@@ -1587,17 +1587,17 @@ class ClusterV2(pulumi.CustomResource):
                
                - true: An enterprise security group is automatically created and used.
                - false: A basic security group is automatically created and used.
-        :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']] manager: The configurations of the cluster management node. See `manager` below.
+        :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict', 'outputs.ClusterV2Manager']] manager: The configurations of the cluster management node. See `manager` below.
         :param pulumi.Input[_builtins.int] max_core_count: The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
         :param pulumi.Input[_builtins.int] max_count: The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
         :param pulumi.Input[_builtins.str] modify_time: (Available since v1.288.0) The time when the cluster was modified.
-        :param pulumi.Input[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict']] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict']]]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+        :param pulumi.Input[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict', 'outputs.ClusterV2MonitorSpec']] monitor_spec: The monitoring configuration of the cluster. See `monitor_spec` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict', 'outputs.ClusterV2Queue']]]] queues: The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
                You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
-        :param pulumi.Input[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict']] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
+        :param pulumi.Input[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict', 'outputs.ClusterV2SchedulerSpec']] scheduler_spec: The scheduler configuration of the cluster. See `scheduler_spec` below.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict', 'outputs.ClusterV2SharedStorage']]]] shared_storages: List of cluster shared storage configurations. See `shared_storages` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

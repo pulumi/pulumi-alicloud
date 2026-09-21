@@ -343,7 +343,7 @@ class DbInstancePlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
+                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict', 'outputs.DbInstancePlanPlanConfig']]]]] = None,
                  plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -371,7 +371,7 @@ class DbInstancePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the GPDB instance.
         :param pulumi.Input[_builtins.str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]] plan_configs: The execution information of the plan. See `plan_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict', 'outputs.DbInstancePlanPlanConfig']]]] plan_configs: The execution information of the plan. See `plan_config` below.
         :param pulumi.Input[_builtins.str] plan_desc: The description of the Plan.
         :param pulumi.Input[_builtins.str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[_builtins.str] plan_schedule_type: The execution mode of the plan. Valid values: `Postpone`, `Regular`.
@@ -418,7 +418,7 @@ class DbInstancePlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
+                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict', 'outputs.DbInstancePlanPlanConfig']]]]] = None,
                  plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -466,7 +466,7 @@ class DbInstancePlan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
-            plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
+            plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict', 'outputs.DbInstancePlanPlanConfig']]]]] = None,
             plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
             plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
             plan_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -483,7 +483,7 @@ class DbInstancePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the GPDB instance.
         :param pulumi.Input[_builtins.str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]] plan_configs: The execution information of the plan. See `plan_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict', 'outputs.DbInstancePlanPlanConfig']]]] plan_configs: The execution information of the plan. See `plan_config` below.
         :param pulumi.Input[_builtins.str] plan_desc: The description of the Plan.
         :param pulumi.Input[_builtins.str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[_builtins.str] plan_id: The ID of the plan.

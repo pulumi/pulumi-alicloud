@@ -1015,14 +1015,14 @@ class FileSystem(pulumi.CustomResource):
                  keytab: pulumi.Input[Optional[_builtins.str]] = None,
                  keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']]] = None,
-                 options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']]] = None,
+                 nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict', 'outputs.FileSystemNfsAcl']]] = None,
+                 options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict', 'outputs.FileSystemOptions']]] = None,
                  protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+                 recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict', 'outputs.FileSystemRecycleBin']]] = None,
                  redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  redundancy_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']]] = None,
+                 smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1140,17 +1140,17 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                
                This parameter is required only when EncryptType = 2.
-        :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
-        :param pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']] options: Option. See `options` below.
+        :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict', 'outputs.FileSystemNfsAcl']] nfs_acl: NFS ACL See `nfs_acl` below.
+        :param pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict', 'outputs.FileSystemOptions']] options: Option. See `options` below.
         :param pulumi.Input[_builtins.str] protocol_type: File transfer protocol type.
                - When FileSystemType = standard, the values are NFS and SMB.
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
-        :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: Recycle Bin See `recycle_bin` below.
+        :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict', 'outputs.FileSystemRecycleBin']] recycle_bin: Recycle Bin See `recycle_bin` below.
         :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']] smb_acl: SMB ACL See `smb_acl` below.
+        :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
                > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
@@ -1278,14 +1278,14 @@ class FileSystem(pulumi.CustomResource):
                  keytab: pulumi.Input[Optional[_builtins.str]] = None,
                  keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']]] = None,
-                 options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']]] = None,
+                 nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict', 'outputs.FileSystemNfsAcl']]] = None,
+                 options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict', 'outputs.FileSystemOptions']]] = None,
                  protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+                 recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict', 'outputs.FileSystemRecycleBin']]] = None,
                  redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  redundancy_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']]] = None,
+                 smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1347,15 +1347,15 @@ class FileSystem(pulumi.CustomResource):
             keytab: pulumi.Input[Optional[_builtins.str]] = None,
             keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-            nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']]] = None,
-            options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']]] = None,
+            nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict', 'outputs.FileSystemNfsAcl']]] = None,
+            options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict', 'outputs.FileSystemOptions']]] = None,
             protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
-            recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+            recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict', 'outputs.FileSystemRecycleBin']]] = None,
             redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
             redundancy_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']]] = None,
+            smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']]] = None,
             snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             storage_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1412,18 +1412,18 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                
                This parameter is required only when EncryptType = 2.
-        :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
-        :param pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']] options: Option. See `options` below.
+        :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict', 'outputs.FileSystemNfsAcl']] nfs_acl: NFS ACL See `nfs_acl` below.
+        :param pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict', 'outputs.FileSystemOptions']] options: Option. See `options` below.
         :param pulumi.Input[_builtins.str] protocol_type: File transfer protocol type.
                - When FileSystemType = standard, the values are NFS and SMB.
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
-        :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: Recycle Bin See `recycle_bin` below.
+        :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict', 'outputs.FileSystemRecycleBin']] recycle_bin: Recycle Bin See `recycle_bin` below.
         :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']] smb_acl: SMB ACL See `smb_acl` below.
+        :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
                > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.

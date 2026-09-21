@@ -548,21 +548,21 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
+                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict', 'outputs.ClusterApplicationConfig']]]]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
+                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict', 'outputs.ClusterBootstrapScript']]]]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
-                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict', 'outputs.ClusterNodeAttribute']]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  release_version: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
+                 subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict', 'outputs.ClusterSubscriptionConfig']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -711,21 +711,21 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict', 'outputs.ClusterApplicationConfig']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict', 'outputs.ClusterBootstrapScript']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[_builtins.str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[_builtins.bool] deletion_protection: The deletion protection of EMR cluster.
         :param pulumi.Input[_builtins.str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[_builtins.str] log_collect_strategy: The log collect strategy of EMR cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict', 'outputs.ClusterNodeAttribute']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         :param pulumi.Input[_builtins.str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[_builtins.str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[_builtins.str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
+        :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict', 'outputs.ClusterSubscriptionConfig']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -893,21 +893,21 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
+                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict', 'outputs.ClusterApplicationConfig']]]]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
+                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict', 'outputs.ClusterBootstrapScript']]]]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
-                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict', 'outputs.ClusterNodeAttribute']]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  release_version: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
+                 subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict', 'outputs.ClusterSubscriptionConfig']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -956,21 +956,21 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
+            application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict', 'outputs.ClusterApplicationConfig']]]]] = None,
             applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
+            bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict', 'outputs.ClusterBootstrapScript']]]]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
             log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-            node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
-            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+            node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict', 'outputs.ClusterNodeAttribute']]]]] = None,
+            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             release_version: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
+            subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict', 'outputs.ClusterSubscriptionConfig']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -979,21 +979,21 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict', 'outputs.ClusterApplicationConfig']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict', 'outputs.ClusterBootstrapScript']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[_builtins.str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[_builtins.bool] deletion_protection: The deletion protection of EMR cluster.
         :param pulumi.Input[_builtins.str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[_builtins.str] log_collect_strategy: The log collect strategy of EMR cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict', 'outputs.ClusterNodeAttribute']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         :param pulumi.Input[_builtins.str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[_builtins.str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[_builtins.str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
+        :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict', 'outputs.ClusterSubscriptionConfig']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

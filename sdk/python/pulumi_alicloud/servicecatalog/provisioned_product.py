@@ -518,7 +518,7 @@ class ProvisionedProduct(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]]] = None,
                  portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
                  product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,7 +574,7 @@ class ProvisionedProduct(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
         :param pulumi.Input[_builtins.str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[_builtins.str] product_id: Product ID.
         :param pulumi.Input[_builtins.str] product_version_id: Product version ID.
@@ -649,7 +649,7 @@ class ProvisionedProduct(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]]] = None,
                  portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
                  product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -710,10 +710,10 @@ class ProvisionedProduct(pulumi.CustomResource):
             last_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
             last_successful_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
             last_task_id: pulumi.Input[Optional[_builtins.str]] = None,
-            outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict']]]]] = None,
+            outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict', 'outputs.ProvisionedProductOutput']]]]] = None,
             owner_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             owner_principal_type: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]]] = None,
             portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
             product_id: pulumi.Input[Optional[_builtins.str]] = None,
             product_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -739,10 +739,10 @@ class ProvisionedProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_provisioning_task_id: The ID of the last instance operation task
         :param pulumi.Input[_builtins.str] last_successful_provisioning_task_id: The ID of the last successful instance operation task
         :param pulumi.Input[_builtins.str] last_task_id: The ID of the last task
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict']]]] outputs: The output value of the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict', 'outputs.ProvisionedProductOutput']]]] outputs: The output value of the template.
         :param pulumi.Input[_builtins.str] owner_principal_id: The RAM entity ID of the owner
         :param pulumi.Input[_builtins.str] owner_principal_type: The RAM entity type of the owner
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
         :param pulumi.Input[_builtins.str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[_builtins.str] product_id: Product ID.
         :param pulumi.Input[_builtins.str] product_name: The name of the product

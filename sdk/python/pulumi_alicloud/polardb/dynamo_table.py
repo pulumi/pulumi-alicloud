@@ -505,17 +505,17 @@ class DynamoTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_auth: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict', 'outputs.DynamoTableAttribute']]]]] = None,
                  billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict']]]]] = None,
+                 global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict', 'outputs.DynamoTableGlobalSecondaryIndex']]]]] = None,
                  hash_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict']]]]] = None,
+                 local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict', 'outputs.DynamoTableLocalSecondaryIndex']]]]] = None,
                  range_key: pulumi.Input[Optional[_builtins.str]] = None,
                  read_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict']]] = None,
+                 ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict', 'outputs.DynamoTableTtl']]] = None,
                  write_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -612,17 +612,17 @@ class DynamoTable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_auth: The authentication password for PolarDB DynamoDB. Usually references the `dynamodb_auth_password` attribute of an `polardb.Account` with `account_type = "DynamoDB"`. If not set, it is resolved from the cluster's DynamoDB-type account automatically.
         :param pulumi.Input[_builtins.str] account_name: The account name for PolarDB DynamoDB authentication. If not set, it is resolved from the cluster's DynamoDB-type account automatically.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict']]]] attributes: List of attribute definitions for the table key schema and indexes. See `attribute` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict', 'outputs.DynamoTableAttribute']]]] attributes: List of attribute definitions for the table key schema and indexes. See `attribute` below.
         :param pulumi.Input[_builtins.str] billing_mode: The billing mode of the table. Valid values: `PROVISIONED`, `PAY_PER_REQUEST`. Default to `PROVISIONED`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the PolarDB cluster where DynamoDB is enabled.
         :param pulumi.Input[_builtins.str] endpoint: The PolarDB DynamoDB-compatible endpoint URL, in the format `http://<connection_string>:5432`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict']]]] global_secondary_indices: Describe a GSI for the table. See `global_secondary_index` below. Changing the key schema or projection of an existing index recreates that index.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict', 'outputs.DynamoTableGlobalSecondaryIndex']]]] global_secondary_indices: Describe a GSI for the table. See `global_secondary_index` below. Changing the key schema or projection of an existing index recreates that index.
         :param pulumi.Input[_builtins.str] hash_key: The attribute name used as the partition key (hash key) of the table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict']]]] local_secondary_indices: Describe an LSI on the table. See `local_secondary_index` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict', 'outputs.DynamoTableLocalSecondaryIndex']]]] local_secondary_indices: Describe an LSI on the table. See `local_secondary_index` below.
         :param pulumi.Input[_builtins.str] range_key: The attribute name used as the sort key (range key) of the table.
         :param pulumi.Input[_builtins.int] read_capacity: The number of read capacity units. Required when `billing_mode` is `PROVISIONED`.
         :param pulumi.Input[_builtins.str] table_name: The name of the DynamoDB-compatible table.
-        :param pulumi.Input[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict']] ttl: Configuration block for TTL. See `ttl` below.
+        :param pulumi.Input[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict', 'outputs.DynamoTableTtl']] ttl: Configuration block for TTL. See `ttl` below.
         :param pulumi.Input[_builtins.int] write_capacity: The number of write capacity units. Required when `billing_mode` is `PROVISIONED`.
         """
         ...
@@ -738,17 +738,17 @@ class DynamoTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_auth: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict', 'outputs.DynamoTableAttribute']]]]] = None,
                  billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict']]]]] = None,
+                 global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict', 'outputs.DynamoTableGlobalSecondaryIndex']]]]] = None,
                  hash_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict']]]]] = None,
+                 local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict', 'outputs.DynamoTableLocalSecondaryIndex']]]]] = None,
                  range_key: pulumi.Input[Optional[_builtins.str]] = None,
                  read_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict']]] = None,
+                 ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict', 'outputs.DynamoTableTtl']]] = None,
                  write_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -795,17 +795,17 @@ class DynamoTable(pulumi.CustomResource):
             account_auth: pulumi.Input[Optional[_builtins.str]] = None,
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
             arn: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict']]]]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict', 'outputs.DynamoTableAttribute']]]]] = None,
             billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-            global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict']]]]] = None,
+            global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict', 'outputs.DynamoTableGlobalSecondaryIndex']]]]] = None,
             hash_key: pulumi.Input[Optional[_builtins.str]] = None,
-            local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict']]]]] = None,
+            local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict', 'outputs.DynamoTableLocalSecondaryIndex']]]]] = None,
             range_key: pulumi.Input[Optional[_builtins.str]] = None,
             read_capacity: pulumi.Input[Optional[_builtins.int]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict']]] = None,
+            ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict', 'outputs.DynamoTableTtl']]] = None,
             write_capacity: pulumi.Input[Optional[_builtins.int]] = None) -> 'DynamoTable':
         """
         Get an existing DynamoTable resource's state with the given name, id, and optional extra
@@ -817,17 +817,17 @@ class DynamoTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_auth: The authentication password for PolarDB DynamoDB. Usually references the `dynamodb_auth_password` attribute of an `polardb.Account` with `account_type = "DynamoDB"`. If not set, it is resolved from the cluster's DynamoDB-type account automatically.
         :param pulumi.Input[_builtins.str] account_name: The account name for PolarDB DynamoDB authentication. If not set, it is resolved from the cluster's DynamoDB-type account automatically.
         :param pulumi.Input[_builtins.str] arn: The ARN of the table, if returned by the endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict']]]] attributes: List of attribute definitions for the table key schema and indexes. See `attribute` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict', 'outputs.DynamoTableAttribute']]]] attributes: List of attribute definitions for the table key schema and indexes. See `attribute` below.
         :param pulumi.Input[_builtins.str] billing_mode: The billing mode of the table. Valid values: `PROVISIONED`, `PAY_PER_REQUEST`. Default to `PROVISIONED`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the PolarDB cluster where DynamoDB is enabled.
         :param pulumi.Input[_builtins.str] endpoint: The PolarDB DynamoDB-compatible endpoint URL, in the format `http://<connection_string>:5432`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict']]]] global_secondary_indices: Describe a GSI for the table. See `global_secondary_index` below. Changing the key schema or projection of an existing index recreates that index.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict', 'outputs.DynamoTableGlobalSecondaryIndex']]]] global_secondary_indices: Describe a GSI for the table. See `global_secondary_index` below. Changing the key schema or projection of an existing index recreates that index.
         :param pulumi.Input[_builtins.str] hash_key: The attribute name used as the partition key (hash key) of the table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict']]]] local_secondary_indices: Describe an LSI on the table. See `local_secondary_index` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict', 'outputs.DynamoTableLocalSecondaryIndex']]]] local_secondary_indices: Describe an LSI on the table. See `local_secondary_index` below.
         :param pulumi.Input[_builtins.str] range_key: The attribute name used as the sort key (range key) of the table.
         :param pulumi.Input[_builtins.int] read_capacity: The number of read capacity units. Required when `billing_mode` is `PROVISIONED`.
         :param pulumi.Input[_builtins.str] table_name: The name of the DynamoDB-compatible table.
-        :param pulumi.Input[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict']] ttl: Configuration block for TTL. See `ttl` below.
+        :param pulumi.Input[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict', 'outputs.DynamoTableTtl']] ttl: Configuration block for TTL. See `ttl` below.
         :param pulumi.Input[_builtins.int] write_capacity: The number of write capacity units. Required when `billing_mode` is `PROVISIONED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

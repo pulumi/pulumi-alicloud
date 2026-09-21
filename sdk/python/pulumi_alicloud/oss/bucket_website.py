@@ -170,9 +170,9 @@ class BucketWebsite(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict']]] = None,
-                 index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict']]] = None,
-                 routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict']]] = None,
+                 error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict', 'outputs.BucketWebsiteErrorDocument']]] = None,
+                 index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict', 'outputs.BucketWebsiteIndexDocument']]] = None,
+                 routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict', 'outputs.BucketWebsiteRoutingRules']]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Website resource.
@@ -244,9 +244,9 @@ class BucketWebsite(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
-        :param pulumi.Input[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict']] error_document: The container that holds the error page configuration information. See `error_document` below.
-        :param pulumi.Input[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict']] index_document: Static Website Default Home Page Configuration See `index_document` below.
-        :param pulumi.Input[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict']] routing_rules: The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+        :param pulumi.Input[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict', 'outputs.BucketWebsiteErrorDocument']] error_document: The container that holds the error page configuration information. See `error_document` below.
+        :param pulumi.Input[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict', 'outputs.BucketWebsiteIndexDocument']] index_document: Static Website Default Home Page Configuration See `index_document` below.
+        :param pulumi.Input[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict', 'outputs.BucketWebsiteRoutingRules']] routing_rules: The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
         """
         ...
     @overload
@@ -337,9 +337,9 @@ class BucketWebsite(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict']]] = None,
-                 index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict']]] = None,
-                 routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict']]] = None,
+                 error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict', 'outputs.BucketWebsiteErrorDocument']]] = None,
+                 index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict', 'outputs.BucketWebsiteIndexDocument']]] = None,
+                 routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict', 'outputs.BucketWebsiteRoutingRules']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,9 +366,9 @@ class BucketWebsite(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict']]] = None,
-            index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict']]] = None,
-            routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict']]] = None) -> 'BucketWebsite':
+            error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict', 'outputs.BucketWebsiteErrorDocument']]] = None,
+            index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict', 'outputs.BucketWebsiteIndexDocument']]] = None,
+            routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict', 'outputs.BucketWebsiteRoutingRules']]] = None) -> 'BucketWebsite':
         """
         Get an existing BucketWebsite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -377,9 +377,9 @@ class BucketWebsite(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
-        :param pulumi.Input[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict']] error_document: The container that holds the error page configuration information. See `error_document` below.
-        :param pulumi.Input[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict']] index_document: Static Website Default Home Page Configuration See `index_document` below.
-        :param pulumi.Input[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict']] routing_rules: The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
+        :param pulumi.Input[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict', 'outputs.BucketWebsiteErrorDocument']] error_document: The container that holds the error page configuration information. See `error_document` below.
+        :param pulumi.Input[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict', 'outputs.BucketWebsiteIndexDocument']] index_document: Static Website Default Home Page Configuration See `index_document` below.
+        :param pulumi.Input[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict', 'outputs.BucketWebsiteRoutingRules']] routing_rules: The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

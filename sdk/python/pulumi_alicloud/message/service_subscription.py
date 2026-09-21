@@ -370,7 +370,7 @@ class ServiceSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict', 'outputs.ServiceSubscriptionDlqPolicy']]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -426,7 +426,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict', 'outputs.ServiceSubscriptionDlqPolicy']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: An HTTP URL that starts with http:// or https://.
                - `Queue Format`: A queue name.
@@ -508,7 +508,7 @@ class ServiceSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict', 'outputs.ServiceSubscriptionDlqPolicy']]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -555,7 +555,7 @@ class ServiceSubscription(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
-            dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
+            dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict', 'outputs.ServiceSubscriptionDlqPolicy']]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
             notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -572,7 +572,7 @@ class ServiceSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.244.0) The time when the subscription was created.
-        :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
+        :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict', 'outputs.ServiceSubscriptionDlqPolicy']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: An HTTP URL that starts with http:// or https://.
                - `Queue Format`: A queue name.

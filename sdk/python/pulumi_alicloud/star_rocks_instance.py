@@ -801,14 +801,14 @@ class StarRocksInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
+                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict', 'outputs.StarRocksInstanceBackendNodeGroup']]]]] = None,
                  cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
-                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
+                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict', 'outputs.StarRocksInstanceFrontendNodeGroup']]]]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
+                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict', 'outputs.StarRocksInstanceObserverNodeGroup']]]]] = None,
                  oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pay_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -819,7 +819,7 @@ class StarRocksInstance(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict', 'outputs.StarRocksInstanceVswitch']]]]] = None,
                  __props__=None):
         """
         Provides a Star Rocks Instance resource.
@@ -916,14 +916,14 @@ class StarRocksInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_password: Password of admin user.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]] backend_node_groups: BackendNodeGroups See `backend_node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict', 'outputs.StarRocksInstanceBackendNodeGroup']]]] backend_node_groups: BackendNodeGroups See `backend_node_groups` below.
         :param pulumi.Input[_builtins.str] cluster_zone_id: ZoneId of instance.
         :param pulumi.Input[_builtins.int] duration: Duration of purchase. It is only meaningful when payType is set to PrePaid.
         :param pulumi.Input[_builtins.bool] encrypted: Whether encrypted
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]] frontend_node_groups: FrontendNodeGroups See `frontend_node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict', 'outputs.StarRocksInstanceFrontendNodeGroup']]]] frontend_node_groups: FrontendNodeGroups See `frontend_node_groups` below.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
         :param pulumi.Input[_builtins.str] kms_key_id: KmsKeyId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]] observer_node_groups: ObserverNodeGroups See `observer_node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict', 'outputs.StarRocksInstanceObserverNodeGroup']]]] observer_node_groups: ObserverNodeGroups See `observer_node_groups` below.
         :param pulumi.Input[_builtins.str] oss_accessing_role_name: Role name used for password-free access to OSS.
         :param pulumi.Input[_builtins.str] package_type: The package type of the instance:
                - trial
@@ -944,7 +944,7 @@ class StarRocksInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag list of the instance.
         :param pulumi.Input[_builtins.str] version: The version of the instance.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]] vswitches: The VSwitches info of the instance. See `vswitches` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict', 'outputs.StarRocksInstanceVswitch']]]] vswitches: The VSwitches info of the instance. See `vswitches` below.
         """
         ...
     @overload
@@ -1060,14 +1060,14 @@ class StarRocksInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
+                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict', 'outputs.StarRocksInstanceBackendNodeGroup']]]]] = None,
                  cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
-                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
+                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict', 'outputs.StarRocksInstanceFrontendNodeGroup']]]]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
+                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict', 'outputs.StarRocksInstanceObserverNodeGroup']]]]] = None,
                  oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pay_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1078,7 +1078,7 @@ class StarRocksInstance(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict', 'outputs.StarRocksInstanceVswitch']]]]] = None,
                  __props__=None):
         pulumi.log.warn("""StarRocksInstance is deprecated: alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1141,15 +1141,15 @@ class StarRocksInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_password: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-            backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
+            backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict', 'outputs.StarRocksInstanceBackendNodeGroup']]]]] = None,
             cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
             encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
-            frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
+            frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict', 'outputs.StarRocksInstanceFrontendNodeGroup']]]]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-            observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
+            observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict', 'outputs.StarRocksInstanceObserverNodeGroup']]]]] = None,
             oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             package_type: pulumi.Input[Optional[_builtins.str]] = None,
             pay_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1162,7 +1162,7 @@ class StarRocksInstance(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-            vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None) -> 'StarRocksInstance':
+            vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict', 'outputs.StarRocksInstanceVswitch']]]]] = None) -> 'StarRocksInstance':
         """
         Get an existing StarRocksInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1172,15 +1172,15 @@ class StarRocksInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_password: Password of admin user.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]] backend_node_groups: BackendNodeGroups See `backend_node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict', 'outputs.StarRocksInstanceBackendNodeGroup']]]] backend_node_groups: BackendNodeGroups See `backend_node_groups` below.
         :param pulumi.Input[_builtins.str] cluster_zone_id: ZoneId of instance.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the instance.
         :param pulumi.Input[_builtins.int] duration: Duration of purchase. It is only meaningful when payType is set to PrePaid.
         :param pulumi.Input[_builtins.bool] encrypted: Whether encrypted
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]] frontend_node_groups: FrontendNodeGroups See `frontend_node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict', 'outputs.StarRocksInstanceFrontendNodeGroup']]]] frontend_node_groups: FrontendNodeGroups See `frontend_node_groups` below.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
         :param pulumi.Input[_builtins.str] kms_key_id: KmsKeyId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]] observer_node_groups: ObserverNodeGroups See `observer_node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict', 'outputs.StarRocksInstanceObserverNodeGroup']]]] observer_node_groups: ObserverNodeGroups See `observer_node_groups` below.
         :param pulumi.Input[_builtins.str] oss_accessing_role_name: Role name used for password-free access to OSS.
         :param pulumi.Input[_builtins.str] package_type: The package type of the instance:
                - trial
@@ -1203,7 +1203,7 @@ class StarRocksInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag list of the instance.
         :param pulumi.Input[_builtins.str] version: The version of the instance.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]] vswitches: The VSwitches info of the instance. See `vswitches` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict', 'outputs.StarRocksInstanceVswitch']]]] vswitches: The VSwitches info of the instance. See `vswitches` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

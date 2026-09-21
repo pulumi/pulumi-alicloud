@@ -137,7 +137,7 @@ class QuotaSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
+                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict', 'outputs.QuotaScheduleScheduleList']]]]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -273,7 +273,7 @@ class QuotaSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] nickname: The nickname of level-1 compute quota.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]] schedule_lists: schedule list See `schedule_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict', 'outputs.QuotaScheduleScheduleList']]]] schedule_lists: schedule list See `schedule_list` below.
         :param pulumi.Input[_builtins.str] timezone: Time zone, reference value: UTC +8
         """
         ...
@@ -428,7 +428,7 @@ class QuotaSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
+                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict', 'outputs.QuotaScheduleScheduleList']]]]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -457,7 +457,7 @@ class QuotaSchedule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             nickname: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
+            schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict', 'outputs.QuotaScheduleScheduleList']]]]] = None,
             timezone: pulumi.Input[Optional[_builtins.str]] = None) -> 'QuotaSchedule':
         """
         Get an existing QuotaSchedule resource's state with the given name, id, and optional extra
@@ -467,7 +467,7 @@ class QuotaSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] nickname: The nickname of level-1 compute quota.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]] schedule_lists: schedule list See `schedule_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict', 'outputs.QuotaScheduleScheduleList']]]] schedule_lists: schedule list See `schedule_list` below.
         :param pulumi.Input[_builtins.str] timezone: Time zone, reference value: UTC +8
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

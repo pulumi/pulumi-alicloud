@@ -137,8 +137,8 @@ class NetworkAclEntries(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]]] = None,
-                 ingresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]]] = None,
+                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict', 'outputs.NetworkAclEntriesEgress']]]]] = None,
+                 ingresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict', 'outputs.NetworkAclEntriesIngress']]]]] = None,
                  network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -207,8 +207,8 @@ class NetworkAclEntries(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict', 'outputs.NetworkAclEntriesEgress']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict', 'outputs.NetworkAclEntriesIngress']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         ...
@@ -296,8 +296,8 @@ class NetworkAclEntries(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]]] = None,
-                 ingresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]]] = None,
+                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict', 'outputs.NetworkAclEntriesEgress']]]]] = None,
+                 ingresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict', 'outputs.NetworkAclEntriesIngress']]]]] = None,
                  network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -323,8 +323,8 @@ class NetworkAclEntries(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]]] = None,
-            ingresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]]] = None,
+            egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict', 'outputs.NetworkAclEntriesEgress']]]]] = None,
+            ingresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict', 'outputs.NetworkAclEntriesIngress']]]]] = None,
             network_acl_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAclEntries':
         """
         Get an existing NetworkAclEntries resource's state with the given name, id, and optional extra
@@ -333,8 +333,8 @@ class NetworkAclEntries(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict', 'outputs.NetworkAclEntriesEgress']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict', 'outputs.NetworkAclEntriesIngress']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

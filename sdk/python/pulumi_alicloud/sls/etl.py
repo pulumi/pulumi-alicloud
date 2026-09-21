@@ -246,7 +246,7 @@ class Etl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: pulumi.Input[Optional[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict', 'outputs.EtlConfiguration']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -316,7 +316,7 @@ class Etl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
+        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict', 'outputs.EtlConfiguration']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
         :param pulumi.Input[_builtins.str] description: Description of the data processing task.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.
         :param pulumi.Input[_builtins.str] job_name: The job name. Naming rules are as follows:
@@ -409,7 +409,7 @@ class Etl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: pulumi.Input[Optional[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict', 'outputs.EtlConfiguration']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,7 +448,7 @@ class Etl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configuration: pulumi.Input[Optional[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']]] = None,
+            configuration: pulumi.Input[Optional[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict', 'outputs.EtlConfiguration']]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -462,7 +462,7 @@ class Etl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
+        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict', 'outputs.EtlConfiguration']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
         :param pulumi.Input[_builtins.int] create_time: The time when the task was created.
         :param pulumi.Input[_builtins.str] description: Description of the data processing task.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.

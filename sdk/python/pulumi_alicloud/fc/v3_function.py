@@ -1200,28 +1200,28 @@ class V3Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict', 'outputs.V3FunctionCode']]] = None,
                  cpu: pulumi.Input[Optional[_builtins.float]] = None,
-                 custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
-                 custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict', 'outputs.V3FunctionCustomContainerConfig']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict', 'outputs.V3FunctionCustomDns']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict', 'outputs.V3FunctionCustomRuntimeConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
+                 gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict', 'outputs.V3FunctionGpuConfig']]] = None,
                  handler: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict', 'outputs.V3FunctionInstanceLifecycleConfig']]] = None,
                  internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
-                 invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
+                 invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict', 'outputs.V3FunctionInvocationRestriction']]] = None,
                  layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict', 'outputs.V3FunctionLogConfig']]] = None,
                  memory_size: pulumi.Input[Optional[_builtins.int]] = None,
-                 nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
-                 oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+                 nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict', 'outputs.V3FunctionNasConfig']]] = None,
+                 oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict', 'outputs.V3FunctionOssMountConfig']]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1229,7 +1229,7 @@ class V3Function(pulumi.CustomResource):
                  session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
-                 vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
+                 vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict', 'outputs.V3FunctionVpcConfig']]] = None,
                  __props__=None):
         """
         Provides a Function Compute Service V3 (FCV3) Function resource.
@@ -1328,30 +1328,30 @@ class V3Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict', 'outputs.V3FunctionCode']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
-        :param pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']] custom_dns: Function custom DNS configuration See `custom_dns` below.
-        :param pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
+        :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict', 'outputs.V3FunctionCustomContainerConfig']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
+        :param pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict', 'outputs.V3FunctionCustomDns']] custom_dns: Function custom DNS configuration See `custom_dns` below.
+        :param pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict', 'outputs.V3FunctionCustomRuntimeConfig']] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
         :param pulumi.Input[_builtins.str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[_builtins.int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[_builtins.str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
-        :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
+        :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict', 'outputs.V3FunctionGpuConfig']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.int] idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         :param pulumi.Input[_builtins.int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[_builtins.str] instance_isolation_mode: Instance isolation mode
-        :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
+        :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict', 'outputs.V3FunctionInstanceLifecycleConfig']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         :param pulumi.Input[_builtins.bool] internet_access: Allow function to access public network
-        :param pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']] invocation_restriction: Invocation Restriction Detail See `invocation_restriction` below.
+        :param pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict', 'outputs.V3FunctionInvocationRestriction']] invocation_restriction: Invocation Restriction Detail See `invocation_restriction` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] layers: The list of layers.
-        :param pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']] log_config: The logs generated by the function are written to the configured Logstore. See `log_config` below.
+        :param pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict', 'outputs.V3FunctionLogConfig']] log_config: The logs generated by the function are written to the configured Logstore. See `log_config` below.
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
-        :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
-        :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
+        :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict', 'outputs.V3FunctionNasConfig']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
+        :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict', 'outputs.V3FunctionOssMountConfig']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
         :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[_builtins.str] runtime: Function runtime type
@@ -1359,7 +1359,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.int] timeout: The maximum running time of the function, in seconds.
-        :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
+        :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict', 'outputs.V3FunctionVpcConfig']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
         ...
     @overload
@@ -1477,28 +1477,28 @@ class V3Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict', 'outputs.V3FunctionCode']]] = None,
                  cpu: pulumi.Input[Optional[_builtins.float]] = None,
-                 custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
-                 custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict', 'outputs.V3FunctionCustomContainerConfig']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict', 'outputs.V3FunctionCustomDns']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict', 'outputs.V3FunctionCustomRuntimeConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
+                 gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict', 'outputs.V3FunctionGpuConfig']]] = None,
                  handler: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict', 'outputs.V3FunctionInstanceLifecycleConfig']]] = None,
                  internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
-                 invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
+                 invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict', 'outputs.V3FunctionInvocationRestriction']]] = None,
                  layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict', 'outputs.V3FunctionLogConfig']]] = None,
                  memory_size: pulumi.Input[Optional[_builtins.int]] = None,
-                 nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
-                 oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+                 nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict', 'outputs.V3FunctionNasConfig']]] = None,
+                 oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict', 'outputs.V3FunctionOssMountConfig']]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1506,7 +1506,7 @@ class V3Function(pulumi.CustomResource):
                  session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
-                 vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
+                 vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict', 'outputs.V3FunctionVpcConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1572,36 +1572,36 @@ class V3Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+            code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict', 'outputs.V3FunctionCode']]] = None,
             code_size: pulumi.Input[Optional[_builtins.int]] = None,
             cpu: pulumi.Input[Optional[_builtins.float]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
-            custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
-            custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
+            custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict', 'outputs.V3FunctionCustomContainerConfig']]] = None,
+            custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict', 'outputs.V3FunctionCustomDns']]] = None,
+            custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict', 'outputs.V3FunctionCustomRuntimeConfig']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disk_size: pulumi.Input[Optional[_builtins.int]] = None,
             environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             function_arn: pulumi.Input[Optional[_builtins.str]] = None,
             function_id: pulumi.Input[Optional[_builtins.str]] = None,
             function_name: pulumi.Input[Optional[_builtins.str]] = None,
-            gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
+            gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict', 'outputs.V3FunctionGpuConfig']]] = None,
             handler: pulumi.Input[Optional[_builtins.str]] = None,
             idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
             instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
+            instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict', 'outputs.V3FunctionInstanceLifecycleConfig']]] = None,
             internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
-            invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
+            invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict', 'outputs.V3FunctionInvocationRestriction']]] = None,
             last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
             last_update_status: pulumi.Input[Optional[_builtins.str]] = None,
             last_update_status_reason: pulumi.Input[Optional[_builtins.str]] = None,
             last_update_status_reason_code: pulumi.Input[Optional[_builtins.str]] = None,
             layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict', 'outputs.V3FunctionLogConfig']]] = None,
             memory_size: pulumi.Input[Optional[_builtins.int]] = None,
-            nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
-            oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+            nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict', 'outputs.V3FunctionNasConfig']]] = None,
+            oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict', 'outputs.V3FunctionOssMountConfig']]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
             runtime: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1612,8 +1612,8 @@ class V3Function(pulumi.CustomResource):
             state_reason_code: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             timeout: pulumi.Input[Optional[_builtins.int]] = None,
-            tracing_config: pulumi.Input[Optional[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']]] = None,
-            vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None) -> 'V3Function':
+            tracing_config: pulumi.Input[Optional[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict', 'outputs.V3FunctionTracingConfig']]] = None,
+            vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict', 'outputs.V3FunctionVpcConfig']]] = None) -> 'V3Function':
         """
         Get an existing V3Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1621,38 +1621,38 @@ class V3Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict', 'outputs.V3FunctionCode']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the function.
-        :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
-        :param pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']] custom_dns: Function custom DNS configuration See `custom_dns` below.
-        :param pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
+        :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict', 'outputs.V3FunctionCustomContainerConfig']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
+        :param pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict', 'outputs.V3FunctionCustomDns']] custom_dns: Function custom DNS configuration See `custom_dns` below.
+        :param pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict', 'outputs.V3FunctionCustomRuntimeConfig']] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
         :param pulumi.Input[_builtins.str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[_builtins.int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[_builtins.str] function_arn: ARN of function
         :param pulumi.Input[_builtins.str] function_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
-        :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
+        :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict', 'outputs.V3FunctionGpuConfig']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.int] idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         :param pulumi.Input[_builtins.int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[_builtins.str] instance_isolation_mode: Instance isolation mode
-        :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
+        :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict', 'outputs.V3FunctionInstanceLifecycleConfig']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         :param pulumi.Input[_builtins.bool] internet_access: Allow function to access public network
-        :param pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']] invocation_restriction: Invocation Restriction Detail See `invocation_restriction` below.
+        :param pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict', 'outputs.V3FunctionInvocationRestriction']] invocation_restriction: Invocation Restriction Detail See `invocation_restriction` below.
         :param pulumi.Input[_builtins.str] last_modified_time: Last time the function was Updated
         :param pulumi.Input[_builtins.str] last_update_status: The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
         :param pulumi.Input[_builtins.str] last_update_status_reason: The reason that caused the last function to update the Operation State to the current value
         :param pulumi.Input[_builtins.str] last_update_status_reason_code: Status code of the reason that caused the last function update operation status to the current value
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] layers: The list of layers.
-        :param pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']] log_config: The logs generated by the function are written to the configured Logstore. See `log_config` below.
+        :param pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict', 'outputs.V3FunctionLogConfig']] log_config: The logs generated by the function are written to the configured Logstore. See `log_config` below.
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
-        :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
-        :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
+        :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict', 'outputs.V3FunctionNasConfig']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
+        :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict', 'outputs.V3FunctionOssMountConfig']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
         :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[_builtins.str] runtime: Function runtime type
@@ -1663,8 +1663,8 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state_reason_code: The status code of the reason the function is in the current state.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.int] timeout: The maximum running time of the function, in seconds.
-        :param pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']] tracing_config: Tracing configuration
-        :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
+        :param pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict', 'outputs.V3FunctionTracingConfig']] tracing_config: Tracing configuration
+        :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict', 'outputs.V3FunctionVpcConfig']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

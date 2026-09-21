@@ -427,7 +427,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[_builtins.str]] = Non
                   instance_id: Optional[_builtins.str] = None,
                   kms_key_id: Optional[_builtins.str] = None,
                   name_regex: Optional[_builtins.str] = None,
-                  operation_locks: Optional[Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict']]] = None,
+                  operation_locks: Optional[Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict', 'outputs.GetEcsDisksOperationLockResult']]] = None,
                   output_file: Optional[_builtins.str] = None,
                   page_number: Optional[_builtins.int] = None,
                   page_size: Optional[_builtins.int] = None,
@@ -485,7 +485,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[_builtins.str]] = Non
     :param _builtins.str instance_id: Filter the results by the specified ECS instance ID.
     :param _builtins.str kms_key_id: The kms key id.
     :param _builtins.str name_regex: A regex string to filter results by Disk name.
-    :param Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict']] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
+    :param Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict', 'outputs.GetEcsDisksOperationLockResult']] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
     :param _builtins.bool portable: Whether the cloud disk or local disk supports uninstallation.
@@ -580,7 +580,7 @@ def get_ecs_disks_output(additional_attributes: pulumi.Input[Optional[Optional[S
                          instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          kms_key_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                         operation_locks: pulumi.Input[Optional[Optional[Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict']]]]] = None,
+                         operation_locks: pulumi.Input[Optional[Optional[Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict', 'outputs.GetEcsDisksOperationLockResult']]]]] = None,
                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                          page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -638,7 +638,7 @@ def get_ecs_disks_output(additional_attributes: pulumi.Input[Optional[Optional[S
     :param _builtins.str instance_id: Filter the results by the specified ECS instance ID.
     :param _builtins.str kms_key_id: The kms key id.
     :param _builtins.str name_regex: A regex string to filter results by Disk name.
-    :param Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict']] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
+    :param Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict', 'outputs.GetEcsDisksOperationLockResult']] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
     :param _builtins.bool portable: Whether the cloud disk or local disk supports uninstallation.

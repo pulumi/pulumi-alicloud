@@ -424,7 +424,7 @@ class MetricStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
-                 encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict']]] = None,
+                 encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict', 'outputs.MetricStoreEncryptConf']]] = None,
                  hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -485,7 +485,7 @@ class MetricStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] append_meta: Specifies whether to record the IP address of the requester. Default value: `false`.
         :param pulumi.Input[_builtins.bool] auto_split: Specifies whether to automatically split shards. Default value: `true`.
-        :param pulumi.Input[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict']] encrypt_conf: The encryption configuration. See `encrypt_conf` below.
+        :param pulumi.Input[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict', 'outputs.MetricStoreEncryptConf']] encrypt_conf: The encryption configuration. See `encrypt_conf` below.
         :param pulumi.Input[_builtins.int] hot_ttl: The data retention period in the hot storage tier, in days. Minimum value is `7`. Set to `-1` to retain data in the hot storage tier for the entire TTL.
         :param pulumi.Input[_builtins.int] infrequent_access_ttl: The data retention period in the Infrequent Access (IA) storage tier, in days. It must be greater than `60`, and `hot_ttl + infrequent_access_ttl` must not be greater than `ttl`.
         :param pulumi.Input[_builtins.int] max_split_shard_count: The maximum number of shards to split when auto-split is enabled. Valid values: `0` to `256`. Default value: `64`.
@@ -565,7 +565,7 @@ class MetricStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
-                 encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict']]] = None,
+                 encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict', 'outputs.MetricStoreEncryptConf']]] = None,
                  hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -617,7 +617,7 @@ class MetricStore(pulumi.CustomResource):
             append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
-            encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict']]] = None,
+            encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict', 'outputs.MetricStoreEncryptConf']]] = None,
             hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
             infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
             last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
@@ -637,7 +637,7 @@ class MetricStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] append_meta: Specifies whether to record the IP address of the requester. Default value: `false`.
         :param pulumi.Input[_builtins.bool] auto_split: Specifies whether to automatically split shards. Default value: `true`.
         :param pulumi.Input[_builtins.int] create_time: The time when the MetricStore was created.
-        :param pulumi.Input[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict']] encrypt_conf: The encryption configuration. See `encrypt_conf` below.
+        :param pulumi.Input[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict', 'outputs.MetricStoreEncryptConf']] encrypt_conf: The encryption configuration. See `encrypt_conf` below.
         :param pulumi.Input[_builtins.int] hot_ttl: The data retention period in the hot storage tier, in days. Minimum value is `7`. Set to `-1` to retain data in the hot storage tier for the entire TTL.
         :param pulumi.Input[_builtins.int] infrequent_access_ttl: The data retention period in the Infrequent Access (IA) storage tier, in days. It must be greater than `60`, and `hot_ttl + infrequent_access_ttl` must not be greater than `ttl`.
         :param pulumi.Input[_builtins.int] last_modify_time: The time when the MetricStore was last modified.

@@ -296,7 +296,7 @@ class Secret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict']]] = None,
+                 kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict', 'outputs.SecretKmsConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_data: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -371,7 +371,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The secret description.
         :param pulumi.Input[_builtins.str] gateway_type: The gateway type.
-        :param pulumi.Input[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict']] kms_config: The KMS config of the secret. See `kms_config` below.
+        :param pulumi.Input[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict', 'outputs.SecretKmsConfig']] kms_config: The KMS config of the secret. See `kms_config` below.
         :param pulumi.Input[_builtins.str] name: The secret name.
         :param pulumi.Input[_builtins.str] secret_data: The KMS credential value.
         :param pulumi.Input[_builtins.str] secret_source: The source of the key.
@@ -465,7 +465,7 @@ class Secret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict']]] = None,
+                 kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict', 'outputs.SecretKmsConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_data: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -511,7 +511,7 @@ class Secret(pulumi.CustomResource):
             create_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
-            kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict']]] = None,
+            kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict', 'outputs.SecretKmsConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             reference_count: pulumi.Input[Optional[_builtins.int]] = None,
             secret_data: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,7 +528,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] create_timestamp: The creation timestamp of the secret.
         :param pulumi.Input[_builtins.str] description: The secret description.
         :param pulumi.Input[_builtins.str] gateway_type: The gateway type.
-        :param pulumi.Input[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict']] kms_config: The KMS config of the secret. See `kms_config` below.
+        :param pulumi.Input[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict', 'outputs.SecretKmsConfig']] kms_config: The KMS config of the secret. See `kms_config` below.
         :param pulumi.Input[_builtins.str] name: The secret name.
         :param pulumi.Input[_builtins.int] reference_count: The reference count of the secret.
         :param pulumi.Input[_builtins.str] secret_data: The KMS credential value.

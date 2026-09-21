@@ -278,8 +278,8 @@ class DiAlarmRule(pulumi.CustomResource):
                  di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  metric_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
-                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict', 'outputs.DiAlarmRuleNotificationSettings']]] = None,
+                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict', 'outputs.DiAlarmRuleTriggerCondition']]]]] = None,
                  __props__=None):
         """
         Provides a Data Works Di Alarm Rule resource.
@@ -419,8 +419,8 @@ class DiAlarmRule(pulumi.CustomResource):
                - Heartbeat (task status alarm)
                - FailoverCount(failover times alarm)
                - Delay (task Delay alarm)
-        :param pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']] notification_settings: Alarm notification settings See `notification_settings` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]] trigger_conditions: Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+        :param pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict', 'outputs.DiAlarmRuleNotificationSettings']] notification_settings: Alarm notification settings See `notification_settings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict', 'outputs.DiAlarmRuleTriggerCondition']]]] trigger_conditions: Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
         """
         ...
     @overload
@@ -578,8 +578,8 @@ class DiAlarmRule(pulumi.CustomResource):
                  di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  metric_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
-                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict', 'outputs.DiAlarmRuleNotificationSettings']]] = None,
+                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict', 'outputs.DiAlarmRuleTriggerCondition']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,8 +623,8 @@ class DiAlarmRule(pulumi.CustomResource):
             di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             metric_type: pulumi.Input[Optional[_builtins.str]] = None,
-            notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
-            trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None) -> 'DiAlarmRule':
+            notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict', 'outputs.DiAlarmRuleNotificationSettings']]] = None,
+            trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict', 'outputs.DiAlarmRuleTriggerCondition']]]]] = None) -> 'DiAlarmRule':
         """
         Get an existing DiAlarmRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -639,8 +639,8 @@ class DiAlarmRule(pulumi.CustomResource):
                - Heartbeat (task status alarm)
                - FailoverCount(failover times alarm)
                - Delay (task Delay alarm)
-        :param pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']] notification_settings: Alarm notification settings See `notification_settings` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]] trigger_conditions: Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
+        :param pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict', 'outputs.DiAlarmRuleNotificationSettings']] notification_settings: Alarm notification settings See `notification_settings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict', 'outputs.DiAlarmRuleTriggerCondition']]]] trigger_conditions: Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

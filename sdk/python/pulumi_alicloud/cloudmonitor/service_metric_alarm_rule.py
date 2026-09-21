@@ -888,26 +888,26 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict']]] = None,
+                 composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict', 'outputs.ServiceMetricAlarmRuleCompositeExpression']]] = None,
                  contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  email_subject: pulumi.Input[Optional[_builtins.str]] = None,
-                 escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict']]] = None,
+                 escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict', 'outputs.ServiceMetricAlarmRuleEscalations']]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict', 'outputs.ServiceMetricAlarmRuleLabel']]]]] = None,
                  metric_alarm_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  metric_name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  no_data_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
-                 prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict']]] = None,
+                 prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict', 'outputs.ServiceMetricAlarmRulePrometheus']]] = None,
                  resources: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.bool]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict', 'outputs.ServiceMetricAlarmRuleTarget']]]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -970,7 +970,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict']] composite_expression: Alert condition for multiple metrics.
+        :param pulumi.Input[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict', 'outputs.ServiceMetricAlarmRuleCompositeExpression']] composite_expression: Alert condition for multiple metrics.
                
                > **NOTE:**  Single-metric and multi-metric conditions are mutually exclusive and cannot be configured simultaneously.
                See `composite_expression` below.
@@ -979,13 +979,13 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
                > **NOTE:**  An alarm contact group is a collection of one or more alarm contacts. For information about how to create alarm contacts and alarm contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
         :param pulumi.Input[_builtins.str] effective_interval: The time range during which the alert rule is effective.
         :param pulumi.Input[_builtins.str] email_subject: Subject of alert emails.
-        :param pulumi.Input[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict']] escalations: The trigger conditions for alert levels. See `escalations` below.
+        :param pulumi.Input[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict', 'outputs.ServiceMetricAlarmRuleEscalations']] escalations: The trigger conditions for alert levels. See `escalations` below.
         :param pulumi.Input[_builtins.str] interval: The trigger interval of the alarm rule. Unit: seconds.
                
                > **NOTE:** For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
                
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict']]]] labels: When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict', 'outputs.ServiceMetricAlarmRuleLabel']]]] labels: When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
                
                > **NOTE:**  This feature is equivalent to the Label in Prometheus alerts.
                See `labels` below.
@@ -1008,7 +1008,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] period: The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
                
                > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
-        :param pulumi.Input[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict']] prometheus: Prometheus alert.
+        :param pulumi.Input[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict', 'outputs.ServiceMetricAlarmRulePrometheus']] prometheus: Prometheus alert.
                
                > **NOTE:**  You must specify this parameter only when you create a Prometheus alert rule for Enterprise Cloud Monitor.
                See `prometheus` below.
@@ -1026,7 +1026,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] status: The enabled status of the alarm rule. Valid values:
                - true: enabled.
                - false: disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict', 'outputs.ServiceMetricAlarmRuleTarget']]]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         """
         ...
@@ -1108,26 +1108,26 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict']]] = None,
+                 composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict', 'outputs.ServiceMetricAlarmRuleCompositeExpression']]] = None,
                  contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  email_subject: pulumi.Input[Optional[_builtins.str]] = None,
-                 escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict']]] = None,
+                 escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict', 'outputs.ServiceMetricAlarmRuleEscalations']]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict', 'outputs.ServiceMetricAlarmRuleLabel']]]]] = None,
                  metric_alarm_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  metric_name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  no_data_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
-                 prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict']]] = None,
+                 prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict', 'outputs.ServiceMetricAlarmRulePrometheus']]] = None,
                  resources: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.bool]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict', 'outputs.ServiceMetricAlarmRuleTarget']]]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1183,28 +1183,28 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict']]] = None,
+            composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict', 'outputs.ServiceMetricAlarmRuleCompositeExpression']]] = None,
             contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
             dimensions: pulumi.Input[Optional[_builtins.str]] = None,
             effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
             email_subject: pulumi.Input[Optional[_builtins.str]] = None,
-            escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict']]] = None,
+            escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict', 'outputs.ServiceMetricAlarmRuleEscalations']]] = None,
             interval: pulumi.Input[Optional[_builtins.str]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict', 'outputs.ServiceMetricAlarmRuleLabel']]]]] = None,
             metric_alarm_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
             metric_name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             no_data_policy: pulumi.Input[Optional[_builtins.str]] = None,
             no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
-            prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict']]] = None,
+            prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict', 'outputs.ServiceMetricAlarmRulePrometheus']]] = None,
             resources: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
             silence_time: pulumi.Input[Optional[_builtins.str]] = None,
             source_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.bool]] = None,
-            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict', 'outputs.ServiceMetricAlarmRuleTarget']]]]] = None,
             webhook: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceMetricAlarmRule':
         """
         Get an existing ServiceMetricAlarmRule resource's state with the given name, id, and optional extra
@@ -1213,7 +1213,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict']] composite_expression: Alert condition for multiple metrics.
+        :param pulumi.Input[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict', 'outputs.ServiceMetricAlarmRuleCompositeExpression']] composite_expression: Alert condition for multiple metrics.
                
                > **NOTE:**  Single-metric and multi-metric conditions are mutually exclusive and cannot be configured simultaneously.
                See `composite_expression` below.
@@ -1223,13 +1223,13 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dimensions: The monitoring dimensions for the specified resource.
         :param pulumi.Input[_builtins.str] effective_interval: The time range during which the alert rule is effective.
         :param pulumi.Input[_builtins.str] email_subject: Subject of alert emails.
-        :param pulumi.Input[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict']] escalations: The trigger conditions for alert levels. See `escalations` below.
+        :param pulumi.Input[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict', 'outputs.ServiceMetricAlarmRuleEscalations']] escalations: The trigger conditions for alert levels. See `escalations` below.
         :param pulumi.Input[_builtins.str] interval: The trigger interval of the alarm rule. Unit: seconds.
                
                > **NOTE:** For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
                
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict']]]] labels: When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict', 'outputs.ServiceMetricAlarmRuleLabel']]]] labels: When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
                
                > **NOTE:**  This feature is equivalent to the Label in Prometheus alerts.
                See `labels` below.
@@ -1252,7 +1252,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] period: The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
                
                > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
-        :param pulumi.Input[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict']] prometheus: Prometheus alert.
+        :param pulumi.Input[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict', 'outputs.ServiceMetricAlarmRulePrometheus']] prometheus: Prometheus alert.
                
                > **NOTE:**  You must specify this parameter only when you create a Prometheus alert rule for Enterprise Cloud Monitor.
                See `prometheus` below.
@@ -1271,7 +1271,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] status: The enabled status of the alarm rule. Valid values:
                - true: enabled.
                - false: disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict', 'outputs.ServiceMetricAlarmRuleTarget']]]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

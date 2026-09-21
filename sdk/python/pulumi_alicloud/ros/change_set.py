@@ -638,7 +638,7 @@ class ChangeSet(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
                  notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]]] = None,
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -697,7 +697,7 @@ class ChangeSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The notification urls.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict']]]] parameters: Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]] parameters: Parameters.
         :param pulumi.Input[_builtins.str] ram_role_name: The ram role name.
         :param pulumi.Input[_builtins.str] replacement_option: The replacement option.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
@@ -775,7 +775,7 @@ class ChangeSet(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
                  notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]]] = None,
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -833,7 +833,7 @@ class ChangeSet(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
             notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]]] = None,
             ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
             stack_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -859,7 +859,7 @@ class ChangeSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The notification urls.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict']]]] parameters: Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChangeSetParameterArgs', 'ChangeSetParameterArgsDict', 'outputs.ChangeSetParameter']]]] parameters: Parameters.
         :param pulumi.Input[_builtins.str] ram_role_name: The ram role name.
         :param pulumi.Input[_builtins.str] replacement_option: The replacement option.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.

@@ -1143,7 +1143,7 @@ class Site(pulumi.CustomResource):
                  site_name: pulumi.Input[Optional[_builtins.str]] = None,
                  site_name_exclusive: pulumi.Input[Optional[_builtins.str]] = None,
                  site_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']]] = None,
+                 site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict', 'outputs.SiteSiteWafSettings']]] = None,
                  tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_management: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1234,7 +1234,7 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
-        :param pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
+        :param pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict', 'outputs.SiteSiteWafSettings']] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
         :param pulumi.Input[_builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Resource tags
         :param pulumi.Input[_builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
@@ -1339,7 +1339,7 @@ class Site(pulumi.CustomResource):
                  site_name: pulumi.Input[Optional[_builtins.str]] = None,
                  site_name_exclusive: pulumi.Input[Optional[_builtins.str]] = None,
                  site_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']]] = None,
+                 site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict', 'outputs.SiteSiteWafSettings']]] = None,
                  tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_management: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1431,7 +1431,7 @@ class Site(pulumi.CustomResource):
             site_name: pulumi.Input[Optional[_builtins.str]] = None,
             site_name_exclusive: pulumi.Input[Optional[_builtins.str]] = None,
             site_version: pulumi.Input[Optional[_builtins.int]] = None,
-            site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']]] = None,
+            site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict', 'outputs.SiteSiteWafSettings']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tag_name: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1477,7 +1477,7 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
-        :param pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict']] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
+        :param pulumi.Input[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict', 'outputs.SiteSiteWafSettings']] site_waf_settings: Site WAF Configuration Details. See `site_waf_settings` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Resource tags

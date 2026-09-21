@@ -249,7 +249,7 @@ class BucketCname(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
+                 certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict', 'outputs.BucketCnameCertificate']]] = None,
                  delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -310,7 +310,7 @@ class BucketCname(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The bucket to which the custom domain name belongs
-        :param pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']] certificate: The container for the certificate configuration. See `certificate` below.
+        :param pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict', 'outputs.BucketCnameCertificate']] certificate: The container for the certificate configuration. See `certificate` below.
         :param pulumi.Input[_builtins.bool] delete_certificate: Whether to delete the certificate.
         :param pulumi.Input[_builtins.str] domain: User-defined domain name
         :param pulumi.Input[_builtins.bool] force: Whether to force overwrite certificate.
@@ -390,7 +390,7 @@ class BucketCname(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
+                 certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict', 'outputs.BucketCnameCertificate']]] = None,
                  delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -426,7 +426,7 @@ class BucketCname(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
+            certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict', 'outputs.BucketCnameCertificate']]] = None,
             delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -440,7 +440,7 @@ class BucketCname(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The bucket to which the custom domain name belongs
-        :param pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']] certificate: The container for the certificate configuration. See `certificate` below.
+        :param pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict', 'outputs.BucketCnameCertificate']] certificate: The container for the certificate configuration. See `certificate` below.
         :param pulumi.Input[_builtins.bool] delete_certificate: Whether to delete the certificate.
         :param pulumi.Input[_builtins.str] domain: User-defined domain name
         :param pulumi.Input[_builtins.bool] force: Whether to force overwrite certificate.

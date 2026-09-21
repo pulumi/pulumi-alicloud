@@ -186,7 +186,7 @@ class OriginPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  origin_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]]] = None,
+                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict', 'outputs.OriginPoolOrigin']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -280,7 +280,7 @@ class OriginPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
         :param pulumi.Input[_builtins.str] origin_pool_name: The source address pool name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict', 'outputs.OriginPoolOrigin']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         """
         ...
@@ -393,7 +393,7 @@ class OriginPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  origin_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]]] = None,
+                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict', 'outputs.OriginPoolOrigin']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -426,7 +426,7 @@ class OriginPool(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             origin_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             origin_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
-            origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]]] = None,
+            origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict', 'outputs.OriginPoolOrigin']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OriginPool':
         """
         Get an existing OriginPool resource's state with the given name, id, and optional extra
@@ -438,7 +438,7 @@ class OriginPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
         :param pulumi.Input[_builtins.str] origin_pool_id: OriginPool Id
         :param pulumi.Input[_builtins.str] origin_pool_name: The source address pool name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict', 'outputs.OriginPoolOrigin']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
