@@ -441,7 +441,7 @@ class DbCluster(pulumi.CustomResource):
                  db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
+                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict', 'outputs.DbClusterDesiredParam']]]]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -502,7 +502,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_cluster_class: The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         :param pulumi.Input[_builtins.str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[_builtins.str] db_instance_id: The InstanceId of DBInstance for DBCluster. Every DBCluster requires one DBInstance to rely on.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]] desired_params: The modified parameter in DBCluster. See `desired_params` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict', 'outputs.DbClusterDesiredParam']]]] desired_params: The modified parameter in DBCluster. See `desired_params` below.
         :param pulumi.Input[_builtins.str] desired_status: The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         """
@@ -582,7 +582,7 @@ class DbCluster(pulumi.CustomResource):
                  db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
+                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict', 'outputs.DbClusterDesiredParam']]]]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -639,12 +639,12 @@ class DbCluster(pulumi.CustomResource):
             db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-            desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
+            desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict', 'outputs.DbClusterDesiredParam']]]]] = None,
             desired_status: pulumi.Input[Optional[_builtins.str]] = None,
             engine: pulumi.Input[Optional[_builtins.str]] = None,
             engine_version: pulumi.Input[Optional[_builtins.str]] = None,
             memory: pulumi.Input[Optional[_builtins.int]] = None,
-            param_change_logs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict']]]]] = None,
+            param_change_logs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict', 'outputs.DbClusterParamChangeLog']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -664,12 +664,12 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[_builtins.str] db_cluster_id: The id of the cluster.
         :param pulumi.Input[_builtins.str] db_instance_id: The InstanceId of DBInstance for DBCluster. Every DBCluster requires one DBInstance to rely on.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]] desired_params: The modified parameter in DBCluster. See `desired_params` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict', 'outputs.DbClusterDesiredParam']]]] desired_params: The modified parameter in DBCluster. See `desired_params` below.
         :param pulumi.Input[_builtins.str] desired_status: The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         :param pulumi.Input[_builtins.str] engine: The engine of DBCluster. Always `selectdb`.
         :param pulumi.Input[_builtins.str] engine_version: The version of DBCluster.
         :param pulumi.Input[_builtins.int] memory: The memory resource amount of DBCluster. Depends on `db_cluster_class`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict']]]] param_change_logs: The details about parameter changelogs in DBCluster returned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict', 'outputs.DbClusterParamChangeLog']]]] param_change_logs: The details about parameter changelogs in DBCluster returned.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[_builtins.str] region_id: The ID of region for the cluster.
         :param pulumi.Input[_builtins.str] status: The current status of the resource.

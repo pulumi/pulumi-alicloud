@@ -1106,12 +1106,12 @@ class Node(pulumi.CustomResource):
                  classify: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  computing_server: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict', 'outputs.NodeDataDisk']]]]] = None,
                  discount_level: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict', 'outputs.NodeIpAllocationPolicy']]]]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1258,14 +1258,14 @@ class Node(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster id
         :param pulumi.Input[_builtins.str] computing_server: Node Model
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict', 'outputs.NodeDataDisk']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict', 'outputs.NodeIpAllocationPolicy']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Model
         :param pulumi.Input[_builtins.str] node_group_id: node group id
@@ -1444,12 +1444,12 @@ class Node(pulumi.CustomResource):
                  classify: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  computing_server: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict', 'outputs.NodeDataDisk']]]]] = None,
                  discount_level: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict', 'outputs.NodeIpAllocationPolicy']]]]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1526,12 +1526,12 @@ class Node(pulumi.CustomResource):
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             computing_server: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict', 'outputs.NodeDataDisk']]]]] = None,
             discount_level: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
             install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
-            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict', 'outputs.NodeIpAllocationPolicy']]]]] = None,
             login_password: pulumi.Input[Optional[_builtins.str]] = None,
             machine_type: pulumi.Input[Optional[_builtins.str]] = None,
             node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1568,14 +1568,14 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: Cluster id
         :param pulumi.Input[_builtins.str] computing_server: Node Model
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict', 'outputs.NodeDataDisk']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict', 'outputs.NodeIpAllocationPolicy']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Model
         :param pulumi.Input[_builtins.str] node_group_id: node group id

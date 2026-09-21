@@ -295,7 +295,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict']]] = None,
+                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict', 'outputs.FirewallVpcFirewallCenLocalVpc']]] = None,
                  member_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -343,7 +343,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
-        :param pulumi.Input[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict']] local_vpc: The details of the VPC. See `local_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict', 'outputs.FirewallVpcFirewallCenLocalVpc']] local_vpc: The details of the VPC. See `local_vpc` below.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
         :param pulumi.Input[_builtins.str] status: Firewall switch status.
         :param pulumi.Input[_builtins.str] vpc_firewall_name: The name of the VPC firewall instance.
@@ -410,7 +410,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict']]] = None,
+                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict', 'outputs.FirewallVpcFirewallCenLocalVpc']]] = None,
                  member_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -456,7 +456,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             cen_id: pulumi.Input[Optional[_builtins.str]] = None,
             connect_type: pulumi.Input[Optional[_builtins.str]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
-            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict']]] = None,
+            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict', 'outputs.FirewallVpcFirewallCenLocalVpc']]] = None,
             member_uid: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -472,7 +472,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] connect_type: Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
-        :param pulumi.Input[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict']] local_vpc: The details of the VPC. See `local_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict', 'outputs.FirewallVpcFirewallCenLocalVpc']] local_vpc: The details of the VPC. See `local_vpc` below.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
         :param pulumi.Input[_builtins.str] status: Firewall switch status.
         :param pulumi.Input[_builtins.str] vpc_firewall_id: VPC firewall ID

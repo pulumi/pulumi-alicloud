@@ -967,7 +967,7 @@ class SslCertificatesServiceInstance(pulumi.CustomResource):
                  generate_csr_method: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict', 'outputs.SslCertificatesServiceInstanceParameter']]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.int]] = None,
                  product_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1061,7 +1061,7 @@ class SslCertificatesServiceInstance(pulumi.CustomResource):
                - `RSA_4096`
                - `ECC_256`
                - `SM2`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict']]]] parameters: The list of modules. See `parameter` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict', 'outputs.SslCertificatesServiceInstanceParameter']]]] parameters: The list of modules. See `parameter` below.
                
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.int] period: The subscription period. Unit: months. For products billed on a yearly basis, enter an integer multiple of 12.
@@ -1167,7 +1167,7 @@ class SslCertificatesServiceInstance(pulumi.CustomResource):
                  generate_csr_method: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict', 'outputs.SslCertificatesServiceInstanceParameter']]]]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.int]] = None,
                  product_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1243,7 +1243,7 @@ class SslCertificatesServiceInstance(pulumi.CustomResource):
             key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             order_end_time: pulumi.Input[Optional[_builtins.int]] = None,
             order_start_time: pulumi.Input[Optional[_builtins.int]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict', 'outputs.SslCertificatesServiceInstanceParameter']]]]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             pricing_cycle: pulumi.Input[Optional[_builtins.int]] = None,
             product_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1305,7 +1305,7 @@ class SslCertificatesServiceInstance(pulumi.CustomResource):
                - `SM2`
         :param pulumi.Input[_builtins.int] order_end_time: Order end time, a UNIX timestamp in seconds.
         :param pulumi.Input[_builtins.int] order_start_time: Order start time, a UNIX timestamp in seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict']]]] parameters: The list of modules. See `parameter` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict', 'outputs.SslCertificatesServiceInstanceParameter']]]] parameters: The list of modules. See `parameter` below.
                
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.int] period: The subscription period. Unit: months. For products billed on a yearly basis, enter an integer multiple of 12.

@@ -146,7 +146,7 @@ class CooWebCcRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None,
+                 rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict', 'outputs.CooWebCcRuleRuleDetail']]] = None,
                  __props__=None):
         """
         Provides a DdosCoo Web Cc Rule resource.
@@ -244,7 +244,7 @@ class CooWebCcRule(pulumi.CustomResource):
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.str] name: Rule name.
-        :param pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']] rule_detail: Rule details.   See `rule_detail` below.
+        :param pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict', 'outputs.CooWebCcRuleRuleDetail']] rule_detail: Rule details.   See `rule_detail` below.
         """
         ...
     @overload
@@ -359,7 +359,7 @@ class CooWebCcRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None,
+                 rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict', 'outputs.CooWebCcRuleRuleDetail']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,7 +388,7 @@ class CooWebCcRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None) -> 'CooWebCcRule':
+            rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict', 'outputs.CooWebCcRuleRuleDetail']]] = None) -> 'CooWebCcRule':
         """
         Get an existing CooWebCcRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -400,7 +400,7 @@ class CooWebCcRule(pulumi.CustomResource):
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.str] name: Rule name.
-        :param pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']] rule_detail: Rule details.   See `rule_detail` below.
+        :param pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict', 'outputs.CooWebCcRuleRuleDetail']] rule_detail: Rule details.   See `rule_detail` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

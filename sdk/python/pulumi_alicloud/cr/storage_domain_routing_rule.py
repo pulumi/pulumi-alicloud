@@ -137,7 +137,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict', 'outputs.StorageDomainRoutingRuleRoute']]]]] = None,
                  __props__=None):
         """
         Provides a CR Storage Domain Routing Rule resource.
@@ -190,7 +190,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]] routes: Domain name routing entry See `routes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict', 'outputs.StorageDomainRoutingRuleRoute']]]] routes: Domain name routing entry See `routes` below.
         """
         ...
     @overload
@@ -262,7 +262,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict', 'outputs.StorageDomainRoutingRuleRoute']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,7 +292,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict', 'outputs.StorageDomainRoutingRuleRoute']]]]] = None,
             rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageDomainRoutingRule':
         """
         Get an existing StorageDomainRoutingRule resource's state with the given name, id, and optional extra
@@ -303,7 +303,7 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]] routes: Domain name routing entry See `routes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict', 'outputs.StorageDomainRoutingRuleRoute']]]] routes: Domain name routing entry See `routes` below.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

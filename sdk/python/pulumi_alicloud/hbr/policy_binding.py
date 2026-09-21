@@ -506,7 +506,7 @@ class PolicyBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
+                 advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict', 'outputs.PolicyBindingAdvancedOptions']]] = None,
                  cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -641,7 +641,7 @@ class PolicyBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options See `advanced_options` below.
+        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict', 'outputs.PolicyBindingAdvancedOptions']] advanced_options: Backup Advanced Options See `advanced_options` below.
         :param pulumi.Input[_builtins.str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
         :param pulumi.Input[_builtins.str] cross_account_type: Cross-account type, supported
         :param pulumi.Input[_builtins.int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
@@ -803,7 +803,7 @@ class PolicyBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
+                 advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict', 'outputs.PolicyBindingAdvancedOptions']]] = None,
                  cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -849,7 +849,7 @@ class PolicyBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
+            advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict', 'outputs.PolicyBindingAdvancedOptions']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -870,7 +870,7 @@ class PolicyBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options See `advanced_options` below.
+        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict', 'outputs.PolicyBindingAdvancedOptions']] advanced_options: Backup Advanced Options See `advanced_options` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
         :param pulumi.Input[_builtins.str] cross_account_type: Cross-account type, supported

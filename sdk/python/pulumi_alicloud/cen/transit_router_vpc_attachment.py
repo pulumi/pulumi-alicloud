@@ -784,7 +784,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict', 'outputs.TransitRouterVpcAttachmentOptions']]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -798,7 +798,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict', 'outputs.TransitRouterVpcAttachmentZoneMapping']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpc Attachment resource.
@@ -880,7 +880,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                > **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
-        :param pulumi.Input[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']] options: A collection of feature attributes. See `options` below.
+        :param pulumi.Input[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict', 'outputs.TransitRouterVpcAttachmentOptions']] options: A collection of feature attributes. See `options` below.
         :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
                
                - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -901,7 +901,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vpc_owner_id: VpcOwnerId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict', 'outputs.TransitRouterVpcAttachmentZoneMapping']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
         """
         ...
     @overload
@@ -998,7 +998,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict', 'outputs.TransitRouterVpcAttachmentOptions']]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1012,7 +1012,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict', 'outputs.TransitRouterVpcAttachmentZoneMapping']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1064,7 +1064,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-            options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']]] = None,
+            options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict', 'outputs.TransitRouterVpcAttachmentOptions']]] = None,
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1081,7 +1081,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
-            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None) -> 'TransitRouterVpcAttachment':
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict', 'outputs.TransitRouterVpcAttachmentZoneMapping']]]]] = None) -> 'TransitRouterVpcAttachment':
         """
         Get an existing TransitRouterVpcAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1098,7 +1098,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
-        :param pulumi.Input[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']] options: A collection of feature attributes. See `options` below.
+        :param pulumi.Input[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict', 'outputs.TransitRouterVpcAttachmentOptions']] options: A collection of feature attributes. See `options` below.
         :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
                
                - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -1122,7 +1122,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vpc_owner_id: VpcOwnerId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict', 'outputs.TransitRouterVpcAttachmentZoneMapping']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

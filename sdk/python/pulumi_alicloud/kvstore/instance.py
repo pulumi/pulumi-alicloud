@@ -2339,7 +2339,7 @@ class Instance(pulumi.CustomResource):
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type: pulumi.Input[Optional[_builtins.str]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2563,7 +2563,7 @@ class Instance(pulumi.CustomResource):
                - `MASTER_SLAVE`: High availability (master-replica)
                - `STAND_ALONE`: Standalone
         :param pulumi.Input[_builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[_builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         :param pulumi.Input[_builtins.str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
@@ -2806,7 +2806,7 @@ class Instance(pulumi.CustomResource):
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type: pulumi.Input[Optional[_builtins.str]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2965,7 +2965,7 @@ class Instance(pulumi.CustomResource):
             maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
             node_type: pulumi.Input[Optional[_builtins.str]] = None,
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3048,7 +3048,7 @@ class Instance(pulumi.CustomResource):
                - `MASTER_SLAVE`: High availability (master-replica)
                - `STAND_ALONE`: Standalone
         :param pulumi.Input[_builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[_builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         :param pulumi.Input[_builtins.str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.

@@ -266,8 +266,8 @@ class ForwardingRule(pulumi.CustomResource):
                  forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
-                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict', 'outputs.ForwardingRuleRuleAction']]]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict', 'outputs.ForwardingRuleRuleCondition']]]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Forwarding Rule resource.
@@ -396,8 +396,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
         :param pulumi.Input[_builtins.int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]] rule_actions: Forward action. See `rule_actions` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict', 'outputs.ForwardingRuleRuleAction']]]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict', 'outputs.ForwardingRuleRuleCondition']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         ...
     @overload
@@ -545,8 +545,8 @@ class ForwardingRule(pulumi.CustomResource):
                  forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
-                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict', 'outputs.ForwardingRuleRuleAction']]]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict', 'outputs.ForwardingRuleRuleCondition']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,8 +588,8 @@ class ForwardingRule(pulumi.CustomResource):
             forwarding_rule_status: pulumi.Input[Optional[_builtins.str]] = None,
             listener_id: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
-            rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None) -> 'ForwardingRule':
+            rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict', 'outputs.ForwardingRuleRuleAction']]]]] = None,
+            rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict', 'outputs.ForwardingRuleRuleCondition']]]]] = None) -> 'ForwardingRule':
         """
         Get an existing ForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -603,8 +603,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] forwarding_rule_status: The status of the Forwarding Rule.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
         :param pulumi.Input[_builtins.int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]] rule_actions: Forward action. See `rule_actions` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict', 'outputs.ForwardingRuleRuleAction']]]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict', 'outputs.ForwardingRuleRuleCondition']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

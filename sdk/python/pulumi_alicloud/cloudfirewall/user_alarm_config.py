@@ -249,11 +249,11 @@ class UserAlarmConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]]] = None,
+                 alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict', 'outputs.UserAlarmConfigAlarmConfig']]]]] = None,
                  alarm_lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]]] = None,
+                 contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict', 'outputs.UserAlarmConfigContactConfig']]]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]]] = None,
+                 notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict', 'outputs.UserAlarmConfigNotifyConfig']]]]] = None,
                  use_default_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -308,13 +308,13 @@ class UserAlarmConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict', 'outputs.UserAlarmConfigAlarmConfig']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict', 'outputs.UserAlarmConfigContactConfig']]]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
         :param pulumi.Input[_builtins.str] lang: The language type. Possible values are `zh`, `en`.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict', 'outputs.UserAlarmConfigNotifyConfig']]]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
         :param pulumi.Input[_builtins.str] use_default_contact: Whether to Use the default contact.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -390,11 +390,11 @@ class UserAlarmConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]]] = None,
+                 alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict', 'outputs.UserAlarmConfigAlarmConfig']]]]] = None,
                  alarm_lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]]] = None,
+                 contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict', 'outputs.UserAlarmConfigContactConfig']]]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]]] = None,
+                 notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict', 'outputs.UserAlarmConfigNotifyConfig']]]]] = None,
                  use_default_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -423,11 +423,11 @@ class UserAlarmConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]]] = None,
+            alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict', 'outputs.UserAlarmConfigAlarmConfig']]]]] = None,
             alarm_lang: pulumi.Input[Optional[_builtins.str]] = None,
-            contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]]] = None,
+            contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict', 'outputs.UserAlarmConfigContactConfig']]]]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
-            notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]]] = None,
+            notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict', 'outputs.UserAlarmConfigNotifyConfig']]]]] = None,
             use_default_contact: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserAlarmConfig':
         """
         Get an existing UserAlarmConfig resource's state with the given name, id, and optional extra
@@ -436,13 +436,13 @@ class UserAlarmConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict', 'outputs.UserAlarmConfigAlarmConfig']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict', 'outputs.UserAlarmConfigContactConfig']]]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
         :param pulumi.Input[_builtins.str] lang: The language type. Possible values are `zh`, `en`.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict', 'outputs.UserAlarmConfigNotifyConfig']]]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
         :param pulumi.Input[_builtins.str] use_default_contact: Whether to Use the default contact.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.

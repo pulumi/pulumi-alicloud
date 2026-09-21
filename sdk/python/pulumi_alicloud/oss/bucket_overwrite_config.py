@@ -106,7 +106,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict', 'outputs.BucketOverwriteConfigRule']]]]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Overwrite Config resource.
@@ -189,7 +189,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict']]]] rules: Forbid overwrite rule See `rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict', 'outputs.BucketOverwriteConfigRule']]]] rules: Forbid overwrite rule See `rule` below.
         """
         ...
     @overload
@@ -291,7 +291,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict', 'outputs.BucketOverwriteConfigRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,7 +316,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict']]]]] = None) -> 'BucketOverwriteConfig':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict', 'outputs.BucketOverwriteConfigRule']]]]] = None) -> 'BucketOverwriteConfig':
         """
         Get an existing BucketOverwriteConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -325,7 +325,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict']]]] rules: Forbid overwrite rule See `rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketOverwriteConfigRuleArgs', 'BucketOverwriteConfigRuleArgsDict', 'outputs.BucketOverwriteConfigRule']]]] rules: Forbid overwrite rule See `rule` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

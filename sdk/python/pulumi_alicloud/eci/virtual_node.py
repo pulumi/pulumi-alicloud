@@ -381,7 +381,7 @@ class VirtualNode(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict', 'outputs.VirtualNodeTaint']]]]] = None,
                  virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -462,7 +462,7 @@ class VirtualNode(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]] taints: The taint. See `taints` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict', 'outputs.VirtualNodeTaint']]]] taints: The taint. See `taints` below.
         :param pulumi.Input[_builtins.str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
         :param pulumi.Input[_builtins.str] zone_id: The Zone.
@@ -562,7 +562,7 @@ class VirtualNode(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict', 'outputs.VirtualNodeTaint']]]]] = None,
                  virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -609,7 +609,7 @@ class VirtualNode(pulumi.CustomResource):
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict', 'outputs.VirtualNodeTaint']]]]] = None,
             virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualNode':
@@ -627,7 +627,7 @@ class VirtualNode(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[_builtins.str] status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]] taints: The taint. See `taints` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict', 'outputs.VirtualNodeTaint']]]] taints: The taint. See `taints` below.
         :param pulumi.Input[_builtins.str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
         :param pulumi.Input[_builtins.str] zone_id: The Zone.

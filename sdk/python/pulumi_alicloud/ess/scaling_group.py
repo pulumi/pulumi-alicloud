@@ -1452,7 +1452,7 @@ class ScalingGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
+                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict', 'outputs.ScalingGroupAlbServerGroup']]]]] = None,
                  allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
                  az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1473,7 +1473,7 @@ class ScalingGroup(pulumi.CustomResource):
                  health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
+                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict', 'outputs.ScalingGroupLaunchTemplateOverride']]]]] = None,
                  launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1587,7 +1587,7 @@ class ScalingGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict', 'outputs.ScalingGroupAlbServerGroup']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         :param pulumi.Input[_builtins.bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
@@ -1610,7 +1610,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         :param pulumi.Input[_builtins.str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict', 'outputs.ScalingGroupLaunchTemplateOverride']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         :param pulumi.Input[_builtins.str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
@@ -1756,7 +1756,7 @@ class ScalingGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
+                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict', 'outputs.ScalingGroupAlbServerGroup']]]]] = None,
                  allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
                  az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1777,7 +1777,7 @@ class ScalingGroup(pulumi.CustomResource):
                  health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
+                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict', 'outputs.ScalingGroupLaunchTemplateOverride']]]]] = None,
                  launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1863,7 +1863,7 @@ class ScalingGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
+            alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict', 'outputs.ScalingGroupAlbServerGroup']]]]] = None,
             allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
             az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1884,7 +1884,7 @@ class ScalingGroup(pulumi.CustomResource):
             health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
+            launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict', 'outputs.ScalingGroupLaunchTemplateOverride']]]]] = None,
             launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
             loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1912,7 +1912,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict', 'outputs.ScalingGroupAlbServerGroup']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         :param pulumi.Input[_builtins.bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
@@ -1935,7 +1935,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         :param pulumi.Input[_builtins.str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict', 'outputs.ScalingGroupLaunchTemplateOverride']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         :param pulumi.Input[_builtins.str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.

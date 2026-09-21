@@ -183,7 +183,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict']]]]] = None,
+                 code_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict', 'outputs.RoutineCodeDeploymentCodeVersion']]]]] = None,
                  env: pulumi.Input[Optional[_builtins.str]] = None,
                  routine_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -236,7 +236,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict']]]] code_versions: The list of code versions and their traffic percentages. At most two versions are supported, and the percentages must sum to 100. See `code_versions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict', 'outputs.RoutineCodeDeploymentCodeVersion']]]] code_versions: The list of code versions and their traffic percentages. At most two versions are supported, and the percentages must sum to 100. See `code_versions` below.
         :param pulumi.Input[_builtins.str] env: The target environment. Valid values: `staging`, `production`.
         :param pulumi.Input[_builtins.str] routine_name: The name of the routine to deploy.
         :param pulumi.Input[_builtins.str] strategy: The deployment strategy. Valid values: `percentage`. Default value: `percentage`.
@@ -308,7 +308,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict']]]]] = None,
+                 code_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict', 'outputs.RoutineCodeDeploymentCodeVersion']]]]] = None,
                  env: pulumi.Input[Optional[_builtins.str]] = None,
                  routine_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -342,7 +342,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            code_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict']]]]] = None,
+            code_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict', 'outputs.RoutineCodeDeploymentCodeVersion']]]]] = None,
             deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
             env: pulumi.Input[Optional[_builtins.str]] = None,
             routine_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -354,7 +354,7 @@ class RoutineCodeDeployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict']]]] code_versions: The list of code versions and their traffic percentages. At most two versions are supported, and the percentages must sum to 100. See `code_versions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineCodeDeploymentCodeVersionArgs', 'RoutineCodeDeploymentCodeVersionArgsDict', 'outputs.RoutineCodeDeploymentCodeVersion']]]] code_versions: The list of code versions and their traffic percentages. At most two versions are supported, and the percentages must sum to 100. See `code_versions` below.
         :param pulumi.Input[_builtins.str] deployment_id: The ID of the deployment record.
         :param pulumi.Input[_builtins.str] env: The target environment. Valid values: `staging`, `production`.
         :param pulumi.Input[_builtins.str] routine_name: The name of the routine to deploy.

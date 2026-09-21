@@ -864,7 +864,7 @@ class Application(pulumi.CustomResource):
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  component_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict']]]]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict', 'outputs.ApplicationComponent']]]]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  model_api: pulumi.Input[Optional[_builtins.str]] = None,
@@ -873,7 +873,7 @@ class Application(pulumi.CustomResource):
                  model_from: pulumi.Input[Optional[_builtins.str]] = None,
                  model_name: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]]] = None,
                  pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -964,7 +964,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] architecture: The architecture of the application. Valid value `x86`.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal. Valid values are `true`, `false`.
         :param pulumi.Input[_builtins.str] component_id: The ID of the component.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict']]]] components: The components of the application. See `components` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict', 'outputs.ApplicationComponent']]]] components: The components of the application. See `components` below.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the associated PolarDB cluster.
         :param pulumi.Input[_builtins.str] description: The description of the application. It must be 2 to 256 characters in length.
         :param pulumi.Input[_builtins.str] model_api: The API endpoint for the model.
@@ -973,7 +973,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] model_from: The source of the model. Valid values are `bailian`,`custom`,`maas`.
         :param pulumi.Input[_builtins.str] model_name: The name of the model.
         :param pulumi.Input[_builtins.str] modify_mode: The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict']]]] parameters: The parameters of the application. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]] parameters: The parameters of the application. See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1084,7 +1084,7 @@ class Application(pulumi.CustomResource):
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  component_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict']]]]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict', 'outputs.ApplicationComponent']]]]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  model_api: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1093,7 +1093,7 @@ class Application(pulumi.CustomResource):
                  model_from: pulumi.Input[Optional[_builtins.str]] = None,
                  model_name: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]]] = None,
                  pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1162,7 +1162,7 @@ class Application(pulumi.CustomResource):
             architecture: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             component_id: pulumi.Input[Optional[_builtins.str]] = None,
-            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict']]]]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict', 'outputs.ApplicationComponent']]]]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             model_api: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1171,7 +1171,7 @@ class Application(pulumi.CustomResource):
             model_from: pulumi.Input[Optional[_builtins.str]] = None,
             model_name: pulumi.Input[Optional[_builtins.str]] = None,
             modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]]] = None,
             pay_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1195,7 +1195,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] architecture: The architecture of the application. Valid value `x86`.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal. Valid values are `true`, `false`.
         :param pulumi.Input[_builtins.str] component_id: The ID of the component.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict']]]] components: The components of the application. See `components` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict', 'outputs.ApplicationComponent']]]] components: The components of the application. See `components` below.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the associated PolarDB cluster.
         :param pulumi.Input[_builtins.str] description: The description of the application. It must be 2 to 256 characters in length.
         :param pulumi.Input[_builtins.str] model_api: The API endpoint for the model.
@@ -1204,7 +1204,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] model_from: The source of the model. Valid values are `bailian`,`custom`,`maas`.
         :param pulumi.Input[_builtins.str] model_name: The name of the model.
         :param pulumi.Input[_builtins.str] modify_mode: The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict']]]] parameters: The parameters of the application. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]] parameters: The parameters of the application. See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.

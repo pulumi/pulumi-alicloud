@@ -1137,7 +1137,7 @@ class Listener(pulumi.CustomResource):
                  sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-                 x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None,
+                 x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict', 'outputs.ListenerXForwardedFor']]] = None,
                  __props__=None):
         """
         Provides a Classic Load Balancer (SLB) Load Balancer Listener resource.
@@ -1234,7 +1234,7 @@ class Listener(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
+        :param pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict', 'outputs.ListenerXForwardedFor']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         ...
     @overload
@@ -1392,7 +1392,7 @@ class Listener(pulumi.CustomResource):
                  sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-                 x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None,
+                 x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict', 'outputs.ListenerXForwardedFor']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1503,7 +1503,7 @@ class Listener(pulumi.CustomResource):
             sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
             tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
             unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-            x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None) -> 'Listener':
+            x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict', 'outputs.ListenerXForwardedFor']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1511,7 +1511,7 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
+        :param pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict', 'outputs.ListenerXForwardedFor']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

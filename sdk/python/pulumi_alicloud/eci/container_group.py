@@ -1058,20 +1058,20 @@ class ContainerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
+                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict', 'outputs.ContainerGroupAcrRegistryInfo']]]]] = None,
                  auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict', 'outputs.ContainerGroupContainer']]]]] = None,
                  cpu: pulumi.Input[Optional[_builtins.float]] = None,
-                 dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict', 'outputs.ContainerGroupDnsConfig']]] = None,
                  dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
-                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
-                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
-                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
+                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict', 'outputs.ContainerGroupHostAlias']]]]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict', 'outputs.ContainerGroupImageRegistryCredential']]]]] = None,
+                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict', 'outputs.ContainerGroupInitContainer']]]]] = None,
                  insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  memory: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1079,13 +1079,13 @@ class ContainerGroup(pulumi.CustomResource):
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
+                 security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict', 'outputs.ContainerGroupSecurityContext']]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict', 'outputs.ContainerGroupVolume']]]]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1208,20 +1208,20 @@ class ContainerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict', 'outputs.ContainerGroupAcrRegistryInfo']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[_builtins.bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[_builtins.bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[_builtins.str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]] containers: The list of containers. See `containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict', 'outputs.ContainerGroupContainer']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[_builtins.float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict', 'outputs.ContainerGroupDnsConfig']] dns_config: The structure of dnsConfig. See `dns_config` below.
         :param pulumi.Input[_builtins.str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[_builtins.int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[_builtins.str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the temporary storage space to add. Unit: GiB.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict', 'outputs.ContainerGroupHostAlias']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict', 'outputs.ContainerGroupImageRegistryCredential']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict', 'outputs.ContainerGroupInitContainer']]]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[_builtins.str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ECS instance.
         :param pulumi.Input[_builtins.float] memory: The amount of memory resources allocated to the container group.
@@ -1229,7 +1229,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[_builtins.str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
-        :param pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']] security_context: The security context of the container group. See `security_context` below.
+        :param pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict', 'outputs.ContainerGroupSecurityContext']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[_builtins.float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[_builtins.str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -1237,7 +1237,7 @@ class ContainerGroup(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict', 'outputs.ContainerGroupVolume']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
@@ -1380,20 +1380,20 @@ class ContainerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
+                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict', 'outputs.ContainerGroupAcrRegistryInfo']]]]] = None,
                  auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict', 'outputs.ContainerGroupContainer']]]]] = None,
                  cpu: pulumi.Input[Optional[_builtins.float]] = None,
-                 dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict', 'outputs.ContainerGroupDnsConfig']]] = None,
                  dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
-                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
-                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
-                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
+                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict', 'outputs.ContainerGroupHostAlias']]]]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict', 'outputs.ContainerGroupImageRegistryCredential']]]]] = None,
+                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict', 'outputs.ContainerGroupInitContainer']]]]] = None,
                  insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  memory: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1401,13 +1401,13 @@ class ContainerGroup(pulumi.CustomResource):
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
+                 security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict', 'outputs.ContainerGroupSecurityContext']]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict', 'outputs.ContainerGroupVolume']]]]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1470,20 +1470,20 @@ class ContainerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
+            acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict', 'outputs.ContainerGroupAcrRegistryInfo']]]]] = None,
             auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
             container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict', 'outputs.ContainerGroupContainer']]]]] = None,
             cpu: pulumi.Input[Optional[_builtins.float]] = None,
-            dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+            dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict', 'outputs.ContainerGroupDnsConfig']]] = None,
             dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
             eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
-            host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
-            image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
-            init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
+            host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict', 'outputs.ContainerGroupHostAlias']]]]] = None,
+            image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict', 'outputs.ContainerGroupImageRegistryCredential']]]]] = None,
+            init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict', 'outputs.ContainerGroupInitContainer']]]]] = None,
             insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1493,14 +1493,14 @@ class ContainerGroup(pulumi.CustomResource):
             ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
+            security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict', 'outputs.ContainerGroupSecurityContext']]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
             spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
+            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict', 'outputs.ContainerGroupVolume']]]]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContainerGroup':
         """
@@ -1510,20 +1510,20 @@ class ContainerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict', 'outputs.ContainerGroupAcrRegistryInfo']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[_builtins.bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[_builtins.bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[_builtins.str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]] containers: The list of containers. See `containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict', 'outputs.ContainerGroupContainer']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[_builtins.float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict', 'outputs.ContainerGroupDnsConfig']] dns_config: The structure of dnsConfig. See `dns_config` below.
         :param pulumi.Input[_builtins.str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[_builtins.int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[_builtins.str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the temporary storage space to add. Unit: GiB.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict', 'outputs.ContainerGroupHostAlias']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict', 'outputs.ContainerGroupImageRegistryCredential']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict', 'outputs.ContainerGroupInitContainer']]]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[_builtins.str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ECS instance.
         :param pulumi.Input[_builtins.str] internet_ip: (Available since v1.170.0) The Public IP of the container group.
@@ -1533,7 +1533,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[_builtins.str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
-        :param pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']] security_context: The security context of the container group. See `security_context` below.
+        :param pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict', 'outputs.ContainerGroupSecurityContext']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[_builtins.float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[_builtins.str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -1542,7 +1542,7 @@ class ContainerGroup(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict', 'outputs.ContainerGroupVolume']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.

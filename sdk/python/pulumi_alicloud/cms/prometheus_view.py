@@ -264,7 +264,7 @@ class PrometheusView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
-                 prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict']]]]] = None,
+                 prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict', 'outputs.PrometheusViewPrometheusInstance']]]]] = None,
                  prometheus_view_name: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -326,7 +326,7 @@ class PrometheusView(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_free_read_policy: Read password-free address whitelist policy.
         :param pulumi.Input[_builtins.bool] enable_auth_free_read: Specifies whether to enable password-free read access. Valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict']]]] prometheus_instances: The list of Prometheus instances. See `prometheus_instances` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict', 'outputs.PrometheusViewPrometheusInstance']]]] prometheus_instances: The list of Prometheus instances. See `prometheus_instances` below.
         :param pulumi.Input[_builtins.str] prometheus_view_name: The name of the Prometheus view.
         :param pulumi.Input[_builtins.str] version: The version. Valid values: `V1`, `V2`.
         :param pulumi.Input[_builtins.str] workspace: The workspace to which the environment belongs.
@@ -407,7 +407,7 @@ class PrometheusView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
-                 prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict']]]]] = None,
+                 prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict', 'outputs.PrometheusViewPrometheusInstance']]]]] = None,
                  prometheus_view_name: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -449,7 +449,7 @@ class PrometheusView(pulumi.CustomResource):
             auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
-            prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict']]]]] = None,
+            prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict', 'outputs.PrometheusViewPrometheusInstance']]]]] = None,
             prometheus_view_name: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -464,7 +464,7 @@ class PrometheusView(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auth_free_read_policy: Read password-free address whitelist policy.
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created.
         :param pulumi.Input[_builtins.bool] enable_auth_free_read: Specifies whether to enable password-free read access. Valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict']]]] prometheus_instances: The list of Prometheus instances. See `prometheus_instances` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict', 'outputs.PrometheusViewPrometheusInstance']]]] prometheus_instances: The list of Prometheus instances. See `prometheus_instances` below.
         :param pulumi.Input[_builtins.str] prometheus_view_name: The name of the Prometheus view.
         :param pulumi.Input[_builtins.str] region_id: The region ID.
         :param pulumi.Input[_builtins.str] version: The version. Valid values: `V1`, `V2`.

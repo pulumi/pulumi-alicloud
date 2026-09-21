@@ -837,7 +837,7 @@ class Listener(pulumi.CustomResource):
                  listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mss: pulumi.Input[Optional[_builtins.int]] = None,
-                 proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict', 'outputs.ListenerProxyProtocolConfig']]] = None,
                  proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -989,7 +989,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
                
                > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
-        :param pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        :param pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict', 'outputs.ListenerProxyProtocolConfig']] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         :param pulumi.Input[_builtins.bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         :param pulumi.Input[_builtins.bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring. Valid values:
         :param pulumi.Input[_builtins.str] security_policy_id: The security policy ID. System security policies and custom security policies are supported.
@@ -1148,7 +1148,7 @@ class Listener(pulumi.CustomResource):
                  listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mss: pulumi.Input[Optional[_builtins.int]] = None,
-                 proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict', 'outputs.ListenerProxyProtocolConfig']]] = None,
                  proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1218,7 +1218,7 @@ class Listener(pulumi.CustomResource):
             listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
             mss: pulumi.Input[Optional[_builtins.int]] = None,
-            proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
+            proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict', 'outputs.ListenerProxyProtocolConfig']]] = None,
             proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1265,7 +1265,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
                
                > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
-        :param pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        :param pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict', 'outputs.ListenerProxyProtocolConfig']] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         :param pulumi.Input[_builtins.bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         :param pulumi.Input[_builtins.str] region_id: The ID of the region where the Network Load Balancer (NLB) instance is deployed.
                You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.

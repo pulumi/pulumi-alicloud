@@ -385,7 +385,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
+                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict', 'outputs.MetricRuleTemplateAlertTemplate']]]]] = None,
                  apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -446,7 +446,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict', 'outputs.MetricRuleTemplateAlertTemplate']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
                - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
@@ -528,7 +528,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
+                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict', 'outputs.MetricRuleTemplateAlertTemplate']]]]] = None,
                  apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,7 +570,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
+            alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict', 'outputs.MetricRuleTemplateAlertTemplate']]]]] = None,
             apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -588,7 +588,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict', 'outputs.MetricRuleTemplateAlertTemplate']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
                - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.

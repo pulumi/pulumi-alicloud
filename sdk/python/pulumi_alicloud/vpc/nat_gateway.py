@@ -805,7 +805,7 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
+                 access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict', 'outputs.NatGatewayAccessMode']]] = None,
                  availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -914,7 +914,7 @@ class NatGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict', 'outputs.NatGatewayAccessMode']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[_builtins.str] availability_mode: The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
                - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
                - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
@@ -1049,7 +1049,7 @@ class NatGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
+                 access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict', 'outputs.NatGatewayAccessMode']]] = None,
                  availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1115,7 +1115,7 @@ class NatGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
+            access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict', 'outputs.NatGatewayAccessMode']]] = None,
             availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1146,7 +1146,7 @@ class NatGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict', 'outputs.NatGatewayAccessMode']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[_builtins.str] availability_mode: The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
                - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
                - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.

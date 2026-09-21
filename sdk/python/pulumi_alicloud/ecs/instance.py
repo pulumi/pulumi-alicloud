@@ -3318,9 +3318,9 @@ class Instance(pulumi.CustomResource):
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 cpu_options: pulumi.Input[Optional[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']]] = None,
+                 cpu_options: pulumi.Input[Optional[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']]] = None,
                  credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
                  dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3336,7 +3336,7 @@ class Instance(pulumi.CustomResource):
                  http_put_response_hop_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  http_tokens: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']]] = None,
+                 image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict', 'outputs.InstanceImageOptions']]] = None,
                  include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3356,11 +3356,11 @@ class Instance(pulumi.CustomResource):
                  launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
-                 maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']]] = None,
+                 maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
                  network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
+                 network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict', 'outputs.InstanceNetworkInterfaces']]] = None,
                  operator_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3493,10 +3493,10 @@ class Instance(pulumi.CustomResource):
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
-        :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
+        :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
@@ -3522,7 +3522,7 @@ class Instance(pulumi.CustomResource):
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
-        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
+        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict', 'outputs.InstanceImageOptions']] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -3549,7 +3549,7 @@ class Instance(pulumi.CustomResource):
                * `AutoRecover` : automatically recovers the instance.
                * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
-        :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
                
@@ -3557,7 +3557,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
+        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict', 'outputs.InstanceNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[_builtins.str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
@@ -3751,9 +3751,9 @@ class Instance(pulumi.CustomResource):
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 cpu_options: pulumi.Input[Optional[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']]] = None,
+                 cpu_options: pulumi.Input[Optional[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']]] = None,
                  credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
                  dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3769,7 +3769,7 @@ class Instance(pulumi.CustomResource):
                  http_put_response_hop_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  http_tokens: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']]] = None,
+                 image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict', 'outputs.InstanceImageOptions']]] = None,
                  include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3789,11 +3789,11 @@ class Instance(pulumi.CustomResource):
                  launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
-                 maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']]] = None,
+                 maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
                  network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
+                 network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict', 'outputs.InstanceNetworkInterfaces']]] = None,
                  operator_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3958,10 +3958,10 @@ class Instance(pulumi.CustomResource):
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
             availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
             cpu: pulumi.Input[Optional[_builtins.int]] = None,
-            cpu_options: pulumi.Input[Optional[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']]] = None,
+            cpu_options: pulumi.Input[Optional[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
             dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             deployment_set_group_no: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3979,7 +3979,7 @@ class Instance(pulumi.CustomResource):
             http_put_response_hop_limit: pulumi.Input[Optional[_builtins.int]] = None,
             http_tokens: pulumi.Input[Optional[_builtins.str]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
-            image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']]] = None,
+            image_options: pulumi.Input[Optional[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict', 'outputs.InstanceImageOptions']]] = None,
             include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_metadata_tags: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3999,12 +3999,12 @@ class Instance(pulumi.CustomResource):
             launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_action: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
-            maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']]] = None,
+            maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']]] = None,
             memory: pulumi.Input[Optional[_builtins.int]] = None,
             network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
             network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
             network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
+            network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict', 'outputs.InstanceNetworkInterfaces']]] = None,
             operator_type: pulumi.Input[Optional[_builtins.str]] = None,
             os_name: pulumi.Input[Optional[_builtins.str]] = None,
             os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4067,11 +4067,11 @@ class Instance(pulumi.CustomResource):
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
-        :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
+        :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict', 'outputs.InstanceCpuOptions']] cpu_options: The options of cpu. See `cpu_options` below.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
                > **NOTE:** `credit_specification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]] data_disks: The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         :param pulumi.Input[_builtins.str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
@@ -4099,7 +4099,7 @@ class Instance(pulumi.CustomResource):
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
-        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
+        :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict', 'outputs.InstanceImageOptions']] image_options: The options of images. **Note: The parameter is immutable after resource creation.** See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -4126,7 +4126,7 @@ class Instance(pulumi.CustomResource):
                * `AutoRecover` : automatically recovers the instance.
                * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
-        :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict', 'outputs.InstanceMaintenanceTime']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[_builtins.int] memory: The memory size of the instance. Unit: MiB.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
@@ -4135,7 +4135,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
+        :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict', 'outputs.InstanceNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance. **Note: The parameter is immutable after resource creation.** See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[_builtins.str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system of the instance.

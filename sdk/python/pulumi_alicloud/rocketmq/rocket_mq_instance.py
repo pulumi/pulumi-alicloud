@@ -841,23 +841,23 @@ class RocketMQInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
+                 acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict', 'outputs.RocketMQInstanceAclInfo']]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
+                 network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
-                 product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+                 product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict', 'outputs.RocketMQInstanceProductInfo']]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  series_code: pulumi.Input[Optional[_builtins.str]] = None,
                  service_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
+                 software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict', 'outputs.RocketMQInstanceSoftware']]] = None,
                  sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -951,7 +951,7 @@ class RocketMQInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']] acl_info: The access control list for the instance. See `acl_info` below.
+        :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict', 'outputs.RocketMQInstanceAclInfo']] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
                - false: Disable auto-renewal
@@ -969,7 +969,7 @@ class RocketMQInstance(pulumi.CustomResource):
                Next: Serverless instances
         :param pulumi.Input[_builtins.str] instance_name: The name of instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_whitelists: The ip whitelist.
-        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information See `network_info` below.
+        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']] network_info: Instance network configuration information See `network_info` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
                
                The parameter values are as follows:
@@ -987,7 +987,7 @@ class RocketMQInstance(pulumi.CustomResource):
                The parameter values are as follows:
                - Month: Purchase on a monthly basis
                - Year: Purchase on an annual basis
-        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info See `product_info` below.
+        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict', 'outputs.RocketMQInstanceProductInfo']] product_info: product info See `product_info` below.
         :param pulumi.Input[_builtins.str] remark: Custom description
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
@@ -997,7 +997,7 @@ class RocketMQInstance(pulumi.CustomResource):
                - ultimate: Platinum Edition
                - professional: Professional Edition
         :param pulumi.Input[_builtins.str] service_code: The code of the service code instance. The code of the RocketMQ is rmq.
-        :param pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']] software: Instance software information. See `software` below.
+        :param pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict', 'outputs.RocketMQInstanceSoftware']] software: Instance software information. See `software` below.
         :param pulumi.Input[_builtins.str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
                
                The parameter values are as follows:
@@ -1117,23 +1117,23 @@ class RocketMQInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
+                 acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict', 'outputs.RocketMQInstanceAclInfo']]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
+                 network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
-                 product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+                 product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict', 'outputs.RocketMQInstanceProductInfo']]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  series_code: pulumi.Input[Optional[_builtins.str]] = None,
                  service_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
+                 software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict', 'outputs.RocketMQInstanceSoftware']]] = None,
                  sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -1187,7 +1187,7 @@ class RocketMQInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
+            acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict', 'outputs.RocketMQInstanceAclInfo']]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
             auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1195,17 +1195,17 @@ class RocketMQInstance(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
+            network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             period_unit: pulumi.Input[Optional[_builtins.str]] = None,
-            product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+            product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict', 'outputs.RocketMQInstanceProductInfo']]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             remark: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             series_code: pulumi.Input[Optional[_builtins.str]] = None,
             service_code: pulumi.Input[Optional[_builtins.str]] = None,
-            software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
+            software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict', 'outputs.RocketMQInstanceSoftware']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'RocketMQInstance':
@@ -1216,7 +1216,7 @@ class RocketMQInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']] acl_info: The access control list for the instance. See `acl_info` below.
+        :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict', 'outputs.RocketMQInstanceAclInfo']] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
                - false: Disable auto-renewal
@@ -1235,7 +1235,7 @@ class RocketMQInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] instance_name: The name of instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_whitelists: The ip whitelist.
-        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information See `network_info` below.
+        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']] network_info: Instance network configuration information See `network_info` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
                
                The parameter values are as follows:
@@ -1253,7 +1253,7 @@ class RocketMQInstance(pulumi.CustomResource):
                The parameter values are as follows:
                - Month: Purchase on a monthly basis
                - Year: Purchase on an annual basis
-        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info See `product_info` below.
+        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict', 'outputs.RocketMQInstanceProductInfo']] product_info: product info See `product_info` below.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.245.0) The ID of the region in which the instance resides.
         :param pulumi.Input[_builtins.str] remark: Custom description
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
@@ -1264,7 +1264,7 @@ class RocketMQInstance(pulumi.CustomResource):
                - ultimate: Platinum Edition
                - professional: Professional Edition
         :param pulumi.Input[_builtins.str] service_code: The code of the service code instance. The code of the RocketMQ is rmq.
-        :param pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']] software: Instance software information. See `software` below.
+        :param pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict', 'outputs.RocketMQInstanceSoftware']] software: Instance software information. See `software` below.
         :param pulumi.Input[_builtins.str] status: The status of the instance
         :param pulumi.Input[_builtins.str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
                

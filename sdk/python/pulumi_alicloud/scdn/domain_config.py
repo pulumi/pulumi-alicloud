@@ -168,7 +168,7 @@ class DomainConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 function_args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]]] = None,
+                 function_args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -224,7 +224,7 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]] function_args: The args of the domain config.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
         """
         ...
@@ -299,7 +299,7 @@ class DomainConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 function_args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]]] = None,
+                 function_args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -333,7 +333,7 @@ class DomainConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config_id: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
-            function_args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]]] = None,
+            function_args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]]] = None,
             function_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DomainConfig':
         """
@@ -345,7 +345,7 @@ class DomainConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: The SCDN domain config id.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]] function_args: The args of the domain config.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
         :param pulumi.Input[_builtins.str] status: The status of this resource.
         """

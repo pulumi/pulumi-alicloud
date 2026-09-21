@@ -613,7 +613,7 @@ class Store(pulumi.CustomResource):
                  append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
-                 encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
+                 encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict', 'outputs.StoreEncryptConf']]] = None,
                  hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -736,7 +736,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[_builtins.bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[_builtins.bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
-        :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict', 'outputs.StoreEncryptConf']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[_builtins.int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[_builtins.int] infrequent_access_ttl: Low frequency storage time
         :param pulumi.Input[_builtins.str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
@@ -880,7 +880,7 @@ class Store(pulumi.CustomResource):
                  append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
-                 encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
+                 encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict', 'outputs.StoreEncryptConf']]] = None,
                  hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -934,7 +934,7 @@ class Store(pulumi.CustomResource):
             auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
-            encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
+            encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict', 'outputs.StoreEncryptConf']]] = None,
             hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
             infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
             logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -946,7 +946,7 @@ class Store(pulumi.CustomResource):
             project_name: pulumi.Input[Optional[_builtins.str]] = None,
             retention_period: pulumi.Input[Optional[_builtins.int]] = None,
             shard_count: pulumi.Input[Optional[_builtins.int]] = None,
-            shards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict']]]]] = None,
+            shards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict', 'outputs.StoreShard']]]]] = None,
             telemetry_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Store':
         """
         Get an existing Store resource's state with the given name, id, and optional extra
@@ -959,7 +959,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[_builtins.int] create_time: Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
         :param pulumi.Input[_builtins.bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
-        :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict', 'outputs.StoreEncryptConf']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[_builtins.int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[_builtins.int] infrequent_access_ttl: Low frequency storage time
         :param pulumi.Input[_builtins.str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
@@ -971,7 +971,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_name: The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
         :param pulumi.Input[_builtins.int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         :param pulumi.Input[_builtins.int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict']]]] shards: The shard attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict', 'outputs.StoreShard']]]] shards: The shard attribute.
         :param pulumi.Input[_builtins.str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
                
                The following arguments will be discarded. Please use new fields as soon as possible:

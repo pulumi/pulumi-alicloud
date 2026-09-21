@@ -464,12 +464,12 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  default_quota: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
+                 ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict', 'outputs.ProjectIpWhiteList']]] = None,
                  is_logical: pulumi.Input[Optional[_builtins.str]] = None,
                  product_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
-                 security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']]] = None,
+                 security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -517,13 +517,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[_builtins.str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
                If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
-        :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
+        :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict', 'outputs.ProjectIpWhiteList']] ip_white_list: IP whitelist See `ip_white_list` below.
         :param pulumi.Input[_builtins.str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
                
                > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[_builtins.str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
-        :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
-        :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
+        :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']] properties: Project base attributes See `properties` below.
+        :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[_builtins.str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.bool] three_tier_model: Indicates whether data storage by schema is supported. Valid values:
@@ -589,12 +589,12 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  default_quota: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
+                 ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict', 'outputs.ProjectIpWhiteList']]] = None,
                  is_logical: pulumi.Input[Optional[_builtins.str]] = None,
                  product_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
-                 security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']]] = None,
+                 security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -635,14 +635,14 @@ class Project(pulumi.CustomResource):
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             default_quota: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
+            ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict', 'outputs.ProjectIpWhiteList']]] = None,
             is_logical: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             product_type: pulumi.Input[Optional[_builtins.str]] = None,
             project_name: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
-            security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
+            security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -658,15 +658,15 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Represents the creation time of the project
         :param pulumi.Input[_builtins.str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
                If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
-        :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
+        :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict', 'outputs.ProjectIpWhiteList']] ip_white_list: IP whitelist See `ip_white_list` below.
         :param pulumi.Input[_builtins.str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
                
                > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[_builtins.str] owner: Project owner
         :param pulumi.Input[_builtins.str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
-        :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
+        :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']] properties: Project base attributes See `properties` below.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
-        :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
+        :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[_builtins.str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.bool] three_tier_model: Indicates whether data storage by schema is supported. Valid values:

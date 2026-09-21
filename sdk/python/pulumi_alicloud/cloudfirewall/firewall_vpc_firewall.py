@@ -295,9 +295,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
+                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict', 'outputs.FirewallVpcFirewallLocalVpc']]] = None,
                  member_uid: pulumi.Input[Optional[_builtins.str]] = None,
-                 peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
+                 peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict', 'outputs.FirewallVpcFirewallPeerVpc']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -359,9 +359,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
-        :param pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']] local_vpc: The details of the local VPC. See `local_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict', 'outputs.FirewallVpcFirewallLocalVpc']] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict', 'outputs.FirewallVpcFirewallPeerVpc']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values:
         :param pulumi.Input[_builtins.str] vpc_firewall_name: The name of the VPC firewall instance.
         """
@@ -442,9 +442,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
+                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict', 'outputs.FirewallVpcFirewallLocalVpc']]] = None,
                  member_uid: pulumi.Input[Optional[_builtins.str]] = None,
-                 peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
+                 peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict', 'outputs.FirewallVpcFirewallPeerVpc']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -487,9 +487,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             connect_type: pulumi.Input[Optional[_builtins.str]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
-            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
+            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict', 'outputs.FirewallVpcFirewallLocalVpc']]] = None,
             member_uid: pulumi.Input[Optional[_builtins.str]] = None,
-            peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
+            peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict', 'outputs.FirewallVpcFirewallPeerVpc']]] = None,
             region_status: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -504,9 +504,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] bandwidth: Bandwidth specifications for high-speed channels. Unit: Mbps.
         :param pulumi.Input[_builtins.str] connect_type: The communication type of the VPC firewall.
         :param pulumi.Input[_builtins.str] lang: The language type of the requested and received messages. Valid values:
-        :param pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']] local_vpc: The details of the local VPC. See `local_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict', 'outputs.FirewallVpcFirewallLocalVpc']] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict', 'outputs.FirewallVpcFirewallPeerVpc']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
         :param pulumi.Input[_builtins.str] region_status: The region is open.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values:
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall instance.

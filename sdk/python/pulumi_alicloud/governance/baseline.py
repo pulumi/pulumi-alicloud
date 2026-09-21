@@ -146,7 +146,7 @@ class Baseline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
+                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict', 'outputs.BaselineBaselineItem']]]]] = None,
                  baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -224,7 +224,7 @@ class Baseline(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]] baseline_items: List of baseline items.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict', 'outputs.BaselineBaselineItem']]]] baseline_items: List of baseline items.
                
                You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
         :param pulumi.Input[_builtins.str] baseline_name: Baseline Name.
@@ -323,7 +323,7 @@ class Baseline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
+                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict', 'outputs.BaselineBaselineItem']]]]] = None,
                  baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -348,7 +348,7 @@ class Baseline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
+            baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict', 'outputs.BaselineBaselineItem']]]]] = None,
             baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None) -> 'Baseline':
         """
@@ -358,7 +358,7 @@ class Baseline(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]] baseline_items: List of baseline items.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict', 'outputs.BaselineBaselineItem']]]] baseline_items: List of baseline items.
                
                You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
         :param pulumi.Input[_builtins.str] baseline_name: Baseline Name.

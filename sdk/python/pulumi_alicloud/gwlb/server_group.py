@@ -561,16 +561,16 @@ class ServerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
                  server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -674,9 +674,9 @@ class ServerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
+        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: Health check configurations. See `health_check_config` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']] health_check_config: Health check configurations. See `health_check_config` below.
         :param pulumi.Input[_builtins.str] protocol: The backend protocol. Valid values:
                
                - `GENEVE`(default)
@@ -697,7 +697,7 @@ class ServerGroup(pulumi.CustomResource):
                
                - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
                - `Ip`: allows you to add servers of by specifying IP addresses.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: The backend servers that you want to remove. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]] servers: The backend servers that you want to remove. See `servers` below.
                
                > **NOTE:**  You can remove at most 200 backend servers in each call.
                
@@ -828,16 +828,16 @@ class ServerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
                  server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -876,18 +876,18 @@ class ServerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+            connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            draining_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupDrainingServerArgs', 'ServerGroupDrainingServerArgsDict']]]]] = None,
+            draining_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupDrainingServerArgs', 'ServerGroupDrainingServerArgsDict', 'outputs.ServerGroupDrainingServer']]]]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-            health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             scheduler: pulumi.Input[Optional[_builtins.str]] = None,
             server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
-            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerGroup':
@@ -898,11 +898,11 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
+        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
         :param pulumi.Input[_builtins.str] create_time: The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupDrainingServerArgs', 'ServerGroupDrainingServerArgsDict']]]] draining_servers: (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupDrainingServerArgs', 'ServerGroupDrainingServerArgsDict', 'outputs.ServerGroupDrainingServer']]]] draining_servers: (Set, Available since v1.290.0) The backend servers that are being removed (in the `Draining` or `Removing` status).
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: Health check configurations. See `health_check_config` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']] health_check_config: Health check configurations. See `health_check_config` below.
         :param pulumi.Input[_builtins.str] protocol: The backend protocol. Valid values:
                
                - `GENEVE`(default)
@@ -923,7 +923,7 @@ class ServerGroup(pulumi.CustomResource):
                
                - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
                - `Ip`: allows you to add servers of by specifying IP addresses.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: The backend servers that you want to remove. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]] servers: The backend servers that you want to remove. See `servers` below.
                
                > **NOTE:**  You can remove at most 200 backend servers in each call.
                

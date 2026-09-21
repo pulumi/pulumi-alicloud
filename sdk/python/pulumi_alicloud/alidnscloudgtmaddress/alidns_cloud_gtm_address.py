@@ -345,7 +345,7 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
                  available_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_status: pulumi.Input[Optional[_builtins.str]] = None,
                  health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
-                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
+                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict', 'outputs.AlidnsCloudGtmAddressHealthTask']]]]] = None,
                  manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -479,7 +479,7 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] available_mode: How the availability of the address is determined. Valid values:
         :param pulumi.Input[_builtins.str] enable_status: Whether the address participates in DNS resolution. Valid values:
         :param pulumi.Input[_builtins.str] health_judgement: The rule used to judge overall health when the address has multiple health-check tasks. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]] health_tasks: The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `health_tasks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict', 'outputs.AlidnsCloudGtmAddressHealthTask']]]] health_tasks: The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `health_tasks` below.
         :param pulumi.Input[_builtins.str] manual_available_status: The manually-set availability status. Only meaningful when `available_mode` is `manual`. Valid values: `available`, `unavailable`.
         :param pulumi.Input[_builtins.str] name: The name of the address. Used to identify the address in the Cloud GTM console.
         :param pulumi.Input[_builtins.str] remark: The remark of the address. Passing an empty value clears the existing remark.
@@ -632,7 +632,7 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
                  available_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_status: pulumi.Input[Optional[_builtins.str]] = None,
                  health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
-                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
+                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict', 'outputs.AlidnsCloudGtmAddressHealthTask']]]]] = None,
                  manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,7 +681,7 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enable_status: pulumi.Input[Optional[_builtins.str]] = None,
             health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
-            health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
+            health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict', 'outputs.AlidnsCloudGtmAddressHealthTask']]]]] = None,
             manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -698,7 +698,7 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the address.
         :param pulumi.Input[_builtins.str] enable_status: Whether the address participates in DNS resolution. Valid values:
         :param pulumi.Input[_builtins.str] health_judgement: The rule used to judge overall health when the address has multiple health-check tasks. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]] health_tasks: The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `health_tasks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict', 'outputs.AlidnsCloudGtmAddressHealthTask']]]] health_tasks: The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `health_tasks` below.
         :param pulumi.Input[_builtins.str] manual_available_status: The manually-set availability status. Only meaningful when `available_mode` is `manual`. Valid values: `available`, `unavailable`.
         :param pulumi.Input[_builtins.str] name: The name of the address. Used to identify the address in the Cloud GTM console.
         :param pulumi.Input[_builtins.str] remark: The remark of the address. Passing an empty value clears the existing remark.

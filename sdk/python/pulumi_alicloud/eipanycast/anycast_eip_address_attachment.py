@@ -315,7 +315,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
                  bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
+                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict', 'outputs.AnycastEipAddressAttachmentPopLocation']]]]] = None,
                  private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -464,7 +464,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bind_instance_type: The type of the cloud resource instance to be bound. Value:
                - **SlbInstance**: a private network SLB instance.
                - **NetworkInterface**: ENI.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]] pop_locations: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict', 'outputs.AnycastEipAddressAttachmentPopLocation']]]] pop_locations: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
         :param pulumi.Input[_builtins.str] private_ip_address: The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
         """
         ...
@@ -628,7 +628,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
                  bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
+                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict', 'outputs.AnycastEipAddressAttachmentPopLocation']]]]] = None,
                  private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -672,7 +672,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
             bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             bind_time: pulumi.Input[Optional[_builtins.str]] = None,
-            pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
+            pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict', 'outputs.AnycastEipAddressAttachmentPopLocation']]]]] = None,
             private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AnycastEipAddressAttachment':
         """
@@ -692,7 +692,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
                - **SlbInstance**: a private network SLB instance.
                - **NetworkInterface**: ENI.
         :param pulumi.Input[_builtins.str] bind_time: Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]] pop_locations: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict', 'outputs.AnycastEipAddressAttachmentPopLocation']]]] pop_locations: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
         :param pulumi.Input[_builtins.str] private_ip_address: The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
         :param pulumi.Input[_builtins.str] status: The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
         """

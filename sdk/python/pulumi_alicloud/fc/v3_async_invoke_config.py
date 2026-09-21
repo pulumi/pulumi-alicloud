@@ -282,7 +282,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  async_task: pulumi.Input[Optional[_builtins.bool]] = None,
-                 destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict', 'outputs.V3AsyncInvokeConfigDestinationConfig']]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -388,7 +388,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] async_task: Whether to enable an asynchronous task
-        :param pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Target Configuration See `destination_config` below.
+        :param pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict', 'outputs.V3AsyncInvokeConfigDestinationConfig']] destination_config: Target Configuration See `destination_config` below.
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: Event maximum survival time
         :param pulumi.Input[_builtins.int] max_async_retry_attempts: Number of Asynchronous call retries
@@ -513,7 +513,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  async_task: pulumi.Input[Optional[_builtins.bool]] = None,
-                 destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict', 'outputs.V3AsyncInvokeConfigDestinationConfig']]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -550,7 +550,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             async_task: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+            destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict', 'outputs.V3AsyncInvokeConfigDestinationConfig']]] = None,
             function_arn: pulumi.Input[Optional[_builtins.str]] = None,
             function_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -566,7 +566,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] async_task: Whether to enable an asynchronous task
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Target Configuration See `destination_config` below.
+        :param pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict', 'outputs.V3AsyncInvokeConfigDestinationConfig']] destination_config: Target Configuration See `destination_config` below.
         :param pulumi.Input[_builtins.str] function_arn: (Available since v1.234.0) Function resource identification
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.str] last_modified_time: (Available since v1.234.0) Last modification time

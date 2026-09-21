@@ -540,7 +540,7 @@ class QuotaApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict', 'outputs.QuotaApplicationDimension']]]]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  env_language: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -604,7 +604,7 @@ class QuotaApplication(pulumi.CustomResource):
                - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
                - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict', 'outputs.QuotaApplicationDimension']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The effective time of the quota application.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.
@@ -690,7 +690,7 @@ class QuotaApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict', 'outputs.QuotaApplicationDimension']]]]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  env_language: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -749,7 +749,7 @@ class QuotaApplication(pulumi.CustomResource):
             audit_reason: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict', 'outputs.QuotaApplicationDimension']]]]] = None,
             effective_time: pulumi.Input[Optional[_builtins.str]] = None,
             env_language: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -776,7 +776,7 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] audit_reason: The audit reason.
         :param pulumi.Input[_builtins.str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict', 'outputs.QuotaApplicationDimension']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The effective time of the quota application.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.

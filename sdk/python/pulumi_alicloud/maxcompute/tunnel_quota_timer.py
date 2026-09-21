@@ -154,7 +154,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
+                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict', 'outputs.TunnelQuotaTimerQuotaTimer']]]]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -227,7 +227,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] nickname: The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]] quota_timers: Time-Sharing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict', 'outputs.TunnelQuotaTimerQuotaTimer']]]] quota_timers: Time-Sharing configuration
                
                > **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
                See `quota_timer` below.
@@ -323,7 +323,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
+                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict', 'outputs.TunnelQuotaTimerQuotaTimer']]]]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -350,7 +350,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             nickname: pulumi.Input[Optional[_builtins.str]] = None,
-            quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
+            quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict', 'outputs.TunnelQuotaTimerQuotaTimer']]]]] = None,
             time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'TunnelQuotaTimer':
         """
         Get an existing TunnelQuotaTimer resource's state with the given name, id, and optional extra
@@ -360,7 +360,7 @@ class TunnelQuotaTimer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] nickname: The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]] quota_timers: Time-Sharing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict', 'outputs.TunnelQuotaTimerQuotaTimer']]]] quota_timers: Time-Sharing configuration
                
                > **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
                See `quota_timer` below.

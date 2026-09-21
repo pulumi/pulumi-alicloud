@@ -296,7 +296,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict', 'outputs.FunctionAsyncInvokeConfigDestinationConfig']]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -420,7 +420,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Configuration block with destination configuration. See `destination_config` below.
+        :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict', 'outputs.FunctionAsyncInvokeConfigDestinationConfig']] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[_builtins.str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[_builtins.int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         :param pulumi.Input[_builtins.int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
@@ -563,7 +563,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict', 'outputs.FunctionAsyncInvokeConfigDestinationConfig']]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -603,7 +603,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_time: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+            destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict', 'outputs.FunctionAsyncInvokeConfigDestinationConfig']]] = None,
             function_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
             maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -619,7 +619,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_time: The date this resource was created.
-        :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Configuration block with destination configuration. See `destination_config` below.
+        :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict', 'outputs.FunctionAsyncInvokeConfigDestinationConfig']] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[_builtins.str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[_builtins.str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[_builtins.int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).

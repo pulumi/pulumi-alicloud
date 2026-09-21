@@ -803,10 +803,10 @@ class Job(pulumi.CustomResource):
                  execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  fail_times: pulumi.Input[Optional[_builtins.int]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
+                 job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict', 'outputs.JobJobMonitorInfo']]] = None,
                  job_name: pulumi.Input[Optional[_builtins.str]] = None,
                  job_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
+                 map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict', 'outputs.JobMapTaskXattrs']]] = None,
                  max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
                  max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -816,7 +816,7 @@ class Job(pulumi.CustomResource):
                  success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
-                 time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
+                 time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict', 'outputs.JobTimeConfig']]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  x_attrs: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -947,10 +947,10 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] execute_mode: Task execution mode, the possible results are as follows:
         :param pulumi.Input[_builtins.int] fail_times: Number of consecutive failed alarms
         :param pulumi.Input[_builtins.str] group_id: The application ID, which is obtained from the **application management** page of the console.
-        :param pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']] job_monitor_info: Task monitoring information See `job_monitor_info` below.
+        :param pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict', 'outputs.JobJobMonitorInfo']] job_monitor_info: Task monitoring information See `job_monitor_info` below.
         :param pulumi.Input[_builtins.str] job_name: JobName
         :param pulumi.Input[_builtins.str] job_type: Job Type
-        :param pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']] map_task_xattrs: Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+        :param pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict', 'outputs.JobMapTaskXattrs']] map_task_xattrs: Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
         :param pulumi.Input[_builtins.int] max_attempt: The maximum number of error retries, which is set based on business requirements. The default value is 0.
         :param pulumi.Input[_builtins.str] max_concurrency: The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         :param pulumi.Input[_builtins.str] namespace: Namespace, which is obtained on the `Namespace` page of the console.
@@ -960,7 +960,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] success_notice_enable: Success Notification Switch
         :param pulumi.Input[_builtins.str] task_dispatch_mode: Advanced configuration of parallel grid tasks, push model or pull model
         :param pulumi.Input[_builtins.str] template: K8s task type custom task template
-        :param pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']] time_config: Time configuration information See `time_config` below.
+        :param pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict', 'outputs.JobTimeConfig']] time_config: Time configuration information See `time_config` below.
         :param pulumi.Input[_builtins.str] timezone: Time Zone
         :param pulumi.Input[_builtins.str] x_attrs: Task Extension Field
         """
@@ -1108,10 +1108,10 @@ class Job(pulumi.CustomResource):
                  execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  fail_times: pulumi.Input[Optional[_builtins.int]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
+                 job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict', 'outputs.JobJobMonitorInfo']]] = None,
                  job_name: pulumi.Input[Optional[_builtins.str]] = None,
                  job_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
+                 map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict', 'outputs.JobMapTaskXattrs']]] = None,
                  max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
                  max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1121,7 +1121,7 @@ class Job(pulumi.CustomResource):
                  success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
-                 time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
+                 time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict', 'outputs.JobTimeConfig']]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  x_attrs: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1187,10 +1187,10 @@ class Job(pulumi.CustomResource):
             fail_times: pulumi.Input[Optional[_builtins.int]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             job_id: pulumi.Input[Optional[_builtins.int]] = None,
-            job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
+            job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict', 'outputs.JobJobMonitorInfo']]] = None,
             job_name: pulumi.Input[Optional[_builtins.str]] = None,
             job_type: pulumi.Input[Optional[_builtins.str]] = None,
-            map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
+            map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict', 'outputs.JobMapTaskXattrs']]] = None,
             max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
             max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1200,7 +1200,7 @@ class Job(pulumi.CustomResource):
             success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
             task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
             template: pulumi.Input[Optional[_builtins.str]] = None,
-            time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
+            time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict', 'outputs.JobTimeConfig']]] = None,
             timezone: pulumi.Input[Optional[_builtins.str]] = None,
             x_attrs: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
@@ -1220,10 +1220,10 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] fail_times: Number of consecutive failed alarms
         :param pulumi.Input[_builtins.str] group_id: The application ID, which is obtained from the **application management** page of the console.
         :param pulumi.Input[_builtins.int] job_id: JobId
-        :param pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']] job_monitor_info: Task monitoring information See `job_monitor_info` below.
+        :param pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict', 'outputs.JobJobMonitorInfo']] job_monitor_info: Task monitoring information See `job_monitor_info` below.
         :param pulumi.Input[_builtins.str] job_name: JobName
         :param pulumi.Input[_builtins.str] job_type: Job Type
-        :param pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']] map_task_xattrs: Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
+        :param pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict', 'outputs.JobMapTaskXattrs']] map_task_xattrs: Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
         :param pulumi.Input[_builtins.int] max_attempt: The maximum number of error retries, which is set based on business requirements. The default value is 0.
         :param pulumi.Input[_builtins.str] max_concurrency: The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         :param pulumi.Input[_builtins.str] namespace: Namespace, which is obtained on the `Namespace` page of the console.
@@ -1233,7 +1233,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] success_notice_enable: Success Notification Switch
         :param pulumi.Input[_builtins.str] task_dispatch_mode: Advanced configuration of parallel grid tasks, push model or pull model
         :param pulumi.Input[_builtins.str] template: K8s task type custom task template
-        :param pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']] time_config: Time configuration information See `time_config` below.
+        :param pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict', 'outputs.JobTimeConfig']] time_config: Time configuration information See `time_config` below.
         :param pulumi.Input[_builtins.str] timezone: Time Zone
         :param pulumi.Input[_builtins.str] x_attrs: Task Extension Field
         """

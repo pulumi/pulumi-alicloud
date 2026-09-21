@@ -489,7 +489,7 @@ class Policy(pulumi.CustomResource):
                  policy_document: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rotate_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict', 'outputs.PolicyStatement']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -563,7 +563,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
                - `None`: Turn off the rotation mechanism.
                - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict', 'outputs.PolicyStatement']]]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags on the policy.
         :param pulumi.Input[_builtins.str] version: Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
@@ -654,7 +654,7 @@ class Policy(pulumi.CustomResource):
                  policy_document: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rotate_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict', 'outputs.PolicyStatement']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -701,7 +701,7 @@ class Policy(pulumi.CustomResource):
             policy_document: pulumi.Input[Optional[_builtins.str]] = None,
             policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             rotate_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]]] = None,
+            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict', 'outputs.PolicyStatement']]]]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -725,7 +725,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
                - `None`: Turn off the rotation mechanism.
                - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict', 'outputs.PolicyStatement']]]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags on the policy.
         :param pulumi.Input[_builtins.str] type: The type of the policy.
         :param pulumi.Input[_builtins.str] version: Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.

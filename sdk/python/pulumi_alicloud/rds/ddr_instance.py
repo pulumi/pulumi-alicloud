@@ -2633,10 +2633,10 @@ class DdrInstance(pulumi.CustomResource):
                  manual_ha_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  monitoring_period: pulumi.Input[Optional[_builtins.int]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
-                 pg_hba_confs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict']]]]] = None,
+                 pg_hba_confs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2770,11 +2770,11 @@ class DdrInstance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[_builtins.int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[_builtins.str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[_builtins.str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -2930,10 +2930,10 @@ class DdrInstance(pulumi.CustomResource):
                  manual_ha_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  monitoring_period: pulumi.Input[Optional[_builtins.int]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
-                 pg_hba_confs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict']]]]] = None,
+                 pg_hba_confs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3098,10 +3098,10 @@ class DdrInstance(pulumi.CustomResource):
             manual_ha_time: pulumi.Input[Optional[_builtins.str]] = None,
             modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
             monitoring_period: pulumi.Input[Optional[_builtins.int]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
-            pg_hba_confs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict']]]]] = None,
+            pg_hba_confs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
             private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3224,11 +3224,11 @@ class DdrInstance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[_builtins.int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[_builtins.str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[_builtins.str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:

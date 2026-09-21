@@ -651,16 +651,16 @@ class Gateway(pulumi.CustomResource):
                  gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']]] = None,
-                 network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict', 'outputs.GatewayLogConfig']]] = None,
+                 network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict', 'outputs.GatewayNetworkAccessConfig']]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']]] = None,
-                 vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']]] = None,
-                 zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']]] = None,
-                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]]] = None,
+                 vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict', 'outputs.GatewayVpc']]] = None,
+                 vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict', 'outputs.GatewayVswitch']]] = None,
+                 zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict', 'outputs.GatewayZoneConfig']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict', 'outputs.GatewayZone']]]]] = None,
                  __props__=None):
         """
         Provides a APIG Gateway resource.
@@ -737,8 +737,8 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_type: The gateway type. Valid values:
                - API: API Gateway
                - AI: AI Gateway
-        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
-        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict', 'outputs.GatewayLogConfig']] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict', 'outputs.GatewayNetworkAccessConfig']] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values:
                - PayAsYouGo: Pay-as-you-go.
                - Subscription: Subscription.
@@ -746,10 +746,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] spec: Gateway specification:
                - apigw.small.x1: Small specification.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
-        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
-        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]] zones: The list of zones associated with the gateway. See `zones` below.
+        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict', 'outputs.GatewayVpc']] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
+        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict', 'outputs.GatewayVswitch']] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
+        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict', 'outputs.GatewayZoneConfig']] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict', 'outputs.GatewayZone']]]] zones: The list of zones associated with the gateway. See `zones` below.
         """
         ...
     @overload
@@ -840,16 +840,16 @@ class Gateway(pulumi.CustomResource):
                  gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']]] = None,
-                 network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict', 'outputs.GatewayLogConfig']]] = None,
+                 network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict', 'outputs.GatewayNetworkAccessConfig']]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']]] = None,
-                 vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']]] = None,
-                 zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']]] = None,
-                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]]] = None,
+                 vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict', 'outputs.GatewayVpc']]] = None,
+                 vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict', 'outputs.GatewayVswitch']]] = None,
+                 zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict', 'outputs.GatewayZoneConfig']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict', 'outputs.GatewayZone']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -898,27 +898,27 @@ class Gateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_from: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
-            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict']]]]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict', 'outputs.GatewayEnvironment']]]]] = None,
             expire_time: pulumi.Input[Optional[_builtins.int]] = None,
             gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
-            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict']]]]] = None,
-            log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']]] = None,
-            network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict', 'outputs.GatewayLoadBalancer']]]]] = None,
+            log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict', 'outputs.GatewayLogConfig']]] = None,
+            network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict', 'outputs.GatewayNetworkAccessConfig']]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict']]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict', 'outputs.GatewaySecurityGroup']]]]] = None,
             spec: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_version: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.int]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']]] = None,
-            vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']]] = None,
-            zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']]] = None,
-            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]]] = None) -> 'Gateway':
+            vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict', 'outputs.GatewayVpc']]] = None,
+            vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict', 'outputs.GatewayVswitch']]] = None,
+            zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict', 'outputs.GatewayZoneConfig']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict', 'outputs.GatewayZone']]]]] = None) -> 'Gateway':
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -928,7 +928,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_from: The source from which the gateway was created.
         :param pulumi.Input[_builtins.int] create_time: The creation timestamp. Unit: milliseconds.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict']]]] environments: The list of environments associated with the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict', 'outputs.GatewayEnvironment']]]] environments: The list of environments associated with the gateway.
         :param pulumi.Input[_builtins.int] expire_time: Timestamp indicating when the subscription expires. Unit: milliseconds.
         :param pulumi.Input[_builtins.str] gateway_edition: Gateway instance edition. Valid values:
                - Professional: Standard instance.
@@ -938,14 +938,14 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_type: The gateway type. Valid values:
                - API: API Gateway
                - AI: AI Gateway
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict']]]] load_balancers: The list of Gateway ingress addresses.
-        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
-        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict', 'outputs.GatewayLoadBalancer']]]] load_balancers: The list of Gateway ingress addresses.
+        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict', 'outputs.GatewayLogConfig']] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict', 'outputs.GatewayNetworkAccessConfig']] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values:
                - PayAsYouGo: Pay-as-you-go.
                - Subscription: Subscription.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the destination resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict']]]] security_groups: The security group of the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict', 'outputs.GatewaySecurityGroup']]]] security_groups: The security group of the gateway.
         :param pulumi.Input[_builtins.str] spec: Gateway specification:
                - apigw.small.x1: Small specification.
         :param pulumi.Input[_builtins.str] status: The status of the gateway.
@@ -953,10 +953,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] target_version: The target version of the gateway instance.
         :param pulumi.Input[_builtins.int] update_time: The timestamp when the gateway was last updated. Unit: milliseconds.
         :param pulumi.Input[_builtins.str] version: The current running version of the gateway instance.
-        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
-        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
-        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]] zones: The list of zones associated with the gateway. See `zones` below.
+        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict', 'outputs.GatewayVpc']] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
+        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict', 'outputs.GatewayVswitch']] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
+        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict', 'outputs.GatewayZoneConfig']] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict', 'outputs.GatewayZone']]]] zones: The list of zones associated with the gateway. See `zones` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

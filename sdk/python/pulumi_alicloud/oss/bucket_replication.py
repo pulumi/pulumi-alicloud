@@ -394,13 +394,13 @@ class BucketReplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
-                 encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict', 'outputs.BucketReplicationDestination']]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict', 'outputs.BucketReplicationEncryptionConfiguration']]] = None,
                  historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
-                 prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
-                 progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
-                 rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
-                 source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
+                 prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict', 'outputs.BucketReplicationPrefixSet']]] = None,
+                 progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict', 'outputs.BucketReplicationProgress']]] = None,
+                 rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict', 'outputs.BucketReplicationRtc']]] = None,
+                 source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict', 'outputs.BucketReplicationSourceSelectionCriteria']]] = None,
                  sync_role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -510,13 +510,13 @@ class BucketReplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
-        :param pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']] destination: Specifies the destination for the rule. See `destination` below.
-        :param pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']] encryption_configuration: Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+        :param pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict', 'outputs.BucketReplicationDestination']] destination: Specifies the destination for the rule. See `destination` below.
+        :param pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict', 'outputs.BucketReplicationEncryptionConfiguration']] encryption_configuration: Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         :param pulumi.Input[_builtins.str] historical_object_replication: Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
-        :param pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
-        :param pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
-        :param pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
-        :param pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+        :param pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict', 'outputs.BucketReplicationPrefixSet']] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+        :param pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict', 'outputs.BucketReplicationProgress']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
+        :param pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict', 'outputs.BucketReplicationRtc']] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+        :param pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict', 'outputs.BucketReplicationSourceSelectionCriteria']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         :param pulumi.Input[_builtins.str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
         ...
@@ -645,13 +645,13 @@ class BucketReplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
-                 encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict', 'outputs.BucketReplicationDestination']]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict', 'outputs.BucketReplicationEncryptionConfiguration']]] = None,
                  historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
-                 prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
-                 progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
-                 rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
-                 source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
+                 prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict', 'outputs.BucketReplicationPrefixSet']]] = None,
+                 progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict', 'outputs.BucketReplicationProgress']]] = None,
+                 rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict', 'outputs.BucketReplicationRtc']]] = None,
+                 source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict', 'outputs.BucketReplicationSourceSelectionCriteria']]] = None,
                  sync_role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -690,14 +690,14 @@ class BucketReplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
-            encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict', 'outputs.BucketReplicationDestination']]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict', 'outputs.BucketReplicationEncryptionConfiguration']]] = None,
             historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
-            prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
-            progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
-            rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
+            prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict', 'outputs.BucketReplicationPrefixSet']]] = None,
+            progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict', 'outputs.BucketReplicationProgress']]] = None,
+            rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict', 'outputs.BucketReplicationRtc']]] = None,
             rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-            source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
+            source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict', 'outputs.BucketReplicationSourceSelectionCriteria']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             sync_role: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketReplication':
         """
@@ -709,14 +709,14 @@ class BucketReplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
-        :param pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']] destination: Specifies the destination for the rule. See `destination` below.
-        :param pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']] encryption_configuration: Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
+        :param pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict', 'outputs.BucketReplicationDestination']] destination: Specifies the destination for the rule. See `destination` below.
+        :param pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict', 'outputs.BucketReplicationEncryptionConfiguration']] encryption_configuration: Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         :param pulumi.Input[_builtins.str] historical_object_replication: Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
-        :param pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
-        :param pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
-        :param pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+        :param pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict', 'outputs.BucketReplicationPrefixSet']] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
+        :param pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict', 'outputs.BucketReplicationProgress']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
+        :param pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict', 'outputs.BucketReplicationRtc']] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the data replication rule.
-        :param pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
+        :param pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict', 'outputs.BucketReplicationSourceSelectionCriteria']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         :param pulumi.Input[_builtins.str] status: The status of the data replication task. Can be starting, doing and closing.
         :param pulumi.Input[_builtins.str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """

@@ -844,7 +844,7 @@ class InstanceV2(pulumi.CustomResource):
                  cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
-                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
+                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict', 'outputs.InstanceV2EngineList']]]]] = None,
                  instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -854,7 +854,7 @@ class InstanceV2(pulumi.CustomResource):
                  standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
+                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict', 'outputs.InstanceV2WhiteIpList']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -961,7 +961,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] duration: The specified duration when the resource is purchased. Only the subscription instances are valid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]] engine_lists: Engine List See `engine_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict', 'outputs.InstanceV2EngineList']]]] engine_lists: Engine List See `engine_list` below.
         :param pulumi.Input[_builtins.str] instance_alias: Instance name
         :param pulumi.Input[_builtins.str] payment_type: Resource attribute fields representing payment types
                
@@ -977,7 +977,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] standby_zone_id: Standby zone ZoneID
         :param pulumi.Input[_builtins.str] vpc_id: VpcId
         :param pulumi.Input[_builtins.str] vswitch_id: VswitchId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict', 'outputs.InstanceV2WhiteIpList']]]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
         """
         ...
@@ -1081,7 +1081,7 @@ class InstanceV2(pulumi.CustomResource):
                  cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
-                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
+                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict', 'outputs.InstanceV2EngineList']]]]] = None,
                  instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1091,7 +1091,7 @@ class InstanceV2(pulumi.CustomResource):
                  standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
+                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict', 'outputs.InstanceV2WhiteIpList']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1157,7 +1157,7 @@ class InstanceV2(pulumi.CustomResource):
             cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
-            engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
+            engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict', 'outputs.InstanceV2EngineList']]]]] = None,
             instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1168,7 +1168,7 @@ class InstanceV2(pulumi.CustomResource):
             standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
-            white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
+            white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict', 'outputs.InstanceV2WhiteIpList']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceV2':
         """
         Get an existing InstanceV2 resource's state with the given name, id, and optional extra
@@ -1208,7 +1208,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] duration: The specified duration when the resource is purchased. Only the subscription instances are valid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]] engine_lists: Engine List See `engine_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict', 'outputs.InstanceV2EngineList']]]] engine_lists: Engine List See `engine_list` below.
         :param pulumi.Input[_builtins.str] instance_alias: Instance name
         :param pulumi.Input[_builtins.str] payment_type: Resource attribute fields representing payment types
                
@@ -1225,7 +1225,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] standby_zone_id: Standby zone ZoneID
         :param pulumi.Input[_builtins.str] vpc_id: VpcId
         :param pulumi.Input[_builtins.str] vswitch_id: VswitchId
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict', 'outputs.InstanceV2WhiteIpList']]]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

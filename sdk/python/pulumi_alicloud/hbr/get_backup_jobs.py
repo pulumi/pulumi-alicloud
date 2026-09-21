@@ -114,7 +114,7 @@ class AwaitableGetBackupJobsResult(GetBackupJobsResult):
             status=self.status)
 
 
-def get_backup_jobs(filters: Optional[Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict']]] = None,
+def get_backup_jobs(filters: Optional[Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict', 'outputs.GetBackupJobsFilterResult']]] = None,
                     ids: Optional[Sequence[_builtins.str]] = None,
                     output_file: Optional[_builtins.str] = None,
                     sort_direction: Optional[_builtins.str] = None,
@@ -205,7 +205,7 @@ def get_backup_jobs(filters: Optional[Sequence[Union['GetBackupJobsFilterArgs', 
         sort_direction=pulumi.get(__ret__, 'sort_direction'),
         source_type=pulumi.get(__ret__, 'source_type'),
         status=pulumi.get(__ret__, 'status'))
-def get_backup_jobs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict']]]]] = None,
+def get_backup_jobs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict', 'outputs.GetBackupJobsFilterResult']]]]] = None,
                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            sort_direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

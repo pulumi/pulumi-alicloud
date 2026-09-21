@@ -558,7 +558,7 @@ class AiInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_name: pulumi.Input[Optional[_builtins.str]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
+                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict', 'outputs.AiInstanceAuthConfigList']]]]] = None,
                  ca_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
                  database_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,7 +570,7 @@ class AiInstance(pulumi.CustomResource):
                  server_key: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None,
+                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict', 'outputs.AiInstanceStorageConfigList']]]]] = None,
                  __props__=None):
         """
         Provides a Rds Ai Instance resource.
@@ -621,7 +621,7 @@ class AiInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_name: The name of the new AI application.
         :param pulumi.Input[_builtins.str] app_type: Application type. Currently, only `supabase` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]] auth_config_lists: Authentication information list. See `auth_config_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict', 'outputs.AiInstanceAuthConfigList']]]] auth_config_lists: Authentication information list. See `auth_config_list` below.
         :param pulumi.Input[_builtins.str] ca_type: The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
                
                > **NOTE:**  When `ssl_enabled` is set to `1`, this parameter must be configured.
@@ -642,7 +642,7 @@ class AiInstance(pulumi.CustomResource):
                > **NOTE:**  When `ca_type` is set to `custom`, this parameter must be configured.
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the instance. Valid values: `Running`, `Stopped`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]] storage_config_lists: A list of storage configurations. See `storage_config_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict', 'outputs.AiInstanceStorageConfigList']]]] storage_config_lists: A list of storage configurations. See `storage_config_list` below.
         """
         ...
     @overload
@@ -712,7 +712,7 @@ class AiInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_name: pulumi.Input[Optional[_builtins.str]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
+                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict', 'outputs.AiInstanceAuthConfigList']]]]] = None,
                  ca_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
                  database_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -724,7 +724,7 @@ class AiInstance(pulumi.CustomResource):
                  server_key: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None,
+                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict', 'outputs.AiInstanceStorageConfigList']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -767,7 +767,7 @@ class AiInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_name: pulumi.Input[Optional[_builtins.str]] = None,
             app_type: pulumi.Input[Optional[_builtins.str]] = None,
-            auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
+            auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict', 'outputs.AiInstanceAuthConfigList']]]]] = None,
             ca_type: pulumi.Input[Optional[_builtins.str]] = None,
             dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
             database_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -779,7 +779,7 @@ class AiInstance(pulumi.CustomResource):
             server_key: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None) -> 'AiInstance':
+            storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict', 'outputs.AiInstanceStorageConfigList']]]]] = None) -> 'AiInstance':
         """
         Get an existing AiInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -789,7 +789,7 @@ class AiInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_name: The name of the new AI application.
         :param pulumi.Input[_builtins.str] app_type: Application type. Currently, only `supabase` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]] auth_config_lists: Authentication information list. See `auth_config_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict', 'outputs.AiInstanceAuthConfigList']]]] auth_config_lists: Authentication information list. See `auth_config_list` below.
         :param pulumi.Input[_builtins.str] ca_type: The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
                
                > **NOTE:**  When `ssl_enabled` is set to `1`, this parameter must be configured.
@@ -810,7 +810,7 @@ class AiInstance(pulumi.CustomResource):
                > **NOTE:**  When `ca_type` is set to `custom`, this parameter must be configured.
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the instance. Valid values: `Running`, `Stopped`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]] storage_config_lists: A list of storage configurations. See `storage_config_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict', 'outputs.AiInstanceStorageConfigList']]]] storage_config_lists: A list of storage configurations. See `storage_config_list` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

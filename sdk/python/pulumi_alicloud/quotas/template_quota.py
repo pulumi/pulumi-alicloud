@@ -356,7 +356,7 @@ class TemplateQuota(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict', 'outputs.TemplateQuotaDimension']]]]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  env_language: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -411,7 +411,7 @@ class TemplateQuota(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]] dimensions: The Quota Dimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict', 'outputs.TemplateQuotaDimension']]]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.
@@ -492,7 +492,7 @@ class TemplateQuota(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict', 'outputs.TemplateQuotaDimension']]]]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  env_language: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -535,7 +535,7 @@ class TemplateQuota(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             desire_value: pulumi.Input[Optional[_builtins.float]] = None,
-            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict', 'outputs.TemplateQuotaDimension']]]]] = None,
             effective_time: pulumi.Input[Optional[_builtins.str]] = None,
             env_language: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -551,7 +551,7 @@ class TemplateQuota(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]] dimensions: The Quota Dimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict', 'outputs.TemplateQuotaDimension']]]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.

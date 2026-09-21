@@ -248,7 +248,7 @@ class Chain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
+                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict', 'outputs.ChainChainConfig']]]]] = None,
                  chain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -426,7 +426,7 @@ class Chain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict', 'outputs.ChainChainConfig']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[_builtins.str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[_builtins.str] description: The description delivery chain.
         :param pulumi.Input[_builtins.str] instance_id: The ID of CR Enterprise Edition instance.
@@ -623,7 +623,7 @@ class Chain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
+                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict', 'outputs.ChainChainConfig']]]]] = None,
                  chain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -659,7 +659,7 @@ class Chain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
+            chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict', 'outputs.ChainChainConfig']]]]] = None,
             chain_id: pulumi.Input[Optional[_builtins.str]] = None,
             chain_name: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -673,7 +673,7 @@ class Chain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict', 'outputs.ChainChainConfig']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[_builtins.str] chain_id: Delivery chain ID.
         :param pulumi.Input[_builtins.str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[_builtins.str] description: The description delivery chain.

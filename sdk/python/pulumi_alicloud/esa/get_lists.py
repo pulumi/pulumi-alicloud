@@ -114,7 +114,7 @@ class AwaitableGetListsResult(GetListsResult):
 def get_lists(ids: Optional[Sequence[_builtins.str]] = None,
               name_regex: Optional[_builtins.str] = None,
               output_file: Optional[_builtins.str] = None,
-              query_args: Optional[Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict']] = None,
+              query_args: Optional[Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict', 'outputs.GetListsQueryArgsResult']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListsResult:
     """
     This data source provides the ESA Lists of the current Alibaba Cloud user.
@@ -149,7 +149,7 @@ def get_lists(ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] ids: A list of List IDs used to filter the returned results locally.
     :param _builtins.str name_regex: A regex string used to filter the returned results locally by List name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict'] query_args: The query parameters sent to the server. At most one block is supported. See `query_args` below.
+    :param Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict', 'outputs.GetListsQueryArgsResult'] query_args: The query parameters sent to the server. At most one block is supported. See `query_args` below.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -170,7 +170,7 @@ def get_lists(ids: Optional[Sequence[_builtins.str]] = None,
 def get_lists_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                     query_args: pulumi.Input[Optional[Optional[Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict']]]] = None,
+                     query_args: pulumi.Input[Optional[Optional[Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict', 'outputs.GetListsQueryArgsResult']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListsResult]:
     """
     This data source provides the ESA Lists of the current Alibaba Cloud user.
@@ -205,7 +205,7 @@ def get_lists_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]
     :param Sequence[_builtins.str] ids: A list of List IDs used to filter the returned results locally.
     :param _builtins.str name_regex: A regex string used to filter the returned results locally by List name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict'] query_args: The query parameters sent to the server. At most one block is supported. See `query_args` below.
+    :param Union['GetListsQueryArgsArgs', 'GetListsQueryArgsArgsDict', 'outputs.GetListsQueryArgsResult'] query_args: The query parameters sent to the server. At most one block is supported. See `query_args` below.
     """
     __args__ = dict()
     __args__['ids'] = ids

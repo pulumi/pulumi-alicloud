@@ -186,7 +186,7 @@ class ApiDestination(pulumi.CustomResource):
                  api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
+                 http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict', 'outputs.ApiDestinationHttpApiParameters']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Api Destination resource.
@@ -241,7 +241,7 @@ class ApiDestination(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_destination_name: The name of the API destination.
         :param pulumi.Input[_builtins.str] connection_name: The name of the connection.
         :param pulumi.Input[_builtins.str] description: The description of the API destination.
-        :param pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
+        :param pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict', 'outputs.ApiDestinationHttpApiParameters']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
         """
         ...
     @overload
@@ -315,7 +315,7 @@ class ApiDestination(pulumi.CustomResource):
                  api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
+                 http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict', 'outputs.ApiDestinationHttpApiParameters']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -350,7 +350,7 @@ class ApiDestination(pulumi.CustomResource):
             connection_name: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None) -> 'ApiDestination':
+            http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict', 'outputs.ApiDestinationHttpApiParameters']]] = None) -> 'ApiDestination':
         """
         Get an existing ApiDestination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -362,7 +362,7 @@ class ApiDestination(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] connection_name: The name of the connection.
         :param pulumi.Input[_builtins.int] create_time: The creation time of the Api Destination.
         :param pulumi.Input[_builtins.str] description: The description of the API destination.
-        :param pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
+        :param pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict', 'outputs.ApiDestinationHttpApiParameters']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

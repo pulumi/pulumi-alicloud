@@ -226,8 +226,8 @@ class AccessPoint(pulumi.CustomResource):
                  access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  network_origin: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
-                 vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None,
+                 public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict', 'outputs.AccessPointPublicAccessBlockConfiguration']]] = None,
+                 vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict', 'outputs.AccessPointVpcConfiguration']]] = None,
                  __props__=None):
         """
         Provides a OSS Access Point resource.
@@ -281,8 +281,8 @@ class AccessPoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows:
                - vpc: only the specified VPC ID can be used to access the access point.
                - internet: the access point can be accessed through both external and internal Endpoint.
-        :param pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
-        :param pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']] vpc_configuration: If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+        :param pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict', 'outputs.AccessPointPublicAccessBlockConfiguration']] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+        :param pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict', 'outputs.AccessPointVpcConfiguration']] vpc_configuration: If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
         """
         ...
     @overload
@@ -353,8 +353,8 @@ class AccessPoint(pulumi.CustomResource):
                  access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  network_origin: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
-                 vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None,
+                 public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict', 'outputs.AccessPointPublicAccessBlockConfiguration']]] = None,
+                 vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict', 'outputs.AccessPointVpcConfiguration']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -389,9 +389,9 @@ class AccessPoint(pulumi.CustomResource):
             access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
             network_origin: pulumi.Input[Optional[_builtins.str]] = None,
-            public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
+            public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict', 'outputs.AccessPointPublicAccessBlockConfiguration']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None) -> 'AccessPoint':
+            vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict', 'outputs.AccessPointVpcConfiguration']]] = None) -> 'AccessPoint':
         """
         Get an existing AccessPoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -404,9 +404,9 @@ class AccessPoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows:
                - vpc: only the specified VPC ID can be used to access the access point.
                - internet: the access point can be accessed through both external and internal Endpoint.
-        :param pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
+        :param pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict', 'outputs.AccessPointPublicAccessBlockConfiguration']] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']] vpc_configuration: If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
+        :param pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict', 'outputs.AccessPointVpcConfiguration']] vpc_configuration: If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

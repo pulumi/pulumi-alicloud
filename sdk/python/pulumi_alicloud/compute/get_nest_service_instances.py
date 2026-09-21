@@ -135,7 +135,7 @@ class AwaitableGetNestServiceInstancesResult(GetNestServiceInstancesResult):
             tags=self.tags)
 
 
-def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict']]] = None,
+def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict', 'outputs.GetNestServiceInstancesFilterResult']]] = None,
                                ids: Optional[Sequence[_builtins.str]] = None,
                                name_regex: Optional[_builtins.str] = None,
                                output_file: Optional[_builtins.str] = None,
@@ -162,7 +162,7 @@ def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceI
     ```
 
 
-    :param Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict']] filters: The conditions that are used to filter. See the following `Block filter`.
+    :param Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict', 'outputs.GetNestServiceInstancesFilterResult']] filters: The conditions that are used to filter. See the following `Block filter`.
     :param Sequence[_builtins.str] ids: A list of Service Instance IDs.
     :param _builtins.str name_regex: A regex string to filter results by Service Instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -189,7 +189,7 @@ def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceI
         service_instances=pulumi.get(__ret__, 'service_instances'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_nest_service_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict']]]]] = None,
+def get_nest_service_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict', 'outputs.GetNestServiceInstancesFilterResult']]]]] = None,
                                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -216,7 +216,7 @@ def get_nest_service_instances_output(filters: pulumi.Input[Optional[Optional[Se
     ```
 
 
-    :param Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict']] filters: The conditions that are used to filter. See the following `Block filter`.
+    :param Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict', 'outputs.GetNestServiceInstancesFilterResult']] filters: The conditions that are used to filter. See the following `Block filter`.
     :param Sequence[_builtins.str] ids: A list of Service Instance IDs.
     :param _builtins.str name_regex: A regex string to filter results by Service Instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

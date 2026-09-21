@@ -472,10 +472,10 @@ class NestServiceInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
+                 commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict', 'outputs.NestServiceInstanceCommodity']]] = None,
                  enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
-                 operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
+                 operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict', 'outputs.NestServiceInstanceOperationMetadata']]] = None,
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,10 +570,10 @@ class NestServiceInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']] commodity: The order information of cloud market. See `commodity` below.
+        :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict', 'outputs.NestServiceInstanceCommodity']] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[_builtins.bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
+        :param pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict', 'outputs.NestServiceInstanceOperationMetadata']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[_builtins.str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[_builtins.str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -687,10 +687,10 @@ class NestServiceInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
+                 commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict', 'outputs.NestServiceInstanceCommodity']]] = None,
                  enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
-                 operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
+                 operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict', 'outputs.NestServiceInstanceOperationMetadata']]] = None,
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -737,10 +737,10 @@ class NestServiceInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
+            commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict', 'outputs.NestServiceInstanceCommodity']]] = None,
             enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
-            operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
+            operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict', 'outputs.NestServiceInstanceOperationMetadata']]] = None,
             parameters: pulumi.Input[Optional[_builtins.str]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -758,10 +758,10 @@ class NestServiceInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']] commodity: The order information of cloud market. See `commodity` below.
+        :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict', 'outputs.NestServiceInstanceCommodity']] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[_builtins.bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
+        :param pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict', 'outputs.NestServiceInstanceOperationMetadata']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[_builtins.str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[_builtins.str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.

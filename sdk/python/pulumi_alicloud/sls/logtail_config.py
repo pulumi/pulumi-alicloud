@@ -335,7 +335,7 @@ class LogtailConfig(pulumi.CustomResource):
                  last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
                  log_sample: pulumi.Input[Optional[_builtins.str]] = None,
                  logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
+                 output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict', 'outputs.LogtailConfigOutputDetail']]] = None,
                  output_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -434,7 +434,7 @@ class LogtailConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] last_modify_time: Last modification time, unix timestamp
         :param pulumi.Input[_builtins.str] log_sample: Sample log
         :param pulumi.Input[_builtins.str] logtail_config_name: The name of the resource
-        :param pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']] output_detail: Detailed configuration of logtail output See `output_detail` below.
+        :param pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict', 'outputs.LogtailConfigOutputDetail']] output_detail: Detailed configuration of logtail output See `output_detail` below.
         :param pulumi.Input[_builtins.str] output_type: Log output mode. You can only upload data to log service.
         :param pulumi.Input[_builtins.str] project_name: Project name
         """
@@ -552,7 +552,7 @@ class LogtailConfig(pulumi.CustomResource):
                  last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
                  log_sample: pulumi.Input[Optional[_builtins.str]] = None,
                  logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
+                 output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict', 'outputs.LogtailConfigOutputDetail']]] = None,
                  output_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -591,7 +591,7 @@ class LogtailConfig(pulumi.CustomResource):
             last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
             log_sample: pulumi.Input[Optional[_builtins.str]] = None,
             logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
-            output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
+            output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict', 'outputs.LogtailConfigOutputDetail']]] = None,
             output_type: pulumi.Input[Optional[_builtins.str]] = None,
             project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogtailConfig':
         """
@@ -607,7 +607,7 @@ class LogtailConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] last_modify_time: Last modification time, unix timestamp
         :param pulumi.Input[_builtins.str] log_sample: Sample log
         :param pulumi.Input[_builtins.str] logtail_config_name: The name of the resource
-        :param pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']] output_detail: Detailed configuration of logtail output See `output_detail` below.
+        :param pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict', 'outputs.LogtailConfigOutputDetail']] output_detail: Detailed configuration of logtail output See `output_detail` below.
         :param pulumi.Input[_builtins.str] output_type: Log output mode. You can only upload data to log service.
         :param pulumi.Input[_builtins.str] project_name: Project name
         """

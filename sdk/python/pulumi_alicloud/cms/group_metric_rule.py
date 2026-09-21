@@ -601,7 +601,7 @@ class GroupMetricRule(pulumi.CustomResource):
                  dimensions: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  email_subject: pulumi.Input[Optional[_builtins.str]] = None,
-                 escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
+                 escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict', 'outputs.GroupMetricRuleEscalations']]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -611,7 +611,7 @@ class GroupMetricRule(pulumi.CustomResource):
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict', 'outputs.GroupMetricRuleTarget']]]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -685,7 +685,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[_builtins.str] effective_interval: The time period during which the alert rule is effective.
         :param pulumi.Input[_builtins.str] email_subject: The subject of the alert notification email.
-        :param pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']] escalations: Alarm level. See `escalations` below.
+        :param pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict', 'outputs.GroupMetricRuleEscalations']] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[_builtins.str] interval: The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
@@ -695,7 +695,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the alert rule.
         :param pulumi.Input[_builtins.int] silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict', 'outputs.GroupMetricRuleTarget']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The callback URL.
         """
         ...
@@ -788,7 +788,7 @@ class GroupMetricRule(pulumi.CustomResource):
                  dimensions: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  email_subject: pulumi.Input[Optional[_builtins.str]] = None,
-                 escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
+                 escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict', 'outputs.GroupMetricRuleEscalations']]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -798,7 +798,7 @@ class GroupMetricRule(pulumi.CustomResource):
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict', 'outputs.GroupMetricRuleTarget']]]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -854,7 +854,7 @@ class GroupMetricRule(pulumi.CustomResource):
             dimensions: pulumi.Input[Optional[_builtins.str]] = None,
             effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
             email_subject: pulumi.Input[Optional[_builtins.str]] = None,
-            escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
+            escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict', 'outputs.GroupMetricRuleEscalations']]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -865,7 +865,7 @@ class GroupMetricRule(pulumi.CustomResource):
             rule_id: pulumi.Input[Optional[_builtins.str]] = None,
             silence_time: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict', 'outputs.GroupMetricRuleTarget']]]]] = None,
             webhook: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupMetricRule':
         """
         Get an existing GroupMetricRule resource's state with the given name, id, and optional extra
@@ -879,7 +879,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[_builtins.str] effective_interval: The time period during which the alert rule is effective.
         :param pulumi.Input[_builtins.str] email_subject: The subject of the alert notification email.
-        :param pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']] escalations: Alarm level. See `escalations` below.
+        :param pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict', 'outputs.GroupMetricRuleEscalations']] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[_builtins.str] interval: The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
@@ -890,7 +890,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rule_id: The ID of the alert rule.
         :param pulumi.Input[_builtins.int] silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         :param pulumi.Input[_builtins.str] status: The status of Group Metric Rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict', 'outputs.GroupMetricRuleTarget']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The callback URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

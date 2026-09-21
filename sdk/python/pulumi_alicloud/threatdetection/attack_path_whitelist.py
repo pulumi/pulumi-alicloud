@@ -230,7 +230,7 @@ class AttackPathWhitelist(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict']]]]] = None,
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict', 'outputs.AttackPathWhitelistAttackPathAssetList']]]]] = None,
                  path_name: pulumi.Input[Optional[_builtins.str]] = None,
                  path_type: pulumi.Input[Optional[_builtins.str]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -287,7 +287,7 @@ class AttackPathWhitelist(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict']]]] attack_path_asset_lists: The list of attack path cloud product assets. See `attack_path_asset_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict', 'outputs.AttackPathWhitelistAttackPathAssetList']]]] attack_path_asset_lists: The list of attack path cloud product assets. See `attack_path_asset_list` below.
         :param pulumi.Input[_builtins.str] path_name: The path name of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path names.
         :param pulumi.Input[_builtins.str] path_type: The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
         :param pulumi.Input[_builtins.str] remark: The remarks of the whitelist.
@@ -363,7 +363,7 @@ class AttackPathWhitelist(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict']]]]] = None,
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict', 'outputs.AttackPathWhitelistAttackPathAssetList']]]]] = None,
                  path_name: pulumi.Input[Optional[_builtins.str]] = None,
                  path_type: pulumi.Input[Optional[_builtins.str]] = None,
                  remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -402,7 +402,7 @@ class AttackPathWhitelist(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict']]]]] = None,
+            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict', 'outputs.AttackPathWhitelistAttackPathAssetList']]]]] = None,
             path_name: pulumi.Input[Optional[_builtins.str]] = None,
             path_type: pulumi.Input[Optional[_builtins.str]] = None,
             remark: pulumi.Input[Optional[_builtins.str]] = None,
@@ -415,7 +415,7 @@ class AttackPathWhitelist(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict']]]] attack_path_asset_lists: The list of attack path cloud product assets. See `attack_path_asset_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict', 'outputs.AttackPathWhitelistAttackPathAssetList']]]] attack_path_asset_lists: The list of attack path cloud product assets. See `attack_path_asset_list` below.
         :param pulumi.Input[_builtins.str] path_name: The path name of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path names.
         :param pulumi.Input[_builtins.str] path_type: The path type of the whitelist. You can call [ListAvailableAttackPath](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAvailableAttackPath) to query the available path types.
         :param pulumi.Input[_builtins.str] remark: The remarks of the whitelist.

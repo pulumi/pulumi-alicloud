@@ -727,7 +727,7 @@ class Gateway(pulumi.CustomResource):
             db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
             db_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEndpointArgs', 'GatewayEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEndpointArgs', 'GatewayEndpointArgsDict', 'outputs.GatewayEndpoint']]]]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             expired: pulumi.Input[Optional[_builtins.bool]] = None,
             latest_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -737,7 +737,7 @@ class Gateway(pulumi.CustomResource):
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             running_version: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            security_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityIpArrayArgs', 'GatewaySecurityIpArrayArgsDict']]]]] = None,
+            security_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityIpArrayArgs', 'GatewaySecurityIpArrayArgsDict', 'outputs.GatewaySecurityIpArray']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             used_time: pulumi.Input[Optional[_builtins.int]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -756,7 +756,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_cluster_class: The specifications of the PolarDB gateway.
         :param pulumi.Input[_builtins.str] db_type: The database engine. Valid values: `MySQL`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] description: (Available since v1.290.0) The description of the PolarDB gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayEndpointArgs', 'GatewayEndpointArgsDict']]]] endpoints: (Available since v1.290.0) The endpoints of the PolarDB gateway. Each item contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayEndpointArgs', 'GatewayEndpointArgsDict', 'outputs.GatewayEndpoint']]]] endpoints: (Available since v1.290.0) The endpoints of the PolarDB gateway. Each item contains the following attributes:
         :param pulumi.Input[_builtins.str] expire_time: (Available since v1.290.0) The expiration time of the PolarDB gateway.
         :param pulumi.Input[_builtins.bool] expired: (Available since v1.290.0) Indicates whether the PolarDB gateway has expired.
         :param pulumi.Input[_builtins.str] latest_version: (Available since v1.290.0) The latest available gateway version.
@@ -766,7 +766,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.290.0) The region ID of the PolarDB gateway.
         :param pulumi.Input[_builtins.str] running_version: (Available since v1.290.0) The running gateway version.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySecurityIpArrayArgs', 'GatewaySecurityIpArrayArgsDict']]]] security_ip_arrays: (Available since v1.290.0) The IP whitelist groups of the PolarDB gateway. Each item contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySecurityIpArrayArgs', 'GatewaySecurityIpArrayArgsDict', 'outputs.GatewaySecurityIpArray']]]] security_ip_arrays: (Available since v1.290.0) The IP whitelist groups of the PolarDB gateway. Each item contains the following attributes:
         :param pulumi.Input[_builtins.str] status: (Available since v1.290.0) The status of the PolarDB gateway.
         :param pulumi.Input[_builtins.int] used_time: The subscription duration. Valid values are `1` to `9` when `period` is `Month`, and `1` to `3` when `period` is `Year`. This argument is required when `pay_type` is `Prepaid`.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.

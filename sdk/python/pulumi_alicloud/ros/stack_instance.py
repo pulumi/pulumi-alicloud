@@ -339,7 +339,7 @@ class StackInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  operation_description: pulumi.Input[Optional[_builtins.str]] = None,
                  operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]]] = None,
                  retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
                  stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -414,7 +414,7 @@ class StackInstance(pulumi.CustomResource):
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[_builtins.bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
@@ -504,7 +504,7 @@ class StackInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  operation_description: pulumi.Input[Optional[_builtins.str]] = None,
                  operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]]] = None,
                  retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
                  stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -548,7 +548,7 @@ class StackInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             operation_description: pulumi.Input[Optional[_builtins.str]] = None,
             operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
-            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
+            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]]] = None,
             retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
             stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -568,7 +568,7 @@ class StackInstance(pulumi.CustomResource):
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[_builtins.bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.

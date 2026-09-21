@@ -138,7 +138,7 @@ class Er(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
+                 env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict', 'outputs.ErEnvConf']]] = None,
                  er_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -189,7 +189,7 @@ class Er(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Routine The description of the routine.
-        :param pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']] env_conf: The configurations of the specified environment. See `env_conf` below.
+        :param pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict', 'outputs.ErEnvConf']] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[_builtins.str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
         ...
@@ -259,7 +259,7 @@ class Er(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
+                 env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict', 'outputs.ErEnvConf']]] = None,
                  er_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -286,7 +286,7 @@ class Er(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
+            env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict', 'outputs.ErEnvConf']]] = None,
             er_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Er':
         """
         Get an existing Er resource's state with the given name, id, and optional extra
@@ -296,7 +296,7 @@ class Er(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Routine The description of the routine.
-        :param pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']] env_conf: The configurations of the specified environment. See `env_conf` below.
+        :param pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict', 'outputs.ErEnvConf']] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[_builtins.str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

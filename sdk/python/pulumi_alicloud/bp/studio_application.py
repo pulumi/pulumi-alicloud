@@ -283,7 +283,7 @@ class StudioApplication(pulumi.CustomResource):
                  application_name: pulumi.Input[Optional[_builtins.str]] = None,
                  area_id: pulumi.Input[Optional[_builtins.str]] = None,
                  configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -343,7 +343,7 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[_builtins.str] resource_group_id: The id of the resource group.
         :param pulumi.Input[_builtins.str] template_id: The id of the template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variables: The variables of the application.
@@ -422,7 +422,7 @@ class StudioApplication(pulumi.CustomResource):
                  application_name: pulumi.Input[Optional[_builtins.str]] = None,
                  area_id: pulumi.Input[Optional[_builtins.str]] = None,
                  configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -460,7 +460,7 @@ class StudioApplication(pulumi.CustomResource):
             application_name: pulumi.Input[Optional[_builtins.str]] = None,
             area_id: pulumi.Input[Optional[_builtins.str]] = None,
             configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -475,7 +475,7 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[_builtins.str] resource_group_id: The id of the resource group.
         :param pulumi.Input[_builtins.str] status: The status of the Application.
         :param pulumi.Input[_builtins.str] template_id: The id of the template.

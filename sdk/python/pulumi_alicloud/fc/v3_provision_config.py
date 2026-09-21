@@ -317,9 +317,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
                  always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  qualifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
+                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict', 'outputs.V3ProvisionConfigScheduledAction']]]]] = None,
                  target: pulumi.Input[Optional[_builtins.int]] = None,
-                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None,
+                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict', 'outputs.V3ProvisionConfigTargetTrackingPolicy']]]]] = None,
                  __props__=None):
         """
         Provides a FCV3 Provision Config resource.
@@ -456,9 +456,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] always_allocate_gpu: Whether to always assign GPU to function instance
         :param pulumi.Input[_builtins.str] function_name: The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
         :param pulumi.Input[_builtins.str] qualifier: The function alias or LATEST.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]] scheduled_actions: Timing policy configuration See `scheduled_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict', 'outputs.V3ProvisionConfigScheduledAction']]]] scheduled_actions: Timing policy configuration See `scheduled_actions` below.
         :param pulumi.Input[_builtins.int] target: Number of reserved target resources. The value range is [0,10000].
-        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]] target_tracking_policies: Metric tracking scaling policy configuration See `target_tracking_policies` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict', 'outputs.V3ProvisionConfigTargetTrackingPolicy']]]] target_tracking_policies: Metric tracking scaling policy configuration See `target_tracking_policies` below.
         """
         ...
     @overload
@@ -614,9 +614,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
                  always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  qualifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
+                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict', 'outputs.V3ProvisionConfigScheduledAction']]]]] = None,
                  target: pulumi.Input[Optional[_builtins.int]] = None,
-                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None,
+                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict', 'outputs.V3ProvisionConfigTargetTrackingPolicy']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -655,9 +655,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
             function_arn: pulumi.Input[Optional[_builtins.str]] = None,
             function_name: pulumi.Input[Optional[_builtins.str]] = None,
             qualifier: pulumi.Input[Optional[_builtins.str]] = None,
-            scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
+            scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict', 'outputs.V3ProvisionConfigScheduledAction']]]]] = None,
             target: pulumi.Input[Optional[_builtins.int]] = None,
-            target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None) -> 'V3ProvisionConfig':
+            target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict', 'outputs.V3ProvisionConfigTargetTrackingPolicy']]]]] = None) -> 'V3ProvisionConfig':
         """
         Get an existing V3ProvisionConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -672,9 +672,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] function_arn: (Available since v1.234.0) Resource Description of the function
         :param pulumi.Input[_builtins.str] function_name: The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
         :param pulumi.Input[_builtins.str] qualifier: The function alias or LATEST.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]] scheduled_actions: Timing policy configuration See `scheduled_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict', 'outputs.V3ProvisionConfigScheduledAction']]]] scheduled_actions: Timing policy configuration See `scheduled_actions` below.
         :param pulumi.Input[_builtins.int] target: Number of reserved target resources. The value range is [0,10000].
-        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]] target_tracking_policies: Metric tracking scaling policy configuration See `target_tracking_policies` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict', 'outputs.V3ProvisionConfigTargetTrackingPolicy']]]] target_tracking_policies: Metric tracking scaling policy configuration See `target_tracking_policies` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

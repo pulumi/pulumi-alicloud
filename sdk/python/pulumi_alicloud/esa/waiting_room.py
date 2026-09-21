@@ -603,7 +603,7 @@ class WaitingRoom(pulumi.CustomResource):
                  custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
-                 host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict']]]]] = None,
+                 host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict', 'outputs.WaitingRoomHostNameAndPath']]]]] = None,
                  json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  language: pulumi.Input[Optional[_builtins.str]] = None,
                  new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
@@ -691,7 +691,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
         :param pulumi.Input[_builtins.str] disable_session_renewal_enable: Disable session renewal. Value:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict']]]] host_name_and_paths: Host name and path. See `host_name_and_path` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict', 'outputs.WaitingRoomHostNameAndPath']]]] host_name_and_paths: Host name and path. See `host_name_and_path` below.
         :param pulumi.Input[_builtins.str] json_response_enable: The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
         :param pulumi.Input[_builtins.str] language: The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.
@@ -800,7 +800,7 @@ class WaitingRoom(pulumi.CustomResource):
                  custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
-                 host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict']]]]] = None,
+                 host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict', 'outputs.WaitingRoomHostNameAndPath']]]]] = None,
                  json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  language: pulumi.Input[Optional[_builtins.str]] = None,
                  new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
@@ -876,7 +876,7 @@ class WaitingRoom(pulumi.CustomResource):
             custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
-            host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict']]]]] = None,
+            host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict', 'outputs.WaitingRoomHostNameAndPath']]]]] = None,
             json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
             language: pulumi.Input[Optional[_builtins.str]] = None,
             new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
@@ -901,7 +901,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
         :param pulumi.Input[_builtins.str] disable_session_renewal_enable: Disable session renewal. Value:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict']]]] host_name_and_paths: Host name and path. See `host_name_and_path` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict', 'outputs.WaitingRoomHostNameAndPath']]]] host_name_and_paths: Host name and path. See `host_name_and_path` below.
         :param pulumi.Input[_builtins.str] json_response_enable: The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
         :param pulumi.Input[_builtins.str] language: The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.

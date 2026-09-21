@@ -202,9 +202,9 @@ class GreyTagRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
+                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict', 'outputs.GreyTagRouteDubboRule']]]]] = None,
                  grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None,
+                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict', 'outputs.GreyTagRouteScRule']]]]] = None,
                  __props__=None):
         """
         Provides a Serverless App Engine (SAE) GreyTagRoute resource.
@@ -304,9 +304,9 @@ class GreyTagRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID  of the SAE Application.
         :param pulumi.Input[_builtins.str] description: The description of GreyTagRoute.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]] dubbo_rules: The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict', 'outputs.GreyTagRouteDubboRule']]]] dubbo_rules: The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         :param pulumi.Input[_builtins.str] grey_tag_route_name: The name of GreyTagRoute.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]] sc_rules: The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict', 'outputs.GreyTagRouteScRule']]]] sc_rules: The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         """
         ...
     @overload
@@ -425,9 +425,9 @@ class GreyTagRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
+                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict', 'outputs.GreyTagRouteDubboRule']]]]] = None,
                  grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None,
+                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict', 'outputs.GreyTagRouteScRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,9 +458,9 @@ class GreyTagRoute(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
+            dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict', 'outputs.GreyTagRouteDubboRule']]]]] = None,
             grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
-            sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None) -> 'GreyTagRoute':
+            sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict', 'outputs.GreyTagRouteScRule']]]]] = None) -> 'GreyTagRoute':
         """
         Get an existing GreyTagRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -470,9 +470,9 @@ class GreyTagRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID  of the SAE Application.
         :param pulumi.Input[_builtins.str] description: The description of GreyTagRoute.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]] dubbo_rules: The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict', 'outputs.GreyTagRouteDubboRule']]]] dubbo_rules: The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         :param pulumi.Input[_builtins.str] grey_tag_route_name: The name of GreyTagRoute.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]] sc_rules: The grayscale rule created for SpringCloud Application. See `sc_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict', 'outputs.GreyTagRouteScRule']]]] sc_rules: The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

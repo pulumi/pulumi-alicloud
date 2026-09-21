@@ -87,7 +87,7 @@ class AwaitableGetServerBackupPlansResult(GetServerBackupPlansResult):
             plans=self.plans)
 
 
-def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]] = None,
+def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']]] = None,
                             ids: Optional[Sequence[_builtins.str]] = None,
                             output_file: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerBackupPlansResult:
@@ -114,7 +114,7 @@ def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPla
     ```
 
 
-    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']] filters: The filters.
+    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']] filters: The filters.
     :param Sequence[_builtins.str] ids: A list of Server Backup Plan IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -131,7 +131,7 @@ def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPla
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         plans=pulumi.get(__ret__, 'plans'))
-def get_server_backup_plans_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]]]] = None,
+def get_server_backup_plans_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']]]]] = None,
                                    ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBackupPlansResult]:
@@ -158,7 +158,7 @@ def get_server_backup_plans_output(filters: pulumi.Input[Optional[Optional[Seque
     ```
 
 
-    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']] filters: The filters.
+    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']] filters: The filters.
     :param Sequence[_builtins.str] ids: A list of Server Backup Plan IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """

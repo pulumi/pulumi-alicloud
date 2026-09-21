@@ -329,14 +329,14 @@ class BucketInventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict']]] = None,
-                 filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict', 'outputs.BucketInventoryDestination']]] = None,
+                 filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict', 'outputs.BucketInventoryFilter']]] = None,
                  included_object_versions: pulumi.Input[Optional[_builtins.str]] = None,
-                 incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict']]] = None,
+                 incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict', 'outputs.BucketInventoryIncrementalInventory']]] = None,
                  inventory_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict']]] = None,
+                 optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict', 'outputs.BucketInventoryOptionalFields']]] = None,
+                 schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict', 'outputs.BucketInventorySchedule']]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Inventory resource.
@@ -398,14 +398,14 @@ class BucketInventory(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
-        :param pulumi.Input[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict']] destination: Holds the container that holds the location of the inventory results. **Note:** The parameter is immutable after resource creation and the exported storage location cannot be modified without recreating the rule. See `destination` below.
-        :param pulumi.Input[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict']] filter: Container for inventory filtering rules. See `filter` below.
+        :param pulumi.Input[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict', 'outputs.BucketInventoryDestination']] destination: Holds the container that holds the location of the inventory results. **Note:** The parameter is immutable after resource creation and the exported storage location cannot be modified without recreating the rule. See `destination` below.
+        :param pulumi.Input[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict', 'outputs.BucketInventoryFilter']] filter: Container for inventory filtering rules. See `filter` below.
         :param pulumi.Input[_builtins.str] included_object_versions: Whether the Object version information is included in the list. Valid values: All: export All version information of the Object. Current: exports the Current version of the Object.
-        :param pulumi.Input[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict']] incremental_inventory: Configuration container for incremental inventory. **Note:** The parameter is immutable after resource creation; OSS fixes the incremental export cycle server-side. See `incremental_inventory` below.
+        :param pulumi.Input[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict', 'outputs.BucketInventoryIncrementalInventory']] incremental_inventory: Configuration container for incremental inventory. **Note:** The parameter is immutable after resource creation; OSS fixes the incremental export cycle server-side. See `incremental_inventory` below.
         :param pulumi.Input[_builtins.str] inventory_id: The ID of the inventory rule. The ID must be unique in the bucket.
         :param pulumi.Input[_builtins.bool] is_enabled: Identification of whether the manifest feature is enabled. Valid values: true: Enable the inventory feature. false: Do not enable the manifest feature.
-        :param pulumi.Input[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict']] optional_fields: Sets the configuration items included in the manifest results. See `optional_fields` below.
-        :param pulumi.Input[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict']] schedule: Container for storing inventory export cycle information. See `schedule` below.
+        :param pulumi.Input[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict', 'outputs.BucketInventoryOptionalFields']] optional_fields: Sets the configuration items included in the manifest results. See `optional_fields` below.
+        :param pulumi.Input[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict', 'outputs.BucketInventorySchedule']] schedule: Container for storing inventory export cycle information. See `schedule` below.
         """
         ...
     @overload
@@ -486,14 +486,14 @@ class BucketInventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict']]] = None,
-                 filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict', 'outputs.BucketInventoryDestination']]] = None,
+                 filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict', 'outputs.BucketInventoryFilter']]] = None,
                  included_object_versions: pulumi.Input[Optional[_builtins.str]] = None,
-                 incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict']]] = None,
+                 incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict', 'outputs.BucketInventoryIncrementalInventory']]] = None,
                  inventory_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict']]] = None,
+                 optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict', 'outputs.BucketInventoryOptionalFields']]] = None,
+                 schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict', 'outputs.BucketInventorySchedule']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -527,14 +527,14 @@ class BucketInventory(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict']]] = None,
-            filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict', 'outputs.BucketInventoryDestination']]] = None,
+            filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict', 'outputs.BucketInventoryFilter']]] = None,
             included_object_versions: pulumi.Input[Optional[_builtins.str]] = None,
-            incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict']]] = None,
+            incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict', 'outputs.BucketInventoryIncrementalInventory']]] = None,
             inventory_id: pulumi.Input[Optional[_builtins.str]] = None,
             is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict']]] = None,
-            schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict']]] = None) -> 'BucketInventory':
+            optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict', 'outputs.BucketInventoryOptionalFields']]] = None,
+            schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict', 'outputs.BucketInventorySchedule']]] = None) -> 'BucketInventory':
         """
         Get an existing BucketInventory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -543,14 +543,14 @@ class BucketInventory(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
-        :param pulumi.Input[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict']] destination: Holds the container that holds the location of the inventory results. **Note:** The parameter is immutable after resource creation and the exported storage location cannot be modified without recreating the rule. See `destination` below.
-        :param pulumi.Input[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict']] filter: Container for inventory filtering rules. See `filter` below.
+        :param pulumi.Input[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict', 'outputs.BucketInventoryDestination']] destination: Holds the container that holds the location of the inventory results. **Note:** The parameter is immutable after resource creation and the exported storage location cannot be modified without recreating the rule. See `destination` below.
+        :param pulumi.Input[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict', 'outputs.BucketInventoryFilter']] filter: Container for inventory filtering rules. See `filter` below.
         :param pulumi.Input[_builtins.str] included_object_versions: Whether the Object version information is included in the list. Valid values: All: export All version information of the Object. Current: exports the Current version of the Object.
-        :param pulumi.Input[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict']] incremental_inventory: Configuration container for incremental inventory. **Note:** The parameter is immutable after resource creation; OSS fixes the incremental export cycle server-side. See `incremental_inventory` below.
+        :param pulumi.Input[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict', 'outputs.BucketInventoryIncrementalInventory']] incremental_inventory: Configuration container for incremental inventory. **Note:** The parameter is immutable after resource creation; OSS fixes the incremental export cycle server-side. See `incremental_inventory` below.
         :param pulumi.Input[_builtins.str] inventory_id: The ID of the inventory rule. The ID must be unique in the bucket.
         :param pulumi.Input[_builtins.bool] is_enabled: Identification of whether the manifest feature is enabled. Valid values: true: Enable the inventory feature. false: Do not enable the manifest feature.
-        :param pulumi.Input[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict']] optional_fields: Sets the configuration items included in the manifest results. See `optional_fields` below.
-        :param pulumi.Input[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict']] schedule: Container for storing inventory export cycle information. See `schedule` below.
+        :param pulumi.Input[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict', 'outputs.BucketInventoryOptionalFields']] optional_fields: Sets the configuration items included in the manifest results. See `optional_fields` below.
+        :param pulumi.Input[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict', 'outputs.BucketInventorySchedule']] schedule: Container for storing inventory export cycle information. See `schedule` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

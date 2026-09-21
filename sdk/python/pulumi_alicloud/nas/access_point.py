@@ -394,9 +394,9 @@ class AccessPoint(pulumi.CustomResource):
                  access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
                  file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+                 posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict', 'outputs.AccessPointPosixUser']]] = None,
                  root_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
+                 root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict', 'outputs.AccessPointRootPathPermission']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -479,9 +479,9 @@ class AccessPoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point.
         :param pulumi.Input[_builtins.bool] enabled_ram: Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']] posix_user: The Posix user. See `posix_user` below.
+        :param pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict', 'outputs.AccessPointPosixUser']] posix_user: The Posix user. See `posix_user` below.
         :param pulumi.Input[_builtins.str] root_path: The root directory of the access point.
-        :param pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']] root_path_permission: Root permissions. See `root_path_permission` below.
+        :param pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict', 'outputs.AccessPointRootPathPermission']] root_path_permission: Root permissions. See `root_path_permission` below.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
         """
@@ -583,9 +583,9 @@ class AccessPoint(pulumi.CustomResource):
                  access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
                  file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+                 posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict', 'outputs.AccessPointPosixUser']]] = None,
                  root_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
+                 root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict', 'outputs.AccessPointRootPathPermission']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -634,10 +634,10 @@ class AccessPoint(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
             file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
-            posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+            posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict', 'outputs.AccessPointPosixUser']]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             root_path: pulumi.Input[Optional[_builtins.str]] = None,
-            root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
+            root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict', 'outputs.AccessPointRootPathPermission']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessPoint':
@@ -654,10 +654,10 @@ class AccessPoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time when the access point was created.
         :param pulumi.Input[_builtins.bool] enabled_ram: Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']] posix_user: The Posix user. See `posix_user` below.
+        :param pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict', 'outputs.AccessPointPosixUser']] posix_user: The Posix user. See `posix_user` below.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.254.0) The region ID.
         :param pulumi.Input[_builtins.str] root_path: The root directory of the access point.
-        :param pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']] root_path_permission: Root permissions. See `root_path_permission` below.
+        :param pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict', 'outputs.AccessPointRootPathPermission']] root_path_permission: Root permissions. See `root_path_permission` below.
         :param pulumi.Input[_builtins.str] status: The status of the access point.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.

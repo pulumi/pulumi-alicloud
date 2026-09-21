@@ -105,7 +105,7 @@ class KubernetesPermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict', 'outputs.KubernetesPermissionPermission']]]]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -207,7 +207,7 @@ class KubernetesPermission(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]] permissions: A list of user permission. See `permissions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict', 'outputs.KubernetesPermissionPermission']]]] permissions: A list of user permission. See `permissions` below.
         :param pulumi.Input[_builtins.str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         ...
@@ -328,7 +328,7 @@ class KubernetesPermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict', 'outputs.KubernetesPermissionPermission']]]]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -353,7 +353,7 @@ class KubernetesPermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict', 'outputs.KubernetesPermissionPermission']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesPermission':
         """
         Get an existing KubernetesPermission resource's state with the given name, id, and optional extra
@@ -362,7 +362,7 @@ class KubernetesPermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]] permissions: A list of user permission. See `permissions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict', 'outputs.KubernetesPermissionPermission']]]] permissions: A list of user permission. See `permissions` below.
         :param pulumi.Input[_builtins.str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

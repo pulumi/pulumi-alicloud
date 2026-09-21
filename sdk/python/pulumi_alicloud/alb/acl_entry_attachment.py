@@ -195,7 +195,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict', 'outputs.AclEntryAttachmentEntry']]]]] = None,
                  entry: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -270,7 +270,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
         :param pulumi.Input[_builtins.str] description: The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict', 'outputs.AclEntryAttachmentEntry']]]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
         :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
         """
         ...
@@ -364,7 +364,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict', 'outputs.AclEntryAttachmentEntry']]]]] = None,
                  entry: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -394,7 +394,7 @@ class AclEntryAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict', 'outputs.AclEntryAttachmentEntry']]]]] = None,
             entry: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclEntryAttachment':
         """
@@ -406,7 +406,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
         :param pulumi.Input[_builtins.str] description: The description of the entry. Only valid when `entry` is set. The description must be `1` to `256` characters in length.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict']]]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryAttachmentEntryArgs', 'AclEntryAttachmentEntryArgsDict', 'outputs.AclEntryAttachmentEntry']]]] entries: One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
         :param pulumi.Input[_builtins.str] entry: The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Only exported when `entry` is set. When `entries` is set, the status of each entry is exported in its `entries` block.
         """

@@ -1278,7 +1278,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
-                 confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
+                 confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']]] = None,
                  default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
                  deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1297,7 +1297,7 @@ class Instance(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group: pulumi.Input[Optional[_builtins.str]] = None,
                  selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
+                 serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']]] = None,
                  service_version: pulumi.Input[Optional[_builtins.str]] = None,
                  spec_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1380,7 +1380,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
-        :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']] confluent_config: The configurations of Confluent. See `confluent_config` below.
+        :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
@@ -1403,7 +1403,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
-        :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
                - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -1516,7 +1516,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
-                 confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
+                 confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']]] = None,
                  default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
                  deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1535,7 +1535,7 @@ class Instance(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group: pulumi.Input[Optional[_builtins.str]] = None,
                  selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
+                 serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']]] = None,
                  service_version: pulumi.Input[Optional[_builtins.str]] = None,
                  spec_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1610,7 +1610,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config: pulumi.Input[Optional[_builtins.str]] = None,
-            confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
+            confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']]] = None,
             default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
             deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
             disk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1637,7 +1637,7 @@ class Instance(pulumi.CustomResource):
             sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             security_group: pulumi.Input[Optional[_builtins.str]] = None,
             selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
+            serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']]] = None,
             service_version: pulumi.Input[Optional[_builtins.str]] = None,
             spec_type: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1661,7 +1661,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
-        :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']] confluent_config: The configurations of Confluent. See `confluent_config` below.
+        :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
@@ -1692,7 +1692,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
-        :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
                - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.

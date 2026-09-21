@@ -198,7 +198,7 @@ class AddressPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict', 'outputs.AddressPoolAddress']]]]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -279,7 +279,7 @@ class AddressPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]] addresses: The address lists of the Address Pool. See `address` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict', 'outputs.AddressPoolAddress']]]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[_builtins.str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -379,7 +379,7 @@ class AddressPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict', 'outputs.AddressPoolAddress']]]]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -418,7 +418,7 @@ class AddressPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
-            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict', 'outputs.AddressPoolAddress']]]]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddressPool':
@@ -430,7 +430,7 @@ class AddressPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]] addresses: The address lists of the Address Pool. See `address` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict', 'outputs.AddressPoolAddress']]]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[_builtins.str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.

@@ -346,7 +346,7 @@ class PrefixList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
+                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  max_entries: pulumi.Input[Optional[_builtins.int]] = None,
                  prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -404,7 +404,7 @@ class PrefixList(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
         :param pulumi.Input[_builtins.str] prefix_list_description: The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -481,7 +481,7 @@ class PrefixList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
+                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  max_entries: pulumi.Input[Optional[_builtins.int]] = None,
                  prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -520,10 +520,10 @@ class PrefixList(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
+            entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]]] = None,
             ip_version: pulumi.Input[Optional[_builtins.str]] = None,
             max_entries: pulumi.Input[Optional[_builtins.int]] = None,
-            prefix_list_associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict']]]]] = None,
+            prefix_list_associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict', 'outputs.PrefixListPrefixListAssociation']]]]] = None,
             prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
             prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
             prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -539,10 +539,10 @@ class PrefixList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time when the prefix list was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict']]]] prefix_list_associations: The association list information of the prefix list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict', 'outputs.PrefixListPrefixListAssociation']]]] prefix_list_associations: The association list information of the prefix list.
         :param pulumi.Input[_builtins.str] prefix_list_description: The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] prefix_list_id: The ID of the query Prefix List.
         :param pulumi.Input[_builtins.str] prefix_list_name: The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).

@@ -328,7 +328,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict', 'outputs.NodeGroupAttachmentDataDisk']]]]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -382,7 +382,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict', 'outputs.NodeGroupAttachmentDataDisk']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] hostname: Node hostname
         :param pulumi.Input[_builtins.str] login_password: Node login password
         :param pulumi.Input[_builtins.str] node_group_id: Node group ID
@@ -455,7 +455,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict', 'outputs.NodeGroupAttachmentDataDisk']]]]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,7 +498,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict', 'outputs.NodeGroupAttachmentDataDisk']]]]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             login_password: pulumi.Input[Optional[_builtins.str]] = None,
             node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,7 +514,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict', 'outputs.NodeGroupAttachmentDataDisk']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] hostname: Node hostname
         :param pulumi.Input[_builtins.str] login_password: Node login password
         :param pulumi.Input[_builtins.str] node_group_id: Node group ID

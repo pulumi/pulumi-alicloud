@@ -436,14 +436,14 @@ class EventSourceV2(pulumi.CustomResource):
                  event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
                  event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
-                 source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
-                 source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
-                 source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
-                 source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
-                 source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
-                 source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
-                 source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
-                 source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None,
+                 source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict', 'outputs.EventSourceV2SourceHttpEventParameters']]] = None,
+                 source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict', 'outputs.EventSourceV2SourceKafkaParameters']]] = None,
+                 source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict', 'outputs.EventSourceV2SourceMnsParameters']]] = None,
+                 source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict', 'outputs.EventSourceV2SourceOssEventParameters']]] = None,
+                 source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict', 'outputs.EventSourceV2SourceRabbitMqParameters']]] = None,
+                 source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict', 'outputs.EventSourceV2SourceRocketmqParameters']]] = None,
+                 source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict', 'outputs.EventSourceV2SourceScheduledEventParameters']]] = None,
+                 source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict', 'outputs.EventSourceV2SourceSlsParameters']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Event Source V2 resource.
@@ -509,14 +509,14 @@ class EventSourceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']] source_oss_event_parameters: OSS event source parameters See `source_oss_event_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']] source_rabbit_mq_parameters: The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']] source_rocketmq_parameters: The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']] source_scheduled_event_parameters: Time event source parameter. See `source_scheduled_event_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']] source_sls_parameters: The request parameter SourceSLSParameters. See `source_sls_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict', 'outputs.EventSourceV2SourceHttpEventParameters']] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict', 'outputs.EventSourceV2SourceKafkaParameters']] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict', 'outputs.EventSourceV2SourceMnsParameters']] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict', 'outputs.EventSourceV2SourceOssEventParameters']] source_oss_event_parameters: OSS event source parameters See `source_oss_event_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict', 'outputs.EventSourceV2SourceRabbitMqParameters']] source_rabbit_mq_parameters: The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict', 'outputs.EventSourceV2SourceRocketmqParameters']] source_rocketmq_parameters: The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict', 'outputs.EventSourceV2SourceScheduledEventParameters']] source_scheduled_event_parameters: Time event source parameter. See `source_scheduled_event_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict', 'outputs.EventSourceV2SourceSlsParameters']] source_sls_parameters: The request parameter SourceSLSParameters. See `source_sls_parameters` below.
         """
         ...
     @overload
@@ -599,14 +599,14 @@ class EventSourceV2(pulumi.CustomResource):
                  event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
                  event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
-                 source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
-                 source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
-                 source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
-                 source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
-                 source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
-                 source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
-                 source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
-                 source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None,
+                 source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict', 'outputs.EventSourceV2SourceHttpEventParameters']]] = None,
+                 source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict', 'outputs.EventSourceV2SourceKafkaParameters']]] = None,
+                 source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict', 'outputs.EventSourceV2SourceMnsParameters']]] = None,
+                 source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict', 'outputs.EventSourceV2SourceOssEventParameters']]] = None,
+                 source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict', 'outputs.EventSourceV2SourceRabbitMqParameters']]] = None,
+                 source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict', 'outputs.EventSourceV2SourceRocketmqParameters']]] = None,
+                 source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict', 'outputs.EventSourceV2SourceScheduledEventParameters']]] = None,
+                 source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict', 'outputs.EventSourceV2SourceSlsParameters']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -646,14 +646,14 @@ class EventSourceV2(pulumi.CustomResource):
             event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
             event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
             linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
-            source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
-            source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
-            source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
-            source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
-            source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
-            source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
-            source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
-            source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None) -> 'EventSourceV2':
+            source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict', 'outputs.EventSourceV2SourceHttpEventParameters']]] = None,
+            source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict', 'outputs.EventSourceV2SourceKafkaParameters']]] = None,
+            source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict', 'outputs.EventSourceV2SourceMnsParameters']]] = None,
+            source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict', 'outputs.EventSourceV2SourceOssEventParameters']]] = None,
+            source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict', 'outputs.EventSourceV2SourceRabbitMqParameters']]] = None,
+            source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict', 'outputs.EventSourceV2SourceRocketmqParameters']]] = None,
+            source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict', 'outputs.EventSourceV2SourceScheduledEventParameters']]] = None,
+            source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict', 'outputs.EventSourceV2SourceSlsParameters']]] = None) -> 'EventSourceV2':
         """
         Get an existing EventSourceV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -667,14 +667,14 @@ class EventSourceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']] source_oss_event_parameters: OSS event source parameters See `source_oss_event_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']] source_rabbit_mq_parameters: The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']] source_rocketmq_parameters: The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']] source_scheduled_event_parameters: Time event source parameter. See `source_scheduled_event_parameters` below.
-        :param pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']] source_sls_parameters: The request parameter SourceSLSParameters. See `source_sls_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict', 'outputs.EventSourceV2SourceHttpEventParameters']] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict', 'outputs.EventSourceV2SourceKafkaParameters']] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict', 'outputs.EventSourceV2SourceMnsParameters']] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict', 'outputs.EventSourceV2SourceOssEventParameters']] source_oss_event_parameters: OSS event source parameters See `source_oss_event_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict', 'outputs.EventSourceV2SourceRabbitMqParameters']] source_rabbit_mq_parameters: The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict', 'outputs.EventSourceV2SourceRocketmqParameters']] source_rocketmq_parameters: The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict', 'outputs.EventSourceV2SourceScheduledEventParameters']] source_scheduled_event_parameters: Time event source parameter. See `source_scheduled_event_parameters` below.
+        :param pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict', 'outputs.EventSourceV2SourceSlsParameters']] source_sls_parameters: The request parameter SourceSLSParameters. See `source_sls_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

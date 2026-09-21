@@ -781,11 +781,11 @@ class Instance(pulumi.CustomResource):
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
+                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]] = None,
                  user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
+                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict', 'outputs.InstanceZoneVswitchSecurityGroup']]]]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Instance resource.
@@ -897,11 +897,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         :param pulumi.Input[_builtins.bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
-        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[_builtins.str] user_vpc_id: User's VpcID.
         :param pulumi.Input[_builtins.bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[_builtins.str] zone_id: The zone where the instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict', 'outputs.InstanceZoneVswitchSecurityGroup']]]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         ...
     @overload
@@ -1026,11 +1026,11 @@ class Instance(pulumi.CustomResource):
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
+                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]] = None,
                  user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
+                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict', 'outputs.InstanceZoneVswitchSecurityGroup']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1101,11 +1101,11 @@ class Instance(pulumi.CustomResource):
             skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
-            to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
+            to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]] = None,
             user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
-            zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None) -> 'Instance':
+            zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict', 'outputs.InstanceZoneVswitchSecurityGroup']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1138,11 +1138,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.bool] support_ipv6: Does ipv6 support.
-        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[_builtins.str] user_vpc_id: User's VpcID.
         :param pulumi.Input[_builtins.bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[_builtins.str] zone_id: The zone where the instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict', 'outputs.InstanceZoneVswitchSecurityGroup']]]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

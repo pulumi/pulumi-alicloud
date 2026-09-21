@@ -322,7 +322,7 @@ class QuotaAlarm(pulumi.CustomResource):
                  product_code: pulumi.Input[Optional[_builtins.str]] = None,
                  quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
                  quota_alarm_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]]] = None,
+                 quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict', 'outputs.QuotaAlarmQuotaDimension']]]]] = None,
                  threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  threshold_percent: pulumi.Input[Optional[_builtins.float]] = None,
                  threshold_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,7 +379,7 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] product_code: The Product Code.
         :param pulumi.Input[_builtins.str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[_builtins.str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict', 'outputs.QuotaAlarmQuotaDimension']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[_builtins.float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[_builtins.float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[_builtins.str] threshold_type: Quota alarm type. Value:
@@ -457,7 +457,7 @@ class QuotaAlarm(pulumi.CustomResource):
                  product_code: pulumi.Input[Optional[_builtins.str]] = None,
                  quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
                  quota_alarm_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]]] = None,
+                 quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict', 'outputs.QuotaAlarmQuotaDimension']]]]] = None,
                  threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  threshold_percent: pulumi.Input[Optional[_builtins.float]] = None,
                  threshold_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -500,7 +500,7 @@ class QuotaAlarm(pulumi.CustomResource):
             product_code: pulumi.Input[Optional[_builtins.str]] = None,
             quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
             quota_alarm_name: pulumi.Input[Optional[_builtins.str]] = None,
-            quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]]] = None,
+            quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict', 'outputs.QuotaAlarmQuotaDimension']]]]] = None,
             threshold: pulumi.Input[Optional[_builtins.float]] = None,
             threshold_percent: pulumi.Input[Optional[_builtins.float]] = None,
             threshold_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -516,7 +516,7 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] product_code: The Product Code.
         :param pulumi.Input[_builtins.str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[_builtins.str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict', 'outputs.QuotaAlarmQuotaDimension']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[_builtins.float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[_builtins.float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[_builtins.str] threshold_type: Quota alarm type. Value:

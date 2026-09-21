@@ -337,15 +337,15 @@ class CollectionPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
+                 centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict', 'outputs.CollectionPolicyCentralizeConfig']]] = None,
                  centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
+                 data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict', 'outputs.CollectionPolicyDataConfig']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
+                 policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict', 'outputs.CollectionPolicyPolicyConfig']]] = None,
                  policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  product_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
+                 resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Collection Policy resource.
@@ -507,18 +507,18 @@ class CollectionPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
+        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict', 'outputs.CollectionPolicyCentralizeConfig']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
         :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
         :param pulumi.Input[_builtins.str] data_code: Log type code.
-        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
+        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict', 'outputs.CollectionPolicyDataConfig']] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
-        :param pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']] policy_config: Collection rule configuration. See `policy_config` below.
+        :param pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict', 'outputs.CollectionPolicyPolicyConfig']] policy_config: Collection rule configuration. See `policy_config` below.
         :param pulumi.Input[_builtins.str] policy_name: The naming rules are as follows:
                - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
                - It must start with a letter.
                - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
-        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         ...
     @overload
@@ -699,15 +699,15 @@ class CollectionPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
+                 centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict', 'outputs.CollectionPolicyCentralizeConfig']]] = None,
                  centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
+                 data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict', 'outputs.CollectionPolicyDataConfig']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
+                 policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict', 'outputs.CollectionPolicyPolicyConfig']]] = None,
                  policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  product_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
+                 resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -746,15 +746,15 @@ class CollectionPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
+            centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict', 'outputs.CollectionPolicyCentralizeConfig']]] = None,
             centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             data_code: pulumi.Input[Optional[_builtins.str]] = None,
-            data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
+            data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict', 'outputs.CollectionPolicyDataConfig']]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
+            policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict', 'outputs.CollectionPolicyPolicyConfig']]] = None,
             policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             product_code: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None) -> 'CollectionPolicy':
+            resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']]] = None) -> 'CollectionPolicy':
         """
         Get an existing CollectionPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -762,18 +762,18 @@ class CollectionPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
+        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict', 'outputs.CollectionPolicyCentralizeConfig']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
         :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
         :param pulumi.Input[_builtins.str] data_code: Log type code.
-        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
+        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict', 'outputs.CollectionPolicyDataConfig']] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
-        :param pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']] policy_config: Collection rule configuration. See `policy_config` below.
+        :param pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict', 'outputs.CollectionPolicyPolicyConfig']] policy_config: Collection rule configuration. See `policy_config` below.
         :param pulumi.Input[_builtins.str] policy_name: The naming rules are as follows:
                - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
                - It must start with a letter.
                - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
-        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
+        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

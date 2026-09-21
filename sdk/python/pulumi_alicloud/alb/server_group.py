@@ -784,10 +784,10 @@ class ServerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
                  cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
                  health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -795,12 +795,12 @@ class ServerGroup(pulumi.CustomResource):
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
-                 sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
+                 slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict', 'outputs.ServerGroupSlowStartConfig']]] = None,
+                 sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict', 'outputs.ServerGroupStickySessionConfig']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
+                 uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict', 'outputs.ServerGroupUchConfig']]] = None,
                  upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -903,12 +903,12 @@ class ServerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
+        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
         :param pulumi.Input[_builtins.bool] cross_zone_enabled: Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                true: Send a check request,
                false (default): Send a normal request.
-        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: The configuration of health checks See `health_check_config` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']] health_check_config: The configuration of health checks See `health_check_config` below.
         :param pulumi.Input[_builtins.str] health_check_template_id: The ID of the resource group to which you want to transfer the cloud resource.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -938,12 +938,12 @@ class ServerGroup(pulumi.CustomResource):
                - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
                - `Ip`: allows you to add servers by specifying IP addresses.
                - `Fc`: allows you to add servers by specifying functions of Function Compute.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: List of servers. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]] servers: List of servers. See `servers` below.
         :param pulumi.Input[_builtins.str] service_name: Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
-        :param pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']] slow_start_config: Slow start configuration. See `slow_start_config` below.
-        :param pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']] sticky_session_config: The configuration of health checks See `sticky_session_config` below.
+        :param pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict', 'outputs.ServerGroupSlowStartConfig']] slow_start_config: Slow start configuration. See `slow_start_config` below.
+        :param pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict', 'outputs.ServerGroupStickySessionConfig']] sticky_session_config: The configuration of health checks See `sticky_session_config` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The creation time of the resource
-        :param pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']] uch_config: Url consistency hash parameter configuration See `uch_config` below.
+        :param pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict', 'outputs.ServerGroupUchConfig']] uch_config: Url consistency hash parameter configuration See `uch_config` below.
         :param pulumi.Input[_builtins.bool] upstream_keepalive_enabled: Specifies whether to enable persistent TCP connections.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
                
@@ -1067,10 +1067,10 @@ class ServerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
                  cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
                  health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1078,12 +1078,12 @@ class ServerGroup(pulumi.CustomResource):
                  scheduler: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
-                 sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
+                 slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict', 'outputs.ServerGroupSlowStartConfig']]] = None,
+                 sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict', 'outputs.ServerGroupStickySessionConfig']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
+                 uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict', 'outputs.ServerGroupUchConfig']]] = None,
                  upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1130,11 +1130,11 @@ class ServerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+            connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-            health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
             health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1142,13 +1142,13 @@ class ServerGroup(pulumi.CustomResource):
             scheduler: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
-            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
+            slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict', 'outputs.ServerGroupSlowStartConfig']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
+            sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict', 'outputs.ServerGroupStickySessionConfig']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
+            uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict', 'outputs.ServerGroupUchConfig']]] = None,
             upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerGroup':
         """
@@ -1158,13 +1158,13 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
+        :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']] connection_drain_config: Elegant interrupt configuration. See `connection_drain_config` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.bool] cross_zone_enabled: Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                true: Send a check request,
                false (default): Send a normal request.
-        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: The configuration of health checks See `health_check_config` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']] health_check_config: The configuration of health checks See `health_check_config` below.
         :param pulumi.Input[_builtins.str] health_check_template_id: The ID of the resource group to which you want to transfer the cloud resource.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -1194,13 +1194,13 @@ class ServerGroup(pulumi.CustomResource):
                - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
                - `Ip`: allows you to add servers by specifying IP addresses.
                - `Fc`: allows you to add servers by specifying functions of Function Compute.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: List of servers. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]] servers: List of servers. See `servers` below.
         :param pulumi.Input[_builtins.str] service_name: Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
-        :param pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']] slow_start_config: Slow start configuration. See `slow_start_config` below.
+        :param pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict', 'outputs.ServerGroupSlowStartConfig']] slow_start_config: Slow start configuration. See `slow_start_config` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']] sticky_session_config: The configuration of health checks See `sticky_session_config` below.
+        :param pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict', 'outputs.ServerGroupStickySessionConfig']] sticky_session_config: The configuration of health checks See `sticky_session_config` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The creation time of the resource
-        :param pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']] uch_config: Url consistency hash parameter configuration See `uch_config` below.
+        :param pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict', 'outputs.ServerGroupUchConfig']] uch_config: Url consistency hash parameter configuration See `uch_config` below.
         :param pulumi.Input[_builtins.bool] upstream_keepalive_enabled: Specifies whether to enable persistent TCP connections.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
                

@@ -1077,7 +1077,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             end_time: pulumi.Input[Optional[_builtins.str]] = None,
             image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]]] = None,
+            instance_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict', 'outputs.RegistryEnterpriseInstanceInstanceEndpoint']]]]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1114,7 +1114,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                - `DISABLE`: Disables the image security scan engine.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict', 'outputs.RegistryEnterpriseInstanceInstanceEndpoint']]]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
         :param pulumi.Input[_builtins.str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
                - `Basic`: Basic instance

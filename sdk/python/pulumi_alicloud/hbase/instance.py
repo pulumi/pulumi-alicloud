@@ -1181,12 +1181,12 @@ class Instance(pulumi.CustomResource):
             password: pulumi.Input[Optional[_builtins.str]] = None,
             pay_type: pulumi.Input[Optional[_builtins.str]] = None,
             security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            slb_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSlbConnAddrArgs', 'InstanceSlbConnAddrArgsDict']]]]] = None,
+            slb_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSlbConnAddrArgs', 'InstanceSlbConnAddrArgsDict', 'outputs.InstanceSlbConnAddr']]]]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ui_proxy_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUiProxyConnAddrArgs', 'InstanceUiProxyConnAddrArgsDict']]]]] = None,
+            ui_proxy_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUiProxyConnAddrArgs', 'InstanceUiProxyConnAddrArgsDict', 'outputs.InstanceUiProxyConnAddr']]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
-            zk_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZkConnAddrArgs', 'InstanceZkConnAddrArgsDict']]]]] = None,
+            zk_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZkConnAddrArgs', 'InstanceZkConnAddrArgsDict', 'outputs.InstanceZkConnAddr']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -1219,14 +1219,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] password: The password of the cluster web ui account. Size [0-128].
         :param pulumi.Input[_builtins.str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: The security group resource of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSlbConnAddrArgs', 'InstanceSlbConnAddrArgsDict']]]] slb_conn_addrs: The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSlbConnAddrArgs', 'InstanceSlbConnAddrArgsDict', 'outputs.InstanceSlbConnAddr']]]] slb_conn_addrs: The slb service addresses of the cluster. See `slb_conn_addrs` below.
                
                > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUiProxyConnAddrArgs', 'InstanceUiProxyConnAddrArgsDict']]]] ui_proxy_conn_addrs: The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUiProxyConnAddrArgs', 'InstanceUiProxyConnAddrArgsDict', 'outputs.InstanceUiProxyConnAddr']]]] ui_proxy_conn_addrs: The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZkConnAddrArgs', 'InstanceZkConnAddrArgsDict']]]] zk_conn_addrs: The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZkConnAddrArgs', 'InstanceZkConnAddrArgsDict', 'outputs.InstanceZkConnAddr']]]] zk_conn_addrs: The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

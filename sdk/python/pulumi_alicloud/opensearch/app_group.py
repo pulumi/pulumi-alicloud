@@ -363,9 +363,9 @@ class AppGroup(pulumi.CustomResource):
                  current_version: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
+                 orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
+                 quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -416,9 +416,9 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] current_version: The version of Application Group Name.
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]] orders: Order cycle information. The details see Block order.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']] quota: Quota information.  The details see Block quota.
         :param pulumi.Input[_builtins.str] type: Application type. Valid Values: `standard`, `enhanced`.
         """
         ...
@@ -488,9 +488,9 @@ class AppGroup(pulumi.CustomResource):
                  current_version: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
+                 orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
+                 quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -536,9 +536,9 @@ class AppGroup(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
-            orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
+            orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
-            quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
+            quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppGroup':
         """
@@ -554,9 +554,9 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] instance_id: The instance id.
         :param pulumi.Input[_builtins.str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]] orders: Order cycle information. The details see Block order.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']] quota: Quota information.  The details see Block quota.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         :param pulumi.Input[_builtins.str] type: Application type. Valid Values: `standard`, `enhanced`.
         """

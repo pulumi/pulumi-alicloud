@@ -470,10 +470,10 @@ class SiteMonitor(pulumi.CustomResource):
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_group: pulumi.Input[Optional[_builtins.str]] = None,
                  alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+                 custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict', 'outputs.SiteMonitorCustomSchedule']]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
-                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
-                 option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
+                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict', 'outputs.SiteMonitorIspCity']]]]] = None,
+                 option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict', 'outputs.SiteMonitorOptionJson']]] = None,
                  options_json: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  task_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -561,10 +561,10 @@ class SiteMonitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
         :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
-        :param pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        :param pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict', 'outputs.SiteMonitorCustomSchedule']] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
         :param pulumi.Input[_builtins.str] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
-        :param pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict', 'outputs.SiteMonitorIspCity']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        :param pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict', 'outputs.SiteMonitorOptionJson']] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
         :param pulumi.Input[_builtins.str] options_json: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         :param pulumi.Input[_builtins.str] status: The status of the site monitoring task. Valid values:
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
@@ -671,10 +671,10 @@ class SiteMonitor(pulumi.CustomResource):
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_group: pulumi.Input[Optional[_builtins.str]] = None,
                  alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+                 custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict', 'outputs.SiteMonitorCustomSchedule']]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
-                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
-                 option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
+                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict', 'outputs.SiteMonitorIspCity']]]]] = None,
+                 option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict', 'outputs.SiteMonitorOptionJson']]] = None,
                  options_json: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  task_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -722,10 +722,10 @@ class SiteMonitor(pulumi.CustomResource):
             agent_group: pulumi.Input[Optional[_builtins.str]] = None,
             alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+            custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict', 'outputs.SiteMonitorCustomSchedule']]] = None,
             interval: pulumi.Input[Optional[_builtins.str]] = None,
-            isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
-            option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
+            isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict', 'outputs.SiteMonitorIspCity']]]]] = None,
+            option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict', 'outputs.SiteMonitorOptionJson']]] = None,
             options_json: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             task_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -743,10 +743,10 @@ class SiteMonitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
         :param pulumi.Input[_builtins.str] create_time: (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
-        :param pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        :param pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict', 'outputs.SiteMonitorCustomSchedule']] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
         :param pulumi.Input[_builtins.str] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
-        :param pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict', 'outputs.SiteMonitorIspCity']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        :param pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict', 'outputs.SiteMonitorOptionJson']] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
         :param pulumi.Input[_builtins.str] options_json: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         :param pulumi.Input[_builtins.str] status: The status of the site monitoring task. Valid values:
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.

@@ -701,7 +701,7 @@ class Stack(pulumi.CustomResource):
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
                  notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]]] = None,
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_all_resources: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -767,7 +767,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[_builtins.str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[_builtins.bool] retain_all_resources: The retain all resources.
@@ -852,7 +852,7 @@ class Stack(pulumi.CustomResource):
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
                  notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]]] = None,
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_all_resources: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -914,7 +914,7 @@ class Stack(pulumi.CustomResource):
             deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
             disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
             notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]]] = None,
             ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
             retain_all_resources: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -942,7 +942,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[_builtins.str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[_builtins.bool] retain_all_resources: The retain all resources.

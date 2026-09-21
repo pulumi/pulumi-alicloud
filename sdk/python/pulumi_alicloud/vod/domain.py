@@ -387,7 +387,7 @@ class Domain(pulumi.CustomResource):
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -440,7 +440,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
         :param pulumi.Input[_builtins.str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
         :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
@@ -514,7 +514,7 @@ class Domain(pulumi.CustomResource):
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -563,7 +563,7 @@ class Domain(pulumi.CustomResource):
             gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
             gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
             ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -585,7 +585,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gmt_created: The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] gmt_modified: The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[_builtins.str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param pulumi.Input[_builtins.str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[_builtins.str] status: The status of the domain name for CDN. Valid values:

@@ -137,7 +137,7 @@ class BucketCors(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict', 'outputs.BucketCorsCorsRule']]]]] = None,
                  response_vary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -193,7 +193,7 @@ class BucketCors(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict', 'outputs.BucketCorsCorsRule']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.bool] response_vary: Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
         """
         ...
@@ -268,7 +268,7 @@ class BucketCors(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict', 'outputs.BucketCorsCorsRule']]]]] = None,
                  response_vary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -297,7 +297,7 @@ class BucketCors(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict', 'outputs.BucketCorsCorsRule']]]]] = None,
             response_vary: pulumi.Input[Optional[_builtins.bool]] = None) -> 'BucketCors':
         """
         Get an existing BucketCors resource's state with the given name, id, and optional extra
@@ -307,7 +307,7 @@ class BucketCors(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict', 'outputs.BucketCorsCorsRule']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.bool] response_vary: Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -304,7 +304,7 @@ class ImageImport(pulumi.CustomResource):
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
                  image_name: pulumi.Input[Optional[_builtins.str]] = None,
                  license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -376,7 +376,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] architecture: The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
@@ -468,7 +468,7 @@ class ImageImport(pulumi.CustomResource):
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
                  image_name: pulumi.Input[Optional[_builtins.str]] = None,
                  license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,7 +505,7 @@ class ImageImport(pulumi.CustomResource):
             architecture: pulumi.Input[Optional[_builtins.str]] = None,
             boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
+            disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
             image_name: pulumi.Input[Optional[_builtins.str]] = None,
             license_type: pulumi.Input[Optional[_builtins.str]] = None,
             os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -520,7 +520,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] architecture: The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.

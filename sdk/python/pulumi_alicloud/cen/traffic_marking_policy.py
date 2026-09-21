@@ -337,7 +337,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                  marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
+                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict', 'outputs.TrafficMarkingPolicyTrafficMatchRule']]]]] = None,
                  transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -387,7 +387,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] marking_dscp: MarkingDscp
         :param pulumi.Input[_builtins.int] priority: Priority
         :param pulumi.Input[_builtins.str] traffic_marking_policy_name: TrafficMarkingPolicyName
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]] traffic_match_rules: List of stream classification rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict', 'outputs.TrafficMarkingPolicyTrafficMatchRule']]]] traffic_match_rules: List of stream classification rules.
                You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         :param pulumi.Input[_builtins.str] transit_router_id: TransitRouterId
         """
@@ -457,7 +457,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                  marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
+                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict', 'outputs.TrafficMarkingPolicyTrafficMatchRule']]]]] = None,
                  transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -502,7 +502,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             traffic_marking_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
-            traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
+            traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict', 'outputs.TrafficMarkingPolicyTrafficMatchRule']]]]] = None,
             transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficMarkingPolicy':
         """
         Get an existing TrafficMarkingPolicy resource's state with the given name, id, and optional extra
@@ -519,7 +519,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] traffic_marking_policy_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] traffic_marking_policy_name: TrafficMarkingPolicyName
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]] traffic_match_rules: List of stream classification rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict', 'outputs.TrafficMarkingPolicyTrafficMatchRule']]]] traffic_match_rules: List of stream classification rules.
                You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         :param pulumi.Input[_builtins.str] transit_router_id: TransitRouterId
         """

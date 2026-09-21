@@ -211,7 +211,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict', 'outputs.ClusterNetwork']]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -265,7 +265,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name.
-        :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']] network: Cluster network information. See `network` below.
+        :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict', 'outputs.ClusterNetwork']] network: Cluster network information. See `network` below.
         :param pulumi.Input[_builtins.str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
                
                **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
@@ -340,7 +340,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict', 'outputs.ClusterNetwork']]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -372,7 +372,7 @@ class Cluster(pulumi.CustomResource):
             argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
+            network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict', 'outputs.ClusterNetwork']]] = None,
             profile: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
@@ -385,7 +385,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name.
         :param pulumi.Input[_builtins.str] create_time: Cluster creation time.
-        :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']] network: Cluster network information. See `network` below.
+        :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict', 'outputs.ClusterNetwork']] network: Cluster network information. See `network` below.
         :param pulumi.Input[_builtins.str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
                
                **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.

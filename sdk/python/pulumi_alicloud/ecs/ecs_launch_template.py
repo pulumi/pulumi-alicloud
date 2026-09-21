@@ -1893,7 +1893,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict', 'outputs.EcsLaunchTemplateDataDisk']]]]] = None,
                  default_version_number: pulumi.Input[Optional[_builtins.int]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1903,7 +1903,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  http_put_response_hop_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  http_tokens: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 image_options: pulumi.Input[Optional[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']]] = None,
+                 image_options: pulumi.Input[Optional[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict', 'outputs.EcsLaunchTemplateImageOptions']]] = None,
                  image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1915,7 +1915,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
                  launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
+                 network_interfaces: pulumi.Input[Optional[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict', 'outputs.EcsLaunchTemplateNetworkInterfaces']]] = None,
                  network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1929,7 +1929,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  spot_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 system_disk: pulumi.Input[Optional[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']]] = None,
+                 system_disk: pulumi.Input[Optional[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict', 'outputs.EcsLaunchTemplateSystemDisk']]] = None,
                  system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2055,7 +2055,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict', 'outputs.EcsLaunchTemplateDataDisk']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.int] default_version_number: The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
         :param pulumi.Input[_builtins.str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -2073,7 +2073,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
                  **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         :param pulumi.Input[_builtins.str] image_id: The Image ID.
-        :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict', 'outputs.EcsLaunchTemplateImageOptions']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[_builtins.str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
@@ -2087,7 +2087,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[_builtins.str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict', 'outputs.EcsLaunchTemplateNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[_builtins.int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -2103,7 +2103,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[_builtins.float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']] system_disk: The System Disk. See `system_disk` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict', 'outputs.EcsLaunchTemplateSystemDisk']] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[_builtins.str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[_builtins.str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[_builtins.str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
@@ -2250,7 +2250,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict', 'outputs.EcsLaunchTemplateDataDisk']]]]] = None,
                  default_version_number: pulumi.Input[Optional[_builtins.int]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2260,7 +2260,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  http_put_response_hop_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  http_tokens: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 image_options: pulumi.Input[Optional[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']]] = None,
+                 image_options: pulumi.Input[Optional[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict', 'outputs.EcsLaunchTemplateImageOptions']]] = None,
                  image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2272,7 +2272,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
                  launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
+                 network_interfaces: pulumi.Input[Optional[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict', 'outputs.EcsLaunchTemplateNetworkInterfaces']]] = None,
                  network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2286,7 +2286,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  spot_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 system_disk: pulumi.Input[Optional[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']]] = None,
+                 system_disk: pulumi.Input[Optional[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict', 'outputs.EcsLaunchTemplateSystemDisk']]] = None,
                  system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2378,7 +2378,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict', 'outputs.EcsLaunchTemplateDataDisk']]]]] = None,
             default_version_number: pulumi.Input[Optional[_builtins.int]] = None,
             deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2388,7 +2388,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             http_put_response_hop_limit: pulumi.Input[Optional[_builtins.int]] = None,
             http_tokens: pulumi.Input[Optional[_builtins.str]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
-            image_options: pulumi.Input[Optional[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']]] = None,
+            image_options: pulumi.Input[Optional[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict', 'outputs.EcsLaunchTemplateImageOptions']]] = None,
             image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2401,7 +2401,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             latest_version_number: pulumi.Input[Optional[_builtins.int]] = None,
             launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_interfaces: pulumi.Input[Optional[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
+            network_interfaces: pulumi.Input[Optional[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict', 'outputs.EcsLaunchTemplateNetworkInterfaces']]] = None,
             network_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2415,7 +2415,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             spot_duration: pulumi.Input[Optional[_builtins.str]] = None,
             spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
             spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-            system_disk: pulumi.Input[Optional[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']]] = None,
+            system_disk: pulumi.Input[Optional[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict', 'outputs.EcsLaunchTemplateSystemDisk']]] = None,
             system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
             system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
             system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2440,7 +2440,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict', 'outputs.EcsLaunchTemplateDataDisk']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.int] default_version_number: The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
         :param pulumi.Input[_builtins.str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -2458,7 +2458,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
                  **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         :param pulumi.Input[_builtins.str] image_id: The Image ID.
-        :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict', 'outputs.EcsLaunchTemplateImageOptions']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[_builtins.str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
@@ -2473,7 +2473,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] latest_version_number: The latest version number of the launch template.
         :param pulumi.Input[_builtins.str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict', 'outputs.EcsLaunchTemplateNetworkInterfaces']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[_builtins.int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -2489,7 +2489,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[_builtins.float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']] system_disk: The System Disk. See `system_disk` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict', 'outputs.EcsLaunchTemplateSystemDisk']] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[_builtins.str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[_builtins.str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[_builtins.str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.

@@ -544,7 +544,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                  transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict', 'outputs.TransitRouterVpnAttachmentZone']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
@@ -679,7 +679,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                
                - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
                - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]] zones: The Zone ID in the current region.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict', 'outputs.TransitRouterVpnAttachmentZone']]]] zones: The Zone ID in the current region.
                System will create resources under the Zone that you specify.
                Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
                
@@ -828,7 +828,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                  transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict', 'outputs.TransitRouterVpnAttachmentZone']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -879,7 +879,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
             vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
-            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None) -> 'TransitRouterVpnAttachment':
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict', 'outputs.TransitRouterVpnAttachmentZone']]]]] = None) -> 'TransitRouterVpnAttachment':
         """
         Get an existing TransitRouterVpnAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -910,7 +910,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                
                - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
                - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]] zones: The Zone ID in the current region.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict', 'outputs.TransitRouterVpnAttachmentZone']]]] zones: The Zone ID in the current region.
                System will create resources under the Zone that you specify.
                Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
                

@@ -614,7 +614,7 @@ class Alarm(pulumi.CustomResource):
                  effective: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
+                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict', 'outputs.AlarmExpression']]]]] = None,
                  expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
                  metric_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metric_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -738,7 +738,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] effective: The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         :param pulumi.Input[_builtins.bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[_builtins.int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]] expressions: Support multi alert rule. See `expressions` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict', 'outputs.AlarmExpression']]]] expressions: Support multi alert rule. See `expressions` below for details.
         :param pulumi.Input[_builtins.str] expressions_logic_operator: The relationship between the trigger conditions in the multi-metric alert rule.
         :param pulumi.Input[_builtins.str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[_builtins.str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
@@ -881,7 +881,7 @@ class Alarm(pulumi.CustomResource):
                  effective: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
+                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict', 'outputs.AlarmExpression']]]]] = None,
                  expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
                  metric_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metric_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -939,7 +939,7 @@ class Alarm(pulumi.CustomResource):
             effective: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.bool]] = None,
             evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
-            expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
+            expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict', 'outputs.AlarmExpression']]]]] = None,
             expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
             metric_name: pulumi.Input[Optional[_builtins.str]] = None,
             metric_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -964,7 +964,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] effective: The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         :param pulumi.Input[_builtins.bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[_builtins.int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]] expressions: Support multi alert rule. See `expressions` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict', 'outputs.AlarmExpression']]]] expressions: Support multi alert rule. See `expressions` below for details.
         :param pulumi.Input[_builtins.str] expressions_logic_operator: The relationship between the trigger conditions in the multi-metric alert rule.
         :param pulumi.Input[_builtins.str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[_builtins.str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.

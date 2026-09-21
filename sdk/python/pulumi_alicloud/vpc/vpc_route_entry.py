@@ -366,11 +366,11 @@ class VPCRouteEntry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
+                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict', 'outputs.VPCRouteEntryNextHop']]]]] = None,
                  nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
                  nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
                  route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
+                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict', 'outputs.VPCRouteEntryRoutePublishTarget']]]]] = None,
                  route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -423,7 +423,7 @@ class VPCRouteEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the route entry.
         :param pulumi.Input[_builtins.str] destination_cidr_block: The destination network segment of the routing entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]] next_hops: Next jump See `next_hops` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict', 'outputs.VPCRouteEntryNextHop']]]] next_hops: Next jump See `next_hops` below.
         :param pulumi.Input[_builtins.str] nexthop_id: The ID of the next hop instance of the custom route entry.
         :param pulumi.Input[_builtins.str] nexthop_type: The type of the next hop of the custom route entry. Valid values:
                - `Instance` (default): The ECS Instance.
@@ -440,7 +440,7 @@ class VPCRouteEntry(pulumi.CustomResource):
                - `Ecr`: Leased line gateway.
                - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         :param pulumi.Input[_builtins.str] route_entry_name: The name of the route entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]] route_publish_targets: Route publish status and publish target type See `route_publish_targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict', 'outputs.VPCRouteEntryRoutePublishTarget']]]] route_publish_targets: Route publish status and publish target type See `route_publish_targets` below.
         :param pulumi.Input[_builtins.str] route_table_id: Routing table ID
         """
         ...
@@ -512,11 +512,11 @@ class VPCRouteEntry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
+                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict', 'outputs.VPCRouteEntryNextHop']]]]] = None,
                  nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
                  nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
                  route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
+                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict', 'outputs.VPCRouteEntryRoutePublishTarget']]]]] = None,
                  route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -552,11 +552,11 @@ class VPCRouteEntry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
-            next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
+            next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict', 'outputs.VPCRouteEntryNextHop']]]]] = None,
             nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
             nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
             route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
-            route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
+            route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict', 'outputs.VPCRouteEntryRoutePublishTarget']]]]] = None,
             route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'VPCRouteEntry':
         """
@@ -568,7 +568,7 @@ class VPCRouteEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the route entry.
         :param pulumi.Input[_builtins.str] destination_cidr_block: The destination network segment of the routing entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]] next_hops: Next jump See `next_hops` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict', 'outputs.VPCRouteEntryNextHop']]]] next_hops: Next jump See `next_hops` below.
         :param pulumi.Input[_builtins.str] nexthop_id: The ID of the next hop instance of the custom route entry.
         :param pulumi.Input[_builtins.str] nexthop_type: The type of the next hop of the custom route entry. Valid values:
                - `Instance` (default): The ECS Instance.
@@ -585,7 +585,7 @@ class VPCRouteEntry(pulumi.CustomResource):
                - `Ecr`: Leased line gateway.
                - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         :param pulumi.Input[_builtins.str] route_entry_name: The name of the route entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]] route_publish_targets: Route publish status and publish target type See `route_publish_targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict', 'outputs.VPCRouteEntryRoutePublishTarget']]]] route_publish_targets: Route publish status and publish target type See `route_publish_targets` below.
         :param pulumi.Input[_builtins.str] route_table_id: Routing table ID
         :param pulumi.Input[_builtins.str] status: The status of the route entry.
         """

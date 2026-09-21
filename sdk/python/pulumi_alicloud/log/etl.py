@@ -810,7 +810,7 @@ class Etl(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etl_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
+                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict', 'outputs.EtlEtlSink']]]]] = None,
                  etl_type: pulumi.Input[Optional[_builtins.str]] = None,
                  from_time: pulumi.Input[Optional[_builtins.int]] = None,
                  kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -926,7 +926,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the log etl job.
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict', 'outputs.EtlEtlSink']]]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         :param pulumi.Input[_builtins.str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[_builtins.int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
@@ -1061,7 +1061,7 @@ class Etl(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etl_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
+                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict', 'outputs.EtlEtlSink']]]]] = None,
                  etl_type: pulumi.Input[Optional[_builtins.str]] = None,
                  from_time: pulumi.Input[Optional[_builtins.int]] = None,
                  kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1142,7 +1142,7 @@ class Etl(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etl_name: pulumi.Input[Optional[_builtins.str]] = None,
-            etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
+            etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict', 'outputs.EtlEtlSink']]]]] = None,
             etl_type: pulumi.Input[Optional[_builtins.str]] = None,
             from_time: pulumi.Input[Optional[_builtins.int]] = None,
             kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1173,7 +1173,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the log etl job.
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict', 'outputs.EtlEtlSink']]]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         :param pulumi.Input[_builtins.str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[_builtins.int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.

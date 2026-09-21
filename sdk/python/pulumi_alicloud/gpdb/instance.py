@@ -1731,13 +1731,13 @@ class Instance(pulumi.CustomResource):
                  instance_group_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]]] = None,
                  maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  master_cu: pulumi.Input[Optional[_builtins.int]] = None,
                  master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  minor_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1851,7 +1851,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
                **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
@@ -1860,7 +1860,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] minor_version: The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
                
                > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: The parameters. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: The parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[_builtins.str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
@@ -1991,13 +1991,13 @@ class Instance(pulumi.CustomResource):
                  instance_group_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]]] = None,
                  maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  master_cu: pulumi.Input[Optional[_builtins.int]] = None,
                  master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  minor_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2113,13 +2113,13 @@ class Instance(pulumi.CustomResource):
             instance_group_count: pulumi.Input[Optional[_builtins.int]] = None,
             instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]]] = None,
+            ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]]] = None,
             maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
             maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
             master_cu: pulumi.Input[Optional[_builtins.int]] = None,
             master_node_num: pulumi.Input[Optional[_builtins.int]] = None,
             minor_version: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2184,7 +2184,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
                **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
@@ -2193,7 +2193,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] minor_version: The minor version of the instance. When this attribute is changed, the provider calls the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) operation to upgrade the minor version of the instance and waits until the upgrade is complete. The value must be a valid minor version of the instance's engine version.
                
                > **NOTE:** The instance is created with the latest minor version, so this attribute does not take effect at creation time; it only triggers a minor version upgrade when it is changed after the instance is created. The current minor version of the instance is read back into state.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: The parameters. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: The parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From provider version 1.287.0, `payment_type` can be modified in both directions between `Subscription` and `PayAsYouGo`. When modifying the billing method of an instance to `Subscription`, `period` and `used_time` are required; when modifying the billing method of an instance to `PayAsYouGo`, `period` and `used_time` are not required. See [ModifyDBInstancePayType](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifydbinstancepaytype).
         :param pulumi.Input[_builtins.str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`, including when `payment_type` is modified to `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the instance.

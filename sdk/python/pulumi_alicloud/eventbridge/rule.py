@@ -235,7 +235,7 @@ class Rule(pulumi.CustomResource):
                  filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict', 'outputs.RuleTarget']]]]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Rule resource.
@@ -313,7 +313,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[_builtins.str] rule_name: The name of the event rule.
         :param pulumi.Input[_builtins.str] status: The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]] targets: The targets of rule. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict', 'outputs.RuleTarget']]]] targets: The targets of rule. See `targets` below.
         """
         ...
     @overload
@@ -410,7 +410,7 @@ class Rule(pulumi.CustomResource):
                  filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict', 'outputs.RuleTarget']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -449,7 +449,7 @@ class Rule(pulumi.CustomResource):
             filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None) -> 'Rule':
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict', 'outputs.RuleTarget']]]]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -462,7 +462,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[_builtins.str] rule_name: The name of the event rule.
         :param pulumi.Input[_builtins.str] status: The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]] targets: The targets of rule. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict', 'outputs.RuleTarget']]]] targets: The targets of rule. See `targets` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

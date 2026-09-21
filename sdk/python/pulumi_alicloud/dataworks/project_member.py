@@ -153,7 +153,7 @@ class ProjectMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict', 'outputs.ProjectMemberRole']]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -217,7 +217,7 @@ class ProjectMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] project_id: Project ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]] roles: List of roles owned by members. See `roles` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict', 'outputs.ProjectMemberRole']]]] roles: List of roles owned by members. See `roles` below.
         :param pulumi.Input[_builtins.str] user_id: The user ID of the member.
         """
         ...
@@ -300,7 +300,7 @@ class ProjectMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict', 'outputs.ProjectMemberRole']]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -330,7 +330,7 @@ class ProjectMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             project_id: pulumi.Input[Optional[_builtins.int]] = None,
-            roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict', 'outputs.ProjectMemberRole']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectMember':
         """
@@ -341,7 +341,7 @@ class ProjectMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] project_id: Project ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]] roles: List of roles owned by members. See `roles` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict', 'outputs.ProjectMemberRole']]]] roles: List of roles owned by members. See `roles` below.
         :param pulumi.Input[_builtins.str] status: The status of the user in project
         :param pulumi.Input[_builtins.str] user_id: The user ID of the member.
         """

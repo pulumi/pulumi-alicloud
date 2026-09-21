@@ -73,7 +73,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None,
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict', 'outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]]]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Attack Path Sensitive Asset Config resource.
@@ -115,7 +115,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict', 'outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
         """
         ...
     @overload
@@ -176,7 +176,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None,
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict', 'outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -199,7 +199,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None) -> 'AttackPathSensitiveAssetConfig':
+            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict', 'outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]]]] = None) -> 'AttackPathSensitiveAssetConfig':
         """
         Get an existing AttackPathSensitiveAssetConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -207,7 +207,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict', 'outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]]] attack_path_asset_lists: The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

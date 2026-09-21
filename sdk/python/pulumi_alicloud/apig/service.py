@@ -610,10 +610,10 @@ class Service(pulumi.CustomResource):
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  express_type: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict']]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict', 'outputs.ServiceHealthCheckConfig']]] = None,
                  healthy_panic_threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                 outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict']]] = None,
+                 outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict', 'outputs.ServiceOutlierDetectionConfig']]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -703,10 +703,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: The list of DNS server addresses. Used when `source_type` is `DNS`.
         :param pulumi.Input[_builtins.str] express_type: The service express type, which identifies a special type or mode of the service. Example value: `Standard`.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Cloud Native API Gateway.
-        :param pulumi.Input[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict']] health_check_config: Health check configuration See `health_check_config` below.
+        :param pulumi.Input[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict', 'outputs.ServiceHealthCheckConfig']] health_check_config: Health check configuration See `health_check_config` below.
         :param pulumi.Input[_builtins.float] healthy_panic_threshold: Healthy panic threshold
         :param pulumi.Input[_builtins.str] namespace: The namespace of the service.
-        :param pulumi.Input[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict']] outlier_detection_config: Outlier detection configuration See `outlier_detection_config` below.
+        :param pulumi.Input[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict', 'outputs.ServiceOutlierDetectionConfig']] outlier_detection_config: Outlier detection configuration See `outlier_detection_config` below.
         :param pulumi.Input[_builtins.str] protocol: Service protocol.
                
                > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
@@ -820,10 +820,10 @@ class Service(pulumi.CustomResource):
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  express_type: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict']]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict', 'outputs.ServiceHealthCheckConfig']]] = None,
                  healthy_panic_threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                 outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict']]] = None,
+                 outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict', 'outputs.ServiceOutlierDetectionConfig']]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -874,13 +874,13 @@ class Service(pulumi.CustomResource):
             dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             express_type: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-            health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict']]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict', 'outputs.ServiceHealthCheckConfig']]] = None,
             health_status: pulumi.Input[Optional[_builtins.str]] = None,
             healthy_panic_threshold: pulumi.Input[Optional[_builtins.float]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
-            outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict']]] = None,
+            outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict', 'outputs.ServiceOutlierDetectionConfig']]] = None,
             outlier_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePortArgs', 'ServicePortArgsDict']]]]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePortArgs', 'ServicePortArgsDict', 'outputs.ServicePort']]]]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             qualifier: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -902,13 +902,13 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: The list of DNS server addresses. Used when `source_type` is `DNS`.
         :param pulumi.Input[_builtins.str] express_type: The service express type, which identifies a special type or mode of the service. Example value: `Standard`.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Cloud Native API Gateway.
-        :param pulumi.Input[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict']] health_check_config: Health check configuration See `health_check_config` below.
+        :param pulumi.Input[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict', 'outputs.ServiceHealthCheckConfig']] health_check_config: Health check configuration See `health_check_config` below.
         :param pulumi.Input[_builtins.str] health_status: Health status.
         :param pulumi.Input[_builtins.float] healthy_panic_threshold: Healthy panic threshold
         :param pulumi.Input[_builtins.str] namespace: The namespace of the service.
-        :param pulumi.Input[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict']] outlier_detection_config: Outlier detection configuration See `outlier_detection_config` below.
+        :param pulumi.Input[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict', 'outputs.ServiceOutlierDetectionConfig']] outlier_detection_config: Outlier detection configuration See `outlier_detection_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outlier_endpoints: Outlier endpoints.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePortArgs', 'ServicePortArgsDict']]]] ports: Port information derived by the gateway. Each element contains:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePortArgs', 'ServicePortArgsDict', 'outputs.ServicePort']]]] ports: Port information derived by the gateway. Each element contains:
         :param pulumi.Input[_builtins.str] protocol: Service protocol.
                
                > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.

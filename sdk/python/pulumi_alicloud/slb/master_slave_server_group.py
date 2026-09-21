@@ -172,7 +172,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict', 'outputs.MasterSlaveServerGroupServer']]]]] = None,
                  __props__=None):
         """
         A master slave server group contains two ECS instances. The master slave server group can help you to define multiple listening dimension.
@@ -297,7 +297,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[_builtins.str] name: Name of the master slave server group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict', 'outputs.MasterSlaveServerGroupServer']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
         """
         ...
     @overload
@@ -441,7 +441,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict', 'outputs.MasterSlaveServerGroupServer']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -470,7 +470,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None) -> 'MasterSlaveServerGroup':
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict', 'outputs.MasterSlaveServerGroupServer']]]]] = None) -> 'MasterSlaveServerGroup':
         """
         Get an existing MasterSlaveServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -481,7 +481,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[_builtins.str] name: Name of the master slave server group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict', 'outputs.MasterSlaveServerGroupServer']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

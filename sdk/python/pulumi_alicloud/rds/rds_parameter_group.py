@@ -200,7 +200,7 @@ class RdsParameterGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
+                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict', 'outputs.RdsParameterGroupParamDetail']]]]] = None,
                  parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -255,7 +255,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]] param_details: Parameter list. See `param_detail` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict', 'outputs.RdsParameterGroupParamDetail']]]] param_details: Parameter list. See `param_detail` below.
         :param pulumi.Input[_builtins.str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template.
         """
@@ -329,7 +329,7 @@ class RdsParameterGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
+                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict', 'outputs.RdsParameterGroupParamDetail']]]]] = None,
                  parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -366,7 +366,7 @@ class RdsParameterGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             engine: pulumi.Input[Optional[_builtins.str]] = None,
             engine_version: pulumi.Input[Optional[_builtins.str]] = None,
-            param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
+            param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict', 'outputs.RdsParameterGroupParamDetail']]]]] = None,
             parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
             parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RdsParameterGroup':
         """
@@ -378,7 +378,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]] param_details: Parameter list. See `param_detail` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict', 'outputs.RdsParameterGroupParamDetail']]]] param_details: Parameter list. See `param_detail` below.
         :param pulumi.Input[_builtins.str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template.
         """

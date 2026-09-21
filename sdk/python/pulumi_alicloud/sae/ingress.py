@@ -360,13 +360,13 @@ class Ingress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
+                 default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict', 'outputs.IngressDefaultRule']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict', 'outputs.IngressRule']]]]] = None,
                  slb_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -458,13 +458,13 @@ class Ingress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         :param pulumi.Input[_builtins.str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
-        :param pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']] default_rule: Default Rule. See `default_rule` below.
+        :param pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict', 'outputs.IngressDefaultRule']] default_rule: Default Rule. See `default_rule` below.
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.int] listener_port: SLB listening port.
         :param pulumi.Input[_builtins.str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
         :param pulumi.Input[_builtins.str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict', 'outputs.IngressRule']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[_builtins.str] slb_id: SLB ID.
         """
         ...
@@ -575,13 +575,13 @@ class Ingress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
+                 default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict', 'outputs.IngressDefaultRule']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict', 'outputs.IngressRule']]]]] = None,
                  slb_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -622,13 +622,13 @@ class Ingress(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cert_id: pulumi.Input[Optional[_builtins.str]] = None,
             cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
-            default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
+            default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict', 'outputs.IngressDefaultRule']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             listener_port: pulumi.Input[Optional[_builtins.int]] = None,
             listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict', 'outputs.IngressRule']]]]] = None,
             slb_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ingress':
         """
         Get an existing Ingress resource's state with the given name, id, and optional extra
@@ -639,13 +639,13 @@ class Ingress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         :param pulumi.Input[_builtins.str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
-        :param pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']] default_rule: Default Rule. See `default_rule` below.
+        :param pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict', 'outputs.IngressDefaultRule']] default_rule: Default Rule. See `default_rule` below.
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.int] listener_port: SLB listening port.
         :param pulumi.Input[_builtins.str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
         :param pulumi.Input[_builtins.str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict', 'outputs.IngressRule']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[_builtins.str] slb_id: SLB ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

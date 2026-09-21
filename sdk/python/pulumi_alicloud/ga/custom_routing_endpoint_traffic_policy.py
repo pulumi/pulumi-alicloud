@@ -218,7 +218,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]]] = None,
+                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict', 'outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Custom Routing Endpoint Traffic Policy resource.
@@ -311,7 +311,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The IP address of the destination to which traffic is allowed.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Custom Routing Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict', 'outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         """
         ...
     @overload
@@ -423,7 +423,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]]] = None,
+                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict', 'outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -461,7 +461,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
             endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             listener_id: pulumi.Input[Optional[_builtins.str]] = None,
-            port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]]] = None,
+            port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict', 'outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomRoutingEndpointTrafficPolicy':
         """
         Get an existing CustomRoutingEndpointTrafficPolicy resource's state with the given name, id, and optional extra
@@ -476,7 +476,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict', 'outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         :param pulumi.Input[_builtins.str] status: The status of the Custom Routing Endpoint Traffic Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

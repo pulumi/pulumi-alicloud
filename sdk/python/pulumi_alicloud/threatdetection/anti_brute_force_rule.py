@@ -265,7 +265,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
                  default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
                  fail_count: pulumi.Input[Optional[_builtins.int]] = None,
                  forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
+                 protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict', 'outputs.AntiBruteForceRuleProtocolType']]] = None,
                  span: pulumi.Input[Optional[_builtins.int]] = None,
                  uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -311,7 +311,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
         :param pulumi.Input[_builtins.int] fail_count: FailCount
         :param pulumi.Input[_builtins.int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
-        :param pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']] protocol_type: The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+        :param pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict', 'outputs.AntiBruteForceRuleProtocolType']] protocol_type: The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
         :param pulumi.Input[_builtins.int] span: The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uuid_lists: The UUIDs of the servers to which you want to apply the defense rule.
         """
@@ -376,7 +376,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
                  default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
                  fail_count: pulumi.Input[Optional[_builtins.int]] = None,
                  forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
+                 protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict', 'outputs.AntiBruteForceRuleProtocolType']]] = None,
                  span: pulumi.Input[Optional[_builtins.int]] = None,
                  uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -419,7 +419,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
             default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
             fail_count: pulumi.Input[Optional[_builtins.int]] = None,
             forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
-            protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
+            protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict', 'outputs.AntiBruteForceRuleProtocolType']]] = None,
             span: pulumi.Input[Optional[_builtins.int]] = None,
             uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AntiBruteForceRule':
         """
@@ -433,7 +433,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
         :param pulumi.Input[_builtins.int] fail_count: FailCount
         :param pulumi.Input[_builtins.int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
-        :param pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']] protocol_type: The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+        :param pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict', 'outputs.AntiBruteForceRuleProtocolType']] protocol_type: The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
         :param pulumi.Input[_builtins.int] span: The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uuid_lists: The UUIDs of the servers to which you want to apply the defense rule.
         """

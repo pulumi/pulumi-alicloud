@@ -183,7 +183,7 @@ class HoneypotPreset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
+                 meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict', 'outputs.HoneypotPresetMeta']]] = None,
                  node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  preset_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -236,7 +236,7 @@ class HoneypotPreset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name
-        :param pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']] meta: Honeypot template custom parameters. See `meta` below.
+        :param pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict', 'outputs.HoneypotPresetMeta']] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[_builtins.str] node_id: Unique id of management node
         :param pulumi.Input[_builtins.str] preset_name: Honeypot template custom name
         """
@@ -308,7 +308,7 @@ class HoneypotPreset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
+                 meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict', 'outputs.HoneypotPresetMeta']]] = None,
                  node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  preset_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -345,7 +345,7 @@ class HoneypotPreset(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
             honeypot_preset_id: pulumi.Input[Optional[_builtins.str]] = None,
-            meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
+            meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict', 'outputs.HoneypotPresetMeta']]] = None,
             node_id: pulumi.Input[Optional[_builtins.str]] = None,
             preset_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'HoneypotPreset':
         """
@@ -357,7 +357,7 @@ class HoneypotPreset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name
         :param pulumi.Input[_builtins.str] honeypot_preset_id: Unique ID of honeypot Template
-        :param pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']] meta: Honeypot template custom parameters. See `meta` below.
+        :param pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict', 'outputs.HoneypotPresetMeta']] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[_builtins.str] node_id: Unique id of management node
         :param pulumi.Input[_builtins.str] preset_name: Honeypot template custom name
         """

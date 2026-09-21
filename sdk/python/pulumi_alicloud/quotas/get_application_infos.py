@@ -141,7 +141,7 @@ class AwaitableGetApplicationInfosResult(GetApplicationInfosResult):
             status=self.status)
 
 
-def get_application_infos(dimensions: Optional[Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict']]] = None,
+def get_application_infos(dimensions: Optional[Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict', 'outputs.GetApplicationInfosDimensionResult']]] = None,
                           enable_details: Optional[_builtins.bool] = None,
                           ids: Optional[Sequence[_builtins.str]] = None,
                           key_word: Optional[_builtins.str] = None,
@@ -179,7 +179,7 @@ def get_application_infos(dimensions: Optional[Sequence[Union['GetApplicationInf
         quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
         quota_category=pulumi.get(__ret__, 'quota_category'),
         status=pulumi.get(__ret__, 'status'))
-def get_application_infos_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict']]]]] = None,
+def get_application_infos_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict', 'outputs.GetApplicationInfosDimensionResult']]]]] = None,
                                  enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                  ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                  key_word: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

@@ -445,7 +445,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict', 'outputs.MetricRuleBlackListMetric']]]]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  scope_type: pulumi.Input[Optional[_builtins.str]] = None,
                  scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -525,7 +525,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The list of instances of cloud services specified in the alert blacklist policy.
         :param pulumi.Input[_builtins.bool] is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         :param pulumi.Input[_builtins.str] metric_rule_black_list_name: The name of the alert blacklist policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]] metrics: Monitoring metrics in the instance. See `metrics` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict', 'outputs.MetricRuleBlackListMetric']]]] metrics: Monitoring metrics in the instance. See `metrics` below.
         :param pulumi.Input[_builtins.str] namespace: The data namespace of the cloud service.
         :param pulumi.Input[_builtins.str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
@@ -624,7 +624,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict', 'outputs.MetricRuleBlackListMetric']]]]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  scope_type: pulumi.Input[Optional[_builtins.str]] = None,
                  scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -678,7 +678,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
             is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
             metric_rule_black_list_id: pulumi.Input[Optional[_builtins.str]] = None,
             metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
-            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict', 'outputs.MetricRuleBlackListMetric']]]]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             scope_type: pulumi.Input[Optional[_builtins.str]] = None,
             scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -699,7 +699,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         :param pulumi.Input[_builtins.str] metric_rule_black_list_id: The ID of the blacklist policy.
         :param pulumi.Input[_builtins.str] metric_rule_black_list_name: The name of the alert blacklist policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]] metrics: Monitoring metrics in the instance. See `metrics` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict', 'outputs.MetricRuleBlackListMetric']]]] metrics: Monitoring metrics in the instance. See `metrics` below.
         :param pulumi.Input[_builtins.str] namespace: The data namespace of the cloud service.
         :param pulumi.Input[_builtins.str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.

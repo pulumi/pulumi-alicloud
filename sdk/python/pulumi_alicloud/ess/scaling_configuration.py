@@ -1995,8 +1995,8 @@ class ScalingConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict', 'outputs.ScalingConfigurationCustomPriority']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict', 'outputs.ScalingConfigurationDataDisk']]]]] = None,
                  dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2009,9 +2009,9 @@ class ScalingConfiguration(pulumi.CustomResource):
                  instance_description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
+                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict', 'outputs.ScalingConfigurationInstancePatternInfo']]]]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
+                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict', 'outputs.ScalingConfigurationInstanceTypeOverride']]]]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2021,13 +2021,13 @@ class ScalingConfiguration(pulumi.CustomResource):
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict', 'outputs.ScalingConfigurationNetworkInterface']]]]] = None,
                  override: pulumi.Input[Optional[_builtins.bool]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]]] = None,
+                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict', 'outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag']]]]] = None,
                  resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2036,7 +2036,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
-                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict', 'outputs.ScalingConfigurationSpotPriceLimit']]]]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  substitute: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2140,8 +2140,8 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict', 'outputs.ScalingConfigurationCustomPriority']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict', 'outputs.ScalingConfigurationDataDisk']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         :param pulumi.Input[_builtins.str] dedicated_host_cluster_id: The ID of the dedicated host cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[_builtins.bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -2154,9 +2154,9 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_description: The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[_builtins.str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict', 'outputs.ScalingConfigurationInstancePatternInfo']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict', 'outputs.ScalingConfigurationInstanceTypeOverride']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
@@ -2166,13 +2166,13 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict', 'outputs.ScalingConfigurationNetworkInterface']]]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         :param pulumi.Input[_builtins.bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[_builtins.str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_pool_options_private_pool_ids: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict', 'outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag']]]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
         :param pulumi.Input[_builtins.str] resource_pool_options_strategy: The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
                - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
                - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
@@ -2199,7 +2199,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict', 'outputs.ScalingConfigurationSpotPriceLimit']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[_builtins.str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -2324,8 +2324,8 @@ class ScalingConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict', 'outputs.ScalingConfigurationCustomPriority']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict', 'outputs.ScalingConfigurationDataDisk']]]]] = None,
                  dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2338,9 +2338,9 @@ class ScalingConfiguration(pulumi.CustomResource):
                  instance_description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
+                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict', 'outputs.ScalingConfigurationInstancePatternInfo']]]]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
+                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict', 'outputs.ScalingConfigurationInstanceTypeOverride']]]]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2350,13 +2350,13 @@ class ScalingConfiguration(pulumi.CustomResource):
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict', 'outputs.ScalingConfigurationNetworkInterface']]]]] = None,
                  override: pulumi.Input[Optional[_builtins.bool]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]]] = None,
+                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict', 'outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag']]]]] = None,
                  resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2365,7 +2365,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
-                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict', 'outputs.ScalingConfigurationSpotPriceLimit']]]]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  substitute: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2461,8 +2461,8 @@ class ScalingConfiguration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: pulumi.Input[Optional[_builtins.bool]] = None,
             credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+            custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict', 'outputs.ScalingConfigurationCustomPriority']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict', 'outputs.ScalingConfigurationDataDisk']]]]] = None,
             dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2475,9 +2475,9 @@ class ScalingConfiguration(pulumi.CustomResource):
             instance_description: pulumi.Input[Optional[_builtins.str]] = None,
             instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
+            instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict', 'outputs.ScalingConfigurationInstancePatternInfo']]]]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
+            instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict', 'outputs.ScalingConfigurationInstanceTypeOverride']]]]] = None,
             instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2487,13 +2487,13 @@ class ScalingConfiguration(pulumi.CustomResource):
             key_name: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict', 'outputs.ScalingConfigurationNetworkInterface']]]]] = None,
             override: pulumi.Input[Optional[_builtins.bool]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]]] = None,
+            resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict', 'outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag']]]]] = None,
             resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             role_name: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2502,7 +2502,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
-            spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
+            spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict', 'outputs.ScalingConfigurationSpotPriceLimit']]]]] = None,
             spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             substitute: pulumi.Input[Optional[_builtins.str]] = None,
             system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2526,8 +2526,8 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict', 'outputs.ScalingConfigurationCustomPriority']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict', 'outputs.ScalingConfigurationDataDisk']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         :param pulumi.Input[_builtins.str] dedicated_host_cluster_id: The ID of the dedicated host cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[_builtins.bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -2540,9 +2540,9 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_description: The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[_builtins.str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict', 'outputs.ScalingConfigurationInstancePatternInfo']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict', 'outputs.ScalingConfigurationInstanceTypeOverride']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
@@ -2552,13 +2552,13 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict', 'outputs.ScalingConfigurationNetworkInterface']]]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         :param pulumi.Input[_builtins.bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[_builtins.str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_pool_options_private_pool_ids: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict', 'outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag']]]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
         :param pulumi.Input[_builtins.str] resource_pool_options_strategy: The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
                - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
                - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
@@ -2585,7 +2585,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict', 'outputs.ScalingConfigurationSpotPriceLimit']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[_builtins.str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.

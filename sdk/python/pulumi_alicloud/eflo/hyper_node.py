@@ -722,7 +722,7 @@ class HyperNode(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict', 'outputs.HyperNodeDataDisk']]]]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -792,7 +792,7 @@ class HyperNode(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]] data_disks: List of disk information of attaching to each sub computing node.  See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict', 'outputs.HyperNodeDataDisk']]]] data_disks: List of disk information of attaching to each sub computing node.  See `data_disk` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] hostname: The host name prefix of the sub computing node
@@ -887,7 +887,7 @@ class HyperNode(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict', 'outputs.HyperNodeDataDisk']]]]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -952,7 +952,7 @@ class HyperNode(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict', 'outputs.HyperNodeDataDisk']]]]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
             login_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -981,7 +981,7 @@ class HyperNode(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]] data_disks: List of disk information of attaching to each sub computing node.  See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict', 'outputs.HyperNodeDataDisk']]]] data_disks: List of disk information of attaching to each sub computing node.  See `data_disk` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] hostname: The host name prefix of the sub computing node

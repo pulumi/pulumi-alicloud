@@ -348,9 +348,9 @@ class EventNotifyPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notify_strategy: pulumi.Input[Optional[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict']]] = None,
-                 response_plan: pulumi.Input[Optional[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict']]] = None,
-                 subscription: pulumi.Input[Optional[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict']]] = None,
+                 notify_strategy: pulumi.Input[Optional[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict', 'outputs.EventNotifyPolicyNotifyStrategy']]] = None,
+                 response_plan: pulumi.Input[Optional[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict', 'outputs.EventNotifyPolicyResponsePlan']]] = None,
+                 subscription: pulumi.Input[Optional[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict', 'outputs.EventNotifyPolicySubscription']]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -441,9 +441,9 @@ class EventNotifyPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the policy.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the policy is enabled. The value is applied through the dedicated enable and disable operations rather than the creation payload.
         :param pulumi.Input[_builtins.str] name: The name of the notification policy. The name must be unique within the workspace. Creating a policy whose name duplicates an existing one returns a `ConflictName` error.
-        :param pulumi.Input[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict']] notify_strategy: The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates. See `notify_strategy` below.
-        :param pulumi.Input[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict']] response_plan: Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration. See `response_plan` below.
-        :param pulumi.Input[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict']] subscription: Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription. See `subscription` below.
+        :param pulumi.Input[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict', 'outputs.EventNotifyPolicyNotifyStrategy']] notify_strategy: The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates. See `notify_strategy` below.
+        :param pulumi.Input[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict', 'outputs.EventNotifyPolicyResponsePlan']] response_plan: Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration. See `response_plan` below.
+        :param pulumi.Input[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict', 'outputs.EventNotifyPolicySubscription']] subscription: Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription. See `subscription` below.
         :param pulumi.Input[_builtins.str] workspace: The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
         """
         ...
@@ -553,9 +553,9 @@ class EventNotifyPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notify_strategy: pulumi.Input[Optional[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict']]] = None,
-                 response_plan: pulumi.Input[Optional[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict']]] = None,
-                 subscription: pulumi.Input[Optional[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict']]] = None,
+                 notify_strategy: pulumi.Input[Optional[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict', 'outputs.EventNotifyPolicyNotifyStrategy']]] = None,
+                 response_plan: pulumi.Input[Optional[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict', 'outputs.EventNotifyPolicyResponsePlan']]] = None,
+                 subscription: pulumi.Input[Optional[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict', 'outputs.EventNotifyPolicySubscription']]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -594,9 +594,9 @@ class EventNotifyPolicy(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            notify_strategy: pulumi.Input[Optional[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict']]] = None,
-            response_plan: pulumi.Input[Optional[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict']]] = None,
-            subscription: pulumi.Input[Optional[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict']]] = None,
+            notify_strategy: pulumi.Input[Optional[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict', 'outputs.EventNotifyPolicyNotifyStrategy']]] = None,
+            response_plan: pulumi.Input[Optional[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict', 'outputs.EventNotifyPolicyResponsePlan']]] = None,
+            subscription: pulumi.Input[Optional[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict', 'outputs.EventNotifyPolicySubscription']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -613,9 +613,9 @@ class EventNotifyPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the policy.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the policy is enabled. The value is applied through the dedicated enable and disable operations rather than the creation payload.
         :param pulumi.Input[_builtins.str] name: The name of the notification policy. The name must be unique within the workspace. Creating a policy whose name duplicates an existing one returns a `ConflictName` error.
-        :param pulumi.Input[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict']] notify_strategy: The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates. See `notify_strategy` below.
-        :param pulumi.Input[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict']] response_plan: Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration. See `response_plan` below.
-        :param pulumi.Input[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict']] subscription: Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription. See `subscription` below.
+        :param pulumi.Input[Union['EventNotifyPolicyNotifyStrategyArgs', 'EventNotifyPolicyNotifyStrategyArgsDict', 'outputs.EventNotifyPolicyNotifyStrategy']] notify_strategy: The notification strategy sub-entity, which includes grouping and merging settings, notification routing, channels, and custom templates. See `notify_strategy` below.
+        :param pulumi.Input[Union['EventNotifyPolicyResponsePlanArgs', 'EventNotifyPolicyResponsePlanArgsDict', 'outputs.EventNotifyPolicyResponsePlan']] response_plan: Response plan sub-entities: escalation, repeated notification, automatic recovery, and action integration. See `response_plan` below.
+        :param pulumi.Input[Union['EventNotifyPolicySubscriptionArgs', 'EventNotifyPolicySubscriptionArgsDict', 'outputs.EventNotifyPolicySubscription']] subscription: Subscription sub-entities: event filtering, cross-workspace routing, and the switch for legacy product event subscription. See `subscription` below.
         :param pulumi.Input[_builtins.str] update_time: The update time.
         :param pulumi.Input[_builtins.str] user_id: The user ID.
         :param pulumi.Input[_builtins.str] uuid: The unique identifier of the notification policy, which is generated by the server on creation.

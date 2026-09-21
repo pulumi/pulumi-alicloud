@@ -541,11 +541,11 @@ class ServiceMesh(pulumi.CustomResource):
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
-                 extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
+                 extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict', 'outputs.ServiceMeshExtraConfiguration']]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
-                 load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
-                 mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
-                 network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict', 'outputs.ServiceMeshLoadBalancer']]] = None,
+                 mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict', 'outputs.ServiceMeshMeshConfig']]] = None,
+                 network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict', 'outputs.ServiceMeshNetwork']]] = None,
                  prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
                  service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -577,15 +577,15 @@ class ServiceMesh(pulumi.CustomResource):
                
                Default value: 'false '.
         :param pulumi.Input[_builtins.str] edition: Grid instance version type (for example: the standard, the Pro version, etc.)
-        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
+        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict', 'outputs.ServiceMeshExtraConfiguration']] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
         :param pulumi.Input[_builtins.bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
                -'false': no forced deletion of ASM instance
                
                Default value: false
-        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']] load_balancer: Load balancing information See `load_balancer` below.
-        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']] mesh_config: Service grid configuration information See `mesh_config` below.
-        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information See `network` below.
+        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict', 'outputs.ServiceMeshLoadBalancer']] load_balancer: Load balancing information See `load_balancer` below.
+        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict', 'outputs.ServiceMeshMeshConfig']] mesh_config: Service grid configuration information See `mesh_config` below.
+        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict', 'outputs.ServiceMeshNetwork']] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[_builtins.str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
         :param pulumi.Input[_builtins.str] service_mesh_name: ServiceMeshName
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -632,11 +632,11 @@ class ServiceMesh(pulumi.CustomResource):
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
-                 extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
+                 extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict', 'outputs.ServiceMeshExtraConfiguration']]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
-                 load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
-                 mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
-                 network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict', 'outputs.ServiceMeshLoadBalancer']]] = None,
+                 mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict', 'outputs.ServiceMeshMeshConfig']]] = None,
+                 network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict', 'outputs.ServiceMeshNetwork']]] = None,
                  prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
                  service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -683,12 +683,12 @@ class ServiceMesh(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
-            extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
+            extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict', 'outputs.ServiceMeshExtraConfiguration']]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
-            load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
-            mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
-            network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
+            load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict', 'outputs.ServiceMeshLoadBalancer']]] = None,
+            mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict', 'outputs.ServiceMeshMeshConfig']]] = None,
+            network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict', 'outputs.ServiceMeshNetwork']]] = None,
             prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
             service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -710,16 +710,16 @@ class ServiceMesh(pulumi.CustomResource):
                
                Default value: 'false '.
         :param pulumi.Input[_builtins.str] edition: Grid instance version type (for example: the standard, the Pro version, etc.)
-        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
+        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict', 'outputs.ServiceMeshExtraConfiguration']] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
         :param pulumi.Input[_builtins.bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
                -'false': no forced deletion of ASM instance
                
                Default value: false
         :param pulumi.Input[_builtins.str] kubeconfig: Kubeconfig configuration content
-        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']] load_balancer: Load balancing information See `load_balancer` below.
-        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']] mesh_config: Service grid configuration information See `mesh_config` below.
-        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information See `network` below.
+        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict', 'outputs.ServiceMeshLoadBalancer']] load_balancer: Load balancing information See `load_balancer` below.
+        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict', 'outputs.ServiceMeshMeshConfig']] mesh_config: Service grid configuration information See `mesh_config` below.
+        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict', 'outputs.ServiceMeshNetwork']] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[_builtins.str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
         :param pulumi.Input[_builtins.str] service_mesh_name: ServiceMeshName
         :param pulumi.Input[_builtins.str] status: The status of the resource

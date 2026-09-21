@@ -299,9 +299,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
                  min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
                  min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
-                 scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
+                 scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict', 'outputs.ApplicationScalingRuleScalingRuleMetric']]] = None,
                  scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
+                 scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict', 'outputs.ApplicationScalingRuleScalingRuleTimer']]] = None,
                  scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -425,9 +425,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[_builtins.int] min_ready_instances: The min ready instances.
         :param pulumi.Input[_builtins.bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict', 'outputs.ApplicationScalingRuleScalingRuleMetric']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[_builtins.str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict', 'outputs.ApplicationScalingRuleScalingRuleTimer']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[_builtins.str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         ...
@@ -570,9 +570,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
                  min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
                  min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
-                 scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
+                 scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict', 'outputs.ApplicationScalingRuleScalingRuleMetric']]] = None,
                  scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
+                 scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict', 'outputs.ApplicationScalingRuleScalingRuleTimer']]] = None,
                  scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -611,9 +611,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
             min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
             min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
             scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
-            scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
+            scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict', 'outputs.ApplicationScalingRuleScalingRuleMetric']]] = None,
             scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
-            scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
+            scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict', 'outputs.ApplicationScalingRuleScalingRuleTimer']]] = None,
             scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationScalingRule':
         """
         Get an existing ApplicationScalingRule resource's state with the given name, id, and optional extra
@@ -626,9 +626,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[_builtins.int] min_ready_instances: The min ready instances.
         :param pulumi.Input[_builtins.bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict', 'outputs.ApplicationScalingRuleScalingRuleMetric']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[_builtins.str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict', 'outputs.ApplicationScalingRuleScalingRuleTimer']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[_builtins.str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

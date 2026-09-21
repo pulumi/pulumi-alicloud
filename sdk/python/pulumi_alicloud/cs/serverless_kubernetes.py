@@ -1214,13 +1214,13 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict', 'outputs.ServerlessKubernetesAddon']]]]] = None,
                  client_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
-                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]]] = None,
+                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1229,11 +1229,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict', 'outputs.ServerlessKubernetesMaintenanceWindow']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']]] = None,
+                 operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']]] = None,
                  private_zone: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1323,7 +1323,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict', 'outputs.ServerlessKubernetesAddon']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1332,7 +1332,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1345,11 +1345,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
-        :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict', 'outputs.ServerlessKubernetesMaintenanceWindow']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
-        :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+        :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
                
                *Removed params*
         :param pulumi.Input[_builtins.bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
@@ -1460,13 +1460,13 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict', 'outputs.ServerlessKubernetesAddon']]]]] = None,
                  client_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
-                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]]] = None,
+                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1475,11 +1475,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict', 'outputs.ServerlessKubernetesMaintenanceWindow']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']]] = None,
+                 operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']]] = None,
                  private_zone: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1546,13 +1546,13 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]]] = None,
+            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict', 'outputs.ServerlessKubernetesAddon']]]]] = None,
             client_cert: pulumi.Input[Optional[_builtins.str]] = None,
             client_key: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
             custom_san: pulumi.Input[Optional[_builtins.str]] = None,
-            delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]]] = None,
+            delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1561,15 +1561,15 @@ class ServerlessKubernetes(pulumi.CustomResource):
             kube_config: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
             logging_type: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict', 'outputs.ServerlessKubernetesMaintenanceWindow']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-            operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']]] = None,
+            operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']]] = None,
             private_zone: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rrsa_metadata: pulumi.Input[Optional[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']]] = None,
+            rrsa_metadata: pulumi.Input[Optional[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict', 'outputs.ServerlessKubernetesRrsaMetadata']]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             service_discovery_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1587,7 +1587,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict', 'outputs.ServerlessKubernetesAddon']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1596,7 +1596,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1609,17 +1609,17 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
-        :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict', 'outputs.ServerlessKubernetesMaintenanceWindow']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
-        :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+        :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
                
                *Removed params*
         :param pulumi.Input[_builtins.bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict', 'outputs.ServerlessKubernetesRrsaMetadata']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_discovery_types: Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.

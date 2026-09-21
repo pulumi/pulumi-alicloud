@@ -210,7 +210,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
                  privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
                  template_description: pulumi.Input[Optional[_builtins.str]] = None,
                  template_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None,
+                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict', 'outputs.ExperimentPlanTemplateTemplatePipeline']]]]] = None,
                  __props__=None):
         """
         Provides a Eflo Experiment Plan Template resource.
@@ -272,7 +272,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
                - public: Indicates that the content is public and can be accessed by anyone. Public content is usually viewable by all users and is suitable for sharing information or resources
         :param pulumi.Input[_builtins.str] template_description: Describe the purpose of this template.
         :param pulumi.Input[_builtins.str] template_name: Help users identify and select specific templates.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]] template_pipelines: Representative Template Pipeline. See `template_pipeline` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict', 'outputs.ExperimentPlanTemplateTemplatePipeline']]]] template_pipelines: Representative Template Pipeline. See `template_pipeline` below.
         """
         ...
     @overload
@@ -351,7 +351,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
                  privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
                  template_description: pulumi.Input[Optional[_builtins.str]] = None,
                  template_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None,
+                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict', 'outputs.ExperimentPlanTemplateTemplatePipeline']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,7 +388,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
             template_description: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
             template_name: pulumi.Input[Optional[_builtins.str]] = None,
-            template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None) -> 'ExperimentPlanTemplate':
+            template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict', 'outputs.ExperimentPlanTemplateTemplatePipeline']]]]] = None) -> 'ExperimentPlanTemplate':
         """
         Get an existing ExperimentPlanTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -403,7 +403,7 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] template_description: Describe the purpose of this template.
         :param pulumi.Input[_builtins.str] template_id: The ID of the template.
         :param pulumi.Input[_builtins.str] template_name: Help users identify and select specific templates.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]] template_pipelines: Representative Template Pipeline. See `template_pipeline` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict', 'outputs.ExperimentPlanTemplateTemplatePipeline']]]] template_pipelines: Representative Template Pipeline. See `template_pipeline` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

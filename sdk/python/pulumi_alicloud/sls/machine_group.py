@@ -270,7 +270,7 @@ class MachineGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
+                 group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict', 'outputs.MachineGroupGroupAttribute']]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -326,7 +326,7 @@ class MachineGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+        :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict', 'outputs.MachineGroupGroupAttribute']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
         :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
                
                - The name of each machine group in a project must be unique.
@@ -411,7 +411,7 @@ class MachineGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
+                 group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict', 'outputs.MachineGroupGroupAttribute']]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  group_type: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -450,7 +450,7 @@ class MachineGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
+            group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict', 'outputs.MachineGroupGroupAttribute']]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
             group_type: pulumi.Input[Optional[_builtins.str]] = None,
             machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -463,7 +463,7 @@ class MachineGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
+        :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict', 'outputs.MachineGroupGroupAttribute']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
         :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
                
                - The name of each machine group in a project must be unique.

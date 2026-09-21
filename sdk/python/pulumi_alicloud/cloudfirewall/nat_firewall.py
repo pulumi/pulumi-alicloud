@@ -424,7 +424,7 @@ class NatFirewall(pulumi.CustomResource):
                  firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
+                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict', 'outputs.NatFirewallNatRouteEntryList']]]]] = None,
                  proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  region_no: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -516,7 +516,7 @@ class NatFirewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] firewall_switch: Safety protection switch. Value:-**open**: open-**close**: close.
         :param pulumi.Input[_builtins.str] lang: Lang.
         :param pulumi.Input[_builtins.str] nat_gateway_id: NAT gateway ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict', 'outputs.NatFirewallNatRouteEntryList']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
         :param pulumi.Input[_builtins.str] proxy_name: NAT firewall name.
         :param pulumi.Input[_builtins.str] region_no: Region.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
@@ -627,7 +627,7 @@ class NatFirewall(pulumi.CustomResource):
                  firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
+                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict', 'outputs.NatFirewallNatRouteEntryList']]]]] = None,
                  proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  region_no: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -680,7 +680,7 @@ class NatFirewall(pulumi.CustomResource):
             firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
             nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-            nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
+            nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict', 'outputs.NatFirewallNatRouteEntryList']]]]] = None,
             proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
             region_no: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -699,7 +699,7 @@ class NatFirewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] firewall_switch: Safety protection switch. Value:-**open**: open-**close**: close.
         :param pulumi.Input[_builtins.str] lang: Lang.
         :param pulumi.Input[_builtins.str] nat_gateway_id: NAT gateway ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict', 'outputs.NatFirewallNatRouteEntryList']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
         :param pulumi.Input[_builtins.str] proxy_name: NAT firewall name.
         :param pulumi.Input[_builtins.str] region_no: Region.
         :param pulumi.Input[_builtins.str] status: The status of the resource.

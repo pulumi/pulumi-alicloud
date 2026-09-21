@@ -2106,10 +2106,10 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-                 client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
+                 client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict', 'outputs.InstanceClientNodeConfiguration']]] = None,
                  client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-                 data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
+                 data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict', 'outputs.InstanceDataNodeConfiguration']]] = None,
                  data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2122,14 +2122,14 @@ class Instance(pulumi.CustomResource):
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
+                 kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
                  kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
+                 master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict', 'outputs.InstanceMasterConfiguration']]] = None,
                  master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2148,7 +2148,7 @@ class Instance(pulumi.CustomResource):
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-                 warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
+                 warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict', 'outputs.InstanceWarmNodeConfiguration']]] = None,
                  warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2216,10 +2216,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Number of auto-renewal periods.
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
+        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict', 'outputs.InstanceClientNodeConfiguration']] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
-        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
+        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict', 'outputs.InstanceDataNodeConfiguration']] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
@@ -2244,14 +2244,14 @@ class Instance(pulumi.CustomResource):
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
-        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
+        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[_builtins.str] kibana_private_security_group_id: List of security groups.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
+        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict', 'outputs.InstanceMasterConfiguration']] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[_builtins.str] order_action_type: Configuration change type. Valid values:
@@ -2298,7 +2298,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
+        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict', 'outputs.InstanceWarmNodeConfiguration']] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
@@ -2387,10 +2387,10 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-                 client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
+                 client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict', 'outputs.InstanceClientNodeConfiguration']]] = None,
                  client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-                 data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
+                 data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict', 'outputs.InstanceDataNodeConfiguration']]] = None,
                  data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2403,14 +2403,14 @@ class Instance(pulumi.CustomResource):
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
+                 kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
                  kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
+                 master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict', 'outputs.InstanceMasterConfiguration']]] = None,
                  master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2429,7 +2429,7 @@ class Instance(pulumi.CustomResource):
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-                 warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
+                 warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict', 'outputs.InstanceWarmNodeConfiguration']]] = None,
                  warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2523,11 +2523,11 @@ class Instance(pulumi.CustomResource):
             arch_type: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-            client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
+            client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict', 'outputs.InstanceClientNodeConfiguration']]] = None,
             client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-            data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
+            data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict', 'outputs.InstanceDataNodeConfiguration']]] = None,
             data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
             data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
             data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2541,7 +2541,7 @@ class Instance(pulumi.CustomResource):
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_category: pulumi.Input[Optional[_builtins.str]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
-            kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
+            kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
             kibana_domain: pulumi.Input[Optional[_builtins.str]] = None,
             kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
             kibana_port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2551,7 +2551,7 @@ class Instance(pulumi.CustomResource):
             kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
+            master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict', 'outputs.InstanceMasterConfiguration']]] = None,
             master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
             master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
             order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2574,7 +2574,7 @@ class Instance(pulumi.CustomResource):
             version: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
-            warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
+            warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict', 'outputs.InstanceWarmNodeConfiguration']]] = None,
             warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
             warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
             warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2590,11 +2590,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] arch_type: The deployment mode or architecture type:.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Number of auto-renewal periods.
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
+        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict', 'outputs.InstanceClientNodeConfiguration']] client_node_configuration: Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
-        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
+        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict', 'outputs.InstanceDataNodeConfiguration']] data_node_configuration: Elasticsearch data node information. See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
@@ -2620,7 +2620,7 @@ class Instance(pulumi.CustomResource):
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
-        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
+        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']] kibana_configuration: The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_domain: Kibana endpoint.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[_builtins.int] kibana_port: The access port for Kibana.
@@ -2630,7 +2630,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
+        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict', 'outputs.InstanceMasterConfiguration']] master_configuration: Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[_builtins.str] order_action_type: Configuration change type. Valid values:
@@ -2681,7 +2681,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**  The versions listed above might not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
+        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict', 'outputs.InstanceWarmNodeConfiguration']] warm_node_configuration: Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.

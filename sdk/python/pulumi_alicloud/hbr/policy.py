@@ -189,7 +189,7 @@ class Policy(pulumi.CustomResource):
                  policy_description: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict', 'outputs.PolicyRule']]]]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Policy resource.
@@ -246,7 +246,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
         :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict', 'outputs.PolicyRule']]]] rules: A list of policy rules See `rules` below.
         """
         ...
     @overload
@@ -322,7 +322,7 @@ class Policy(pulumi.CustomResource):
                  policy_description: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict', 'outputs.PolicyRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,7 +351,7 @@ class Policy(pulumi.CustomResource):
             policy_description: pulumi.Input[Optional[_builtins.str]] = None,
             policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None) -> 'Policy':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict', 'outputs.PolicyRule']]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -363,7 +363,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
         :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict', 'outputs.PolicyRule']]]] rules: A list of policy rules See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

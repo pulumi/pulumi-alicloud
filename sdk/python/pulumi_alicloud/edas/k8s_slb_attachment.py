@@ -106,7 +106,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None,
+                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict', 'outputs.K8sSlbAttachmentSlbConfig']]]]] = None,
                  __props__=None):
         """
         Binds SLBs to an EDAS k8s application.
@@ -205,7 +205,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict', 'outputs.K8sSlbAttachmentSlbConfig']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         ...
     @overload
@@ -323,7 +323,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None,
+                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict', 'outputs.K8sSlbAttachmentSlbConfig']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -348,7 +348,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
-            slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None) -> 'K8sSlbAttachment':
+            slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict', 'outputs.K8sSlbAttachmentSlbConfig']]]]] = None) -> 'K8sSlbAttachment':
         """
         Get an existing K8sSlbAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -357,7 +357,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict', 'outputs.K8sSlbAttachmentSlbConfig']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

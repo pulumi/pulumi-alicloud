@@ -327,7 +327,7 @@ class RouteTargetGroup(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  route_target_group_description: pulumi.Input[Optional[_builtins.str]] = None,
                  route_target_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict']]]]] = None,
+                 route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict', 'outputs.RouteTargetGroupRouteTargetMemberList']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -476,7 +476,7 @@ class RouteTargetGroup(pulumi.CustomResource):
                The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] route_target_group_name: The name of the route target group.
                The name must be 1 to 128 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict']]]] route_target_member_lists: The member list of the route target group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict', 'outputs.RouteTargetGroupRouteTargetMemberList']]]] route_target_member_lists: The member list of the route target group.
                **Note: The parameter is immutable after resource creation. In active-standby mode, member weight and type cannot be changed via UpdateRouteTargetGroup; switching active/standby uses a separate SwitchActiveRouteTarget operation.
                In active/standby mode, the following restrictions apply to route target group members:
                1. The route target group must contain exactly two members.
@@ -645,7 +645,7 @@ class RouteTargetGroup(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  route_target_group_description: pulumi.Input[Optional[_builtins.str]] = None,
                  route_target_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict']]]]] = None,
+                 route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict', 'outputs.RouteTargetGroupRouteTargetMemberList']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -687,7 +687,7 @@ class RouteTargetGroup(pulumi.CustomResource):
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             route_target_group_description: pulumi.Input[Optional[_builtins.str]] = None,
             route_target_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict']]]]] = None,
+            route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict', 'outputs.RouteTargetGroupRouteTargetMemberList']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouteTargetGroup':
@@ -706,7 +706,7 @@ class RouteTargetGroup(pulumi.CustomResource):
                The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] route_target_group_name: The name of the route target group.
                The name must be 1 to 128 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict']]]] route_target_member_lists: The member list of the route target group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict', 'outputs.RouteTargetGroupRouteTargetMemberList']]]] route_target_member_lists: The member list of the route target group.
                **Note: The parameter is immutable after resource creation. In active-standby mode, member weight and type cannot be changed via UpdateRouteTargetGroup; switching active/standby uses a separate SwitchActiveRouteTarget operation.
                In active/standby mode, the following restrictions apply to route target group members:
                1. The route target group must contain exactly two members.

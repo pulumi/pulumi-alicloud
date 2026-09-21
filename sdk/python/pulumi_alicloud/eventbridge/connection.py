@@ -184,10 +184,10 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
+                 auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict', 'outputs.ConnectionAuthParameters']]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
+                 network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict', 'outputs.ConnectionNetworkParameters']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Connection resource.
@@ -283,10 +283,10 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
+        :param pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict', 'outputs.ConnectionAuthParameters']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
         :param pulumi.Input[_builtins.str] connection_name: The name of the connection.
         :param pulumi.Input[_builtins.str] description: The description of the connection.
-        :param pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
+        :param pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict', 'outputs.ConnectionNetworkParameters']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
         """
         ...
     @overload
@@ -401,10 +401,10 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
+                 auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict', 'outputs.ConnectionAuthParameters']]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
+                 network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict', 'outputs.ConnectionNetworkParameters']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,11 +433,11 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
+            auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict', 'outputs.ConnectionAuthParameters']]] = None,
             connection_name: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None) -> 'Connection':
+            network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict', 'outputs.ConnectionNetworkParameters']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -445,11 +445,11 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
+        :param pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict', 'outputs.ConnectionAuthParameters']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
         :param pulumi.Input[_builtins.str] connection_name: The name of the connection.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the Connection.
         :param pulumi.Input[_builtins.str] description: The description of the connection.
-        :param pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
+        :param pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict', 'outputs.ConnectionNetworkParameters']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

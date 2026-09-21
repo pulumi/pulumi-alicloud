@@ -436,7 +436,7 @@ class WorkspaceModel(pulumi.CustomResource):
                  accessibility: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict', 'outputs.WorkspaceModelLabel']]]]] = None,
                  model_description: pulumi.Input[Optional[_builtins.str]] = None,
                  model_doc: pulumi.Input[Optional[_builtins.str]] = None,
                  model_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -512,7 +512,7 @@ class WorkspaceModel(pulumi.CustomResource):
                - `PUBLIC`: In this workspace, it is visible to everyone.
         :param pulumi.Input[_builtins.str] domain: The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_info: Other information about the model.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]] labels: A list of tags. See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict', 'outputs.WorkspaceModelLabel']]]] labels: A list of tags. See `labels` below.
         :param pulumi.Input[_builtins.str] model_description: The model description, used to distinguish different models.
         :param pulumi.Input[_builtins.str] model_doc: The documentation of the model.
         :param pulumi.Input[_builtins.str] model_name: The name of the model. The name must be 1 to 127 characters in length.
@@ -605,7 +605,7 @@ class WorkspaceModel(pulumi.CustomResource):
                  accessibility: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict', 'outputs.WorkspaceModelLabel']]]]] = None,
                  model_description: pulumi.Input[Optional[_builtins.str]] = None,
                  model_doc: pulumi.Input[Optional[_builtins.str]] = None,
                  model_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -650,7 +650,7 @@ class WorkspaceModel(pulumi.CustomResource):
             accessibility: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict', 'outputs.WorkspaceModelLabel']]]]] = None,
             model_description: pulumi.Input[Optional[_builtins.str]] = None,
             model_doc: pulumi.Input[Optional[_builtins.str]] = None,
             model_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -671,7 +671,7 @@ class WorkspaceModel(pulumi.CustomResource):
                - `PUBLIC`: In this workspace, it is visible to everyone.
         :param pulumi.Input[_builtins.str] domain: The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_info: Other information about the model.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]] labels: A list of tags. See `labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict', 'outputs.WorkspaceModelLabel']]]] labels: A list of tags. See `labels` below.
         :param pulumi.Input[_builtins.str] model_description: The model description, used to distinguish different models.
         :param pulumi.Input[_builtins.str] model_doc: The documentation of the model.
         :param pulumi.Input[_builtins.str] model_name: The name of the model. The name must be 1 to 127 characters in length.

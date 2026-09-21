@@ -461,12 +461,12 @@ class Cluster(pulumi.CustomResource):
                  cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict', 'outputs.ClusterComponent']]]]] = None,
                  hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
-                 networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict', 'outputs.ClusterNetworks']]] = None,
                  nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
                  open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -587,12 +587,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_description: cluster description
         :param pulumi.Input[_builtins.str] cluster_name: ClusterName
         :param pulumi.Input[_builtins.str] cluster_type: cluster type
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]] components: Component (software instance) See `components` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict', 'outputs.ClusterComponent']]]] components: Component (software instance) See `components` below.
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
-        :param pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']] networks: Network Information See `networks` below.
+        :param pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict', 'outputs.ClusterNetworks']] networks: Network Information See `networks` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nimiz_vswitches: Node virtual switch
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]] node_groups: Node Group List See `node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]] node_groups: Node Group List See `node_groups` below.
         :param pulumi.Input[_builtins.bool] open_eni_jumbo_frame: Whether the network interface supports jumbo frames
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: tag
@@ -732,12 +732,12 @@ class Cluster(pulumi.CustomResource):
                  cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict', 'outputs.ClusterComponent']]]]] = None,
                  hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
-                 networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict', 'outputs.ClusterNetworks']]] = None,
                  nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
                  open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -777,13 +777,13 @@ class Cluster(pulumi.CustomResource):
             cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict', 'outputs.ClusterComponent']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
-            networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
+            networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict', 'outputs.ClusterNetworks']]] = None,
             nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
             open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -798,13 +798,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_description: cluster description
         :param pulumi.Input[_builtins.str] cluster_name: ClusterName
         :param pulumi.Input[_builtins.str] cluster_type: cluster type
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]] components: Component (software instance) See `components` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict', 'outputs.ClusterComponent']]]] components: Component (software instance) See `components` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
-        :param pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']] networks: Network Information See `networks` below.
+        :param pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict', 'outputs.ClusterNetworks']] networks: Network Information See `networks` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nimiz_vswitches: Node virtual switch
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]] node_groups: Node Group List See `node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]] node_groups: Node Group List See `node_groups` below.
         :param pulumi.Input[_builtins.bool] open_eni_jumbo_frame: Whether the network interface supports jumbo frames
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] status: The status of the resource

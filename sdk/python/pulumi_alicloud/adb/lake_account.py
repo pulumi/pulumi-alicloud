@@ -282,7 +282,7 @@ class LakeAccount(pulumi.CustomResource):
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
-                 account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
+                 account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict', 'outputs.LakeAccountAccountPrivilege']]]]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ram_user_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -380,7 +380,7 @@ class LakeAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
         :param pulumi.Input[_builtins.str] account_name: The name of the account.
         :param pulumi.Input[_builtins.str] account_password: AccountPassword.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]] account_privileges: List of permissions granted. See `account_privileges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict', 'outputs.LakeAccountAccountPrivilege']]]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[_builtins.str] account_type: The type of the account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The DBCluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ram_user_lists: List of Alibaba Cloud RAM user IDs to bind.
@@ -497,7 +497,7 @@ class LakeAccount(pulumi.CustomResource):
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
-                 account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
+                 account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict', 'outputs.LakeAccountAccountPrivilege']]]]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ram_user_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -539,7 +539,7 @@ class LakeAccount(pulumi.CustomResource):
             account_description: pulumi.Input[Optional[_builtins.str]] = None,
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
-            account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
+            account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict', 'outputs.LakeAccountAccountPrivilege']]]]] = None,
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             ram_user_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -554,7 +554,7 @@ class LakeAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
         :param pulumi.Input[_builtins.str] account_name: The name of the account.
         :param pulumi.Input[_builtins.str] account_password: AccountPassword.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]] account_privileges: List of permissions granted. See `account_privileges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict', 'outputs.LakeAccountAccountPrivilege']]]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[_builtins.str] account_type: The type of the account.
         :param pulumi.Input[_builtins.str] db_cluster_id: The DBCluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ram_user_lists: List of Alibaba Cloud RAM user IDs to bind.

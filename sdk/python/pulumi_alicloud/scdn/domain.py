@@ -305,12 +305,12 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  biz_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
+                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  force_set: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -357,12 +357,12 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
         :param pulumi.Input[_builtins.str] force_set: Whether to set certificate forcibly.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: the Origin Server Information. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: the Origin Server Information. See the following `Block sources`.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `offline`, `online`.
         """
         ...
@@ -428,12 +428,12 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  biz_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
+                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  force_set: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -467,12 +467,12 @@ class Domain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             biz_name: pulumi.Input[Optional[_builtins.str]] = None,
-            cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
+            cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]]] = None,
             check_url: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
             force_set: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
@@ -482,12 +482,12 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
         :param pulumi.Input[_builtins.str] force_set: Whether to set certificate forcibly.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: the Origin Server Information. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: the Origin Server Information. See the following `Block sources`.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `offline`, `online`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

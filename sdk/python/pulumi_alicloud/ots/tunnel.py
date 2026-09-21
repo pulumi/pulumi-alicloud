@@ -472,7 +472,7 @@ class Tunnel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict']]]]] = None,
+            channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict', 'outputs.TunnelChannel']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             expired: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -489,7 +489,7 @@ class Tunnel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict']]]] channels: The channels of OTS tunnel. Each element contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict', 'outputs.TunnelChannel']]]] channels: The channels of OTS tunnel. Each element contains the following attributes:
         :param pulumi.Input[_builtins.int] create_time: The creation time of the Tunnel.
         :param pulumi.Input[_builtins.bool] expired: Whether the tunnel has expired.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.

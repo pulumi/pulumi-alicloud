@@ -199,7 +199,7 @@ class Rule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
+                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict', 'outputs.RuleForwardIp']]]]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -287,7 +287,7 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]] forward_ips: Forwarding target. See `forward_ips` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict', 'outputs.RuleForwardIp']]]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the resource.
         :param pulumi.Input[_builtins.str] type: The type of the rule. Valid values: `OUTBOUND`.
         :param pulumi.Input[_builtins.str] zone_name: The name of the forwarding zone.
@@ -394,7 +394,7 @@ class Rule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
+                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict', 'outputs.RuleForwardIp']]]]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,7 +431,7 @@ class Rule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
+            forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict', 'outputs.RuleForwardIp']]]]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
@@ -443,7 +443,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]] forward_ips: Forwarding target. See `forward_ips` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict', 'outputs.RuleForwardIp']]]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the resource.
         :param pulumi.Input[_builtins.str] type: The type of the rule. Valid values: `OUTBOUND`.
         :param pulumi.Input[_builtins.str] zone_name: The name of the forwarding zone.

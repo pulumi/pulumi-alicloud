@@ -91,7 +91,7 @@ class AwaitableGetPolicyDocumentResult(GetPolicyDocumentResult):
 
 
 def get_policy_document(output_file: Optional[_builtins.str] = None,
-                        statements: Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]] = None,
+                        statements: Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict', 'outputs.GetPolicyDocumentStatementResult']]] = None,
                         version: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyDocumentResult:
     """
@@ -254,7 +254,7 @@ def get_policy_document(output_file: Optional[_builtins.str] = None,
 
 
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
+    :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict', 'outputs.GetPolicyDocumentStatementResult']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param _builtins.str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
     __args__ = dict()
@@ -271,7 +271,7 @@ def get_policy_document(output_file: Optional[_builtins.str] = None,
         statements=pulumi.get(__ret__, 'statements'),
         version=pulumi.get(__ret__, 'version'))
 def get_policy_document_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               statements: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]]]] = None,
+                               statements: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict', 'outputs.GetPolicyDocumentStatementResult']]]]] = None,
                                version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyDocumentResult]:
     """
@@ -434,7 +434,7 @@ def get_policy_document_output(output_file: pulumi.Input[Optional[Optional[_buil
 
 
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
+    :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict', 'outputs.GetPolicyDocumentStatementResult']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param _builtins.str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
     __args__ = dict()

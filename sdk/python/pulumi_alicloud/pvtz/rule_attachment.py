@@ -105,7 +105,7 @@ class RuleAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict', 'outputs.RuleAttachmentVpc']]]]] = None,
                  __props__=None):
         """
         Provides a Private Zone Rule Attachment resource.
@@ -204,7 +204,7 @@ class RuleAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]] vpcs: The List of the VPC. See `vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict', 'outputs.RuleAttachmentVpc']]]] vpcs: The List of the VPC. See `vpcs` below.
         """
         ...
     @overload
@@ -322,7 +322,7 @@ class RuleAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict', 'outputs.RuleAttachmentVpc']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,7 +349,7 @@ class RuleAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None) -> 'RuleAttachment':
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict', 'outputs.RuleAttachmentVpc']]]]] = None) -> 'RuleAttachment':
         """
         Get an existing RuleAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -358,7 +358,7 @@ class RuleAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]] vpcs: The List of the VPC. See `vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict', 'outputs.RuleAttachmentVpc']]]] vpcs: The List of the VPC. See `vpcs` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

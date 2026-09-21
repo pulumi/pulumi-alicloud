@@ -294,7 +294,7 @@ class MonitorConfig(pulumi.CustomResource):
                  addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
                  interval: pulumi.Input[Optional[_builtins.int]] = None,
-                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict', 'outputs.MonitorConfigIspCityNode']]]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -385,7 +385,7 @@ class MonitorConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool.
         :param pulumi.Input[_builtins.int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.int] interval: The health check interval. Unit: seconds. Valid values: `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict', 'outputs.MonitorConfigIspCityNode']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[_builtins.str] lang: The lang.
         :param pulumi.Input[_builtins.str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[_builtins.str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
@@ -495,7 +495,7 @@ class MonitorConfig(pulumi.CustomResource):
                  addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
                  interval: pulumi.Input[Optional[_builtins.int]] = None,
-                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict', 'outputs.MonitorConfigIspCityNode']]]]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -544,7 +544,7 @@ class MonitorConfig(pulumi.CustomResource):
             addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
             interval: pulumi.Input[Optional[_builtins.int]] = None,
-            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
+            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict', 'outputs.MonitorConfigIspCityNode']]]]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
             monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
             protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -559,7 +559,7 @@ class MonitorConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool.
         :param pulumi.Input[_builtins.int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.int] interval: The health check interval. Unit: seconds. Valid values: `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict', 'outputs.MonitorConfigIspCityNode']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[_builtins.str] lang: The lang.
         :param pulumi.Input[_builtins.str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[_builtins.str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.

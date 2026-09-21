@@ -169,7 +169,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']]] = None,
+                 cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict', 'outputs.BucketHttpsConfigCipherSuit']]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -225,7 +225,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
-        :param pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
+        :param pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict', 'outputs.BucketHttpsConfigCipherSuit']] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: Specifies the TLS versions allowed to access this buckets.
         """
@@ -300,7 +300,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']]] = None,
+                 cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict', 'outputs.BucketHttpsConfigCipherSuit']]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -331,7 +331,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']]] = None,
+            cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict', 'outputs.BucketHttpsConfigCipherSuit']]] = None,
             enable: pulumi.Input[Optional[_builtins.bool]] = None,
             tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BucketHttpsConfig':
         """
@@ -342,7 +342,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
-        :param pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
+        :param pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict', 'outputs.BucketHttpsConfigCipherSuit']] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: Specifies the TLS versions allowed to access this buckets.
         """

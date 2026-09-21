@@ -141,7 +141,7 @@ class AwaitableGetQuotaApplicationsResult(GetQuotaApplicationsResult):
             status=self.status)
 
 
-def get_quota_applications(dimensions: Optional[Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict']]] = None,
+def get_quota_applications(dimensions: Optional[Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']]] = None,
                            enable_details: Optional[_builtins.bool] = None,
                            ids: Optional[Sequence[_builtins.str]] = None,
                            key_word: Optional[_builtins.str] = None,
@@ -182,7 +182,7 @@ def get_quota_applications(dimensions: Optional[Sequence[Union['GetQuotaApplicat
     ```
 
 
-    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict']] dimensions: The quota dimensions.
+    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']] dimensions: The quota dimensions.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Application Info IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -216,7 +216,7 @@ def get_quota_applications(dimensions: Optional[Sequence[Union['GetQuotaApplicat
         quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
         quota_category=pulumi.get(__ret__, 'quota_category'),
         status=pulumi.get(__ret__, 'status'))
-def get_quota_applications_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict']]]]] = None,
+def get_quota_applications_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']]]]] = None,
                                   enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                   ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                   key_word: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -257,7 +257,7 @@ def get_quota_applications_output(dimensions: pulumi.Input[Optional[Optional[Seq
     ```
 
 
-    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict']] dimensions: The quota dimensions.
+    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']] dimensions: The quota dimensions.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Application Info IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

@@ -270,7 +270,7 @@ class Group(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']]] = None,
+                 user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict', 'outputs.GroupUserLogConfig']]] = None,
                  vpc_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -321,7 +321,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[_builtins.str] instance_id: The id of the api gateway.
         :param pulumi.Input[_builtins.str] name: The name of the api gateway group. Defaults to null.
-        :param pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
+        :param pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict', 'outputs.GroupUserLogConfig']] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
         :param pulumi.Input[_builtins.bool] vpc_intranet_enable: Whether to enable `vpc_domain`. Defaults to `false`.
         """
         ...
@@ -391,7 +391,7 @@ class Group(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']]] = None,
+                 user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict', 'outputs.GroupUserLogConfig']]] = None,
                  vpc_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -425,7 +425,7 @@ class Group(pulumi.CustomResource):
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
-            user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']]] = None,
+            user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict', 'outputs.GroupUserLogConfig']]] = None,
             vpc_domain: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Group':
         """
@@ -440,7 +440,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: The id of the api gateway.
         :param pulumi.Input[_builtins.str] name: The name of the api gateway group. Defaults to null.
         :param pulumi.Input[_builtins.str] sub_domain: (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
-        :param pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
+        :param pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict', 'outputs.GroupUserLogConfig']] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
         :param pulumi.Input[_builtins.str] vpc_domain: (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         :param pulumi.Input[_builtins.bool] vpc_intranet_enable: Whether to enable `vpc_domain`. Defaults to `false`.
         """

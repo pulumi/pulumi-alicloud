@@ -230,7 +230,7 @@ class Acl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]]] = None,
+                 acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]]] = None,
                  acl_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -270,7 +270,7 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
                **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         :param pulumi.Input[_builtins.str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck the API request.
@@ -330,7 +330,7 @@ class Acl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]]] = None,
+                 acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]]] = None,
                  acl_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -360,7 +360,7 @@ class Acl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]]] = None,
+            acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]]] = None,
             acl_name: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -373,7 +373,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
                **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         :param pulumi.Input[_builtins.str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck the API request.

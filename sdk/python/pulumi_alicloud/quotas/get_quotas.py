@@ -168,7 +168,7 @@ class AwaitableGetQuotasResult(GetQuotasResult):
             sort_order=self.sort_order)
 
 
-def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]] = None,
+def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']]] = None,
                group_code: Optional[_builtins.str] = None,
                key_word: Optional[_builtins.str] = None,
                name_regex: Optional[_builtins.str] = None,
@@ -198,7 +198,7 @@ def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'Ge
     ```
 
 
-    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']] dimensions: The dimensions.
+    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']] dimensions: The dimensions.
     :param _builtins.str group_code: The group code.
     :param _builtins.str key_word: The key word.
     :param _builtins.str name_regex: A regex string to filter results by Quota name.
@@ -238,7 +238,7 @@ def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'Ge
         quotas=pulumi.get(__ret__, 'quotas'),
         sort_field=pulumi.get(__ret__, 'sort_field'),
         sort_order=pulumi.get(__ret__, 'sort_order'))
-def get_quotas_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]]]] = None,
+def get_quotas_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']]]]] = None,
                       group_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       key_word: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -268,7 +268,7 @@ def get_quotas_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union[
     ```
 
 
-    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']] dimensions: The dimensions.
+    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict', 'outputs.GetQuotasDimensionResult']] dimensions: The dimensions.
     :param _builtins.str group_code: The group code.
     :param _builtins.str key_word: The key word.
     :param _builtins.str name_regex: A regex string to filter results by Quota name.

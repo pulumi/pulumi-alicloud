@@ -865,7 +865,7 @@ class DbCluster(pulumi.CustomResource):
                  allocate_public_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  cold_storage: pulumi.Input[Optional[_builtins.str]] = None,
-                 db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
+                 db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict', 'outputs.DbClusterDbClusterAccessWhiteList']]]]] = None,
                  db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_network_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -875,7 +875,7 @@ class DbCluster(pulumi.CustomResource):
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]]] = None,
+                 multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict', 'outputs.DbClusterMultiZoneVswitchList']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -949,7 +949,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
         :param pulumi.Input[_builtins.str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         :param pulumi.Input[_builtins.str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict', 'outputs.DbClusterDbClusterAccessWhiteList']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[_builtins.str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
@@ -961,7 +961,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[_builtins.str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[_builtins.str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]] multi_zone_vswitch_lists: The zone IDs and
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict', 'outputs.DbClusterMultiZoneVswitchList']]]] multi_zone_vswitch_lists: The zone IDs and
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[_builtins.str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
@@ -1055,7 +1055,7 @@ class DbCluster(pulumi.CustomResource):
                  allocate_public_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  cold_storage: pulumi.Input[Optional[_builtins.str]] = None,
-                 db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
+                 db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict', 'outputs.DbClusterDbClusterAccessWhiteList']]]]] = None,
                  db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_network_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1065,7 +1065,7 @@ class DbCluster(pulumi.CustomResource):
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]]] = None,
+                 multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict', 'outputs.DbClusterMultiZoneVswitchList']]]]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1142,7 +1142,7 @@ class DbCluster(pulumi.CustomResource):
             category: pulumi.Input[Optional[_builtins.str]] = None,
             cold_storage: pulumi.Input[Optional[_builtins.str]] = None,
             connection_string: pulumi.Input[Optional[_builtins.str]] = None,
-            db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
+            db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict', 'outputs.DbClusterDbClusterAccessWhiteList']]]]] = None,
             db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_network_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1152,7 +1152,7 @@ class DbCluster(pulumi.CustomResource):
             encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
-            multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]]] = None,
+            multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict', 'outputs.DbClusterMultiZoneVswitchList']]]]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1176,7 +1176,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         :param pulumi.Input[_builtins.str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) - The connection string of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict', 'outputs.DbClusterDbClusterAccessWhiteList']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[_builtins.str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
@@ -1188,7 +1188,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[_builtins.str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[_builtins.str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]] multi_zone_vswitch_lists: The zone IDs and
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict', 'outputs.DbClusterMultiZoneVswitchList']]]] multi_zone_vswitch_lists: The zone IDs and
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[_builtins.str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.

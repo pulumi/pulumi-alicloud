@@ -727,12 +727,12 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
-                 acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
-                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
+                 access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict', 'outputs.ListenerAccessLogTracingConfig']]] = None,
+                 acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict', 'outputs.ListenerAclConfig']]] = None,
+                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict', 'outputs.ListenerCaCertificate']]]]] = None,
                  ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
-                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
+                 certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict', 'outputs.ListenerCertificates']]] = None,
+                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict', 'outputs.ListenerDefaultAction']]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -741,12 +741,12 @@ class Listener(pulumi.CustomResource):
                  listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
+                 quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict', 'outputs.ListenerQuicConfig']]] = None,
                  request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None,
+                 x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict', 'outputs.ListenerXForwardedForConfig']]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Listener resource.
@@ -892,12 +892,12 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
                > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
-        :param pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
-        :param pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]] ca_certificates: The list of certificates. See `ca_certificates` below.
+        :param pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict', 'outputs.ListenerAccessLogTracingConfig']] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
+        :param pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict', 'outputs.ListenerAclConfig']] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict', 'outputs.ListenerCaCertificate']]]] ca_certificates: The list of certificates. See `ca_certificates` below.
         :param pulumi.Input[_builtins.bool] ca_enabled: Whether to turn on two-way authentication. Value:
-        :param pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']] certificates: The list of certificates. See `certificates` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]] default_actions: The Default Rule Action List See `default_actions` below.
+        :param pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict', 'outputs.ListenerCertificates']] certificates: The list of certificates. See `certificates` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict', 'outputs.ListenerDefaultAction']]]] default_actions: The Default Rule Action List See `default_actions` below.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[_builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
@@ -906,12 +906,12 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[_builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[_builtins.str] load_balancer_id: The SLB Instance Id.
-        :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
+        :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict', 'outputs.ListenerQuicConfig']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
         :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[_builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[_builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']] x_forwarded_for_config: xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+        :param pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict', 'outputs.ListenerXForwardedForConfig']] x_forwarded_for_config: xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         """
         ...
     @overload
@@ -1074,12 +1074,12 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
-                 acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
-                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
+                 access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict', 'outputs.ListenerAccessLogTracingConfig']]] = None,
+                 acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict', 'outputs.ListenerAclConfig']]] = None,
+                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict', 'outputs.ListenerCaCertificate']]]]] = None,
                  ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
-                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
+                 certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict', 'outputs.ListenerCertificates']]] = None,
+                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict', 'outputs.ListenerDefaultAction']]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1088,12 +1088,12 @@ class Listener(pulumi.CustomResource):
                  listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
+                 quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict', 'outputs.ListenerQuicConfig']]] = None,
                  request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None,
+                 x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict', 'outputs.ListenerXForwardedForConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1143,12 +1143,12 @@ class Listener(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
-            acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
-            ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
+            access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict', 'outputs.ListenerAccessLogTracingConfig']]] = None,
+            acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict', 'outputs.ListenerAclConfig']]] = None,
+            ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict', 'outputs.ListenerCaCertificate']]]]] = None,
             ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
-            default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
+            certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict', 'outputs.ListenerCertificates']]] = None,
+            default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict', 'outputs.ListenerDefaultAction']]]]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1157,12 +1157,12 @@ class Listener(pulumi.CustomResource):
             listener_port: pulumi.Input[Optional[_builtins.int]] = None,
             listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
-            quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
+            quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict', 'outputs.ListenerQuicConfig']]] = None,
             request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None) -> 'Listener':
+            x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict', 'outputs.ListenerXForwardedForConfig']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1173,12 +1173,12 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
                > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
-        :param pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
-        :param pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]] ca_certificates: The list of certificates. See `ca_certificates` below.
+        :param pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict', 'outputs.ListenerAccessLogTracingConfig']] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
+        :param pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict', 'outputs.ListenerAclConfig']] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict', 'outputs.ListenerCaCertificate']]]] ca_certificates: The list of certificates. See `ca_certificates` below.
         :param pulumi.Input[_builtins.bool] ca_enabled: Whether to turn on two-way authentication. Value:
-        :param pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']] certificates: The list of certificates. See `certificates` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]] default_actions: The Default Rule Action List See `default_actions` below.
+        :param pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict', 'outputs.ListenerCertificates']] certificates: The list of certificates. See `certificates` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict', 'outputs.ListenerDefaultAction']]]] default_actions: The Default Rule Action List See `default_actions` below.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[_builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
@@ -1187,12 +1187,12 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[_builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[_builtins.str] load_balancer_id: The SLB Instance Id.
-        :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
+        :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict', 'outputs.ListenerQuicConfig']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
         :param pulumi.Input[_builtins.int] request_timeout: The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[_builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[_builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']] x_forwarded_for_config: xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
+        :param pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict', 'outputs.ListenerXForwardedForConfig']] x_forwarded_for_config: xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

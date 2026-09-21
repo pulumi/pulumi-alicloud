@@ -1549,7 +1549,7 @@ class Instance(pulumi.CustomResource):
                  post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
                  post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
                  post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
-                 post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
+                 post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']]] = None,
                  rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
                  renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1671,7 +1671,7 @@ class Instance(pulumi.CustomResource):
                - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
                - Value: `0` means off, `1` means on
                > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
-        :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
+        :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -1836,7 +1836,7 @@ class Instance(pulumi.CustomResource):
                  post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
                  post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
                  post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
-                 post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
+                 post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']]] = None,
                  rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
                  renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1932,7 +1932,7 @@ class Instance(pulumi.CustomResource):
             post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
             post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
             post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
-            post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
+            post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']]] = None,
             rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
             renew_period: pulumi.Input[Optional[_builtins.int]] = None,
             renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2002,7 +2002,7 @@ class Instance(pulumi.CustomResource):
                - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
                - Value: `0` means off, `1` means on
                > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
-        :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
+        :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                

@@ -523,7 +523,7 @@ class Apply(pulumi.CustomResource):
             certificate_status: pulumi.Input[Optional[_builtins.str]] = None,
             csr: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
-            domain_validation_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplyDomainValidationListArgs', 'ApplyDomainValidationListArgsDict']]]]] = None,
+            domain_validation_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplyDomainValidationListArgs', 'ApplyDomainValidationListArgsDict', 'outputs.ApplyDomainValidationList']]]]] = None,
             generate_csr_method: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
@@ -541,7 +541,7 @@ class Apply(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_status: The status of the certificate this application produces.
         :param pulumi.Input[_builtins.str] csr: The content of the certificate signing request.
         :param pulumi.Input[_builtins.str] domain: The domain names the certificate is requested for, separated by commas.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplyDomainValidationListArgs', 'ApplyDomainValidationListArgsDict']]]] domain_validation_lists: The domain ownership validation records that have to be published before the certificate authority can validate the domains. It contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplyDomainValidationListArgs', 'ApplyDomainValidationListArgsDict', 'outputs.ApplyDomainValidationList']]]] domain_validation_lists: The domain ownership validation records that have to be published before the certificate authority can validate the domains. It contains the following attributes:
         :param pulumi.Input[_builtins.str] generate_csr_method: How the certificate signing request is produced. Valid values: `online` and `upload`.
                
                > **NOTE:** The five application settings above are stored on the certificate instance and are written there by the instance resource. `ApplyCertificate` accepts none of them — it submits whatever the instance holds at that moment. They are accepted here so that changing one of them replaces this resource and resubmits the application, since a different configuration means a different certificate is being requested. **Reference the corresponding attribute of `sslcertificatesserviceinstance.SslCertificatesServiceInstance` rather than hardcoding a value**; a configured value that disagrees with the instance is rejected when the resource is created.

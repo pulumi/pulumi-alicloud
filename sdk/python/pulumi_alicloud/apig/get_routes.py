@@ -150,7 +150,7 @@ class AwaitableGetRoutesResult(GetRoutesResult):
             status=self.status)
 
 
-def get_routes(environment_info: Optional[Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict']] = None,
+def get_routes(environment_info: Optional[Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict', 'outputs.GetRoutesEnvironmentInfoResult']] = None,
                http_api_id: Optional[_builtins.str] = None,
                ids: Optional[Sequence[_builtins.str]] = None,
                name_regex: Optional[_builtins.str] = None,
@@ -250,7 +250,7 @@ def get_routes(environment_info: Optional[Union['GetRoutesEnvironmentInfoArgs', 
     ```
 
 
-    :param Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict'] environment_info: The environment information of the route. See `environment_info` below.
+    :param Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict', 'outputs.GetRoutesEnvironmentInfoResult'] environment_info: The environment information of the route. See `environment_info` below.
     :param _builtins.str http_api_id: The ID of the HTTP API to which the route belongs.
     :param Sequence[_builtins.str] ids: A list of Route IDs. The value is formulated as `<http_api_id>:<route_id>`.
     :param _builtins.str name_regex: A regex string to filter results by Route name.
@@ -280,7 +280,7 @@ def get_routes(environment_info: Optional[Union['GetRoutesEnvironmentInfoArgs', 
         route_name=pulumi.get(__ret__, 'route_name'),
         routes=pulumi.get(__ret__, 'routes'),
         status=pulumi.get(__ret__, 'status'))
-def get_routes_output(environment_info: pulumi.Input[Optional[Optional[Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict']]]] = None,
+def get_routes_output(environment_info: pulumi.Input[Optional[Optional[Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict', 'outputs.GetRoutesEnvironmentInfoResult']]]] = None,
                       http_api_id: pulumi.Input[Optional[_builtins.str]] = None,
                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -380,7 +380,7 @@ def get_routes_output(environment_info: pulumi.Input[Optional[Optional[Union['Ge
     ```
 
 
-    :param Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict'] environment_info: The environment information of the route. See `environment_info` below.
+    :param Union['GetRoutesEnvironmentInfoArgs', 'GetRoutesEnvironmentInfoArgsDict', 'outputs.GetRoutesEnvironmentInfoResult'] environment_info: The environment information of the route. See `environment_info` below.
     :param _builtins.str http_api_id: The ID of the HTTP API to which the route belongs.
     :param Sequence[_builtins.str] ids: A list of Route IDs. The value is formulated as `<http_api_id>:<route_id>`.
     :param _builtins.str name_regex: A regex string to filter results by Route name.

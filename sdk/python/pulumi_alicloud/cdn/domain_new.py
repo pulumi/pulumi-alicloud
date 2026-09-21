@@ -376,13 +376,13 @@ class DomainNew(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
+                 certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict', 'outputs.DomainNewCertificateConfig']]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  env: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict', 'outputs.DomainNewSource']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -434,13 +434,13 @@ class DomainNew(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']] certificate_config: Certificate configuration See `certificate_config` below.
+        :param pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict', 'outputs.DomainNewCertificateConfig']] certificate_config: Certificate configuration See `certificate_config` below.
         :param pulumi.Input[_builtins.str] check_url: Health test URL.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] env: Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict', 'outputs.DomainNewSource']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource, valid values: `online`, `offline`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         """
@@ -511,13 +511,13 @@ class DomainNew(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
+                 certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict', 'outputs.DomainNewCertificateConfig']]] = None,
                  check_url: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  env: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict', 'outputs.DomainNewSource']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -557,14 +557,14 @@ class DomainNew(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
-            certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
+            certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict', 'outputs.DomainNewCertificateConfig']]] = None,
             check_url: pulumi.Input[Optional[_builtins.str]] = None,
             cname: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
             env: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict', 'outputs.DomainNewSource']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DomainNew':
         """
@@ -575,14 +575,14 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']] certificate_config: Certificate configuration See `certificate_config` below.
+        :param pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict', 'outputs.DomainNewCertificateConfig']] certificate_config: Certificate configuration See `certificate_config` below.
         :param pulumi.Input[_builtins.str] check_url: Health test URL.
         :param pulumi.Input[_builtins.str] cname: The CNAME domain name corresponding to the accelerated domain name.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] env: Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict', 'outputs.DomainNewSource']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource, valid values: `online`, `offline`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         """

@@ -232,10 +232,10 @@ class CustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
+                 cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict', 'outputs.CustomDomainCertConfig']]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None,
+                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict', 'outputs.CustomDomainRouteConfig']]]]] = None,
                  __props__=None):
         """
         Provides an Alicloud Function Compute custom domain resource.
@@ -348,10 +348,10 @@ class CustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
+        :param pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict', 'outputs.CustomDomainCertConfig']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
         :param pulumi.Input[_builtins.str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[_builtins.str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict', 'outputs.CustomDomainRouteConfig']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         ...
     @overload
@@ -483,10 +483,10 @@ class CustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
+                 cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict', 'outputs.CustomDomainCertConfig']]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None,
+                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict', 'outputs.CustomDomainRouteConfig']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -520,12 +520,12 @@ class CustomDomain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             api_version: pulumi.Input[Optional[_builtins.str]] = None,
-            cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
+            cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict', 'outputs.CustomDomainCertConfig']]] = None,
             created_time: pulumi.Input[Optional[_builtins.str]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
-            route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None) -> 'CustomDomain':
+            route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict', 'outputs.CustomDomainRouteConfig']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -535,12 +535,12 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account id.
         :param pulumi.Input[_builtins.str] api_version: The api version of Function Compute.
-        :param pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
+        :param pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict', 'outputs.CustomDomainCertConfig']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
         :param pulumi.Input[_builtins.str] created_time: The date this resource was created.
         :param pulumi.Input[_builtins.str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[_builtins.str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[_builtins.str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict', 'outputs.CustomDomainRouteConfig']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

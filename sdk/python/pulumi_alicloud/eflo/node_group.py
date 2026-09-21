@@ -553,13 +553,13 @@ class NodeGroup(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict', 'outputs.NodeGroupIpAllocationPolicy']]]]] = None,
                  key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict', 'outputs.NodeGroupNode']]]]] = None,
                  user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -739,13 +739,13 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[_builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
         :param pulumi.Input[_builtins.str] image_id: Image ID. You can modify the image ID since v1.252.0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict', 'outputs.NodeGroupIpAllocationPolicy']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         :param pulumi.Input[_builtins.str] key_pair_name: key pair name
         :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Machine type
         :param pulumi.Input[_builtins.str] node_group_description: NodeGroupDescription
         :param pulumi.Input[_builtins.str] node_group_name: The name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]] nodes: Node List See `nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict', 'outputs.NodeGroupNode']]]] nodes: Node List See `nodes` below.
         :param pulumi.Input[_builtins.str] user_data: Custom Data
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpd_subnets: Cluster subnet list
         :param pulumi.Input[_builtins.str] vswitch_zone_id: Zone ID of the switch
@@ -944,13 +944,13 @@ class NodeGroup(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict', 'outputs.NodeGroupIpAllocationPolicy']]]]] = None,
                  key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
                  login_password: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict', 'outputs.NodeGroupNode']]]]] = None,
                  user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1008,14 +1008,14 @@ class NodeGroup(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict', 'outputs.NodeGroupIpAllocationPolicy']]]]] = None,
             key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
             login_password: pulumi.Input[Optional[_builtins.str]] = None,
             machine_type: pulumi.Input[Optional[_builtins.str]] = None,
             node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
             node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict', 'outputs.NodeGroupNode']]]]] = None,
             user_data: pulumi.Input[Optional[_builtins.str]] = None,
             vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1032,14 +1032,14 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Create time
         :param pulumi.Input[_builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
         :param pulumi.Input[_builtins.str] image_id: Image ID. You can modify the image ID since v1.252.0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict', 'outputs.NodeGroupIpAllocationPolicy']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         :param pulumi.Input[_builtins.str] key_pair_name: key pair name
         :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Machine type
         :param pulumi.Input[_builtins.str] node_group_description: NodeGroupDescription
         :param pulumi.Input[_builtins.str] node_group_id: The first ID of the resource
         :param pulumi.Input[_builtins.str] node_group_name: The name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]] nodes: Node List See `nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict', 'outputs.NodeGroupNode']]]] nodes: Node List See `nodes` below.
         :param pulumi.Input[_builtins.str] user_data: Custom Data
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpd_subnets: Cluster subnet list
         :param pulumi.Input[_builtins.str] vswitch_zone_id: Zone ID of the switch

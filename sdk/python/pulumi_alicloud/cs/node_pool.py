@@ -2917,26 +2917,26 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_mode: pulumi.Input[Optional[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']]] = None,
+                 auto_mode: pulumi.Input[Optional[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict', 'outputs.NodePoolAutoMode']]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
-                 containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']]] = None,
+                 containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict', 'outputs.NodePoolContainerdConfig']]] = None,
                  cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict', 'outputs.NodePoolDataDisk']]]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_size: pulumi.Input[Optional[_builtins.str]] = None,
-                 eflo_node_group: pulumi.Input[Optional[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']]] = None,
+                 eflo_node_group: pulumi.Input[Optional[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict', 'outputs.NodePoolEfloNodeGroup']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  format_disk: pulumi.Input[Optional[_builtins.bool]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  image_type: pulumi.Input[Optional[_builtins.str]] = None,
                  install_cloud_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_metadata_options: pulumi.Input[Optional[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']]] = None,
-                 instance_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]]] = None,
+                 instance_metadata_options: pulumi.Input[Optional[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict', 'outputs.NodePoolInstanceMetadataOptions']]] = None,
+                 instance_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict', 'outputs.NodePoolInstancePattern']]]]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2945,10 +2945,10 @@ class NodePool(pulumi.CustomResource):
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kubelet_configuration: pulumi.Input[Optional[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict']]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict']]]]] = None,
+                 kubelet_configuration: pulumi.Input[Optional[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict', 'outputs.NodePoolKubeletConfiguration']]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict', 'outputs.NodePoolLabel']]]]] = None,
                  login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
-                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
+                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
                  multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2961,15 +2961,15 @@ class NodePool(pulumi.CustomResource):
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  platform: pulumi.Input[Optional[_builtins.str]] = None,
                  pre_user_data: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_pool_options: pulumi.Input[Optional[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
+                 private_pool_options: pulumi.Input[Optional[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict', 'outputs.NodePoolPrivatePoolOptions']]] = None,
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']]] = None,
-                 rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
+                 resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict', 'outputs.NodePoolResourcePoolOptions']]] = None,
+                 rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict', 'outputs.NodePoolRollingPolicy']]] = None,
                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling_config: pulumi.Input[Optional[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']]] = None,
+                 scaling_config: pulumi.Input[Optional[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict', 'outputs.NodePoolScalingConfig']]] = None,
                  scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2977,7 +2977,7 @@ class NodePool(pulumi.CustomResource):
                  soc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
                  spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict']]]]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict', 'outputs.NodePoolSpotPriceLimit']]]]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  system_disk_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2990,12 +2990,12 @@ class NodePool(pulumi.CustomResource):
                  system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  system_disk_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]]] = None,
-                 tee_config: pulumi.Input[Optional[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict', 'outputs.NodePoolTaint']]]]] = None,
+                 tee_config: pulumi.Input[Optional[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict', 'outputs.NodePoolTeeConfig']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  unschedulable: pulumi.Input[Optional[_builtins.bool]] = None,
                  update_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
-                 upgrade_policy: pulumi.Input[Optional[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict', 'outputs.NodePoolUpgradePolicy']]] = None,
                  user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -3662,20 +3662,20 @@ class NodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
+        :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict', 'outputs.NodePoolAutoMode']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
-        :param pulumi.Input[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']] containerd_config: Containerd configuration parameters for worker nodes.
+        :param pulumi.Input[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict', 'outputs.NodePoolContainerdConfig']] containerd_config: Containerd configuration parameters for worker nodes.
                
                > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
         :param pulumi.Input[_builtins.str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict', 'outputs.NodePoolDataDisk']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[_builtins.str] desired_size: Number of expected nodes in the node pool.
-        :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
+        :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict', 'outputs.NodePoolEfloNodeGroup']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] force_delete: Whether to force deletion.
@@ -3703,8 +3703,8 @@ class NodePool(pulumi.CustomResource):
                - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
-        :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]] instance_patterns: Instance property configuration. See `instance_patterns` below.
+        :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict', 'outputs.NodePoolInstanceMetadataOptions']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict', 'outputs.NodePoolInstancePattern']]]] instance_patterns: Instance property configuration. See `instance_patterns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
@@ -3713,10 +3713,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict']] kubelet_configuration: Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
+        :param pulumi.Input[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict', 'outputs.NodePoolKubeletConfiguration']] kubelet_configuration: Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict', 'outputs.NodePoolLabel']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
         :param pulumi.Input[_builtins.bool] login_as_non_root: Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
-        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']] management: Managed node pool configuration. See `management` below.
+        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']] management: Managed node pool configuration. See `management` below.
         :param pulumi.Input[_builtins.str] multi_az_policy: The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.219.0. New field 'node_pool_name' instead.
         :param pulumi.Input[_builtins.int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -3732,7 +3732,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[_builtins.str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[_builtins.str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
-        :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
+        :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict', 'outputs.NodePoolPrivatePoolOptions']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the Worker RAM role.
                * If it is empty, the default Worker RAM role created in the cluster will be used.
                * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
@@ -3740,15 +3740,15 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+        :param pulumi.Input[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict', 'outputs.NodePoolResourcePoolOptions']] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
                
                > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
-        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
+        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict', 'outputs.NodePoolRollingPolicy']] rolling_policy: Rotary configuration. See `rolling_policy` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
-        :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
+        :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict', 'outputs.NodePoolScalingConfig']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
         :param pulumi.Input[_builtins.str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
@@ -3758,7 +3758,7 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[_builtins.int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[_builtins.bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict', 'outputs.NodePoolSpotPriceLimit']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
         :param pulumi.Input[_builtins.str] spot_strategy: The preemptible instance type. Value:
                - `NoSpot` : Non-preemptible instance.
                - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
@@ -3782,8 +3782,8 @@ class NodePool(pulumi.CustomResource):
                - Other disk categories: 20 to 2048.
         :param pulumi.Input[_builtins.str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-        :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict', 'outputs.NodePoolTaint']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
+        :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict', 'outputs.NodePoolTeeConfig']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[_builtins.str] type: Node pool type, value range:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
@@ -3791,7 +3791,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+        :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict', 'outputs.NodePoolUpgradePolicy']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
                
                > **NOTE:** This parameter only applies during resource update.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
@@ -4479,26 +4479,26 @@ class NodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_mode: pulumi.Input[Optional[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']]] = None,
+                 auto_mode: pulumi.Input[Optional[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict', 'outputs.NodePoolAutoMode']]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
-                 containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']]] = None,
+                 containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict', 'outputs.NodePoolContainerdConfig']]] = None,
                  cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict', 'outputs.NodePoolDataDisk']]]]] = None,
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_size: pulumi.Input[Optional[_builtins.str]] = None,
-                 eflo_node_group: pulumi.Input[Optional[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']]] = None,
+                 eflo_node_group: pulumi.Input[Optional[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict', 'outputs.NodePoolEfloNodeGroup']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  format_disk: pulumi.Input[Optional[_builtins.bool]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  image_type: pulumi.Input[Optional[_builtins.str]] = None,
                  install_cloud_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_metadata_options: pulumi.Input[Optional[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']]] = None,
-                 instance_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]]] = None,
+                 instance_metadata_options: pulumi.Input[Optional[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict', 'outputs.NodePoolInstanceMetadataOptions']]] = None,
+                 instance_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict', 'outputs.NodePoolInstancePattern']]]]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4507,10 +4507,10 @@ class NodePool(pulumi.CustomResource):
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kubelet_configuration: pulumi.Input[Optional[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict']]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict']]]]] = None,
+                 kubelet_configuration: pulumi.Input[Optional[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict', 'outputs.NodePoolKubeletConfiguration']]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict', 'outputs.NodePoolLabel']]]]] = None,
                  login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
-                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
+                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
                  multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4523,15 +4523,15 @@ class NodePool(pulumi.CustomResource):
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  platform: pulumi.Input[Optional[_builtins.str]] = None,
                  pre_user_data: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_pool_options: pulumi.Input[Optional[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
+                 private_pool_options: pulumi.Input[Optional[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict', 'outputs.NodePoolPrivatePoolOptions']]] = None,
                  ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']]] = None,
-                 rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
+                 resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict', 'outputs.NodePoolResourcePoolOptions']]] = None,
+                 rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict', 'outputs.NodePoolRollingPolicy']]] = None,
                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling_config: pulumi.Input[Optional[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']]] = None,
+                 scaling_config: pulumi.Input[Optional[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict', 'outputs.NodePoolScalingConfig']]] = None,
                  scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -4539,7 +4539,7 @@ class NodePool(pulumi.CustomResource):
                  soc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
                  spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict']]]]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict', 'outputs.NodePoolSpotPriceLimit']]]]] = None,
                  spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk_bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  system_disk_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -4552,12 +4552,12 @@ class NodePool(pulumi.CustomResource):
                  system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
                  system_disk_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]]] = None,
-                 tee_config: pulumi.Input[Optional[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict', 'outputs.NodePoolTaint']]]]] = None,
+                 tee_config: pulumi.Input[Optional[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict', 'outputs.NodePoolTeeConfig']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  unschedulable: pulumi.Input[Optional[_builtins.bool]] = None,
                  update_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
-                 upgrade_policy: pulumi.Input[Optional[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict', 'outputs.NodePoolUpgradePolicy']]] = None,
                  user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -4666,26 +4666,26 @@ class NodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_mode: pulumi.Input[Optional[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']]] = None,
+            auto_mode: pulumi.Input[Optional[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict', 'outputs.NodePoolAutoMode']]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
             cis_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
-            containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']]] = None,
+            containerd_config: pulumi.Input[Optional[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict', 'outputs.NodePoolContainerdConfig']]] = None,
             cpu_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict', 'outputs.NodePoolDataDisk']]]]] = None,
             deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
             desired_size: pulumi.Input[Optional[_builtins.str]] = None,
-            eflo_node_group: pulumi.Input[Optional[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']]] = None,
+            eflo_node_group: pulumi.Input[Optional[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict', 'outputs.NodePoolEfloNodeGroup']]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             format_disk: pulumi.Input[Optional[_builtins.bool]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
             image_type: pulumi.Input[Optional[_builtins.str]] = None,
             install_cloud_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_metadata_options: pulumi.Input[Optional[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']]] = None,
-            instance_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]]] = None,
+            instance_metadata_options: pulumi.Input[Optional[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict', 'outputs.NodePoolInstanceMetadataOptions']]] = None,
+            instance_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict', 'outputs.NodePoolInstancePattern']]]]] = None,
             instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4694,10 +4694,10 @@ class NodePool(pulumi.CustomResource):
             key_name: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            kubelet_configuration: pulumi.Input[Optional[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict']]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict']]]]] = None,
+            kubelet_configuration: pulumi.Input[Optional[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict', 'outputs.NodePoolKubeletConfiguration']]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict', 'outputs.NodePoolLabel']]]]] = None,
             login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
-            management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
+            management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
             multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4711,15 +4711,15 @@ class NodePool(pulumi.CustomResource):
             period_unit: pulumi.Input[Optional[_builtins.str]] = None,
             platform: pulumi.Input[Optional[_builtins.str]] = None,
             pre_user_data: pulumi.Input[Optional[_builtins.str]] = None,
-            private_pool_options: pulumi.Input[Optional[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
+            private_pool_options: pulumi.Input[Optional[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict', 'outputs.NodePoolPrivatePoolOptions']]] = None,
             ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
             rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']]] = None,
-            rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
+            resource_pool_options: pulumi.Input[Optional[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict', 'outputs.NodePoolResourcePoolOptions']]] = None,
+            rolling_policy: pulumi.Input[Optional[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict', 'outputs.NodePoolRollingPolicy']]] = None,
             runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
             runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
-            scaling_config: pulumi.Input[Optional[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']]] = None,
+            scaling_config: pulumi.Input[Optional[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict', 'outputs.NodePoolScalingConfig']]] = None,
             scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4728,7 +4728,7 @@ class NodePool(pulumi.CustomResource):
             soc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
             spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
-            spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict']]]]] = None,
+            spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict', 'outputs.NodePoolSpotPriceLimit']]]]] = None,
             spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             system_disk_bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             system_disk_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -4741,12 +4741,12 @@ class NodePool(pulumi.CustomResource):
             system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
             system_disk_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]]] = None,
-            tee_config: pulumi.Input[Optional[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict', 'outputs.NodePoolTaint']]]]] = None,
+            tee_config: pulumi.Input[Optional[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict', 'outputs.NodePoolTeeConfig']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             unschedulable: pulumi.Input[Optional[_builtins.bool]] = None,
             update_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
-            upgrade_policy: pulumi.Input[Optional[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']]] = None,
+            upgrade_policy: pulumi.Input[Optional[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict', 'outputs.NodePoolUpgradePolicy']]] = None,
             user_data: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'NodePool':
         """
@@ -4756,20 +4756,20 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
+        :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict', 'outputs.NodePoolAutoMode']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
-        :param pulumi.Input[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict']] containerd_config: Containerd configuration parameters for worker nodes.
+        :param pulumi.Input[Union['NodePoolContainerdConfigArgs', 'NodePoolContainerdConfigArgsDict', 'outputs.NodePoolContainerdConfig']] containerd_config: Containerd configuration parameters for worker nodes.
                
                > **NOTE:** Setting `containerd_config` at creation time takes effect through an extra node_config update call issued after the node pool has been created. Removing the whole `containerd_config` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerd_config` below.
         :param pulumi.Input[_builtins.str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict', 'outputs.NodePoolDataDisk']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[_builtins.str] desired_size: Number of expected nodes in the node pool.
-        :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
+        :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict', 'outputs.NodePoolEfloNodeGroup']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] force_delete: Whether to force deletion.
@@ -4797,8 +4797,8 @@ class NodePool(pulumi.CustomResource):
                - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
-        :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]] instance_patterns: Instance property configuration. See `instance_patterns` below.
+        :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict', 'outputs.NodePoolInstanceMetadataOptions']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict', 'outputs.NodePoolInstancePattern']]]] instance_patterns: Instance property configuration. See `instance_patterns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
@@ -4807,10 +4807,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict']] kubelet_configuration: Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
+        :param pulumi.Input[Union['NodePoolKubeletConfigurationArgs', 'NodePoolKubeletConfigurationArgsDict', 'outputs.NodePoolKubeletConfiguration']] kubelet_configuration: Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolLabelArgs', 'NodePoolLabelArgsDict', 'outputs.NodePoolLabel']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
         :param pulumi.Input[_builtins.bool] login_as_non_root: Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
-        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']] management: Managed node pool configuration. See `management` below.
+        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']] management: Managed node pool configuration. See `management` below.
         :param pulumi.Input[_builtins.str] multi_az_policy: The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.219.0. New field 'node_pool_name' instead.
         :param pulumi.Input[_builtins.int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -4827,7 +4827,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[_builtins.str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[_builtins.str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
-        :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
+        :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict', 'outputs.NodePoolPrivatePoolOptions']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[_builtins.str] ram_role_name: The name of the Worker RAM role.
                * If it is empty, the default Worker RAM role created in the cluster will be used.
                * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
@@ -4835,15 +4835,15 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict']] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
+        :param pulumi.Input[Union['NodePoolResourcePoolOptionsArgs', 'NodePoolResourcePoolOptionsArgsDict', 'outputs.NodePoolResourcePoolOptions']] resource_pool_options: The resource pool and resource pool strategy used when launching instances. See `resource_pool_options` below.
                
                > **NOTE:** `resource_pool_options` only takes effect when creating PostPaid (pay-as-you-go) instances, and it cannot be set together with `private_pool_options.private_pool_options_match_criteria` and `private_pool_options.private_pool_options_id`.
-        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
+        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict', 'outputs.NodePoolRollingPolicy']] rolling_policy: Rotary configuration. See `rolling_policy` below.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
-        :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
+        :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict', 'outputs.NodePoolScalingConfig']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
         :param pulumi.Input[_builtins.str] scaling_group_id: The ID of the scaling group.
         :param pulumi.Input[_builtins.str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
@@ -4854,7 +4854,7 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[_builtins.int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[_builtins.bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolSpotPriceLimitArgs', 'NodePoolSpotPriceLimitArgsDict', 'outputs.NodePoolSpotPriceLimit']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
         :param pulumi.Input[_builtins.str] spot_strategy: The preemptible instance type. Value:
                - `NoSpot` : Non-preemptible instance.
                - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
@@ -4878,8 +4878,8 @@ class NodePool(pulumi.CustomResource):
                - Other disk categories: 20 to 2048.
         :param pulumi.Input[_builtins.str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-        :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict', 'outputs.NodePoolTaint']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
+        :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict', 'outputs.NodePoolTeeConfig']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[_builtins.str] type: Node pool type, value range:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
@@ -4887,7 +4887,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
-        :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+        :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict', 'outputs.NodePoolUpgradePolicy']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
                
                > **NOTE:** This parameter only applies during resource update.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.

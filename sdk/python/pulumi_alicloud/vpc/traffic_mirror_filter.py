@@ -291,8 +291,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
-                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
+                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]]] = None,
+                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -363,8 +363,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
@@ -452,8 +452,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
-                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
+                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]]] = None,
+                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -486,8 +486,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-            egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
-            ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
+            egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]]] = None,
+            ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -503,8 +503,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.

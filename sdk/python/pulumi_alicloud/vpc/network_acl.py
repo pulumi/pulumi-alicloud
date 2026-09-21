@@ -382,11 +382,11 @@ class NetworkAcl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
-                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
+                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]]] = None,
+                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]]] = None,
                  source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -463,12 +463,12 @@ class NetworkAcl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
@@ -566,11 +566,11 @@ class NetworkAcl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
-                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
+                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]]] = None,
+                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]]] = None,
                  source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -608,11 +608,11 @@ class NetworkAcl(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
-            ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
+            egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]]] = None,
+            ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]]] = None,
             source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -626,12 +626,12 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
         :param pulumi.Input[_builtins.str] status: The state of the network ACL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
