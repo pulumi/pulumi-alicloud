@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
     public sealed class NetworkAclEgressAclEntryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the outbound rule.
+        /// The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `NetworkAclEntryName`.
         /// The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// Name of the outbound rule entry.
+        /// Name of the outbound rule entry. Currently, this name is displayed in the console.
         /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclEntryName")]

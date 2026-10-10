@@ -85,7 +85,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
      * The type of Endpoint N in the endpoint group. Valid values:
      * - `Domain`: A custom domain name.
      * - `Ip`: A custom IP address.
-     * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+     * - `IpTarget`: (Available since v1.262.0) a custom private IP address.
      * - `PublicIp`: An Alibaba Cloud public IP address.
      * - `ECS`: An Elastic Compute Service (ECS) instance.
      * - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -102,7 +102,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
      * @return The type of Endpoint N in the endpoint group. Valid values:
      * - `Domain`: A custom domain name.
      * - `Ip`: A custom IP address.
-     * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+     * - `IpTarget`: (Available since v1.262.0) a custom private IP address.
      * - `PublicIp`: An Alibaba Cloud public IP address.
      * - `ECS`: An Elastic Compute Service (ECS) instance.
      * - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -117,14 +117,14 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
     }
 
     /**
-     * The ID of the VPC.
+     * The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC.
+     * @return The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -132,14 +132,14 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
     }
 
     /**
-     * The IDs of vSwitches that are deployed in the VPC.
+     * A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
      * 
      */
     @Import(name="vswitchIds")
     private @Nullable Output<List<String>> vswitchIds;
 
     /**
-     * @return The IDs of vSwitches that are deployed in the VPC.
+     * @return A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
      * 
      */
     public Optional<Output<List<String>>> vswitchIds() {
@@ -284,7 +284,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
          * @param type The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
-         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+         * - `IpTarget`: (Available since v1.262.0) a custom private IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -305,7 +305,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
          * @param type The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
-         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+         * - `IpTarget`: (Available since v1.262.0) a custom private IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -322,7 +322,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param vpcId The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param vpcId The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchIds The IDs of vSwitches that are deployed in the VPC.
+         * @param vswitchIds A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchIds The IDs of vSwitches that are deployed in the VPC.
+         * @param vswitchIds A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchIds The IDs of vSwitches that are deployed in the VPC.
+         * @param vswitchIds A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
          * 
          * @return builder
          * 

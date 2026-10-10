@@ -79,11 +79,6 @@ type Certificate struct {
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
-	//
-	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType pulumi.StringOutput `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
 	Domains pulumi.StringPtrOutput `pulumi:"domains"`
@@ -99,7 +94,7 @@ type Certificate struct {
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+	// The certificate type. Valid values:
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -150,11 +145,6 @@ type certificateState struct {
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
-	//
-	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType *string `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
 	Domains *string `pulumi:"domains"`
@@ -170,7 +160,7 @@ type certificateState struct {
 	SiteId *string `pulumi:"siteId"`
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status *string `pulumi:"status"`
-	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+	// The certificate type. Valid values:
 	Type *string `pulumi:"type"`
 }
 
@@ -186,11 +176,6 @@ type CertificateState struct {
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
 	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
-	//
-	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType pulumi.StringPtrInput
 	// A list of domain names. Multiple domain names are separated by commas.
 	Domains pulumi.StringPtrInput
@@ -206,7 +191,7 @@ type CertificateState struct {
 	SiteId pulumi.StringPtrInput
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status pulumi.StringPtrInput
-	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+	// The certificate type. Valid values:
 	Type pulumi.StringPtrInput
 }
 
@@ -224,11 +209,6 @@ type certificateArgs struct {
 	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
 	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
-	//
-	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType string `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
 	Domains *string `pulumi:"domains"`
@@ -242,7 +222,7 @@ type certificateArgs struct {
 	Region *string `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId string `pulumi:"siteId"`
-	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+	// The certificate type. Valid values:
 	Type *string `pulumi:"type"`
 }
 
@@ -257,11 +237,6 @@ type CertificateArgs struct {
 	// Certificate content.
 	Certificate pulumi.StringPtrInput
 	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
-	//
-	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType pulumi.StringInput
 	// A list of domain names. Multiple domain names are separated by commas.
 	Domains pulumi.StringPtrInput
@@ -275,7 +250,7 @@ type CertificateArgs struct {
 	Region pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.StringInput
-	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+	// The certificate type. Valid values:
 	Type pulumi.StringPtrInput
 }
 
@@ -392,11 +367,6 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The certificate type.
-// - cas (Certificate Center Certificate)
-// - upload (custom upload certificate)
-// - free( Free certificate).
-//
-// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o CertificateOutput) CreatedType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreatedType }).(pulumi.StringOutput)
 }
@@ -430,7 +400,7 @@ func (o CertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+// The certificate type. Valid values:
 func (o CertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

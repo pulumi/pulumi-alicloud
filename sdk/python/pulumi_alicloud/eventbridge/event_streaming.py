@@ -387,6 +387,8 @@ class EventStreaming(pulumi.CustomResource):
             }))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Event Bridge Event Streaming can be imported using the id, e.g.
@@ -466,6 +468,8 @@ class EventStreaming(pulumi.CustomResource):
                 },
             }))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

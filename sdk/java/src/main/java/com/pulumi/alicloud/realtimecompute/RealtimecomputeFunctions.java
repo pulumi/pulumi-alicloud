@@ -8,8 +8,11 @@ import com.pulumi.alicloud.realtimecompute.inputs.GetMembersArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.GetMembersPlainArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.GetSqlFilesArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.GetSqlFilesPlainArgs;
+import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesArgs;
+import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesPlainArgs;
 import com.pulumi.alicloud.realtimecompute.outputs.GetMembersResult;
 import com.pulumi.alicloud.realtimecompute.outputs.GetSqlFilesResult;
+import com.pulumi.alicloud.realtimecompute.outputs.GetVariablesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -817,5 +820,580 @@ public final class RealtimecomputeFunctions {
      */
     public static CompletableFuture<GetSqlFilesResult> getSqlFilesPlain(GetSqlFilesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:realtimecompute/getSqlFiles:getSqlFiles", TypeShape.of(GetSqlFilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Realtime Compute Variables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstance;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
+     * import com.pulumi.alicloud.realtimecompute.Variable;
+     * import com.pulumi.alicloud.realtimecompute.VariableArgs;
+     * import com.pulumi.alicloud.realtimecompute.RealtimecomputeFunctions;
+     * import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
+     *             .comments("yoyoyo")
+     *             .build());
+     * 
+     *         var defaultVvpInstance = new VvpInstance("defaultVvpInstance", VvpInstanceArgs.builder()
+     *             .vvpInstanceName(name)
+     *             .storage(VvpInstanceStorageArgs.builder()
+     *                 .oss(VvpInstanceStorageOssArgs.builder()
+     *                     .bucket(default_.buckets()[0].name())
+     *                     .build())
+     *                 .build())
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .resourceSpec(VvpInstanceResourceSpecArgs.builder()
+     *                 .cpu(8)
+     *                 .memoryGb(32)
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .zoneId(defaultSwitch.zoneId())
+     *             .build());
+     * 
+     *         var defaultVariable = new Variable("defaultVariable", VariableArgs.builder()
+     *             .name(name)
+     *             .namespace(defaultVvpInstance.vvpInstanceName().applyValue(_vvpInstanceName -> String.format("%s-default", _vvpInstanceName)))
+     *             .workspace(defaultVvpInstance.resourceId())
+     *             .kind("Clear")
+     *             .value("YourPassword123!")
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = RealtimecomputeFunctions.getVariables(GetVariablesArgs.builder()
+     *             .ids(defaultVariable.id())
+     *             .workspace(defaultVariable.workspace())
+     *             .namespace(defaultVariable.namespace())
+     *             .build());
+     * 
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVariablesResult> getVariables(GetVariablesArgs args) {
+        return getVariables(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Realtime Compute Variables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstance;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
+     * import com.pulumi.alicloud.realtimecompute.Variable;
+     * import com.pulumi.alicloud.realtimecompute.VariableArgs;
+     * import com.pulumi.alicloud.realtimecompute.RealtimecomputeFunctions;
+     * import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
+     *             .comments("yoyoyo")
+     *             .build());
+     * 
+     *         var defaultVvpInstance = new VvpInstance("defaultVvpInstance", VvpInstanceArgs.builder()
+     *             .vvpInstanceName(name)
+     *             .storage(VvpInstanceStorageArgs.builder()
+     *                 .oss(VvpInstanceStorageOssArgs.builder()
+     *                     .bucket(default_.buckets()[0].name())
+     *                     .build())
+     *                 .build())
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .resourceSpec(VvpInstanceResourceSpecArgs.builder()
+     *                 .cpu(8)
+     *                 .memoryGb(32)
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .zoneId(defaultSwitch.zoneId())
+     *             .build());
+     * 
+     *         var defaultVariable = new Variable("defaultVariable", VariableArgs.builder()
+     *             .name(name)
+     *             .namespace(defaultVvpInstance.vvpInstanceName().applyValue(_vvpInstanceName -> String.format("%s-default", _vvpInstanceName)))
+     *             .workspace(defaultVvpInstance.resourceId())
+     *             .kind("Clear")
+     *             .value("YourPassword123!")
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = RealtimecomputeFunctions.getVariables(GetVariablesArgs.builder()
+     *             .ids(defaultVariable.id())
+     *             .workspace(defaultVariable.workspace())
+     *             .namespace(defaultVariable.namespace())
+     *             .build());
+     * 
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVariablesResult> getVariablesPlain(GetVariablesPlainArgs args) {
+        return getVariablesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Realtime Compute Variables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstance;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
+     * import com.pulumi.alicloud.realtimecompute.Variable;
+     * import com.pulumi.alicloud.realtimecompute.VariableArgs;
+     * import com.pulumi.alicloud.realtimecompute.RealtimecomputeFunctions;
+     * import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
+     *             .comments("yoyoyo")
+     *             .build());
+     * 
+     *         var defaultVvpInstance = new VvpInstance("defaultVvpInstance", VvpInstanceArgs.builder()
+     *             .vvpInstanceName(name)
+     *             .storage(VvpInstanceStorageArgs.builder()
+     *                 .oss(VvpInstanceStorageOssArgs.builder()
+     *                     .bucket(default_.buckets()[0].name())
+     *                     .build())
+     *                 .build())
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .resourceSpec(VvpInstanceResourceSpecArgs.builder()
+     *                 .cpu(8)
+     *                 .memoryGb(32)
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .zoneId(defaultSwitch.zoneId())
+     *             .build());
+     * 
+     *         var defaultVariable = new Variable("defaultVariable", VariableArgs.builder()
+     *             .name(name)
+     *             .namespace(defaultVvpInstance.vvpInstanceName().applyValue(_vvpInstanceName -> String.format("%s-default", _vvpInstanceName)))
+     *             .workspace(defaultVvpInstance.resourceId())
+     *             .kind("Clear")
+     *             .value("YourPassword123!")
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = RealtimecomputeFunctions.getVariables(GetVariablesArgs.builder()
+     *             .ids(defaultVariable.id())
+     *             .workspace(defaultVariable.workspace())
+     *             .namespace(defaultVariable.namespace())
+     *             .build());
+     * 
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVariablesResult> getVariables(GetVariablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:realtimecompute/getVariables:getVariables", TypeShape.of(GetVariablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Realtime Compute Variables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstance;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
+     * import com.pulumi.alicloud.realtimecompute.Variable;
+     * import com.pulumi.alicloud.realtimecompute.VariableArgs;
+     * import com.pulumi.alicloud.realtimecompute.RealtimecomputeFunctions;
+     * import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
+     *             .comments("yoyoyo")
+     *             .build());
+     * 
+     *         var defaultVvpInstance = new VvpInstance("defaultVvpInstance", VvpInstanceArgs.builder()
+     *             .vvpInstanceName(name)
+     *             .storage(VvpInstanceStorageArgs.builder()
+     *                 .oss(VvpInstanceStorageOssArgs.builder()
+     *                     .bucket(default_.buckets()[0].name())
+     *                     .build())
+     *                 .build())
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .resourceSpec(VvpInstanceResourceSpecArgs.builder()
+     *                 .cpu(8)
+     *                 .memoryGb(32)
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .zoneId(defaultSwitch.zoneId())
+     *             .build());
+     * 
+     *         var defaultVariable = new Variable("defaultVariable", VariableArgs.builder()
+     *             .name(name)
+     *             .namespace(defaultVvpInstance.vvpInstanceName().applyValue(_vvpInstanceName -> String.format("%s-default", _vvpInstanceName)))
+     *             .workspace(defaultVvpInstance.resourceId())
+     *             .kind("Clear")
+     *             .value("YourPassword123!")
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = RealtimecomputeFunctions.getVariables(GetVariablesArgs.builder()
+     *             .ids(defaultVariable.id())
+     *             .workspace(defaultVariable.workspace())
+     *             .namespace(defaultVariable.namespace())
+     *             .build());
+     * 
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVariablesResult> getVariables(GetVariablesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:realtimecompute/getVariables:getVariables", TypeShape.of(GetVariablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Realtime Compute Variables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstance;
+     * import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
+     * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
+     * import com.pulumi.alicloud.realtimecompute.Variable;
+     * import com.pulumi.alicloud.realtimecompute.VariableArgs;
+     * import com.pulumi.alicloud.realtimecompute.RealtimecomputeFunctions;
+     * import com.pulumi.alicloud.realtimecompute.inputs.GetVariablesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name(name)
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
+     *             .comments("yoyoyo")
+     *             .build());
+     * 
+     *         var defaultVvpInstance = new VvpInstance("defaultVvpInstance", VvpInstanceArgs.builder()
+     *             .vvpInstanceName(name)
+     *             .storage(VvpInstanceStorageArgs.builder()
+     *                 .oss(VvpInstanceStorageOssArgs.builder()
+     *                     .bucket(default_.buckets()[0].name())
+     *                     .build())
+     *                 .build())
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .resourceSpec(VvpInstanceResourceSpecArgs.builder()
+     *                 .cpu(8)
+     *                 .memoryGb(32)
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .zoneId(defaultSwitch.zoneId())
+     *             .build());
+     * 
+     *         var defaultVariable = new Variable("defaultVariable", VariableArgs.builder()
+     *             .name(name)
+     *             .namespace(defaultVvpInstance.vvpInstanceName().applyValue(_vvpInstanceName -> String.format("%s-default", _vvpInstanceName)))
+     *             .workspace(defaultVvpInstance.resourceId())
+     *             .kind("Clear")
+     *             .value("YourPassword123!")
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = RealtimecomputeFunctions.getVariables(GetVariablesArgs.builder()
+     *             .ids(defaultVariable.id())
+     *             .workspace(defaultVariable.workspace())
+     *             .namespace(defaultVariable.namespace())
+     *             .build());
+     * 
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVariablesResult> getVariablesPlain(GetVariablesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:realtimecompute/getVariables:getVariables", TypeShape.of(GetVariablesResult.class), args, Utilities.withVersion(options));
     }
 }

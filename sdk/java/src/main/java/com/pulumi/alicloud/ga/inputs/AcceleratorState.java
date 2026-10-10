@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ga.inputs;
 
+import com.pulumi.alicloud.ga.inputs.AcceleratorIpSetConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -61,6 +62,21 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> autoUseCoupon() {
         return Optional.ofNullable(this.autoUseCoupon);
+    }
+
+    /**
+     * The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     * 
+     */
+    @Import(name="bandwidth")
+    private @Nullable Output<Integer> bandwidth;
+
+    /**
+     * @return The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     * 
+     */
+    public Optional<Output<Integer>> bandwidth() {
+        return Optional.ofNullable(this.bandwidth);
     }
 
     /**
@@ -144,6 +160,21 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> duration() {
         return Optional.ofNullable(this.duration);
+    }
+
+    /**
+     * The configurations of the acceleration area. See `ipSetConfig` below.
+     * 
+     */
+    @Import(name="ipSetConfig")
+    private @Nullable Output<AcceleratorIpSetConfigArgs> ipSetConfig;
+
+    /**
+     * @return The configurations of the acceleration area. See `ipSetConfig` below.
+     * 
+     */
+    public Optional<Output<AcceleratorIpSetConfigArgs>> ipSetConfig() {
+        return Optional.ofNullable(this.ipSetConfig);
     }
 
     /**
@@ -282,11 +313,13 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         this.acceleratorName = $.acceleratorName;
         this.autoRenewDuration = $.autoRenewDuration;
         this.autoUseCoupon = $.autoUseCoupon;
+        this.bandwidth = $.bandwidth;
         this.bandwidthBillingType = $.bandwidthBillingType;
         this.crossBorderMode = $.crossBorderMode;
         this.crossBorderStatus = $.crossBorderStatus;
         this.description = $.description;
         this.duration = $.duration;
+        this.ipSetConfig = $.ipSetConfig;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
         this.promotionOptionNo = $.promotionOptionNo;
@@ -376,6 +409,27 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoUseCoupon(Boolean autoUseCoupon) {
             return autoUseCoupon(Output.of(autoUseCoupon));
+        }
+
+        /**
+         * @param bandwidth The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(@Nullable Output<Integer> bandwidth) {
+            $.bandwidth = bandwidth;
+            return this;
+        }
+
+        /**
+         * @param bandwidth The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(Integer bandwidth) {
+            return bandwidth(Output.of(bandwidth));
         }
 
         /**
@@ -489,6 +543,27 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
+        }
+
+        /**
+         * @param ipSetConfig The configurations of the acceleration area. See `ipSetConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipSetConfig(@Nullable Output<AcceleratorIpSetConfigArgs> ipSetConfig) {
+            $.ipSetConfig = ipSetConfig;
+            return this;
+        }
+
+        /**
+         * @param ipSetConfig The configurations of the acceleration area. See `ipSetConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipSetConfig(AcceleratorIpSetConfigArgs ipSetConfig) {
+            return ipSetConfig(Output.of(ipSetConfig));
         }
 
         /**

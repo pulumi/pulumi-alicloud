@@ -11,7 +11,13 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.241.0.
  *
+ * > **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+ *
  * ## Example Usage
+ *
+ * ### Flat attributes
+ *
+ * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,11 +35,32 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCloudControlPriceExampleId = _default.then(_default => _default.prices?.[0]?.discountPrice);
  * ```
+ *
+ * ### Nested attributes
+ *
+ * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.cloudcontrol.getPrices({
+ *     desireAttributesJson: JSON.stringify({
+ *         InstanceType: "ecs.g7.large",
+ *         SystemDisk: {
+ *             Category: "cloud_essd",
+ *         },
+ *     }),
+ *     product: "ECS",
+ *     resourceCode: "Instance",
+ * });
+ * ```
  */
 export function getPrices(args: GetPricesArgs, opts?: pulumi.InvokeOptions): Promise<GetPricesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudcontrol/getPrices:getPrices", {
         "desireAttributes": args.desireAttributes,
+        "desireAttributesJson": args.desireAttributesJson,
         "outputFile": args.outputFile,
         "product": args.product,
         "resourceCode": args.resourceCode,
@@ -45,9 +72,13 @@ export function getPrices(args: GetPricesArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetPricesArgs {
     /**
-     * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+     * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `desireAttributesJson`.
      */
     desireAttributes?: {[key: string]: string};
+    /**
+     * The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "cloudEssd"}}
+     */
+    desireAttributesJson?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
@@ -67,6 +98,7 @@ export interface GetPricesArgs {
  */
 export interface GetPricesResult {
     readonly desireAttributes?: {[key: string]: string};
+    readonly desireAttributesJson?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -84,7 +116,13 @@ export interface GetPricesResult {
  *
  * > **NOTE:** Available since v1.241.0.
  *
+ * > **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+ *
  * ## Example Usage
+ *
+ * ### Flat attributes
+ *
+ * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -102,11 +140,32 @@ export interface GetPricesResult {
  * });
  * export const alicloudCloudControlPriceExampleId = _default.then(_default => _default.prices?.[0]?.discountPrice);
  * ```
+ *
+ * ### Nested attributes
+ *
+ * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.cloudcontrol.getPrices({
+ *     desireAttributesJson: JSON.stringify({
+ *         InstanceType: "ecs.g7.large",
+ *         SystemDisk: {
+ *             Category: "cloud_essd",
+ *         },
+ *     }),
+ *     product: "ECS",
+ *     resourceCode: "Instance",
+ * });
+ * ```
  */
 export function getPricesOutput(args: GetPricesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPricesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudcontrol/getPrices:getPrices", {
         "desireAttributes": args.desireAttributes,
+        "desireAttributesJson": args.desireAttributesJson,
         "outputFile": args.outputFile,
         "product": args.product,
         "resourceCode": args.resourceCode,
@@ -118,9 +177,13 @@ export function getPricesOutput(args: GetPricesOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetPricesOutputArgs {
     /**
-     * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+     * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `desireAttributesJson`.
      */
     desireAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "cloudEssd"}}
+     */
+    desireAttributesJson?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */

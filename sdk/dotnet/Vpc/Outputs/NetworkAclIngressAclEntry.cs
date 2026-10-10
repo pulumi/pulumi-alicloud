@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class NetworkAclIngressAclEntry
     {
         /// <summary>
-        /// Description of the inbound rule.
+        /// Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `NetworkAclEntryName`.
         /// The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? Description;
@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string? IpVersion;
         /// <summary>
-        /// The name of the inbound rule entry.
+        /// The name of the inbound rule entry. Currently, this name is displayed in the console.
         /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? NetworkAclEntryName;

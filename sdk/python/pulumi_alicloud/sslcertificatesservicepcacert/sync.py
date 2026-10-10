@@ -122,6 +122,8 @@ class Sync(pulumi.CustomResource):
         default_sync = alicloud.sslcertificatesservicepcacert.Sync("default", ids=[__item.id for __item in default])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SSL Certificates Pca Cert Sync can be imported using the id, which is the comma-separated list of the synchronized PCA certificate identifiers, e.g.
@@ -189,6 +191,8 @@ class Sync(pulumi.CustomResource):
                 country_code="cn"))
         default_sync = alicloud.sslcertificatesservicepcacert.Sync("default", ids=[__item.id for __item in default])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

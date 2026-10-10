@@ -26,7 +26,13 @@ public final class CloudcontrolFunctions {
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
+     * &gt; **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+     * 
      * ## Example Usage
+     * 
+     * ### Flat attributes
+     * 
+     * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
      * 
      * <pre>
      * {@code
@@ -62,6 +68,50 @@ public final class CloudcontrolFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCloudControlPriceExampleId", default_.prices()[0].discountPrice());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Nested attributes
+     * 
+     * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
+     * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudcontrolFunctions.getPrices(GetPricesArgs.builder()
+     *             .desireAttributesJson(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("InstanceType", "ecs.g7.large"),
+     *                     jsonProperty("SystemDisk", jsonObject(
+     *                         jsonProperty("Category", "cloud_essd")
+     *                     ))
+     *                 )))
+     *             .product("ECS")
+     *             .resourceCode("Instance")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -76,7 +126,13 @@ public final class CloudcontrolFunctions {
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
+     * &gt; **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+     * 
      * ## Example Usage
+     * 
+     * ### Flat attributes
+     * 
+     * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
      * 
      * <pre>
      * {@code
@@ -112,6 +168,50 @@ public final class CloudcontrolFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCloudControlPriceExampleId", default_.prices()[0].discountPrice());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Nested attributes
+     * 
+     * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
+     * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudcontrolFunctions.getPrices(GetPricesArgs.builder()
+     *             .desireAttributesJson(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("InstanceType", "ecs.g7.large"),
+     *                     jsonProperty("SystemDisk", jsonObject(
+     *                         jsonProperty("Category", "cloud_essd")
+     *                     ))
+     *                 )))
+     *             .product("ECS")
+     *             .resourceCode("Instance")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -126,7 +226,13 @@ public final class CloudcontrolFunctions {
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
+     * &gt; **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+     * 
      * ## Example Usage
+     * 
+     * ### Flat attributes
+     * 
+     * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
      * 
      * <pre>
      * {@code
@@ -162,6 +268,50 @@ public final class CloudcontrolFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCloudControlPriceExampleId", default_.prices()[0].discountPrice());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Nested attributes
+     * 
+     * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
+     * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudcontrolFunctions.getPrices(GetPricesArgs.builder()
+     *             .desireAttributesJson(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("InstanceType", "ecs.g7.large"),
+     *                     jsonProperty("SystemDisk", jsonObject(
+     *                         jsonProperty("Category", "cloud_essd")
+     *                     ))
+     *                 )))
+     *             .product("ECS")
+     *             .resourceCode("Instance")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -176,7 +326,13 @@ public final class CloudcontrolFunctions {
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
+     * &gt; **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+     * 
      * ## Example Usage
+     * 
+     * ### Flat attributes
+     * 
+     * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
      * 
      * <pre>
      * {@code
@@ -217,6 +373,50 @@ public final class CloudcontrolFunctions {
      * }
      * </pre>
      * 
+     * ### Nested attributes
+     * 
+     * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
+     * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudcontrolFunctions.getPrices(GetPricesArgs.builder()
+     *             .desireAttributesJson(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("InstanceType", "ecs.g7.large"),
+     *                     jsonProperty("SystemDisk", jsonObject(
+     *                         jsonProperty("Category", "cloud_essd")
+     *                     ))
+     *                 )))
+     *             .product("ECS")
+     *             .resourceCode("Instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPricesResult> getPrices(GetPricesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getPrices:getPrices", TypeShape.of(GetPricesResult.class), args, Utilities.withVersion(options));
@@ -226,7 +426,13 @@ public final class CloudcontrolFunctions {
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
+     * &gt; **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+     * 
      * ## Example Usage
+     * 
+     * ### Flat attributes
+     * 
+     * Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
      * 
      * <pre>
      * {@code
@@ -262,6 +468,50 @@ public final class CloudcontrolFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCloudControlPriceExampleId", default_.prices()[0].discountPrice());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Nested attributes
+     * 
+     * Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudcontrol.CloudcontrolFunctions;
+     * import com.pulumi.alicloud.cloudcontrol.inputs.GetPricesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudcontrolFunctions.getPrices(GetPricesArgs.builder()
+     *             .desireAttributesJson(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("InstanceType", "ecs.g7.large"),
+     *                     jsonProperty("SystemDisk", jsonObject(
+     *                         jsonProperty("Category", "cloud_essd")
+     *                     ))
+     *                 )))
+     *             .product("ECS")
+     *             .resourceCode("Instance")
+     *             .build());
+     * 
      *     }
      * }
      * }

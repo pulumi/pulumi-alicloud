@@ -53,7 +53,7 @@ import * as alicloud from "@pulumi/alicloud";
 const config = new pulumi.Config();
 const name = config.get("name") || "pulumi-example";
 const _default = alicloud.getZones({
-    availableDiskCategory: "cloud_efficiency",
+    availableDiskCategory: "cloud_essd",
     availableResourceCreation: "VSwitch",
 });
 // Create a new ECS instance for VPC
@@ -83,17 +83,17 @@ const instance = new alicloud.ecs.Instance("instance", {
     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
     securityGroups: [group].map(__item => __item.id),
     instanceType: "ecs.n4.large",
-    systemDiskCategory: "cloud_efficiency",
+    systemDiskCategory: "cloud_essd",
     systemDiskName: name,
     systemDiskDescription: "system_disk_description",
-    imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    imageId: "ubuntu_22_04_x64_20G_alibase_20260828.vhd",
     instanceName: name,
     vswitchId: vswitch.id,
     internetMaxBandwidthOut: 10,
     dataDisks: [{
         name: "data-disk",
         size: 20,
-        category: "cloud_efficiency",
+        category: "cloud_essd",
         description: "disk-description",
         encrypted: true,
         kmsKeyId: key.id,
@@ -125,7 +125,7 @@ config = pulumi.Config()
 name = config.get("name")
 if name is None:
     name = "pulumi-example"
-default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+default = alicloud.get_zones(available_disk_category="cloud_essd",
     available_resource_creation="VSwitch")
 # Create a new ECS instance for VPC
 vpc = alicloud.vpc.Network("vpc",
@@ -150,17 +150,17 @@ instance = alicloud.ecs.Instance("instance",
     availability_zone=default.zones[0].id,
     security_groups=[__item.id for __item in [group]],
     instance_type="ecs.n4.large",
-    system_disk_category="cloud_efficiency",
+    system_disk_category="cloud_essd",
     system_disk_name=name,
     system_disk_description="system_disk_description",
-    image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    image_id="ubuntu_22_04_x64_20G_alibase_20260828.vhd",
     instance_name=name,
     vswitch_id=vswitch.id,
     internet_max_bandwidth_out=10,
     data_disks=[{
         "name": "data-disk",
         "size": 20,
-        "category": "cloud_efficiency",
+        "category": "cloud_essd",
         "description": "disk-description",
         "encrypted": True,
         "kms_key_id": key.id,
@@ -195,7 +195,7 @@ return await Deployment.RunAsync(() =>
     var name = config.Get("name") ?? "pulumi-example";
     var @default = AliCloud.GetZones.Invoke(new()
     {
-        AvailableDiskCategory = "cloud_efficiency",
+        AvailableDiskCategory = "cloud_essd",
         AvailableResourceCreation = "VSwitch",
     });
 
@@ -238,10 +238,10 @@ return await Deployment.RunAsync(() =>
             @group,
         }.Select(__item => __item.Id).ToList(),
         InstanceType = "ecs.n4.large",
-        SystemDiskCategory = "cloud_efficiency",
+        SystemDiskCategory = "cloud_essd",
         SystemDiskName = name,
         SystemDiskDescription = "system_disk_description",
-        ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+        ImageId = "ubuntu_22_04_x64_20G_alibase_20260828.vhd",
         InstanceName = name,
         VswitchId = vswitch.Id,
         InternetMaxBandwidthOut = 10,
@@ -251,7 +251,7 @@ return await Deployment.RunAsync(() =>
             {
                 Name = "data-disk",
                 Size = 20,
-                Category = "cloud_efficiency",
+                Category = "cloud_essd",
                 Description = "disk-description",
                 Encrypted = true,
                 KmsKeyId = key.Id,
@@ -298,7 +298,7 @@ if param := cfg.Get("name"); param != ""{
 name = param
 }
 _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+AvailableDiskCategory: pulumi.StringRef("cloud_essd"),
 AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 }, nil);
 if err != nil {
@@ -347,10 +347,10 @@ _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 SecurityGroups: toPulumiIDArray(splat0),
 InstanceType: pulumi.String("ecs.n4.large"),
-SystemDiskCategory: pulumi.String("cloud_efficiency"),
+SystemDiskCategory: pulumi.String("cloud_essd"),
 SystemDiskName: pulumi.String(name),
 SystemDiskDescription: pulumi.String("system_disk_description"),
-ImageId: pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+ImageId: pulumi.String("ubuntu_22_04_x64_20G_alibase_20260828.vhd"),
 InstanceName: pulumi.String(name),
 VswitchId: vswitch.ID().ToIDOutput().ToStringOutput(),
 InternetMaxBandwidthOut: pulumi.Int(10),
@@ -358,7 +358,7 @@ DataDisks: ecs.InstanceDataDiskArray{
 &ecs.InstanceDataDiskArgs{
 Name: pulumi.String("data-disk"),
 Size: pulumi.Int(20),
-Category: pulumi.String("cloud_efficiency"),
+Category: pulumi.String("cloud_essd"),
 Description: pulumi.String("disk-description"),
 Encrypted: pulumi.Bool(true),
 KmsKeyId: key.ID().ToIDOutput().ToStringOutput(),
@@ -451,7 +451,7 @@ public class App {
         final var config = ctx.config();
         final var name = config.get("name").orElse("pulumi-example");
         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-            .availableDiskCategory("cloud_efficiency")
+            .availableDiskCategory("cloud_essd")
             .availableResourceCreation("VSwitch")
             .build());
 
@@ -486,17 +486,17 @@ public class App {
             .availabilityZone(default_.zones()[0].id())
             .securityGroups(group.stream().map(element -> element.id()).collect(toList()))
             .instanceType("ecs.n4.large")
-            .systemDiskCategory("cloud_efficiency")
+            .systemDiskCategory("cloud_essd")
             .systemDiskName(name)
             .systemDiskDescription("system_disk_description")
-            .imageId("ubuntu_18_04_64_20G_alibase_20190624.vhd")
+            .imageId("ubuntu_22_04_x64_20G_alibase_20260828.vhd")
             .instanceName(name)
             .vswitchId(vswitch.id())
             .internetMaxBandwidthOut(10)
             .dataDisks(InstanceDataDiskArgs.builder()
                 .name("data-disk")
                 .size(20)
-                .category("cloud_efficiency")
+                .category("cloud_essd")
                 .description("disk-description")
                 .encrypted(true)
                 .kmsKeyId(key.id())
@@ -519,7 +519,7 @@ pulumi {
 }
 
 data "alicloud_getzones" "default" {
-  available_disk_category     = "cloud_efficiency"
+  available_disk_category     = "cloud_essd"
   available_resource_creation = "VSwitch"
 }
 
@@ -543,24 +543,24 @@ resource "alicloud_ecs_securitygroup" "group" {
 # Create a kms to encrypt the disk
 resource "alicloud_kms_key" "key" {
   description            = "Hello KMS"
-  pending_window_in_days = "7"
+  pending_window_in_days = 7
   status                 = "Enabled"
 }
 resource "alicloud_ecs_instance" "instance" {
   availability_zone          = data.alicloud_getzones.default.zones[0].id
   security_groups            = [alicloud_ecs_securitygroup.group][*].id
   instance_type              = "ecs.n4.large"
-  system_disk_category       = "cloud_efficiency"
+  system_disk_category       = "cloud_essd"
   system_disk_name           = var.name
   system_disk_description    = "system_disk_description"
-  image_id                   = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
+  image_id                   = "ubuntu_22_04_x64_20G_alibase_20260828.vhd"
   instance_name              = var.name
   vswitch_id                 = alicloud_vpc_switch.vswitch.id
   internet_max_bandwidth_out = 10
   data_disks {
     name        = "data-disk"
     size        = 20
-    category    = "cloud_efficiency"
+    category    = "cloud_essd"
     description = "disk-description"
     encrypted   = true
     kms_key_id  = alicloud_kms_key.key.id
@@ -698,7 +698,7 @@ config:
 ### Assuming A RAM Role With OIDC
 
 If provided with a role ARN and a token from a service account OpenID Connect (OIDC),
-the Alibaba CLoud Provider will attempt to assume this role using the supplied credentials.
+the Alibaba Cloud Provider will attempt to assume this role using the supplied credentials.
 
 **NOTE:** Assuming-Role-With-OIDC is a no-AK auth type, and there is no need setting accessKey and secretKey while using it.
 
@@ -765,18 +765,34 @@ config:
         value: cn-hangzhou
 
 ```
+### Network Proxy
+
+The provider does not offer a proxy argument in the provider configuration. Instead, it honors the standard proxy environment variables for all Alibaba Cloud API calls:
+
+* `HTTPS_PROXY` (or `httpsProxy`) - the proxy used for API calls when the provider `protocol` is `HTTPS` (the default).
+* `HTTP_PROXY` (or `httpProxy`) - the proxy used for API calls when `protocol = "HTTP"` is set in the provider configuration.
+* `NO_PROXY` (or `noProxy`) - a comma-separated list of hosts or domain suffixes (for example `.aliyuncs.com`) that bypass the proxy.
+
+Usage:
+
+```shell
+$ export HTTPS_PROXY="http://proxy.example.com:3128"
+$ export NO_PROXY="localhost,.internal.example.com"
+```
+
+Note: these variables control the provider's API calls only. The Pulumi state backend (for example `backend "oss"`) is handled by Pulumi core, not by the provider.
 ## Configuration Reference
 
 In addition to generic `provider` arguments
 (e.g. `alias` and `version`), the following arguments are supported in the Alibaba Cloud
 provider configuration:
 
-* `accessKey` - Alibaba Cloud access key. It is required for the provider.
+* `accessKey` - Alibaba Cloud access key. Required when using static credentials.
   Can also be set with the `ALIBABA_CLOUD_ACCESS_KEY_ID` environment variable since v1.228.0,
   or via a shared credentials file if profile is specified. See also `secretKey`.
   Environment variable `ALICLOUD_ACCESS_KEY` and `ALIBABACLOUD_ACCESS_KEY_ID` have been deprecated since v1.228.0.
 
-* `secretKey` - Alibaba Cloud secret key. It is required for the provider.
+* `secretKey` - Alibaba Cloud secret key. Required when using static credentials.
   Can also be set with the `ALIBABA_CLOUD_ACCESS_KEY_SECRET` environment variable since v1.228.0,
   or via a shared credentials file if profile is specified. See also `accessKey`.
   Environment variable `ALICLOUD_SECRET_KEY` and `ALIBABACLOUD_ACCESS_KEY_SECRET` have been deprecated since v1.228.0.
@@ -790,7 +806,7 @@ provider configuration:
   Can also be set with the `ALIBABA_CLOUD_ECS_METADATA` environment variable since v1.228.0.
   Environment variable `ALICLOUD_ECS_ROLE_NAME` has been deprecated since v1.228.0.
 
-* `region` - Alibaba Cloud region. Default to `cn-beijing`.
+* `region` - Alibaba Cloud region. No default value.
   Can also be set with the `ALIBABA_CLOUD_REGION` environment variable since v1.228.0.
   Environment variable `ALICLOUD_REGION` has been deprecated since v1.228.0.
 
@@ -840,6 +856,10 @@ provider configuration:
 * `clientConnectTimeout` - (Optional, Available since v1.125.0) The maximum timeout in millisecond second of the client connection server. Default to 60000.
 
 * `maxRetryTimeout` - (Optional, Available since v1.183.0) The maximum retry timeout in second of the request. Default to `0`.
+
+* `sourceIp` - (Optional, Available since v1.104.0) The source IP for the assume role invoking. Can also be set with the `ALIBABA_CLOUD_SOURCE_IP` or `ALICLOUD_SOURCE_IP` environment variable.
+
+* `secureTransport` - (Optional, Available since v1.136.0) The security transport for the assume role invoking. Can also be set with the `ALIBABA_CLOUD_SECURE_TRANSPORT` or `ALICLOUD_SECURE_TRANSPORT` environment variable.
 ### `assumeRole`
 
 * `roleArn` - (Required) The ARN of the role to assume. If ARN is set to an empty string, it does not perform role switching.
@@ -999,8 +1019,6 @@ The `ecsInstance` configuration block applies to the alicloud.ecs.Instance resou
 
 * `ehpc` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elastic High Performance Computing endpoints.
 
-* `mscsub` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Message Center endpoints.
-
 * `hitsdb` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Lindorm endpoints.
 
 * `sddp` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Data Security Center endpoints.
@@ -1023,7 +1041,7 @@ The `ecsInstance` configuration block applies to the alicloud.ecs.Instance resou
 
 * `hbr` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Hybrid Backup Recovery endpoints.
 
-* `dataworkspublic` - - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Data Works endpoints.
+* `dataworkspublic` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Data Works endpoints.
 
 * `cloudfw` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Firewall endpoints.
 
@@ -1055,6 +1073,180 @@ The `ecsInstance` configuration block applies to the alicloud.ecs.Instance resou
 
 * `edas` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EDAS endpoints.
 
-* `dmsenterprise` - - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DMS Enterprise endpoints.
+* `dmsenterprise` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DMS Enterprise endpoints.
 
 * `servicemesh` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Service Mesh endpoints.
+
+* `computenest` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+
+* `beebot` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+
+* `chatbot` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom chatbot endpoints.
+
+* `eflo` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+
+* `efloController` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+
+* `efloCnp` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloCnp endpoints.
+
+* `srvcatalog` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+
+* `servicecatalog` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicecatalog endpoints.
+
+* `cloudfirewall` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+
+* `das` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+
+* `bpstudio` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+
+* `ebs` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+
+* `nlb` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+
+* `cbs` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+
+* `dbs` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbs endpoints.
+
+* `vpcpeer` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+
+* `dysms` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysms endpoints.
+
+* `dysmsapi` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+
+* `edasschedulerx` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+
+* `schedulerx2` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom schedulerx2 endpoints.
+
+* `ehs` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+
+* `tag` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+
+* `ddosbasic` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+
+* `antiddosPublic` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom antiddosPublic endpoints.
+
+* `smartag` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+
+* `oceanbase` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+
+* `oceanbasepro` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbasepro endpoints.
+
+* `gaplus` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+
+* `edsuser` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+
+* `edsUser` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsUser endpoints.
+
+* `acr` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+
+* `imp` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+
+* `cloudauth` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+
+* `mhub` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+
+* `quickbiPublic` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbiPublic endpoints.
+
+* `gdb` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gdb endpoints.
+
+* `dbfs` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+
+* `devopsrdc` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+
+* `swasOpen` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swasOpen endpoints.
+
+* `selectdb` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+
+* `dfs` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dfs endpoints.
+
+* `mscopensubscription` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+
+* `dataworksPublic` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworksPublic endpoints.
+
+* `hcsSgw` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcsSgw endpoints.
+
+* `cloudphone` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+
+* `redisa` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+
+* `gwsecd` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+
+* `ecd` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ecd endpoints.
+
+* `scdn` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+
+* `serverless` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+
+* `sae` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sae endpoints.
+
+* `amqp` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom amqp endpoints.
+
+* `onsproxy` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+
+* `cds` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+
+* `eventbridge` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridgeShare endpoints.
+
+* `sgw` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+
+* `quotas` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+
+* `ims` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+
+* `brainIndustrial` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brainIndustrial endpoints.
+
+* `ressharing` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ressharing endpoints.
+
+* `resourcesharing` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+
+* `ga` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+
+* `privatelink` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+
+* `eipanycast` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+
+* `fnf` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+
+* `ros` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+
+* `rKvstore` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rKvstore endpoints.
+
+* `config` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+
+* `dcdn` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+
+* `mse` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+
+* `oos` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+
+* `eci` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+
+* `alidns` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+
+* `resourcemanager` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+
+* `wafOpenapi` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom wafOpenapi endpoints.
+
+* `cassandra` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+
+* `polardbx` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom polardbx endpoints.
+
+* `fcOpen` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fcOpen endpoints.
+
+* `cloudapi` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudapi endpoints.
+
+* `apig` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom apig endpoints.
+
+* `devopsRdc` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsRdc endpoints.
+
+* `mnsOpen` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mnsOpen endpoints.
+
+* `rocketmq` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rocketmq endpoints.
+
+* `aiworkspace` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom aiworkspace endpoints.
+
+* `vpcipam` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcipam endpoints.
+
+* `gwlb` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwlb endpoints.
+
+* `esa` - (Optional) Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom esa endpoints.

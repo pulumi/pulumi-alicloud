@@ -894,6 +894,8 @@ class DbCluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.295.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -986,6 +988,8 @@ class DbCluster(pulumi.CustomResource):
         For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/zh/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 
         > **NOTE:** Available since v1.134.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.295.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 

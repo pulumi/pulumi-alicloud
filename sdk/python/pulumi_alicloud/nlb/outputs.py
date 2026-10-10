@@ -1425,6 +1425,7 @@ class GetServerGroupsGroupResult(dict):
                  connection_drain_timeout: _builtins.int,
                  health_checks: Sequence['outputs.GetServerGroupsGroupHealthCheckResult'],
                  id: _builtins.str,
+                 ip_version_affinity_mode: _builtins.str,
                  preserve_client_ip_enabled: _builtins.bool,
                  protocol: _builtins.str,
                  related_load_balancer_ids: Sequence[_builtins.str],
@@ -1442,6 +1443,7 @@ class GetServerGroupsGroupResult(dict):
         :param _builtins.int connection_drain_timeout: The timeout period of connection draining. Unit: seconds.
         :param Sequence['GetServerGroupsGroupHealthCheckArgs'] health_checks: The configurations of health checks.
         :param _builtins.str id: The ID of the Server Group.
+        :param _builtins.str ip_version_affinity_mode: (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
         :param _builtins.bool preserve_client_ip_enabled: Indicates whether client address retention is enabled.
         :param _builtins.str protocol: The protocol used to forward requests to the backend servers.
         :param Sequence[_builtins.str] related_load_balancer_ids: The NLB instance.
@@ -1459,6 +1461,7 @@ class GetServerGroupsGroupResult(dict):
         pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
         pulumi.set(__self__, "health_checks", health_checks)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_version_affinity_mode", ip_version_affinity_mode)
         pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "related_load_balancer_ids", related_load_balancer_ids)
@@ -1510,6 +1513,14 @@ class GetServerGroupsGroupResult(dict):
         The ID of the Server Group.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersionAffinityMode")
+    def ip_version_affinity_mode(self) -> _builtins.str:
+        """
+        (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+        """
+        return pulumi.get(self, "ip_version_affinity_mode")
 
     @_builtins.property
     @pulumi.getter(name="preserveClientIpEnabled")

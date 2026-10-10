@@ -92,11 +92,6 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      * 
      */
     @Import(name="createdType")
@@ -104,11 +99,6 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      * 
      */
     public Optional<Output<String>> createdType() {
@@ -199,14 +189,14 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
+     * The certificate type. Valid values:
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
+     * @return The certificate type. Valid values:
      * 
      */
     public Optional<Output<String>> type() {
@@ -355,11 +345,6 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param createdType The certificate type.
-         * - cas (Certificate Center Certificate)
-         * - upload (custom upload certificate)
-         * - free( Free certificate).
-         * 
-         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
          * 
          * @return builder
          * 
@@ -371,11 +356,6 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param createdType The certificate type.
-         * - cas (Certificate Center Certificate)
-         * - upload (custom upload certificate)
-         * - free( Free certificate).
-         * 
-         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
          * 
          * @return builder
          * 
@@ -498,7 +478,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
+         * @param type The certificate type. Valid values:
          * 
          * @return builder
          * 
@@ -509,7 +489,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
+         * @param type The certificate type. Valid values:
          * 
          * @return builder
          * 

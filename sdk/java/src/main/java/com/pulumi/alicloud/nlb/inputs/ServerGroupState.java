@@ -118,6 +118,31 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The traffic scheduling policy for dual-stack server groups. Valid values:
+     * 
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     * 
+     */
+    @Import(name="ipVersionAffinityMode")
+    private @Nullable Output<String> ipVersionAffinityMode;
+
+    /**
+     * @return The traffic scheduling policy for dual-stack server groups. Valid values:
+     * 
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     * 
+     */
+    public Optional<Output<String>> ipVersionAffinityMode() {
+        return Optional.ofNullable(this.ipVersionAffinityMode);
+    }
+
+    /**
      * Specifies whether to enable client IP preservation. Valid values:
      * 
      */
@@ -314,6 +339,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         this.connectionDrainEnabled = $.connectionDrainEnabled;
         this.connectionDrainTimeout = $.connectionDrainTimeout;
         this.healthCheck = $.healthCheck;
+        this.ipVersionAffinityMode = $.ipVersionAffinityMode;
         this.preserveClientIpEnabled = $.preserveClientIpEnabled;
         this.protocol = $.protocol;
         this.regionId = $.regionId;
@@ -476,6 +502,37 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder healthCheck(ServerGroupHealthCheckArgs healthCheck) {
             return healthCheck(Output.of(healthCheck));
+        }
+
+        /**
+         * @param ipVersionAffinityMode The traffic scheduling policy for dual-stack server groups. Valid values:
+         * 
+         * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+         * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+         * 
+         * &gt; **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersionAffinityMode(@Nullable Output<String> ipVersionAffinityMode) {
+            $.ipVersionAffinityMode = ipVersionAffinityMode;
+            return this;
+        }
+
+        /**
+         * @param ipVersionAffinityMode The traffic scheduling policy for dual-stack server groups. Valid values:
+         * 
+         * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+         * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+         * 
+         * &gt; **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersionAffinityMode(String ipVersionAffinityMode) {
+            return ipVersionAffinityMode(Output.of(ipVersionAffinityMode));
         }
 
         /**

@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool> EnableNatTraversal { get; private set; } = null!;
 
         /// <summary>
-        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default).
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default). When enabling BGP in-place (`False` to `True`), the `TunnelBgpConfig` blocks in `TunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
         /// 
         /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         /// </summary>
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default).
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default). When enabling BGP in-place (`False` to `True`), the `TunnelBgpConfig` blocks in `TunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
         /// 
         /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         /// </summary>
@@ -596,7 +596,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default).
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `True` or `False` (default). When enabling BGP in-place (`False` to `True`), the `TunnelBgpConfig` blocks in `TunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
         /// 
         /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         /// </summary>

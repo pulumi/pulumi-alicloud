@@ -270,18 +270,18 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desktopGroupName);
     }
     /**
-     * The ID of the directory.
+     * The ID of the directory. This parameter is not publicly available yet.
      * 
      */
     @Export(name="directoryId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> directoryId;
+    private Output<String> directoryId;
 
     /**
-     * @return The ID of the directory.
+     * @return The ID of the directory. This parameter is not publicly available yet.
      * 
      */
-    public Output<Optional<String>> directoryId() {
-        return Codegen.optional(this.directoryId);
+    public Output<String> directoryId() {
+        return this.directoryId;
     }
     /**
      * The type of the directory.
@@ -298,18 +298,18 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.directoryType;
     }
     /**
-     * The list of IDs of the end users authorized to use the desktop group.
+     * The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      * 
      */
     @Export(name="endUserIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> endUserIds;
+    private Output</* @Nullable */ List<String>> endUserIds;
 
     /**
-     * @return The list of IDs of the end users authorized to use the desktop group.
+     * @return The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      * 
      */
-    public Output<List<String>> endUserIds() {
-        return this.endUserIds;
+    public Output<Optional<List<String>>> endUserIds() {
+        return Codegen.optional(this.endUserIds);
     }
     /**
      * The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
@@ -466,14 +466,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.ownBundleName;
     }
     /**
-     * The billing method.
+     * The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Export(name="payType", refs={String.class}, tree="[0]")
     private Output<String> payType;
 
     /**
-     * @return The billing method.
+     * @return The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Output<String> payType() {
@@ -522,14 +522,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.resType;
     }
     /**
-     * The ID of the scaling policy.
+     * The ID of the scaling policy. This parameter is not publicly available yet.
      * 
      */
     @Export(name="scaleStrategyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scaleStrategyId;
 
     /**
-     * @return The ID of the scaling policy.
+     * @return The ID of the scaling policy. This parameter is not publicly available yet.
      * 
      */
     public Output<Optional<String>> scaleStrategyId() {
@@ -603,11 +603,6 @@ public class Group extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "allowAutoSetup",
-                "allowBufferCount",
-                "scaleStrategyId"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

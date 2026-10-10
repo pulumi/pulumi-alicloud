@@ -1927,6 +1927,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.37.0.
 
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 
         ## Example Usage
@@ -2068,6 +2070,8 @@ class Instance(pulumi.CustomResource):
         You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.37.0.
+
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 

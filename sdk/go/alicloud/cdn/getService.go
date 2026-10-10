@@ -57,9 +57,8 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 type GetServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
 	Enable *string `pulumi:"enable"`
-	// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-	// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
-	// As a note, the updated internet charge type will be effective in the next day zero time.
+	// The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+	// It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
 	//
 	// > **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
 	InternetChargeType *string `pulumi:"internetChargeType"`
@@ -73,7 +72,8 @@ type GetServiceResult struct {
 	ChangingChargeType string  `pulumi:"changingChargeType"`
 	Enable             *string `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The current billing method of the opened service, read back from the CDN service.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.
 	OpeningTime string `pulumi:"openingTime"`
@@ -90,9 +90,8 @@ func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pu
 type GetServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
-	// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-	// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
-	// As a note, the updated internet charge type will be effective in the next day zero time.
+	// The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+	// It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
 	//
 	// > **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
 	InternetChargeType pulumi.StringPtrInput `pulumi:"internetChargeType"`
@@ -136,6 +135,7 @@ func (o GetServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The current billing method of the opened service, read back from the CDN service.
 func (o GetServiceResultOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceResult) *string { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }

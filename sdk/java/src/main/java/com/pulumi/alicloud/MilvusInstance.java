@@ -154,6 +154,20 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoPay);
     }
     /**
+     * Whether auto-renewal is enabled when the instance is created.
+     * 
+     */
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRenew;
+
+    /**
+     * @return Whether auto-renewal is enabled when the instance is created.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -162,7 +176,7 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="components", refs={List.class,MilvusInstanceComponent.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<MilvusInstanceComponent>> components;
+    private Output<List<MilvusInstanceComponent>> components;
 
     /**
      * @return Instance component information. Includes Starter Edition/Standard Edition.
@@ -172,8 +186,8 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
      *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      * 
      */
-    public Output<Optional<List<MilvusInstanceComponent>>> components() {
-        return Codegen.optional(this.components);
+    public Output<List<MilvusInstanceComponent>> components() {
+        return this.components;
     }
     /**
      * User-defined configuration
@@ -206,16 +220,12 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
     /**
      * DB administrator password, which can be used to log in to attu.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-     * 
      */
     @Export(name="dbAdminPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbAdminPassword;
 
     /**
      * @return DB administrator password, which can be used to log in to attu.
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> dbAdminPassword() {
@@ -250,6 +260,20 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encrypted);
     }
     /**
+     * (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+     * 
+     */
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    private Output<String> expireTime;
+
+    /**
+     * @return (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
+    }
+    /**
      * Whether to enable multiple copies of data
      * 
      */
@@ -278,6 +302,20 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
+     * Whether multi-zone storage is enabled when the instance is created.
+     * 
+     */
+    @Export(name="isMultiAzStorage", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isMultiAzStorage;
+
+    /**
+     * @return Whether multi-zone storage is enabled when the instance is created.
+     * 
+     */
+    public Output<Optional<Boolean>> isMultiAzStorage() {
+        return Codegen.optional(this.isMultiAzStorage);
+    }
+    /**
      * Kms Key encryption id, need to be encrypted set to true.
      * 
      */
@@ -290,6 +328,20 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> kmsKeyId() {
         return Codegen.optional(this.kmsKeyId);
+    }
+    /**
+     * The number of load replicas configured when the instance is created.
+     * 
+     */
+    @Export(name="loadReplicas", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> loadReplicas;
+
+    /**
+     * @return The number of load replicas configured when the instance is created.
+     * 
+     */
+    public Output<Optional<Integer>> loadReplicas() {
+        return Codegen.optional(this.loadReplicas);
     }
     /**
      * Availability Zone mode. The default Single.
@@ -308,6 +360,20 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> multiZoneMode() {
         return Codegen.optional(this.multiZoneMode);
+    }
+    /**
+     * (Available since v1.294.0) Alibaba Cloud Order Number.
+     * 
+     */
+    @Export(name="orderId", refs={String.class}, tree="[0]")
+    private Output<String> orderId;
+
+    /**
+     * @return (Available since v1.294.0) Alibaba Cloud Order Number.
+     * 
+     */
+    public Output<String> orderId() {
+        return this.orderId;
     }
     /**
      * Instance Payment Duration
@@ -368,14 +434,28 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * regionId. For example: cn-hangzhou
+     * The promotion code used to create the instance.
+     * 
+     */
+    @Export(name="promotionNo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> promotionNo;
+
+    /**
+     * @return The promotion code used to create the instance.
+     * 
+     */
+    public Output<Optional<String>> promotionNo() {
+        return Codegen.optional(this.promotionNo);
+    }
+    /**
+     * The regionId.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return regionId. For example: cn-hangzhou
+     * @return The regionId.
      * 
      */
     public Output<String> regionId() {
@@ -396,14 +476,42 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Instance status. Value range:
+     * (Available since v1.294.0) Instance running time.
+     * 
+     */
+    @Export(name="runningTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> runningTime;
+
+    /**
+     * @return (Available since v1.294.0) Instance running time.
+     * 
+     */
+    public Output<Integer> runningTime() {
+        return this.runningTime;
+    }
+    /**
+     * (Available since v1.294.0) Configured Security Group id.
+     * 
+     */
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> securityGroupIds;
+
+    /**
+     * @return (Available since v1.294.0) Configured Security Group id.
+     * 
+     */
+    public Output<List<String>> securityGroupIds() {
+        return this.securityGroupIds;
+    }
+    /**
+     * Instance status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Instance status. Value range:
+     * @return Instance status.
      * 
      */
     public Output<String> status() {

@@ -250,14 +250,14 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> vswitchId;
+    private Output<String> vswitchId;
 
     /**
      * @return The ID of the switch.
      * 
      */
-    public Output<Optional<String>> vswitchId() {
-        return Codegen.optional(this.vswitchId);
+    public Output<String> vswitchId() {
+        return this.vswitchId;
     }
 
     /**

@@ -358,6 +358,8 @@ class Secret(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         APIG Secret can be imported using the id, e.g.
@@ -438,6 +440,8 @@ class Secret(pulumi.CustomResource):
                 "kms_key_id": default_secret.encryption_key_id,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -6749,7 +6749,7 @@ func (o NodePoolLabelArrayOutput) Index(i pulumi.IntInput) NodePoolLabelOutput {
 }
 
 type NodePoolManagement struct {
-	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
 	AutoRepair *bool `pulumi:"autoRepair"`
 	// Automatic repair node policy. See `autoRepairPolicy` below.
 	AutoRepairPolicy *NodePoolManagementAutoRepairPolicy `pulumi:"autoRepairPolicy"`
@@ -6787,7 +6787,7 @@ type NodePoolManagementInput interface {
 }
 
 type NodePoolManagementArgs struct {
-	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
 	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
 	// Automatic repair node policy. See `autoRepairPolicy` below.
 	AutoRepairPolicy NodePoolManagementAutoRepairPolicyPtrInput `pulumi:"autoRepairPolicy"`
@@ -6890,7 +6890,7 @@ func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx c
 	}).(NodePoolManagementPtrOutput)
 }
 
-// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
 func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
@@ -6968,7 +6968,7 @@ func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
 	}).(NodePoolManagementOutput)
 }
 
-// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
 func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *bool {
 		if v == nil {

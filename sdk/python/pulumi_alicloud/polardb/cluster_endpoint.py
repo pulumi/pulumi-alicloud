@@ -28,6 +28,7 @@ class ClusterEndpointArgs:
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -42,6 +43,7 @@ class ClusterEndpointArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
                **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
                For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -64,6 +66,8 @@ class ClusterEndpointArgs:
             pulumi.set(__self__, "port", port)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if scc_mode is not None:
+            pulumi.set(__self__, "scc_mode", scc_mode)
         if ssl_auto_rotate is not None:
             pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_enabled is not None:
@@ -178,6 +182,18 @@ class ClusterEndpointArgs:
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="sccMode")
+    def scc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
+        """
+        return pulumi.get(self, "scc_mode")
+
+    @scc_mode.setter
+    def scc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scc_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslAutoRotate")
     def ssl_auto_rotate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -218,6 +234,7 @@ class _ClusterEndpointState:
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -237,6 +254,7 @@ class _ClusterEndpointState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
                **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
                For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -267,6 +285,8 @@ class _ClusterEndpointState:
             pulumi.set(__self__, "port", port)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if scc_mode is not None:
+            pulumi.set(__self__, "scc_mode", scc_mode)
         if ssl_auto_rotate is not None:
             pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_certificate_url is not None:
@@ -411,6 +431,18 @@ class _ClusterEndpointState:
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="sccMode")
+    def scc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
+        """
+        return pulumi.get(self, "scc_mode")
+
+    @scc_mode.setter
+    def scc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scc_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslAutoRotate")
     def ssl_auto_rotate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -488,6 +520,7 @@ class ClusterEndpoint(pulumi.CustomResource):
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -523,7 +556,9 @@ class ClusterEndpoint(pulumi.CustomResource):
             pay_type="PostPaid",
             vswitch_id=default_switch.id,
             description="terraform-example")
-        default_cluster_endpoint = alicloud.polardb.ClusterEndpoint("default", db_cluster_id=default_cluster.id)
+        default_cluster_endpoint = alicloud.polardb.ClusterEndpoint("default",
+            db_cluster_id=default_cluster.id,
+            scc_mode="on")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -548,6 +583,7 @@ class ClusterEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
                **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
                For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -591,7 +627,9 @@ class ClusterEndpoint(pulumi.CustomResource):
             pay_type="PostPaid",
             vswitch_id=default_switch.id,
             description="terraform-example")
-        default_cluster_endpoint = alicloud.polardb.ClusterEndpoint("default", db_cluster_id=default_cluster.id)
+        default_cluster_endpoint = alicloud.polardb.ClusterEndpoint("default",
+            db_cluster_id=default_cluster.id,
+            scc_mode="on")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -629,6 +667,7 @@ class ClusterEndpoint(pulumi.CustomResource):
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -651,6 +690,7 @@ class ClusterEndpoint(pulumi.CustomResource):
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["port"] = port
             __props__.__dict__["read_write_mode"] = read_write_mode
+            __props__.__dict__["scc_mode"] = scc_mode
             __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
             __props__.__dict__["ssl_enabled"] = ssl_enabled
             __props__.__dict__["db_endpoint_id"] = None
@@ -679,6 +719,7 @@ class ClusterEndpoint(pulumi.CustomResource):
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
             read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -702,6 +743,7 @@ class ClusterEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
                **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
                For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -725,6 +767,7 @@ class ClusterEndpoint(pulumi.CustomResource):
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["port"] = port
         __props__.__dict__["read_write_mode"] = read_write_mode
+        __props__.__dict__["scc_mode"] = scc_mode
         __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
         __props__.__dict__["ssl_certificate_url"] = ssl_certificate_url
         __props__.__dict__["ssl_connection_string"] = ssl_connection_string
@@ -819,6 +862,14 @@ class ClusterEndpoint(pulumi.CustomResource):
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         """
         return pulumi.get(self, "read_write_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="sccMode")
+    def scc_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpoint_config` to `0` (eventual consistency).
+        """
+        return pulumi.get(self, "scc_mode")
 
     @_builtins.property
     @pulumi.getter(name="sslAutoRotate")

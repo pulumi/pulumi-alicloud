@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,25 @@ import javax.annotation.Nullable;
 public final class InstanceCpuOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceCpuOptionsArgs Empty = new InstanceCpuOptionsArgs();
+
+    /**
+     * The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+     * 
+     * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+     * 
+     */
+    @Import(name="accelerators")
+    private @Nullable Output<List<String>> accelerators;
+
+    /**
+     * @return The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+     * 
+     * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+     * 
+     */
+    public Optional<Output<List<String>>> accelerators() {
+        return Optional.ofNullable(this.accelerators);
+    }
 
     /**
      * The maximum number of partitions in the storage set.
@@ -64,6 +84,7 @@ public final class InstanceCpuOptionsArgs extends com.pulumi.resources.ResourceA
     private InstanceCpuOptionsArgs() {}
 
     private InstanceCpuOptionsArgs(InstanceCpuOptionsArgs $) {
+        this.accelerators = $.accelerators;
         this.coreCount = $.coreCount;
         this.threadsPerCore = $.threadsPerCore;
         this.topologyType = $.topologyType;
@@ -85,6 +106,43 @@ public final class InstanceCpuOptionsArgs extends com.pulumi.resources.ResourceA
 
         public Builder(InstanceCpuOptionsArgs defaults) {
             $ = new InstanceCpuOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accelerators The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+         * 
+         * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(@Nullable Output<List<String>> accelerators) {
+            $.accelerators = accelerators;
+            return this;
+        }
+
+        /**
+         * @param accelerators The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+         * 
+         * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(List<String> accelerators) {
+            return accelerators(Output.of(accelerators));
+        }
+
+        /**
+         * @param accelerators The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+         * 
+         * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(String... accelerators) {
+            return accelerators(List.of(accelerators));
         }
 
         /**

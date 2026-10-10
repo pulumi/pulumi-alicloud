@@ -18,18 +18,33 @@ public final class GetPricesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPricesArgs Empty = new GetPricesArgs();
 
     /**
-     * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} See `DesireAttributes` below.
+     * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} Only flat string values are supported. It conflicts with `desireAttributesJson`.
      * 
      */
     @Import(name="desireAttributes")
     private @Nullable Output<Map<String,String>> desireAttributes;
 
     /**
-     * @return This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} See `DesireAttributes` below.
+     * @return This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} Only flat string values are supported. It conflicts with `desireAttributesJson`.
      * 
      */
     public Optional<Output<Map<String,String>>> desireAttributes() {
         return Optional.ofNullable(this.desireAttributes);
+    }
+
+    /**
+     * The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{&#34;InstanceType&#34;: &#34;ecs.g7.large&#34;, &#34;SystemDisk&#34;: {&#34;Category&#34;: &#34;cloudEssd&#34;}}
+     * 
+     */
+    @Import(name="desireAttributesJson")
+    private @Nullable Output<String> desireAttributesJson;
+
+    /**
+     * @return The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{&#34;InstanceType&#34;: &#34;ecs.g7.large&#34;, &#34;SystemDisk&#34;: {&#34;Category&#34;: &#34;cloudEssd&#34;}}
+     * 
+     */
+    public Optional<Output<String>> desireAttributesJson() {
+        return Optional.ofNullable(this.desireAttributesJson);
     }
 
     /**
@@ -81,6 +96,7 @@ public final class GetPricesArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetPricesArgs(GetPricesArgs $) {
         this.desireAttributes = $.desireAttributes;
+        this.desireAttributesJson = $.desireAttributesJson;
         this.outputFile = $.outputFile;
         this.product = $.product;
         this.resourceCode = $.resourceCode;
@@ -105,7 +121,7 @@ public final class GetPricesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desireAttributes This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} See `DesireAttributes` below.
+         * @param desireAttributes This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} Only flat string values are supported. It conflicts with `desireAttributesJson`.
          * 
          * @return builder
          * 
@@ -116,13 +132,34 @@ public final class GetPricesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desireAttributes This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} See `DesireAttributes` below.
+         * @param desireAttributes This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the &#39;Resource&#39; Resource when start Create operation. &#39;PaymentType&#39; is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{&#34;LoadBalancerName&#34;: &#34;cc-test&#34;,&#34;Bandwidth&#34;: 6,&#34;PaymentType&#34;: &#34;PayAsYouGo&#34;,&#34;AddressType&#34;: &#34;internet&#34;,&#34;LoadBalancerSpec&#34;: &#34;slb.s3.small&#34;,&#34;InternetChargeType&#34;: &#34;paybybandwidth&#34;} Only flat string values are supported. It conflicts with `desireAttributesJson`.
          * 
          * @return builder
          * 
          */
         public Builder desireAttributes(Map<String,String> desireAttributes) {
             return desireAttributes(Output.of(desireAttributes));
+        }
+
+        /**
+         * @param desireAttributesJson The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{&#34;InstanceType&#34;: &#34;ecs.g7.large&#34;, &#34;SystemDisk&#34;: {&#34;Category&#34;: &#34;cloudEssd&#34;}}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desireAttributesJson(@Nullable Output<String> desireAttributesJson) {
+            $.desireAttributesJson = desireAttributesJson;
+            return this;
+        }
+
+        /**
+         * @param desireAttributesJson The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{&#34;InstanceType&#34;: &#34;ecs.g7.large&#34;, &#34;SystemDisk&#34;: {&#34;Category&#34;: &#34;cloudEssd&#34;}}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desireAttributesJson(String desireAttributesJson) {
+            return desireAttributesJson(Output.of(desireAttributesJson));
         }
 
         /**

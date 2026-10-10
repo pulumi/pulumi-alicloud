@@ -17,6 +17,7 @@ from .get_plugin_classes import *
 from .get_plugins import *
 from .get_policies import *
 from .get_routes import *
+from .get_secrets import *
 from .get_services import *
 from .get_sources import *
 from .http_api import *

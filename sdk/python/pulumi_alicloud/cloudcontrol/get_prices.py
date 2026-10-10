@@ -27,10 +27,13 @@ class GetPricesResult:
     """
     A collection of values returned by getPrices.
     """
-    def __init__(__self__, desire_attributes=None, id=None, output_file=None, prices=None, product=None, resource_code=None):
+    def __init__(__self__, desire_attributes=None, desire_attributes_json=None, id=None, output_file=None, prices=None, product=None, resource_code=None):
         if desire_attributes and not isinstance(desire_attributes, dict):
             raise TypeError("Expected argument 'desire_attributes' to be a dict")
         pulumi.set(__self__, "desire_attributes", desire_attributes)
+        if desire_attributes_json and not isinstance(desire_attributes_json, str):
+            raise TypeError("Expected argument 'desire_attributes_json' to be a str")
+        pulumi.set(__self__, "desire_attributes_json", desire_attributes_json)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -51,6 +54,11 @@ class GetPricesResult:
     @pulumi.getter(name="desireAttributes")
     def desire_attributes(self) -> Optional[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "desire_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="desireAttributesJson")
+    def desire_attributes_json(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "desire_attributes_json")
 
     @_builtins.property
     @pulumi.getter
@@ -91,6 +99,7 @@ class AwaitableGetPricesResult(GetPricesResult):
             yield self
         return GetPricesResult(
             desire_attributes=self.desire_attributes,
+            desire_attributes_json=self.desire_attributes_json,
             id=self.id,
             output_file=self.output_file,
             prices=self.prices,
@@ -99,6 +108,7 @@ class AwaitableGetPricesResult(GetPricesResult):
 
 
 def get_prices(desire_attributes: Optional[Mapping[str, _builtins.str]] = None,
+               desire_attributes_json: Optional[_builtins.str] = None,
                output_file: Optional[_builtins.str] = None,
                product: Optional[_builtins.str] = None,
                resource_code: Optional[_builtins.str] = None,
@@ -108,7 +118,13 @@ def get_prices(desire_attributes: Optional[Mapping[str, _builtins.str]] = None,
 
     > **NOTE:** Available since v1.241.0.
 
+    > **NOTE:** `desire_attributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desire_attributes_json` instead. The two attributes conflict with each other and cannot be configured together.
+
     ## Example Usage
+
+    ### Flat attributes
+
+    Use `desire_attributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
 
     ```python
     import pulumi
@@ -127,14 +143,35 @@ def get_prices(desire_attributes: Optional[Mapping[str, _builtins.str]] = None,
     pulumi.export("alicloudCloudControlPriceExampleId", default.prices[0].discount_price)
     ```
 
+    ### Nested attributes
 
-    :param Mapping[str, _builtins.str] desire_attributes: This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+    Use `desire_attributes_json` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+
+    ```python
+    import pulumi
+    import json
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cloudcontrol.get_prices(desire_attributes_json=json.dumps({
+            "InstanceType": "ecs.g7.large",
+            "SystemDisk": {
+                "Category": "cloud_essd",
+            },
+        }),
+        product="ECS",
+        resource_code="Instance")
+    ```
+
+
+    :param Mapping[str, _builtins.str] desire_attributes: This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `desire_attributes_json`.
+    :param _builtins.str desire_attributes_json: The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desire_attributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "cloud_essd"}}
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str product: The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
     :param _builtins.str resource_code: Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
     """
     __args__ = dict()
     __args__['desireAttributes'] = desire_attributes
+    __args__['desireAttributesJson'] = desire_attributes_json
     __args__['outputFile'] = output_file
     __args__['product'] = product
     __args__['resourceCode'] = resource_code
@@ -143,12 +180,14 @@ def get_prices(desire_attributes: Optional[Mapping[str, _builtins.str]] = None,
 
     return AwaitableGetPricesResult(
         desire_attributes=pulumi.get(__ret__, 'desire_attributes'),
+        desire_attributes_json=pulumi.get(__ret__, 'desire_attributes_json'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         prices=pulumi.get(__ret__, 'prices'),
         product=pulumi.get(__ret__, 'product'),
         resource_code=pulumi.get(__ret__, 'resource_code'))
 def get_prices_output(desire_attributes: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                      desire_attributes_json: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       product: pulumi.Input[Optional[_builtins.str]] = None,
                       resource_code: pulumi.Input[Optional[_builtins.str]] = None,
@@ -158,7 +197,13 @@ def get_prices_output(desire_attributes: pulumi.Input[Optional[Optional[Mapping[
 
     > **NOTE:** Available since v1.241.0.
 
+    > **NOTE:** `desire_attributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desire_attributes_json` instead. The two attributes conflict with each other and cannot be configured together.
+
     ## Example Usage
+
+    ### Flat attributes
+
+    Use `desire_attributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
 
     ```python
     import pulumi
@@ -177,14 +222,35 @@ def get_prices_output(desire_attributes: pulumi.Input[Optional[Optional[Mapping[
     pulumi.export("alicloudCloudControlPriceExampleId", default.prices[0].discount_price)
     ```
 
+    ### Nested attributes
 
-    :param Mapping[str, _builtins.str] desire_attributes: This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+    Use `desire_attributes_json` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+
+    ```python
+    import pulumi
+    import json
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cloudcontrol.get_prices(desire_attributes_json=json.dumps({
+            "InstanceType": "ecs.g7.large",
+            "SystemDisk": {
+                "Category": "cloud_essd",
+            },
+        }),
+        product="ECS",
+        resource_code="Instance")
+    ```
+
+
+    :param Mapping[str, _builtins.str] desire_attributes: This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `desire_attributes_json`.
+    :param _builtins.str desire_attributes_json: The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desire_attributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "cloud_essd"}}
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str product: The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
     :param _builtins.str resource_code: Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
     """
     __args__ = dict()
     __args__['desireAttributes'] = desire_attributes
+    __args__['desireAttributesJson'] = desire_attributes_json
     __args__['outputFile'] = output_file
     __args__['product'] = product
     __args__['resourceCode'] = resource_code
@@ -192,6 +258,7 @@ def get_prices_output(desire_attributes: pulumi.Input[Optional[Optional[Mapping[
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudcontrol/getPrices:getPrices', __args__, opts=opts, typ=GetPricesResult)
     return __ret__.apply(lambda __response__: GetPricesResult(
         desire_attributes=pulumi.get(__response__, 'desire_attributes'),
+        desire_attributes_json=pulumi.get(__response__, 'desire_attributes_json'),
         id=pulumi.get(__response__, 'id'),
         output_file=pulumi.get(__response__, 'output_file'),
         prices=pulumi.get(__response__, 'prices'),

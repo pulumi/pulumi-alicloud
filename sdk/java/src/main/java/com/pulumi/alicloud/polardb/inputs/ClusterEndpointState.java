@@ -183,6 +183,21 @@ public final class ClusterEndpointState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     * 
+     */
+    @Import(name="sccMode")
+    private @Nullable Output<String> sccMode;
+
+    /**
+     * @return Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     * 
+     */
+    public Optional<Output<String>> sccMode() {
+        return Optional.ofNullable(this.sccMode);
+    }
+
+    /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -275,6 +290,7 @@ public final class ClusterEndpointState extends com.pulumi.resources.ResourceArg
         this.nodes = $.nodes;
         this.port = $.port;
         this.readWriteMode = $.readWriteMode;
+        this.sccMode = $.sccMode;
         this.sslAutoRotate = $.sslAutoRotate;
         this.sslCertificateUrl = $.sslCertificateUrl;
         this.sslConnectionString = $.sslConnectionString;
@@ -539,6 +555,27 @@ public final class ClusterEndpointState extends com.pulumi.resources.ResourceArg
          */
         public Builder readWriteMode(String readWriteMode) {
             return readWriteMode(Output.of(readWriteMode));
+        }
+
+        /**
+         * @param sccMode Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccMode(@Nullable Output<String> sccMode) {
+            $.sccMode = sccMode;
+            return this;
+        }
+
+        /**
+         * @param sccMode Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccMode(String sccMode) {
+            return sccMode(Output.of(sccMode));
         }
 
         /**

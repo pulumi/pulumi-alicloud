@@ -71,6 +71,7 @@ import (
 //			}
 //			_, err = polardb.NewClusterEndpoint(ctx, "default", &polardb.ClusterEndpointArgs{
 //				DbClusterId: defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				SccMode:     pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
@@ -115,6 +116,8 @@ type ClusterEndpoint struct {
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 	ReadWriteMode pulumi.StringOutput `pulumi:"readWriteMode"`
+	// Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+	SccMode pulumi.StringOutput `pulumi:"sccMode"`
 	// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
 	// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
 	// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -184,6 +187,8 @@ type clusterEndpointState struct {
 	Port *string `pulumi:"port"`
 	// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 	ReadWriteMode *string `pulumi:"readWriteMode"`
+	// Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+	SccMode *string `pulumi:"sccMode"`
 	// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
 	// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
 	// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -221,6 +226,8 @@ type ClusterEndpointState struct {
 	Port pulumi.StringPtrInput
 	// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 	ReadWriteMode pulumi.StringPtrInput
+	// Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+	SccMode pulumi.StringPtrInput
 	// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
 	// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
 	// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -258,6 +265,8 @@ type clusterEndpointArgs struct {
 	Port *string `pulumi:"port"`
 	// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 	ReadWriteMode *string `pulumi:"readWriteMode"`
+	// Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+	SccMode *string `pulumi:"sccMode"`
 	// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
 	// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
 	// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -286,6 +295,8 @@ type ClusterEndpointArgs struct {
 	Port pulumi.StringPtrInput
 	// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 	ReadWriteMode pulumi.StringPtrInput
+	// Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+	SccMode pulumi.StringPtrInput
 	// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
 	// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
 	// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -434,6 +445,11 @@ func (o ClusterEndpointOutput) Port() pulumi.StringOutput {
 // Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 func (o ClusterEndpointOutput) ReadWriteMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterEndpoint) pulumi.StringOutput { return v.ReadWriteMode }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+func (o ClusterEndpointOutput) SccMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterEndpoint) pulumi.StringOutput { return v.SccMode }).(pulumi.StringOutput)
 }
 
 // Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.

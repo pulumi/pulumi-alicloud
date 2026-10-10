@@ -76,6 +76,8 @@ __all__ = [
     'GetRoutesRouteMatchHeaderResult',
     'GetRoutesRouteMatchPathResult',
     'GetRoutesRouteMatchQueryParamResult',
+    'GetSecretsSecretResult',
+    'GetSecretsSecretKmsConfigResult',
     'GetServicesServiceResult',
     'GetServicesServiceHealthCheckConfigResult',
     'GetServicesServiceOutlierDetectionConfigResult',
@@ -3978,6 +3980,185 @@ class GetRoutesRouteMatchQueryParamResult(dict):
         The parameter value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSecretsSecretResult(dict):
+    def __init__(__self__, *,
+                 create_timestamp: _builtins.str,
+                 description: _builtins.str,
+                 gateway_type: _builtins.str,
+                 id: _builtins.str,
+                 kms_configs: Sequence['outputs.GetSecretsSecretKmsConfigResult'],
+                 name: _builtins.str,
+                 reference_count: _builtins.int,
+                 secret_id: _builtins.str,
+                 secret_source: _builtins.str,
+                 status: _builtins.str,
+                 update_timestamp: _builtins.str):
+        """
+        :param _builtins.str create_timestamp: The creation timestamp of the secret.
+        :param _builtins.str description: The secret description.
+        :param _builtins.str gateway_type: The gateway type associated with the secret. Valid values: `AI`, `API`.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param Sequence['GetSecretsSecretKmsConfigArgs'] kms_configs: The KMS config of the secret.
+        :param _builtins.str name: The secret name.
+        :param _builtins.int reference_count: The reference count of the secret.
+        :param _builtins.str secret_id: The secret ID.
+        :param _builtins.str secret_source: The secret source.
+        :param _builtins.str status: The current status of the secret. Valid values: `ENABLE`, `DISABLE`, `DELETED`.
+        :param _builtins.str update_timestamp: The update timestamp of the secret.
+        """
+        pulumi.set(__self__, "create_timestamp", create_timestamp)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "gateway_type", gateway_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kms_configs", kms_configs)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reference_count", reference_count)
+        pulumi.set(__self__, "secret_id", secret_id)
+        pulumi.set(__self__, "secret_source", secret_source)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_timestamp", update_timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="createTimestamp")
+    def create_timestamp(self) -> _builtins.str:
+        """
+        The creation timestamp of the secret.
+        """
+        return pulumi.get(self, "create_timestamp")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The secret description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayType")
+    def gateway_type(self) -> _builtins.str:
+        """
+        The gateway type associated with the secret. Valid values: `AI`, `API`.
+        """
+        return pulumi.get(self, "gateway_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsConfigs")
+    def kms_configs(self) -> Sequence['outputs.GetSecretsSecretKmsConfigResult']:
+        """
+        The KMS config of the secret.
+        """
+        return pulumi.get(self, "kms_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The secret name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="referenceCount")
+    def reference_count(self) -> _builtins.int:
+        """
+        The reference count of the secret.
+        """
+        return pulumi.get(self, "reference_count")
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> _builtins.str:
+        """
+        The secret ID.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretSource")
+    def secret_source(self) -> _builtins.str:
+        """
+        The secret source.
+        """
+        return pulumi.get(self, "secret_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The current status of the secret. Valid values: `ENABLE`, `DISABLE`, `DELETED`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTimestamp")
+    def update_timestamp(self) -> _builtins.str:
+        """
+        The update timestamp of the secret.
+        """
+        return pulumi.get(self, "update_timestamp")
+
+
+@pulumi.output_type
+class GetSecretsSecretKmsConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_instance_id: _builtins.str,
+                 kms_key_id: _builtins.str,
+                 kms_secret_arn: _builtins.str,
+                 version_id: _builtins.str):
+        """
+        :param _builtins.str kms_instance_id: The KMS instance ID.
+        :param _builtins.str kms_key_id: The KMS key ID.
+        :param _builtins.str kms_secret_arn: The KMS secret arn.
+        :param _builtins.str version_id: The version ID.
+        """
+        pulumi.set(__self__, "kms_instance_id", kms_instance_id)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "kms_secret_arn", kms_secret_arn)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsInstanceId")
+    def kms_instance_id(self) -> _builtins.str:
+        """
+        The KMS instance ID.
+        """
+        return pulumi.get(self, "kms_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> _builtins.str:
+        """
+        The KMS key ID.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsSecretArn")
+    def kms_secret_arn(self) -> _builtins.str:
+        """
+        The KMS secret arn.
+        """
+        return pulumi.get(self, "kms_secret_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> _builtins.str:
+        """
+        The version ID.
+        """
+        return pulumi.get(self, "version_id")
 
 
 @pulumi.output_type

@@ -45,6 +45,7 @@ __all__ = [
     'VvpInstanceStorageOss',
     'GetMembersMemberResult',
     'GetSqlFilesFileResult',
+    'GetVariablesVariableResult',
 ]
 
 @pulumi.output_type
@@ -1513,6 +1514,90 @@ class GetSqlFilesFileResult(dict):
         The SQL script content.
         """
         return pulumi.get(self, "sql_script")
+
+    @_builtins.property
+    @pulumi.getter
+    def workspace(self) -> _builtins.str:
+        """
+        The ID of the workspace.
+        """
+        return pulumi.get(self, "workspace")
+
+
+@pulumi.output_type
+class GetVariablesVariableResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 kind: _builtins.str,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 value: _builtins.str,
+                 workspace: _builtins.str):
+        """
+        :param _builtins.str description: The description of the variable.
+        :param _builtins.str id: The ID of the Variable.
+        :param _builtins.str kind: The kind of the variable, currently supports Plain.
+        :param _builtins.str name: The name of the variable.
+        :param _builtins.str namespace: The name of the namespace.
+        :param _builtins.str value: The value of the variable.
+        :param _builtins.str workspace: The ID of the workspace.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "workspace", workspace)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the variable.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Variable.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        """
+        The kind of the variable, currently supports Plain.
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the variable.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
 
     @_builtins.property
     @pulumi.getter

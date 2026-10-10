@@ -20,8 +20,12 @@ type MilvusInstanceComponent struct {
 	// - general: Generic
 	// - ram: Capacity
 	CuType *string `pulumi:"cuType"`
+	// The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+	DataDisks []MilvusInstanceComponentDataDisk `pulumi:"dataDisks"`
 	// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
 	DiskSizeType *string `pulumi:"diskSizeType"`
+	// The default is consistent with the cluster.
+	PayType *string `pulumi:"payType"`
 	// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
 	Replica int `pulumi:"replica"`
 	// The component type. Different types need to be configured according to different versions.
@@ -50,8 +54,12 @@ type MilvusInstanceComponentArgs struct {
 	// - general: Generic
 	// - ram: Capacity
 	CuType pulumi.StringPtrInput `pulumi:"cuType"`
+	// The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+	DataDisks MilvusInstanceComponentDataDiskArrayInput `pulumi:"dataDisks"`
 	// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
 	DiskSizeType pulumi.StringPtrInput `pulumi:"diskSizeType"`
+	// The default is consistent with the cluster.
+	PayType pulumi.StringPtrInput `pulumi:"payType"`
 	// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
 	Replica pulumi.IntInput `pulumi:"replica"`
 	// The component type. Different types need to be configured according to different versions.
@@ -125,9 +133,19 @@ func (o MilvusInstanceComponentOutput) CuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MilvusInstanceComponent) *string { return v.CuType }).(pulumi.StringPtrOutput)
 }
 
+// The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+func (o MilvusInstanceComponentOutput) DataDisks() MilvusInstanceComponentDataDiskArrayOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) []MilvusInstanceComponentDataDisk { return v.DataDisks }).(MilvusInstanceComponentDataDiskArrayOutput)
+}
+
 // Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
 func (o MilvusInstanceComponentOutput) DiskSizeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MilvusInstanceComponent) *string { return v.DiskSizeType }).(pulumi.StringPtrOutput)
+}
+
+// The default is consistent with the cluster.
+func (o MilvusInstanceComponentOutput) PayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) *string { return v.PayType }).(pulumi.StringPtrOutput)
 }
 
 // The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
@@ -162,6 +180,130 @@ func (o MilvusInstanceComponentArrayOutput) Index(i pulumi.IntInput) MilvusInsta
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MilvusInstanceComponent {
 		return vs[0].([]MilvusInstanceComponent)[vs[1].(int)]
 	}).(MilvusInstanceComponentOutput)
+}
+
+type MilvusInstanceComponentDataDisk struct {
+	// Whether to enable the QueryNode data disk.
+	Enabled *bool `pulumi:"enabled"`
+	// The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The data disk size in GiB.
+	Size *int `pulumi:"size"`
+	// The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+	StorageClass *string `pulumi:"storageClass"`
+}
+
+// MilvusInstanceComponentDataDiskInput is an input type that accepts MilvusInstanceComponentDataDiskArgs and MilvusInstanceComponentDataDiskOutput values.
+// You can construct a concrete instance of `MilvusInstanceComponentDataDiskInput` via:
+//
+//	MilvusInstanceComponentDataDiskArgs{...}
+type MilvusInstanceComponentDataDiskInput interface {
+	pulumi.Input
+
+	ToMilvusInstanceComponentDataDiskOutput() MilvusInstanceComponentDataDiskOutput
+	ToMilvusInstanceComponentDataDiskOutputWithContext(context.Context) MilvusInstanceComponentDataDiskOutput
+}
+
+type MilvusInstanceComponentDataDiskArgs struct {
+	// Whether to enable the QueryNode data disk.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The data disk size in GiB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
+}
+
+func (MilvusInstanceComponentDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MilvusInstanceComponentDataDisk)(nil)).Elem()
+}
+
+func (i MilvusInstanceComponentDataDiskArgs) ToMilvusInstanceComponentDataDiskOutput() MilvusInstanceComponentDataDiskOutput {
+	return i.ToMilvusInstanceComponentDataDiskOutputWithContext(context.Background())
+}
+
+func (i MilvusInstanceComponentDataDiskArgs) ToMilvusInstanceComponentDataDiskOutputWithContext(ctx context.Context) MilvusInstanceComponentDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MilvusInstanceComponentDataDiskOutput)
+}
+
+// MilvusInstanceComponentDataDiskArrayInput is an input type that accepts MilvusInstanceComponentDataDiskArray and MilvusInstanceComponentDataDiskArrayOutput values.
+// You can construct a concrete instance of `MilvusInstanceComponentDataDiskArrayInput` via:
+//
+//	MilvusInstanceComponentDataDiskArray{ MilvusInstanceComponentDataDiskArgs{...} }
+type MilvusInstanceComponentDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToMilvusInstanceComponentDataDiskArrayOutput() MilvusInstanceComponentDataDiskArrayOutput
+	ToMilvusInstanceComponentDataDiskArrayOutputWithContext(context.Context) MilvusInstanceComponentDataDiskArrayOutput
+}
+
+type MilvusInstanceComponentDataDiskArray []MilvusInstanceComponentDataDiskInput
+
+func (MilvusInstanceComponentDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MilvusInstanceComponentDataDisk)(nil)).Elem()
+}
+
+func (i MilvusInstanceComponentDataDiskArray) ToMilvusInstanceComponentDataDiskArrayOutput() MilvusInstanceComponentDataDiskArrayOutput {
+	return i.ToMilvusInstanceComponentDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i MilvusInstanceComponentDataDiskArray) ToMilvusInstanceComponentDataDiskArrayOutputWithContext(ctx context.Context) MilvusInstanceComponentDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MilvusInstanceComponentDataDiskArrayOutput)
+}
+
+type MilvusInstanceComponentDataDiskOutput struct{ *pulumi.OutputState }
+
+func (MilvusInstanceComponentDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MilvusInstanceComponentDataDisk)(nil)).Elem()
+}
+
+func (o MilvusInstanceComponentDataDiskOutput) ToMilvusInstanceComponentDataDiskOutput() MilvusInstanceComponentDataDiskOutput {
+	return o
+}
+
+func (o MilvusInstanceComponentDataDiskOutput) ToMilvusInstanceComponentDataDiskOutputWithContext(ctx context.Context) MilvusInstanceComponentDataDiskOutput {
+	return o
+}
+
+// Whether to enable the QueryNode data disk.
+func (o MilvusInstanceComponentDataDiskOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponentDataDisk) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+func (o MilvusInstanceComponentDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponentDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The data disk size in GiB.
+func (o MilvusInstanceComponentDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponentDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+func (o MilvusInstanceComponentDataDiskOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponentDataDisk) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+type MilvusInstanceComponentDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (MilvusInstanceComponentDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MilvusInstanceComponentDataDisk)(nil)).Elem()
+}
+
+func (o MilvusInstanceComponentDataDiskArrayOutput) ToMilvusInstanceComponentDataDiskArrayOutput() MilvusInstanceComponentDataDiskArrayOutput {
+	return o
+}
+
+func (o MilvusInstanceComponentDataDiskArrayOutput) ToMilvusInstanceComponentDataDiskArrayOutputWithContext(ctx context.Context) MilvusInstanceComponentDataDiskArrayOutput {
+	return o
+}
+
+func (o MilvusInstanceComponentDataDiskArrayOutput) Index(i pulumi.IntInput) MilvusInstanceComponentDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MilvusInstanceComponentDataDisk {
+		return vs[0].([]MilvusInstanceComponentDataDisk)[vs[1].(int)]
+	}).(MilvusInstanceComponentDataDiskOutput)
 }
 
 type MilvusInstanceVswitchId struct {
@@ -4918,6 +5060,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentInput)(nil)).Elem(), MilvusInstanceComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentArrayInput)(nil)).Elem(), MilvusInstanceComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentDataDiskInput)(nil)).Elem(), MilvusInstanceComponentDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentDataDiskArrayInput)(nil)).Elem(), MilvusInstanceComponentDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceVswitchIdInput)(nil)).Elem(), MilvusInstanceVswitchIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceVswitchIdArrayInput)(nil)).Elem(), MilvusInstanceVswitchIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionInput)(nil)).Elem(), OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs{})
@@ -4964,6 +5108,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(MilvusInstanceComponentOutput{})
 	pulumi.RegisterOutputType(MilvusInstanceComponentArrayOutput{})
+	pulumi.RegisterOutputType(MilvusInstanceComponentDataDiskOutput{})
+	pulumi.RegisterOutputType(MilvusInstanceComponentDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(MilvusInstanceVswitchIdOutput{})
 	pulumi.RegisterOutputType(MilvusInstanceVswitchIdArrayOutput{})
 	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput{})

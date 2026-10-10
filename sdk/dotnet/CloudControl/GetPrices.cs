@@ -16,7 +16,13 @@ namespace Pulumi.AliCloud.CloudControl
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
+        /// &gt; **NOTE:** `DesireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `DesireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+        /// 
         /// ## Example Usage
+        /// 
+        /// ### Flat attributes
+        /// 
+        /// Use `DesireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -43,6 +49,36 @@ namespace Pulumi.AliCloud.CloudControl
         ///     {
         ///         ["alicloudCloudControlPriceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getPricesResult =&gt; getPricesResult.Prices[0]?.DiscountPrice)),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Nested attributes
+        /// 
+        /// Use `DesireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudControl.GetPrices.Invoke(new()
+        ///     {
+        ///         DesireAttributesJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         {
+        ///             ["InstanceType"] = "ecs.g7.large",
+        ///             ["SystemDisk"] = new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["Category"] = "cloud_essd",
+        ///             },
+        ///         }),
+        ///         Product = "ECS",
+        ///         ResourceCode = "Instance",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -54,7 +90,13 @@ namespace Pulumi.AliCloud.CloudControl
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
+        /// &gt; **NOTE:** `DesireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `DesireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+        /// 
         /// ## Example Usage
+        /// 
+        /// ### Flat attributes
+        /// 
+        /// Use `DesireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -83,6 +125,36 @@ namespace Pulumi.AliCloud.CloudControl
         ///     };
         /// });
         /// ```
+        /// 
+        /// ### Nested attributes
+        /// 
+        /// Use `DesireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudControl.GetPrices.Invoke(new()
+        ///     {
+        ///         DesireAttributesJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         {
+        ///             ["InstanceType"] = "ecs.g7.large",
+        ///             ["SystemDisk"] = new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["Category"] = "cloud_essd",
+        ///             },
+        ///         }),
+        ///         Product = "ECS",
+        ///         ResourceCode = "Instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPricesResult> Invoke(GetPricesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPricesResult>("alicloud:cloudcontrol/getPrices:getPrices", args ?? new GetPricesInvokeArgs(), options.WithDefaults());
@@ -92,7 +164,13 @@ namespace Pulumi.AliCloud.CloudControl
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
+        /// &gt; **NOTE:** `DesireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `DesireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+        /// 
         /// ## Example Usage
+        /// 
+        /// ### Flat attributes
+        /// 
+        /// Use `DesireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -119,6 +197,36 @@ namespace Pulumi.AliCloud.CloudControl
         ///     {
         ///         ["alicloudCloudControlPriceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getPricesResult =&gt; getPricesResult.Prices[0]?.DiscountPrice)),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Nested attributes
+        /// 
+        /// Use `DesireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudControl.GetPrices.Invoke(new()
+        ///     {
+        ///         DesireAttributesJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         {
+        ///             ["InstanceType"] = "ecs.g7.large",
+        ///             ["SystemDisk"] = new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["Category"] = "cloud_essd",
+        ///             },
+        ///         }),
+        ///         Product = "ECS",
+        ///         ResourceCode = "Instance",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -133,13 +241,19 @@ namespace Pulumi.AliCloud.CloudControl
         private Dictionary<string, string>? _desireAttributes;
 
         /// <summary>
-        /// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+        /// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `DesireAttributesJson`.
         /// </summary>
         public Dictionary<string, string> DesireAttributes
         {
             get => _desireAttributes ?? (_desireAttributes = new Dictionary<string, string>());
             set => _desireAttributes = value;
         }
+
+        /// <summary>
+        /// The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `DesireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "CloudEssd"}}
+        /// </summary>
+        [Input("desireAttributesJson")]
+        public string? DesireAttributesJson { get; set; }
 
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
@@ -171,13 +285,19 @@ namespace Pulumi.AliCloud.CloudControl
         private InputMap<string>? _desireAttributes;
 
         /// <summary>
-        /// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+        /// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `DesireAttributesJson`.
         /// </summary>
         public InputMap<string> DesireAttributes
         {
             get => _desireAttributes ?? (_desireAttributes = new InputMap<string>());
             set => _desireAttributes = value;
         }
+
+        /// <summary>
+        /// The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `DesireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "CloudEssd"}}
+        /// </summary>
+        [Input("desireAttributesJson")]
+        public Input<string>? DesireAttributesJson { get; set; }
 
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
@@ -208,6 +328,7 @@ namespace Pulumi.AliCloud.CloudControl
     public sealed class GetPricesResult
     {
         public readonly ImmutableDictionary<string, string>? DesireAttributes;
+        public readonly string? DesireAttributesJson;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -224,6 +345,8 @@ namespace Pulumi.AliCloud.CloudControl
         private GetPricesResult(
             ImmutableDictionary<string, string>? desireAttributes,
 
+            string? desireAttributesJson,
+
             string id,
 
             string? outputFile,
@@ -235,6 +358,7 @@ namespace Pulumi.AliCloud.CloudControl
             string resourceCode)
         {
             DesireAttributes = desireAttributes;
+            DesireAttributesJson = desireAttributesJson;
             Id = id;
             OutputFile = outputFile;
             Prices = prices;

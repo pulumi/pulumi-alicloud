@@ -125,6 +125,15 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     declare public readonly healthCheck: pulumi.Output<outputs.nlb.ServerGroupHealthCheck>;
     /**
+     * The traffic scheduling policy for dual-stack server groups. Valid values:
+     *
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     *
+     * > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     */
+    declare public readonly ipVersionAffinityMode: pulumi.Output<string>;
+    /**
      * Specifies whether to enable client IP preservation. Valid values:
      */
     declare public readonly preserveClientIpEnabled: pulumi.Output<boolean>;
@@ -203,6 +212,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["connectionDrainEnabled"] = state?.connectionDrainEnabled;
             resourceInputs["connectionDrainTimeout"] = state?.connectionDrainTimeout;
             resourceInputs["healthCheck"] = state?.healthCheck;
+            resourceInputs["ipVersionAffinityMode"] = state?.ipVersionAffinityMode;
             resourceInputs["preserveClientIpEnabled"] = state?.preserveClientIpEnabled;
             resourceInputs["protocol"] = state?.protocol;
             resourceInputs["regionId"] = state?.regionId;
@@ -227,6 +237,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["connectionDrainEnabled"] = args?.connectionDrainEnabled;
             resourceInputs["connectionDrainTimeout"] = args?.connectionDrainTimeout;
             resourceInputs["healthCheck"] = args?.healthCheck;
+            resourceInputs["ipVersionAffinityMode"] = args?.ipVersionAffinityMode;
             resourceInputs["preserveClientIpEnabled"] = args?.preserveClientIpEnabled;
             resourceInputs["protocol"] = args?.protocol;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
@@ -273,6 +284,15 @@ export interface ServerGroupState {
      * Health check configuration information. See `healthCheck` below.
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck | undefined>;
+    /**
+     * The traffic scheduling policy for dual-stack server groups. Valid values:
+     *
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     *
+     * > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     */
+    ipVersionAffinityMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable client IP preservation. Valid values:
      */
@@ -364,6 +384,15 @@ export interface ServerGroupArgs {
      * Health check configuration information. See `healthCheck` below.
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck | undefined>;
+    /**
+     * The traffic scheduling policy for dual-stack server groups. Valid values:
+     *
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     *
+     * > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     */
+    ipVersionAffinityMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable client IP preservation. Valid values:
      */

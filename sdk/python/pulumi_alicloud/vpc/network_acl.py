@@ -36,11 +36,11 @@ class NetworkAclArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL. Currently, this name is displayed in the console.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
@@ -85,7 +85,7 @@ class NetworkAclArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         """
         return pulumi.get(self, "description")
 
@@ -134,7 +134,7 @@ class NetworkAclArgs:
     @pulumi.getter(name="networkAclName")
     def network_acl_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the network ACL.
+        The name of the network ACL. Currently, this name is displayed in the console.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_name")
@@ -198,11 +198,11 @@ class _NetworkAclState:
         Input properties used for looking up and filtering NetworkAcl resources.
 
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL. Currently, this name is displayed in the console.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
@@ -254,7 +254,7 @@ class _NetworkAclState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         """
         return pulumi.get(self, "description")
 
@@ -303,7 +303,7 @@ class _NetworkAclState:
     @pulumi.getter(name="networkAclName")
     def network_acl_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the network ACL.
+        The name of the network ACL. Currently, this name is displayed in the console.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_name")
@@ -462,11 +462,11 @@ class NetworkAcl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL. Currently, this name is displayed in the console.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
@@ -625,11 +625,11 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL. Currently, this name is displayed in the console.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
@@ -668,7 +668,7 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_name`.
         """
         return pulumi.get(self, "description")
 
@@ -701,7 +701,7 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter(name="networkAclName")
     def network_acl_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the network ACL.
+        The name of the network ACL. Currently, this name is displayed in the console.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_name")

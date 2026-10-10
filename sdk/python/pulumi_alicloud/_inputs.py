@@ -17,6 +17,8 @@ from . import _utilities
 __all__ = [
     'MilvusInstanceComponentArgs',
     'MilvusInstanceComponentArgsDict',
+    'MilvusInstanceComponentDataDiskArgs',
+    'MilvusInstanceComponentDataDiskArgsDict',
     'MilvusInstanceVswitchIdArgs',
     'MilvusInstanceVswitchIdArgsDict',
     'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs',
@@ -76,9 +78,17 @@ class MilvusInstanceComponentArgsDict(TypedDict):
     - general: Generic
     - ram: Capacity
     """
+    data_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentDataDiskArgsDict']]]]]
+    """
+    The QueryNode data disk configuration. Only Type=query is supported. See `data_disk` below.
+    """
     disk_size_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+    """
+    pay_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default is consistent with the cluster.
     """
 
 @pulumi.input_type
@@ -88,7 +98,9 @@ class MilvusInstanceComponentArgs:
                  replica: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
                  cu_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_size_type: pulumi.Input[Optional[_builtins.str]] = None):
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentDataDiskArgs']]]] = None,
+                 disk_size_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cu_num: The number of CU. For example: 4
         :param pulumi.Input[_builtins.int] replica: The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
@@ -100,15 +112,21 @@ class MilvusInstanceComponentArgs:
         :param pulumi.Input[_builtins.str] cu_type: The calculation type. The default value is general, and the ram type needs to be opened with a work order.
                - general: Generic
                - ram: Capacity
+        :param pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentDataDiskArgs']]] data_disks: The QueryNode data disk configuration. Only Type=query is supported. See `data_disk` below.
         :param pulumi.Input[_builtins.str] disk_size_type: Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+        :param pulumi.Input[_builtins.str] pay_type: The default is consistent with the cluster.
         """
         pulumi.set(__self__, "cu_num", cu_num)
         pulumi.set(__self__, "replica", replica)
         pulumi.set(__self__, "type", type)
         if cu_type is not None:
             pulumi.set(__self__, "cu_type", cu_type)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
         if disk_size_type is not None:
             pulumi.set(__self__, "disk_size_type", disk_size_type)
+        if pay_type is not None:
+            pulumi.set(__self__, "pay_type", pay_type)
 
     @_builtins.property
     @pulumi.getter(name="cuNum")
@@ -165,6 +183,18 @@ class MilvusInstanceComponentArgs:
         pulumi.set(self, "cu_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentDataDiskArgs']]]]:
+        """
+        The QueryNode data disk configuration. Only Type=query is supported. See `data_disk` below.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentDataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @_builtins.property
     @pulumi.getter(name="diskSizeType")
     def disk_size_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -175,6 +205,107 @@ class MilvusInstanceComponentArgs:
     @disk_size_type.setter
     def disk_size_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_size_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default is consistent with the cluster.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pay_type", value)
+
+
+class MilvusInstanceComponentDataDiskArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable the QueryNode data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+    """
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The data disk size in GiB.
+    """
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+    """
+
+@pulumi.input_type
+class MilvusInstanceComponentDataDiskArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable the QueryNode data disk.
+        :param pulumi.Input[_builtins.str] performance_level: The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+        :param pulumi.Input[_builtins.int] size: The data disk size in GiB.
+        :param pulumi.Input[_builtins.str] storage_class: The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable the QueryNode data disk.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The data disk size in GiB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_class", value)
 
 
 class MilvusInstanceVswitchIdArgsDict(TypedDict):

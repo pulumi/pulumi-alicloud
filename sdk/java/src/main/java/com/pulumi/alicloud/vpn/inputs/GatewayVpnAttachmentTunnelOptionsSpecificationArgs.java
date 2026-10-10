@@ -86,14 +86,14 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
     }
 
     /**
-     * The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+     * The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+     * @return The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
      * 
      */
     public Optional<Output<String>> role() {
@@ -182,14 +182,14 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
     }
 
     /**
-     * The order in which the tunnel was created.
+     * The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
      * 
      */
     @Import(name="tunnelIndex", required=true)
     private Output<Integer> tunnelIndex;
 
     /**
-     * @return The order in which the tunnel was created.
+     * @return The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
      * 
      */
     public Output<Integer> tunnelIndex() {
@@ -351,7 +351,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param role The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+         * @param role The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param role The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+         * @param role The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param tunnelIndex The order in which the tunnel was created.
+         * @param tunnelIndex The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecificationArgs extends co
         }
 
         /**
-         * @param tunnelIndex The order in which the tunnel was created.
+         * @param tunnelIndex The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
          * 
          * @return builder
          * 

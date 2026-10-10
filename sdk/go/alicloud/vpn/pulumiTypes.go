@@ -2789,7 +2789,7 @@ type GatewayVpnAttachmentTunnelOptionsSpecification struct {
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
 	// The local internet IP in Tunnel.
 	InternetIp *string `pulumi:"internetIp"`
-	// The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+	// The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
 	Role *string `pulumi:"role"`
 	// The state of Tunnel.
 	State *string `pulumi:"state"`
@@ -2804,7 +2804,7 @@ type GatewayVpnAttachmentTunnelOptionsSpecification struct {
 	TunnelId *string `pulumi:"tunnelId"`
 	// Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
 	TunnelIkeConfig *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig `pulumi:"tunnelIkeConfig"`
-	// The order in which the tunnel was created.
+	// The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
 	TunnelIndex int `pulumi:"tunnelIndex"`
 	// Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
 	TunnelIpsecConfig *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig `pulumi:"tunnelIpsecConfig"`
@@ -2834,7 +2834,7 @@ type GatewayVpnAttachmentTunnelOptionsSpecificationArgs struct {
 	EnableNatTraversal pulumi.BoolPtrInput `pulumi:"enableNatTraversal"`
 	// The local internet IP in Tunnel.
 	InternetIp pulumi.StringPtrInput `pulumi:"internetIp"`
-	// The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+	// The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 	// The state of Tunnel.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -2849,7 +2849,7 @@ type GatewayVpnAttachmentTunnelOptionsSpecificationArgs struct {
 	TunnelId pulumi.StringPtrInput `pulumi:"tunnelId"`
 	// Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
 	TunnelIkeConfig GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput `pulumi:"tunnelIkeConfig"`
-	// The order in which the tunnel was created.
+	// The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
 	TunnelIndex pulumi.IntInput `pulumi:"tunnelIndex"`
 	// Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
 	TunnelIpsecConfig GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput `pulumi:"tunnelIpsecConfig"`
@@ -2930,7 +2930,7 @@ func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) InternetIp() pulum
 	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.InternetIp }).(pulumi.StringPtrOutput)
 }
 
-// The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+// The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
 func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -2967,7 +2967,7 @@ func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelIkeConfig() 
 	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput)
 }
 
-// The order in which the tunnel was created.
+// The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
 func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) int { return v.TunnelIndex }).(pulumi.IntOutput)
 }

@@ -3,10 +3,12 @@
 
 package com.pulumi.alicloud.outputs;
 
+import com.pulumi.alicloud.outputs.MilvusInstanceComponentDataDisk;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,10 +28,20 @@ public final class MilvusInstanceComponent {
      */
     private @Nullable String cuType;
     /**
+     * @return The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+     * 
+     */
+    private @Nullable List<MilvusInstanceComponentDataDisk> dataDisks;
+    /**
      * @return Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
      * 
      */
     private @Nullable String diskSizeType;
+    /**
+     * @return The default is consistent with the cluster.
+     * 
+     */
+    private @Nullable String payType;
     /**
      * @return The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
      * 
@@ -63,11 +75,25 @@ public final class MilvusInstanceComponent {
         return Optional.ofNullable(this.cuType);
     }
     /**
+     * @return The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+     * 
+     */
+    public List<MilvusInstanceComponentDataDisk> dataDisks() {
+        return this.dataDisks == null ? List.of() : this.dataDisks;
+    }
+    /**
      * @return Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
      * 
      */
     public Optional<String> diskSizeType() {
         return Optional.ofNullable(this.diskSizeType);
+    }
+    /**
+     * @return The default is consistent with the cluster.
+     * 
+     */
+    public Optional<String> payType() {
+        return Optional.ofNullable(this.payType);
     }
     /**
      * @return The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
@@ -99,7 +125,9 @@ public final class MilvusInstanceComponent {
     public static final class Builder {
         private Integer cuNum;
         private @Nullable String cuType;
+        private @Nullable List<MilvusInstanceComponentDataDisk> dataDisks;
         private @Nullable String diskSizeType;
+        private @Nullable String payType;
         private Integer replica;
         private String type;
         public Builder() {}
@@ -107,7 +135,9 @@ public final class MilvusInstanceComponent {
     	      Objects.requireNonNull(defaults);
     	      this.cuNum = defaults.cuNum;
     	      this.cuType = defaults.cuType;
+    	      this.dataDisks = defaults.dataDisks;
     	      this.diskSizeType = defaults.diskSizeType;
+    	      this.payType = defaults.payType;
     	      this.replica = defaults.replica;
     	      this.type = defaults.type;
         }
@@ -127,9 +157,24 @@ public final class MilvusInstanceComponent {
             return this;
         }
         @CustomType.Setter
+        public Builder dataDisks(@Nullable List<MilvusInstanceComponentDataDisk> dataDisks) {
+
+            this.dataDisks = dataDisks;
+            return this;
+        }
+        public Builder dataDisks(MilvusInstanceComponentDataDisk... dataDisks) {
+            return dataDisks(List.of(dataDisks));
+        }
+        @CustomType.Setter
         public Builder diskSizeType(@Nullable String diskSizeType) {
 
             this.diskSizeType = diskSizeType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder payType(@Nullable String payType) {
+
+            this.payType = payType;
             return this;
         }
         @CustomType.Setter
@@ -152,7 +197,9 @@ public final class MilvusInstanceComponent {
             final var _resultValue = new MilvusInstanceComponent();
             _resultValue.cuNum = cuNum;
             _resultValue.cuType = cuType;
+            _resultValue.dataDisks = dataDisks;
             _resultValue.diskSizeType = diskSizeType;
+            _resultValue.payType = payType;
             _resultValue.replica = replica;
             _resultValue.type = type;
             return _resultValue;

@@ -41,6 +41,11 @@ public final class GetServerGroupsGroup {
      */
     private String id;
     /**
+     * @return (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+     * 
+     */
+    private String ipVersionAffinityMode;
+    /**
      * @return Indicates whether client address retention is enabled.
      * 
      */
@@ -131,6 +136,13 @@ public final class GetServerGroupsGroup {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+     * 
+     */
+    public String ipVersionAffinityMode() {
+        return this.ipVersionAffinityMode;
     }
     /**
      * @return Indicates whether client address retention is enabled.
@@ -224,6 +236,7 @@ public final class GetServerGroupsGroup {
         private Integer connectionDrainTimeout;
         private List<GetServerGroupsGroupHealthCheck> healthChecks;
         private String id;
+        private String ipVersionAffinityMode;
         private Boolean preserveClientIpEnabled;
         private String protocol;
         private List<String> relatedLoadBalancerIds;
@@ -243,6 +256,7 @@ public final class GetServerGroupsGroup {
     	      this.connectionDrainTimeout = defaults.connectionDrainTimeout;
     	      this.healthChecks = defaults.healthChecks;
     	      this.id = defaults.id;
+    	      this.ipVersionAffinityMode = defaults.ipVersionAffinityMode;
     	      this.preserveClientIpEnabled = defaults.preserveClientIpEnabled;
     	      this.protocol = defaults.protocol;
     	      this.relatedLoadBalancerIds = defaults.relatedLoadBalancerIds;
@@ -297,6 +311,14 @@ public final class GetServerGroupsGroup {
               throw new MissingRequiredPropertyException("GetServerGroupsGroup", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersionAffinityMode(String ipVersionAffinityMode) {
+            if (ipVersionAffinityMode == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "ipVersionAffinityMode");
+            }
+            this.ipVersionAffinityMode = ipVersionAffinityMode;
             return this;
         }
         @CustomType.Setter
@@ -397,6 +419,7 @@ public final class GetServerGroupsGroup {
             _resultValue.connectionDrainTimeout = connectionDrainTimeout;
             _resultValue.healthChecks = healthChecks;
             _resultValue.id = id;
+            _resultValue.ipVersionAffinityMode = ipVersionAffinityMode;
             _resultValue.preserveClientIpEnabled = preserveClientIpEnabled;
             _resultValue.protocol = protocol;
             _resultValue.relatedLoadBalancerIds = relatedLoadBalancerIds;

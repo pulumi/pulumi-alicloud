@@ -773,6 +773,71 @@ class EndpointGroup(pulumi.CustomResource):
             listener_id=default_listener.id)
         ```
 
+        ### IpTarget Usage
+
+        The following example shows how to create an endpoint group with `IpTarget` type endpoints.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default = alicloud.ga.Accelerator("default",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("default",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            port_ranges=[{
+                "from_port": 8080,
+                "to_port": 8080,
+            }],
+            client_affinity="SOURCE_IP",
+            protocol="HTTP",
+            name="terraform-example")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name="terraform-example",
+            vpc_id=default_network.id,
+            cidr_block="192.168.1.0/24",
+            zone_id="cn-hangzhou-h")
+        update = alicloud.vpc.Switch("update",
+            vswitch_name="terraform-example-update",
+            vpc_id=default_network.id,
+            cidr_block="192.168.2.0/24",
+            zone_id="cn-hangzhou-i")
+        default_endpoint_group = alicloud.ga.EndpointGroup("default",
+            accelerator_id=default.id,
+            endpoint_configurations=[{
+                "endpoint": "192.168.1.10",
+                "type": "IpTarget",
+                "weight": 20,
+                "vpc_id": default_network.id,
+                "vswitch_ids": [default_switch.id],
+                "enable_proxy_protocol": True,
+                "enable_clientip_preservation": False,
+            }],
+            endpoint_group_region=region,
+            listener_id=default_listener.id,
+            name="terraform-example",
+            description="terraform-example")
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -893,6 +958,71 @@ class EndpointGroup(pulumi.CustomResource):
             ],
             endpoint_group_region=region,
             listener_id=default_listener.id)
+        ```
+
+        ### IpTarget Usage
+
+        The following example shows how to create an endpoint group with `IpTarget` type endpoints.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default = alicloud.ga.Accelerator("default",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("default",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            port_ranges=[{
+                "from_port": 8080,
+                "to_port": 8080,
+            }],
+            client_affinity="SOURCE_IP",
+            protocol="HTTP",
+            name="terraform-example")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name="terraform-example",
+            vpc_id=default_network.id,
+            cidr_block="192.168.1.0/24",
+            zone_id="cn-hangzhou-h")
+        update = alicloud.vpc.Switch("update",
+            vswitch_name="terraform-example-update",
+            vpc_id=default_network.id,
+            cidr_block="192.168.2.0/24",
+            zone_id="cn-hangzhou-i")
+        default_endpoint_group = alicloud.ga.EndpointGroup("default",
+            accelerator_id=default.id,
+            endpoint_configurations=[{
+                "endpoint": "192.168.1.10",
+                "type": "IpTarget",
+                "weight": 20,
+                "vpc_id": default_network.id,
+                "vswitch_ids": [default_switch.id],
+                "enable_proxy_protocol": True,
+                "enable_clientip_preservation": False,
+            }],
+            endpoint_group_region=region,
+            listener_id=default_listener.id,
+            name="terraform-example",
+            description="terraform-example")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

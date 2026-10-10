@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AcceleratorArgs', 'Accelerator']
 
@@ -22,11 +24,13 @@ class AcceleratorArgs:
                  accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_set_config: pulumi.Input[Optional['AcceleratorIpSetConfigArgs']] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +44,7 @@ class AcceleratorArgs:
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
         :param pulumi.Input[_builtins.str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
                - `BandwidthPackage`: billed based on bandwidth plans.
                - `CDT`: billed based on data transfer.
@@ -49,6 +54,7 @@ class AcceleratorArgs:
         :param pulumi.Input[_builtins.int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input['AcceleratorIpSetConfigArgs'] ip_set_config: The configurations of the acceleration area. See `ip_set_config` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
                - `Month`: billed on a monthly basis.
@@ -68,6 +74,8 @@ class AcceleratorArgs:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_billing_type is not None:
             pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if cross_border_mode is not None:
@@ -78,6 +86,8 @@ class AcceleratorArgs:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if ip_set_config is not None:
+            pulumi.set(__self__, "ip_set_config", ip_set_config)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
@@ -128,6 +138,18 @@ class AcceleratorArgs:
     @auto_use_coupon.setter
     def auto_use_coupon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_use_coupon", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthBillingType")
@@ -192,6 +214,18 @@ class AcceleratorArgs:
     @duration.setter
     def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipSetConfig")
+    def ip_set_config(self) -> pulumi.Input[Optional['AcceleratorIpSetConfigArgs']]:
+        """
+        The configurations of the acceleration area. See `ip_set_config` below.
+        """
+        return pulumi.get(self, "ip_set_config")
+
+    @ip_set_config.setter
+    def ip_set_config(self, value: pulumi.Input[Optional['AcceleratorIpSetConfigArgs']]):
+        pulumi.set(self, "ip_set_config", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
@@ -289,11 +323,13 @@ class _AcceleratorState:
                  accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_set_config: pulumi.Input[Optional['AcceleratorIpSetConfigArgs']] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
@@ -308,6 +344,7 @@ class _AcceleratorState:
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
         :param pulumi.Input[_builtins.str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
                - `BandwidthPackage`: billed based on bandwidth plans.
                - `CDT`: billed based on data transfer.
@@ -317,6 +354,7 @@ class _AcceleratorState:
         :param pulumi.Input[_builtins.int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input['AcceleratorIpSetConfigArgs'] ip_set_config: The configurations of the acceleration area. See `ip_set_config` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
                - `Month`: billed on a monthly basis.
@@ -337,6 +375,8 @@ class _AcceleratorState:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_billing_type is not None:
             pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if cross_border_mode is not None:
@@ -347,6 +387,8 @@ class _AcceleratorState:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if ip_set_config is not None:
+            pulumi.set(__self__, "ip_set_config", ip_set_config)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
@@ -399,6 +441,18 @@ class _AcceleratorState:
     @auto_use_coupon.setter
     def auto_use_coupon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_use_coupon", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthBillingType")
@@ -463,6 +517,18 @@ class _AcceleratorState:
     @duration.setter
     def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipSetConfig")
+    def ip_set_config(self) -> pulumi.Input[Optional['AcceleratorIpSetConfigArgs']]:
+        """
+        The configurations of the acceleration area. See `ip_set_config` below.
+        """
+        return pulumi.get(self, "ip_set_config")
+
+    @ip_set_config.setter
+    def ip_set_config(self, value: pulumi.Input[Optional['AcceleratorIpSetConfigArgs']]):
+        pulumi.set(self, "ip_set_config", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
@@ -575,11 +641,13 @@ class Accelerator(pulumi.CustomResource):
                  accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_set_config: pulumi.Input[Optional[Union['AcceleratorIpSetConfigArgs', 'AcceleratorIpSetConfigArgsDict', 'outputs.AcceleratorIpSetConfig']]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
@@ -625,6 +693,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
         :param pulumi.Input[_builtins.str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
                - `BandwidthPackage`: billed based on bandwidth plans.
                - `CDT`: billed based on data transfer.
@@ -634,6 +703,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[Union['AcceleratorIpSetConfigArgs', 'AcceleratorIpSetConfigArgsDict', 'outputs.AcceleratorIpSetConfig']] ip_set_config: The configurations of the acceleration area. See `ip_set_config` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
                - `Month`: billed on a monthly basis.
@@ -703,11 +773,13 @@ class Accelerator(pulumi.CustomResource):
                  accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_set_config: pulumi.Input[Optional[Union['AcceleratorIpSetConfigArgs', 'AcceleratorIpSetConfigArgsDict', 'outputs.AcceleratorIpSetConfig']]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
@@ -727,11 +799,13 @@ class Accelerator(pulumi.CustomResource):
             __props__.__dict__["accelerator_name"] = accelerator_name
             __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+            __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
             __props__.__dict__["cross_border_mode"] = cross_border_mode
             __props__.__dict__["cross_border_status"] = cross_border_status
             __props__.__dict__["description"] = description
             __props__.__dict__["duration"] = duration
+            __props__.__dict__["ip_set_config"] = ip_set_config
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["promotion_option_no"] = promotion_option_no
@@ -753,11 +827,13 @@ class Accelerator(pulumi.CustomResource):
             accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
             cross_border_mode: pulumi.Input[Optional[_builtins.str]] = None,
             cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_set_config: pulumi.Input[Optional[Union['AcceleratorIpSetConfigArgs', 'AcceleratorIpSetConfigArgsDict', 'outputs.AcceleratorIpSetConfig']]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
             promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
@@ -776,6 +852,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
         :param pulumi.Input[_builtins.str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
                - `BandwidthPackage`: billed based on bandwidth plans.
                - `CDT`: billed based on data transfer.
@@ -785,6 +862,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[Union['AcceleratorIpSetConfigArgs', 'AcceleratorIpSetConfigArgsDict', 'outputs.AcceleratorIpSetConfig']] ip_set_config: The configurations of the acceleration area. See `ip_set_config` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
                - `Month`: billed on a monthly basis.
@@ -806,11 +884,13 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["accelerator_name"] = accelerator_name
         __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+        __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
         __props__.__dict__["cross_border_mode"] = cross_border_mode
         __props__.__dict__["cross_border_status"] = cross_border_status
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["ip_set_config"] = ip_set_config
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["promotion_option_no"] = promotion_option_no
@@ -844,6 +924,14 @@ class Accelerator(pulumi.CustomResource):
         Use coupons to pay bills automatically. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Output[_builtins.int]:
+        """
+        The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `access_mode` in `ip_set_config` is set to `Anycast`.
+        """
+        return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthBillingType")
@@ -888,6 +976,14 @@ class Accelerator(pulumi.CustomResource):
         * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
         return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="ipSetConfig")
+    def ip_set_config(self) -> pulumi.Output['outputs.AcceleratorIpSetConfig']:
+        """
+        The configurations of the acceleration area. See `ip_set_config` below.
+        """
+        return pulumi.get(self, "ip_set_config")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")

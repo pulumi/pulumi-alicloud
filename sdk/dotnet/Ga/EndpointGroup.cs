@@ -114,6 +114,109 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// ### IpTarget Usage
+    /// 
+    /// The following example shows how to create an endpoint group with `IpTarget` type endpoints.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var @default = new AliCloud.Ga.Accelerator("default", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
+    ///     {
+    ///         AcceleratorId = @default.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 8080,
+    ///                 ToPort = 8080,
+    ///             },
+    ///         },
+    ///         ClientAffinity = "SOURCE_IP",
+    ///         Protocol = "HTTP",
+    ///         Name = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         ZoneId = "cn-hangzhou-h",
+    ///     });
+    /// 
+    ///     var update = new AliCloud.Vpc.Switch("update", new()
+    ///     {
+    ///         VswitchName = "terraform-example-update",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.2.0/24",
+    ///         ZoneId = "cn-hangzhou-i",
+    ///     });
+    /// 
+    ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("default", new()
+    ///     {
+    ///         AcceleratorId = @default.Id,
+    ///         EndpointConfigurations = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
+    ///             {
+    ///                 Endpoint = "192.168.1.10",
+    ///                 Type = "IpTarget",
+    ///                 Weight = 20,
+    ///                 VpcId = defaultNetwork.Id,
+    ///                 VswitchIds = new[]
+    ///                 {
+    ///                     defaultSwitch.Id,
+    ///                 },
+    ///                 EnableProxyProtocol = true,
+    ///                 EnableClientipPreservation = false,
+    ///             },
+    ///         },
+    ///         EndpointGroupRegion = region,
+    ///         ListenerId = defaultListener.Id,
+    ///         Name = "terraform-example",
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import

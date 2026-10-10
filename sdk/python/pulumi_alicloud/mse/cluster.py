@@ -820,6 +820,8 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.94.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.295.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         ```python
@@ -919,6 +921,8 @@ class Cluster(pulumi.CustomResource):
         Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
 
         > **NOTE:** Available since v1.94.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.295.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 

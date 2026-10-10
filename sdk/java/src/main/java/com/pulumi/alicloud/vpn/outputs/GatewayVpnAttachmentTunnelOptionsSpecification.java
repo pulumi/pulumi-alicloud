@@ -40,7 +40,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      */
     private @Nullable String internetIp;
     /**
-     * @return The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+     * @return The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
      * 
      */
     private @Nullable String role;
@@ -73,7 +73,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
      */
     private @Nullable GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig tunnelIkeConfig;
     /**
-     * @return The order in which the tunnel was created.
+     * @return The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
      * 
      */
     private Integer tunnelIndex;
@@ -120,7 +120,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
         return Optional.ofNullable(this.internetIp);
     }
     /**
-     * @return The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+     * @return The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
      * 
      */
     public Optional<String> role() {
@@ -165,7 +165,7 @@ public final class GatewayVpnAttachmentTunnelOptionsSpecification {
         return Optional.ofNullable(this.tunnelIkeConfig);
     }
     /**
-     * @return The order in which the tunnel was created.
+     * @return The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
      * 
      */
     public Integer tunnelIndex() {

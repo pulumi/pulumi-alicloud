@@ -28,6 +28,10 @@ public final class GetServiceResult {
      * 
      */
     private String id;
+    /**
+     * @return The current billing method of the opened service, read back from the CDN service.
+     * 
+     */
     private @Nullable String internetChargeType;
     /**
      * @return The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.
@@ -65,6 +69,10 @@ public final class GetServiceResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The current billing method of the opened service, read back from the CDN service.
+     * 
+     */
     public Optional<String> internetChargeType() {
         return Optional.ofNullable(this.internetChargeType);
     }

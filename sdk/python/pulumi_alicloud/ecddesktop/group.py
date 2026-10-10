@@ -20,7 +20,6 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  bundle_id: pulumi.Input[_builtins.str],
-                 end_user_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  office_site_id: pulumi.Input[_builtins.str],
                  policy_group_id: pulumi.Input[_builtins.str],
                  allow_auto_setup: pulumi.Input[Optional[_builtins.int]] = None,
@@ -28,29 +27,31 @@ class GroupArgs:
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  desktop_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keep_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  max_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
                  min_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_strategy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
 
         :param pulumi.Input[_builtins.str] bundle_id: The ID of the desktop template.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of the office network to which the desktop group belongs.
         :param pulumi.Input[_builtins.str] policy_group_id: The ID of the policy group associated with the desktop group.
         :param pulumi.Input[_builtins.int] allow_auto_setup: Specifies whether to allow cloud desktops to be automatically created for a subscription desktop group. This parameter takes effect only when the desktop group uses the subscription billing method. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.int] allow_buffer_count: The number of cloud desktops that are reserved in the desktop group. Reserved desktops are kept started and idle, waiting for connections. Valid values: `0` to `100`. `0` indicates that no desktop is reserved.
         :param pulumi.Input[_builtins.str] comments: The remarks of the desktop group.
         :param pulumi.Input[_builtins.str] desktop_group_name: The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory. This parameter is not publicly available yet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         :param pulumi.Input[_builtins.int] keep_duration: The retention duration of a session after it is disconnected. Unit: milliseconds. Valid values: `180000` to `345600000`. `0` indicates that the session is always retained. If the user does not reconnect within the retention duration, the session is logged off and unsaved data is destroyed.
         :param pulumi.Input[_builtins.int] max_desktops_count: The maximum number of cloud desktops that the pay-as-you-go desktop group can contain. Valid values: `0` to `500`.
         :param pulumi.Input[_builtins.int] min_desktops_count: The minimum number of cloud desktops that the pay-as-you-go desktop group automatically creates. Valid values: `0` to the value of `max_desktops_count`.
-        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy.
+        :param pulumi.Input[_builtins.str] pay_type: The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy. This parameter is not publicly available yet.
         """
         pulumi.set(__self__, "bundle_id", bundle_id)
-        pulumi.set(__self__, "end_user_ids", end_user_ids)
         pulumi.set(__self__, "office_site_id", office_site_id)
         pulumi.set(__self__, "policy_group_id", policy_group_id)
         if allow_auto_setup is not None:
@@ -63,12 +64,16 @@ class GroupArgs:
             pulumi.set(__self__, "desktop_group_name", desktop_group_name)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
+        if end_user_ids is not None:
+            pulumi.set(__self__, "end_user_ids", end_user_ids)
         if keep_duration is not None:
             pulumi.set(__self__, "keep_duration", keep_duration)
         if max_desktops_count is not None:
             pulumi.set(__self__, "max_desktops_count", max_desktops_count)
         if min_desktops_count is not None:
             pulumi.set(__self__, "min_desktops_count", min_desktops_count)
+        if pay_type is not None:
+            pulumi.set(__self__, "pay_type", pay_type)
         if scale_strategy_id is not None:
             pulumi.set(__self__, "scale_strategy_id", scale_strategy_id)
 
@@ -83,18 +88,6 @@ class GroupArgs:
     @bundle_id.setter
     def bundle_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "bundle_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="endUserIds")
-    def end_user_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The list of IDs of the end users authorized to use the desktop group.
-        """
-        return pulumi.get(self, "end_user_ids")
-
-    @end_user_ids.setter
-    def end_user_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "end_user_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteId")
@@ -172,13 +165,25 @@ class GroupArgs:
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the directory.
+        The ID of the directory. This parameter is not publicly available yet.
         """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
     def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserIds")
+    def end_user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
+        """
+        return pulumi.get(self, "end_user_ids")
+
+    @end_user_ids.setter
+    def end_user_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "end_user_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="keepDuration")
@@ -217,10 +222,22 @@ class GroupArgs:
         pulumi.set(self, "min_desktops_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pay_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="scaleStrategyId")
     def scale_strategy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the scaling policy.
+        The ID of the scaling policy. This parameter is not publicly available yet.
         """
         return pulumi.get(self, "scale_strategy_id")
 
@@ -276,9 +293,9 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] data_disk_category: The category of the data disk.
         :param pulumi.Input[_builtins.str] data_disk_size: The size of the data disk. Unit: GiB.
         :param pulumi.Input[_builtins.str] desktop_group_name: The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory. This parameter is not publicly available yet.
         :param pulumi.Input[_builtins.str] directory_type: The type of the directory.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         :param pulumi.Input[_builtins.str] expired_time: The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
         :param pulumi.Input[_builtins.float] gpu_count: The number of GPUs.
         :param pulumi.Input[_builtins.str] gpu_spec: The GPU specifications.
@@ -290,11 +307,11 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] office_site_name: The name of the office network.
         :param pulumi.Input[_builtins.str] office_site_type: The type of the account system of the office network.
         :param pulumi.Input[_builtins.str] own_bundle_name: The name of the desktop template.
-        :param pulumi.Input[_builtins.str] pay_type: The billing method.
+        :param pulumi.Input[_builtins.str] pay_type: The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] policy_group_id: The ID of the policy group associated with the desktop group.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of the policy group.
         :param pulumi.Input[_builtins.int] res_type: The type of the resource.
-        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy.
+        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy. This parameter is not publicly available yet.
         :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk.
         :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk. Unit: GiB.
         """
@@ -485,7 +502,7 @@ class _GroupState:
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the directory.
+        The ID of the directory. This parameter is not publicly available yet.
         """
         return pulumi.get(self, "directory_id")
 
@@ -509,7 +526,7 @@ class _GroupState:
     @pulumi.getter(name="endUserIds")
     def end_user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of IDs of the end users authorized to use the desktop group.
+        The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         """
         return pulumi.get(self, "end_user_ids")
 
@@ -653,7 +670,7 @@ class _GroupState:
     @pulumi.getter(name="payType")
     def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing method.
+        The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "pay_type")
 
@@ -701,7 +718,7 @@ class _GroupState:
     @pulumi.getter(name="scaleStrategyId")
     def scale_strategy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the scaling policy.
+        The ID of the scaling policy. This parameter is not publicly available yet.
         """
         return pulumi.get(self, "scale_strategy_id")
 
@@ -751,6 +768,7 @@ class Group(pulumi.CustomResource):
                  max_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
                  min_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
                  office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -831,14 +849,15 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bundle_id: The ID of the desktop template.
         :param pulumi.Input[_builtins.str] comments: The remarks of the desktop group.
         :param pulumi.Input[_builtins.str] desktop_group_name: The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory. This parameter is not publicly available yet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         :param pulumi.Input[_builtins.int] keep_duration: The retention duration of a session after it is disconnected. Unit: milliseconds. Valid values: `180000` to `345600000`. `0` indicates that the session is always retained. If the user does not reconnect within the retention duration, the session is logged off and unsaved data is destroyed.
         :param pulumi.Input[_builtins.int] max_desktops_count: The maximum number of cloud desktops that the pay-as-you-go desktop group can contain. Valid values: `0` to `500`.
         :param pulumi.Input[_builtins.int] min_desktops_count: The minimum number of cloud desktops that the pay-as-you-go desktop group automatically creates. Valid values: `0` to the value of `max_desktops_count`.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of the office network to which the desktop group belongs.
+        :param pulumi.Input[_builtins.str] pay_type: The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] policy_group_id: The ID of the policy group associated with the desktop group.
-        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy.
+        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy. This parameter is not publicly available yet.
         """
         ...
     @overload
@@ -942,6 +961,7 @@ class Group(pulumi.CustomResource):
                  max_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
                  min_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
                  office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -953,16 +973,14 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
-            __props__.__dict__["allow_auto_setup"] = None if allow_auto_setup is None else pulumi.Output.secret(allow_auto_setup)
-            __props__.__dict__["allow_buffer_count"] = None if allow_buffer_count is None else pulumi.Output.secret(allow_buffer_count)
+            __props__.__dict__["allow_auto_setup"] = allow_auto_setup
+            __props__.__dict__["allow_buffer_count"] = allow_buffer_count
             if bundle_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bundle_id'")
             __props__.__dict__["bundle_id"] = bundle_id
             __props__.__dict__["comments"] = comments
             __props__.__dict__["desktop_group_name"] = desktop_group_name
             __props__.__dict__["directory_id"] = directory_id
-            if end_user_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'end_user_ids'")
             __props__.__dict__["end_user_ids"] = end_user_ids
             __props__.__dict__["keep_duration"] = keep_duration
             __props__.__dict__["max_desktops_count"] = max_desktops_count
@@ -970,10 +988,11 @@ class Group(pulumi.CustomResource):
             if office_site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'office_site_id'")
             __props__.__dict__["office_site_id"] = office_site_id
+            __props__.__dict__["pay_type"] = pay_type
             if policy_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_group_id'")
             __props__.__dict__["policy_group_id"] = policy_group_id
-            __props__.__dict__["scale_strategy_id"] = None if scale_strategy_id is None else pulumi.Output.secret(scale_strategy_id)
+            __props__.__dict__["scale_strategy_id"] = scale_strategy_id
             __props__.__dict__["cpu"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
@@ -987,13 +1006,10 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["office_site_name"] = None
             __props__.__dict__["office_site_type"] = None
             __props__.__dict__["own_bundle_name"] = None
-            __props__.__dict__["pay_type"] = None
             __props__.__dict__["policy_group_name"] = None
             __props__.__dict__["res_type"] = None
             __props__.__dict__["system_disk_category"] = None
             __props__.__dict__["system_disk_size"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["allowAutoSetup", "allowBufferCount", "scaleStrategyId"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Group, __self__).__init__(
             'alicloud:ecddesktop/group:Group',
             resource_name,
@@ -1052,9 +1068,9 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_disk_category: The category of the data disk.
         :param pulumi.Input[_builtins.str] data_disk_size: The size of the data disk. Unit: GiB.
         :param pulumi.Input[_builtins.str] desktop_group_name: The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory. This parameter is not publicly available yet.
         :param pulumi.Input[_builtins.str] directory_type: The type of the directory.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] end_user_ids: The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         :param pulumi.Input[_builtins.str] expired_time: The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
         :param pulumi.Input[_builtins.float] gpu_count: The number of GPUs.
         :param pulumi.Input[_builtins.str] gpu_spec: The GPU specifications.
@@ -1066,11 +1082,11 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] office_site_name: The name of the office network.
         :param pulumi.Input[_builtins.str] office_site_type: The type of the account system of the office network.
         :param pulumi.Input[_builtins.str] own_bundle_name: The name of the desktop template.
-        :param pulumi.Input[_builtins.str] pay_type: The billing method.
+        :param pulumi.Input[_builtins.str] pay_type: The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] policy_group_id: The ID of the policy group associated with the desktop group.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of the policy group.
         :param pulumi.Input[_builtins.int] res_type: The type of the resource.
-        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy.
+        :param pulumi.Input[_builtins.str] scale_strategy_id: The ID of the scaling policy. This parameter is not publicly available yet.
         :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk.
         :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk. Unit: GiB.
         """
@@ -1193,9 +1209,9 @@ class Group(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def directory_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the directory.
+        The ID of the directory. This parameter is not publicly available yet.
         """
         return pulumi.get(self, "directory_id")
 
@@ -1209,9 +1225,9 @@ class Group(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="endUserIds")
-    def end_user_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def end_user_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The list of IDs of the end users authorized to use the desktop group.
+        The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         """
         return pulumi.get(self, "end_user_ids")
 
@@ -1307,7 +1323,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="payType")
     def pay_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The billing method.
+        The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "pay_type")
 
@@ -1339,7 +1355,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="scaleStrategyId")
     def scale_strategy_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the scaling policy.
+        The ID of the scaling policy. This parameter is not publicly available yet.
         """
         return pulumi.get(self, "scale_strategy_id")
 

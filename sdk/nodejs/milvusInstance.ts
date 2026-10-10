@@ -111,13 +111,17 @@ export class MilvusInstance extends pulumi.CustomResource {
      */
     declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
+     * Whether auto-renewal is enabled when the instance is created.
+     */
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
      *   2.5: proxy ,mix_coordinator,data,query,index
      *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      */
-    declare public readonly components: pulumi.Output<outputs.MilvusInstanceComponent[] | undefined>;
+    declare public readonly components: pulumi.Output<outputs.MilvusInstanceComponent[]>;
     /**
      * User-defined configuration
      */
@@ -128,8 +132,6 @@ export class MilvusInstance extends pulumi.CustomResource {
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * DB administrator password, which can be used to log in to attu.
-     *
-     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly dbAdminPassword: pulumi.Output<string | undefined>;
     /**
@@ -141,6 +143,10 @@ export class MilvusInstance extends pulumi.CustomResource {
      */
     declare public readonly encrypted: pulumi.Output<boolean | undefined>;
     /**
+     * (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+     */
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
+    /**
      * Whether to enable multiple copies of data
      */
     declare public readonly ha: pulumi.Output<boolean | undefined>;
@@ -149,15 +155,27 @@ export class MilvusInstance extends pulumi.CustomResource {
      */
     declare public readonly instanceName: pulumi.Output<string>;
     /**
+     * Whether multi-zone storage is enabled when the instance is created.
+     */
+    declare public readonly isMultiAzStorage: pulumi.Output<boolean | undefined>;
+    /**
      * Kms Key encryption id, need to be encrypted set to true.
      */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
+    /**
+     * The number of load replicas configured when the instance is created.
+     */
+    declare public readonly loadReplicas: pulumi.Output<number | undefined>;
     /**
      * Availability Zone mode. The default Single.
      * - Single: Single zone.
      * - Two: Dual Availability Zones.
      */
     declare public readonly multiZoneMode: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.294.0) Alibaba Cloud Order Number.
+     */
+    declare public /*out*/ readonly orderId: pulumi.Output<string>;
     /**
      * Instance Payment Duration
      *
@@ -179,7 +197,11 @@ export class MilvusInstance extends pulumi.CustomResource {
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
-     * regionId. For example: cn-hangzhou
+     * The promotion code used to create the instance.
+     */
+    declare public readonly promotionNo: pulumi.Output<string | undefined>;
+    /**
+     * The regionId.
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
@@ -187,7 +209,15 @@ export class MilvusInstance extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * Instance status. Value range:
+     * (Available since v1.294.0) Instance running time.
+     */
+    declare public /*out*/ readonly runningTime: pulumi.Output<number>;
+    /**
+     * (Available since v1.294.0) Configured Security Group id.
+     */
+    declare public /*out*/ readonly securityGroupIds: pulumi.Output<string[]>;
+    /**
+     * Instance status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -222,21 +252,29 @@ export class MilvusInstance extends pulumi.CustomResource {
             const state = argsOrState as MilvusInstanceState | undefined;
             resourceInputs["autoBackup"] = state?.autoBackup;
             resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["components"] = state?.components;
             resourceInputs["configuration"] = state?.configuration;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dbAdminPassword"] = state?.dbAdminPassword;
             resourceInputs["dbVersion"] = state?.dbVersion;
             resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["ha"] = state?.ha;
             resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["isMultiAzStorage"] = state?.isMultiAzStorage;
             resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["loadReplicas"] = state?.loadReplicas;
             resourceInputs["multiZoneMode"] = state?.multiZoneMode;
+            resourceInputs["orderId"] = state?.orderId;
             resourceInputs["paymentDuration"] = state?.paymentDuration;
             resourceInputs["paymentDurationUnit"] = state?.paymentDurationUnit;
             resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["promotionNo"] = state?.promotionNo;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["runningTime"] = state?.runningTime;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcId"] = state?.vpcId;
@@ -258,6 +296,7 @@ export class MilvusInstance extends pulumi.CustomResource {
             }
             resourceInputs["autoBackup"] = args?.autoBackup;
             resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["components"] = args?.components;
             resourceInputs["configuration"] = args?.configuration;
             resourceInputs["dbAdminPassword"] = args?.dbAdminPassword ? pulumi.secret(args.dbAdminPassword) : undefined;
@@ -265,18 +304,25 @@ export class MilvusInstance extends pulumi.CustomResource {
             resourceInputs["encrypted"] = args?.encrypted;
             resourceInputs["ha"] = args?.ha;
             resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["isMultiAzStorage"] = args?.isMultiAzStorage;
             resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["loadReplicas"] = args?.loadReplicas;
             resourceInputs["multiZoneMode"] = args?.multiZoneMode;
             resourceInputs["paymentDuration"] = args?.paymentDuration;
             resourceInputs["paymentDurationUnit"] = args?.paymentDurationUnit;
             resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["promotionNo"] = args?.promotionNo;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchIds"] = args?.vswitchIds;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["orderId"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
+            resourceInputs["runningTime"] = undefined /*out*/;
+            resourceInputs["securityGroupIds"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -301,6 +347,10 @@ export interface MilvusInstanceState {
      */
     autoPay?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether auto-renewal is enabled when the instance is created.
+     */
+    autoRenew?: pulumi.Input<boolean | undefined>;
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -318,8 +368,6 @@ export interface MilvusInstanceState {
     createTime?: pulumi.Input<string | undefined>;
     /**
      * DB administrator password, which can be used to log in to attu.
-     *
-     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     dbAdminPassword?: pulumi.Input<string | undefined>;
     /**
@@ -331,6 +379,10 @@ export interface MilvusInstanceState {
      */
     encrypted?: pulumi.Input<boolean | undefined>;
     /**
+     * (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+     */
+    expireTime?: pulumi.Input<string | undefined>;
+    /**
      * Whether to enable multiple copies of data
      */
     ha?: pulumi.Input<boolean | undefined>;
@@ -339,15 +391,27 @@ export interface MilvusInstanceState {
      */
     instanceName?: pulumi.Input<string | undefined>;
     /**
+     * Whether multi-zone storage is enabled when the instance is created.
+     */
+    isMultiAzStorage?: pulumi.Input<boolean | undefined>;
+    /**
      * Kms Key encryption id, need to be encrypted set to true.
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * The number of load replicas configured when the instance is created.
+     */
+    loadReplicas?: pulumi.Input<number | undefined>;
     /**
      * Availability Zone mode. The default Single.
      * - Single: Single zone.
      * - Two: Dual Availability Zones.
      */
     multiZoneMode?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.294.0) Alibaba Cloud Order Number.
+     */
+    orderId?: pulumi.Input<string | undefined>;
     /**
      * Instance Payment Duration
      *
@@ -369,7 +433,11 @@ export interface MilvusInstanceState {
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
-     * regionId. For example: cn-hangzhou
+     * The promotion code used to create the instance.
+     */
+    promotionNo?: pulumi.Input<string | undefined>;
+    /**
+     * The regionId.
      */
     regionId?: pulumi.Input<string | undefined>;
     /**
@@ -377,7 +445,15 @@ export interface MilvusInstanceState {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * Instance status. Value range:
+     * (Available since v1.294.0) Instance running time.
+     */
+    runningTime?: pulumi.Input<number | undefined>;
+    /**
+     * (Available since v1.294.0) Configured Security Group id.
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Instance status.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -413,6 +489,10 @@ export interface MilvusInstanceArgs {
      */
     autoPay?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether auto-renewal is enabled when the instance is created.
+     */
+    autoRenew?: pulumi.Input<boolean | undefined>;
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -426,8 +506,6 @@ export interface MilvusInstanceArgs {
     configuration?: pulumi.Input<string | undefined>;
     /**
      * DB administrator password, which can be used to log in to attu.
-     *
-     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     dbAdminPassword?: pulumi.Input<string | undefined>;
     /**
@@ -447,9 +525,17 @@ export interface MilvusInstanceArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
+     * Whether multi-zone storage is enabled when the instance is created.
+     */
+    isMultiAzStorage?: pulumi.Input<boolean | undefined>;
+    /**
      * Kms Key encryption id, need to be encrypted set to true.
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * The number of load replicas configured when the instance is created.
+     */
+    loadReplicas?: pulumi.Input<number | undefined>;
     /**
      * Availability Zone mode. The default Single.
      * - Single: Single zone.
@@ -476,6 +562,10 @@ export interface MilvusInstanceArgs {
      * - Subscription: Package year package month
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * The promotion code used to create the instance.
+     */
+    promotionNo?: pulumi.Input<string | undefined>;
     /**
      * Resource Group ID
      */

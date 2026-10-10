@@ -2344,6 +2344,8 @@ type GetServerGroupsGroup struct {
 	HealthChecks []GetServerGroupsGroupHealthCheck `pulumi:"healthChecks"`
 	// The ID of the Server Group.
 	Id string `pulumi:"id"`
+	// (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+	IpVersionAffinityMode string `pulumi:"ipVersionAffinityMode"`
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled bool `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers.
@@ -2390,6 +2392,8 @@ type GetServerGroupsGroupArgs struct {
 	HealthChecks GetServerGroupsGroupHealthCheckArrayInput `pulumi:"healthChecks"`
 	// The ID of the Server Group.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+	IpVersionAffinityMode pulumi.StringInput `pulumi:"ipVersionAffinityMode"`
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled pulumi.BoolInput `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers.
@@ -2488,6 +2492,11 @@ func (o GetServerGroupsGroupOutput) HealthChecks() GetServerGroupsGroupHealthChe
 // The ID of the Server Group.
 func (o GetServerGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+func (o GetServerGroupsGroupOutput) IpVersionAffinityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.IpVersionAffinityMode }).(pulumi.StringOutput)
 }
 
 // Indicates whether client address retention is enabled.

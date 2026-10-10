@@ -269,7 +269,7 @@ class NetworkAclEgressAclEntry(dict):
                  port: Optional[_builtins.str] = None,
                  protocol: Optional[_builtins.str] = None):
         """
-        :param _builtins.str description: The description of the outbound rule.
+        :param _builtins.str description: The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_entry_name`.
                The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param _builtins.str destination_cidr_ip: The destination CIDR block, or the prefix list instance ID.
         :param _builtins.str entry_type: The route entry type. Value
@@ -277,7 +277,7 @@ class NetworkAclEgressAclEntry(dict):
                system system rules
                service Cloud service rules
         :param _builtins.str ip_version: The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
-        :param _builtins.str network_acl_entry_name: Name of the outbound rule entry.
+        :param _builtins.str network_acl_entry_name: Name of the outbound rule entry. Currently, this name is displayed in the console.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param _builtins.str policy: The action to be performed on network traffic that matches the rule. Valid values:
                - accept
@@ -313,7 +313,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        The description of the outbound rule.
+        The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_entry_name`.
         The description must be 1 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
@@ -349,7 +349,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[_builtins.str]:
         """
-        Name of the outbound rule entry.
+        Name of the outbound rule entry. Currently, this name is displayed in the console.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_entry_name")
@@ -643,11 +643,11 @@ class NetworkAclIngressAclEntry(dict):
                  protocol: Optional[_builtins.str] = None,
                  source_cidr_ip: Optional[_builtins.str] = None):
         """
-        :param _builtins.str description: Description of the inbound rule.
+        :param _builtins.str description: Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_entry_name`.
                The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param _builtins.str entry_type: The route entry type. Value
         :param _builtins.str ip_version: The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
-        :param _builtins.str network_acl_entry_name: The name of the inbound rule entry.
+        :param _builtins.str network_acl_entry_name: The name of the inbound rule entry. Currently, this name is displayed in the console.
                The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param _builtins.str policy: The action to be performed on network traffic that matches the rule. Valid values:
                - accept
@@ -684,7 +684,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Description of the inbound rule.
+        Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `network_acl_entry_name`.
         The description must be 1 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
@@ -709,7 +709,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[_builtins.str]:
         """
-        The name of the inbound rule entry.
+        The name of the inbound rule entry. Currently, this name is displayed in the console.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_entry_name")

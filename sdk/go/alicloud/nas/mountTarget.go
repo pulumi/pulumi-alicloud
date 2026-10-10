@@ -133,7 +133,7 @@ type MountTarget struct {
 	// VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the switch.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
 // NewMountTarget registers a new resource with the given unique name, arguments, and options.
@@ -411,8 +411,8 @@ func (o MountTargetOutput) VpcId() pulumi.StringOutput {
 }
 
 // The ID of the switch.
-func (o MountTargetOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MountTarget) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+func (o MountTargetOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 type MountTargetArrayOutput struct{ *pulumi.OutputState }

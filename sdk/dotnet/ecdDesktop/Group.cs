@@ -172,10 +172,10 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Output<string?> DesktopGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the directory.
+        /// The ID of the directory. This parameter is not publicly available yet.
         /// </summary>
         [Output("directoryId")]
-        public Output<string?> DirectoryId { get; private set; } = null!;
+        public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
         /// The type of the directory.
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Output<string> DirectoryType { get; private set; } = null!;
 
         /// <summary>
-        /// The list of IDs of the end users authorized to use the desktop group.
+        /// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         /// </summary>
         [Output("endUserIds")]
         public Output<ImmutableArray<string>> EndUserIds { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Output<string> OwnBundleName { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method.
+        /// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Output<int> ResType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the scaling policy.
+        /// The ID of the scaling policy. This parameter is not publicly available yet.
         /// </summary>
         [Output("scaleStrategyId")]
         public Output<string?> ScaleStrategyId { get; private set; } = null!;
@@ -320,12 +320,6 @@ namespace Pulumi.AliCloud.ecdDesktop
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "allowAutoSetup",
-                    "allowBufferCount",
-                    "scaleStrategyId",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -349,37 +343,17 @@ namespace Pulumi.AliCloud.ecdDesktop
 
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
-        [Input("allowAutoSetup")]
-        private Input<int>? _allowAutoSetup;
-
         /// <summary>
         /// Specifies whether to allow cloud desktops to be automatically created for a subscription desktop group. This parameter takes effect only when the desktop group uses the subscription billing method. Valid values: `0` and `1`.
         /// </summary>
-        public Input<int>? AllowAutoSetup
-        {
-            get => _allowAutoSetup;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _allowAutoSetup = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("allowBufferCount")]
-        private Input<int>? _allowBufferCount;
+        [Input("allowAutoSetup")]
+        public Input<int>? AllowAutoSetup { get; set; }
 
         /// <summary>
         /// The number of cloud desktops that are reserved in the desktop group. Reserved desktops are kept started and idle, waiting for connections. Valid values: `0` to `100`. `0` indicates that no desktop is reserved.
         /// </summary>
-        public Input<int>? AllowBufferCount
-        {
-            get => _allowBufferCount;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _allowBufferCount = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("allowBufferCount")]
+        public Input<int>? AllowBufferCount { get; set; }
 
         /// <summary>
         /// The ID of the desktop template.
@@ -400,16 +374,16 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Input<string>? DesktopGroupName { get; set; }
 
         /// <summary>
-        /// The ID of the directory.
+        /// The ID of the directory. This parameter is not publicly available yet.
         /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
-        [Input("endUserIds", required: true)]
+        [Input("endUserIds")]
         private InputList<string>? _endUserIds;
 
         /// <summary>
-        /// The list of IDs of the end users authorized to use the desktop group.
+        /// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         /// </summary>
         public InputList<string> EndUserIds
         {
@@ -442,26 +416,22 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Input<string> OfficeSiteId { get; set; } = null!;
 
         /// <summary>
+        /// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+        /// </summary>
+        [Input("payType")]
+        public Input<string>? PayType { get; set; }
+
+        /// <summary>
         /// The ID of the policy group associated with the desktop group.
         /// </summary>
         [Input("policyGroupId", required: true)]
         public Input<string> PolicyGroupId { get; set; } = null!;
 
-        [Input("scaleStrategyId")]
-        private Input<string>? _scaleStrategyId;
-
         /// <summary>
-        /// The ID of the scaling policy.
+        /// The ID of the scaling policy. This parameter is not publicly available yet.
         /// </summary>
-        public Input<string>? ScaleStrategyId
-        {
-            get => _scaleStrategyId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _scaleStrategyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("scaleStrategyId")]
+        public Input<string>? ScaleStrategyId { get; set; }
 
         public GroupArgs()
         {
@@ -471,37 +441,17 @@ namespace Pulumi.AliCloud.ecdDesktop
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
-        [Input("allowAutoSetup")]
-        private Input<int>? _allowAutoSetup;
-
         /// <summary>
         /// Specifies whether to allow cloud desktops to be automatically created for a subscription desktop group. This parameter takes effect only when the desktop group uses the subscription billing method. Valid values: `0` and `1`.
         /// </summary>
-        public Input<int>? AllowAutoSetup
-        {
-            get => _allowAutoSetup;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _allowAutoSetup = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("allowBufferCount")]
-        private Input<int>? _allowBufferCount;
+        [Input("allowAutoSetup")]
+        public Input<int>? AllowAutoSetup { get; set; }
 
         /// <summary>
         /// The number of cloud desktops that are reserved in the desktop group. Reserved desktops are kept started and idle, waiting for connections. Valid values: `0` to `100`. `0` indicates that no desktop is reserved.
         /// </summary>
-        public Input<int>? AllowBufferCount
-        {
-            get => _allowBufferCount;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _allowBufferCount = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("allowBufferCount")]
+        public Input<int>? AllowBufferCount { get; set; }
 
         /// <summary>
         /// The ID of the desktop template.
@@ -552,7 +502,7 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Input<string>? DesktopGroupName { get; set; }
 
         /// <summary>
-        /// The ID of the directory.
+        /// The ID of the directory. This parameter is not publicly available yet.
         /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
@@ -567,7 +517,7 @@ namespace Pulumi.AliCloud.ecdDesktop
         private InputList<string>? _endUserIds;
 
         /// <summary>
-        /// The list of IDs of the end users authorized to use the desktop group.
+        /// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
         /// </summary>
         public InputList<string> EndUserIds
         {
@@ -642,7 +592,7 @@ namespace Pulumi.AliCloud.ecdDesktop
         public Input<string>? OwnBundleName { get; set; }
 
         /// <summary>
-        /// The billing method.
+        /// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -665,21 +615,11 @@ namespace Pulumi.AliCloud.ecdDesktop
         [Input("resType")]
         public Input<int>? ResType { get; set; }
 
-        [Input("scaleStrategyId")]
-        private Input<string>? _scaleStrategyId;
-
         /// <summary>
-        /// The ID of the scaling policy.
+        /// The ID of the scaling policy. This parameter is not publicly available yet.
         /// </summary>
-        public Input<string>? ScaleStrategyId
-        {
-            get => _scaleStrategyId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _scaleStrategyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("scaleStrategyId")]
+        public Input<string>? ScaleStrategyId { get; set; }
 
         /// <summary>
         /// The category of the system disk.

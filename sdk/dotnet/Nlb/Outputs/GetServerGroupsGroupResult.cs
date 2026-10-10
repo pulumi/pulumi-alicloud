@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+        /// </summary>
+        public readonly string IpVersionAffinityMode;
+        /// <summary>
         /// Indicates whether client address retention is enabled.
         /// </summary>
         public readonly bool PreserveClientIpEnabled;
@@ -90,6 +94,8 @@ namespace Pulumi.AliCloud.Nlb.Outputs
 
             string id,
 
+            string ipVersionAffinityMode,
+
             bool preserveClientIpEnabled,
 
             string protocol,
@@ -117,6 +123,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
             ConnectionDrainTimeout = connectionDrainTimeout;
             HealthChecks = healthChecks;
             Id = id;
+            IpVersionAffinityMode = ipVersionAffinityMode;
             PreserveClientIpEnabled = preserveClientIpEnabled;
             Protocol = protocol;
             RelatedLoadBalancerIds = relatedLoadBalancerIds;

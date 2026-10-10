@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultClusterEndpoint = new ClusterEndpoint("defaultClusterEndpoint", ClusterEndpointArgs.builder()
  *             .dbClusterId(defaultCluster.id())
+ *             .sccMode("on")
  *             .build());
  * 
  *     }
@@ -258,6 +259,20 @@ public class ClusterEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> readWriteMode() {
         return this.readWriteMode;
+    }
+    /**
+     * Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     * 
+     */
+    @Export(name="sccMode", refs={String.class}, tree="[0]")
+    private Output<String> sccMode;
+
+    /**
+     * @return Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     * 
+     */
+    public Output<String> sccMode() {
+        return this.sccMode;
     }
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.

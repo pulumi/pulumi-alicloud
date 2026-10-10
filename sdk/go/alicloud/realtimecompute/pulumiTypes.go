@@ -4677,6 +4677,157 @@ func (o GetSqlFilesFileArrayOutput) Index(i pulumi.IntInput) GetSqlFilesFileOutp
 	}).(GetSqlFilesFileOutput)
 }
 
+type GetVariablesVariable struct {
+	// The description of the variable.
+	Description string `pulumi:"description"`
+	// The ID of the Variable.
+	Id string `pulumi:"id"`
+	// The kind of the variable, currently supports Plain.
+	Kind string `pulumi:"kind"`
+	// The name of the variable.
+	Name string `pulumi:"name"`
+	// The name of the namespace.
+	Namespace string `pulumi:"namespace"`
+	// The value of the variable.
+	Value string `pulumi:"value"`
+	// The ID of the workspace.
+	Workspace string `pulumi:"workspace"`
+}
+
+// GetVariablesVariableInput is an input type that accepts GetVariablesVariableArgs and GetVariablesVariableOutput values.
+// You can construct a concrete instance of `GetVariablesVariableInput` via:
+//
+//	GetVariablesVariableArgs{...}
+type GetVariablesVariableInput interface {
+	pulumi.Input
+
+	ToGetVariablesVariableOutput() GetVariablesVariableOutput
+	ToGetVariablesVariableOutputWithContext(context.Context) GetVariablesVariableOutput
+}
+
+type GetVariablesVariableArgs struct {
+	// The description of the variable.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Variable.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The kind of the variable, currently supports Plain.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The name of the variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The value of the variable.
+	Value pulumi.StringInput `pulumi:"value"`
+	// The ID of the workspace.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (GetVariablesVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVariablesVariable)(nil)).Elem()
+}
+
+func (i GetVariablesVariableArgs) ToGetVariablesVariableOutput() GetVariablesVariableOutput {
+	return i.ToGetVariablesVariableOutputWithContext(context.Background())
+}
+
+func (i GetVariablesVariableArgs) ToGetVariablesVariableOutputWithContext(ctx context.Context) GetVariablesVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVariablesVariableOutput)
+}
+
+// GetVariablesVariableArrayInput is an input type that accepts GetVariablesVariableArray and GetVariablesVariableArrayOutput values.
+// You can construct a concrete instance of `GetVariablesVariableArrayInput` via:
+//
+//	GetVariablesVariableArray{ GetVariablesVariableArgs{...} }
+type GetVariablesVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetVariablesVariableArrayOutput() GetVariablesVariableArrayOutput
+	ToGetVariablesVariableArrayOutputWithContext(context.Context) GetVariablesVariableArrayOutput
+}
+
+type GetVariablesVariableArray []GetVariablesVariableInput
+
+func (GetVariablesVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVariablesVariable)(nil)).Elem()
+}
+
+func (i GetVariablesVariableArray) ToGetVariablesVariableArrayOutput() GetVariablesVariableArrayOutput {
+	return i.ToGetVariablesVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetVariablesVariableArray) ToGetVariablesVariableArrayOutputWithContext(ctx context.Context) GetVariablesVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVariablesVariableArrayOutput)
+}
+
+type GetVariablesVariableOutput struct{ *pulumi.OutputState }
+
+func (GetVariablesVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVariablesVariable)(nil)).Elem()
+}
+
+func (o GetVariablesVariableOutput) ToGetVariablesVariableOutput() GetVariablesVariableOutput {
+	return o
+}
+
+func (o GetVariablesVariableOutput) ToGetVariablesVariableOutputWithContext(ctx context.Context) GetVariablesVariableOutput {
+	return o
+}
+
+// The description of the variable.
+func (o GetVariablesVariableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Variable.
+func (o GetVariablesVariableOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The kind of the variable, currently supports Plain.
+func (o GetVariablesVariableOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the variable.
+func (o GetVariablesVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the namespace.
+func (o GetVariablesVariableOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The value of the variable.
+func (o GetVariablesVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// The ID of the workspace.
+func (o GetVariablesVariableOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVariablesVariable) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type GetVariablesVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVariablesVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVariablesVariable)(nil)).Elem()
+}
+
+func (o GetVariablesVariableArrayOutput) ToGetVariablesVariableArrayOutput() GetVariablesVariableArrayOutput {
+	return o
+}
+
+func (o GetVariablesVariableArrayOutput) ToGetVariablesVariableArrayOutputWithContext(ctx context.Context) GetVariablesVariableArrayOutput {
+	return o
+}
+
+func (o GetVariablesVariableArrayOutput) Index(i pulumi.IntInput) GetVariablesVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVariablesVariable {
+		return vs[0].([]GetVariablesVariable)[vs[1].(int)]
+	}).(GetVariablesVariableOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactInput)(nil)).Elem(), DeploymentArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactPtrInput)(nil)).Elem(), DeploymentArtifactArgs{})
@@ -4736,6 +4887,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMembersMemberArrayInput)(nil)).Elem(), GetMembersMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlFilesFileInput)(nil)).Elem(), GetSqlFilesFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlFilesFileArrayInput)(nil)).Elem(), GetSqlFilesFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVariablesVariableInput)(nil)).Elem(), GetVariablesVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVariablesVariableArrayInput)(nil)).Elem(), GetVariablesVariableArray{})
 	pulumi.RegisterOutputType(DeploymentArtifactOutput{})
 	pulumi.RegisterOutputType(DeploymentArtifactPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentArtifactJarArtifactOutput{})
@@ -4794,4 +4947,6 @@ func init() {
 	pulumi.RegisterOutputType(GetMembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetSqlFilesFileOutput{})
 	pulumi.RegisterOutputType(GetSqlFilesFileArrayOutput{})
+	pulumi.RegisterOutputType(GetVariablesVariableOutput{})
+	pulumi.RegisterOutputType(GetVariablesVariableArrayOutput{})
 }

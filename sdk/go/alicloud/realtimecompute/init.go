@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Member{}
 	case "alicloud:realtimecompute/sqlFile:SqlFile":
 		r = &SqlFile{}
+	case "alicloud:realtimecompute/variable:Variable":
+		r = &Variable{}
 	case "alicloud:realtimecompute/vvpInstance:VvpInstance":
 		r = &VvpInstance{}
 	default:
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"realtimecompute/sqlFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"realtimecompute/variable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

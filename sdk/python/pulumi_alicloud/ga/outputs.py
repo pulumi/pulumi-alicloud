@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AcceleratorIpSetConfig',
     'AclAclEntry',
     'CustomRoutingEndpointTrafficPolicyPortRange',
     'EndpointGroupEndpointConfiguration',
@@ -33,6 +34,7 @@ __all__ = [
     'GetAcceleratorsAcceleratorResult',
     'GetAcceleratorsAcceleratorBasicBandwidthPackageResult',
     'GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult',
+    'GetAcceleratorsAcceleratorIpSetConfigResult',
     'GetAclsAclResult',
     'GetAclsAclAclEntryResult',
     'GetAdditionalCertificatesCertificateResult',
@@ -67,6 +69,44 @@ __all__ = [
     'GetListenersListenerCertificateResult',
     'GetListenersListenerPortRangeResult',
 ]
+
+@pulumi.output_type
+class AcceleratorIpSetConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessMode":
+            suggest = "access_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AcceleratorIpSetConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AcceleratorIpSetConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AcceleratorIpSetConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_mode: The access mode of the acceleration area. Valid value:
+               - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+        """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[_builtins.str]:
+        """
+        The access mode of the acceleration area. Valid value:
+        - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+        """
+        return pulumi.get(self, "access_mode")
+
 
 @pulumi.output_type
 class AclAclEntry(dict):
@@ -207,7 +247,7 @@ class EndpointGroupEndpointConfiguration(dict):
         :param _builtins.str type: The type of Endpoint N in the endpoint group. Valid values:
                - `Domain`: A custom domain name.
                - `Ip`: A custom IP address.
-               - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+               - `IpTarget`: (Available since v1.262.0) a custom private IP address.
                - `PublicIp`: An Alibaba Cloud public IP address.
                - `ECS`: An Elastic Compute Service (ECS) instance.
                - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -221,8 +261,8 @@ class EndpointGroupEndpointConfiguration(dict):
         :param _builtins.bool enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         :param _builtins.str sub_address: The private IP address of the ENI.
                > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
-        :param _builtins.str vpc_id: The ID of the VPC.
-        :param Sequence[_builtins.str] vswitch_ids: The IDs of vSwitches that are deployed in the VPC.
+        :param _builtins.str vpc_id: The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
+        :param Sequence[_builtins.str] vswitch_ids: A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "type", type)
@@ -253,7 +293,7 @@ class EndpointGroupEndpointConfiguration(dict):
         The type of Endpoint N in the endpoint group. Valid values:
         - `Domain`: A custom domain name.
         - `Ip`: A custom IP address.
-        - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+        - `IpTarget`: (Available since v1.262.0) a custom private IP address.
         - `PublicIp`: An Alibaba Cloud public IP address.
         - `ECS`: An Elastic Compute Service (ECS) instance.
         - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -302,7 +342,7 @@ class EndpointGroupEndpointConfiguration(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
         """
-        The ID of the VPC.
+        The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -310,7 +350,7 @@ class EndpointGroupEndpointConfiguration(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The IDs of vSwitches that are deployed in the VPC.
+        A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -843,6 +883,8 @@ class GetAcceleratorsAcceleratorResult(dict):
     def __init__(__self__, *,
                  accelerator_id: _builtins.str,
                  accelerator_name: _builtins.str,
+                 bandwidth: _builtins.int,
+                 bandwidth_billing_type: _builtins.str,
                  basic_bandwidth_packages: Sequence['outputs.GetAcceleratorsAcceleratorBasicBandwidthPackageResult'],
                  cen_id: _builtins.str,
                  cross_domain_bandwidth_packages: Sequence['outputs.GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult'],
@@ -851,6 +893,7 @@ class GetAcceleratorsAcceleratorResult(dict):
                  dns_name: _builtins.str,
                  expired_time: _builtins.int,
                  id: _builtins.str,
+                 ip_set_configs: Sequence['outputs.GetAcceleratorsAcceleratorIpSetConfigResult'],
                  payment_type: _builtins.str,
                  second_dns_name: _builtins.str,
                  spec: _builtins.str,
@@ -858,6 +901,10 @@ class GetAcceleratorsAcceleratorResult(dict):
         """
         :param _builtins.str accelerator_id: The ID of the GA instance to query.
         :param _builtins.str accelerator_name: The Name of the GA instance.
+        :param _builtins.int bandwidth: Bandwidth value of cross-domain acceleration package.
+        :param _builtins.str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+               - `BandwidthPackage`: billed based on bandwidth plans.
+               - `CDT`: billed based on data transfer.
         :param Sequence['GetAcceleratorsAcceleratorBasicBandwidthPackageArgs'] basic_bandwidth_packages: Details of the basic bandwidth package bound to the global acceleration instance.
         :param _builtins.str cen_id: The cloud enterprise network instance ID bound to the global acceleration instance.
         :param Sequence['GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs'] cross_domain_bandwidth_packages: Details of the cross-domain acceleration package bound to the global acceleration instance.
@@ -873,6 +920,8 @@ class GetAcceleratorsAcceleratorResult(dict):
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         pulumi.set(__self__, "accelerator_name", accelerator_name)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         pulumi.set(__self__, "basic_bandwidth_packages", basic_bandwidth_packages)
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "cross_domain_bandwidth_packages", cross_domain_bandwidth_packages)
@@ -881,6 +930,7 @@ class GetAcceleratorsAcceleratorResult(dict):
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_set_configs", ip_set_configs)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "second_dns_name", second_dns_name)
         pulumi.set(__self__, "spec", spec)
@@ -901,6 +951,24 @@ class GetAcceleratorsAcceleratorResult(dict):
         The Name of the GA instance.
         """
         return pulumi.get(self, "accelerator_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> _builtins.int:
+        """
+        Bandwidth value of cross-domain acceleration package.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> _builtins.str:
+        """
+        The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        - `BandwidthPackage`: billed based on bandwidth plans.
+        - `CDT`: billed based on data transfer.
+        """
+        return pulumi.get(self, "bandwidth_billing_type")
 
     @_builtins.property
     @pulumi.getter(name="basicBandwidthPackages")
@@ -965,6 +1033,11 @@ class GetAcceleratorsAcceleratorResult(dict):
         The ID of the Accelerator.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipSetConfigs")
+    def ip_set_configs(self) -> Sequence['outputs.GetAcceleratorsAcceleratorIpSetConfigResult']:
+        return pulumi.get(self, "ip_set_configs")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
@@ -1066,6 +1139,18 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
         Instance ID of the cross-domain acceleration package.
         """
         return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetAcceleratorsAcceleratorIpSetConfigResult(dict):
+    def __init__(__self__, *,
+                 access_mode: _builtins.str):
+        pulumi.set(__self__, "access_mode", access_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> _builtins.str:
+        return pulumi.get(self, "access_mode")
 
 
 @pulumi.output_type
@@ -2802,10 +2887,14 @@ class GetEndpointGroupsGroupResult(dict):
 class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
     def __init__(__self__, *,
                  enable_clientip_preservation: _builtins.bool,
+                 enable_proxy_protocol: _builtins.bool,
                  endpoint: _builtins.str,
                  probe_port: _builtins.int,
                  probe_protocol: _builtins.str,
+                 sub_address: _builtins.str,
                  type: _builtins.str,
+                 vpc_id: _builtins.str,
+                 vswitch_ids: Sequence[_builtins.str],
                  weight: _builtins.int):
         """
         :param _builtins.bool enable_clientip_preservation: Indicates whether client IP addresses are reserved.
@@ -2816,10 +2905,14 @@ class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
         :param _builtins.int weight: The weight of Endpoint N in the endpoint group.
         """
         pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
+        pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "probe_port", probe_port)
         pulumi.set(__self__, "probe_protocol", probe_protocol)
+        pulumi.set(__self__, "sub_address", sub_address)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
@@ -2829,6 +2922,11 @@ class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
         Indicates whether client IP addresses are reserved.
         """
         return pulumi.get(self, "enable_clientip_preservation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableProxyProtocol")
+    def enable_proxy_protocol(self) -> _builtins.bool:
+        return pulumi.get(self, "enable_proxy_protocol")
 
     @_builtins.property
     @pulumi.getter
@@ -2855,12 +2953,27 @@ class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
         return pulumi.get(self, "probe_protocol")
 
     @_builtins.property
+    @pulumi.getter(name="subAddress")
+    def sub_address(self) -> _builtins.str:
+        return pulumi.get(self, "sub_address")
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
         The type of Endpoint N in the endpoint group.
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "vswitch_ids")
 
     @_builtins.property
     @pulumi.getter

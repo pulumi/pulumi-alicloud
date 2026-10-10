@@ -139,6 +139,120 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### IpTarget Usage
+ * 
+ * The following example shows how to create an endpoint group with `IpTarget` type endpoints.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackage;
+ * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.ga.Listener;
+ * import com.pulumi.alicloud.ga.ListenerArgs;
+ * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ga.EndpointGroup;
+ * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+ * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()
+ *             .duration(1)
+ *             .autoUseCoupon(true)
+ *             .spec("1")
+ *             .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
+ *             .bandwidth(100)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
+ *             .ratio(30)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
+ *             .acceleratorId(default_.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .build());
+ * 
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+ *             .portRanges(ListenerPortRangeArgs.builder()
+ *                 .fromPort(8080)
+ *                 .toPort(8080)
+ *                 .build())
+ *             .clientAffinity("SOURCE_IP")
+ *             .protocol("HTTP")
+ *             .name("terraform-example")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName("terraform-example")
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.1.0/24")
+ *             .zoneId("cn-hangzhou-h")
+ *             .build());
+ * 
+ *         var update = new Switch("update", SwitchArgs.builder()
+ *             .vswitchName("terraform-example-update")
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.2.0/24")
+ *             .zoneId("cn-hangzhou-i")
+ *             .build());
+ * 
+ *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
+ *             .acceleratorId(default_.id())
+ *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+ *                 .endpoint("192.168.1.10")
+ *                 .type("IpTarget")
+ *                 .weight(20)
+ *                 .vpcId(defaultNetwork.id())
+ *                 .vswitchIds(defaultSwitch.id())
+ *                 .enableProxyProtocol(true)
+ *                 .enableClientipPreservation(false)
+ *                 .build())
+ *             .endpointGroupRegion(region)
+ *             .listenerId(defaultListener.id())
+ *             .name("terraform-example")
+ *             .description("terraform-example")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import

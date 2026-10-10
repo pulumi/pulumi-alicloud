@@ -2415,7 +2415,148 @@ func (o ImageImportDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageI
 	}).(ImageImportDiskDeviceMappingOutput)
 }
 
+type ImageImportFeatures struct {
+	// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+	NvmeSupport *string `pulumi:"nvmeSupport"`
+}
+
+// ImageImportFeaturesInput is an input type that accepts ImageImportFeaturesArgs and ImageImportFeaturesOutput values.
+// You can construct a concrete instance of `ImageImportFeaturesInput` via:
+//
+//	ImageImportFeaturesArgs{...}
+type ImageImportFeaturesInput interface {
+	pulumi.Input
+
+	ToImageImportFeaturesOutput() ImageImportFeaturesOutput
+	ToImageImportFeaturesOutputWithContext(context.Context) ImageImportFeaturesOutput
+}
+
+type ImageImportFeaturesArgs struct {
+	// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+	NvmeSupport pulumi.StringPtrInput `pulumi:"nvmeSupport"`
+}
+
+func (ImageImportFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportFeatures)(nil)).Elem()
+}
+
+func (i ImageImportFeaturesArgs) ToImageImportFeaturesOutput() ImageImportFeaturesOutput {
+	return i.ToImageImportFeaturesOutputWithContext(context.Background())
+}
+
+func (i ImageImportFeaturesArgs) ToImageImportFeaturesOutputWithContext(ctx context.Context) ImageImportFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportFeaturesOutput)
+}
+
+func (i ImageImportFeaturesArgs) ToImageImportFeaturesPtrOutput() ImageImportFeaturesPtrOutput {
+	return i.ToImageImportFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ImageImportFeaturesArgs) ToImageImportFeaturesPtrOutputWithContext(ctx context.Context) ImageImportFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportFeaturesOutput).ToImageImportFeaturesPtrOutputWithContext(ctx)
+}
+
+// ImageImportFeaturesPtrInput is an input type that accepts ImageImportFeaturesArgs, ImageImportFeaturesPtr and ImageImportFeaturesPtrOutput values.
+// You can construct a concrete instance of `ImageImportFeaturesPtrInput` via:
+//
+//	        ImageImportFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageImportFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToImageImportFeaturesPtrOutput() ImageImportFeaturesPtrOutput
+	ToImageImportFeaturesPtrOutputWithContext(context.Context) ImageImportFeaturesPtrOutput
+}
+
+type imageImportFeaturesPtrType ImageImportFeaturesArgs
+
+func ImageImportFeaturesPtr(v *ImageImportFeaturesArgs) ImageImportFeaturesPtrInput {
+	return (*imageImportFeaturesPtrType)(v)
+}
+
+func (*imageImportFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImportFeatures)(nil)).Elem()
+}
+
+func (i *imageImportFeaturesPtrType) ToImageImportFeaturesPtrOutput() ImageImportFeaturesPtrOutput {
+	return i.ToImageImportFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *imageImportFeaturesPtrType) ToImageImportFeaturesPtrOutputWithContext(ctx context.Context) ImageImportFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportFeaturesPtrOutput)
+}
+
+type ImageImportFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ImageImportFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportFeatures)(nil)).Elem()
+}
+
+func (o ImageImportFeaturesOutput) ToImageImportFeaturesOutput() ImageImportFeaturesOutput {
+	return o
+}
+
+func (o ImageImportFeaturesOutput) ToImageImportFeaturesOutputWithContext(ctx context.Context) ImageImportFeaturesOutput {
+	return o
+}
+
+func (o ImageImportFeaturesOutput) ToImageImportFeaturesPtrOutput() ImageImportFeaturesPtrOutput {
+	return o.ToImageImportFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImportFeaturesOutput) ToImageImportFeaturesPtrOutputWithContext(ctx context.Context) ImageImportFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageImportFeatures) *ImageImportFeatures {
+		return &v
+	}).(ImageImportFeaturesPtrOutput)
+}
+
+// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+func (o ImageImportFeaturesOutput) NvmeSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageImportFeatures) *string { return v.NvmeSupport }).(pulumi.StringPtrOutput)
+}
+
+type ImageImportFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageImportFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImportFeatures)(nil)).Elem()
+}
+
+func (o ImageImportFeaturesPtrOutput) ToImageImportFeaturesPtrOutput() ImageImportFeaturesPtrOutput {
+	return o
+}
+
+func (o ImageImportFeaturesPtrOutput) ToImageImportFeaturesPtrOutputWithContext(ctx context.Context) ImageImportFeaturesPtrOutput {
+	return o
+}
+
+func (o ImageImportFeaturesPtrOutput) Elem() ImageImportFeaturesOutput {
+	return o.ApplyT(func(v *ImageImportFeatures) ImageImportFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ImageImportFeatures
+		return ret
+	}).(ImageImportFeaturesOutput)
+}
+
+// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+func (o ImageImportFeaturesPtrOutput) NvmeSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImportFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NvmeSupport
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceCpuOptions struct {
+	// The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+	//
+	// > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+	Accelerators []string `pulumi:"accelerators"`
 	// The maximum number of partitions in the storage set.
 	CoreCount *int `pulumi:"coreCount"`
 	// The number of threads per CPU core.
@@ -2436,6 +2577,10 @@ type InstanceCpuOptionsInput interface {
 }
 
 type InstanceCpuOptionsArgs struct {
+	// The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+	//
+	// > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+	Accelerators pulumi.StringArrayInput `pulumi:"accelerators"`
 	// The maximum number of partitions in the storage set.
 	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
 	// The number of threads per CPU core.
@@ -2521,6 +2666,13 @@ func (o InstanceCpuOptionsOutput) ToInstanceCpuOptionsPtrOutputWithContext(ctx c
 	}).(InstanceCpuOptionsPtrOutput)
 }
 
+// The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+//
+// > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+func (o InstanceCpuOptionsOutput) Accelerators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceCpuOptions) []string { return v.Accelerators }).(pulumi.StringArrayOutput)
+}
+
 // The maximum number of partitions in the storage set.
 func (o InstanceCpuOptionsOutput) CoreCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceCpuOptions) *int { return v.CoreCount }).(pulumi.IntPtrOutput)
@@ -2558,6 +2710,18 @@ func (o InstanceCpuOptionsPtrOutput) Elem() InstanceCpuOptionsOutput {
 		var ret InstanceCpuOptions
 		return ret
 	}).(InstanceCpuOptionsOutput)
+}
+
+// The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+//
+// > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+func (o InstanceCpuOptionsPtrOutput) Accelerators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceCpuOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(pulumi.StringArrayOutput)
 }
 
 // The maximum number of partitions in the storage set.
@@ -17533,6 +17697,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageFeaturesPtrInput)(nil)).Elem(), ImageFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingInput)(nil)).Elem(), ImageImportDiskDeviceMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingArrayInput)(nil)).Elem(), ImageImportDiskDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportFeaturesInput)(nil)).Elem(), ImageImportFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportFeaturesPtrInput)(nil)).Elem(), ImageImportFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCpuOptionsInput)(nil)).Elem(), InstanceCpuOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCpuOptionsPtrInput)(nil)).Elem(), InstanceCpuOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
@@ -17720,6 +17886,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingArrayOutput{})
+	pulumi.RegisterOutputType(ImageImportFeaturesOutput{})
+	pulumi.RegisterOutputType(ImageImportFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceCpuOptionsOutput{})
 	pulumi.RegisterOutputType(InstanceCpuOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskOutput{})

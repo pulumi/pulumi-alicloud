@@ -24,9 +24,17 @@ namespace Pulumi.AliCloud.Outputs
         /// </summary>
         public readonly string? CuType;
         /// <summary>
+        /// The QueryNode data disk configuration. Only Type=query is supported. See `DataDisk` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.MilvusInstanceComponentDataDisk> DataDisks;
+        /// <summary>
         /// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
         /// </summary>
         public readonly string? DiskSizeType;
+        /// <summary>
+        /// The default is consistent with the cluster.
+        /// </summary>
+        public readonly string? PayType;
         /// <summary>
         /// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
         /// </summary>
@@ -46,7 +54,11 @@ namespace Pulumi.AliCloud.Outputs
 
             string? cuType,
 
+            ImmutableArray<Outputs.MilvusInstanceComponentDataDisk> dataDisks,
+
             string? diskSizeType,
+
+            string? payType,
 
             int replica,
 
@@ -54,7 +66,9 @@ namespace Pulumi.AliCloud.Outputs
         {
             CuNum = cuNum;
             CuType = cuType;
+            DataDisks = dataDisks;
             DiskSizeType = diskSizeType;
+            PayType = payType;
             Replica = replica;
             Type = type;
         }

@@ -273,10 +273,10 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
         /// 
-        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VpcId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, `VpcId` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `Standard` or `Extreme` file systems.
         /// </summary>
         [Output("vpcId")]
-        public Output<string?> VpcId { get; private set; } = null!;
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the switch.
@@ -285,10 +285,10 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** This `VswitchId` configures the network of the CPFS file system itself and is different from `VswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `VswitchId` regardless of `FileSystemType`.
         /// 
-        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VswitchId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, `VswitchId` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `Standard` or `Extreme` file systems.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The zone ID.
@@ -519,7 +519,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
         /// 
-        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VpcId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, `VpcId` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `Standard` or `Extreme` file systems.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -531,7 +531,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** This `VswitchId` configures the network of the CPFS file system itself and is different from `VswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `VswitchId` regardless of `FileSystemType`.
         /// 
-        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VswitchId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, `VswitchId` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `Standard` or `Extreme` file systems.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -745,7 +745,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
         /// 
-        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VpcId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, `VpcId` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `Standard` or `Extreme` file systems.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -757,7 +757,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** This `VswitchId` configures the network of the CPFS file system itself and is different from `VswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `VswitchId` regardless of `FileSystemType`.
         /// 
-        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, do not set `VswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `VswitchId` on a `Standard` or `Extreme` file system, remove it from the configuration before upgrading.
+        /// &gt; **NOTE:** For `Standard` or `Extreme` file systems, `VswitchId` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `Standard` or `Extreme` file systems.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

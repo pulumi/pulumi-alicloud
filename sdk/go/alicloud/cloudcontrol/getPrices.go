@@ -15,7 +15,13 @@ import (
 //
 // > **NOTE:** Available since v1.241.0.
 //
+// > **NOTE:** `desireAttributes` only accepts a flat map of string values. When the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance, use `desireAttributesJson` instead. The two attributes conflict with each other and cannot be configured together.
+//
 // ## Example Usage
+//
+// ### Flat attributes
+//
+// Use `desireAttributes` when all pricing attributes are flat key-value pairs, such as the price of an SLB LoadBalancer:
 //
 // ```go
 // package main
@@ -52,6 +58,48 @@ import (
 //	}
 //
 // ```
+//
+// ### Nested attributes
+//
+// Use `desireAttributesJson` when the pricing attributes contain nested objects or arrays, such as the `SystemDisk` of an ECS instance:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudcontrol"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"InstanceType": "ecs.g7.large",
+//				"SystemDisk": map[string]string{
+//					"Category": "cloud_essd",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudcontrol.GetPrices(ctx, &cloudcontrol.GetPricesArgs{
+//				DesireAttributesJson: pulumi.StringRef(json0),
+//				Product:              "ECS",
+//				ResourceCode:         "Instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPrices(ctx *pulumi.Context, args *GetPricesArgs, opts ...pulumi.InvokeOption) (*GetPricesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPricesResult
@@ -64,8 +112,10 @@ func GetPrices(ctx *pulumi.Context, args *GetPricesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getPrices.
 type GetPricesArgs struct {
-	// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+	// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `desireAttributesJson`.
 	DesireAttributes map[string]string `pulumi:"desireAttributes"`
+	// The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "cloudEssd"}}
+	DesireAttributesJson *string `pulumi:"desireAttributesJson"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
@@ -76,7 +126,8 @@ type GetPricesArgs struct {
 
 // A collection of values returned by getPrices.
 type GetPricesResult struct {
-	DesireAttributes map[string]string `pulumi:"desireAttributes"`
+	DesireAttributes     map[string]string `pulumi:"desireAttributes"`
+	DesireAttributesJson *string           `pulumi:"desireAttributesJson"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -93,8 +144,10 @@ func GetPricesOutput(ctx *pulumi.Context, args GetPricesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getPrices.
 type GetPricesOutputArgs struct {
-	// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
+	// This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} Only flat string values are supported. It conflicts with `desireAttributesJson`.
 	DesireAttributes pulumi.StringMapInput `pulumi:"desireAttributes"`
+	// The desired attributes in JSON format, which supports nested objects and arrays, such as the `SystemDisk` of an ECS instance. It has the same purpose as `desireAttributes` and conflicts with it. Here is a probably example when you get the price of an ECS instance:```json{"InstanceType": "ecs.g7.large", "SystemDisk": {"Category": "cloudEssd"}}
+	DesireAttributesJson pulumi.StringPtrInput `pulumi:"desireAttributesJson"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
@@ -124,6 +177,10 @@ func (o GetPricesResultOutput) ToGetPricesResultOutputWithContext(ctx context.Co
 
 func (o GetPricesResultOutput) DesireAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetPricesResult) map[string]string { return v.DesireAttributes }).(pulumi.StringMapOutput)
+}
+
+func (o GetPricesResultOutput) DesireAttributesJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPricesResult) *string { return v.DesireAttributesJson }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

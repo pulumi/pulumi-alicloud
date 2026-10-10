@@ -91,11 +91,6 @@ export class Certificate extends pulumi.CustomResource {
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     *
-     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
     declare public readonly createdType: pulumi.Output<string>;
     /**
@@ -123,7 +118,7 @@ export class Certificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+     * The certificate type. Valid values:
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -204,11 +199,6 @@ export interface CertificateState {
     createTime?: pulumi.Input<string | undefined>;
     /**
      * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     *
-     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
     createdType?: pulumi.Input<string | undefined>;
     /**
@@ -236,7 +226,7 @@ export interface CertificateState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+     * The certificate type. Valid values:
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -263,11 +253,6 @@ export interface CertificateArgs {
     certificate?: pulumi.Input<string | undefined>;
     /**
      * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     *
-     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
     createdType: pulumi.Input<string>;
     /**
@@ -291,7 +276,7 @@ export interface CertificateArgs {
      */
     siteId: pulumi.Input<string>;
     /**
-     * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+     * The certificate type. Valid values:
      */
     type?: pulumi.Input<string | undefined>;
 }

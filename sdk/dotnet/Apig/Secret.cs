@@ -94,6 +94,8 @@ namespace Pulumi.AliCloud.Apig
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// APIG Secret can be imported using the id, e.g.

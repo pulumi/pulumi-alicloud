@@ -29,6 +29,7 @@ class ServerGroupArgs:
                  connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  health_check: pulumi.Input[Optional['ServerGroupHealthCheckArgs']] = None,
+                 ip_version_affinity_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -51,6 +52,12 @@ class ServerGroupArgs:
         :param pulumi.Input[_builtins.bool] connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
         :param pulumi.Input[_builtins.int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[_builtins.str] ip_version_affinity_mode: The traffic scheduling policy for dual-stack server groups. Valid values:
+               
+               - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+               - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+               
+               > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
         :param pulumi.Input[_builtins.bool] preserve_client_ip_enabled: Specifies whether to enable client IP preservation. Valid values:
         :param pulumi.Input[_builtins.str] protocol: The protocol used to forward requests to the backend servers. Valid values:
                
@@ -89,6 +96,8 @@ class ServerGroupArgs:
             pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
+        if ip_version_affinity_mode is not None:
+            pulumi.set(__self__, "ip_version_affinity_mode", ip_version_affinity_mode)
         if preserve_client_ip_enabled is not None:
             pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
         if protocol is not None:
@@ -205,6 +214,23 @@ class ServerGroupArgs:
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipVersionAffinityMode")
+    def ip_version_affinity_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic scheduling policy for dual-stack server groups. Valid values:
+
+        - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+        - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+
+        > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
+        """
+        return pulumi.get(self, "ip_version_affinity_mode")
+
+    @ip_version_affinity_mode.setter
+    def ip_version_affinity_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_version_affinity_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="preserveClientIpEnabled")
     def preserve_client_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -300,6 +326,7 @@ class _ServerGroupState:
                  connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  health_check: pulumi.Input[Optional['ServerGroupHealthCheckArgs']] = None,
+                 ip_version_affinity_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -319,6 +346,12 @@ class _ServerGroupState:
         :param pulumi.Input[_builtins.bool] connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
         :param pulumi.Input[_builtins.int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[_builtins.str] ip_version_affinity_mode: The traffic scheduling policy for dual-stack server groups. Valid values:
+               
+               - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+               - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+               
+               > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
         :param pulumi.Input[_builtins.bool] preserve_client_ip_enabled: Specifies whether to enable client IP preservation. Valid values:
         :param pulumi.Input[_builtins.str] protocol: The protocol used to forward requests to the backend servers. Valid values:
                
@@ -364,6 +397,8 @@ class _ServerGroupState:
             pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
+        if ip_version_affinity_mode is not None:
+            pulumi.set(__self__, "ip_version_affinity_mode", ip_version_affinity_mode)
         if preserve_client_ip_enabled is not None:
             pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
         if protocol is not None:
@@ -457,6 +492,23 @@ class _ServerGroupState:
     @health_check.setter
     def health_check(self, value: pulumi.Input[Optional['ServerGroupHealthCheckArgs']]):
         pulumi.set(self, "health_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersionAffinityMode")
+    def ip_version_affinity_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic scheduling policy for dual-stack server groups. Valid values:
+
+        - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+        - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+
+        > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
+        """
+        return pulumi.get(self, "ip_version_affinity_mode")
+
+    @ip_version_affinity_mode.setter
+    def ip_version_affinity_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_version_affinity_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="preserveClientIpEnabled")
@@ -610,6 +662,7 @@ class ServerGroup(pulumi.CustomResource):
                  connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
+                 ip_version_affinity_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -692,6 +745,12 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
         :param pulumi.Input[_builtins.int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[_builtins.str] ip_version_affinity_mode: The traffic scheduling policy for dual-stack server groups. Valid values:
+               
+               - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+               - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+               
+               > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
         :param pulumi.Input[_builtins.bool] preserve_client_ip_enabled: Specifies whether to enable client IP preservation. Valid values:
         :param pulumi.Input[_builtins.str] protocol: The protocol used to forward requests to the backend servers. Valid values:
                
@@ -812,6 +871,7 @@ class ServerGroup(pulumi.CustomResource):
                  connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
+                 ip_version_affinity_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -835,6 +895,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["connection_drain_enabled"] = connection_drain_enabled
             __props__.__dict__["connection_drain_timeout"] = connection_drain_timeout
             __props__.__dict__["health_check"] = health_check
+            __props__.__dict__["ip_version_affinity_mode"] = ip_version_affinity_mode
             __props__.__dict__["preserve_client_ip_enabled"] = preserve_client_ip_enabled
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -865,6 +926,7 @@ class ServerGroup(pulumi.CustomResource):
             connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
+            ip_version_affinity_mode: pulumi.Input[Optional[_builtins.str]] = None,
             preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -888,6 +950,12 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
         :param pulumi.Input[_builtins.int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[_builtins.str] ip_version_affinity_mode: The traffic scheduling policy for dual-stack server groups. Valid values:
+               
+               - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+               - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+               
+               > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
         :param pulumi.Input[_builtins.bool] preserve_client_ip_enabled: Specifies whether to enable client IP preservation. Valid values:
         :param pulumi.Input[_builtins.str] protocol: The protocol used to forward requests to the backend servers. Valid values:
                
@@ -928,6 +996,7 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["connection_drain_enabled"] = connection_drain_enabled
         __props__.__dict__["connection_drain_timeout"] = connection_drain_timeout
         __props__.__dict__["health_check"] = health_check
+        __props__.__dict__["ip_version_affinity_mode"] = ip_version_affinity_mode
         __props__.__dict__["preserve_client_ip_enabled"] = preserve_client_ip_enabled
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region_id"] = region_id
@@ -988,6 +1057,19 @@ class ServerGroup(pulumi.CustomResource):
         Health check configuration information. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersionAffinityMode")
+    def ip_version_affinity_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The traffic scheduling policy for dual-stack server groups. Valid values:
+
+        - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+        - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+
+        > **NOTE:** This parameter takes effect only when `address_ip_version` is set to `DualStack`.
+        """
+        return pulumi.get(self, "ip_version_affinity_mode")
 
     @_builtins.property
     @pulumi.getter(name="preserveClientIpEnabled")

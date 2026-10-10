@@ -9,9 +9,11 @@ import typing
 from .deployment import *
 from .get_members import *
 from .get_sql_files import *
+from .get_variables import *
 from .job import *
 from .member import *
 from .sql_file import *
+from .variable import *
 from .vvp_instance import *
 from ._inputs import *
 from . import outputs

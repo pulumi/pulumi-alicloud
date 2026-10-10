@@ -30,6 +30,11 @@ export const getAlarms: typeof import("./getAlarms").getAlarms = null as any;
 export const getAlarmsOutput: typeof import("./getAlarms").getAlarmsOutput = null as any;
 utilities.lazyLoad(exports, ["getAlarms","getAlarmsOutput"], () => require("./getAlarms"));
 
+export { GetEciScalingConfigurationsArgs, GetEciScalingConfigurationsResult, GetEciScalingConfigurationsOutputArgs } from "./getEciScalingConfigurations";
+export const getEciScalingConfigurations: typeof import("./getEciScalingConfigurations").getEciScalingConfigurations = null as any;
+export const getEciScalingConfigurationsOutput: typeof import("./getEciScalingConfigurations").getEciScalingConfigurationsOutput = null as any;
+utilities.lazyLoad(exports, ["getEciScalingConfigurations","getEciScalingConfigurationsOutput"], () => require("./getEciScalingConfigurations"));
+
 export { GetLifecycleHooksArgs, GetLifecycleHooksResult, GetLifecycleHooksOutputArgs } from "./getLifecycleHooks";
 export const getLifecycleHooks: typeof import("./getLifecycleHooks").getLifecycleHooks = null as any;
 export const getLifecycleHooksOutput: typeof import("./getLifecycleHooks").getLifecycleHooksOutput = null as any;

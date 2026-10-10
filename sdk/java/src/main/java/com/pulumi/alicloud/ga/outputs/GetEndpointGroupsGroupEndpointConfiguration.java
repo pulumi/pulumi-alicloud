@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -17,6 +18,7 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
      * 
      */
     private Boolean enableClientipPreservation;
+    private Boolean enableProxyProtocol;
     /**
      * @return The IP address or domain name of Endpoint N in the endpoint group.
      * 
@@ -32,11 +34,14 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
      * 
      */
     private String probeProtocol;
+    private String subAddress;
     /**
      * @return The type of Endpoint N in the endpoint group.
      * 
      */
     private String type;
+    private String vpcId;
+    private List<String> vswitchIds;
     /**
      * @return The weight of Endpoint N in the endpoint group.
      * 
@@ -50,6 +55,9 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
      */
     public Boolean enableClientipPreservation() {
         return this.enableClientipPreservation;
+    }
+    public Boolean enableProxyProtocol() {
+        return this.enableProxyProtocol;
     }
     /**
      * @return The IP address or domain name of Endpoint N in the endpoint group.
@@ -72,12 +80,21 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
     public String probeProtocol() {
         return this.probeProtocol;
     }
+    public String subAddress() {
+        return this.subAddress;
+    }
     /**
      * @return The type of Endpoint N in the endpoint group.
      * 
      */
     public String type() {
         return this.type;
+    }
+    public String vpcId() {
+        return this.vpcId;
+    }
+    public List<String> vswitchIds() {
+        return this.vswitchIds;
     }
     /**
      * @return The weight of Endpoint N in the endpoint group.
@@ -97,19 +114,27 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enableClientipPreservation;
+        private Boolean enableProxyProtocol;
         private String endpoint;
         private Integer probePort;
         private String probeProtocol;
+        private String subAddress;
         private String type;
+        private String vpcId;
+        private List<String> vswitchIds;
         private Integer weight;
         public Builder() {}
         public Builder(GetEndpointGroupsGroupEndpointConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableClientipPreservation = defaults.enableClientipPreservation;
+    	      this.enableProxyProtocol = defaults.enableProxyProtocol;
     	      this.endpoint = defaults.endpoint;
     	      this.probePort = defaults.probePort;
     	      this.probeProtocol = defaults.probeProtocol;
+    	      this.subAddress = defaults.subAddress;
     	      this.type = defaults.type;
+    	      this.vpcId = defaults.vpcId;
+    	      this.vswitchIds = defaults.vswitchIds;
     	      this.weight = defaults.weight;
         }
 
@@ -119,6 +144,14 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
               throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "enableClientipPreservation");
             }
             this.enableClientipPreservation = enableClientipPreservation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableProxyProtocol(Boolean enableProxyProtocol) {
+            if (enableProxyProtocol == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "enableProxyProtocol");
+            }
+            this.enableProxyProtocol = enableProxyProtocol;
             return this;
         }
         @CustomType.Setter
@@ -146,12 +179,39 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder subAddress(String subAddress) {
+            if (subAddress == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "subAddress");
+            }
+            this.subAddress = subAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "type");
             }
             this.type = type;
             return this;
+        }
+        @CustomType.Setter
+        public Builder vpcId(String vpcId) {
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "vpcId");
+            }
+            this.vpcId = vpcId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vswitchIds(List<String> vswitchIds) {
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
+            return this;
+        }
+        public Builder vswitchIds(String... vswitchIds) {
+            return vswitchIds(List.of(vswitchIds));
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
@@ -164,10 +224,14 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
         public GetEndpointGroupsGroupEndpointConfiguration build() {
             final var _resultValue = new GetEndpointGroupsGroupEndpointConfiguration();
             _resultValue.enableClientipPreservation = enableClientipPreservation;
+            _resultValue.enableProxyProtocol = enableProxyProtocol;
             _resultValue.endpoint = endpoint;
             _resultValue.probePort = probePort;
             _resultValue.probeProtocol = probeProtocol;
+            _resultValue.subAddress = subAddress;
             _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
             _resultValue.weight = weight;
             return _resultValue;
         }

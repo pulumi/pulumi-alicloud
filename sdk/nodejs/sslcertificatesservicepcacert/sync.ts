@@ -56,6 +56,8 @@ import * as utilities from "../utilities";
  * const defaultSync = new alicloud.sslcertificatesservicepcacert.Sync("default", {ids: _default.map(__item => __item.id)});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * SSL Certificates Pca Cert Sync can be imported using the id, which is the comma-separated list of the synchronized PCA certificate identifiers, e.g.

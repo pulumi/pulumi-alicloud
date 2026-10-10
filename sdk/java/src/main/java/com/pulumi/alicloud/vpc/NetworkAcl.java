@@ -142,14 +142,14 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclName`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * @return The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclName`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -202,7 +202,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name of the network ACL.
+     * The name of the network ACL. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
@@ -210,7 +210,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
     private Output<String> networkAclName;
 
     /**
-     * @return The name of the network ACL.
+     * @return The name of the network ACL. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */

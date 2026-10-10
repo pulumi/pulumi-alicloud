@@ -17,9 +17,17 @@ export interface MilvusInstanceComponent {
      */
     cuType?: pulumi.Input<string | undefined>;
     /**
+     * The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+     */
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponentDataDisk>[] | undefined>;
+    /**
      * Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
      */
     diskSizeType?: pulumi.Input<string | undefined>;
+    /**
+     * The default is consistent with the cluster.
+     */
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
      */
@@ -32,6 +40,25 @@ export interface MilvusInstanceComponent {
      *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming
      */
     type: pulumi.Input<string>;
+}
+
+export interface MilvusInstanceComponentDataDisk {
+    /**
+     * Whether to enable the QueryNode data disk.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+     */
+    performanceLevel?: pulumi.Input<string | undefined>;
+    /**
+     * The data disk size in GiB.
+     */
+    size?: pulumi.Input<number | undefined>;
+    /**
+     * The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+     */
+    storageClass?: pulumi.Input<string | undefined>;
 }
 
 export interface MilvusInstanceVswitchId {
@@ -8039,7 +8066,7 @@ export namespace cs {
 
     export interface NodePoolManagement {
         /**
-         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
          */
         autoRepair?: pulumi.Input<boolean | undefined>;
         /**
@@ -11145,7 +11172,20 @@ export namespace ecs {
         ossObject?: pulumi.Input<string | undefined>;
     }
 
+    export interface ImageImportFeatures {
+        /**
+         * Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+         */
+        nvmeSupport?: pulumi.Input<string | undefined>;
+    }
+
     export interface InstanceCpuOptions {
+        /**
+         * The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+         *
+         * > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+         */
+        accelerators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The maximum number of partitions in the storage set.
          */
@@ -17086,6 +17126,14 @@ export namespace fnf {
 }
 
 export namespace ga {
+    export interface AcceleratorIpSetConfig {
+        /**
+         * The access mode of the acceleration area. Valid value:
+         * - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+         */
+        accessMode?: pulumi.Input<string | undefined>;
+    }
+
     export interface AclAclEntry {
         /**
          * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
@@ -17130,7 +17178,7 @@ export namespace ga {
          * The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
-         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+         * - `IpTarget`: (Available since v1.262.0) a custom private IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -17141,11 +17189,11 @@ export namespace ga {
          */
         type: pulumi.Input<string>;
         /**
-         * The ID of the VPC.
+         * The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
          */
         vpcId?: pulumi.Input<string | undefined>;
         /**
-         * The IDs of vSwitches that are deployed in the VPC.
+         * A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
          */
         vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
@@ -18116,6 +18164,9 @@ export namespace kms {
          */
         vswitchId?: pulumi.Input<string | undefined>;
     }
+}
+
+export namespace kvcachestorekvcache {
 }
 
 export namespace kvstore {
@@ -25542,7 +25593,7 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the outbound rule.
+         * The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
          * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string | undefined>;
@@ -25562,7 +25613,7 @@ export namespace vpc {
          */
         ipVersion?: pulumi.Input<string | undefined>;
         /**
-         * Name of the outbound rule entry.
+         * Name of the outbound rule entry. Currently, this name is displayed in the console.
          * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string | undefined>;
@@ -25653,7 +25704,7 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * Description of the inbound rule.
+         * Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
          * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string | undefined>;
@@ -25666,7 +25717,7 @@ export namespace vpc {
          */
         ipVersion?: pulumi.Input<string | undefined>;
         /**
-         * The name of the inbound rule entry.
+         * The name of the inbound rule entry. Currently, this name is displayed in the console.
          * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string | undefined>;
@@ -26228,7 +26279,7 @@ export namespace vpn {
          */
         internetIp?: pulumi.Input<string | undefined>;
         /**
-         * The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+         * The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
          */
         role?: pulumi.Input<string | undefined>;
         /**
@@ -26255,7 +26306,7 @@ export namespace vpn {
          */
         tunnelIkeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig | undefined>;
         /**
-         * The order in which the tunnel was created.
+         * The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
          */
         tunnelIndex: pulumi.Input<number>;
         /**

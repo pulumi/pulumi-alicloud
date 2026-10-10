@@ -56,6 +56,21 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether auto-renewal is enabled when the instance is created.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Whether auto-renewal is enabled when the instance is created.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -111,16 +126,12 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     /**
      * DB administrator password, which can be used to log in to attu.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-     * 
      */
     @Import(name="dbAdminPassword")
     private @Nullable Output<String> dbAdminPassword;
 
     /**
      * @return DB administrator password, which can be used to log in to attu.
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> dbAdminPassword() {
@@ -158,6 +169,21 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
+    /**
      * Whether to enable multiple copies of data
      * 
      */
@@ -188,6 +214,21 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether multi-zone storage is enabled when the instance is created.
+     * 
+     */
+    @Import(name="isMultiAzStorage")
+    private @Nullable Output<Boolean> isMultiAzStorage;
+
+    /**
+     * @return Whether multi-zone storage is enabled when the instance is created.
+     * 
+     */
+    public Optional<Output<Boolean>> isMultiAzStorage() {
+        return Optional.ofNullable(this.isMultiAzStorage);
+    }
+
+    /**
      * Kms Key encryption id, need to be encrypted set to true.
      * 
      */
@@ -200,6 +241,21 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
+     * The number of load replicas configured when the instance is created.
+     * 
+     */
+    @Import(name="loadReplicas")
+    private @Nullable Output<Integer> loadReplicas;
+
+    /**
+     * @return The number of load replicas configured when the instance is created.
+     * 
+     */
+    public Optional<Output<Integer>> loadReplicas() {
+        return Optional.ofNullable(this.loadReplicas);
     }
 
     /**
@@ -219,6 +275,21 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> multiZoneMode() {
         return Optional.ofNullable(this.multiZoneMode);
+    }
+
+    /**
+     * (Available since v1.294.0) Alibaba Cloud Order Number.
+     * 
+     */
+    @Import(name="orderId")
+    private @Nullable Output<String> orderId;
+
+    /**
+     * @return (Available since v1.294.0) Alibaba Cloud Order Number.
+     * 
+     */
+    public Optional<Output<String>> orderId() {
+        return Optional.ofNullable(this.orderId);
     }
 
     /**
@@ -283,14 +354,29 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * regionId. For example: cn-hangzhou
+     * The promotion code used to create the instance.
+     * 
+     */
+    @Import(name="promotionNo")
+    private @Nullable Output<String> promotionNo;
+
+    /**
+     * @return The promotion code used to create the instance.
+     * 
+     */
+    public Optional<Output<String>> promotionNo() {
+        return Optional.ofNullable(this.promotionNo);
+    }
+
+    /**
+     * The regionId.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return regionId. For example: cn-hangzhou
+     * @return The regionId.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -313,14 +399,44 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Instance status. Value range:
+     * (Available since v1.294.0) Instance running time.
+     * 
+     */
+    @Import(name="runningTime")
+    private @Nullable Output<Integer> runningTime;
+
+    /**
+     * @return (Available since v1.294.0) Instance running time.
+     * 
+     */
+    public Optional<Output<Integer>> runningTime() {
+        return Optional.ofNullable(this.runningTime);
+    }
+
+    /**
+     * (Available since v1.294.0) Configured Security Group id.
+     * 
+     */
+    @Import(name="securityGroupIds")
+    private @Nullable Output<List<String>> securityGroupIds;
+
+    /**
+     * @return (Available since v1.294.0) Configured Security Group id.
+     * 
+     */
+    public Optional<Output<List<String>>> securityGroupIds() {
+        return Optional.ofNullable(this.securityGroupIds);
+    }
+
+    /**
+     * Instance status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Instance status. Value range:
+     * @return Instance status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -392,21 +508,29 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     private MilvusInstanceState(MilvusInstanceState $) {
         this.autoBackup = $.autoBackup;
         this.autoPay = $.autoPay;
+        this.autoRenew = $.autoRenew;
         this.components = $.components;
         this.configuration = $.configuration;
         this.createTime = $.createTime;
         this.dbAdminPassword = $.dbAdminPassword;
         this.dbVersion = $.dbVersion;
         this.encrypted = $.encrypted;
+        this.expireTime = $.expireTime;
         this.ha = $.ha;
         this.instanceName = $.instanceName;
+        this.isMultiAzStorage = $.isMultiAzStorage;
         this.kmsKeyId = $.kmsKeyId;
+        this.loadReplicas = $.loadReplicas;
         this.multiZoneMode = $.multiZoneMode;
+        this.orderId = $.orderId;
         this.paymentDuration = $.paymentDuration;
         this.paymentDurationUnit = $.paymentDurationUnit;
         this.paymentType = $.paymentType;
+        this.promotionNo = $.promotionNo;
         this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
+        this.runningTime = $.runningTime;
+        this.securityGroupIds = $.securityGroupIds;
         this.status = $.status;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -476,6 +600,27 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
+        }
+
+        /**
+         * @param autoRenew Whether auto-renewal is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Whether auto-renewal is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
         }
 
         /**
@@ -566,8 +711,6 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param dbAdminPassword DB administrator password, which can be used to log in to attu.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-         * 
          * @return builder
          * 
          */
@@ -578,8 +721,6 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param dbAdminPassword DB administrator password, which can be used to log in to attu.
-         * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -631,6 +772,27 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param expireTime (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
+        }
+
+        /**
          * @param ha Whether to enable multiple copies of data
          * 
          * @return builder
@@ -673,6 +835,27 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param isMultiAzStorage Whether multi-zone storage is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isMultiAzStorage(@Nullable Output<Boolean> isMultiAzStorage) {
+            $.isMultiAzStorage = isMultiAzStorage;
+            return this;
+        }
+
+        /**
+         * @param isMultiAzStorage Whether multi-zone storage is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isMultiAzStorage(Boolean isMultiAzStorage) {
+            return isMultiAzStorage(Output.of(isMultiAzStorage));
+        }
+
+        /**
          * @param kmsKeyId Kms Key encryption id, need to be encrypted set to true.
          * 
          * @return builder
@@ -691,6 +874,27 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
+        }
+
+        /**
+         * @param loadReplicas The number of load replicas configured when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadReplicas(@Nullable Output<Integer> loadReplicas) {
+            $.loadReplicas = loadReplicas;
+            return this;
+        }
+
+        /**
+         * @param loadReplicas The number of load replicas configured when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadReplicas(Integer loadReplicas) {
+            return loadReplicas(Output.of(loadReplicas));
         }
 
         /**
@@ -716,6 +920,27 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder multiZoneMode(String multiZoneMode) {
             return multiZoneMode(Output.of(multiZoneMode));
+        }
+
+        /**
+         * @param orderId (Available since v1.294.0) Alibaba Cloud Order Number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderId(@Nullable Output<String> orderId) {
+            $.orderId = orderId;
+            return this;
+        }
+
+        /**
+         * @param orderId (Available since v1.294.0) Alibaba Cloud Order Number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderId(String orderId) {
+            return orderId(Output.of(orderId));
         }
 
         /**
@@ -798,7 +1023,28 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param regionId regionId. For example: cn-hangzhou
+         * @param promotionNo The promotion code used to create the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionNo(@Nullable Output<String> promotionNo) {
+            $.promotionNo = promotionNo;
+            return this;
+        }
+
+        /**
+         * @param promotionNo The promotion code used to create the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionNo(String promotionNo) {
+            return promotionNo(Output.of(promotionNo));
+        }
+
+        /**
+         * @param regionId The regionId.
          * 
          * @return builder
          * 
@@ -809,7 +1055,7 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param regionId regionId. For example: cn-hangzhou
+         * @param regionId The regionId.
          * 
          * @return builder
          * 
@@ -840,7 +1086,59 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status Instance status. Value range:
+         * @param runningTime (Available since v1.294.0) Instance running time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runningTime(@Nullable Output<Integer> runningTime) {
+            $.runningTime = runningTime;
+            return this;
+        }
+
+        /**
+         * @param runningTime (Available since v1.294.0) Instance running time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runningTime(Integer runningTime) {
+            return runningTime(Output.of(runningTime));
+        }
+
+        /**
+         * @param securityGroupIds (Available since v1.294.0) Configured Security Group id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(@Nullable Output<List<String>> securityGroupIds) {
+            $.securityGroupIds = securityGroupIds;
+            return this;
+        }
+
+        /**
+         * @param securityGroupIds (Available since v1.294.0) Configured Security Group id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(List<String> securityGroupIds) {
+            return securityGroupIds(Output.of(securityGroupIds));
+        }
+
+        /**
+         * @param securityGroupIds (Available since v1.294.0) Configured Security Group id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(String... securityGroupIds) {
+            return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param status Instance status.
          * 
          * @return builder
          * 
@@ -851,7 +1149,7 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status Instance status. Value range:
+         * @param status Instance status.
          * 
          * @return builder
          * 

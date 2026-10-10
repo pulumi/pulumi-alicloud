@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Nas
         /// The ID of the switch.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
 
         /// <summary>

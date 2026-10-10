@@ -126,6 +126,17 @@ namespace Pulumi.AliCloud.Nlb
         public Output<Outputs.ServerGroupHealthCheck> HealthCheck { get; private set; } = null!;
 
         /// <summary>
+        /// The traffic scheduling policy for dual-stack server groups. Valid values:
+        /// 
+        /// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+        /// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when `AddressIpVersion` is set to `DualStack`.
+        /// </summary>
+        [Output("ipVersionAffinityMode")]
+        public Output<string> IpVersionAffinityMode { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable client IP preservation. Valid values:
         /// </summary>
         [Output("preserveClientIpEnabled")]
@@ -288,6 +299,17 @@ namespace Pulumi.AliCloud.Nlb
         public Input<Inputs.ServerGroupHealthCheckArgs>? HealthCheck { get; set; }
 
         /// <summary>
+        /// The traffic scheduling policy for dual-stack server groups. Valid values:
+        /// 
+        /// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+        /// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when `AddressIpVersion` is set to `DualStack`.
+        /// </summary>
+        [Input("ipVersionAffinityMode")]
+        public Input<string>? IpVersionAffinityMode { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable client IP preservation. Valid values:
         /// </summary>
         [Input("preserveClientIpEnabled")]
@@ -404,6 +426,17 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ServerGroupHealthCheckGetArgs>? HealthCheck { get; set; }
+
+        /// <summary>
+        /// The traffic scheduling policy for dual-stack server groups. Valid values:
+        /// 
+        /// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+        /// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when `AddressIpVersion` is set to `DualStack`.
+        /// </summary>
+        [Input("ipVersionAffinityMode")]
+        public Input<string>? IpVersionAffinityMode { get; set; }
 
         /// <summary>
         /// Specifies whether to enable client IP preservation. Valid values:

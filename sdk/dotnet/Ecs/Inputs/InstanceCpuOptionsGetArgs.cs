@@ -12,6 +12,20 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class InstanceCpuOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<string>? _accelerators;
+
+        /// <summary>
+        /// The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `Vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+        /// 
+        /// &gt; **NOTE:** `Accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+        /// </summary>
+        public InputList<string> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<string>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// The maximum number of partitions in the storage set.
         /// </summary>

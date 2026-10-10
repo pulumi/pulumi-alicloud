@@ -382,7 +382,7 @@ func (o NetworkAclAttachmentResourceArrayOutput) Index(i pulumi.IntInput) Networ
 }
 
 type NetworkAclEgressAclEntry struct {
-	// The description of the outbound rule.
+	// The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
 	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
 	// The destination CIDR block, or the prefix list instance ID.
@@ -394,7 +394,7 @@ type NetworkAclEgressAclEntry struct {
 	EntryType *string `pulumi:"entryType"`
 	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion *string `pulumi:"ipVersion"`
-	// Name of the outbound rule entry.
+	// Name of the outbound rule entry. Currently, this name is displayed in the console.
 	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
 	// The action to be performed on network traffic that matches the rule. Valid values:
@@ -426,7 +426,7 @@ type NetworkAclEgressAclEntryInput interface {
 }
 
 type NetworkAclEgressAclEntryArgs struct {
-	// The description of the outbound rule.
+	// The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
 	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The destination CIDR block, or the prefix list instance ID.
@@ -438,7 +438,7 @@ type NetworkAclEgressAclEntryArgs struct {
 	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
 	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
-	// Name of the outbound rule entry.
+	// Name of the outbound rule entry. Currently, this name is displayed in the console.
 	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
 	// The action to be performed on network traffic that matches the rule. Valid values:
@@ -509,7 +509,7 @@ func (o NetworkAclEgressAclEntryOutput) ToNetworkAclEgressAclEntryOutputWithCont
 	return o
 }
 
-// The description of the outbound rule.
+// The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
 // The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclEgressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -533,7 +533,7 @@ func (o NetworkAclEgressAclEntryOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// Name of the outbound rule entry.
+// Name of the outbound rule entry. Currently, this name is displayed in the console.
 // The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
@@ -886,14 +886,14 @@ func (o NetworkAclEntriesIngressArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclIngressAclEntry struct {
-	// Description of the inbound rule.
+	// Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
 	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
 	// The route entry type. Value
 	EntryType *string `pulumi:"entryType"`
 	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion *string `pulumi:"ipVersion"`
-	// The name of the inbound rule entry.
+	// The name of the inbound rule entry. Currently, this name is displayed in the console.
 	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
 	// The action to be performed on network traffic that matches the rule. Valid values:
@@ -927,14 +927,14 @@ type NetworkAclIngressAclEntryInput interface {
 }
 
 type NetworkAclIngressAclEntryArgs struct {
-	// Description of the inbound rule.
+	// Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
 	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The route entry type. Value
 	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
 	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
-	// The name of the inbound rule entry.
+	// The name of the inbound rule entry. Currently, this name is displayed in the console.
 	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
 	// The action to be performed on network traffic that matches the rule. Valid values:
@@ -1007,7 +1007,7 @@ func (o NetworkAclIngressAclEntryOutput) ToNetworkAclIngressAclEntryOutputWithCo
 	return o
 }
 
-// Description of the inbound rule.
+// Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
 // The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclIngressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1023,7 +1023,7 @@ func (o NetworkAclIngressAclEntryOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The name of the inbound rule entry.
+// The name of the inbound rule entry. Currently, this name is displayed in the console.
 // The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclIngressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)

@@ -52,6 +52,22 @@ __all__ = [
     'ScalingRuleHybridMetricDimension',
     'ScalingRuleStepAdjustment',
     'GetAlarmsAlarmResult',
+    'GetEciScalingConfigurationsConfigurationResult',
+    'GetEciScalingConfigurationsConfigurationAcrRegistryInfoResult',
+    'GetEciScalingConfigurationsConfigurationContainerResult',
+    'GetEciScalingConfigurationsConfigurationContainerEnvironmentVarResult',
+    'GetEciScalingConfigurationsConfigurationContainerPortResult',
+    'GetEciScalingConfigurationsConfigurationContainerVolumeMountResult',
+    'GetEciScalingConfigurationsConfigurationDnsConfigOptionResult',
+    'GetEciScalingConfigurationsConfigurationHostAliasResult',
+    'GetEciScalingConfigurationsConfigurationImageRegistryCredentialResult',
+    'GetEciScalingConfigurationsConfigurationInitContainerResult',
+    'GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVarResult',
+    'GetEciScalingConfigurationsConfigurationInitContainerPortResult',
+    'GetEciScalingConfigurationsConfigurationInitContainerVolumeMountResult',
+    'GetEciScalingConfigurationsConfigurationSecurityContextSysctlResult',
+    'GetEciScalingConfigurationsConfigurationVolumeResult',
+    'GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPathResult',
     'GetLifecycleHooksHookResult',
     'GetNotificationsNotificationResult',
     'GetScalingConfigurationsConfigurationResult',
@@ -3359,6 +3375,1757 @@ class GetAlarmsAlarmResult(dict):
         The value against which the specified statistics is compared.
         """
         return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationResult(dict):
+    def __init__(__self__, *,
+                 acr_registry_infos: Sequence['outputs.GetEciScalingConfigurationsConfigurationAcrRegistryInfoResult'],
+                 active_deadline_seconds: _builtins.int,
+                 auto_create_eip: _builtins.bool,
+                 auto_match_image_cache: _builtins.bool,
+                 container_group_name: _builtins.str,
+                 containers: Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerResult'],
+                 cost_optimization: _builtins.bool,
+                 cpu: _builtins.float,
+                 cpu_options_core: _builtins.int,
+                 cpu_options_threads_per_core: _builtins.int,
+                 creation_time: _builtins.str,
+                 description: _builtins.str,
+                 dns_config_options: Sequence['outputs.GetEciScalingConfigurationsConfigurationDnsConfigOptionResult'],
+                 dns_policy: _builtins.str,
+                 egress_bandwidth: _builtins.int,
+                 eip_bandwidth: _builtins.int,
+                 enable_sls: _builtins.bool,
+                 ephemeral_storage: _builtins.int,
+                 host_aliases: Sequence['outputs.GetEciScalingConfigurationsConfigurationHostAliasResult'],
+                 host_name: _builtins.str,
+                 id: _builtins.str,
+                 image_registry_credentials: Sequence['outputs.GetEciScalingConfigurationsConfigurationImageRegistryCredentialResult'],
+                 image_snapshot_id: _builtins.str,
+                 ingress_bandwidth: _builtins.int,
+                 init_containers: Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerResult'],
+                 instance_family_level: _builtins.str,
+                 instance_types: Sequence[_builtins.str],
+                 ipv6_address_count: _builtins.int,
+                 lifecycle_state: _builtins.str,
+                 load_balancer_weight: _builtins.int,
+                 memory: _builtins.float,
+                 ram_role_name: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 restart_policy: _builtins.str,
+                 scaling_configuration_name: _builtins.str,
+                 scaling_group_id: _builtins.str,
+                 security_context_sysctls: Sequence['outputs.GetEciScalingConfigurationsConfigurationSecurityContextSysctlResult'],
+                 security_group_id: _builtins.str,
+                 spot_price_limit: _builtins.float,
+                 spot_strategy: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 termination_grace_period_seconds: _builtins.int,
+                 volumes: Sequence['outputs.GetEciScalingConfigurationsConfigurationVolumeResult']):
+        """
+        :param Sequence['GetEciScalingConfigurationsConfigurationAcrRegistryInfoArgs'] acr_registry_infos: ACR registry information.
+        :param _builtins.int active_deadline_seconds: Maximum running time of the container group.
+        :param _builtins.bool auto_create_eip: Whether to automatically create an EIP.
+        :param _builtins.bool auto_match_image_cache: Whether to automatically match image caches.
+        :param _builtins.str container_group_name: Name of the container group.
+        :param Sequence['GetEciScalingConfigurationsConfigurationContainerArgs'] containers: Containers in the container group.
+        :param _builtins.bool cost_optimization: Whether cost optimization is enabled.
+        :param _builtins.float cpu: CPU size.
+        :param _builtins.int cpu_options_core: Number of CPU cores.
+        :param _builtins.int cpu_options_threads_per_core: Number of threads per CPU core.
+        :param _builtins.str creation_time: Creation time of the scaling configuration.
+        :param _builtins.str description: Description of the scaling configuration.
+        :param Sequence['GetEciScalingConfigurationsConfigurationDnsConfigOptionArgs'] dns_config_options: DNS configuration options.
+        :param _builtins.str dns_policy: DNS policy of the container group.
+        :param _builtins.int egress_bandwidth: Egress bandwidth.
+        :param _builtins.int eip_bandwidth: EIP bandwidth.
+        :param _builtins.bool enable_sls: Whether Simple Log Service is enabled.
+        :param _builtins.int ephemeral_storage: Ephemeral storage size.
+        :param Sequence['GetEciScalingConfigurationsConfigurationHostAliasArgs'] host_aliases: Host aliases.
+        :param _builtins.str host_name: Hostname of the container group.
+        :param _builtins.str id: ID of the scaling configuration.
+        :param Sequence['GetEciScalingConfigurationsConfigurationImageRegistryCredentialArgs'] image_registry_credentials: Image registry credentials.
+        :param _builtins.str image_snapshot_id: ID of the image cache.
+        :param _builtins.int ingress_bandwidth: Ingress bandwidth.
+        :param Sequence['GetEciScalingConfigurationsConfigurationInitContainerArgs'] init_containers: Init containers in the container group.
+        :param _builtins.str instance_family_level: Instance family level.
+        :param Sequence[_builtins.str] instance_types: Instance types.
+        :param _builtins.int ipv6_address_count: Number of IPv6 addresses.
+        :param _builtins.str lifecycle_state: Lifecycle state of the scaling configuration.
+        :param _builtins.int load_balancer_weight: Weight of the container group in a load balancer.
+        :param _builtins.float memory: Memory size.
+        :param _builtins.str ram_role_name: Name of the RAM role.
+        :param _builtins.str resource_group_id: ID of the resource group.
+        :param _builtins.str restart_policy: Restart policy for containers.
+        :param _builtins.str scaling_configuration_name: Name of the scaling configuration.
+        :param _builtins.str scaling_group_id: ID of the scaling group to which the scaling configurations belong.
+        :param Sequence['GetEciScalingConfigurationsConfigurationSecurityContextSysctlArgs'] security_context_sysctls: Security context sysctls.
+        :param _builtins.str security_group_id: ID of the security group.
+        :param _builtins.float spot_price_limit: Maximum hourly spot price.
+        :param _builtins.str spot_strategy: Spot strategy.
+        :param Mapping[str, _builtins.str] tags: Tags of the scaling configuration.
+        :param _builtins.int termination_grace_period_seconds: Grace period before container termination.
+        :param Sequence['GetEciScalingConfigurationsConfigurationVolumeArgs'] volumes: Volumes in the container group.
+        """
+        pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
+        pulumi.set(__self__, "active_deadline_seconds", active_deadline_seconds)
+        pulumi.set(__self__, "auto_create_eip", auto_create_eip)
+        pulumi.set(__self__, "auto_match_image_cache", auto_match_image_cache)
+        pulumi.set(__self__, "container_group_name", container_group_name)
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "cost_optimization", cost_optimization)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "cpu_options_core", cpu_options_core)
+        pulumi.set(__self__, "cpu_options_threads_per_core", cpu_options_threads_per_core)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dns_config_options", dns_config_options)
+        pulumi.set(__self__, "dns_policy", dns_policy)
+        pulumi.set(__self__, "egress_bandwidth", egress_bandwidth)
+        pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+        pulumi.set(__self__, "enable_sls", enable_sls)
+        pulumi.set(__self__, "ephemeral_storage", ephemeral_storage)
+        pulumi.set(__self__, "host_aliases", host_aliases)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
+        pulumi.set(__self__, "image_snapshot_id", image_snapshot_id)
+        pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
+        pulumi.set(__self__, "init_containers", init_containers)
+        pulumi.set(__self__, "instance_family_level", instance_family_level)
+        pulumi.set(__self__, "instance_types", instance_types)
+        pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        pulumi.set(__self__, "load_balancer_weight", load_balancer_weight)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "restart_policy", restart_policy)
+        pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "security_context_sysctls", security_context_sysctls)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        pulumi.set(__self__, "spot_strategy", spot_strategy)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
+        pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="acrRegistryInfos")
+    def acr_registry_infos(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationAcrRegistryInfoResult']:
+        """
+        ACR registry information.
+        """
+        return pulumi.get(self, "acr_registry_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="activeDeadlineSeconds")
+    def active_deadline_seconds(self) -> _builtins.int:
+        """
+        Maximum running time of the container group.
+        """
+        return pulumi.get(self, "active_deadline_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateEip")
+    def auto_create_eip(self) -> _builtins.bool:
+        """
+        Whether to automatically create an EIP.
+        """
+        return pulumi.get(self, "auto_create_eip")
+
+    @_builtins.property
+    @pulumi.getter(name="autoMatchImageCache")
+    def auto_match_image_cache(self) -> _builtins.bool:
+        """
+        Whether to automatically match image caches.
+        """
+        return pulumi.get(self, "auto_match_image_cache")
+
+    @_builtins.property
+    @pulumi.getter(name="containerGroupName")
+    def container_group_name(self) -> _builtins.str:
+        """
+        Name of the container group.
+        """
+        return pulumi.get(self, "container_group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerResult']:
+        """
+        Containers in the container group.
+        """
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
+    @pulumi.getter(name="costOptimization")
+    def cost_optimization(self) -> _builtins.bool:
+        """
+        Whether cost optimization is enabled.
+        """
+        return pulumi.get(self, "cost_optimization")
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.float:
+        """
+        CPU size.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuOptionsCore")
+    def cpu_options_core(self) -> _builtins.int:
+        """
+        Number of CPU cores.
+        """
+        return pulumi.get(self, "cpu_options_core")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuOptionsThreadsPerCore")
+    def cpu_options_threads_per_core(self) -> _builtins.int:
+        """
+        Number of threads per CPU core.
+        """
+        return pulumi.get(self, "cpu_options_threads_per_core")
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> _builtins.str:
+        """
+        Creation time of the scaling configuration.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the scaling configuration.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsConfigOptions")
+    def dns_config_options(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationDnsConfigOptionResult']:
+        """
+        DNS configuration options.
+        """
+        return pulumi.get(self, "dns_config_options")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPolicy")
+    def dns_policy(self) -> _builtins.str:
+        """
+        DNS policy of the container group.
+        """
+        return pulumi.get(self, "dns_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="egressBandwidth")
+    def egress_bandwidth(self) -> _builtins.int:
+        """
+        Egress bandwidth.
+        """
+        return pulumi.get(self, "egress_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="eipBandwidth")
+    def eip_bandwidth(self) -> _builtins.int:
+        """
+        EIP bandwidth.
+        """
+        return pulumi.get(self, "eip_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="enableSls")
+    def enable_sls(self) -> _builtins.bool:
+        """
+        Whether Simple Log Service is enabled.
+        """
+        return pulumi.get(self, "enable_sls")
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralStorage")
+    def ephemeral_storage(self) -> _builtins.int:
+        """
+        Ephemeral storage size.
+        """
+        return pulumi.get(self, "ephemeral_storage")
+
+    @_builtins.property
+    @pulumi.getter(name="hostAliases")
+    def host_aliases(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationHostAliasResult']:
+        """
+        Host aliases.
+        """
+        return pulumi.get(self, "host_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> _builtins.str:
+        """
+        Hostname of the container group.
+        """
+        return pulumi.get(self, "host_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the scaling configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageRegistryCredentials")
+    def image_registry_credentials(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationImageRegistryCredentialResult']:
+        """
+        Image registry credentials.
+        """
+        return pulumi.get(self, "image_registry_credentials")
+
+    @_builtins.property
+    @pulumi.getter(name="imageSnapshotId")
+    def image_snapshot_id(self) -> _builtins.str:
+        """
+        ID of the image cache.
+        """
+        return pulumi.get(self, "image_snapshot_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressBandwidth")
+    def ingress_bandwidth(self) -> _builtins.int:
+        """
+        Ingress bandwidth.
+        """
+        return pulumi.get(self, "ingress_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="initContainers")
+    def init_containers(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerResult']:
+        """
+        Init containers in the container group.
+        """
+        return pulumi.get(self, "init_containers")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> _builtins.str:
+        """
+        Instance family level.
+        """
+        return pulumi.get(self, "instance_family_level")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Sequence[_builtins.str]:
+        """
+        Instance types.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> _builtins.int:
+        """
+        Number of IPv6 addresses.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> _builtins.str:
+        """
+        Lifecycle state of the scaling configuration.
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerWeight")
+    def load_balancer_weight(self) -> _builtins.int:
+        """
+        Weight of the container group in a load balancer.
+        """
+        return pulumi.get(self, "load_balancer_weight")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.float:
+        """
+        Memory size.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> _builtins.str:
+        """
+        Name of the RAM role.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="restartPolicy")
+    def restart_policy(self) -> _builtins.str:
+        """
+        Restart policy for containers.
+        """
+        return pulumi.get(self, "restart_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="scalingConfigurationName")
+    def scaling_configuration_name(self) -> _builtins.str:
+        """
+        Name of the scaling configuration.
+        """
+        return pulumi.get(self, "scaling_configuration_name")
+
+    @_builtins.property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> _builtins.str:
+        """
+        ID of the scaling group to which the scaling configurations belong.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextSysctls")
+    def security_context_sysctls(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationSecurityContextSysctlResult']:
+        """
+        Security context sysctls.
+        """
+        return pulumi.get(self, "security_context_sysctls")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> _builtins.float:
+        """
+        Maximum hourly spot price.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> _builtins.str:
+        """
+        Spot strategy.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Tags of the scaling configuration.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="terminationGracePeriodSeconds")
+    def termination_grace_period_seconds(self) -> _builtins.int:
+        """
+        Grace period before container termination.
+        """
+        return pulumi.get(self, "termination_grace_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationVolumeResult']:
+        """
+        Volumes in the container group.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationAcrRegistryInfoResult(dict):
+    def __init__(__self__, *,
+                 domains: Sequence[_builtins.str],
+                 instance_id: _builtins.str,
+                 instance_name: _builtins.str,
+                 region_id: _builtins.str):
+        """
+        :param Sequence[_builtins.str] domains: Domains of the ACR registry.
+        :param _builtins.str instance_id: ID of the ACR instance.
+        :param _builtins.str instance_name: Name of the ACR instance.
+        :param _builtins.str region_id: Region ID of the ACR instance.
+        """
+        pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> Sequence[_builtins.str]:
+        """
+        Domains of the ACR registry.
+        """
+        return pulumi.get(self, "domains")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        ID of the ACR instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> _builtins.str:
+        """
+        Name of the ACR instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        Region ID of the ACR instance.
+        """
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationContainerResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[_builtins.str],
+                 commands: Sequence[_builtins.str],
+                 cpu: _builtins.float,
+                 environment_vars: Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerEnvironmentVarResult'],
+                 gpu: _builtins.int,
+                 image: _builtins.str,
+                 image_pull_policy: _builtins.str,
+                 lifecycle_pre_stop_handler_execs: Sequence[_builtins.str],
+                 liveness_probe_exec_commands: Sequence[_builtins.str],
+                 liveness_probe_failure_threshold: _builtins.int,
+                 liveness_probe_http_get_path: _builtins.str,
+                 liveness_probe_http_get_port: _builtins.int,
+                 liveness_probe_http_get_scheme: _builtins.str,
+                 liveness_probe_initial_delay_seconds: _builtins.int,
+                 liveness_probe_period_seconds: _builtins.int,
+                 liveness_probe_success_threshold: _builtins.int,
+                 liveness_probe_tcp_socket_port: _builtins.int,
+                 liveness_probe_timeout_seconds: _builtins.int,
+                 memory: _builtins.float,
+                 name: _builtins.str,
+                 ports: Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerPortResult'],
+                 readiness_probe_exec_commands: Sequence[_builtins.str],
+                 readiness_probe_failure_threshold: _builtins.int,
+                 readiness_probe_http_get_path: _builtins.str,
+                 readiness_probe_http_get_port: _builtins.int,
+                 readiness_probe_http_get_scheme: _builtins.str,
+                 readiness_probe_initial_delay_seconds: _builtins.int,
+                 readiness_probe_period_seconds: _builtins.int,
+                 readiness_probe_success_threshold: _builtins.int,
+                 readiness_probe_tcp_socket_port: _builtins.int,
+                 readiness_probe_timeout_seconds: _builtins.int,
+                 security_context_capability_adds: Sequence[_builtins.str],
+                 security_context_read_only_root_file_system: _builtins.bool,
+                 security_context_run_as_user: _builtins.int,
+                 stdin: _builtins.bool,
+                 tty: _builtins.bool,
+                 volume_mounts: Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerVolumeMountResult'],
+                 working_dir: _builtins.str):
+        """
+        :param Sequence[_builtins.str] args: Arguments passed to the init container.
+        :param Sequence[_builtins.str] commands: Commands run by the init container.
+        :param _builtins.float cpu: CPU size.
+        :param Sequence['GetEciScalingConfigurationsConfigurationContainerEnvironmentVarArgs'] environment_vars: Environment variables.
+        :param _builtins.int gpu: Number of GPUs.
+        :param _builtins.str image: Init container image.
+        :param _builtins.str image_pull_policy: Image pull policy.
+        :param Sequence[_builtins.str] lifecycle_pre_stop_handler_execs: Commands run before the container stops.
+        :param Sequence[_builtins.str] liveness_probe_exec_commands: Commands in the liveness probe.
+        :param _builtins.int liveness_probe_failure_threshold: Liveness probe failure threshold.
+        :param _builtins.str liveness_probe_http_get_path: HTTP path in the liveness probe.
+        :param _builtins.int liveness_probe_http_get_port: HTTP port in the liveness probe.
+        :param _builtins.str liveness_probe_http_get_scheme: HTTP scheme in the liveness probe.
+        :param _builtins.int liveness_probe_initial_delay_seconds: Liveness probe initial delay.
+        :param _builtins.int liveness_probe_period_seconds: Liveness probe period.
+        :param _builtins.int liveness_probe_success_threshold: Liveness probe success threshold.
+        :param _builtins.int liveness_probe_tcp_socket_port: TCP socket port in the liveness probe.
+        :param _builtins.int liveness_probe_timeout_seconds: Liveness probe timeout.
+        :param _builtins.float memory: Memory size.
+        :param _builtins.str name: Name of the volume.
+        :param Sequence['GetEciScalingConfigurationsConfigurationContainerPortArgs'] ports: Ports exposed by the init container.
+        :param Sequence[_builtins.str] readiness_probe_exec_commands: Commands in the readiness probe.
+        :param _builtins.int readiness_probe_failure_threshold: Readiness probe failure threshold.
+        :param _builtins.str readiness_probe_http_get_path: HTTP path in the readiness probe.
+        :param _builtins.int readiness_probe_http_get_port: HTTP port in the readiness probe.
+        :param _builtins.str readiness_probe_http_get_scheme: HTTP scheme in the readiness probe.
+        :param _builtins.int readiness_probe_initial_delay_seconds: Readiness probe initial delay.
+        :param _builtins.int readiness_probe_period_seconds: Readiness probe period.
+        :param _builtins.int readiness_probe_success_threshold: Readiness probe success threshold.
+        :param _builtins.int readiness_probe_tcp_socket_port: TCP socket port in the readiness probe.
+        :param _builtins.int readiness_probe_timeout_seconds: Readiness probe timeout.
+        :param Sequence[_builtins.str] security_context_capability_adds: Linux capabilities to add.
+        :param _builtins.bool security_context_read_only_root_file_system: Whether the root file system is read-only.
+        :param _builtins.int security_context_run_as_user: UID to run the container as.
+        :param _builtins.bool stdin: Whether to allocate stdin.
+        :param _builtins.bool tty: Whether to allocate a TTY.
+        :param Sequence['GetEciScalingConfigurationsConfigurationContainerVolumeMountArgs'] volume_mounts: Volume mounts.
+        :param _builtins.str working_dir: Working directory.
+        """
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "environment_vars", environment_vars)
+        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        pulumi.set(__self__, "lifecycle_pre_stop_handler_execs", lifecycle_pre_stop_handler_execs)
+        pulumi.set(__self__, "liveness_probe_exec_commands", liveness_probe_exec_commands)
+        pulumi.set(__self__, "liveness_probe_failure_threshold", liveness_probe_failure_threshold)
+        pulumi.set(__self__, "liveness_probe_http_get_path", liveness_probe_http_get_path)
+        pulumi.set(__self__, "liveness_probe_http_get_port", liveness_probe_http_get_port)
+        pulumi.set(__self__, "liveness_probe_http_get_scheme", liveness_probe_http_get_scheme)
+        pulumi.set(__self__, "liveness_probe_initial_delay_seconds", liveness_probe_initial_delay_seconds)
+        pulumi.set(__self__, "liveness_probe_period_seconds", liveness_probe_period_seconds)
+        pulumi.set(__self__, "liveness_probe_success_threshold", liveness_probe_success_threshold)
+        pulumi.set(__self__, "liveness_probe_tcp_socket_port", liveness_probe_tcp_socket_port)
+        pulumi.set(__self__, "liveness_probe_timeout_seconds", liveness_probe_timeout_seconds)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "readiness_probe_exec_commands", readiness_probe_exec_commands)
+        pulumi.set(__self__, "readiness_probe_failure_threshold", readiness_probe_failure_threshold)
+        pulumi.set(__self__, "readiness_probe_http_get_path", readiness_probe_http_get_path)
+        pulumi.set(__self__, "readiness_probe_http_get_port", readiness_probe_http_get_port)
+        pulumi.set(__self__, "readiness_probe_http_get_scheme", readiness_probe_http_get_scheme)
+        pulumi.set(__self__, "readiness_probe_initial_delay_seconds", readiness_probe_initial_delay_seconds)
+        pulumi.set(__self__, "readiness_probe_period_seconds", readiness_probe_period_seconds)
+        pulumi.set(__self__, "readiness_probe_success_threshold", readiness_probe_success_threshold)
+        pulumi.set(__self__, "readiness_probe_tcp_socket_port", readiness_probe_tcp_socket_port)
+        pulumi.set(__self__, "readiness_probe_timeout_seconds", readiness_probe_timeout_seconds)
+        pulumi.set(__self__, "security_context_capability_adds", security_context_capability_adds)
+        pulumi.set(__self__, "security_context_read_only_root_file_system", security_context_read_only_root_file_system)
+        pulumi.set(__self__, "security_context_run_as_user", security_context_run_as_user)
+        pulumi.set(__self__, "stdin", stdin)
+        pulumi.set(__self__, "tty", tty)
+        pulumi.set(__self__, "volume_mounts", volume_mounts)
+        pulumi.set(__self__, "working_dir", working_dir)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Sequence[_builtins.str]:
+        """
+        Arguments passed to the init container.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Sequence[_builtins.str]:
+        """
+        Commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.float:
+        """
+        CPU size.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerEnvironmentVarResult']:
+        """
+        Environment variables.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @_builtins.property
+    @pulumi.getter
+    def gpu(self) -> _builtins.int:
+        """
+        Number of GPUs.
+        """
+        return pulumi.get(self, "gpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        Init container image.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> _builtins.str:
+        """
+        Image pull policy.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecyclePreStopHandlerExecs")
+    def lifecycle_pre_stop_handler_execs(self) -> Sequence[_builtins.str]:
+        """
+        Commands run before the container stops.
+        """
+        return pulumi.get(self, "lifecycle_pre_stop_handler_execs")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeExecCommands")
+    def liveness_probe_exec_commands(self) -> Sequence[_builtins.str]:
+        """
+        Commands in the liveness probe.
+        """
+        return pulumi.get(self, "liveness_probe_exec_commands")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeFailureThreshold")
+    def liveness_probe_failure_threshold(self) -> _builtins.int:
+        """
+        Liveness probe failure threshold.
+        """
+        return pulumi.get(self, "liveness_probe_failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeHttpGetPath")
+    def liveness_probe_http_get_path(self) -> _builtins.str:
+        """
+        HTTP path in the liveness probe.
+        """
+        return pulumi.get(self, "liveness_probe_http_get_path")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeHttpGetPort")
+    def liveness_probe_http_get_port(self) -> _builtins.int:
+        """
+        HTTP port in the liveness probe.
+        """
+        return pulumi.get(self, "liveness_probe_http_get_port")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeHttpGetScheme")
+    def liveness_probe_http_get_scheme(self) -> _builtins.str:
+        """
+        HTTP scheme in the liveness probe.
+        """
+        return pulumi.get(self, "liveness_probe_http_get_scheme")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeInitialDelaySeconds")
+    def liveness_probe_initial_delay_seconds(self) -> _builtins.int:
+        """
+        Liveness probe initial delay.
+        """
+        return pulumi.get(self, "liveness_probe_initial_delay_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbePeriodSeconds")
+    def liveness_probe_period_seconds(self) -> _builtins.int:
+        """
+        Liveness probe period.
+        """
+        return pulumi.get(self, "liveness_probe_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeSuccessThreshold")
+    def liveness_probe_success_threshold(self) -> _builtins.int:
+        """
+        Liveness probe success threshold.
+        """
+        return pulumi.get(self, "liveness_probe_success_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeTcpSocketPort")
+    def liveness_probe_tcp_socket_port(self) -> _builtins.int:
+        """
+        TCP socket port in the liveness probe.
+        """
+        return pulumi.get(self, "liveness_probe_tcp_socket_port")
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbeTimeoutSeconds")
+    def liveness_probe_timeout_seconds(self) -> _builtins.int:
+        """
+        Liveness probe timeout.
+        """
+        return pulumi.get(self, "liveness_probe_timeout_seconds")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.float:
+        """
+        Memory size.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerPortResult']:
+        """
+        Ports exposed by the init container.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeExecCommands")
+    def readiness_probe_exec_commands(self) -> Sequence[_builtins.str]:
+        """
+        Commands in the readiness probe.
+        """
+        return pulumi.get(self, "readiness_probe_exec_commands")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeFailureThreshold")
+    def readiness_probe_failure_threshold(self) -> _builtins.int:
+        """
+        Readiness probe failure threshold.
+        """
+        return pulumi.get(self, "readiness_probe_failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeHttpGetPath")
+    def readiness_probe_http_get_path(self) -> _builtins.str:
+        """
+        HTTP path in the readiness probe.
+        """
+        return pulumi.get(self, "readiness_probe_http_get_path")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeHttpGetPort")
+    def readiness_probe_http_get_port(self) -> _builtins.int:
+        """
+        HTTP port in the readiness probe.
+        """
+        return pulumi.get(self, "readiness_probe_http_get_port")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeHttpGetScheme")
+    def readiness_probe_http_get_scheme(self) -> _builtins.str:
+        """
+        HTTP scheme in the readiness probe.
+        """
+        return pulumi.get(self, "readiness_probe_http_get_scheme")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeInitialDelaySeconds")
+    def readiness_probe_initial_delay_seconds(self) -> _builtins.int:
+        """
+        Readiness probe initial delay.
+        """
+        return pulumi.get(self, "readiness_probe_initial_delay_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbePeriodSeconds")
+    def readiness_probe_period_seconds(self) -> _builtins.int:
+        """
+        Readiness probe period.
+        """
+        return pulumi.get(self, "readiness_probe_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeSuccessThreshold")
+    def readiness_probe_success_threshold(self) -> _builtins.int:
+        """
+        Readiness probe success threshold.
+        """
+        return pulumi.get(self, "readiness_probe_success_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeTcpSocketPort")
+    def readiness_probe_tcp_socket_port(self) -> _builtins.int:
+        """
+        TCP socket port in the readiness probe.
+        """
+        return pulumi.get(self, "readiness_probe_tcp_socket_port")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbeTimeoutSeconds")
+    def readiness_probe_timeout_seconds(self) -> _builtins.int:
+        """
+        Readiness probe timeout.
+        """
+        return pulumi.get(self, "readiness_probe_timeout_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextCapabilityAdds")
+    def security_context_capability_adds(self) -> Sequence[_builtins.str]:
+        """
+        Linux capabilities to add.
+        """
+        return pulumi.get(self, "security_context_capability_adds")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextReadOnlyRootFileSystem")
+    def security_context_read_only_root_file_system(self) -> _builtins.bool:
+        """
+        Whether the root file system is read-only.
+        """
+        return pulumi.get(self, "security_context_read_only_root_file_system")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextRunAsUser")
+    def security_context_run_as_user(self) -> _builtins.int:
+        """
+        UID to run the container as.
+        """
+        return pulumi.get(self, "security_context_run_as_user")
+
+    @_builtins.property
+    @pulumi.getter
+    def stdin(self) -> _builtins.bool:
+        """
+        Whether to allocate stdin.
+        """
+        return pulumi.get(self, "stdin")
+
+    @_builtins.property
+    @pulumi.getter
+    def tty(self) -> _builtins.bool:
+        """
+        Whether to allocate a TTY.
+        """
+        return pulumi.get(self, "tty")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationContainerVolumeMountResult']:
+        """
+        Volume mounts.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @_builtins.property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> _builtins.str:
+        """
+        Working directory.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationContainerEnvironmentVarResult(dict):
+    def __init__(__self__, *,
+                 field_ref_field_path: _builtins.str,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str field_ref_field_path: Field reference path.
+        :param _builtins.str key: Name of the environment variable.
+        :param _builtins.str value: Value of the environment variable.
+        """
+        pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldRefFieldPath")
+    def field_ref_field_path(self) -> _builtins.str:
+        """
+        Field reference path.
+        """
+        return pulumi.get(self, "field_ref_field_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationContainerPortResult(dict):
+    def __init__(__self__, *,
+                 port: _builtins.int,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.int port: Port number.
+        :param _builtins.str protocol: Protocol of the port.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port number.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol of the port.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationContainerVolumeMountResult(dict):
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 mount_propagation: _builtins.str,
+                 name: _builtins.str,
+                 read_only: _builtins.bool,
+                 sub_path: _builtins.str):
+        """
+        :param _builtins.str mount_path: Path where the volume is mounted.
+        :param _builtins.str mount_propagation: Mount propagation mode.
+        :param _builtins.str name: Name of the volume.
+        :param _builtins.bool read_only: Whether the mount is read-only.
+        :param _builtins.str sub_path: Subpath within the volume.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "mount_propagation", mount_propagation)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "read_only", read_only)
+        pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Path where the volume is mounted.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter(name="mountPropagation")
+    def mount_propagation(self) -> _builtins.str:
+        """
+        Mount propagation mode.
+        """
+        return pulumi.get(self, "mount_propagation")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> _builtins.bool:
+        """
+        Whether the mount is read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> _builtins.str:
+        """
+        Subpath within the volume.
+        """
+        return pulumi.get(self, "sub_path")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationDnsConfigOptionResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Name of the volume.
+        :param _builtins.str value: Value of the environment variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationHostAliasResult(dict):
+    def __init__(__self__, *,
+                 hostnames: Sequence[_builtins.str],
+                 ip: _builtins.str):
+        """
+        :param Sequence[_builtins.str] hostnames: Hostnames for the alias.
+        :param _builtins.str ip: IP address for the alias.
+        """
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> Sequence[_builtins.str]:
+        """
+        Hostnames for the alias.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address for the alias.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationImageRegistryCredentialResult(dict):
+    def __init__(__self__, *,
+                 password: _builtins.str,
+                 server: _builtins.str,
+                 username: _builtins.str):
+        """
+        :param _builtins.str password: Password of the image registry.
+        :param _builtins.str server: Server address of the image registry.
+        :param _builtins.str username: Username of the image registry.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        Password of the image registry.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Server address of the image registry.
+        """
+        return pulumi.get(self, "server")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Username of the image registry.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationInitContainerResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[_builtins.str],
+                 commands: Sequence[_builtins.str],
+                 cpu: _builtins.float,
+                 environment_vars: Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVarResult'],
+                 gpu: _builtins.int,
+                 image: _builtins.str,
+                 image_pull_policy: _builtins.str,
+                 memory: _builtins.float,
+                 name: _builtins.str,
+                 ports: Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerPortResult'],
+                 security_context_capability_adds: Sequence[_builtins.str],
+                 security_context_read_only_root_file_system: _builtins.bool,
+                 security_context_run_as_user: _builtins.int,
+                 volume_mounts: Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerVolumeMountResult'],
+                 working_dir: _builtins.str):
+        """
+        :param Sequence[_builtins.str] args: Arguments passed to the init container.
+        :param Sequence[_builtins.str] commands: Commands run by the init container.
+        :param _builtins.float cpu: CPU size.
+        :param Sequence['GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVarArgs'] environment_vars: Environment variables.
+        :param _builtins.int gpu: Number of GPUs.
+        :param _builtins.str image: Init container image.
+        :param _builtins.str image_pull_policy: Image pull policy.
+        :param _builtins.float memory: Memory size.
+        :param _builtins.str name: Name of the volume.
+        :param Sequence['GetEciScalingConfigurationsConfigurationInitContainerPortArgs'] ports: Ports exposed by the init container.
+        :param Sequence[_builtins.str] security_context_capability_adds: Linux capabilities to add.
+        :param _builtins.bool security_context_read_only_root_file_system: Whether the root file system is read-only.
+        :param _builtins.int security_context_run_as_user: UID to run the container as.
+        :param Sequence['GetEciScalingConfigurationsConfigurationInitContainerVolumeMountArgs'] volume_mounts: Volume mounts.
+        :param _builtins.str working_dir: Working directory.
+        """
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "environment_vars", environment_vars)
+        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "security_context_capability_adds", security_context_capability_adds)
+        pulumi.set(__self__, "security_context_read_only_root_file_system", security_context_read_only_root_file_system)
+        pulumi.set(__self__, "security_context_run_as_user", security_context_run_as_user)
+        pulumi.set(__self__, "volume_mounts", volume_mounts)
+        pulumi.set(__self__, "working_dir", working_dir)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Sequence[_builtins.str]:
+        """
+        Arguments passed to the init container.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Sequence[_builtins.str]:
+        """
+        Commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.float:
+        """
+        CPU size.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVarResult']:
+        """
+        Environment variables.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @_builtins.property
+    @pulumi.getter
+    def gpu(self) -> _builtins.int:
+        """
+        Number of GPUs.
+        """
+        return pulumi.get(self, "gpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        Init container image.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> _builtins.str:
+        """
+        Image pull policy.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.float:
+        """
+        Memory size.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerPortResult']:
+        """
+        Ports exposed by the init container.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextCapabilityAdds")
+    def security_context_capability_adds(self) -> Sequence[_builtins.str]:
+        """
+        Linux capabilities to add.
+        """
+        return pulumi.get(self, "security_context_capability_adds")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextReadOnlyRootFileSystem")
+    def security_context_read_only_root_file_system(self) -> _builtins.bool:
+        """
+        Whether the root file system is read-only.
+        """
+        return pulumi.get(self, "security_context_read_only_root_file_system")
+
+    @_builtins.property
+    @pulumi.getter(name="securityContextRunAsUser")
+    def security_context_run_as_user(self) -> _builtins.int:
+        """
+        UID to run the container as.
+        """
+        return pulumi.get(self, "security_context_run_as_user")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationInitContainerVolumeMountResult']:
+        """
+        Volume mounts.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @_builtins.property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> _builtins.str:
+        """
+        Working directory.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVarResult(dict):
+    def __init__(__self__, *,
+                 field_ref_field_path: _builtins.str,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str field_ref_field_path: Field reference path.
+        :param _builtins.str key: Name of the environment variable.
+        :param _builtins.str value: Value of the environment variable.
+        """
+        pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldRefFieldPath")
+    def field_ref_field_path(self) -> _builtins.str:
+        """
+        Field reference path.
+        """
+        return pulumi.get(self, "field_ref_field_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationInitContainerPortResult(dict):
+    def __init__(__self__, *,
+                 port: _builtins.int,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.int port: Port number.
+        :param _builtins.str protocol: Protocol of the port.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port number.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol of the port.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationInitContainerVolumeMountResult(dict):
+    def __init__(__self__, *,
+                 mount_path: _builtins.str,
+                 mount_propagation: _builtins.str,
+                 name: _builtins.str,
+                 read_only: _builtins.bool,
+                 sub_path: _builtins.str):
+        """
+        :param _builtins.str mount_path: Path where the volume is mounted.
+        :param _builtins.str mount_propagation: Mount propagation mode.
+        :param _builtins.str name: Name of the volume.
+        :param _builtins.bool read_only: Whether the mount is read-only.
+        :param _builtins.str sub_path: Subpath within the volume.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "mount_propagation", mount_propagation)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "read_only", read_only)
+        pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> _builtins.str:
+        """
+        Path where the volume is mounted.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @_builtins.property
+    @pulumi.getter(name="mountPropagation")
+    def mount_propagation(self) -> _builtins.str:
+        """
+        Mount propagation mode.
+        """
+        return pulumi.get(self, "mount_propagation")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> _builtins.bool:
+        """
+        Whether the mount is read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> _builtins.str:
+        """
+        Subpath within the volume.
+        """
+        return pulumi.get(self, "sub_path")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationSecurityContextSysctlResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Name of the volume.
+        :param _builtins.str value: Value of the environment variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationVolumeResult(dict):
+    def __init__(__self__, *,
+                 config_file_volume_config_file_to_paths: Sequence['outputs.GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPathResult'],
+                 config_file_volume_default_mode: _builtins.int,
+                 disk_volume_disk_id: _builtins.str,
+                 disk_volume_disk_size: _builtins.int,
+                 disk_volume_fs_type: _builtins.str,
+                 empty_dir_volume_medium: _builtins.str,
+                 empty_dir_volume_size_limit: _builtins.str,
+                 flex_volume_driver: _builtins.str,
+                 flex_volume_fs_type: _builtins.str,
+                 flex_volume_options: _builtins.str,
+                 host_path_volume_path: _builtins.str,
+                 host_path_volume_type: _builtins.str,
+                 name: _builtins.str,
+                 nfs_volume_path: _builtins.str,
+                 nfs_volume_read_only: _builtins.bool,
+                 nfs_volume_server: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPathArgs'] config_file_volume_config_file_to_paths: Files mounted from a config file volume.
+        :param _builtins.int config_file_volume_default_mode: Default mode of config file volume files.
+        :param _builtins.str disk_volume_disk_id: ID of the disk volume.
+        :param _builtins.int disk_volume_disk_size: Size of the disk volume.
+        :param _builtins.str disk_volume_fs_type: File system type of the disk volume.
+        :param _builtins.str empty_dir_volume_medium: Storage medium for the empty directory volume.
+        :param _builtins.str empty_dir_volume_size_limit: Size limit of the empty directory volume.
+        :param _builtins.str flex_volume_driver: Driver of the FlexVolume.
+        :param _builtins.str flex_volume_fs_type: File system type of the FlexVolume.
+        :param _builtins.str flex_volume_options: Options of the FlexVolume.
+        :param _builtins.str host_path_volume_path: Path of the host path volume.
+        :param _builtins.str host_path_volume_type: Type of the host path volume.
+        :param _builtins.str name: Name of the volume.
+        :param _builtins.str nfs_volume_path: Path of the NFS volume.
+        :param _builtins.bool nfs_volume_read_only: Whether the NFS volume is read-only.
+        :param _builtins.str nfs_volume_server: Server of the NFS volume.
+        :param _builtins.str type: Type of the volume.
+        """
+        pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+        pulumi.set(__self__, "config_file_volume_default_mode", config_file_volume_default_mode)
+        pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
+        pulumi.set(__self__, "disk_volume_disk_size", disk_volume_disk_size)
+        pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
+        pulumi.set(__self__, "empty_dir_volume_medium", empty_dir_volume_medium)
+        pulumi.set(__self__, "empty_dir_volume_size_limit", empty_dir_volume_size_limit)
+        pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
+        pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
+        pulumi.set(__self__, "flex_volume_options", flex_volume_options)
+        pulumi.set(__self__, "host_path_volume_path", host_path_volume_path)
+        pulumi.set(__self__, "host_path_volume_type", host_path_volume_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nfs_volume_path", nfs_volume_path)
+        pulumi.set(__self__, "nfs_volume_read_only", nfs_volume_read_only)
+        pulumi.set(__self__, "nfs_volume_server", nfs_volume_server)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="configFileVolumeConfigFileToPaths")
+    def config_file_volume_config_file_to_paths(self) -> Sequence['outputs.GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPathResult']:
+        """
+        Files mounted from a config file volume.
+        """
+        return pulumi.get(self, "config_file_volume_config_file_to_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="configFileVolumeDefaultMode")
+    def config_file_volume_default_mode(self) -> _builtins.int:
+        """
+        Default mode of config file volume files.
+        """
+        return pulumi.get(self, "config_file_volume_default_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="diskVolumeDiskId")
+    def disk_volume_disk_id(self) -> _builtins.str:
+        """
+        ID of the disk volume.
+        """
+        return pulumi.get(self, "disk_volume_disk_id")
+
+    @_builtins.property
+    @pulumi.getter(name="diskVolumeDiskSize")
+    def disk_volume_disk_size(self) -> _builtins.int:
+        """
+        Size of the disk volume.
+        """
+        return pulumi.get(self, "disk_volume_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="diskVolumeFsType")
+    def disk_volume_fs_type(self) -> _builtins.str:
+        """
+        File system type of the disk volume.
+        """
+        return pulumi.get(self, "disk_volume_fs_type")
+
+    @_builtins.property
+    @pulumi.getter(name="emptyDirVolumeMedium")
+    def empty_dir_volume_medium(self) -> _builtins.str:
+        """
+        Storage medium for the empty directory volume.
+        """
+        return pulumi.get(self, "empty_dir_volume_medium")
+
+    @_builtins.property
+    @pulumi.getter(name="emptyDirVolumeSizeLimit")
+    def empty_dir_volume_size_limit(self) -> _builtins.str:
+        """
+        Size limit of the empty directory volume.
+        """
+        return pulumi.get(self, "empty_dir_volume_size_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="flexVolumeDriver")
+    def flex_volume_driver(self) -> _builtins.str:
+        """
+        Driver of the FlexVolume.
+        """
+        return pulumi.get(self, "flex_volume_driver")
+
+    @_builtins.property
+    @pulumi.getter(name="flexVolumeFsType")
+    def flex_volume_fs_type(self) -> _builtins.str:
+        """
+        File system type of the FlexVolume.
+        """
+        return pulumi.get(self, "flex_volume_fs_type")
+
+    @_builtins.property
+    @pulumi.getter(name="flexVolumeOptions")
+    def flex_volume_options(self) -> _builtins.str:
+        """
+        Options of the FlexVolume.
+        """
+        return pulumi.get(self, "flex_volume_options")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPathVolumePath")
+    def host_path_volume_path(self) -> _builtins.str:
+        """
+        Path of the host path volume.
+        """
+        return pulumi.get(self, "host_path_volume_path")
+
+    @_builtins.property
+    @pulumi.getter(name="hostPathVolumeType")
+    def host_path_volume_type(self) -> _builtins.str:
+        """
+        Type of the host path volume.
+        """
+        return pulumi.get(self, "host_path_volume_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsVolumePath")
+    def nfs_volume_path(self) -> _builtins.str:
+        """
+        Path of the NFS volume.
+        """
+        return pulumi.get(self, "nfs_volume_path")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsVolumeReadOnly")
+    def nfs_volume_read_only(self) -> _builtins.bool:
+        """
+        Whether the NFS volume is read-only.
+        """
+        return pulumi.get(self, "nfs_volume_read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsVolumeServer")
+    def nfs_volume_server(self) -> _builtins.str:
+        """
+        Server of the NFS volume.
+        """
+        return pulumi.get(self, "nfs_volume_server")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the volume.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPathResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 mode: _builtins.int,
+                 path: _builtins.str):
+        """
+        :param _builtins.str content: File content.
+        :param _builtins.int mode: File mode.
+        :param _builtins.str path: Destination path.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        File content.
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.int:
+        """
+        File mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Destination path.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

@@ -49,6 +49,9 @@ import * as utilities from "../utilities";
  *     licenseType: "Auto",
  *     imageName: name,
  *     description: name,
+ *     features: {
+ *         nvmeSupport: "supported",
+ *     },
  *     diskDeviceMappings: [{
  *         ossBucket: defaultBucket.id,
  *         ossObject: defaultBucketObject.id,
@@ -112,6 +115,10 @@ export class ImageImport extends pulumi.CustomResource {
      */
     declare public readonly diskDeviceMappings: pulumi.Output<outputs.ecs.ImageImportDiskDeviceMapping[]>;
     /**
+     * Features for the image. See `features` below.
+     */
+    declare public readonly features: pulumi.Output<outputs.ecs.ImageImportFeatures>;
+    /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      */
     declare public readonly imageName: pulumi.Output<string>;
@@ -146,6 +153,7 @@ export class ImageImport extends pulumi.CustomResource {
             resourceInputs["bootMode"] = state?.bootMode;
             resourceInputs["description"] = state?.description;
             resourceInputs["diskDeviceMappings"] = state?.diskDeviceMappings;
+            resourceInputs["features"] = state?.features;
             resourceInputs["imageName"] = state?.imageName;
             resourceInputs["licenseType"] = state?.licenseType;
             resourceInputs["osType"] = state?.osType;
@@ -159,6 +167,7 @@ export class ImageImport extends pulumi.CustomResource {
             resourceInputs["bootMode"] = args?.bootMode;
             resourceInputs["description"] = args?.description;
             resourceInputs["diskDeviceMappings"] = args?.diskDeviceMappings;
+            resourceInputs["features"] = args?.features;
             resourceInputs["imageName"] = args?.imageName;
             resourceInputs["licenseType"] = args?.licenseType;
             resourceInputs["osType"] = args?.osType;
@@ -189,6 +198,10 @@ export interface ImageImportState {
      * The information about the custom image. See `diskDeviceMapping` below.
      */
     diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageImportDiskDeviceMapping>[] | undefined>;
+    /**
+     * Features for the image. See `features` below.
+     */
+    features?: pulumi.Input<inputs.ecs.ImageImportFeatures | undefined>;
     /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      */
@@ -228,6 +241,10 @@ export interface ImageImportArgs {
      * The information about the custom image. See `diskDeviceMapping` below.
      */
     diskDeviceMappings: pulumi.Input<pulumi.Input<inputs.ecs.ImageImportDiskDeviceMapping>[]>;
+    /**
+     * Features for the image. See `features` below.
+     */
+    features?: pulumi.Input<inputs.ecs.ImageImportFeatures | undefined>;
     /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      */

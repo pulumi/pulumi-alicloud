@@ -13,6 +13,147 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AcceleratorIpSetConfig struct {
+	// The access mode of the acceleration area. Valid value:
+	// - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+	AccessMode *string `pulumi:"accessMode"`
+}
+
+// AcceleratorIpSetConfigInput is an input type that accepts AcceleratorIpSetConfigArgs and AcceleratorIpSetConfigOutput values.
+// You can construct a concrete instance of `AcceleratorIpSetConfigInput` via:
+//
+//	AcceleratorIpSetConfigArgs{...}
+type AcceleratorIpSetConfigInput interface {
+	pulumi.Input
+
+	ToAcceleratorIpSetConfigOutput() AcceleratorIpSetConfigOutput
+	ToAcceleratorIpSetConfigOutputWithContext(context.Context) AcceleratorIpSetConfigOutput
+}
+
+type AcceleratorIpSetConfigArgs struct {
+	// The access mode of the acceleration area. Valid value:
+	// - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+	AccessMode pulumi.StringPtrInput `pulumi:"accessMode"`
+}
+
+func (AcceleratorIpSetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (i AcceleratorIpSetConfigArgs) ToAcceleratorIpSetConfigOutput() AcceleratorIpSetConfigOutput {
+	return i.ToAcceleratorIpSetConfigOutputWithContext(context.Background())
+}
+
+func (i AcceleratorIpSetConfigArgs) ToAcceleratorIpSetConfigOutputWithContext(ctx context.Context) AcceleratorIpSetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorIpSetConfigOutput)
+}
+
+func (i AcceleratorIpSetConfigArgs) ToAcceleratorIpSetConfigPtrOutput() AcceleratorIpSetConfigPtrOutput {
+	return i.ToAcceleratorIpSetConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorIpSetConfigArgs) ToAcceleratorIpSetConfigPtrOutputWithContext(ctx context.Context) AcceleratorIpSetConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorIpSetConfigOutput).ToAcceleratorIpSetConfigPtrOutputWithContext(ctx)
+}
+
+// AcceleratorIpSetConfigPtrInput is an input type that accepts AcceleratorIpSetConfigArgs, AcceleratorIpSetConfigPtr and AcceleratorIpSetConfigPtrOutput values.
+// You can construct a concrete instance of `AcceleratorIpSetConfigPtrInput` via:
+//
+//	        AcceleratorIpSetConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AcceleratorIpSetConfigPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorIpSetConfigPtrOutput() AcceleratorIpSetConfigPtrOutput
+	ToAcceleratorIpSetConfigPtrOutputWithContext(context.Context) AcceleratorIpSetConfigPtrOutput
+}
+
+type acceleratorIpSetConfigPtrType AcceleratorIpSetConfigArgs
+
+func AcceleratorIpSetConfigPtr(v *AcceleratorIpSetConfigArgs) AcceleratorIpSetConfigPtrInput {
+	return (*acceleratorIpSetConfigPtrType)(v)
+}
+
+func (*acceleratorIpSetConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (i *acceleratorIpSetConfigPtrType) ToAcceleratorIpSetConfigPtrOutput() AcceleratorIpSetConfigPtrOutput {
+	return i.ToAcceleratorIpSetConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorIpSetConfigPtrType) ToAcceleratorIpSetConfigPtrOutputWithContext(ctx context.Context) AcceleratorIpSetConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorIpSetConfigPtrOutput)
+}
+
+type AcceleratorIpSetConfigOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorIpSetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (o AcceleratorIpSetConfigOutput) ToAcceleratorIpSetConfigOutput() AcceleratorIpSetConfigOutput {
+	return o
+}
+
+func (o AcceleratorIpSetConfigOutput) ToAcceleratorIpSetConfigOutputWithContext(ctx context.Context) AcceleratorIpSetConfigOutput {
+	return o
+}
+
+func (o AcceleratorIpSetConfigOutput) ToAcceleratorIpSetConfigPtrOutput() AcceleratorIpSetConfigPtrOutput {
+	return o.ToAcceleratorIpSetConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorIpSetConfigOutput) ToAcceleratorIpSetConfigPtrOutputWithContext(ctx context.Context) AcceleratorIpSetConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorIpSetConfig) *AcceleratorIpSetConfig {
+		return &v
+	}).(AcceleratorIpSetConfigPtrOutput)
+}
+
+// The access mode of the acceleration area. Valid value:
+// - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+func (o AcceleratorIpSetConfigOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorIpSetConfig) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorIpSetConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorIpSetConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (o AcceleratorIpSetConfigPtrOutput) ToAcceleratorIpSetConfigPtrOutput() AcceleratorIpSetConfigPtrOutput {
+	return o
+}
+
+func (o AcceleratorIpSetConfigPtrOutput) ToAcceleratorIpSetConfigPtrOutputWithContext(ctx context.Context) AcceleratorIpSetConfigPtrOutput {
+	return o
+}
+
+func (o AcceleratorIpSetConfigPtrOutput) Elem() AcceleratorIpSetConfigOutput {
+	return o.ApplyT(func(v *AcceleratorIpSetConfig) AcceleratorIpSetConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorIpSetConfig
+		return ret
+	}).(AcceleratorIpSetConfigOutput)
+}
+
+// The access mode of the acceleration area. Valid value:
+// - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+func (o AcceleratorIpSetConfigPtrOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorIpSetConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type AclAclEntry struct {
 	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry *string `pulumi:"entry"`
@@ -238,7 +379,7 @@ type EndpointGroupEndpointConfiguration struct {
 	// The type of Endpoint N in the endpoint group. Valid values:
 	// - `Domain`: A custom domain name.
 	// - `Ip`: A custom IP address.
-	// - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+	// - `IpTarget`: (Available since v1.262.0) a custom private IP address.
 	// - `PublicIp`: An Alibaba Cloud public IP address.
 	// - `ECS`: An Elastic Compute Service (ECS) instance.
 	// - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -247,9 +388,9 @@ type EndpointGroupEndpointConfiguration struct {
 	// - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
 	// - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
 	Type string `pulumi:"type"`
-	// The ID of the VPC.
+	// The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
 	VpcId *string `pulumi:"vpcId"`
-	// The IDs of vSwitches that are deployed in the VPC.
+	// A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
 	// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
@@ -280,7 +421,7 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	// The type of Endpoint N in the endpoint group. Valid values:
 	// - `Domain`: A custom domain name.
 	// - `Ip`: A custom IP address.
-	// - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+	// - `IpTarget`: (Available since v1.262.0) a custom private IP address.
 	// - `PublicIp`: An Alibaba Cloud public IP address.
 	// - `ECS`: An Elastic Compute Service (ECS) instance.
 	// - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -289,9 +430,9 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	// - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
 	// - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The ID of the VPC.
+	// The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// The IDs of vSwitches that are deployed in the VPC.
+	// A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
 	// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
@@ -373,7 +514,7 @@ func (o EndpointGroupEndpointConfigurationOutput) SubAddress() pulumi.StringPtrO
 // The type of Endpoint N in the endpoint group. Valid values:
 // - `Domain`: A custom domain name.
 // - `Ip`: A custom IP address.
-// - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+// - `IpTarget`: (Available since v1.262.0) a custom private IP address.
 // - `PublicIp`: An Alibaba Cloud public IP address.
 // - `ECS`: An Elastic Compute Service (ECS) instance.
 // - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -385,12 +526,12 @@ func (o EndpointGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC.
+// The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
 func (o EndpointGroupEndpointConfigurationOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// The IDs of vSwitches that are deployed in the VPC.
+// A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
 func (o EndpointGroupEndpointConfigurationOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -1848,6 +1989,12 @@ type GetAcceleratorsAccelerator struct {
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The Name of the GA instance.
 	AcceleratorName string `pulumi:"acceleratorName"`
+	// Bandwidth value of cross-domain acceleration package.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
+	BandwidthBillingType string `pulumi:"bandwidthBillingType"`
 	// Details of the basic bandwidth package bound to the global acceleration instance.
 	BasicBandwidthPackages []GetAcceleratorsAcceleratorBasicBandwidthPackage `pulumi:"basicBandwidthPackages"`
 	// The cloud enterprise network instance ID bound to the global acceleration instance.
@@ -1863,7 +2010,8 @@ type GetAcceleratorsAccelerator struct {
 	// Time when the global acceleration instance expires.
 	ExpiredTime int `pulumi:"expiredTime"`
 	// The ID of the Accelerator.
-	Id string `pulumi:"id"`
+	Id           string                                  `pulumi:"id"`
+	IpSetConfigs []GetAcceleratorsAcceleratorIpSetConfig `pulumi:"ipSetConfigs"`
 	// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
 	PaymentType string `pulumi:"paymentType"`
 	// CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
@@ -1890,6 +2038,12 @@ type GetAcceleratorsAcceleratorArgs struct {
 	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringInput `pulumi:"acceleratorName"`
+	// Bandwidth value of cross-domain acceleration package.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
+	BandwidthBillingType pulumi.StringInput `pulumi:"bandwidthBillingType"`
 	// Details of the basic bandwidth package bound to the global acceleration instance.
 	BasicBandwidthPackages GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput `pulumi:"basicBandwidthPackages"`
 	// The cloud enterprise network instance ID bound to the global acceleration instance.
@@ -1905,7 +2059,8 @@ type GetAcceleratorsAcceleratorArgs struct {
 	// Time when the global acceleration instance expires.
 	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
 	// The ID of the Accelerator.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id           pulumi.StringInput                              `pulumi:"id"`
+	IpSetConfigs GetAcceleratorsAcceleratorIpSetConfigArrayInput `pulumi:"ipSetConfigs"`
 	// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
@@ -1977,6 +2132,18 @@ func (o GetAcceleratorsAcceleratorOutput) AcceleratorName() pulumi.StringOutput 
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.AcceleratorName }).(pulumi.StringOutput)
 }
 
+// Bandwidth value of cross-domain acceleration package.
+func (o GetAcceleratorsAcceleratorOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAcceleratorsAccelerator) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+// - `BandwidthPackage`: billed based on bandwidth plans.
+// - `CDT`: billed based on data transfer.
+func (o GetAcceleratorsAcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.BandwidthBillingType }).(pulumi.StringOutput)
+}
+
 // Details of the basic bandwidth package bound to the global acceleration instance.
 func (o GetAcceleratorsAcceleratorOutput) BasicBandwidthPackages() GetAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput {
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) []GetAcceleratorsAcceleratorBasicBandwidthPackage {
@@ -2019,6 +2186,10 @@ func (o GetAcceleratorsAcceleratorOutput) ExpiredTime() pulumi.IntOutput {
 // The ID of the Accelerator.
 func (o GetAcceleratorsAcceleratorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAcceleratorsAcceleratorOutput) IpSetConfigs() GetAcceleratorsAcceleratorIpSetConfigArrayOutput {
+	return o.ApplyT(func(v GetAcceleratorsAccelerator) []GetAcceleratorsAcceleratorIpSetConfig { return v.IpSetConfigs }).(GetAcceleratorsAcceleratorIpSetConfigArrayOutput)
 }
 
 // The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
@@ -2280,6 +2451,100 @@ func (o GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAcceleratorsAcceleratorCrossDomainBandwidthPackage {
 		return vs[0].([]GetAcceleratorsAcceleratorCrossDomainBandwidthPackage)[vs[1].(int)]
 	}).(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput)
+}
+
+type GetAcceleratorsAcceleratorIpSetConfig struct {
+	AccessMode string `pulumi:"accessMode"`
+}
+
+// GetAcceleratorsAcceleratorIpSetConfigInput is an input type that accepts GetAcceleratorsAcceleratorIpSetConfigArgs and GetAcceleratorsAcceleratorIpSetConfigOutput values.
+// You can construct a concrete instance of `GetAcceleratorsAcceleratorIpSetConfigInput` via:
+//
+//	GetAcceleratorsAcceleratorIpSetConfigArgs{...}
+type GetAcceleratorsAcceleratorIpSetConfigInput interface {
+	pulumi.Input
+
+	ToGetAcceleratorsAcceleratorIpSetConfigOutput() GetAcceleratorsAcceleratorIpSetConfigOutput
+	ToGetAcceleratorsAcceleratorIpSetConfigOutputWithContext(context.Context) GetAcceleratorsAcceleratorIpSetConfigOutput
+}
+
+type GetAcceleratorsAcceleratorIpSetConfigArgs struct {
+	AccessMode pulumi.StringInput `pulumi:"accessMode"`
+}
+
+func (GetAcceleratorsAcceleratorIpSetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcceleratorsAcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (i GetAcceleratorsAcceleratorIpSetConfigArgs) ToGetAcceleratorsAcceleratorIpSetConfigOutput() GetAcceleratorsAcceleratorIpSetConfigOutput {
+	return i.ToGetAcceleratorsAcceleratorIpSetConfigOutputWithContext(context.Background())
+}
+
+func (i GetAcceleratorsAcceleratorIpSetConfigArgs) ToGetAcceleratorsAcceleratorIpSetConfigOutputWithContext(ctx context.Context) GetAcceleratorsAcceleratorIpSetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAcceleratorsAcceleratorIpSetConfigOutput)
+}
+
+// GetAcceleratorsAcceleratorIpSetConfigArrayInput is an input type that accepts GetAcceleratorsAcceleratorIpSetConfigArray and GetAcceleratorsAcceleratorIpSetConfigArrayOutput values.
+// You can construct a concrete instance of `GetAcceleratorsAcceleratorIpSetConfigArrayInput` via:
+//
+//	GetAcceleratorsAcceleratorIpSetConfigArray{ GetAcceleratorsAcceleratorIpSetConfigArgs{...} }
+type GetAcceleratorsAcceleratorIpSetConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAcceleratorsAcceleratorIpSetConfigArrayOutput() GetAcceleratorsAcceleratorIpSetConfigArrayOutput
+	ToGetAcceleratorsAcceleratorIpSetConfigArrayOutputWithContext(context.Context) GetAcceleratorsAcceleratorIpSetConfigArrayOutput
+}
+
+type GetAcceleratorsAcceleratorIpSetConfigArray []GetAcceleratorsAcceleratorIpSetConfigInput
+
+func (GetAcceleratorsAcceleratorIpSetConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAcceleratorsAcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (i GetAcceleratorsAcceleratorIpSetConfigArray) ToGetAcceleratorsAcceleratorIpSetConfigArrayOutput() GetAcceleratorsAcceleratorIpSetConfigArrayOutput {
+	return i.ToGetAcceleratorsAcceleratorIpSetConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAcceleratorsAcceleratorIpSetConfigArray) ToGetAcceleratorsAcceleratorIpSetConfigArrayOutputWithContext(ctx context.Context) GetAcceleratorsAcceleratorIpSetConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAcceleratorsAcceleratorIpSetConfigArrayOutput)
+}
+
+type GetAcceleratorsAcceleratorIpSetConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAcceleratorsAcceleratorIpSetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcceleratorsAcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (o GetAcceleratorsAcceleratorIpSetConfigOutput) ToGetAcceleratorsAcceleratorIpSetConfigOutput() GetAcceleratorsAcceleratorIpSetConfigOutput {
+	return o
+}
+
+func (o GetAcceleratorsAcceleratorIpSetConfigOutput) ToGetAcceleratorsAcceleratorIpSetConfigOutputWithContext(ctx context.Context) GetAcceleratorsAcceleratorIpSetConfigOutput {
+	return o
+}
+
+func (o GetAcceleratorsAcceleratorIpSetConfigOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorsAcceleratorIpSetConfig) string { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+type GetAcceleratorsAcceleratorIpSetConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAcceleratorsAcceleratorIpSetConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAcceleratorsAcceleratorIpSetConfig)(nil)).Elem()
+}
+
+func (o GetAcceleratorsAcceleratorIpSetConfigArrayOutput) ToGetAcceleratorsAcceleratorIpSetConfigArrayOutput() GetAcceleratorsAcceleratorIpSetConfigArrayOutput {
+	return o
+}
+
+func (o GetAcceleratorsAcceleratorIpSetConfigArrayOutput) ToGetAcceleratorsAcceleratorIpSetConfigArrayOutputWithContext(ctx context.Context) GetAcceleratorsAcceleratorIpSetConfigArrayOutput {
+	return o
+}
+
+func (o GetAcceleratorsAcceleratorIpSetConfigArrayOutput) Index(i pulumi.IntInput) GetAcceleratorsAcceleratorIpSetConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAcceleratorsAcceleratorIpSetConfig {
+		return vs[0].([]GetAcceleratorsAcceleratorIpSetConfig)[vs[1].(int)]
+	}).(GetAcceleratorsAcceleratorIpSetConfigOutput)
 }
 
 type GetAclsAcl struct {
@@ -5400,14 +5665,18 @@ func (o GetEndpointGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetEndpointG
 type GetEndpointGroupsGroupEndpointConfiguration struct {
 	// Indicates whether client IP addresses are reserved.
 	EnableClientipPreservation bool `pulumi:"enableClientipPreservation"`
+	EnableProxyProtocol        bool `pulumi:"enableProxyProtocol"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint string `pulumi:"endpoint"`
 	// Probe Port.
 	ProbePort int `pulumi:"probePort"`
 	// Probe Protocol.
 	ProbeProtocol string `pulumi:"probeProtocol"`
+	SubAddress    string `pulumi:"subAddress"`
 	// The type of Endpoint N in the endpoint group.
-	Type string `pulumi:"type"`
+	Type       string   `pulumi:"type"`
+	VpcId      string   `pulumi:"vpcId"`
+	VswitchIds []string `pulumi:"vswitchIds"`
 	// The weight of Endpoint N in the endpoint group.
 	Weight int `pulumi:"weight"`
 }
@@ -5426,14 +5695,18 @@ type GetEndpointGroupsGroupEndpointConfigurationInput interface {
 type GetEndpointGroupsGroupEndpointConfigurationArgs struct {
 	// Indicates whether client IP addresses are reserved.
 	EnableClientipPreservation pulumi.BoolInput `pulumi:"enableClientipPreservation"`
+	EnableProxyProtocol        pulumi.BoolInput `pulumi:"enableProxyProtocol"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// Probe Port.
 	ProbePort pulumi.IntInput `pulumi:"probePort"`
 	// Probe Protocol.
 	ProbeProtocol pulumi.StringInput `pulumi:"probeProtocol"`
+	SubAddress    pulumi.StringInput `pulumi:"subAddress"`
 	// The type of Endpoint N in the endpoint group.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type       pulumi.StringInput      `pulumi:"type"`
+	VpcId      pulumi.StringInput      `pulumi:"vpcId"`
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 	// The weight of Endpoint N in the endpoint group.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
@@ -5494,6 +5767,10 @@ func (o GetEndpointGroupsGroupEndpointConfigurationOutput) EnableClientipPreserv
 	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) bool { return v.EnableClientipPreservation }).(pulumi.BoolOutput)
 }
 
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) EnableProxyProtocol() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) bool { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
+}
+
 // The IP address or domain name of Endpoint N in the endpoint group.
 func (o GetEndpointGroupsGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -5509,9 +5786,21 @@ func (o GetEndpointGroupsGroupEndpointConfigurationOutput) ProbeProtocol() pulum
 	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.ProbeProtocol }).(pulumi.StringOutput)
 }
 
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) SubAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.SubAddress }).(pulumi.StringOutput)
+}
+
 // The type of Endpoint N in the endpoint group.
 func (o GetEndpointGroupsGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 // The weight of Endpoint N in the endpoint group.
@@ -6970,6 +7259,8 @@ func (o GetListenersListenerPortRangeArrayOutput) Index(i pulumi.IntInput) GetLi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorIpSetConfigInput)(nil)).Elem(), AcceleratorIpSetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorIpSetConfigPtrInput)(nil)).Elem(), AcceleratorIpSetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryInput)(nil)).Elem(), AclAclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryArrayInput)(nil)).Elem(), AclAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRoutingEndpointTrafficPolicyPortRangeInput)(nil)).Elem(), CustomRoutingEndpointTrafficPolicyPortRangeArgs{})
@@ -7004,6 +7295,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorBasicBandwidthPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorCrossDomainBandwidthPackageInput)(nil)).Elem(), GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorIpSetConfigInput)(nil)).Elem(), GetAcceleratorsAcceleratorIpSetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorIpSetConfigArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorIpSetConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclInput)(nil)).Elem(), GetAclsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclArrayInput)(nil)).Elem(), GetAclsAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclAclEntryInput)(nil)).Elem(), GetAclsAclAclEntryArgs{})
@@ -7070,6 +7363,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerCertificateArrayInput)(nil)).Elem(), GetListenersListenerCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeInput)(nil)).Elem(), GetListenersListenerPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeArrayInput)(nil)).Elem(), GetListenersListenerPortRangeArray{})
+	pulumi.RegisterOutputType(AcceleratorIpSetConfigOutput{})
+	pulumi.RegisterOutputType(AcceleratorIpSetConfigPtrOutput{})
 	pulumi.RegisterOutputType(AclAclEntryOutput{})
 	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(CustomRoutingEndpointTrafficPolicyPortRangeOutput{})
@@ -7104,6 +7399,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorIpSetConfigOutput{})
+	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorIpSetConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAclsAclOutput{})
 	pulumi.RegisterOutputType(GetAclsAclArrayOutput{})
 	pulumi.RegisterOutputType(GetAclsAclAclEntryOutput{})

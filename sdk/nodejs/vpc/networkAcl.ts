@@ -110,7 +110,7 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclName`.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -128,7 +128,7 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The name of the network ACL.
+     * The name of the network ACL. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
     declare public readonly networkAclName: pulumi.Output<string>;
@@ -210,7 +210,7 @@ export interface NetworkAclState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclName`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -228,7 +228,7 @@ export interface NetworkAclState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The name of the network ACL.
+     * The name of the network ACL. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
     networkAclName?: pulumi.Input<string | undefined>;
@@ -261,7 +261,7 @@ export interface NetworkAclState {
  */
 export interface NetworkAclArgs {
     /**
-     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclName`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -279,7 +279,7 @@ export interface NetworkAclArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The name of the network ACL.
+     * The name of the network ACL. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
     networkAclName?: pulumi.Input<string | undefined>;

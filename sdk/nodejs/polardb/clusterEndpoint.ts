@@ -41,7 +41,10 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     description: "terraform-example",
  * });
- * const defaultClusterEndpoint = new alicloud.polardb.ClusterEndpoint("default", {dbClusterId: defaultCluster.id});
+ * const defaultClusterEndpoint = new alicloud.polardb.ClusterEndpoint("default", {
+ *     dbClusterId: defaultCluster.id,
+ *     sccMode: "on",
+ * });
  * ```
  *
  * 📚 Need more examples? VIEW MORE EXAMPLES
@@ -127,6 +130,10 @@ export class ClusterEndpoint extends pulumi.CustomResource {
      */
     declare public readonly readWriteMode: pulumi.Output<string>;
     /**
+     * Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     */
+    declare public readonly sccMode: pulumi.Output<string>;
+    /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
@@ -173,6 +180,7 @@ export class ClusterEndpoint extends pulumi.CustomResource {
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["port"] = state?.port;
             resourceInputs["readWriteMode"] = state?.readWriteMode;
+            resourceInputs["sccMode"] = state?.sccMode;
             resourceInputs["sslAutoRotate"] = state?.sslAutoRotate;
             resourceInputs["sslCertificateUrl"] = state?.sslCertificateUrl;
             resourceInputs["sslConnectionString"] = state?.sslConnectionString;
@@ -192,6 +200,7 @@ export class ClusterEndpoint extends pulumi.CustomResource {
             resourceInputs["nodes"] = args?.nodes;
             resourceInputs["port"] = args?.port;
             resourceInputs["readWriteMode"] = args?.readWriteMode;
+            resourceInputs["sccMode"] = args?.sccMode;
             resourceInputs["sslAutoRotate"] = args?.sslAutoRotate;
             resourceInputs["sslEnabled"] = args?.sslEnabled;
             resourceInputs["dbEndpointId"] = undefined /*out*/;
@@ -253,6 +262,10 @@ export interface ClusterEndpointState {
      * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
      */
     readWriteMode?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     */
+    sccMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
@@ -317,6 +330,10 @@ export interface ClusterEndpointArgs {
      * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
      */
     readWriteMode?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable global consistency (high-performance mode). Valid values are `on` and `off`. Before setting this argument to `on`, set `ConsistLevel` in `endpointConfig` to `0` (eventual consistency).
+     */
+    sccMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).

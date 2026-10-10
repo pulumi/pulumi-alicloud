@@ -86,6 +86,77 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### IpTarget Usage
+ *
+ * The following example shows how to create an endpoint group with `IpTarget` type endpoints.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const _default = new alicloud.ga.Accelerator("default", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
+ * });
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("default", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     portRanges: [{
+ *         fromPort: 8080,
+ *         toPort: 8080,
+ *     }],
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "HTTP",
+ *     name: "terraform-example",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: "terraform-example",
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.1.0/24",
+ *     zoneId: "cn-hangzhou-h",
+ * });
+ * const update = new alicloud.vpc.Switch("update", {
+ *     vswitchName: "terraform-example-update",
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.2.0/24",
+ *     zoneId: "cn-hangzhou-i",
+ * });
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("default", {
+ *     acceleratorId: _default.id,
+ *     endpointConfigurations: [{
+ *         endpoint: "192.168.1.10",
+ *         type: "IpTarget",
+ *         weight: 20,
+ *         vpcId: defaultNetwork.id,
+ *         vswitchIds: [defaultSwitch.id],
+ *         enableProxyProtocol: true,
+ *         enableClientipPreservation: false,
+ *     }],
+ *     endpointGroupRegion: region,
+ *     listenerId: defaultListener.id,
+ *     name: "terraform-example",
+ *     description: "terraform-example",
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
