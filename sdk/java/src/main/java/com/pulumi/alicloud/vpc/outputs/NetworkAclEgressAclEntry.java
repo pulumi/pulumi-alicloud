@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclEgressAclEntry {
     /**
-     * @return The description of the outbound rule.
+     * @return The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
      * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
@@ -36,7 +36,7 @@ public final class NetworkAclEgressAclEntry {
      */
     private @Nullable String ipVersion;
     /**
-     * @return Name of the outbound rule entry.
+     * @return Name of the outbound rule entry. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
@@ -68,7 +68,7 @@ public final class NetworkAclEgressAclEntry {
 
     private NetworkAclEgressAclEntry() {}
     /**
-     * @return The description of the outbound rule.
+     * @return The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
      * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
@@ -100,7 +100,7 @@ public final class NetworkAclEgressAclEntry {
         return Optional.ofNullable(this.ipVersion);
     }
     /**
-     * @return Name of the outbound rule entry.
+     * @return Name of the outbound rule entry. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */

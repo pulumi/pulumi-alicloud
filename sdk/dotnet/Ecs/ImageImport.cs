@@ -65,6 +65,10 @@ namespace Pulumi.AliCloud.Ecs
     ///         LicenseType = "Auto",
     ///         ImageName = name,
     ///         Description = name,
+    ///         Features = new AliCloud.Ecs.Inputs.ImageImportFeaturesArgs
+    ///         {
+    ///             NvmeSupport = "supported",
+    ///         },
     ///         DiskDeviceMappings = new[]
     ///         {
     ///             new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
@@ -115,6 +119,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("diskDeviceMappings")]
         public Output<ImmutableArray<Outputs.ImageImportDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
+
+        /// <summary>
+        /// Features for the image. See `Features` below.
+        /// </summary>
+        [Output("features")]
+        public Output<Outputs.ImageImportFeatures> Features { get; private set; } = null!;
 
         /// <summary>
         /// The name of the image. The `ImageName` must be `2` to `128` characters in length. The `ImageName` must start with a letter and cannot start with acs: or aliyun. The `ImageName` cannot contain http:// or https://. The `ImageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
@@ -218,6 +228,12 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// Features for the image. See `Features` below.
+        /// </summary>
+        [Input("features")]
+        public Input<Inputs.ImageImportFeaturesArgs>? Features { get; set; }
+
+        /// <summary>
         /// The name of the image. The `ImageName` must be `2` to `128` characters in length. The `ImageName` must start with a letter and cannot start with acs: or aliyun. The `ImageName` cannot contain http:// or https://. The `ImageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName")]
@@ -279,6 +295,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageImportDiskDeviceMappingGetArgs>());
             set => _diskDeviceMappings = value;
         }
+
+        /// <summary>
+        /// Features for the image. See `Features` below.
+        /// </summary>
+        [Input("features")]
+        public Input<Inputs.ImageImportFeaturesGetArgs>? Features { get; set; }
 
         /// <summary>
         /// The name of the image. The `ImageName` must be `2` to `128` characters in length. The `ImageName` must start with a letter and cannot start with acs: or aliyun. The `ImageName` cannot contain http:// or https://. The `ImageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).

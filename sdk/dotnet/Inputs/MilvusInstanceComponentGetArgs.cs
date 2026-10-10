@@ -26,11 +26,29 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cuType")]
         public Input<string>? CuType { get; set; }
 
+        [Input("dataDisks")]
+        private InputList<Inputs.MilvusInstanceComponentDataDiskGetArgs>? _dataDisks;
+
+        /// <summary>
+        /// The QueryNode data disk configuration. Only Type=query is supported. See `DataDisk` below.
+        /// </summary>
+        public InputList<Inputs.MilvusInstanceComponentDataDiskGetArgs> DataDisks
+        {
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.MilvusInstanceComponentDataDiskGetArgs>());
+            set => _dataDisks = value;
+        }
+
         /// <summary>
         /// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
         /// </summary>
         [Input("diskSizeType")]
         public Input<string>? DiskSizeType { get; set; }
+
+        /// <summary>
+        /// The default is consistent with the cluster.
+        /// </summary>
+        [Input("payType")]
+        public Input<string>? PayType { get; set; }
 
         /// <summary>
         /// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.

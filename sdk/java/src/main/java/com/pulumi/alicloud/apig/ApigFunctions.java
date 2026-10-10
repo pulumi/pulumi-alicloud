@@ -18,6 +18,8 @@ import com.pulumi.alicloud.apig.inputs.GetPoliciesArgs;
 import com.pulumi.alicloud.apig.inputs.GetPoliciesPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetRoutesArgs;
 import com.pulumi.alicloud.apig.inputs.GetRoutesPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+import com.pulumi.alicloud.apig.inputs.GetSecretsPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
 import com.pulumi.alicloud.apig.inputs.GetServicesPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetSourcesArgs;
@@ -29,6 +31,7 @@ import com.pulumi.alicloud.apig.outputs.GetPluginClassesResult;
 import com.pulumi.alicloud.apig.outputs.GetPluginsResult;
 import com.pulumi.alicloud.apig.outputs.GetPoliciesResult;
 import com.pulumi.alicloud.apig.outputs.GetRoutesResult;
+import com.pulumi.alicloud.apig.outputs.GetSecretsResult;
 import com.pulumi.alicloud.apig.outputs.GetServicesResult;
 import com.pulumi.alicloud.apig.outputs.GetSourcesResult;
 import com.pulumi.core.Output;
@@ -3388,6 +3391,727 @@ public final class ApigFunctions {
      */
     public static CompletableFuture<GetRoutesResult> getRoutesPlain(GetRoutesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:apig/getRoutes:getRoutes", TypeShape.of(GetRoutesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets() {
+        return getSecrets(GetSecretsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecretsResult> getSecretsPlain() {
+        return getSecretsPlain(GetSecretsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets(GetSecretsArgs args) {
+        return getSecrets(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecretsResult> getSecretsPlain(GetSecretsPlainArgs args) {
+        return getSecretsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets(GetSecretsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets(GetSecretsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Apig Secrets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.kms.Instance;
+     * import com.pulumi.alicloud.kms.InstanceArgs;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.apig.inputs.SecretKmsConfigArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetSecretsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .zoneId("cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .productVersion("3")
+     *             .vpcNum(1)
+     *             .keyNum(1000)
+     *             .secretNum(1000)
+     *             .spec(1000)
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchIds(defaultGetSwitches.ids()[0])
+     *             .zoneIds(            
+     *                 "cn-hangzhou-k",
+     *                 "cn-hangzhou-j")
+     *             .build());
+     * 
+     *         var defaultKey = new Key("defaultKey", KeyArgs.builder()
+     *             .dkmsInstanceId(defaultInstance.id())
+     *             .pendingWindowInDays(7)
+     *             .build());
+     * 
+     *         var defaultSecret = new com.pulumi.alicloud.kms.Secret("defaultSecret", com.pulumi.alicloud.kms.SecretArgs.builder()
+     *             .secretData(name)
+     *             .secretName(name)
+     *             .versionId("v1")
+     *             .dkmsInstanceId(defaultKey.dkmsInstanceId())
+     *             .encryptionKeyId(defaultKey.id())
+     *             .forceDeleteWithoutRecovery(true)
+     *             .build());
+     * 
+     *         var defaultSecret2 = new com.pulumi.alicloud.apig.Secret("defaultSecret2", com.pulumi.alicloud.apig.SecretArgs.builder()
+     *             .gatewayType("API")
+     *             .name(name)
+     *             .secretSource("KMS")
+     *             .secretData(defaultSecret.secretData())
+     *             .description(name)
+     *             .kmsConfig(SecretKmsConfigArgs.builder()
+     *                 .kmsInstanceId(defaultSecret.dkmsInstanceId())
+     *                 .kmsKeyId(defaultSecret.encryptionKeyId())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .ids(defaultSecret2.id())
+     *             .build());
+     * 
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecretsResult> getSecretsPlain(GetSecretsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)

@@ -2373,6 +2373,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.14.0.
 
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `payment_type = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -2499,13 +2501,6 @@ class Instance(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-
-        ### Deleting `kvstore.Instance` or removing it from your configuration
-
-        The `kvstore.Instance` resource allows you to manage `payment_type = "Prepaid"` db instance, but Terraform cannot destroy it.
-        From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
-        from your state file and management, but will not destroy the DB Instance.
-        You can resume managing the subscription db instance via the AlibabaCloud Console.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -2609,6 +2604,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.14.0.
 
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `payment_type = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -2735,13 +2732,6 @@ class Instance(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-
-        ### Deleting `kvstore.Instance` or removing it from your configuration
-
-        The `kvstore.Instance` resource allows you to manage `payment_type = "Prepaid"` db instance, but Terraform cannot destroy it.
-        From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
-        from your state file and management, but will not destroy the DB Instance.
-        You can resume managing the subscription db instance via the AlibabaCloud Console.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 

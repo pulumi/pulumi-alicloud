@@ -6,12 +6,20 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceCpuOptions {
+    /**
+     * @return The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+     * 
+     * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+     * 
+     */
+    private @Nullable List<String> accelerators;
     /**
      * @return The maximum number of partitions in the storage set.
      * 
@@ -29,6 +37,15 @@ public final class InstanceCpuOptions {
     private @Nullable String topologyType;
 
     private InstanceCpuOptions() {}
+    /**
+     * @return The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+     * 
+     * &gt; **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+     * 
+     */
+    public List<String> accelerators() {
+        return this.accelerators == null ? List.of() : this.accelerators;
+    }
     /**
      * @return The maximum number of partitions in the storage set.
      * 
@@ -60,17 +77,28 @@ public final class InstanceCpuOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> accelerators;
         private @Nullable Integer coreCount;
         private @Nullable Integer threadsPerCore;
         private @Nullable String topologyType;
         public Builder() {}
         public Builder(InstanceCpuOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accelerators = defaults.accelerators;
     	      this.coreCount = defaults.coreCount;
     	      this.threadsPerCore = defaults.threadsPerCore;
     	      this.topologyType = defaults.topologyType;
         }
 
+        @CustomType.Setter
+        public Builder accelerators(@Nullable List<String> accelerators) {
+
+            this.accelerators = accelerators;
+            return this;
+        }
+        public Builder accelerators(String... accelerators) {
+            return accelerators(List.of(accelerators));
+        }
         @CustomType.Setter
         public Builder coreCount(@Nullable Integer coreCount) {
 
@@ -91,6 +119,7 @@ public final class InstanceCpuOptions {
         }
         public InstanceCpuOptions build() {
             final var _resultValue = new InstanceCpuOptions();
+            _resultValue.accelerators = accelerators;
             _resultValue.coreCount = coreCount;
             _resultValue.threadsPerCore = threadsPerCore;
             _resultValue.topologyType = topologyType;

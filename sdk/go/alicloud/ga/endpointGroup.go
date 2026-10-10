@@ -132,6 +132,124 @@ import (
 //
 // ```
 //
+// ### IpTarget Usage
+//
+// The following example shows how to create an endpoint group with `IpTarget` type endpoints.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			_default, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "default", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := ga.NewListener(ctx, "default", &ga.ListenerArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
+//				PortRanges: ga.ListenerPortRangeArray{
+//					&ga.ListenerPortRangeArgs{
+//						FromPort: pulumi.Int(8080),
+//						ToPort:   pulumi.Int(8080),
+//					},
+//				},
+//				ClientAffinity: pulumi.String("SOURCE_IP"),
+//				Protocol:       pulumi.String("HTTP"),
+//				Name:           pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				ZoneId:      pulumi.String("cn-hangzhou-h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "update", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example-update"),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				CidrBlock:   pulumi.String("192.168.2.0/24"),
+//				ZoneId:      pulumi.String("cn-hangzhou-i"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
+//				AcceleratorId: _default.ID().ToIDOutput().ToStringOutput(),
+//				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
+//					&ga.EndpointGroupEndpointConfigurationArgs{
+//						Endpoint: pulumi.String("192.168.1.10"),
+//						Type:     pulumi.String("IpTarget"),
+//						Weight:   pulumi.Int(20),
+//						VpcId:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//						VswitchIds: pulumi.StringArray{
+//							defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//						},
+//						EnableProxyProtocol:        pulumi.Bool(true),
+//						EnableClientipPreservation: pulumi.Bool(false),
+//					},
+//				},
+//				EndpointGroupRegion: pulumi.String(region),
+//				ListenerId:          defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				Name:                pulumi.String("terraform-example"),
+//				Description:         pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import

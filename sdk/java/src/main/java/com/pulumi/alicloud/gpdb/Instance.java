@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.47.0.
  * 
+ * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v1.295.0. To destroy it, convert the instance to `PayAsYouGo` by setting `paymentType = &#34;PayAsYouGo&#34;` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

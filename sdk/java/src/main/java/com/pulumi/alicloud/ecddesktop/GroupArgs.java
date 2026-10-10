@@ -94,14 +94,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the directory.
+     * The ID of the directory. This parameter is not publicly available yet.
      * 
      */
     @Import(name="directoryId")
     private @Nullable Output<String> directoryId;
 
     /**
-     * @return The ID of the directory.
+     * @return The ID of the directory. This parameter is not publicly available yet.
      * 
      */
     public Optional<Output<String>> directoryId() {
@@ -109,18 +109,18 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of IDs of the end users authorized to use the desktop group.
+     * The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      * 
      */
-    @Import(name="endUserIds", required=true)
-    private Output<List<String>> endUserIds;
+    @Import(name="endUserIds")
+    private @Nullable Output<List<String>> endUserIds;
 
     /**
-     * @return The list of IDs of the end users authorized to use the desktop group.
+     * @return The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      * 
      */
-    public Output<List<String>> endUserIds() {
-        return this.endUserIds;
+    public Optional<Output<List<String>>> endUserIds() {
+        return Optional.ofNullable(this.endUserIds);
     }
 
     /**
@@ -184,6 +184,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+     * 
+     */
+    @Import(name="payType")
+    private @Nullable Output<String> payType;
+
+    /**
+     * @return The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+     * 
+     */
+    public Optional<Output<String>> payType() {
+        return Optional.ofNullable(this.payType);
+    }
+
+    /**
      * The ID of the policy group associated with the desktop group.
      * 
      */
@@ -199,14 +214,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the scaling policy.
+     * The ID of the scaling policy. This parameter is not publicly available yet.
      * 
      */
     @Import(name="scaleStrategyId")
     private @Nullable Output<String> scaleStrategyId;
 
     /**
-     * @return The ID of the scaling policy.
+     * @return The ID of the scaling policy. This parameter is not publicly available yet.
      * 
      */
     public Optional<Output<String>> scaleStrategyId() {
@@ -227,6 +242,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.maxDesktopsCount = $.maxDesktopsCount;
         this.minDesktopsCount = $.minDesktopsCount;
         this.officeSiteId = $.officeSiteId;
+        this.payType = $.payType;
         this.policyGroupId = $.policyGroupId;
         this.scaleStrategyId = $.scaleStrategyId;
     }
@@ -355,7 +371,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param directoryId The ID of the directory.
+         * @param directoryId The ID of the directory. This parameter is not publicly available yet.
          * 
          * @return builder
          * 
@@ -366,7 +382,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param directoryId The ID of the directory.
+         * @param directoryId The ID of the directory. This parameter is not publicly available yet.
          * 
          * @return builder
          * 
@@ -376,18 +392,18 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endUserIds The list of IDs of the end users authorized to use the desktop group.
+         * @param endUserIds The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
          * 
          * @return builder
          * 
          */
-        public Builder endUserIds(Output<List<String>> endUserIds) {
+        public Builder endUserIds(@Nullable Output<List<String>> endUserIds) {
             $.endUserIds = endUserIds;
             return this;
         }
 
         /**
-         * @param endUserIds The list of IDs of the end users authorized to use the desktop group.
+         * @param endUserIds The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
          * 
          * @return builder
          * 
@@ -397,7 +413,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endUserIds The list of IDs of the end users authorized to use the desktop group.
+         * @param endUserIds The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
          * 
          * @return builder
          * 
@@ -491,6 +507,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param payType The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payType(@Nullable Output<String> payType) {
+            $.payType = payType;
+            return this;
+        }
+
+        /**
+         * @param payType The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payType(String payType) {
+            return payType(Output.of(payType));
+        }
+
+        /**
          * @param policyGroupId The ID of the policy group associated with the desktop group.
          * 
          * @return builder
@@ -512,7 +549,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleStrategyId The ID of the scaling policy.
+         * @param scaleStrategyId The ID of the scaling policy. This parameter is not publicly available yet.
          * 
          * @return builder
          * 
@@ -523,7 +560,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleStrategyId The ID of the scaling policy.
+         * @param scaleStrategyId The ID of the scaling policy. This parameter is not publicly available yet.
          * 
          * @return builder
          * 
@@ -535,9 +572,6 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         public GroupArgs build() {
             if ($.bundleId == null) {
                 throw new MissingRequiredPropertyException("GroupArgs", "bundleId");
-            }
-            if ($.endUserIds == null) {
-                throw new MissingRequiredPropertyException("GroupArgs", "endUserIds");
             }
             if ($.officeSiteId == null) {
                 throw new MissingRequiredPropertyException("GroupArgs", "officeSiteId");

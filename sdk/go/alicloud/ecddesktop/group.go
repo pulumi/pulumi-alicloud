@@ -144,11 +144,11 @@ type Group struct {
 	DataDiskSize pulumi.StringOutput `pulumi:"dataDiskSize"`
 	// The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
 	DesktopGroupName pulumi.StringPtrOutput `pulumi:"desktopGroupName"`
-	// The ID of the directory.
-	DirectoryId pulumi.StringPtrOutput `pulumi:"directoryId"`
+	// The ID of the directory. This parameter is not publicly available yet.
+	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
 	// The type of the directory.
 	DirectoryType pulumi.StringOutput `pulumi:"directoryType"`
-	// The list of IDs of the end users authorized to use the desktop group.
+	// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
 	EndUserIds pulumi.StringArrayOutput `pulumi:"endUserIds"`
 	// The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
@@ -172,7 +172,7 @@ type Group struct {
 	OfficeSiteType pulumi.StringOutput `pulumi:"officeSiteType"`
 	// The name of the desktop template.
 	OwnBundleName pulumi.StringOutput `pulumi:"ownBundleName"`
-	// The billing method.
+	// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
 	PayType pulumi.StringOutput `pulumi:"payType"`
 	// The ID of the policy group associated with the desktop group.
 	PolicyGroupId pulumi.StringOutput `pulumi:"policyGroupId"`
@@ -180,7 +180,7 @@ type Group struct {
 	PolicyGroupName pulumi.StringOutput `pulumi:"policyGroupName"`
 	// The type of the resource.
 	ResType pulumi.IntOutput `pulumi:"resType"`
-	// The ID of the scaling policy.
+	// The ID of the scaling policy. This parameter is not publicly available yet.
 	ScaleStrategyId pulumi.StringPtrOutput `pulumi:"scaleStrategyId"`
 	// The category of the system disk.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
@@ -198,30 +198,12 @@ func NewGroup(ctx *pulumi.Context,
 	if args.BundleId == nil {
 		return nil, errors.New("invalid value for required argument 'BundleId'")
 	}
-	if args.EndUserIds == nil {
-		return nil, errors.New("invalid value for required argument 'EndUserIds'")
-	}
 	if args.OfficeSiteId == nil {
 		return nil, errors.New("invalid value for required argument 'OfficeSiteId'")
 	}
 	if args.PolicyGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyGroupId'")
 	}
-	if args.AllowAutoSetup != nil {
-		args.AllowAutoSetup = pulumi.ToSecret(args.AllowAutoSetup).(pulumi.IntPtrInput)
-	}
-	if args.AllowBufferCount != nil {
-		args.AllowBufferCount = pulumi.ToSecret(args.AllowBufferCount).(pulumi.IntPtrInput)
-	}
-	if args.ScaleStrategyId != nil {
-		args.ScaleStrategyId = pulumi.ToSecret(args.ScaleStrategyId).(pulumi.StringPtrInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"allowAutoSetup",
-		"allowBufferCount",
-		"scaleStrategyId",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("alicloud:ecddesktop/group:Group", name, args, &resource, opts...)
@@ -265,11 +247,11 @@ type groupState struct {
 	DataDiskSize *string `pulumi:"dataDiskSize"`
 	// The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
 	DesktopGroupName *string `pulumi:"desktopGroupName"`
-	// The ID of the directory.
+	// The ID of the directory. This parameter is not publicly available yet.
 	DirectoryId *string `pulumi:"directoryId"`
 	// The type of the directory.
 	DirectoryType *string `pulumi:"directoryType"`
-	// The list of IDs of the end users authorized to use the desktop group.
+	// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
 	EndUserIds []string `pulumi:"endUserIds"`
 	// The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
 	ExpiredTime *string `pulumi:"expiredTime"`
@@ -293,7 +275,7 @@ type groupState struct {
 	OfficeSiteType *string `pulumi:"officeSiteType"`
 	// The name of the desktop template.
 	OwnBundleName *string `pulumi:"ownBundleName"`
-	// The billing method.
+	// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
 	PayType *string `pulumi:"payType"`
 	// The ID of the policy group associated with the desktop group.
 	PolicyGroupId *string `pulumi:"policyGroupId"`
@@ -301,7 +283,7 @@ type groupState struct {
 	PolicyGroupName *string `pulumi:"policyGroupName"`
 	// The type of the resource.
 	ResType *int `pulumi:"resType"`
-	// The ID of the scaling policy.
+	// The ID of the scaling policy. This parameter is not publicly available yet.
 	ScaleStrategyId *string `pulumi:"scaleStrategyId"`
 	// The category of the system disk.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
@@ -330,11 +312,11 @@ type GroupState struct {
 	DataDiskSize pulumi.StringPtrInput
 	// The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
 	DesktopGroupName pulumi.StringPtrInput
-	// The ID of the directory.
+	// The ID of the directory. This parameter is not publicly available yet.
 	DirectoryId pulumi.StringPtrInput
 	// The type of the directory.
 	DirectoryType pulumi.StringPtrInput
-	// The list of IDs of the end users authorized to use the desktop group.
+	// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
 	EndUserIds pulumi.StringArrayInput
 	// The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
 	ExpiredTime pulumi.StringPtrInput
@@ -358,7 +340,7 @@ type GroupState struct {
 	OfficeSiteType pulumi.StringPtrInput
 	// The name of the desktop template.
 	OwnBundleName pulumi.StringPtrInput
-	// The billing method.
+	// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
 	PayType pulumi.StringPtrInput
 	// The ID of the policy group associated with the desktop group.
 	PolicyGroupId pulumi.StringPtrInput
@@ -366,7 +348,7 @@ type GroupState struct {
 	PolicyGroupName pulumi.StringPtrInput
 	// The type of the resource.
 	ResType pulumi.IntPtrInput
-	// The ID of the scaling policy.
+	// The ID of the scaling policy. This parameter is not publicly available yet.
 	ScaleStrategyId pulumi.StringPtrInput
 	// The category of the system disk.
 	SystemDiskCategory pulumi.StringPtrInput
@@ -389,9 +371,9 @@ type groupArgs struct {
 	Comments *string `pulumi:"comments"`
 	// The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
 	DesktopGroupName *string `pulumi:"desktopGroupName"`
-	// The ID of the directory.
+	// The ID of the directory. This parameter is not publicly available yet.
 	DirectoryId *string `pulumi:"directoryId"`
-	// The list of IDs of the end users authorized to use the desktop group.
+	// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
 	EndUserIds []string `pulumi:"endUserIds"`
 	// The retention duration of a session after it is disconnected. Unit: milliseconds. Valid values: `180000` to `345600000`. `0` indicates that the session is always retained. If the user does not reconnect within the retention duration, the session is logged off and unsaved data is destroyed.
 	KeepDuration *int `pulumi:"keepDuration"`
@@ -401,9 +383,11 @@ type groupArgs struct {
 	MinDesktopsCount *int `pulumi:"minDesktopsCount"`
 	// The ID of the office network to which the desktop group belongs.
 	OfficeSiteId string `pulumi:"officeSiteId"`
+	// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+	PayType *string `pulumi:"payType"`
 	// The ID of the policy group associated with the desktop group.
 	PolicyGroupId string `pulumi:"policyGroupId"`
-	// The ID of the scaling policy.
+	// The ID of the scaling policy. This parameter is not publicly available yet.
 	ScaleStrategyId *string `pulumi:"scaleStrategyId"`
 }
 
@@ -419,9 +403,9 @@ type GroupArgs struct {
 	Comments pulumi.StringPtrInput
 	// The name of the desktop group. The name must be 1 to 30 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
 	DesktopGroupName pulumi.StringPtrInput
-	// The ID of the directory.
+	// The ID of the directory. This parameter is not publicly available yet.
 	DirectoryId pulumi.StringPtrInput
-	// The list of IDs of the end users authorized to use the desktop group.
+	// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
 	EndUserIds pulumi.StringArrayInput
 	// The retention duration of a session after it is disconnected. Unit: milliseconds. Valid values: `180000` to `345600000`. `0` indicates that the session is always retained. If the user does not reconnect within the retention duration, the session is logged off and unsaved data is destroyed.
 	KeepDuration pulumi.IntPtrInput
@@ -431,9 +415,11 @@ type GroupArgs struct {
 	MinDesktopsCount pulumi.IntPtrInput
 	// The ID of the office network to which the desktop group belongs.
 	OfficeSiteId pulumi.StringInput
+	// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+	PayType pulumi.StringPtrInput
 	// The ID of the policy group associated with the desktop group.
 	PolicyGroupId pulumi.StringInput
-	// The ID of the scaling policy.
+	// The ID of the scaling policy. This parameter is not publicly available yet.
 	ScaleStrategyId pulumi.StringPtrInput
 }
 
@@ -574,9 +560,9 @@ func (o GroupOutput) DesktopGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.DesktopGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the directory.
-func (o GroupOutput) DirectoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.DirectoryId }).(pulumi.StringPtrOutput)
+// The ID of the directory. This parameter is not publicly available yet.
+func (o GroupOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
 }
 
 // The type of the directory.
@@ -584,7 +570,7 @@ func (o GroupOutput) DirectoryType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.DirectoryType }).(pulumi.StringOutput)
 }
 
-// The list of IDs of the end users authorized to use the desktop group.
+// The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
 func (o GroupOutput) EndUserIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.EndUserIds }).(pulumi.StringArrayOutput)
 }
@@ -644,7 +630,7 @@ func (o GroupOutput) OwnBundleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OwnBundleName }).(pulumi.StringOutput)
 }
 
-// The billing method.
+// The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
 func (o GroupOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
 }
@@ -664,7 +650,7 @@ func (o GroupOutput) ResType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.ResType }).(pulumi.IntOutput)
 }
 
-// The ID of the scaling policy.
+// The ID of the scaling policy. This parameter is not publicly available yet.
 func (o GroupOutput) ScaleStrategyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ScaleStrategyId }).(pulumi.StringPtrOutput)
 }

@@ -77,6 +77,8 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// SSL Certificates Pca Cert Sync can be imported using the id, which is the comma-separated list of the synchronized PCA certificate identifiers, e.g.

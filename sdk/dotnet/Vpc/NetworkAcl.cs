@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `NetworkAclName`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the network ACL.
+        /// The name of the network ACL. Currently, this name is displayed in the console.
         /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Output("networkAclName")]
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `NetworkAclName`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the network ACL.
+        /// The name of the network ACL. Currently, this name is displayed in the console.
         /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclName")]
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `NetworkAclName`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the network ACL.
+        /// The name of the network ACL. Currently, this name is displayed in the console.
         /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclName")]

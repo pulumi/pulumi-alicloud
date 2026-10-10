@@ -16,7 +16,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     public static final NetworkAclEgressAclEntryArgs Empty = new NetworkAclEgressAclEntryArgs();
 
     /**
-     * The description of the outbound rule.
+     * The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
      * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
@@ -24,7 +24,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the outbound rule.
+     * @return The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
      * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
@@ -84,7 +84,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Name of the outbound rule entry.
+     * Name of the outbound rule entry. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
@@ -92,7 +92,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> networkAclEntryName;
 
     /**
-     * @return Name of the outbound rule entry.
+     * @return Name of the outbound rule entry. Currently, this name is displayed in the console.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
@@ -195,7 +195,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the outbound rule.
+         * @param description The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
          * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
@@ -207,7 +207,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the outbound rule.
+         * @param description The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
          * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
@@ -287,7 +287,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkAclEntryName Name of the outbound rule entry.
+         * @param networkAclEntryName Name of the outbound rule entry. Currently, this name is displayed in the console.
          * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
@@ -299,7 +299,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkAclEntryName Name of the outbound rule entry.
+         * @param networkAclEntryName Name of the outbound rule entry. Currently, this name is displayed in the console.
          * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder

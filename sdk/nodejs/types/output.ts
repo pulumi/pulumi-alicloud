@@ -189,9 +189,17 @@ export interface MilvusInstanceComponent {
      */
     cuType: string;
     /**
+     * The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+     */
+    dataDisks: outputs.MilvusInstanceComponentDataDisk[];
+    /**
      * Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
      */
     diskSizeType: string;
+    /**
+     * The default is consistent with the cluster.
+     */
+    payType: string;
     /**
      * The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
      */
@@ -204,6 +212,25 @@ export interface MilvusInstanceComponent {
      *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming
      */
     type: string;
+}
+
+export interface MilvusInstanceComponentDataDisk {
+    /**
+     * Whether to enable the QueryNode data disk.
+     */
+    enabled: boolean;
+    /**
+     * The ESSD performance level. Supported values: PL0, PL1, PL2, and PL3.
+     */
+    performanceLevel: string;
+    /**
+     * The data disk size in GiB.
+     */
+    size: number;
+    /**
+     * The data disk StorageClass. Supported values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+     */
+    storageClass: string;
 }
 
 export interface MilvusInstanceVswitchId {
@@ -4896,6 +4923,72 @@ export namespace apig {
          * The parameter value.
          */
         value: string;
+    }
+
+    export interface GetSecretsSecret {
+        /**
+         * The creation timestamp of the secret.
+         */
+        createTimestamp: string;
+        /**
+         * The secret description.
+         */
+        description: string;
+        /**
+         * The gateway type associated with the secret. Valid values: `AI`, `API`.
+         */
+        gatewayType: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The KMS config of the secret.
+         */
+        kmsConfigs: outputs.apig.GetSecretsSecretKmsConfig[];
+        /**
+         * The secret name.
+         */
+        name: string;
+        /**
+         * The reference count of the secret.
+         */
+        referenceCount: number;
+        /**
+         * The secret ID.
+         */
+        secretId: string;
+        /**
+         * The secret source.
+         */
+        secretSource: string;
+        /**
+         * The current status of the secret. Valid values: `ENABLE`, `DISABLE`, `DELETED`.
+         */
+        status: string;
+        /**
+         * The update timestamp of the secret.
+         */
+        updateTimestamp: string;
+    }
+
+    export interface GetSecretsSecretKmsConfig {
+        /**
+         * The KMS instance ID.
+         */
+        kmsInstanceId: string;
+        /**
+         * The KMS key ID.
+         */
+        kmsKeyId: string;
+        /**
+         * The KMS secret arn.
+         */
+        kmsSecretArn: string;
+        /**
+         * The version ID.
+         */
+        versionId: string;
     }
 
     export interface GetServicesService {
@@ -22430,7 +22523,7 @@ export namespace cs {
 
     export interface NodePoolManagement {
         /**
-         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
          */
         autoRepair: boolean;
         /**
@@ -32969,7 +33062,20 @@ export namespace ecs {
         ossObject?: string;
     }
 
+    export interface ImageImportFeatures {
+        /**
+         * Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+         */
+        nvmeSupport: string;
+    }
+
     export interface InstanceCpuOptions {
+        /**
+         * The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+         *
+         * > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+         */
+        accelerators?: string[];
         /**
          * The maximum number of partitions in the storage set.
          */
@@ -40162,6 +40268,650 @@ export namespace ess {
         threshold: string;
     }
 
+    export interface GetEciScalingConfigurationsConfiguration {
+        /**
+         * ACR registry information.
+         */
+        acrRegistryInfos: outputs.ess.GetEciScalingConfigurationsConfigurationAcrRegistryInfo[];
+        /**
+         * Maximum running time of the container group.
+         */
+        activeDeadlineSeconds: number;
+        /**
+         * Whether to automatically create an EIP.
+         */
+        autoCreateEip: boolean;
+        /**
+         * Whether to automatically match image caches.
+         */
+        autoMatchImageCache: boolean;
+        /**
+         * Name of the container group.
+         */
+        containerGroupName: string;
+        /**
+         * Containers in the container group.
+         */
+        containers: outputs.ess.GetEciScalingConfigurationsConfigurationContainer[];
+        /**
+         * Whether cost optimization is enabled.
+         */
+        costOptimization: boolean;
+        /**
+         * CPU size.
+         */
+        cpu: number;
+        /**
+         * Number of CPU cores.
+         */
+        cpuOptionsCore: number;
+        /**
+         * Number of threads per CPU core.
+         */
+        cpuOptionsThreadsPerCore: number;
+        /**
+         * Creation time of the scaling configuration.
+         */
+        creationTime: string;
+        /**
+         * Description of the scaling configuration.
+         */
+        description: string;
+        /**
+         * DNS configuration options.
+         */
+        dnsConfigOptions: outputs.ess.GetEciScalingConfigurationsConfigurationDnsConfigOption[];
+        /**
+         * DNS policy of the container group.
+         */
+        dnsPolicy: string;
+        /**
+         * Egress bandwidth.
+         */
+        egressBandwidth: number;
+        /**
+         * EIP bandwidth.
+         */
+        eipBandwidth: number;
+        /**
+         * Whether Simple Log Service is enabled.
+         */
+        enableSls: boolean;
+        /**
+         * Ephemeral storage size.
+         */
+        ephemeralStorage: number;
+        /**
+         * Host aliases.
+         */
+        hostAliases: outputs.ess.GetEciScalingConfigurationsConfigurationHostAlias[];
+        /**
+         * Hostname of the container group.
+         */
+        hostName: string;
+        /**
+         * ID of the scaling configuration.
+         */
+        id: string;
+        /**
+         * Image registry credentials.
+         */
+        imageRegistryCredentials: outputs.ess.GetEciScalingConfigurationsConfigurationImageRegistryCredential[];
+        /**
+         * ID of the image cache.
+         */
+        imageSnapshotId: string;
+        /**
+         * Ingress bandwidth.
+         */
+        ingressBandwidth: number;
+        /**
+         * Init containers in the container group.
+         */
+        initContainers: outputs.ess.GetEciScalingConfigurationsConfigurationInitContainer[];
+        /**
+         * Instance family level.
+         */
+        instanceFamilyLevel: string;
+        /**
+         * Instance types.
+         */
+        instanceTypes: string[];
+        /**
+         * Number of IPv6 addresses.
+         */
+        ipv6AddressCount: number;
+        /**
+         * Lifecycle state of the scaling configuration.
+         */
+        lifecycleState: string;
+        /**
+         * Weight of the container group in a load balancer.
+         */
+        loadBalancerWeight: number;
+        /**
+         * Memory size.
+         */
+        memory: number;
+        /**
+         * Name of the RAM role.
+         */
+        ramRoleName: string;
+        /**
+         * ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * Restart policy for containers.
+         */
+        restartPolicy: string;
+        /**
+         * Name of the scaling configuration.
+         */
+        scalingConfigurationName: string;
+        /**
+         * ID of the scaling group to which the scaling configurations belong.
+         */
+        scalingGroupId: string;
+        /**
+         * Security context sysctls.
+         */
+        securityContextSysctls: outputs.ess.GetEciScalingConfigurationsConfigurationSecurityContextSysctl[];
+        /**
+         * ID of the security group.
+         */
+        securityGroupId: string;
+        /**
+         * Maximum hourly spot price.
+         */
+        spotPriceLimit: number;
+        /**
+         * Spot strategy.
+         */
+        spotStrategy: string;
+        /**
+         * Tags of the scaling configuration.
+         */
+        tags: {[key: string]: string};
+        /**
+         * Grace period before container termination.
+         */
+        terminationGracePeriodSeconds: number;
+        /**
+         * Volumes in the container group.
+         */
+        volumes: outputs.ess.GetEciScalingConfigurationsConfigurationVolume[];
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationAcrRegistryInfo {
+        /**
+         * Domains of the ACR registry.
+         */
+        domains: string[];
+        /**
+         * ID of the ACR instance.
+         */
+        instanceId: string;
+        /**
+         * Name of the ACR instance.
+         */
+        instanceName: string;
+        /**
+         * Region ID of the ACR instance.
+         */
+        regionId: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationContainer {
+        /**
+         * Arguments passed to the init container.
+         */
+        args: string[];
+        /**
+         * Commands run by the init container.
+         */
+        commands: string[];
+        /**
+         * CPU size.
+         */
+        cpu: number;
+        /**
+         * Environment variables.
+         */
+        environmentVars: outputs.ess.GetEciScalingConfigurationsConfigurationContainerEnvironmentVar[];
+        /**
+         * Number of GPUs.
+         */
+        gpu: number;
+        /**
+         * Init container image.
+         */
+        image: string;
+        /**
+         * Image pull policy.
+         */
+        imagePullPolicy: string;
+        /**
+         * Commands run before the container stops.
+         */
+        lifecyclePreStopHandlerExecs: string[];
+        /**
+         * Commands in the liveness probe.
+         */
+        livenessProbeExecCommands: string[];
+        /**
+         * Liveness probe failure threshold.
+         */
+        livenessProbeFailureThreshold: number;
+        /**
+         * HTTP path in the liveness probe.
+         */
+        livenessProbeHttpGetPath: string;
+        /**
+         * HTTP port in the liveness probe.
+         */
+        livenessProbeHttpGetPort: number;
+        /**
+         * HTTP scheme in the liveness probe.
+         */
+        livenessProbeHttpGetScheme: string;
+        /**
+         * Liveness probe initial delay.
+         */
+        livenessProbeInitialDelaySeconds: number;
+        /**
+         * Liveness probe period.
+         */
+        livenessProbePeriodSeconds: number;
+        /**
+         * Liveness probe success threshold.
+         */
+        livenessProbeSuccessThreshold: number;
+        /**
+         * TCP socket port in the liveness probe.
+         */
+        livenessProbeTcpSocketPort: number;
+        /**
+         * Liveness probe timeout.
+         */
+        livenessProbeTimeoutSeconds: number;
+        /**
+         * Memory size.
+         */
+        memory: number;
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Ports exposed by the init container.
+         */
+        ports: outputs.ess.GetEciScalingConfigurationsConfigurationContainerPort[];
+        /**
+         * Commands in the readiness probe.
+         */
+        readinessProbeExecCommands: string[];
+        /**
+         * Readiness probe failure threshold.
+         */
+        readinessProbeFailureThreshold: number;
+        /**
+         * HTTP path in the readiness probe.
+         */
+        readinessProbeHttpGetPath: string;
+        /**
+         * HTTP port in the readiness probe.
+         */
+        readinessProbeHttpGetPort: number;
+        /**
+         * HTTP scheme in the readiness probe.
+         */
+        readinessProbeHttpGetScheme: string;
+        /**
+         * Readiness probe initial delay.
+         */
+        readinessProbeInitialDelaySeconds: number;
+        /**
+         * Readiness probe period.
+         */
+        readinessProbePeriodSeconds: number;
+        /**
+         * Readiness probe success threshold.
+         */
+        readinessProbeSuccessThreshold: number;
+        /**
+         * TCP socket port in the readiness probe.
+         */
+        readinessProbeTcpSocketPort: number;
+        /**
+         * Readiness probe timeout.
+         */
+        readinessProbeTimeoutSeconds: number;
+        /**
+         * Linux capabilities to add.
+         */
+        securityContextCapabilityAdds: string[];
+        /**
+         * Whether the root file system is read-only.
+         */
+        securityContextReadOnlyRootFileSystem: boolean;
+        /**
+         * UID to run the container as.
+         */
+        securityContextRunAsUser: number;
+        /**
+         * Whether to allocate stdin.
+         */
+        stdin: boolean;
+        /**
+         * Whether to allocate a TTY.
+         */
+        tty: boolean;
+        /**
+         * Volume mounts.
+         */
+        volumeMounts: outputs.ess.GetEciScalingConfigurationsConfigurationContainerVolumeMount[];
+        /**
+         * Working directory.
+         */
+        workingDir: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationContainerEnvironmentVar {
+        /**
+         * Field reference path.
+         */
+        fieldRefFieldPath: string;
+        /**
+         * Name of the environment variable.
+         */
+        key: string;
+        /**
+         * Value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationContainerPort {
+        /**
+         * Port number.
+         */
+        port: number;
+        /**
+         * Protocol of the port.
+         */
+        protocol: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationContainerVolumeMount {
+        /**
+         * Path where the volume is mounted.
+         */
+        mountPath: string;
+        /**
+         * Mount propagation mode.
+         */
+        mountPropagation: string;
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Whether the mount is read-only.
+         */
+        readOnly: boolean;
+        /**
+         * Subpath within the volume.
+         */
+        subPath: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationDnsConfigOption {
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationHostAlias {
+        /**
+         * Hostnames for the alias.
+         */
+        hostnames: string[];
+        /**
+         * IP address for the alias.
+         */
+        ip: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationImageRegistryCredential {
+        /**
+         * Password of the image registry.
+         */
+        password: string;
+        /**
+         * Server address of the image registry.
+         */
+        server: string;
+        /**
+         * Username of the image registry.
+         */
+        username: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationInitContainer {
+        /**
+         * Arguments passed to the init container.
+         */
+        args: string[];
+        /**
+         * Commands run by the init container.
+         */
+        commands: string[];
+        /**
+         * CPU size.
+         */
+        cpu: number;
+        /**
+         * Environment variables.
+         */
+        environmentVars: outputs.ess.GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVar[];
+        /**
+         * Number of GPUs.
+         */
+        gpu: number;
+        /**
+         * Init container image.
+         */
+        image: string;
+        /**
+         * Image pull policy.
+         */
+        imagePullPolicy: string;
+        /**
+         * Memory size.
+         */
+        memory: number;
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Ports exposed by the init container.
+         */
+        ports: outputs.ess.GetEciScalingConfigurationsConfigurationInitContainerPort[];
+        /**
+         * Linux capabilities to add.
+         */
+        securityContextCapabilityAdds: string[];
+        /**
+         * Whether the root file system is read-only.
+         */
+        securityContextReadOnlyRootFileSystem: boolean;
+        /**
+         * UID to run the container as.
+         */
+        securityContextRunAsUser: number;
+        /**
+         * Volume mounts.
+         */
+        volumeMounts: outputs.ess.GetEciScalingConfigurationsConfigurationInitContainerVolumeMount[];
+        /**
+         * Working directory.
+         */
+        workingDir: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationInitContainerEnvironmentVar {
+        /**
+         * Field reference path.
+         */
+        fieldRefFieldPath: string;
+        /**
+         * Name of the environment variable.
+         */
+        key: string;
+        /**
+         * Value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationInitContainerPort {
+        /**
+         * Port number.
+         */
+        port: number;
+        /**
+         * Protocol of the port.
+         */
+        protocol: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationInitContainerVolumeMount {
+        /**
+         * Path where the volume is mounted.
+         */
+        mountPath: string;
+        /**
+         * Mount propagation mode.
+         */
+        mountPropagation: string;
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Whether the mount is read-only.
+         */
+        readOnly: boolean;
+        /**
+         * Subpath within the volume.
+         */
+        subPath: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationSecurityContextSysctl {
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Value of the environment variable.
+         */
+        value: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationVolume {
+        /**
+         * Files mounted from a config file volume.
+         */
+        configFileVolumeConfigFileToPaths: outputs.ess.GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPath[];
+        /**
+         * Default mode of config file volume files.
+         */
+        configFileVolumeDefaultMode: number;
+        /**
+         * ID of the disk volume.
+         */
+        diskVolumeDiskId: string;
+        /**
+         * Size of the disk volume.
+         */
+        diskVolumeDiskSize: number;
+        /**
+         * File system type of the disk volume.
+         */
+        diskVolumeFsType: string;
+        /**
+         * Storage medium for the empty directory volume.
+         */
+        emptyDirVolumeMedium: string;
+        /**
+         * Size limit of the empty directory volume.
+         */
+        emptyDirVolumeSizeLimit: string;
+        /**
+         * Driver of the FlexVolume.
+         */
+        flexVolumeDriver: string;
+        /**
+         * File system type of the FlexVolume.
+         */
+        flexVolumeFsType: string;
+        /**
+         * Options of the FlexVolume.
+         */
+        flexVolumeOptions: string;
+        /**
+         * Path of the host path volume.
+         */
+        hostPathVolumePath: string;
+        /**
+         * Type of the host path volume.
+         */
+        hostPathVolumeType: string;
+        /**
+         * Name of the volume.
+         */
+        name: string;
+        /**
+         * Path of the NFS volume.
+         */
+        nfsVolumePath: string;
+        /**
+         * Whether the NFS volume is read-only.
+         */
+        nfsVolumeReadOnly: boolean;
+        /**
+         * Server of the NFS volume.
+         */
+        nfsVolumeServer: string;
+        /**
+         * Type of the volume.
+         */
+        type: string;
+    }
+
+    export interface GetEciScalingConfigurationsConfigurationVolumeConfigFileVolumeConfigFileToPath {
+        /**
+         * File content.
+         */
+        content: string;
+        /**
+         * File mode.
+         */
+        mode: number;
+        /**
+         * Destination path.
+         */
+        path: string;
+    }
+
     export interface GetLifecycleHooksHook {
         /**
          * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
@@ -44640,6 +45390,14 @@ export namespace fnf {
 }
 
 export namespace ga {
+    export interface AcceleratorIpSetConfig {
+        /**
+         * The access mode of the acceleration area. Valid value:
+         * - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+         */
+        accessMode: string;
+    }
+
     export interface AclAclEntry {
         /**
          * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
@@ -44684,7 +45442,7 @@ export namespace ga {
          * The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
-         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+         * - `IpTarget`: (Available since v1.262.0) a custom private IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -44695,11 +45453,11 @@ export namespace ga {
          */
         type: string;
         /**
-         * The ID of the VPC.
+         * The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
          */
         vpcId?: string;
         /**
-         * The IDs of vSwitches that are deployed in the VPC.
+         * A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
          */
         vswitchIds?: string[];
         /**
@@ -44817,6 +45575,16 @@ export namespace ga {
          */
         acceleratorName: string;
         /**
+         * Bandwidth value of cross-domain acceleration package.
+         */
+        bandwidth: number;
+        /**
+         * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * - `BandwidthPackage`: billed based on bandwidth plans.
+         * - `CDT`: billed based on data transfer.
+         */
+        bandwidthBillingType: string;
+        /**
          * Details of the basic bandwidth package bound to the global acceleration instance.
          */
         basicBandwidthPackages: outputs.ga.GetAcceleratorsAcceleratorBasicBandwidthPackage[];
@@ -44848,6 +45616,7 @@ export namespace ga {
          * The ID of the Accelerator.
          */
         id: string;
+        ipSetConfigs: outputs.ga.GetAcceleratorsAcceleratorIpSetConfig[];
         /**
          * The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
          */
@@ -44890,6 +45659,10 @@ export namespace ga {
          * Instance ID of the cross-domain acceleration package.
          */
         instanceId: string;
+    }
+
+    export interface GetAcceleratorsAcceleratorIpSetConfig {
+        accessMode: string;
     }
 
     export interface GetAclsAcl {
@@ -45536,6 +46309,7 @@ export namespace ga {
          * Indicates whether client IP addresses are reserved.
          */
         enableClientipPreservation: boolean;
+        enableProxyProtocol: boolean;
         /**
          * The IP address or domain name of Endpoint N in the endpoint group.
          */
@@ -45548,10 +46322,13 @@ export namespace ga {
          * Probe Protocol.
          */
         probeProtocol: string;
+        subAddress: string;
         /**
          * The type of Endpoint N in the endpoint group.
          */
         type: string;
+        vpcId: string;
+        vswitchIds: string[];
         /**
          * The weight of Endpoint N in the endpoint group.
          */
@@ -48977,6 +49754,56 @@ export namespace kms {
          * vswitch id
          */
         vswitchId?: string;
+    }
+
+}
+
+export namespace kvcachestorekvcache {
+    export interface GetStoresStore {
+        /**
+         * The storage capacity of the instance. Unit: GiB.
+         */
+        capacity: number;
+        /**
+         * The creation time of the instance (ISO 8601).
+         */
+        createTime: string;
+        /**
+         * The description of the instance.
+         */
+        description: string;
+        /**
+         * The cluster ID (HPN zone) of the instance.
+         */
+        hpnZone: string;
+        /**
+         * The ID of the instance. The value is the same as `kvcsId`.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        kvcsId: string;
+        /**
+         * The instance name used to filter the results.
+         */
+        name: string;
+        /**
+         * The payment type of the instance.
+         */
+        paymentType: string;
+        /**
+         * The region ID of the instance.
+         */
+        regionId: string;
+        /**
+         * The instance status used to filter the results. Valid values: `Creating`, `Available`, `InUse`, `Stopping`, `Stopped`, `Deleting`.
+         */
+        status: string;
+        /**
+         * The zone ID used to filter the results.
+         */
+        zoneId: string;
     }
 
 }
@@ -53045,6 +53872,10 @@ export namespace nlb {
          * The ID of the Server Group.
          */
         id: string;
+        /**
+         * (Available since v1.295.0) The traffic scheduling policy for dual-stack server groups.
+         */
+        ipVersionAffinityMode: string;
         /**
          * Indicates whether client address retention is enabled.
          */
@@ -59407,6 +60238,37 @@ export namespace realtimecompute {
          * The SQL script content.
          */
         sqlScript: string;
+        /**
+         * The ID of the workspace.
+         */
+        workspace: string;
+    }
+
+    export interface GetVariablesVariable {
+        /**
+         * The description of the variable.
+         */
+        description: string;
+        /**
+         * The ID of the Variable.
+         */
+        id: string;
+        /**
+         * The kind of the variable, currently supports Plain.
+         */
+        kind: string;
+        /**
+         * The name of the variable.
+         */
+        name: string;
+        /**
+         * The name of the namespace.
+         */
+        namespace: string;
+        /**
+         * The value of the variable.
+         */
+        value: string;
         /**
          * The ID of the workspace.
          */
@@ -71447,7 +72309,7 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the outbound rule.
+         * The description of the outbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
          * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
@@ -71467,7 +72329,7 @@ export namespace vpc {
          */
         ipVersion: string;
         /**
-         * Name of the outbound rule entry.
+         * Name of the outbound rule entry. Currently, this name is displayed in the console.
          * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
@@ -71558,7 +72420,7 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * Description of the inbound rule.
+         * Description of the inbound rule. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclEntryName`.
          * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
@@ -71571,7 +72433,7 @@ export namespace vpc {
          */
         ipVersion: string;
         /**
-         * The name of the inbound rule entry.
+         * The name of the inbound rule entry. Currently, this name is displayed in the console.
          * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
@@ -72134,7 +72996,7 @@ export namespace vpn {
          */
         internetIp: string;
         /**
-         * The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+         * The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
          */
         role: string;
         /**
@@ -72161,7 +73023,7 @@ export namespace vpn {
          */
         tunnelIkeConfig: outputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig;
         /**
-         * The order in which the tunnel was created.
+         * The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
          */
         tunnelIndex: number;
         /**

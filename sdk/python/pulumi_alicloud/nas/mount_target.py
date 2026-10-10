@@ -655,7 +655,7 @@ class MountTarget(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the switch.
         """

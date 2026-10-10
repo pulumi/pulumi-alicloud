@@ -8787,6 +8787,317 @@ func (o GetRoutesRouteMatchQueryParamArrayOutput) Index(i pulumi.IntInput) GetRo
 	}).(GetRoutesRouteMatchQueryParamOutput)
 }
 
+type GetSecretsSecret struct {
+	// The creation timestamp of the secret.
+	CreateTimestamp string `pulumi:"createTimestamp"`
+	// The secret description.
+	Description string `pulumi:"description"`
+	// The gateway type associated with the secret. Valid values: `AI`, `API`.
+	GatewayType string `pulumi:"gatewayType"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The KMS config of the secret.
+	KmsConfigs []GetSecretsSecretKmsConfig `pulumi:"kmsConfigs"`
+	// The secret name.
+	Name string `pulumi:"name"`
+	// The reference count of the secret.
+	ReferenceCount int `pulumi:"referenceCount"`
+	// The secret ID.
+	SecretId string `pulumi:"secretId"`
+	// The secret source.
+	SecretSource string `pulumi:"secretSource"`
+	// The current status of the secret. Valid values: `ENABLE`, `DISABLE`, `DELETED`.
+	Status string `pulumi:"status"`
+	// The update timestamp of the secret.
+	UpdateTimestamp string `pulumi:"updateTimestamp"`
+}
+
+// GetSecretsSecretInput is an input type that accepts GetSecretsSecretArgs and GetSecretsSecretOutput values.
+// You can construct a concrete instance of `GetSecretsSecretInput` via:
+//
+//	GetSecretsSecretArgs{...}
+type GetSecretsSecretInput interface {
+	pulumi.Input
+
+	ToGetSecretsSecretOutput() GetSecretsSecretOutput
+	ToGetSecretsSecretOutputWithContext(context.Context) GetSecretsSecretOutput
+}
+
+type GetSecretsSecretArgs struct {
+	// The creation timestamp of the secret.
+	CreateTimestamp pulumi.StringInput `pulumi:"createTimestamp"`
+	// The secret description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The gateway type associated with the secret. Valid values: `AI`, `API`.
+	GatewayType pulumi.StringInput `pulumi:"gatewayType"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The KMS config of the secret.
+	KmsConfigs GetSecretsSecretKmsConfigArrayInput `pulumi:"kmsConfigs"`
+	// The secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The reference count of the secret.
+	ReferenceCount pulumi.IntInput `pulumi:"referenceCount"`
+	// The secret ID.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// The secret source.
+	SecretSource pulumi.StringInput `pulumi:"secretSource"`
+	// The current status of the secret. Valid values: `ENABLE`, `DISABLE`, `DELETED`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The update timestamp of the secret.
+	UpdateTimestamp pulumi.StringInput `pulumi:"updateTimestamp"`
+}
+
+func (GetSecretsSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsSecret)(nil)).Elem()
+}
+
+func (i GetSecretsSecretArgs) ToGetSecretsSecretOutput() GetSecretsSecretOutput {
+	return i.ToGetSecretsSecretOutputWithContext(context.Background())
+}
+
+func (i GetSecretsSecretArgs) ToGetSecretsSecretOutputWithContext(ctx context.Context) GetSecretsSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretOutput)
+}
+
+// GetSecretsSecretArrayInput is an input type that accepts GetSecretsSecretArray and GetSecretsSecretArrayOutput values.
+// You can construct a concrete instance of `GetSecretsSecretArrayInput` via:
+//
+//	GetSecretsSecretArray{ GetSecretsSecretArgs{...} }
+type GetSecretsSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretsSecretArrayOutput() GetSecretsSecretArrayOutput
+	ToGetSecretsSecretArrayOutputWithContext(context.Context) GetSecretsSecretArrayOutput
+}
+
+type GetSecretsSecretArray []GetSecretsSecretInput
+
+func (GetSecretsSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsSecret)(nil)).Elem()
+}
+
+func (i GetSecretsSecretArray) ToGetSecretsSecretArrayOutput() GetSecretsSecretArrayOutput {
+	return i.ToGetSecretsSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretsSecretArray) ToGetSecretsSecretArrayOutputWithContext(ctx context.Context) GetSecretsSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretArrayOutput)
+}
+
+type GetSecretsSecretOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsSecret)(nil)).Elem()
+}
+
+func (o GetSecretsSecretOutput) ToGetSecretsSecretOutput() GetSecretsSecretOutput {
+	return o
+}
+
+func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.Context) GetSecretsSecretOutput {
+	return o
+}
+
+// The creation timestamp of the secret.
+func (o GetSecretsSecretOutput) CreateTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.CreateTimestamp }).(pulumi.StringOutput)
+}
+
+// The secret description.
+func (o GetSecretsSecretOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The gateway type associated with the secret. Valid values: `AI`, `API`.
+func (o GetSecretsSecretOutput) GatewayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.GatewayType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetSecretsSecretOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The KMS config of the secret.
+func (o GetSecretsSecretOutput) KmsConfigs() GetSecretsSecretKmsConfigArrayOutput {
+	return o.ApplyT(func(v GetSecretsSecret) []GetSecretsSecretKmsConfig { return v.KmsConfigs }).(GetSecretsSecretKmsConfigArrayOutput)
+}
+
+// The secret name.
+func (o GetSecretsSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The reference count of the secret.
+func (o GetSecretsSecretOutput) ReferenceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecretsSecret) int { return v.ReferenceCount }).(pulumi.IntOutput)
+}
+
+// The secret ID.
+func (o GetSecretsSecretOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// The secret source.
+func (o GetSecretsSecretOutput) SecretSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretSource }).(pulumi.StringOutput)
+}
+
+// The current status of the secret. Valid values: `ENABLE`, `DISABLE`, `DELETED`.
+func (o GetSecretsSecretOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The update timestamp of the secret.
+func (o GetSecretsSecretOutput) UpdateTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.UpdateTimestamp }).(pulumi.StringOutput)
+}
+
+type GetSecretsSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsSecret)(nil)).Elem()
+}
+
+func (o GetSecretsSecretArrayOutput) ToGetSecretsSecretArrayOutput() GetSecretsSecretArrayOutput {
+	return o
+}
+
+func (o GetSecretsSecretArrayOutput) ToGetSecretsSecretArrayOutputWithContext(ctx context.Context) GetSecretsSecretArrayOutput {
+	return o
+}
+
+func (o GetSecretsSecretArrayOutput) Index(i pulumi.IntInput) GetSecretsSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretsSecret {
+		return vs[0].([]GetSecretsSecret)[vs[1].(int)]
+	}).(GetSecretsSecretOutput)
+}
+
+type GetSecretsSecretKmsConfig struct {
+	// The KMS instance ID.
+	KmsInstanceId string `pulumi:"kmsInstanceId"`
+	// The KMS key ID.
+	KmsKeyId string `pulumi:"kmsKeyId"`
+	// The KMS secret arn.
+	KmsSecretArn string `pulumi:"kmsSecretArn"`
+	// The version ID.
+	VersionId string `pulumi:"versionId"`
+}
+
+// GetSecretsSecretKmsConfigInput is an input type that accepts GetSecretsSecretKmsConfigArgs and GetSecretsSecretKmsConfigOutput values.
+// You can construct a concrete instance of `GetSecretsSecretKmsConfigInput` via:
+//
+//	GetSecretsSecretKmsConfigArgs{...}
+type GetSecretsSecretKmsConfigInput interface {
+	pulumi.Input
+
+	ToGetSecretsSecretKmsConfigOutput() GetSecretsSecretKmsConfigOutput
+	ToGetSecretsSecretKmsConfigOutputWithContext(context.Context) GetSecretsSecretKmsConfigOutput
+}
+
+type GetSecretsSecretKmsConfigArgs struct {
+	// The KMS instance ID.
+	KmsInstanceId pulumi.StringInput `pulumi:"kmsInstanceId"`
+	// The KMS key ID.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+	// The KMS secret arn.
+	KmsSecretArn pulumi.StringInput `pulumi:"kmsSecretArn"`
+	// The version ID.
+	VersionId pulumi.StringInput `pulumi:"versionId"`
+}
+
+func (GetSecretsSecretKmsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsSecretKmsConfig)(nil)).Elem()
+}
+
+func (i GetSecretsSecretKmsConfigArgs) ToGetSecretsSecretKmsConfigOutput() GetSecretsSecretKmsConfigOutput {
+	return i.ToGetSecretsSecretKmsConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecretsSecretKmsConfigArgs) ToGetSecretsSecretKmsConfigOutputWithContext(ctx context.Context) GetSecretsSecretKmsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretKmsConfigOutput)
+}
+
+// GetSecretsSecretKmsConfigArrayInput is an input type that accepts GetSecretsSecretKmsConfigArray and GetSecretsSecretKmsConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecretsSecretKmsConfigArrayInput` via:
+//
+//	GetSecretsSecretKmsConfigArray{ GetSecretsSecretKmsConfigArgs{...} }
+type GetSecretsSecretKmsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretsSecretKmsConfigArrayOutput() GetSecretsSecretKmsConfigArrayOutput
+	ToGetSecretsSecretKmsConfigArrayOutputWithContext(context.Context) GetSecretsSecretKmsConfigArrayOutput
+}
+
+type GetSecretsSecretKmsConfigArray []GetSecretsSecretKmsConfigInput
+
+func (GetSecretsSecretKmsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsSecretKmsConfig)(nil)).Elem()
+}
+
+func (i GetSecretsSecretKmsConfigArray) ToGetSecretsSecretKmsConfigArrayOutput() GetSecretsSecretKmsConfigArrayOutput {
+	return i.ToGetSecretsSecretKmsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretsSecretKmsConfigArray) ToGetSecretsSecretKmsConfigArrayOutputWithContext(ctx context.Context) GetSecretsSecretKmsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretKmsConfigArrayOutput)
+}
+
+type GetSecretsSecretKmsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsSecretKmsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsSecretKmsConfig)(nil)).Elem()
+}
+
+func (o GetSecretsSecretKmsConfigOutput) ToGetSecretsSecretKmsConfigOutput() GetSecretsSecretKmsConfigOutput {
+	return o
+}
+
+func (o GetSecretsSecretKmsConfigOutput) ToGetSecretsSecretKmsConfigOutputWithContext(ctx context.Context) GetSecretsSecretKmsConfigOutput {
+	return o
+}
+
+// The KMS instance ID.
+func (o GetSecretsSecretKmsConfigOutput) KmsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecretKmsConfig) string { return v.KmsInstanceId }).(pulumi.StringOutput)
+}
+
+// The KMS key ID.
+func (o GetSecretsSecretKmsConfigOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecretKmsConfig) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+// The KMS secret arn.
+func (o GetSecretsSecretKmsConfigOutput) KmsSecretArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecretKmsConfig) string { return v.KmsSecretArn }).(pulumi.StringOutput)
+}
+
+// The version ID.
+func (o GetSecretsSecretKmsConfigOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecretKmsConfig) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+type GetSecretsSecretKmsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsSecretKmsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsSecretKmsConfig)(nil)).Elem()
+}
+
+func (o GetSecretsSecretKmsConfigArrayOutput) ToGetSecretsSecretKmsConfigArrayOutput() GetSecretsSecretKmsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecretsSecretKmsConfigArrayOutput) ToGetSecretsSecretKmsConfigArrayOutputWithContext(ctx context.Context) GetSecretsSecretKmsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecretsSecretKmsConfigArrayOutput) Index(i pulumi.IntInput) GetSecretsSecretKmsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretsSecretKmsConfig {
+		return vs[0].([]GetSecretsSecretKmsConfig)[vs[1].(int)]
+	}).(GetSecretsSecretKmsConfigOutput)
+}
+
 type GetServicesService struct {
 	// A list of domain names or fixed addresses.
 	Addresses []string `pulumi:"addresses"`
@@ -10030,6 +10341,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchPathArrayInput)(nil)).Elem(), GetRoutesRouteMatchPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchQueryParamInput)(nil)).Elem(), GetRoutesRouteMatchQueryParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutesRouteMatchQueryParamArrayInput)(nil)).Elem(), GetRoutesRouteMatchQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretInput)(nil)).Elem(), GetSecretsSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretArrayInput)(nil)).Elem(), GetSecretsSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretKmsConfigInput)(nil)).Elem(), GetSecretsSecretKmsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretKmsConfigArrayInput)(nil)).Elem(), GetSecretsSecretKmsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceHealthCheckConfigInput)(nil)).Elem(), GetServicesServiceHealthCheckConfigArgs{})
@@ -10164,6 +10479,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRoutesRouteMatchPathArrayOutput{})
 	pulumi.RegisterOutputType(GetRoutesRouteMatchQueryParamOutput{})
 	pulumi.RegisterOutputType(GetRoutesRouteMatchQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretsSecretOutput{})
+	pulumi.RegisterOutputType(GetSecretsSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretsSecretKmsConfigOutput{})
+	pulumi.RegisterOutputType(GetSecretsSecretKmsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceHealthCheckConfigOutput{})

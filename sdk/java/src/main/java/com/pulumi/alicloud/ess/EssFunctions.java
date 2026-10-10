@@ -6,6 +6,8 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.inputs.GetAlarmsArgs;
 import com.pulumi.alicloud.ess.inputs.GetAlarmsPlainArgs;
+import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsPlainArgs;
 import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
 import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksPlainArgs;
 import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
@@ -19,6 +21,7 @@ import com.pulumi.alicloud.ess.inputs.GetScalingRulesPlainArgs;
 import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
 import com.pulumi.alicloud.ess.inputs.GetScheduledTasksPlainArgs;
 import com.pulumi.alicloud.ess.outputs.GetAlarmsResult;
+import com.pulumi.alicloud.ess.outputs.GetEciScalingConfigurationsResult;
 import com.pulumi.alicloud.ess.outputs.GetLifecycleHooksResult;
 import com.pulumi.alicloud.ess.outputs.GetNotificationsResult;
 import com.pulumi.alicloud.ess.outputs.GetScalingConfigurationsResult;
@@ -95,6 +98,818 @@ public final class EssFunctions {
      */
     public static CompletableFuture<GetAlarmsResult> getAlarmsPlain(GetAlarmsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ess/getAlarms:getAlarms", TypeShape.of(GetAlarmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEciScalingConfigurationsResult> getEciScalingConfigurations() {
+        return getEciScalingConfigurations(GetEciScalingConfigurationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEciScalingConfigurationsResult> getEciScalingConfigurationsPlain() {
+        return getEciScalingConfigurationsPlain(GetEciScalingConfigurationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEciScalingConfigurationsResult> getEciScalingConfigurations(GetEciScalingConfigurationsArgs args) {
+        return getEciScalingConfigurations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEciScalingConfigurationsResult> getEciScalingConfigurationsPlain(GetEciScalingConfigurationsPlainArgs args) {
+        return getEciScalingConfigurationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEciScalingConfigurationsResult> getEciScalingConfigurations(GetEciScalingConfigurationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getEciScalingConfigurations:getEciScalingConfigurations", TypeShape.of(GetEciScalingConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEciScalingConfigurationsResult> getEciScalingConfigurations(GetEciScalingConfigurationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getEciScalingConfigurations:getEciScalingConfigurations", TypeShape.of(GetEciScalingConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available ECI scaling configuration resources.
+     * 
+     * &gt; **NOTE:** Available since v1.294.0
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+     * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+     * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetEciScalingConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(0)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .groupType("ECI")
+     *             .build());
+     * 
+     *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .cpu(2.0)
+     *             .memory(4.0)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .containerGroupName(myName)
+     *             .containers(EciScalingConfigurationContainerArgs.builder()
+     *                 .name("container-1")
+     *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEciScalingConfigurations = EssFunctions.getEciScalingConfigurations(GetEciScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultEciScalingConfiguration.id())
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEciScalingConfigurationsResult> getEciScalingConfigurationsPlain(GetEciScalingConfigurationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ess/getEciScalingConfigurations:getEciScalingConfigurations", TypeShape.of(GetEciScalingConfigurationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides available lifecycle hook resources.

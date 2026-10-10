@@ -31,9 +31,8 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
-     * As a note, the updated internet charge type will be effective in the next day zero time.
+     * The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+     * It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
      * 
      * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
      * 
@@ -42,9 +41,8 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-     * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
-     * As a note, the updated internet charge type will be effective in the next day zero time.
+     * @return The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+     * It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
      * 
      * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
      * 
@@ -100,9 +98,8 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param internetChargeType The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-         * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
-         * As a note, the updated internet charge type will be effective in the next day zero time.
+         * @param internetChargeType The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+         * It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
          * 
          * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
          * 
@@ -115,9 +112,8 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param internetChargeType The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-         * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
-         * As a note, the updated internet charge type will be effective in the next day zero time.
+         * @param internetChargeType The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+         * It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
          * 
          * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
          * 

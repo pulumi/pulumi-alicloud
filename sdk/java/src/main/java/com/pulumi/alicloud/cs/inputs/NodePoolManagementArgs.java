@@ -20,14 +20,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     public static final NodePoolManagementArgs Empty = new NodePoolManagementArgs();
 
     /**
-     * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+     * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
      * 
      */
     @Import(name="autoRepair")
     private @Nullable Output<Boolean> autoRepair;
 
     /**
-     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
      * 
      */
     public Optional<Output<Boolean>> autoRepair() {
@@ -219,7 +219,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
          * 
          * @return builder
          * 

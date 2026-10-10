@@ -60,6 +60,11 @@ export const getRoutes: typeof import("./getRoutes").getRoutes = null as any;
 export const getRoutesOutput: typeof import("./getRoutes").getRoutesOutput = null as any;
 utilities.lazyLoad(exports, ["getRoutes","getRoutesOutput"], () => require("./getRoutes"));
 
+export { GetSecretsArgs, GetSecretsResult, GetSecretsOutputArgs } from "./getSecrets";
+export const getSecrets: typeof import("./getSecrets").getSecrets = null as any;
+export const getSecretsOutput: typeof import("./getSecrets").getSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getSecrets","getSecretsOutput"], () => require("./getSecrets"));
+
 export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./getServices";
 export const getServices: typeof import("./getServices").getServices = null as any;
 export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;

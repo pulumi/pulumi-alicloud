@@ -137,7 +137,7 @@ export class MountTarget extends pulumi.CustomResource {
     /**
      * The ID of the switch.
      */
-    declare public readonly vswitchId: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a MountTarget resource with the given unique name, arguments, and options.

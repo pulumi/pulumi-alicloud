@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ga.AcceleratorArgs;
 import com.pulumi.alicloud.ga.inputs.AcceleratorState;
+import com.pulumi.alicloud.ga.outputs.AcceleratorIpSetConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -117,6 +118,20 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoUseCoupon);
     }
     /**
+     * The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     * 
+     */
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
+    private Output<Integer> bandwidth;
+
+    /**
+     * @return The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     * 
+     */
+    public Output<Integer> bandwidth() {
+        return this.bandwidth;
+    }
+    /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
@@ -193,6 +208,20 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> duration() {
         return Codegen.optional(this.duration);
+    }
+    /**
+     * The configurations of the acceleration area. See `ipSetConfig` below.
+     * 
+     */
+    @Export(name="ipSetConfig", refs={AcceleratorIpSetConfig.class}, tree="[0]")
+    private Output<AcceleratorIpSetConfig> ipSetConfig;
+
+    /**
+     * @return The configurations of the acceleration area. See `ipSetConfig` below.
+     * 
+     */
+    public Output<AcceleratorIpSetConfig> ipSetConfig() {
+        return this.ipSetConfig;
     }
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.

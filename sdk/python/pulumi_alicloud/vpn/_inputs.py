@@ -1686,7 +1686,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict(TypedDict):
     """
     tunnel_index: pulumi.Input[_builtins.int]
     """
-    The order in which the tunnel was created.
+    The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
     """
     enable_dpd: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -1702,7 +1702,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict(TypedDict):
     """
     role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+    The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
     """
     state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1756,11 +1756,11 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgs:
         :param pulumi.Input[_builtins.str] customer_gateway_id: The ID of the user gateway associated with the tunnel.
                
                > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
-        :param pulumi.Input[_builtins.int] tunnel_index: The order in which the tunnel was created.
+        :param pulumi.Input[_builtins.int] tunnel_index: The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
         :param pulumi.Input[_builtins.bool] enable_dpd: Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
         :param pulumi.Input[_builtins.bool] enable_nat_traversal: Whether the NAT crossing function is enabled for the tunnel. Value:
         :param pulumi.Input[_builtins.str] internet_ip: The local internet IP in Tunnel.
-        :param pulumi.Input[_builtins.str] role: The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+        :param pulumi.Input[_builtins.str] role: The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
         :param pulumi.Input[_builtins.str] state: The state of Tunnel.
         :param pulumi.Input[_builtins.str] status: The negotiation status of Tunnel.
         :param pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs'] tunnel_bgp_config: Add the BGP configuration for the tunnel.
@@ -1815,7 +1815,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgs:
     @pulumi.getter(name="tunnelIndex")
     def tunnel_index(self) -> pulumi.Input[_builtins.int]:
         """
-        The order in which the tunnel was created.
+        The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
         """
         return pulumi.get(self, "tunnel_index")
 
@@ -1863,7 +1863,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The role of the tunnel. Valid values: `master`, `slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+        The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
         """
         return pulumi.get(self, "role")
 

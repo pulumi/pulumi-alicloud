@@ -4771,7 +4771,7 @@ class NodePoolLabelArgs:
 class NodePoolManagementArgsDict(TypedDict):
     auto_repair: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+    Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see cs_kubernetes_addon for installation.
     """
     auto_repair_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoRepairPolicyArgsDict']]]
     """
@@ -4824,7 +4824,7 @@ class NodePoolManagementArgs:
                  surge: pulumi.Input[Optional[_builtins.int]] = None,
                  surge_percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.bool] auto_repair: Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        :param pulumi.Input[_builtins.bool] auto_repair: Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see cs_kubernetes_addon for installation.
         :param pulumi.Input['NodePoolManagementAutoRepairPolicyArgs'] auto_repair_policy: Automatic repair node policy. See `auto_repair_policy` below.
         :param pulumi.Input[_builtins.bool] auto_upgrade: Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
         :param pulumi.Input['NodePoolManagementAutoUpgradePolicyArgs'] auto_upgrade_policy: The auto update policy. See `auto_upgrade_policy` below.
@@ -4866,7 +4866,7 @@ class NodePoolManagementArgs:
     @pulumi.getter(name="autoRepair")
     def auto_repair(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see cs_kubernetes_addon for installation.
         """
         return pulumi.get(self, "auto_repair")
 

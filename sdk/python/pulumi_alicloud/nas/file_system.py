@@ -111,14 +111,14 @@ class FileSystemArgs:
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
                > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
@@ -438,7 +438,7 @@ class FileSystemArgs:
 
         This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
 
-        > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+        > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -456,7 +456,7 @@ class FileSystemArgs:
 
         > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
 
-        > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+        > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -584,14 +584,14 @@ class _FileSystemState:
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
                > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
@@ -955,7 +955,7 @@ class _FileSystemState:
 
         This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
 
-        > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+        > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -973,7 +973,7 @@ class _FileSystemState:
 
         > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
 
-        > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+        > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1165,14 +1165,14 @@ class FileSystem(pulumi.CustomResource):
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
                > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
@@ -1439,14 +1439,14 @@ class FileSystem(pulumi.CustomResource):
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
                
                This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
                
                > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
                
-               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+               > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
@@ -1701,19 +1701,19 @@ class FileSystem(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the VPC network.
 
         This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
 
-        > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+        > **NOTE:** For `standard` or `extreme` file systems, `vpc_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the switch.
 
@@ -1721,7 +1721,7 @@ class FileSystem(pulumi.CustomResource):
 
         > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
 
-        > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
+        > **NOTE:** For `standard` or `extreme` file systems, `vswitch_id` is reserved by the interface and has no effect; the NAS API does not return it for these file system types, so any configured value is suppressed from the plan diff and will not force a replacement. It is still recommended to leave it unset for `standard` or `extreme` file systems.
         """
         return pulumi.get(self, "vswitch_id")
 

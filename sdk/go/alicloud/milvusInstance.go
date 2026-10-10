@@ -123,6 +123,8 @@ type MilvusInstance struct {
 	//
 	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
+	// Whether auto-renewal is enabled when the instance is created.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -134,23 +136,29 @@ type MilvusInstance struct {
 	// Instance creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// DB administrator password, which can be used to log in to attu.
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DbAdminPassword pulumi.StringPtrOutput `pulumi:"dbAdminPassword"`
 	// Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
 	// Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
+	// (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Whether to enable multiple copies of data
 	Ha pulumi.BoolPtrOutput `pulumi:"ha"`
 	// Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
+	// Whether multi-zone storage is enabled when the instance is created.
+	IsMultiAzStorage pulumi.BoolPtrOutput `pulumi:"isMultiAzStorage"`
 	// Kms Key encryption id, need to be encrypted set to true.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// The number of load replicas configured when the instance is created.
+	LoadReplicas pulumi.IntPtrOutput `pulumi:"loadReplicas"`
 	// Availability Zone mode. The default Single.
 	// - Single: Single zone.
 	// - Two: Dual Availability Zones.
 	MultiZoneMode pulumi.StringPtrOutput `pulumi:"multiZoneMode"`
+	// (Available since v1.294.0) Alibaba Cloud Order Number.
+	OrderId pulumi.StringOutput `pulumi:"orderId"`
 	// Instance Payment Duration
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -165,11 +173,17 @@ type MilvusInstance struct {
 	// - PayAsYouGo: Pay by volume
 	// - Subscription: Package year package month
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// regionId. For example: cn-hangzhou
+	// The promotion code used to create the instance.
+	PromotionNo pulumi.StringPtrOutput `pulumi:"promotionNo"`
+	// The regionId.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Resource Group ID
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Instance status. Value range:
+	// (Available since v1.294.0) Instance running time.
+	RunningTime pulumi.IntOutput `pulumi:"runningTime"`
+	// (Available since v1.294.0) Configured Security Group id.
+	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// Instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// User Defined Label
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -236,6 +250,8 @@ type milvusInstanceState struct {
 	//
 	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	AutoPay *bool `pulumi:"autoPay"`
+	// Whether auto-renewal is enabled when the instance is created.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -247,23 +263,29 @@ type milvusInstanceState struct {
 	// Instance creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// DB administrator password, which can be used to log in to attu.
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DbAdminPassword *string `pulumi:"dbAdminPassword"`
 	// Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
 	DbVersion *string `pulumi:"dbVersion"`
 	// Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
 	Encrypted *bool `pulumi:"encrypted"`
+	// (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+	ExpireTime *string `pulumi:"expireTime"`
 	// Whether to enable multiple copies of data
 	Ha *bool `pulumi:"ha"`
 	// Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
 	InstanceName *string `pulumi:"instanceName"`
+	// Whether multi-zone storage is enabled when the instance is created.
+	IsMultiAzStorage *bool `pulumi:"isMultiAzStorage"`
 	// Kms Key encryption id, need to be encrypted set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The number of load replicas configured when the instance is created.
+	LoadReplicas *int `pulumi:"loadReplicas"`
 	// Availability Zone mode. The default Single.
 	// - Single: Single zone.
 	// - Two: Dual Availability Zones.
 	MultiZoneMode *string `pulumi:"multiZoneMode"`
+	// (Available since v1.294.0) Alibaba Cloud Order Number.
+	OrderId *string `pulumi:"orderId"`
 	// Instance Payment Duration
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -278,11 +300,17 @@ type milvusInstanceState struct {
 	// - PayAsYouGo: Pay by volume
 	// - Subscription: Package year package month
 	PaymentType *string `pulumi:"paymentType"`
-	// regionId. For example: cn-hangzhou
+	// The promotion code used to create the instance.
+	PromotionNo *string `pulumi:"promotionNo"`
+	// The regionId.
 	RegionId *string `pulumi:"regionId"`
 	// Resource Group ID
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Instance status. Value range:
+	// (Available since v1.294.0) Instance running time.
+	RunningTime *int `pulumi:"runningTime"`
+	// (Available since v1.294.0) Configured Security Group id.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Instance status.
 	Status *string `pulumi:"status"`
 	// User Defined Label
 	Tags map[string]string `pulumi:"tags"`
@@ -301,6 +329,8 @@ type MilvusInstanceState struct {
 	//
 	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	AutoPay pulumi.BoolPtrInput
+	// Whether auto-renewal is enabled when the instance is created.
+	AutoRenew pulumi.BoolPtrInput
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -312,23 +342,29 @@ type MilvusInstanceState struct {
 	// Instance creation time.
 	CreateTime pulumi.StringPtrInput
 	// DB administrator password, which can be used to log in to attu.
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DbAdminPassword pulumi.StringPtrInput
 	// Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
 	DbVersion pulumi.StringPtrInput
 	// Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
 	Encrypted pulumi.BoolPtrInput
+	// (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+	ExpireTime pulumi.StringPtrInput
 	// Whether to enable multiple copies of data
 	Ha pulumi.BoolPtrInput
 	// Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
 	InstanceName pulumi.StringPtrInput
+	// Whether multi-zone storage is enabled when the instance is created.
+	IsMultiAzStorage pulumi.BoolPtrInput
 	// Kms Key encryption id, need to be encrypted set to true.
 	KmsKeyId pulumi.StringPtrInput
+	// The number of load replicas configured when the instance is created.
+	LoadReplicas pulumi.IntPtrInput
 	// Availability Zone mode. The default Single.
 	// - Single: Single zone.
 	// - Two: Dual Availability Zones.
 	MultiZoneMode pulumi.StringPtrInput
+	// (Available since v1.294.0) Alibaba Cloud Order Number.
+	OrderId pulumi.StringPtrInput
 	// Instance Payment Duration
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -343,11 +379,17 @@ type MilvusInstanceState struct {
 	// - PayAsYouGo: Pay by volume
 	// - Subscription: Package year package month
 	PaymentType pulumi.StringPtrInput
-	// regionId. For example: cn-hangzhou
+	// The promotion code used to create the instance.
+	PromotionNo pulumi.StringPtrInput
+	// The regionId.
 	RegionId pulumi.StringPtrInput
 	// Resource Group ID
 	ResourceGroupId pulumi.StringPtrInput
-	// Instance status. Value range:
+	// (Available since v1.294.0) Instance running time.
+	RunningTime pulumi.IntPtrInput
+	// (Available since v1.294.0) Configured Security Group id.
+	SecurityGroupIds pulumi.StringArrayInput
+	// Instance status.
 	Status pulumi.StringPtrInput
 	// User Defined Label
 	Tags pulumi.StringMapInput
@@ -370,6 +412,8 @@ type milvusInstanceArgs struct {
 	//
 	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	AutoPay *bool `pulumi:"autoPay"`
+	// Whether auto-renewal is enabled when the instance is created.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -379,8 +423,6 @@ type milvusInstanceArgs struct {
 	// User-defined configuration
 	Configuration *string `pulumi:"configuration"`
 	// DB administrator password, which can be used to log in to attu.
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DbAdminPassword *string `pulumi:"dbAdminPassword"`
 	// Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
 	DbVersion string `pulumi:"dbVersion"`
@@ -390,8 +432,12 @@ type milvusInstanceArgs struct {
 	Ha *bool `pulumi:"ha"`
 	// Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
 	InstanceName string `pulumi:"instanceName"`
+	// Whether multi-zone storage is enabled when the instance is created.
+	IsMultiAzStorage *bool `pulumi:"isMultiAzStorage"`
 	// Kms Key encryption id, need to be encrypted set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The number of load replicas configured when the instance is created.
+	LoadReplicas *int `pulumi:"loadReplicas"`
 	// Availability Zone mode. The default Single.
 	// - Single: Single zone.
 	// - Two: Dual Availability Zones.
@@ -410,6 +456,8 @@ type milvusInstanceArgs struct {
 	// - PayAsYouGo: Pay by volume
 	// - Subscription: Package year package month
 	PaymentType string `pulumi:"paymentType"`
+	// The promotion code used to create the instance.
+	PromotionNo *string `pulumi:"promotionNo"`
 	// Resource Group ID
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// User Defined Label
@@ -430,6 +478,8 @@ type MilvusInstanceArgs struct {
 	//
 	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	AutoPay pulumi.BoolPtrInput
+	// Whether auto-renewal is enabled when the instance is created.
+	AutoRenew pulumi.BoolPtrInput
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -439,8 +489,6 @@ type MilvusInstanceArgs struct {
 	// User-defined configuration
 	Configuration pulumi.StringPtrInput
 	// DB administrator password, which can be used to log in to attu.
-	//
-	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DbAdminPassword pulumi.StringPtrInput
 	// Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
 	DbVersion pulumi.StringInput
@@ -450,8 +498,12 @@ type MilvusInstanceArgs struct {
 	Ha pulumi.BoolPtrInput
 	// Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
 	InstanceName pulumi.StringInput
+	// Whether multi-zone storage is enabled when the instance is created.
+	IsMultiAzStorage pulumi.BoolPtrInput
 	// Kms Key encryption id, need to be encrypted set to true.
 	KmsKeyId pulumi.StringPtrInput
+	// The number of load replicas configured when the instance is created.
+	LoadReplicas pulumi.IntPtrInput
 	// Availability Zone mode. The default Single.
 	// - Single: Single zone.
 	// - Two: Dual Availability Zones.
@@ -470,6 +522,8 @@ type MilvusInstanceArgs struct {
 	// - PayAsYouGo: Pay by volume
 	// - Subscription: Package year package month
 	PaymentType pulumi.StringInput
+	// The promotion code used to create the instance.
+	PromotionNo pulumi.StringPtrInput
 	// Resource Group ID
 	ResourceGroupId pulumi.StringPtrInput
 	// User Defined Label
@@ -581,6 +635,11 @@ func (o MilvusInstanceOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
+// Whether auto-renewal is enabled when the instance is created.
+func (o MilvusInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
 // Instance component information. Includes Starter Edition/Standard Edition.
 //   - Starter version: Array including standalone
 //   - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -601,8 +660,6 @@ func (o MilvusInstanceOutput) CreateTime() pulumi.StringOutput {
 }
 
 // DB administrator password, which can be used to log in to attu.
-//
-// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o MilvusInstanceOutput) DbAdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringPtrOutput { return v.DbAdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -617,6 +674,11 @@ func (o MilvusInstanceOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+func (o MilvusInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
 // Whether to enable multiple copies of data
 func (o MilvusInstanceOutput) Ha() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolPtrOutput { return v.Ha }).(pulumi.BoolPtrOutput)
@@ -627,9 +689,19 @@ func (o MilvusInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// Whether multi-zone storage is enabled when the instance is created.
+func (o MilvusInstanceOutput) IsMultiAzStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolPtrOutput { return v.IsMultiAzStorage }).(pulumi.BoolPtrOutput)
+}
+
 // Kms Key encryption id, need to be encrypted set to true.
 func (o MilvusInstanceOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The number of load replicas configured when the instance is created.
+func (o MilvusInstanceOutput) LoadReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.IntPtrOutput { return v.LoadReplicas }).(pulumi.IntPtrOutput)
 }
 
 // Availability Zone mode. The default Single.
@@ -637,6 +709,11 @@ func (o MilvusInstanceOutput) KmsKeyId() pulumi.StringPtrOutput {
 // - Two: Dual Availability Zones.
 func (o MilvusInstanceOutput) MultiZoneMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringPtrOutput { return v.MultiZoneMode }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.294.0) Alibaba Cloud Order Number.
+func (o MilvusInstanceOutput) OrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.OrderId }).(pulumi.StringOutput)
 }
 
 // Instance Payment Duration
@@ -662,7 +739,12 @@ func (o MilvusInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// regionId. For example: cn-hangzhou
+// The promotion code used to create the instance.
+func (o MilvusInstanceOutput) PromotionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.StringPtrOutput { return v.PromotionNo }).(pulumi.StringPtrOutput)
+}
+
+// The regionId.
 func (o MilvusInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -672,7 +754,17 @@ func (o MilvusInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Instance status. Value range:
+// (Available since v1.294.0) Instance running time.
+func (o MilvusInstanceOutput) RunningTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.IntOutput { return v.RunningTime }).(pulumi.IntOutput)
+}
+
+// (Available since v1.294.0) Configured Security Group id.
+func (o MilvusInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Instance status.
 func (o MilvusInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

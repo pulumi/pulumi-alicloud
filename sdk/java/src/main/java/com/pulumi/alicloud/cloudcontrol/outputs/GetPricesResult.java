@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPricesResult {
     private @Nullable Map<String,String> desireAttributes;
+    private @Nullable String desireAttributesJson;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -33,6 +34,9 @@ public final class GetPricesResult {
     private GetPricesResult() {}
     public Map<String,String> desireAttributes() {
         return this.desireAttributes == null ? Map.of() : this.desireAttributes;
+    }
+    public Optional<String> desireAttributesJson() {
+        return Optional.ofNullable(this.desireAttributesJson);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -68,6 +72,7 @@ public final class GetPricesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> desireAttributes;
+        private @Nullable String desireAttributesJson;
         private String id;
         private @Nullable String outputFile;
         private List<GetPricesPrice> prices;
@@ -77,6 +82,7 @@ public final class GetPricesResult {
         public Builder(GetPricesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desireAttributes = defaults.desireAttributes;
+    	      this.desireAttributesJson = defaults.desireAttributesJson;
     	      this.id = defaults.id;
     	      this.outputFile = defaults.outputFile;
     	      this.prices = defaults.prices;
@@ -88,6 +94,12 @@ public final class GetPricesResult {
         public Builder desireAttributes(@Nullable Map<String,String> desireAttributes) {
 
             this.desireAttributes = desireAttributes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder desireAttributesJson(@Nullable String desireAttributesJson) {
+
+            this.desireAttributesJson = desireAttributesJson;
             return this;
         }
         @CustomType.Setter
@@ -134,6 +146,7 @@ public final class GetPricesResult {
         public GetPricesResult build() {
             final var _resultValue = new GetPricesResult();
             _resultValue.desireAttributes = desireAttributes;
+            _resultValue.desireAttributesJson = desireAttributesJson;
             _resultValue.id = id;
             _resultValue.outputFile = outputFile;
             _resultValue.prices = prices;

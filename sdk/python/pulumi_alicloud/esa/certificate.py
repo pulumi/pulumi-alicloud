@@ -33,11 +33,6 @@ class CertificateArgs:
         The set of arguments for constructing a Certificate resource.
 
         :param pulumi.Input[_builtins.str] created_type: The certificate type.
-               - cas (Certificate Center Certificate)
-               - upload (custom upload certificate)
-               - free( Free certificate).
-               
-               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[_builtins.str] cert_id: The certificate Id.
@@ -50,7 +45,7 @@ class CertificateArgs:
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
-        :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        :param pulumi.Input[_builtins.str] type: The certificate type. Valid values:
         """
         pulumi.set(__self__, "created_type", created_type)
         pulumi.set(__self__, "site_id", site_id)
@@ -76,11 +71,6 @@ class CertificateArgs:
     def created_type(self) -> pulumi.Input[_builtins.str]:
         """
         The certificate type.
-        - cas (Certificate Center Certificate)
-        - upload (custom upload certificate)
-        - free( Free certificate).
-
-        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "created_type")
 
@@ -192,7 +182,7 @@ class CertificateArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        The certificate type. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -225,11 +215,6 @@ class _CertificateState:
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] created_type: The certificate type.
-               - cas (Certificate Center Certificate)
-               - upload (custom upload certificate)
-               - free( Free certificate).
-               
-               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
         :param pulumi.Input[_builtins.str] private_key: The certificate private key.
                
@@ -239,7 +224,7 @@ class _CertificateState:
                For accounts on the international site, this parameter value is: ap-southeast-1
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] status: Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
-        :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        :param pulumi.Input[_builtins.str] type: The certificate type. Valid values:
         """
         if cas_id is not None:
             pulumi.set(__self__, "cas_id", cas_id)
@@ -331,11 +316,6 @@ class _CertificateState:
     def created_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate type.
-        - cas (Certificate Center Certificate)
-        - upload (custom upload certificate)
-        - free( Free certificate).
-
-        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "created_type")
 
@@ -411,7 +391,7 @@ class _CertificateState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        The certificate type. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -479,11 +459,6 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] created_type: The certificate type.
-               - cas (Certificate Center Certificate)
-               - upload (custom upload certificate)
-               - free( Free certificate).
-               
-               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
         :param pulumi.Input[_builtins.str] private_key: The certificate private key.
                
@@ -492,7 +467,7 @@ class Certificate(pulumi.CustomResource):
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
-        :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        :param pulumi.Input[_builtins.str] type: The certificate type. Valid values:
         """
         ...
     @overload
@@ -620,11 +595,6 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] created_type: The certificate type.
-               - cas (Certificate Center Certificate)
-               - upload (custom upload certificate)
-               - free( Free certificate).
-               
-               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
         :param pulumi.Input[_builtins.str] private_key: The certificate private key.
                
@@ -634,7 +604,7 @@ class Certificate(pulumi.CustomResource):
                For accounts on the international site, this parameter value is: ap-southeast-1
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] status: Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
-        :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        :param pulumi.Input[_builtins.str] type: The certificate type. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -699,11 +669,6 @@ class Certificate(pulumi.CustomResource):
     def created_type(self) -> pulumi.Output[_builtins.str]:
         """
         The certificate type.
-        - cas (Certificate Center Certificate)
-        - upload (custom upload certificate)
-        - free( Free certificate).
-
-        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "created_type")
 
@@ -755,7 +720,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        The certificate type. Valid values:
         """
         return pulumi.get(self, "type")
 

@@ -118,6 +118,13 @@ type ServerGroup struct {
 	ConnectionDrainTimeout pulumi.IntOutput `pulumi:"connectionDrainTimeout"`
 	// Health check configuration information. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheckOutput `pulumi:"healthCheck"`
+	// The traffic scheduling policy for dual-stack server groups. Valid values:
+	//
+	// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+	// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+	//
+	// > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+	IpVersionAffinityMode pulumi.StringOutput `pulumi:"ipVersionAffinityMode"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled pulumi.BoolOutput `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers. Valid values:
@@ -209,6 +216,13 @@ type serverGroupState struct {
 	ConnectionDrainTimeout *int `pulumi:"connectionDrainTimeout"`
 	// Health check configuration information. See `healthCheck` below.
 	HealthCheck *ServerGroupHealthCheck `pulumi:"healthCheck"`
+	// The traffic scheduling policy for dual-stack server groups. Valid values:
+	//
+	// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+	// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+	//
+	// > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+	IpVersionAffinityMode *string `pulumi:"ipVersionAffinityMode"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled *bool `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers. Valid values:
@@ -265,6 +279,13 @@ type ServerGroupState struct {
 	ConnectionDrainTimeout pulumi.IntPtrInput
 	// Health check configuration information. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheckPtrInput
+	// The traffic scheduling policy for dual-stack server groups. Valid values:
+	//
+	// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+	// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+	//
+	// > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+	IpVersionAffinityMode pulumi.StringPtrInput
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled pulumi.BoolPtrInput
 	// The protocol used to forward requests to the backend servers. Valid values:
@@ -325,6 +346,13 @@ type serverGroupArgs struct {
 	ConnectionDrainTimeout *int `pulumi:"connectionDrainTimeout"`
 	// Health check configuration information. See `healthCheck` below.
 	HealthCheck *ServerGroupHealthCheck `pulumi:"healthCheck"`
+	// The traffic scheduling policy for dual-stack server groups. Valid values:
+	//
+	// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+	// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+	//
+	// > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+	IpVersionAffinityMode *string `pulumi:"ipVersionAffinityMode"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled *bool `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers. Valid values:
@@ -378,6 +406,13 @@ type ServerGroupArgs struct {
 	ConnectionDrainTimeout pulumi.IntPtrInput
 	// Health check configuration information. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheckPtrInput
+	// The traffic scheduling policy for dual-stack server groups. Valid values:
+	//
+	// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+	// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+	//
+	// > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+	IpVersionAffinityMode pulumi.StringPtrInput
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled pulumi.BoolPtrInput
 	// The protocol used to forward requests to the backend servers. Valid values:
@@ -532,6 +567,16 @@ func (o ServerGroupOutput) ConnectionDrainTimeout() pulumi.IntOutput {
 // Health check configuration information. See `healthCheck` below.
 func (o ServerGroupOutput) HealthCheck() ServerGroupHealthCheckOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckOutput { return v.HealthCheck }).(ServerGroupHealthCheckOutput)
+}
+
+// The traffic scheduling policy for dual-stack server groups. Valid values:
+//
+// - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+// - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+//
+// > **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+func (o ServerGroupOutput) IpVersionAffinityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.IpVersionAffinityMode }).(pulumi.StringOutput)
 }
 
 // Specifies whether to enable client IP preservation. Valid values:

@@ -70,6 +70,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
 
         /// <summary>
+        /// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `AccessMode` in `IpSetConfig` is set to `Anycast`.
+        /// </summary>
+        [Output("bandwidth")]
+        public Output<int> Bandwidth { get; private set; } = null!;
+
+        /// <summary>
         /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         /// - `BandwidthPackage`: billed based on bandwidth plans.
         /// - `CDT`: billed based on data transfer.
@@ -102,6 +108,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("duration")]
         public Output<int?> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// The configurations of the acceleration area. See `IpSetConfig` below.
+        /// </summary>
+        [Output("ipSetConfig")]
+        public Output<Outputs.AcceleratorIpSetConfig> IpSetConfig { get; private set; } = null!;
 
         /// <summary>
         /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -221,6 +233,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoUseCoupon { get; set; }
 
         /// <summary>
+        /// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `AccessMode` in `IpSetConfig` is set to `Anycast`.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
         /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         /// - `BandwidthPackage`: billed based on bandwidth plans.
         /// - `CDT`: billed based on data transfer.
@@ -253,6 +271,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
+
+        /// <summary>
+        /// The configurations of the acceleration area. See `IpSetConfig` below.
+        /// </summary>
+        [Input("ipSetConfig")]
+        public Input<Inputs.AcceleratorIpSetConfigArgs>? IpSetConfig { get; set; }
 
         /// <summary>
         /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -334,6 +358,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoUseCoupon { get; set; }
 
         /// <summary>
+        /// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `AccessMode` in `IpSetConfig` is set to `Anycast`.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
         /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         /// - `BandwidthPackage`: billed based on bandwidth plans.
         /// - `CDT`: billed based on data transfer.
@@ -366,6 +396,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
+
+        /// <summary>
+        /// The configurations of the acceleration area. See `IpSetConfig` below.
+        /// </summary>
+        [Input("ipSetConfig")]
+        public Input<Inputs.AcceleratorIpSetConfigGetArgs>? IpSetConfig { get; set; }
 
         /// <summary>
         /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -77,6 +79,10 @@ export class Accelerator extends pulumi.CustomResource {
      */
     declare public readonly autoUseCoupon: pulumi.Output<boolean | undefined>;
     /**
+     * The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     */
+    declare public readonly bandwidth: pulumi.Output<number>;
+    /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
@@ -100,6 +106,10 @@ export class Accelerator extends pulumi.CustomResource {
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     declare public readonly duration: pulumi.Output<number | undefined>;
+    /**
+     * The configurations of the acceleration area. See `ipSetConfig` below.
+     */
+    declare public readonly ipSetConfig: pulumi.Output<outputs.ga.AcceleratorIpSetConfig>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
@@ -154,11 +164,13 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["acceleratorName"] = state?.acceleratorName;
             resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
+            resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["bandwidthBillingType"] = state?.bandwidthBillingType;
             resourceInputs["crossBorderMode"] = state?.crossBorderMode;
             resourceInputs["crossBorderStatus"] = state?.crossBorderStatus;
             resourceInputs["description"] = state?.description;
             resourceInputs["duration"] = state?.duration;
+            resourceInputs["ipSetConfig"] = state?.ipSetConfig;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["pricingCycle"] = state?.pricingCycle;
             resourceInputs["promotionOptionNo"] = state?.promotionOptionNo;
@@ -172,11 +184,13 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["acceleratorName"] = args?.acceleratorName;
             resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
             resourceInputs["autoUseCoupon"] = args?.autoUseCoupon;
+            resourceInputs["bandwidth"] = args?.bandwidth;
             resourceInputs["bandwidthBillingType"] = args?.bandwidthBillingType;
             resourceInputs["crossBorderMode"] = args?.crossBorderMode;
             resourceInputs["crossBorderStatus"] = args?.crossBorderStatus;
             resourceInputs["description"] = args?.description;
             resourceInputs["duration"] = args?.duration;
+            resourceInputs["ipSetConfig"] = args?.ipSetConfig;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["pricingCycle"] = args?.pricingCycle;
             resourceInputs["promotionOptionNo"] = args?.promotionOptionNo;
@@ -208,6 +222,10 @@ export interface AcceleratorState {
      */
     autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
+     * The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     */
+    bandwidth?: pulumi.Input<number | undefined>;
+    /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
@@ -231,6 +249,10 @@ export interface AcceleratorState {
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     duration?: pulumi.Input<number | undefined>;
+    /**
+     * The configurations of the acceleration area. See `ipSetConfig` below.
+     */
+    ipSetConfig?: pulumi.Input<inputs.ga.AcceleratorIpSetConfig | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
@@ -287,6 +309,10 @@ export interface AcceleratorArgs {
      */
     autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
+     * The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+     */
+    bandwidth?: pulumi.Input<number | undefined>;
+    /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
@@ -310,6 +336,10 @@ export interface AcceleratorArgs {
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     duration?: pulumi.Input<number | undefined>;
+    /**
+     * The configurations of the acceleration area. See `ipSetConfig` below.
+     */
+    ipSetConfig?: pulumi.Input<inputs.ga.AcceleratorIpSetConfig | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */

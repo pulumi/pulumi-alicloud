@@ -22,6 +22,16 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string AcceleratorName;
         /// <summary>
+        /// Bandwidth value of cross-domain acceleration package.
+        /// </summary>
+        public readonly int Bandwidth;
+        /// <summary>
+        /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// - `BandwidthPackage`: billed based on bandwidth plans.
+        /// - `CDT`: billed based on data transfer.
+        /// </summary>
+        public readonly string BandwidthBillingType;
+        /// <summary>
         /// Details of the basic bandwidth package bound to the global acceleration instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAcceleratorsAcceleratorBasicBandwidthPackageResult> BasicBandwidthPackages;
@@ -53,6 +63,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// The ID of the Accelerator.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetAcceleratorsAcceleratorIpSetConfigResult> IpSetConfigs;
         /// <summary>
         /// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
         /// </summary>
@@ -76,6 +87,10 @@ namespace Pulumi.AliCloud.Ga.Outputs
 
             string acceleratorName,
 
+            int bandwidth,
+
+            string bandwidthBillingType,
+
             ImmutableArray<Outputs.GetAcceleratorsAcceleratorBasicBandwidthPackageResult> basicBandwidthPackages,
 
             string cenId,
@@ -92,6 +107,8 @@ namespace Pulumi.AliCloud.Ga.Outputs
 
             string id,
 
+            ImmutableArray<Outputs.GetAcceleratorsAcceleratorIpSetConfigResult> ipSetConfigs,
+
             string paymentType,
 
             string secondDnsName,
@@ -102,6 +119,8 @@ namespace Pulumi.AliCloud.Ga.Outputs
         {
             AcceleratorId = acceleratorId;
             AcceleratorName = acceleratorName;
+            Bandwidth = bandwidth;
+            BandwidthBillingType = bandwidthBillingType;
             BasicBandwidthPackages = basicBandwidthPackages;
             CenId = cenId;
             CrossDomainBandwidthPackages = crossDomainBandwidthPackages;
@@ -110,6 +129,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
             DnsName = dnsName;
             ExpiredTime = expiredTime;
             Id = id;
+            IpSetConfigs = ipSetConfigs;
             PaymentType = paymentType;
             SecondDnsName = secondDnsName;
             Spec = spec;

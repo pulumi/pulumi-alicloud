@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Available since v1.212.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -110,12 +112,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// });
     /// ```
-    /// 
-    /// ### Deleting `alicloud.rocketmq.RocketMQInstance` or removing it from your configuration
-    /// 
-    /// The `alicloud.rocketmq.RocketMQInstance` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
-    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
-    /// You can resume managing the subscription instance via the AlibabaCloud Console.
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 

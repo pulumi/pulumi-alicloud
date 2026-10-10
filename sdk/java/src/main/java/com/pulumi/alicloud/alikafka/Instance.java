@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.59.0.
  * 
+ * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v1.295.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * &gt; **NOTE:** Creation or modification may took about 10-40 minutes.
  * 
  * &gt; **NOTE:** Only the following regions support create alikafka pre paid instance.

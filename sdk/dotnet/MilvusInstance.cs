@@ -114,6 +114,12 @@ namespace Pulumi.AliCloud
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
+        /// Whether auto-renewal is enabled when the instance is created.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
         /// Instance component information. Includes Starter Edition/Standard Edition.
         /// - Starter version: Array including standalone
         /// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -137,8 +143,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// DB administrator password, which can be used to log in to attu.
-        /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("dbAdminPassword")]
         public Output<string?> DbAdminPassword { get; private set; } = null!;
@@ -156,6 +160,12 @@ namespace Pulumi.AliCloud
         public Output<bool?> Encrypted { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable multiple copies of data
         /// </summary>
         [Output("ha")]
@@ -168,10 +178,22 @@ namespace Pulumi.AliCloud
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether multi-zone storage is enabled when the instance is created.
+        /// </summary>
+        [Output("isMultiAzStorage")]
+        public Output<bool?> IsMultiAzStorage { get; private set; } = null!;
+
+        /// <summary>
         /// Kms Key encryption id, need to be encrypted set to true.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of load replicas configured when the instance is created.
+        /// </summary>
+        [Output("loadReplicas")]
+        public Output<int?> LoadReplicas { get; private set; } = null!;
 
         /// <summary>
         /// Availability Zone mode. The default Single.
@@ -180,6 +202,12 @@ namespace Pulumi.AliCloud
         /// </summary>
         [Output("multiZoneMode")]
         public Output<string?> MultiZoneMode { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.294.0) Alibaba Cloud Order Number.
+        /// </summary>
+        [Output("orderId")]
+        public Output<string> OrderId { get; private set; } = null!;
 
         /// <summary>
         /// Instance Payment Duration
@@ -208,7 +236,13 @@ namespace Pulumi.AliCloud
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// regionId. For example: cn-hangzhou
+        /// The promotion code used to create the instance.
+        /// </summary>
+        [Output("promotionNo")]
+        public Output<string?> PromotionNo { get; private set; } = null!;
+
+        /// <summary>
+        /// The regionId.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
@@ -220,7 +254,19 @@ namespace Pulumi.AliCloud
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance status. Value range:
+        /// (Available since v1.294.0) Instance running time.
+        /// </summary>
+        [Output("runningTime")]
+        public Output<int> RunningTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.294.0) Configured Security Group id.
+        /// </summary>
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -313,6 +359,12 @@ namespace Pulumi.AliCloud
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
+        /// <summary>
+        /// Whether auto-renewal is enabled when the instance is created.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
         [Input("components")]
         private InputList<Inputs.MilvusInstanceComponentArgs>? _components;
 
@@ -340,8 +392,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// DB administrator password, which can be used to log in to attu.
-        /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public Input<string>? DbAdminPassword
         {
@@ -378,10 +428,22 @@ namespace Pulumi.AliCloud
         public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
+        /// Whether multi-zone storage is enabled when the instance is created.
+        /// </summary>
+        [Input("isMultiAzStorage")]
+        public Input<bool>? IsMultiAzStorage { get; set; }
+
+        /// <summary>
         /// Kms Key encryption id, need to be encrypted set to true.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The number of load replicas configured when the instance is created.
+        /// </summary>
+        [Input("loadReplicas")]
+        public Input<int>? LoadReplicas { get; set; }
 
         /// <summary>
         /// Availability Zone mode. The default Single.
@@ -416,6 +478,12 @@ namespace Pulumi.AliCloud
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
+
+        /// <summary>
+        /// The promotion code used to create the instance.
+        /// </summary>
+        [Input("promotionNo")]
+        public Input<string>? PromotionNo { get; set; }
 
         /// <summary>
         /// Resource Group ID
@@ -481,6 +549,12 @@ namespace Pulumi.AliCloud
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
+        /// <summary>
+        /// Whether auto-renewal is enabled when the instance is created.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
         [Input("components")]
         private InputList<Inputs.MilvusInstanceComponentGetArgs>? _components;
 
@@ -514,8 +588,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// DB administrator password, which can be used to log in to attu.
-        /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public Input<string>? DbAdminPassword
         {
@@ -540,6 +612,12 @@ namespace Pulumi.AliCloud
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
+        /// (Available since v1.294.0) The expiration time of the instance, which is returned by the package year and month cluster.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
         /// Whether to enable multiple copies of data
         /// </summary>
         [Input("ha")]
@@ -552,10 +630,22 @@ namespace Pulumi.AliCloud
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
+        /// Whether multi-zone storage is enabled when the instance is created.
+        /// </summary>
+        [Input("isMultiAzStorage")]
+        public Input<bool>? IsMultiAzStorage { get; set; }
+
+        /// <summary>
         /// Kms Key encryption id, need to be encrypted set to true.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The number of load replicas configured when the instance is created.
+        /// </summary>
+        [Input("loadReplicas")]
+        public Input<int>? LoadReplicas { get; set; }
 
         /// <summary>
         /// Availability Zone mode. The default Single.
@@ -564,6 +654,12 @@ namespace Pulumi.AliCloud
         /// </summary>
         [Input("multiZoneMode")]
         public Input<string>? MultiZoneMode { get; set; }
+
+        /// <summary>
+        /// (Available since v1.294.0) Alibaba Cloud Order Number.
+        /// </summary>
+        [Input("orderId")]
+        public Input<string>? OrderId { get; set; }
 
         /// <summary>
         /// Instance Payment Duration
@@ -592,7 +688,13 @@ namespace Pulumi.AliCloud
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// regionId. For example: cn-hangzhou
+        /// The promotion code used to create the instance.
+        /// </summary>
+        [Input("promotionNo")]
+        public Input<string>? PromotionNo { get; set; }
+
+        /// <summary>
+        /// The regionId.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
@@ -604,7 +706,25 @@ namespace Pulumi.AliCloud
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Instance status. Value range:
+        /// (Available since v1.294.0) Instance running time.
+        /// </summary>
+        [Input("runningTime")]
+        public Input<int>? RunningTime { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// (Available since v1.294.0) Configured Security Group id.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        /// <summary>
+        /// Instance status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

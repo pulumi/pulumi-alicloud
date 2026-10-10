@@ -3,11 +3,13 @@
 
 package com.pulumi.alicloud.inputs;
 
+import com.pulumi.alicloud.inputs.MilvusInstanceComponentDataDiskArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,6 +54,21 @@ public final class MilvusInstanceComponentArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+     * 
+     */
+    @Import(name="dataDisks")
+    private @Nullable Output<List<MilvusInstanceComponentDataDiskArgs>> dataDisks;
+
+    /**
+     * @return The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+     * 
+     */
+    public Optional<Output<List<MilvusInstanceComponentDataDiskArgs>>> dataDisks() {
+        return Optional.ofNullable(this.dataDisks);
+    }
+
+    /**
      * Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
      * 
      */
@@ -64,6 +81,21 @@ public final class MilvusInstanceComponentArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> diskSizeType() {
         return Optional.ofNullable(this.diskSizeType);
+    }
+
+    /**
+     * The default is consistent with the cluster.
+     * 
+     */
+    @Import(name="payType")
+    private @Nullable Output<String> payType;
+
+    /**
+     * @return The default is consistent with the cluster.
+     * 
+     */
+    public Optional<Output<String>> payType() {
+        return Optional.ofNullable(this.payType);
     }
 
     /**
@@ -109,7 +141,9 @@ public final class MilvusInstanceComponentArgs extends com.pulumi.resources.Reso
     private MilvusInstanceComponentArgs(MilvusInstanceComponentArgs $) {
         this.cuNum = $.cuNum;
         this.cuType = $.cuType;
+        this.dataDisks = $.dataDisks;
         this.diskSizeType = $.diskSizeType;
+        this.payType = $.payType;
         this.replica = $.replica;
         this.type = $.type;
     }
@@ -179,6 +213,37 @@ public final class MilvusInstanceComponentArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param dataDisks The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(@Nullable Output<List<MilvusInstanceComponentDataDiskArgs>> dataDisks) {
+            $.dataDisks = dataDisks;
+            return this;
+        }
+
+        /**
+         * @param dataDisks The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(List<MilvusInstanceComponentDataDiskArgs> dataDisks) {
+            return dataDisks(Output.of(dataDisks));
+        }
+
+        /**
+         * @param dataDisks The QueryNode data disk configuration. Only Type=query is supported. See `dataDisk` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(MilvusInstanceComponentDataDiskArgs... dataDisks) {
+            return dataDisks(List.of(dataDisks));
+        }
+
+        /**
          * @param diskSizeType Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
          * 
          * @return builder
@@ -197,6 +262,27 @@ public final class MilvusInstanceComponentArgs extends com.pulumi.resources.Reso
          */
         public Builder diskSizeType(String diskSizeType) {
             return diskSizeType(Output.of(diskSizeType));
+        }
+
+        /**
+         * @param payType The default is consistent with the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payType(@Nullable Output<String> payType) {
+            $.payType = payType;
+            return this;
+        }
+
+        /**
+         * @param payType The default is consistent with the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payType(String payType) {
+            return payType(Output.of(payType));
         }
 
         /**

@@ -25,6 +25,7 @@ class ImageImportArgs:
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional['ImageImportFeaturesArgs']] = None,
                  image_name: pulumi.Input[Optional[_builtins.str]] = None,
                  license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,7 @@ class ImageImportArgs:
         :param pulumi.Input[_builtins.str] architecture: The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input['ImageImportFeaturesArgs'] features: Features for the image. See `features` below.
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
@@ -49,6 +51,8 @@ class ImageImportArgs:
             pulumi.set(__self__, "boot_mode", boot_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if image_name is not None:
             pulumi.set(__self__, "image_name", image_name)
         if license_type is not None:
@@ -107,6 +111,18 @@ class ImageImportArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter
+    def features(self) -> pulumi.Input[Optional['ImageImportFeaturesArgs']]:
+        """
+        Features for the image. See `features` below.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: pulumi.Input[Optional['ImageImportFeaturesArgs']]):
+        pulumi.set(self, "features", value)
+
+    @_builtins.property
     @pulumi.getter(name="imageName")
     def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -163,6 +179,7 @@ class _ImageImportState:
                  boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
+                 features: pulumi.Input[Optional['ImageImportFeaturesArgs']] = None,
                  image_name: pulumi.Input[Optional[_builtins.str]] = None,
                  license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -174,6 +191,7 @@ class _ImageImportState:
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
+        :param pulumi.Input['ImageImportFeaturesArgs'] features: Features for the image. See `features` below.
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
@@ -188,6 +206,8 @@ class _ImageImportState:
             pulumi.set(__self__, "description", description)
         if disk_device_mappings is not None:
             pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if image_name is not None:
             pulumi.set(__self__, "image_name", image_name)
         if license_type is not None:
@@ -244,6 +264,18 @@ class _ImageImportState:
     @disk_device_mappings.setter
     def disk_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]):
         pulumi.set(self, "disk_device_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def features(self) -> pulumi.Input[Optional['ImageImportFeaturesArgs']]:
+        """
+        Features for the image. See `features` below.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: pulumi.Input[Optional['ImageImportFeaturesArgs']]):
+        pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
@@ -305,6 +337,7 @@ class ImageImport(pulumi.CustomResource):
                  boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
+                 features: pulumi.Input[Optional[Union['ImageImportFeaturesArgs', 'ImageImportFeaturesArgsDict', 'outputs.ImageImportFeatures']]] = None,
                  image_name: pulumi.Input[Optional[_builtins.str]] = None,
                  license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -353,6 +386,9 @@ class ImageImport(pulumi.CustomResource):
             license_type="Auto",
             image_name=name,
             description=name,
+            features={
+                "nvme_support": "supported",
+            },
             disk_device_mappings=[{
                 "oss_bucket": default_bucket.id,
                 "oss_object": default_bucket_object.id,
@@ -377,6 +413,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
+        :param pulumi.Input[Union['ImageImportFeaturesArgs', 'ImageImportFeaturesArgsDict', 'outputs.ImageImportFeatures']] features: Features for the image. See `features` below.
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
@@ -432,6 +469,9 @@ class ImageImport(pulumi.CustomResource):
             license_type="Auto",
             image_name=name,
             description=name,
+            features={
+                "nvme_support": "supported",
+            },
             disk_device_mappings=[{
                 "oss_bucket": default_bucket.id,
                 "oss_object": default_bucket_object.id,
@@ -469,6 +509,7 @@ class ImageImport(pulumi.CustomResource):
                  boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
+                 features: pulumi.Input[Optional[Union['ImageImportFeaturesArgs', 'ImageImportFeaturesArgsDict', 'outputs.ImageImportFeatures']]] = None,
                  image_name: pulumi.Input[Optional[_builtins.str]] = None,
                  license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -488,6 +529,7 @@ class ImageImport(pulumi.CustomResource):
             if disk_device_mappings is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_device_mappings'")
             __props__.__dict__["disk_device_mappings"] = disk_device_mappings
+            __props__.__dict__["features"] = features
             __props__.__dict__["image_name"] = image_name
             __props__.__dict__["license_type"] = license_type
             __props__.__dict__["os_type"] = os_type
@@ -506,6 +548,7 @@ class ImageImport(pulumi.CustomResource):
             boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
+            features: pulumi.Input[Optional[Union['ImageImportFeaturesArgs', 'ImageImportFeaturesArgsDict', 'outputs.ImageImportFeatures']]] = None,
             image_name: pulumi.Input[Optional[_builtins.str]] = None,
             license_type: pulumi.Input[Optional[_builtins.str]] = None,
             os_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -521,6 +564,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
+        :param pulumi.Input[Union['ImageImportFeaturesArgs', 'ImageImportFeaturesArgsDict', 'outputs.ImageImportFeatures']] features: Features for the image. See `features` below.
         :param pulumi.Input[_builtins.str] image_name: The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
@@ -535,6 +579,7 @@ class ImageImport(pulumi.CustomResource):
         __props__.__dict__["boot_mode"] = boot_mode
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_device_mappings"] = disk_device_mappings
+        __props__.__dict__["features"] = features
         __props__.__dict__["image_name"] = image_name
         __props__.__dict__["license_type"] = license_type
         __props__.__dict__["os_type"] = os_type
@@ -572,6 +617,14 @@ class ImageImport(pulumi.CustomResource):
         The information about the custom image. See `disk_device_mapping` below.
         """
         return pulumi.get(self, "disk_device_mappings")
+
+    @_builtins.property
+    @pulumi.getter
+    def features(self) -> pulumi.Output['outputs.ImageImportFeatures']:
+        """
+        Features for the image. See `features` below.
+        """
+        return pulumi.get(self, "features")
 
     @_builtins.property
     @pulumi.getter(name="imageName")

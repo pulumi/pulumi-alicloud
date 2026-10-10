@@ -206,6 +206,8 @@ if typing.TYPE_CHECKING:
     iot = __iot
     import pulumi_alicloud.kms as __kms
     kms = __kms
+    import pulumi_alicloud.kvcachestorekvcache as __kvcachestorekvcache
+    kvcachestorekvcache = __kvcachestorekvcache
     import pulumi_alicloud.kvstore as __kvstore
     kvstore = __kvstore
     import pulumi_alicloud.lindorm as __lindorm
@@ -418,6 +420,7 @@ else:
     ims = _utilities.lazy_import('pulumi_alicloud.ims')
     iot = _utilities.lazy_import('pulumi_alicloud.iot')
     kms = _utilities.lazy_import('pulumi_alicloud.kms')
+    kvcachestorekvcache = _utilities.lazy_import('pulumi_alicloud.kvcachestorekvcache')
     kvstore = _utilities.lazy_import('pulumi_alicloud.kvstore')
     lindorm = _utilities.lazy_import('pulumi_alicloud.lindorm')
     live = _utilities.lazy_import('pulumi_alicloud.live')
@@ -6293,6 +6296,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "kvcachestorekvcache/store",
+  "fqn": "pulumi_alicloud.kvcachestorekvcache",
+  "classes": {
+   "alicloud:kvcachestorekvcache/store:Store": "Store"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "kvstore/account",
   "fqn": "pulumi_alicloud.kvstore",
   "classes": {
@@ -8249,6 +8260,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.realtimecompute",
   "classes": {
    "alicloud:realtimecompute/sqlFile:SqlFile": "SqlFile"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "realtimecompute/variable",
+  "fqn": "pulumi_alicloud.realtimecompute",
+  "classes": {
+   "alicloud:realtimecompute/variable:Variable": "Variable"
   }
  },
  {

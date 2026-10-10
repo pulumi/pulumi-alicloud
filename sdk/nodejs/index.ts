@@ -179,6 +179,7 @@ import * as imp from "./imp";
 import * as ims from "./ims";
 import * as iot from "./iot";
 import * as kms from "./kms";
+import * as kvcachestorekvcache from "./kvcachestorekvcache";
 import * as kvstore from "./kvstore";
 import * as lindorm from "./lindorm";
 import * as live from "./live";
@@ -332,6 +333,7 @@ export {
     ims,
     iot,
     kms,
+    kvcachestorekvcache,
     kvstore,
     lindorm,
     live,

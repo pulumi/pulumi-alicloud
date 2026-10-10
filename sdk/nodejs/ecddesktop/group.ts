@@ -146,17 +146,17 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly desktopGroupName: pulumi.Output<string | undefined>;
     /**
-     * The ID of the directory.
+     * The ID of the directory. This parameter is not publicly available yet.
      */
-    declare public readonly directoryId: pulumi.Output<string | undefined>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * The type of the directory.
      */
     declare public /*out*/ readonly directoryType: pulumi.Output<string>;
     /**
-     * The list of IDs of the end users authorized to use the desktop group.
+     * The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      */
-    declare public readonly endUserIds: pulumi.Output<string[]>;
+    declare public readonly endUserIds: pulumi.Output<string[] | undefined>;
     /**
      * The time when the subscription desktop group expires. The time follows the ISO 8601 standard in UTC.
      */
@@ -202,9 +202,9 @@ export class Group extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ownBundleName: pulumi.Output<string>;
     /**
-     * The billing method.
+     * The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
      */
-    declare public /*out*/ readonly payType: pulumi.Output<string>;
+    declare public readonly payType: pulumi.Output<string>;
     /**
      * The ID of the policy group associated with the desktop group.
      */
@@ -218,7 +218,7 @@ export class Group extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly resType: pulumi.Output<number>;
     /**
-     * The ID of the scaling policy.
+     * The ID of the scaling policy. This parameter is not publicly available yet.
      */
     declare public readonly scaleStrategyId: pulumi.Output<string | undefined>;
     /**
@@ -279,17 +279,14 @@ export class Group extends pulumi.CustomResource {
             if (args?.bundleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bundleId'");
             }
-            if (args?.endUserIds === undefined && !opts.urn) {
-                throw new Error("Missing required property 'endUserIds'");
-            }
             if (args?.officeSiteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'officeSiteId'");
             }
             if (args?.policyGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyGroupId'");
             }
-            resourceInputs["allowAutoSetup"] = args?.allowAutoSetup ? pulumi.secret(args.allowAutoSetup) : undefined;
-            resourceInputs["allowBufferCount"] = args?.allowBufferCount ? pulumi.secret(args.allowBufferCount) : undefined;
+            resourceInputs["allowAutoSetup"] = args?.allowAutoSetup;
+            resourceInputs["allowBufferCount"] = args?.allowBufferCount;
             resourceInputs["bundleId"] = args?.bundleId;
             resourceInputs["comments"] = args?.comments;
             resourceInputs["desktopGroupName"] = args?.desktopGroupName;
@@ -299,8 +296,9 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["maxDesktopsCount"] = args?.maxDesktopsCount;
             resourceInputs["minDesktopsCount"] = args?.minDesktopsCount;
             resourceInputs["officeSiteId"] = args?.officeSiteId;
+            resourceInputs["payType"] = args?.payType;
             resourceInputs["policyGroupId"] = args?.policyGroupId;
-            resourceInputs["scaleStrategyId"] = args?.scaleStrategyId ? pulumi.secret(args.scaleStrategyId) : undefined;
+            resourceInputs["scaleStrategyId"] = args?.scaleStrategyId;
             resourceInputs["cpu"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
@@ -314,15 +312,12 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["officeSiteName"] = undefined /*out*/;
             resourceInputs["officeSiteType"] = undefined /*out*/;
             resourceInputs["ownBundleName"] = undefined /*out*/;
-            resourceInputs["payType"] = undefined /*out*/;
             resourceInputs["policyGroupName"] = undefined /*out*/;
             resourceInputs["resType"] = undefined /*out*/;
             resourceInputs["systemDiskCategory"] = undefined /*out*/;
             resourceInputs["systemDiskSize"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["allowAutoSetup", "allowBufferCount", "scaleStrategyId"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -372,7 +367,7 @@ export interface GroupState {
      */
     desktopGroupName?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the directory.
+     * The ID of the directory. This parameter is not publicly available yet.
      */
     directoryId?: pulumi.Input<string | undefined>;
     /**
@@ -380,7 +375,7 @@ export interface GroupState {
      */
     directoryType?: pulumi.Input<string | undefined>;
     /**
-     * The list of IDs of the end users authorized to use the desktop group.
+     * The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      */
     endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -428,7 +423,7 @@ export interface GroupState {
      */
     ownBundleName?: pulumi.Input<string | undefined>;
     /**
-     * The billing method.
+     * The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
      */
     payType?: pulumi.Input<string | undefined>;
     /**
@@ -444,7 +439,7 @@ export interface GroupState {
      */
     resType?: pulumi.Input<number | undefined>;
     /**
-     * The ID of the scaling policy.
+     * The ID of the scaling policy. This parameter is not publicly available yet.
      */
     scaleStrategyId?: pulumi.Input<string | undefined>;
     /**
@@ -482,13 +477,13 @@ export interface GroupArgs {
      */
     desktopGroupName?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the directory.
+     * The ID of the directory. This parameter is not publicly available yet.
      */
     directoryId?: pulumi.Input<string | undefined>;
     /**
-     * The list of IDs of the end users authorized to use the desktop group.
+     * The list of IDs of the end users authorized to use the desktop group. Reordering the IDs does not change the authorized users, and the configured order is kept after apply.
      */
-    endUserIds: pulumi.Input<pulumi.Input<string>[]>;
+    endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention duration of a session after it is disconnected. Unit: milliseconds. Valid values: `180000` to `345600000`. `0` indicates that the session is always retained. If the user does not reconnect within the retention duration, the session is logged off and unsaved data is destroyed.
      */
@@ -506,11 +501,15 @@ export interface GroupArgs {
      */
     officeSiteId: pulumi.Input<string>;
     /**
+     * The billing method of the desktop group. Valid values: `PostPaid`. If it is not set, the desktop group is created with the `PostPaid` billing method. **Note: The parameter is immutable after resource creation.**
+     */
+    payType?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the policy group associated with the desktop group.
      */
     policyGroupId: pulumi.Input<string>;
     /**
-     * The ID of the scaling policy.
+     * The ID of the scaling policy. This parameter is not publicly available yet.
      */
     scaleStrategyId?: pulumi.Input<string | undefined>;
 }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolManagement {
     /**
-     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
      * 
      */
     private @Nullable Boolean autoRepair;
@@ -76,7 +76,7 @@ public final class NodePoolManagement {
 
     private NodePoolManagement() {}
     /**
-     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
      * 
      */
     public Optional<Boolean> autoRepair() {

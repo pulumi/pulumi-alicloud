@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.ImageImportArgs;
 import com.pulumi.alicloud.ecs.inputs.ImageImportState;
 import com.pulumi.alicloud.ecs.outputs.ImageImportDiskDeviceMapping;
+import com.pulumi.alicloud.ecs.outputs.ImageImportFeatures;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -46,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import com.pulumi.alicloud.ecs.ImageImport;
  * import com.pulumi.alicloud.ecs.ImageImportArgs;
+ * import com.pulumi.alicloud.ecs.inputs.ImageImportFeaturesArgs;
  * import com.pulumi.alicloud.ecs.inputs.ImageImportDiskDeviceMappingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -89,6 +91,9 @@ import javax.annotation.Nullable;
  *             .licenseType("Auto")
  *             .imageName(name)
  *             .description(name)
+ *             .features(ImageImportFeaturesArgs.builder()
+ *                 .nvmeSupport("supported")
+ *                 .build())
  *             .diskDeviceMappings(ImageImportDiskDeviceMappingArgs.builder()
  *                 .ossBucket(defaultBucket.id())
  *                 .ossObject(defaultBucketObject.id())
@@ -169,6 +174,20 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings() {
         return this.diskDeviceMappings;
+    }
+    /**
+     * Features for the image. See `features` below.
+     * 
+     */
+    @Export(name="features", refs={ImageImportFeatures.class}, tree="[0]")
+    private Output<ImageImportFeatures> features;
+
+    /**
+     * @return Features for the image. See `features` below.
+     * 
+     */
+    public Output<ImageImportFeatures> features() {
+        return this.features;
     }
     /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).

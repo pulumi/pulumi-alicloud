@@ -17,6 +17,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// Indicates whether client IP addresses are reserved.
         /// </summary>
         public readonly bool EnableClientipPreservation;
+        public readonly bool EnableProxyProtocol;
         /// <summary>
         /// The IP address or domain name of Endpoint N in the endpoint group.
         /// </summary>
@@ -29,10 +30,13 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// Probe Protocol.
         /// </summary>
         public readonly string ProbeProtocol;
+        public readonly string SubAddress;
         /// <summary>
         /// The type of Endpoint N in the endpoint group.
         /// </summary>
         public readonly string Type;
+        public readonly string VpcId;
+        public readonly ImmutableArray<string> VswitchIds;
         /// <summary>
         /// The weight of Endpoint N in the endpoint group.
         /// </summary>
@@ -42,21 +46,33 @@ namespace Pulumi.AliCloud.Ga.Outputs
         private GetEndpointGroupsGroupEndpointConfigurationResult(
             bool enableClientipPreservation,
 
+            bool enableProxyProtocol,
+
             string endpoint,
 
             int probePort,
 
             string probeProtocol,
 
+            string subAddress,
+
             string type,
+
+            string vpcId,
+
+            ImmutableArray<string> vswitchIds,
 
             int weight)
         {
             EnableClientipPreservation = enableClientipPreservation;
+            EnableProxyProtocol = enableProxyProtocol;
             Endpoint = endpoint;
             ProbePort = probePort;
             ProbeProtocol = probeProtocol;
+            SubAddress = subAddress;
             Type = type;
+            VpcId = vpcId;
+            VswitchIds = vswitchIds;
             Weight = weight;
         }
     }

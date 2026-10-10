@@ -45,6 +45,8 @@ __all__ = [
     'ImageFeaturesArgsDict',
     'ImageImportDiskDeviceMappingArgs',
     'ImageImportDiskDeviceMappingArgsDict',
+    'ImageImportFeaturesArgs',
+    'ImageImportFeaturesArgsDict',
     'InstanceCpuOptionsArgs',
     'InstanceCpuOptionsArgsDict',
     'InstanceDataDiskArgs',
@@ -1665,7 +1667,42 @@ class ImageImportDiskDeviceMappingArgs:
         pulumi.set(self, "oss_object", value)
 
 
+class ImageImportFeaturesArgsDict(TypedDict):
+    nvme_support: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+    """
+
+@pulumi.input_type
+class ImageImportFeaturesArgs:
+    def __init__(__self__, *,
+                 nvme_support: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] nvme_support: Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+        """
+        if nvme_support is not None:
+            pulumi.set(__self__, "nvme_support", nvme_support)
+
+    @_builtins.property
+    @pulumi.getter(name="nvmeSupport")
+    def nvme_support(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+        """
+        return pulumi.get(self, "nvme_support")
+
+    @nvme_support.setter
+    def nvme_support(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "nvme_support", value)
+
+
 class InstanceCpuOptionsArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+
+    > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+    """
     core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of partitions in the storage set.
@@ -1682,20 +1719,40 @@ class InstanceCpuOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceCpuOptionsArgs:
     def __init__(__self__, *,
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  core_count: pulumi.Input[Optional[_builtins.int]] = None,
                  threads_per_core: pulumi.Input[Optional[_builtins.int]] = None,
                  topology_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] accelerators: The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+               
+               > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
         :param pulumi.Input[_builtins.int] core_count: The maximum number of partitions in the storage set.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per CPU core.
         :param pulumi.Input[_builtins.str] topology_type: The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if topology_type is not None:
             pulumi.set(__self__, "topology_type", topology_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The CPU accelerators to enable on the instance, such as the Intel vQAT (QuickAssist Technology) accelerator. Valid values are determined by the API and not yet documented; currently `vqat` is the only valid value, and invalid values are rejected by the API at apply time.
+
+        > **NOTE:** `accelerators` can only be set at instance creation and is not reported back by the API. It is only supported by specific instance types, for example the standard 8th-generation Intel instance families (`ecs.g8i`, `ecs.c8i`, `ecs.r8i`, `ecs.hfc8i`, `ecs.hfg8i`) at 2xlarge size and above. Invalid accelerator values are rejected by the API with `InvalidParameter.CpuOptionsAccelerators`, and unsupported instance types with `InvalidInstanceType.NotSupportCpuOptionsAccelerators`.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="coreCount")

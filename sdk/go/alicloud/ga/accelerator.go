@@ -65,6 +65,8 @@ type Accelerator struct {
 	AutoRenewDuration pulumi.IntOutput `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
+	// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	// - `BandwidthPackage`: billed based on bandwidth plans.
 	// - `CDT`: billed based on data transfer.
@@ -79,6 +81,8 @@ type Accelerator struct {
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrOutput `pulumi:"duration"`
+	// The configurations of the acceleration area. See `ipSetConfig` below.
+	IpSetConfig AcceleratorIpSetConfigOutput `pulumi:"ipSetConfig"`
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
@@ -138,6 +142,8 @@ type acceleratorState struct {
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
+	// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+	Bandwidth *int `pulumi:"bandwidth"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	// - `BandwidthPackage`: billed based on bandwidth plans.
 	// - `CDT`: billed based on data transfer.
@@ -152,6 +158,8 @@ type acceleratorState struct {
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration *int `pulumi:"duration"`
+	// The configurations of the acceleration area. See `ipSetConfig` below.
+	IpSetConfig *AcceleratorIpSetConfig `pulumi:"ipSetConfig"`
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
@@ -182,6 +190,8 @@ type AcceleratorState struct {
 	AutoRenewDuration pulumi.IntPtrInput
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
+	// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+	Bandwidth pulumi.IntPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	// - `BandwidthPackage`: billed based on bandwidth plans.
 	// - `CDT`: billed based on data transfer.
@@ -196,6 +206,8 @@ type AcceleratorState struct {
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrInput
+	// The configurations of the acceleration area. See `ipSetConfig` below.
+	IpSetConfig AcceleratorIpSetConfigPtrInput
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
@@ -230,6 +242,8 @@ type acceleratorArgs struct {
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
+	// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+	Bandwidth *int `pulumi:"bandwidth"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	// - `BandwidthPackage`: billed based on bandwidth plans.
 	// - `CDT`: billed based on data transfer.
@@ -244,6 +258,8 @@ type acceleratorArgs struct {
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration *int `pulumi:"duration"`
+	// The configurations of the acceleration area. See `ipSetConfig` below.
+	IpSetConfig *AcceleratorIpSetConfig `pulumi:"ipSetConfig"`
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
@@ -273,6 +289,8 @@ type AcceleratorArgs struct {
 	AutoRenewDuration pulumi.IntPtrInput
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
+	// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+	Bandwidth pulumi.IntPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	// - `BandwidthPackage`: billed based on bandwidth plans.
 	// - `CDT`: billed based on data transfer.
@@ -287,6 +305,8 @@ type AcceleratorArgs struct {
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrInput
+	// The configurations of the acceleration area. See `ipSetConfig` below.
+	IpSetConfig AcceleratorIpSetConfigPtrInput
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
@@ -410,6 +430,11 @@ func (o AcceleratorOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
 }
 
+// The bandwidth of the GA instance. Unit: Mbps. Valid values: `200` to `5000`. **NOTE:** This parameter is required only when `accessMode` in `ipSetConfig` is set to `Anycast`.
+func (o AcceleratorOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
 // The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 // - `BandwidthPackage`: billed based on bandwidth plans.
 // - `CDT`: billed based on data transfer.
@@ -437,6 +462,11 @@ func (o AcceleratorOutput) Description() pulumi.StringPtrOutput {
 // * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 func (o AcceleratorOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// The configurations of the acceleration area. See `ipSetConfig` below.
+func (o AcceleratorOutput) IpSetConfig() AcceleratorIpSetConfigOutput {
+	return o.ApplyT(func(v *Accelerator) AcceleratorIpSetConfigOutput { return v.IpSetConfig }).(AcceleratorIpSetConfigOutput)
 }
 
 // The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.

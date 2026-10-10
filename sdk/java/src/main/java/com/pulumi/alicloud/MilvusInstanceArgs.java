@@ -57,6 +57,21 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Whether auto-renewal is enabled when the instance is created.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Whether auto-renewal is enabled when the instance is created.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -97,16 +112,12 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * DB administrator password, which can be used to log in to attu.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-     * 
      */
     @Import(name="dbAdminPassword")
     private @Nullable Output<String> dbAdminPassword;
 
     /**
      * @return DB administrator password, which can be used to log in to attu.
-     * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> dbAdminPassword() {
@@ -174,6 +185,21 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Whether multi-zone storage is enabled when the instance is created.
+     * 
+     */
+    @Import(name="isMultiAzStorage")
+    private @Nullable Output<Boolean> isMultiAzStorage;
+
+    /**
+     * @return Whether multi-zone storage is enabled when the instance is created.
+     * 
+     */
+    public Optional<Output<Boolean>> isMultiAzStorage() {
+        return Optional.ofNullable(this.isMultiAzStorage);
+    }
+
+    /**
      * Kms Key encryption id, need to be encrypted set to true.
      * 
      */
@@ -186,6 +212,21 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
+     * The number of load replicas configured when the instance is created.
+     * 
+     */
+    @Import(name="loadReplicas")
+    private @Nullable Output<Integer> loadReplicas;
+
+    /**
+     * @return The number of load replicas configured when the instance is created.
+     * 
+     */
+    public Optional<Output<Integer>> loadReplicas() {
+        return Optional.ofNullable(this.loadReplicas);
     }
 
     /**
@@ -269,6 +310,21 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The promotion code used to create the instance.
+     * 
+     */
+    @Import(name="promotionNo")
+    private @Nullable Output<String> promotionNo;
+
+    /**
+     * @return The promotion code used to create the instance.
+     * 
+     */
+    public Optional<Output<String>> promotionNo() {
+        return Optional.ofNullable(this.promotionNo);
+    }
+
+    /**
      * Resource Group ID
      * 
      */
@@ -348,6 +404,7 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
     private MilvusInstanceArgs(MilvusInstanceArgs $) {
         this.autoBackup = $.autoBackup;
         this.autoPay = $.autoPay;
+        this.autoRenew = $.autoRenew;
         this.components = $.components;
         this.configuration = $.configuration;
         this.dbAdminPassword = $.dbAdminPassword;
@@ -355,11 +412,14 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
         this.encrypted = $.encrypted;
         this.ha = $.ha;
         this.instanceName = $.instanceName;
+        this.isMultiAzStorage = $.isMultiAzStorage;
         this.kmsKeyId = $.kmsKeyId;
+        this.loadReplicas = $.loadReplicas;
         this.multiZoneMode = $.multiZoneMode;
         this.paymentDuration = $.paymentDuration;
         this.paymentDurationUnit = $.paymentDurationUnit;
         this.paymentType = $.paymentType;
+        this.promotionNo = $.promotionNo;
         this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -432,6 +492,27 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param autoRenew Whether auto-renewal is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Whether auto-renewal is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
          * @param components Instance component information. Includes Starter Edition/Standard Edition.
          * - Starter version: Array including standalone
          * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -498,8 +579,6 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param dbAdminPassword DB administrator password, which can be used to log in to attu.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-         * 
          * @return builder
          * 
          */
@@ -510,8 +589,6 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dbAdminPassword DB administrator password, which can be used to log in to attu.
-         * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -605,6 +682,27 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param isMultiAzStorage Whether multi-zone storage is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isMultiAzStorage(@Nullable Output<Boolean> isMultiAzStorage) {
+            $.isMultiAzStorage = isMultiAzStorage;
+            return this;
+        }
+
+        /**
+         * @param isMultiAzStorage Whether multi-zone storage is enabled when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isMultiAzStorage(Boolean isMultiAzStorage) {
+            return isMultiAzStorage(Output.of(isMultiAzStorage));
+        }
+
+        /**
          * @param kmsKeyId Kms Key encryption id, need to be encrypted set to true.
          * 
          * @return builder
@@ -623,6 +721,27 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
+        }
+
+        /**
+         * @param loadReplicas The number of load replicas configured when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadReplicas(@Nullable Output<Integer> loadReplicas) {
+            $.loadReplicas = loadReplicas;
+            return this;
+        }
+
+        /**
+         * @param loadReplicas The number of load replicas configured when the instance is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadReplicas(Integer loadReplicas) {
+            return loadReplicas(Output.of(loadReplicas));
         }
 
         /**
@@ -727,6 +846,27 @@ public final class MilvusInstanceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param promotionNo The promotion code used to create the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionNo(@Nullable Output<String> promotionNo) {
+            $.promotionNo = promotionNo;
+            return this;
+        }
+
+        /**
+         * @param promotionNo The promotion code used to create the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionNo(String promotionNo) {
+            return promotionNo(Output.of(promotionNo));
         }
 
         /**

@@ -262,7 +262,7 @@ type GatewayVpnAttachment struct {
 	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
 	// - false: disables NAT traversal.
 	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
-	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
 	//
 	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
 	EnableTunnelsBgp pulumi.BoolOutput `pulumi:"enableTunnelsBgp"`
@@ -359,7 +359,7 @@ type gatewayVpnAttachmentState struct {
 	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
 	// - false: disables NAT traversal.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
 	//
 	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
 	EnableTunnelsBgp *bool `pulumi:"enableTunnelsBgp"`
@@ -421,7 +421,7 @@ type GatewayVpnAttachmentState struct {
 	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
 	// - false: disables NAT traversal.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
 	//
 	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
 	EnableTunnelsBgp pulumi.BoolPtrInput
@@ -485,7 +485,7 @@ type gatewayVpnAttachmentArgs struct {
 	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
 	// - false: disables NAT traversal.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
 	//
 	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
 	EnableTunnelsBgp *bool `pulumi:"enableTunnelsBgp"`
@@ -544,7 +544,7 @@ type GatewayVpnAttachmentArgs struct {
 	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
 	// - false: disables NAT traversal.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
 	//
 	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
 	EnableTunnelsBgp pulumi.BoolPtrInput
@@ -708,7 +708,7 @@ func (o GatewayVpnAttachmentOutput) EnableNatTraversal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
-// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
 //
 // > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
 func (o GatewayVpnAttachmentOutput) EnableTunnelsBgp() pulumi.BoolOutput {

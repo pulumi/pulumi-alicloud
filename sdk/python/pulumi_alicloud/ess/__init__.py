@@ -11,6 +11,7 @@ from .alb_server_group_attachment import *
 from .attachment import *
 from .eci_scaling_configuration import *
 from .get_alarms import *
+from .get_eci_scaling_configurations import *
 from .get_lifecycle_hooks import *
 from .get_notifications import *
 from .get_scaling_configurations import *

@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? InternetIp { get; set; }
 
         /// <summary>
-        /// The role of the tunnel. Valid values: `Master`, `Slave`. The role is determined by the order in which the tunnel is added to the IPsec-VPN connection.
+        /// The role reported by the service. The attachment create and update APIs do not accept this field. Configuration is accepted for backward compatibility but is ignored: it does not affect tunnel identity or trigger an update. State always reflects the role returned by the service.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigGetArgs>? TunnelIkeConfig { get; set; }
 
         /// <summary>
-        /// The order in which the tunnel was created.
+        /// The logical index identifying the tunnel. Each tunnel must have a unique index; configuration block order does not determine the index.
         /// </summary>
         [Input("tunnelIndex", required: true)]
         public Input<int> TunnelIndex { get; set; } = null!;

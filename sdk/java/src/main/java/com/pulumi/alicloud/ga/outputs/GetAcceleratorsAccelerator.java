@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetAcceleratorsAcceleratorBasicBandwidthPackage;
 import com.pulumi.alicloud.ga.outputs.GetAcceleratorsAcceleratorCrossDomainBandwidthPackage;
+import com.pulumi.alicloud.ga.outputs.GetAcceleratorsAcceleratorIpSetConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -24,6 +25,18 @@ public final class GetAcceleratorsAccelerator {
      * 
      */
     private String acceleratorName;
+    /**
+     * @return Bandwidth value of cross-domain acceleration package.
+     * 
+     */
+    private Integer bandwidth;
+    /**
+     * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
+     * 
+     */
+    private String bandwidthBillingType;
     /**
      * @return Details of the basic bandwidth package bound to the global acceleration instance.
      * 
@@ -64,6 +77,7 @@ public final class GetAcceleratorsAccelerator {
      * 
      */
     private String id;
+    private List<GetAcceleratorsAcceleratorIpSetConfig> ipSetConfigs;
     /**
      * @return The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
      * 
@@ -99,6 +113,22 @@ public final class GetAcceleratorsAccelerator {
      */
     public String acceleratorName() {
         return this.acceleratorName;
+    }
+    /**
+     * @return Bandwidth value of cross-domain acceleration package.
+     * 
+     */
+    public Integer bandwidth() {
+        return this.bandwidth;
+    }
+    /**
+     * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
+     * 
+     */
+    public String bandwidthBillingType() {
+        return this.bandwidthBillingType;
     }
     /**
      * @return Details of the basic bandwidth package bound to the global acceleration instance.
@@ -156,6 +186,9 @@ public final class GetAcceleratorsAccelerator {
     public String id() {
         return this.id;
     }
+    public List<GetAcceleratorsAcceleratorIpSetConfig> ipSetConfigs() {
+        return this.ipSetConfigs;
+    }
     /**
      * @return The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
      * 
@@ -196,6 +229,8 @@ public final class GetAcceleratorsAccelerator {
     public static final class Builder {
         private String acceleratorId;
         private String acceleratorName;
+        private Integer bandwidth;
+        private String bandwidthBillingType;
         private List<GetAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages;
         private String cenId;
         private List<GetAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages;
@@ -204,6 +239,7 @@ public final class GetAcceleratorsAccelerator {
         private String dnsName;
         private Integer expiredTime;
         private String id;
+        private List<GetAcceleratorsAcceleratorIpSetConfig> ipSetConfigs;
         private String paymentType;
         private String secondDnsName;
         private String spec;
@@ -213,6 +249,8 @@ public final class GetAcceleratorsAccelerator {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
     	      this.acceleratorName = defaults.acceleratorName;
+    	      this.bandwidth = defaults.bandwidth;
+    	      this.bandwidthBillingType = defaults.bandwidthBillingType;
     	      this.basicBandwidthPackages = defaults.basicBandwidthPackages;
     	      this.cenId = defaults.cenId;
     	      this.crossDomainBandwidthPackages = defaults.crossDomainBandwidthPackages;
@@ -221,6 +259,7 @@ public final class GetAcceleratorsAccelerator {
     	      this.dnsName = defaults.dnsName;
     	      this.expiredTime = defaults.expiredTime;
     	      this.id = defaults.id;
+    	      this.ipSetConfigs = defaults.ipSetConfigs;
     	      this.paymentType = defaults.paymentType;
     	      this.secondDnsName = defaults.secondDnsName;
     	      this.spec = defaults.spec;
@@ -241,6 +280,22 @@ public final class GetAcceleratorsAccelerator {
               throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "acceleratorName");
             }
             this.acceleratorName = acceleratorName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bandwidth(Integer bandwidth) {
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bandwidthBillingType(String bandwidthBillingType) {
+            if (bandwidthBillingType == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "bandwidthBillingType");
+            }
+            this.bandwidthBillingType = bandwidthBillingType;
             return this;
         }
         @CustomType.Setter
@@ -314,6 +369,17 @@ public final class GetAcceleratorsAccelerator {
             return this;
         }
         @CustomType.Setter
+        public Builder ipSetConfigs(List<GetAcceleratorsAcceleratorIpSetConfig> ipSetConfigs) {
+            if (ipSetConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "ipSetConfigs");
+            }
+            this.ipSetConfigs = ipSetConfigs;
+            return this;
+        }
+        public Builder ipSetConfigs(GetAcceleratorsAcceleratorIpSetConfig... ipSetConfigs) {
+            return ipSetConfigs(List.of(ipSetConfigs));
+        }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             if (paymentType == null) {
               throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "paymentType");
@@ -349,6 +415,8 @@ public final class GetAcceleratorsAccelerator {
             final var _resultValue = new GetAcceleratorsAccelerator();
             _resultValue.acceleratorId = acceleratorId;
             _resultValue.acceleratorName = acceleratorName;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.bandwidthBillingType = bandwidthBillingType;
             _resultValue.basicBandwidthPackages = basicBandwidthPackages;
             _resultValue.cenId = cenId;
             _resultValue.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
@@ -357,6 +425,7 @@ public final class GetAcceleratorsAccelerator {
             _resultValue.dnsName = dnsName;
             _resultValue.expiredTime = expiredTime;
             _resultValue.id = id;
+            _resultValue.ipSetConfigs = ipSetConfigs;
             _resultValue.paymentType = paymentType;
             _resultValue.secondDnsName = secondDnsName;
             _resultValue.spec = spec;

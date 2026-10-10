@@ -81,6 +81,9 @@ class GetServiceResult:
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[_builtins.str]:
+        """
+        The current billing method of the opened service, read back from the CDN service.
+        """
         return pulumi.get(self, "internet_charge_type")
 
     @_builtins.property
@@ -137,9 +140,8 @@ def get_service(enable: Optional[_builtins.str] = None,
 
 
     :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
-    :param _builtins.str internet_charge_type: The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-           It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
-           As a note, the updated internet charge type will be effective in the next day zero time.
+    :param _builtins.str internet_charge_type: The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+           It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
            
            > **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
     """
@@ -179,9 +181,8 @@ def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] =
 
 
     :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
-    :param _builtins.str internet_charge_type: The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-           It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
-           As a note, the updated internet charge type will be effective in the next day zero time.
+    :param _builtins.str internet_charge_type: The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+           It is required when `enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
            
            > **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
     """

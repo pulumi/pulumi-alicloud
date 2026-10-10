@@ -90,11 +90,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// The certificate type.
-        /// - cas (Certificate Center Certificate)
-        /// - upload (custom upload certificate)
-        /// - free( Free certificate).
-        /// 
-        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
         [Output("createdType")]
         public Output<string> CreatedType { get; private set; } = null!;
@@ -134,7 +129,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        /// The certificate type. Valid values:
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -211,11 +206,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// The certificate type.
-        /// - cas (Certificate Center Certificate)
-        /// - upload (custom upload certificate)
-        /// - free( Free certificate).
-        /// 
-        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
         [Input("createdType", required: true)]
         public Input<string> CreatedType { get; set; } = null!;
@@ -249,7 +239,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        /// The certificate type. Valid values:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -294,11 +284,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// The certificate type.
-        /// - cas (Certificate Center Certificate)
-        /// - upload (custom upload certificate)
-        /// - free( Free certificate).
-        /// 
-        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
         [Input("createdType")]
         public Input<string>? CreatedType { get; set; }
@@ -338,7 +323,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
+        /// The certificate type. Valid values:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

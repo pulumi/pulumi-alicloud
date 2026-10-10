@@ -151,11 +151,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     }
     /**
      * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      * 
      */
     @Export(name="createdType", refs={String.class}, tree="[0]")
@@ -163,11 +158,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     * 
-     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      * 
      */
     public Output<String> createdType() {
@@ -252,14 +242,14 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
+     * The certificate type. Valid values:
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
+     * @return The certificate type. Valid values:
      * 
      */
     public Output<String> type() {

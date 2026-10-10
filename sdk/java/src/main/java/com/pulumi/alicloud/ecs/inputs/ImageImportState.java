@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.alicloud.ecs.inputs.ImageImportDiskDeviceMappingArgs;
+import com.pulumi.alicloud.ecs.inputs.ImageImportFeaturesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -78,6 +79,21 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Features for the image. See `features` below.
+     * 
+     */
+    @Import(name="features")
+    private @Nullable Output<ImageImportFeaturesArgs> features;
+
+    /**
+     * @return Features for the image. See `features` below.
+     * 
+     */
+    public Optional<Output<ImageImportFeaturesArgs>> features() {
+        return Optional.ofNullable(this.features);
+    }
+
+    /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
@@ -146,6 +162,7 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         this.bootMode = $.bootMode;
         this.description = $.description;
         this.diskDeviceMappings = $.diskDeviceMappings;
+        this.features = $.features;
         this.imageName = $.imageName;
         this.licenseType = $.licenseType;
         this.osType = $.osType;
@@ -262,6 +279,27 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskDeviceMappings(ImageImportDiskDeviceMappingArgs... diskDeviceMappings) {
             return diskDeviceMappings(List.of(diskDeviceMappings));
+        }
+
+        /**
+         * @param features Features for the image. See `features` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(@Nullable Output<ImageImportFeaturesArgs> features) {
+            $.features = features;
+            return this;
+        }
+
+        /**
+         * @param features Features for the image. See `features` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(ImageImportFeaturesArgs features) {
+            return features(Output.of(features));
         }
 
         /**

@@ -20,6 +20,11 @@ export const getSqlFiles: typeof import("./getSqlFiles").getSqlFiles = null as a
 export const getSqlFilesOutput: typeof import("./getSqlFiles").getSqlFilesOutput = null as any;
 utilities.lazyLoad(exports, ["getSqlFiles","getSqlFilesOutput"], () => require("./getSqlFiles"));
 
+export { GetVariablesArgs, GetVariablesResult, GetVariablesOutputArgs } from "./getVariables";
+export const getVariables: typeof import("./getVariables").getVariables = null as any;
+export const getVariablesOutput: typeof import("./getVariables").getVariablesOutput = null as any;
+utilities.lazyLoad(exports, ["getVariables","getVariablesOutput"], () => require("./getVariables"));
+
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
@@ -34,6 +39,11 @@ export { SqlFileArgs, SqlFileState } from "./sqlFile";
 export type SqlFile = import("./sqlFile").SqlFile;
 export const SqlFile: typeof import("./sqlFile").SqlFile = null as any;
 utilities.lazyLoad(exports, ["SqlFile"], () => require("./sqlFile"));
+
+export { VariableArgs, VariableState } from "./variable";
+export type Variable = import("./variable").Variable;
+export const Variable: typeof import("./variable").Variable = null as any;
+utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
 
 export { VvpInstanceArgs, VvpInstanceState } from "./vvpInstance";
 export type VvpInstance = import("./vvpInstance").VvpInstance;
@@ -53,6 +63,8 @@ const _module = {
                 return new Member(name, <any>undefined, { urn })
             case "alicloud:realtimecompute/sqlFile:SqlFile":
                 return new SqlFile(name, <any>undefined, { urn })
+            case "alicloud:realtimecompute/variable:Variable":
+                return new Variable(name, <any>undefined, { urn })
             case "alicloud:realtimecompute/vvpInstance:VvpInstance":
                 return new VvpInstance(name, <any>undefined, { urn })
             default:
@@ -64,4 +76,5 @@ pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/deployment", 
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/job", _module)
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/member", _module)
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/sqlFile", _module)
+pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/variable", _module)
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/vvpInstance", _module)

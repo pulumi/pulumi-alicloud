@@ -203,6 +203,30 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.healthCheck;
     }
     /**
+     * The traffic scheduling policy for dual-stack server groups. Valid values:
+     * 
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     * 
+     */
+    @Export(name="ipVersionAffinityMode", refs={String.class}, tree="[0]")
+    private Output<String> ipVersionAffinityMode;
+
+    /**
+     * @return The traffic scheduling policy for dual-stack server groups. Valid values:
+     * 
+     * - `NonAffinity` (default): forwards requests to healthy backends regardless of IP version.
+     * - `Affinity`: IPv4 requests are forwarded only to IPv4 backends; IPv6 requests are forwarded only to IPv6 backends.
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when `addressIpVersion` is set to `DualStack`.
+     * 
+     */
+    public Output<String> ipVersionAffinityMode() {
+        return this.ipVersionAffinityMode;
+    }
+    /**
      * Specifies whether to enable client IP preservation. Valid values:
      * 
      */

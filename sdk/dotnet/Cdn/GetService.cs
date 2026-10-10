@@ -109,9 +109,8 @@ namespace Pulumi.AliCloud.Cdn
         public string? Enable { get; set; }
 
         /// <summary>
-        /// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-        /// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `InternetChargeType`.
-        /// As a note, the updated internet charge type will be effective in the next day zero time.
+        /// The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+        /// It is required when `Enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
         /// </summary>
@@ -133,9 +132,8 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? Enable { get; set; }
 
         /// <summary>
-        /// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-        /// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `InternetChargeType`.
-        /// As a note, the updated internet charge type will be effective in the next day zero time.
+        /// The billing method used when this data source opens the CDN service. Valid values: `PayByTraffic` and `PayByBandwidth`. Defaults to `PayByTraffic`.
+        /// It is required when `Enable` is `On`. It only takes effect when the service is opened; this data source never changes the billing method of an already opened service. To change the billing method of an opened service, use the CDN console or the `ModifyCdnService` API instead.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
         /// </summary>
@@ -165,6 +163,9 @@ namespace Pulumi.AliCloud.Cdn
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The current billing method of the opened service, read back from the CDN service.
+        /// </summary>
         public readonly string? InternetChargeType;
         /// <summary>
         /// The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.

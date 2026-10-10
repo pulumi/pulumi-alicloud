@@ -364,7 +364,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
         return this.enableNatTraversal;
     }
     /**
-     * You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+     * You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
      * 
      * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
      * 
@@ -373,7 +373,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
     private Output<Boolean> enableTunnelsBgp;
 
     /**
-     * @return You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+     * @return You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default). When enabling BGP in-place (`false` to `true`), the `tunnelBgpConfig` blocks in `tunnelOptionsSpecification` are submitted together so the API receives the required BGP configuration.
      * 
      * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
      * 

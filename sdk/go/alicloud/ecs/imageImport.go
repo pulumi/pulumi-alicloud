@@ -74,6 +74,9 @@ import (
 //				LicenseType:  pulumi.String("Auto"),
 //				ImageName:    pulumi.String(name),
 //				Description:  pulumi.String(name),
+//				Features: &ecs.ImageImportFeaturesArgs{
+//					NvmeSupport: pulumi.String("supported"),
+//				},
 //				DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
 //					&ecs.ImageImportDiskDeviceMappingArgs{
 //						OssBucket:     defaultBucket.ID().ToIDOutput().ToStringOutput(),
@@ -111,6 +114,8 @@ type ImageImport struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The information about the custom image. See `diskDeviceMapping` below.
 	DiskDeviceMappings ImageImportDiskDeviceMappingArrayOutput `pulumi:"diskDeviceMappings"`
+	// Features for the image. See `features` below.
+	Features ImageImportFeaturesOutput `pulumi:"features"`
 	// The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
@@ -163,6 +168,8 @@ type imageImportState struct {
 	Description *string `pulumi:"description"`
 	// The information about the custom image. See `diskDeviceMapping` below.
 	DiskDeviceMappings []ImageImportDiskDeviceMapping `pulumi:"diskDeviceMappings"`
+	// Features for the image. See `features` below.
+	Features *ImageImportFeatures `pulumi:"features"`
 	// The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	ImageName *string `pulumi:"imageName"`
 	// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
@@ -183,6 +190,8 @@ type ImageImportState struct {
 	Description pulumi.StringPtrInput
 	// The information about the custom image. See `diskDeviceMapping` below.
 	DiskDeviceMappings ImageImportDiskDeviceMappingArrayInput
+	// Features for the image. See `features` below.
+	Features ImageImportFeaturesPtrInput
 	// The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	ImageName pulumi.StringPtrInput
 	// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
@@ -207,6 +216,8 @@ type imageImportArgs struct {
 	Description *string `pulumi:"description"`
 	// The information about the custom image. See `diskDeviceMapping` below.
 	DiskDeviceMappings []ImageImportDiskDeviceMapping `pulumi:"diskDeviceMappings"`
+	// Features for the image. See `features` below.
+	Features *ImageImportFeatures `pulumi:"features"`
 	// The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	ImageName *string `pulumi:"imageName"`
 	// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
@@ -228,6 +239,8 @@ type ImageImportArgs struct {
 	Description pulumi.StringPtrInput
 	// The information about the custom image. See `diskDeviceMapping` below.
 	DiskDeviceMappings ImageImportDiskDeviceMappingArrayInput
+	// Features for the image. See `features` below.
+	Features ImageImportFeaturesPtrInput
 	// The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	ImageName pulumi.StringPtrInput
 	// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
@@ -344,6 +357,11 @@ func (o ImageImportOutput) Description() pulumi.StringPtrOutput {
 // The information about the custom image. See `diskDeviceMapping` below.
 func (o ImageImportOutput) DiskDeviceMappings() ImageImportDiskDeviceMappingArrayOutput {
 	return o.ApplyT(func(v *ImageImport) ImageImportDiskDeviceMappingArrayOutput { return v.DiskDeviceMappings }).(ImageImportDiskDeviceMappingArrayOutput)
+}
+
+// Features for the image. See `features` below.
+func (o ImageImportOutput) Features() ImageImportFeaturesOutput {
+	return o.ApplyT(func(v *ImageImport) ImageImportFeaturesOutput { return v.Features }).(ImageImportFeaturesOutput)
 }
 
 // The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).

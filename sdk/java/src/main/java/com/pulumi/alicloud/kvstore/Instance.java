@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.14.0.
  * 
+ * &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `paymentType = &#34;PostPaid&#34;` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -267,13 +269,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * ### Deleting `alicloud.kvstore.Instance` or removing it from your configuration
- * 
- * The `alicloud.kvstore.Instance` resource allows you to manage `paymentType = &#34;Prepaid&#34;` db instance, but Terraform cannot destroy it.
- * From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
- * from your state file and management, but will not destroy the DB Instance.
- * You can resume managing the subscription db instance via the AlibabaCloud Console.
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 

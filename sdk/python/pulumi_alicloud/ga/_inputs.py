@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AcceleratorIpSetConfigArgs',
+    'AcceleratorIpSetConfigArgsDict',
     'AclAclEntryArgs',
     'AclAclEntryArgsDict',
     'CustomRoutingEndpointTrafficPolicyPortRangeArgs',
@@ -42,6 +44,38 @@ __all__ = [
     'ListenerPortRangeArgs',
     'ListenerPortRangeArgsDict',
 ]
+
+class AcceleratorIpSetConfigArgsDict(TypedDict):
+    access_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The access mode of the acceleration area. Valid value:
+    - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+    """
+
+@pulumi.input_type
+class AcceleratorIpSetConfigArgs:
+    def __init__(__self__, *,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_mode: The access mode of the acceleration area. Valid value:
+               - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+        """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The access mode of the acceleration area. Valid value:
+        - `Anycast`: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_mode", value)
+
 
 class AclAclEntryArgsDict(TypedDict):
     entry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -151,7 +185,7 @@ class EndpointGroupEndpointConfigurationArgsDict(TypedDict):
     The type of Endpoint N in the endpoint group. Valid values:
     - `Domain`: A custom domain name.
     - `Ip`: A custom IP address.
-    - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+    - `IpTarget`: (Available since v1.262.0) a custom private IP address.
     - `PublicIp`: An Alibaba Cloud public IP address.
     - `ECS`: An Elastic Compute Service (ECS) instance.
     - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -180,11 +214,11 @@ class EndpointGroupEndpointConfigurationArgsDict(TypedDict):
     """
     vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The ID of the VPC.
+    The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
     """
     vswitch_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    The IDs of vSwitches that are deployed in the VPC.
+    A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
     """
 
 @pulumi.input_type
@@ -203,7 +237,7 @@ class EndpointGroupEndpointConfigurationArgs:
         :param pulumi.Input[_builtins.str] type: The type of Endpoint N in the endpoint group. Valid values:
                - `Domain`: A custom domain name.
                - `Ip`: A custom IP address.
-               - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+               - `IpTarget`: (Available since v1.262.0) a custom private IP address.
                - `PublicIp`: An Alibaba Cloud public IP address.
                - `ECS`: An Elastic Compute Service (ECS) instance.
                - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -217,8 +251,8 @@ class EndpointGroupEndpointConfigurationArgs:
         :param pulumi.Input[_builtins.bool] enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] sub_address: The private IP address of the ENI.
                > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of vSwitches that are deployed in the VPC.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "type", type)
@@ -253,7 +287,7 @@ class EndpointGroupEndpointConfigurationArgs:
         The type of Endpoint N in the endpoint group. Valid values:
         - `Domain`: A custom domain name.
         - `Ip`: A custom IP address.
-        - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+        - `IpTarget`: (Available since v1.262.0) a custom private IP address.
         - `PublicIp`: An Alibaba Cloud public IP address.
         - `ECS`: An Elastic Compute Service (ECS) instance.
         - `SLB`: A Classic Load Balancer (CLB) instance.
@@ -322,7 +356,7 @@ class EndpointGroupEndpointConfigurationArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the VPC.
+        The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -334,7 +368,7 @@ class EndpointGroupEndpointConfigurationArgs:
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of vSwitches that are deployed in the VPC.
+        A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
         """
         return pulumi.get(self, "vswitch_ids")
 
