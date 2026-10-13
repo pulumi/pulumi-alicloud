@@ -17,24 +17,14 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of availability zone.
         /// </summary>
         public readonly string AvailabilityZone;
-        public readonly string ClusterNetworkType;
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// A list of kubernetes cluster connection information.
         /// </summary>
-        public readonly Outputs.GetManagedKubernetesClustersClusterConnectionsResult Connections;
+        public readonly ImmutableArray<Outputs.GetManagedKubernetesClustersClusterConnectionResult> Connections;
         /// <summary>
         /// ID of the node.
         /// </summary>
         public readonly string Id;
-        public readonly string ImageId;
-        /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first.
-        /// </summary>
-        public readonly string KeyName;
-        /// <summary>
-        /// A list of one element containing information about the associated log store. It contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetManagedKubernetesClustersClusterLogConfigResult> LogConfigs;
         /// <summary>
         /// Node name.
         /// </summary>
@@ -43,7 +33,6 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of nat gateway used to launch kubernetes cluster.
         /// </summary>
         public readonly string NatGatewayId;
-        public readonly string PodCidr;
         /// <summary>
         /// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
         /// </summary>
@@ -52,8 +41,6 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of security group where the current cluster worker node is located.
         /// </summary>
         public readonly string SecurityGroupId;
-        public readonly string ServiceCidr;
-        public readonly bool SlbInternetEnabled;
         /// <summary>
         /// (Available since v1.245.0) The state of cluster.
         /// </summary>
@@ -63,117 +50,42 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The ID of VSwitches where the current cluster is located.
-        /// </summary>
-        public readonly ImmutableArray<string> VswitchIds;
-        public readonly bool WorkerAutoRenew;
-        public readonly int WorkerAutoRenewPeriod;
-        public readonly string WorkerDataDiskCategory;
-        public readonly int WorkerDataDiskSize;
-        public readonly string WorkerDiskCategory;
-        public readonly int WorkerDiskSize;
-        public readonly string WorkerInstanceChargeType;
-        public readonly ImmutableArray<string> WorkerInstanceTypes;
-        /// <summary>
         /// List of cluster worker nodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetManagedKubernetesClustersClusterWorkerNodeResult> WorkerNodes;
-        /// <summary>
-        /// The ECS instance node number in the current container cluster.
-        /// </summary>
-        public readonly ImmutableArray<int> WorkerNumbers;
-        public readonly int WorkerPeriod;
-        public readonly string WorkerPeriodUnit;
 
         [OutputConstructor]
         private GetManagedKubernetesClustersClusterResult(
             string availabilityZone,
 
-            string clusterNetworkType,
-
-            Outputs.GetManagedKubernetesClustersClusterConnectionsResult connections,
+            ImmutableArray<Outputs.GetManagedKubernetesClustersClusterConnectionResult> connections,
 
             string id,
-
-            string imageId,
-
-            string keyName,
-
-            ImmutableArray<Outputs.GetManagedKubernetesClustersClusterLogConfigResult> logConfigs,
 
             string name,
 
             string natGatewayId,
 
-            string podCidr,
-
             Outputs.GetManagedKubernetesClustersClusterRrsaConfigResult rrsaConfig,
 
             string securityGroupId,
-
-            string serviceCidr,
-
-            bool slbInternetEnabled,
 
             string state,
 
             string vpcId,
 
-            ImmutableArray<string> vswitchIds,
-
-            bool workerAutoRenew,
-
-            int workerAutoRenewPeriod,
-
-            string workerDataDiskCategory,
-
-            int workerDataDiskSize,
-
-            string workerDiskCategory,
-
-            int workerDiskSize,
-
-            string workerInstanceChargeType,
-
-            ImmutableArray<string> workerInstanceTypes,
-
-            ImmutableArray<Outputs.GetManagedKubernetesClustersClusterWorkerNodeResult> workerNodes,
-
-            ImmutableArray<int> workerNumbers,
-
-            int workerPeriod,
-
-            string workerPeriodUnit)
+            ImmutableArray<Outputs.GetManagedKubernetesClustersClusterWorkerNodeResult> workerNodes)
         {
             AvailabilityZone = availabilityZone;
-            ClusterNetworkType = clusterNetworkType;
             Connections = connections;
             Id = id;
-            ImageId = imageId;
-            KeyName = keyName;
-            LogConfigs = logConfigs;
             Name = name;
             NatGatewayId = natGatewayId;
-            PodCidr = podCidr;
             RrsaConfig = rrsaConfig;
             SecurityGroupId = securityGroupId;
-            ServiceCidr = serviceCidr;
-            SlbInternetEnabled = slbInternetEnabled;
             State = state;
             VpcId = vpcId;
-            VswitchIds = vswitchIds;
-            WorkerAutoRenew = workerAutoRenew;
-            WorkerAutoRenewPeriod = workerAutoRenewPeriod;
-            WorkerDataDiskCategory = workerDataDiskCategory;
-            WorkerDataDiskSize = workerDataDiskSize;
-            WorkerDiskCategory = workerDiskCategory;
-            WorkerDiskSize = workerDiskSize;
-            WorkerInstanceChargeType = workerInstanceChargeType;
-            WorkerInstanceTypes = workerInstanceTypes;
             WorkerNodes = workerNodes;
-            WorkerNumbers = workerNumbers;
-            WorkerPeriod = workerPeriod;
-            WorkerPeriodUnit = workerPeriodUnit;
         }
     }
 }

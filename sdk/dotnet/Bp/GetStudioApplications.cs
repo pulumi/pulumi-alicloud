@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Bp
         /// <summary>
         /// This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.192.0+.
+        /// &gt; **NOTE:** Available since v1.192.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Bp
         /// <summary>
         /// This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.192.0+.
+        /// &gt; **NOTE:** Available since v1.192.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Bp
         /// <summary>
         /// This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.192.0+.
+        /// &gt; **NOTE:** Available since v1.192.0.
         /// 
         /// ## Example Usage
         /// 

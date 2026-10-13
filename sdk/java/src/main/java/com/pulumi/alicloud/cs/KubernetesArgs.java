@@ -702,18 +702,18 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
-    @Import(name="runtime")
-    private @Nullable Output<KubernetesRuntimeArgs> runtime;
+    @Import(name="runtimes")
+    private @Nullable Output<List<KubernetesRuntimeArgs>> runtimes;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * @return A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
-    public Optional<Output<KubernetesRuntimeArgs>> runtime() {
-        return Optional.ofNullable(this.runtime);
+    public Optional<Output<List<KubernetesRuntimeArgs>>> runtimes() {
+        return Optional.ofNullable(this.runtimes);
     }
 
     /**
@@ -910,7 +910,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
-        this.runtime = $.runtime;
+        this.runtimes = $.runtimes;
         this.securityGroupId = $.securityGroupId;
         this.serviceAccountIssuer = $.serviceAccountIssuer;
         this.serviceCidr = $.serviceCidr;
@@ -1951,24 +1951,34 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+         * @param runtimes A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(@Nullable Output<KubernetesRuntimeArgs> runtime) {
-            $.runtime = runtime;
+        public Builder runtimes(@Nullable Output<List<KubernetesRuntimeArgs>> runtimes) {
+            $.runtimes = runtimes;
             return this;
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+         * @param runtimes A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(KubernetesRuntimeArgs runtime) {
-            return runtime(Output.of(runtime));
+        public Builder runtimes(List<KubernetesRuntimeArgs> runtimes) {
+            return runtimes(Output.of(runtimes));
+        }
+
+        /**
+         * @param runtimes A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtimes(KubernetesRuntimeArgs... runtimes) {
+            return runtimes(List.of(runtimes));
         }
 
         /**

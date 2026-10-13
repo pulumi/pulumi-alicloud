@@ -347,9 +347,10 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The storage type.
-     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
      * - When FileSystemType = extreme, the value is standard or advance.
      * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+     * - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
      * 
      */
     @Import(name="storageType", required=true)
@@ -357,9 +358,10 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The storage type.
-     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
      * - When FileSystemType = extreme, the value is standard or advance.
      * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+     * - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
      * 
      */
     public Output<String> storageType() {
@@ -936,9 +938,10 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageType The storage type.
-         * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+         * - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
          * - When FileSystemType = extreme, the value is standard or advance.
          * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+         * - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
          * 
          * @return builder
          * 
@@ -950,9 +953,10 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageType The storage type.
-         * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+         * - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
          * - When FileSystemType = extreme, the value is standard or advance.
          * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+         * - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
          * 
          * @return builder
          * 

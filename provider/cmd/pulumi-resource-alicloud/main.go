@@ -21,8 +21,8 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 
-	alicloud "github.com/pulumi/pulumi-alicloud/provider/v3"
-	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
+	alicloud "github.com/pulumi/pulumi-alicloud/provider/v4"
+	"github.com/pulumi/pulumi-alicloud/provider/v4/pkg/version"
 )
 
 //go:embed schema-embed.json

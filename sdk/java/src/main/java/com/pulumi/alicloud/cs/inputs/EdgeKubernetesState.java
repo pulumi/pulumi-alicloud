@@ -5,7 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesCertificateAuthorityArgs;
-import com.pulumi.alicloud.cs.inputs.EdgeKubernetesConnectionsArgs;
+import com.pulumi.alicloud.cs.inputs.EdgeKubernetesConnectionArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesLogConfigArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesRuntimeArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerDataDiskArgs;
@@ -57,26 +57,26 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    @Import(name="certificateAuthority")
-    private @Nullable Output<EdgeKubernetesCertificateAuthorityArgs> certificateAuthority;
+    @Import(name="certificateAuthorities")
+    private @Nullable Output<List<EdgeKubernetesCertificateAuthorityArgs>> certificateAuthorities;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    public Optional<Output<EdgeKubernetesCertificateAuthorityArgs>> certificateAuthority() {
-        return Optional.ofNullable(this.certificateAuthority);
+    public Optional<Output<List<EdgeKubernetesCertificateAuthorityArgs>>> certificateAuthorities() {
+        return Optional.ofNullable(this.certificateAuthorities);
     }
 
     /**
@@ -172,17 +172,17 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
-    private @Nullable Output<EdgeKubernetesConnectionsArgs> connections;
+    private @Nullable Output<List<EdgeKubernetesConnectionArgs>> connections;
 
     /**
-     * @return (Map) Map of kubernetes cluster connection information.
+     * @return (List) A list of kubernetes cluster connection information.
      * 
      */
-    public Optional<Output<EdgeKubernetesConnectionsArgs>> connections() {
+    public Optional<Output<List<EdgeKubernetesConnectionArgs>>> connections() {
         return Optional.ofNullable(this.connections);
     }
 
@@ -479,18 +479,18 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
-    @Import(name="runtime")
-    private @Nullable Output<EdgeKubernetesRuntimeArgs> runtime;
+    @Import(name="runtimes")
+    private @Nullable Output<List<EdgeKubernetesRuntimeArgs>> runtimes;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * @return A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
-    public Optional<Output<EdgeKubernetesRuntimeArgs>> runtime() {
-        return Optional.ofNullable(this.runtime);
+    public Optional<Output<List<EdgeKubernetesRuntimeArgs>>> runtimes() {
+        return Optional.ofNullable(this.runtimes);
     }
 
     /**
@@ -540,6 +540,13 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Boolean>> skipSetCertificateAuthority() {
         return Optional.ofNullable(this.skipSetCertificateAuthority);
+    }
+
+    @Import(name="slbId")
+    private @Nullable Output<String> slbId;
+
+    public Optional<Output<String>> slbId() {
+        return Optional.ofNullable(this.slbId);
     }
 
     /**
@@ -825,7 +832,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     private EdgeKubernetesState(EdgeKubernetesState $) {
         this.addons = $.addons;
         this.availabilityZone = $.availabilityZone;
-        this.certificateAuthority = $.certificateAuthority;
+        this.certificateAuthorities = $.certificateAuthorities;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
         this.clusterCaCert = $.clusterCaCert;
@@ -849,10 +856,11 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
-        this.runtime = $.runtime;
+        this.runtimes = $.runtimes;
         this.securityGroupId = $.securityGroupId;
         this.serviceCidr = $.serviceCidr;
         this.skipSetCertificateAuthority = $.skipSetCertificateAuthority;
+        this.slbId = $.slbId;
         this.slbInternet = $.slbInternet;
         this.slbInternetEnabled = $.slbInternetEnabled;
         this.slbIntranet = $.slbIntranet;
@@ -944,7 +952,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -953,13 +961,13 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          * 
          */
         @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-        public Builder certificateAuthority(@Nullable Output<EdgeKubernetesCertificateAuthorityArgs> certificateAuthority) {
-            $.certificateAuthority = certificateAuthority;
+        public Builder certificateAuthorities(@Nullable Output<List<EdgeKubernetesCertificateAuthorityArgs>> certificateAuthorities) {
+            $.certificateAuthorities = certificateAuthorities;
             return this;
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -968,8 +976,22 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          * 
          */
         @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-        public Builder certificateAuthority(EdgeKubernetesCertificateAuthorityArgs certificateAuthority) {
-            return certificateAuthority(Output.of(certificateAuthority));
+        public Builder certificateAuthorities(List<EdgeKubernetesCertificateAuthorityArgs> certificateAuthorities) {
+            return certificateAuthorities(Output.of(certificateAuthorities));
+        }
+
+        /**
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+         * 
+         */
+        @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+        public Builder certificateAuthorities(EdgeKubernetesCertificateAuthorityArgs... certificateAuthorities) {
+            return certificateAuthorities(List.of(certificateAuthorities));
         }
 
         /**
@@ -1089,24 +1111,34 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connections (Map) Map of kubernetes cluster connection information.
+         * @param connections (List) A list of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
-        public Builder connections(@Nullable Output<EdgeKubernetesConnectionsArgs> connections) {
+        public Builder connections(@Nullable Output<List<EdgeKubernetesConnectionArgs>> connections) {
             $.connections = connections;
             return this;
         }
 
         /**
-         * @param connections (Map) Map of kubernetes cluster connection information.
+         * @param connections (List) A list of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
-        public Builder connections(EdgeKubernetesConnectionsArgs connections) {
+        public Builder connections(List<EdgeKubernetesConnectionArgs> connections) {
             return connections(Output.of(connections));
+        }
+
+        /**
+         * @param connections (List) A list of kubernetes cluster connection information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connections(EdgeKubernetesConnectionArgs... connections) {
+            return connections(List.of(connections));
         }
 
         /**
@@ -1530,24 +1562,34 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+         * @param runtimes A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(@Nullable Output<EdgeKubernetesRuntimeArgs> runtime) {
-            $.runtime = runtime;
+        public Builder runtimes(@Nullable Output<List<EdgeKubernetesRuntimeArgs>> runtimes) {
+            $.runtimes = runtimes;
             return this;
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+         * @param runtimes A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(EdgeKubernetesRuntimeArgs runtime) {
-            return runtime(Output.of(runtime));
+        public Builder runtimes(List<EdgeKubernetesRuntimeArgs> runtimes) {
+            return runtimes(Output.of(runtimes));
+        }
+
+        /**
+         * @param runtimes A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtimes(EdgeKubernetesRuntimeArgs... runtimes) {
+            return runtimes(List.of(runtimes));
         }
 
         /**
@@ -1615,6 +1657,15 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          */
         public Builder skipSetCertificateAuthority(Boolean skipSetCertificateAuthority) {
             return skipSetCertificateAuthority(Output.of(skipSetCertificateAuthority));
+        }
+
+        public Builder slbId(@Nullable Output<String> slbId) {
+            $.slbId = slbId;
+            return this;
+        }
+
+        public Builder slbId(String slbId) {
+            return slbId(Output.of(slbId));
         }
 
         /**

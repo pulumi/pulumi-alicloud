@@ -92,10 +92,10 @@ namespace Pulumi.AliCloud.Amqp
         public Output<bool> AutoDeleteState { get; private set; } = null!;
 
         /// <summary>
-        /// CreateTime
+        /// The time when the exchange was created. Unix timestamp, to millisecond level.
         /// </summary>
         [Output("createTime")]
-        public Output<int> CreateTime { get; private set; } = null!;
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The name of the exchange that you want to create. The exchange name must meet the following conventions:
@@ -266,10 +266,10 @@ namespace Pulumi.AliCloud.Amqp
         public Input<bool>? AutoDeleteState { get; set; }
 
         /// <summary>
-        /// CreateTime
+        /// The time when the exchange was created. Unix timestamp, to millisecond level.
         /// </summary>
         [Input("createTime")]
-        public Input<int>? CreateTime { get; set; }
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The name of the exchange that you want to create. The exchange name must meet the following conventions:

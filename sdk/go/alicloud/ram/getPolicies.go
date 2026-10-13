@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ram"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -132,8 +132,7 @@ type GetPoliciesResult struct {
 	// (Available since v1.262.1) The tags of the Policy.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the policy.
-	Type *string `pulumi:"type"`
-	// (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
+	Type     *string `pulumi:"type"`
 	UserName *string `pulumi:"userName"`
 }
 
@@ -232,7 +231,6 @@ func (o GetPoliciesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
 func (o GetPoliciesResultOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }

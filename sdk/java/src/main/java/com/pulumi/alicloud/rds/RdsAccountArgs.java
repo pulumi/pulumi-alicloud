@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -76,7 +77,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the account.
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
@@ -86,7 +87,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return The password of the account.
+     * @return The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
@@ -94,6 +95,38 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accountPassword() {
         return Optional.ofNullable(this.accountPassword);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+     * 
+     */
+    @Import(name="accountPasswordWo")
+    private @Nullable Output<String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+     * 
+     */
+    public Optional<Output<String>> accountPasswordWo() {
+        return Optional.ofNullable(this.accountPasswordWo);
+    }
+
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    @Import(name="accountPasswordWoVersion")
+    private @Nullable Output<Integer> accountPasswordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    public Optional<Output<Integer>> accountPasswordWoVersion() {
+        return Optional.ofNullable(this.accountPasswordWoVersion);
     }
 
     /**
@@ -198,14 +231,14 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -251,7 +284,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
@@ -262,7 +295,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> password;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
@@ -336,6 +369,8 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         this.accountDescription = $.accountDescription;
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
+        this.accountPasswordWo = $.accountPasswordWo;
+        this.accountPasswordWoVersion = $.accountPasswordWoVersion;
         this.accountType = $.accountType;
         this.checkPolicy = $.checkPolicy;
         this.dbInstanceId = $.dbInstanceId;
@@ -439,7 +474,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account.
+         * @param accountPassword The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
          * * The value must be 8 to 32 characters in length.
          * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
          * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
@@ -453,7 +488,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account.
+         * @param accountPassword The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
          * * The value must be 8 to 32 characters in length.
          * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
          * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
@@ -463,6 +498,50 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountPassword(String accountPassword) {
             return accountPassword(Output.of(accountPassword));
+        }
+
+        /**
+         * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWo(@Nullable Output<String> accountPasswordWo) {
+            $.accountPasswordWo = accountPasswordWo;
+            return this;
+        }
+
+        /**
+         * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWo(String accountPasswordWo) {
+            return accountPasswordWo(Output.of(accountPasswordWo));
+        }
+
+        /**
+         * @param accountPasswordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWoVersion(@Nullable Output<Integer> accountPasswordWoVersion) {
+            $.accountPasswordWoVersion = accountPasswordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param accountPasswordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWoVersion(Integer accountPasswordWoVersion) {
+            return accountPasswordWoVersion(Output.of(accountPasswordWoVersion));
         }
 
         /**
@@ -597,7 +676,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
          * 
          * @return builder
          * 
@@ -608,7 +687,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+         * @param kmsEncryptedPassword An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
          * 
          * @return builder
          * 
@@ -668,7 +747,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+         * @param password The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
          * 
          * @return builder
          * 
@@ -683,7 +762,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+         * @param password The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
          * 
          * @return builder
          * 

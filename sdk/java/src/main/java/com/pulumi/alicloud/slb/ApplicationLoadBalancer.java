@@ -365,6 +365,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     /**
      * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      * 
+     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
+     * 
+     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     * 
+     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+     * 
+     * &gt; **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
+     * 
      * @deprecated
      * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
      * 
@@ -375,6 +383,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
 
     /**
      * @return Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+     * 
+     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
+     * 
+     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     * 
+     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+     * 
+     * &gt; **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
      * 
      */
     public Output<String> specification() {

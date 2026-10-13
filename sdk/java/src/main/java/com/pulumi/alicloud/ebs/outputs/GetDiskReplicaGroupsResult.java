@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskReplicaGroupsResult {
+    /**
+     * @return A list of Ebs Disk Replica Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetDiskReplicaGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +28,10 @@ public final class GetDiskReplicaGroupsResult {
     private @Nullable String outputFile;
 
     private GetDiskReplicaGroupsResult() {}
+    /**
+     * @return A list of Ebs Disk Replica Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetDiskReplicaGroupsGroup> groups() {
         return this.groups;
     }

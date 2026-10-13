@@ -169,6 +169,14 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
     /**
      * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      *
+     * > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+     *
+     * > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     *
+     * > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+     *
+     * > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
+     *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     declare public readonly specification: pulumi.Output<string>;
@@ -331,6 +339,14 @@ export interface ApplicationLoadBalancerState {
     /**
      * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
      *
+     * > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+     *
+     * > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     *
+     * > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+     *
+     * > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
+     *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     specification?: pulumi.Input<string | undefined>;
@@ -430,6 +446,14 @@ export interface ApplicationLoadBalancerArgs {
     slaveZoneId?: pulumi.Input<string | undefined>;
     /**
      * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+     *
+     * > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+     *
+     * > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     *
+     * > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+     *
+     * > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
      *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */

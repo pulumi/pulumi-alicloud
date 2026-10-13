@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/apigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -62,9 +62,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -197,8 +197,8 @@ type Instance struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Does ipv6 support.
 	SupportIpv6 pulumi.BoolOutput `pulumi:"supportIpv6"`
-	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
-	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrOutput `pulumi:"toConnectVpcIpBlock"`
+	// A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlocks InstanceToConnectVpcIpBlockArrayOutput `pulumi:"toConnectVpcIpBlocks"`
 	// User's VpcID.
 	UserVpcId pulumi.StringPtrOutput `pulumi:"userVpcId"`
 	// Whether the slb of the Vpc supports.
@@ -295,8 +295,8 @@ type instanceState struct {
 	Status *string `pulumi:"status"`
 	// Does ipv6 support.
 	SupportIpv6 *bool `pulumi:"supportIpv6"`
-	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
-	ToConnectVpcIpBlock *InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlock"`
+	// A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlocks []InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlocks"`
 	// User's VpcID.
 	UserVpcId *string `pulumi:"userVpcId"`
 	// Whether the slb of the Vpc supports.
@@ -352,8 +352,8 @@ type InstanceState struct {
 	Status pulumi.StringPtrInput
 	// Does ipv6 support.
 	SupportIpv6 pulumi.BoolPtrInput
-	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
-	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrInput
+	// A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlocks InstanceToConnectVpcIpBlockArrayInput
 	// User's VpcID.
 	UserVpcId pulumi.StringPtrInput
 	// Whether the slb of the Vpc supports.
@@ -405,8 +405,8 @@ type instanceArgs struct {
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
 	SkipWaitSwitch *bool `pulumi:"skipWaitSwitch"`
-	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
-	ToConnectVpcIpBlock *InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlock"`
+	// A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlocks []InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlocks"`
 	// User's VpcID.
 	UserVpcId *string `pulumi:"userVpcId"`
 	// Whether the slb of the Vpc supports.
@@ -455,8 +455,8 @@ type InstanceArgs struct {
 	PricingCycle pulumi.StringPtrInput
 	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
 	SkipWaitSwitch pulumi.BoolPtrInput
-	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
-	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrInput
+	// A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlocks InstanceToConnectVpcIpBlockArrayInput
 	// User's VpcID.
 	UserVpcId pulumi.StringPtrInput
 	// Whether the slb of the Vpc supports.
@@ -655,9 +655,9 @@ func (o InstanceOutput) SupportIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SupportIpv6 }).(pulumi.BoolOutput)
 }
 
-// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
-func (o InstanceOutput) ToConnectVpcIpBlock() InstanceToConnectVpcIpBlockPtrOutput {
-	return o.ApplyT(func(v *Instance) InstanceToConnectVpcIpBlockPtrOutput { return v.ToConnectVpcIpBlock }).(InstanceToConnectVpcIpBlockPtrOutput)
+// A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+func (o InstanceOutput) ToConnectVpcIpBlocks() InstanceToConnectVpcIpBlockArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceToConnectVpcIpBlockArrayOutput { return v.ToConnectVpcIpBlocks }).(InstanceToConnectVpcIpBlockArrayOutput)
 }
 
 // User's VpcID.

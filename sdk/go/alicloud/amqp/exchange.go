@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/amqp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -100,8 +100,8 @@ type Exchange struct {
 	AlternateExchange pulumi.StringPtrOutput `pulumi:"alternateExchange"`
 	// Specifies whether to automatically delete the exchange. Valid values:
 	AutoDeleteState pulumi.BoolOutput `pulumi:"autoDeleteState"`
-	// CreateTime
-	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The time when the exchange was created. Unix timestamp, to millisecond level.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of the exchange that you want to create. The exchange name must meet the following conventions:
 	//
 	// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
@@ -177,8 +177,8 @@ type exchangeState struct {
 	AlternateExchange *string `pulumi:"alternateExchange"`
 	// Specifies whether to automatically delete the exchange. Valid values:
 	AutoDeleteState *bool `pulumi:"autoDeleteState"`
-	// CreateTime
-	CreateTime *int `pulumi:"createTime"`
+	// The time when the exchange was created. Unix timestamp, to millisecond level.
+	CreateTime *string `pulumi:"createTime"`
 	// The name of the exchange that you want to create. The exchange name must meet the following conventions:
 	//
 	// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
@@ -207,8 +207,8 @@ type ExchangeState struct {
 	AlternateExchange pulumi.StringPtrInput
 	// Specifies whether to automatically delete the exchange. Valid values:
 	AutoDeleteState pulumi.BoolPtrInput
-	// CreateTime
-	CreateTime pulumi.IntPtrInput
+	// The time when the exchange was created. Unix timestamp, to millisecond level.
+	CreateTime pulumi.StringPtrInput
 	// The name of the exchange that you want to create. The exchange name must meet the following conventions:
 	//
 	// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
@@ -390,9 +390,9 @@ func (o ExchangeOutput) AutoDeleteState() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Exchange) pulumi.BoolOutput { return v.AutoDeleteState }).(pulumi.BoolOutput)
 }
 
-// CreateTime
-func (o ExchangeOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func(v *Exchange) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+// The time when the exchange was created. Unix timestamp, to millisecond level.
+func (o ExchangeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Exchange) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The name of the exchange that you want to create. The exchange name must meet the following conventions:

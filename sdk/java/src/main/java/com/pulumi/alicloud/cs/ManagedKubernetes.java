@@ -10,7 +10,7 @@ import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAuditLogConfig;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAutoMode;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
-import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnection;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesControlPlaneEndpointsConfig;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
@@ -560,22 +560,22 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoMode);
     }
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    @Export(name="certificateAuthority", refs={ManagedKubernetesCertificateAuthority.class}, tree="[0]")
-    private Output<ManagedKubernetesCertificateAuthority> certificateAuthority;
+    @Export(name="certificateAuthorities", refs={List.class,ManagedKubernetesCertificateAuthority.class}, tree="[0,1]")
+    private Output<List<ManagedKubernetesCertificateAuthority>> certificateAuthorities;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      */
-    public Output<ManagedKubernetesCertificateAuthority> certificateAuthority() {
-        return this.certificateAuthority;
+    public Output<List<ManagedKubernetesCertificateAuthority>> certificateAuthorities() {
+        return this.certificateAuthorities;
     }
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -678,17 +678,17 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.clusterSpec;
     }
     /**
-     * Map of kubernetes cluster connection information.
+     * A list of kubernetes cluster connection information.
      * 
      */
-    @Export(name="connections", refs={ManagedKubernetesConnections.class}, tree="[0]")
-    private Output<ManagedKubernetesConnections> connections;
+    @Export(name="connections", refs={List.class,ManagedKubernetesConnection.class}, tree="[0,1]")
+    private Output<List<ManagedKubernetesConnection>> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
-    public Output<ManagedKubernetesConnections> connections() {
+    public Output<List<ManagedKubernetesConnection>> connections() {
         return this.connections;
     }
     /**

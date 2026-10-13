@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -125,6 +126,10 @@ import javax.annotation.Nullable;
  *                     .parameterKey("mysqlPassword")
  *                     .parameterValue("Ebs12345")
  *                     .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "Terraform"),
+ *                 Map.entry("For", "Example")
+ *             ))
  *             .build());
  * 
  *     }
@@ -242,6 +247,20 @@ public class SolutionInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

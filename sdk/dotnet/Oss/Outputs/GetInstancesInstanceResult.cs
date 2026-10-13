@@ -26,10 +26,6 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-        /// </summary>
-        public readonly int EntityQuota;
-        /// <summary>
         /// ID of the instance.
         /// </summary>
         public readonly string Id;
@@ -37,10 +33,6 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// Instance name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-        /// </summary>
-        public readonly string Network;
         /// <summary>
         /// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
         /// </summary>
@@ -105,13 +97,9 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string description,
 
-            int entityQuota,
-
             string id,
 
             string name,
-
-            string network,
 
             ImmutableArray<string> networkSourceAcls,
 
@@ -134,10 +122,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
             ClusterType = clusterType;
             CreateTime = createTime;
             Description = description;
-            EntityQuota = entityQuota;
             Id = id;
             Name = name;
-            Network = network;
             NetworkSourceAcls = networkSourceAcls;
             NetworkTypeAcls = networkTypeAcls;
             Policy = policy;

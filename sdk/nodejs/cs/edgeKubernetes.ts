@@ -180,11 +180,11 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     declare public readonly availabilityZone: pulumi.Output<string>;
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    declare public /*out*/ readonly certificateAuthority: pulumi.Output<outputs.cs.EdgeKubernetesCertificateAuthority>;
+    declare public /*out*/ readonly certificateAuthorities: pulumi.Output<outputs.cs.EdgeKubernetesCertificateAuthority[]>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
@@ -212,9 +212,9 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     declare public readonly clusterSpec: pulumi.Output<string>;
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      */
-    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.EdgeKubernetesConnections>;
+    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.EdgeKubernetesConnection[]>;
     /**
      * Whether to enable cluster deletion protection.
      */
@@ -295,9 +295,9 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      */
-    declare public readonly runtime: pulumi.Output<outputs.cs.EdgeKubernetesRuntime | undefined>;
+    declare public readonly runtimes: pulumi.Output<outputs.cs.EdgeKubernetesRuntime[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -312,6 +312,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * *Network params*
      */
     declare public readonly skipSetCertificateAuthority: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly slbId: pulumi.Output<string>;
     /**
      * The public ip of load balancer.
      */
@@ -404,7 +405,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             const state = argsOrState as EdgeKubernetesState | undefined;
             resourceInputs["addons"] = state?.addons;
             resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["certificateAuthorities"] = state?.certificateAuthorities;
             resourceInputs["clientCert"] = state?.clientCert;
             resourceInputs["clientKey"] = state?.clientKey;
             resourceInputs["clusterCaCert"] = state?.clusterCaCert;
@@ -428,10 +429,11 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = state?.rdsInstances;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["retainResources"] = state?.retainResources;
-            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["runtimes"] = state?.runtimes;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["serviceCidr"] = state?.serviceCidr;
             resourceInputs["skipSetCertificateAuthority"] = state?.skipSetCertificateAuthority;
+            resourceInputs["slbId"] = state?.slbId;
             resourceInputs["slbInternet"] = state?.slbInternet;
             resourceInputs["slbInternetEnabled"] = state?.slbInternetEnabled;
             resourceInputs["slbIntranet"] = state?.slbIntranet;
@@ -484,7 +486,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = args?.rdsInstances;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["retainResources"] = args?.retainResources;
-            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["runtimes"] = args?.runtimes;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["serviceCidr"] = args?.serviceCidr;
             resourceInputs["skipSetCertificateAuthority"] = args?.skipSetCertificateAuthority;
@@ -501,9 +503,10 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["workerInstanceTypes"] = args?.workerInstanceTypes;
             resourceInputs["workerNumber"] = args?.workerNumber;
             resourceInputs["workerVswitchIds"] = args?.workerVswitchIds;
-            resourceInputs["certificateAuthority"] = undefined /*out*/;
+            resourceInputs["certificateAuthorities"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["natGatewayId"] = undefined /*out*/;
+            resourceInputs["slbId"] = undefined /*out*/;
             resourceInputs["slbInternet"] = undefined /*out*/;
             resourceInputs["slbIntranet"] = undefined /*out*/;
             resourceInputs["vpcId"] = undefined /*out*/;
@@ -530,11 +533,11 @@ export interface EdgeKubernetesState {
      */
     availabilityZone?: pulumi.Input<string | undefined>;
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority | undefined>;
+    certificateAuthorities?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
@@ -562,9 +565,9 @@ export interface EdgeKubernetesState {
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      */
-    connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections | undefined>;
+    connections?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesConnection>[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
@@ -645,9 +648,9 @@ export interface EdgeKubernetesState {
      */
     retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime | undefined>;
+    runtimes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesRuntime>[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -662,6 +665,7 @@ export interface EdgeKubernetesState {
      * *Network params*
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
+    slbId?: pulumi.Input<string | undefined>;
     /**
      * The public ip of load balancer.
      */
@@ -854,9 +858,9 @@ export interface EdgeKubernetesArgs {
      */
     retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime | undefined>;
+    runtimes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesRuntime>[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

@@ -22,6 +22,8 @@ class AccountArgs:
                  account_name: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35,7 +37,10 @@ class AccountArgs:
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
                - `RoleReadOnly`: This value is only for Redis and Memcache
                - `RoleReadWrite`: This value is only for Redis and Memcache
@@ -43,13 +48,17 @@ class AccountArgs:
                - Normal: Common privilege.
                  Default to Normal.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "instance_id", instance_id)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_privilege is not None:
             pulumi.set(__self__, "account_privilege", account_privilege)
         if account_type is not None:
@@ -92,13 +101,38 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
     def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPrivilege")
@@ -144,7 +178,7 @@ class AccountArgs:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -170,6 +204,8 @@ class _AccountState:
     def __init__(__self__, *,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -184,7 +220,10 @@ class _AccountState:
                * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
-        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
                - `RoleReadOnly`: This value is only for Redis and Memcache
                - `RoleReadWrite`: This value is only for Redis and Memcache
@@ -193,7 +232,7 @@ class _AccountState:
                  Default to Normal.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
         """
@@ -201,6 +240,10 @@ class _AccountState:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_privilege is not None:
             pulumi.set(__self__, "account_privilege", account_privilege)
         if account_type is not None:
@@ -235,13 +278,38 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
     def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPrivilege")
@@ -299,7 +367,7 @@ class _AccountState:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -340,6 +408,8 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -353,6 +423,8 @@ class Account(pulumi.CustomResource):
         For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createaccount-redis).
 
         > **NOTE:** Available since v1.66.0.
+
+        > **NOTE:** The `account_password_wo` and `account_password_wo_version` arguments require Terraform v1.11.0 or later.
 
         ## Example Usage
 
@@ -416,7 +488,10 @@ class Account(pulumi.CustomResource):
                * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
-        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
                - `RoleReadOnly`: This value is only for Redis and Memcache
                - `RoleReadWrite`: This value is only for Redis and Memcache
@@ -425,7 +500,7 @@ class Account(pulumi.CustomResource):
                  Default to Normal.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         ...
@@ -440,6 +515,8 @@ class Account(pulumi.CustomResource):
         For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createaccount-redis).
 
         > **NOTE:** Available since v1.66.0.
+
+        > **NOTE:** The `account_password_wo` and `account_password_wo_version` arguments require Terraform v1.11.0 or later.
 
         ## Example Usage
 
@@ -514,6 +591,8 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -533,6 +612,8 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_name'")
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
+            __props__.__dict__["account_password_wo"] = None if account_password_wo is None else pulumi.Output.secret(account_password_wo)
+            __props__.__dict__["account_password_wo_version"] = account_password_wo_version
             __props__.__dict__["account_privilege"] = account_privilege
             __props__.__dict__["account_type"] = account_type
             __props__.__dict__["description"] = description
@@ -542,7 +623,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["status"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "accountPasswordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:kvstore/account:Account',
@@ -556,6 +637,8 @@ class Account(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,7 +657,10 @@ class Account(pulumi.CustomResource):
                * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
-        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
                - `RoleReadOnly`: This value is only for Redis and Memcache
                - `RoleReadWrite`: This value is only for Redis and Memcache
@@ -583,7 +669,7 @@ class Account(pulumi.CustomResource):
                  Default to Normal.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
         """
@@ -593,6 +679,8 @@ class Account(pulumi.CustomResource):
 
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_password_wo"] = account_password_wo
+        __props__.__dict__["account_password_wo_version"] = account_password_wo_version
         __props__.__dict__["account_privilege"] = account_privilege
         __props__.__dict__["account_type"] = account_type
         __props__.__dict__["description"] = description
@@ -617,9 +705,26 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `account_password_wo`.
         """
         return pulumi.get(self, "account_password")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="accountPrivilege")
@@ -661,7 +766,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored. It conflicts with `account_password_wo`.
         """
         return pulumi.get(self, "kms_encrypted_password")
 

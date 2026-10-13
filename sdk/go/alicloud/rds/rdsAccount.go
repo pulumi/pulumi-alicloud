@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +16,8 @@ import (
 // For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
 //
 // > **NOTE:** Available since v1.120.0.
+//
+// > **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
 //
 // ## Example Usage
 //
@@ -26,8 +28,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -81,7 +83,7 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(defaultGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InstanceName:          pulumi.String(name),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
@@ -136,11 +138,16 @@ type RdsAccount struct {
 	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
 	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The password of the account.
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	// * The value must be 8 to 32 characters in length.
 	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
-	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
+	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+	AccountPasswordWo pulumi.StringPtrOutput `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrOutput `pulumi:"accountPasswordWoVersion"`
 	// The account type. Valid values:
 	// * Normal: standard account (default).
 	// * Super: privileged account.
@@ -160,7 +167,7 @@ type RdsAccount struct {
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
@@ -168,10 +175,10 @@ type RdsAccount struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password pulumi.StringOutput `pulumi:"password"`
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
 	// The status of the resource. Valid values: `Available`, `Unavailable`.
@@ -194,11 +201,15 @@ func NewRdsAccount(ctx *pulumi.Context,
 	if args.AccountPassword != nil {
 		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
 	}
+	if args.AccountPasswordWo != nil {
+		args.AccountPasswordWo = pulumi.ToSecret(args.AccountPasswordWo).(pulumi.StringPtrInput)
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountPassword",
+		"accountPasswordWo",
 		"password",
 	})
 	opts = append(opts, secrets)
@@ -243,11 +254,16 @@ type rdsAccountState struct {
 	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
 	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName *string `pulumi:"accountName"`
-	// The password of the account.
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	// * The value must be 8 to 32 characters in length.
 	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword *string `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
 	// The account type. Valid values:
 	// * Normal: standard account (default).
 	// * Super: privileged account.
@@ -267,7 +283,7 @@ type rdsAccountState struct {
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
@@ -275,7 +291,7 @@ type rdsAccountState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
-	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password *string `pulumi:"password"`
@@ -310,11 +326,16 @@ type RdsAccountState struct {
 	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
 	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName pulumi.StringPtrInput
-	// The password of the account.
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	// * The value must be 8 to 32 characters in length.
 	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrInput
 	// The account type. Valid values:
 	// * Normal: standard account (default).
 	// * Super: privileged account.
@@ -334,7 +355,7 @@ type RdsAccountState struct {
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
@@ -342,7 +363,7 @@ type RdsAccountState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
-	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringPtrInput
@@ -381,11 +402,16 @@ type rdsAccountArgs struct {
 	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
 	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName *string `pulumi:"accountName"`
-	// The password of the account.
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	// * The value must be 8 to 32 characters in length.
 	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword *string `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
 	// The account type. Valid values:
 	// * Normal: standard account (default).
 	// * Super: privileged account.
@@ -405,7 +431,7 @@ type rdsAccountArgs struct {
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
@@ -413,7 +439,7 @@ type rdsAccountArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
-	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password *string `pulumi:"password"`
@@ -449,11 +475,16 @@ type RdsAccountArgs struct {
 	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
 	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName pulumi.StringPtrInput
-	// The password of the account.
+	// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	// * The value must be 8 to 32 characters in length.
 	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrInput
 	// The account type. Valid values:
 	// * Normal: standard account (default).
 	// * Super: privileged account.
@@ -473,7 +504,7 @@ type RdsAccountArgs struct {
 	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
@@ -481,7 +512,7 @@ type RdsAccountArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
-	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringPtrInput
@@ -608,12 +639,23 @@ func (o RdsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The password of the account.
+// The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 // * The value must be 8 to 32 characters in length.
 // * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 // * Special characters include ! @ # $ % ^ & * ( ) _ + - =
-func (o RdsAccountOutput) AccountPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+func (o RdsAccountOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+func (o RdsAccountOutput) AccountPasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringPtrOutput { return v.AccountPasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+func (o RdsAccountOutput) AccountPasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.IntPtrOutput { return v.AccountPasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The account type. Valid values:
@@ -650,7 +692,7 @@ func (o RdsAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+// An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
 func (o RdsAccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
 }
@@ -667,11 +709,11 @@ func (o RdsAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
 //
 // Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-func (o RdsAccountOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+func (o RdsAccountOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.

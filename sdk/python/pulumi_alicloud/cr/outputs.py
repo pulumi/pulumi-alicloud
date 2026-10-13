@@ -1567,21 +1567,21 @@ class GetNamespacesNamespaceResult(dict):
 @pulumi.output_type
 class GetReposRepoResult(dict):
     def __init__(__self__, *,
-                 domain_list: 'outputs.GetReposRepoDomainListResult',
+                 domain_lists: Sequence['outputs.GetReposRepoDomainListResult'],
                  name: _builtins.str,
                  namespace: _builtins.str,
                  repo_type: _builtins.str,
                  summary: _builtins.str,
                  tags: Sequence['outputs.GetReposRepoTagResult']):
         """
-        :param 'GetReposRepoDomainListArgs' domain_list: The repository domain list.
+        :param Sequence['GetReposRepoDomainListArgs'] domain_lists: A list of repository domain:
         :param _builtins.str name: Name of container registry namespace.
         :param _builtins.str namespace: Name of container registry namespace where the repositories are located in.
         :param _builtins.str repo_type: `PUBLIC` or `PRIVATE`, repository's visibility.
         :param _builtins.str summary: The repository general information.
         :param Sequence['GetReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
-        pulumi.set(__self__, "domain_list", domain_list)
+        pulumi.set(__self__, "domain_lists", domain_lists)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "repo_type", repo_type)
@@ -1589,12 +1589,12 @@ class GetReposRepoResult(dict):
         pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
-    @pulumi.getter(name="domainList")
-    def domain_list(self) -> 'outputs.GetReposRepoDomainListResult':
+    @pulumi.getter(name="domainLists")
+    def domain_lists(self) -> Sequence['outputs.GetReposRepoDomainListResult']:
         """
-        The repository domain list.
+        A list of repository domain:
         """
-        return pulumi.get(self, "domain_list")
+        return pulumi.get(self, "domain_lists")
 
     @_builtins.property
     @pulumi.getter

@@ -71,10 +71,10 @@ namespace Pulumi.AliCloud.CR
         public Output<string?> Detail { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The repository domain list.
+        /// (Optional) A list of repository domain.
         /// </summary>
-        [Output("domainList")]
-        public Output<Outputs.RepoDomainList> DomainList { get; private set; } = null!;
+        [Output("domainLists")]
+        public Output<ImmutableArray<Outputs.RepoDomainList>> DomainLists { get; private set; } = null!;
 
         /// <summary>
         /// Name of container registry repository.
@@ -190,11 +190,17 @@ namespace Pulumi.AliCloud.CR
         [Input("detail")]
         public Input<string>? Detail { get; set; }
 
+        [Input("domainLists")]
+        private InputList<Inputs.RepoDomainListGetArgs>? _domainLists;
+
         /// <summary>
-        /// (Optional) The repository domain list.
+        /// (Optional) A list of repository domain.
         /// </summary>
-        [Input("domainList")]
-        public Input<Inputs.RepoDomainListGetArgs>? DomainList { get; set; }
+        public InputList<Inputs.RepoDomainListGetArgs> DomainLists
+        {
+            get => _domainLists ?? (_domainLists = new InputList<Inputs.RepoDomainListGetArgs>());
+            set => _domainLists = value;
+        }
 
         /// <summary>
         /// Name of container registry repository.

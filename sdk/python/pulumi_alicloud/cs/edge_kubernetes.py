@@ -47,7 +47,7 @@ class EdgeKubernetesArgs:
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional['EdgeKubernetesRuntimeArgs']] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -97,7 +97,7 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input['EdgeKubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]] runtimes: A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
@@ -182,8 +182,8 @@ class EdgeKubernetesArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
-        if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+        if runtimes is not None:
+            pulumi.set(__self__, "runtimes", runtimes)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
@@ -537,15 +537,15 @@ class EdgeKubernetesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> pulumi.Input[Optional['EdgeKubernetesRuntimeArgs']]:
+    def runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]]]:
         """
-        The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         """
-        return pulumi.get(self, "runtime")
+        return pulumi.get(self, "runtimes")
 
-    @runtime.setter
-    def runtime(self, value: pulumi.Input[Optional['EdgeKubernetesRuntimeArgs']]):
-        pulumi.set(self, "runtime", value)
+    @runtimes.setter
+    def runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]]]):
+        pulumi.set(self, "runtimes", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -715,12 +715,12 @@ class _EdgeKubernetesState:
     def __init__(__self__, *,
                  addons: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]]] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificate_authority: pulumi.Input[Optional['EdgeKubernetesCertificateAuthorityArgs']] = None,
+                 certificate_authorities: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']]]] = None,
                  client_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
-                 connections: pulumi.Input[Optional['EdgeKubernetesConnectionsArgs']] = None,
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesConnectionArgs']]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  install_cloud_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -739,10 +739,11 @@ class _EdgeKubernetesState:
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional['EdgeKubernetesRuntimeArgs']] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
                  slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
                  slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,7 +767,7 @@ class _EdgeKubernetesState:
 
         :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[_builtins.str] availability_zone: The ID of availability zone.
-        :param pulumi.Input['EdgeKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']]] certificate_authorities: (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -775,7 +776,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
-        :param pulumi.Input['EdgeKubernetesConnectionsArgs'] connections: (Map) Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesConnectionArgs']]] connections: (List) A list of kubernetes cluster connection information.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -797,7 +798,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input['EdgeKubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]] runtimes: A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
@@ -830,11 +831,11 @@ class _EdgeKubernetesState:
             pulumi.set(__self__, "addons", addons)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
-        if certificate_authority is not None:
+        if certificate_authorities is not None:
             warnings.warn("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
-            pulumi.log.warn("""certificate_authority is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-        if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            pulumi.log.warn("""certificate_authorities is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
+        if certificate_authorities is not None:
+            pulumi.set(__self__, "certificate_authorities", certificate_authorities)
         if client_cert is not None:
             warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
             pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
@@ -896,14 +897,16 @@ class _EdgeKubernetesState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
-        if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+        if runtimes is not None:
+            pulumi.set(__self__, "runtimes", runtimes)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
         if skip_set_certificate_authority is not None:
             pulumi.set(__self__, "skip_set_certificate_authority", skip_set_certificate_authority)
+        if slb_id is not None:
+            pulumi.set(__self__, "slb_id", slb_id)
         if slb_internet is not None:
             pulumi.set(__self__, "slb_internet", slb_internet)
         if slb_internet_enabled is not None:
@@ -966,17 +969,17 @@ class _EdgeKubernetesState:
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
+    @pulumi.getter(name="certificateAuthorities")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> pulumi.Input[Optional['EdgeKubernetesCertificateAuthorityArgs']]:
+    def certificate_authorities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']]]]:
         """
-        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
-    @certificate_authority.setter
-    def certificate_authority(self, value: pulumi.Input[Optional['EdgeKubernetesCertificateAuthorityArgs']]):
-        pulumi.set(self, "certificate_authority", value)
+    @certificate_authorities.setter
+    def certificate_authorities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']]]]):
+        pulumi.set(self, "certificate_authorities", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -1035,14 +1038,14 @@ class _EdgeKubernetesState:
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> pulumi.Input[Optional['EdgeKubernetesConnectionsArgs']]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesConnectionArgs']]]]:
         """
-        (Map) Map of kubernetes cluster connection information.
+        (List) A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: pulumi.Input[Optional['EdgeKubernetesConnectionsArgs']]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
     @_builtins.property
@@ -1268,15 +1271,15 @@ class _EdgeKubernetesState:
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> pulumi.Input[Optional['EdgeKubernetesRuntimeArgs']]:
+    def runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]]]:
         """
-        The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         """
-        return pulumi.get(self, "runtime")
+        return pulumi.get(self, "runtimes")
 
-    @runtime.setter
-    def runtime(self, value: pulumi.Input[Optional['EdgeKubernetesRuntimeArgs']]):
-        pulumi.set(self, "runtime", value)
+    @runtimes.setter
+    def runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeKubernetesRuntimeArgs']]]]):
+        pulumi.set(self, "runtimes", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -1315,6 +1318,15 @@ class _EdgeKubernetesState:
     @skip_set_certificate_authority.setter
     def skip_set_certificate_authority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_set_certificate_authority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "slb_id")
+
+    @slb_id.setter
+    def slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slbInternet")
@@ -1566,7 +1578,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1744,7 +1756,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]]] runtimes: A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
@@ -1940,7 +1952,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1989,7 +2001,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
-            __props__.__dict__["runtime"] = runtime
+            __props__.__dict__["runtimes"] = runtimes
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr
             __props__.__dict__["skip_set_certificate_authority"] = skip_set_certificate_authority
@@ -2012,9 +2024,10 @@ class EdgeKubernetes(pulumi.CustomResource):
             if worker_vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_vswitch_ids'")
             __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
-            __props__.__dict__["certificate_authority"] = None
+            __props__.__dict__["certificate_authorities"] = None
             __props__.__dict__["connections"] = None
             __props__.__dict__["nat_gateway_id"] = None
+            __props__.__dict__["slb_id"] = None
             __props__.__dict__["slb_internet"] = None
             __props__.__dict__["slb_intranet"] = None
             __props__.__dict__["vpc_id"] = None
@@ -2034,12 +2047,12 @@ class EdgeKubernetes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict', 'outputs.EdgeKubernetesAddon']]]]] = None,
             availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            certificate_authority: pulumi.Input[Optional[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict', 'outputs.EdgeKubernetesCertificateAuthority']]] = None,
+            certificate_authorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict', 'outputs.EdgeKubernetesCertificateAuthority']]]]] = None,
             client_cert: pulumi.Input[Optional[_builtins.str]] = None,
             client_key: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
-            connections: pulumi.Input[Optional[Union['EdgeKubernetesConnectionsArgs', 'EdgeKubernetesConnectionsArgsDict', 'outputs.EdgeKubernetesConnections']]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeKubernetesConnectionArgs', 'EdgeKubernetesConnectionArgsDict', 'outputs.EdgeKubernetesConnection']]]]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             install_cloud_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
             is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2058,10 +2071,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            runtime: pulumi.Input[Optional[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]] = None,
+            runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]]]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+            slb_id: pulumi.Input[Optional[_builtins.str]] = None,
             slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
             slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2089,7 +2103,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict', 'outputs.EdgeKubernetesAddon']]]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[_builtins.str] availability_zone: The ID of availability zone.
-        :param pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict', 'outputs.EdgeKubernetesCertificateAuthority']] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict', 'outputs.EdgeKubernetesCertificateAuthority']]]] certificate_authorities: (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -2098,7 +2112,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
-        :param pulumi.Input[Union['EdgeKubernetesConnectionsArgs', 'EdgeKubernetesConnectionsArgsDict', 'outputs.EdgeKubernetesConnections']] connections: (Map) Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesConnectionArgs', 'EdgeKubernetesConnectionArgsDict', 'outputs.EdgeKubernetesConnection']]]] connections: (List) A list of kubernetes cluster connection information.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -2120,7 +2134,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict', 'outputs.EdgeKubernetesRuntime']]]] runtimes: A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
@@ -2155,7 +2169,7 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         __props__.__dict__["addons"] = addons
         __props__.__dict__["availability_zone"] = availability_zone
-        __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["certificate_authorities"] = certificate_authorities
         __props__.__dict__["client_cert"] = client_cert
         __props__.__dict__["client_key"] = client_key
         __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
@@ -2179,10 +2193,11 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retain_resources"] = retain_resources
-        __props__.__dict__["runtime"] = runtime
+        __props__.__dict__["runtimes"] = runtimes
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_cidr"] = service_cidr
         __props__.__dict__["skip_set_certificate_authority"] = skip_set_certificate_authority
+        __props__.__dict__["slb_id"] = slb_id
         __props__.__dict__["slb_internet"] = slb_internet
         __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
         __props__.__dict__["slb_intranet"] = slb_intranet
@@ -2220,13 +2235,13 @@ class EdgeKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
+    @pulumi.getter(name="certificateAuthorities")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> pulumi.Output['outputs.EdgeKubernetesCertificateAuthority']:
+    def certificate_authorities(self) -> pulumi.Output[Sequence['outputs.EdgeKubernetesCertificateAuthority']]:
         """
-        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -2269,9 +2284,9 @@ class EdgeKubernetes(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> pulumi.Output['outputs.EdgeKubernetesConnections']:
+    def connections(self) -> pulumi.Output[Sequence['outputs.EdgeKubernetesConnection']]:
         """
-        (Map) Map of kubernetes cluster connection information.
+        (List) A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -2426,11 +2441,11 @@ class EdgeKubernetes(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> pulumi.Output[Optional['outputs.EdgeKubernetesRuntime']]:
+    def runtimes(self) -> pulumi.Output[Optional[Sequence['outputs.EdgeKubernetesRuntime']]]:
         """
-        The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         """
-        return pulumi.get(self, "runtime")
+        return pulumi.get(self, "runtimes")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -2457,6 +2472,11 @@ class EdgeKubernetes(pulumi.CustomResource):
         *Network params*
         """
         return pulumi.get(self, "skip_set_certificate_authority")
+
+    @_builtins.property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "slb_id")
 
     @_builtins.property
     @pulumi.getter(name="slbInternet")

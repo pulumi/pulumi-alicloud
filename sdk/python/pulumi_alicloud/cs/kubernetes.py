@@ -63,7 +63,7 @@ class KubernetesArgs:
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional['KubernetesRuntimeArgs']] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesRuntimeArgs']]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -122,7 +122,7 @@ class KubernetesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesRuntimeArgs']]] runtimes: A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -237,8 +237,8 @@ class KubernetesArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
-        if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+        if runtimes is not None:
+            pulumi.set(__self__, "runtimes", runtimes)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_account_issuer is not None:
@@ -773,15 +773,15 @@ class KubernetesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> pulumi.Input[Optional['KubernetesRuntimeArgs']]:
+    def runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesRuntimeArgs']]]]:
         """
-        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         """
-        return pulumi.get(self, "runtime")
+        return pulumi.get(self, "runtimes")
 
-    @runtime.setter
-    def runtime(self, value: pulumi.Input[Optional['KubernetesRuntimeArgs']]):
-        pulumi.set(self, "runtime", value)
+    @runtimes.setter
+    def runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesRuntimeArgs']]]]):
+        pulumi.set(self, "runtimes", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -904,12 +904,12 @@ class _KubernetesState:
     def __init__(__self__, *,
                  addons: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesAddonArgs']]]] = None,
                  api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 certificate_authority: pulumi.Input[Optional['KubernetesCertificateAuthorityArgs']] = None,
+                 certificate_authorities: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesCertificateAuthorityArgs']]]] = None,
                  client_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
-                 connections: pulumi.Input[Optional['KubernetesConnectionsArgs']] = None,
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesConnectionArgs']]]] = None,
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_options: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -948,7 +948,7 @@ class _KubernetesState:
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional['KubernetesRuntimeArgs']] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesRuntimeArgs']]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -968,14 +968,14 @@ class _KubernetesState:
 
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        :param pulumi.Input['KubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesCertificateAuthorityArgs']]] certificate_authorities: (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
                *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input['KubernetesConnectionsArgs'] connections: (Map) Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesConnectionArgs']]] connections: (List) A list of kubernetes cluster connection information.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -1016,7 +1016,7 @@ class _KubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesRuntimeArgs']]] runtimes: A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -1043,11 +1043,11 @@ class _KubernetesState:
             pulumi.set(__self__, "addons", addons)
         if api_audiences is not None:
             pulumi.set(__self__, "api_audiences", api_audiences)
-        if certificate_authority is not None:
+        if certificate_authorities is not None:
             warnings.warn("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
-            pulumi.log.warn("""certificate_authority is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-        if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            pulumi.log.warn("""certificate_authorities is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
+        if certificate_authorities is not None:
+            pulumi.set(__self__, "certificate_authorities", certificate_authorities)
         if client_cert is not None:
             warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
             pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
@@ -1149,8 +1149,8 @@ class _KubernetesState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
-        if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+        if runtimes is not None:
+            pulumi.set(__self__, "runtimes", runtimes)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_account_issuer is not None:
@@ -1205,17 +1205,17 @@ class _KubernetesState:
         pulumi.set(self, "api_audiences", value)
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
+    @pulumi.getter(name="certificateAuthorities")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> pulumi.Input[Optional['KubernetesCertificateAuthorityArgs']]:
+    def certificate_authorities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesCertificateAuthorityArgs']]]]:
         """
-        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
-    @certificate_authority.setter
-    def certificate_authority(self, value: pulumi.Input[Optional['KubernetesCertificateAuthorityArgs']]):
-        pulumi.set(self, "certificate_authority", value)
+    @certificate_authorities.setter
+    def certificate_authorities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesCertificateAuthorityArgs']]]]):
+        pulumi.set(self, "certificate_authorities", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -1272,14 +1272,14 @@ class _KubernetesState:
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> pulumi.Input[Optional['KubernetesConnectionsArgs']]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesConnectionArgs']]]]:
         """
-        (Map) Map of kubernetes cluster connection information.
+        (List) A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: pulumi.Input[Optional['KubernetesConnectionsArgs']]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
     @_builtins.property
@@ -1744,15 +1744,15 @@ class _KubernetesState:
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> pulumi.Input[Optional['KubernetesRuntimeArgs']]:
+    def runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesRuntimeArgs']]]]:
         """
-        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         """
-        return pulumi.get(self, "runtime")
+        return pulumi.get(self, "runtimes")
 
-    @runtime.setter
-    def runtime(self, value: pulumi.Input[Optional['KubernetesRuntimeArgs']]):
-        pulumi.set(self, "runtime", value)
+    @runtimes.setter
+    def runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesRuntimeArgs']]]]):
+        pulumi.set(self, "runtimes", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
@@ -1978,7 +1978,7 @@ class Kubernetes(pulumi.CustomResource):
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2019,8 +2019,6 @@ class Kubernetes(pulumi.CustomResource):
         Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
 
         > **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
-
-        > **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `cluster_spec`.
 
         > **NOTE:** From version 1.177.0+, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id` are deprecated.
         We Suggest you using resource **`cs.NodePool`** to manage your cluster worker nodes.
@@ -2236,7 +2234,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]]] runtimes: A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2290,8 +2288,6 @@ class Kubernetes(pulumi.CustomResource):
         Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
 
         > **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
-
-        > **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `cluster_spec`.
 
         > **NOTE:** From version 1.177.0+, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id` are deprecated.
         We Suggest you using resource **`cs.NodePool`** to manage your cluster worker nodes.
@@ -2516,7 +2512,7 @@ class Kubernetes(pulumi.CustomResource):
                  rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime: pulumi.Input[Optional[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]] = None,
+                 runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]]]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2581,7 +2577,7 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
-            __props__.__dict__["runtime"] = runtime
+            __props__.__dict__["runtimes"] = runtimes
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_account_issuer"] = service_account_issuer
             __props__.__dict__["service_cidr"] = service_cidr
@@ -2591,7 +2587,7 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["user_ca"] = user_ca
             __props__.__dict__["version"] = version
-            __props__.__dict__["certificate_authority"] = None
+            __props__.__dict__["certificate_authorities"] = None
             __props__.__dict__["connections"] = None
             __props__.__dict__["master_nodes"] = None
             __props__.__dict__["nat_gateway_id"] = None
@@ -2614,12 +2610,12 @@ class Kubernetes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict', 'outputs.KubernetesAddon']]]]] = None,
             api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            certificate_authority: pulumi.Input[Optional[Union['KubernetesCertificateAuthorityArgs', 'KubernetesCertificateAuthorityArgsDict', 'outputs.KubernetesCertificateAuthority']]] = None,
+            certificate_authorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesCertificateAuthorityArgs', 'KubernetesCertificateAuthorityArgsDict', 'outputs.KubernetesCertificateAuthority']]]]] = None,
             client_cert: pulumi.Input[Optional[_builtins.str]] = None,
             client_key: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
-            connections: pulumi.Input[Optional[Union['KubernetesConnectionsArgs', 'KubernetesConnectionsArgsDict', 'outputs.KubernetesConnections']]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesConnectionArgs', 'KubernetesConnectionArgsDict', 'outputs.KubernetesConnection']]]]] = None,
             custom_san: pulumi.Input[Optional[_builtins.str]] = None,
             delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesDeleteOptionArgs', 'KubernetesDeleteOptionArgsDict', 'outputs.KubernetesDeleteOption']]]]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2658,7 +2654,7 @@ class Kubernetes(pulumi.CustomResource):
             rds_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            runtime: pulumi.Input[Optional[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]] = None,
+            runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]]]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
             service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2682,14 +2678,14 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict', 'outputs.KubernetesAddon']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        :param pulumi.Input[Union['KubernetesCertificateAuthorityArgs', 'KubernetesCertificateAuthorityArgsDict', 'outputs.KubernetesCertificateAuthority']] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesCertificateAuthorityArgs', 'KubernetesCertificateAuthorityArgsDict', 'outputs.KubernetesCertificateAuthority']]]] certificate_authorities: (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
                *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[Union['KubernetesConnectionsArgs', 'KubernetesConnectionsArgsDict', 'outputs.KubernetesConnections']] connections: (Map) Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesConnectionArgs', 'KubernetesConnectionArgsDict', 'outputs.KubernetesConnection']]]] connections: (List) A list of kubernetes cluster connection information.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesDeleteOptionArgs', 'KubernetesDeleteOptionArgsDict', 'outputs.KubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -2730,7 +2726,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
-        :param pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict', 'outputs.KubernetesRuntime']]]] runtimes: A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2759,7 +2755,7 @@ class Kubernetes(pulumi.CustomResource):
 
         __props__.__dict__["addons"] = addons
         __props__.__dict__["api_audiences"] = api_audiences
-        __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["certificate_authorities"] = certificate_authorities
         __props__.__dict__["client_cert"] = client_cert
         __props__.__dict__["client_key"] = client_key
         __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
@@ -2803,7 +2799,7 @@ class Kubernetes(pulumi.CustomResource):
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retain_resources"] = retain_resources
-        __props__.__dict__["runtime"] = runtime
+        __props__.__dict__["runtimes"] = runtimes
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_account_issuer"] = service_account_issuer
         __props__.__dict__["service_cidr"] = service_cidr
@@ -2837,13 +2833,13 @@ class Kubernetes(pulumi.CustomResource):
         return pulumi.get(self, "api_audiences")
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
+    @pulumi.getter(name="certificateAuthorities")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> pulumi.Output['outputs.KubernetesCertificateAuthority']:
+    def certificate_authorities(self) -> pulumi.Output[Sequence['outputs.KubernetesCertificateAuthority']]:
         """
-        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -2884,9 +2880,9 @@ class Kubernetes(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> pulumi.Output['outputs.KubernetesConnections']:
+    def connections(self) -> pulumi.Output[Sequence['outputs.KubernetesConnection']]:
         """
-        (Map) Map of kubernetes cluster connection information.
+        (List) A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -3200,11 +3196,11 @@ class Kubernetes(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> pulumi.Output[Optional['outputs.KubernetesRuntime']]:
+    def runtimes(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesRuntime']]]:
         """
-        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+        A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         """
-        return pulumi.get(self, "runtime")
+        return pulumi.get(self, "runtimes")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")

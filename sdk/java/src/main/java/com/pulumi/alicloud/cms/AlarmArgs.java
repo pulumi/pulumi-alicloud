@@ -112,6 +112,8 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
+     * 
      * @deprecated
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
@@ -122,6 +124,8 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
      * @deprecated
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
@@ -521,6 +525,8 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param endTime Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
+         * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -535,6 +541,8 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param endTime Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+         * 
+         * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
          * 
          * @return builder
          * 

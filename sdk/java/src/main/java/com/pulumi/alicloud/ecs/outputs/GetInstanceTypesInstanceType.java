@@ -4,7 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeBurstableInstance;
-import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeGpu;
+import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeGpus;
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeLocalStorage;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,10 +22,10 @@ public final class GetInstanceTypesInstanceType {
      */
     private List<String> availabilityZones;
     /**
-     * @return The burstable instance attribution.
+     * @return A list of the burstable instance attribution.
      * 
      */
-    private GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
+    private List<GetInstanceTypesInstanceTypeBurstableInstance> burstableInstances;
     /**
      * @return Filter the results to a specific number of cpu cores.
      * 
@@ -57,20 +57,20 @@ public final class GetInstanceTypesInstanceType {
      */
     private String family;
     /**
-     * @return The GPU attribution of an instance type:
+     * @return A list of GPU attributes of an instance type:
      * 
      */
-    private GetInstanceTypesInstanceTypeGpu gpu;
+    private List<GetInstanceTypesInstanceTypeGpus> gpus;
     /**
      * @return ID of the instance type.
      * 
      */
     private String id;
     /**
-     * @return Local storage of an instance type.
+     * @return A list of local storage of an instance type.
      * 
      */
-    private GetInstanceTypesInstanceTypeLocalStorage localStorage;
+    private List<GetInstanceTypesInstanceTypeLocalStorage> localStorages;
     /**
      * @return (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
      * 
@@ -116,11 +116,11 @@ public final class GetInstanceTypesInstanceType {
         return this.availabilityZones;
     }
     /**
-     * @return The burstable instance attribution.
+     * @return A list of the burstable instance attribution.
      * 
      */
-    public GetInstanceTypesInstanceTypeBurstableInstance burstableInstance() {
-        return this.burstableInstance;
+    public List<GetInstanceTypesInstanceTypeBurstableInstance> burstableInstances() {
+        return this.burstableInstances;
     }
     /**
      * @return Filter the results to a specific number of cpu cores.
@@ -165,11 +165,11 @@ public final class GetInstanceTypesInstanceType {
         return this.family;
     }
     /**
-     * @return The GPU attribution of an instance type:
+     * @return A list of GPU attributes of an instance type:
      * 
      */
-    public GetInstanceTypesInstanceTypeGpu gpu() {
-        return this.gpu;
+    public List<GetInstanceTypesInstanceTypeGpus> gpus() {
+        return this.gpus;
     }
     /**
      * @return ID of the instance type.
@@ -179,11 +179,11 @@ public final class GetInstanceTypesInstanceType {
         return this.id;
     }
     /**
-     * @return Local storage of an instance type.
+     * @return A list of local storage of an instance type.
      * 
      */
-    public GetInstanceTypesInstanceTypeLocalStorage localStorage() {
-        return this.localStorage;
+    public List<GetInstanceTypesInstanceTypeLocalStorage> localStorages() {
+        return this.localStorages;
     }
     /**
      * @return (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
@@ -245,16 +245,16 @@ public final class GetInstanceTypesInstanceType {
     @CustomType.Builder
     public static final class Builder {
         private List<String> availabilityZones;
-        private GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
+        private List<GetInstanceTypesInstanceTypeBurstableInstance> burstableInstances;
         private Integer cpuCoreCount;
         private Integer eniAmount;
         private Integer eniIpv6AddressQuantity;
         private Integer eniPrivateIpAddressQuantity;
         private Integer eniQuantity;
         private String family;
-        private GetInstanceTypesInstanceTypeGpu gpu;
+        private List<GetInstanceTypesInstanceTypeGpus> gpus;
         private String id;
-        private GetInstanceTypesInstanceTypeLocalStorage localStorage;
+        private List<GetInstanceTypesInstanceTypeLocalStorage> localStorages;
         private Integer maximumQueueNumberPerEni;
         private Double memorySize;
         private String nvmeSupport;
@@ -266,16 +266,16 @@ public final class GetInstanceTypesInstanceType {
         public Builder(GetInstanceTypesInstanceType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZones = defaults.availabilityZones;
-    	      this.burstableInstance = defaults.burstableInstance;
+    	      this.burstableInstances = defaults.burstableInstances;
     	      this.cpuCoreCount = defaults.cpuCoreCount;
     	      this.eniAmount = defaults.eniAmount;
     	      this.eniIpv6AddressQuantity = defaults.eniIpv6AddressQuantity;
     	      this.eniPrivateIpAddressQuantity = defaults.eniPrivateIpAddressQuantity;
     	      this.eniQuantity = defaults.eniQuantity;
     	      this.family = defaults.family;
-    	      this.gpu = defaults.gpu;
+    	      this.gpus = defaults.gpus;
     	      this.id = defaults.id;
-    	      this.localStorage = defaults.localStorage;
+    	      this.localStorages = defaults.localStorages;
     	      this.maximumQueueNumberPerEni = defaults.maximumQueueNumberPerEni;
     	      this.memorySize = defaults.memorySize;
     	      this.nvmeSupport = defaults.nvmeSupport;
@@ -297,12 +297,15 @@ public final class GetInstanceTypesInstanceType {
             return availabilityZones(List.of(availabilityZones));
         }
         @CustomType.Setter
-        public Builder burstableInstance(GetInstanceTypesInstanceTypeBurstableInstance burstableInstance) {
-            if (burstableInstance == null) {
-              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "burstableInstance");
+        public Builder burstableInstances(List<GetInstanceTypesInstanceTypeBurstableInstance> burstableInstances) {
+            if (burstableInstances == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "burstableInstances");
             }
-            this.burstableInstance = burstableInstance;
+            this.burstableInstances = burstableInstances;
             return this;
+        }
+        public Builder burstableInstances(GetInstanceTypesInstanceTypeBurstableInstance... burstableInstances) {
+            return burstableInstances(List.of(burstableInstances));
         }
         @CustomType.Setter
         public Builder cpuCoreCount(Integer cpuCoreCount) {
@@ -353,12 +356,15 @@ public final class GetInstanceTypesInstanceType {
             return this;
         }
         @CustomType.Setter
-        public Builder gpu(GetInstanceTypesInstanceTypeGpu gpu) {
-            if (gpu == null) {
-              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "gpu");
+        public Builder gpus(List<GetInstanceTypesInstanceTypeGpus> gpus) {
+            if (gpus == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "gpus");
             }
-            this.gpu = gpu;
+            this.gpus = gpus;
             return this;
+        }
+        public Builder gpus(GetInstanceTypesInstanceTypeGpus... gpus) {
+            return gpus(List.of(gpus));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -369,12 +375,15 @@ public final class GetInstanceTypesInstanceType {
             return this;
         }
         @CustomType.Setter
-        public Builder localStorage(GetInstanceTypesInstanceTypeLocalStorage localStorage) {
-            if (localStorage == null) {
-              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "localStorage");
+        public Builder localStorages(List<GetInstanceTypesInstanceTypeLocalStorage> localStorages) {
+            if (localStorages == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "localStorages");
             }
-            this.localStorage = localStorage;
+            this.localStorages = localStorages;
             return this;
+        }
+        public Builder localStorages(GetInstanceTypesInstanceTypeLocalStorage... localStorages) {
+            return localStorages(List.of(localStorages));
         }
         @CustomType.Setter
         public Builder maximumQueueNumberPerEni(Integer maximumQueueNumberPerEni) {
@@ -435,16 +444,16 @@ public final class GetInstanceTypesInstanceType {
         public GetInstanceTypesInstanceType build() {
             final var _resultValue = new GetInstanceTypesInstanceType();
             _resultValue.availabilityZones = availabilityZones;
-            _resultValue.burstableInstance = burstableInstance;
+            _resultValue.burstableInstances = burstableInstances;
             _resultValue.cpuCoreCount = cpuCoreCount;
             _resultValue.eniAmount = eniAmount;
             _resultValue.eniIpv6AddressQuantity = eniIpv6AddressQuantity;
             _resultValue.eniPrivateIpAddressQuantity = eniPrivateIpAddressQuantity;
             _resultValue.eniQuantity = eniQuantity;
             _resultValue.family = family;
-            _resultValue.gpu = gpu;
+            _resultValue.gpus = gpus;
             _resultValue.id = id;
-            _resultValue.localStorage = localStorage;
+            _resultValue.localStorages = localStorages;
             _resultValue.maximumQueueNumberPerEni = maximumQueueNumberPerEni;
             _resultValue.memorySize = memorySize;
             _resultValue.nvmeSupport = nvmeSupport;

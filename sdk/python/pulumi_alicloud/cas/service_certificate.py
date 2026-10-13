@@ -24,6 +24,8 @@ class ServiceCertificateArgs:
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,7 +39,10 @@ class ServiceCertificateArgs:
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
         :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
-        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        :param pulumi.Input[_builtins.int] key_wo_version: The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
         :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -55,6 +60,10 @@ class ServiceCertificateArgs:
             pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if key_wo is not None:
+            pulumi.set(__self__, "key_wo", key_wo)
+        if key_wo_version is not None:
+            pulumi.set(__self__, "key_wo_version", key_wo_version)
         if lang is not None:
             warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
             pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
@@ -126,13 +135,38 @@ class ServiceCertificateArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The private key of a non-SM certificate in PEM format.
+        The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
         """
         return pulumi.get(self, "key")
 
     @key.setter
     def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWo")
+    def key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        """
+        return pulumi.get(self, "key_wo")
+
+    @key_wo.setter
+    def key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWoVersion")
+    def key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
+        """
+        return pulumi.get(self, "key_wo_version")
+
+    @key_wo_version.setter
+    def key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -217,6 +251,8 @@ class _ServiceCertificateState:
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -230,7 +266,10 @@ class _ServiceCertificateState:
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
         :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
-        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        :param pulumi.Input[_builtins.int] key_wo_version: The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
         :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -248,6 +287,10 @@ class _ServiceCertificateState:
             pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if key_wo is not None:
+            pulumi.set(__self__, "key_wo", key_wo)
+        if key_wo_version is not None:
+            pulumi.set(__self__, "key_wo_version", key_wo_version)
         if lang is not None:
             warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
             pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
@@ -319,13 +362,38 @@ class _ServiceCertificateState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The private key of a non-SM certificate in PEM format.
+        The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
         """
         return pulumi.get(self, "key")
 
     @key.setter
     def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWo")
+    def key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        """
+        return pulumi.get(self, "key_wo")
+
+    @key_wo.setter
+    def key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWoVersion")
+    def key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
+        """
+        return pulumi.get(self, "key_wo_version")
+
+    @key_wo_version.setter
+    def key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -413,6 +481,8 @@ class ServiceCertificate(pulumi.CustomResource):
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -426,6 +496,8 @@ class ServiceCertificate(pulumi.CustomResource):
         For information about SSL Certificates Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/product/28533.html).
 
         > **NOTE:** Available since v1.129.0.
+
+        > **NOTE:** The `key_wo` and `key_wo_version` arguments require Terraform v1.11.0 or later. When `key_wo` is in use, `key` reads back empty because it is not stored in the state or plan.
 
         ## Example Usage
 
@@ -512,7 +584,10 @@ class ServiceCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
         :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
-        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        :param pulumi.Input[_builtins.int] key_wo_version: The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
         :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -532,6 +607,8 @@ class ServiceCertificate(pulumi.CustomResource):
         For information about SSL Certificates Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/product/28533.html).
 
         > **NOTE:** Available since v1.129.0.
+
+        > **NOTE:** The `key_wo` and `key_wo_version` arguments require Terraform v1.11.0 or later. When `key_wo` is in use, `key` reads back empty because it is not stored in the state or plan.
 
         ## Example Usage
 
@@ -632,6 +709,8 @@ class ServiceCertificate(pulumi.CustomResource):
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -652,13 +731,15 @@ class ServiceCertificate(pulumi.CustomResource):
             __props__.__dict__["encrypt_cert"] = encrypt_cert
             __props__.__dict__["encrypt_private_key"] = None if encrypt_private_key is None else pulumi.Output.secret(encrypt_private_key)
             __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
+            __props__.__dict__["key_wo"] = None if key_wo is None else pulumi.Output.secret(key_wo)
+            __props__.__dict__["key_wo_version"] = key_wo_version
             __props__.__dict__["lang"] = lang
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["sign_cert"] = sign_cert
             __props__.__dict__["sign_private_key"] = None if sign_private_key is None else pulumi.Output.secret(sign_private_key)
             __props__.__dict__["tags"] = tags
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "signPrivateKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "keyWo", "signPrivateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServiceCertificate, __self__).__init__(
             'alicloud:cas/serviceCertificate:ServiceCertificate',
@@ -675,6 +756,8 @@ class ServiceCertificate(pulumi.CustomResource):
             encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
             encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
+            key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -692,7 +775,10 @@ class ServiceCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
         :param pulumi.Input[_builtins.str] encrypt_private_key: The private key of an SM encryption certificate in PEM format.
-        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format.
+        :param pulumi.Input[_builtins.str] key: The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        :param pulumi.Input[_builtins.int] key_wo_version: The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
         :param pulumi.Input[_builtins.str] lang: Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -709,6 +795,8 @@ class ServiceCertificate(pulumi.CustomResource):
         __props__.__dict__["encrypt_cert"] = encrypt_cert
         __props__.__dict__["encrypt_private_key"] = encrypt_private_key
         __props__.__dict__["key"] = key
+        __props__.__dict__["key_wo"] = key_wo
+        __props__.__dict__["key_wo_version"] = key_wo_version
         __props__.__dict__["lang"] = lang
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -753,9 +841,26 @@ class ServiceCertificate(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The private key of a non-SM certificate in PEM format.
+        The private key of a non-SM certificate in PEM format. It conflicts with `key_wo`.
         """
         return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="keyWo")
+    def key_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `key_wo_version`. It conflicts with `key`.
+        """
+        return pulumi.get(self, "key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="keyWoVersion")
+    def key_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `key_wo` value.
+        """
+        return pulumi.get(self, "key_wo_version")
 
     @_builtins.property
     @pulumi.getter

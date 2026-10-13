@@ -46,9 +46,13 @@ public final class GetStudioApplicationsApplication {
      */
     private String status;
     /**
-     * @return The topo url of the Application.
+     * @return (Deprecated) The topo url of the Application.
+     * 
+     * @deprecated
+     * Field &#39;topo_url&#39; has been deprecated and it is no longer returned by the server.
      * 
      */
+    @Deprecated /* Field 'topo_url' has been deprecated and it is no longer returned by the server. */
     private String topoUrl;
 
     private GetStudioApplicationsApplication() {}
@@ -102,9 +106,13 @@ public final class GetStudioApplicationsApplication {
         return this.status;
     }
     /**
-     * @return The topo url of the Application.
+     * @return (Deprecated) The topo url of the Application.
+     * 
+     * @deprecated
+     * Field &#39;topo_url&#39; has been deprecated and it is no longer returned by the server.
      * 
      */
+    @Deprecated /* Field 'topo_url' has been deprecated and it is no longer returned by the server. */
     public String topoUrl() {
         return this.topoUrl;
     }

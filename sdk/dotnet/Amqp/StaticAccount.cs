@@ -73,10 +73,10 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp that indicates when the pair of static username and password was created.
+        /// The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
         /// </summary>
         [Output("createTime")]
-        public Output<int> CreateTime { get; private set; } = null!;
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Amqp instance ID.
@@ -201,10 +201,10 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The timestamp that indicates when the pair of static username and password was created.
+        /// The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
         /// </summary>
         [Input("createTime")]
-        public Input<int>? CreateTime { get; set; }
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Amqp instance ID.

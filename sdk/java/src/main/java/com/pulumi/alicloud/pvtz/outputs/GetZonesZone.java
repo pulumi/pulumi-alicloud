@@ -24,7 +24,6 @@ public final class GetZonesZone {
      * 
      */
     private Integer createTimestamp;
-    private String creationTime;
     /**
      * @return The ID of the Private Zone.
      * 
@@ -65,7 +64,6 @@ public final class GetZonesZone {
      * 
      */
     private Boolean slaveDns;
-    private String updateTime;
     /**
      * @return The time when the DNS record was updated.
      * 
@@ -96,9 +94,6 @@ public final class GetZonesZone {
      */
     public Integer createTimestamp() {
         return this.createTimestamp;
-    }
-    public String creationTime() {
-        return this.creationTime;
     }
     /**
      * @return The ID of the Private Zone.
@@ -156,9 +151,6 @@ public final class GetZonesZone {
     public Boolean slaveDns() {
         return this.slaveDns;
     }
-    public String updateTime() {
-        return this.updateTime;
-    }
     /**
      * @return The time when the DNS record was updated.
      * 
@@ -192,7 +184,6 @@ public final class GetZonesZone {
     public static final class Builder {
         private List<GetZonesZoneBindVpc> bindVpcs;
         private Integer createTimestamp;
-        private String creationTime;
         private String id;
         private Boolean isPtr;
         private String name;
@@ -201,7 +192,6 @@ public final class GetZonesZone {
         private String remark;
         private String resourceGroupId;
         private Boolean slaveDns;
-        private String updateTime;
         private Integer updateTimestamp;
         private String zoneId;
         private String zoneName;
@@ -210,7 +200,6 @@ public final class GetZonesZone {
     	      Objects.requireNonNull(defaults);
     	      this.bindVpcs = defaults.bindVpcs;
     	      this.createTimestamp = defaults.createTimestamp;
-    	      this.creationTime = defaults.creationTime;
     	      this.id = defaults.id;
     	      this.isPtr = defaults.isPtr;
     	      this.name = defaults.name;
@@ -219,7 +208,6 @@ public final class GetZonesZone {
     	      this.remark = defaults.remark;
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.slaveDns = defaults.slaveDns;
-    	      this.updateTime = defaults.updateTime;
     	      this.updateTimestamp = defaults.updateTimestamp;
     	      this.zoneId = defaults.zoneId;
     	      this.zoneName = defaults.zoneName;
@@ -242,14 +230,6 @@ public final class GetZonesZone {
               throw new MissingRequiredPropertyException("GetZonesZone", "createTimestamp");
             }
             this.createTimestamp = createTimestamp;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder creationTime(String creationTime) {
-            if (creationTime == null) {
-              throw new MissingRequiredPropertyException("GetZonesZone", "creationTime");
-            }
-            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
@@ -317,14 +297,6 @@ public final class GetZonesZone {
             return this;
         }
         @CustomType.Setter
-        public Builder updateTime(String updateTime) {
-            if (updateTime == null) {
-              throw new MissingRequiredPropertyException("GetZonesZone", "updateTime");
-            }
-            this.updateTime = updateTime;
-            return this;
-        }
-        @CustomType.Setter
         public Builder updateTimestamp(Integer updateTimestamp) {
             if (updateTimestamp == null) {
               throw new MissingRequiredPropertyException("GetZonesZone", "updateTimestamp");
@@ -352,7 +324,6 @@ public final class GetZonesZone {
             final var _resultValue = new GetZonesZone();
             _resultValue.bindVpcs = bindVpcs;
             _resultValue.createTimestamp = createTimestamp;
-            _resultValue.creationTime = creationTime;
             _resultValue.id = id;
             _resultValue.isPtr = isPtr;
             _resultValue.name = name;
@@ -361,7 +332,6 @@ public final class GetZonesZone {
             _resultValue.remark = remark;
             _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.slaveDns = slaveDns;
-            _resultValue.updateTime = updateTime;
             _resultValue.updateTimestamp = updateTimestamp;
             _resultValue.zoneId = zoneId;
             _resultValue.zoneName = zoneName;

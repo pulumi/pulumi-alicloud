@@ -24,6 +24,8 @@ class CertificateArgs:
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35,6 +37,7 @@ class CertificateArgs:
 
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         if cert is not None:
@@ -47,6 +50,10 @@ class CertificateArgs:
             pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if key_wo is not None:
+            pulumi.set(__self__, "key_wo", key_wo)
+        if key_wo_version is not None:
+            pulumi.set(__self__, "key_wo_version", key_wo_version)
         if lang is not None:
             warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
             pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
@@ -116,6 +123,27 @@ class CertificateArgs:
     @key.setter
     def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWo")
+    def key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "key_wo")
+
+    @key_wo.setter
+    def key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWoVersion")
+    def key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "key_wo_version")
+
+    @key_wo_version.setter
+    def key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -185,6 +213,8 @@ class _CertificateState:
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -196,6 +226,7 @@ class _CertificateState:
 
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         if cert is not None:
@@ -208,6 +239,10 @@ class _CertificateState:
             pulumi.set(__self__, "encrypt_private_key", encrypt_private_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if key_wo is not None:
+            pulumi.set(__self__, "key_wo", key_wo)
+        if key_wo_version is not None:
+            pulumi.set(__self__, "key_wo_version", key_wo_version)
         if lang is not None:
             warnings.warn("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""", DeprecationWarning)
             pulumi.log.warn("""lang is deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
@@ -277,6 +312,27 @@ class _CertificateState:
     @key.setter
     def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWo")
+    def key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "key_wo")
+
+    @key_wo.setter
+    def key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyWoVersion")
+    def key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "key_wo_version")
+
+    @key_wo_version.setter
+    def key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -354,6 +410,8 @@ class Certificate(pulumi.CustomResource):
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -450,6 +508,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         ...
@@ -563,6 +622,8 @@ class Certificate(pulumi.CustomResource):
                  encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  lang: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -584,13 +645,15 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["encrypt_cert"] = encrypt_cert
             __props__.__dict__["encrypt_private_key"] = None if encrypt_private_key is None else pulumi.Output.secret(encrypt_private_key)
             __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
+            __props__.__dict__["key_wo"] = None if key_wo is None else pulumi.Output.secret(key_wo)
+            __props__.__dict__["key_wo_version"] = key_wo_version
             __props__.__dict__["lang"] = lang
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["sign_cert"] = sign_cert
             __props__.__dict__["sign_private_key"] = None if sign_private_key is None else pulumi.Output.secret(sign_private_key)
             __props__.__dict__["tags"] = tags
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "signPrivateKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptPrivateKey", "key", "keyWo", "signPrivateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certificate, __self__).__init__(
             'alicloud:cas/certificate:Certificate',
@@ -607,6 +670,8 @@ class Certificate(pulumi.CustomResource):
             encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
             encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
+            key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             lang: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,6 +687,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
+        :param pulumi.Input[_builtins.str] key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -633,6 +699,8 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["encrypt_cert"] = encrypt_cert
         __props__.__dict__["encrypt_private_key"] = encrypt_private_key
         __props__.__dict__["key"] = key
+        __props__.__dict__["key_wo"] = key_wo
+        __props__.__dict__["key_wo_version"] = key_wo_version
         __props__.__dict__["lang"] = lang
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -671,6 +739,19 @@ class Certificate(pulumi.CustomResource):
         Key of the Certificate in which the Certificate will add.
         """
         return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="keyWo")
+    def key_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="keyWoVersion")
+    def key_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "key_wo_version")
 
     @_builtins.property
     @pulumi.getter

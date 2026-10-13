@@ -563,7 +563,7 @@ class TransitRouter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="supportMulticast")
-    def support_multicast(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def support_multicast(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         """

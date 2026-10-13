@@ -535,7 +535,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  auth_model: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,7 +570,7 @@ class _InstanceState:
 
         :param pulumi.Input[_builtins.str] auth_model: The authentication mode of the instance. Default value: `ram`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
-        :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
+        :param pulumi.Input[_builtins.str] create_time: The time when the order was created. Unix timestamp, to millisecond level.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.bool] encrypted_instance: Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
                - `instance_type = "vip"`.
@@ -705,14 +705,14 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        OrderCreateTime.
+        The time when the order was created. Unix timestamp, to millisecond level.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
@@ -1554,7 +1554,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_model: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
             encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1593,7 +1593,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_model: The authentication mode of the instance. Default value: `ram`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
-        :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
+        :param pulumi.Input[_builtins.str] create_time: The time when the order was created. Unix timestamp, to millisecond level.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.bool] encrypted_instance: Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
                - `instance_type = "vip"`.
@@ -1693,9 +1693,9 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Output[_builtins.int]:
+    def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        OrderCreateTime.
+        The time when the order was created. Unix timestamp, to millisecond level.
         """
         return pulumi.get(self, "create_time")
 

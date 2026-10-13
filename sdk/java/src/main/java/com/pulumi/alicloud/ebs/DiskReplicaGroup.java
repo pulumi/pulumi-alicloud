@@ -150,6 +150,20 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
         return this.diskReplicaGroupName;
     }
     /**
+     * Whether to enable replication time control. Default value: false.
+     * 
+     */
+    @Export(name="enableRtc", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableRtc;
+
+    /**
+     * @return Whether to enable replication time control. Default value: false.
+     * 
+     */
+    public Output<Boolean> enableRtc() {
+        return this.enableRtc;
+    }
+    /**
      * . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
      * 
      * @deprecated
@@ -236,14 +250,14 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rpo", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> rpo;
+    private Output<Integer> rpo;
 
     /**
      * @return The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    public Output<Optional<Integer>> rpo() {
-        return Codegen.optional(this.rpo);
+    public Output<Integer> rpo() {
+        return this.rpo;
     }
     /**
      * The ID of the region to which the production site belongs.

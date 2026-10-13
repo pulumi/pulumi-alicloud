@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,10 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterCredentialResult {
     /**
-     * @return (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * @return (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
      * 
      */
-    private GetClusterCredentialCertificateAuthority certificateAuthority;
+    private List<GetClusterCredentialCertificateAuthority> certificateAuthorities;
     /**
      * @return The id of target cluster.
      * 
@@ -49,11 +50,11 @@ public final class GetClusterCredentialResult {
 
     private GetClusterCredentialResult() {}
     /**
-     * @return (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * @return (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
      * 
      */
-    public GetClusterCredentialCertificateAuthority certificateAuthority() {
-        return this.certificateAuthority;
+    public List<GetClusterCredentialCertificateAuthority> certificateAuthorities() {
+        return this.certificateAuthorities;
     }
     /**
      * @return The id of target cluster.
@@ -106,7 +107,7 @@ public final class GetClusterCredentialResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetClusterCredentialCertificateAuthority certificateAuthority;
+        private List<GetClusterCredentialCertificateAuthority> certificateAuthorities;
         private String clusterId;
         private String clusterName;
         private String expiration;
@@ -117,7 +118,7 @@ public final class GetClusterCredentialResult {
         public Builder() {}
         public Builder(GetClusterCredentialResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.certificateAuthority = defaults.certificateAuthority;
+    	      this.certificateAuthorities = defaults.certificateAuthorities;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterName = defaults.clusterName;
     	      this.expiration = defaults.expiration;
@@ -128,12 +129,15 @@ public final class GetClusterCredentialResult {
         }
 
         @CustomType.Setter
-        public Builder certificateAuthority(GetClusterCredentialCertificateAuthority certificateAuthority) {
-            if (certificateAuthority == null) {
-              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "certificateAuthority");
+        public Builder certificateAuthorities(List<GetClusterCredentialCertificateAuthority> certificateAuthorities) {
+            if (certificateAuthorities == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "certificateAuthorities");
             }
-            this.certificateAuthority = certificateAuthority;
+            this.certificateAuthorities = certificateAuthorities;
             return this;
+        }
+        public Builder certificateAuthorities(GetClusterCredentialCertificateAuthority... certificateAuthorities) {
+            return certificateAuthorities(List.of(certificateAuthorities));
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
@@ -189,7 +193,7 @@ public final class GetClusterCredentialResult {
         }
         public GetClusterCredentialResult build() {
             final var _resultValue = new GetClusterCredentialResult();
-            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.certificateAuthorities = certificateAuthorities;
             _resultValue.clusterId = clusterId;
             _resultValue.clusterName = clusterName;
             _resultValue.expiration = expiration;

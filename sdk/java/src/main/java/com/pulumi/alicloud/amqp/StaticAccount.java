@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -103,17 +102,17 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
         return this.accessKey;
     }
     /**
-     * The timestamp that indicates when the pair of static username and password was created.
+     * The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
      * 
      */
-    @Export(name="createTime", refs={Integer.class}, tree="[0]")
-    private Output<Integer> createTime;
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
 
     /**
-     * @return The timestamp that indicates when the pair of static username and password was created.
+     * @return The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
      * 
      */
-    public Output<Integer> createTime() {
+    public Output<String> createTime() {
         return this.createTime;
     }
     /**

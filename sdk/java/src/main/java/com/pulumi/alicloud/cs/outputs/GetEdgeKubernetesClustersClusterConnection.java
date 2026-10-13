@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetEdgeKubernetesClustersClusterConnections {
+public final class GetEdgeKubernetesClustersClusterConnection {
     /**
      * @return API Server Internet endpoint.
      * 
@@ -21,7 +21,7 @@ public final class GetEdgeKubernetesClustersClusterConnections {
      */
     private String apiServerIntranet;
 
-    private GetEdgeKubernetesClustersClusterConnections() {}
+    private GetEdgeKubernetesClustersClusterConnection() {}
     /**
      * @return API Server Internet endpoint.
      * 
@@ -41,7 +41,7 @@ public final class GetEdgeKubernetesClustersClusterConnections {
         return new Builder();
     }
 
-    public static Builder builder(GetEdgeKubernetesClustersClusterConnections defaults) {
+    public static Builder builder(GetEdgeKubernetesClustersClusterConnection defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -49,7 +49,7 @@ public final class GetEdgeKubernetesClustersClusterConnections {
         private String apiServerInternet;
         private String apiServerIntranet;
         public Builder() {}
-        public Builder(GetEdgeKubernetesClustersClusterConnections defaults) {
+        public Builder(GetEdgeKubernetesClustersClusterConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
     	      this.apiServerIntranet = defaults.apiServerIntranet;
@@ -58,7 +58,7 @@ public final class GetEdgeKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
             if (apiServerInternet == null) {
-              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersClusterConnections", "apiServerInternet");
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersClusterConnection", "apiServerInternet");
             }
             this.apiServerInternet = apiServerInternet;
             return this;
@@ -66,13 +66,13 @@ public final class GetEdgeKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
             if (apiServerIntranet == null) {
-              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersClusterConnections", "apiServerIntranet");
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersClusterConnection", "apiServerIntranet");
             }
             this.apiServerIntranet = apiServerIntranet;
             return this;
         }
-        public GetEdgeKubernetesClustersClusterConnections build() {
-            final var _resultValue = new GetEdgeKubernetesClustersClusterConnections();
+        public GetEdgeKubernetesClustersClusterConnection build() {
+            final var _resultValue = new GetEdgeKubernetesClustersClusterConnection();
             _resultValue.apiServerInternet = apiServerInternet;
             _resultValue.apiServerIntranet = apiServerIntranet;
             return _resultValue;

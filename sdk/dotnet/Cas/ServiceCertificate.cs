@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// &gt; **NOTE:** Available since v1.129.0.
     /// 
+    /// &gt; **NOTE:** The `KeyWo` and `KeyWoVersion` arguments require Terraform v1.11.0 or later. When `KeyWo` is in use, `Key` reads back empty because it is not stored in the state or plan.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -133,10 +135,23 @@ namespace Pulumi.AliCloud.Cas
         public Output<string?> EncryptPrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of a non-SM certificate in PEM format.
+        /// The private key of a non-SM certificate in PEM format. It conflicts with `KeyWo`.
         /// </summary>
         [Output("key")]
         public Output<string?> Key { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `KeyWoVersion`. It conflicts with `Key`.
+        /// </summary>
+        [Output("keyWo")]
+        public Output<string?> KeyWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `KeyWo` value.
+        /// </summary>
+        [Output("keyWoVersion")]
+        public Output<int?> KeyWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -201,6 +216,7 @@ namespace Pulumi.AliCloud.Cas
                 {
                     "encryptPrivateKey",
                     "key",
+                    "keyWo",
                     "signPrivateKey",
                 },
             };
@@ -264,7 +280,7 @@ namespace Pulumi.AliCloud.Cas
         private Input<string>? _key;
 
         /// <summary>
-        /// The private key of a non-SM certificate in PEM format.
+        /// The private key of a non-SM certificate in PEM format. It conflicts with `KeyWo`.
         /// </summary>
         public Input<string>? Key
         {
@@ -275,6 +291,29 @@ namespace Pulumi.AliCloud.Cas
                 _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("keyWo")]
+        private Input<string>? _keyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `KeyWoVersion`. It conflicts with `Key`.
+        /// </summary>
+        public Input<string>? KeyWo
+        {
+            get => _keyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `KeyWo` value.
+        /// </summary>
+        [Input("keyWoVersion")]
+        public Input<int>? KeyWoVersion { get; set; }
 
         /// <summary>
         /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -374,7 +413,7 @@ namespace Pulumi.AliCloud.Cas
         private Input<string>? _key;
 
         /// <summary>
-        /// The private key of a non-SM certificate in PEM format.
+        /// The private key of a non-SM certificate in PEM format. It conflicts with `KeyWo`.
         /// </summary>
         public Input<string>? Key
         {
@@ -385,6 +424,29 @@ namespace Pulumi.AliCloud.Cas
                 _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("keyWo")]
+        private Input<string>? _keyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `KeyWoVersion`. It conflicts with `Key`.
+        /// </summary>
+        public Input<string>? KeyWo
+        {
+            get => _keyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `KeyWo` value.
+        /// </summary>
+        [Input("keyWoVersion")]
+        public Input<int>? KeyWoVersion { get; set; }
 
         /// <summary>
         /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.

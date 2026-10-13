@@ -22,10 +22,6 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Removed) Last login date of the user. Removed from version 1.79.0.
-        /// </summary>
-        public readonly string LastLoginDate;
-        /// <summary>
         /// Name of the user.
         /// </summary>
         public readonly string Name;
@@ -36,13 +32,10 @@ namespace Pulumi.AliCloud.Ram.Outputs
 
             string id,
 
-            string lastLoginDate,
-
             string name)
         {
             CreateDate = createDate;
             Id = id;
-            LastLoginDate = lastLoginDate;
             Name = name;
         }
     }

@@ -137,7 +137,7 @@ export class Quota extends pulumi.CustomResource {
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      *
-     * > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
@@ -211,7 +211,7 @@ export interface QuotaState {
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      *
-     * > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
@@ -249,7 +249,7 @@ export interface QuotaArgs {
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      *
-     * > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
      */
     paymentType: pulumi.Input<string>;
     /**

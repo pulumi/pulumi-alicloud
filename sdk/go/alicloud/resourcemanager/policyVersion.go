@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -95,6 +95,8 @@ type PolicyVersion struct {
 
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//
+	// > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion pulumi.BoolPtrOutput `pulumi:"isDefaultVersion"`
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
@@ -141,6 +143,8 @@ func GetPolicyVersion(ctx *pulumi.Context,
 type policyVersionState struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//
+	// > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion *bool `pulumi:"isDefaultVersion"`
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
@@ -151,6 +155,8 @@ type policyVersionState struct {
 
 type PolicyVersionState struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
 	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion pulumi.BoolPtrInput
@@ -167,6 +173,8 @@ func (PolicyVersionState) ElementType() reflect.Type {
 type policyVersionArgs struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//
+	// > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion *bool `pulumi:"isDefaultVersion"`
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
@@ -178,6 +186,8 @@ type policyVersionArgs struct {
 // The set of arguments for constructing a PolicyVersion resource.
 type PolicyVersionArgs struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
 	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion pulumi.BoolPtrInput
@@ -275,6 +285,8 @@ func (o PolicyVersionOutput) ToPolicyVersionOutputWithContext(ctx context.Contex
 }
 
 // Specifies whether to set the policy version as the default version. Default to `false`.
+//
+// > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
 //
 // Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 func (o PolicyVersionOutput) IsDefaultVersion() pulumi.BoolPtrOutput {

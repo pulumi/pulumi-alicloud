@@ -50,17 +50,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OrderCreateTime.
+     * The time when the order was created. Unix timestamp, to millisecond level.
      * 
      */
     @Import(name="createTime")
-    private @Nullable Output<Integer> createTime;
+    private @Nullable Output<String> createTime;
 
     /**
-     * @return OrderCreateTime.
+     * @return The time when the order was created. Unix timestamp, to millisecond level.
      * 
      */
-    public Optional<Output<Integer>> createTime() {
+    public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
@@ -623,23 +623,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime OrderCreateTime.
+         * @param createTime The time when the order was created. Unix timestamp, to millisecond level.
          * 
          * @return builder
          * 
          */
-        public Builder createTime(@Nullable Output<Integer> createTime) {
+        public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
         /**
-         * @param createTime OrderCreateTime.
+         * @param createTime The time when the order was created. Unix timestamp, to millisecond level.
          * 
          * @return builder
          * 
          */
-        public Builder createTime(Integer createTime) {
+        public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -231,11 +231,9 @@ type AlarmCompositeExpressionExpressionList struct {
 	// The metric that is used to monitor the cloud service.
 	MetricName *string `pulumi:"metricName"`
 	// The statistical period of the metric. Unit: seconds. Default value: `300`.
-	Period *string `pulumi:"period"`
-	// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+	Period     *string `pulumi:"period"`
 	Statistics *string `pulumi:"statistics"`
-	// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-	Threshold *string `pulumi:"threshold"`
+	Threshold  *string `pulumi:"threshold"`
 }
 
 // AlarmCompositeExpressionExpressionListInput is an input type that accepts AlarmCompositeExpressionExpressionListArgs and AlarmCompositeExpressionExpressionListOutput values.
@@ -254,11 +252,9 @@ type AlarmCompositeExpressionExpressionListArgs struct {
 	// The metric that is used to monitor the cloud service.
 	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
 	// The statistical period of the metric. Unit: seconds. Default value: `300`.
-	Period pulumi.StringPtrInput `pulumi:"period"`
-	// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+	Period     pulumi.StringPtrInput `pulumi:"period"`
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	Threshold  pulumi.StringPtrInput `pulumi:"threshold"`
 }
 
 func (AlarmCompositeExpressionExpressionListArgs) ElementType() reflect.Type {
@@ -326,12 +322,10 @@ func (o AlarmCompositeExpressionExpressionListOutput) Period() pulumi.StringPtrO
 	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
 func (o AlarmCompositeExpressionExpressionListOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
 func (o AlarmCompositeExpressionExpressionListOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }

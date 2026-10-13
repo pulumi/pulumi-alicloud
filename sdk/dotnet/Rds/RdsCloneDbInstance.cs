@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Rds
     ///         Engine = "PostgreSQL",
     ///         EngineVersion = "13.0",
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = "terraform-example",
     ///         VswitchId = exampleSwitch.Id,

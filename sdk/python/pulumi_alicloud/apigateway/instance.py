@@ -36,7 +36,7 @@ class InstanceArgs:
                  ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']] = None,
+                 to_connect_vpc_ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]]] = None,
                  user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -65,7 +65,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         :param pulumi.Input[_builtins.bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
-        :param pulumi.Input['InstanceToConnectVpcIpBlockArgs'] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]] to_connect_vpc_ip_blocks: A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[_builtins.str] user_vpc_id: User's VpcID.
         :param pulumi.Input[_builtins.bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[_builtins.str] zone_id: The zone where the instance is deployed.
@@ -97,8 +97,8 @@ class InstanceArgs:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if skip_wait_switch is not None:
             pulumi.set(__self__, "skip_wait_switch", skip_wait_switch)
-        if to_connect_vpc_ip_block is not None:
-            pulumi.set(__self__, "to_connect_vpc_ip_block", to_connect_vpc_ip_block)
+        if to_connect_vpc_ip_blocks is not None:
+            pulumi.set(__self__, "to_connect_vpc_ip_blocks", to_connect_vpc_ip_blocks)
         if user_vpc_id is not None:
             pulumi.set(__self__, "user_vpc_id", user_vpc_id)
         if vpc_slb_intranet_enable is not None:
@@ -295,16 +295,16 @@ class InstanceArgs:
         pulumi.set(self, "skip_wait_switch", value)
 
     @_builtins.property
-    @pulumi.getter(name="toConnectVpcIpBlock")
-    def to_connect_vpc_ip_block(self) -> pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]:
+    @pulumi.getter(name="toConnectVpcIpBlocks")
+    def to_connect_vpc_ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]]]:
         """
-        The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         """
-        return pulumi.get(self, "to_connect_vpc_ip_block")
+        return pulumi.get(self, "to_connect_vpc_ip_blocks")
 
-    @to_connect_vpc_ip_block.setter
-    def to_connect_vpc_ip_block(self, value: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]):
-        pulumi.set(self, "to_connect_vpc_ip_block", value)
+    @to_connect_vpc_ip_blocks.setter
+    def to_connect_vpc_ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]]]):
+        pulumi.set(self, "to_connect_vpc_ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="userVpcId")
@@ -377,7 +377,7 @@ class _InstanceState:
                  skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']] = None,
+                 to_connect_vpc_ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]]] = None,
                  user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -410,7 +410,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.bool] support_ipv6: Does ipv6 support.
-        :param pulumi.Input['InstanceToConnectVpcIpBlockArgs'] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]] to_connect_vpc_ip_blocks: A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[_builtins.str] user_vpc_id: User's VpcID.
         :param pulumi.Input[_builtins.bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[_builtins.str] zone_id: The zone where the instance is deployed.
@@ -454,8 +454,8 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if support_ipv6 is not None:
             pulumi.set(__self__, "support_ipv6", support_ipv6)
-        if to_connect_vpc_ip_block is not None:
-            pulumi.set(__self__, "to_connect_vpc_ip_block", to_connect_vpc_ip_block)
+        if to_connect_vpc_ip_blocks is not None:
+            pulumi.set(__self__, "to_connect_vpc_ip_blocks", to_connect_vpc_ip_blocks)
         if user_vpc_id is not None:
             pulumi.set(__self__, "user_vpc_id", user_vpc_id)
         if vpc_slb_intranet_enable is not None:
@@ -700,16 +700,16 @@ class _InstanceState:
         pulumi.set(self, "support_ipv6", value)
 
     @_builtins.property
-    @pulumi.getter(name="toConnectVpcIpBlock")
-    def to_connect_vpc_ip_block(self) -> pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]:
+    @pulumi.getter(name="toConnectVpcIpBlocks")
+    def to_connect_vpc_ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]]]:
         """
-        The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         """
-        return pulumi.get(self, "to_connect_vpc_ip_block")
+        return pulumi.get(self, "to_connect_vpc_ip_blocks")
 
-    @to_connect_vpc_ip_block.setter
-    def to_connect_vpc_ip_block(self, value: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]):
-        pulumi.set(self, "to_connect_vpc_ip_block", value)
+    @to_connect_vpc_ip_blocks.setter
+    def to_connect_vpc_ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]]]):
+        pulumi.set(self, "to_connect_vpc_ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="userVpcId")
@@ -781,7 +781,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]] = None,
+                 to_connect_vpc_ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]]]] = None,
                  user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -897,7 +897,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         :param pulumi.Input[_builtins.bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
-        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]]] to_connect_vpc_ip_blocks: A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[_builtins.str] user_vpc_id: User's VpcID.
         :param pulumi.Input[_builtins.bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[_builtins.str] zone_id: The zone where the instance is deployed.
@@ -1026,7 +1026,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]] = None,
+                 to_connect_vpc_ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]]]] = None,
                  user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1063,7 +1063,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["skip_wait_switch"] = skip_wait_switch
-            __props__.__dict__["to_connect_vpc_ip_block"] = to_connect_vpc_ip_block
+            __props__.__dict__["to_connect_vpc_ip_blocks"] = to_connect_vpc_ip_blocks
             __props__.__dict__["user_vpc_id"] = user_vpc_id
             __props__.__dict__["vpc_slb_intranet_enable"] = vpc_slb_intranet_enable
             __props__.__dict__["zone_id"] = zone_id
@@ -1101,7 +1101,7 @@ class Instance(pulumi.CustomResource):
             skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
-            to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]] = None,
+            to_connect_vpc_ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]]]] = None,
             user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1138,7 +1138,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.bool] support_ipv6: Does ipv6 support.
-        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]]] to_connect_vpc_ip_blocks: A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[_builtins.str] user_vpc_id: User's VpcID.
         :param pulumi.Input[_builtins.bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[_builtins.str] zone_id: The zone where the instance is deployed.
@@ -1167,7 +1167,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["skip_wait_switch"] = skip_wait_switch
         __props__.__dict__["status"] = status
         __props__.__dict__["support_ipv6"] = support_ipv6
-        __props__.__dict__["to_connect_vpc_ip_block"] = to_connect_vpc_ip_block
+        __props__.__dict__["to_connect_vpc_ip_blocks"] = to_connect_vpc_ip_blocks
         __props__.__dict__["user_vpc_id"] = user_vpc_id
         __props__.__dict__["vpc_slb_intranet_enable"] = vpc_slb_intranet_enable
         __props__.__dict__["zone_id"] = zone_id
@@ -1333,12 +1333,12 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "support_ipv6")
 
     @_builtins.property
-    @pulumi.getter(name="toConnectVpcIpBlock")
-    def to_connect_vpc_ip_block(self) -> pulumi.Output[Optional['outputs.InstanceToConnectVpcIpBlock']]:
+    @pulumi.getter(name="toConnectVpcIpBlocks")
+    def to_connect_vpc_ip_blocks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceToConnectVpcIpBlock']]]:
         """
-        The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        A list of additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         """
-        return pulumi.get(self, "to_connect_vpc_ip_block")
+        return pulumi.get(self, "to_connect_vpc_ip_blocks")
 
     @_builtins.property
     @pulumi.getter(name="userVpcId")

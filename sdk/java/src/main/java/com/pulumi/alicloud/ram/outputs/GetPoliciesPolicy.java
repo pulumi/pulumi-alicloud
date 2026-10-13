@@ -68,15 +68,10 @@ public final class GetPoliciesPolicy {
      */
     private String type;
     /**
-     * @return The time when the policy was modified.
+     * @return The time when the policy was updated.
      * 
      */
     private String updateDate;
-    /**
-     * @return The name of the RAM user.
-     * 
-     */
-    private String userName;
     /**
      * @return (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
      * 
@@ -162,18 +157,11 @@ public final class GetPoliciesPolicy {
         return this.type;
     }
     /**
-     * @return The time when the policy was modified.
+     * @return The time when the policy was updated.
      * 
      */
     public String updateDate() {
         return this.updateDate;
-    }
-    /**
-     * @return The name of the RAM user.
-     * 
-     */
-    public String userName() {
-        return this.userName;
     }
     /**
      * @return (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
@@ -204,7 +192,6 @@ public final class GetPoliciesPolicy {
         private Map<String,String> tags;
         private String type;
         private String updateDate;
-        private String userName;
         private String versionId;
         public Builder() {}
         public Builder(GetPoliciesPolicy defaults) {
@@ -221,7 +208,6 @@ public final class GetPoliciesPolicy {
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.updateDate = defaults.updateDate;
-    	      this.userName = defaults.userName;
     	      this.versionId = defaults.versionId;
         }
 
@@ -322,14 +308,6 @@ public final class GetPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder userName(String userName) {
-            if (userName == null) {
-              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "userName");
-            }
-            this.userName = userName;
-            return this;
-        }
-        @CustomType.Setter
         public Builder versionId(String versionId) {
             if (versionId == null) {
               throw new MissingRequiredPropertyException("GetPoliciesPolicy", "versionId");
@@ -351,7 +329,6 @@ public final class GetPoliciesPolicy {
             _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.updateDate = updateDate;
-            _resultValue.userName = userName;
             _resultValue.versionId = versionId;
             return _resultValue;
         }

@@ -8,7 +8,7 @@ import com.pulumi.alicloud.cs.KubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesState;
 import com.pulumi.alicloud.cs.outputs.KubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.KubernetesCertificateAuthority;
-import com.pulumi.alicloud.cs.outputs.KubernetesConnections;
+import com.pulumi.alicloud.cs.outputs.KubernetesConnection;
 import com.pulumi.alicloud.cs.outputs.KubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.KubernetesMasterNode;
 import com.pulumi.alicloud.cs.outputs.KubernetesRuntime;
@@ -54,8 +54,6 @@ import javax.annotation.Nullable;
  * Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
  * 
  * &gt; **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
- * 
- * &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `clusterSpec`.
  * 
  * &gt; **NOTE:** From version 1.177.0+, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId` are deprecated.
  * We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
@@ -107,22 +105,22 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apiAudiences);
     }
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    @Export(name="certificateAuthority", refs={KubernetesCertificateAuthority.class}, tree="[0]")
-    private Output<KubernetesCertificateAuthority> certificateAuthority;
+    @Export(name="certificateAuthorities", refs={List.class,KubernetesCertificateAuthority.class}, tree="[0,1]")
+    private Output<List<KubernetesCertificateAuthority>> certificateAuthorities;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      */
-    public Output<KubernetesCertificateAuthority> certificateAuthority() {
-        return this.certificateAuthority;
+    public Output<List<KubernetesCertificateAuthority>> certificateAuthorities() {
+        return this.certificateAuthorities;
     }
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -197,17 +195,17 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterDomain);
     }
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      * 
      */
-    @Export(name="connections", refs={KubernetesConnections.class}, tree="[0]")
-    private Output<KubernetesConnections> connections;
+    @Export(name="connections", refs={List.class,KubernetesConnection.class}, tree="[0,1]")
+    private Output<List<KubernetesConnection>> connections;
 
     /**
-     * @return (Map) Map of kubernetes cluster connection information.
+     * @return (List) A list of kubernetes cluster connection information.
      * 
      */
-    public Output<KubernetesConnections> connections() {
+    public Output<List<KubernetesConnection>> connections() {
         return this.connections;
     }
     /**
@@ -755,18 +753,18 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
-    @Export(name="runtime", refs={KubernetesRuntime.class}, tree="[0]")
-    private Output</* @Nullable */ KubernetesRuntime> runtime;
+    @Export(name="runtimes", refs={List.class,KubernetesRuntime.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KubernetesRuntime>> runtimes;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * @return A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
-    public Output<Optional<KubernetesRuntime>> runtime() {
-        return Codegen.optional(this.runtime);
+    public Output<Optional<List<KubernetesRuntime>>> runtimes() {
+        return Codegen.optional(this.runtimes);
     }
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

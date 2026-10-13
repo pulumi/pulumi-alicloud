@@ -76,7 +76,9 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class PolicyVersion : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `False`.
+        /// Specifies whether to set the policy version as the default version. Default to `False`. 
+        /// 
+        /// &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         /// </summary>
         [Output("isDefaultVersion")]
         public Output<bool?> IsDefaultVersion { get; private set; } = null!;
@@ -140,7 +142,9 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `False`.
+        /// Specifies whether to set the policy version as the default version. Default to `False`. 
+        /// 
+        /// &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }
@@ -166,7 +170,9 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `False`.
+        /// Specifies whether to set the policy version as the default version. Default to `False`. 
+        /// 
+        /// &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }

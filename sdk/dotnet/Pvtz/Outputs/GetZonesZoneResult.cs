@@ -21,7 +21,6 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// The time when the zone was created.
         /// </summary>
         public readonly int CreateTimestamp;
-        public readonly string CreationTime;
         /// <summary>
         /// The ID of the Private Zone.
         /// </summary>
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `SlaveDns` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly bool SlaveDns;
-        public readonly string UpdateTime;
         /// <summary>
         /// The time when the DNS record was updated.
         /// </summary>
@@ -74,8 +72,6 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
             int createTimestamp,
 
-            string creationTime,
-
             string id,
 
             bool isPtr,
@@ -92,8 +88,6 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
             bool slaveDns,
 
-            string updateTime,
-
             int updateTimestamp,
 
             string zoneId,
@@ -102,7 +96,6 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         {
             BindVpcs = bindVpcs;
             CreateTimestamp = createTimestamp;
-            CreationTime = creationTime;
             Id = id;
             IsPtr = isPtr;
             Name = name;
@@ -111,7 +104,6 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
             Remark = remark;
             ResourceGroupId = resourceGroupId;
             SlaveDns = slaveDns;
-            UpdateTime = updateTime;
             UpdateTimestamp = updateTimestamp;
             ZoneId = zoneId;
             ZoneName = zoneName;

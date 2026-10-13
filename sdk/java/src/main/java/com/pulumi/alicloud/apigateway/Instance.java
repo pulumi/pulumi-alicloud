@@ -443,18 +443,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.supportIpv6;
     }
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
-    @Export(name="toConnectVpcIpBlock", refs={InstanceToConnectVpcIpBlock.class}, tree="[0]")
-    private Output</* @Nullable */ InstanceToConnectVpcIpBlock> toConnectVpcIpBlock;
+    @Export(name="toConnectVpcIpBlocks", refs={List.class,InstanceToConnectVpcIpBlock.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceToConnectVpcIpBlock>> toConnectVpcIpBlocks;
 
     /**
-     * @return The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * @return A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
-    public Output<Optional<InstanceToConnectVpcIpBlock>> toConnectVpcIpBlock() {
-        return Codegen.optional(this.toConnectVpcIpBlock);
+    public Output<Optional<List<InstanceToConnectVpcIpBlock>>> toConnectVpcIpBlocks() {
+        return Codegen.optional(this.toConnectVpcIpBlocks);
     }
     /**
      * User&#39;s VpcID.

@@ -82,9 +82,9 @@ export class StaticAccount extends pulumi.CustomResource {
      */
     declare public readonly accessKey: pulumi.Output<string>;
     /**
-     * The timestamp that indicates when the pair of static username and password was created.
+     * The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Amqp instance ID.
      */
@@ -161,9 +161,9 @@ export interface StaticAccountState {
      */
     accessKey?: pulumi.Input<string | undefined>;
     /**
-     * The timestamp that indicates when the pair of static username and password was created.
+     * The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
      */
-    createTime?: pulumi.Input<number | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Amqp instance ID.
      */

@@ -25,6 +25,7 @@ class DiskReplicaGroupArgs:
                  source_zone_id: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rtc: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
                  pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -42,6 +43,7 @@ class DiskReplicaGroupArgs:
         :param pulumi.Input[_builtins.str] source_zone_id: The ID of the zone to which the production site belongs.
         :param pulumi.Input[_builtins.str] description: The description of the consistent replication group.
         :param pulumi.Input[_builtins.str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[_builtins.bool] enable_rtc: Whether to enable replication time control. Default value: false.
         :param pulumi.Input[_builtins.str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         :param pulumi.Input[_builtins.bool] one_shot: Whether to synchronize immediately. Value range:
                - true: Start data synchronization immediately.
@@ -83,6 +85,8 @@ class DiskReplicaGroupArgs:
             pulumi.set(__self__, "description", description)
         if disk_replica_group_name is not None:
             pulumi.set(__self__, "disk_replica_group_name", disk_replica_group_name)
+        if enable_rtc is not None:
+            pulumi.set(__self__, "enable_rtc", enable_rtc)
         if group_name is not None:
             warnings.warn("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
@@ -174,6 +178,18 @@ class DiskReplicaGroupArgs:
     @disk_replica_group_name.setter
     def disk_replica_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_replica_group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableRtc")
+    def enable_rtc(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable replication time control. Default value: false.
+        """
+        return pulumi.get(self, "enable_rtc")
+
+    @enable_rtc.setter
+    def enable_rtc(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_rtc", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
@@ -304,6 +320,7 @@ class _DiskReplicaGroupState:
                  destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rtc: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
                  pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -321,6 +338,7 @@ class _DiskReplicaGroupState:
         :param pulumi.Input[_builtins.str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[_builtins.bool] enable_rtc: Whether to enable replication time control. Default value: false.
         :param pulumi.Input[_builtins.str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         :param pulumi.Input[_builtins.bool] one_shot: Whether to synchronize immediately. Value range:
                - true: Start data synchronization immediately.
@@ -364,6 +382,8 @@ class _DiskReplicaGroupState:
             pulumi.set(__self__, "destination_zone_id", destination_zone_id)
         if disk_replica_group_name is not None:
             pulumi.set(__self__, "disk_replica_group_name", disk_replica_group_name)
+        if enable_rtc is not None:
+            pulumi.set(__self__, "enable_rtc", enable_rtc)
         if group_name is not None:
             warnings.warn("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
@@ -435,6 +455,18 @@ class _DiskReplicaGroupState:
     @disk_replica_group_name.setter
     def disk_replica_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_replica_group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableRtc")
+    def enable_rtc(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable replication time control. Default value: false.
+        """
+        return pulumi.get(self, "enable_rtc")
+
+    @enable_rtc.setter
+    def enable_rtc(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_rtc", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
@@ -592,6 +624,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
                  destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rtc: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
                  pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -653,6 +686,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[_builtins.bool] enable_rtc: Whether to enable replication time control. Default value: false.
         :param pulumi.Input[_builtins.str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         :param pulumi.Input[_builtins.bool] one_shot: Whether to synchronize immediately. Value range:
                - true: Start data synchronization immediately.
@@ -757,6 +791,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
                  destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rtc: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
                  pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -784,6 +819,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'destination_zone_id'")
             __props__.__dict__["destination_zone_id"] = destination_zone_id
             __props__.__dict__["disk_replica_group_name"] = disk_replica_group_name
+            __props__.__dict__["enable_rtc"] = enable_rtc
             __props__.__dict__["group_name"] = group_name
             __props__.__dict__["one_shot"] = one_shot
             __props__.__dict__["pair_ids"] = pair_ids
@@ -812,6 +848,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
             destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
             destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_rtc: pulumi.Input[Optional[_builtins.bool]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
             one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
             pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -833,6 +870,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[_builtins.bool] enable_rtc: Whether to enable replication time control. Default value: false.
         :param pulumi.Input[_builtins.str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         :param pulumi.Input[_builtins.bool] one_shot: Whether to synchronize immediately. Value range:
                - true: Start data synchronization immediately.
@@ -876,6 +914,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         __props__.__dict__["destination_region_id"] = destination_region_id
         __props__.__dict__["destination_zone_id"] = destination_zone_id
         __props__.__dict__["disk_replica_group_name"] = disk_replica_group_name
+        __props__.__dict__["enable_rtc"] = enable_rtc
         __props__.__dict__["group_name"] = group_name
         __props__.__dict__["one_shot"] = one_shot
         __props__.__dict__["pair_ids"] = pair_ids
@@ -919,6 +958,14 @@ class DiskReplicaGroup(pulumi.CustomResource):
         Consistent replication group name.
         """
         return pulumi.get(self, "disk_replica_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enableRtc")
+    def enable_rtc(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable replication time control. Default value: false.
+        """
+        return pulumi.get(self, "enable_rtc")
 
     @_builtins.property
     @pulumi.getter(name="groupName")
@@ -967,7 +1014,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def rpo(self) -> pulumi.Output[_builtins.int]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """

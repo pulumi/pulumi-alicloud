@@ -1821,7 +1821,7 @@ class SynchronizationJob(pulumi.CustomResource):
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+                instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input="%s_%d",
                     args=[
@@ -2040,7 +2040,7 @@ class SynchronizationJob(pulumi.CustomResource):
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+                instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input="%s_%d",
                     args=[

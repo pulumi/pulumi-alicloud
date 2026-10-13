@@ -161,6 +161,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Field `EndTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
+        /// 
+        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -347,6 +349,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Field `EndTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
+        /// 
+        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -507,6 +511,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Field `EndTime` has been deprecated from provider version 1.50.0. New field `EffectiveInterval` instead.
+        /// 
+        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }

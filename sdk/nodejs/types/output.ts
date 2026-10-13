@@ -7910,7 +7910,9 @@ export namespace bp {
          */
         status: string;
         /**
-         * The topo url of the Application.
+         * (Deprecated) The topo url of the Application.
+         *
+         * @deprecated Field 'topo_url' has been deprecated and it is no longer returned by the server.
          */
         topoUrl: string;
     }
@@ -11161,10 +11163,6 @@ export namespace chatbot {
 export namespace clickhouse {
     export interface DbClusterDbClusterAccessWhiteList {
         /**
-         * Field `dbClusterIpArrayAttribute` has been removed from provider.
-         */
-        dbClusterIpArrayAttribute?: string;
-        /**
          * Whitelist group name.
          */
         dbClusterIpArrayName?: string;
@@ -11396,10 +11394,6 @@ export namespace clickhouse {
     }
 
     export interface GetDbClustersClusterDbClusterAccessWhiteList {
-        /**
-         * Field `dbClusterIpArrayAttribute` has been removed from provider.
-         */
-        dbClusterIpArrayAttribute: string;
         /**
          * Whitelist group name.
          */
@@ -14934,13 +14928,7 @@ export namespace cms {
          * The statistical period of the metric. Unit: seconds. Default value: `300`.
          */
         period?: string;
-        /**
-         * Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-         */
         statistics?: string;
-        /**
-         * Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-         */
         threshold?: string;
     }
 
@@ -19668,9 +19656,9 @@ export namespace cr {
 
     export interface GetReposRepo {
         /**
-         * The repository domain list.
+         * A list of repository domain:
          */
-        domainList: outputs.cr.GetReposRepoDomainList;
+        domainLists: outputs.cr.GetReposRepoDomainList[];
         /**
          * Name of container registry namespace.
          */
@@ -19895,7 +19883,7 @@ export namespace cs {
         clusterCert: string;
     }
 
-    export interface EdgeKubernetesConnections {
+    export interface EdgeKubernetesConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -20185,9 +20173,9 @@ export namespace cs {
          */
         availabilityZone: string;
         /**
-         * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+         * A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
          */
-        connections: outputs.cs.GetEdgeKubernetesClustersClusterConnections;
+        connections: outputs.cs.GetEdgeKubernetesClustersClusterConnection[];
         /**
          * ID of the node.
          */
@@ -20214,7 +20202,7 @@ export namespace cs {
         workerNodes: outputs.cs.GetEdgeKubernetesClustersClusterWorkerNode[];
     }
 
-    export interface GetEdgeKubernetesClustersClusterConnections {
+    export interface GetEdgeKubernetesClustersClusterConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -20277,9 +20265,9 @@ export namespace cs {
          */
         clusterNetworkType: string;
         /**
-         * Map of kubernetes cluster connection information.
+         * A list of kubernetes cluster connection information.
          */
-        connections: outputs.cs.GetKubernetesClustersClusterConnections;
+        connections: outputs.cs.GetKubernetesClustersClusterConnection[];
         /**
          * ID of the node.
          */
@@ -20418,7 +20406,7 @@ export namespace cs {
         workerPeriodUnit: string;
     }
 
-    export interface GetKubernetesClustersClusterConnections {
+    export interface GetKubernetesClustersClusterConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -21153,24 +21141,14 @@ export namespace cs {
          * The ID of availability zone.
          */
         availabilityZone: string;
-        clusterNetworkType: string;
         /**
-         * Map of kubernetes cluster connection information.
+         * A list of kubernetes cluster connection information.
          */
-        connections: outputs.cs.GetManagedKubernetesClustersClusterConnections;
+        connections: outputs.cs.GetManagedKubernetesClustersClusterConnection[];
         /**
          * ID of the node.
          */
         id: string;
-        imageId: string;
-        /**
-         * The keypair of ssh login cluster node, you have to create it first.
-         */
-        keyName: string;
-        /**
-         * A list of one element containing information about the associated log store. It contains the following attributes:
-         */
-        logConfigs: outputs.cs.GetManagedKubernetesClustersClusterLogConfig[];
         /**
          * Node name.
          */
@@ -21179,7 +21157,6 @@ export namespace cs {
          * The ID of nat gateway used to launch kubernetes cluster.
          */
         natGatewayId: string;
-        podCidr: string;
         /**
          * (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
          */
@@ -21188,8 +21165,6 @@ export namespace cs {
          * The ID of security group where the current cluster worker node is located.
          */
         securityGroupId: string;
-        serviceCidr: string;
-        slbInternetEnabled: boolean;
         /**
          * (Available since v1.245.0) The state of cluster.
          */
@@ -21199,30 +21174,12 @@ export namespace cs {
          */
         vpcId: string;
         /**
-         * The ID of VSwitches where the current cluster is located.
-         */
-        vswitchIds: string[];
-        workerAutoRenew: boolean;
-        workerAutoRenewPeriod: number;
-        workerDataDiskCategory: string;
-        workerDataDiskSize: number;
-        workerDiskCategory: string;
-        workerDiskSize: number;
-        workerInstanceChargeType: string;
-        workerInstanceTypes: string[];
-        /**
          * List of cluster worker nodes.
          */
         workerNodes: outputs.cs.GetManagedKubernetesClustersClusterWorkerNode[];
-        /**
-         * The ECS instance node number in the current container cluster.
-         */
-        workerNumbers: number[];
-        workerPeriod: number;
-        workerPeriodUnit: string;
     }
 
-    export interface GetManagedKubernetesClustersClusterConnections {
+    export interface GetManagedKubernetesClustersClusterConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -21239,17 +21196,6 @@ export namespace cs {
          * Service Access Domain.
          */
         serviceDomain: string;
-    }
-
-    export interface GetManagedKubernetesClustersClusterLogConfig {
-        /**
-         * Log Service project name.
-         */
-        project: string;
-        /**
-         * Type of collecting logs.
-         */
-        type: string;
     }
 
     export interface GetManagedKubernetesClustersClusterRrsaConfig {
@@ -21495,9 +21441,9 @@ export namespace cs {
 
     export interface GetServerlessKubernetesClustersCluster {
         /**
-         * Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
+         * A list of serverless cluster connection information.
          */
-        connections: outputs.cs.GetServerlessKubernetesClustersClusterConnections;
+        connections: outputs.cs.GetServerlessKubernetesClustersClusterConnection[];
         /**
          * Whether the cluster support delete protection.
          */
@@ -21536,7 +21482,7 @@ export namespace cs {
         vswitchId: string;
     }
 
-    export interface GetServerlessKubernetesClustersClusterConnections {
+    export interface GetServerlessKubernetesClustersClusterConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -21613,7 +21559,7 @@ export namespace cs {
         clusterCert: string;
     }
 
-    export interface KubernetesConnections {
+    export interface KubernetesConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -21981,7 +21927,7 @@ export namespace cs {
         clusterCert: string;
     }
 
-    export interface ManagedKubernetesConnections {
+    export interface ManagedKubernetesConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -28127,6 +28073,10 @@ export namespace ebs {
          */
         destinationZoneId: string;
         /**
+         * Whether to enable replication time control.
+         */
+        enableRtc: boolean;
+        /**
          * Consistent replication group name.
          */
         groupName: string;
@@ -28134,6 +28084,9 @@ export namespace ebs {
          * The ID of the Disk Replica Group.
          */
         id: string;
+        /**
+         * The most recent recovery point time of the replication pair-consistent group.
+         */
         lastRecoverPoint: string;
         /**
          * The initial source region of the replication group.
@@ -32353,9 +32306,9 @@ export namespace ecs {
          */
         availabilityZones: string[];
         /**
-         * The burstable instance attribution.
+         * A list of the burstable instance attribution.
          */
-        burstableInstance: outputs.ecs.GetInstanceTypesInstanceTypeBurstableInstance;
+        burstableInstances: outputs.ecs.GetInstanceTypesInstanceTypeBurstableInstance[];
         /**
          * Filter the results to a specific number of cpu cores.
          */
@@ -32381,17 +32334,17 @@ export namespace ecs {
          */
         family: string;
         /**
-         * The GPU attribution of an instance type:
+         * A list of GPU attributes of an instance type:
          */
-        gpu: outputs.ecs.GetInstanceTypesInstanceTypeGpu;
+        gpus: outputs.ecs.GetInstanceTypesInstanceTypeGpus[];
         /**
          * ID of the instance type.
          */
         id: string;
         /**
-         * Local storage of an instance type.
+         * A list of local storage of an instance type.
          */
-        localStorage: outputs.ecs.GetInstanceTypesInstanceTypeLocalStorage;
+        localStorages: outputs.ecs.GetInstanceTypesInstanceTypeLocalStorage[];
         /**
          * (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
          */
@@ -32433,7 +32386,7 @@ export namespace ecs {
         initialCredit: string;
     }
 
-    export interface GetInstanceTypesInstanceTypeGpu {
+    export interface GetInstanceTypesInstanceTypeGpus {
         /**
          * The number of local storage devices that an instance has been attached to.
          */
@@ -47779,10 +47732,6 @@ export namespace hbase {
          * ID of the zone.
          */
         id: string;
-        /**
-         * A list of zone ids in which the multi zone. Removed from v1.99.0.
-         */
-        multiZoneIds: string[];
     }
 
     export interface InstanceSlbConnAddr {
@@ -49570,10 +49519,6 @@ export namespace kms {
          * Date and time when the key version was created (UTC time).
          */
         createTime: string;
-        /**
-         * (Removed from v1.124.4) It has been removed and using `createTime` instead.
-         */
-        creationDate: string;
         /**
          * ID of the KMS KeyVersion resource.
          */
@@ -56292,10 +56237,6 @@ export namespace oss {
          */
         description: string;
         /**
-         * (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-         */
-        entityQuota: number;
-        /**
          * ID of the instance.
          */
         id: string;
@@ -56303,10 +56244,6 @@ export namespace oss {
          * Instance name.
          */
         name: string;
-        /**
-         * (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-         */
-        network: string;
         /**
          * (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
          */
@@ -56442,10 +56379,6 @@ export namespace ots {
          */
         description: string;
         /**
-         * (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-         */
-        entityQuota: number;
-        /**
          * ID of the instance.
          */
         id: string;
@@ -56453,10 +56386,6 @@ export namespace ots {
          * Instance name.
          */
         name: string;
-        /**
-         * (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-         */
-        network: string;
         /**
          * (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
          */
@@ -57886,7 +57815,6 @@ export namespace pvtz {
          * The time when the zone was created.
          */
         createTimestamp: number;
-        creationTime: string;
         /**
          * The ID of the Private Zone.
          */
@@ -57919,7 +57847,6 @@ export namespace pvtz {
          * Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
          */
         slaveDns: boolean;
-        updateTime: string;
         /**
          * The time when the DNS record was updated.
          */
@@ -58544,13 +58471,9 @@ export namespace ram {
          */
         type: string;
         /**
-         * The time when the policy was modified.
+         * The time when the policy was updated.
          */
         updateDate: string;
-        /**
-         * The name of the RAM user.
-         */
-        userName: string;
         /**
          * (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
          */
@@ -58735,10 +58658,6 @@ export namespace ram {
          * The original id is user's name, but it is user id in 1.37.0+.
          */
         id: string;
-        /**
-         * (Removed) Last login date of the user. Removed from version 1.79.0.
-         */
-        lastLoginDate: string;
         /**
          * Name of the user.
          */
@@ -59122,9 +59041,9 @@ export namespace rds {
          */
         price: string;
         /**
-         * DB Instance available storage range.
+         * A list of DB Instance available storage range.
          */
-        storageRange: outputs.rds.GetInstanceClassesInstanceClassStorageRange;
+        storageRanges: outputs.rds.GetInstanceClassesInstanceClassStorageRange[];
         /**
          * A list of Zone to launch the DB instance.
          */
@@ -66500,10 +66419,6 @@ export namespace slb {
          */
         instanceId: string;
         /**
-         * (Removed from v1.63.0) Determine if the server is executing.
-         */
-        isBackup: number;
-        /**
          * The port used by the master slave server group.
          */
         port: number;
@@ -66732,10 +66647,6 @@ export namespace slb {
     }
 
     export interface MasterSlaveServerGroupServer {
-        /**
-         * Determine if the server is executing. Valid value 0, 1.
-         */
-        isBackup?: number;
         /**
          * The port used by the backend server. Valid value range: [1-65535].
          */
@@ -67831,7 +67742,7 @@ export namespace sls {
         /**
          * The endpoint of the log project.
          */
-        endpoint?: string;
+        endpoint: string;
         /**
          * The name of the output target logstore.
          */
@@ -67839,7 +67750,7 @@ export namespace sls {
         /**
          * Region
          */
-        region?: string;
+        region: string;
     }
 
     export interface MachineGroupGroupAttribute {

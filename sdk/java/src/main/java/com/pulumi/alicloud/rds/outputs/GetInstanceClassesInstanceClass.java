@@ -24,10 +24,10 @@ public final class GetInstanceClassesInstanceClass {
      */
     private String price;
     /**
-     * @return DB Instance available storage range.
+     * @return A list of DB Instance available storage range.
      * 
      */
-    private GetInstanceClassesInstanceClassStorageRange storageRange;
+    private List<GetInstanceClassesInstanceClassStorageRange> storageRanges;
     /**
      * @return A list of Zone to launch the DB instance.
      * 
@@ -50,11 +50,11 @@ public final class GetInstanceClassesInstanceClass {
         return this.price;
     }
     /**
-     * @return DB Instance available storage range.
+     * @return A list of DB Instance available storage range.
      * 
      */
-    public GetInstanceClassesInstanceClassStorageRange storageRange() {
-        return this.storageRange;
+    public List<GetInstanceClassesInstanceClassStorageRange> storageRanges() {
+        return this.storageRanges;
     }
     /**
      * @return A list of Zone to launch the DB instance.
@@ -75,14 +75,14 @@ public final class GetInstanceClassesInstanceClass {
     public static final class Builder {
         private String instanceClass;
         private String price;
-        private GetInstanceClassesInstanceClassStorageRange storageRange;
+        private List<GetInstanceClassesInstanceClassStorageRange> storageRanges;
         private List<GetInstanceClassesInstanceClassZoneId> zoneIds;
         public Builder() {}
         public Builder(GetInstanceClassesInstanceClass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceClass = defaults.instanceClass;
     	      this.price = defaults.price;
-    	      this.storageRange = defaults.storageRange;
+    	      this.storageRanges = defaults.storageRanges;
     	      this.zoneIds = defaults.zoneIds;
         }
 
@@ -103,12 +103,15 @@ public final class GetInstanceClassesInstanceClass {
             return this;
         }
         @CustomType.Setter
-        public Builder storageRange(GetInstanceClassesInstanceClassStorageRange storageRange) {
-            if (storageRange == null) {
-              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClass", "storageRange");
+        public Builder storageRanges(List<GetInstanceClassesInstanceClassStorageRange> storageRanges) {
+            if (storageRanges == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClass", "storageRanges");
             }
-            this.storageRange = storageRange;
+            this.storageRanges = storageRanges;
             return this;
+        }
+        public Builder storageRanges(GetInstanceClassesInstanceClassStorageRange... storageRanges) {
+            return storageRanges(List.of(storageRanges));
         }
         @CustomType.Setter
         public Builder zoneIds(List<GetInstanceClassesInstanceClassZoneId> zoneIds) {
@@ -125,7 +128,7 @@ public final class GetInstanceClassesInstanceClass {
             final var _resultValue = new GetInstanceClassesInstanceClass();
             _resultValue.instanceClass = instanceClass;
             _resultValue.price = price;
-            _resultValue.storageRange = storageRange;
+            _resultValue.storageRanges = storageRanges;
             _resultValue.zoneIds = zoneIds;
             return _resultValue;
         }

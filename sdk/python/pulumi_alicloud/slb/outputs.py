@@ -211,8 +211,6 @@ class MasterSlaveServerGroupServer(dict):
         suggest = None
         if key == "serverId":
             suggest = "server_id"
-        elif key == "isBackup":
-            suggest = "is_backup"
         elif key == "serverType":
             suggest = "server_type"
 
@@ -230,22 +228,18 @@ class MasterSlaveServerGroupServer(dict):
     def __init__(__self__, *,
                  port: _builtins.int,
                  server_id: _builtins.str,
-                 is_backup: Optional[_builtins.int] = None,
                  server_type: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None,
                  weight: Optional[_builtins.int] = None):
         """
         :param _builtins.int port: The port used by the backend server. Valid value range: [1-65535].
         :param _builtins.str server_id: A list backend server ID (ECS instance ID).
-        :param _builtins.int is_backup: Determine if the server is executing. Valid value 0, 1.
         :param _builtins.str server_type: The server type of the backend server. Valid value Master, Slave.
         :param _builtins.str type: Type of the backend server. Valid value ecs, eni. Default to eni.
         :param _builtins.int weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
-        if is_backup is not None:
-            pulumi.set(__self__, "is_backup", is_backup)
         if server_type is not None:
             pulumi.set(__self__, "server_type", server_type)
         if type is not None:
@@ -268,14 +262,6 @@ class MasterSlaveServerGroupServer(dict):
         A list backend server ID (ECS instance ID).
         """
         return pulumi.get(self, "server_id")
-
-    @_builtins.property
-    @pulumi.getter(name="isBackup")
-    def is_backup(self) -> Optional[_builtins.int]:
-        """
-        Determine if the server is executing. Valid value 0, 1.
-        """
-        return pulumi.get(self, "is_backup")
 
     @_builtins.property
     @pulumi.getter(name="serverType")
@@ -2439,19 +2425,16 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
 class GetMasterSlaveServerGroupsGroupServerResult(dict):
     def __init__(__self__, *,
                  instance_id: _builtins.str,
-                 is_backup: _builtins.int,
                  port: _builtins.int,
                  server_type: _builtins.str,
                  weight: _builtins.int):
         """
         :param _builtins.str instance_id: ID of the attached ECS instance.
-        :param _builtins.int is_backup: (Removed from v1.63.0) Determine if the server is executing.
         :param _builtins.int port: The port used by the master slave server group.
         :param _builtins.str server_type: The server type of the attached ECS instance.
         :param _builtins.int weight: Weight associated to the ECS instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "is_backup", is_backup)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_type", server_type)
         pulumi.set(__self__, "weight", weight)
@@ -2463,14 +2446,6 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
         ID of the attached ECS instance.
         """
         return pulumi.get(self, "instance_id")
-
-    @_builtins.property
-    @pulumi.getter(name="isBackup")
-    def is_backup(self) -> _builtins.int:
-        """
-        (Removed from v1.63.0) Determine if the server is executing.
-        """
-        return pulumi.get(self, "is_backup")
 
     @_builtins.property
     @pulumi.getter

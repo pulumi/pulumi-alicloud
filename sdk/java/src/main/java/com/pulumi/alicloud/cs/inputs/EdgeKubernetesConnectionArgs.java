@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ManagedKubernetesConnectionsArgs extends com.pulumi.resources.ResourceArgs {
+public final class EdgeKubernetesConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ManagedKubernetesConnectionsArgs Empty = new ManagedKubernetesConnectionsArgs();
+    public static final EdgeKubernetesConnectionArgs Empty = new EdgeKubernetesConnectionArgs();
 
     /**
      * API Server Internet endpoint.
@@ -75,9 +75,9 @@ public final class ManagedKubernetesConnectionsArgs extends com.pulumi.resources
         return Optional.ofNullable(this.serviceDomain);
     }
 
-    private ManagedKubernetesConnectionsArgs() {}
+    private EdgeKubernetesConnectionArgs() {}
 
-    private ManagedKubernetesConnectionsArgs(ManagedKubernetesConnectionsArgs $) {
+    private EdgeKubernetesConnectionArgs(EdgeKubernetesConnectionArgs $) {
         this.apiServerInternet = $.apiServerInternet;
         this.apiServerIntranet = $.apiServerIntranet;
         this.masterPublicIp = $.masterPublicIp;
@@ -87,19 +87,19 @@ public final class ManagedKubernetesConnectionsArgs extends com.pulumi.resources
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ManagedKubernetesConnectionsArgs defaults) {
+    public static Builder builder(EdgeKubernetesConnectionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ManagedKubernetesConnectionsArgs $;
+        private EdgeKubernetesConnectionArgs $;
 
         public Builder() {
-            $ = new ManagedKubernetesConnectionsArgs();
+            $ = new EdgeKubernetesConnectionArgs();
         }
 
-        public Builder(ManagedKubernetesConnectionsArgs defaults) {
-            $ = new ManagedKubernetesConnectionsArgs(Objects.requireNonNull(defaults));
+        public Builder(EdgeKubernetesConnectionArgs defaults) {
+            $ = new EdgeKubernetesConnectionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -186,7 +186,7 @@ public final class ManagedKubernetesConnectionsArgs extends com.pulumi.resources
             return serviceDomain(Output.of(serviceDomain));
         }
 
-        public ManagedKubernetesConnectionsArgs build() {
+        public EdgeKubernetesConnectionArgs build() {
             return $;
         }
     }

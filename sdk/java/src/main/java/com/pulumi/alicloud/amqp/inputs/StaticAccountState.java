@@ -5,7 +5,6 @@ package com.pulumi.alicloud.amqp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,17 +31,17 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The timestamp that indicates when the pair of static username and password was created.
+     * The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
      * 
      */
     @Import(name="createTime")
-    private @Nullable Output<Integer> createTime;
+    private @Nullable Output<String> createTime;
 
     /**
-     * @return The timestamp that indicates when the pair of static username and password was created.
+     * @return The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
      * 
      */
-    public Optional<Output<Integer>> createTime() {
+    public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
@@ -173,23 +172,23 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The timestamp that indicates when the pair of static username and password was created.
+         * @param createTime The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
          * 
          * @return builder
          * 
          */
-        public Builder createTime(@Nullable Output<Integer> createTime) {
+        public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
         /**
-         * @param createTime The timestamp that indicates when the pair of static username and password was created.
+         * @param createTime The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
          * 
          * @return builder
          * 
          */
-        public Builder createTime(Integer createTime) {
+        public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 

@@ -246,10 +246,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<bool> SupportIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// The additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
+        /// A list of additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
         /// </summary>
-        [Output("toConnectVpcIpBlock")]
-        public Output<Outputs.InstanceToConnectVpcIpBlock?> ToConnectVpcIpBlock { get; private set; } = null!;
+        [Output("toConnectVpcIpBlocks")]
+        public Output<ImmutableArray<Outputs.InstanceToConnectVpcIpBlock>> ToConnectVpcIpBlocks { get; private set; } = null!;
 
         /// <summary>
         /// User's VpcID.
@@ -417,11 +417,17 @@ namespace Pulumi.AliCloud.ApiGateway
         [Input("skipWaitSwitch")]
         public Input<bool>? SkipWaitSwitch { get; set; }
 
+        [Input("toConnectVpcIpBlocks")]
+        private InputList<Inputs.InstanceToConnectVpcIpBlockArgs>? _toConnectVpcIpBlocks;
+
         /// <summary>
-        /// The additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
+        /// A list of additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
         /// </summary>
-        [Input("toConnectVpcIpBlock")]
-        public Input<Inputs.InstanceToConnectVpcIpBlockArgs>? ToConnectVpcIpBlock { get; set; }
+        public InputList<Inputs.InstanceToConnectVpcIpBlockArgs> ToConnectVpcIpBlocks
+        {
+            get => _toConnectVpcIpBlocks ?? (_toConnectVpcIpBlocks = new InputList<Inputs.InstanceToConnectVpcIpBlockArgs>());
+            set => _toConnectVpcIpBlocks = value;
+        }
 
         /// <summary>
         /// User's VpcID.
@@ -581,11 +587,17 @@ namespace Pulumi.AliCloud.ApiGateway
         [Input("supportIpv6")]
         public Input<bool>? SupportIpv6 { get; set; }
 
+        [Input("toConnectVpcIpBlocks")]
+        private InputList<Inputs.InstanceToConnectVpcIpBlockGetArgs>? _toConnectVpcIpBlocks;
+
         /// <summary>
-        /// The additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
+        /// A list of additional IP block that the VPC integration instance can access, conflict with `DeleteVpcIpBlock`. See `ToConnectVpcIpBlock` below.
         /// </summary>
-        [Input("toConnectVpcIpBlock")]
-        public Input<Inputs.InstanceToConnectVpcIpBlockGetArgs>? ToConnectVpcIpBlock { get; set; }
+        public InputList<Inputs.InstanceToConnectVpcIpBlockGetArgs> ToConnectVpcIpBlocks
+        {
+            get => _toConnectVpcIpBlocks ?? (_toConnectVpcIpBlocks = new InputList<Inputs.InstanceToConnectVpcIpBlockGetArgs>());
+            set => _toConnectVpcIpBlocks = value;
+        }
 
         /// <summary>
         /// User's VpcID.

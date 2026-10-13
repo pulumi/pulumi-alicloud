@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -115,18 +116,50 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * @return The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      * 
      */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     * 
+     */
+    @Import(name="valueWo")
+    private @Nullable Output<String> valueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     * 
+     */
+    public Optional<Output<String>> valueWo() {
+        return Optional.ofNullable(this.valueWo);
+    }
+
+    /**
+     * The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     * 
+     */
+    @Import(name="valueWoVersion")
+    private @Nullable Output<Integer> valueWoVersion;
+
+    /**
+     * @return The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     * 
+     */
+    public Optional<Output<Integer>> valueWoVersion() {
+        return Optional.ofNullable(this.valueWoVersion);
     }
 
     private ParameterState() {}
@@ -139,6 +172,8 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.type = $.type;
         this.value = $.value;
+        this.valueWo = $.valueWo;
+        this.valueWoVersion = $.valueWoVersion;
     }
 
     public static Builder builder() {
@@ -294,7 +329,7 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the common parameter. The value must be `1` to `4096` characters in length.
+         * @param value The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
          * 
          * @return builder
          * 
@@ -305,13 +340,57 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the common parameter. The value must be `1` to `4096` characters in length.
+         * @param value The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
          * 
          * @return builder
          * 
          */
         public Builder value(String value) {
             return value(Output.of(value));
+        }
+
+        /**
+         * @param valueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWo(@Nullable Output<String> valueWo) {
+            $.valueWo = valueWo;
+            return this;
+        }
+
+        /**
+         * @param valueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWo(String valueWo) {
+            return valueWo(Output.of(valueWo));
+        }
+
+        /**
+         * @param valueWoVersion The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWoVersion(@Nullable Output<Integer> valueWoVersion) {
+            $.valueWoVersion = valueWoVersion;
+            return this;
+        }
+
+        /**
+         * @param valueWoVersion The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWoVersion(Integer valueWoVersion) {
+            return valueWoVersion(Output.of(valueWoVersion));
         }
 
         public ParameterState build() {

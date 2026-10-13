@@ -205,9 +205,9 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly supportIpv6: pulumi.Output<boolean>;
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */
-    declare public readonly toConnectVpcIpBlock: pulumi.Output<outputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
+    declare public readonly toConnectVpcIpBlocks: pulumi.Output<outputs.apigateway.InstanceToConnectVpcIpBlock[] | undefined>;
     /**
      * User's VpcID.
      */
@@ -257,7 +257,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["skipWaitSwitch"] = state?.skipWaitSwitch;
             resourceInputs["status"] = state?.status;
             resourceInputs["supportIpv6"] = state?.supportIpv6;
-            resourceInputs["toConnectVpcIpBlock"] = state?.toConnectVpcIpBlock;
+            resourceInputs["toConnectVpcIpBlocks"] = state?.toConnectVpcIpBlocks;
             resourceInputs["userVpcId"] = state?.userVpcId;
             resourceInputs["vpcSlbIntranetEnable"] = state?.vpcSlbIntranetEnable;
             resourceInputs["zoneId"] = state?.zoneId;
@@ -291,7 +291,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["pricingCycle"] = args?.pricingCycle;
             resourceInputs["skipWaitSwitch"] = args?.skipWaitSwitch;
-            resourceInputs["toConnectVpcIpBlock"] = args?.toConnectVpcIpBlock;
+            resourceInputs["toConnectVpcIpBlocks"] = args?.toConnectVpcIpBlocks;
             resourceInputs["userVpcId"] = args?.userVpcId;
             resourceInputs["vpcSlbIntranetEnable"] = args?.vpcSlbIntranetEnable;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -393,9 +393,9 @@ export interface InstanceState {
      */
     supportIpv6?: pulumi.Input<boolean | undefined>;
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */
-    toConnectVpcIpBlock?: pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
+    toConnectVpcIpBlocks?: pulumi.Input<pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock>[] | undefined>;
     /**
      * User's VpcID.
      */
@@ -485,9 +485,9 @@ export interface InstanceArgs {
      */
     skipWaitSwitch?: pulumi.Input<boolean | undefined>;
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */
-    toConnectVpcIpBlock?: pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
+    toConnectVpcIpBlocks?: pulumi.Input<pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock>[] | undefined>;
     /**
      * User's VpcID.
      */

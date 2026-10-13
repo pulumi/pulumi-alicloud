@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -83,7 +83,7 @@ type TransitRouter struct {
 	// The status of the transit router.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
-	SupportMulticast pulumi.BoolPtrOutput `pulumi:"supportMulticast"`
+	SupportMulticast pulumi.BoolOutput `pulumi:"supportMulticast"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The description of the Enterprise Edition transit router instance.
@@ -336,8 +336,8 @@ func (o TransitRouterOutput) Status() pulumi.StringOutput {
 }
 
 // Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
-func (o TransitRouterOutput) SupportMulticast() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TransitRouter) pulumi.BoolPtrOutput { return v.SupportMulticast }).(pulumi.BoolPtrOutput)
+func (o TransitRouterOutput) SupportMulticast() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.BoolOutput { return v.SupportMulticast }).(pulumi.BoolOutput)
 }
 
 // The tag of the resource

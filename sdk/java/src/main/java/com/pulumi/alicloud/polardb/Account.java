@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,8 @@ import javax.annotation.Nullable;
  * For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
  * 
  * &gt; **NOTE:** Available since v1.67.0.
+ * 
+ * &gt; **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
  * 
  * &gt; **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
  * 
@@ -167,7 +170,7 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
      * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * - Be 8 to 32 characters in length.
      * - Special characters include !{@literal @}#$%^&amp;*()_+-=.
@@ -177,7 +180,7 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * @return The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
      * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * - Be 8 to 32 characters in length.
      * - Special characters include !{@literal @}#$%^&amp;*()_+-=.
@@ -199,6 +202,36 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountPasswordValidTime() {
         return this.accountPasswordValidTime;
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+     * 
+     */
+    @Export(name="accountPasswordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+     * 
+     */
+    public Output<Optional<String>> accountPasswordWo() {
+        return Codegen.optional(this.accountPasswordWo);
+    }
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    @Export(name="accountPasswordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> accountPasswordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> accountPasswordWoVersion() {
+        return Codegen.optional(this.accountPasswordWoVersion);
     }
     /**
      * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
@@ -243,14 +276,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.dynamodbAuthPassword;
     }
     /**
-     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
@@ -326,6 +359,7 @@ public class Account extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "accountPassword",
+                "accountPasswordWo",
                 "dynamodbAuthPassword"
             ))
             .build();

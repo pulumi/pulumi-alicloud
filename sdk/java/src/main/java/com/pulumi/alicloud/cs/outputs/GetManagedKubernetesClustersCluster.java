@@ -3,14 +3,11 @@
 
 package com.pulumi.alicloud.cs.outputs;
 
-import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterConnections;
-import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterLogConfig;
+import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterConnection;
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterRrsaConfig;
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterWorkerNode;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,28 +19,16 @@ public final class GetManagedKubernetesClustersCluster {
      * 
      */
     private String availabilityZone;
-    private String clusterNetworkType;
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
-    private GetManagedKubernetesClustersClusterConnections connections;
+    private List<GetManagedKubernetesClustersClusterConnection> connections;
     /**
      * @return ID of the node.
      * 
      */
     private String id;
-    private String imageId;
-    /**
-     * @return The keypair of ssh login cluster node, you have to create it first.
-     * 
-     */
-    private String keyName;
-    /**
-     * @return A list of one element containing information about the associated log store. It contains the following attributes:
-     * 
-     */
-    private List<GetManagedKubernetesClustersClusterLogConfig> logConfigs;
     /**
      * @return Node name.
      * 
@@ -54,7 +39,6 @@ public final class GetManagedKubernetesClustersCluster {
      * 
      */
     private String natGatewayId;
-    private String podCidr;
     /**
      * @return (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
      * 
@@ -65,8 +49,6 @@ public final class GetManagedKubernetesClustersCluster {
      * 
      */
     private String securityGroupId;
-    private String serviceCidr;
-    private Boolean slbInternetEnabled;
     /**
      * @return (Available since v1.245.0) The state of cluster.
      * 
@@ -78,30 +60,10 @@ public final class GetManagedKubernetesClustersCluster {
      */
     private String vpcId;
     /**
-     * @return The ID of VSwitches where the current cluster is located.
-     * 
-     */
-    private List<String> vswitchIds;
-    private Boolean workerAutoRenew;
-    private Integer workerAutoRenewPeriod;
-    private String workerDataDiskCategory;
-    private Integer workerDataDiskSize;
-    private String workerDiskCategory;
-    private Integer workerDiskSize;
-    private String workerInstanceChargeType;
-    private List<String> workerInstanceTypes;
-    /**
      * @return List of cluster worker nodes.
      * 
      */
     private List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes;
-    /**
-     * @return The ECS instance node number in the current container cluster.
-     * 
-     */
-    private List<Integer> workerNumbers;
-    private Integer workerPeriod;
-    private String workerPeriodUnit;
 
     private GetManagedKubernetesClustersCluster() {}
     /**
@@ -111,14 +73,11 @@ public final class GetManagedKubernetesClustersCluster {
     public String availabilityZone() {
         return this.availabilityZone;
     }
-    public String clusterNetworkType() {
-        return this.clusterNetworkType;
-    }
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
-    public GetManagedKubernetesClustersClusterConnections connections() {
+    public List<GetManagedKubernetesClustersClusterConnection> connections() {
         return this.connections;
     }
     /**
@@ -127,23 +86,6 @@ public final class GetManagedKubernetesClustersCluster {
      */
     public String id() {
         return this.id;
-    }
-    public String imageId() {
-        return this.imageId;
-    }
-    /**
-     * @return The keypair of ssh login cluster node, you have to create it first.
-     * 
-     */
-    public String keyName() {
-        return this.keyName;
-    }
-    /**
-     * @return A list of one element containing information about the associated log store. It contains the following attributes:
-     * 
-     */
-    public List<GetManagedKubernetesClustersClusterLogConfig> logConfigs() {
-        return this.logConfigs;
     }
     /**
      * @return Node name.
@@ -159,9 +101,6 @@ public final class GetManagedKubernetesClustersCluster {
     public String natGatewayId() {
         return this.natGatewayId;
     }
-    public String podCidr() {
-        return this.podCidr;
-    }
     /**
      * @return (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
      * 
@@ -175,12 +114,6 @@ public final class GetManagedKubernetesClustersCluster {
      */
     public String securityGroupId() {
         return this.securityGroupId;
-    }
-    public String serviceCidr() {
-        return this.serviceCidr;
-    }
-    public Boolean slbInternetEnabled() {
-        return this.slbInternetEnabled;
     }
     /**
      * @return (Available since v1.245.0) The state of cluster.
@@ -197,55 +130,11 @@ public final class GetManagedKubernetesClustersCluster {
         return this.vpcId;
     }
     /**
-     * @return The ID of VSwitches where the current cluster is located.
-     * 
-     */
-    public List<String> vswitchIds() {
-        return this.vswitchIds;
-    }
-    public Boolean workerAutoRenew() {
-        return this.workerAutoRenew;
-    }
-    public Integer workerAutoRenewPeriod() {
-        return this.workerAutoRenewPeriod;
-    }
-    public String workerDataDiskCategory() {
-        return this.workerDataDiskCategory;
-    }
-    public Integer workerDataDiskSize() {
-        return this.workerDataDiskSize;
-    }
-    public String workerDiskCategory() {
-        return this.workerDiskCategory;
-    }
-    public Integer workerDiskSize() {
-        return this.workerDiskSize;
-    }
-    public String workerInstanceChargeType() {
-        return this.workerInstanceChargeType;
-    }
-    public List<String> workerInstanceTypes() {
-        return this.workerInstanceTypes;
-    }
-    /**
      * @return List of cluster worker nodes.
      * 
      */
     public List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes() {
         return this.workerNodes;
-    }
-    /**
-     * @return The ECS instance node number in the current container cluster.
-     * 
-     */
-    public List<Integer> workerNumbers() {
-        return this.workerNumbers;
-    }
-    public Integer workerPeriod() {
-        return this.workerPeriod;
-    }
-    public String workerPeriodUnit() {
-        return this.workerPeriodUnit;
     }
 
     public static Builder builder() {
@@ -258,66 +147,28 @@ public final class GetManagedKubernetesClustersCluster {
     @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
-        private String clusterNetworkType;
-        private GetManagedKubernetesClustersClusterConnections connections;
+        private List<GetManagedKubernetesClustersClusterConnection> connections;
         private String id;
-        private String imageId;
-        private String keyName;
-        private List<GetManagedKubernetesClustersClusterLogConfig> logConfigs;
         private String name;
         private String natGatewayId;
-        private String podCidr;
         private GetManagedKubernetesClustersClusterRrsaConfig rrsaConfig;
         private String securityGroupId;
-        private String serviceCidr;
-        private Boolean slbInternetEnabled;
         private String state;
         private String vpcId;
-        private List<String> vswitchIds;
-        private Boolean workerAutoRenew;
-        private Integer workerAutoRenewPeriod;
-        private String workerDataDiskCategory;
-        private Integer workerDataDiskSize;
-        private String workerDiskCategory;
-        private Integer workerDiskSize;
-        private String workerInstanceChargeType;
-        private List<String> workerInstanceTypes;
         private List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes;
-        private List<Integer> workerNumbers;
-        private Integer workerPeriod;
-        private String workerPeriodUnit;
         public Builder() {}
         public Builder(GetManagedKubernetesClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
-    	      this.clusterNetworkType = defaults.clusterNetworkType;
     	      this.connections = defaults.connections;
     	      this.id = defaults.id;
-    	      this.imageId = defaults.imageId;
-    	      this.keyName = defaults.keyName;
-    	      this.logConfigs = defaults.logConfigs;
     	      this.name = defaults.name;
     	      this.natGatewayId = defaults.natGatewayId;
-    	      this.podCidr = defaults.podCidr;
     	      this.rrsaConfig = defaults.rrsaConfig;
     	      this.securityGroupId = defaults.securityGroupId;
-    	      this.serviceCidr = defaults.serviceCidr;
-    	      this.slbInternetEnabled = defaults.slbInternetEnabled;
     	      this.state = defaults.state;
     	      this.vpcId = defaults.vpcId;
-    	      this.vswitchIds = defaults.vswitchIds;
-    	      this.workerAutoRenew = defaults.workerAutoRenew;
-    	      this.workerAutoRenewPeriod = defaults.workerAutoRenewPeriod;
-    	      this.workerDataDiskCategory = defaults.workerDataDiskCategory;
-    	      this.workerDataDiskSize = defaults.workerDataDiskSize;
-    	      this.workerDiskCategory = defaults.workerDiskCategory;
-    	      this.workerDiskSize = defaults.workerDiskSize;
-    	      this.workerInstanceChargeType = defaults.workerInstanceChargeType;
-    	      this.workerInstanceTypes = defaults.workerInstanceTypes;
     	      this.workerNodes = defaults.workerNodes;
-    	      this.workerNumbers = defaults.workerNumbers;
-    	      this.workerPeriod = defaults.workerPeriod;
-    	      this.workerPeriodUnit = defaults.workerPeriodUnit;
         }
 
         @CustomType.Setter
@@ -329,20 +180,15 @@ public final class GetManagedKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder clusterNetworkType(String clusterNetworkType) {
-            if (clusterNetworkType == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "clusterNetworkType");
-            }
-            this.clusterNetworkType = clusterNetworkType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder connections(GetManagedKubernetesClustersClusterConnections connections) {
+        public Builder connections(List<GetManagedKubernetesClustersClusterConnection> connections) {
             if (connections == null) {
               throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "connections");
             }
             this.connections = connections;
             return this;
+        }
+        public Builder connections(GetManagedKubernetesClustersClusterConnection... connections) {
+            return connections(List.of(connections));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -351,33 +197,6 @@ public final class GetManagedKubernetesClustersCluster {
             }
             this.id = id;
             return this;
-        }
-        @CustomType.Setter
-        public Builder imageId(String imageId) {
-            if (imageId == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "imageId");
-            }
-            this.imageId = imageId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder keyName(String keyName) {
-            if (keyName == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "keyName");
-            }
-            this.keyName = keyName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder logConfigs(List<GetManagedKubernetesClustersClusterLogConfig> logConfigs) {
-            if (logConfigs == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "logConfigs");
-            }
-            this.logConfigs = logConfigs;
-            return this;
-        }
-        public Builder logConfigs(GetManagedKubernetesClustersClusterLogConfig... logConfigs) {
-            return logConfigs(List.of(logConfigs));
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -393,14 +212,6 @@ public final class GetManagedKubernetesClustersCluster {
               throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "natGatewayId");
             }
             this.natGatewayId = natGatewayId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder podCidr(String podCidr) {
-            if (podCidr == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "podCidr");
-            }
-            this.podCidr = podCidr;
             return this;
         }
         @CustomType.Setter
@@ -420,22 +231,6 @@ public final class GetManagedKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder serviceCidr(String serviceCidr) {
-            if (serviceCidr == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "serviceCidr");
-            }
-            this.serviceCidr = serviceCidr;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder slbInternetEnabled(Boolean slbInternetEnabled) {
-            if (slbInternetEnabled == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "slbInternetEnabled");
-            }
-            this.slbInternetEnabled = slbInternetEnabled;
-            return this;
-        }
-        @CustomType.Setter
         public Builder state(String state) {
             if (state == null) {
               throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "state");
@@ -452,84 +247,6 @@ public final class GetManagedKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder vswitchIds(List<String> vswitchIds) {
-            if (vswitchIds == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "vswitchIds");
-            }
-            this.vswitchIds = vswitchIds;
-            return this;
-        }
-        public Builder vswitchIds(String... vswitchIds) {
-            return vswitchIds(List.of(vswitchIds));
-        }
-        @CustomType.Setter
-        public Builder workerAutoRenew(Boolean workerAutoRenew) {
-            if (workerAutoRenew == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerAutoRenew");
-            }
-            this.workerAutoRenew = workerAutoRenew;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerAutoRenewPeriod(Integer workerAutoRenewPeriod) {
-            if (workerAutoRenewPeriod == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerAutoRenewPeriod");
-            }
-            this.workerAutoRenewPeriod = workerAutoRenewPeriod;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerDataDiskCategory(String workerDataDiskCategory) {
-            if (workerDataDiskCategory == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDataDiskCategory");
-            }
-            this.workerDataDiskCategory = workerDataDiskCategory;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerDataDiskSize(Integer workerDataDiskSize) {
-            if (workerDataDiskSize == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDataDiskSize");
-            }
-            this.workerDataDiskSize = workerDataDiskSize;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerDiskCategory(String workerDiskCategory) {
-            if (workerDiskCategory == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDiskCategory");
-            }
-            this.workerDiskCategory = workerDiskCategory;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerDiskSize(Integer workerDiskSize) {
-            if (workerDiskSize == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDiskSize");
-            }
-            this.workerDiskSize = workerDiskSize;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerInstanceChargeType(String workerInstanceChargeType) {
-            if (workerInstanceChargeType == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerInstanceChargeType");
-            }
-            this.workerInstanceChargeType = workerInstanceChargeType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerInstanceTypes(List<String> workerInstanceTypes) {
-            if (workerInstanceTypes == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerInstanceTypes");
-            }
-            this.workerInstanceTypes = workerInstanceTypes;
-            return this;
-        }
-        public Builder workerInstanceTypes(String... workerInstanceTypes) {
-            return workerInstanceTypes(List.of(workerInstanceTypes));
-        }
-        @CustomType.Setter
         public Builder workerNodes(List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes) {
             if (workerNodes == null) {
               throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerNodes");
@@ -540,64 +257,18 @@ public final class GetManagedKubernetesClustersCluster {
         public Builder workerNodes(GetManagedKubernetesClustersClusterWorkerNode... workerNodes) {
             return workerNodes(List.of(workerNodes));
         }
-        @CustomType.Setter
-        public Builder workerNumbers(List<Integer> workerNumbers) {
-            if (workerNumbers == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerNumbers");
-            }
-            this.workerNumbers = workerNumbers;
-            return this;
-        }
-        public Builder workerNumbers(Integer... workerNumbers) {
-            return workerNumbers(List.of(workerNumbers));
-        }
-        @CustomType.Setter
-        public Builder workerPeriod(Integer workerPeriod) {
-            if (workerPeriod == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerPeriod");
-            }
-            this.workerPeriod = workerPeriod;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workerPeriodUnit(String workerPeriodUnit) {
-            if (workerPeriodUnit == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerPeriodUnit");
-            }
-            this.workerPeriodUnit = workerPeriodUnit;
-            return this;
-        }
         public GetManagedKubernetesClustersCluster build() {
             final var _resultValue = new GetManagedKubernetesClustersCluster();
             _resultValue.availabilityZone = availabilityZone;
-            _resultValue.clusterNetworkType = clusterNetworkType;
             _resultValue.connections = connections;
             _resultValue.id = id;
-            _resultValue.imageId = imageId;
-            _resultValue.keyName = keyName;
-            _resultValue.logConfigs = logConfigs;
             _resultValue.name = name;
             _resultValue.natGatewayId = natGatewayId;
-            _resultValue.podCidr = podCidr;
             _resultValue.rrsaConfig = rrsaConfig;
             _resultValue.securityGroupId = securityGroupId;
-            _resultValue.serviceCidr = serviceCidr;
-            _resultValue.slbInternetEnabled = slbInternetEnabled;
             _resultValue.state = state;
             _resultValue.vpcId = vpcId;
-            _resultValue.vswitchIds = vswitchIds;
-            _resultValue.workerAutoRenew = workerAutoRenew;
-            _resultValue.workerAutoRenewPeriod = workerAutoRenewPeriod;
-            _resultValue.workerDataDiskCategory = workerDataDiskCategory;
-            _resultValue.workerDataDiskSize = workerDataDiskSize;
-            _resultValue.workerDiskCategory = workerDiskCategory;
-            _resultValue.workerDiskSize = workerDiskSize;
-            _resultValue.workerInstanceChargeType = workerInstanceChargeType;
-            _resultValue.workerInstanceTypes = workerInstanceTypes;
             _resultValue.workerNodes = workerNodes;
-            _resultValue.workerNumbers = workerNumbers;
-            _resultValue.workerPeriod = workerPeriod;
-            _resultValue.workerPeriodUnit = workerPeriodUnit;
             return _resultValue;
         }
     }

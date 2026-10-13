@@ -140,9 +140,6 @@ export interface GetPoliciesResult {
      * The type of the policy.
      */
     readonly type?: string;
-    /**
-     * (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
-     */
     readonly userName?: string;
 }
 /**

@@ -25,16 +25,16 @@ import (
 	_ "embed"
 
 	"github.com/aliyun/terraform-provider-alicloud/alicloud"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	v2schema "github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-alicloud/provider/v4/pkg/version"
 )
 
 // all of the AliCloud token components used below.
@@ -353,9 +353,37 @@ func resource(mod string, res string) tokens.Type {
 	return alicloudTypeDefaultFile(mod, res)
 }
 
+// fixupSchemaDefaults works around upstream terraform-provider-alicloud schema bugs where a
+// field's `Default` value is set using a named type (e.g. `HealthCheckHttpCodeType`) while the
+// field's `ValidateFunc` asserts the value is a plain `string`. Calling that `ValidateFunc`
+// against the mismatched `Default` -- as pulumi-terraform-bridge's sdk-v2 shim does while
+// detecting invalid defaults during tfgen -- panics with an interface conversion error. Normalize
+// the affected defaults to plain strings so bridge codegen can run without crashing.
+func fixupSchemaDefaults(p *v2schema.Provider) {
+	type fixup struct{ resource, field string }
+	fixups := []fixup{
+		{"alicloud_slb_rule", "health_check_http_code"},
+	}
+	for _, f := range fixups {
+		res, ok := p.ResourcesMap[f.resource]
+		if !ok {
+			continue
+		}
+		s, ok := res.Schema[f.field]
+		if !ok || s.Default == nil {
+			continue
+		}
+		if v, ok := s.Default.(alicloud.HealthCheckHttpCodeType); ok {
+			s.Default = string(v)
+		}
+	}
+}
+
 // Provider returns additional overlaid schema and metadata associated with the alicloud package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(alicloud.Provider().(*schema.Provider))
+	tfProvider := alicloud.Provider()
+	fixupSchemaDefaults(tfProvider)
+	p := shimv2.NewProvider(tfProvider)
 
 	prov := tfbridge.ProviderInfo{
 		P:            p,

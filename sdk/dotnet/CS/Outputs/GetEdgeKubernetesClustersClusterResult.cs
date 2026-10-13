@@ -18,9 +18,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        /// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
-        public readonly Outputs.GetEdgeKubernetesClustersClusterConnectionsResult Connections;
+        public readonly ImmutableArray<Outputs.GetEdgeKubernetesClustersClusterConnectionResult> Connections;
         /// <summary>
         /// ID of the node.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         private GetEdgeKubernetesClustersClusterResult(
             string availabilityZone,
 
-            Outputs.GetEdgeKubernetesClustersClusterConnectionsResult connections,
+            ImmutableArray<Outputs.GetEdgeKubernetesClustersClusterConnectionResult> connections,
 
             string id,
 

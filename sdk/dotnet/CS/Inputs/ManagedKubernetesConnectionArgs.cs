@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class EdgeKubernetesConnectionsGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// API Server Internet endpoint.
@@ -36,9 +36,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("serviceDomain")]
         public Input<string>? ServiceDomain { get; set; }
 
-        public EdgeKubernetesConnectionsGetArgs()
+        public ManagedKubernetesConnectionArgs()
         {
         }
-        public static new EdgeKubernetesConnectionsGetArgs Empty => new EdgeKubernetesConnectionsGetArgs();
+        public static new ManagedKubernetesConnectionArgs Empty => new ManagedKubernetesConnectionArgs();
     }
 }

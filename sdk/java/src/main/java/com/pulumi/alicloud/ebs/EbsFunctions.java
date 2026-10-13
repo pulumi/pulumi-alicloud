@@ -335,7 +335,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -380,7 +380,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -425,7 +425,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -470,7 +470,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -515,7 +515,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -560,7 +560,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -605,7 +605,7 @@ public final class EbsFunctions {
     /**
      * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 

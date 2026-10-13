@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/maxcompute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -140,7 +140,7 @@ type Quota struct {
 	PartNickName pulumi.StringPtrOutput `pulumi:"partNickName"`
 	// Payment type. Valid values: Subscription/PayAsYouGo
 	//
-	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Secondary Quota list
 	//
@@ -200,7 +200,7 @@ type quotaState struct {
 	PartNickName *string `pulumi:"partNickName"`
 	// Payment type. Valid values: Subscription/PayAsYouGo
 	//
-	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
 	PaymentType *string `pulumi:"paymentType"`
 	// Secondary Quota list
 	//
@@ -225,7 +225,7 @@ type QuotaState struct {
 	PartNickName pulumi.StringPtrInput
 	// Payment type. Valid values: Subscription/PayAsYouGo
 	//
-	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
 	PaymentType pulumi.StringPtrInput
 	// Secondary Quota list
 	//
@@ -254,7 +254,7 @@ type quotaArgs struct {
 	PartNickName *string `pulumi:"partNickName"`
 	// Payment type. Valid values: Subscription/PayAsYouGo
 	//
-	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
 	PaymentType string `pulumi:"paymentType"`
 	// Secondary Quota list
 	//
@@ -280,7 +280,7 @@ type QuotaArgs struct {
 	PartNickName pulumi.StringPtrInput
 	// Payment type. Valid values: Subscription/PayAsYouGo
 	//
-	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+	// > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
 	PaymentType pulumi.StringInput
 	// Secondary Quota list
 	//
@@ -400,7 +400,7 @@ func (o QuotaOutput) PartNickName() pulumi.StringPtrOutput {
 
 // Payment type. Valid values: Subscription/PayAsYouGo
 //
-// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+// > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
 func (o QuotaOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Quota) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

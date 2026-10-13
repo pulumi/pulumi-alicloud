@@ -58,13 +58,9 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The time when the policy was modified.
+        /// The time when the policy was updated.
         /// </summary>
         public readonly string UpdateDate;
-        /// <summary>
-        /// The name of the RAM user.
-        /// </summary>
-        public readonly string UserName;
         /// <summary>
         /// (Available since v1.114.0) The ID of the default policy version. **Note:** `VersionId` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
@@ -96,8 +92,6 @@ namespace Pulumi.AliCloud.Ram.Outputs
 
             string updateDate,
 
-            string userName,
-
             string versionId)
         {
             AttachmentCount = attachmentCount;
@@ -112,7 +106,6 @@ namespace Pulumi.AliCloud.Ram.Outputs
             Tags = tags;
             Type = type;
             UpdateDate = updateDate;
-            UserName = userName;
             VersionId = versionId;
         }
     }

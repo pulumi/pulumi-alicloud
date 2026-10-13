@@ -182,7 +182,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      * 
-     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = &#34;PayAsYouGo&#34;` adopts the existing pay-as-you-go quota of the region when it has already been opened
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
@@ -191,7 +191,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
     /**
      * @return Payment type. Valid values: Subscription/PayAsYouGo
      * 
-     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = &#34;PayAsYouGo&#34;` adopts the existing pay-as-you-go quota of the region when it has already been opened
      * 
      */
     public Output<String> paymentType() {

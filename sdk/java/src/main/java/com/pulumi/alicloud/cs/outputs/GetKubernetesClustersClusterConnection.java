@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetServerlessKubernetesClustersClusterConnections {
+public final class GetKubernetesClustersClusterConnection {
     /**
      * @return API Server Internet endpoint.
      * 
@@ -25,8 +25,13 @@ public final class GetServerlessKubernetesClustersClusterConnections {
      * 
      */
     private String masterPublicIp;
+    /**
+     * @return Service Access Domain.
+     * 
+     */
+    private String serviceDomain;
 
-    private GetServerlessKubernetesClustersClusterConnections() {}
+    private GetKubernetesClustersClusterConnection() {}
     /**
      * @return API Server Internet endpoint.
      * 
@@ -48,12 +53,19 @@ public final class GetServerlessKubernetesClustersClusterConnections {
     public String masterPublicIp() {
         return this.masterPublicIp;
     }
+    /**
+     * @return Service Access Domain.
+     * 
+     */
+    public String serviceDomain() {
+        return this.serviceDomain;
+    }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static Builder builder(GetServerlessKubernetesClustersClusterConnections defaults) {
+    public static Builder builder(GetKubernetesClustersClusterConnection defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -61,18 +73,20 @@ public final class GetServerlessKubernetesClustersClusterConnections {
         private String apiServerInternet;
         private String apiServerIntranet;
         private String masterPublicIp;
+        private String serviceDomain;
         public Builder() {}
-        public Builder(GetServerlessKubernetesClustersClusterConnections defaults) {
+        public Builder(GetKubernetesClustersClusterConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
     	      this.apiServerIntranet = defaults.apiServerIntranet;
     	      this.masterPublicIp = defaults.masterPublicIp;
+    	      this.serviceDomain = defaults.serviceDomain;
         }
 
         @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
             if (apiServerInternet == null) {
-              throw new MissingRequiredPropertyException("GetServerlessKubernetesClustersClusterConnections", "apiServerInternet");
+              throw new MissingRequiredPropertyException("GetKubernetesClustersClusterConnection", "apiServerInternet");
             }
             this.apiServerInternet = apiServerInternet;
             return this;
@@ -80,7 +94,7 @@ public final class GetServerlessKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
             if (apiServerIntranet == null) {
-              throw new MissingRequiredPropertyException("GetServerlessKubernetesClustersClusterConnections", "apiServerIntranet");
+              throw new MissingRequiredPropertyException("GetKubernetesClustersClusterConnection", "apiServerIntranet");
             }
             this.apiServerIntranet = apiServerIntranet;
             return this;
@@ -88,16 +102,25 @@ public final class GetServerlessKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder masterPublicIp(String masterPublicIp) {
             if (masterPublicIp == null) {
-              throw new MissingRequiredPropertyException("GetServerlessKubernetesClustersClusterConnections", "masterPublicIp");
+              throw new MissingRequiredPropertyException("GetKubernetesClustersClusterConnection", "masterPublicIp");
             }
             this.masterPublicIp = masterPublicIp;
             return this;
         }
-        public GetServerlessKubernetesClustersClusterConnections build() {
-            final var _resultValue = new GetServerlessKubernetesClustersClusterConnections();
+        @CustomType.Setter
+        public Builder serviceDomain(String serviceDomain) {
+            if (serviceDomain == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClustersClusterConnection", "serviceDomain");
+            }
+            this.serviceDomain = serviceDomain;
+            return this;
+        }
+        public GetKubernetesClustersClusterConnection build() {
+            final var _resultValue = new GetKubernetesClustersClusterConnection();
             _resultValue.apiServerInternet = apiServerInternet;
             _resultValue.apiServerIntranet = apiServerIntranet;
             _resultValue.masterPublicIp = masterPublicIp;
+            _resultValue.serviceDomain = serviceDomain;
             return _resultValue;
         }
     }

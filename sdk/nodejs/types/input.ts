@@ -4153,10 +4153,6 @@ export namespace chatbot {
 export namespace clickhouse {
     export interface DbClusterDbClusterAccessWhiteList {
         /**
-         * Field `dbClusterIpArrayAttribute` has been removed from provider.
-         */
-        dbClusterIpArrayAttribute?: pulumi.Input<string | undefined>;
-        /**
          * Whitelist group name.
          */
         dbClusterIpArrayName?: pulumi.Input<string | undefined>;
@@ -5189,13 +5185,7 @@ export namespace cms {
          * The statistical period of the metric. Unit: seconds. Default value: `300`.
          */
         period?: pulumi.Input<string | undefined>;
-        /**
-         * Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-         */
         statistics?: pulumi.Input<string | undefined>;
-        /**
-         * Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-         */
         threshold?: pulumi.Input<string | undefined>;
     }
 
@@ -6990,7 +6980,7 @@ export namespace cs {
         clusterCert?: pulumi.Input<string | undefined>;
     }
 
-    export interface EdgeKubernetesConnections {
+    export interface EdgeKubernetesConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -7156,7 +7146,7 @@ export namespace cs {
         clusterCert?: pulumi.Input<string | undefined>;
     }
 
-    export interface KubernetesConnections {
+    export interface KubernetesConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -7524,7 +7514,7 @@ export namespace cs {
         clusterCert?: pulumi.Input<string | undefined>;
     }
 
-    export interface ManagedKubernetesConnections {
+    export interface ManagedKubernetesConnection {
         /**
          * API Server Internet endpoint.
          */
@@ -24302,10 +24292,6 @@ export namespace slb {
     }
 
     export interface MasterSlaveServerGroupServer {
-        /**
-         * Determine if the server is executing. Valid value 0, 1.
-         */
-        isBackup?: pulumi.Input<number | undefined>;
         /**
          * The port used by the backend server. Valid value range: [1-65535].
          */

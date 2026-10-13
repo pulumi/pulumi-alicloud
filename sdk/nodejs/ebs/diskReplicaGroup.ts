@@ -95,6 +95,10 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
      */
     declare public readonly diskReplicaGroupName: pulumi.Output<string>;
     /**
+     * Whether to enable replication time control. Default value: false.
+     */
+    declare public readonly enableRtc: pulumi.Output<boolean>;
+    /**
      * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
      *
      * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -123,7 +127,7 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
     /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
-    declare public readonly rpo: pulumi.Output<number | undefined>;
+    declare public readonly rpo: pulumi.Output<number>;
     /**
      * The ID of the region to which the production site belongs.
      */
@@ -178,6 +182,7 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
             resourceInputs["destinationRegionId"] = state?.destinationRegionId;
             resourceInputs["destinationZoneId"] = state?.destinationZoneId;
             resourceInputs["diskReplicaGroupName"] = state?.diskReplicaGroupName;
+            resourceInputs["enableRtc"] = state?.enableRtc;
             resourceInputs["groupName"] = state?.groupName;
             resourceInputs["oneShot"] = state?.oneShot;
             resourceInputs["pairIds"] = state?.pairIds;
@@ -206,6 +211,7 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
             resourceInputs["destinationRegionId"] = args?.destinationRegionId;
             resourceInputs["destinationZoneId"] = args?.destinationZoneId;
             resourceInputs["diskReplicaGroupName"] = args?.diskReplicaGroupName;
+            resourceInputs["enableRtc"] = args?.enableRtc;
             resourceInputs["groupName"] = args?.groupName;
             resourceInputs["oneShot"] = args?.oneShot;
             resourceInputs["pairIds"] = args?.pairIds;
@@ -242,6 +248,10 @@ export interface DiskReplicaGroupState {
      * Consistent replication group name.
      */
     diskReplicaGroupName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable replication time control. Default value: false.
+     */
+    enableRtc?: pulumi.Input<boolean | undefined>;
     /**
      * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
      *
@@ -330,6 +340,10 @@ export interface DiskReplicaGroupArgs {
      * Consistent replication group name.
      */
     diskReplicaGroupName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable replication time control. Default value: false.
+     */
+    enableRtc?: pulumi.Input<boolean | undefined>;
     /**
      * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
      *

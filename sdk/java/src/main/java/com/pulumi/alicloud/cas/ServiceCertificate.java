@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,8 @@ import javax.annotation.Nullable;
  * For information about SSL Certificates Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/product/28533.html).
  * 
  * &gt; **NOTE:** Available since v1.129.0.
+ * 
+ * &gt; **NOTE:** The `keyWo` and `keyWoVersion` arguments require Terraform v1.11.0 or later. When `keyWo` is in use, `key` reads back empty because it is not stored in the state or plan.
  * 
  * ## Example Usage
  * 
@@ -189,18 +192,48 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptPrivateKey);
     }
     /**
-     * The private key of a non-SM certificate in PEM format.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     @Export(name="key", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> key;
 
     /**
-     * @return The private key of a non-SM certificate in PEM format.
+     * @return The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     public Output<Optional<String>> key() {
         return Codegen.optional(this.key);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     * 
+     */
+    @Export(name="keyWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     * 
+     */
+    public Output<Optional<String>> keyWo() {
+        return Codegen.optional(this.keyWo);
+    }
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
+    @Export(name="keyWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> keyWoVersion;
+
+    /**
+     * @return The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
+    public Output<Optional<Integer>> keyWoVersion() {
+        return Codegen.optional(this.keyWoVersion);
     }
     /**
      * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -337,6 +370,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "encryptPrivateKey",
                 "key",
+                "keyWo",
                 "signPrivateKey"
             ))
             .build();

@@ -27,10 +27,10 @@ class GetClusterCredentialResult:
     """
     A collection of values returned by getClusterCredential.
     """
-    def __init__(__self__, certificate_authority=None, cluster_id=None, cluster_name=None, expiration=None, id=None, kube_config=None, output_file=None, temporary_duration_minutes=None):
-        if certificate_authority and not isinstance(certificate_authority, dict):
-            raise TypeError("Expected argument 'certificate_authority' to be a dict")
-        pulumi.set(__self__, "certificate_authority", certificate_authority)
+    def __init__(__self__, certificate_authorities=None, cluster_id=None, cluster_name=None, expiration=None, id=None, kube_config=None, output_file=None, temporary_duration_minutes=None):
+        if certificate_authorities and not isinstance(certificate_authorities, list):
+            raise TypeError("Expected argument 'certificate_authorities' to be a list")
+        pulumi.set(__self__, "certificate_authorities", certificate_authorities)
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -54,12 +54,12 @@ class GetClusterCredentialResult:
         pulumi.set(__self__, "temporary_duration_minutes", temporary_duration_minutes)
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> 'outputs.GetClusterCredentialCertificateAuthorityResult':
+    @pulumi.getter(name="certificateAuthorities")
+    def certificate_authorities(self) -> Sequence['outputs.GetClusterCredentialCertificateAuthorityResult']:
         """
-        (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -118,7 +118,7 @@ class AwaitableGetClusterCredentialResult(GetClusterCredentialResult):
         if False:
             yield self
         return GetClusterCredentialResult(
-            certificate_authority=self.certificate_authority,
+            certificate_authorities=self.certificate_authorities,
             cluster_id=self.cluster_id,
             cluster_name=self.cluster_name,
             expiration=self.expiration,
@@ -167,7 +167,7 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getClusterCredential:getClusterCredential', __args__, opts=opts, typ=GetClusterCredentialResult).value
 
     return AwaitableGetClusterCredentialResult(
-        certificate_authority=pulumi.get(__ret__, 'certificate_authority'),
+        certificate_authorities=pulumi.get(__ret__, 'certificate_authorities'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         cluster_name=pulumi.get(__ret__, 'cluster_name'),
         expiration=pulumi.get(__ret__, 'expiration'),
@@ -213,7 +213,7 @@ def get_cluster_credential_output(cluster_id: pulumi.Input[Optional[_builtins.st
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getClusterCredential:getClusterCredential', __args__, opts=opts, typ=GetClusterCredentialResult)
     return __ret__.apply(lambda __response__: GetClusterCredentialResult(
-        certificate_authority=pulumi.get(__response__, 'certificate_authority'),
+        certificate_authorities=pulumi.get(__response__, 'certificate_authorities'),
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         cluster_name=pulumi.get(__response__, 'cluster_name'),
         expiration=pulumi.get(__response__, 'expiration'),

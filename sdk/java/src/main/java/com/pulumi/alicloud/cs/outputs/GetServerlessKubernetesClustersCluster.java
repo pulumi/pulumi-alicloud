@@ -3,21 +3,22 @@
 
 package com.pulumi.alicloud.cs.outputs;
 
-import com.pulumi.alicloud.cs.outputs.GetServerlessKubernetesClustersClusterConnections;
+import com.pulumi.alicloud.cs.outputs.GetServerlessKubernetesClustersClusterConnection;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetServerlessKubernetesClustersCluster {
     /**
-     * @return Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
+     * @return A list of serverless cluster connection information.
      * 
      */
-    private GetServerlessKubernetesClustersClusterConnections connections;
+    private List<GetServerlessKubernetesClustersClusterConnection> connections;
     /**
      * @return Whether the cluster support delete protection.
      * 
@@ -66,10 +67,10 @@ public final class GetServerlessKubernetesClustersCluster {
 
     private GetServerlessKubernetesClustersCluster() {}
     /**
-     * @return Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
+     * @return A list of serverless cluster connection information.
      * 
      */
-    public GetServerlessKubernetesClustersClusterConnections connections() {
+    public List<GetServerlessKubernetesClustersClusterConnection> connections() {
         return this.connections;
     }
     /**
@@ -145,7 +146,7 @@ public final class GetServerlessKubernetesClustersCluster {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetServerlessKubernetesClustersClusterConnections connections;
+        private List<GetServerlessKubernetesClustersClusterConnection> connections;
         private Boolean deletionProtection;
         private Boolean endpointPublicAccessEnabled;
         private String id;
@@ -171,12 +172,15 @@ public final class GetServerlessKubernetesClustersCluster {
         }
 
         @CustomType.Setter
-        public Builder connections(GetServerlessKubernetesClustersClusterConnections connections) {
+        public Builder connections(List<GetServerlessKubernetesClustersClusterConnection> connections) {
             if (connections == null) {
               throw new MissingRequiredPropertyException("GetServerlessKubernetesClustersCluster", "connections");
             }
             this.connections = connections;
             return this;
+        }
+        public Builder connections(GetServerlessKubernetesClustersClusterConnection... connections) {
+            return connections(List.of(connections));
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {

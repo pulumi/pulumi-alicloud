@@ -398,6 +398,7 @@
         "cloudfirewall/firewallVpcFirewall.ts",
         "cloudfirewall/firewallVpcFirewallCen.ts",
         "cloudfirewall/firewallVpcFirewallControlPolicy.ts",
+        "cloudfirewall/fwSwitch.ts",
         "cloudfirewall/getAddressBooks.ts",
         "cloudfirewall/getControlPolicies.ts",
         "cloudfirewall/getInstanceMembers.ts",

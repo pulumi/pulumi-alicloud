@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -131,17 +130,17 @@ public class Exchange extends com.pulumi.resources.CustomResource {
         return this.autoDeleteState;
     }
     /**
-     * CreateTime
+     * The time when the exchange was created. Unix timestamp, to millisecond level.
      * 
      */
-    @Export(name="createTime", refs={Integer.class}, tree="[0]")
-    private Output<Integer> createTime;
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
 
     /**
-     * @return CreateTime
+     * @return The time when the exchange was created. Unix timestamp, to millisecond level.
      * 
      */
-    public Output<Integer> createTime() {
+    public Output<String> createTime() {
         return this.createTime;
     }
     /**

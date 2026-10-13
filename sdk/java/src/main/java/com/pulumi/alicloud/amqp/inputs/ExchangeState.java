@@ -6,7 +6,6 @@ package com.pulumi.alicloud.amqp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +47,17 @@ public final class ExchangeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CreateTime
+     * The time when the exchange was created. Unix timestamp, to millisecond level.
      * 
      */
     @Import(name="createTime")
-    private @Nullable Output<Integer> createTime;
+    private @Nullable Output<String> createTime;
 
     /**
-     * @return CreateTime
+     * @return The time when the exchange was created. Unix timestamp, to millisecond level.
      * 
      */
-    public Optional<Output<Integer>> createTime() {
+    public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
@@ -245,23 +244,23 @@ public final class ExchangeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime CreateTime
+         * @param createTime The time when the exchange was created. Unix timestamp, to millisecond level.
          * 
          * @return builder
          * 
          */
-        public Builder createTime(@Nullable Output<Integer> createTime) {
+        public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
         /**
-         * @param createTime CreateTime
+         * @param createTime The time when the exchange was created. Unix timestamp, to millisecond level.
          * 
          * @return builder
          * 
          */
-        public Builder createTime(Integer createTime) {
+        public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 

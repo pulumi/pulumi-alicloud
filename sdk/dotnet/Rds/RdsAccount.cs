@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
     /// 
+    /// &gt; **NOTE:** The `AccountPasswordWo` and `AccountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -68,7 +70,7 @@ namespace Pulumi.AliCloud.Rds
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///         InstanceChargeType = "Postpaid",
@@ -127,13 +129,26 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the account.
+        /// The password of the account. It conflicts with `Password`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// * The value must be 8 to 32 characters in length.
         /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         /// * Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
         /// </summary>
         [Output("accountPassword")]
-        public Output<string> AccountPassword { get; private set; } = null!;
+        public Output<string?> AccountPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword`, `Password` and `KmsEncryptedPassword`, and one of the four password sources must be set.
+        /// </summary>
+        [Output("accountPasswordWo")]
+        public Output<string?> AccountPasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Output("accountPasswordWoVersion")]
+        public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The account type. Valid values:
@@ -171,7 +186,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. It conflicts with `AccountPassword`, `Password` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -189,10 +204,10 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead. It conflicts with `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
@@ -240,6 +255,7 @@ namespace Pulumi.AliCloud.Rds
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "accountPasswordWo",
                     "password",
                 },
             };
@@ -295,7 +311,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the account.
+        /// The password of the account. It conflicts with `Password`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// * The value must be 8 to 32 characters in length.
         /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         /// * Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
@@ -309,6 +325,29 @@ namespace Pulumi.AliCloud.Rds
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword`, `Password` and `KmsEncryptedPassword`, and one of the four password sources must be set.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The account type. Valid values:
@@ -346,7 +385,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. It conflicts with `AccountPassword`, `Password` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -373,7 +412,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead. It conflicts with `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password
@@ -444,7 +483,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the account.
+        /// The password of the account. It conflicts with `Password`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// * The value must be 8 to 32 characters in length.
         /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         /// * Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
@@ -458,6 +497,29 @@ namespace Pulumi.AliCloud.Rds
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword`, `Password` and `KmsEncryptedPassword`, and one of the four password sources must be set.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The account type. Valid values:
@@ -495,7 +557,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. It conflicts with `AccountPassword`, `Password` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -522,7 +584,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
+        /// The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead. It conflicts with `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password

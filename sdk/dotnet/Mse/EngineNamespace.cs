@@ -99,6 +99,12 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.279.1) The current number of configurations in the namespace.
+        /// </summary>
+        [Output("configCount")]
+        public Output<int> ConfigCount { get; private set; } = null!;
+
+        /// <summary>
         /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
         /// </summary>
         [Output("instanceId")]
@@ -123,6 +129,30 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Output("namespaceShowName")]
         public Output<string> NamespaceShowName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+        /// </summary>
+        [Output("quota")]
+        public Output<int> Quota { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.279.1) The current number of services registered to the namespace.
+        /// </summary>
+        [Output("serviceCount")]
+        public Output<string> ServiceCount { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.279.1) The source type of the namespace.
+        /// </summary>
+        [Output("sourceType")]
+        public Output<string> SourceType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.279.1) The type of the namespace.
+        /// </summary>
+        [Output("type")]
+        public Output<int> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -229,6 +259,12 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
+        /// (Available since v1.279.1) The current number of configurations in the namespace.
+        /// </summary>
+        [Input("configCount")]
+        public Input<int>? ConfigCount { get; set; }
+
+        /// <summary>
         /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
         /// </summary>
         [Input("instanceId")]
@@ -253,6 +289,30 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("namespaceShowName")]
         public Input<string>? NamespaceShowName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+        /// </summary>
+        [Input("quota")]
+        public Input<int>? Quota { get; set; }
+
+        /// <summary>
+        /// (Available since v1.279.1) The current number of services registered to the namespace.
+        /// </summary>
+        [Input("serviceCount")]
+        public Input<string>? ServiceCount { get; set; }
+
+        /// <summary>
+        /// (Available since v1.279.1) The source type of the namespace.
+        /// </summary>
+        [Input("sourceType")]
+        public Input<string>? SourceType { get; set; }
+
+        /// <summary>
+        /// (Available since v1.279.1) The type of the namespace.
+        /// </summary>
+        [Input("type")]
+        public Input<int>? Type { get; set; }
 
         public EngineNamespaceState()
         {

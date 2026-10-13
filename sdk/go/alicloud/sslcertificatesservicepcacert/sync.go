@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,6 +19,8 @@ import (
 // > **NOTE:** Available since v1.294.0.
 //
 // > **NOTE:** The synchronization is a one-shot operation. The API returns no server-side object, and the synchronized certificates cannot be located by PCA identifier on the SSL Certificates side, so the resource does not refresh anything after creation. Changing the `ids` list recreates the resource, which re-runs the synchronization. Destroying the resource only removes it from the Terraform state; the synchronized certificates remain in the SSL Certificates service. The server processes the synchronization asynchronously: shortly after the apply, attempts to delete the synchronized certificates from the PCA side may be rejected until the processing finishes.
+//
+// > **NOTE:** It is recommended to use the `sslcertificatesservicepcacert.Sync` action (available since v2.0.0-beta5, requires Terraform 1.14 or later) when the synchronization should run as part of the certificate lifecycle: the action can be wired with `actionTrigger` (for example, after client certificates are created) and runs without storing any state. Use this resource when the synchronization is a standalone batch operation.
 //
 // ## Example Usage
 //
@@ -31,8 +33,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservice"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicepcacert"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/sslcertificatesservice"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/sslcertificatesservicepcacert"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

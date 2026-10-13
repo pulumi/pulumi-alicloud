@@ -231,10 +231,10 @@ namespace Pulumi.AliCloud.Amqp
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// OrderCreateTime.
+        /// The time when the order was created. Unix timestamp, to millisecond level.
         /// </summary>
         [Output("createTime")]
-        public Output<int> CreateTime { get; private set; } = null!;
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The deployment architecture for Serverless instances. Valid values:
@@ -695,10 +695,10 @@ namespace Pulumi.AliCloud.Amqp
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// OrderCreateTime.
+        /// The time when the order was created. Unix timestamp, to millisecond level.
         /// </summary>
         [Input("createTime")]
-        public Input<int>? CreateTime { get; set; }
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The deployment architecture for Serverless instances. Valid values:

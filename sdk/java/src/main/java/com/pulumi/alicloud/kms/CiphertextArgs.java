@@ -6,6 +6,7 @@ package com.pulumi.alicloud.kms;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -48,18 +49,50 @@ public final class CiphertextArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The plaintext to be encrypted which must be encoded in Base64.
+     * The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      * 
      */
-    @Import(name="plaintext", required=true)
-    private Output<String> plaintext;
+    @Import(name="plaintext")
+    private @Nullable Output<String> plaintext;
 
     /**
-     * @return The plaintext to be encrypted which must be encoded in Base64.
+     * @return The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      * 
      */
-    public Output<String> plaintext() {
-        return this.plaintext;
+    public Optional<Output<String>> plaintext() {
+        return Optional.ofNullable(this.plaintext);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     * 
+     */
+    @Import(name="plaintextWo")
+    private @Nullable Output<String> plaintextWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     * 
+     */
+    public Optional<Output<String>> plaintextWo() {
+        return Optional.ofNullable(this.plaintextWo);
+    }
+
+    /**
+     * The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     * 
+     */
+    @Import(name="plaintextWoVersion")
+    private @Nullable Output<Integer> plaintextWoVersion;
+
+    /**
+     * @return The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     * 
+     */
+    public Optional<Output<Integer>> plaintextWoVersion() {
+        return Optional.ofNullable(this.plaintextWoVersion);
     }
 
     private CiphertextArgs() {}
@@ -68,6 +101,8 @@ public final class CiphertextArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptionContext = $.encryptionContext;
         this.keyId = $.keyId;
         this.plaintext = $.plaintext;
+        this.plaintextWo = $.plaintextWo;
+        this.plaintextWoVersion = $.plaintextWoVersion;
     }
 
     public static Builder builder() {
@@ -131,18 +166,18 @@ public final class CiphertextArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plaintext The plaintext to be encrypted which must be encoded in Base64.
+         * @param plaintext The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
          * 
          * @return builder
          * 
          */
-        public Builder plaintext(Output<String> plaintext) {
+        public Builder plaintext(@Nullable Output<String> plaintext) {
             $.plaintext = plaintext;
             return this;
         }
 
         /**
-         * @param plaintext The plaintext to be encrypted which must be encoded in Base64.
+         * @param plaintext The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
          * 
          * @return builder
          * 
@@ -151,12 +186,53 @@ public final class CiphertextArgs extends com.pulumi.resources.ResourceArgs {
             return plaintext(Output.of(plaintext));
         }
 
+        /**
+         * @param plaintextWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plaintextWo(@Nullable Output<String> plaintextWo) {
+            $.plaintextWo = plaintextWo;
+            return this;
+        }
+
+        /**
+         * @param plaintextWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plaintextWo(String plaintextWo) {
+            return plaintextWo(Output.of(plaintextWo));
+        }
+
+        /**
+         * @param plaintextWoVersion The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plaintextWoVersion(@Nullable Output<Integer> plaintextWoVersion) {
+            $.plaintextWoVersion = plaintextWoVersion;
+            return this;
+        }
+
+        /**
+         * @param plaintextWoVersion The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plaintextWoVersion(Integer plaintextWoVersion) {
+            return plaintextWoVersion(Output.of(plaintextWoVersion));
+        }
+
         public CiphertextArgs build() {
             if ($.keyId == null) {
                 throw new MissingRequiredPropertyException("CiphertextArgs", "keyId");
-            }
-            if ($.plaintext == null) {
-                throw new MissingRequiredPropertyException("CiphertextArgs", "plaintext");
             }
             return $;
         }

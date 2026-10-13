@@ -8,7 +8,7 @@ import com.pulumi.alicloud.cs.EdgeKubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesState;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesCertificateAuthority;
-import com.pulumi.alicloud.cs.outputs.EdgeKubernetesConnections;
+import com.pulumi.alicloud.cs.outputs.EdgeKubernetesConnection;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesLogConfig;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesRuntime;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesWorkerDataDisk;
@@ -264,22 +264,22 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    @Export(name="certificateAuthority", refs={EdgeKubernetesCertificateAuthority.class}, tree="[0]")
-    private Output<EdgeKubernetesCertificateAuthority> certificateAuthority;
+    @Export(name="certificateAuthorities", refs={List.class,EdgeKubernetesCertificateAuthority.class}, tree="[0,1]")
+    private Output<List<EdgeKubernetesCertificateAuthority>> certificateAuthorities;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      */
-    public Output<EdgeKubernetesCertificateAuthority> certificateAuthority() {
-        return this.certificateAuthority;
+    public Output<List<EdgeKubernetesCertificateAuthority>> certificateAuthorities() {
+        return this.certificateAuthorities;
     }
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -358,17 +358,17 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.clusterSpec;
     }
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      * 
      */
-    @Export(name="connections", refs={EdgeKubernetesConnections.class}, tree="[0]")
-    private Output<EdgeKubernetesConnections> connections;
+    @Export(name="connections", refs={List.class,EdgeKubernetesConnection.class}, tree="[0,1]")
+    private Output<List<EdgeKubernetesConnection>> connections;
 
     /**
-     * @return (Map) Map of kubernetes cluster connection information.
+     * @return (List) A list of kubernetes cluster connection information.
      * 
      */
-    public Output<EdgeKubernetesConnections> connections() {
+    public Output<List<EdgeKubernetesConnection>> connections() {
         return this.connections;
     }
     /**
@@ -638,18 +638,18 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
-    @Export(name="runtime", refs={EdgeKubernetesRuntime.class}, tree="[0]")
-    private Output</* @Nullable */ EdgeKubernetesRuntime> runtime;
+    @Export(name="runtimes", refs={List.class,EdgeKubernetesRuntime.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<EdgeKubernetesRuntime>> runtimes;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * @return A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
-    public Output<Optional<EdgeKubernetesRuntime>> runtime() {
-        return Codegen.optional(this.runtime);
+    public Output<Optional<List<EdgeKubernetesRuntime>>> runtimes() {
+        return Codegen.optional(this.runtimes);
     }
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -696,6 +696,12 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> skipSetCertificateAuthority() {
         return Codegen.optional(this.skipSetCertificateAuthority);
+    }
+    @Export(name="slbId", refs={String.class}, tree="[0]")
+    private Output<String> slbId;
+
+    public Output<String> slbId() {
+        return this.slbId;
     }
     /**
      * The public ip of load balancer.

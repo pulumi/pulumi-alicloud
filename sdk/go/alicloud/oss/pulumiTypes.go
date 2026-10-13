@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -12673,14 +12673,10 @@ type GetInstancesInstance struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the instance.
 	Description string `pulumi:"description"`
-	// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-	EntityQuota int `pulumi:"entityQuota"`
 	// ID of the instance.
 	Id string `pulumi:"id"`
 	// Instance name.
 	Name string `pulumi:"name"`
-	// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-	Network string `pulumi:"network"`
 	// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
 	NetworkSourceAcls []string `pulumi:"networkSourceAcls"`
 	// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
@@ -12700,7 +12696,7 @@ type GetInstancesInstance struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -12742,14 +12738,10 @@ type GetInstancesInstanceArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the instance.
 	Description pulumi.StringInput `pulumi:"description"`
-	// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-	EntityQuota pulumi.IntInput `pulumi:"entityQuota"`
 	// ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Instance name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-	Network pulumi.StringInput `pulumi:"network"`
 	// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
 	NetworkSourceAcls pulumi.StringArrayInput `pulumi:"networkSourceAcls"`
 	// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
@@ -12769,7 +12761,7 @@ type GetInstancesInstanceArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -12859,11 +12851,6 @@ func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-func (o GetInstancesInstanceOutput) EntityQuota() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstancesInstance) int { return v.EntityQuota }).(pulumi.IntOutput)
-}
-
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
@@ -12872,11 +12859,6 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 // Instance name.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-func (o GetInstancesInstanceOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancesInstance) string { return v.Network }).(pulumi.StringOutput)
 }
 
 // (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
@@ -12920,7 +12902,7 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

@@ -424,18 +424,18 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
-    @Import(name="runtime")
-    private @Nullable Output<EdgeKubernetesRuntimeArgs> runtime;
+    @Import(name="runtimes")
+    private @Nullable Output<List<EdgeKubernetesRuntimeArgs>> runtimes;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+     * @return A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
-    public Optional<Output<EdgeKubernetesRuntimeArgs>> runtime() {
-        return Optional.ofNullable(this.runtime);
+    public Optional<Output<List<EdgeKubernetesRuntimeArgs>>> runtimes() {
+        return Optional.ofNullable(this.runtimes);
     }
 
     /**
@@ -716,7 +716,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
-        this.runtime = $.runtime;
+        this.runtimes = $.runtimes;
         this.securityGroupId = $.securityGroupId;
         this.serviceCidr = $.serviceCidr;
         this.skipSetCertificateAuthority = $.skipSetCertificateAuthority;
@@ -1321,24 +1321,34 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+         * @param runtimes A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(@Nullable Output<EdgeKubernetesRuntimeArgs> runtime) {
-            $.runtime = runtime;
+        public Builder runtimes(@Nullable Output<List<EdgeKubernetesRuntimeArgs>> runtimes) {
+            $.runtimes = runtimes;
             return this;
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+         * @param runtimes A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(EdgeKubernetesRuntimeArgs runtime) {
-            return runtime(Output.of(runtime));
+        public Builder runtimes(List<EdgeKubernetesRuntimeArgs> runtimes) {
+            return runtimes(Output.of(runtimes));
+        }
+
+        /**
+         * @param runtimes A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtimes(EdgeKubernetesRuntimeArgs... runtimes) {
+            return runtimes(List.of(runtimes));
         }
 
         /**

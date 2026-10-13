@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -139,6 +140,20 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
+     * (Available since v1.279.1) The current number of configurations in the namespace.
+     * 
+     */
+    @Export(name="configCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> configCount;
+
+    /**
+     * @return (Available since v1.279.1) The current number of configurations in the namespace.
+     * 
+     */
+    public Output<Integer> configCount() {
+        return this.configCount;
+    }
+    /**
      * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
      * 
      */
@@ -197,6 +212,62 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
      */
     public Output<String> namespaceShowName() {
         return this.namespaceShowName;
+    }
+    /**
+     * (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+     * 
+     */
+    @Export(name="quota", refs={Integer.class}, tree="[0]")
+    private Output<Integer> quota;
+
+    /**
+     * @return (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+     * 
+     */
+    public Output<Integer> quota() {
+        return this.quota;
+    }
+    /**
+     * (Available since v1.279.1) The current number of services registered to the namespace.
+     * 
+     */
+    @Export(name="serviceCount", refs={String.class}, tree="[0]")
+    private Output<String> serviceCount;
+
+    /**
+     * @return (Available since v1.279.1) The current number of services registered to the namespace.
+     * 
+     */
+    public Output<String> serviceCount() {
+        return this.serviceCount;
+    }
+    /**
+     * (Available since v1.279.1) The source type of the namespace.
+     * 
+     */
+    @Export(name="sourceType", refs={String.class}, tree="[0]")
+    private Output<String> sourceType;
+
+    /**
+     * @return (Available since v1.279.1) The source type of the namespace.
+     * 
+     */
+    public Output<String> sourceType() {
+        return this.sourceType;
+    }
+    /**
+     * (Available since v1.279.1) The type of the namespace.
+     * 
+     */
+    @Export(name="type", refs={Integer.class}, tree="[0]")
+    private Output<Integer> type;
+
+    /**
+     * @return (Available since v1.279.1) The type of the namespace.
+     * 
+     */
+    public Output<Integer> type() {
+        return this.type;
     }
 
     /**
